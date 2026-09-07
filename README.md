@@ -24,6 +24,24 @@ The builder writes portable PNG assets, normalizes the three source schemas,
 constructs region masks/boxes/points and evaluation masks, and validates the
 result before copying the lightweight files into `benchmark_v0/`.
 
+## Visual examples
+
+Each card shows the source image, region input overlay, target reference when
+available, and both instruction variants. Blue denotes the evaluation region;
+red/green denote input regions; the white dot is the point prompt.
+
+![CompBench examples](benchmark_v0/visual_examples/compbench_examples.png)
+
+![HumanEdit examples](benchmark_v0/visual_examples/humanedit_examples.png)
+
+![ReShapeBench examples](benchmark_v0/visual_examples/reshape_bench_examples.png)
+
+Regenerate these sheets with:
+
+```bash
+python render_unified_examples.py
+```
+
 ## Candidate selection
 
 This directory contains the reproducible automatic pre-selection used to build the

@@ -89,6 +89,7 @@ CompBench 的 60 条显式多目标记录均导出为两个 `regions`。其中 5
 ```text
 finegrained_edit_benchmark_selection/
 ├── build_unified_benchmark.py
+├── render_unified_examples.py
 ├── select_candidates.py
 ├── render_review_sheets.py
 ├── validate_selection.py
@@ -96,7 +97,8 @@ finegrained_edit_benchmark_selection/
 ├── benchmark_v0/
 │   ├── benchmark.jsonl
 │   ├── benchmark_meta.json
-│   └── validation_report.json
+│   ├── validation_report.json
+│   └── visual_examples/
 └── output/
     ├── selected_500.jsonl
     ├── selected_500.csv

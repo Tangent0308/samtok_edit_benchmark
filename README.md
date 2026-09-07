@@ -1,7 +1,30 @@
-# Fine-grained regional edit benchmark candidate selection
+# SAMTok fine-grained interactive edit benchmark
 
-Current construction status and the proposed unified benchmark schema are recorded
+The v0 unified benchmark has been materialized and validated. Construction details are recorded
 in [`BENCHMARK_PROGRESS.md`](BENCHMARK_PROGRESS.md).
+
+The complete 545 MB benchmark is stored outside Git at:
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v0/
+```
+
+`benchmark_v0/` contains the lightweight `benchmark.jsonl`, global metadata,
+and validation report. All paths in the manifest are relative to the complete
+benchmark root above.
+
+Rebuild the unified data from the pinned source datasets and selected candidate
+manifest with:
+
+```bash
+python build_unified_benchmark.py
+```
+
+The builder writes portable PNG assets, normalizes the three source schemas,
+constructs region masks/boxes/points and evaluation masks, and validates the
+result before copying the lightweight files into `benchmark_v0/`.
+
+## Candidate selection
 
 This directory contains the reproducible automatic pre-selection used to build the
 human-review pool described in `细粒度交互式编辑 Benchmark 方案.md`.
@@ -35,8 +58,8 @@ python render_review_sheets.py
 python validate_selection.py
 ```
 
-The selection is intentionally labelled `auto-v0`. It is not the frozen benchmark.
-`review_flags` must be resolved by SAM2 refinement and/or human Y/N review before freeze.
+`output/selected_500.jsonl` remains the rich construction-time candidate manifest;
+it is not the compact evaluation manifest.
 
 Important implementation choices:
 
@@ -49,5 +72,6 @@ Important implementation choices:
   changed pixels use mean absolute RGB difference >= 12/255. A secondary requirement
   keeps at least 40% of total RGB difference mass inside the same region.
 - ReShapeBench: 30 single-object and 70 multi-object cases; no GT image is assumed.
-  Released box masks are retained as locators but explicitly require SAM2 refinement.
+  Released box masks are weak locators; Grounding DINO plus SAM2 supplies the final
+  semantic instance masks because some released locators are coarse or misplaced.
 - All Parquet `source_row` values are zero-based.

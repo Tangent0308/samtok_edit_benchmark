@@ -4,9 +4,15 @@
 
 ## 1. 当前状态
 
-当前已经完成三个源数据集的下载与完整性检查、全量自动特征扫描、500 条候选样本的配额筛选，以及全部候选样本的可视化审核页生成。
+当前已经完成三个源数据集的下载与完整性检查、全量自动特征扫描、500 条样本的配额筛选、全部候选样本的可视化页，以及统一精简格式的正式导出和自动验证。
 
-当前的 `selected_500.jsonl` 是 **自动筛选候选集**，还不是最终冻结的 benchmark。最终统一格式已经完成字段设计，但尚未执行图片、mask 和 manifest 的正式导出。
+最终数据位于：
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v0/
+```
+
+其中 `benchmark.jsonl` 是 500 条最终统一记录；源图、目标参考图、输入区域 mask 和 evaluation mask 均已转换为可移植的相对路径资产。仓库中的 `benchmark_v0/` 保存 manifest、metadata 和验证报告，不重复提交 545 MB 的图片资产。
 
 ## 2. 数据集下载
 
@@ -50,7 +56,7 @@
 
 CompBench 的选择优先覆盖不同 MOSE 视频前缀，避免从少量视频连续抽取大量相邻帧。
 
-## 4. 自动质量检查
+## 4. 自动质量检查与区域构建
 
 CompBench 和 HumanEdit 共 400 条候选全部通过当前的严格自动检查：
 
@@ -64,21 +70,33 @@ GT 局部一致性统计：
 - 最低变化像素区域内比例：0.80004。
 - 中位变化像素区域内比例：0.97707。
 
-ReShapeBench 当前仍有以下待处理项：
+ReShapeBench 的 100 条记录已使用固定 revision 的 Grounding DINO 与 SAM2 生成语义实例 mask。检查中发现部分官方 locator 过粗或明显偏位，因此 locator 仅用于候选排序的弱先验；最终 `regions[].mask`、`box` 和 `evaluation_mask` 均由语义定位后的实例区域生成。ReShapeBench 没有目标 GT 图片，使用局部/全局目标文本进行 reference-free 评测。
 
-- 100 条都需要将官方 box locator 通过 SAM2 转换为实例 mask。
-- 其中 30 条官方 box 区域面积超过实例 mask 的目标阈值。
-- 其中 16 条官方 locator 的连通域数量偏多。
-- ReShapeBench 没有目标 GT 图片，后续使用文本目标描述和 reference-free 指标评测。
+CompBench 的 60 条显式多目标记录均导出为两个 `regions`。其中 55 条可直接从官方 union mask 的连通域拆分；其余 5 条粘连实例使用 Grounding DINO + SAM2 辅助分区，并强制两个区域互斥且并集保持官方 mask 不变。
+
+最终自动验证结果：
+
+- 500 条记录、500 个唯一 ID。
+- 480 张不同源图、400 张目标参考图。
+- 560 个输入区域 mask、500 个 evaluation mask。
+- 482 条 `region_only` 指令；18 条 counting 因无法由单一区域提示完整表达而保留为 `null`。
+- 所有引用路径存在；图像/mask 尺寸一致；mask 均为 0/255 二值图。
+- 所有 box 均使用合法的半开区间坐标，point 均落在对应 mask 内。
+- 验证状态：`passed`，错误数为 0。
 
 ## 5. 当前产物
 
 ```text
 finegrained_edit_benchmark_selection/
+├── build_unified_benchmark.py
 ├── select_candidates.py
 ├── render_review_sheets.py
 ├── validate_selection.py
 ├── BENCHMARK_PROGRESS.md
+├── benchmark_v0/
+│   ├── benchmark.jsonl
+│   ├── benchmark_meta.json
+│   └── validation_report.json
 └── output/
     ├── selected_500.jsonl
     ├── selected_500.csv
@@ -94,15 +112,17 @@ finegrained_edit_benchmark_selection/
 - HumanEdit：8 张。
 - ReShapeBench：4 张。
 
-当前候选 manifest 的 SHA256：
+最终 benchmark manifest 的 SHA256：
 
 ```text
-bd6fbf2ae0c227590c089c208dfbf3db6e6fd741605851be426db8e887c32ae3
+79d0b78fcd843d6388fa28c8e9ca6ab213eea16fd5b01ac76b0e5613fa35e16c
 ```
+
+完整数据目录大小约 545 MB；构建诊断保存在数据目录的 `build_report.json`，不会进入最终逐条 manifest。
 
 ## 6. 最终 benchmark 的精简统一格式
 
-一条 JSONL 记录表示一个编辑 case。最终记录只保留模型输入、评测目标、评测区域以及分组报告所必需的信息。下面仅为字段示意，其中坐标不是已冻结的真实标注：
+一条 JSONL 记录表示一个编辑 case。最终记录只保留模型输入、评测目标、评测区域以及分组报告所必需的信息。下面为字段结构示意：
 
 ```json
 {
@@ -128,7 +148,7 @@ bd6fbf2ae0c227590c089c208dfbf3db6e6fd741605851be426db8e887c32ae3
     "expected_global_description": "A vintage steam locomotive ... A modern solar-powered light pole ..."
   },
   "difficulty": {
-    "same_class_instances": 1,
+    "same_class_multi_instance": false,
     "multi_object_scene": true
   }
 }
@@ -164,10 +184,10 @@ bd6fbf2ae0c227590c089c208dfbf3db6e6fd741605851be426db8e887c32ae3
 | `instruction.with_location_reference` | `instruction` | `EDITING_INSTRUCTION` | `instruction` |
 | `instruction.region_only` | 自动去指代改写 | 自动去指代改写；不适用时为 `null` | 使用 `{region_1}` 绑定目标 |
 | `edit_type` | add/remove/replace | add/remove/replace/counting | 统一映射为 replace |
-| `regions[].mask` | 官方实例 mask | 手绘 alpha mask | 官方 box 经 SAM2 得到的实例 mask |
-| `regions[].box` | mask 外接框加 padding | mask 外接框加 padding | 官方 box |
+| `regions[].mask` | 官方实例 mask；多目标 union 拆为逐实例区域 | 手绘 alpha mask | 文本 grounding 后经 SAM2 得到的实例 mask |
+| `regions[].box` | mask 外接框加 padding | mask 外接框加 padding | SAM2 mask 外接框加 padding |
 | `regions[].point` | mask 最内点 | mask 最内点 | SAM2 mask 最内点 |
-| `evaluation_mask` | 区域并集膨胀 2% | 区域并集膨胀 2% | 官方 box 膨胀 2% |
+| `evaluation_mask` | 区域并集膨胀 2% | 区域并集膨胀 2% | grounded SAM2 mask 外接矩形膨胀 2% |
 | `target.expected_local_content` | `caption` | `OUTPUT_DESCRIPTION` | `foreground_target` |
 | `target.expected_global_description` | 无可靠描述时为 `null` | `OUTPUT_CAPTION_BY_LLAMA` | `target_prompt` |
 
@@ -185,12 +205,6 @@ CompBench 的 `multi_object_add` 和 `multi_object_remove` 分别归一化为 `a
 
 全局固定信息，例如 benchmark 版本、坐标格式、小目标阈值、mask 取值、区域膨胀比例和标记渲染参数，统一存入 `benchmark_meta.json`，不在每条记录中重复。
 
-## 8. 下一步
+## 8. 后续可选工作
 
-1. 对 100 条 ReShapeBench case 执行 box-to-SAM2，并确认实例 mask。
-2. 将 CompBench 多目标样本恢复为逐实例 `regions`。
-3. 生成 `instruction.region_only`，并保留不适合去指代样本的 `null` 状态。
-4. 补全三个数据集统一的 `target.expected_local_content` 与可用的全局目标描述。
-5. 导出 source、target reference、逐实例 mask 和 evaluation mask。
-6. 生成精简版 `benchmark.jsonl` 与全局 `benchmark_meta.json`。
-7. 对最终 manifest 做路径、数量、区域坐标和可复现性校验后冻结版本。
+当前 v0 已可用于评测。冻结公开版本前仍可进行一次人工 spot-check，并补充具体模型运行适配器与 metric 实现；这些工作不改变当前统一字段设计。

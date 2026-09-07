@@ -12,19 +12,19 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 DEFAULT_BENCHMARK_ROOT = Path(
-    "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v0"
+    "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1"
 )
 DEFAULT_OUTPUT = DEFAULT_BENCHMARK_ROOT / "visual_examples"
 EXAMPLES = {
     "compbench": [
-        "cb_train-00000-of-00007_0027",
+        "cb_train-00006-of-00007_0279",
         "cb_train-00006-of-00007_0311",
         "cb_train-00006-of-00007_0344",
-        "cb_train-00005-of-00007_0238",
+        "cb_train-00006-of-00007_0330",
     ],
     "humanedit": [
         "he_000000000307",
-        "he_000000089503",
+        "he_-3Mbr-3-e2s",
         "he_04iFOldrYig",
         "he_0Ut0pNrTdQo",
     ],

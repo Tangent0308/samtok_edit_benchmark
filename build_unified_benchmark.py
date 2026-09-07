@@ -50,11 +50,38 @@ RESHAPE_GROUNDING_MAX_BOX_AREA = {
 }
 
 COMP_TOUCHING_INSTANCE_QUERIES = {
-    "cb_train-00006-of-00007_0296": "white rabbit",
-    "cb_train-00006-of-00007_0311": "red fish",
-    "cb_train-00006-of-00007_0325": "goat",
-    "cb_train-00006-of-00007_0335": "man",
-    "cb_train-00006-of-00007_0383": "fish",
+    "cb_train-00006-of-00007_0279": ["grey bird", "yellow bird"],
+    "cb_train-00006-of-00007_0287": ["white and red fish", "yellow fish"],
+    "cb_train-00006-of-00007_0296": ["white rabbit", "white rabbit"],
+    "cb_train-00006-of-00007_0311": ["red fish", "red fish"],
+    "cb_train-00006-of-00007_0325": ["goat", "goat"],
+    "cb_train-00006-of-00007_0328": ["flamingo", "flamingo"],
+    "cb_train-00006-of-00007_0330": ["red fish with black spots", "black and white fish"],
+    "cb_train-00006-of-00007_0335": ["man", "man"],
+    "cb_train-00006-of-00007_0351": ["grey bird", "yellow bird"],
+    "cb_train-00006-of-00007_0359": ["fish", "fish"],
+    "cb_train-00006-of-00007_0368": ["rabbit", "rabbit"],
+    "cb_train-00006-of-00007_0383": ["fish", "fish"],
+    "cb_train-00006-of-00007_0397": ["white goat", "white goat"],
+    "cb_train-00006-of-00007_0400": ["flamingo", "flamingo"],
+    "cb_train-00006-of-00007_0402": ["fish", "fish"],
+    "cb_train-00006-of-00007_0407": ["man", "man"],
+}
+
+COMP_MULTI_ADD_TARGET_OVERRIDES = {
+    "cb_train-00006-of-00007_0287": ["a white and red fish", "a yellow fish"],
+    "cb_train-00006-of-00007_0330": [
+        "a red fish with black spots",
+        "a black and white fish",
+    ],
+}
+
+COMP_FORCE_SPATIAL_SPLIT = {
+    # Dense overlapping koi make semantic detections merge several fish. The
+    # instructions explicitly identify bottom-left and bottom-right instances,
+    # so the lowest-density left/right cut is the more faithful partition.
+    "cb_train-00006-of-00007_0330",
+    "cb_train-00006-of-00007_0402",
 }
 
 DATASET_REVISIONS = {
@@ -153,6 +180,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--repo-manifest-dir", type=Path, default=DEFAULT_REPO_MANIFEST_DIR)
     parser.add_argument("--model-cache", type=Path, default=DEFAULT_MODEL_CACHE)
     parser.add_argument("--device", default="cuda:0")
+    parser.add_argument("--benchmark-version", default="v0")
     return parser.parse_args()
 
 
@@ -354,6 +382,12 @@ def replacement_target(instruction: str) -> str | None:
     return None
 
 
+def comp_add_targets(record: dict[str, Any]) -> list[str]:
+    if record["candidate_id"] in COMP_MULTI_ADD_TARGET_OVERRIDES:
+        return COMP_MULTI_ADD_TARGET_OVERRIDES[record["candidate_id"]]
+    return [text for value in record["local_caption"].split("|") if (text := clean_text(value))]
+
+
 def region_only_instruction(record: dict[str, Any], region_count: int) -> str | None:
     dataset = record["source_dataset"]
     edit_type = normalize_edit_type(record)
@@ -370,8 +404,7 @@ def region_only_instruction(record: dict[str, Any], region_count: int) -> str | 
             if record["candidate_id"] not in HUMAN_ADD_REWRITES:
                 raise ValueError(f"missing HumanEdit add rewrite: {record['candidate_id']}")
             return HUMAN_ADD_REWRITES[record["candidate_id"]]
-        captions = [clean_text(x) for x in record["local_caption"].split("|")]
-        captions = [x for x in captions if x]
+        captions = comp_add_targets(record)
         if not captions:
             raise ValueError(f"missing add target text: {record['candidate_id']}")
         if len(captions) == 1 and region_count > 1:
@@ -527,10 +560,9 @@ class GroundedSam2Segmenter:
         )
         return selected, diagnostic
 
-    def segment_multiple(
-        self, image: Image.Image, text: str, union_mask: np.ndarray, count: int
-    ) -> tuple[list[np.ndarray], dict[str, Any]]:
-        """Recover touching instances while preserving the released union exactly."""
+    def _grounding_candidates(
+        self, image: Image.Image, text: str, union_mask: np.ndarray
+    ) -> list[tuple[float, float, list[float]]]:
         prompt = text.strip().rstrip(".") + "."
         inputs = self.grounding_processor(images=image, text=prompt, return_tensors="pt").to(self.device)
         with self.torch.inference_mode():
@@ -554,20 +586,44 @@ class GroundedSam2Segmenter:
             overlap = bbox_iou(box, union_box)
             if coverage > 0.02 or overlap > 0.02:
                 candidates.append((score + 0.35 * coverage + 0.10 * overlap, score, box))
-        candidates.sort(reverse=True, key=lambda x: x[0])
-        boxes = []
-        detection_scores = []
-        for _, score, box in candidates:
-            if all(bbox_iou(box, existing) < 0.65 for existing in boxes):
-                boxes.append(box)
-                detection_scores.append(score)
-            if len(boxes) == count:
-                break
+        return sorted(candidates, reverse=True, key=lambda x: x[0])
+
+    def segment_multiple(
+        self, image: Image.Image, texts: list[str], union_mask: np.ndarray
+    ) -> tuple[list[np.ndarray], dict[str, Any]]:
+        """Recover touching instances while preserving the released union exactly."""
+        count = len(texts)
+        if count != 2:
+            raise ValueError(f"touching-instance grounding requires two queries, got {count}")
+        normalized = [x.strip().lower() for x in texts]
+        boxes: list[list[float]] = []
+        detection_scores: list[float] = []
+        same_query = len(set(normalized)) == 1
+        if same_query:
+            candidates = self._grounding_candidates(image, texts[0], union_mask)
+            for _, score, box in candidates:
+                if all(bbox_iou(box, existing) < 0.65 for existing in boxes):
+                    boxes.append(box)
+                    detection_scores.append(score)
+                if len(boxes) == count:
+                    break
+        else:
+            per_query = [self._grounding_candidates(image, text, union_mask)[:10] for text in texts]
+            combinations = []
+            for first in per_query[0]:
+                for second in per_query[1]:
+                    overlap = bbox_iou(first[2], second[2])
+                    if overlap < 0.75:
+                        combinations.append((first[0] + second[0] - 0.15 * overlap, first, second))
+            if combinations:
+                _, first, second = max(combinations, key=lambda x: x[0])
+                boxes = [first[2], second[2]]
+                detection_scores = [first[1], second[1]]
         if len(boxes) != count:
             fallback = split_connected_region(union_mask, count)
             return fallback, {
                 "id": None,
-                "query": text,
+                "queries": texts,
                 "method": "spatial_split_fallback",
                 "detections": len(boxes),
             }
@@ -605,11 +661,18 @@ class GroundedSam2Segmenter:
                 distances.append(((xs - cx) / sx) ** 2 + ((ys - cy) / sy) ** 2)
             choices = np.argmin(np.stack(distances, axis=0), axis=0)
             assigned[ys, xs] = choices
-        regions = sort_regions([(assigned == index) & union_mask for index in range(count)])
+        regions = [(assigned == index) & union_mask for index in range(count)]
+        if any(int(region.sum()) < 16 for region in regions):
+            regions = split_connected_region(union_mask, count)
+            method = "spatial_split_fallback_after_empty_partition"
+        else:
+            method = "grounding_dino_sam2_partition"
+            if same_query:
+                regions = sort_regions(regions)
         return regions, {
             "id": None,
-            "query": text,
-            "method": "grounding_dino_sam2_partition",
+            "queries": texts,
+            "method": method,
             "detection_scores": [round(float(x), 6) for x in detection_scores],
             "boxes": [[round(float(x), 4) for x in box] for box in boxes],
             "sam2_selected_indices": selected_indices,
@@ -688,9 +751,12 @@ def make_record(
     evaluation_path = root / "regions" / "evaluation" / dataset / f"{case_name}.png"
     save_png(Image.fromarray(evaluation_mask.astype(np.uint8) * 255, mode="L"), evaluation_path, "L")
     local_text = clean_text(selected.get("local_caption"))
+    if selected["source_dataset"] == "CompBench" and selected["edit_type"] == "multi_object_add":
+        local_text = "; ".join(comp_add_targets(selected))
+    elif local_text:
+        local_text = local_text.replace("|", "; ")
     if not local_text:
         raise ValueError(f"missing target local content: {selected['candidate_id']}")
-    local_text = local_text.replace("|", "; ")
     return {
         "id": selected["candidate_id"],
         "source_dataset": dataset,
@@ -810,6 +876,8 @@ def validate_records(records: list[dict[str, Any]], root: Path) -> dict[str, Any
         "unique_source_images": len({x["source_image"] for x in records}),
         "target_reference_images": reference_count,
         "input_region_masks": region_count,
+        "multi_region_cases": sum(len(x["regions"]) > 1 for x in records),
+        "counts_by_region_count": dict(sorted(Counter(len(x["regions"]) for x in records).items())),
         "evaluation_masks": len(records),
         "region_only_instructions": sum(x["instruction"]["region_only"] is not None for x in records),
         "counts_by_dataset": dict(sorted(Counter(x["source_dataset"] for x in records).items())),
@@ -821,10 +889,11 @@ def validate_records(records: list[dict[str, Any]], root: Path) -> dict[str, Any
     return report
 
 
-def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
+def build_metadata(records: list[dict[str, Any]], benchmark_version: str) -> dict[str, Any]:
+    present_edit_types = {x["edit_type"] for x in records}
     return {
         "benchmark_name": "SAMTok Fine-Grained Interactive Edit Benchmark",
-        "benchmark_version": "v0",
+        "benchmark_version": benchmark_version,
         "split": "test",
         "num_cases": len(records),
         "manifest": "benchmark.jsonl",
@@ -832,18 +901,26 @@ def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
         "schema": {
             "one_record_per_edit_case": True,
             "top_level_fields": sorted(TOP_LEVEL_FIELDS),
-            "edit_types": ["add", "remove", "replace", "counting"],
+            "edit_types": [
+                edit_type
+                for edit_type in ("add", "remove", "replace", "counting")
+                if edit_type in present_edit_types
+            ],
             "box_format": "pixel_xyxy_half_open",
             "point_format": "pixel_xy",
             "mask_format": "single_channel_png_0_or_255_source_resolution",
             "region_numbering": "regions_array_order_is_1_based",
             "region_placeholder": "{region_N}",
-            "null_region_only_instruction": "use with_location_reference; currently counting only",
+            "null_region_only_instruction": (
+                "use with_location_reference; currently counting only"
+                if any(x["instruction"]["region_only"] is None for x in records)
+                else "none"
+            ),
             "null_target_reference_image": "reference-free evaluation; currently ReShapeBench only",
             "target_semantics": "all target fields describe the expected post-edit result and are evaluator-only",
         },
         "region_construction": {
-            "compbench_mask": "released instance mask; multi-object unions split into two instance regions",
+            "compbench_mask": "released instance mask; multi-object unions split into two instance regions; isolated encoding speckles below the significance threshold are suppressed",
             "humanedit_mask": "original human brush from MASK_IMG alpha < 128",
             "reshape_mask": "foreground text grounding followed by SAM2 instance segmentation",
             "compbench_humanedit_box": "input mask bounding box padded by 2% of the shorter image side",
@@ -858,7 +935,7 @@ def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
         "models_used_for_derived_instance_masks": {
             "uses": [
                 "ReShapeBench semantic instance masks",
-                "five touching CompBench multi-instance unions",
+                "touching CompBench multi-instance unions",
             ],
             "grounding": {"repo": GROUNDING_MODEL_ID, "revision": GROUNDING_REVISION},
             "segmentation": {"repo": SAM2_MODEL_ID, "revision": SAM2_REVISION},
@@ -869,6 +946,10 @@ def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
         },
         "counts_by_dataset": dict(sorted(Counter(x["source_dataset"] for x in records).items())),
         "counts_by_edit_type": dict(sorted(Counter(x["edit_type"] for x in records).items())),
+        "counts_by_region_count": {
+            str(count): value
+            for count, value in sorted(Counter(len(x["regions"]) for x in records).items())
+        },
     }
 
 
@@ -902,13 +983,20 @@ def main() -> None:
         mask = payload["mask"]
         if item["source_dataset"] == "CompBench":
             if item["candidate_id"] in COMP_TOUCHING_INSTANCE_QUERIES:
-                segmentation_image = target if item["edit_type"] == "multi_object_add" else source
-                masks, diagnostic = segmenter.segment_multiple(
-                    segmentation_image,
-                    COMP_TOUCHING_INSTANCE_QUERIES[item["candidate_id"]],
-                    mask,
-                    2,
-                )
+                queries = COMP_TOUCHING_INSTANCE_QUERIES[item["candidate_id"]]
+                if item["candidate_id"] in COMP_FORCE_SPATIAL_SPLIT:
+                    masks = split_connected_region(mask, len(queries))
+                    diagnostic = {
+                        "queries": queries,
+                        "method": "instruction_guided_spatial_partition",
+                    }
+                else:
+                    segmentation_image = target if item["edit_type"] == "multi_object_add" else source
+                    masks, diagnostic = segmenter.segment_multiple(
+                        segmentation_image,
+                        queries,
+                        mask,
+                    )
                 diagnostic["id"] = item["candidate_id"]
                 comp_instance_diagnostics.append(diagnostic)
             else:
@@ -952,7 +1040,7 @@ def main() -> None:
 
     records.sort(key=lambda x: x["id"])
     write_jsonl(args.output / "benchmark.jsonl", records)
-    metadata = build_metadata(records)
+    metadata = build_metadata(records, args.benchmark_version)
     atomic_text(args.output / "benchmark_meta.json", json.dumps(metadata, indent=2, ensure_ascii=False) + "\n")
     validation = validate_records(records, args.output)
     atomic_text(args.output / "validation_report.json", json.dumps(validation, indent=2, ensure_ascii=False) + "\n")

@@ -4,15 +4,15 @@
 
 ## 1. 当前状态
 
-当前已经完成三个源数据集的下载与完整性检查、全量自动特征扫描、500 条样本的配额筛选、全部候选样本的可视化页，以及统一精简格式的正式导出和自动验证。
+当前已经完成三个源数据集的下载与完整性检查、全量自动特征扫描、v0 构建，以及增强多实例和精确局部编辑的 v1 重平衡、正式导出和自动验证。
 
 最终数据位于：
 
 ```text
-/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v0/
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/
 ```
 
-其中 `benchmark.jsonl` 是 500 条最终统一记录；源图、目标参考图、输入区域 mask 和 evaluation mask 均已转换为可移植的相对路径资产。仓库中的 `benchmark_v0/` 保存 manifest、metadata 和验证报告，不重复提交 545 MB 的图片资产。
+其中 `benchmark.jsonl` 是 500 条最终统一记录；源图、目标参考图、输入区域 mask 和 evaluation mask 均已转换为可移植的相对路径资产。仓库中的 `benchmark_v1/` 保存 manifest、metadata、验证报告和示例图，不重复提交 544 MB 的完整图片资产。原 v0 仍保留，便于审计版本差异。
 
 ## 2. 数据集下载
 
@@ -35,10 +35,11 @@
 自动筛选代码位于当前目录：
 
 - `select_candidates.py`：提取特征并按配额筛选。
+- `rebalance_multi_instance.py`：将 v0 确定性重平衡为多实例增强 v1，并输出完整增删审计。
 - `render_review_sheets.py`：生成候选可视化页面。
 - `validate_selection.py`：检查数量、配额、路径和关键约束。
 
-候选结果位于 `output/`。当前从 5,106 条符合任务类型的预选样本中选出 500 条：
+候选结果位于 `output/`。初始 v0 从 5,106 条符合任务类型的预选样本中选出 500 条：
 
 | 来源 | 数量 | 组成 |
 |---|---:|---|
@@ -47,7 +48,7 @@
 | ReShapeBench | 100 | multi-object scene 70、single-object scene 30 |
 | 合计 | 500 | 480 张不同源图、394 个不同场景组 |
 
-当前难度配额统计：
+v0 难度配额统计：
 
 - 小目标（区域面积小于 2%）：125 条，占 25.0%。
 - 多编辑目标：78 条，占 15.6%。
@@ -56,9 +57,40 @@
 
 CompBench 的选择优先覆盖不同 MOSE 视频前缀，避免从少量视频连续抽取大量相邻帧。
 
+### 3.1 多实例增强 v1
+
+v1 纳入全部 116 条通过严格质量检查的 CompBench 显式多实例 case，并用以下 56 条替换另外 56 条：
+
+- 18 条无法可靠生成 `region_only` 指令的 HumanEdit counting case。
+- 20 条与另一 case 共享完全相同 source/region 的 ReShapeBench 冗余目标变体；每组保留目标描述更简洁的一条。
+- 18 条剩余单目标样本中最终 region 面积最大的 case。
+
+重平衡后的组成：
+
+| 来源 | 数量 | 组成 |
+|---|---:|---|
+| CompBench | 269 | add 50、remove 58、replace 45、multi-object add 58、multi-object remove 58 |
+| HumanEdit | 154 | add 40、remove 56、replace 58 |
+| ReShapeBench | 77 | multi-object scene 49、single-object scene 28 |
+| 合计 | 500 | 500 张不同源图 |
+
+关键变化：
+
+| 指标 | v0 | v1 |
+|---|---:|---:|
+| 显式双实例编辑 | 60（12.0%） | 116（23.2%） |
+| 小目标（最终 mask 面积小于 2%） | 144（28.8%） | 137（27.4%） |
+| region 面积不超过 10% | 347 | 367 |
+| region 面积超过 20% | 51 | 26 |
+| region 面积中位数 | 6.47% | 5.89% |
+| 不同源图 | 480 | 500 |
+| 可用 `region_only` 指令 | 482 | 500 |
+
+完整增删 ID、删除原因和前后统计记录在 `output/multi_instance_rebalance_report.json`。
+
 ## 4. 自动质量检查与区域构建
 
-CompBench 和 HumanEdit 共 400 条候选全部通过当前的严格自动检查：
+CompBench 和 HumanEdit 共 423 条 v1 样本全部通过当前的严格自动检查：
 
 - 每个编辑目标的面积和连通域数量满足规则。
 - GT 与源图之间至少 80% 的显著变化像素落在膨胀后的编辑区域内。
@@ -68,18 +100,18 @@ CompBench 和 HumanEdit 共 400 条候选全部通过当前的严格自动检查
 GT 局部一致性统计：
 
 - 最低变化像素区域内比例：0.80004。
-- 中位变化像素区域内比例：0.97707。
+- 中位变化像素区域内比例：0.97739。
 
-ReShapeBench 的 100 条记录已使用固定 revision 的 Grounding DINO 与 SAM2 生成语义实例 mask。检查中发现部分官方 locator 过粗或明显偏位，因此 locator 仅用于候选排序的弱先验；最终 `regions[].mask`、`box` 和 `evaluation_mask` 均由语义定位后的实例区域生成。ReShapeBench 没有目标 GT 图片，使用局部/全局目标文本进行 reference-free 评测。
+ReShapeBench 的 77 条 v1 记录已使用固定 revision 的 Grounding DINO 与 SAM2 生成语义实例 mask。检查中发现部分官方 locator 过粗或明显偏位，因此 locator 仅用于候选排序的弱先验；最终 `regions[].mask`、`box` 和 `evaluation_mask` 均由语义定位后的实例区域生成。ReShapeBench 没有目标 GT 图片，使用局部/全局目标文本进行 reference-free 评测。
 
-CompBench 的 60 条显式多目标记录均导出为两个 `regions`。其中 55 条可直接从官方 union mask 的连通域拆分；其余 5 条粘连实例使用 Grounding DINO + SAM2 辅助分区，并强制两个区域互斥且并集保持官方 mask 不变。
+CompBench 的 116 条显式多目标记录均导出为两个 `regions`。其中 100 条可直接从官方 union mask 的主要连通域拆分；两条记录各抑制了 5 个孤立编码噪声像素。14 条粘连实例使用 Grounding DINO + SAM2 辅助分区；另有一组成对的 add/remove 鱼类 case 根据指令中的 left/right 关系进行确定性空间分区。粘连分区强制两个区域互斥且并集保持官方 mask 不变。
 
 最终自动验证结果：
 
 - 500 条记录、500 个唯一 ID。
-- 480 张不同源图、400 张目标参考图。
-- 560 个输入区域 mask、500 个 evaluation mask。
-- 482 条 `region_only` 指令；18 条 counting 因无法由单一区域提示完整表达而保留为 `null`。
+- 500 张不同源图、423 张目标参考图。
+- 616 个输入区域 mask、500 个 evaluation mask。
+- 500 条记录均提供 `region_only` 指令。
 - 所有引用路径存在；图像/mask 尺寸一致；mask 均为 0/255 二值图。
 - 所有 box 均使用合法的半开区间坐标，point 均落在对应 mask 内。
 - 验证状态：`passed`，错误数为 0。
@@ -89,6 +121,7 @@ CompBench 的 60 条显式多目标记录均导出为两个 `regions`。其中 5
 ```text
 finegrained_edit_benchmark_selection/
 ├── build_unified_benchmark.py
+├── rebalance_multi_instance.py
 ├── render_unified_examples.py
 ├── select_candidates.py
 ├── render_review_sheets.py
@@ -99,16 +132,24 @@ finegrained_edit_benchmark_selection/
 │   ├── benchmark_meta.json
 │   ├── validation_report.json
 │   └── visual_examples/
+├── benchmark_v1/
+│   ├── benchmark.jsonl
+│   ├── benchmark_meta.json
+│   ├── validation_report.json
+│   └── visual_examples/
 └── output/
     ├── selected_500.jsonl
     ├── selected_500.csv
+    ├── selected_500_multi_instance_v1.jsonl
+    ├── selected_500_multi_instance_v1.csv
+    ├── multi_instance_rebalance_report.json
     ├── selection_stats.json
     ├── all_preselection_features.jsonl
     ├── human_review_template.csv
     └── review_sheets/
 ```
 
-可视化审核页共 21 张，覆盖全部 500 条候选：
+原始 v0 可视化审核页共 21 张，覆盖其全部 500 条候选：
 
 - CompBench：9 张。
 - HumanEdit：8 张。
@@ -117,10 +158,10 @@ finegrained_edit_benchmark_selection/
 最终 benchmark manifest 的 SHA256：
 
 ```text
-79d0b78fcd843d6388fa28c8e9ca6ab213eea16fd5b01ac76b0e5613fa35e16c
+a795cf1b935e5a55d9122dad1ca9cd77e2a268dd70b515f24e6e2a2484ec4507
 ```
 
-完整数据目录大小约 545 MB；构建诊断保存在数据目录的 `build_report.json`，不会进入最终逐条 manifest。
+完整 v1 数据目录大小约 544 MB；构建诊断保存在数据目录的 `build_report.json`，不会进入最终逐条 manifest。
 
 ## 6. 最终 benchmark 的精简统一格式
 
@@ -184,8 +225,8 @@ finegrained_edit_benchmark_selection/
 | `source_image` | `input_image` | `INPUT_IMG` | `file_name` |
 | `target.reference_image` | `edited_image` | `OUTPUT_IMG` | `null` |
 | `instruction.with_location_reference` | `instruction` | `EDITING_INSTRUCTION` | `instruction` |
-| `instruction.region_only` | 自动去指代改写 | 自动去指代改写；不适用时为 `null` | 使用 `{region_1}` 绑定目标 |
-| `edit_type` | add/remove/replace | add/remove/replace/counting | 统一映射为 replace |
+| `instruction.region_only` | 自动去指代改写 | 自动去指代改写 | 使用 `{region_1}` 绑定目标 |
+| `edit_type` | add/remove/replace | add/remove/replace；counting 在 v1 中排除 | 统一映射为 replace |
 | `regions[].mask` | 官方实例 mask；多目标 union 拆为逐实例区域 | 手绘 alpha mask | 文本 grounding 后经 SAM2 得到的实例 mask |
 | `regions[].box` | mask 外接框加 padding | mask 外接框加 padding | SAM2 mask 外接框加 padding |
 | `regions[].point` | mask 最内点 | mask 最内点 | SAM2 mask 最内点 |
@@ -209,4 +250,4 @@ CompBench 的 `multi_object_add` 和 `multi_object_remove` 分别归一化为 `a
 
 ## 8. 后续可选工作
 
-当前 v0 已可用于评测。冻结公开版本前仍可进行一次人工 spot-check，并补充具体模型运行适配器与 metric 实现；这些工作不改变当前统一字段设计。
+当前多实例增强 v1 已可用于评测。冻结公开版本前仍可进行一次人工 spot-check，并补充具体模型运行适配器与 metric 实现；这些工作不改变当前统一字段设计。

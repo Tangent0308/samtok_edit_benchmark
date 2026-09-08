@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 DEFAULT_BENCHMARK_ROOT = Path(
-    "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1"
+    "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark"
 )
 DEFAULT_OUTPUT = DEFAULT_BENCHMARK_ROOT / "visual_examples"
 EXAMPLES = {

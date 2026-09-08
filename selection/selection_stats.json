@@ -1,0 +1,49 @@
+{
+  "selected_total": 500,
+  "selected_by_source": {
+    "CompBench": 269,
+    "HumanEdit": 154,
+    "ReShapeBench": 77
+  },
+  "selected_by_group": {
+    "CompBench/add": 50,
+    "CompBench/multi_object_add": 58,
+    "CompBench/multi_object_remove": 58,
+    "CompBench/remove": 58,
+    "CompBench/replace": 45,
+    "HumanEdit/add": 40,
+    "HumanEdit/remove": 56,
+    "HumanEdit/replace": 58,
+    "ReShapeBench/multi_object": 49,
+    "ReShapeBench/single_object": 28
+  },
+  "normalized_edit_type_counts": {
+    "add": 148,
+    "remove": 172,
+    "replace": 180
+  },
+  "strict_eligible_count": 463,
+  "materialized_region_statistics": {
+    "unique_source_images": 500,
+    "multi_instance_cases": 116,
+    "multi_instance_fraction": 0.232,
+    "small_target_count": 137,
+    "small_target_fraction": 0.274,
+    "region_area_le_10pct_count": 367,
+    "region_area_gt_20pct_count": 26,
+    "region_area_quantiles": {
+      "0.0": 0.001926422119140625,
+      "0.25": 0.01923095703125,
+      "0.5": 0.058887481689453125,
+      "0.75": 0.1061962890625,
+      "0.9": 0.16363449096679689,
+      "1.0": 0.23685791015625
+    }
+  },
+  "notes": [
+    "All 116 strict explicit CompBench multi-instance add/remove cases are retained.",
+    "Counting and weak non-local cases are excluded from the final benchmark.",
+    "Every selected case uses a unique source image.",
+    "ReShapeBench locators are refined during materialization with pinned Grounding DINO and SAM2 models."
+  ]
+}

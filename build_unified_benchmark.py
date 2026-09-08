@@ -26,9 +26,9 @@ from PIL import Image, ImageOps
 
 REPO_ROOT = Path(__file__).resolve().parent
 DATASET_ROOT = Path("/mnt/bn/strategy-mllm-train/user/tanyue/datasets")
-DEFAULT_SELECTION = REPO_ROOT / "output" / "selected_500.jsonl"
-DEFAULT_OUTPUT = DATASET_ROOT / "samtok_edit_benchmark_v0"
-DEFAULT_REPO_MANIFEST_DIR = REPO_ROOT / "benchmark_v0"
+DEFAULT_SELECTION = REPO_ROOT / "selection" / "selected_500.jsonl"
+DEFAULT_OUTPUT = DATASET_ROOT / "samtok_edit_benchmark"
+DEFAULT_REPO_MANIFEST_DIR = REPO_ROOT / "benchmark"
 DEFAULT_MODEL_CACHE = DATASET_ROOT / "model_cache"
 
 SAM2_MODEL_ID = "facebook/sam2.1-hiera-small"
@@ -180,7 +180,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--repo-manifest-dir", type=Path, default=DEFAULT_REPO_MANIFEST_DIR)
     parser.add_argument("--model-cache", type=Path, default=DEFAULT_MODEL_CACHE)
     parser.add_argument("--device", default="cuda:0")
-    parser.add_argument("--benchmark-version", default="v0")
     return parser.parse_args()
 
 
@@ -889,11 +888,10 @@ def validate_records(records: list[dict[str, Any]], root: Path) -> dict[str, Any
     return report
 
 
-def build_metadata(records: list[dict[str, Any]], benchmark_version: str) -> dict[str, Any]:
+def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
     present_edit_types = {x["edit_type"] for x in records}
     return {
         "benchmark_name": "SAMTok Fine-Grained Interactive Edit Benchmark",
-        "benchmark_version": benchmark_version,
         "split": "test",
         "num_cases": len(records),
         "manifest": "benchmark.jsonl",
@@ -1040,7 +1038,7 @@ def main() -> None:
 
     records.sort(key=lambda x: x["id"])
     write_jsonl(args.output / "benchmark.jsonl", records)
-    metadata = build_metadata(records, args.benchmark_version)
+    metadata = build_metadata(records)
     atomic_text(args.output / "benchmark_meta.json", json.dumps(metadata, indent=2, ensure_ascii=False) + "\n")
     validation = validate_records(records, args.output)
     atomic_text(args.output / "validation_report.json", json.dumps(validation, indent=2, ensure_ascii=False) + "\n")

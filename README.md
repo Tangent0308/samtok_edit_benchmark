@@ -4,7 +4,17 @@ This repository contains the canonical 500-case benchmark manifest, selection
 records, validation report, construction scripts, and representative
 visualizations for fine-grained interactive image editing.
 
-The materialized benchmark assets are stored outside Git at:
+## Data locations
+
+The three downloaded source datasets are:
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/CompBench/
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/HumanEdit/
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/ReShapeBench/
+```
+
+The materialized benchmark is:
 
 ```text
 /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark/

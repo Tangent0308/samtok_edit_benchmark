@@ -23,6 +23,14 @@
 
 ## 2. 数据来源与固定 revision
 
+三个原始数据目录：
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/CompBench/
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/HumanEdit/
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/ReShapeBench/
+```
+
 | 数据集 | Hugging Face 仓库 | Revision | 当前用途 |
 | --- | --- | --- | --- |
 | CompBench | `BohanJia/CompBench` | `a4c5a4d1854056d24aad43a494772dc90588d426` | add、remove、replace；含显式双实例编辑 |

@@ -63,6 +63,18 @@ selection/
 build_unified_benchmark.py
 render_unified_examples.py
 BENCHMARK_PROGRESS.md
+BENCHMARK_CONSTRUCTION_AND_EVALUATION.md
+evaluation/
+  prepare_inputs.py
+  run_inference.py
+  validate_outputs.py
+  audit_inference_protocol.py
+  launch_full_evaluation.sh
+  README.md
+docs/assets/benchmark_evaluation/
+  overview_01.png
+  overview_02.png
+  selection.json
 ```
 
 `benchmark/benchmark.jsonl` is the lightweight copy of the final unified data.
@@ -95,5 +107,25 @@ python render_unified_examples.py --output benchmark/visual_examples
 
 The builder validates all records before copying the lightweight manifest,
 metadata, and validation report into `benchmark/`. See
-`BENCHMARK_PROGRESS.md` for selection policy, field semantics, and current
-verification results.
+[`BENCHMARK_CONSTRUCTION_AND_EVALUATION.md`](BENCHMARK_CONSTRUCTION_AND_EVALUATION.md)
+for the complete construction, annotation, inference, audit, result-location,
+and visualization record. `BENCHMARK_PROGRESS.md` is the shorter Chinese
+construction summary.
+
+## Inference evaluation
+
+The reproducible 15-setting inference implementation is in `evaluation/`.
+It evaluates Qwen-Image-Edit-2511, FLUX.2-klein-4B, and the refined four-node
+SAMTokEdit checkpoint through DiffSynth. Generated assets and logs are written
+outside Git to:
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/finegrained_edit_benchmark/
+```
+
+The full run is complete: 7,500/7,500 image/sidecar pairs passed decode and
+protocol validation. No quality metric or judge has been run. See
+[`evaluation/README.md`](evaluation/README.md) for concise commands and the
+[complete benchmark record](BENCHMARK_CONSTRUCTION_AND_EVALUATION.md) for exact
+model identities, checkpoint hashes, implementation audit, result paths, and
+representative all-setting comparisons.

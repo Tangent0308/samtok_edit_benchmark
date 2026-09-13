@@ -1,0 +1,371 @@
+{
+  "sampling": "deterministic stratified quantile sample over dataset, edit type, region count, and evaluation-mask area",
+  "created_at_utc": "2026-09-12",
+  "case_count": 17,
+  "included_settings": {
+    "qwen": [
+      "text_only",
+      "mask_annotation",
+      "mask_annotation_pasteback",
+      "box_annotation",
+      "point_annotation"
+    ],
+    "flux2": [
+      "text_only",
+      "mask_annotation",
+      "mask_annotation_pasteback",
+      "box_annotation",
+      "point_annotation"
+    ],
+    "samtok_edit": [
+      "online_cot",
+      "mask_umt",
+      "mask_mt",
+      "box_sam2_umt",
+      "point_sam2_umt"
+    ]
+  },
+  "layout": "top row contains source, modality inputs, paste-back region, and target; model rows align each output beneath its corresponding input/modality",
+  "cases": [
+    {
+      "order": 1,
+      "eval_index": 23,
+      "id": "cb_train-00000-of-00007_0284",
+      "source_dataset": "compbench",
+      "edit_type": "add",
+      "region_count": 1,
+      "mask_area_ratio": 0.024458,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Add a brown bear in {region_1}.",
+        "with_location_reference": "add a brown bear on the rightmost"
+      },
+      "expected_local_content": "a brown bear",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/01_index0023_cb_train-00000-of-00007_0284.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 2,
+      "eval_index": 160,
+      "id": "cb_train-00006-of-00007_0279",
+      "source_dataset": "compbench",
+      "edit_type": "add",
+      "region_count": 2,
+      "mask_area_ratio": 0.045686,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Add a grey bird in {region_1} and a yellow bird in {region_2}.",
+        "with_location_reference": "add a grey bird on the upper left of the rightmost yellow bird and a yellow bird on the left of the rightmost yellow bird"
+      },
+      "expected_local_content": "a grey bird; a yellow bird",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/02_index0160_cb_train-00006-of-00007_0279.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 3,
+      "eval_index": 189,
+      "id": "cb_train-00006-of-00007_0310",
+      "source_dataset": "compbench",
+      "edit_type": "add",
+      "region_count": 2,
+      "mask_area_ratio": 0.163296,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Add a black duck in {region_1} and a black duck in {region_2}.",
+        "with_location_reference": "add a black duck on the upper left near the feeding bowl and a black duck facing the feeding bowl in front"
+      },
+      "expected_local_content": "a black duck; a black duck",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/03_index0189_cb_train-00006-of-00007_0310.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 4,
+      "eval_index": 66,
+      "id": "cb_train-00003-of-00007_0086",
+      "source_dataset": "compbench",
+      "edit_type": "remove",
+      "region_count": 1,
+      "mask_area_ratio": 0.02822,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Remove {region_1}.",
+        "with_location_reference": "remove the leftmost dog"
+      },
+      "expected_local_content": "muddy ground",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/04_index0066_cb_train-00003-of-00007_0086.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 5,
+      "eval_index": 218,
+      "id": "cb_train-00006-of-00007_0351",
+      "source_dataset": "compbench",
+      "edit_type": "remove",
+      "region_count": 2,
+      "mask_area_ratio": 0.045686,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Remove {region_1} and {region_2}.",
+        "with_location_reference": "remove the grey bird on the right and the yellow bird in the middle"
+      },
+      "expected_local_content": "wiring nets; wiring nets",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/05_index0218_cb_train-00006-of-00007_0351.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 6,
+      "eval_index": 247,
+      "id": "cb_train-00006-of-00007_0382",
+      "source_dataset": "compbench",
+      "edit_type": "remove",
+      "region_count": 2,
+      "mask_area_ratio": 0.163296,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Remove {region_1} and {region_2}.",
+        "with_location_reference": "remove all the black ducks except the right one"
+      },
+      "expected_local_content": "ground; basin and ground",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/06_index0247_cb_train-00006-of-00007_0382.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 7,
+      "eval_index": 108,
+      "id": "cb_train-00005-of-00007_0238",
+      "source_dataset": "compbench",
+      "edit_type": "replace",
+      "region_count": 1,
+      "mask_area_ratio": 0.071929,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Replace {region_1} with a black camera long lens.",
+        "with_location_reference": "replace the fish on the right with a black camera long lens"
+      },
+      "expected_local_content": "a black camera long lens and green fish tank wall",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/07_index0108_cb_train-00005-of-00007_0238.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 8,
+      "eval_index": 121,
+      "id": "cb_train-00005-of-00007_0306",
+      "source_dataset": "compbench",
+      "edit_type": "replace",
+      "region_count": 1,
+      "mask_area_ratio": 0.154802,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Replace {region_1} with a grey pickup truck heading right.",
+        "with_location_reference": "replace the brown car with a grey pickup truck heading right"
+      },
+      "expected_local_content": "a grey pickup truck",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/08_index0121_cb_train-00005-of-00007_0306.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 9,
+      "eval_index": 415,
+      "id": "he_bgoE05DFF9U",
+      "source_dataset": "humanedit",
+      "edit_type": "add",
+      "region_count": 1,
+      "mask_area_ratio": 0.086747,
+      "difficulty": {
+        "multi_object_scene": false,
+        "same_class_multi_instance": false
+      },
+      "instruction": {
+        "region_only": "Add a hat in {region_1}.",
+        "with_location_reference": "Put a hat on the girl's head."
+      },
+      "expected_local_content": "In the gap of the trees stood a man with a blue top hat. Girls with curly hair wearing striped tops and suspenders carry backpacks",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/09_index0415_he_bgoE05DFF9U.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 10,
+      "eval_index": 398,
+      "id": "he__Jsde7RXd3o",
+      "source_dataset": "humanedit",
+      "edit_type": "add",
+      "region_count": 1,
+      "mask_area_ratio": 0.17631,
+      "difficulty": {
+        "multi_object_scene": false,
+        "same_class_multi_instance": false
+      },
+      "instruction": {
+        "region_only": "Add a fly in {region_1}.",
+        "with_location_reference": "Add a fly to the transparent ball of the prototype"
+      },
+      "expected_local_content": "There's a bug on the droplets",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/10_index0398_he__Jsde7RXd3o.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 11,
+      "eval_index": 351,
+      "id": "he_6g-b4Ewoho0",
+      "source_dataset": "humanedit",
+      "edit_type": "remove",
+      "region_count": 1,
+      "mask_area_ratio": 0.026184,
+      "difficulty": {
+        "multi_object_scene": false,
+        "same_class_multi_instance": false
+      },
+      "instruction": {
+        "region_only": "Remove {region_1}.",
+        "with_location_reference": "Remove the red ball."
+      },
+      "expected_local_content": "The child stands in front of the shelf",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/11_index0351_he_6g-b4Ewoho0.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 12,
+      "eval_index": 391,
+      "id": "he_N92PmuFjVOI",
+      "source_dataset": "humanedit",
+      "edit_type": "remove",
+      "region_count": 1,
+      "mask_area_ratio": 0.153762,
+      "difficulty": {
+        "multi_object_scene": false,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Remove {region_1}.",
+        "with_location_reference": "Remove the right girl."
+      },
+      "expected_local_content": "On the endless beach sat a girl in a pink dress with long hair",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/12_index0391_he_N92PmuFjVOI.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 13,
+      "eval_index": 381,
+      "id": "he_9t1l8iKx1xA",
+      "source_dataset": "humanedit",
+      "edit_type": "replace",
+      "region_count": 1,
+      "mask_area_ratio": 0.025657,
+      "difficulty": {
+        "multi_object_scene": false,
+        "same_class_multi_instance": false
+      },
+      "instruction": {
+        "region_only": "Replace {region_1} with white ears.",
+        "with_location_reference": "Turn the rabbit's pink ears into white ears."
+      },
+      "expected_local_content": "A rabbit with white ears is holding a carrot.",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/13_index0381_he_9t1l8iKx1xA.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 14,
+      "eval_index": 312,
+      "id": "he_3QDsA0uUd4k",
+      "source_dataset": "humanedit",
+      "edit_type": "replace",
+      "region_count": 1,
+      "mask_area_ratio": 0.174049,
+      "difficulty": {
+        "multi_object_scene": false,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Replace {region_1} with a prickly cactus.",
+        "with_location_reference": "Replace the front greenery with a prickly cactus."
+      },
+      "expected_local_content": "Four green plants, the front is cactus.",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/14_index0312_he_3QDsA0uUd4k.png",
+      "target_reference_available": true
+    },
+    {
+      "order": 15,
+      "eval_index": 451,
+      "id": "rs_000101_2",
+      "source_dataset": "reshape_bench",
+      "edit_type": "replace",
+      "region_count": 1,
+      "mask_area_ratio": 0.052231,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Replace {region_1} with ornate cast-iron clock post.",
+        "with_location_reference": "Change the classic street lamp into an ornate cast-iron clock post"
+      },
+      "expected_local_content": "ornate cast-iron clock post",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/15_index0451_rs_000101_2.png",
+      "target_reference_available": false
+    },
+    {
+      "order": 16,
+      "eval_index": 454,
+      "id": "rs_000104_2",
+      "source_dataset": "reshape_bench",
+      "edit_type": "replace",
+      "region_count": 1,
+      "mask_area_ratio": 0.132393,
+      "difficulty": {
+        "multi_object_scene": true,
+        "same_class_multi_instance": true
+      },
+      "instruction": {
+        "region_only": "Replace {region_1} with glass honey dispenser with a metal lid.",
+        "with_location_reference": "Change the metal sugar bowl into a glass honey dispenser with a metal lid"
+      },
+      "expected_local_content": "glass honey dispenser with a metal lid",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/16_index0454_rs_000104_2.png",
+      "target_reference_available": false
+    },
+    {
+      "order": 17,
+      "eval_index": 423,
+      "id": "rs_000001_1",
+      "source_dataset": "reshape_bench",
+      "edit_type": "replace",
+      "region_count": 1,
+      "mask_area_ratio": 0.34856,
+      "difficulty": {
+        "multi_object_scene": false,
+        "same_class_multi_instance": false
+      },
+      "instruction": {
+        "region_only": "Replace {region_1} with bicycle.",
+        "with_location_reference": "Change the car into a bicycle"
+      },
+      "expected_local_content": "bicycle",
+      "board": "/tmp/samtok_benchmark_all_settings_20260912_CPx7vP/17_index0423_rs_000001_1.png",
+      "target_reference_available": false
+    }
+  ]
+}

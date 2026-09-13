@@ -189,4 +189,38 @@ python render_unified_examples.py
 python render_unified_examples.py --output benchmark/visual_examples
 ```
 
-当前数据已经可以用于模型推理与分项评测。后续工作是实现具体模型适配器和 metric，而不是继续维护并行的数据版本。
+## 9. 推理评测实现与状态
+
+`evaluation/` 已实现 Qwen-Image-Edit-2511、FLUX.2-klein-4B 与 Refined 四机
+SAMTokEdit 的 15-setting DiffSynth 推理协议、交互输入预处理、逐图 sidecar、严格断点续跑和
+八卡启动器。正式输出与日志统一写到：
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/finegrained_edit_benchmark/
+```
+
+预处理已经完成，冻结的 prepared manifest 为
+`prepared/benchmark_eval_inputs.jsonl`，共 500 条，SHA256 为
+`a50721359ecc1ac79986dc7959cc76a90bc47e550215d946e57379c4894e66e9`。其中包含
+1,500 张可视化交互输入、1,232 张 box/point 提示产生的 SAM2 mask，以及 1,848 个
+region/modality SAMTok span。具体统计与 SAM2 IoU 诊断见
+`prepared/preparation_report.json`。
+
+两个基模都使用 `/opt/tiger/tanyue/samtok_edit/DiffSynth-Studio`。FLUX.2-dev 的 Hugging
+Face 仓库对当前账号不可访问，因此按照方案允许的 dev/klein 二选一，固定为公开的
+`black-forest-labs/FLUX.2-klein-4B@e7b7dc27f91deacad38e78976d1f2b499d76a294`。
+Refined 四机 SAMTokEdit 的两阶段 LoRA 路径和文件哈希均在启动前严格校验。
+
+全量协议已经完成并产生 7,500 个结果图与 sidecar，其中 6,500 次为随机生成，另
+1,000 个 paste-back 结果由对应的 mask-annotation 输出确定性合成。完整性验证和
+inference protocol 审计均为 `passed`：15 个 setting 各 500 条、无缺失，1,000 个
+paste-back 结果逐像素一致。结果和审计报告位于：
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/finegrained_edit_benchmark/
+```
+
+当前尚未计算任何质量指标，也未调用 judge。构建/标注流程、模型与 checkpoint、
+15 个 setting、运行命令、完整结果目录、审计结论及代表性可视化统一记录在
+[`BENCHMARK_CONSTRUCTION_AND_EVALUATION.md`](BENCHMARK_CONSTRUCTION_AND_EVALUATION.md)；
+简要运行说明见 [`evaluation/README.md`](evaluation/README.md)。

@@ -1,7 +1,7 @@
 {
   "benchmark_name": "SAMTok Fine-Grained Interactive Edit Benchmark",
   "split": "test",
-  "num_cases": 500,
+  "num_cases": 556,
   "manifest": "benchmark.jsonl",
   "source_datasets": {
     "compbench": {
@@ -11,10 +11,6 @@
     "humanedit": {
       "repo": "BryanW/HumanEdit",
       "revision": "dbc60b9ba3c17adf59e1effd8a9d92bdf2f14041"
-    },
-    "reshape_bench": {
-      "repo": "3087richard/ReShapeBench",
-      "revision": "6250f37e29552b33a07f18f4c9a93156435ac027"
     }
   },
   "schema": {
@@ -41,27 +37,24 @@
     "region_numbering": "regions_array_order_is_1_based",
     "region_placeholder": "{region_N}",
     "null_region_only_instruction": "none",
-    "null_target_reference_image": "reference-free evaluation; currently ReShapeBench only",
+    "null_target_reference_image": "none; every case has a target reference image",
     "target_semantics": "all target fields describe the expected post-edit result and are evaluator-only"
   },
   "region_construction": {
-    "compbench_mask": "released instance mask; multi-object unions split into two instance regions; isolated encoding speckles below the significance threshold are suppressed",
+    "compbench_mask": "released mask preserved exactly; disconnected multi-object unions become two regions, and one connected two-object union is semantically partitioned into two reviewed regions without changing the union",
     "humanedit_mask": "original human brush from MASK_IMG alpha < 128",
-    "reshape_mask": "foreground text grounding followed by SAM2 instance segmentation",
     "compbench_humanedit_box": "input mask bounding box padded by 2% of the shorter image side",
-    "reshape_box": "SAM2 instance-mask bounding box padded by 2% of the shorter image side",
-    "point": "maximum L2 distance-transform point of each input mask"
+    "point": "maximum L2 distance-transform point after adding a one-pixel background border, so image edges are treated as mask boundaries"
   },
   "evaluation_region": {
     "compbench": "union of input masks dilated by 2% of the shorter image side",
-    "humanedit": "union of input masks dilated by 2% of the shorter image side",
-    "reshape_bench": "rectangle from the grounded SAM2 instance-mask bounding box dilated by 2% of the shorter image side; released locators are not used because some are visibly misplaced"
+    "humanedit": "union of input masks dilated by 2% of the shorter image side"
   },
   "models_used_for_derived_instance_masks": {
     "uses": [
-      "ReShapeBench semantic instance masks",
-      "touching CompBench multi-instance unions"
+      "semantic partition of a connected CompBench multi-object union"
     ],
+    "note": "The two derived regions are disjoint and their union exactly equals the released mask; no released mask pixels are added or removed.",
     "grounding": {
       "repo": "IDEA-Research/grounding-dino-tiny",
       "revision": "a2bb814dd30d776dcf7e30523b00659f4f141c71"
@@ -76,17 +69,16 @@
     "multi_target": "derive from len(regions) > 1"
   },
   "counts_by_dataset": {
-    "compbench": 269,
-    "humanedit": 154,
-    "reshape_bench": 77
+    "compbench": 532,
+    "humanedit": 24
   },
   "counts_by_edit_type": {
-    "add": 148,
-    "remove": 172,
-    "replace": 180
+    "add": 258,
+    "remove": 265,
+    "replace": 33
   },
   "counts_by_region_count": {
-    "1": 384,
-    "2": 116
+    "1": 516,
+    "2": 40
   }
 }

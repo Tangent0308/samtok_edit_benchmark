@@ -25,9 +25,11 @@ DEFAULT_DATASET_ROOT = Path(
 DEFAULT_MANIFEST = DEFAULT_DATASET_ROOT / "benchmark.jsonl"
 DEFAULT_EXPERIMENT_ROOT = Path(
     "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/"
-    "finegrained_edit_benchmark"
+    "referential_finegrained_edit_benchmark_two_image_locator"
 )
-DEFAULT_PREPARED_MANIFEST = DEFAULT_EXPERIMENT_ROOT / "prepared/benchmark_eval_inputs.jsonl"
+DEFAULT_BASELINE_PREPARED_MANIFEST = (
+    DEFAULT_EXPERIMENT_ROOT / "prepared/benchmark_baseline_eval_inputs.jsonl"
+)
 DEFAULT_SAMTOK_REPO = Path("/opt/tiger/tanyue/samtok_edit")
 DEFAULT_QWEN_2511 = Path(
     "/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/"
@@ -37,39 +39,20 @@ DEFAULT_FLUX2 = Path(
     "/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/"
     "FLUX.2-klein-4B"
 )
-DEFAULT_SAMTOK_TE = Path(
-    "/mnt/bn/strategy-mllm-train/user/tanyue/models/SAMTok/"
-    "Qwen2.5-VL-7B-SAMTok-gres-ft"
-)
-DEFAULT_MERGED_TE = Path(
-    "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/"
-    "artifacts/merged_samtok_te"
-)
-DEFAULT_TE_LORA = Path(
-    "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/"
-    "crispedit_refined_4node/crispedit-refined-4node-20260910-run2/"
-    "stage1_te_lora/step-2648.safetensors"
-)
-DEFAULT_DIT_LORA = Path(
-    "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/"
-    "crispedit_refined_4node/crispedit-refined-4node-20260910-run2/"
-    "stage2_dit_lora/step-5296.safetensors"
-)
-SAM2_MODEL_ID = "facebook/sam2.1-hiera-small"
-SAM2_REVISION = "e07df6aa19f5c6545121551bf89957b7663ee715"
 FLUX2_MODEL_ID = "black-forest-labs/FLUX.2-klein-4B"
 FLUX2_REVISION = "e7b7dc27f91deacad38e78976d1f2b499d76a294"
+EXPECTED_CASES = 556
+BASELINE_VISUAL_PROTOCOL = "baseline_two_image_locator_inputs_v1"
 
 REGION_COLORS = ((235, 50, 45), (45, 180, 70), (45, 105, 230))
 REGION_COLOR_NAMES = ("red", "green", "blue")
 PLACEHOLDER_RE = re.compile(r"\{region_(\d+)\}")
-SAMTOK_SPAN_RE = re.compile(
-    r"<\|mt_start\|><\|mt_(\d{4})\|><\|mt_(\d{4})\|><\|mt_end\|>"
-)
 
 
 @dataclass(frozen=True)
 class SettingSpec:
+    # The final three always remain null/false for the four baseline settings.
+    # They preserve resume compatibility with the active frozen run config.
     model: str
     key: str
     input_mode: str
@@ -84,14 +67,6 @@ BASE_SETTING_KEYS = (
     "mask_annotation",
     "box_annotation",
     "point_annotation",
-    "mask_annotation_pasteback",
-)
-SAMTOK_SETTING_KEYS = (
-    "online_cot",
-    "mask_umt",
-    "box_sam2_umt",
-    "point_sam2_umt",
-    "mask_mt",
 )
 
 
@@ -102,22 +77,6 @@ def settings_for_model(model: str) -> list[SettingSpec]:
             SettingSpec(model, "mask_annotation", "mask_annotation", "region_only"),
             SettingSpec(model, "box_annotation", "box_annotation", "region_only"),
             SettingSpec(model, "point_annotation", "point_annotation", "region_only"),
-            SettingSpec(
-                model,
-                "mask_annotation_pasteback",
-                "mask_annotation",
-                "region_only",
-                pasteback=True,
-                derived_from="mask_annotation",
-            ),
-        ]
-    if model == "samtok_edit":
-        return [
-            SettingSpec(model, "online_cot", "source", "with_location_reference", "online"),
-            SettingSpec(model, "mask_umt", "source", "region_only", "umt_mask"),
-            SettingSpec(model, "box_sam2_umt", "source", "region_only", "umt_box_sam2"),
-            SettingSpec(model, "point_sam2_umt", "source", "region_only", "umt_point_sam2"),
-            SettingSpec(model, "mask_mt", "source", "with_location_reference", "mt_mask"),
         ]
     raise ValueError(f"Unknown model: {model!r}")
 
@@ -138,12 +97,7 @@ def parse_settings(model: str, values: list[str]) -> list[SettingSpec]:
         raise ValueError(
             f"Unknown settings for {model}: {unknown}; available={sorted(by_key)}"
         )
-    selected = [by_key[key] for key in requested]
-    if any(setting.pasteback for setting in selected):
-        source_key = next(setting.derived_from for setting in selected if setting.pasteback)
-        if source_key not in requested:
-            selected.insert(0, by_key[source_key])
-    return selected
+    return [by_key[key] for key in requested]
 
 
 def sha256_file(path: Path) -> str:
@@ -209,8 +163,8 @@ def read_jsonl(path: Path) -> list[dict]:
 
 def load_benchmark(manifest: Path, dataset_root: Path, verify_assets: bool = True) -> tuple[list[dict], dict]:
     rows = read_jsonl(manifest)
-    if len(rows) != 500:
-        raise ValueError(f"Expected 500 benchmark rows, found {len(rows)}")
+    if len(rows) != EXPECTED_CASES:
+        raise ValueError(f"Expected {EXPECTED_CASES} benchmark rows, found {len(rows)}")
     ids: set[str] = set()
     sources: set[str] = set()
     region_counts = Counter()
@@ -228,8 +182,6 @@ def load_benchmark(manifest: Path, dataset_root: Path, verify_assets: bool = Tru
             raise ValueError(f"row {index}: invalid or duplicate id {case_id!r}")
         ids.add(case_id)
         source_ref = row["source_image"]
-        if source_ref in sources:
-            raise ValueError(f"row {index}: duplicate source_image {source_ref!r}")
         sources.add(source_ref)
         regions = row["regions"]
         if len(regions) not in {1, 2}:
@@ -275,10 +227,13 @@ def load_benchmark(manifest: Path, dataset_root: Path, verify_assets: bool = Tru
     }
 
 
-def load_prepared_manifest(path: Path, experiment_root: Path) -> tuple[list[dict], dict]:
+def load_prepared_manifest(
+    path: Path,
+    experiment_root: Path,
+) -> tuple[list[dict], dict]:
     rows = read_jsonl(path)
-    if len(rows) != 500:
-        raise ValueError(f"Expected 500 prepared rows, found {len(rows)}")
+    if len(rows) != EXPECTED_CASES:
+        raise ValueError(f"Expected {EXPECTED_CASES} prepared rows, found {len(rows)}")
     asset_paths: set[Path] = set()
     for index, row in enumerate(rows):
         if row.get("eval_index") != index:
@@ -286,44 +241,35 @@ def load_prepared_manifest(path: Path, experiment_root: Path) -> tuple[list[dict
         prepared = row.get("prepared", {})
         for field in ("mask_annotation", "box_annotation", "point_annotation"):
             asset_paths.add(resolve_path(prepared[field], experiment_root))
-        for modality in ("mask", "box_sam2", "point_sam2"):
-            spans = prepared["samtok_spans"][modality]
-            if len(spans) != len(row["regions"]):
-                raise ValueError(f"prepared row {index}: {modality} span count mismatch")
-            for span in spans:
-                match = SAMTOK_SPAN_RE.fullmatch(span)
-                if not match or not (
-                    0 <= int(match.group(1)) < 256
-                    and 256 <= int(match.group(2)) < 512
-                ):
-                    raise ValueError(f"prepared row {index}: invalid SAMTok span {span!r}")
-            prompt_key = {
-                "mask": "mask_umt",
-                "box_sam2": "box_sam2_umt",
-                "point_sam2": "point_sam2_umt",
-            }[modality]
-            if SAMTOK_SPAN_RE.findall(prepared["samtok_prompts"][prompt_key]) != [
-                SAMTOK_SPAN_RE.fullmatch(span).groups() for span in spans
-            ]:
-                raise ValueError(f"prepared row {index}: {prompt_key} span/order mismatch")
-            if modality == "mask" and SAMTOK_SPAN_RE.findall(
-                prepared["mask_mt_cot"]
-            ) != [SAMTOK_SPAN_RE.fullmatch(span).groups() for span in spans]:
-                raise ValueError(f"prepared row {index}: mask MT CoT span/order mismatch")
-        for modality in ("box_sam2_masks", "point_sam2_masks"):
-            paths = prepared[modality]
-            if len(paths) != len(row["regions"]):
-                raise ValueError(f"prepared row {index}: {modality} count mismatch")
-            for item in paths:
-                asset_paths.add(resolve_path(item, experiment_root))
+        if prepared.get("baseline_visual_protocol") != BASELINE_VISUAL_PROTOCOL:
+            raise ValueError(f"prepared row {index}: wrong baseline visual protocol")
+        baseline_inputs = prepared.get("baseline_inputs", {})
+        expected_keys = set(BASE_SETTING_KEYS)
+        if set(baseline_inputs) != expected_keys:
+            raise ValueError(f"prepared row {index}: baseline input keys mismatch")
+        for key, item in baseline_inputs.items():
+            if set(item) != {"images", "image_roles", "prompt"} or not item["prompt"].strip():
+                raise ValueError(f"prepared row {index}: invalid frozen baseline input {key}")
+            expected_roles = (
+                ["clean_source_to_edit"]
+                if key == "text_only"
+                else ["clean_source_to_edit", f"{key.removesuffix('_annotation')}_locator_only"]
+            )
+            if item["image_roles"] != expected_roles or len(item["images"]) != len(expected_roles):
+                raise ValueError(f"prepared row {index}: invalid image roles for {key}")
+            for image_path in item["images"]:
+                asset_paths.add(Path(image_path))
     with ThreadPoolExecutor(max_workers=32) as pool:
         list(pool.map(verify_image, sorted(asset_paths)))
-    return rows, {
+    report = {
         "prepared_manifest": str(path.resolve()),
         "prepared_manifest_sha256": sha256_file(path),
         "rows": len(rows),
         "prepared_assets_verified": len(asset_paths),
+        "profile": "visual_baselines_only",
+        "baseline_visual_protocol": BASELINE_VISUAL_PROTOCOL,
     }
+    return rows, report
 
 
 def official_output_size(source: Image.Image, target_area: int = 1024 * 1024) -> tuple[int, int]:
@@ -371,7 +317,11 @@ def render_annotation(
     base = source.convert("RGBA")
     short_side = min(source.size)
     line_width = max(3, round(short_side * 0.006))
-    point_radius = max(7, round(short_side * 0.014))
+    # Keep the point visually simple: one moderately sized colored dot with a
+    # thin white outline. It remains legible after resizing without dominating
+    # the target object. The annotated xy is always the dot center.
+    point_radius = max(10, round(short_side * 0.018))
+    point_outline_width = max(3, round(short_side * 0.005))
     if mode == "mask":
         for index, region in enumerate(regions):
             color = REGION_COLORS[index]
@@ -417,80 +367,90 @@ def render_annotation(
             r = point_radius * scale
             draw.ellipse(
                 (x * scale - r, y * scale - r, x * scale + r, y * scale + r),
-                fill=(*color, 255), outline=(255, 255, 255, 255), width=max(2, line_width // 2) * scale,
+                fill=(*color, 255),
+                outline=(255, 255, 255, 255),
+                width=point_outline_width * scale,
             )
-            label_xy = ((x + point_radius + 3) * scale, max(0, (y - point_radius - 18) * scale))
+            label_xy = (
+                (x + point_radius + 3) * scale,
+                max(0, (y - point_radius - 18) * scale),
+            )
         if len(regions) > 1:
             _label(draw, label_xy, f"R{index + 1}", color, scale)
     overlay = overlay.resize(source.size, Image.Resampling.LANCZOS)
     return Image.alpha_composite(base, overlay).convert("RGB")
 
 
-def annotated_prompt(region_only: str, region_count: int, modality: str = "mask") -> str:
+def two_image_locator_prompt(
+    region_only: str,
+    region_count: int,
+    modality: str = "mask",
+) -> str:
+    """Bind an edit to markers in a second, locator-only reference image."""
+
     if modality not in {"mask", "box", "point"}:
         raise ValueError(modality)
-    nouns = {
-        "mask": ("highlighted area", "colored highlights and labels"),
-        "box": ("colored box", "colored boxes and labels"),
-        "point": ("colored point", "colored points and labels"),
-    }
-    noun, marks = nouns[modality]
     prompt = region_only
     if region_count == 1:
-        single_references = {
-            "mask": "the area highlighted in red",
-            "box": "the region inside the red box",
-            "point": "the location marked by the red point",
-        }
-        prompt = prompt.replace("{region_1}", single_references[modality])
-        legend = {
-            "mask": "the area highlighted in red marks the target region",
-            "box": "the red box marks the target region",
-            "point": "the red point marks the target region",
+        reference = {
+            "mask": "the region covered by the translucent red mask in the second reference image",
+            "box": "the region inside the red box in the second reference image",
+            "point": (
+                "the object or location at the center of the red point in the second "
+                "reference image"
+            ),
         }[modality]
-        marks = {
-            "mask": "red highlight",
-            "box": "red box",
-            "point": "red point",
+        prompt = prompt.replace("{region_1}", reference)
+        legend = {
+            "mask": (
+                "The translucent red mask in the second reference image identifies "
+                "the target edit region."
+            ),
+            "box": (
+                "The red box in the second reference image identifies the target edit region."
+            ),
+            "point": (
+                "The red point in the second reference image identifies the target; "
+                "the center of the point is the exact target coordinate."
+            ),
         }[modality]
     else:
+        descriptions = []
         for index in range(region_count):
-            prompt = prompt.replace(
-                f"{{region_{index + 1}}}",
-                f"the region marked R{index + 1} in {REGION_COLOR_NAMES[index]}",
-            )
-        legend = "; ".join(
-            f"R{index + 1} is the {noun} in {REGION_COLOR_NAMES[index]}"
-            for index in range(region_count)
-        )
+            color = REGION_COLOR_NAMES[index]
+            if modality == "point":
+                reference = (
+                    f"the object or location at the center of R{index + 1} in {color} "
+                    "in the second reference image"
+                )
+                descriptions.append(
+                    f"R{index + 1} is the {color} point in the second reference image"
+                )
+            else:
+                reference = (
+                    f"the region marked R{index + 1} in {color} "
+                    "in the second reference image"
+                )
+                noun = "mask" if modality == "mask" else "box"
+                descriptions.append(
+                    f"R{index + 1} is the {color} {noun} in the second reference image"
+                )
+            prompt = prompt.replace(f"{{region_{index + 1}}}", reference)
+        legend = "; ".join(descriptions) + "."
+        if modality == "point":
+            legend += " The center of each point is the exact target coordinate."
     if PLACEHOLDER_RE.search(prompt):
         raise ValueError(f"Unresolved region placeholder: {prompt}")
-    marker_instruction = (
-        f"The {marks} is an instruction only; do not preserve, reproduce, or draw it in the result."
-        if region_count == 1
-        else f"The {marks} are instructions only; do not preserve, reproduce, or draw them in the result."
-    )
     return (
-        f"The image contains temporary visual markers: {legend}. {prompt} "
-        "Change only the marked target region or regions and keep everything else exactly the same. "
-        f"{marker_instruction}"
+        "The first reference image is the clean source image to edit. "
+        "The second reference image is a locator copy of the same scene and contains "
+        f"temporary visual markers only. {legend} {prompt} "
+        "Apply the edit to the corresponding object or area in the first reference image. "
+        "Generate only the edited version of the first reference image. Use the second "
+        "reference image only for localization; do not copy, preserve, reproduce, or draw "
+        "any colored mask, outline, box, point, or R label from it. Keep all other content "
+        "from the first reference image unchanged."
     )
-
-
-def token_prompt(region_only: str, spans: list[str]) -> str:
-    prompt = region_only
-    for index, span in enumerate(spans, 1):
-        prompt = prompt.replace(f"{{region_{index}}}", span)
-    if PLACEHOLDER_RE.search(prompt):
-        raise ValueError(f"Unresolved region placeholder: {prompt}")
-    return prompt
-
-
-def paste_back(source: Image.Image, generated: Image.Image, evaluation_mask: Image.Image) -> Image.Image:
-    generated = generated.convert("RGB").resize(source.size, Image.Resampling.LANCZOS)
-    mask = evaluation_mask.convert("L").resize(source.size, Image.Resampling.NEAREST)
-    mask = mask.point(lambda value: 255 if value > 0 else 0)
-    return Image.composite(generated, source.convert("RGB"), mask)
 
 
 def output_paths(experiment_root: Path, model: str, setting: str, index: int) -> tuple[Path, Path]:
@@ -526,38 +486,13 @@ def completed_record(
 
 
 def summarize_records(records: list[dict]) -> dict:
-    summary = {
+    return {
         "count": len(records),
         "elapsed_seconds_total": sum(float(row.get("elapsed_seconds", 0.0)) for row in records),
         "edit_types": dict(sorted(Counter(row["edit_type"] for row in records).items())),
         "source_datasets": dict(sorted(Counter(row["source_dataset"] for row in records).items())),
         "derived_outputs": sum(row.get("derived_from_output") is not None for row in records),
     }
-    if any("parse_layer" in row for row in records):
-        summary["parse_layers"] = dict(
-            sorted(Counter(str(row.get("parse_layer")) for row in records).items())
-        )
-        summary["nonempty_conditioned_mt_cot"] = sum(
-            bool(row.get("conditioned_mt_cot")) for row in records
-        )
-        # The pipeline emits an audit object for every SAMTok mode. Online CoT
-        # and explicit MT correctly contain zero mask spans in the *user*
-        # message, so only positive-span records are UMT tokenizer audits.
-        audits = [
-            row["user_mask_audit"]
-            for row in records
-            if (row.get("user_mask_audit") or {}).get("user_mask_span_count", 0) > 0
-        ]
-        if audits:
-            summary["umt_tokenizer_audits"] = {
-                "count": len(audits),
-                "passed": sum(
-                    audit.get("user_mask_spans_atomic") is True
-                    and audit.get("user_mask_spans_in_template") is True
-                    for audit in audits
-                ),
-            }
-    return summary
 
 
 def setting_dicts(settings: Iterable[SettingSpec]) -> list[dict]:

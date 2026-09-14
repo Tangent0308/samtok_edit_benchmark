@@ -1,131 +1,52 @@
 # SAMTok Fine-Grained Interactive Edit Benchmark
 
-This repository contains the canonical 500-case benchmark manifest, selection
-records, validation report, construction scripts, and representative
-visualizations for fine-grained interactive image editing.
+A 556-case benchmark for referential, fine-grained image editing in
+same-class multi-instance scenes. It contains 532 CompBench cases and 24
+HumanEdit cases covering add, remove, and replace operations. ReShapeBench is
+not included.
 
-## Data locations
-
-The three downloaded source datasets are:
-
-```text
-/mnt/bn/strategy-mllm-train/user/tanyue/datasets/CompBench/
-/mnt/bn/strategy-mllm-train/user/tanyue/datasets/HumanEdit/
-/mnt/bn/strategy-mllm-train/user/tanyue/datasets/ReShapeBench/
-```
-
-The materialized benchmark is:
+The benchmark compares text-only editing with mask-, box-, and point-guided
+editing. For Qwen-Image-Edit-2511 and FLUX.2-klein-4B, each interactive setting
+uses an ordered two-reference input:
 
 ```text
-/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark/
+[clean source image, source image with a temporary locator]
 ```
 
-## Benchmark summary
+The target reference and evaluation mask are evaluator-only and are never
+passed to either model.
 
-| Property | Count |
-| --- | ---: |
-| Cases / unique source images | 500 |
-| CompBench | 269 |
-| HumanEdit | 154 |
-| ReShapeBench | 77 |
-| Add / remove / replace | 148 / 172 / 180 |
-| Multi-instance cases | 116 |
-| Small-target cases | 137 |
-| Target reference images | 423 |
-| Input region masks | 616 |
-| Evaluation masks | 500 |
-
-Every benchmark record uses the same compact top-level schema:
+## Data
 
 ```text
-id, source_dataset, edit_type, source_image, instruction,
-regions, evaluation_mask, target, difficulty
+Benchmark: /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark/
+CompBench: /mnt/bn/strategy-mllm-train/user/tanyue/datasets/CompBench/
+HumanEdit: /mnt/bn/strategy-mllm-train/user/tanyue/datasets/HumanEdit/
+Results:   /mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/referential_finegrained_edit_benchmark_two_image_locator/
 ```
 
-All asset paths in `benchmark.jsonl` are relative to the materialized benchmark
-root. `regions` contains one entry per requested instance, with a binary mask,
-padded half-open `xyxy` box, and an interior point. The fields under `target`
-describe the desired post-edit result and are evaluator-only; they are not model
-inputs.
-
-## Repository layout
-
-```text
-benchmark/
-  benchmark.jsonl
-  benchmark_meta.json
-  validation_report.json
-  visual_examples/
-selection/
-  selected_500.jsonl
-  selected_500.csv
-  selection_stats.json
-build_unified_benchmark.py
-render_unified_examples.py
-BENCHMARK_PROGRESS.md
-BENCHMARK_CONSTRUCTION_AND_EVALUATION.md
-evaluation/
-  prepare_inputs.py
-  run_inference.py
-  validate_outputs.py
-  audit_inference_protocol.py
-  launch_full_evaluation.sh
-  README.md
-docs/assets/benchmark_evaluation/
-  overview_01.png
-  overview_02.png
-  selection.json
-```
-
-`benchmark/benchmark.jsonl` is the lightweight copy of the final unified data.
-`selection/selected_500.jsonl` retains the source-facing construction fields
-needed to reproduce the materialization step. Large PNG assets remain under the
-external dataset root and are intentionally not committed to Git.
-
-## Visual examples
-
-Red/green overlays mark model input regions; blue tint marks the evaluation
-region. The right panel is the target reference when available.
-
-![CompBench examples](benchmark/visual_examples/compbench_examples.png)
-
-![HumanEdit examples](benchmark/visual_examples/humanedit_examples.png)
-
-![ReShapeBench examples](benchmark/visual_examples/reshape_bench_examples.png)
-
-## Reproduction
-
-The three source datasets and derived-model revisions are pinned in
-`benchmark/benchmark_meta.json`. With those datasets available at the paths used
-by the selection manifest, rebuild the canonical benchmark with:
+## Usage
 
 ```bash
-python build_unified_benchmark.py
-python render_unified_examples.py
-python render_unified_examples.py --output benchmark/visual_examples
+cd /opt/tiger/tanyue/finegrained_edit_benchmark_selection
+
+# Rebuild and validate the benchmark data.
+CUDA_VISIBLE_DEVICES=0 python build_unified_benchmark.py
+python verify_source_masks.py
+
+# Render and freeze the baseline inputs.
+/opt/tiger/tanyue/samtok_edit/.venv/bin/python \
+  evaluation/prepare_inputs.py --resume
+
+# Run Qwen and FLUX.2 on eight GPUs in the background.
+tmux new-session -d -s samtok_baselines_two_image_556 \
+  -c /opt/tiger/tanyue/finegrained_edit_benchmark_selection \
+  'bash evaluation/launch_baseline_inference.sh'
+
+# Show current progress or validate completed outputs.
+python evaluation/report_baseline_progress.py
+python evaluation/validate_baseline_outputs.py
 ```
 
-The builder validates all records before copying the lightweight manifest,
-metadata, and validation report into `benchmark/`. See
-[`BENCHMARK_CONSTRUCTION_AND_EVALUATION.md`](BENCHMARK_CONSTRUCTION_AND_EVALUATION.md)
-for the complete construction, annotation, inference, audit, result-location,
-and visualization record. `BENCHMARK_PROGRESS.md` is the shorter Chinese
-construction summary.
-
-## Inference evaluation
-
-The reproducible 15-setting inference implementation is in `evaluation/`.
-It evaluates Qwen-Image-Edit-2511, FLUX.2-klein-4B, and the refined four-node
-SAMTokEdit checkpoint through DiffSynth. Generated assets and logs are written
-outside Git to:
-
-```text
-/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/finegrained_edit_benchmark/
-```
-
-The full run is complete: 7,500/7,500 image/sidecar pairs passed decode and
-protocol validation. No quality metric or judge has been run. See
-[`evaluation/README.md`](evaluation/README.md) for concise commands and the
-[complete benchmark record](BENCHMARK_CONSTRUCTION_AND_EVALUATION.md) for exact
-model identities, checkpoint hashes, implementation audit, result paths, and
-representative all-setting comparisons.
+No metric or judge is run by these commands. See [BENCHMARK.md](BENCHMARK.md)
+for the complete Chinese construction and evaluation record.

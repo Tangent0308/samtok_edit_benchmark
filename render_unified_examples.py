@@ -17,22 +17,16 @@ DEFAULT_BENCHMARK_ROOT = Path(
 DEFAULT_OUTPUT = DEFAULT_BENCHMARK_ROOT / "visual_examples"
 EXAMPLES = {
     "compbench": [
-        "cb_train-00006-of-00007_0279",
-        "cb_train-00006-of-00007_0311",
-        "cb_train-00006-of-00007_0344",
-        "cb_train-00006-of-00007_0330",
+        "cb_train-00000-of-00007_0356",
+        "cb_train-00005-of-00007_0284",
+        "cb_train-00006-of-00007_0351",
+        "cb_train-00006-of-00007_0401",
     ],
     "humanedit": [
-        "he_000000000307",
-        "he_-3Mbr-3-e2s",
-        "he_04iFOldrYig",
-        "he_0Ut0pNrTdQo",
-    ],
-    "reshape_bench": [
-        "rs_000026_2",
-        "rs_000106_1",
-        "rs_000114_1",
-        "rs_000115_1",
+        "he_8VPSh4Wj61Q",
+        "he_3NQAnprYLaY",
+        "he_AXQQ0Kq69es",
+        "he__ropNcPmpW8",
     ],
 }
 
@@ -135,8 +129,14 @@ def annotated_source(record: dict, root: Path) -> Image.Image:
         x1, y1, x2, y2 = region["box"]
         draw.rectangle((x1, y1, x2 - 1, y2 - 1), outline=color, width=scale)
         px, py = region["point"]
-        radius = scale * 3
-        draw.ellipse((px - radius, py - radius, px + radius, py + radius), fill=(255, 255, 255), outline=color, width=scale)
+        radius = max(10, round(min(source.size) * 0.018))
+        outline_width = max(3, round(min(source.size) * 0.005))
+        draw.ellipse(
+            (px - radius, py - radius, px + radius, py + radius),
+            fill=color,
+            outline="white",
+            width=outline_width,
+        )
         label = f"R{index}"
         label_box = draw.textbbox((x1, max(0, y1 - label_font.size - 7)), label, font=label_font)
         draw.rectangle(label_box, fill=color)
@@ -239,7 +239,7 @@ def render_sheet(dataset: str, records: list[dict], root: Path, output: Path) ->
     draw.text((24, 18), title, font=heading_font, fill="#111827")
     draw.text(
         (1040, 31),
-        "Blue: evaluation region   Red/green: input regions   Dot: point prompt",
+        "Blue: evaluation region   Red/green: input regions   Dot center: exact point",
         font=legend_font,
         fill="#374151",
     )

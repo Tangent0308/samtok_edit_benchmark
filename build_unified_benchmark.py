@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Materialize the selected cases into the compact unified benchmark format.
+"""Materialize the selected CompBench and HumanEdit cases into one schema.
 
 The source datasets remain immutable. This builder extracts portable PNG assets,
-normalizes interaction regions, creates deterministic box/point inputs, refines
-ReShapeBench locators with Grounding DINO + SAM2, and writes benchmark.jsonl.
+preserves the released masks, derives deterministic box/point interactions, and
+writes the compact benchmark manifest.
 """
 
 from __future__ import annotations
@@ -26,7 +26,8 @@ from PIL import Image, ImageOps
 
 REPO_ROOT = Path(__file__).resolve().parent
 DATASET_ROOT = Path("/mnt/bn/strategy-mllm-train/user/tanyue/datasets")
-DEFAULT_SELECTION = REPO_ROOT / "selection" / "selected_500.jsonl"
+EXPECTED_CASES = 556
+DEFAULT_SELECTION = REPO_ROOT / "selection" / "selected_cases.jsonl"
 DEFAULT_OUTPUT = DATASET_ROOT / "samtok_edit_benchmark"
 DEFAULT_REPO_MANIFEST_DIR = REPO_ROOT / "benchmark"
 DEFAULT_MODEL_CACHE = DATASET_ROOT / "model_cache"
@@ -36,52 +37,8 @@ SAM2_REVISION = "e07df6aa19f5c6545121551bf89957b7663ee715"
 GROUNDING_MODEL_ID = "IDEA-Research/grounding-dino-tiny"
 GROUNDING_REVISION = "a2bb814dd30d776dcf7e30523b00659f4f141c71"
 
-# Grounding DINO occasionally treats a semantic role as the visually similar
-# animal beside it ("shepherd" -> sheep), or lets an incorrect released locator
-# overpower an otherwise strong detection. These query constraints are semantic
-# normalization, not per-image hand-drawn annotations.
-RESHAPE_GROUNDING_QUERY_OVERRIDES = {
-    "shepherd": "person",
-}
-
-RESHAPE_GROUNDING_MAX_BOX_AREA = {
-    # Broad bowl detections receive higher confidence than the spoon itself.
-    "white ceramic spoon": 0.10,
-}
-
 COMP_TOUCHING_INSTANCE_QUERIES = {
-    "cb_train-00006-of-00007_0279": ["grey bird", "yellow bird"],
-    "cb_train-00006-of-00007_0287": ["white and red fish", "yellow fish"],
-    "cb_train-00006-of-00007_0296": ["white rabbit", "white rabbit"],
-    "cb_train-00006-of-00007_0311": ["red fish", "red fish"],
-    "cb_train-00006-of-00007_0325": ["goat", "goat"],
-    "cb_train-00006-of-00007_0328": ["flamingo", "flamingo"],
-    "cb_train-00006-of-00007_0330": ["red fish with black spots", "black and white fish"],
-    "cb_train-00006-of-00007_0335": ["man", "man"],
     "cb_train-00006-of-00007_0351": ["grey bird", "yellow bird"],
-    "cb_train-00006-of-00007_0359": ["fish", "fish"],
-    "cb_train-00006-of-00007_0368": ["rabbit", "rabbit"],
-    "cb_train-00006-of-00007_0383": ["fish", "fish"],
-    "cb_train-00006-of-00007_0397": ["white goat", "white goat"],
-    "cb_train-00006-of-00007_0400": ["flamingo", "flamingo"],
-    "cb_train-00006-of-00007_0402": ["fish", "fish"],
-    "cb_train-00006-of-00007_0407": ["man", "man"],
-}
-
-COMP_MULTI_ADD_TARGET_OVERRIDES = {
-    "cb_train-00006-of-00007_0287": ["a white and red fish", "a yellow fish"],
-    "cb_train-00006-of-00007_0330": [
-        "a red fish with black spots",
-        "a black and white fish",
-    ],
-}
-
-COMP_FORCE_SPATIAL_SPLIT = {
-    # Dense overlapping koi make semantic detections merge several fish. The
-    # instructions explicitly identify bottom-left and bottom-right instances,
-    # so the lowest-density left/right cut is the more faithful partition.
-    "cb_train-00006-of-00007_0330",
-    "cb_train-00006-of-00007_0402",
 }
 
 DATASET_REVISIONS = {
@@ -92,10 +49,6 @@ DATASET_REVISIONS = {
     "humanedit": {
         "repo": "BryanW/HumanEdit",
         "revision": "dbc60b9ba3c17adf59e1effd8a9d92bdf2f14041",
-    },
-    "reshape_bench": {
-        "repo": "3087richard/ReShapeBench",
-        "revision": "6250f37e29552b33a07f18f4c9a93156435ac027",
     },
 }
 
@@ -116,6 +69,7 @@ TOP_LEVEL_FIELDS = {
 # Explicit model-neutral rewrites retain the requested content while binding the
 # placement exclusively through {region_1}.
 HUMAN_ADD_REWRITES = {
+    "he_000000001319": "Add a white cat in {region_1}.",
     "he_0-frDDoQqUw": "Add a hat in {region_1}.",
     "he_000000000307": "Add a black dog with a white neck in {region_1}.",
     "he_000000093106": "Add a top hat in {region_1}.",
@@ -161,6 +115,7 @@ HUMAN_ADD_REWRITES = {
 }
 
 HUMAN_REPLACE_REWRITES = {
+    "he_4k8xEFW4_3Q": "Replace {region_1} with a red raspberry matching the other fruits.",
     "he_0l_PZ1mO_ZA": "Change {region_1} to red clothing.",
     "he_30AOxN5emxs": "Replace {region_1} with blue pants.",
     "he_3d853e9ZjPM": "Replace {region_1} with a black hat with a white chin strap.",
@@ -212,7 +167,7 @@ def save_png(image: Image.Image, path: Path, mode: str) -> None:
 
 
 def dataset_slug(name: str) -> str:
-    return {"CompBench": "compbench", "HumanEdit": "humanedit", "ReShapeBench": "reshape_bench"}[name]
+    return {"CompBench": "compbench", "HumanEdit": "humanedit"}[name]
 
 
 def safe_name(value: str) -> str:
@@ -249,7 +204,13 @@ def padded_bbox(mask: np.ndarray, ratio: float = 0.02) -> list[int]:
 
 
 def innermost_point(mask: np.ndarray) -> list[int]:
-    distance = cv2.distanceTransform(mask.astype(np.uint8), cv2.DIST_L2, 5)
+    # OpenCV does not treat pixels outside the array as background. Without an
+    # explicit zero border, a mask touching the canvas can incorrectly select a
+    # point on the image edge, where a visual click is clipped. Padding makes
+    # both the mask boundary and the image boundary participate in the distance
+    # transform, then maps the result back to the original coordinates.
+    padded = np.pad(mask.astype(np.uint8), 1, mode="constant", constant_values=0)
+    distance = cv2.distanceTransform(padded, cv2.DIST_L2, 5)[1:-1, 1:-1]
     y, x = np.unravel_index(int(np.argmax(distance)), distance.shape)
     if not mask[y, x]:
         y, x = np.argwhere(mask)[0]
@@ -322,9 +283,22 @@ def comp_regions(mask: np.ndarray, edit_type: str) -> list[np.ndarray]:
         return [mask]
     components = significant_components(mask)
     if len(components) == 2:
-        return sort_regions(components)
+        regions = sort_regions(components)
+        residual = mask & ~np.logical_or.reduce(regions)
+        if residual.any():
+            distances = np.stack(
+                [cv2.distanceTransform((~region).astype(np.uint8), cv2.DIST_L2, 5) for region in regions]
+            )
+            ys, xs = np.nonzero(residual)
+            assignments = np.argmin(distances[:, ys, xs], axis=0)
+            for index in range(len(regions)):
+                chosen = assignments == index
+                regions[index][ys[chosen], xs[chosen]] = True
+        return regions
     if len(components) == 1:
-        return split_connected_region(components[0], 2)
+        # A connected released union has no trustworthy instance boundary.
+        # Keep it as one interaction region instead of inventing a split.
+        return [mask]
     raise ValueError(f"expected one or two significant components for {edit_type}, got {len(components)}")
 
 
@@ -346,8 +320,6 @@ def normalize_edit_type(record: dict[str, Any]) -> str:
         return "add"
     if value == "multi_object_remove":
         return "remove"
-    if record["source_dataset"] == "ReShapeBench":
-        return "replace"
     if value not in {"add", "remove", "replace", "counting"}:
         raise ValueError(f"unsupported edit type: {record['candidate_id']} {value}")
     return value
@@ -382,8 +354,6 @@ def replacement_target(instruction: str) -> str | None:
 
 
 def comp_add_targets(record: dict[str, Any]) -> list[str]:
-    if record["candidate_id"] in COMP_MULTI_ADD_TARGET_OVERRIDES:
-        return COMP_MULTI_ADD_TARGET_OVERRIDES[record["candidate_id"]]
     return [text for value in record["local_caption"].split("|") if (text := clean_text(value))]
 
 
@@ -391,9 +361,6 @@ def region_only_instruction(record: dict[str, Any], region_count: int) -> str | 
     dataset = record["source_dataset"]
     edit_type = normalize_edit_type(record)
     references = region_references(region_count)
-    if dataset == "ReShapeBench":
-        target = clean_text(record.get("foreground_target")) or clean_text(record["local_caption"])
-        return f"Replace {references[0]} with {target}."
     if edit_type == "counting" or record.get("requires_ref_instruction"):
         return None
     if edit_type == "remove":
@@ -403,6 +370,17 @@ def region_only_instruction(record: dict[str, Any], region_count: int) -> str | 
             if record["candidate_id"] not in HUMAN_ADD_REWRITES:
                 raise ValueError(f"missing HumanEdit add rewrite: {record['candidate_id']}")
             return HUMAN_ADD_REWRITES[record["candidate_id"]]
+        if record["edit_type"] == "add":
+            # CompBench crop captions sometimes include nearby anchor instances
+            # (for example "two fish") rather than only the new object. Preserve
+            # the authoritative source instruction and make the visual region an
+            # explicit placement constraint instead of changing edit semantics.
+            original = clean_text(record["instruction_original"])
+            if not original:
+                raise ValueError(f"missing add instruction: {record['candidate_id']}")
+            original = original[0].upper() + original[1:]
+            original = original.rstrip(".")
+            return f"Use {references[0]} as the exact placement region. {original}."
         captions = comp_add_targets(record)
         if not captions:
             raise ValueError(f"missing add target text: {record['candidate_id']}")
@@ -459,105 +437,6 @@ class GroundedSam2Segmenter:
             cache_dir=cache_dir,
             dtype=torch.float32,
         ).to(device).eval()
-
-    def grounded_box(
-        self, image: Image.Image, text: str, locator: np.ndarray
-    ) -> tuple[list[float], dict[str, Any]]:
-        normalized_text = text.strip().lower()
-        query = RESHAPE_GROUNDING_QUERY_OVERRIDES.get(normalized_text, text)
-        prompt = query.strip().rstrip(".") + "."
-        inputs = self.grounding_processor(images=image, text=prompt, return_tensors="pt").to(self.device)
-        with self.torch.inference_mode():
-            outputs = self.grounding_model(**inputs)
-        result = self.grounding_processor.post_process_grounded_object_detection(
-            outputs,
-            inputs.input_ids,
-            threshold=0.08,
-            text_threshold=0.08,
-            target_sizes=[image.size[::-1]],
-        )[0]
-        locator_box = mask_bbox(locator)
-        candidates = []
-        maximum_area = RESHAPE_GROUNDING_MAX_BOX_AREA.get(normalized_text)
-        for score_tensor, box_tensor, label in zip(
-            result["scores"], result["boxes"], result["text_labels"]
-        ):
-            score = float(score_tensor)
-            box = [float(x) for x in box_tensor.tolist()]
-            x1, y1 = max(0, int(math.floor(box[0]))), max(0, int(math.floor(box[1])))
-            x2, y2 = min(locator.shape[1], int(math.ceil(box[2]))), min(locator.shape[0], int(math.ceil(box[3])))
-            coverage = float(locator[y1:y2, x1:x2].mean()) if x2 > x1 and y2 > y1 else 0.0
-            box_area_ratio = max(0.0, box[2] - box[0]) * max(0.0, box[3] - box[1]) / locator.size
-            if maximum_area is not None and box_area_ratio > maximum_area:
-                continue
-            cx = min(locator.shape[1] - 1, max(0, int(round((box[0] + box[2]) / 2))))
-            cy = min(locator.shape[0] - 1, max(0, int(round((box[1] + box[3]) / 2))))
-            center_inside = float(locator[cy, cx])
-            # Text confidence dominates because a small fraction of the released
-            # ReShape locators are visibly misplaced. Locator overlap is only a
-            # tie-breaker for repeated instances.
-            rank = 0.82 * score + 0.12 * coverage + 0.04 * center_inside + 0.02 * bbox_iou(box, locator_box)
-            candidates.append((rank, score, coverage, center_inside, box, str(label)))
-        if not candidates:
-            return [float(x) for x in locator_box], {
-                "grounding_method": "official_locator_fallback",
-                "grounding_score": None,
-                "grounding_candidates": 0,
-            }
-        candidates.sort(reverse=True, key=lambda x: x[0])
-        _, score, coverage, center_inside, box, label = candidates[0]
-        return box, {
-            "grounding_method": "grounding_dino",
-            "grounding_score": score,
-            "grounding_query": query,
-            "grounding_locator_coverage": coverage,
-            "grounding_center_in_locator": bool(center_inside),
-            "grounding_label": label,
-            "grounding_candidates": len(candidates),
-        }
-
-    def segment(
-        self, image: Image.Image, foreground: str, locator: np.ndarray
-    ) -> tuple[np.ndarray, dict[str, Any]]:
-        box, diagnostic = self.grounded_box(image, foreground, locator)
-        sam_inputs = self.sam_processor(images=image, input_boxes=[[box]], return_tensors="pt").to(self.device)
-        with self.torch.inference_mode():
-            outputs = self.sam_model(**sam_inputs, multimask_output=True)
-        masks = self.sam_processor.post_process_masks(
-            outputs.pred_masks.cpu(), sam_inputs["original_sizes"].cpu()
-        )[0][0].numpy().astype(bool)
-        scores = outputs.iou_scores[0, 0].detach().cpu().numpy()
-        candidate_scores = []
-        for mask, score in zip(masks, scores):
-            area = float(mask.mean())
-            penalty = 0.0
-            if area < 0.0002:
-                penalty += 0.5
-            if area > 0.60:
-                penalty += area
-            candidate_scores.append(float(score) - penalty)
-        index = int(np.argmax(candidate_scores))
-        selected = masks[index]
-        components = significant_components(selected)
-        if components:
-            largest = max(int(x.sum()) for x in components)
-            retained = [x for x in components if int(x.sum()) >= max(16, int(largest * 0.01))]
-            selected = np.logical_or.reduce(retained)
-        if not selected.any():
-            selected = locator.copy()
-            diagnostic["segmentation_method"] = "official_locator_fallback"
-        else:
-            diagnostic["segmentation_method"] = "sam2"
-        diagnostic.update(
-            {
-                "grounded_box": [round(float(x), 4) for x in box],
-                "sam2_iou_scores": [round(float(x), 6) for x in scores.tolist()],
-                "sam2_selected_index": index,
-                "mask_area_ratio": float(selected.mean()),
-                "mask_locator_intersection_ratio": float((selected & locator).sum() / max(1, selected.sum())),
-            }
-        )
-        return selected, diagnostic
 
     def _grounding_candidates(
         self, image: Image.Image, text: str, union_mask: np.ndarray
@@ -682,8 +561,7 @@ def load_parquet_payloads(records: list[dict[str, Any]]) -> dict[str, dict[str, 
     payloads: dict[str, dict[str, Any]] = {}
     groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for record in records:
-        if record["source_dataset"] != "ReShapeBench":
-            groups[(record["source_dataset"], record["source_shard"])].append(record)
+        groups[(record["source_dataset"], record["source_shard"])].append(record)
     for (dataset, shard_name), group in sorted(groups.items()):
         if dataset == "CompBench":
             columns = ["input_image", "edited_image", "mask"]
@@ -724,7 +602,6 @@ def make_record(
     masks: list[np.ndarray],
     evaluation_mask: np.ndarray,
     root: Path,
-    reshape_box: list[int] | None = None,
 ) -> dict[str, Any]:
     dataset = dataset_slug(selected["source_dataset"])
     case_name = safe_name(selected["candidate_id"])
@@ -739,7 +616,7 @@ def make_record(
     for index, mask in enumerate(masks, start=1):
         mask_path = root / "regions" / "input" / dataset / f"{case_name}_r{index:02d}.png"
         save_png(Image.fromarray(mask.astype(np.uint8) * 255, mode="L"), mask_path, "L")
-        box = reshape_box if reshape_box is not None else padded_bbox(mask)
+        box = padded_bbox(mask)
         regions.append(
             {
                 "mask": relative(mask_path, root),
@@ -773,8 +650,8 @@ def make_record(
             "expected_global_description": clean_text(selected.get("target_prompt")),
         },
         "difficulty": {
-            "same_class_multi_instance": bool(selected["same_class_multi_instance_proxy"]),
-            "multi_object_scene": bool(selected["multi_object_scene"]),
+            "same_class_multi_instance": bool(selected.get("same_class_multi_instance_proxy", True)),
+            "multi_object_scene": bool(selected.get("multi_object_scene", True)),
         },
     }
 
@@ -782,8 +659,8 @@ def make_record(
 def validate_records(records: list[dict[str, Any]], root: Path) -> dict[str, Any]:
     errors: list[str] = []
     ids = [x["id"] for x in records]
-    if len(records) != 500:
-        errors.append(f"record count is {len(records)}, expected 500")
+    if len(records) != EXPECTED_CASES:
+        errors.append(f"record count is {len(records)}, expected {EXPECTED_CASES}")
     if len(set(ids)) != len(ids):
         errors.append("duplicate case ids")
     path_cache: dict[str, tuple[tuple[int, int], str]] = {}
@@ -828,8 +705,8 @@ def validate_records(records: list[dict[str, Any]], root: Path) -> dict[str, Any
             if evaluation_size != source_size:
                 raise ValueError("evaluation mask size differs from source")
             reference = record["target"]["reference_image"]
-            if (record["source_dataset"] == "reshape_bench") != (reference is None):
-                raise ValueError("target reference image nullability is inconsistent with source dataset")
+            if reference is None:
+                raise ValueError("CompBench and HumanEdit records require a target reference image")
             if reference is not None:
                 reference_size, reference_image = open_asset(reference, False)
                 reference_image.close()
@@ -914,27 +791,25 @@ def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
                 if any(x["instruction"]["region_only"] is None for x in records)
                 else "none"
             ),
-            "null_target_reference_image": "reference-free evaluation; currently ReShapeBench only",
+            "null_target_reference_image": "none; every case has a target reference image",
             "target_semantics": "all target fields describe the expected post-edit result and are evaluator-only",
         },
         "region_construction": {
-            "compbench_mask": "released instance mask; multi-object unions split into two instance regions; isolated encoding speckles below the significance threshold are suppressed",
+            "compbench_mask": "released mask preserved exactly; disconnected multi-object unions become two regions, and one connected two-object union is semantically partitioned into two reviewed regions without changing the union",
             "humanedit_mask": "original human brush from MASK_IMG alpha < 128",
-            "reshape_mask": "foreground text grounding followed by SAM2 instance segmentation",
             "compbench_humanedit_box": "input mask bounding box padded by 2% of the shorter image side",
-            "reshape_box": "SAM2 instance-mask bounding box padded by 2% of the shorter image side",
-            "point": "maximum L2 distance-transform point of each input mask",
+            "point": (
+                "maximum L2 distance-transform point after adding a one-pixel "
+                "background border, so image edges are treated as mask boundaries"
+            ),
         },
         "evaluation_region": {
             "compbench": "union of input masks dilated by 2% of the shorter image side",
             "humanedit": "union of input masks dilated by 2% of the shorter image side",
-            "reshape_bench": "rectangle from the grounded SAM2 instance-mask bounding box dilated by 2% of the shorter image side; released locators are not used because some are visibly misplaced",
         },
         "models_used_for_derived_instance_masks": {
-            "uses": [
-                "ReShapeBench semantic instance masks",
-                "touching CompBench multi-instance unions",
-            ],
+            "uses": ["semantic partition of a connected CompBench multi-object union"],
+            "note": "The two derived regions are disjoint and their union exactly equals the released mask; no released mask pixels are added or removed.",
             "grounding": {"repo": GROUNDING_MODEL_ID, "revision": GROUNDING_REVISION},
             "segmentation": {"repo": SAM2_MODEL_ID, "revision": SAM2_REVISION},
         },
@@ -961,40 +836,30 @@ def main() -> None:
     args = parse_args()
     cv2.setNumThreads(1)
     selected = read_jsonl(args.selection)
-    if len(selected) != 500:
-        raise ValueError(f"expected 500 selected cases, got {len(selected)}")
+    if len(selected) != EXPECTED_CASES:
+        raise ValueError(f"expected {EXPECTED_CASES} selected cases, got {len(selected)}")
+    invalid_datasets = sorted({x["source_dataset"] for x in selected} - {"CompBench", "HumanEdit"})
+    if invalid_datasets:
+        raise ValueError(f"unsupported source datasets in selection: {invalid_datasets}")
     args.output.mkdir(parents=True, exist_ok=True)
     payloads = load_parquet_payloads(selected)
     records: list[dict[str, Any]] = []
-    reshape_diagnostics = []
+    segmenter: GroundedSam2Segmenter | None = None
     comp_instance_diagnostics = []
 
-    print("loading Grounding DINO and SAM2", flush=True)
-    segmenter = GroundedSam2Segmenter(args.device, args.model_cache)
-
     for index, item in enumerate(selected):
-        if item["source_dataset"] == "ReShapeBench":
-            continue
         payload = payloads[item["candidate_id"]]
         source = payload["source"]
         target = payload["target"]
         mask = payload["mask"]
         if item["source_dataset"] == "CompBench":
             if item["candidate_id"] in COMP_TOUCHING_INSTANCE_QUERIES:
+                if segmenter is None:
+                    print("loading Grounding DINO and SAM2 for one connected-union partition", flush=True)
+                    segmenter = GroundedSam2Segmenter(args.device, args.model_cache)
                 queries = COMP_TOUCHING_INSTANCE_QUERIES[item["candidate_id"]]
-                if item["candidate_id"] in COMP_FORCE_SPATIAL_SPLIT:
-                    masks = split_connected_region(mask, len(queries))
-                    diagnostic = {
-                        "queries": queries,
-                        "method": "instruction_guided_spatial_partition",
-                    }
-                else:
-                    segmentation_image = target if item["edit_type"] == "multi_object_add" else source
-                    masks, diagnostic = segmenter.segment_multiple(
-                        segmentation_image,
-                        queries,
-                        mask,
-                    )
+                segmentation_image = target if item["edit_type"] == "multi_object_add" else source
+                masks, diagnostic = segmenter.segment_multiple(segmentation_image, queries, mask)
                 diagnostic["id"] = item["candidate_id"]
                 comp_instance_diagnostics.append(diagnostic)
             else:
@@ -1006,36 +871,6 @@ def main() -> None:
         if (index + 1) % 50 == 0:
             print(f"materialized GT-backed cases: {index + 1}", flush=True)
 
-    print("materializing ReShapeBench with Grounding DINO and SAM2", flush=True)
-    reshape_cache: dict[tuple[str, str, str], tuple[np.ndarray, dict[str, Any]]] = {}
-    reshape_items = [x for x in selected if x["source_dataset"] == "ReShapeBench"]
-    for index, item in enumerate(reshape_items, start=1):
-        source = Image.open(item["source_image_path"]).convert("RGB")
-        locator = binary_mask(Image.open(item["source_mask_path"]).convert("L"), source.size)
-        cache_key = (item["source_image_path"], item["source_mask_path"], item["foreground"])
-        if cache_key not in reshape_cache:
-            reshape_cache[cache_key] = segmenter.segment(source, item["foreground"], locator)
-        mask, diagnostic = reshape_cache[cache_key]
-        grounded_box = mask_bbox(mask)
-        evaluation_base = np.zeros_like(locator)
-        x1, y1, x2, y2 = grounded_box
-        evaluation_base[y1:y2, x1:x2] = True
-        evaluation = dilate_two_percent(evaluation_base)
-        records.append(
-            make_record(
-                item,
-                source,
-                None,
-                [mask],
-                evaluation,
-                args.output,
-                reshape_box=padded_bbox(mask),
-            )
-        )
-        reshape_diagnostics.append({"id": item["candidate_id"], **diagnostic})
-        if index % 10 == 0:
-            print(f"materialized ReShapeBench cases: {index}/{len(reshape_items)}", flush=True)
-
     records.sort(key=lambda x: x["id"])
     write_jsonl(args.output / "benchmark.jsonl", records)
     metadata = build_metadata(records)
@@ -1045,15 +880,9 @@ def main() -> None:
     build_report = {
         "selection_manifest": str(args.selection),
         "output_root": str(args.output),
-        "reshape_unique_segmentations": len(reshape_cache),
-        "reshape_grounding_fallbacks": sum(
-            x["grounding_method"] != "grounding_dino" for x in reshape_diagnostics
-        ),
-        "reshape_segmentation_fallbacks": sum(
-            x["segmentation_method"] != "sam2" for x in reshape_diagnostics
-        ),
-        "comp_touching_instance_diagnostics": comp_instance_diagnostics,
-        "reshape_diagnostics": reshape_diagnostics,
+        "mask_policy": "released source-dataset masks are preserved",
+        "multi_object_policy": "use released connected components; one connected two-object union is semantically partitioned while preserving the exact released union",
+        "comp_connected_union_partition_diagnostics": comp_instance_diagnostics,
     }
     atomic_text(args.output / "build_report.json", json.dumps(build_report, indent=2, ensure_ascii=False) + "\n")
     copy_manifest_files(args.output, args.repo_manifest_dir)

@@ -311,4 +311,93 @@ python evaluation/validate_baseline_outputs.py
 
 ## 5. 基模评测结果
 
-待全量 inference 完成并经过人工检查后补充。
+### 5.1 完成状态与结果位置
+
+两基模的 8 卡全量 inference 已完成。运行从 2026-09-14 07:30:25 UTC
+开始，Qwen 于 12:35:52 UTC 完成，FLUX.2 于 12:48:41 UTC 完成；controller
+在输出结构验证通过后于 12:55:26 UTC 正常退出。
+
+结果根目录为：
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/
+  referential_finegrained_edit_benchmark_two_image_locator/
+```
+
+其中主要内容为：
+
+```text
+inference/qwen/<setting>/{0000..0555}.{png,json}
+inference/qwen/report.json
+inference/qwen/run_config.json
+inference/flux2/<setting>/{0000..0555}.{png,json}
+inference/flux2/report.json
+inference/flux2/run_config.json
+reports/baseline_inference_validation.json
+logs/baseline_inference.log
+logs/baseline_progress.log
+baseline_controller.status
+```
+
+完整性计数如下：
+
+| 模型 | `text_only` | `mask_annotation` | `box_annotation` | `point_annotation` | 合计 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Qwen-Image-Edit-2511 | 556 | 556 | 556 | 556 | 2,224 |
+| FLUX.2-klein-4B | 556 | 556 | 556 | 556 | 2,224 |
+| 总计 | 1,112 | 1,112 | 1,112 | 1,112 | 4,448 |
+
+本次结果严格使用第 3 节记录的 DiffSynth pipeline、双图 locator 协议和冻结
+prompt：`text_only` 输入一张 clean source，其他三种 setting 按顺序输入
+`[clean source, annotated locator]`；target reference 和 evaluation mask 均未进入
+生成。Qwen 使用 40 steps、CFG 4.0、`zero_cond_t=True`，FLUX.2 使用 4 steps、
+CFG 1.0、`embedded_guidance=4.0`，两者均使用固定 seed 0 和 8 卡数据并行。
+
+### 5.2 完整性验证
+
+`reports/baseline_inference_validation.json` 的状态为 `passed`，`error_count=0`。
+验证逐条检查了：
+
+- 4,448 张结果 PNG 和 4,448 个 JSON sidecar 均存在；每个 setting 的
+  `results.jsonl` 也均为 556 行；
+- 所有输出均可解码，保存尺寸与对应 source 完全一致；
+- sidecar 中的 case ID、模型、setting、实际输入图片顺序与角色、完整 prompt
+  均与冻结 manifest 一致；
+- 两个 `run_config.json` 均对应 8 卡运行及同一个冻结 manifest hash
+  `05e7669f36fe82c03671886f249ad522ac4ef1299330f53d5bbb81f69609c401`；
+- 全量缩略像素扫描未发现空白或近纯色输出；运行日志中没有 traceback、
+  RuntimeError 或 CUDA OOM。
+
+以上只确认推理正常完成、产物可读且 provenance 正确，不代表编辑质量已经
+达标。按照当前阶段约定，本次没有计算任何质量指标，也没有调用 judge。
+
+### 5.3 抽样可视化
+
+下图按 setting 对齐展示输入和输出：第一行依次是 text 使用的 clean source、
+mask/box/point locator 和仅供检查的 target；第二、三行是在相应输入 setting
+下的 Qwen 与 FLUX.2 输出。target 未作为模型输入。
+
+第一组覆盖 CompBench 的序数单实例删除、位于同类实例之间的新增，以及左右
+两端双目标新增：
+
+![CompBench 基模抽样结果](docs/assets/benchmark_evaluation/baseline_results_representative_01.jpg)
+
+第二组覆盖 CompBench 双区域复合删除，以及 HumanEdit 的小目标属性替换和
+`all ... except ...` 排除式编辑：
+
+![多区域与 HumanEdit 基模抽样结果](docs/assets/benchmark_evaluation/baseline_results_representative_02.jpg)
+
+图中包含以下六条代表性 case：
+
+| index | case ID | 数据集 | 类型 | 代表性 |
+| ---: | --- | --- | --- | --- |
+| 0234 | `cb_train-00002-of-00007_0176` | CompBench | remove | 删除左起第二只斑马 |
+| 0215 | `cb_train-00002-of-00007_0089` | CompBench | add | 在两只老虎之间新增实例 |
+| 0496 | `cb_train-00006-of-00007_0283` | CompBench | add | 左右两端双区域、不同朝向 |
+| 0514 | `cb_train-00006-of-00007_0347` | CompBench | remove | 双区域且包含 between 与事件指代 |
+| 0539 | `he_3NQAnprYLaY` | HumanEdit | replace | 左起第二块上的细粒度图案替换 |
+| 0548 | `he_AXQQ0Kq69es` | HumanEdit | remove | 删除所有人但保留跳跃运动员 |
+
+这些图片用于快速人工抽查，不构成定量结果。可以直接到结果根目录查看任意
+`eval_index` 的四种 setting，并结合相邻 JSON sidecar 复核模型实际收到的输入
+和 prompt。

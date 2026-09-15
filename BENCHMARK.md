@@ -1,8 +1,9 @@
 # SAMTok 细粒度交互式编辑 Benchmark 说明
 
-本文档是当前 benchmark 唯一的详细说明，记录评测目标、数据构建、两个基模
-的推理实现、运行方式与结果位置。当前阶段只包含
-Qwen-Image-Edit-2511 和 FLUX.2-klein-4B，不计算质量指标，也不调用 judge。
+本文档是当前 benchmark 唯一的详细说明，记录评测目标、三套源数据的筛选与
+统一、两个基模的推理实现、运行方式和已有结果。当前代码只包含
+Qwen-Image-Edit-2511 与 FLUX.2-klein-4B；准备输入和 inference 均不会计算指标
+或调用 judge。
 
 ## 1. 评测目标
 
@@ -33,33 +34,68 @@ Qwen-Image-Edit-2511 和 FLUX.2-klein-4B，不计算质量指标，也不调用 
 
 | 统计项 | 数量 |
 | --- | ---: |
-| case / 唯一 ID | 556 / 556 |
-| 唯一 source image | 555 |
-| CompBench / HumanEdit | 532 / 24 |
-| add / remove / replace | 258 / 265 / 33 |
-| 单 region / 双 region | 516 / 40 |
-| input region mask / evaluation mask | 596 / 556 |
+| case / 唯一 ID | 656 / 656 |
+| 唯一 source image | 655 |
+| CompBench / HumanEdit / MIRAGE | 532 / 24 / 100 |
+| add / remove / replace / mixed | 260 / 268 / 94 / 34 |
+| 单 region / 双 region | 517 / 139 |
+| input region mask / evaluation mask | 795 / 656 |
 | target reference image | 556 |
 
-两个不同编辑任务共享一张像素相同的 source，因此唯一 source 数为 555。
-ReShapeBench 已排除，不属于当前 benchmark。
+CompBench 中两个不同任务共享一张 source，因此唯一 source 数为 655。全部
+CompBench/HumanEdit case 有 target；MIRAGE 未发布编辑后 GT，100 条的
+`target.reference_image` 均为 `null`。ReShapeBench 已排除。
 
 ### 2.1 源数据
 
 ```text
 /mnt/bn/strategy-mllm-train/user/tanyue/datasets/CompBench/
 /mnt/bn/strategy-mllm-train/user/tanyue/datasets/HumanEdit/
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRAGE/benchmark/
 ```
 
 | 数据集 | Hugging Face 仓库 | 固定 revision | 入选数 |
 | --- | --- | --- | ---: |
 | CompBench | `BohanJia/CompBench` | `a4c5a4d1854056d24aad43a494772dc90588d426` | 532 |
 | HumanEdit | `BryanW/HumanEdit` | `dbc60b9ba3c17adf59e1effd8a9d92bdf2f14041` | 24 |
+| MIRAGE | `ziqiangoodgood/MIRAGE` | `11eff1e3f396e189e61bd1f0ca596286d8a0b183` | 100 |
 
-入选 case 强调相邻同类实例及位置/方向指代，包括极值位置、序数、中间、两者
-之间、相对方位和 `all except ...` 等排除式子集编辑。选择只使用源图片、原始
-instruction、原始标注和 target 做数据一致性检查，没有使用任何模型输出或
-judge 分数。最终选择记录位于 `selection/selected_cases.jsonl`，统计位于
+所有筛选只使用源图片、原始 instruction、发布标注，以及 CompBench/HumanEdit
+的 target 做数据一致性检查；没有使用任何模型输出、指标或 judge 分数。
+
+#### CompBench（532 条）
+
+先按文本检索极值位置、序数、中间、between、相对方位和 `all except ...` 等
+指代，再逐图检查：同类比较实例确实存在，文字能够唯一解析目标，发布 mask
+与 target 的局部变化一致。add/remove/replace 分别为 255/255/22，其中 40 条
+是双实例编辑。选择与源 parquet 行号记录在
+`selection/selected_cases.jsonl`。
+
+#### HumanEdit（24 条）
+
+从候选中只保留同类多实例、小部件或排除式编辑，并核对 source、人工笔刷
+mask、target 的尺寸和语义一致性。保留原始 `MASK_IMG` 的人工 alpha 笔刷，
+不使用 SAM 精修。add/remove/replace 为 3/10/11；全部为单 region。选择记录
+与 CompBench 共用 `selection/selected_cases.jsonl`。
+
+#### MIRAGE（100 条）
+
+MIRAGE 每张 1024×1024 source 发布 5 个候选编辑及其 polygon。这里对全部 100
+张逐条做 five-to-one/two 筛选，而不执行原始 5 区域联合指令：优先选择眼、鼻、
+喙、衣物局部等小部件，remove/replace 等结构敏感任务，以及 `leftmost`、
+`middle`、`first/second from the left/right` 这类容易混淆的指代。只有当两个
+编辑落在不同同类实例上、组合会增加“编辑内容—实例”绑定难度时才组成双
+region；否则保留单 region。最终为 99 条双 region、1 条单 region，共 199 个
+region；34 条跨操作组合用 `edit_type=mixed` 表示。
+
+MIRAGE 未提供编辑后 target，且当前上游数据仓库未声明 license；本仓库只保存
+清单和派生路径，正式发布或再分发图片前应先补充确认授权。
+
+固定索引、原子编辑、最终 instruction 和逐条理由位于
+`selection/mirage_selected_regions.jsonl`，生成器为
+`selection/build_mirage_selection.py`，统计为
+`selection/mirage_selection_stats.json`。五页全量审查图可用
+`selection/render_mirage_selection.py` 生成到临时目录。总统计位于
 `selection/selection_stats.json`。
 
 ### 2.2 统一字段
@@ -76,8 +112,8 @@ regions, evaluation_mask, target, difficulty
 ```json
 {
   "id": "case id",
-  "source_dataset": "compbench | humanedit",
-  "edit_type": "add | remove | replace",
+  "source_dataset": "compbench | humanedit | mirage",
+  "edit_type": "add | remove | replace | mixed",
   "source_image": "images/source/...png",
   "instruction": {
     "with_location_reference": "原始位置/指代 instruction",
@@ -92,7 +128,7 @@ regions, evaluation_mask, target, difficulty
   ],
   "evaluation_mask": "regions/evaluation/...png",
   "target": {
-    "reference_image": "images/target/...png",
+    "reference_image": "images/target/...png | null",
     "expected_local_content": "期望的编辑后局部内容",
     "expected_global_description": null
   },
@@ -107,6 +143,10 @@ regions, evaluation_mask, target, difficulty
 `[x1, y1, x2, y2)`，point 使用像素坐标 `[x, y]`。`regions` 的数组顺序
 对应 `{region_1}`、`{region_2}` 以及可视化中的 R1、R2。
 
+`mixed` 仅用于 MIRAGE 双 region 中包含不同原子操作的 case。MIRAGE 没有
+编辑后 GT，因此 `reference_image=null`，`expected_local_content` 保存所选局部
+编辑的目标语义；不得据此计算需要 GT 图的指标。
+
 `target.*` 和 `evaluation_mask` 只用于人工检查或未来评价。推理结果 sidecar
 可以记录这些路径作为 provenance，但它们不会进入模型的图片列表或 prompt。
 
@@ -115,6 +155,8 @@ regions, evaluation_mask, target, difficulty
 - CompBench 保留发布的二值 mask。
 - HumanEdit 使用 `MASK_IMG` 中 `alpha < 128` 的原始人工笔刷区域，不做 SAM
   精修。
+- MIRAGE 只栅格化入选的 1/2 个发布 polygon，方法与官方 metric 相同：PIL
+  `ImageDraw.polygon(..., outline=1, fill=1)`；不改写或精修区域。
 - 39 条双目标 CompBench case 的两个连通分量直接成为 R1/R2。
 - 另有一条双鸟 case 的发布 mask 是连通 union。构建时使用固定版本的
   Grounding DINO 与 SAM2 只在原 union 内进行语义分区；两个子 mask 不重叠，
@@ -131,15 +173,17 @@ IDEA-Research/grounding-dino-tiny@a2bb814dd30d776dcf7e30523b00659f4f141c71
 facebook/sam2.1-hiera-small@e07df6aa19f5c6545121551bf89957b7663ee715
 ```
 
-`verify_source_masks.py` 已重新读取全部源 parquet；556 条 case 的物化 region
-union 与源 mask mismatch 为 0。`benchmark/validation_report.json` 状态为
+`verify_source_masks.py` 已重新读取 CompBench/HumanEdit 源 parquet，并读取
+MIRAGE 发布 polygon；656 条 case 的物化 region union 与对应发布标注 mismatch
+为 0。`benchmark/validation_report.json` 状态为
 `passed`，检查了 schema、ID、资源路径、图片尺寸、二值 mask、box、point、
-region placeholder 和 target reference。
+region placeholder，以及按数据源约束的 target reference。
 
 ### 2.4 数据重建
 
 ```bash
 cd /opt/tiger/tanyue/finegrained_edit_benchmark_selection
+python selection/build_mirage_selection.py
 CUDA_VISIBLE_DEVICES=0 python build_unified_benchmark.py
 python verify_source_masks.py
 python render_unified_examples.py --output benchmark/visual_examples
@@ -150,6 +194,8 @@ python render_unified_examples.py --output benchmark/visual_examples
 ![CompBench 示例](benchmark/visual_examples/compbench_examples.png)
 
 ![HumanEdit 示例](benchmark/visual_examples/humanedit_examples.png)
+
+![MIRAGE 示例](benchmark/visual_examples/mirage_examples.png)
 
 ## 3. 两个基模的评测实现
 
@@ -215,18 +261,21 @@ setting。每个 setting 保存：
 
 ```text
 /mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/
-  referential_finegrained_edit_benchmark_two_image_locator/
-    inputs/mask_annotation/                 # 556 locator images
-    inputs/box_annotation/                  # 556 locator images
-    inputs/point_annotation/                # 556 locator images
+  referential_finegrained_edit_benchmark_656_two_image_locator/
+    inputs/mask_annotation/                 # 656 locator images
+    inputs/box_annotation/                  # 656 locator images
+    inputs/point_annotation/                # 656 locator images
     prepared/baseline_inputs.jsonl
     prepared/benchmark_baseline_eval_inputs.jsonl
     prepared/baseline_input_report.json
 ```
 
-当前冻结输入协议为 `baseline_two_image_locator_inputs_v1`。共有 1,668 张
-locator，556 行 inference manifest，每行四个 setting。输入准备不读取任何
-target 内容来构造图片或 prompt。
+当前冻结输入协议为 `baseline_two_image_locator_inputs_v1`。共有 1,968 张
+locator，656 行 inference manifest，每行四个 setting；已验证的不同输入图片
+共 2,623 张（655 张唯一 clean source + 1,968 张 locator）。冻结 inference
+manifest 的 SHA256 为
+`4cd634a6f02d8869240fba34241752ea6aee864a5357c5e0a3dc3dcb85654273`。
+输入准备不读取任何 target 内容来构造图片或 prompt。
 
 ### 3.4 Inference 参数与输出
 
@@ -285,13 +334,13 @@ CUDA_VISIBLE_DEVICES=0 \
 ### 4.3 8 卡全量推理
 
 ```bash
-tmux new-session -d -s samtok_baselines_two_image_556 \
+tmux new-session -d -s samtok_baselines_656 \
   -c /opt/tiger/tanyue/finegrained_edit_benchmark_selection \
   'bash evaluation/launch_baseline_inference.sh'
 ```
 
-controller 依次运行 Qwen 和 FLUX.2，每个模型包含 556 × 4 个 setting；总计
-4,448 张输出。任务可恢复，并在两个模型结束后自动运行结构验证。它不会运行
+controller 依次运行 Qwen 和 FLUX.2，每个模型包含 656 × 4 个 setting；总计
+5,248 张输出。任务可恢复，并在两个模型结束后自动运行结构验证。它不会运行
 paste-back、质量指标或 judge。
 
 ### 4.4 查看进度与验证
@@ -300,16 +349,21 @@ paste-back、质量指标或 judge。
 python evaluation/report_baseline_progress.py
 
 tail -f /mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/\
-referential_finegrained_edit_benchmark_two_image_locator/logs/baseline_progress.log
+referential_finegrained_edit_benchmark_656_two_image_locator/logs/baseline_progress.log
 
 tail -f /mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/\
-referential_finegrained_edit_benchmark_two_image_locator/logs/baseline_inference.log
+referential_finegrained_edit_benchmark_656_two_image_locator/logs/baseline_inference.log
 
-# 全部完成后检查 4,448 张图片、sidecar、输入顺序、prompt 和 run config。
+# 全部完成后检查 5,248 张图片、sidecar、输入顺序、prompt 和 run config。
 python evaluation/validate_baseline_outputs.py
 ```
 
-## 5. 基模评测结果
+## 5. 已归档的 556-case 基模评测结果（不含 MIRAGE）
+
+本节是接入 MIRAGE 前的 532 CompBench + 24 HumanEdit 历史结果，用于保留可追溯
+实验记录；它不代表当前 656-case benchmark 已经完成 inference。当前 656 条只
+完成了数据构建、locator 渲染、prompt 冻结和两模型 dry-run，尚未启动新一轮
+全量生成。旧结果继续保存在原目录，未被覆盖。
 
 ### 5.1 完成状态与结果位置
 

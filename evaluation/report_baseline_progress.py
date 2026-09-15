@@ -9,12 +9,12 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from common import DEFAULT_EXPERIMENT_ROOT, atomic_write_json
+from common import DEFAULT_EXPERIMENT_ROOT, EXPECTED_CASES, atomic_write_json
 
 
 MODELS = ("qwen", "flux2")
 SETTINGS = ("text_only", "mask_annotation", "box_annotation", "point_annotation")
-EXPECTED_PER_SETTING = 556
+EXPECTED_PER_SETTING = EXPECTED_CASES
 
 
 def numeric_sidecars(path: Path) -> list[Path]:

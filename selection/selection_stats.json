@@ -1,8 +1,9 @@
 {
-  "total": 556,
+  "total": 656,
   "counts_by_dataset": {
     "CompBench": 532,
-    "HumanEdit": 24
+    "HumanEdit": 24,
+    "MIRAGE": 100
   },
   "counts_by_source_edit_type": {
     "CompBench/add": 233,
@@ -12,16 +13,26 @@
     "CompBench/replace": 22,
     "HumanEdit/add": 3,
     "HumanEdit/remove": 10,
-    "HumanEdit/replace": 11
+    "HumanEdit/replace": 11,
+    "MIRAGE/add": 2,
+    "MIRAGE/mixed": 34,
+    "MIRAGE/remove": 3,
+    "MIRAGE/replace": 61
   },
   "counts_by_normalized_edit_type": {
-    "add": 258,
-    "remove": 265,
-    "replace": 33
+    "add": 260,
+    "mixed": 34,
+    "remove": 268,
+    "replace": 94
   },
-  "multi_object_cases": 40,
+  "counts_by_region_count": {
+    "1": 517,
+    "2": 139
+  },
+  "multi_region_cases": 139,
   "with_target_reference": 556,
-  "reference_categories": {
+  "without_target_reference": 100,
+  "reference_categories_compbench_humanedit": {
     "between": 11,
     "exclusion": 36,
     "extreme": 317,
@@ -30,7 +41,17 @@
     "relative": 56,
     "side": 267
   },
-  "selection_policy": "Accepted source-only referential and same-class multi-instance cases; no inference outputs or judge scores were used.",
+  "mirage_selection": {
+    "source_cases": 100,
+    "selected_cases": 100,
+    "selected_regions": 199,
+    "single_region_cases": 1,
+    "two_region_cases": 99,
+    "candidate_regions_per_source_case": 5,
+    "maximum_selected_regions": 2,
+    "selection_uses_model_outputs_or_scores": false
+  },
+  "selection_policy": "CompBench and HumanEdit use the frozen source-only referential selection. Every MIRAGE source case is reduced from five released edits to the hardest reviewed one- or two-region task, prioritizing small parts, structural edits, and ordinal/directional binding between same-class instances. No inference outputs or judge scores are used.",
   "excluded_datasets": [
     "ReShapeBench"
   ]

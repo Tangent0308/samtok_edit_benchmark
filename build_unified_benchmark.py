@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Materialize the selected CompBench and HumanEdit cases into one schema.
+"""Materialize selected CompBench, HumanEdit, and MIRAGE cases into one schema.
 
 The source datasets remain immutable. This builder extracts portable PNG assets,
 preserves the released masks, derives deterministic box/point interactions, and
@@ -26,8 +26,9 @@ from PIL import Image, ImageOps
 
 REPO_ROOT = Path(__file__).resolve().parent
 DATASET_ROOT = Path("/mnt/bn/strategy-mllm-train/user/tanyue/datasets")
-EXPECTED_CASES = 556
+EXPECTED_CASES = 656
 DEFAULT_SELECTION = REPO_ROOT / "selection" / "selected_cases.jsonl"
+DEFAULT_MIRAGE_SELECTION = REPO_ROOT / "selection" / "mirage_selected_regions.jsonl"
 DEFAULT_OUTPUT = DATASET_ROOT / "samtok_edit_benchmark"
 DEFAULT_REPO_MANIFEST_DIR = REPO_ROOT / "benchmark"
 DEFAULT_MODEL_CACHE = DATASET_ROOT / "model_cache"
@@ -49,6 +50,10 @@ DATASET_REVISIONS = {
     "humanedit": {
         "repo": "BryanW/HumanEdit",
         "revision": "dbc60b9ba3c17adf59e1effd8a9d92bdf2f14041",
+    },
+    "mirage": {
+        "repo": "ziqiangoodgood/MIRAGE",
+        "revision": "11eff1e3f396e189e61bd1f0ca596286d8a0b183",
     },
 }
 
@@ -130,6 +135,7 @@ HUMAN_REPLACE_REWRITES = {
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--selection", type=Path, default=DEFAULT_SELECTION)
+    parser.add_argument("--mirage-selection", type=Path, default=DEFAULT_MIRAGE_SELECTION)
     parser.add_argument("--dataset-root", type=Path, default=DATASET_ROOT)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--repo-manifest-dir", type=Path, default=DEFAULT_REPO_MANIFEST_DIR)
@@ -167,7 +173,7 @@ def save_png(image: Image.Image, path: Path, mode: str) -> None:
 
 
 def dataset_slug(name: str) -> str:
-    return {"CompBench": "compbench", "HumanEdit": "humanedit"}[name]
+    return {"CompBench": "compbench", "HumanEdit": "humanedit", "MIRAGE": "mirage"}[name]
 
 
 def safe_name(value: str) -> str:
@@ -320,7 +326,7 @@ def normalize_edit_type(record: dict[str, Any]) -> str:
         return "add"
     if value == "multi_object_remove":
         return "remove"
-    if value not in {"add", "remove", "replace", "counting"}:
+    if value not in {"add", "remove", "replace", "mixed", "counting"}:
         raise ValueError(f"unsupported edit type: {record['candidate_id']} {value}")
     return value
 
@@ -359,6 +365,11 @@ def comp_add_targets(record: dict[str, Any]) -> list[str]:
 
 def region_only_instruction(record: dict[str, Any], region_count: int) -> str | None:
     dataset = record["source_dataset"]
+    if dataset == "MIRAGE":
+        instruction = clean_text(record.get("region_only_instruction"))
+        if not instruction:
+            raise ValueError(f"missing MIRAGE region-only instruction: {record['candidate_id']}")
+        return instruction
     edit_type = normalize_edit_type(record)
     references = region_references(region_count)
     if edit_type == "counting" or record.get("requires_ref_instruction"):
@@ -561,6 +572,8 @@ def load_parquet_payloads(records: list[dict[str, Any]]) -> dict[str, dict[str, 
     payloads: dict[str, dict[str, Any]] = {}
     groups: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
     for record in records:
+        if record["source_dataset"] == "MIRAGE":
+            continue
         groups[(record["source_dataset"], record["source_shard"])].append(record)
     for (dataset, shard_name), group in sorted(groups.items()):
         if dataset == "CompBench":
@@ -588,6 +601,48 @@ def load_parquet_payloads(records: list[dict[str, Any]]) -> dict[str, dict[str, 
                 target = decode(row["OUTPUT_IMG"], "RGB").resize(canvas.size, Image.Resampling.BICUBIC)
             payloads[record["candidate_id"]] = {"source": source, "target": target, "mask": mask}
         print(f"loaded {dataset} {Path(shard_name).name}: {len(group)} selected rows", flush=True)
+    return payloads
+
+
+def mirage_polygon_mask(value: list[Any], size: tuple[int, int]) -> np.ndarray:
+    """Rasterize a released MIRAGE polygon exactly as its official metrics do."""
+    from PIL import ImageDraw
+
+    if len(value) == 1 and isinstance(value[0], list):
+        value = value[0]
+    if len(value) < 6 or len(value) % 2:
+        raise ValueError("invalid MIRAGE polygon")
+    points = [(float(value[index]), float(value[index + 1])) for index in range(0, len(value), 2)]
+    canvas = Image.new("L", size, 0)
+    ImageDraw.Draw(canvas).polygon(points, outline=255, fill=255)
+    return np.asarray(canvas) == 255
+
+
+def load_mirage_payloads(
+    records: list[dict[str, Any]], dataset_root: Path
+) -> dict[str, dict[str, Any]]:
+    benchmark_root = dataset_root / "MIRAGE" / "benchmark"
+    annotations = read_jsonl(benchmark_root / "annotations.jsonl")
+    payloads: dict[str, dict[str, Any]] = {}
+    for record in records:
+        if record["source_dataset"] != "MIRAGE":
+            continue
+        source_row = int(record["source_row"])
+        annotation = annotations[source_row]
+        if annotation["image"] != record["source_record_id"]:
+            raise ValueError(f"MIRAGE source identity mismatch: {record['candidate_id']}")
+        with Image.open(benchmark_root / annotation["image"]) as handle:
+            source = handle.convert("RGB").copy()
+        indices = record["selected_region_indices"]
+        masks = [mirage_polygon_mask(annotation["mask"][index - 1], source.size) for index in indices]
+        if any(not mask.any() for mask in masks):
+            raise ValueError(f"empty MIRAGE mask: {record['candidate_id']}")
+        payloads[record["candidate_id"]] = {
+            "source": source,
+            "target": None,
+            "masks": masks,
+        }
+    print(f"loaded MIRAGE: {len(payloads)} selected rows", flush=True)
     return payloads
 
 
@@ -696,7 +751,7 @@ def validate_records(records: list[dict[str, Any]], root: Path) -> dict[str, Any
                 raise ValueError("difficulty values must be booleans")
             if record["source_dataset"] not in DATASET_REVISIONS:
                 raise ValueError("invalid source_dataset")
-            if record["edit_type"] not in {"add", "remove", "replace", "counting"}:
+            if record["edit_type"] not in {"add", "remove", "replace", "mixed", "counting"}:
                 raise ValueError("invalid edit_type")
             source_size, source_image = open_asset(record["source_image"], False)
             source_image.close()
@@ -705,8 +760,10 @@ def validate_records(records: list[dict[str, Any]], root: Path) -> dict[str, Any
             if evaluation_size != source_size:
                 raise ValueError("evaluation mask size differs from source")
             reference = record["target"]["reference_image"]
-            if reference is None:
+            if reference is None and record["source_dataset"] != "mirage":
                 raise ValueError("CompBench and HumanEdit records require a target reference image")
+            if reference is not None and record["source_dataset"] == "mirage":
+                raise ValueError("MIRAGE records must not invent a target reference image")
             if reference is not None:
                 reference_size, reference_image = open_asset(reference, False)
                 reference_image.close()
@@ -778,7 +835,7 @@ def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
             "top_level_fields": sorted(TOP_LEVEL_FIELDS),
             "edit_types": [
                 edit_type
-                for edit_type in ("add", "remove", "replace", "counting")
+                for edit_type in ("add", "remove", "replace", "mixed", "counting")
                 if edit_type in present_edit_types
             ],
             "box_format": "pixel_xyxy_half_open",
@@ -791,13 +848,14 @@ def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
                 if any(x["instruction"]["region_only"] is None for x in records)
                 else "none"
             ),
-            "null_target_reference_image": "none; every case has a target reference image",
+            "null_target_reference_image": "MIRAGE only; the release has no edited target reference image",
             "target_semantics": "all target fields describe the expected post-edit result and are evaluator-only",
         },
         "region_construction": {
             "compbench_mask": "released mask preserved exactly; disconnected multi-object unions become two regions, and one connected two-object union is semantically partitioned into two reviewed regions without changing the union",
             "humanedit_mask": "original human brush from MASK_IMG alpha < 128",
-            "compbench_humanedit_box": "input mask bounding box padded by 2% of the shorter image side",
+            "mirage_mask": "selected released polygon rasterized with PIL ImageDraw, matching the official metrics",
+            "box": "input mask bounding box padded by 2% of the shorter image side",
             "point": (
                 "maximum L2 distance-transform point after adding a one-pixel "
                 "background border, so image edges are treated as mask boundaries"
@@ -806,6 +864,7 @@ def build_metadata(records: list[dict[str, Any]]) -> dict[str, Any]:
         "evaluation_region": {
             "compbench": "union of input masks dilated by 2% of the shorter image side",
             "humanedit": "union of input masks dilated by 2% of the shorter image side",
+            "mirage": "union of the selected one or two released masks dilated by 2% of the shorter image side",
         },
         "models_used_for_derived_instance_masks": {
             "uses": ["semantic partition of a connected CompBench multi-object union"],
@@ -835,14 +894,23 @@ def copy_manifest_files(output: Path, destination: Path) -> None:
 def main() -> None:
     args = parse_args()
     cv2.setNumThreads(1)
-    selected = read_jsonl(args.selection)
+    selected_base = read_jsonl(args.selection)
+    selected_mirage = read_jsonl(args.mirage_selection)
+    if len(selected_base) != 556:
+        raise ValueError(f"expected 556 CompBench/HumanEdit cases, got {len(selected_base)}")
+    if len(selected_mirage) != 100:
+        raise ValueError(f"expected 100 MIRAGE cases, got {len(selected_mirage)}")
+    selected = selected_base + selected_mirage
     if len(selected) != EXPECTED_CASES:
         raise ValueError(f"expected {EXPECTED_CASES} selected cases, got {len(selected)}")
-    invalid_datasets = sorted({x["source_dataset"] for x in selected} - {"CompBench", "HumanEdit"})
+    invalid_datasets = sorted(
+        {x["source_dataset"] for x in selected} - {"CompBench", "HumanEdit", "MIRAGE"}
+    )
     if invalid_datasets:
         raise ValueError(f"unsupported source datasets in selection: {invalid_datasets}")
     args.output.mkdir(parents=True, exist_ok=True)
     payloads = load_parquet_payloads(selected)
+    payloads.update(load_mirage_payloads(selected, args.dataset_root))
     records: list[dict[str, Any]] = []
     segmenter: GroundedSam2Segmenter | None = None
     comp_instance_diagnostics = []
@@ -851,8 +919,8 @@ def main() -> None:
         payload = payloads[item["candidate_id"]]
         source = payload["source"]
         target = payload["target"]
-        mask = payload["mask"]
         if item["source_dataset"] == "CompBench":
+            mask = payload["mask"]
             if item["candidate_id"] in COMP_TOUCHING_INSTANCE_QUERIES:
                 if segmenter is None:
                     print("loading Grounding DINO and SAM2 for one connected-union partition", flush=True)
@@ -864,12 +932,15 @@ def main() -> None:
                 comp_instance_diagnostics.append(diagnostic)
             else:
                 masks = comp_regions(mask, item["edit_type"])
-        else:
+        elif item["source_dataset"] == "HumanEdit":
+            mask = payload["mask"]
             masks = [mask]
+        else:
+            masks = payload["masks"]
         evaluation = dilate_two_percent(np.logical_or.reduce(masks))
         records.append(make_record(item, source, target, masks, evaluation, args.output))
         if (index + 1) % 50 == 0:
-            print(f"materialized GT-backed cases: {index + 1}", flush=True)
+            print(f"materialized cases: {index + 1}", flush=True)
 
     records.sort(key=lambda x: x["id"])
     write_jsonl(args.output / "benchmark.jsonl", records)
@@ -879,8 +950,9 @@ def main() -> None:
     atomic_text(args.output / "validation_report.json", json.dumps(validation, indent=2, ensure_ascii=False) + "\n")
     build_report = {
         "selection_manifest": str(args.selection),
+        "mirage_selection_manifest": str(args.mirage_selection),
         "output_root": str(args.output),
-        "mask_policy": "released source-dataset masks are preserved",
+        "mask_policy": "released source-dataset masks/polygons are preserved",
         "multi_object_policy": "use released connected components; one connected two-object union is semantically partitioned while preserving the exact released union",
         "comp_connected_union_partition_diagnostics": comp_instance_diagnostics,
     }

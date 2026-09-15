@@ -13,12 +13,25 @@ import numpy as np
 import pyarrow.parquet as pq
 from PIL import Image
 
-from build_unified_benchmark import DEFAULT_OUTPUT, DEFAULT_SELECTION, atomic_text, read_jsonl
+from build_unified_benchmark import (
+    DEFAULT_MIRAGE_SELECTION,
+    DEFAULT_OUTPUT,
+    DEFAULT_SELECTION,
+    atomic_text,
+    mirage_polygon_mask,
+    read_jsonl,
+)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--selection", type=Path, default=DEFAULT_SELECTION)
+    parser.add_argument("--mirage-selection", type=Path, default=DEFAULT_MIRAGE_SELECTION)
+    parser.add_argument(
+        "--mirage-root",
+        type=Path,
+        default=Path("/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRAGE/benchmark"),
+    )
     parser.add_argument("--benchmark-root", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument(
         "--output",
@@ -42,12 +55,14 @@ def load_binary_mask(path: Path) -> np.ndarray:
 
 def main() -> None:
     args = parse_args()
-    selected = read_jsonl(args.selection)
+    selected_base = read_jsonl(args.selection)
+    selected_mirage = read_jsonl(args.mirage_selection)
+    selected = selected_base + selected_mirage
     benchmark = {
         row["id"]: row for row in read_jsonl(args.benchmark_root / "benchmark.jsonl")
     }
     groups: dict[tuple[str, str], list[dict]] = defaultdict(list)
-    for row in selected:
+    for row in selected_base:
         groups[(row["source_dataset"], row["source_shard"])].append(row)
 
     mismatches = []
@@ -72,6 +87,27 @@ def main() -> None:
                 mismatches.append({"id": case_id, "different_pixels": difference})
             checked += 1
 
+    annotations = read_jsonl(args.mirage_root / "annotations.jsonl")
+    for selected_row in selected_mirage:
+        case_id = selected_row["candidate_id"]
+        annotation = annotations[int(selected_row["source_row"])]
+        with Image.open(args.mirage_root / annotation["image"]) as source_image:
+            source_size = source_image.size
+        source = np.logical_or.reduce(
+            [
+                mirage_polygon_mask(annotation["mask"][index - 1], source_size)
+                for index in selected_row["selected_region_indices"]
+            ]
+        )
+        regions = benchmark[case_id]["regions"]
+        materialized = np.logical_or.reduce(
+            [load_binary_mask(args.benchmark_root / region["mask"]) for region in regions]
+        )
+        difference = int(np.logical_xor(source, materialized).sum())
+        if difference:
+            mismatches.append({"id": case_id, "different_pixels": difference})
+        checked += 1
+
     report = {
         "status": "passed" if not mismatches and checked == len(selected) else "failed",
         "checked_cases": checked,
@@ -79,7 +115,10 @@ def main() -> None:
         "exact_union_matches": checked - len(mismatches),
         "mismatch_count": len(mismatches),
         "mismatches": mismatches,
-        "definition": "union(regions[].mask) is pixel-identical to the released parquet mask",
+        "definition": (
+            "union(regions[].mask) is pixel-identical to the released parquet mask "
+            "or the selected released MIRAGE polygons rasterized by the official PIL method"
+        ),
     }
     atomic_text(args.output, json.dumps(report, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(report, ensure_ascii=False, indent=2))

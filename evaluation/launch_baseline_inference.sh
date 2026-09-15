@@ -3,7 +3,7 @@ set -euo pipefail
 
 REPO_ROOT="${REPO_ROOT:-/opt/tiger/tanyue/finegrained_edit_benchmark_selection}"
 SAMTOK_REPO="${SAMTOK_REPO:-/opt/tiger/tanyue/samtok_edit}"
-EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/referential_finegrained_edit_benchmark_two_image_locator}"
+EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/referential_finegrained_edit_benchmark_656_two_image_locator}"
 PREPARED_MANIFEST="${PREPARED_MANIFEST:-${EXPERIMENT_ROOT}/prepared/benchmark_baseline_eval_inputs.jsonl}"
 PREPARED_ROOT="${PREPARED_ROOT:-${EXPERIMENT_ROOT}}"
 DATASET_ROOT="${DATASET_ROOT:-/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark}"

@@ -25,7 +25,7 @@ DEFAULT_DATASET_ROOT = Path(
 DEFAULT_MANIFEST = DEFAULT_DATASET_ROOT / "benchmark.jsonl"
 DEFAULT_EXPERIMENT_ROOT = Path(
     "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/"
-    "referential_finegrained_edit_benchmark_two_image_locator"
+    "referential_finegrained_edit_benchmark_656_two_image_locator"
 )
 DEFAULT_BASELINE_PREPARED_MANIFEST = (
     DEFAULT_EXPERIMENT_ROOT / "prepared/benchmark_baseline_eval_inputs.jsonl"
@@ -41,7 +41,7 @@ DEFAULT_FLUX2 = Path(
 )
 FLUX2_MODEL_ID = "black-forest-labs/FLUX.2-klein-4B"
 FLUX2_REVISION = "e7b7dc27f91deacad38e78976d1f2b499d76a294"
-EXPECTED_CASES = 556
+EXPECTED_CASES = 656
 BASELINE_VISUAL_PROTOCOL = "baseline_two_image_locator_inputs_v1"
 
 REGION_COLORS = ((235, 50, 45), (45, 180, 70), (45, 105, 230))

@@ -28,6 +28,12 @@ EXAMPLES = {
         "he_AXQQ0Kq69es",
         "he__ropNcPmpW8",
     ],
+    "mirage": [
+        "mirage_000",
+        "mirage_002",
+        "mirage_061",
+        "mirage_093",
+    ],
 }
 
 REGION_COLORS = [

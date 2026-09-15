@@ -1,7 +1,7 @@
 {
   "benchmark_name": "SAMTok Fine-Grained Interactive Edit Benchmark",
   "split": "test",
-  "num_cases": 556,
+  "num_cases": 656,
   "manifest": "benchmark.jsonl",
   "source_datasets": {
     "compbench": {
@@ -11,6 +11,10 @@
     "humanedit": {
       "repo": "BryanW/HumanEdit",
       "revision": "dbc60b9ba3c17adf59e1effd8a9d92bdf2f14041"
+    },
+    "mirage": {
+      "repo": "ziqiangoodgood/MIRAGE",
+      "revision": "11eff1e3f396e189e61bd1f0ca596286d8a0b183"
     }
   },
   "schema": {
@@ -29,7 +33,8 @@
     "edit_types": [
       "add",
       "remove",
-      "replace"
+      "replace",
+      "mixed"
     ],
     "box_format": "pixel_xyxy_half_open",
     "point_format": "pixel_xy",
@@ -37,18 +42,20 @@
     "region_numbering": "regions_array_order_is_1_based",
     "region_placeholder": "{region_N}",
     "null_region_only_instruction": "none",
-    "null_target_reference_image": "none; every case has a target reference image",
+    "null_target_reference_image": "MIRAGE only; the release has no edited target reference image",
     "target_semantics": "all target fields describe the expected post-edit result and are evaluator-only"
   },
   "region_construction": {
     "compbench_mask": "released mask preserved exactly; disconnected multi-object unions become two regions, and one connected two-object union is semantically partitioned into two reviewed regions without changing the union",
     "humanedit_mask": "original human brush from MASK_IMG alpha < 128",
-    "compbench_humanedit_box": "input mask bounding box padded by 2% of the shorter image side",
+    "mirage_mask": "selected released polygon rasterized with PIL ImageDraw, matching the official metrics",
+    "box": "input mask bounding box padded by 2% of the shorter image side",
     "point": "maximum L2 distance-transform point after adding a one-pixel background border, so image edges are treated as mask boundaries"
   },
   "evaluation_region": {
     "compbench": "union of input masks dilated by 2% of the shorter image side",
-    "humanedit": "union of input masks dilated by 2% of the shorter image side"
+    "humanedit": "union of input masks dilated by 2% of the shorter image side",
+    "mirage": "union of the selected one or two released masks dilated by 2% of the shorter image side"
   },
   "models_used_for_derived_instance_masks": {
     "uses": [
@@ -70,15 +77,17 @@
   },
   "counts_by_dataset": {
     "compbench": 532,
-    "humanedit": 24
+    "humanedit": 24,
+    "mirage": 100
   },
   "counts_by_edit_type": {
-    "add": 258,
-    "remove": 265,
-    "replace": 33
+    "add": 260,
+    "mixed": 34,
+    "remove": 268,
+    "replace": 94
   },
   "counts_by_region_count": {
-    "1": 516,
-    "2": 40
+    "1": 517,
+    "2": 139
   }
 }

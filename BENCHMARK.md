@@ -401,3 +401,29 @@ mask/box/point locator 和仅供检查的 target；第二、三行是在相应�
 这些图片用于快速人工抽查，不构成定量结果。可以直接到结果根目录查看任意
 `eval_index` 的四种 setting，并结合相邻 JSON sidecar 复核模型实际收到的输入
 和 prompt。
+
+### 5.4 Qwen locator 标记残留分析
+
+index 0496（`cb_train-00006-of-00007_0283`）的 Qwen mask/box 输出保留了红绿
+区域、边框及 `R1/R2`。这不是可视化叠加或文件格式错误：使用相同模型、完整
+prompt、seed 0、40 steps、CFG 4.0 和 `zero_cond_t=True` 复跑后，mask 与 box
+结果分别与原输出 PNG 的 SHA256 完全一致。
+
+根因是双图 locator 只是输入协议，不是 Qwen/DiffSynth 的结构化控制通道。
+`[clean source, annotated locator]` 中两张 RGB 图都会被 VAE 编码为
+`edit_latents`，并以同类条件拼接给 DiT；模型没有架构级的“第二张只定位、
+不可渲染”标志，prompt 中的禁止复制约束不足以覆盖强图像条件。该 add case
+尤其明显：CompBench 的区域 mask 沿新增斑马轮廓，locator 已同时提供目标形状、
+位置和高饱和度标记，模型因而把它当作接近目标的重建模板；box 虽不泄露轮廓，
+仍可能连同框线和标签一起重建。
+
+下图直接解码同一条确定性生成轨迹的当前 latent。step 24 前以噪声为主，step
+28 开始出现标记，step 32 已形成彩色目标、框线和标签，step 36 后基本锁定，
+step 40 得到保存结果。这说明残留在去噪过程中由模型生成，并非输出后处理加入。
+
+![Qwen index 0496 locator 标记残留去噪分析](docs/assets/benchmark_evaluation/qwen_case_0496_locator_artifact_denoising.jpg)
+
+因此，结构验证中的“正常完成”仅表示调用、输入和产物正确；这种 locator 复制
+应保留为模型失败并在后续质量评测中惩罚。若希望消除该风险，需要使用模型原生
+的结构化 mask/box 控制接口；Qwen-Image-Edit-2511 当前这条官方 DiffSynth
+多图路径不提供这样的 locator-only 通道。

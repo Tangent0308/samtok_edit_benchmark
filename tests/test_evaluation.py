@@ -30,15 +30,15 @@ def test_two_region_prompt_preserves_region_order():
     prompt = two_image_locator_prompt(
         "Replace {region_1} and remove {region_2}.", 2, "box"
     )
-    assert "R1 in red" in prompt
-    assert "R2 in green" in prompt
+    assert "R1 (red box) in Image 2" in prompt
+    assert "R2 (green box) in Image 2" in prompt
     assert prompt.index("R1") < prompt.index("R2")
-    assert "do not copy, preserve, reproduce, or draw" in prompt
+    assert "without any markers from Image 2" in prompt
 
 
 def test_single_region_prompt_and_rendering_do_not_add_r1_label(tmp_path):
     prompt = two_image_locator_prompt("Remove {region_1}.", 1, "mask")
-    assert "translucent red mask in the second reference image" in prompt
+    assert "red mask in Image 2" in prompt
     assert "R1" not in prompt
     source = Image.new("RGB", (64, 64), (100, 100, 100))
     mask = np.zeros((64, 64), dtype=np.uint8)
@@ -55,17 +55,18 @@ def test_single_region_prompt_and_rendering_do_not_add_r1_label(tmp_path):
 
 def test_each_prompt_explains_reference_roles_and_modality():
     phrases = {
-        "mask": "translucent red mask in the second reference image",
-        "box": "red box in the second reference image",
-        "point": "red point in the second reference image",
+        "mask": "red mask in Image 2",
+        "box": "red box in Image 2",
+        "point": "red point in Image 2",
     }
     for modality, phrase in phrases.items():
         prompt = two_image_locator_prompt(
             "Replace {region_1} with a blue cup.", 1, modality
         )
-        assert "first reference image is the clean source image to edit" in prompt
+        assert prompt.startswith("Edit Image 1.")
         assert phrase in prompt
-        assert "Use the second reference image only for localization" in prompt
+        assert "Keep everything else unchanged." in prompt
+        assert "without any markers from Image 2" in prompt
 
 
 def test_point_marker_is_clear_and_centered(tmp_path):

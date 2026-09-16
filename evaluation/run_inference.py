@@ -173,6 +173,7 @@ def run_config(
     world_size: int,
     selected_rows: list[dict],
 ) -> dict:
+    selected_indices = [row["eval_index"] for row in selected_rows]
     return {
         "protocol": "samtok_finegrained_edit_benchmark_inference_v2",
         "model": args.model,
@@ -181,8 +182,9 @@ def run_config(
         "data": prepared_report,
         "selection": {
             "count": len(selected_rows),
-            "eval_index_start": selected_rows[0]["eval_index"],
-            "eval_index_stop_inclusive": selected_rows[-1]["eval_index"],
+            "eval_indices": selected_indices,
+            "contiguous": selected_indices
+            == list(range(selected_indices[0], selected_indices[-1] + 1)),
         },
         "generation": {
             "seed_rule": f"constant seed={args.seed} for every case and setting",
@@ -443,6 +445,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--start_index", type=int, default=0)
     parser.add_argument("--max_samples", type=int, default=None)
+    parser.add_argument(
+        "--eval_indices",
+        nargs="+",
+        type=int,
+        default=None,
+        help="Exact benchmark eval indices to run, in the requested order.",
+    )
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--dry_run", action="store_true")
@@ -465,8 +474,24 @@ def main(argv: list[str] | None = None) -> None:
             rows, prepared_report = load_prepared_manifest(
                 args.prepared_manifest, args.prepared_root
             )
-            stop = None if args.max_samples is None else args.start_index + args.max_samples
-            selected = rows[args.start_index:stop]
+            if args.eval_indices is not None:
+                if args.start_index != 0 or args.max_samples is not None:
+                    raise ValueError(
+                        "--eval_indices cannot be combined with --start_index/--max_samples"
+                    )
+                if len(set(args.eval_indices)) != len(args.eval_indices):
+                    raise ValueError("--eval_indices contains duplicates")
+                invalid = [index for index in args.eval_indices if not 0 <= index < len(rows)]
+                if invalid:
+                    raise ValueError(f"Invalid --eval_indices: {invalid}")
+                selected = [rows[index] for index in args.eval_indices]
+            else:
+                stop = (
+                    None
+                    if args.max_samples is None
+                    else args.start_index + args.max_samples
+                )
+                selected = rows[args.start_index:stop]
             if not selected:
                 raise ValueError("No rows selected")
             return selected, prepared_report, validate_model_artifacts(args)

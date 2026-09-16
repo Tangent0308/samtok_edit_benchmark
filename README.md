@@ -24,6 +24,7 @@ CompBench raw:     /mnt/bn/strategy-mllm-train/user/tanyue/datasets/CompBench/
 HumanEdit raw:     /mnt/bn/strategy-mllm-train/user/tanyue/datasets/HumanEdit/
 MIRAGE raw:        /mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRAGE/benchmark/
 Prepared inputs:   /mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/referential_finegrained_edit_benchmark_656_two_image_locator/
+15-case results:   /mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/referential_finegrained_edit_benchmark_656_prompt_v2_smoke15/
 ```
 
 ## Usage
@@ -51,4 +52,5 @@ python evaluation/validate_baseline_outputs.py
 
 The preparation and inference commands do not compute metrics or call a judge.
 See [BENCHMARK.md](BENCHMARK.md) for the Chinese construction record, schema,
-exact input protocol, and the archived 556-case baseline results.
+exact prompt-v2 input protocol, archived 556-case results, and the current
+656-case 15-sample DiffSynth smoke test with visual comparisons.

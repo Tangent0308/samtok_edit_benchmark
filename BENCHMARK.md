@@ -233,10 +233,19 @@ benchmark 顺序使用红色 R1、绿色 R2。mask 使用半透明填充和实�
 使用矩形；point 使用大小适中的实心圆点和细白色描边，圆心严格等于
 `regions[].point`。
 
-交互 prompt 明确说明：第一张参考图是需要编辑的干净 source，第二张只用于
-定位；编辑必须作用在第一张图的对应对象或位置；不得复制第二张图中的 mask、
-轮廓、box、point 或 R 标签；其他内容来自第一张图并应保持不变。target
-reference 从不作为第三张输入图。
+交互 prompt 使用冻结的精简 v2 模板，不再重复解释两张图的所有角色。模板只
+保留三个必要约束：编辑 Image 1、用 Image 2 中的标记绑定 region、保持其他
+内容并且不复现 marker。例如双区域 mask 的完整形式为：
+
+```text
+Edit Image 1. For R1 (red mask) in Image 2, <edit 1>.
+For R2 (green mask) in Image 2, <edit 2>. Keep everything else unchanged.
+Return only the edited Image 1 without any markers from Image 2.
+```
+
+point 会额外把 region 表述为 point 中心处的对象或位置。全体 1,968 条交互
+prompt 的平均字符数由 781.4 降为 228.8，减少 70.7%；`text_only` prompt 不变。
+target reference 从不作为第三张输入图。
 
 该调用方式位于模型支持范围内：Qwen 2511 的 DiffSynth 示例将其定义为
 multi-image editing model，并要求 `edit_image` 使用 list；FLUX.2-klein-4B
@@ -270,11 +279,13 @@ setting。每个 setting 保存：
     prepared/baseline_input_report.json
 ```
 
-当前冻结输入协议为 `baseline_two_image_locator_inputs_v1`。共有 1,968 张
+当前冻结输入协议为 `baseline_two_image_locator_inputs_v2`。交互 prompt 采用直接、
+精简的形式：编辑 Image 1，用 Image 2 中的 mask/box/point 定位目标，保持其他内容
+不变，并且不在输出中复现 marker。共有 1,968 张
 locator，656 行 inference manifest，每行四个 setting；已验证的不同输入图片
 共 2,623 张（655 张唯一 clean source + 1,968 张 locator）。冻结 inference
 manifest 的 SHA256 为
-`4cd634a6f02d8869240fba34241752ea6aee864a5357c5e0a3dc3dcb85654273`。
+`8a46bb7a2693984132ca203fcf7dc8f118b2563497dbea8c70497552865c56e2`。
 输入准备不读取任何 target 内容来构造图片或 prompt。
 
 ### 3.4 Inference 参数与输出
@@ -361,9 +372,9 @@ python evaluation/validate_baseline_outputs.py
 ## 5. 已归档的 556-case 基模评测结果（不含 MIRAGE）
 
 本节是接入 MIRAGE 前的 532 CompBench + 24 HumanEdit 历史结果，用于保留可追溯
-实验记录；它不代表当前 656-case benchmark 已经完成 inference。当前 656 条只
-完成了数据构建、locator 渲染、prompt 冻结和两模型 dry-run，尚未启动新一轮
-全量生成。旧结果继续保存在原目录，未被覆盖。
+实验记录；它不代表当前 656-case benchmark 已经完成全量 inference。当前 656
+条已完成数据构建、locator 与 prompt v2 冻结，并完成第 6 节的 15-case 小规模
+推理；尚未启动 656 条全量生成。旧结果继续保存在原目录，未被覆盖。
 
 ### 5.1 完成状态与结果位置
 
@@ -481,3 +492,115 @@ step 40 得到保存结果。这说明残留在去噪过程中由模型生成，
 应保留为模型失败并在后续质量评测中惩罚。若希望消除该风险，需要使用模型原生
 的结构化 mask/box 控制接口；Qwen-Image-Edit-2511 当前这条官方 DiffSynth
 多图路径不提供这样的 locator-only 通道。
+
+## 6. 当前 656-case benchmark 的 15-case smoke test
+
+### 6.1 范围与结果位置
+
+2026-09-16 使用当前 `baseline_two_image_locator_inputs_v2` 冻结输入，从 656 条
+中选择 15 条进行小规模真实 inference。选择覆盖三个数据源、四种编辑类型、
+单/双 region、小部件属性修改、相邻同类实例删除和跨实例双区域编辑：
+
+| 数据集 | eval index | 数量 |
+| --- | --- | ---: |
+| CompBench | 475, 487, 496, 510, 514, 524 | 6 |
+| HumanEdit | 539, 544, 553, 554 | 4 |
+| MIRAGE | 557, 606, 608, 620, 641 | 5 |
+
+其中 add/remove/replace/mixed 分别为 4/5/4/2 条。每条同时运行 `text_only`、
+`mask_annotation`、`box_annotation` 和 `point_annotation`，两个模型共生成
+`15 × 4 × 2 = 120` 张图片。结果根目录为：
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/
+  referential_finegrained_edit_benchmark_656_prompt_v2_smoke15/
+```
+
+主要文件：
+
+```text
+inference/qwen/<setting>/{eval_index}.{png,json}
+inference/flux2/<setting>/{eval_index}.{png,json}
+inference/{qwen,flux2}/run_config.json
+reports/baseline_inference_validation.json
+selection.json
+validation_report.json
+visualizations/cases/                 # 15 张单 case 完整对比图
+visualizations/pages/                 # 每页 3 个 case，共 5 页
+visualizations/index.html
+```
+
+### 6.2 DiffSynth 调用与分辨率
+
+本次没有使用自定义 sampler。两者均通过本仓库 `evaluation/run_inference.py`
+调用 vendored DiffSynth 官方 pipeline；GPU 0 当时被其他任务占用，因此只用
+GPU 1–7 做 7 卡数据并行。卡数只改变 case 分片和运行时间，不改变单 case
+推理。参数为：
+
+| 参数 | Qwen-Image-Edit-2511 | FLUX.2-klein-4B |
+| --- | ---: | ---: |
+| dtype | bfloat16 | bfloat16 |
+| steps | 40 | 4 |
+| CFG | 4.0 | 1.0 |
+| 额外 guidance | `zero_cond_t=True` | `embedded_guidance=4.0` |
+| seed | 0 | 0 |
+| 输入 | 有序 `edit_image` list | 有序 `edit_image` list |
+
+`text_only` 输入一张 clean source；交互 setting 输入
+`[clean source, annotated locator]`。`edit_image_auto_resize=True`，没有传入
+target、evaluation mask、`inpaint_mask`，没有融合、paste-back 或 marker
+擦除。
+
+15 条 source 均为正方形：6 条为 640×640，9 条为 1024×1024。两个 pipeline
+均在受支持的 1024×1024 原生分辨率生成；代码先断言 pipeline 返回尺寸等于
+请求尺寸，再将结果以 Lanczos resize 到 source 的准确尺寸。对 640×640 source
+保存为 640×640，对 1024×1024 source 保持 1024×1024。这是统一的 benchmark
+输出归一化，使结果与 source、region mask 和 evaluation mask 像素对齐；它发生
+在官方 pipeline 推理之后，不改变模型条件或生成过程。
+
+### 6.3 完整性验证
+
+使用支持非连续 `--eval_indices` 的 `evaluation/validate_baseline_outputs.py`
+逐条校验。`reports/baseline_inference_validation.json` 状态为 `passed`，结果为：
+
+- 120/120 张 PNG 和对应 sidecar 完整、可解码；
+- 每个模型的每个 setting 均为 15 条；
+- case/model/setting、输入路径顺序、图片角色、完整 prompt 和 seed 均与冻结
+  manifest 一致；
+- 120/120 张保存尺寸等于各自 source；原生尺寸与约 1024²、32 对齐的策略一致；
+- target reference 和 evaluation mask 均未进入模型输入；
+- 没有 traceback、CUDA OOM、质量指标或 judge 调用。
+
+### 6.4 可视化与初步观察
+
+每个 case 的第一行依次显示 source、mask locator、box locator、point locator
+和仅用于人工检查的 target；第二行是 Qwen 四种输出，第三行是 FLUX.2 四种
+输出。MIRAGE 没有 target，因此对应位置明确显示为空。
+
+第一页：CompBench 单 region replace 与双 region add。
+
+![656-case smoke test 第 1 页](docs/assets/benchmark_evaluation_656/prompt_v2_smoke15_01.jpg)
+
+第二页：CompBench 双 region add/remove。
+
+![656-case smoke test 第 2 页](docs/assets/benchmark_evaluation_656/prompt_v2_smoke15_02.jpg)
+
+第三页：HumanEdit 小目标 replace/add/remove。
+
+![656-case smoke test 第 3 页](docs/assets/benchmark_evaluation_656/prompt_v2_smoke15_03.jpg)
+
+第四页：HumanEdit 小目标 remove，以及 MIRAGE 双区域 replace/mixed。
+
+![656-case smoke test 第 4 页](docs/assets/benchmark_evaluation_656/prompt_v2_smoke15_04.jpg)
+
+第五页：MIRAGE 双区域 add/mixed/remove。
+
+![656-case smoke test 第 5 页](docs/assets/benchmark_evaluation_656/prompt_v2_smoke15_05.jpg)
+
+这组结果只用于确认调用和快速人工观察，不构成定量结论。可见精简 prompt 能让
+Qwen 在部分小目标与双区域任务上正确利用 locator，例如 index 0539、0544、
+0608；FLUX.2 在本组中整体编辑强度更弱。index 0496、0510 等 case 仍出现
+mask/box/point marker 被复制到输出，两个模型都可能发生。这与第 5.4 节结论
+一致：双图 locator 是视觉提示而非架构级结构控制，精简 prompt 不能从机制上
+保证 marker 不被重建。后续全量 inference 应保留这些结果作为模型失败，不做
+事后擦除；任何质量指标或 judge 仍需另行确认后再运行。

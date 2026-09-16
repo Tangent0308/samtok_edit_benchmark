@@ -153,9 +153,8 @@ def assemble_manifest(
             "sized colored dot with a thin white outline"
         ),
         "prompt_policy": (
-            "each prompt names the first image as the clean source to edit and the second "
-            "as locator-only, identifies the marker and exact point center, and asks the "
-            "model to output the edited first image without reproducing locator markers"
+            "concise direct prompts edit Image 1 at the mask/box/point target in Image 2, "
+            "preserve everything else, and return Image 1 without locator markers"
         ),
     }
     atomic_write_json(experiment_root / "prepared/baseline_input_report.json", report)

@@ -42,7 +42,7 @@ DEFAULT_FLUX2 = Path(
 FLUX2_MODEL_ID = "black-forest-labs/FLUX.2-klein-4B"
 FLUX2_REVISION = "e7b7dc27f91deacad38e78976d1f2b499d76a294"
 EXPECTED_CASES = 656
-BASELINE_VISUAL_PROTOCOL = "baseline_two_image_locator_inputs_v1"
+BASELINE_VISUAL_PROTOCOL = "baseline_two_image_locator_inputs_v2"
 
 REGION_COLORS = ((235, 50, 45), (45, 180, 70), (45, 105, 230))
 REGION_COLOR_NAMES = ("red", "green", "blue")
@@ -386,70 +386,37 @@ def two_image_locator_prompt(
     region_count: int,
     modality: str = "mask",
 ) -> str:
-    """Bind an edit to markers in a second, locator-only reference image."""
+    """Bind an edit to a second locator image with a concise direct prompt."""
 
     if modality not in {"mask", "box", "point"}:
         raise ValueError(modality)
     prompt = region_only
     if region_count == 1:
         reference = {
-            "mask": "the region covered by the translucent red mask in the second reference image",
-            "box": "the region inside the red box in the second reference image",
+            "mask": "the region marked by the red mask in Image 2",
+            "box": "the region inside the red box in Image 2",
             "point": (
-                "the object or location at the center of the red point in the second "
-                "reference image"
+                "the object or location at the center of the red point in Image 2"
             ),
         }[modality]
         prompt = prompt.replace("{region_1}", reference)
-        legend = {
-            "mask": (
-                "The translucent red mask in the second reference image identifies "
-                "the target edit region."
-            ),
-            "box": (
-                "The red box in the second reference image identifies the target edit region."
-            ),
-            "point": (
-                "The red point in the second reference image identifies the target; "
-                "the center of the point is the exact target coordinate."
-            ),
-        }[modality]
     else:
-        descriptions = []
         for index in range(region_count):
             color = REGION_COLOR_NAMES[index]
             if modality == "point":
                 reference = (
-                    f"the object or location at the center of R{index + 1} in {color} "
-                    "in the second reference image"
-                )
-                descriptions.append(
-                    f"R{index + 1} is the {color} point in the second reference image"
+                    f"the object or location at the center of R{index + 1} "
+                    f"({color} point) in Image 2"
                 )
             else:
-                reference = (
-                    f"the region marked R{index + 1} in {color} "
-                    "in the second reference image"
-                )
                 noun = "mask" if modality == "mask" else "box"
-                descriptions.append(
-                    f"R{index + 1} is the {color} {noun} in the second reference image"
-                )
+                reference = f"R{index + 1} ({color} {noun}) in Image 2"
             prompt = prompt.replace(f"{{region_{index + 1}}}", reference)
-        legend = "; ".join(descriptions) + "."
-        if modality == "point":
-            legend += " The center of each point is the exact target coordinate."
     if PLACEHOLDER_RE.search(prompt):
         raise ValueError(f"Unresolved region placeholder: {prompt}")
     return (
-        "The first reference image is the clean source image to edit. "
-        "The second reference image is a locator copy of the same scene and contains "
-        f"temporary visual markers only. {legend} {prompt} "
-        "Apply the edit to the corresponding object or area in the first reference image. "
-        "Generate only the edited version of the first reference image. Use the second "
-        "reference image only for localization; do not copy, preserve, reproduce, or draw "
-        "any colored mask, outline, box, point, or R label from it. Keep all other content "
-        "from the first reference image unchanged."
+        f"Edit Image 1. {prompt} Keep everything else unchanged. "
+        "Return only the edited Image 1 without any markers from Image 2."
     )
 
 

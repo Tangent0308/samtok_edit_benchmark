@@ -1,0 +1,424 @@
+[
+  {
+    "index": 71,
+    "tags": [
+      "planner_location",
+      "addition_geometry",
+      "under_edit"
+    ],
+    "qwen": "T/M/B 新猴子落在狗右侧，偏离 locator 指定的狗左上方空位；P 与狗重叠、形态异常。四种规划框都套在已有狗附近。",
+    "flux": "T/M/B 未见新猴子；P 能新增猴子，位置更接近 locator。"
+  },
+  {
+    "index": 150,
+    "tags": [
+      "planner_extent",
+      "addition_geometry",
+      "under_edit"
+    ],
+    "qwen": "T/B 仅出现右边缘的斑马头或残缺身体；M 新斑马很小且位于右下角；P 未新增。预测框小且靠边，未覆盖完整新增对象的预期区域。",
+    "flux": "四种设置都能新增较完整小斑马；大小和姿态与参考不同，但比 Qwen 的残缺结果好。"
+  },
+  {
+    "index": 161,
+    "tags": [
+      "addition_geometry",
+      "under_edit",
+      "planner_location"
+    ],
+    "qwen": "T 基本未新增；M/B 新羊挤在原羊身体下面，形态/相互遮挡异常；P 变成卧羊，与参考的站立新增羊有差异。",
+    "flux": "基本只改变原有羊姿态，未可靠增加第二只完整羊。"
+  },
+  {
+    "index": 181,
+    "tags": [
+      "planner_location",
+      "addition_geometry",
+      "under_edit"
+    ],
+    "qwen": "T 未新增灰猫，框落在右上背景；M/B 新猫离原猫较远且靠右边缘；P 新猫极小。",
+    "flux": "T 未新增；M/B/P 可新增灰猫，但位置、朝向不完全符合参考。"
+  },
+  {
+    "index": 238,
+    "tags": [
+      "over_remove",
+      "marker",
+      "under_edit"
+    ],
+    "qwen": "T/P 连同前方黑白兔一起删除，超出仅删除后方最右白兔的要求；M 保留黑白兔、删除后方白兔较好；B 仍见目标及红色矩形。",
+    "flux": "T/P 过量删除相邻两兔；M/B 目标仍保留。"
+  },
+  {
+    "index": 294,
+    "tags": [
+      "under_edit",
+      "unwanted_changes",
+      "setting_instability"
+    ],
+    "qwen": "局部放大确认：M/P 删除右侧飞机，T 仍保留，B 仍有两架飞机且改变飞行姿态/轨迹。",
+    "flux": "四设置均未可靠删除目标；T 还出现额外飞机形状/机体重构。"
+  },
+  {
+    "index": 321,
+    "tags": [
+      "annotation_conflict",
+      "under_edit"
+    ],
+    "qwen": "文本说删最右鸡，但 locator/target 对应左下前景鸡；T 删除右后方鸡，不能直接据 GT 判定位错。M/P 改变前景鸡姿态而未删除；B 前景鸡仍在。",
+    "flux": "T 同样删除右后方鸡；M 删除左下鸡贴近 locator/GT；B/P 保留目标。"
+  },
+  {
+    "index": 345,
+    "tags": [
+      "under_edit",
+      "setting_instability"
+    ],
+    "qwen": "T 正确删除右侧象且保留左侧象；M/B/P 规划框仍覆盖同一目标，但右象未删除，只发生姿态等变化。",
+    "flux": "T 正确删除；M/B/P 均未删除目标。"
+  },
+  {
+    "index": 473,
+    "tags": [
+      "replacement_as_addition",
+      "setting_instability"
+    ],
+    "qwen": "T/M/P 把右熊替换为路牌较成功；B 保留熊并在前方添加路牌，把替换做成新增。",
+    "flux": "T/M/P 能替换；B 保留熊，仅出现小标牌。"
+  },
+  {
+    "index": 483,
+    "tags": [
+      "positive_control"
+    ],
+    "qwen": "四设置都对正确的左上白车换成黑车，未见显著实例串扰。",
+    "flux": "四设置也能把正确车辆换黑；这是稳定成功的对照例。"
+  },
+  {
+    "index": 486,
+    "tags": [
+      "under_edit",
+      "needs_detail"
+    ],
+    "qwen": "T/M/P 对右车改车型为黑色轿车；B 改动较弱。仅凭静态缩略图不能确认向右运动/朝向约束。",
+    "flux": "四设置多保留原 SUV，替换变化不足。"
+  },
+  {
+    "index": 488,
+    "tags": [
+      "replacement_as_addition",
+      "wrong_attribute",
+      "setting_instability"
+    ],
+    "qwen": "T 能把右猫替换为杯子；M/B/P 留下或重画一只橘猫，再加杯子，未完成对象替换。",
+    "flux": "T 在猫前加杯子但保留目标；M/B/P 多只把黑灰猫变为橘色，未生成杯子。"
+  },
+  {
+    "index": 497,
+    "tags": [
+      "partial_multi",
+      "planner_location",
+      "wrong_attribute",
+      "under_edit"
+    ],
+    "qwen": "T 生成黄马但另一匹非左侧白马；M/B/P 未可靠完成两侧新增。M 左框在远处草地/树旁而非目标，T 框套住已有马。",
+    "flux": "T 仅右方出现很小黄马；左白马缺失；其余设置大多无新增。"
+  },
+  {
+    "index": 506,
+    "tags": [
+      "partial_multi",
+      "planner_location",
+      "under_edit",
+      "setting_instability"
+    ],
+    "qwen": "T 在左侧新增两鸡较接近要求；M/B/P 未完成新增。M 框移向已有鸡，B/P 小框落在背景。",
+    "flux": "T 只明显新增一鸡；M/B/P 多未新增。"
+  },
+  {
+    "index": 507,
+    "tags": [
+      "partial_multi",
+      "planner_location",
+      "marker_like",
+      "under_edit"
+    ],
+    "qwen": "T 仅在现有群前新增一斑马，左侧新增缺失；M 原斑马下方出现红色块；B/P 基本未完成双新增。",
+    "flux": "各设置基本保留原斑马数量，未完成双新增。"
+  },
+  {
+    "index": 519,
+    "tags": [
+      "partial_multi",
+      "under_edit",
+      "over_remove",
+      "setting_instability"
+    ],
+    "qwen": "T 两目标删除接近参考；M/B 两目标仍在；P 只删除被捕斑马，右侧另一个目标仍在。",
+    "flux": "T/P 连同右边缘非目标斑马一起删除，过量删除；M/B 目标保留。"
+  },
+  {
+    "index": 527,
+    "tags": [
+      "partial_multi",
+      "planner_extent",
+      "under_edit"
+    ],
+    "qwen": "T/M/P 只明显删除最右鱼，第二条鱼仍在；B 两鱼保留。另一规划框只覆盖第二目标头部，未覆盖全身。",
+    "flux": "T/P 删除最右鱼但另一目标仍在；M/B 两目标大多仍在。"
+  },
+  {
+    "index": 531,
+    "tags": [
+      "partial_multi",
+      "under_edit",
+      "setting_instability"
+    ],
+    "qwen": "T 仅删左下鸡，中间鸡仍在；M/B/P 目标保留，M 改变鸡形态。",
+    "flux": "T 同时删两个目标较好；M/B 未删；P 仅删中间鸡，左下鸡仍在。"
+  },
+  {
+    "index": 533,
+    "tags": [
+      "addition_as_replacement",
+      "planner_location",
+      "marker_like",
+      "under_edit"
+    ],
+    "qwen": "T/P 把已有右侧小猫变白/替换成白猫，未保留原猫并新增；M 在前景中间加猫；B 左侧白猫旁伴随大红矩形物体，均偏离 locator 或保持要求。",
+    "flux": "T 替换右小猫为白猫；P 把中间灰猫改白；M/B 未明显新增白猫。"
+  },
+  {
+    "index": 535,
+    "tags": [
+      "addition_as_replacement",
+      "addition_geometry",
+      "planner_location",
+      "under_edit"
+    ],
+    "qwen": "T/M 把大颗中央草莓大片替换为白色，参考要求是新增较小白草莓；B/P 白草莓出现在下方缝隙且形状受遮挡。",
+    "flux": "T/P 可加小白草莓但位置偏低；M/B 未新增。"
+  },
+  {
+    "index": 536,
+    "tags": [
+      "planner_location",
+      "planner_extent",
+      "under_edit",
+      "setting_instability"
+    ],
+    "qwen": "T 正确删除男孩；M/B/P 男孩仍在。B 规划框落女孩，P 小框落鞋部；M 框对男孩但仍未删。",
+    "flux": "四设置基本未删男孩，包括 T 框正确的情形。"
+  },
+  {
+    "index": 538,
+    "tags": [
+      "part_to_whole",
+      "wrong_attribute",
+      "under_edit"
+    ],
+    "qwen": "T/P 条纹覆盖整件中间人物衣服，而非只换金色小图案；M 产生大白领/白色块；B 金色图案仍在并出现上方条纹。",
+    "flux": "多数设置金色图案保留，T/P 只在别处加少量条纹。"
+  },
+  {
+    "index": 543,
+    "tags": [
+      "under_edit",
+      "planner_location",
+      "planner_extent",
+      "setting_instability"
+    ],
+    "qwen": "T/M/B 大番茄较好；P 未完成，sidecar 有 1 个框 [880,404,920,448]，落在意面附近，非空计划。",
+    "flux": "M/B 大番茄较好；T/P 未完成。"
+  },
+  {
+    "index": 549,
+    "tags": [
+      "exclusion_failure",
+      "under_edit",
+      "template_coordinates",
+      "unwanted_changes"
+    ],
+    "qwen": "T 未完成排除蓝泳衣者的群体删除：planner 最终只写两个 keep，global 也要求不变，遗漏 remove。M/B/P 也没有删除标注目标；B 误删泳道线。M 框照搬模板 [10,150,150,210]，非空计划。",
+    "flux": "四设置均保留明显应删除的人。T 的排除指令与定位版的区域删除应分别判断。"
+  },
+  {
+    "index": 550,
+    "tags": [
+      "positive_control"
+    ],
+    "qwen": "四设置均把松果换为木盘上的红苹果，语义总体正确；数量/外观与参考不同，不能仅据此判失败。",
+    "flux": "四设置也实现松果→红苹果+木盘，为复杂短指令的成功对照。"
+  },
+  {
+    "index": 555,
+    "tags": [
+      "exclusion_failure",
+      "partial_multi",
+      "under_edit",
+      "planner_extent"
+    ],
+    "qwen": "T 只删部分右侧人，14号未删；M/B/P 大多保留。P 框 [668,604,700,630] 很小且位置不准，非空计划。",
+    "flux": "T 也只删部分人；M/B/P 大多保留。定位版提示只有区域删除，不含完整 all-but 语义。"
+  },
+  {
+    "index": 575,
+    "tags": [
+      "partial_multi",
+      "template_coordinates",
+      "setting_instability"
+    ],
+    "qwen": "T 金属左项圈与红色中项圈较好；M/B 只红中项圈；P 两项未完成。P 两个框及 point_2d 均精确匹配输出格式模板示例，落在背景。",
+    "flux": "T/M/B 两项较好；P 未完成，planner 同样抄模板坐标。"
+  },
+  {
+    "index": 579,
+    "tags": [
+      "attribute_binding",
+      "relation_failure",
+      "unwanted_changes"
+    ],
+    "qwen": "T 两项总体较接近；M/P 额外把中间人的裤子也染蓝并改变右人上衣；B 花束落到地面礼袋中，未握在中间人手中。",
+    "flux": "T 更接近花束在中间人手边；M/P 花朵向地面散落；B 花在箱上，未保持手持关系。"
+  },
+  {
+    "index": 581,
+    "tags": [
+      "ambiguous_part_removal"
+    ],
+    "qwen": "四设置都让展开翅膀消失；仅凭外观难区分翅膀被删除还是收拢，不能直接判失败。",
+    "flux": "同样消除展开翅膀，但无 GT，翅膀折叠与移除有歧义。"
+  },
+  {
+    "index": 586,
+    "tags": [
+      "partial_multi",
+      "wrong_attribute",
+      "under_edit",
+      "setting_instability"
+    ],
+    "qwen": "T 中间猫→狗、删右猫两项成功；M 基本未完成；B 只删右猫；P 中间猫变橘色动物、右猫仍在。",
+    "flux": "T 两项较成功；M/B 只中间换狗，右猫保留；P 右猫改橘而非删除。"
+  },
+  {
+    "index": 587,
+    "tags": [
+      "partial_multi",
+      "attribute_binding",
+      "planner_location",
+      "under_edit"
+    ],
+    "qwen": "T/M/B 左侧腰带变白，但右侧衬衫未呈现金属质感；P 改白了中间人的工具腰带，左侧目标未改。",
+    "flux": "四设置右侧衬衫较明显金属化，但左侧腰带仍棕色，未同时完成两项。"
+  },
+  {
+    "index": 597,
+    "tags": [
+      "attribute_binding",
+      "planner_location",
+      "setting_instability"
+    ],
+    "qwen": "T 右侧男子绿围巾、中间女子绿裤子较好；M/B 围巾加到中间女子；P 围巾加中间女子、绿裤子改右侧男子，角色错配。",
+    "flux": "T/M/B 两项较好；P 同样将围巾给中间女子、裤子改右侧男子。"
+  },
+  {
+    "index": 603,
+    "tags": [
+      "attribute_binding",
+      "wrong_attribute",
+      "partial_multi"
+    ],
+    "qwen": "T 左鸟头胸变红但翅膀仍棕，中鸟红围巾较好；M/B/P 两鸟均加红围巾，左鸟羽毛变红被做成加围巾。",
+    "flux": "左鸟部分羽毛变红、中鸟有红围巾；整身羽毛覆盖程度需谨慎判断。"
+  },
+  {
+    "index": 610,
+    "tags": [
+      "attribute_binding",
+      "planner_location",
+      "unwanted_changes",
+      "partial_multi"
+    ],
+    "qwen": "T 第二左衬衫变白，但光亮服装出现在最右警察而非第二右；M/B/P 第二右裤子有光泽，同时其上衣也变白，白色属性外溢。",
+    "flux": "第二左衬衫变白；第二右裤子材质在缩略图中不易确定，暂不判强失败。"
+  },
+  {
+    "index": 611,
+    "tags": [
+      "attribute_binding",
+      "part_to_whole",
+      "planner_location",
+      "wrong_attribute"
+    ],
+    "qwen": "T/B/P 两匹右侧马均被熔岩化，雪未正确出现，且改到身体；M 熔岩主要加到右马胸身。",
+    "flux": "T 雪与火绑定相反；M/B/P 雪位于第二右马，位置较对；M/P 最右马有局部火焰效果，B 熔岩编辑很弱，未稳定满足熔岩要求。"
+  },
+  {
+    "index": 628,
+    "tags": [
+      "planner_location",
+      "wrong_operation",
+      "attribute_binding"
+    ],
+    "qwen": "T 将第二左与最右机器屏幕都改成火山图，海滩没出现；M/B/P 第三台海滩正确，但第二台仅显示火山图片，没有在机器上添加熔岩。",
+    "flux": "T 将海滩放到最右机器，目标应第二右；M/B/P 海滩位置正确，第二台有火焰/灼烧效果，熔岩材质不十分明确。"
+  },
+  {
+    "index": 632,
+    "tags": [
+      "attribute_binding",
+      "planner_location",
+      "unwanted_changes"
+    ],
+    "qwen": "T 第一鸭红嘴、第三鸭蓝脚之外又改第一鸭蓝脚和第三鸭蓝嘴；M/B 将红嘴给第三鸭；P 改第三鸭红嘴、第四鸭蓝嘴蓝脚等，多目标错配。",
+    "flux": "T 第一鸭红嘴、第三鸭蓝脚较好；M/B 红嘴错给第三鸭；P 红嘴给第三鸭、蓝脚给第四鸭。"
+  },
+  {
+    "index": 635,
+    "tags": [
+      "planner_location",
+      "partial_multi",
+      "material_as_color"
+    ],
+    "qwen": "放大确认四设置第四人仍戴棕色针织帽，未见木质，材质改变退化为改色。T/M 第三帽未蓝；B/P 第三帽蓝但棒球帽变毛线帽。T 第一框落地面标牌。",
+    "flux": "放大确认四设置第四帽仍针织；T 第三帽仍偏灰，M/B/P 蓝，未完成木质要求。"
+  },
+  {
+    "index": 642,
+    "tags": [
+      "positive_control",
+      "material_ambiguity"
+    ],
+    "qwen": "放大确认四设置绿腰带与带大理石纹的围巾均出现；围巾仍有布料褶皱/流苏。按视觉纹理要求较好，若要求实体石材则有歧义。",
+    "flux": "四设置腰带绿、围巾有大理石纹；保留柔软布料形态，同样不判明确失败。"
+  },
+  {
+    "index": 650,
+    "tags": [
+      "positive_control"
+    ],
+    "qwen": "四设置左帽紫、右围巾蓝，两个目标均较稳定，属于双目标正例。",
+    "flux": "四设置两项目标均较好；P 左侧规划框似偏移但仍成功，不能只看框判断最终质量。"
+  },
+  {
+    "index": 651,
+    "tags": [
+      "planner_location",
+      "over_remove",
+      "partial_multi",
+      "under_edit"
+    ],
+    "qwen": "T 删除最左雪地车并清理第三车泥土较好，留下支架；M/B 只清第三车、最左仍在；P 删除第三辆整车，同时最左仍在。",
+    "flux": "T 删除最左但第三泥土仍在；M 删除第二左、目标最左仍在；B 第二左变形而第三未清；P 均未可靠完成。"
+  },
+  {
+    "index": 655,
+    "tags": [
+      "attribute_binding",
+      "part_to_whole",
+      "partial_multi"
+    ],
+    "qwen": "放大确认第三鸟白绒羽已去除；T 第一和第三鸟均出现大块绿色面部，M 只第三鸟面部绿；B/P 第一鸟眼未绿。",
+    "flux": "第三鸟白绒羽去除；T/B/P 第一鸟眼绿且范围小，较好；M 错改第三鸟眼睛。"
+  }
+]

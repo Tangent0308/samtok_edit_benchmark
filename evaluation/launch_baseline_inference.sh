@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO_ROOT="${REPO_ROOT:-/opt/tiger/tanyue/finegrained_edit_benchmark_selection}"
+REPO_ROOT="${REPO_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 SAMTOK_REPO="${SAMTOK_REPO:-/opt/tiger/tanyue/samtok_edit}"
+ENV_ROOT="${ENV_ROOT:-/opt/tiger/tanyue/samtok_edit_eval_stage2/.venv}"
 EXPERIMENT_ROOT="${EXPERIMENT_ROOT:-/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/referential_finegrained_edit_benchmark_656_two_image_locator}"
 PREPARED_MANIFEST="${PREPARED_MANIFEST:-${EXPERIMENT_ROOT}/prepared/benchmark_baseline_eval_inputs.jsonl}"
 PREPARED_ROOT="${PREPARED_ROOT:-${EXPERIMENT_ROOT}}"
 DATASET_ROOT="${DATASET_ROOT:-/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark}"
 NPROC_PER_NODE="${NPROC_PER_NODE:-8}"
-PYTHON_BIN="${PYTHON_BIN:-${SAMTOK_REPO}/.venv/bin/python}"
+PYTHON_BIN="${PYTHON_BIN:-${ENV_ROOT}/bin/python}"
+TORCHRUN_BIN="${TORCHRUN_BIN:-$(dirname "${PYTHON_BIN}")/torchrun}"
 CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3,4,5,6,7}"
 MODEL_SEQUENCE="${MODEL_SEQUENCE:-qwen flux2}"
 SETTINGS=(text_only mask_annotation box_annotation point_annotation)
@@ -83,7 +85,7 @@ for model in ${MODEL_SEQUENCE}; do
     *) echo "Unknown baseline model: ${model}" >&2; exit 2 ;;
   esac
   echo "[controller] START model=${model} at $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  "${SAMTOK_REPO}/.venv/bin/torchrun" \
+  "${TORCHRUN_BIN}" \
     --standalone \
     --nnodes=1 \
     --nproc-per-node="${NPROC_PER_NODE}" \

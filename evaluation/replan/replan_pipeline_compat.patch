@@ -1,0 +1,121 @@
+diff --git a/replan/pipelines/replan.py b/replan/pipelines/replan.py
+index ad3b045..99f6ca0 100755
+--- a/replan/pipelines/replan.py
++++ b/replan/pipelines/replan.py
+@@ -1,4 +1,6 @@
+ import gc
++import importlib.util
++import math
+ import os
+ import json
+ import re
+@@ -333,10 +335,13 @@ class RePlanPipeline:
+             return
+ 
+         print("Initializing VLM model...")
++        attention_backend = "flash_attention_2" if importlib.util.find_spec("flash_attn") else "sdpa"
++        print(f"Planner attention backend: {attention_backend}")
++        self.vlm_attention_backend = attention_backend
+         self.vlm_model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+             self.vlm_ckpt_path,
+             torch_dtype=self.torch_dtype,
+-            attn_implementation="flash_attention_2",
++            attn_implementation=attention_backend,
+         ).to(self._target_device())
+ 
+         print("Initializing VLM processor...")
+@@ -399,18 +404,16 @@ class RePlanPipeline:
+     # -------------------------------------------------------------------------
+ 
+     def build_messages(self, instruction, image):
+-        """Build message format"""
++        """Build message format for one image or an ordered image list."""
+         self._ensure_vlm_initialized()
++        images = image if isinstance(image, (list, tuple)) else [image]
++        if not images:
++            raise ValueError("At least one planner image is required")
+         messages = [
+             {
+                 "role": "user",
+-                "content": [
+-                    {
+-                        "type": "image",
+-                        "image": image,
+-                    },
+-                    {"type": "text", "text": self.template + '\n' + instruction},
+-                ],
++                "content": ([{"type": "image", "image": item} for item in images]
++                            + [{"type": "text", "text": self.template + '\n' + instruction}]),
+             }
+         ]
+         return messages
+@@ -424,7 +427,32 @@ class RePlanPipeline:
+             if match:
+                 region_content = match.group(1).strip()
+                 bbox_data = json.loads(region_content)
+-                return bbox_data
++                if not isinstance(bbox_data, list):
++                    print("<region> is not a list; ignoring malformed region guidance")
++                    return []
++                valid_regions = []
++                for index, region in enumerate(bbox_data):
++                    if not isinstance(region, dict):
++                        print(f"Ignoring malformed region {index}: not an object")
++                        continue
++                    bbox = region.get("bbox_2d")
++                    hint = region.get("hint")
++                    if not isinstance(bbox, (list, tuple)) or len(bbox) != 4:
++                        print(f"Ignoring malformed region {index}: bbox_2d={bbox!r}")
++                        continue
++                    try:
++                        x1, y1, x2, y2 = map(float, bbox)
++                    except (TypeError, ValueError):
++                        print(f"Ignoring malformed region {index}: bbox_2d={bbox!r}")
++                        continue
++                    if not all(map(math.isfinite, (x1, y1, x2, y2))) or x2 <= x1 or y2 <= y1:
++                        print(f"Ignoring malformed region {index}: bbox_2d={bbox!r}")
++                        continue
++                    if not isinstance(hint, str) or not hint.strip():
++                        print(f"Ignoring malformed region {index}: missing hint")
++                        continue
++                    valid_regions.append(region)
++                return valid_regions
+             else:
+                 print("<region> tag not found")
+                 return None
+@@ -463,14 +491,18 @@ class RePlanPipeline:
+             self._ensure_vlm_on_device()
+ 
+         vlm_latency_s = None
+-        image_input = image
+-        if isinstance(image, str):
+-            if not os.path.isabs(image):
+-                if self.image_dir is None:
+-                    raise ValueError("When using relative image paths, image_dir must be provided during initialization.")
+-                image_input = os.path.join(self.image_dir, image)
+-        elif not isinstance(image, Image.Image):
+-            raise TypeError(f"Unsupported image type: {type(image)}. Supported types are str (path) and PIL.Image.")
++        images = image if isinstance(image, (list, tuple)) else [image]
++        image_inputs_resolved = []
++        for item in images:
++            if isinstance(item, str):
++                if not os.path.isabs(item):
++                    if self.image_dir is None:
++                        raise ValueError("When using relative image paths, image_dir must be provided during initialization.")
++                    item = os.path.join(self.image_dir, item)
++            elif not isinstance(item, Image.Image):
++                raise TypeError(f"Unsupported image type: {type(item)}. Supported types are str (path) and PIL.Image.")
++            image_inputs_resolved.append(item)
++        image_input = image_inputs_resolved if isinstance(image, (list, tuple)) else image_inputs_resolved[0]
+ 
+         messages = self.build_messages(instruction, image_input)
+ 
+@@ -911,6 +943,8 @@ class RePlanPipeline:
+             "enable_flex_attn": enable_flex_attn,
+             "flex_attn_use_bitmask": flex_attn_use_bitmask,
+         }
++        if "generator" in pipeline_kwargs:
++            pipe_kwargs["generator"] = pipeline_kwargs["generator"]
+ 
+         if self.pipeline_type == "flux":
+             pipe_kwargs["guidance_scale"] = pipeline_kwargs.get("guidance_scale", 2.5)

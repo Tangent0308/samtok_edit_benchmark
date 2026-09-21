@@ -1,0 +1,160 @@
+{
+  "experiments": [
+    {
+      "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/metrics_qwen38_two_image_v2/dev",
+      "run_id": "d65396c80b2dac0f3a8973597ad174a05f61cb47e2fe3533b257082662e3194d",
+      "protocol_version": "qwen38_judge_two_image_v1",
+      "variants": [
+        {
+          "variant": "pair_v2",
+          "records": 82,
+          "expected_records": 82,
+          "statuses": {
+            "ok": 82
+          },
+          "labels": {
+            "agent_visual_holdout_review_before_judging_20260920_not_human_gold": {
+              "reviewed_with_checks": 40,
+              "n": 39,
+              "expected_positive": 14,
+              "tp": 14,
+              "strict_success_checked": 3,
+              "strict_success_match": 3,
+              "preservation_range_checked": 3,
+              "preservation_range_match": 3,
+              "expected_negative": 25,
+              "tn": 23,
+              "quality_range_checked": 1,
+              "quality_range_match": 1,
+              "fp": 2
+            },
+            "identity_construction": {
+              "reviewed_with_checks": 12,
+              "identity_edit_zero_checked": 12,
+              "identity_edit_zero_match": 12,
+              "n": 12,
+              "expected_negative": 12,
+              "tn": 12,
+              "strict_success_checked": 12,
+              "strict_success_match": 12,
+              "preservation_checked": 12,
+              "preservation_match": 12,
+              "quality_checked": 12,
+              "quality_match": 12
+            },
+            "agent_visual_review_20260920_not_independent_human_gold": {
+              "reviewed_with_checks": 12,
+              "n": 12,
+              "expected_negative": 10,
+              "tn": 9,
+              "fp": 1,
+              "expected_positive": 2,
+              "tp": 2
+            }
+          },
+          "disagreements": [
+            {
+              "sample_id": "0632/replan_qwen/box_annotation",
+              "expected": false,
+              "actual": true,
+              "status": "ok"
+            },
+            {
+              "sample_id": "0641/flux/box_annotation",
+              "expected": false,
+              "actual": true,
+              "status": "ok"
+            },
+            {
+              "sample_id": "0150/replan_qwen/text_only",
+              "expected": false,
+              "actual": true,
+              "status": "ok"
+            }
+          ],
+          "model_calls_including_retries": 82,
+          "finish_reasons": {
+            "stop": 82
+          },
+          "mean_output_tokens_per_call": 659.3536585365854,
+          "median_output_tokens_per_call": 534.5
+        },
+        {
+          "variant": "pair_v2_r1",
+          "records": 82,
+          "expected_records": 82,
+          "statuses": {
+            "ok": 82
+          },
+          "labels": {
+            "agent_visual_holdout_review_before_judging_20260920_not_human_gold": {
+              "reviewed_with_checks": 40,
+              "n": 39,
+              "expected_negative": 25,
+              "tn": 23,
+              "expected_positive": 14,
+              "tp": 14,
+              "strict_success_checked": 3,
+              "strict_success_match": 3,
+              "preservation_range_checked": 3,
+              "preservation_range_match": 3,
+              "quality_range_checked": 1,
+              "quality_range_match": 1,
+              "fp": 2
+            },
+            "identity_construction": {
+              "reviewed_with_checks": 12,
+              "identity_edit_zero_checked": 12,
+              "identity_edit_zero_match": 12,
+              "n": 12,
+              "expected_negative": 12,
+              "tn": 12,
+              "strict_success_checked": 12,
+              "strict_success_match": 12,
+              "preservation_checked": 12,
+              "preservation_match": 12,
+              "quality_checked": 12,
+              "quality_match": 12
+            },
+            "agent_visual_review_20260920_not_independent_human_gold": {
+              "reviewed_with_checks": 12,
+              "n": 12,
+              "expected_negative": 10,
+              "tn": 9,
+              "expected_positive": 2,
+              "tp": 2,
+              "fp": 1
+            }
+          },
+          "disagreements": [
+            {
+              "sample_id": "0150/replan_qwen/text_only",
+              "expected": false,
+              "actual": true,
+              "status": "ok"
+            },
+            {
+              "sample_id": "0641/flux/box_annotation",
+              "expected": false,
+              "actual": true,
+              "status": "ok"
+            },
+            {
+              "sample_id": "0632/replan_qwen/box_annotation",
+              "expected": false,
+              "actual": true,
+              "status": "ok"
+            }
+          ],
+          "model_calls_including_retries": 82,
+          "finish_reasons": {
+            "stop": 82
+          },
+          "mean_output_tokens_per_call": 653.1829268292682,
+          "median_output_tokens_per_call": 534.5
+        }
+      ]
+    }
+  ],
+  "note": "Development examples with agent review labels, not independent human gold."
+}

@@ -30,16 +30,12 @@ mkdir -p "${LOG_DIR}"
 exec > >(tee -a "${CONTROLLER_LOG}") 2>&1
 
 progress_pid=""
-keepalive_pids=()
 on_exit() {
   status=$?
   if [[ -n "${progress_pid}" ]]; then
     kill "${progress_pid}" 2>/dev/null || true
     wait "${progress_pid}" 2>/dev/null || true
   fi
-  for pid in "${keepalive_pids[@]}"; do
-    kill -CONT "${pid}" 2>/dev/null || true
-  done
   if [[ ${status} -eq 0 ]]; then
     printf 'status=complete\nfinished_at=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "${STATUS_FILE}"
   else
@@ -57,14 +53,6 @@ if [[ "${NPROC_PER_NODE}" != "8" ]]; then
   echo "This benchmark launch requires NPROC_PER_NODE=8, got ${NPROC_PER_NODE}" >&2
   exit 2
 fi
-
-mapfile -t keepalive_pids < <(
-  pgrep -f '^python /mnt/bn/strategy-mllm-train/user/tanyue/run.py --size 8000 --gpus 8 --interval 0.0005$' || true
-)
-for pid in "${keepalive_pids[@]}"; do
-  echo "[controller] temporarily suspending GPU keepalive pid=${pid}"
-  kill -STOP "${pid}"
-done
 
 printf 'status=running\nstarted_at=%s\ncontroller_pid=%s\nmodels=%s\nsettings=%s\nworld_size=%s\n' \
   "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$$" "${MODEL_SEQUENCE}" "${SETTINGS[*]}" \

@@ -24,6 +24,27 @@ def test_protocol_has_four_settings_for_each_baseline():
     expected = ["text_only", "mask_annotation", "box_annotation", "point_annotation"]
     assert [setting.key for setting in settings_for_model("qwen")] == expected
     assert [setting.key for setting in settings_for_model("flux2")] == expected
+    assert [setting.key for setting in settings_for_model("qwen21")] == expected
+
+
+def test_qwen21_releases_temporary_hooks_even_after_failure():
+    import pytest
+    import torch
+    norm = torch.nn.Identity()
+    kept = norm.register_forward_hook(lambda module, inputs, output: None)
+    class FailingPipeline:
+        text_encoder = Namespace(model=Namespace(model=Namespace(language_model=Namespace(norm=norm))))
+        def __call__(self, prompt, **kwargs):
+            norm.register_forward_hook(lambda module, inputs, output: None)
+            assert kwargs["cfg_scale"] == 1.0
+            assert kwargs["use_kv_cache"] is True
+            assert kwargs["rand_device"] == "cpu"
+            assert "zero_cond_t" not in kwargs
+            raise RuntimeError("simulated failure")
+    with pytest.raises(RuntimeError, match="simulated failure"):
+        generate(FailingPipeline(), Namespace(model="qwen21", qwen21_steps=40),
+                 [Image.new("RGB", (64,64))], "prompt", 0, (64,64), "cuda:0")
+    assert set(norm._forward_hooks) == {kept.id}
 
 
 def test_two_region_prompt_preserves_region_order():

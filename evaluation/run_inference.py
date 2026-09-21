@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run Qwen-Image-Edit-2511 or FLUX.2 on the frozen benchmark inputs."""
+"""Run official DiffSynth editors on the frozen benchmark inputs."""
 
 from __future__ import annotations
 
@@ -8,12 +8,14 @@ import gc
 import json
 import os
 import sys
+import subprocess
 import time
 from glob import glob
 from pathlib import Path
 
 import torch
 from PIL import Image
+from tqdm import tqdm
 
 from common import (
     DEFAULT_BASELINE_PREPARED_MANIFEST,
@@ -49,6 +51,31 @@ def require_files(label: str, paths: list[Path]) -> None:
 
 
 def validate_model_artifacts(args: argparse.Namespace) -> dict:
+    if args.model == "qwen21":
+        root = args.qwen21
+        index = root / "model_index.json"
+        require_files("Qwen-Image-2.1 index", [index])
+        if json.loads(index.read_text()).get("_class_name") != "QwenImage21Pipeline":
+            raise ValueError(f"Not Qwen-Image-2.1: {index}")
+        shards = {}
+        for component in ("transformer", "text_encoder", "vae"):
+            files = sorted((root / component).glob("*.safetensors"))
+            if not files:
+                raise FileNotFoundError(f"No weights for {root / component}")
+            shards[component] = [{"name": p.name, "bytes": p.stat().st_size} for p in files]
+        require_files("Qwen-Image-2.1 processor", [root / "processor/preprocessor_config.json"])
+        if args.diffsynth_repo is None:
+            raise ValueError("qwen21 requires --diffsynth_repo pointing to the new official checkout")
+        commit = subprocess.check_output(["git", "-C", str(args.diffsynth_repo), "rev-parse", "HEAD"], text=True).strip()
+        cache = root / "cache_provenance.json"
+        provenance = json.loads(cache.read_text()) if cache.is_file() else None
+        metadata = root / ".cache/huggingface/download/model_index.json.metadata"
+        revision = provenance["revision"] if provenance else metadata.read_text().splitlines()[0] if metadata.is_file() else None
+        return {"name": "Qwen/Qwen-Image-2.1", "path": str(root.resolve()),
+                "revision": revision, "cache_provenance": provenance,
+                "diffsynth_pipeline": "QwenImage21Pipeline", "diffsynth_commit": commit,
+                "diffsynth_path": str(args.diffsynth_repo.resolve()),
+                "model_index_sha256": sha256_file(index), "weight_files": shards}
     if args.model == "qwen":
         model_index_path = args.qwen_2511 / "model_index.json"
         require_files("Qwen model index", [model_index_path])
@@ -102,7 +129,18 @@ def add_diffsynth_paths(samtok_repo: Path) -> None:
 
 
 def load_pipeline(args: argparse.Namespace, device: str):
-    add_diffsynth_paths(args.samtok_repo)
+    if args.diffsynth_repo is not None:
+        sys.path.insert(0, str(args.diffsynth_repo))
+    else:
+        add_diffsynth_paths(args.samtok_repo)
+    if args.model == "qwen21":
+        from diffsynth.pipelines.qwen_image_21 import ModelConfig, QwenImage21Pipeline
+        return QwenImage21Pipeline.from_pretrained(
+            torch_dtype=torch.bfloat16, device=device,
+            model_configs=[ModelConfig(path=sorted(glob(str(args.qwen21 / component / "*.safetensors"))))
+                           for component in ("transformer", "text_encoder", "vae")],
+            processor_config=ModelConfig(path=str(args.qwen21 / "processor")),
+        )
     if args.model == "qwen":
         from diffsynth.pipelines.qwen_image import ModelConfig, QwenImagePipeline
 
@@ -149,6 +187,11 @@ def load_pipeline(args: argparse.Namespace, device: str):
 
 
 def model_generation_config(args: argparse.Namespace) -> dict:
+    if args.model == "qwen21":
+        return {"num_inference_steps": args.qwen21_steps, "cfg_scale": 1.0,
+                "use_kv_cache": True, "rand_device": "cpu",
+                "native_output_mode": "RGBA", "rgb_export": "alpha composite over white",
+                "prompt_rewrite": False}
     if args.model == "flux2":
         return {
             "num_inference_steps": args.flux_steps,
@@ -247,6 +290,20 @@ def generate(
     device: str,
 ) -> tuple[Image.Image, dict]:
     width, height = native_size
+    if args.model == "qwen21":
+        # Upstream registers a temporary norm hook on each forward without
+        # removing it. Release only hooks created by this call to prevent
+        # hundreds of retained hidden-state tensors in a long benchmark run.
+        norm = pipe.text_encoder.model.model.language_model.norm
+        previous_hooks = set(norm._forward_hooks)
+        try:
+            output = pipe(prompt, edit_image=model_inputs, seed=seed,
+                          num_inference_steps=args.qwen21_steps, cfg_scale=1.0,
+                          height=height, width=width, use_kv_cache=True, rand_device="cpu")
+        finally:
+            for key in set(norm._forward_hooks) - previous_hooks:
+                del norm._forward_hooks[key]
+        return output, {}
     if args.model == "qwen":
         output = pipe(
             prompt,
@@ -337,7 +394,7 @@ def run_setting(
     device: str,
 ) -> list[dict]:
     records = []
-    for position, row in enumerate(rows, 1):
+    for position, row in enumerate(tqdm(rows, desc=f"{args.model}/{setting.key} rank={rank}", unit="image"), 1):
         source_path = resolve_path(row["source_image"], args.dataset_root)
         with Image.open(source_path) as image:
             source = image.convert("RGB")
@@ -378,6 +435,10 @@ def run_setting(
             raise RuntimeError(
                 f"Unexpected native output size {native.size}; requested {native_size}"
             )
+        if args.model == "qwen21" and native.mode == "RGBA":
+            # Preserve the official RGBA output; judge an explicitly defined RGB view.
+            save_png_atomic(args.experiment_root / "native_rgba" / args.model / setting.key / output_path.name, native)
+            native = Image.alpha_composite(Image.new("RGBA", native.size, "white"), native)
         output = native.convert("RGB").resize(source_size, Image.Resampling.LANCZOS)
         elapsed = time.perf_counter() - started
         save_png_atomic(output_path, output)
@@ -430,13 +491,16 @@ def collect_records(args: argparse.Namespace, setting: SettingSpec, rows: list[d
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--model", choices=("qwen", "flux2"), required=True)
+    parser.add_argument("--model", choices=("qwen", "flux2", "qwen21"), required=True)
     parser.add_argument("--settings", nargs="+", default=["all"])
     parser.add_argument("--prepared_manifest", type=Path, default=None)
     parser.add_argument("--prepared_root", type=Path, default=DEFAULT_EXPERIMENT_ROOT)
     parser.add_argument("--dataset_root", type=Path, default=DEFAULT_DATASET_ROOT)
     parser.add_argument("--experiment_root", type=Path, default=DEFAULT_EXPERIMENT_ROOT)
     parser.add_argument("--samtok_repo", type=Path, default=DEFAULT_SAMTOK_REPO)
+    parser.add_argument("--diffsynth_repo", type=Path, default=None)
+    parser.add_argument("--qwen21", type=Path, default=Path(os.environ.get("QWEN21_MODEL", str(DEFAULT_QWEN_2511.parent / "Qwen-Image-2.1"))))
+    parser.add_argument("--qwen21_steps", type=int, default=40)
     parser.add_argument("--qwen_2511", type=Path, default=DEFAULT_QWEN_2511)
     parser.add_argument("--flux2", type=Path, default=DEFAULT_FLUX2)
     parser.add_argument("--qwen_steps", type=int, default=40)

@@ -41,6 +41,7 @@ def main() -> None:
         help="Validate only these exact benchmark eval indices.",
     )
     parser.add_argument("--expected_world_size", type=int, default=8)
+    parser.add_argument("--models", nargs="+", choices=["qwen", "flux2", "qwen21"], default=list(MODELS))
     args = parser.parse_args()
 
     all_rows, prepared_report = load_prepared_manifest(
@@ -63,7 +64,7 @@ def main() -> None:
     }
     errors: list[str] = []
     counts: dict[str, dict[str, int]] = {}
-    for model in MODELS:
+    for model in args.models:
         counts[model] = {}
         config_path = args.experiment_root / "inference" / model / "run_config.json"
         report_path = args.experiment_root / "inference" / model / "report.json"
@@ -147,7 +148,7 @@ def main() -> None:
                         )
                     count += 1
             counts[model][setting] = count
-    expected = len(rows) * len(MODELS) * len(SETTING_KEYS)
+    expected = len(rows) * len(args.models) * len(SETTING_KEYS)
     actual = sum(value for model in counts.values() for value in model.values())
     result = {
         "status": "passed" if not errors and actual == expected else "failed",

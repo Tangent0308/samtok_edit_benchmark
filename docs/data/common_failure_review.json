@@ -1,0 +1,209 @@
+{
+  "review_protocol": {
+    "judge_candidate_rule": "strict success means E=4, P>=3, and Q>=3",
+    "candidate_scope": "Every valid case with at most four strict successes, plus higher-score cases whose strict successes came from at most two methods or from text only",
+    "valid_cases_screened": 655,
+    "cases_manually_reviewed": 157,
+    "outputs_manually_reviewed": 3140,
+    "reviewed_tier_counts": {
+      "0": 13,
+      "1": 18,
+      "2": 28,
+      "3": 39,
+      "4": 39
+    },
+    "additional_high_risk_review": {
+      "cases": 20,
+      "strict_successes_at_least": 5,
+      "cases_supported_by_at_most_two_methods": 14,
+      "cases_supported_by_text_only": 6,
+      "new_common_failures": 0
+    },
+    "human_decision_rule": "A common failure requires all five methods to lack an acceptable result in text, mask, box, and point settings.",
+    "limitation": "The review covers 157 hard or high-risk valid cases selected by judge patterns, not all 655 valid cases. Judge scores only rank review candidates and are not human ground truth."
+  },
+  "summary": {
+    "confirmed_common_failures": 19,
+    "automatic_strict_false_positives_in_confirmed_cases": 17,
+    "automatic_strict_false_positives_by_method": {
+      "qwen": 3,
+      "flux": 5,
+      "qwen21": 1,
+      "replan_qwen": 5,
+      "replan_flux": 3
+    },
+    "automatic_strict_false_positives_by_setting": {
+      "text_only": 13,
+      "mask_annotation": 2,
+      "box_annotation": 0,
+      "point_annotation": 2
+    },
+    "by_edit_type": {
+      "remove": 15,
+      "replace": 2,
+      "mixed": 2
+    },
+    "by_region_count": {
+      "1": 8,
+      "2": 11
+    },
+    "by_source_dataset": {
+      "compbench": 14,
+      "humanedit": 1,
+      "mirage": 4
+    }
+  },
+  "confirmed_common_failures": [
+    {
+      "eval_index": 256,
+      "instruction": "remove the leftmost turtle",
+      "strict_successes": 1,
+      "failure_modes": ["over_editing", "scene_regeneration"],
+      "analysis": "The only automatically strict output removes the target by redrawing the close turtle scene as open water with one distant turtle. The other outputs leave the target or fail to remove it.",
+      "visual": "docs/assets/common_failures/case_0256.jpg"
+    },
+    {
+      "eval_index": 271,
+      "instruction": "remove the third zebra from the rightmost",
+      "strict_successes": 2,
+      "failure_modes": ["ordinal_binding", "over_deletion"],
+      "analysis": "The two automatically strict RePlan + Qwen outputs delete several neighboring zebras. Remaining outputs are no-ops or remove the wrong instance.",
+      "visual": "docs/assets/common_failures/case_0271.jpg"
+    },
+    {
+      "eval_index": 379,
+      "instruction": "remove the zebra in the middle",
+      "strict_successes": 1,
+      "failure_modes": ["over_deletion", "judge_false_positive"],
+      "analysis": "The automatically strict FLUX text output deletes the entire zebra group. The other settings retain the target or do not produce a clean middle-zebra removal."
+    },
+    {
+      "eval_index": 385,
+      "instruction": "remove the second zebra in the front",
+      "strict_successes": 0,
+      "failure_modes": ["no_op", "ordinal_binding"],
+      "analysis": "All 20 outputs preserve the selected front zebra or make changes that do not remove it.",
+      "visual": "docs/assets/common_failures/case_0385.jpg"
+    },
+    {
+      "eval_index": 443,
+      "instruction": "remove the second bird on the right",
+      "strict_successes": 3,
+      "failure_modes": ["ordinal_binding", "over_deletion"],
+      "analysis": "The three automatically strict text outputs delete several birds and leave only one or none. Interactive settings mostly keep the target."
+    },
+    {
+      "eval_index": 469,
+      "instruction": "remove the second bear on the left",
+      "strict_successes": 2,
+      "failure_modes": ["wrong_target", "partial_edge_instance"],
+      "analysis": "The annotated target is the partly cropped bear at the left edge. Outputs either keep it or edit a central foreground bear instead.",
+      "visual": "docs/assets/common_failures/case_0469.jpg"
+    },
+    {
+      "eval_index": 475,
+      "instruction": "replace the third giraffe from the right with background",
+      "strict_successes": 0,
+      "failure_modes": ["ordinal_binding", "incomplete_removal"],
+      "analysis": "No output cleanly replaces the selected giraffe with background; outputs are no-ops, partial edits, or recolor the animal."
+    },
+    {
+      "eval_index": 517,
+      "instruction": "remove the rightmost yellow horse and the white horse on the left",
+      "strict_successes": 3,
+      "failure_modes": ["multi_target_incomplete", "over_deletion"],
+      "analysis": "FLUX text deletes the whole horse group, while both automatically strict RePlan text outputs leave the rightmost target. Interactive outputs do not complete both removals."
+    },
+    {
+      "eval_index": 521,
+      "instruction": "remove the biggest yellow fish in the middle and the white fish on the upper left",
+      "strict_successes": 2,
+      "failure_modes": ["multi_target_incomplete", "over_deletion"],
+      "analysis": "One automatically strict output is nearly a no-op and keeps both targets; the other removes several non-target fish. No output removes exactly the requested pair."
+    },
+    {
+      "eval_index": 523,
+      "instruction": "remove the zebra facing front on the right and the leftmost zebra",
+      "strict_successes": 0,
+      "failure_modes": ["multi_target_incomplete", "over_deletion"],
+      "analysis": "Qwen text removes the entire herd, while the remaining outputs remove at most one target or remain close to the source."
+    },
+    {
+      "eval_index": 524,
+      "instruction": "remove the second duck on the right and the second duck on the left",
+      "strict_successes": 0,
+      "failure_modes": ["multi_target_incomplete", "over_deletion"],
+      "analysis": "The strongest text output removes an extra duck; other outputs remove only one requested duck or neither."
+    },
+    {
+      "eval_index": 526,
+      "instruction": "remove the rightmost and the leftmost flamingos",
+      "strict_successes": 0,
+      "failure_modes": ["multi_target_incomplete", "over_deletion"],
+      "analysis": "The strongest text output deletes the whole flock. Other settings remove one endpoint flamingo or preserve both."
+    },
+    {
+      "eval_index": 528,
+      "instruction": "remove the rightmost dog and the tallest white dog between two dogs",
+      "strict_successes": 0,
+      "failure_modes": ["multi_target_incomplete", "no_op"],
+      "analysis": "None of the 20 outputs removes both requested dogs; most are no-ops and the rest handle only one target.",
+      "visual": "docs/assets/common_failures/case_0528.jpg"
+    },
+    {
+      "eval_index": 529,
+      "instruction": "remove the second leftmost and the rightmost white goose",
+      "strict_successes": 0,
+      "failure_modes": ["multi_target_incomplete", "over_deletion"],
+      "analysis": "Outputs judged E=4 also delete an additional white goose. Other outputs remove only one requested goose or neither."
+    },
+    {
+      "eval_index": 555,
+      "instruction": "Remove all but the fallen volleyball player",
+      "strict_successes": 0,
+      "failure_modes": ["inverse_set_selection", "incomplete_removal"],
+      "analysis": "Models do not isolate the fallen player: they keep several standing players, remove the wrong people, or leave the image unchanged."
+    },
+    {
+      "eval_index": 606,
+      "instruction": "Change the color of the eyes of the first bird from the left to green, and remove the white down patch on the chest of the second bird from the right.",
+      "strict_successes": 0,
+      "failure_modes": ["attribute_leakage", "multi_target_incomplete"],
+      "analysis": "Green eye color spreads to multiple birds, while the requested chest-patch removal is missed or applied to the wrong bird.",
+      "visual": "docs/assets/common_failures/case_0606.jpg"
+    },
+    {
+      "eval_index": 647,
+      "instruction": "Change the color of the eyes of the first sparrow from the left to green, and change the color of the beak of the fourth sparrow from the left to red.",
+      "strict_successes": 0,
+      "failure_modes": ["attribute_leakage", "ordinal_binding"],
+      "analysis": "Colors spread to neighboring sparrows or the whole bird, and the eye/beak attributes are not bound to the two requested instances."
+    },
+    {
+      "eval_index": 649,
+      "instruction": "Add some snow onto the pants of the fifth person from the left, and change the color of the pants of the fourth person from the left to blue.",
+      "strict_successes": 0,
+      "failure_modes": ["attribute_leakage", "multi_target_incomplete"],
+      "analysis": "Snow and blue color spill onto other people, the floor, luggage, or upper clothing; no output confines both edits to the requested pants.",
+      "visual": "docs/assets/common_failures/case_0649.jpg"
+    },
+    {
+      "eval_index": 651,
+      "instruction": "Remove the first snowmobile from the left, and remove the dirt on the front of the third snowmobile from the left.",
+      "strict_successes": 3,
+      "failure_modes": ["multi_target_incomplete", "judge_false_positive"],
+      "analysis": "The automatically strict text outputs remove the first snowmobile but leave the brown dirt in front of the third, so only one subtask is completed.",
+      "visual": "docs/assets/common_failures/case_0651.jpg"
+    }
+  ],
+  "annotation_issues": [
+    {
+      "eval_index": 321,
+      "issue": "The text requests the rightmost chicken, while the region annotation points to a different chicken. All 20 judge records are marked annotation_conflict."
+    },
+    {
+      "eval_index": 511,
+      "issue": "The global instruction requests two new geese, but region_only requests two geese in region_1 plus one in region_2. The reference image visually adds two geese, so the four input settings do not share one target count."
+    }
+  ]
+}

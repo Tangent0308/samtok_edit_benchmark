@@ -75,7 +75,8 @@
       "instruction": "remove the zebra in the middle",
       "strict_successes": 1,
       "failure_modes": ["over_deletion", "judge_false_positive"],
-      "analysis": "The automatically strict FLUX text output deletes the entire zebra group. The other settings retain the target or do not produce a clean middle-zebra removal."
+      "analysis": "The automatically strict FLUX text output deletes the entire zebra group. The other settings retain the target or do not produce a clean middle-zebra removal.",
+      "visual": "docs/assets/common_failures/case_0379.jpg"
     },
     {
       "eval_index": 385,
@@ -90,7 +91,8 @@
       "instruction": "remove the second bird on the right",
       "strict_successes": 3,
       "failure_modes": ["ordinal_binding", "over_deletion"],
-      "analysis": "The three automatically strict text outputs delete several birds and leave only one or none. Interactive settings mostly keep the target."
+      "analysis": "The three automatically strict text outputs delete several birds and leave only one or none. Interactive settings mostly keep the target.",
+      "visual": "docs/assets/common_failures/case_0443.jpg"
     },
     {
       "eval_index": 469,
@@ -105,42 +107,48 @@
       "instruction": "replace the third giraffe from the right with background",
       "strict_successes": 0,
       "failure_modes": ["ordinal_binding", "incomplete_removal"],
-      "analysis": "No output cleanly replaces the selected giraffe with background; outputs are no-ops, partial edits, or recolor the animal."
+      "analysis": "No output cleanly replaces the selected giraffe with background; outputs are no-ops, partial edits, or recolor the animal.",
+      "visual": "docs/assets/common_failures/case_0475.jpg"
     },
     {
       "eval_index": 517,
       "instruction": "remove the rightmost yellow horse and the white horse on the left",
       "strict_successes": 3,
       "failure_modes": ["multi_target_incomplete", "over_deletion"],
-      "analysis": "FLUX text deletes the whole horse group, while both automatically strict RePlan text outputs leave the rightmost target. Interactive outputs do not complete both removals."
+      "analysis": "FLUX text deletes the whole horse group, while both automatically strict RePlan text outputs leave the rightmost target. Interactive outputs do not complete both removals.",
+      "visual": "docs/assets/common_failures/case_0517.jpg"
     },
     {
       "eval_index": 521,
       "instruction": "remove the biggest yellow fish in the middle and the white fish on the upper left",
       "strict_successes": 2,
       "failure_modes": ["multi_target_incomplete", "over_deletion"],
-      "analysis": "One automatically strict output is nearly a no-op and keeps both targets; the other removes several non-target fish. No output removes exactly the requested pair."
+      "analysis": "One automatically strict output is nearly a no-op and keeps both targets; the other removes several non-target fish. No output removes exactly the requested pair.",
+      "visual": "docs/assets/common_failures/case_0521.jpg"
     },
     {
       "eval_index": 523,
       "instruction": "remove the zebra facing front on the right and the leftmost zebra",
       "strict_successes": 0,
       "failure_modes": ["multi_target_incomplete", "over_deletion"],
-      "analysis": "Qwen text removes the entire herd, while the remaining outputs remove at most one target or remain close to the source."
+      "analysis": "Qwen text removes the entire herd, while the remaining outputs remove at most one target or remain close to the source.",
+      "visual": "docs/assets/common_failures/case_0523.jpg"
     },
     {
       "eval_index": 524,
       "instruction": "remove the second duck on the right and the second duck on the left",
       "strict_successes": 0,
       "failure_modes": ["multi_target_incomplete", "over_deletion"],
-      "analysis": "The strongest text output removes an extra duck; other outputs remove only one requested duck or neither."
+      "analysis": "The strongest text output removes an extra duck; other outputs remove only one requested duck or neither.",
+      "visual": "docs/assets/common_failures/case_0524.jpg"
     },
     {
       "eval_index": 526,
       "instruction": "remove the rightmost and the leftmost flamingos",
       "strict_successes": 0,
       "failure_modes": ["multi_target_incomplete", "over_deletion"],
-      "analysis": "The strongest text output deletes the whole flock. Other settings remove one endpoint flamingo or preserve both."
+      "analysis": "The strongest text output deletes the whole flock. Other settings remove one endpoint flamingo or preserve both.",
+      "visual": "docs/assets/common_failures/case_0526.jpg"
     },
     {
       "eval_index": 528,
@@ -155,14 +163,16 @@
       "instruction": "remove the second leftmost and the rightmost white goose",
       "strict_successes": 0,
       "failure_modes": ["multi_target_incomplete", "over_deletion"],
-      "analysis": "Outputs judged E=4 also delete an additional white goose. Other outputs remove only one requested goose or neither."
+      "analysis": "Outputs judged E=4 also delete an additional white goose. Other outputs remove only one requested goose or neither.",
+      "visual": "docs/assets/common_failures/case_0529.jpg"
     },
     {
       "eval_index": 555,
       "instruction": "Remove all but the fallen volleyball player",
       "strict_successes": 0,
       "failure_modes": ["inverse_set_selection", "incomplete_removal"],
-      "analysis": "Models do not isolate the fallen player: they keep several standing players, remove the wrong people, or leave the image unchanged."
+      "analysis": "Models do not isolate the fallen player: they keep several standing players, remove the wrong people, or leave the image unchanged.",
+      "visual": "docs/assets/common_failures/case_0555.jpg"
     },
     {
       "eval_index": 606,
@@ -177,7 +187,8 @@
       "instruction": "Change the color of the eyes of the first sparrow from the left to green, and change the color of the beak of the fourth sparrow from the left to red.",
       "strict_successes": 0,
       "failure_modes": ["attribute_leakage", "ordinal_binding"],
-      "analysis": "Colors spread to neighboring sparrows or the whole bird, and the eye/beak attributes are not bound to the two requested instances."
+      "analysis": "Colors spread to neighboring sparrows or the whole bird, and the eye/beak attributes are not bound to the two requested instances.",
+      "visual": "docs/assets/common_failures/case_0647.jpg"
     },
     {
       "eval_index": 649,

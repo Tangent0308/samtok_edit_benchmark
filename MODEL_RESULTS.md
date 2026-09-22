@@ -173,18 +173,54 @@ python evaluation/analyze_common_failures.py \
 | 0649 | 第五人裤子加雪；第四人裤子变蓝 | 雪和蓝色扩散到其他人物、地面、行李或上衣，没有结果同时局限在两条指定裤子 |
 | 0651 | 删除第一辆雪地摩托和第三辆前方泥土 | 三个自动严格成功 text 输出只完成摩托删除，棕色泥土仍在 |
 
-### 4.3 代表性可视化
+### 4.3 完整共同失败可视化
 
-矩阵绿框表示 judge 的自动严格成功，不能视为人工正确标签。例如 0256、0271 和 0651 的绿框结果仍是共同失败。完整 19 张矩阵保存在实验目录 `metrics_qwen38_all_models_pair_v2/comparison/common_failures_final`。
+下面展示全部 19 个共同失败 case。每张矩阵包含原图、参考图以及五种方法在 text、mask、box、point 下的输出。绿框表示 judge 的自动严格成功，不能视为人工正确标签；例如 0256、0271 和 0651 的绿框结果仍未完整满足指令。点击图片可查看原始尺寸，也可以通过 [独立 HTML 画廊](docs/assets/common_failures/index.html) 连续浏览。
 
-| 场景重绘与序数过删 | 完全 no-op 与边缘实例错绑 |
+#### 单目标序数删除与替换
+
+| Case 0256：场景重绘 | Case 0271：连带删除相邻斑马 |
 | --- | --- |
-| [![Case 0256](docs/assets/common_failures/case_0256.jpg)](docs/assets/common_failures/case_0256.jpg) | [![Case 0385](docs/assets/common_failures/case_0385.jpg)](docs/assets/common_failures/case_0385.jpg) |
-| [![Case 0271](docs/assets/common_failures/case_0271.jpg)](docs/assets/common_failures/case_0271.jpg) | [![Case 0469](docs/assets/common_failures/case_0469.jpg)](docs/assets/common_failures/case_0469.jpg) |
+| [![Case 0256](docs/assets/common_failures/case_0256.jpg)](docs/assets/common_failures/case_0256.jpg) | [![Case 0271](docs/assets/common_failures/case_0271.jpg)](docs/assets/common_failures/case_0271.jpg) |
 
-| 双目标未完成 | 局部属性扩散与复合指令漏项 |
+| Case 0379：删除整群斑马 | Case 0385：目标保留/no-op |
 | --- | --- |
-| [![Case 0528](docs/assets/common_failures/case_0528.jpg)](docs/assets/common_failures/case_0528.jpg) | [![Case 0606](docs/assets/common_failures/case_0606.jpg)](docs/assets/common_failures/case_0606.jpg) |
+| [![Case 0379](docs/assets/common_failures/case_0379.jpg)](docs/assets/common_failures/case_0379.jpg) | [![Case 0385](docs/assets/common_failures/case_0385.jpg)](docs/assets/common_failures/case_0385.jpg) |
+
+| Case 0443：鸟群过删 | Case 0469：边缘实例错绑 |
+| --- | --- |
+| [![Case 0443](docs/assets/common_failures/case_0443.jpg)](docs/assets/common_failures/case_0443.jpg) | [![Case 0469](docs/assets/common_failures/case_0469.jpg)](docs/assets/common_failures/case_0469.jpg) |
+
+| Case 0475：长颈鹿替换失败 |
+| --- |
+| [![Case 0475](docs/assets/common_failures/case_0475.jpg)](docs/assets/common_failures/case_0475.jpg) |
+
+#### 双目标删除与反向集合选择
+
+| Case 0517：过删整组马 | Case 0521：双目标鱼删除失败 |
+| --- | --- |
+| [![Case 0517](docs/assets/common_failures/case_0517.jpg)](docs/assets/common_failures/case_0517.jpg) | [![Case 0521](docs/assets/common_failures/case_0521.jpg)](docs/assets/common_failures/case_0521.jpg) |
+
+| Case 0523：斑马漏删/过删 | Case 0524：只完成一侧鸭子 |
+| --- | --- |
+| [![Case 0523](docs/assets/common_failures/case_0523.jpg)](docs/assets/common_failures/case_0523.jpg) | [![Case 0524](docs/assets/common_failures/case_0524.jpg)](docs/assets/common_failures/case_0524.jpg) |
+
+| Case 0526：火烈鸟整群过删 | Case 0528：双目标狗 no-op |
+| --- | --- |
+| [![Case 0526](docs/assets/common_failures/case_0526.jpg)](docs/assets/common_failures/case_0526.jpg) | [![Case 0528](docs/assets/common_failures/case_0528.jpg)](docs/assets/common_failures/case_0528.jpg) |
+
+| Case 0529：额外删除白鹅 | Case 0555：反向集合选择失败 |
+| --- | --- |
+| [![Case 0529](docs/assets/common_failures/case_0529.jpg)](docs/assets/common_failures/case_0529.jpg) | [![Case 0555](docs/assets/common_failures/case_0555.jpg)](docs/assets/common_failures/case_0555.jpg) |
+
+#### 局部属性与复合操作
+
+| Case 0606：眼睛颜色扩散/胸前白斑漏改 | Case 0647：眼睛与鸟喙错绑 |
+| --- | --- |
+| [![Case 0606](docs/assets/common_failures/case_0606.jpg)](docs/assets/common_failures/case_0606.jpg) | [![Case 0647](docs/assets/common_failures/case_0647.jpg)](docs/assets/common_failures/case_0647.jpg) |
+
+| Case 0649：雪和裤子颜色扩散 | Case 0651：泥土删除漏项 |
+| --- | --- |
 | [![Case 0649](docs/assets/common_failures/case_0649.jpg)](docs/assets/common_failures/case_0649.jpg) | [![Case 0651](docs/assets/common_failures/case_0651.jpg)](docs/assets/common_failures/case_0651.jpg) |
 
 ### 4.4 Benchmark 标注问题
@@ -211,4 +247,4 @@ python evaluation/analyze_common_failures.py \
 | Judge 清单、原始记录和覆盖报告 | `metrics_qwen38_all_models_pair_v2/{pilot.jsonl,all}` |
 | 汇总、图表、case study 和共同失败审计 | `metrics_qwen38_all_models_pair_v2/comparison` |
 
-仓库保留三张总体图、八张原有 case 矩阵、八张共同失败矩阵及结构化汇总；大规模逐样本结果保存在上述实验目录。
+仓库保留三张总体图、八张原有 case 矩阵、全部十九张共同失败矩阵及结构化汇总；大规模逐样本结果保存在上述实验目录。

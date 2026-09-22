@@ -1,13 +1,11 @@
-"""Comparable-cohort tables, case-clustered intervals, plots and inspectable case sheets."""
+"""Comparable-cohort tables, case-clustered intervals, and aggregate plots."""
 from __future__ import annotations
 import argparse
 from collections import defaultdict, Counter
 import html
 import json
 from pathlib import Path
-import textwrap
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageOps
 from evaluation.common import BASELINE_VISUAL_PROTOCOL, atomic_write_json, read_jsonl
 from evaluation.metrics.report import summarize
 
@@ -109,53 +107,6 @@ def draw_charts(cohort, records, table, output):
     fig.tight_layout();fig.savefig(output/(cohort+'_operations.png'),dpi=170);plt.close(fig)
 
 
-def case_sheets(records, output):
-    """Deterministic audit selection: known hard cases plus each method's extremes."""
-    lookup = defaultdict(dict)
-    for r in records:
-        s = r['sample']; lookup[(s['eval_index'], s['setting'])][s['method']] = r
-    fixed = [(i,s) for i,s in [(475,'box_annotation'),(488,'box_annotation'),(514,'text_only'),
-        (533,'text_only'),(539,'box_annotation'),(544,'point_annotation'),(553,'mask_annotation'),
-        (608,'point_annotation'),(620,'text_only'),(632,'mask_annotation'),(635,'box_annotation'),
-        (641,'box_annotation'),(642,'text_only'),(650,'text_only')]]
-    chosen = [k for k in fixed if k in lookup]
-    for method in ORDER:
-        rs = [r for r in records if r['sample']['method']==method and r['status']=='ok'
-              and all(r['scores'].get(a) is not None for a in AXES)]
-        rs.sort(key=lambda r: tuple(r['scores'][a] for a in AXES))
-        for r in rs[:2]+rs[-2:]:
-            key = (r['sample']['eval_index'],r['sample']['setting'])
-            if key not in chosen: chosen.append(key)
-    font_path = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
-    font = ImageFont.truetype(font_path, 18)
-    small = ImageFont.truetype(font_path, 15)
-    methods = [m for m in ORDER if any(m in lookup[k] for k in chosen)]
-    cell_w, cell_h = 400, 370
-    pages, audit = [], []
-    for start in range(0,len(chosen),4):
-        keys = chosen[start:start+4]
-        board = Image.new('RGB',(cell_w*(1+len(methods)),(cell_h+92)*len(keys)),'white')
-        d = ImageDraw.Draw(board)
-        for row_no, key in enumerate(keys):
-            rs = lookup[key]; sample = next(iter(rs.values()))['sample']; y=row_no*(cell_h+92)
-            heading = f'{key[0]:04d} / {key[1]}: '+sample['instruction']
-            d.text((10,y+4),'\n'.join(textwrap.wrap(heading, width=max(90,27*(len(methods)+1))))[:600],font=font,fill='black')
-            for col, method in enumerate(['source']+methods):
-                r=rs.get(method); path=sample['source_image'] if method=='source' else r['sample']['output_image'] if r else None
-                label='SOURCE' if method=='source' else NAMES[method]
-                if r:
-                    label+=' | E/P/Q='+ '/'.join(str(r.get('scores',{}).get(a,'?')) for a in AXES)
-                d.text((col*cell_w+8,y+83),label,font=small,fill='black')
-                if path and Path(path).is_file():
-                    with Image.open(path) as im: thumb=ImageOps.contain(im.convert('RGB'),(cell_w-12,cell_h-22))
-                    board.paste(thumb,(col*cell_w+(cell_w-thumb.width)//2,y+110))
-            audit.append({'eval_index':key[0],'setting':key[1],'instruction':sample['instruction'],
-                          'records':list(rs.values())})
-        name=f'cases_{start//4+1:02d}.jpg'; board.save(output/name,quality=94); pages.append(name)
-    atomic_write_json(output/'case_selection.json',audit)
-    return pages
-
-
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--run',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
     args=p.parse_args();config=json.loads((args.run/'config.rank0.json').read_text()); records=[]
@@ -197,9 +148,21 @@ def main():
     atomic_write_json(args.output/'comparison.json',{'run_id':config['run_id'],'tables':tables,
         'breakdowns':breakdowns,'status':dict(Counter(r['status'] for r in records))})
     (args.output/'RESULTS.md').write_text('\n'.join(md)+'\n')
-    pages=case_sheets(records,args.output)
-    figures=sorted(p.name for p in args.output.glob('*.png'))+pages
-    (args.output/'index.html').write_text("<!doctype html><meta charset='utf-8'><title>Benchmark comparison</title><style>body{font-family:sans-serif;margin:24px}img{max-width:100%}pre{white-space:pre-wrap}</style><h1>Benchmark scores and review cases</h1><pre>"+html.escape('\n'.join(md))+ '</pre>'+''.join(f"<h2>{f}</h2><a href='{f}'><img loading='lazy' src='{f}'></a>" for f in figures))
-    print(json.dumps({'records':len(records),'output':str(args.output),'case_sheets':len(pages)},indent=2))
+    for stale in args.output.glob('cases_*.jpg'):
+        stale.unlink()
+    selection = args.output/'case_selection.json'
+    if selection.exists():
+        selection.unlink()
+    figures = sorted(args.output.glob('*.png'))
+    page = "<!doctype html><meta charset='utf-8'><title>Benchmark results</title>" \
+           "<style>body{max-width:1500px;margin:24px auto;font-family:sans-serif}" \
+           "img{max-width:100%;height:auto}pre{white-space:pre-wrap}</style>" \
+           "<h1>Benchmark results</h1><pre>" + html.escape('\n'.join(md)) + "</pre>"
+    page += ''.join(
+        f"<h2>{item.name}</h2><a href='{item.name}'><img loading='lazy' src='{item.name}'></a>"
+        for item in figures
+    )
+    (args.output/'index.html').write_text(page)
+    print(json.dumps({'records':len(records),'output':str(args.output)},indent=2))
 
 if __name__=='__main__': main()

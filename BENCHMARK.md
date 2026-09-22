@@ -319,7 +319,7 @@ JUDGE_PY=/opt/tiger/tanyue/sam3-crispedit/.venv-scaleedit-vllm/bin/python
 BENCH_RUNS=/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit
 ```
 
-Qwen-2.1 环境通过 `.pth` 复用 baseline 的基础依赖，在独立环境覆盖 transformers 5.17.0、tokenizers 0.23.2；torch=2.8.0+cu128。包记录见 [qwen21_environment_20260920.json](docs/data/qwen21_environment_20260920.json)。迁移机器时须同时重建基础环境或重新安装依赖。其本地缓存 `/opt/tiger/tanyue/.cache/benchmark_models/Qwen-Image-2.1` 的 `cache_provenance.json` 保存源路径、revision 和逐文件 SHA-256。
+Qwen-2.1 环境通过 `.pth` 复用 baseline 的基础依赖，在独立环境覆盖 transformers 5.17.0、tokenizers 0.23.2；torch=2.8.0+cu128。迁移机器时须同时重建基础环境或重新安装依赖。其本地缓存 `/opt/tiger/tanyue/.cache/benchmark_models/Qwen-Image-2.1` 的 `cache_provenance.json` 保存源路径、revision 和逐文件 SHA-256。
 
 数据根目录为 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark`，权重和大型输出无需复制进 Git 仓库。
 
@@ -345,7 +345,6 @@ Qwen-2.1 环境通过 `.pth` 复用 baseline 的基础依赖，在独立环境�
 tmux new-session -d -s benchmark_replan -c /opt/tiger/tanyue/samtok_edit_benchmark \
   'bash evaluation/replan/launch_8gpu.sh'
 "$REPLAN_PY" evaluation/replan/validate_outputs.py
-"$REPLAN_PY" evaluation/replan/render_gallery.py --workers 8
 ```
 
 已有 5,248 张验证通过的 RePlan 输出可直接复用。需要生成时，先完成此阶段，再运行占用相同 GPU 的基模与 judge 阶段。
@@ -375,6 +374,17 @@ JUDGE_RUN="$BENCH_RUNS/metrics_qwen38_all_models_pair_v2"
 "$JUDGE_PY" -m evaluation.metrics.prepare --require-complete --output "$JUDGE_RUN/pilot.jsonl"
 tmux new-session -d -s benchmark_judge -c /opt/tiger/tanyue/samtok_edit_benchmark \
   "bash evaluation/metrics/launch_pilot.sh $JUDGE_RUN --split all"
+
+# Judge 完成后生成汇总、代表性 setting case study，并发布到文档
+"$QWEN21_PY" -m evaluation.metrics.compare \
+  --run "$JUDGE_RUN/all" --output "$JUDGE_RUN/comparison"
+"$QWEN21_PY" evaluation/render_setting_case_study.py \
+  528 345 181 488 586 608 632 635 \
+  --judge-root "$JUDGE_RUN" \
+  --prepared-manifest "$BENCH_RUNS/referential_finegrained_edit_benchmark_656_two_image_locator/prepared/benchmark_baseline_eval_inputs.jsonl" \
+  --output "$JUDGE_RUN/comparison/setting_case_study"
+"$QWEN21_PY" -m evaluation.metrics.publish_results \
+  --comparison "$JUDGE_RUN/comparison" --repo "$PWD"
 ```
 
 ### 5.5 查看进度与产物
@@ -410,7 +420,8 @@ tail -F "$BENCH_RUNS/metrics_qwen38_all_models_pair_v2/logs/controller.log"
 "$QWEN21_PY" evaluation/validate_baseline_outputs.py --models qwen21 \
   --experiment_root "$BENCH_RUNS/qwen21_656"
 "$REPLAN_PY" evaluation/replan/audit_planner.py
-"$REPLAN_PY" evaluation/replan/render_failure_review.py
+"$QWEN21_PY" evaluation/render_setting_case_study.py \
+  528 345 181 488 586 608 632 635
 ```
 
 结构验证确认产物和输入来源；模型是否完成要求由图像检查与三个评分轴分别衡量。

@@ -24,5 +24,10 @@ if [[ ! -f "$judge_root/pilot.jsonl" ]]; then
 fi
 bash evaluation/metrics/launch_pilot.sh "$judge_root" --split all
 "$python_bin" -m evaluation.metrics.compare --run "$judge_root/all" --output "$judge_root/comparison"
+"$python_bin" evaluation/render_setting_case_study.py \
+  528 345 181 488 586 608 632 635 \
+  --judge-root "$judge_root" \
+  --prepared-manifest "$baseline_root/prepared/benchmark_baseline_eval_inputs.jsonl" \
+  --output "$judge_root/comparison/setting_case_study"
 "$python_bin" -m evaluation.metrics.publish_results --comparison "$judge_root/comparison" --repo "$repo_dir"
 printf 'All generation and scoring stages completed.\n'

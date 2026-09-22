@@ -57,7 +57,7 @@ def main() -> None:
     parser.add_argument("--report", type=Path)
     args = parser.parse_args()
     result = audit(args.output_root)
-    path = args.report or args.output_root / "reports/qualitative_expanded_20260920/template_coordinate_audit.json"
+    path = args.report or args.output_root / "reports/template_coordinate_audit.json"
     write_json(path, result)
     print(json.dumps({key: value for key, value in result.items() if key != "records"}, indent=2))
 

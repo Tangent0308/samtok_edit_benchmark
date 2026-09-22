@@ -18,13 +18,11 @@ export HF_HUB_OFFLINE=1
 
 workers=()
 progress_pid=""
-keepalive_pid=""
 cleanup() {
   code=$?
   trap - EXIT INT TERM
   for pid in "${workers[@]}"; do kill "${pid}" 2>/dev/null || true; done
   if [[ -n "${progress_pid}" ]]; then kill "${progress_pid}" 2>/dev/null || true; fi
-  if [[ -n "${keepalive_pid}" ]]; then kill -CONT "${keepalive_pid}" 2>/dev/null || true; fi
   if [[ ${code} -eq 0 ]]; then
     printf 'status=complete\nfinished_at=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > "${STATUS_FILE}"
   else
@@ -40,12 +38,6 @@ for model in ${MODEL_SEQUENCE}; do
   "${PYTHON_BIN}" evaluation/replan/runner.py --model "${model}" \
     --replan-repo "${REPLAN_ROOT}" --dry-run > "${LOG_DIR}/${model}_preflight.log"
 done
-
-keepalive_pid=$(pgrep -f '^python /mnt/bn/strategy-mllm-train/user/tanyue/run.py --size 8000 --gpus 8 --interval 0.0005$' | head -1 || true)
-if [[ -n "${keepalive_pid}" ]]; then
-  echo "[controller] suspending GPU keepalive ${keepalive_pid}"
-  kill -STOP "${keepalive_pid}"
-fi
 
 printf 'status=running\nstarted_at=%s\nmodels=%s\nworld_size=8\n' \
   "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "${MODEL_SEQUENCE}" > "${STATUS_FILE}"

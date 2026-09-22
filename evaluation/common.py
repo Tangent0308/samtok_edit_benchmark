@@ -71,7 +71,7 @@ BASE_SETTING_KEYS = (
 
 
 def settings_for_model(model: str) -> list[SettingSpec]:
-    if model in {"qwen", "flux2"}:
+    if model in {"qwen", "flux2", "qwen21"}:
         return [
             SettingSpec(model, "text_only", "source", "with_location_reference"),
             SettingSpec(model, "mask_annotation", "mask_annotation", "region_only"),

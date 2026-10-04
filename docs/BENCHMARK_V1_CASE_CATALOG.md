@@ -153,7 +153,7 @@ python selection/build_v1_gallery.py \
 /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/case_gallery.html
 ```
 
-页面支持 case 下拉选择、ID/数据集搜索、source release 筛选、region 数筛选、前后切换以及键盘左右键。图片使用相对于 HTML 的路径，因此不需要启动 Web 服务。
+页面支持 case 下拉选择、ID/数据集搜索、source release 筛选、region 数筛选、前后切换以及键盘左右键。每个 case 的低分辨率 source/evaluation/region 合成预览已经直接内嵌到 HTML，不依赖 VSCode Preview 读取外部图片路径；原始资产路径仍显示在 case 信息中。当前 gallery 文件约 15 MB，切换时只替换一个内嵌预览图。
 
 ## 当前边界
 

@@ -4,9 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import base64
+import io
 import json
 from pathlib import Path
 
+from PIL import Image, ImageDraw, ImageOps
 
 HTML_TEMPLATE = r'''<!doctype html>
 <html lang="zh-CN">
@@ -33,18 +36,17 @@ HTML_TEMPLATE = r'''<!doctype html>
     .label { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.04em; }
     .value { margin-top:2px; overflow-wrap:anywhere; }
     .mono { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; }
-    .views { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+    .views { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; }
     .card { background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:10px; min-width:0; }
     .card h2 { margin:0 0 8px; font-size:14px; }
-    .stage { position:relative; display:flex; justify-content:center; align-items:center; min-height:180px; max-height:62vh; overflow:hidden; background:#e8edf1; border-radius:6px; }
-    .stage img { display:block; max-width:100%; max-height:62vh; object-fit:contain; }
-    .stage.overlay img:first-child { width:100%; }
-    .stage.overlay img:last-child { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; opacity:.48; mix-blend-mode:multiply; }
+    .stage { position:relative; display:flex; justify-content:center; align-items:center; min-height:180px; max-height:75vh; overflow:hidden; background:#e8edf1; border-radius:6px; }
+    .stage img { display:block; max-width:100%; max-height:75vh; object-fit:contain; }
     .caption { margin-top:7px; color:var(--muted); font-size:12px; }
     .regions { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:14px; }
     .region-card { background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:10px; }
     .region-card h3 { margin:0 0 7px; font-size:13px; }
     .region-card img { width:100%; max-height:360px; object-fit:contain; background:#e8edf1; border-radius:6px; display:block; }
+    .region-note { color:var(--muted); font-size:12px; padding:12px 0 2px; }
     .empty { padding:50px 15px; text-align:center; color:var(--muted); background:var(--panel); border:1px dashed var(--line); border-radius:9px; }
     @media (max-width:900px) { .meta-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .views { grid-template-columns:1fr; } .counter { margin-left:0; } }
   </style>
@@ -66,8 +68,7 @@ HTML_TEMPLATE = r'''<!doctype html>
   <main>
     <section class="meta" id="meta"></section>
     <section class="views">
-      <article class="card"><h2>Source image</h2><div class="stage"><img id="source" alt="source image"></div><div class="caption" id="sourceCaption"></div></article>
-      <article class="card"><h2>Evaluation mask overlay</h2><div class="stage overlay"><img id="sourceOverlay" alt="source image"><img id="evaluation" alt="evaluation mask overlay"></div><div class="caption">红色/深色半透明层为 evaluation mask；单独 mask 见下方 region 卡片。</div></article>
+      <article class="card"><h2>Embedded preview · source / evaluation mask / region mask</h2><div class="stage"><img id="preview" alt="source and mask preview"></div><div class="caption" id="sourceCaption"></div></article>
     </section>
     <section class="regions" id="regions"></section>
     <div class="empty" id="empty" hidden>当前筛选条件没有匹配的 case。</div>
@@ -118,15 +119,15 @@ HTML_TEMPLATE = r'''<!doctype html>
     function render() {
       const item = state.filtered[state.position]; $("counter").textContent = state.filtered.length ? `${state.position+1} / ${state.filtered.length}（全量 ${CASES.length}）` : `0 / 0（全量 ${CASES.length}）`;
       $("empty").hidden = Boolean(item); $("meta").replaceChildren(); $("regions").replaceChildren();
-      if (!item) { $("source").removeAttribute("src"); $("sourceOverlay").removeAttribute("src"); $("evaluation").removeAttribute("src"); return; }
+      if (!item) { $("preview").removeAttribute("src"); return; }
       const meta=$("meta"); const grid=document.createElement("div"); grid.className="meta-grid";
       text(grid,"ID",item.id,true); text(grid,"Original ID",item.original_id,true); text(grid,"Release",item.source_release); text(grid,"Dataset",item.source_dataset); text(grid,"Edit type",item.edit_type); meta.appendChild(grid);
       const difficulty=document.createElement("div"); difficulty.className="caption"; difficulty.textContent="Difficulty: "+Object.entries(item.difficulty||{}).filter(([,v])=>v).map(([k])=>k).join(", "); meta.appendChild(difficulty);
-      $("source").src=path(item.source_image); $("sourceOverlay").src=path(item.source_image); $("evaluation").src=path(item.evaluation_mask); $("sourceCaption").textContent=item.source_image;
+      $("preview").src=item.preview_data; $("sourceCaption").textContent="预览图已内嵌到 HTML；源图："+item.source_image;
       for (let i=0;i<item.regions.length;i++) {
         const region=item.regions[i], card=document.createElement("article"); card.className="region-card";
         const title=document.createElement("h3"); title.textContent=`Region ${i+1} · box [${region.box.join(", ")}] · point [${region.point.join(", ")}]`; card.appendChild(title);
-        const img=document.createElement("img"); img.src=path(region.mask); img.alt=`region ${i+1} mask`; card.appendChild(img);
+        const note=document.createElement("div"); note.className="region-note"; note.textContent="该 region mask 已包含在上方 embedded preview 中。"; card.appendChild(note);
         const cap=document.createElement("div"); cap.className="caption mono"; cap.textContent=region.mask; card.appendChild(cap); $("regions").appendChild(card);
       }
     }
@@ -142,6 +143,56 @@ HTML_TEMPLATE = r'''<!doctype html>
 '''
 
 
+def _encode_jpeg(image: Image.Image, quality: int = 72) -> str:
+    buffer = io.BytesIO()
+    image.convert("RGB").save(buffer, format="JPEG", quality=quality, optimize=True)
+    return "data:image/jpeg;base64," + base64.b64encode(buffer.getvalue()).decode("ascii")
+
+
+def _fit(image: Image.Image, size: tuple[int, int]) -> Image.Image:
+    try:
+        resampling = Image.Resampling.LANCZOS
+    except AttributeError:  # pragma: no cover - compatibility with old Pillow
+        resampling = Image.LANCZOS
+    return ImageOps.contain(image, size, method=resampling)
+
+
+def _mask_panel(mask: Image.Image, size: tuple[int, int]) -> Image.Image:
+    fitted = _fit(mask.convert("L"), size)
+    panel = Image.new("RGB", size, (30, 36, 42))
+    x = (size[0] - fitted.width) // 2
+    y = (size[1] - fitted.height) // 2
+    white = Image.new("RGB", fitted.size, (250, 250, 250))
+    panel.paste(white, (x, y), fitted)
+    return panel
+
+
+def _preview_for_case(root: Path, case: dict) -> str:
+    """Return one compact embedded composite for source and all masks."""
+    source = Image.open(root / case["source_image"]).convert("RGB")
+    evaluation = Image.open(root / case["evaluation_mask"]).convert("L")
+    panel_size = (300, 240)
+    gap = 10
+    panels: list[tuple[str, Image.Image]] = [("SOURCE", _fit(source, panel_size))]
+    eval_mask = evaluation.resize(source.size)
+    red = Image.new("RGB", source.size, (225, 40, 45))
+    alpha = eval_mask.point(lambda value: min(180, int(value * 0.70)))
+    overlay = Image.composite(red, source, alpha)
+    panels.append(("EVALUATION MASK", _fit(overlay, panel_size)))
+    for index, region in enumerate(case["regions"], 1):
+        mask = Image.open(root / region["mask"]).convert("L")
+        region_panel = _mask_panel(mask, panel_size)
+        panels.append((f"REGION {index}", region_panel))
+
+    canvas = Image.new("RGB", (gap + len(panels) * (panel_size[0] + gap), panel_size[1] + 42), (242, 245, 247))
+    draw = ImageDraw.Draw(canvas)
+    for index, (label, panel) in enumerate(panels):
+        x = gap + index * (panel_size[0] + gap)
+        canvas.paste(panel, (x, 32))
+        draw.text((x, 9), label, fill=(25, 35, 45))
+    return _encode_jpeg(canvas, quality=62)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, required=True)
@@ -151,6 +202,8 @@ def main() -> None:
     output = (args.output or (root / "case_gallery.html")).resolve()
     manifest = root / "benchmark/benchmark.jsonl"
     cases = [json.loads(line) for line in manifest.open(encoding="utf-8") if line.strip()]
+    for case in cases:
+        case["preview_data"] = _preview_for_case(root, case)
     payload = json.dumps(cases, ensure_ascii=False, separators=(",", ":"))
     payload = payload.replace("</script>", "<\\/script>")
     html = HTML_TEMPLATE.replace("__CASES__", payload).replace("__DATASET_ROOT__", ".")

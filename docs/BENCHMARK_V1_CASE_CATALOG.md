@@ -106,7 +106,9 @@ v1-goal1k_v1_300-0000-<original_id>
 ```text
 samtok_edit_benchmark_v1/
 ├── README.md
-├── case_gallery.html            # VSCode Preview 可直接打开的 case 浏览器
+├── case_gallery.html            # 左侧列表、按需加载预览的 case 浏览器
+├── gallery_cases.json           # 450 条轻量 case 元数据
+├── gallery_previews/            # 450 张按 case 分离的压缩预览图
 ├── dataset_summary.json
 ├── assets/
 │   ├── v0_hard_relevant_150/<local case assets>
@@ -143,6 +145,8 @@ python selection/validate_v1_case_dataset.py \
   --root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1
 python selection/build_v1_gallery.py \
   --root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1
+python selection/build_v1_lazy_gallery.py \
+  --root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1 --clean
 ```
 
 本次校验结果：450 行、450 个唯一 ID、450 个唯一源图，共检查 1,413 个 source/evaluation/region 图像资产，全部通过尺寸和解码检查。
@@ -153,7 +157,16 @@ python selection/build_v1_gallery.py \
 /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/case_gallery.html
 ```
 
-页面支持 case 下拉选择、ID/数据集搜索、source release 筛选、region 数筛选、前后切换以及键盘左右键。每个 case 的低分辨率 source/evaluation/region 合成预览已经直接内嵌到 HTML，不依赖 VSCode Preview 读取外部图片路径；原始资产路径仍显示在 case 信息中。当前 gallery 文件约 15 MB，切换时只替换一个内嵌预览图。
+页面左侧显示 case 列表，支持 ID/数据集搜索、source release 筛选、region 数筛选、前后切换以及键盘左右键。HTML 初始只包含轻量元数据，不加载图片；选择 case 后才请求 `gallery_previews/<index>.jpg`，每个预览包含 source、evaluation mask 和 region mask。HTML 约 269 KB，全部预览图约 10.9 MB。
+
+如果 VSCode Preview 仍然禁止本地图片资源，使用仓库中的标准库 server：
+
+```bash
+python selection/serve_v1_gallery.py \
+  --root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1
+```
+
+然后在浏览器打开命令输出的 `http://127.0.0.1:8765/case_gallery.html`。这个 server 只提供本地 v1 数据目录，不需要额外依赖。
 
 ## 当前边界
 

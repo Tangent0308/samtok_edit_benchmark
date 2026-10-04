@@ -161,10 +161,15 @@ def read_jsonl(path: Path) -> list[dict]:
     return records
 
 
-def load_benchmark(manifest: Path, dataset_root: Path, verify_assets: bool = True) -> tuple[list[dict], dict]:
+def load_benchmark(
+    manifest: Path,
+    dataset_root: Path,
+    verify_assets: bool = True,
+    expected_cases: int | None = EXPECTED_CASES,
+) -> tuple[list[dict], dict]:
     rows = read_jsonl(manifest)
-    if len(rows) != EXPECTED_CASES:
-        raise ValueError(f"Expected {EXPECTED_CASES} benchmark rows, found {len(rows)}")
+    if expected_cases is not None and len(rows) != expected_cases:
+        raise ValueError(f"Expected {expected_cases} benchmark rows, found {len(rows)}")
     ids: set[str] = set()
     sources: set[str] = set()
     region_counts = Counter()
@@ -230,10 +235,11 @@ def load_benchmark(manifest: Path, dataset_root: Path, verify_assets: bool = Tru
 def load_prepared_manifest(
     path: Path,
     experiment_root: Path,
+    expected_cases: int | None = EXPECTED_CASES,
 ) -> tuple[list[dict], dict]:
     rows = read_jsonl(path)
-    if len(rows) != EXPECTED_CASES:
-        raise ValueError(f"Expected {EXPECTED_CASES} prepared rows, found {len(rows)}")
+    if expected_cases is not None and len(rows) != expected_cases:
+        raise ValueError(f"Expected {expected_cases} prepared rows, found {len(rows)}")
     asset_paths: set[Path] = set()
     for index, row in enumerate(rows):
         if row.get("eval_index") != index:

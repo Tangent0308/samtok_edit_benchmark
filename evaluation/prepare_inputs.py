@@ -166,6 +166,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--manifest", type=Path, default=DEFAULT_MANIFEST)
     parser.add_argument("--dataset_root", type=Path, default=DEFAULT_DATASET_ROOT)
     parser.add_argument("--experiment_root", type=Path, default=DEFAULT_EXPERIMENT_ROOT)
+    parser.add_argument(
+        "--expected_cases",
+        type=int,
+        default=656,
+        help="Expected manifest rows; use 0 to disable the legacy 656-row check for a versioned candidate benchmark.",
+    )
     parser.add_argument("--render_workers", type=int, default=16)
     parser.add_argument(
         "--render_modalities",
@@ -181,7 +187,12 @@ def main() -> None:
     args = parse_args()
     if args.render_workers <= 0:
         raise ValueError("--render_workers must be positive")
-    rows, data_report = load_benchmark(args.manifest, args.dataset_root, verify_assets=True)
+    rows, data_report = load_benchmark(
+        args.manifest,
+        args.dataset_root,
+        verify_assets=True,
+        expected_cases=None if args.expected_cases == 0 else args.expected_cases,
+    )
     args.experiment_root.mkdir(parents=True, exist_ok=True)
     atomic_write_json(args.experiment_root / "prepared/benchmark_validation.json", data_report)
     render_inputs(

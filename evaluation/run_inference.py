@@ -497,6 +497,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--prepared_root", type=Path, default=DEFAULT_EXPERIMENT_ROOT)
     parser.add_argument("--dataset_root", type=Path, default=DEFAULT_DATASET_ROOT)
     parser.add_argument("--experiment_root", type=Path, default=DEFAULT_EXPERIMENT_ROOT)
+    parser.add_argument(
+        "--expected_cases",
+        type=int,
+        default=656,
+        help="Expected prepared rows; use 0 for a variable-size candidate benchmark.",
+    )
     parser.add_argument("--samtok_repo", type=Path, default=DEFAULT_SAMTOK_REPO)
     parser.add_argument("--diffsynth_repo", type=Path, default=None)
     parser.add_argument("--qwen21", type=Path, default=Path(os.environ.get("QWEN21_MODEL", str(DEFAULT_QWEN_2511.parent / "Qwen-Image-2.1"))))
@@ -536,7 +542,9 @@ def main(argv: list[str] | None = None) -> None:
 
         def preflight():
             rows, prepared_report = load_prepared_manifest(
-                args.prepared_manifest, args.prepared_root
+                args.prepared_manifest,
+                args.prepared_root,
+                expected_cases=None if args.expected_cases == 0 else args.expected_cases,
             )
             if args.eval_indices is not None:
                 if args.start_index != 0 or args.max_samples is not None:

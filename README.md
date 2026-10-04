@@ -4,6 +4,7 @@
 
 - [Benchmark](BENCHMARK.md): construction, data schema, official model adapters, scoring rubric, environments, launch commands, and progress logs.
 - [Experiments](MODEL_RESULTS.md): final generation and scoring results, visual comparisons, and case studies.
+- [Benchmark v1 case catalog](docs/BENCHMARK_V1_CASE_CATALOG.md): the new `v1branch` staging dataset combining those 150 cases with the external 300-case release. It contains copied source/mask assets and intentionally omits instructions until the case catalog is finalized.
 
 ## Repository layout
 

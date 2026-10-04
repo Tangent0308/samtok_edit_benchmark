@@ -106,6 +106,7 @@ v1-goal1k_v1_300-0000-<original_id>
 ```text
 samtok_edit_benchmark_v1/
 ├── README.md
+├── case_gallery.html            # VSCode Preview 可直接打开的 case 浏览器
 ├── dataset_summary.json
 ├── assets/
 │   ├── v0_hard_relevant_150/<local case assets>
@@ -140,9 +141,19 @@ mask, box, point
 python selection/build_v1_case_dataset.py --overwrite
 python selection/validate_v1_case_dataset.py \
   --root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1
+python selection/build_v1_gallery.py \
+  --root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1
 ```
 
 本次校验结果：450 行、450 个唯一 ID、450 个唯一源图，共检查 1,413 个 source/evaluation/region 图像资产，全部通过尺寸和解码检查。
+
+在 VSCode 中直接打开下面的文件并选择 **Open Preview** 即可浏览：
+
+```text
+/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/case_gallery.html
+```
+
+页面支持 case 下拉选择、ID/数据集搜索、source release 筛选、region 数筛选、前后切换以及键盘左右键。图片使用相对于 HTML 的路径，因此不需要启动 Web 服务。
 
 ## 当前边界
 

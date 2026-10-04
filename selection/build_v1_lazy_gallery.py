@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import html as html_lib
 import json
 import shutil
 from pathlib import Path
@@ -63,7 +64,7 @@ HTML = r'''<!doctype html>
     </div>
   </header>
   <div class="layout">
-    <aside><div class="case-list" id="caseList"></div></aside>
+    <aside><div class="case-list" id="caseList">__STATIC_LIST__</div></aside>
     <main>
       <div class="empty" id="empty">请从左侧选择一个 case。当前尚未加载任何图片。</div>
       <section id="detail" hidden>
@@ -73,45 +74,48 @@ HTML = r'''<!doctype html>
       </section>
     </main>
   </div>
-  <script>
-    const CASES = __CASES__;
-    const state = { filtered: CASES.slice(), selectedId: null };
-    const $ = id => document.getElementById(id);
-    const values = key => [...new Set(CASES.map(x => x[key]))].sort((a,b)=>a.localeCompare(b));
-    for (const value of values("source_release")) { const o=document.createElement("option"); o.value=value; o.textContent=value; $("release").appendChild(o); }
-    for (const value of values("source_dataset")) { const o=document.createElement("option"); o.value=value; o.textContent=value; $("dataset").appendChild(o); }
-    function match(x) {
-      const q=$("search").value.trim().toLowerCase(); const text=[x.id,x.original_id,x.source_release,x.source_dataset,x.edit_type].join(" ").toLowerCase();
-      return (!q || text.includes(q)) && (!$('release').value || x.source_release===$('release').value) && (!$('dataset').value || x.source_dataset===$('dataset').value) && (!$('regions').value || String(x.regions.length)===$('regions').value);
-    }
-    function refresh() { const keep=state.selectedId; state.filtered=CASES.filter(match); renderList(); if (keep && state.filtered.some(x=>x.id===keep)) select(keep); else { state.selectedId=null; showEmpty(); } }
-    function renderList() {
-      const list=$("caseList"); list.replaceChildren(); $("count").textContent=`${state.filtered.length} / ${CASES.length} cases`;
-      for (let i=0;i<state.filtered.length;i++) { const item=state.filtered[i], b=document.createElement("button"); b.className="case-item"+(item.id===state.selectedId?" active":""); b.dataset.id=item.id;
-        b.innerHTML=`<span class="case-number">${String(i+1).padStart(3,"0")}</span><span class="case-id"></span><div class="case-sub"></div>`;
-        b.querySelector('.case-id').textContent=item.id; b.querySelector('.case-sub').textContent=`${item.source_dataset} · ${item.regions.length} region · ${item.edit_type}`; list.appendChild(b); }
-    }
-    function showEmpty() { $("empty").hidden=false; $("detail").hidden=true; $("preview").removeAttribute("src"); }
-    function select(id) {
-      const item=CASES.find(x=>x.id===id); if (!item) return; state.selectedId=id; $("empty").hidden=true; $("detail").hidden=false;
-      const meta=$("meta"); meta.replaceChildren(); const grid=document.createElement("div"); grid.className="meta-grid";
-      const add=(label,value,mono=false)=>{const d=document.createElement('div'),l=document.createElement('div'),v=document.createElement('div');l.className='label';l.textContent=label;v.className='value'+(mono?' mono':'');v.textContent=value;d.append(l,v);grid.appendChild(d);};
-      add('ID',item.id,true); add('Original ID',item.original_id,true); add('Release',item.source_release); add('Dataset',item.source_dataset); add('Edit type',item.edit_type); meta.appendChild(grid);
-      const difficulty=document.createElement('div'); difficulty.className='caption'; difficulty.textContent='Difficulty: '+Object.entries(item.difficulty||{}).filter(([,v])=>v).map(([k])=>k).join(', '); meta.appendChild(difficulty);
-      const image=new Image(); image.onload=()=>{if(state.selectedId===id) $("preview").replaceWith(image);}; image.onerror=()=>{if(state.selectedId===id) $("previewCaption").textContent='预览图加载失败，请使用本目录下的 serve_v1_gallery.py 启动本地服务。';}; image.alt='selected case preview'; image.id='preview'; image.src=item.preview;
-      $("previewCaption").textContent=`已加载当前 case 预览（${item.preview_size_kb} KB）；原始源图：${item.source_image}`;
-      const regions=$("regionInfo"); regions.replaceChildren(); item.regions.forEach((r,i)=>{const d=document.createElement('div');d.className='region';d.innerHTML=`<b>Region ${i+1}</b><div class="caption">box [${r.box.join(', ')}] · point [${r.point.join(', ')}]<br><span class="mono"></span></div>`;d.querySelector('span').textContent=r.mask;regions.appendChild(d);});
-      renderList();
-    }
-    $("caseList").onclick=e=>{const button=e.target.closest('.case-item');if(button)select(button.dataset.id);};
-    $("previous").onclick=()=>{const i=state.filtered.findIndex(x=>x.id===state.selectedId);if(i>0)select(state.filtered[i-1].id);};
-    $("next").onclick=()=>{const i=state.filtered.findIndex(x=>x.id===state.selectedId);if(i>=0&&i<state.filtered.length-1)select(state.filtered[i+1].id);};
-    for(const id of ['search','release','dataset','regions']) $(id).addEventListener(id==='search'?'input':'change',refresh);
-    document.addEventListener('keydown',e=>{if(e.target.matches('input,select'))return;if(e.key==='ArrowLeft')$("previous").click();if(e.key==='ArrowRight')$("next").click();});
-    renderList();
-  </script>
+  <script id="case-data" type="application/json">__CASES__</script>
+  <script src="case_gallery.js"></script>
 </body>
 </html>
+'''
+
+
+LAZY_JS = r'''const CASES = JSON.parse(document.getElementById("case-data").textContent);
+const state = { filtered: CASES.slice(), selectedId: null };
+const $ = id => document.getElementById(id);
+const values = key => [...new Set(CASES.map(x => x[key]))].sort((a,b)=>a.localeCompare(b));
+for (const value of values("source_release")) { const o=document.createElement("option"); o.value=value; o.textContent=value; $("release").appendChild(o); }
+for (const value of values("source_dataset")) { const o=document.createElement("option"); o.value=value; o.textContent=value; $("dataset").appendChild(o); }
+function match(x) {
+  const q=$("search").value.trim().toLowerCase(); const text=[x.id,x.original_id,x.source_release,x.source_dataset,x.edit_type].join(" ").toLowerCase();
+  return (!q || text.includes(q)) && (!$('release').value || x.source_release===$('release').value) && (!$('dataset').value || x.source_dataset===$('dataset').value) && (!$('regions').value || String(x.regions.length)===$('regions').value);
+}
+function refresh() { const keep=state.selectedId; state.filtered=CASES.filter(match); renderList(); if (keep && state.filtered.some(x=>x.id===keep)) select(keep); else { state.selectedId=null; showEmpty(); } }
+function renderList() {
+  const list=$("caseList"); list.replaceChildren(); $("count").textContent=`${state.filtered.length} / ${CASES.length} cases`;
+  for (let i=0;i<state.filtered.length;i++) { const item=state.filtered[i], b=document.createElement("button"); b.className="case-item"+(item.id===state.selectedId?" active":""); b.dataset.id=item.id;
+    b.innerHTML=`<span class="case-number">${String(i+1).padStart(3,"0")}</span><span class="case-id"></span><div class="case-sub"></div>`;
+    b.querySelector('.case-id').textContent=item.id; b.querySelector('.case-sub').textContent=`${item.source_dataset} · ${item.regions.length} region · ${item.edit_type}`; list.appendChild(b); }
+}
+function showEmpty() { $("empty").hidden=false; $("detail").hidden=true; $("preview").removeAttribute("src"); }
+function select(id) {
+  const item=CASES.find(x=>x.id===id); if (!item) return; state.selectedId=id; $("empty").hidden=true; $("detail").hidden=false;
+  const meta=$("meta"); meta.replaceChildren(); const grid=document.createElement("div"); grid.className="meta-grid";
+  const add=(label,value,mono=false)=>{const d=document.createElement('div'),l=document.createElement('div'),v=document.createElement('div');l.className='label';l.textContent=label;v.className='value'+(mono?' mono':'');v.textContent=value;d.append(l,v);grid.appendChild(d);};
+  add('ID',item.id,true); add('Original ID',item.original_id,true); add('Release',item.source_release); add('Dataset',item.source_dataset); add('Edit type',item.edit_type); meta.appendChild(grid);
+  const difficulty=document.createElement('div'); difficulty.className='caption'; difficulty.textContent='Difficulty: '+Object.entries(item.difficulty||{}).filter(([,v])=>v).map(([k])=>k).join(', '); meta.appendChild(difficulty);
+  const image=new Image(); image.onload=()=>{if(state.selectedId===id) $("preview").replaceWith(image);}; image.onerror=()=>{if(state.selectedId===id) $("previewCaption").textContent='预览图加载失败，请使用 serve_v1_gallery.py 启动本地服务。';}; image.alt='selected case preview'; image.id='preview'; image.src=item.preview;
+  $("previewCaption").textContent=`已请求当前 case 预览（${item.preview_size_kb} KB）；原始源图：${item.source_image}`;
+  const regions=$("regionInfo"); regions.replaceChildren(); item.regions.forEach((r,i)=>{const d=document.createElement('div');d.className='region';d.innerHTML=`<b>Region ${i+1}</b><div class="caption">box [${r.box.join(', ')}] · point [${r.point.join(', ')}]<br><span class="mono"></span></div>`;d.querySelector('span').textContent=r.mask;regions.appendChild(d);});
+  renderList();
+}
+$("caseList").onclick=e=>{const button=e.target.closest('.case-item');if(button)select(button.dataset.id);};
+$("previous").onclick=()=>{const i=state.filtered.findIndex(x=>x.id===state.selectedId);if(i>0)select(state.filtered[i-1].id);};
+$("next").onclick=()=>{const i=state.filtered.findIndex(x=>x.id===state.selectedId);if(i>=0&&i<state.filtered.length-1)select(state.filtered[i+1].id);};
+for(const id of ['search','release','dataset','regions']) $(id).addEventListener(id==='search'?'input':'change',refresh);
+document.addEventListener('keydown',e=>{if(e.target.matches('input,select'))return;if(e.key==='ArrowLeft')$("previous").click();if(e.key==='ArrowRight')$("next").click();});
+renderList();
 '''
 
 
@@ -140,7 +144,19 @@ def main() -> None:
         item["preview_size_kb"] = round(preview_path.stat().st_size / 1024, 1)
         metadata.append(item)
     payload = json.dumps(metadata, ensure_ascii=False, separators=(",", ":")).replace("</script>", "<\\/script>")
-    output.write_text(HTML.replace("__CASES__", payload), encoding="utf-8")
+    static_buttons = []
+    for index, item in enumerate(metadata):
+        case_id = html_lib.escape(item["id"], quote=True)
+        dataset = html_lib.escape(f"{item['source_dataset']} · {len(item['regions'])} region · {item['edit_type']}")
+        static_buttons.append(
+            f'<button class="case-item" data-id="{case_id}"><span class="case-number">{index + 1:03d}</span>'
+            f'<span class="case-id">{case_id}</span><div class="case-sub">{dataset}</div></button>'
+        )
+    output.write_text(
+        HTML.replace("__CASES__", payload).replace("__STATIC_LIST__", "".join(static_buttons)),
+        encoding="utf-8",
+    )
+    (output.parent / "case_gallery.js").write_text(LAZY_JS, encoding="utf-8")
     (root / "gallery_cases.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"output": str(output), "cases": len(metadata), "preview_dir": str(preview_dir), "total_preview_bytes": sum(p.stat().st_size for p in preview_dir.glob("*.jpg"))}, ensure_ascii=False, indent=2))
 

@@ -174,7 +174,15 @@ python selection/serve_v1_gallery.py \
   --root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1
 ```
 
-然后在浏览器打开命令输出的 `http://127.0.0.1:8765/case_gallery.html`。这个 server 只提供本地 v1 数据目录，不需要额外依赖。
+如果服务的是 workspace 入口，则使用：
+
+```bash
+python selection/serve_v1_gallery.py \
+  --root /opt/tiger/tanyue/samtok_edit_benchmark \
+  --html v1_case_gallery.html
+```
+
+然后在浏览器打开命令输出的 URL。这个 server 只提供本地 v1 数据目录，不需要额外依赖。
 
 ## 当前边界
 

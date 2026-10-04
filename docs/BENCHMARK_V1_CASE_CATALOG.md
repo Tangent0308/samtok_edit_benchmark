@@ -157,6 +157,14 @@ python selection/build_v1_lazy_gallery.py \
 /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/case_gallery.html
 ```
 
+当前 workspace `/opt/tiger/tanyue/samtok_edit_benchmark` 也保留了一个可直接打开的入口：
+
+```text
+/opt/tiger/tanyue/samtok_edit_benchmark/v1_case_gallery.html
+```
+
+该入口旁的 `gallery_previews` 是指向 v1 数据目录的本地符号链接，专门用于当前机器的 VSCode Preview。
+
 页面左侧显示 case 列表，支持 ID/数据集搜索、source release 筛选、region 数筛选、前后切换以及键盘左右键。HTML 初始只包含轻量元数据，不加载图片；选择 case 后才请求 `gallery_previews/<index>.jpg`，每个预览包含 source、evaluation mask 和 region mask。HTML 约 269 KB，全部预览图约 10.9 MB。
 
 如果 VSCode Preview 仍然禁止本地图片资源，使用仓库中的标准库 server：

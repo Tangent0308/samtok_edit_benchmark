@@ -1,0 +1,48 @@
+{
+  "version": "original_656_hard_relevant_v1",
+  "source_manifest": "benchmark/benchmark.jsonl",
+  "source_manifest_sha256": "280f3c5050cce156173dff31f841328f51b373c83eaf6190b3c1ce3409276022",
+  "source_cases": 656,
+  "core_cases": 150,
+  "decision_counts": {
+    "exclude_or_hold_visual_relevance": 504,
+    "admit_core_hard_relevant": 150,
+    "exclude_annotation_conflict": 2
+  },
+  "core_by_dataset": {
+    "compbench": 114,
+    "humanedit": 1,
+    "mirage": 35
+  },
+  "core_by_edit_type": {
+    "add": 67,
+    "remove": 48,
+    "replace": 24,
+    "mixed": 11
+  },
+  "core_by_model_queue": {
+    "low_success_review": 20,
+    "text_hard_review": 64,
+    "remaining_review_pool": 53,
+    "confirmed_common_failure_seed": 13
+  },
+  "core_by_region_count": {
+    "1": 87,
+    "2": 63
+  },
+  "reviewed_priority_pool": 243,
+  "reviewed_priority_pool_note": "190 direct-failure rows plus 53 text-success=2 supplement rows; all rendered as source/mask contact sheets and directly inspected.",
+  "admission_policy": [
+    "exclude known annotation conflicts at eval indices 321 and 511",
+    "require failure-priority queue: confirmed seed, text-hard, low-success, or text-success=2 supplement",
+    "require maximum target region area below 8 percent",
+    "require multi-region, MIRAGE local edit, localized replace/mixed operation, or target area below 2.5 percent",
+    "exclude MIRAGE cases whose operation is dominated by texture/material/feather/fur/pattern/screen changes",
+    "retain original instructions and regions unchanged"
+  ],
+  "limitations": [
+    "The remaining 506 cases are not proven easy; they were not admitted to this strict core after the stated visual/model gates.",
+    "Other-model difficulty is measured from the existing fixed-seed judge results, not repeated sampling probabilities.",
+    "Review is direct AI visual review, not human annotation or a claim that SAMTok already succeeds on every admitted case."
+  ]
+}

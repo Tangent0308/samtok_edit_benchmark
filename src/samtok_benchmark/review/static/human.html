@@ -1,0 +1,7 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>v1 · 人工评测</title><link rel="stylesheet" href="style.css"><script defer src="human.js"></script></head><body>
+<div class="layout"><aside class="sidebar"><div class="brand"><h1>v1 人工评测</h1><p id="reviewer"></p></div><nav id="case-list" class="case-list"></nav></aside>
+<main class="main"><header class="topbar"><h2 id="title">从左侧选择结果</h2><button id="export">导出 human_scores.jsonl</button></header>
+<section id="case-view" hidden><div class="instruction-card"><p id="instruction"></p><p class="muted">分别评估编辑完成度、内容保持和视觉质量。三项均为 0–4 分；无法判断时选 unknown。移除须目标消失；多目标漏掉主操作，完成度最高 2。mask 内未获指令授权的变化也要扣内容保持分。双图上的轮廓由评测器添加，请忽略；点击图片可按原分辨率查看。</p></div>
+<div class="image-grid"><figure><figcaption>原图</figcaption><a target="_blank" id="before-link"><img id="before"></a></figure><figure><figcaption>编辑结果</figcaption><a target="_blank" id="after-link"><img id="after"></a></figure></div>
+<div class="image-grid"><figure><figcaption>原图 + 原始 region 轮廓</figcaption><a target="_blank" id="before-contours-link"><img id="before-contours"></a></figure><figure><figcaption>编辑结果 + 同位置轮廓</figcaption><a target="_blank" id="after-contours-link"><img id="after-contours"></a></figure></div>
+<div class="review-card" id="ratings"></div><button id="save" class="pass-button">保存当前人工评分</button><p id="message"></p></section></main></div></body></html>

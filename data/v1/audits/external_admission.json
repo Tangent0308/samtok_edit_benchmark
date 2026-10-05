@@ -1,0 +1,32 @@
+{
+  "release": "goal1k_v1_300",
+  "manifest": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/PACO_benchmark_candidates/goal_1k/benchmark_goal1k_v1_300/benchmark.jsonl",
+  "manifest_sha256": "c795e6dad9acb965f5176f12d30b84f30752c2dec019db9dc0ec2cc75ef0defd",
+  "audit_sidecar_sha256": "3c9b88f3fe5215a79283c5cb31f208cd996f2aa1ecd403a79c249e0cb71809a4",
+  "checks": {
+    "rows_300": true,
+    "unique_ids": true,
+    "unique_source_images": true,
+    "unique_source_groups": true,
+    "all_sidecars_admitted": true,
+    "asset_validation_passed": true,
+    "prepared_300_assets": true,
+    "new_expansion_80": true,
+    "new_expansion_direct_review": true,
+    "compact_prompts_all_present": true,
+    "compact_prompt_old_generic_removed": true,
+    "training_exact_matches_zero": true,
+    "training_perceptual_unresolved_zero": true,
+    "frozen_656_sha_unchanged": true
+  },
+  "all_checks_passed": true,
+  "source_dataset_counts": {
+    "goal1k/PACO-LVIS": 153,
+    "goal1k/BURST": 58,
+    "goal1k/MeViS-valid_u": 26,
+    "goal1k/MOSEv2": 6,
+    "goal1k/ADE20K-Part": 43,
+    "goal1k/SA-V": 14
+  },
+  "scope_note": "Training overlap is audited against the cached 175101-image project editing manifest; absence from all backbone pretraining is not proven."
+}

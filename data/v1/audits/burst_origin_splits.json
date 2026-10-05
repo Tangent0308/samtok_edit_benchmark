@@ -1,0 +1,69 @@
+{
+  "official_manifest_sizes": {
+    "hacs_unique_videos": 504716,
+    "charades_videos": 9848,
+    "lasot_all": 1400,
+    "lasot_test": 280
+  },
+  "split_counts": {
+    "val": {
+      "YFCC100M": {
+        "pending_origin_split": 107
+      },
+      "HACS": {
+        "exclude_origin_train": 202,
+        "origin_heldout_id_verified": 4
+      },
+      "BDD": {
+        "pending_origin_split": 108
+      },
+      "ArgoVerse": {
+        "pending_origin_split": 74
+      },
+      "AVA": {
+        "pending_origin_split": 127
+      },
+      "LaSOT": {
+        "origin_heldout_id_verified": 39,
+        "exclude_origin_train": 161
+      },
+      "Charades": {
+        "origin_heldout_id_verified": 44,
+        "exclude_origin_train": 122
+      }
+    },
+    "test": {
+      "YFCC100M": {
+        "pending_origin_split": 160
+      },
+      "HACS": {
+        "exclude_origin_train": 309,
+        "origin_heldout_id_verified": 4
+      },
+      "BDD": {
+        "pending_origin_split": 162
+      },
+      "ArgoVerse": {
+        "pending_origin_split": 111
+      },
+      "AVA": {
+        "pending_origin_split": 193
+      },
+      "LaSOT": {
+        "exclude_origin_train": 238,
+        "origin_heldout_id_verified": 64
+      },
+      "Charades": {
+        "origin_heldout_id_verified": 54,
+        "exclude_origin_train": 126
+      }
+    }
+  },
+  "manifest_sha256": {
+    "Charades.zip": "c616913ef79c2ddde06d9c562eae57bb8901d459d7568a0d27bf09cbf33ae866",
+    "HACS_v1.1.1.zip": "a7bea563c598b4b96c7958f156a1fbae3e93ef642bf8473f378358cb2c6a2cbc",
+    "lasot_all_dataset.txt": "4bddd31c971dff44748b1f3590544babe14eb5cea0714b9481834d7ccb3c58ed",
+    "lasot_testing_set.txt": "11709952a85f42307ffe7a8952378169d9bf026ec904099f040f0de40db5434e"
+  },
+  "scope": "HACS official clips+segments; Charades official train/test; LaSOT official all and test lists. BDD, ArgoVerse, AVA, YFCC source split still pending."
+}

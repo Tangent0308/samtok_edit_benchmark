@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAMTok v1 · 450 case review</title>
+  <link rel="stylesheet" href="style.css?v=mask_grounded_v2">
+  <script src="app.js?v=mask_grounded_v2" defer></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>SAMTok v1</h1>
+        <p>450 条 case 筛选</p>
+      </div>
+      <div class="toolbar">
+        <input id="search" type="search" placeholder="搜索 ID / 数据集 / 类型">
+        <select id="filter">
+          <option value="all">全部 case</option>
+          <option value="unreviewed">未处理</option>
+          <option value="pass">已通过</option>
+          <option value="discard">已丢弃</option>
+        </select>
+      </div>
+      <div class="stats">
+        <span>总数 <b id="total-count">450</b></span>
+        <span class="pass-text">通过 <b id="pass-count">0</b></span>
+        <span class="discard-text">丢弃 <b id="discard-count">0</b></span>
+        <span>未处理 <b id="todo-count">450</b></span>
+      </div>
+      <nav id="case-list" class="case-list" aria-label="case 列表"></nav>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <div class="eyebrow">LOCAL CASE REVIEW</div>
+          <h2 id="case-title">加载中…</h2>
+          <p id="case-subtitle" class="muted"></p>
+        </div>
+        <div class="top-actions">
+          <button id="prev" class="secondary">← 上一个</button>
+          <button id="next" class="secondary">下一个 →</button>
+          <button id="export" class="secondary">导出结果 JSON</button>
+        </div>
+      </header>
+
+      <section id="empty" class="empty" hidden>
+        请从左侧选择一个 case；选择后才会加载图片。
+      </section>
+
+      <section id="case-view" class="case-view" hidden>
+        <div class="instruction-card">
+          <div class="label">Case 元数据</div>
+          <div id="metadata" class="metadata"></div>
+          <div class="label prompt-label">编辑指令</div>
+          <div id="original-instruction" class="original-instruction"></div>
+          <textarea id="instruction-edit" class="instruction-edit" rows="2" spellcheck="false"></textarea>
+          <div class="muted instruction-help">可以直接修改指令；修改会保存到 reviewed_cases.json 副本，不会改动原始标注。</div>
+        </div>
+
+        <div class="image-grid">
+          <figure>
+            <figcaption>源图</figcaption>
+            <img id="source-image" alt="source image">
+          </figure>
+          <figure>
+            <figcaption>原始 region mask 叠加图（R1 红 / R2 绿）</figcaption>
+            <img id="overlay-image" alt="source image with mask overlay">
+          </figure>
+          <figure id="region-figure">
+            <figcaption>region mask</figcaption>
+            <div id="region-images" class="region-images"></div>
+          </figure>
+        </div>
+
+        <div class="review-card">
+          <div class="review-heading">
+            <div>
+              <div class="label">你的判断</div>
+              <p class="muted">选择通过或丢弃；状态会自动保存到本地结果文件。</p>
+            </div>
+            <div id="current-status" class="status-badge unreviewed">未处理</div>
+          </div>
+          <div class="review-buttons">
+            <button id="pass" class="pass-button">✓ 通过 <span class="shortcut">P</span></button>
+            <button id="discard" class="discard-button">× 丢弃 <span class="shortcut">D</span></button>
+            <button id="unset" class="secondary">清除判断 <span class="shortcut">U</span></button>
+          </div>
+          <label class="note-label" for="note">备注（可选）</label>
+          <textarea id="note" rows="3" placeholder="例如：mask 不完整、场景不符合、目标太简单……"></textarea>
+          <div id="save-message" class="save-message"></div>
+        </div>
+
+        <div class="details-card">
+          <div class="label">原始记录</div>
+          <pre id="raw-json"></pre>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

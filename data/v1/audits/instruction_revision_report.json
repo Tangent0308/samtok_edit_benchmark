@@ -1,0 +1,56 @@
+{
+  "revision": "mask_grounded_v2",
+  "case_count": 450,
+  "unchanged_v0_instructions": 150,
+  "rewritten_external_instructions": 300,
+  "external_edit_types": {
+    "attribute": 277,
+    "remove": 14,
+    "replace": 4,
+    "add": 5
+  },
+  "external_instruction_words": {
+    "min": 6,
+    "max": 21,
+    "mean": 13.18
+  },
+  "training_style_reference": "/opt/tiger/tanyue/samtok_edit/docs/04_SAMTokEdit_Qwen21_训练数据盘点.md",
+  "training_example_source": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/qwen21_full4_20260928/data/sources.jsonl",
+  "review_method": "AI direct visual inspection of all 300 clean sources, original region-mask overlays and context crops; five additional clean zooms. Not human annotation or baseline evaluation.",
+  "instruction_policy": "One concise English imperative with an explicit instance/part reference and concrete local change. Segmentation source labels are hints, not editing instructions. No forced replace template.",
+  "no_new_inference_or_baseline_scores": true,
+  "evaluation_mask_displayed": false,
+  "overlay_source": "regions[*].mask",
+  "instruction_table_sha256": "028b8c5ee71eabb02f940dd3905180d5d64b809c9dbab205848e95991fa92b49",
+  "case_source_and_mask_identity_verified": 450,
+  "validation": {
+    "all_450_case_ids_and_region_metadata_match_frozen_catalog": true,
+    "all_package_source_and_region_hashes_match_formal_v1_dataset": true,
+    "all_source_overlay_region_images_decode": true,
+    "region_mask_count": 513,
+    "evaluation_mask_hidden_from_review_ui": true,
+    "browser_test": {
+      "passed": true,
+      "initial_image_requests": 0,
+      "case_list_count": 450,
+      "checked_indices": [
+        0,
+        149,
+        150,
+        151,
+        219,
+        350,
+        449
+      ],
+      "checks": [
+        "image_loading",
+        "no_evaluation_mask_requests",
+        "pass_discard_persistence",
+        "custom_instruction_persistence",
+        "legacy_override_migration",
+        "JSON_download",
+        "reload"
+      ]
+    }
+  }
+}

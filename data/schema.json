@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Tangent0308/samtok_edit_benchmark/data/schema.json",
+  "title": "SAMTok Edit Benchmark v1 case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "original_id",
+    "source_release",
+    "source_dataset",
+    "source_image",
+    "evaluation_mask",
+    "instruction",
+    "region_instruction",
+    "instruction_source",
+    "instruction_revision",
+    "schema_version",
+    "regions",
+    "edit_type",
+    "difficulty"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "original_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_release": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_dataset": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_image": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evaluation_mask": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instruction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "region_instruction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instruction_source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "instruction_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "regions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "mask",
+          "box",
+          "point"
+        ],
+        "properties": {
+          "mask": {
+            "type": "string",
+            "minLength": 1
+          },
+          "box": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "point": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "edit_type": {
+      "enum": [
+        "attribute",
+        "add",
+        "remove",
+        "replace",
+        "mixed",
+        "action",
+        "text",
+        "composite"
+      ]
+    },
+    "difficulty": {
+      "type": "object"
+    }
+  }
+}

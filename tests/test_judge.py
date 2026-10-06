@@ -27,6 +27,26 @@ def test_axes_and_unknowns_remain_separate():
     assert rubric.derive(dict(edit=0, preservation=None, quality=4))["strict_success"] is False
 
 
+@pytest.mark.parametrize(
+    "scores, expected",
+    [
+        ((0, 4, 4), False),  # Unchanged: high preservation/quality cannot compensate.
+        ((0, 2, 4), False),  # Only a wrong instance was edited cleanly.
+        ((4, 2, 4), False),  # Requested edit plus an unauthorized local change.
+        ((2, 4, 4), False),  # A substantial unedited portion / an omitted second target.
+        ((3, 4, 4), False),  # A visible minor requested residual is not full completion.
+        ((4, 4, 2), False),  # Completed target with an obvious rendering defect.
+        ((4, 3, 3), True),
+        ((4, None, 4), None),
+        ((4, 2, None), False),  # Known failure wins even with another axis unknown.
+    ],
+)
+def test_three_axis_acceptance_boundaries(scores, expected):
+    # Aggregation checks only: these assigned scores are NOT real VLM/human visual judgments.
+    value = dict(zip(("edit", "preservation", "quality"), scores))
+    assert rubric.derive(value)["strict_success"] is expected
+
+
 @pytest.mark.parametrize("invalid", ["4", True, 5, -1, 2.5])
 def test_scores_require_integers(invalid):
     with pytest.raises(ValueError):
@@ -69,6 +89,8 @@ def test_judge_prompt_does_not_leak_methods_or_labels():
     )
     text = rubric.prompt(row)
     assert "hidden_model_path" not in text and "strict_success" not in text
+    with pytest.raises(ValueError, match="unsupported rubric"):
+        rubric.prompt(row, "two_image_v2")
 
 
 def test_missing_is_failure_judge_error_is_unknown():
@@ -91,7 +113,7 @@ def args_for(jobs, tmp_path):
         max_pixels=1048576,
         max_tokens=4096,
         max_model_len=16384,
-        variants=["pair_v2"],
+        variants=["pair_v3"],
         manifest=jobs,
         limit=None,
         output=tmp_path / "run",
@@ -142,3 +164,15 @@ def test_dry_run_uses_no_backend_or_checkpoint(pipeline, tmp_path, monkeypatch):
     args.model = None
     args.dry_run = True
     assert runner.run(args) == 0
+
+
+def test_old_protocol_cannot_be_silently_rescored(pipeline, tmp_path):
+    *_, jobs, rows = pipeline
+    rows[0]["judge_protocol"] = "samtok_v1_mask_grounded_two_image_judge_1.0"
+    rows[0]["input_digest"] = digest({k: v for k, v in rows[0].items() if k != "input_digest"})
+    write_jsonl(jobs, rows)
+    args = args_for(jobs, tmp_path)
+    args.dry_run = True
+    with pytest.raises(ValueError, match="wrong judge protocol"):
+        runner.run(args)
+    assert not args.output.exists()

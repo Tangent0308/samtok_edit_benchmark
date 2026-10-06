@@ -3,9 +3,10 @@ import json
 
 import pytest
 
-from samtok_benchmark.io import read_jsonl, write_json
+from samtok_benchmark.io import read_jsonl, write_json, write_jsonl, sha256_file
 from samtok_benchmark.review.package import export_reviewed, package_review
 from samtok_benchmark.judge.human import package_human_review
+from samtok_benchmark.judge.rubric import RUBRIC, RUBRIC_ID
 
 
 def test_portable_review_and_instruction_migration(release, tmp_path):
@@ -128,6 +129,20 @@ def test_human_output_review_is_blind_and_separate(pipeline, tmp_path):
         (output / samples[0][k]).exists()
         for k in ("before_clean", "after_clean", "before_contours", "after_contours")
     )
+    assert (output / "rubric.txt").read_text() == RUBRIC
+    metadata = json.loads((output / "review_metadata.json").read_text())
+    assert metadata["rubric"] == RUBRIC_ID
+    assert metadata["rubric_sha256"] == sha256_file(output / "rubric.txt")
+
+
+def test_human_review_rejects_old_rubric_identity(pipeline, tmp_path):
+    *_, jobs, rows = pipeline
+    rows[0]["judge_protocol"] = "samtok_v1_mask_grounded_two_image_judge_1.0"
+    write_jsonl(jobs, rows)
+    output = tmp_path / "human_old"
+    with pytest.raises(ValueError, match="wrong judge protocol"):
+        package_human_review(jobs, output, "reviewer_a")
+    assert not output.exists()
 
 
 def test_mixed_human_override_cannot_publish(release, tmp_path):

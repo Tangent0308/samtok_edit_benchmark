@@ -61,7 +61,7 @@ def parser() -> argparse.ArgumentParser:
     a.add_argument("--manifest", type=Path, required=True)
     a.add_argument("--output", type=Path, required=True)
     a.add_argument("--model", type=Path)
-    a.add_argument("--variants", nargs="+", choices=("pair_v2", "pair_v2_r1"), default=["pair_v2"])
+    a.add_argument("--variants", nargs="+", choices=("pair_v3", "pair_v3_r1"), default=["pair_v3"])
     a.add_argument("--rank", type=int, default=0)
     a.add_argument("--world-size", type=int, default=1)
     a.add_argument("--batch-size", type=int, default=2)

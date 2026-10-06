@@ -2,7 +2,7 @@
 
 from samtok_benchmark.io import digest
 
-VERSION = "samtok_v1_mask_grounded_two_image_judge_1.0"
+VERSION = "samtok_v1_mask_grounded_two_image_judge_1.1"
 
 
 def conjunction(values: list[bool | None]) -> bool | None:

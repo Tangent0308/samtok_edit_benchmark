@@ -8,12 +8,18 @@ from pathlib import Path
 from PIL import Image
 
 from samtok_benchmark.io import digest, read_jsonl, sha256_file, write_json
-from samtok_benchmark.judge.rubric import outlined
+from samtok_benchmark.judge.rubric import RUBRIC, RUBRIC_ID, outlined
+from samtok_benchmark.judge.protocol import VERSION
 
 
 def package_human_review(manifest: Path, output: Path, reviewer: str) -> dict:
     if not reviewer.strip():
         raise ValueError("reviewer identity is required")
+    jobs = read_jsonl(manifest)
+    if any(j.get("judge_protocol") != VERSION for j in jobs):
+        raise ValueError(
+            "wrong judge protocol; re-prepare before applying the current human rubric"
+        )
     if output.exists() and any(output.iterdir()):
         raise FileExistsError("choose a new directory for independent human review")
     output.mkdir(parents=True, exist_ok=True)
@@ -23,7 +29,7 @@ def package_human_review(manifest: Path, output: Path, reviewer: str) -> dict:
             files("samtok_benchmark.review").joinpath("static", name).read_bytes()
         )
     samples = []
-    jobs = read_jsonl(manifest)
+    (output / "rubric.txt").write_text(RUBRIC, encoding="utf-8")
     # Shuffle by opaque digest to reduce ordering clues about methods/settings.
     for index, j in enumerate(sorted(jobs, key=lambda r: digest(r["sample_id"]))):
         if j["delivery_status"] != "available":
@@ -63,6 +69,9 @@ def package_human_review(manifest: Path, output: Path, reviewer: str) -> dict:
         output / "review_metadata.json",
         {
             "judge_manifest_sha256": sha256_file(manifest),
+            "judge_protocol": VERSION,
+            "rubric": RUBRIC_ID,
+            "rubric_sha256": sha256_file(output / "rubric.txt"),
             "reviewer": reviewer,
             "available_outputs": len(samples),
             "unavailable_outputs": len(jobs) - len(samples),
@@ -71,7 +80,7 @@ def package_human_review(manifest: Path, output: Path, reviewer: str) -> dict:
     (output / "README.md").write_text(
         "Run `python -m http.server 8766 --bind 127.0.0.1` in this directory and open "
         "http://127.0.0.1:8766. Rate edit/preservation/quality from 0 to 4, or unknown. "
-        "Use the published rubric; inspect clean images as well as target contours. "
+        "Use the included rubric.txt and anchored score options; inspect clean images and contours. "
         "Method names and VLM scores are hidden. Decisions persist in browser localStorage; "
         "download human_scores.jsonl before moving machines or clearing browser storage.\n",
         encoding="utf-8",

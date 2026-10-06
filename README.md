@@ -85,7 +85,7 @@ samtok-benchmark report --manifest outputs/judge_inputs.jsonl \
   --run outputs/judge --output outputs/report
 ```
 
-The judge sees two images with identical evaluator-added original-mask contours and scores **edit completion**, **content preservation**, and **visual quality**, each 0–4. Strict success requires completion = 4, preservation ≥ 3, quality ≥ 3. Reports include missing outputs, unknown judgments and coverage. See the full rubric and independently recorded human-review workflow in [Evaluation](docs/EVALUATION.md).
+The `pair_v3` judge sees two images with identical evaluator-added original-mask contours and scores **edit completion** (no missed edits), **content preservation** (no unauthorized edits), and **visual quality** (no new rendering defects), each 0–4. It follows an ordered target/neighbor/scene checklist, explicit operation requirements and anchored score boundaries, with evidence before each score. Strict success requires completion = 4, preservation ≥ 3, quality ≥ 3. Reports include missing outputs, unknown judgments and coverage. See the full rubric and independently recorded human-review workflow in [Evaluation](docs/EVALUATION.md).
 
 ## Repository layout
 

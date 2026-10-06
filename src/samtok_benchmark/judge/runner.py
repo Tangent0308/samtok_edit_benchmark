@@ -18,13 +18,13 @@ from samtok_benchmark.judge import rubric as simple
 
 VARIANTS = {
     name: {
-        "rubric": "two_image_v2",
+        "rubric": simple.RUBRIC_ID,
         "whole": True,
         "repeat": repeat,
         "thinking": True,
         "effort": "low",
     }
-    for name, repeat in (("pair_v2", 0), ("pair_v2_r1", 1))
+    for name, repeat in (("pair_v3", 0), ("pair_v3_r1", 1))
 }
 
 

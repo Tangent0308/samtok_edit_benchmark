@@ -1,56 +1,83 @@
 {
-  "revision": "mask_grounded_v2",
+  "revision": "mask_grounded_balanced_v3",
   "case_count": 450,
-  "unchanged_v0_instructions": 150,
-  "rewritten_external_instructions": 300,
-  "external_edit_types": {
-    "attribute": 277,
-    "remove": 14,
-    "replace": 4,
-    "add": 5
+  "individually_visually_inspected": 450,
+  "newly_written_or_rechecked_instructions": 450,
+  "instruction_text_changed": 361,
+  "edit_type_changed": 230,
+  "edit_type_counts": {
+    "add": 101,
+    "attribute": 100,
+    "mixed": 47,
+    "remove": 101,
+    "replace": 101
   },
-  "external_instruction_words": {
-    "min": 6,
-    "max": 21,
-    "mean": 13.18
+  "external_edit_type_counts": {
+    "add": 35,
+    "attribute": 95,
+    "remove": 75,
+    "replace": 95
   },
+  "single_region_mixed_cases": 0,
+  "all_instructions_start_with_capital_letter": true,
+  "dual_region_bindings_explicit": 63,
+  "review_sheets": 57,
+  "additional_clean_zooms": 9,
+  "instruction_word_count": {
+    "min": 5,
+    "max": 26,
+    "mean": 14.35
+  },
+  "instruction_table_sha256": "f76de9c8c3857e8d4e234413bd0b88edb06eac49014f452c05019c65dcac158c",
+  "previous_manifest_sha256": "e3695c26ec3e45bdc7a45aba9cbaa0cb6e50665af3f6dc3414b5cf6750eb2ea5",
+  "manifest_sha256": "34455779b378ff615008f16a2a4afe09191220d117b5c6f2a52ae02ce27f67d5",
+  "asset_manifest_sha256": "52d0e6fdeef55bb1626e1a61c151d1beb6617324b0c0ec705462f24187c8f9d9",
   "training_style_reference": "/opt/tiger/tanyue/samtok_edit/docs/04_SAMTokEdit_Qwen21_训练数据盘点.md",
   "training_example_source": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/qwen21_full4_20260928/data/sources.jsonl",
-  "review_method": "AI direct visual inspection of all 300 clean sources, original region-mask overlays and context crops; five additional clean zooms. Not human annotation or baseline evaluation.",
-  "instruction_policy": "One concise English imperative with an explicit instance/part reference and concrete local change. Segmentation source labels are hints, not editing instructions. No forced replace template.",
-  "no_new_inference_or_baseline_scores": true,
+  "review_method": "AI individual visual inspection; no independent human approval",
+  "balance_policy": "Preserve image/mask identities; choose natural operations first. Mixed requires two original masks and two distinct operation types. Balance the remaining four operation categories, without recolor-as-replacement relabeling.",
+  "human_review_status": "pending",
+  "model_evaluation_status": "not rerun; old scores are selection evidence only",
   "evaluation_mask_displayed": false,
-  "overlay_source": "regions[*].mask",
-  "instruction_table_sha256": "028b8c5ee71eabb02f940dd3905180d5d64b809c9dbab205848e95991fa92b49",
-  "case_source_and_mask_identity_verified": 450,
+  "asset_geometry_unchanged": true,
   "validation": {
-    "all_450_case_ids_and_region_metadata_match_frozen_catalog": true,
-    "all_package_source_and_region_hashes_match_formal_v1_dataset": true,
-    "all_source_overlay_region_images_decode": true,
-    "region_mask_count": 513,
-    "evaluation_mask_hidden_from_review_ui": true,
+    "asset_hashes_verified": 1413,
+    "geometry_and_masks_unchanged": true,
+    "unit_tests_passed": 36,
+    "all_locator_prompts_checked": 3600,
     "browser_test": {
       "passed": true,
       "initial_image_requests": 0,
-      "case_list_count": 450,
-      "checked_indices": [
+      "case_count": 450,
+      "tested_indices": [
         0,
+        86,
+        97,
+        115,
+        134,
+        146,
         149,
         150,
         151,
         219,
         350,
+        432,
+        435,
         449
       ],
-      "checks": [
-        "image_loading",
-        "no_evaluation_mask_requests",
-        "pass_discard_persistence",
-        "custom_instruction_persistence",
-        "legacy_override_migration",
-        "JSON_download",
-        "reload"
-      ]
+      "tested": [
+        "image loading",
+        "no evaluation mask request",
+        "legacy default override migration",
+        "custom instruction retention",
+        "pass/discard persistence",
+        "reviewed manifest",
+        "JSON download",
+        "reload persistence",
+        "stale approvals excluded from counts",
+        "uppercase pass guard"
+      ],
+      "test_root": "/tmp/v1-review-browser-0od86aak"
     }
   }
 }

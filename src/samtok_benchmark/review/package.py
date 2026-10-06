@@ -105,6 +105,10 @@ def export_reviewed(manifest: Path, results: Path, output: Path, reviewer: str) 
         )
     if not kept:
         raise ValueError("no approved cases")
+    # Human overrides must meet the same instruction requirements as releases.
+    for case in kept:
+        if not "A" <= case["instruction"][0] <= "Z":
+            raise ValueError(f"instruction must start with a capital letter: {case['id']}")
     write_jsonl(output, kept)
     write_jsonl(output.with_suffix(".review_audit.jsonl"), audit)
     return {"passed": len(kept), "remaining": len(cases) - len(kept), "output": str(output)}

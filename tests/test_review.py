@@ -73,6 +73,48 @@ def test_stale_approval_cannot_publish_new_instruction(release, tmp_path):
         export_reviewed(manifest, results, tmp_path / "approved.jsonl", "reviewer")
 
 
+def test_lowercase_human_override_cannot_publish(release, tmp_path):
+    _, manifest, case = release
+    results = tmp_path / "results.json"
+    write_json(
+        results,
+        {
+            "cases": {
+                case["id"]: {
+                    "status": "pass",
+                    "instruction_revision": case["instruction_revision"],
+                    "instruction_override": "paint the support tube green.",
+                }
+            }
+        },
+    )
+    output = tmp_path / "approved.jsonl"
+    with pytest.raises(ValueError, match="capital letter"):
+        export_reviewed(manifest, results, output, "reviewer")
+    assert not output.exists()
+
+
+def test_review_copy_keeps_stale_decision_without_counting_as_approved(release, tmp_path):
+    root, manifest, case = release
+    out = tmp_path / "review"
+    package_review(manifest, root, out)
+    spec = importlib.util.spec_from_file_location("revision_review", out / "run_review.py")
+    server = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(server)
+    record = {
+        "version": 1,
+        "cases": {
+            case["id"]: {"status": "pass", "instruction_revision": "old", "note": "Keep my note"}
+        },
+    }
+    server.save_results(record)
+    assert server.load_results()["cases"][case["id"]]["status"] == "pass"
+    derivative = json.loads((out / "reviewed_cases.json").read_text())[0]
+    assert derivative["review_status"] == "unreviewed"
+    assert derivative["previous_review_status"] == "pass"
+    assert derivative["review_note"] == "Keep my note"
+
+
 def test_human_output_review_is_blind_and_separate(pipeline, tmp_path):
     *_, jobs, rows = pipeline
     output = tmp_path / "human"

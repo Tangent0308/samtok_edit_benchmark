@@ -2,7 +2,7 @@
 
 A 450-case benchmark for fine-grained, region-directed image editing: selecting the correct instance or part, respecting occlusion and irregular boundaries, completing the requested edit, and preserving nearby content.
 
-**Current release:** v1 / `mask_grounded_v2`. It combines 150 difficult cases filtered from the previous benchmark with 300 external-source cases. The 300 new instructions were individually rewritten against the source images and original region masks. Independent human approval and model evaluation with these revised instructions remain pending. Historical model scores are selection evidence, not v1 results.
+**Current release:** v1 / `mask_grounded_balanced_v3`. It combines 150 difficult cases filtered from the previous benchmark with 300 external-source cases. All 450 cases were individually inspected against clean source images and original region masks. The instructions use short, capitalized English imperatives: add 101, remove 101, replace 101, attribute 100, mixed 47. Mixed editing uses two original region masks; single-mask cases contain only one operation type. Independent human approval and model evaluation with these revised instructions remain pending. Historical model scores are selection evidence, not v1 results.
 
 ![Examples: clean source, original region overlay, binary region mask](docs/assets/v1_examples.jpg)
 
@@ -94,7 +94,8 @@ data/v1/                       frozen 450-case release, hashes and provenance
   cases.jsonl                  sole current task manifest
   asset_manifest.jsonl         1,413 source/region/legacy-evaluation asset records
   provenance.jsonl             450 source and selection records
-  instruction_revisions.jsonl  300 old/new instruction audits
+  instruction_revisions.jsonl  ordered instruction history (300 + 450 records)
+  instruction_revisions_balanced_v3.jsonl  current 450-case instruction audit
   selection/                   filtering and expansion evidence
   audits/                      split, overlap, instruction and asset verification
 src/samtok_benchmark/           installable package and CLI

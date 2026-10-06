@@ -9,8 +9,8 @@
 | 项目 | 当前状态 |
 |---|---|
 | case 汇总与资产校验 | 450 条，已冻结并通过校验 |
-| 外部新增指令 | 300 条，逐例对照原图/原始 mask 修订，版本 `mask_grounded_v2` |
-| v0 保留指令 | 150 条，保留既有任务语义与区域绑定 |
+| 全量指令 | 450 条逐例对照原图/原始 mask 编写或复核，版本 `mask_grounded_balanced_v3` |
+| 本次文字变化 / 类型变化 | 361 / 230 条；89 条经复核保留适合的已有文字 |
 | 已有视觉复核 | AI 逐例检查，非人工标注 |
 | 独立人工准入审核 | 未提供实际审核结果；通过工具逐条记录后才能声明完成 |
 | 当前指令下的模型推理/VLM 评分 | 尚未重新运行；旧成绩不能作为本版成绩 |
@@ -25,7 +25,7 @@
 | v0 筛选 / 外部新增 | 150 / 300 |
 | 原始 region mask | 513 |
 | 单 region / 双 region case | 387 / 63 |
-| 属性修改 / 添加 / 移除 / 替换 / 混合编辑 | 277 / 72 / 62 / 28 / 11 |
+| 属性修改 / 添加 / 移除 / 替换 / 混合编辑 | 100 / 101 / 101 / 101 / 47 |
 | 资产清单 | 1,413：450 原图 + 513 region mask + 450 历史 evaluation mask |
 
 | 来源 | 数量 | 任务来源 |
@@ -40,7 +40,9 @@
 | SA-V | 14 | 外部新增 |
 | MOSEv2 | 6 | 外部新增 |
 
-新增 300 条为属性修改 277、移除 14、替换 4、表面细节添加 5；英文指令 6–21 个词，平均 13.18 个词。旧的无指令 catalog 中外部 300 条全部标为 `replace`，那是历史占位值，不是当前操作类型。
+四类单项操作在全量 450 条中均衡：add/remove/replace 各 101，attribute 100；mixed 47，不强求混合编辑配额。387 条单 region 没有 mixed，63 条双 region 中为 add 11、attribute 5、mixed 47。这里按原始 `regions` 数量判断，单 mask 内有多个连通片段不等于多个独立编辑区域。
+
+外部新增 300 条为 add 35、remove 75、replace 95、attribute 95；继承的旧集包含 66 条新增任务放置区，因此不能只把外部来源单独强制四等分。全量英文指令为 5–26 个词，平均 14.35 个词，均句首大写。历史无指令 catalog 的类型仅是当时元数据，不是当前任务类型。
 
 ## 3. 路径与获取
 
@@ -55,9 +57,9 @@
 | 本仓库 `data/v1/cases.jsonl` | 当前规范任务 manifest；所有评测命令默认读取它 |
 | 正式目录 `assets/` | 可独立使用的原图和 mask；路径与仓库 manifest 一致 |
 | 正式目录 `benchmark/benchmark.jsonl` | 历史无指令 catalog，只用于身份/几何追溯 |
-| 正式目录 `benchmark/benchmark_with_instructions.jsonl` | 本轮修订的原始导出；与规范 manifest 的指令、ID、几何逐条一致 |
-| 正式目录 `benchmark/instruction_review_evidence/` | 全部 300 条复核图及额外放大图；图头保留的是旧候选线索，最终指令看当前 manifest |
-| `/opt/tiger/tanyue/samtok_v1_450_case_review.tar.gz` | 可下载解压、用 Python 3 在本地运行的审阅包，约 213 MB |
+| 正式目录 `benchmark/benchmark_with_instructions.jsonl` | 当前规范 manifest 的副本；与仓库逐字节一致 |
+| 正式目录 `benchmark/instruction_review_evidence/` | `mask_grounded_balanced_v3/` 含覆盖 450 条的 57 张复核拼图、9 张干净放大复核和指令表；图头为上一版文字，最终指令看当前 manifest |
+| `/opt/tiger/tanyue/samtok_v1_450_case_review.tar.gz` | 可下载解压、用 Python 3 在本地运行的审阅包，大小以实际压缩包为准 |
 | `/opt/tiger/tanyue/samtok_v1_450_case_review/` | 上述包的项目机器展开目录 |
 
 Git 提供元数据、代码和少量可视化样例；目前没有公开托管的全量图像下载地址。项目机器上可直接用正式资产目录，也可将审阅包解压目录作为 `--dataset-root`。其他使用者需要获得该包或按源数据条款取得资产。重建工具可从现有资产根目录复制，或从 `asset_manifest.jsonl` 记录的原始文件物化；跨机器可用 `--source-map OLD_PREFIX=NEW_PREFIX` 转换原始前缀。不会自动下载数据、申请访问权或猜测路径。
@@ -101,12 +103,12 @@ samtok-benchmark validate --dataset-root local_data/v1
     "same_class_multi_instance": true,
     "multi_object_scene": true
   },
-  "instruction": "Change the exposed inner surface of the foreground doughnut tray to dark blue.",
-  "edit_type": "attribute",
-  "instruction_source": "AI_direct_source_and_original_region_mask_review",
+  "instruction": "Add a thin gold border to the exposed inner surface of the foreground doughnut tray.",
+  "edit_type": "add",
+  "instruction_source": "AI_individual_source_and_original_region_mask_review_balanced",
   "schema_version": "1.0",
-  "instruction_revision": "mask_grounded_v2",
-  "region_instruction": "Change the exposed inner surface of the foreground doughnut tray to dark blue."
+  "instruction_revision": "mask_grounded_balanced_v3",
+  "region_instruction": "Add a thin gold border to the exposed inner surface of the foreground doughnut tray."
 }
 ```
 
@@ -117,13 +119,13 @@ samtok-benchmark validate --dataset-root local_data/v1
 | `id` | v1 唯一身份，含来源 release、原 release 行号和原 ID |
 | `original_id`, `source_release` | 回溯两份输入 release，不依赖评测过程重新编号 |
 | `instruction` | 清楚指明实例/部件的最终英文编辑任务 |
-| `region_instruction` | 同一任务的区域绑定版本；旧 150 条保留 `{region_1}`/`{region_2}`，新增 300 条与 instruction 相同 |
+| `region_instruction` | 同一任务的区域绑定版本；双 region 的 63 条明确对应 `{region_1}`/`{region_2}`，单 region 与 instruction 相同 |
 | `regions` | 原始输入区域；数组顺序对应 R1 红色、R2 绿色 |
 | `box` | 半开像素坐标 `[x1,y1,x2,y2)`；继承 source release 的几何 |
 | `point` | mask 内的像素坐标 `[x,y]`，继承 source release |
 | `difficulty` | 来源保留的场景标签；不替代逐例难度证据，详见 provenance |
 | `evaluation_mask` | 兼容追溯所保留的历史辅助区域；当前模型、VLM judge 和页面均不使用它 |
-| `instruction_revision` | 指令身份：`v0_preserved` 或 `mask_grounded_v2`；人工修改另建导出版本 |
+| `instruction_revision` | 当前指令身份 `mask_grounded_balanced_v3`；历史 revision 保存在审计文件，人工修改另建导出版本 |
 
 `regions[*].mask` 才是目标区域依据。对象轮廓、遮挡空洞和多个断开的可见片段均可能属于同一个目标。不能把 mask 的 bbox 当成目标，也不能把整对象类别标签当成部件指令。
 
@@ -131,9 +133,9 @@ samtok-benchmark validate --dataset-root local_data/v1
 
 ## 5. 可视化与人工筛选
 
-![四个 v1 示例：源图、原始 region 叠加、region mask](assets/v1_examples.jpg)
+![五类操作的 v1 示例：源图、原始 region 叠加、region mask](assets/v1_examples.jpg)
 
-图中展示前景托盘内表面、台灯支撑管、台球桌袋口和手机侧壳等部件编辑。文字只负责明确指代与修改内容；目标范围由原始 region mask 固定。可视化不会展示 evaluation mask。
+图中展示前景托盘内表面新增饰边、花瓶柄移除、SUV 车轮替换、台灯支撑管改色，以及剪贴板/背心的双区域混合编辑。文字只负责明确指代与修改内容；目标范围由原始 region mask 固定。可视化不会展示 evaluation mask。
 
 ```bash
 samtok-benchmark review --dataset-root /path/to/v1 --output outputs/data_review
@@ -142,4 +144,4 @@ python outputs/data_review/run_review.py
 
 在浏览器打开 `http://127.0.0.1:8765/index.html`。初始不加载图片，左侧选择后加载当前 case。通过/丢弃、指令修改、备注会保存到 `review_results.json`；按钮可导出结果。`reviewed_cases.json` 是带审核状态的副本，不能与冻结 release 混为一谈。
 
-本地旧审阅包仍可运行。仓库结构调整后的 `review` 命令可重新生成同功能工具；继续已有审核时先备份并复制自己的 `review_results.json`，再启动新包。300 条旧默认指令的自动 override 会失效；自定义修改与决策保留，指令版本变化提示重新核对。
+本地旧审阅包仍可运行。仓库结构调整后的 `review` 命令可重新生成同功能工具；继续已有审核时先备份并复制自己的 `review_results.json`，再启动新包。历史默认指令的自动 override 会失效；用户自定义修改、备注和旧决定保留。指令版本不一致的旧通过/丢弃在当前页面计为未审核，需要重新确认，不能计入当前版本通过数。

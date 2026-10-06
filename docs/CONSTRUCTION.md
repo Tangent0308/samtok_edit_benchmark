@@ -14,7 +14,7 @@ v1 从两个已经完成筛选的 release 物化资产，而不是把源数据�
   goal_1k/benchmark_goal1k_v1_300/benchmark.jsonl
 ```
 
-`data/v1/provenance.jsonl` 的 450 条记录保存原 ID、原 release、原图/mask 路径、哈希、逐例筛选理由与审阅证据。`asset_manifest.jsonl` 保存全部 1,413 个资产的原始路径、当前相对路径、尺寸、SHA256。旧指令及 300 条最终修订对应关系在 `instruction_revisions.jsonl`。
+`data/v1/provenance.jsonl` 的 450 条记录保存原 ID、原 release、原图/mask 路径、哈希、逐例筛选理由与审阅证据。`asset_manifest.jsonl` 保存全部 1,413 个资产的原始路径、当前相对路径、尺寸、SHA256。历史与当前指令对应关系在 `instruction_revisions.jsonl`（300 条 v2 历史 + 450 条 v3 本轮复核）；`instruction_revisions_balanced_v3.jsonl` 单独保存当前全量审计。
 
 源数据提供**原图与对象/部件分割**；benchmark 另行定义**在该原始区域上做什么编辑**。例如 PACO 的 tray 类别或部件标签不能授权编辑桌上所有托盘；若 mask 覆盖前景托盘的可见内表面，就只能为该内表面设计编辑。
 
@@ -77,7 +77,7 @@ split/训练重叠审计的实际范围：
 4. 视觉上指代能解析，mask 与所编辑实例/部件对应；难度确实涉及实例选择、小部件、遮挡或邻接范围。
 5. 排除 MIRAGE 中主要依靠材质、纹理、羽毛/毛发、反光、屏幕内容等操作内容来增加难度、而区域选择不突出的任务。
 
-最终为 CompBench 114、HumanEdit 1、MIRAGE 35；单 region 87、双 region 63；add/remove/replace/mixed 为 67/48/24/11。其余 504 条是未达到当前严格准入或暂存，另 2 条标注冲突；不能把它们全部描述为“简单”。筛选分数只说明已观察到的固定 seed 结果，不能当成模型的多次采样成功概率。
+筛选时为 CompBench 114、HumanEdit 1、MIRAGE 35；单 region 87、双 region 63；当时的 add/remove/replace/mixed 为 67/48/24/11。这些是筛选时的任务类型，本轮保留图片与 mask 身份后重写了任务，当前分布见第 6 节。其余 504 条是未达到当前严格准入或暂存，另 2 条标注冲突；不能把它们全部描述为“简单”。筛选分数只说明已观察到的固定 seed 结果，不能当成模型的多次采样成功概率。
 
 ## 4. 新增 300 条的筛选
 
@@ -110,11 +110,11 @@ box、point 也继承输入 release，不重估。旧 v0 的 box 为紧致框向
 
 `evaluation_mask` 是历史辅助评价范围，旧 v0 构造为 region union 向外膨胀短边 2%；外部 release 的文件直接继承。它不是编辑目标标注。当前 VLM judge 使用原始 region 轮廓定位，保留性按指令授权判断，完全不读取 evaluation mask；模型输入与审阅 UI 也不读取/展示它。
 
-## 6. 指令编写
+## 6. 指令编写与类型均衡
 
-新增数据的编辑目标必须就是原始 mask 覆盖的实例/部件。对全部 300 条逐条看干净原图、原始 mask 叠加、上下文放大图，并对 5 条有疑义的图额外看干净放大图。没有从 source 类别名机械拼接整物体替换模板。
+当前版本为 `mask_grounded_balanced_v3`。对 **全部 450 条**逐条看干净原图、原始 region mask 叠加、上下文放大图；63 条双区域以红色 R1、绿色 R2 对照，并为 9 条边界/语义有疑义的 case 额外查看干净放大图。本轮改变 361 条主指令文字、230 条操作类型；89 条经复核保留原有合适文字。不是根据类别标签批量套模板，也不通过改类型标签把单纯改色包装成替换。
 
-风格参考 SAMTokEdit 的实际训练记录：
+风格参考 SAMTokEdit 的真实训练记录，未从这些训练记录引入源图：
 
 ```text
 /opt/tiger/tanyue/samtok_edit/docs/04_SAMTokEdit_Qwen21_训练数据盘点.md
@@ -122,24 +122,37 @@ box、point 也继承输入 release，不重估。旧 v0 的 box 为紧致框向
   qwen21_full4_20260928/data/sources.jsonl
 ```
 
-参考任务类型包括 attribute、remove、replace、add、action、text、composite；实际 v1 只使用符合每张图的类型，不为了比例强制塞入动作/文字任务。编写要求：
+训练数据常用直接的 `Add …`、`Remove …`、`Replace … with …`、`Change … to …`。本版使用 add/remove/replace/attribute/mixed；不为补类别而在部件 mask 上强行动作或文字任务。约束和顺序：
 
-- 简短英文祈使句：明确对象/部件 + 必要实例定位 + 一项具体编辑。
-- mask 是杯柄就写杯柄；mask 是手机侧壳就写侧壳；不能扩成整杯或整手机。
-- 近邻、桌面、手等仅作消歧描述，不同时要求编辑它们。无需重复罗列所有应保持的对象。
-- 属性修改选择合理颜色、材质或表面细节；整对象才考虑合理移除/替换。新增 5 条 add 是轮胎白边/皮肤雀斑等 mask 覆盖表面的细节，不在 mask 外新增对象。
-- 清晰指代优先于固定长度；避免只有“this object”“marked region”的模板。指令描述需与静态帧一致，不能沿用视频运动描述。
+1. **先对齐目标**：确认 mask 覆盖的是整实例、可见部件、表面还是旧 CompBench 新增放置区。mask 为杯柄，只操作杯柄；mask 为手机侧壳，只操作侧壳。原 source 名称和旧 instruction 仅是线索，不能覆盖视觉证据。
+2. **再选择自然操作**：整对象/可拆部件可移除、替换；窄边、皮肤、表面适合改色、材质/饰面或添加局部细节。移除皮肤/眼睛等不合理任务不用于补配额。替换指明替代对象或部件的种类、结构或设计；仅改现有对象颜色归 attribute。补充已有标注能容纳的表面细节属于 add，不在其他对象上放新东西。
+3. **明确指代但不重复约束**：用图中可见方位、相对关系或必要序号消歧；附近人、桌面等只作定位，不能要求编辑它们。英文祈使句句首大写；不反复罗列保护对象，不使用“this object”代替实例指代。全量平均 14.35 个词。
+4. **混合任务需要多 mask**：只有 `len(regions) > 1` 且两个区域分别执行不同类型才使用 mixed。单个 mask 的断开连通块仍是一个区域，不因此允许混合操作。同类型作用于两个 mask 仍归 add/attribute 等原类型。双区域的 `region_instruction` 明确绑定 R1/R2，审计保存逐区域操作类型。
+5. **最后平衡四类单项任务**：在适配上述条件的 case 中安排 add 101、remove 101、replace 101、attribute 100；mixed 自然保留 47，不强求五等分。没有改变图像、mask、box、point 来满足比例。
 
-修订例子：
+| 类型 | 全量 | 单 mask | 双 mask | 外部新增 300 |
+|---|---:|---:|---:|---:|
+| add | 101 | 90 | 11 | 35 |
+| remove | 101 | 101 | 0 | 75 |
+| replace | 101 | 101 | 0 | 95 |
+| attribute | 100 | 95 | 5 | 95 |
+| mixed | 47 | 0 | 47 | 0 |
 
-| case index | 目标 | 当前指令 |
+旧 150 条的图片/标注身份保留，任务文字和类型本轮也重新审查。66 条旧来源 add 含 65 条 CompBench 放置区和 1 条 MIRAGE 表面新增任务，因此只在外部 300 条上硬做四等分会与既有放置区冲突；均衡目标针对合并后的 450 条。
+
+修订样例（index 从 0 开始）：
+
+| index | 目标与类型 | 本版指令 |
 |---|---|---|
-| 150 | 前景托盘露出的内表面 | Change the exposed inner surface of the foreground doughnut tray to dark blue. |
-| 170 | 右侧台灯支撑管 | Change the support tubes of the desk lamp to the right of the monitors to turquoise. |
-| 178 | 台球桌可见袋口配件 | Change the billiard table's visible pocket fittings to tan leather. |
-| 362 | 最右手机左/下窄侧壳 | Change the narrow side casing along the rightmost phone's left and bottom edges to red. |
+| 150 | 托盘可见内表面，add | Add a thin gold border to the exposed inner surface of the foreground doughnut tray. |
+| 190 | 花瓶两侧装饰柄，remove | Remove both decorative handles from the floral vase at the back of the bottom shelf. |
+| 350 | 深色 SUV 可见车轮，replace | Replace the dark SUV's visible wheels beside the recycling bins with black five-spoke alloy wheels. |
+| 435 | 中间遥控器六个主按钮，attribute | Change the six main buttons on the middle remote to blue. |
+| 134 | R1 剪贴板移除、R2 反光背心改色，mixed | Remove the clipboard held by the second man from the right and change the second man's high-visibility vest from the left to orange. |
 
-前 150 条旧任务保留原指令；旧 add 的 mask 可以是放置区域，而新增表面 add 指向被标对象表面，二者不能混淆。所有自然语言任务没有编辑后 GT；source segmentation 不能作为编辑后参考答案。
+旧 MIRAGE 部分文字称“眼睛”，但发布 polygon 覆盖头顶、额头或脸部；本轮使用实际部位重新写任务。例如 index 146 改为两只麻雀的头部，不能再按“仅眼睛”评判。原始 mask 完全保留，修订记录可逐条比较。所有自然语言任务都没有编辑后 GT，source segmentation 不能当作编辑后参考答案。
+
+逐条审计见 `data/v1/instruction_revisions_balanced_v3.jsonl`。正式资产目录的 `benchmark/instruction_review_evidence/mask_grounded_balanced_v3/` 保存 57 张拼图、9 张额外干净放大图、完整指令表及复核摘要；拼图上方是上一版文字，仅作对照。审阅属于 AI 视觉复核，没有伪造人工审批或新模型分数。
 
 ## 7. 人工审核与发布状态
 
@@ -162,4 +175,4 @@ samtok-benchmark build --assets-root /path/to/v1 --output local_data/v1
 samtok-benchmark build --output local_data/v1_from_original
 ```
 
-当前规范 manifest 与正式目录原始指令导出逐条保持 ID、源图、regions、evaluation mask、instruction、edit_type 一致。规范化只统一字段名称、移除过期目标描述，并为未改动的 150 条补充 `v0_preserved` 指令版本。
+当前规范 manifest 与正式目录 `benchmark/cases.jsonl`、`benchmark/benchmark_with_instructions.jsonl` 逐字节一致。v3 保留全部 450 个 ID、源图、regions、box/point、evaluation mask；历史无指令 catalog 保留原样。任务文字变化必须重新生成模型输入、推理结果和评分，旧成绩仅用于追溯当时筛选。

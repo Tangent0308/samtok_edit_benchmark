@@ -1,5 +1,6 @@
 const state = {
   cases: [],
+  caseById: new Map(),
   results: { version: 1, cases: {} },
   filtered: [],
   current: -1,
@@ -33,7 +34,10 @@ function currentCase() {
 }
 
 function statusFor(id) {
-  return state.results.cases[id]?.status || "unreviewed";
+  const record = state.results.cases[id];
+  const item = state.caseById.get(id);
+  if (record && item && record.instruction_revision !== item.instruction_revision) return "unreviewed";
+  return record?.status || "unreviewed";
 }
 
 function applyFilter() {
@@ -66,7 +70,7 @@ function renderList() {
     list.appendChild(link);
   });
   const counts = { pass: 0, discard: 0 };
-  Object.values(state.results.cases).forEach((record) => { if (counts[record.status] !== undefined) counts[record.status] += 1; });
+  state.cases.forEach((item) => { const status = statusFor(item.id); if (counts[status] !== undefined) counts[status] += 1; });
   $("total-count").textContent = state.cases.length;
   $("pass-count").textContent = counts.pass;
   $("discard-count").textContent = counts.discard;
@@ -116,7 +120,7 @@ function renderCase() {
   $("source-image").src = item.source_image;
   $("overlay-image").src = item.mask_overlay || "";
   const review = state.results.cases[item.id] || {};
-  const changed = review.updated_at && item.instruction_revision && review.instruction_revision !== item.instruction_revision;
+  const changed = review.status && item.instruction_revision && review.instruction_revision !== item.instruction_revision;
   $("original-instruction").textContent = `本版指令：${item.instruction || "（无）"}${changed ? " · 指令已修订，请重新核对原有判断。" : ""}`;
   $("instruction-edit").value = review.instruction_override || item.instruction || "";
   const regionImages = $("region-images");
@@ -167,6 +171,7 @@ function setStatus(status) {
   const note = $("note").value.trim();
   const instruction = $("instruction-edit").value.trim();
   if (status === "pass" && !instruction) { showSaveMessage("通过前请填写有效编辑指令。"); return; }
+  if (status === "pass" && !/^[A-Z]/.test(instruction)) { showSaveMessage("英文编辑指令的句首必须大写。"); return; }
   if (status === "unreviewed" && !note && !instruction && instruction === (item.instruction || "")) delete state.results.cases[item.id];
   else state.results.cases[item.id] = { status, note, instruction_override: instruction, instruction_revision: item.instruction_revision || "v0_original", updated_at: new Date().toISOString() };
   renderList();
@@ -210,6 +215,7 @@ function move(delta) {
 async function init() {
   try {
     state.cases = await loadJson("cases.json");
+    state.caseById = new Map(state.cases.map(item => [item.id, item]));
     state.results = await loadResults();
     // Old decisions often saved the then-default instruction as an override.
     // Preserve genuine user edits, but never resurrect the erroneous old default.

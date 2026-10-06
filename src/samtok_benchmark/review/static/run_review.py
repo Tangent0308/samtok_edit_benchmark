@@ -79,6 +79,9 @@ def materialize_reviewed_copy(value: dict) -> None:
             and case.get("instruction_revision")
             and record.get("instruction_revision") != case["instruction_revision"]
         )
+        if case["instruction_needs_recheck"]:
+            case["previous_review_status"] = case["review_status"]
+            case["review_status"] = "unreviewed"
         override = record.get("instruction_override")
         case["reviewed_instruction"] = override if override else case.get("instruction", "")
     temporary = REVIEWED_CASES_PATH.with_suffix(".json.tmp")

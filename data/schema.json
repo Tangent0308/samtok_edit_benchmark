@@ -47,11 +47,13 @@
     },
     "instruction": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "pattern": "^[A-Z]"
     },
     "region_instruction": {
       "type": "string",
-      "minLength": 1
+      "minLength": 1,
+      "pattern": "^[A-Z]"
     },
     "instruction_source": {
       "type": "string",
@@ -117,5 +119,26 @@
     "difficulty": {
       "type": "object"
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "edit_type": {
+            "enum": [
+              "mixed",
+              "composite"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "regions": {
+            "minItems": 2
+          }
+        }
+      }
+    }
+  ]
 }

@@ -48,6 +48,11 @@ def load_cases(manifest: Path, expected_cases: int | None = None) -> list[dict]:
                 raise ValueError(f"empty {key}: {row['id']}")
         if len(row["regions"]) not in (1, 2):
             raise ValueError(f"expected one or two regions: {row['id']}")
+        if row["edit_type"] in {"mixed", "composite"} and len(row["regions"]) < 2:
+            raise ValueError(f"mixed editing requires multiple region masks: {row['id']}")
+        for key in ("instruction", "region_instruction"):
+            if not re.match(r"^[A-Z]", row[key]):
+                raise ValueError(f"{key} must start with a capital letter: {row['id']}")
         placeholders = re.findall(r"\{region_(\d+)\}", row["region_instruction"])
         if placeholders and placeholders != [str(i + 1) for i in range(len(row["regions"]))]:
             raise ValueError(f"region placeholder mismatch: {row['id']}")

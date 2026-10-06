@@ -14,8 +14,8 @@ def test_release_metadata_and_instruction_identity():
     assert sum(len(c["regions"]) for c in cases) == 513
     stats = json.loads((root / "statistics.json").read_text())
     assert sha256_file(root / "cases.jsonl") == stats["manifest_sha256"]
-    revised = read_jsonl(root / "instruction_revisions.jsonl")
-    assert len(revised) == 300
+    revised = read_jsonl(root / "instruction_revisions_balanced_v3.jsonl")
+    assert len(revised) == 450
     assets = {a["local_path"]: a for a in read_jsonl(root / "asset_manifest.jsonl")}
     for r in revised:
         c = cases[r["index"]]
@@ -27,7 +27,44 @@ def test_release_metadata_and_instruction_identity():
     assert len(decisions) == 656
     admitted = {d["id"] for d in decisions if d["filter_decision"] == "admit_core_hard_relevant"}
     assert admitted == {c["original_id"] for c in cases[:150]}
-    assert all(c["instruction_revision"] == "v0_preserved" for c in cases[:150])
+    assert all(c["instruction_revision"] == "mask_grounded_balanced_v3" for c in cases)
+    assert stats["edit_type_counts"] == {
+        "add": 101,
+        "remove": 101,
+        "replace": 101,
+        "attribute": 100,
+        "mixed": 47,
+    }
+    for c, r in zip(cases, revised):
+        assert c["instruction"][0].isupper()
+        if c["edit_type"] == "mixed":
+            assert len(c["regions"]) == 2
+            assert len(r["region_operations"]) == 2
+            assert len(set(r["region_operations"])) == 2
+    history = read_jsonl(root / "instruction_revisions.jsonl")
+    assert len(history) == 750
+    assert history[-450:] == revised
+    previous_external = {r["id"]: r for r in history[:300]}
+    for r in revised[150:]:
+        assert previous_external[r["id"]]["instruction"] == r["previous_instruction"]
+
+
+@pytest.mark.parametrize("operation", ["mixed", "composite"])
+def test_single_mask_cannot_have_mixed_operations(release, operation):
+    _, manifest, case = release
+    case["edit_type"] = operation
+    write_jsonl(manifest, [case])
+    with pytest.raises(ValueError, match="multiple region masks"):
+        load_cases(manifest)
+
+
+@pytest.mark.parametrize("field", ["instruction", "region_instruction"])
+def test_lowercase_instruction_is_rejected(release, field):
+    _, manifest, case = release
+    case[field] = "remove the object."
+    write_jsonl(manifest, [case])
+    with pytest.raises(ValueError, match="capital letter"):
+        load_cases(manifest)
 
 
 def test_geometry_and_assets_validate(release):

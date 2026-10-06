@@ -172,6 +172,11 @@ function setStatus(status) {
   const instruction = $("instruction-edit").value.trim();
   if (status === "pass" && !instruction) { showSaveMessage("通过前请填写有效编辑指令。"); return; }
   if (status === "pass" && !/^[A-Z]/.test(instruction)) { showSaveMessage("英文编辑指令的句首必须大写。"); return; }
+  if (status === "pass") {
+    const aliases = {add:"add", remove:"remove", erase:"remove", delete:"remove", replace:"replace", swap:"replace", change:"attribute", paint:"attribute", give:"attribute", tint:"attribute", recolor:"attribute"};
+    const verbs = [...instruction.matchAll(/(?:^|[.;]\s*|\band\s+)(Add|Remove|Erase|Delete|Replace|Swap|Change|Paint|Give|Tint|Recolor)\b/gi)];
+    if (new Set(verbs.map(match => aliases[match[1].toLowerCase()])).size > 1) { showSaveMessage("本版只允许一种编辑类型，请拆掉混合操作后再通过。"); return; }
+  }
   if (status === "unreviewed" && !note && !instruction && instruction === (item.instruction || "")) delete state.results.cases[item.id];
   else state.results.cases[item.id] = { status, note, instruction_override: instruction, instruction_revision: item.instruction_revision || "v0_original", updated_at: new Date().toISOString() };
   renderList();

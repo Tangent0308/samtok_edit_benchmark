@@ -128,3 +128,24 @@ def test_human_output_review_is_blind_and_separate(pipeline, tmp_path):
         (output / samples[0][k]).exists()
         for k in ("before_clean", "after_clean", "before_contours", "after_contours")
     )
+
+
+def test_mixed_human_override_cannot_publish(release, tmp_path):
+    _, manifest, case = release
+    results = tmp_path / "results.json"
+    write_json(
+        results,
+        {
+            "cases": {
+                case["id"]: {
+                    "status": "pass",
+                    "instruction_revision": case["instruction_revision"],
+                    "instruction_override": "Paint the support tube green and remove the handle.",
+                }
+            }
+        },
+    )
+    output = tmp_path / "approved.jsonl"
+    with pytest.raises(ValueError, match="mixed operation clauses"):
+        export_reviewed(manifest, results, output, "reviewer")
+    assert not output.exists()

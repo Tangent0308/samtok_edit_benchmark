@@ -1,0 +1,83 @@
+{
+  "revision": "mask_grounded_balanced_v3",
+  "case_count": 450,
+  "individually_visually_inspected": 450,
+  "newly_written_or_rechecked_instructions": 450,
+  "instruction_text_changed": 361,
+  "edit_type_changed": 230,
+  "edit_type_counts": {
+    "add": 101,
+    "attribute": 100,
+    "mixed": 47,
+    "remove": 101,
+    "replace": 101
+  },
+  "external_edit_type_counts": {
+    "add": 35,
+    "attribute": 95,
+    "remove": 75,
+    "replace": 95
+  },
+  "single_region_mixed_cases": 0,
+  "all_instructions_start_with_capital_letter": true,
+  "dual_region_bindings_explicit": 63,
+  "review_sheets": 57,
+  "additional_clean_zooms": 9,
+  "instruction_word_count": {
+    "min": 5,
+    "max": 26,
+    "mean": 14.35
+  },
+  "instruction_table_sha256": "f76de9c8c3857e8d4e234413bd0b88edb06eac49014f452c05019c65dcac158c",
+  "previous_manifest_sha256": "e3695c26ec3e45bdc7a45aba9cbaa0cb6e50665af3f6dc3414b5cf6750eb2ea5",
+  "manifest_sha256": "34455779b378ff615008f16a2a4afe09191220d117b5c6f2a52ae02ce27f67d5",
+  "asset_manifest_sha256": "52d0e6fdeef55bb1626e1a61c151d1beb6617324b0c0ec705462f24187c8f9d9",
+  "training_style_reference": "/opt/tiger/tanyue/samtok_edit/docs/04_SAMTokEdit_Qwen21_训练数据盘点.md",
+  "training_example_source": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/qwen21_full4_20260928/data/sources.jsonl",
+  "review_method": "AI individual visual inspection; no independent human approval",
+  "balance_policy": "Preserve image/mask identities; choose natural operations first. Mixed requires two original masks and two distinct operation types. Balance the remaining four operation categories, without recolor-as-replacement relabeling.",
+  "human_review_status": "pending",
+  "model_evaluation_status": "not rerun; old scores are selection evidence only",
+  "evaluation_mask_displayed": false,
+  "asset_geometry_unchanged": true,
+  "validation": {
+    "asset_hashes_verified": 1413,
+    "geometry_and_masks_unchanged": true,
+    "unit_tests_passed": 36,
+    "all_locator_prompts_checked": 3600,
+    "browser_test": {
+      "passed": true,
+      "initial_image_requests": 0,
+      "case_count": 450,
+      "tested_indices": [
+        0,
+        86,
+        97,
+        115,
+        134,
+        146,
+        149,
+        150,
+        151,
+        219,
+        350,
+        432,
+        435,
+        449
+      ],
+      "tested": [
+        "image loading",
+        "no evaluation mask request",
+        "legacy default override migration",
+        "custom instruction retention",
+        "pass/discard persistence",
+        "reviewed manifest",
+        "JSON download",
+        "reload persistence",
+        "stale approvals excluded from counts",
+        "uppercase pass guard"
+      ],
+      "test_root": "/tmp/v1-review-browser-0od86aak"
+    }
+  }
+}

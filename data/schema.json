@@ -109,36 +109,11 @@
         "attribute",
         "add",
         "remove",
-        "replace",
-        "mixed",
-        "action",
-        "text",
-        "composite"
+        "replace"
       ]
     },
     "difficulty": {
       "type": "object"
     }
-  },
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "edit_type": {
-            "enum": [
-              "mixed",
-              "composite"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "regions": {
-            "minItems": 2
-          }
-        }
-      }
-    }
-  ]
+  }
 }

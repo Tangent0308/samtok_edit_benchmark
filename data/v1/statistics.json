@@ -1,12 +1,12 @@
 {
   "version": "v1",
-  "instruction_revision": "mask_grounded_balanced_v3",
+  "instruction_revision": "mask_grounded_single_ops_v4",
   "cases": 450,
   "unique_source_images": 450,
-  "region_masks": 513,
+  "region_masks": 466,
   "region_count_distribution": {
-    "1": 387,
-    "2": 63
+    "1": 434,
+    "2": 16
   },
   "source_dataset_counts": {
     "compbench": 114,
@@ -20,23 +20,22 @@
     "mirage": 35
   },
   "edit_type_counts": {
-    "add": 101,
-    "attribute": 100,
-    "mixed": 47,
-    "remove": 101,
-    "replace": 101
+    "add": 113,
+    "attribute": 112,
+    "remove": 112,
+    "replace": 113
   },
   "source_release_counts": {
     "v0_hard_relevant_150": 150,
     "goal1k_v1_300": 300
   },
   "human_review_status": "not supplied; 450 cases remain pending independently recorded human approval",
-  "model_evaluation_status": "not rerun after mask_grounded_balanced_v3 instruction revision",
-  "manifest_sha256": "34455779b378ff615008f16a2a4afe09191220d117b5c6f2a52ae02ce27f67d5",
+  "model_evaluation_status": "not rerun after mask_grounded_single_ops_v4; 47 tasks and their region bindings changed",
+  "manifest_sha256": "16e3c8418d8ef179d0501f349a175409a43435af469829ae3689e36c1ba22937",
   "source_catalog_sha256": "5addb969508c4d25857f946e9e47bd4bdce9fbf17864fb2a07bfc8c26a648d67",
-  "upstream_instruction_manifest_sha256": "34455779b378ff615008f16a2a4afe09191220d117b5c6f2a52ae02ce27f67d5",
+  "upstream_instruction_manifest_sha256": "16e3c8418d8ef179d0501f349a175409a43435af469829ae3689e36c1ba22937",
   "schema_version": "1.0",
-  "catalog_semantics_unchanged": true,
+  "catalog_semantics_unchanged": false,
   "edit_type_counts_by_source_release": {
     "goal1k_v1_300": {
       "add": 35,
@@ -45,28 +44,39 @@
       "replace": 95
     },
     "v0_hard_relevant_150": {
-      "add": 66,
-      "attribute": 5,
-      "mixed": 47,
-      "remove": 26,
-      "replace": 6
+      "add": 78,
+      "attribute": 17,
+      "remove": 37,
+      "replace": 18
     }
   },
   "single_region_edit_type_counts": {
-    "add": 90,
-    "attribute": 95,
-    "remove": 101,
-    "replace": 101
+    "add": 102,
+    "attribute": 107,
+    "remove": 112,
+    "replace": 113
   },
   "dual_region_edit_type_counts": {
     "add": 11,
-    "attribute": 5,
-    "mixed": 47
+    "attribute": 5
   },
   "instruction_word_count": {
     "min": 5,
     "max": 26,
-    "mean": 14.35
+    "mean": 13.5
   },
-  "previous_manifest_sha256": "e3695c26ec3e45bdc7a45aba9cbaa0cb6e50665af3f6dc3414b5cf6750eb2ea5"
+  "previous_manifest_sha256": "34455779b378ff615008f16a2a4afe09191220d117b5c6f2a52ae02ce27f67d5",
+  "active_assets": 1366,
+  "instruction_revision_counts": {
+    "mask_grounded_balanced_v3": 403,
+    "mask_grounded_single_ops_v4": 47
+  },
+  "source_images_unchanged": true,
+  "retained_mask_pixels_and_geometry_unchanged": true,
+  "region_reduction": {
+    "converted_mixed_cases": 47,
+    "removed_masks": 47,
+    "retained_original_R1": 27,
+    "retained_original_R2": 20
+  }
 }

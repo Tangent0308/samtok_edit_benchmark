@@ -8,7 +8,7 @@ from pathlib import Path
 
 from PIL import Image
 
-from samtok_benchmark.dataset import load_cases
+from samtok_benchmark.dataset import instruction_operation_types, load_cases
 from samtok_benchmark.inputs import annotate
 from samtok_benchmark.io import asset_path, sha256_file, write_json
 
@@ -109,6 +109,8 @@ def export_reviewed(manifest: Path, results: Path, output: Path, reviewer: str) 
     for case in kept:
         if not "A" <= case["instruction"][0] <= "Z":
             raise ValueError(f"instruction must start with a capital letter: {case['id']}")
+        if len(instruction_operation_types(case["instruction"])) > 1:
+            raise ValueError(f"mixed operation clauses are not allowed: {case['id']}")
     write_jsonl(output, kept)
     write_jsonl(output.with_suffix(".review_audit.jsonl"), audit)
     return {"passed": len(kept), "remaining": len(cases) - len(kept), "output": str(output)}

@@ -27,7 +27,34 @@ FIELDS = {
     "instruction_source",
     "instruction_revision",
 }
-OPERATIONS = {"attribute", "add", "remove", "replace", "mixed", "action", "text", "composite"}
+OPERATIONS = {"attribute", "add", "remove", "replace"}
+
+
+def instruction_operation_types(text: str) -> set[str]:
+    """Identify explicit imperative clauses in the release's writing style.
+
+    This catches common mixed instructions; it is not a general semantic parser.
+    A human must still check less explicit instructions and target references.
+    """
+    names = {
+        "add": "add",
+        "remove": "remove",
+        "erase": "remove",
+        "delete": "remove",
+        "replace": "replace",
+        "swap": "replace",
+        "change": "attribute",
+        "paint": "attribute",
+        "give": "attribute",
+        "tint": "attribute",
+        "recolor": "attribute",
+    }
+    verbs = re.findall(
+        r"(?:^|[.;]\s*|\band\s+)(Add|Remove|Erase|Delete|Replace|Swap|Change|Paint|Give|Tint|Recolor)\b",
+        text,
+        re.IGNORECASE,
+    )
+    return {names[v.lower()] for v in verbs}
 
 
 def load_cases(manifest: Path, expected_cases: int | None = None) -> list[dict]:
@@ -48,11 +75,11 @@ def load_cases(manifest: Path, expected_cases: int | None = None) -> list[dict]:
                 raise ValueError(f"empty {key}: {row['id']}")
         if len(row["regions"]) not in (1, 2):
             raise ValueError(f"expected one or two regions: {row['id']}")
-        if row["edit_type"] in {"mixed", "composite"} and len(row["regions"]) < 2:
-            raise ValueError(f"mixed editing requires multiple region masks: {row['id']}")
         for key in ("instruction", "region_instruction"):
             if not re.match(r"^[A-Z]", row[key]):
                 raise ValueError(f"{key} must start with a capital letter: {row['id']}")
+            if len(instruction_operation_types(row[key])) > 1:
+                raise ValueError(f"mixed operation clauses are not allowed: {row['id']}")
         placeholders = re.findall(r"\{region_(\d+)\}", row["region_instruction"])
         if placeholders and placeholders != [str(i + 1) for i in range(len(row["regions"]))]:
             raise ValueError(f"region placeholder mismatch: {row['id']}")

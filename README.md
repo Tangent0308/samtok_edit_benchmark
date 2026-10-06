@@ -12,6 +12,7 @@ A 450-case benchmark for fine-grained, region-directed image editing: selecting 
 |---|---|
 | [Dataset](docs/DATASET.md) | Evaluation goals, statistics, paths, schema, visual examples |
 | [Sources and construction](docs/CONSTRUCTION.md) | Source splits, filtering, mask provenance, instruction writing, human approval |
+| [Source selection priorities](docs/SOURCE_PRIORITY_RECOMMENDATIONS.md) | Dataset suitability, investigation priorities, exclusions and audit limits |
 | [Evaluation](docs/EVALUATION.md) | Model input/output protocol, VLM rubric, success definitions, human output assessment |
 | [Development](CONTRIBUTING.md) | Installation, checks, repository conventions, commit format |
 

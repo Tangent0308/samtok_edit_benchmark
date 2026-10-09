@@ -4,25 +4,27 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "samtok-edit-benchmark"
-version = "1.0.0"
-description = "Fine-grained region-directed image editing benchmark: v1, 450 cases"
+version = "2.0.0"
+description = "Fine-grained image editing: v2 mixed-interaction multi-object benchmark and frozen v1"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["Pillow>=10.1", "numpy>=1.24"]
 
 [project.optional-dependencies]
 dev = ["pytest>=7", "ruff>=0.9"]
-construction = ["opencv-python>=4.8"]
+construction = ["opencv-python-headless>=4.8", "scipy>=1.10", "pycocotools>=2.0.7"]
 judge = ["vllm", "transformers", "torch", "tqdm"]
 
 [project.scripts]
 samtok-benchmark = "samtok_benchmark.cli:main"
+samtok-benchmark-v2 = "samtok_benchmark.v2.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
 "samtok_benchmark.review" = ["static/*.html", "static/*.js", "static/*.css", "static/*.py"]
+"samtok_benchmark.v2" = ["*.html"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

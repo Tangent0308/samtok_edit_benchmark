@@ -1,0 +1,58 @@
+{
+  "selected_images": 212,
+  "comparisons": {
+    "training": {
+      "reference_images": 175101,
+      "phash_threshold": 8,
+      "exact_candidates": []
+    },
+    "v1": {
+      "reference_images": 883,
+      "phash_threshold": 10,
+      "exact_candidates": []
+    },
+    "v2_internal": {
+      "reference_images": 212,
+      "phash_threshold": 10,
+      "exact_candidates": []
+    }
+  },
+  "flags": 0,
+  "legacy_cases_covered": 883,
+  "legacy_new_source_lookup": "candidate ID -> original source via versioned goal_1k inventories; PNG repackaging does not define a new source",
+  "training_cache": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/PACO_benchmark_candidates/audit/training_image_fingerprints.jsonl",
+  "training_cache_sha256": "615b8755d07662271132670f78b62f9299a6fa27087d5a2f12a4989be974ef24",
+  "training_protocol": {
+    "protocol": {
+      "version": 1,
+      "orientation": "Pillow ImageOps.exif_transpose before any fingerprint",
+      "rgb": "Pillow convert(RGB); no ICC transform; alpha discarded, not composited",
+      "pixel_sha256": "SHA256(b'RGB\\0' + big-endian uint64 width,height + RGB pixel bytes)",
+      "phash64": "RGB->Pillow L; LANCZOS 32x32; OpenCV float32 orthonormal DCT; top-left 8x8; greater than median of all 64 including DC; row-major MSB first",
+      "dhash64": "RGB->Pillow L; LANCZOS 9x8; right pixel greater than left; row-major MSB first",
+      "perceptual_threshold": 8,
+      "candidate_variants": [
+        "original",
+        "horizontal_flip_after_exif"
+      ],
+      "pixel_dimensions_included": true
+    },
+    "inputs": {
+      "manifest": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/qwen21_full4_20260928/data/sources.jsonl",
+      "manifest_sha256": "d345ee4c7827a0141e68b93dd282409810a7f2a261e0f89fdf60b096492d6615",
+      "training_rows": 98574,
+      "rows_by_dataset": {
+        "refedit": 7804,
+        "crispedit": 37728,
+        "scaleedit": 25085,
+        "derived": 27957
+      },
+      "unique_encoded_sha256": 175101,
+      "source_target_occurrences": 197148,
+      "candidate_ids_path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/PACO_benchmark_candidates/audit/lvis_candidate_coco_ids.txt",
+      "candidate_ids_sha256": "65415741798b746aa4f34cde781fd88521fb7bc9730e5f749291e945252abff0",
+      "coco_val_root": "/mnt/bn/strategy-mllm-train/intern/common_datasets/coco/val2017"
+    }
+  },
+  "scope": "Known task training source AND target cache; all v1 formal and expansion sources. Unknown base-model pretraining is not certified. Perceptual flags require recorded disposition."
+}

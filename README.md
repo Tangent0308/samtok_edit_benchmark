@@ -2,14 +2,19 @@
 
 A 450-case benchmark for fine-grained, region-directed image editing: selecting the correct instance or part, respecting occlusion and irregular boundaries, completing the requested edit, and preserving nearby content.
 
-**Current release:** v1 / `mask_grounded_single_ops_v4`. It combines 150 difficult cases filtered from the previous benchmark with 300 external-source cases. All 450 cases were individually inspected against clean source images and original region masks. The instructions use short, capitalized English imperatives: add 113, remove 112, replace 113, attribute 112. There are no mixed/composite tasks. The 47 former mixed cases each retain one original mask chosen by paired visual difficulty review; the other 403 cases are unchanged. The remaining 16 two-mask cases apply one operation type to both regions. Independent human approval and model evaluation with these revised instructions remain pending. Historical model scores are selection evidence, not v1 results.
+**Current release:** v1 / `mask_grounded_single_ops_v4`. It combines 150 difficult cases filtered from the previous benchmark with 300 external-source cases. All 450 cases were individually inspected against clean source images and original region masks. The instructions use short, capitalized English imperatives: add 113, remove 112, replace 113, attribute 112. There are no mixed/composite tasks. The 47 former mixed cases each retain one original mask chosen by paired visual difficulty review; the other 403 cases are unchanged. The remaining 16 two-mask cases apply one operation type to both regions. Independent human approval remains pending. Qwen-Image-2.1 text-only evaluation of these 450 tasks is complete: **202 good, 232 bad, 16 uncertain**, based on direct AI visual review. Historical pre-revision scores remain selection evidence only.
 
 ![Examples: clean source, original region overlay, binary region mask](docs/assets/v1_examples.jpg)
+
+**Latest construction and results:** an additional 433 candidates were tested after reviewing 642 source candidates. The complete review pool has **883 cases: 350 good, 504 bad, 29 uncertain**. The 504 failure-selected cases are proposed hard candidates, not an approved replacement for the frozen 450-case release. See the [v1 report with visual results](docs/V1_REPORT.md) for goals, sources, selection, inference settings, review limitations and the private review archive.
+
+![Qwen-Image-2.1: source, target overlay, output; only three shelves should turn red](docs/assets/qwen21/case_0742.jpg)
 
 ## Documentation
 
 | Document | Content |
 |---|---|
+| [v1 overview and results](docs/V1_REPORT.md) | Evaluation goals, construction, 450/883/504 cohorts, Qwen-Image-2.1 results and visual examples |
 | [Dataset](docs/DATASET.md) | Evaluation goals, statistics, paths, schema, visual examples |
 | [Sources and construction](docs/CONSTRUCTION.md) | Source splits, filtering, mask provenance, instruction writing, human approval |
 | [Source selection priorities](docs/SOURCE_PRIORITY_RECOMMENDATIONS.md) | Dataset suitability, investigation priorities, exclusions and audit limits |
@@ -27,7 +32,7 @@ DATA_ROOT=/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark
 samtok-benchmark validate --dataset-root "$DATA_ROOT" --output outputs/validation.json
 ```
 
-Git contains the 450-case manifest and provenance, not all source images. The existing project asset directory and the self-contained review archive contain the required images; access and source-dataset terms are described in [Dataset](docs/DATASET.md). There is no public hosted asset release yet.
+Git contains the 450-case manifest and provenance, not all source images. The existing project asset directory and the self-contained review archive contain the required images; access and source-dataset terms are described in [Dataset](docs/DATASET.md). There is no public hosted asset release yet; the complete 883-case result/review archive is available in the private HF dataset linked in the [v1 report](docs/V1_REPORT.md).
 
 To copy the exact frozen release to another directory:
 
@@ -109,4 +114,4 @@ docs/                          dataset, construction, evaluation and sample figu
 tests/                         dataset/protocol/review/scoring invariants
 ```
 
-Model weights, generated results, reviewer decisions and temporary files stay outside Git. The historical v0 dataset and remote `dev` branch remain separate; this branch contains only the current v1 implementation and the evidence needed to trace its construction.
+Model weights, full generated-image collections, interactive reviewer decisions and temporary files stay outside Git. Selected result figures and a frozen AI-review evidence snapshot are included under `docs/` to make the reported results auditable. The historical v0 dataset and remote `dev` branch remain separate; this branch contains only the current v1 implementation and the evidence needed to trace its construction.

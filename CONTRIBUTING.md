@@ -1,6 +1,6 @@
 # Development
 
-This branch maintains the current v1 release only. Keep model weights, source-image downloads, generated outputs and human decisions outside Git. Do not alter released tasks or masks as a side effect of evaluation.
+This branch maintains the current v1 release only. Keep model weights, source-image downloads, full generated-output collections and interactive human decisions outside Git. Small documented result figures and frozen AI-review evidence snapshots may live under `docs/assets/` and `docs/results/`. Do not alter released tasks or masks as a side effect of evaluation.
 
 ```bash
 python -m pip install -e '.[dev]'

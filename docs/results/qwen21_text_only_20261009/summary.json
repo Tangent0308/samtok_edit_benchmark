@@ -349,7 +349,8 @@
       ],
       "output_sha256": "bc704e8f8a0b0a21dffc6e0ae94489f1a3a26e43f5d922e6d262f8a612196289",
       "input_digest": "239d21df0c581d3ab4b7bdef1566a7db817e9f3aa78f8c1fa9896f6b58661cd5",
-      "figure": "../../assets/qwen21/case_0150.jpg"
+      "figure": "../../assets/qwen21/case_0150.jpg",
+      "source_group": "samtok_related_sources"
     },
     {
       "review_index": 160,
@@ -369,7 +370,8 @@
       ],
       "output_sha256": "ba46109060f7262e486c4ccd93317387c2b34c777d98257d42b3caade8c300f5",
       "input_digest": "7c5b067a7415e2c249195f2e77e8e691d6a3d7a1e6a1ef176c6fe154aac93c45",
-      "figure": "../../assets/qwen21/case_0160.jpg"
+      "figure": "../../assets/qwen21/case_0160.jpg",
+      "source_group": "samtok_related_sources"
     },
     {
       "review_index": 450,
@@ -392,7 +394,8 @@
       ],
       "output_sha256": "02159230ac2f4fd20388b85d89f4c8afb6de77a2b5ef8e5f434d0b49328315be",
       "input_digest": "270b9c5c25f3f710f09eb760a93f4359aaa294988bb054880ef83fdc604e63b8",
-      "figure": "../../assets/qwen21/case_0450.jpg"
+      "figure": "../../assets/qwen21/case_0450.jpg",
+      "source_group": "samtok_related_sources"
     },
     {
       "review_index": 462,
@@ -414,7 +417,8 @@
       ],
       "output_sha256": "32a30ae1734da31f01d48b92b76ca8a722fe7118b9cd17d8f44bf5da1f902a67",
       "input_digest": "9332572452e7b1b888cdaf8c0b551f103d6ff2959e4ba1a975d10930874ed3d8",
-      "figure": "../../assets/qwen21/case_0462.jpg"
+      "figure": "../../assets/qwen21/case_0462.jpg",
+      "source_group": "samtok_related_sources"
     },
     {
       "review_index": 463,
@@ -434,7 +438,8 @@
       ],
       "output_sha256": "934c0fd50fbe9decc5ade1c9f04b73dacdee3e021874cf75043c50bb13f4eebd",
       "input_digest": "d60f43dcf3cb4eb858c5a093176bc586de374833b2c930f513f56ebe429b9ef3",
-      "figure": "../../assets/qwen21/case_0463.jpg"
+      "figure": "../../assets/qwen21/case_0463.jpg",
+      "source_group": "samtok_related_sources"
     },
     {
       "review_index": 694,
@@ -454,7 +459,8 @@
       ],
       "output_sha256": "d83ca169d0f138e80316665f1b868ce2cecb4421c4b557666d81c54c20ca3f1c",
       "input_digest": "d7ef1ce9f90be7b43a15c0239cf12087ed538c5b76eacd8f86e8701618a7d0af",
-      "figure": "../../assets/qwen21/case_0694.jpg"
+      "figure": "../../assets/qwen21/case_0694.jpg",
+      "source_group": "samtok_related_sources"
     },
     {
       "review_index": 742,
@@ -476,7 +482,8 @@
       ],
       "output_sha256": "558fc265622697a1026cd93ac101c773e2c55da35b97c0adce9651949c065541",
       "input_digest": "279123db07ea01a68d12ed793a09f69b4a5bb83695cffc138d6dfb15fbe7da8e",
-      "figure": "../../assets/qwen21/case_0742.jpg"
+      "figure": "../../assets/qwen21/case_0742.jpg",
+      "source_group": "samtok_related_sources"
     },
     {
       "review_index": 744,
@@ -499,7 +506,8 @@
       ],
       "output_sha256": "c82d333b75e8e9c1c15efa3247f1f3e67c03005d33dee19c9209e80ccb55d649",
       "input_digest": "3fc1be53be4c85a6df360228f6f9cb04cfc8d3698fe05fc00a624f469f5c79ac",
-      "figure": "../../assets/qwen21/case_0744.jpg"
+      "figure": "../../assets/qwen21/case_0744.jpg",
+      "source_group": "samtok_related_sources"
     }
   ],
   "review_archive": {
@@ -508,5 +516,43 @@
     "hf_revision": "b60dd632eb2d9c0af0f5f36b096bccee1b0a289c",
     "repository": "TTangenty/samtok_edit",
     "private": true
+  },
+  "source_groups": {
+    "v0_filtered": {
+      "total": 150,
+      "verdicts": {
+        "bad": 58,
+        "good": 86,
+        "uncertain": 6
+      },
+      "formal_v1": 150,
+      "later_expansion": 0,
+      "by_source": {
+        "compbench": 114,
+        "humanedit": 1,
+        "mirage": 35
+      }
+    },
+    "samtok_related_sources": {
+      "total": 733,
+      "verdicts": {
+        "bad": 446,
+        "good": 264,
+        "uncertain": 23
+      },
+      "formal_v1": 300,
+      "later_expansion": 433,
+      "by_source": {
+        "goal1k/PACO-LVIS": 153,
+        "goal1k/BURST": 58,
+        "goal1k/MeViS-valid_u": 26,
+        "goal1k/MOSEv2": 6,
+        "goal1k/ADE20K-Part": 43,
+        "goal1k/SA-V": 14,
+        "PACO-LVIS": 241,
+        "SA-V": 48,
+        "ADE20K-Part-234": 144
+      }
+    }
   }
 }

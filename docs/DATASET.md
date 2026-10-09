@@ -26,24 +26,35 @@
 | 统计项 | 数量 |
 |---|---:|
 | 总 case / 唯一 ID / 唯一源图内容 SHA256 | 450 / 450 / 450 |
-| v0 筛选 / 外部新增 | 150 / 300 |
+| A 类 v0 过滤 / B 类 SAMTok 相关源数据新增 | 150 / 300 |
 | 当前保留的原始 region mask | 466 |
 | 单 region / 双 region case | 434 / 16 |
 | 属性修改 / 添加 / 移除 / 替换 | 112 / 113 / 112 / 113 |
 | mixed / composite | 0 / 0 |
 | 资产清单 | 1,366：450 原图 + 466 region mask + 450 历史 evaluation mask |
 
-| 来源 | 数量 | 任务来源 |
-|---|---:|---|
-| CompBench | 114 | v0 筛选 |
-| HumanEdit | 1 | v0 筛选 |
-| MIRAGE | 35 | v0 筛选 |
-| PACO/LVIS | 153 | 外部新增 |
-| BURST | 58 | 外部新增 |
-| ADE20K-Part | 43 | 外部新增 |
-| MeViS-valid_u | 26 | 外部新增 |
-| SA-V | 14 | 外部新增 |
-| MOSEv2 | 6 | 外部新增 |
+来源按两大类组织；B 类指数据源层级关联，实际取自验证/测试等 held-out 划分，不从训练样本取图。正式 v1 为 A 150 + B 300；完整审核池为 A 150 + B 733（包含后续 433），详细批次见 [v1 报告](V1_REPORT.md)。
+
+### A 类：v0 过滤保留（150 条）
+
+| 下属数据源 | 数量 |
+|---|---:|
+| CompBench | 114 |
+| HumanEdit | 1 |
+| MIRAGE | 35 |
+
+### B 类：SAMTok 相关源数据新增选取（正式 v1 中 300 条）
+
+| 下属数据源 | 数量 |
+|---|---:|
+| PACO/LVIS | 153 |
+| BURST | 58 |
+| ADE20K-Part | 43 |
+| MeViS-valid_u | 26 |
+| SA-V | 14 |
+| MOSEv2 | 6 |
+
+### 两类合并后的任务与区域统计
 
 本版只允许 add/remove/replace/attribute 四种单项类型，数量为 113/112/113/112。原有 47 条 Mixed（CompBench 18、MIRAGE 29）逐条比较两块原始 mask 的实例歧义、遮挡邻接、目标大小、部件范围和边界难度，保留一块并改写为单项编辑；27 条保留原 R1、20 条保留原 R2。具体理由与前后区域映射见 [`instruction_revisions_single_ops_v4.jsonl`](../data/v1/instruction_revisions_single_ops_v4.jsonl)。这属于 AI 视觉难度判断，没有用本轮模型结果证明逐块难度。
 

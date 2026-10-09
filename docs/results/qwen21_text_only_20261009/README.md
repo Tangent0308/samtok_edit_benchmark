@@ -8,3 +8,5 @@ This snapshot supports [the v1 report](../../V1_REPORT.md). It does not change t
 Verdicts are `good`, `bad` or `uncertain`, not numerical VLM scores or independent human labels. Recount rows by `batch`, `source_dataset`, `edit_type` and `verdict` to reproduce the tables. `review_index` is a viewer convenience; use `case_id` across experiments. All 883 output hashes were checked against generation records when this snapshot was made.
 
 The complete source images, original region masks, generated outputs and detailed construction/generation audits remain in the versioned review archive linked in the report. The JPEG figures are display derivatives; `source_sha256`, `region_mask_sha256` and `output_sha256` describe the actual package assets. No user instruction overrides or final human decisions have been incorporated.
+
+`source_group` separates `v0_filtered` (A, 150 cases) from `samtok_related_sources` (B, 733 cases). B includes both the initial 300 and later 433 held-out-source tasks; this is source-dataset grouping, not a claim that selected images came from training samples. `batch` continues to record formal-v1 versus later-expansion membership independently.

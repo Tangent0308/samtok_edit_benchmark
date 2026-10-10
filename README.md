@@ -12,11 +12,14 @@ A 450-case benchmark for fine-grained, region-directed image editing: selecting 
 
 ![Qwen-Image-2.1: source, target overlay, output; only three shelves should turn red](docs/assets/qwen21/case_0742.jpg)
 
+**Machine recovery:** all v1 data, existing outputs, scoring records and construction history are available on NAS. Code bundles, exact model configurations, NAS-only weight links and dependency snapshots are retained too. See [Recovery](docs/RECOVERY.md) for an offline clone and NAS-only integrity check.
+
 ## Documentation
 
 | Document | Content |
 |---|---|
 | [v1 overview and results](docs/V1_REPORT.md) | Evaluation goals, construction, 450/883/504 cohorts, Qwen-Image-2.1 results and visual examples |
+| [Machine recovery](docs/RECOVERY.md) | Restore from NAS/repo without the old machine, verify files and resolve historical paths |
 | [Storage and artifacts](docs/STORAGE.md) | Persistent dataset, candidates, experiments, review packages and archival checks |
 | [Dataset](docs/DATASET.md) | Evaluation goals, statistics, paths, schema, visual examples |
 | [Sources and construction](docs/CONSTRUCTION.md) | Source splits, filtering, mask provenance, instruction writing, human approval |

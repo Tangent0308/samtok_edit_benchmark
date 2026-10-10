@@ -39,7 +39,7 @@ samtok_edit_benchmark/
 └── tests/                     正式代码的行为与协议校验
 ```
 
-Git 不存储全量图像、模型权重、模型出图或交互审核产生的用户决定。大文件在下述持久化目录。历史指令和审计用于追溯，不作为另一份当前任务清单。
+Git 不存储全量图像、模型权重、模型出图或交互审核产生的用户决定。NAS-only 恢复、代码 bundle、模型依赖与补充构建历史见 [RECOVERY.md](RECOVERY.md)。大文件在下述持久化目录。历史指令和审计用于追溯，不作为另一份当前任务清单。
 
 ## 3. Dataset 根目录：正式资产、候选与审核包
 
@@ -103,6 +103,7 @@ python -m http.server 8765 --bind 127.0.0.1 \
 ```text
 /mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/
 ├── README.md / path_map.json / archive_verification.json
+├── recovery/                            代码、环境、模型配置、完整构建历史与恢复清单
 ├── resolved_outputs.jsonl               1,717 条输出的归档相对路径与原记录关联
 ├── text_only_450_20261007/
 │   ├── cases450.jsonl / inputs/inputs.jsonl
@@ -134,7 +135,7 @@ python -m http.server 8765 --bind 127.0.0.1 \
 
 450 条实验包含两个模型各 450 张有效输出，部分原生输出来自先前 48 条实验复用，相关记录与对应校准实验一并保留。433 条扩充仅测试 Qwen-Image-2.1。全量 good/bad/uncertain 是 AI 视觉复核类别，不是全量 VLM 数值评分。
 
-48 条评分实验的候选未通过可靠性验收，保留其真实结果及限制，不替换正式 judge。`judge_checkpoint/` 权重副本不归档；原权重哈希清单和生成配置保留。权重按用户提供的有效模型路径加载。
+48 条评分实验的候选未通过可靠性验收，保留其真实结果及限制，不替换正式 judge。本机 `judge_checkpoint/` 权重副本不重复复制；NAS 的 `recovery/models/` 保留实际配置及指向已核验 NAS 权重的相对链接。35 个分片均匹配原实验 SHA256，不依赖原缓存。
 
 ## 5. 路径迁移、完整性与重跑
 
@@ -160,4 +161,4 @@ python scripts/archive_v1_artifacts.py --verify-only \
 
 v0 的正式数据仍在 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark/`；旧五系统四设置结果仍在 `experiments/SAMTokEdit/` 下的 `referential_finegrained_edit_benchmark_656_two_image_locator/`、`qwen21_656/`、`replan_656/` 和 `metrics_qwen38_all_models_pair_v2/`。v0 的旧代码和文档保留在远程 `dev` 分支。
 
-本次归档保留原临时实验目录、旧 `/opt` 审阅包和已发放的压缩包，供身份追溯及用户已有书签继续使用；当前文档和入口以持久化目录为准。用户尚未提供最终人工决定，504 条仍为建议困难候选；正式 450 清单、指令和活跃 mask 身份没有改变。
+本机目录可以保留副本，但恢复 v1 不依赖它们。旧两模型查看器、正式数据准入工具、翻译和指令修订的构建材料、分支备份均已补存到 NAS 的 history/recovery 下。当前文档和入口以持久化目录为准。用户尚未提供最终人工决定，504 条仍为建议困难候选；正式 450 清单、指令和活跃 mask 身份没有改变。

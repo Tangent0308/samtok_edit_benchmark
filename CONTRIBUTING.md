@@ -34,3 +34,5 @@ Run relevant checks before committing. A push of `v1branch` must not update `dev
 The current implementation checks and their scope are recorded in [`data/v1/audits/repository_validation.json`](data/v1/audits/repository_validation.json). The UI and protocol smoke checks use synthetic/unchanged outputs; they are not benchmark model scores or human annotations.
 
 Artifact storage is indexed by `data/v1/artifacts.json` and documented in [Storage](docs/STORAGE.md). Archive large results with `scripts/archive_v1_artifacts.py`; verify all copied files before updating public paths. Keep original frozen records byte-identical and document any path remapping separately. Candidate admission and user-review decisions are never inferred from a successful copy.
+
+Before a machine is reclaimed, run the NAS-only verifier in [Recovery](docs/RECOVERY.md) from a fresh NAS bundle clone. Credentials and browser caches are not benchmark artifacts; final user decisions must be explicitly exported to NAS. Keep raw record paths for provenance and provide a separate persistent mapping.

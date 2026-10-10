@@ -37,14 +37,14 @@ def selected_files(artifact: dict) -> list[tuple[Path, str]]:
         if not path.is_file():
             continue
         relative = path.relative_to(source).as_posix()
-        if path.is_symlink():
-            raise ValueError(f"symlink requires an explicit archival policy: {path}")
         includes = artifact.get("include", ["*"])
         excludes = artifact.get("exclude", [])
         if not any(fnmatch.fnmatchcase(relative, item) for item in includes):
             continue
         if any(fnmatch.fnmatchcase(relative, item) for item in excludes):
             continue
+        if path.is_symlink():
+            raise ValueError(f"symlink requires an explicit archival policy: {path}")
         destination = artifact.get("rename", {}).get(relative, relative)
         if Path(destination).is_absolute() or ".." in Path(destination).parts:
             raise ValueError(f"unsafe destination: {destination}")

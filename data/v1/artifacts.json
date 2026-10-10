@@ -92,8 +92,156 @@
       "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/reviews/packages/qwen21_hard504_case_review_editable_instruction_20261009.zip",
       "sha256": "2bbd3c79f20ad79396b4d84e254c16c2b41a2e7b1fca788e57f37048794edf99",
       "notes": "883-case complete review archive. Same version as private HF b60dd632eb2d9c0af0f5f36b096bccee1b0a289c."
+    },
+    {
+      "id": "legacy_two_model_viewer_450",
+      "kind": "historical_provenance",
+      "source": "/tmp/samtok_text_only_full450_20261007/viewer",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/text_only_450_20261007/viewer",
+      "exclude": [],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "legacy_formal_review_450",
+      "kind": "historical_provenance",
+      "source": "/opt/tiger/tanyue/samtok_v1_450_case_review",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/history/legacy_formal_review_450",
+      "exclude": [],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "bilingual_review_build",
+      "kind": "historical_provenance",
+      "source": "/tmp/samtok_review_bilingual_overlay_20261009",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/bilingual_review_build",
+      "exclude": [
+        "package/**",
+        "test_*.json",
+        "__pycache__/**",
+        "**/__pycache__/**"
+      ],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "editable_review_build",
+      "kind": "historical_provenance",
+      "source": "/tmp/samtok_review_editable_instruction_20261009",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/editable_review_build",
+      "exclude": [
+        "package/**",
+        "test_*.json",
+        "__pycache__/**",
+        "**/__pycache__/**"
+      ],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "v1_documentation_build",
+      "kind": "historical_provenance",
+      "source": "/tmp/samtok_v1_docs_20261009",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/documentation_build",
+      "exclude": [
+        "lark_authorization.png",
+        "lark_auth_pending.json",
+        "__pycache__/**",
+        "**/__pycache__/**"
+      ],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "v1_storage_build",
+      "kind": "historical_provenance",
+      "source": "/tmp/samtok_v1_cleanup_20261010",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/storage_build",
+      "exclude": [
+        "test_*.json",
+        "__pycache__/**",
+        "**/__pycache__/**"
+      ],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "instruction_revision_v2",
+      "kind": "historical_provenance",
+      "source": "/tmp/v1_instruction_revision",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/instruction_revision_v2",
+      "exclude": [],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "instruction_balancing_v3",
+      "kind": "historical_provenance",
+      "source": "/tmp/v1_balanced_instructions",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/instruction_balancing_v3",
+      "exclude": [],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "single_operation_v4",
+      "kind": "historical_provenance",
+      "source": "/tmp/v1_no_mixed",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/single_operation_v4",
+      "exclude": [],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "external_300_review_sheets",
+      "kind": "historical_provenance",
+      "source": "/tmp/v1_goal_sheets",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/external_300_review_sheets",
+      "exclude": [],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "initial_repository_checks",
+      "kind": "historical_provenance",
+      "source": "/tmp/samtok_v1_cleanup",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/initial_repository_checks",
+      "exclude": [
+        "wheels/**",
+        "__pycache__/**",
+        "**/__pycache__/**",
+        "venv/**"
+      ],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "three_axis_rubric_checks",
+      "kind": "historical_provenance",
+      "source": "/tmp/v1_judge_three_axes",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/three_axis_rubric_checks",
+      "exclude": [],
+      "notes": "Retained to recover complete v1 construction/review history. Browser/synthetic test files are development evidence, not human decisions or benchmark model scores."
+    },
+    {
+      "id": "source_inventory_document",
+      "kind": "context_document",
+      "source": "/opt/tiger/tanyue/细粒度区域编辑_本地Mask数据集盘点.md",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/source_inventory/细粒度区域编辑_本地Mask数据集盘点.md",
+      "sha256": "bf30359e330bc47babe40b06d5f1b28c694cb2112bc977b5efbccb043b7e0cf0",
+      "notes": "Original dataset investigation/project context, preserved on private NAS; document contents are not added to Git."
+    },
+    {
+      "id": "project_proposal_document",
+      "kind": "context_document",
+      "source": "/opt/tiger/tanyue/SAMTok image editing 技术探索-[谭越-周报].md",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/source_inventory/SAMTok image editing 技术探索-[谭越-周报].md",
+      "sha256": "4809c53f1b2484a9141002719d0bad1f732ec6419e469cc2172b32a2ed8ff96e",
+      "notes": "Original dataset investigation/project context, preserved on private NAS; document contents are not added to Git."
+    },
+    {
+      "id": "historical_branch_backups",
+      "kind": "historical_provenance",
+      "source": "/opt/tiger/tanyue/samtok_benchmark_branch_backups",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery/provenance/historical_branch_backups",
+      "exclude": [
+        "**/__pycache__/**"
+      ],
+      "notes": "Pre-cleanup and pre-instruction-revision backups preserved as historical material, not current release."
     }
   ],
-  "frozen_path_policy": "Original inputs/records/scripts retain their historical paths and hashes. Use archive index and path_map.json for locating copies; do not alter frozen digests.",
-  "external_model_weights": "Weights are not part of archival datasets or Git; see original checkpoint manifests and caller-supplied model paths."
+  "frozen_path_policy": "Frozen records retain historical path strings. NAS path_map.json and recovery inventory resolve active data/code/model references; old local files are not required.",
+  "external_model_weights": "Exact configurations and NAS-only weight links in recovery/models; all 35 weight shards verified against the recorded experiment SHA256. No weight file depends on the old machine.",
+  "recovery_root": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery",
+  "recovery_policy": "Critical contents and dependencies must resolve to NAS or versioned repository; old source paths are provenance only."
 }

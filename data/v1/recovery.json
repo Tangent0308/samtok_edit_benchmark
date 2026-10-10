@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "nas_user_root": "/mnt/bn/strategy-mllm-train/user/tanyue",
+  "dataset_root": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1",
+  "experiment_root": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1",
+  "recovery_root": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/recovery",
+  "inventory": "manifest.jsonl",
+  "bootstrap_index": "index.json",
+  "offline_benchmark_bundle": "code/benchmark.bundle",
+  "offline_editor_bundle": "code/editor.bundle",
+  "model_checkpoints": {
+    "qwen21": "models/qwen21",
+    "qwen2511": "models/qwen2511",
+    "judge": "models/judge"
+  },
+  "frozen_formal_manifest_sha256": "16e3c8418d8ef179d0501f349a175409a43435af469829ae3689e36c1ba22937",
+  "available_server_human_decisions": "No final user review export supplied; browser-local edits must be exported to NAS separately.",
+  "nas_only_verifier": "scripts/verify_v1_recovery.py"
+}

@@ -12,6 +12,7 @@ from samtok_benchmark.v2.editor import run_editor
 from samtok_benchmark.v2.evaluation import prepare_judge, report
 from samtok_benchmark.v2.gallery import build
 from samtok_benchmark.v2.inputs import prepare, VARIANTS
+from samtok_benchmark.v2.review import package_review
 
 
 def main(argv=None):
@@ -19,7 +20,7 @@ def main(argv=None):
         description="SAMTok v2: independent objects, mixed per-unit interactions"
     )
     sub = parser.add_subparsers(dest="command", required=True)
-    for command in ("validate", "prepare", "gallery", "prepare-judge", "report"):
+    for command in ("validate", "prepare", "gallery", "review", "prepare-judge", "report"):
         p = sub.add_parser(command)
         p.add_argument("--manifest", type=Path, required=True)
         if command != "report":
@@ -56,6 +57,8 @@ def main(argv=None):
                 "gallery --output must be DATASET_ROOT/index.html so relative assets remain portable"
             )
         result = {"gallery": str(build(a.manifest, a.dataset_root, a.inputs))}
+    elif a.command == "review":
+        result = package_review(a.manifest, a.dataset_root, a.output)
     elif a.command == "run-editor":
         rows = run_editor(
             a.inputs,

@@ -60,7 +60,7 @@ ADE 的室内场景提供密集家具、相邻器具和多段部件。mask 的�
 
 ![四对象体育场景：大小目标、遮挡和混合交互](assets/v2/sports_objects.jpg)
 
-以上图片是**审阅用私有标注图**，不是完整发送给模型的提示图。查看实际公开输入请使用离线页面右侧的“实际混合交互图”。
+以上图片是**审阅用私有标注图**，不是完整发送给模型的提示图。查看实际公开输入请使用审核页的“正式混合输入”和“查看实际正式定位输入图”。
 
 ## 七种交互如何分配
 
@@ -111,52 +111,83 @@ no-ref 文本可以说明“所有可见桌腿”“两侧扶手”等编辑粒�
 
 这些审计覆盖当前已知的任务训练清单与缓存，不证明基础模型、分词器或未知训练集合从未见过这些图片。感知阈值无命中也不等同于证明不存在任何同场景不同视角照片。后续训练扩充应把 `holdout_source_ids.jsonl` 作为排除清单，并继续检查像素/近重复及可识别的同场景家族。
 
-## 本机目录与查看方式
+## 正式数据、仓库和中间过程的路径
 
-本次全部产物整理在 `/opt/tiger/SAMTok_Benchmark_v2/`：
+参照 v1 的 assets / benchmark 组织方式，v2 代码与图片分开存放。当前仅有一个 v2 工作仓库：`/opt/tiger/samtok_edit_benchmark_v2branch`，这是包含 `.git` 的真实目录，分支为 `v2branch`。此前的聚合目录与两个兼容符号链接已清理。
 
-| 路径 | 内容 |
+数据盘根目录为 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/`：
+
+| 相对路径 | 内容 |
 |---|---|
-| `README_中文.md` | 本机交付入口 |
-| `dataset/index.html` | 全部 212 条的离线查看页 |
-| `dataset/assets/` | 干净源图、原始 mask、初筛卡、最终目标总览与放大图 |
-| `dataset/inputs_visual/`、`inputs_native/` | 两种协议的全部 212 个主任务 |
-| `dataset/*.json[l]`、`dataset/audit/` | 冻结任务、来源、决定、统计及检查 |
-| `code/` | 仓库 clone，`v2branch` |
-| `construction_workspace/` | 911 张候选、审阅卡、288 条实际审阅决定与构建中间产物 |
-| `SAMTok_Benchmark_v2_浏览包.zip` | 可整体下载并解压查看的完整数据浏览包 |
+| `assets/<case_id>/source.jpg`、`U*.png` | 212 张正式源图、540 个原始二值 mask |
+| `assets/<case_id>/review.jpg`、`final_review.jpg` | 初筛卡与最终入选对象的总览及放大图 |
+| `benchmark/cases.jsonl` | 正式冻结标注，与仓库 `data/v2/cases.jsonl` 内容一致 |
+| `benchmark/provenance.jsonl`、`asset_manifest.jsonl` | 原始来源与图像 / mask 哈希 |
+| `benchmark/statistics.json`、`release.json` | 分布统计、冻结版本与数量 |
+| `benchmark/audit/` | 完整来源、资产、输入与浏览器审计 |
+| `construction/candidate_pool.jsonl`、`candidates/` | 911 张候选及检索出的原始部件 |
+| `construction/review_cards/`、`review_sheets/`、`diverse_sheets/` | 初筛与按类别分散取样查看的证据 |
+| `construction/visual_decisions.jsonl`、`final_review_overrides.jsonl` | 288 条实际初筛决定和二次剔除记录 |
+| `construction/reference_docs/`、`logs/` | 所依据文档快照与构建日志 |
+| `evaluation/inputs_visual/`、`inputs_native/` | 迁移后重新生成的两套 212 个公开运行任务 |
+| `evaluation/previous_smoke/` | 旧路径下的历史管线验证，不是模型实验结果 |
+| `archive/previous_delivery/` | 早期目录布局和静态浏览包的归档，不作为当前入口 |
 
-用 Chrome、Edge 或其他现代浏览器打开 `dataset/index.html`。远程机器上的路径需先下载完整浏览包并解压，不能只下载 HTML。页面不使用 AJAX、不访问绝对 HDFS 图片地址、不依赖 VS Code 的 `html.showPreview`。页面中的个人复核记录保存在浏览器本地，可导出 JSONL；导出内容不会自动冒充已完成的独立人工审核或改变冻结任务。
+仓库保留小型冻结标注、审计摘要、代码、测试和代表性插图；正式图像、mask、完整中间数据及模型输出均在数据盘。原始审计快照中的旧本机路径保留为历史记录，当前读取应使用上表。候选审阅记录的 `review_card` 相对于 `construction/`；正式 case 的 `source.image`、`target.mask`、`review.card` 相对于数据根目录。
 
-## 复现实验入口
+## 可下载的交互审核工具
 
-在 `code/` 下安装 `python -m pip install -e '.[dev]'`。本机已经准备了隔离的 `.deps`，也可直接用 `PYTHONPATH=.deps:src python -m samtok_benchmark.v2.cli` 代替下列命令名。
+审核工具目录：`/opt/tiger/samtok_edit_benchmark_v2_review/`。
+压缩包：`/opt/tiger/samtok_edit_benchmark_v2_review_20261010.zip`。
+上传目标为私有 [TTangenty/samtok_edit](https://huggingface.co/datasets/TTangenty/samtok_edit)，下载需要对应仓库访问权限。文件名为 `samtok_edit_benchmark_v2_review_20261010.zip`；固定版本下载链接和校验值在下方发布记录中。
+
+下载并完整解压后进入包目录运行 `python run_review.py`，浏览器自动打开。若不自动打开，可运行 `python run_review.py --port 8766 --no-browser`，访问 `http://127.0.0.1:8766/`。运行服务器仅用 Python 标准库，不依赖图片处理库、模型环境或 VS Code HTML 插件。
+
+左侧为全部 212 条的列表，支持来源、对象数、关键词和审核状态筛选。选择 case 后才加载对应源图和对象信息；初始视图不显示任何区域。每个对象可分别选择不显示、point、box 或 mask，也可同时显示多个对象的不同标注；“正式混合输入”按钮恢复该 case 冻结的输入分配，纯 ref 对象保持无图形提示。用户自由切换的审核标注不会改变模型的正式输入协议。
+
+支持图像缩放、原尺寸查看、整条保留 / 修改 / 剔除决定、逐对象备注和指令修改建议。结果按 case 写入包内 `reviews/review_results.json`，刷新后保留，可导出 JSON。建议与冻结任务分开保存；填写复核人不等于工具独立验证了其身份，也不会直接将主集改成人工认证版本。
+
+![左侧 case 列表与逐对象 point、mask、box 混合显示](assets/v2/review_ui.jpg)
+
+## 复现构建与评测
+
+在仓库下安装 `python -m pip install -e '.[dev]'`；构建需要 `.[construction]`。本机开发工具位于仓库外 `/opt/tiger/.samtok_v2_tools/python`，可使用 `PYTHONPATH=/opt/tiger/.samtok_v2_tools/python:src python -m samtok_benchmark.v2.cli` 运行。
 
 ```bash
-BENCH_DATA=/opt/tiger/SAMTok_Benchmark_v2/dataset
-samtok-benchmark-v2 validate --manifest "$BENCH_DATA/cases.jsonl" \
+BENCH_DATA=/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
+samtok-benchmark-v2 validate --manifest data/v2/cases.jsonl \
   --dataset-root "$BENCH_DATA" --minimum-cases 200 --output outputs/v2_validation.json
-
-samtok-benchmark-v2 prepare --manifest "$BENCH_DATA/cases.jsonl" \
+samtok-benchmark-v2 prepare --manifest data/v2/cases.jsonl \
   --dataset-root "$BENCH_DATA" --protocol visual_locator_v2 \
   --variants mixed --output outputs/v2_inputs
-
+samtok-benchmark-v2 review --manifest data/v2/cases.jsonl \
+  --dataset-root "$BENCH_DATA" --output /path/to/new_empty_review_folder
 samtok-benchmark-v2 run-editor --inputs outputs/v2_inputs/jobs.jsonl \
   --adapter your_adapter:edit --method your_model --seed 0 --output outputs/your_model
-
-samtok-benchmark-v2 prepare-judge --manifest "$BENCH_DATA/cases.jsonl" \
+samtok-benchmark-v2 prepare-judge --manifest data/v2/cases.jsonl \
   --dataset-root "$BENCH_DATA" --inputs outputs/v2_inputs/jobs.jsonl \
   --outputs outputs/your_model/outputs.jsonl --output outputs/your_model_judge
-
-# 使用真实评审填写 scores_template.jsonl；不可将空模板或测试打分当成模型结果。
-samtok-benchmark-v2 report --manifest "$BENCH_DATA/cases.jsonl" \
+samtok-benchmark-v2 report --manifest data/v2/cases.jsonl \
   --inputs outputs/v2_inputs/jobs.jsonl --outputs outputs/your_model/outputs.jsonl \
   --scores outputs/your_model_judge/scores_completed.jsonl --output outputs/v2_report.json
 ```
 
-复制数据目录到其他机器后，要重新 `prepare`：任务定义与图片是可移植的，已生成的运行 job 中包含本机绝对文件路径，输入摘要也绑定这些实际文件。模型适配器只能使用公开 job 的 `images`、`prompt`、`units`；不能自行读取 `cases.jsonl` 的私有 target、评审页或 gold mask 来补足没有提供的提示。
+源数据检索和冻结代码位于 `construction/`：`build_candidate_pool.py` 提取候选；`render_review.py` 生成原图、mask 与局部卡；`record_review.py` / `record_batch.py` 只记录实际逐图决定；`review_state.py` 应用有证据的二次覆盖；`audit_sources.py` 重算入选图指纹；`freeze_v2.py --root <construction> --output <data_root>` 将正式资产写入 assets、正式标注写入 benchmark，并同步仓库标注。不能以重新排序候选或自动分数代替已经记录的视觉准入。
 
-Git 保存代码、文档和冻结元数据；完整图片留在本地数据包。v1 的数据、代码入口及既有结果保留，旧 `samtok-benchmark` 命令仍对应 v1。
+复制数据到其他机器后重新 prepare：任务及资产使用相对路径，但生成的运行 jobs 绑定本机实际路径。适配器仅使用公开 job，不能从审核工具或 evaluator 私有 target 中补充未提供给模型的提示。空评分模板不能当作正式评测结果。v1 的冻结数据和旧入口保持可复现。
+
+## 发布记录与验证结果
+
+审核包已上传至私有 Hugging Face 数据集。固定版本：[下载审核包](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/e1179b57548c48e1e2090990a446c70b1717b9ca/samtok_edit_benchmark_v2_review_20261010.zip)；HF 提交 `e1179b57548c48e1e2090990a446c70b1717b9ca`。
+
+- 文件：`samtok_edit_benchmark_v2_review_20261010.zip`，185,099,142 字节，约 176.5 MiB。
+- SHA256：`af351b59da063d90f334a720196f865fe781a992851bbc471207f3f458e04d14`。
+- 任务清单 SHA256：`bfba2cc937bb0711d0858a4a44c6fb39ab0014c57d5adaef37b6fc7ac5ad5316`。
+- Git 只包含标注、审计摘要、代码、测试和图例；审核包、正式图片及中间产物不进入仓库。
+
+迁移后完整校验 964 个不可变正式资产；重新生成并检查两套共 424 个公开运行任务；审核包中的 212 张正式定位图与模型输入图逐文件 SHA256 一致。按新目录布局重新运行冻结脚本，得到完全相同的任务清单哈希。
+
+代码 75 项测试通过，覆盖 v1 回归、公开输入不泄漏隐藏定位、逐对象完整评分、审核保存与原始任务不变。真实浏览器检查全部 212 条 case，对 540 个对象分别检查 point、box、mask（共 1,620 次），并验证不显示标注、混合显示、列表筛选、刷新后保存恢复及导出；初始页面仅请求一张当前源图。浏览器检查在隔离临时副本中进行，没有向交付包写入测试人工审核记录。压缩包 CRC、图片引用及远端文件大小 / SHA256 均通过校验。
 
 ## 后续训练构造如何使用这一版
 

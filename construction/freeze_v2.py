@@ -351,6 +351,12 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--root", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True)
+    p.add_argument(
+        "--metadata-output",
+        type=Path,
+        default=REPO / "data/v2",
+        help="Frozen metadata copy destination; can isolate reproduction from Git",
+    )
     args = p.parse_args()
     pool = read_jsonl(args.root / "candidate_pool.jsonl")
     reviews = final_decisions(args.root)
@@ -359,6 +365,8 @@ def main():
         raise ValueError("Resolve source overlap flags before freeze")
     out = args.output
     out.mkdir(parents=True, exist_ok=True)
+    benchmark = out / "benchmark"
+    benchmark.mkdir(exist_ok=True)
     cases, provenance, assets, changes = [], [], [], []
     for n, r in enumerate(x for x in reviews if x["decision"] == "accept"):
         c = pool[r["index"]]
@@ -475,7 +483,6 @@ def main():
                 "candidate_index": r["index"],
                 "source_original": c["source_original"],
                 "annotation_file": c["source_annotation_file"],
-                "annotation_sha256": pool[0].get("unused", ""),
                 "mask_extraction": c["mask_extraction"],
                 "selected_annotations": [u["target"]["annotation_id"] for u in units],
             }
@@ -494,17 +501,19 @@ def main():
     }
     for row in provenance:
         row["annotation_sha256"] = annotation_hashes[row["annotation_file"]]
-    write_jsonl(out / "cases.jsonl", cases)
-    write_jsonl(out / "provenance.jsonl", provenance)
-    write_jsonl(out / "asset_manifest.jsonl", assets)
-    write_jsonl(out / "visual_decisions.jsonl", reviews)
-    shutil.copyfile(args.root / "visual_decisions.jsonl", out / "first_pass_visual_decisions.jsonl")
+    write_jsonl(benchmark / "cases.jsonl", cases)
+    write_jsonl(benchmark / "provenance.jsonl", provenance)
+    write_jsonl(benchmark / "asset_manifest.jsonl", assets)
+    write_jsonl(benchmark / "visual_decisions.jsonl", reviews)
+    shutil.copyfile(
+        args.root / "visual_decisions.jsonl", benchmark / "first_pass_visual_decisions.jsonl"
+    )
     if (args.root / "final_review_overrides.jsonl").exists():
         shutil.copyfile(
-            args.root / "final_review_overrides.jsonl", out / "final_review_overrides.jsonl"
+            args.root / "final_review_overrides.jsonl", benchmark / "final_review_overrides.jsonl"
         )
     write_jsonl(
-        out / "instruction_design_revisions.jsonl",
+        benchmark / "instruction_design_revisions.jsonl",
         [
             {
                 "candidate_index": i,
@@ -524,9 +533,9 @@ def main():
             for i, j in sorted(REMOVE | REPLACE.keys() | MATERIAL.keys())
         ],
     )
-    write_jsonl(out / "color_contrast_revisions.jsonl", changes)
+    write_jsonl(benchmark / "color_contrast_revisions.jsonl", changes)
     write_jsonl(
-        out / "language_scope_revisions.jsonl",
+        benchmark / "language_scope_revisions.jsonl",
         [
             {
                 "candidate_index": r["index"],
@@ -542,21 +551,23 @@ def main():
         ],
     )
     for name in ["candidate_pool_summary.json"]:
-        shutil.copyfile(args.root / name, out / name)
-    shutil.copytree(args.root / "audit", out / "audit", dirs_exist_ok=True)
-    report = validate(out / "cases.jsonl", out, minimum_cases=200, output=out / "validation.json")
-    release = REPO / "data/v2"
+        shutil.copyfile(args.root / name, benchmark / name)
+    shutil.copytree(args.root / "audit", benchmark / "audit", dirs_exist_ok=True)
+    report = validate(
+        benchmark / "cases.jsonl", out, minimum_cases=200, output=benchmark / "validation.json"
+    )
+    release = args.metadata_output
     release.mkdir(parents=True, exist_ok=True)
-    for file in out.glob("*.json*"):
+    for file in benchmark.glob("*.json*"):
         shutil.copyfile(file, release / file.name)
     (release / "audit").mkdir(exist_ok=True)
     for name in ["source_audit.json", "overlap_flags.jsonl", "selected_fingerprints.jsonl"]:
-        shutil.copyfile(out / "audit" / name, release / "audit" / name)
+        shutil.copyfile(benchmark / "audit" / name, release / "audit" / name)
     write_json(
         release / "release.json",
         {
             "release": "2.0.0",
-            "manifest_sha256": sha256_file(out / "cases.jsonl"),
+            "manifest_sha256": sha256_file(benchmark / "cases.jsonl"),
             "assets_bytes": sum(a["bytes"] for a in assets),
             "construction_decisions": len(reviews),
             "admitted": len(cases),
@@ -568,7 +579,7 @@ def main():
             "scope": "Existing-object and part editing. Add-at-new-position tasks are outside this release.",
         },
     )
-    shutil.copyfile(release / "release.json", out / "release.json")
+    shutil.copyfile(release / "release.json", benchmark / "release.json")
     print(json.dumps(report, ensure_ascii=False))
 
 

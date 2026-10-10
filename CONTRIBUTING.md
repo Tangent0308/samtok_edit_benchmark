@@ -4,7 +4,7 @@ This branch maintains the current v1 release only. Keep model weights, source-im
 
 ```bash
 python -m pip install -e '.[dev]'
-ruff check src tests examples
+ruff check src tests examples scripts
 pytest -q
 ```
 
@@ -32,3 +32,5 @@ and a version-checked model-independent evaluation pipeline.
 Run relevant checks before committing. A push of `v1branch` must not update `dev` or `main`. Never force-push unrelated work.
 
 The current implementation checks and their scope are recorded in [`data/v1/audits/repository_validation.json`](data/v1/audits/repository_validation.json). The UI and protocol smoke checks use synthetic/unchanged outputs; they are not benchmark model scores or human annotations.
+
+Artifact storage is indexed by `data/v1/artifacts.json` and documented in [Storage](docs/STORAGE.md). Archive large results with `scripts/archive_v1_artifacts.py`; verify all copied files before updating public paths. Keep original frozen records byte-identical and document any path remapping separately. Candidate admission and user-review decisions are never inferred from a successful copy.

@@ -30,7 +30,7 @@
     "goal1k_v1_300": 300
   },
   "human_review_status": "not supplied; 450 cases remain pending independently recorded human approval",
-  "model_evaluation_status": "not rerun after mask_grounded_single_ops_v4; 47 tasks and their region bindings changed",
+  "model_evaluation_status": "Qwen-Image-2.1 and Qwen-Image-Edit-2511 text-only generation completed on all 450 current tasks; direct AI visual review completed; not independently human-validated",
   "manifest_sha256": "16e3c8418d8ef179d0501f349a175409a43435af469829ae3689e36c1ba22937",
   "source_catalog_sha256": "5addb969508c4d25857f946e9e47bd4bdce9fbf17864fb2a07bfc8c26a648d67",
   "upstream_instruction_manifest_sha256": "16e3c8418d8ef179d0501f349a175409a43435af469829ae3689e36c1ba22937",
@@ -78,5 +78,17 @@
     "removed_masks": 47,
     "retained_original_R1": 27,
     "retained_original_R2": 20
-  }
+  },
+  "qwen21_text_only_review": {
+    "good": 202,
+    "bad": 232,
+    "uncertain": 16,
+    "reviewer": "assistant_direct_visual_inspection",
+    "evidence": "docs/results/qwen21_text_only_20261009/summary.json"
+  },
+  "source_group_counts": {
+    "v0_filtered": 150,
+    "samtok_related_sources": 300
+  },
+  "artifact_registry": "data/v1/artifacts.json"
 }

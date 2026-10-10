@@ -1,6 +1,6 @@
 # SAMTok Edit Benchmark v1：目标、构建与 Qwen-Image-2.1 结果
 
-更新日期：2026-10-09。本文区分**正式 v1 的 450 条任务**与**后续困难候选扩充**，汇总当前有记录可核验的结果。统计快照见 [summary.json](results/qwen21_text_only_20261009/summary.json)，883 条逐例结论、指令、证据与输入/输出身份见 [case_reviews.jsonl](results/qwen21_text_only_20261009/case_reviews.jsonl)。
+更新日期：2026-10-10；模型结果仍为 2026-10-09 冻结快照。本文区分**正式 v1 的 450 条任务**与**后续困难候选扩充**，汇总当前有记录可核验的结果。统计快照见 [summary.json](results/qwen21_text_only_20261009/summary.json)，883 条逐例结论、指令、证据与输入/输出身份见 [case_reviews.jsonl](results/qwen21_text_only_20261009/case_reviews.jsonl)。
 
 ## 1. Benchmark 要评测什么
 
@@ -213,15 +213,17 @@ Case 694：两侧可见扶手移除，猫、椅背与座垫保持。复杂部件
 |---|---|
 | 正式任务 manifest | 仓库 `data/v1/cases.jsonl` |
 | 正式资产 | `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/` |
-| 正式 450 全量纯文本实验 | `/tmp/samtok_text_only_full450_20261007/` |
-| 433 扩充候选、源筛选记录、冻结输入、原生输出 | `/tmp/samtok_expand_hard500_20261008/` |
-| 当前 883 条离线审核器展开目录 | `/tmp/samtok_review_editable_instruction_20261009/package/qwen21_hard500_review/` |
+| 正式 450 全量纯文本实验 | `/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/text_only_450_20261007/` |
+| 433 扩充候选与源图/mask | 正式资产根的 `candidates/expansion_433_20261008/` |
+| 433 扩充实验的冻结输入、生成与复核 | `/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/expansion_433_20261008/` |
+| 当前 883 条离线审核器展开目录 | 正式资产根的 `reviews/qwen21_883_20261009/` |
+| 评分校准实验（未通过验收） | 实验根 `benchmark_v1/judge_calibration_48_20261006/` |
 | 本地完整审核压缩包 | `/opt/tiger/tanyue/qwen21_hard504_case_review_editable_instruction_20261009.zip` |
 | 持久化的完整审核包 | 私有 HF dataset [TTangenty/samtok_edit](https://huggingface.co/datasets/TTangenty/samtok_edit)，需仓库访问权限 |
 
 [固定版本审核包下载](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/b60dd632eb2d9c0af0f5f36b096bccee1b0a289c/qwen21_hard504_case_review_editable_instruction_20261009.zip)。SHA256：`2bbd3c79f20ad79396b4d84e254c16c2b41a2e7b1fca788e57f37048794edf99`。完整解压后用浏览器打开 `qwen21_hard500_review/index.html`；若浏览器限制本地文件，可在该目录运行 `python -m http.server 8000` 后打开 `http://localhost:8000/`。
 
-审核包包含全部 883 张原图及 Qwen-Image-2.1 输出、899 个原始 region mask、逐条生成记录、源筛选/重叠审计和困难候选 manifest。仓库随文保存逐例结论与哈希，完整图像仍在上述包中；临时实验目录可能被清理，不应作为唯一长期获取入口。源数据的使用条件沿用各自上游条款。
+审核包包含全部 883 张原图及 Qwen-Image-2.1 输出、899 个原始 region mask、逐条生成记录、源筛选/重叠审计和困难候选 manifest。仓库随文保存逐例结论与哈希，完整图像仍在上述包中；原图、候选、原生输出和实验记录已逐文件校验后归档到持久化目录；原临时位置作为追溯副本保留。组织与路径迁移规则见 [文件组织](STORAGE.md)。源数据的使用条件沿用各自上游条款。
 
 查看器按需加载单条图片，可开关源图目标 overlay、查看原始英文及中文翻译、修改两种文字、修改好/不好/待定、独立选择最终保留/丢弃/待定并导出名单。数据默认保存在浏览器 localStorage，需导出 JSON 备份；CSV、指令 JSONL 与名单用于后续整理。编辑 instruction 不会重生成图或重判既有结果，现有输出始终对应原英文；采纳修改后必须以新任务身份重新评测。
 

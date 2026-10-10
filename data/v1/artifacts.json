@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "updated_at": "2026-10-10",
+  "dataset_root": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1",
+  "experiment_root": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1",
+  "formal_cases": 450,
+  "review_pool_cases": 883,
+  "proposed_hard_cases": 504,
+  "human_approval": "pending",
+  "artifacts": [
+    {
+      "id": "expansion_candidates_433",
+      "kind": "candidate_dataset",
+      "cases": 433,
+      "source": "/tmp/samtok_expand_hard500_20261008",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/candidates/expansion_433_20261008",
+      "include": [
+        "assets/**",
+        "candidates/**",
+        "new_cases.jsonl",
+        "source_reviews.jsonl",
+        "audit/**",
+        "*_retrieval_summary.json",
+        "paco_exclusions.jsonl"
+      ],
+      "rename": {
+        "new_cases.jsonl": "cases.jsonl"
+      },
+      "notes": "Source/mask candidates, official geometry audit and 642 source decisions. Pending formal admission."
+    },
+    {
+      "id": "text_only_450",
+      "kind": "model_experiment",
+      "cases": 450,
+      "model_outputs": 900,
+      "source": "/tmp/samtok_text_only_full450_20261007",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/text_only_450_20261007",
+      "exclude": [
+        "viewer/**",
+        "__pycache__/**",
+        "**/__pycache__/**"
+      ],
+      "notes": "Two editors, text-only; direct AI visual review. Historical two-model viewer excluded; both raw model outputs and review decisions retained. Latest 883-case viewer shows Qwen-Image-2.1 only."
+    },
+    {
+      "id": "expansion_qwen21_433",
+      "kind": "model_experiment",
+      "cases": 433,
+      "model_outputs": 433,
+      "source": "/tmp/samtok_expand_hard500_20261008",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/expansion_433_20261008",
+      "exclude": [
+        "assets/**",
+        "candidates/**",
+        "package/**",
+        "test_*.json",
+        "*preview*.png",
+        "preview_clean.png",
+        "browser_preview.png",
+        "__pycache__/**",
+        "**/__pycache__/**"
+      ],
+      "notes": "Qwen-Image-2.1 text-only experiment. Source assets archived separately in candidate dataset."
+    },
+    {
+      "id": "judge_calibration_48",
+      "kind": "unqualified_judge_experiment",
+      "cases": 48,
+      "model_outputs": 384,
+      "source": "/tmp/samtok_judge_calibration_20261006",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments/SAMTokEdit/benchmark_v1/judge_calibration_48_20261006",
+      "exclude": [
+        "judge_checkpoint/**",
+        "__pycache__/**",
+        "**/__pycache__/**"
+      ],
+      "notes": "Includes rubric iterations, holdout, output records and AI references; reliability qualification failed. Model weights excluded."
+    },
+    {
+      "id": "review_qwen21_883",
+      "kind": "portable_review",
+      "cases": 883,
+      "model_outputs": 883,
+      "source": "/tmp/samtok_review_editable_instruction_20261009/package/qwen21_hard500_review",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/reviews/qwen21_883_20261009",
+      "notes": "Latest bilingual editable-instruction viewer, source-mask toggle, good/bad/pending and independent keep/discard. Stable dataset ID preserved."
+    },
+    {
+      "id": "review_package",
+      "kind": "portable_archive",
+      "source": "/opt/tiger/tanyue/qwen21_hard504_case_review_editable_instruction_20261009.zip",
+      "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/reviews/packages/qwen21_hard504_case_review_editable_instruction_20261009.zip",
+      "sha256": "2bbd3c79f20ad79396b4d84e254c16c2b41a2e7b1fca788e57f37048794edf99",
+      "notes": "883-case complete review archive. Same version as private HF b60dd632eb2d9c0af0f5f36b096bccee1b0a289c."
+    }
+  ],
+  "frozen_path_policy": "Original inputs/records/scripts retain their historical paths and hashes. Use archive index and path_map.json for locating copies; do not alter frozen digests.",
+  "external_model_weights": "Weights are not part of archival datasets or Git; see original checkpoint manifests and caller-supplied model paths."
+}

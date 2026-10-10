@@ -17,6 +17,7 @@ A 450-case benchmark for fine-grained, region-directed image editing: selecting 
 | Document | Content |
 |---|---|
 | [v1 overview and results](docs/V1_REPORT.md) | Evaluation goals, construction, 450/883/504 cohorts, Qwen-Image-2.1 results and visual examples |
+| [Storage and artifacts](docs/STORAGE.md) | Persistent dataset, candidates, experiments, review packages and archival checks |
 | [Dataset](docs/DATASET.md) | Evaluation goals, statistics, paths, schema, visual examples |
 | [Sources and construction](docs/CONSTRUCTION.md) | Source splits, filtering, mask provenance, instruction writing, human approval |
 | [Source selection priorities](docs/SOURCE_PRIORITY_RECOMMENDATIONS.md) | Dataset suitability, investigation priorities, exclusions and audit limits |
@@ -43,6 +44,17 @@ samtok-benchmark build --assets-root "$DATA_ROOT" --output local_data/v1
 ```
 
 The build verifies all image/mask checksums. It refuses to overwrite an existing directory. On a different machine, `DATA_ROOT` can point to an extracted review package: its `assets/` paths match the release.
+
+## Inspect existing model results
+
+The latest 883-case result reviewer is archived under `$DATA_ROOT/reviews/qwen21_883_20261009/`. It includes English/Chinese instructions, editable text, optional original-region overlays, model judgments and independent keep/discard choices. It loads images after selecting a case.
+
+```bash
+python -m http.server 8765 --bind 127.0.0.1 \
+  --directory "$DATA_ROOT/reviews/qwen21_883_20261009"
+```
+
+Open `http://127.0.0.1:8765/`; export a JSON backup before changing browser/location. User decisions are browser-local until exported. This output-review format differs from the formal data-approval format below. The full experiment archives and their checksums are described in [Storage](docs/STORAGE.md).
 
 ## Browse and approve cases
 
@@ -97,7 +109,7 @@ The `pair_v3` judge sees two images with identical evaluator-added original-mask
 ## Repository layout
 
 ```text
-data/v1/                       frozen 450-case release, hashes and provenance
+data/v1/                       frozen 450-case release, hashes, provenance and artifact registry
   cases.jsonl                  sole current task manifest
   asset_manifest.jsonl         1,366 active source/region/legacy-evaluation asset records
   provenance.jsonl             450 source and selection records
@@ -112,7 +124,8 @@ src/samtok_benchmark/           installable package and CLI
   review/                      standalone lazy-loading data review tool
   judge/                       VLM rubric/runner, report and blind human output review
 examples/                      editor integration contract
-docs/                          dataset, construction, evaluation and sample figure
+docs/                          dataset, construction, evaluation, storage and result snapshots
+scripts/                       checked archival of large artifacts outside Git
 tests/                         dataset/protocol/review/scoring invariants
 ```
 

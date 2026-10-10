@@ -134,7 +134,7 @@ box、point 也继承输入 release，不重估。旧 v0 的 box 为紧致框向
 
 例子：index 106 保留被右侧灰鹅遮住的原 R2；134/137 保留被手指遮挡的小剪贴板；125 保留沿面部轮廓的窄头发区域；141 保留暗处邻近车轮的配对鞋；139 保留细长水平推车手柄。这些比较强调实例绑定和边界保护。
 
-保留原 R2 时，当前 `regions` 数组只有一项，它成为当前 R1；保留原文件路径 `region_2.png`、mask 哈希、box 和 point。不因为数组序号变化复制/修改图像。未选 mask 从当前 manifest、资产清单、输入 controls、judge 轮廓和审阅 UI 移除，它对应的对象不再获得编辑授权。47 个未选资产的追溯记录在 `selection/removed_regions_single_ops_v4.jsonl`；正式目录中历史文件保留，当前 build/review 包只携带实际引用的 1,366 个资产。
+保留原 R2 时，当前 `regions` 数组只有一项，它成为当前 R1；保留原文件路径 `region_2.png`、mask 哈希、box 和 point。不因为数组序号变化复制/修改图像。未选 mask 从当前 manifest、资产清单、输入 controls、judge 轮廓和审阅 UI 移除，它对应的对象不再获得编辑授权。47 个未选资产的持久化副本位于正式根的 `history/pre_cleanup_20261010/inactive_regions/`，追溯记录在 `selection/removed_regions_single_ops_v4.jsonl`；正式目录中历史文件保留，当前 build/review 包只携带实际引用的 1,366 个资产。
 
 ### 6.2 在保留目标上写自然的单项指令
 

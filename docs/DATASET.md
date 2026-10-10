@@ -75,8 +75,13 @@
 | 正式目录 `benchmark/benchmark.jsonl` | 历史无指令 catalog，只用于身份/几何追溯 |
 | 正式目录 `benchmark/benchmark_with_instructions.jsonl` | 当前规范 manifest 的副本；与仓库逐字节一致 |
 | 正式目录 `benchmark/instruction_review_evidence/` | `mask_grounded_single_ops_v4/` 含本轮 47 条的 8 张双 mask 比较拼图、选择理由与指令表；v3 子目录保留上一轮全量视觉复核。图头仅为历史对照，最终看当前 manifest |
+| 正式目录 `candidates/expansion_433_20261008/` | 后续 433 条候选，未并入正式清单 |
+| 正式目录 `reviews/qwen21_883_20261009/` | 当前 883 条模型结果审核器；双语、指令编辑、overlay 和导出 |
+| 正式目录 `reviews/packages/` | 当前完整审核 ZIP 的持久化副本 |
 | `/opt/tiger/tanyue/samtok_v1_450_case_review.tar.gz` | 可下载解压、用 Python 3 在本地运行的审阅包，大小以实际压缩包为准 |
 | `/opt/tiger/tanyue/samtok_v1_450_case_review/` | 上述包的项目机器展开目录 |
+
+当前 datasets/experiments 的完整目录、持久化审核入口与路径迁移说明见 [文件组织](STORAGE.md)。旧 gallery 已归入 `history/pre_cleanup_20261010/legacy_gallery.tar.gz`，47 个非活跃 region 已归入该 history 的 `inactive_regions/`。
 
 Git 提供元数据、代码和少量可视化样例；目前没有公开托管的全量图像下载地址。项目机器上可直接用正式资产目录，也可将审阅包解压目录作为 `--dataset-root`。其他使用者需要获得该包或按源数据条款取得资产。重建工具可从现有资产根目录复制，或从 `asset_manifest.jsonl` 记录的原始文件物化；跨机器可用 `--source-map OLD_PREFIX=NEW_PREFIX` 转换原始前缀。不会自动下载数据、申请访问权或猜测路径。
 

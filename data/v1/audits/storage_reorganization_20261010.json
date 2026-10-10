@@ -1,0 +1,170 @@
+{
+  "updated_at_utc": "2026-10-10T03:43:35.932282+00:00",
+  "status": "passed",
+  "formal_release": {
+    "status": "passed",
+    "manifest_sha256": "16e3c8418d8ef179d0501f349a175409a43435af469829ae3689e36c1ba22937",
+    "cases": 450,
+    "unique_source_images": 450,
+    "region_masks": 466,
+    "checked_assets": 1366,
+    "asset_hashes_verified": true,
+    "source_dataset_counts": {
+      "compbench": 114,
+      "goal1k/ADE20K-Part": 43,
+      "goal1k/BURST": 58,
+      "goal1k/MOSEv2": 6,
+      "goal1k/MeViS-valid_u": 26,
+      "goal1k/PACO-LVIS": 153,
+      "goal1k/SA-V": 14,
+      "humanedit": 1,
+      "mirage": 35
+    },
+    "edit_type_counts": {
+      "add": 113,
+      "attribute": 112,
+      "remove": 112,
+      "replace": 113
+    },
+    "region_count_distribution": {
+      "1": 434,
+      "2": 16
+    }
+  },
+  "storage_archival": {
+    "status": "verified",
+    "registry_sha256": "cf16e2c8cd40f5527566479b10bbe9ef95c3da29c330f4dc5b67dad237f41076",
+    "artifacts": [
+      {
+        "id": "expansion_candidates_433",
+        "files": 1522,
+        "bytes": 233822667,
+        "manifest_sha256": "5051acfa7c8391a0d9ec50c7627ac7d266e02f4ef30a97043b2a482095c9c72a"
+      },
+      {
+        "id": "text_only_450",
+        "files": 2831,
+        "bytes": 2069506268,
+        "manifest_sha256": "33c3a1da67954f37a6e357020ae1c7bbe510a0ebfcf1217fc7cc2f9dcaedabe0"
+      },
+      {
+        "id": "expansion_qwen21_433",
+        "files": 1735,
+        "bytes": 1280155950,
+        "manifest_sha256": "91fe58d38e7228ac31960bc73915885d4795b4e2b3c19a44f887739447278d96"
+      },
+      {
+        "id": "judge_calibration_48",
+        "files": 9772,
+        "bytes": 2899767312,
+        "manifest_sha256": "330ab0c242a55e9730f25768a4fee726ee81ac5aee69d96f5b5ed87b086cbf12"
+      },
+      {
+        "id": "review_qwen21_883",
+        "files": 4479,
+        "bytes": 1046491992,
+        "manifest_sha256": "e9e1740ebaf0edc62921902846753c5d61228d913b6716cb1b18c75716732931"
+      },
+      {
+        "id": "review_package",
+        "files": 1,
+        "bytes": 1031257259,
+        "sha256": "2bbd3c79f20ad79396b4d84e254c16c2b41a2e7b1fca788e57f37048794edf99"
+      }
+    ],
+    "verified_at": "2026-10-10T03:35:01.207732+00:00",
+    "copy_plan_registry_sha256": "0cc10be0cabff83c91afa0f03387c51afd323b7ca65370046cfffd143281bf62",
+    "registry_note_update": "Clarified exclusion of the old two-model viewer; operational copying rules and all archived files unchanged."
+  },
+  "formal_directory_cleanup": {
+    "inactive_masks_moved": 47,
+    "destination": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/history/pre_cleanup_20261010/inactive_regions",
+    "legacy_gallery_archive": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v1/history/pre_cleanup_20261010/legacy_gallery.tar.gz",
+    "legacy_gallery_archive_sha256": "033cd4c4255cb4234ae73c263b1e77af7e7ef823d6db05966c136d6c13afedaa",
+    "formal_manifest_unchanged": true,
+    "active_assets": 1366,
+    "historical_files_preserved": true
+  },
+  "candidate_source_independent_verification": {
+    "status": "verified",
+    "registry_sha256": "0cc10be0cabff83c91afa0f03387c51afd323b7ca65370046cfffd143281bf62",
+    "artifacts": [
+      {
+        "id": "expansion_candidates_433",
+        "files": 1522,
+        "bytes": 233822667,
+        "manifest_sha256": "5051acfa7c8391a0d9ec50c7627ac7d266e02f4ef30a97043b2a482095c9c72a"
+      }
+    ],
+    "verified_at": "2026-10-10T03:35:55.905552+00:00"
+  },
+  "archived_output_lookup": {
+    "resolved_output_records": 1717,
+    "by_experiment": {
+      "text_only_450_20261007": 900,
+      "expansion_433_20261008": 433,
+      "judge_calibration_48_20261006": 384
+    },
+    "all_source_size_and_native_outputs_located": true,
+    "output_hashes_match_byte_verified_archive_manifests": true,
+    "frozen_records_unchanged": true,
+    "relative_index": "resolved_outputs.jsonl"
+  },
+  "relocated_result_viewer": {
+    "status": "passed",
+    "cases": 883,
+    "initial_groups": {
+      "good": 350,
+      "bad": 504,
+      "uncertain": 29
+    },
+    "initial_image_requests": 0,
+    "images_per_selected_case": 2,
+    "file_protocol": true,
+    "bilingual_instructions_and_csv": true,
+    "chinese_search": true,
+    "original_english_unchanged": true,
+    "mask_overlay_default_off": true,
+    "overlay_lazy_load": true,
+    "overlay_exact_alignment_desktop_mobile": true,
+    "overlay_toggle_and_case_switch": true,
+    "old_backup_import_compatible": true,
+    "quality_and_manual_final_decisions": true,
+    "uncertain_excluded_from_default_keep": true,
+    "local_storage_reload": true,
+    "csv_multiline_roundtrip": true,
+    "confirmed_only_exports": true,
+    "json_backup_import": true,
+    "invalid_dataset_rejected": true,
+    "search_and_filter": true,
+    "external_requests": 0,
+    "page_errors": []
+  },
+  "relocated_instruction_editor": {
+    "status": "passed",
+    "cases": 883,
+    "english_and_chinese_editable": true,
+    "per_case_edits_survive_switch_and_reload": true,
+    "original_instructions_immutable": true,
+    "csv_and_jsonl_export_current_edits_and_originals": true,
+    "backup_import_restores_edits": true,
+    "legacy_backup_import": true,
+    "restore_original_preserves_review_decision": true,
+    "typing_does_not_confirm_review": true,
+    "search_uses_edited_instructions": true,
+    "confirmed_only_instruction_exports": true,
+    "empty_english_drafts_saved_final_exports_blocked": true,
+    "malformed_override_rejected": true,
+    "mask_overlay_still_works": true,
+    "page_errors": []
+  },
+  "unit_tests": {
+    "passed": 53
+  },
+  "lint": "passed: src tests examples scripts",
+  "documentation_links": "passed",
+  "human_review": "No final human decisions supplied; initial recommendations remain AI review",
+  "judge_candidate_status": "qualification failed; archived as experiment, not merged into formal scoring",
+  "frozen_manifest_changed": false,
+  "legacy_tmp_sources_retained": true
+}

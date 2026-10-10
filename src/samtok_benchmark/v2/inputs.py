@@ -13,7 +13,7 @@ from samtok_benchmark.v2 import OPERATIONS, PROTOCOLS
 from samtok_benchmark.v2.dataset import validate, load_cases
 
 VARIANTS = ("mixed", "all_ref", "all_mask_noref", "single")
-COLORS = ((235, 40, 75), (0, 150, 240), (0, 190, 110), (220, 135, 0))
+COLORS = ((235, 40, 75), (0, 150, 240), (220, 165, 0), (145, 75, 210), (0, 175, 120))
 PUBLIC_KEYS = {
     "schema_version",
     "job_id",
@@ -79,7 +79,7 @@ def render_locators(case, units, root, path):
         d.rectangle((lx, ly, lx + tw, ly + th), fill=color)
         d.text((lx + 3, ly + 3 - bx[1]), u["id"], font=font, fill="white")
     path.parent.mkdir(parents=True, exist_ok=True)
-    image.save(path)
+    image.save(path, quality=94) if path.suffix.lower() in {".jpg", ".jpeg"} else image.save(path)
 
 
 def _digest(job):

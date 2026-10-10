@@ -8,51 +8,29 @@ from samtok_benchmark.dataset import load_cases, validate
 from samtok_benchmark.io import asset_path, read_jsonl, sha256_file, write_jsonl
 
 
-def test_release_metadata_and_instruction_identity():
-    root = Path(__file__).resolve().parents[1] / "data/v1"
-    cases = load_cases(root / "cases.jsonl", 450)
-    assert sum(len(c["regions"]) for c in cases) == 466
-    stats = json.loads((root / "statistics.json").read_text())
-    assert sha256_file(root / "cases.jsonl") == stats["manifest_sha256"]
-    revised = read_jsonl(root / "instruction_revisions_single_ops_v4.jsonl")
-    assert len(revised) == 450
-    assets = {a["local_path"]: a for a in read_jsonl(root / "asset_manifest.jsonl")}
-    for r in revised:
-        c = cases[r["index"]]
-        assert c["id"] == r["id"] and c["instruction"] == r["instruction"]
-        assert c["edit_type"] == r["edit_type"]
-        assert assets[c["source_image"]]["sha256"] == r["source_sha256"]
-        assert [assets[m["mask"]]["sha256"] for m in c["regions"]] == r["region_mask_sha256"]
-    decisions = read_jsonl(root / "selection/v0_filter_decisions.jsonl")
-    assert len(decisions) == 656
-    admitted = {d["id"] for d in decisions if d["filter_decision"] == "admit_core_hard_relevant"}
-    assert admitted == {c["original_id"] for c in cases[:150]}
-    assert sum(c["instruction_revision"] == "mask_grounded_single_ops_v4" for c in cases) == 47
-    assert stats["edit_type_counts"] == {
-        "add": 113,
-        "remove": 112,
-        "replace": 113,
-        "attribute": 112,
+def test_current_release_metadata_and_instruction_identity():
+    from samtok_benchmark.v2.dataset import load_cases as load_v2
+
+    root = Path(__file__).resolve().parents[1] / "data/v2"
+    cases = load_v2(root / "cases.jsonl")
+    release = json.loads((root / "release.json").read_text())
+    assert release["manifest_sha256"] == sha256_file(root / "cases.jsonl")
+    designs = {
+        (d["case_id"], d["unit_id"]): d for d in read_jsonl(root / "instruction_design.jsonl")
     }
-    assert len(assets) == 1366
-    for c, r in zip(cases, revised):
-        assert c["instruction"][0].isupper()
-        assert c["edit_type"] not in {"mixed", "composite"}
-        assert len(set(r["region_operations"])) == 1
-        if r["changed_in_single_ops_v4"]:
-            assert len(c["regions"]) == 1
-            assert c["regions"] == [r["previous_regions"][r["selected_original_region_index"] - 1]]
-            assert r["selected_original_region_index"] != r["discarded_original_region_index"]
-        else:
-            assert c["regions"] == r["previous_regions"]
-            assert c["instruction"] == r["previous_instruction"]
-            assert c["edit_type"] == r["previous_edit_type"]
-    history = read_jsonl(root / "instruction_revisions.jsonl")
-    assert len(history) == 797
-    assert history[-47:] == [r for r in revised if r["changed_in_single_ops_v4"]]
-    removed = read_jsonl(root / "selection/removed_regions_single_ops_v4.jsonl")
-    assert len(removed) == 47
-    assert all(r["local_path"] not in assets for r in removed)
+    assets = {a["path"]: a for a in read_jsonl(root / "asset_manifest.jsonl")}
+    assert len(cases) == release["cases"] == 200
+    assert len(designs) == release["units"] == 785
+    assert len(assets) == 1185
+    for c in cases:
+        assert assets[c["source"]["image"]]["sha256"] == c["source"]["sha256"]
+        for u in c["units"]:
+            assert assets[u["target"]["mask"]]["sha256"] == u["target"]["mask_sha256"]
+            d = designs[(c["id"], u["id"])]
+            for mode in ["ref", "noref"]:
+                for suffix in ["", "_zh"]:
+                    key = "instruction_" + mode + suffix
+                    assert u[key] == d[key]
 
 
 @pytest.mark.parametrize("operation", ["mixed", "composite"])

@@ -1,4 +1,4 @@
-"""Independent v2 entrypoint; v1 commands and releases remain reproducible."""
+"""Entrypoint for the current SA-1B v2 release."""
 
 from __future__ import annotations
 

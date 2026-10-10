@@ -4,19 +4,20 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "samtok-edit-benchmark"
-version = "2.1.0"
-description = "Fine-grained image editing: v2 mixed-interaction multi-object benchmark and frozen v1"
+version = "2.2.0"
+description = "Fine-grained image editing: SA-1B v2 mixed-interaction multi-object benchmark"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["Pillow>=10.1", "numpy>=1.24"]
 
 [project.optional-dependencies]
 dev = ["pytest>=7", "ruff>=0.9"]
+review = ["playwright", "huggingface-hub"]
 construction = ["opencv-python-headless>=4.8", "scipy>=1.10", "pycocotools>=2.0.7"]
 judge = ["vllm", "transformers", "torch", "tqdm"]
 
 [project.scripts]
-samtok-benchmark = "samtok_benchmark.cli:main"
+samtok-benchmark = "samtok_benchmark.v2.cli:main"
 samtok-benchmark-v2 = "samtok_benchmark.v2.cli:main"
 
 [tool.setuptools.packages.find]

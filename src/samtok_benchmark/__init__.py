@@ -1,3 +1,3 @@
-"""SAMTok Edit Benchmark v1: frozen data, input protocol and independent judging."""
+"""SAMTok SA-1B v2: mixed-interaction multi-object editing benchmark."""
 
-__version__ = "1.0.0"
+__version__ = "2.2.0"

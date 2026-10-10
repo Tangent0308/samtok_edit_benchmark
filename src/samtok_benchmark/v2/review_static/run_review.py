@@ -66,9 +66,20 @@ def save_record(payload):
         or any(v not in {"none", "point", "box", "mask"} for v in modes.values())
     ):
         raise ValueError("Invalid annotation viewing mode")
+    flags = payload.get("overlay_flags", {})
+    if not isinstance(flags, dict) or set(flags) - units:
+        raise ValueError("Invalid overlay units")
+    for layers in flags.values():
+        if (
+            not isinstance(layers, dict)
+            or set(layers) - {"point", "box", "mask", "ref", "none"}
+            or any(type(v) is not bool for v in layers.values())
+        ):
+            raise ValueError("Invalid overlay flags")
     # Identity is entered by the user, not independently authenticated by this tool.
     record = {
-        k: payload.get(k, {}) for k in ["unit_notes", "instruction_suggestions", "view_modes"]
+        k: payload.get(k, {})
+        for k in ["unit_notes", "instruction_suggestions", "view_modes", "overlay_flags"]
     }
     record.update(
         case_id=cid,

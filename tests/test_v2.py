@@ -313,3 +313,24 @@ def test_gallery_is_offline_with_relative_assets(v2release):
     assert str(root) not in text
     assert "__PAYLOAD__" not in text
     assert (root / "final_review.jpg").exists()
+
+
+def test_fifth_independent_unit_is_bound_and_rendered(v2release, tmp_path):
+    root, manifest, case = v2release
+    fifth = copy.deepcopy(case["units"][0])
+    fifth["id"] = "U5"
+    fifth["target"].update(
+        parent_instance_id="fifth", mask="U5.png", box=[8, 94, 19, 110], point=[12, 100]
+    )
+    mask = Image.new("L", (160, 120))
+    ImageDraw.Draw(mask).rectangle((8, 94, 18, 109), fill=255)
+    mask.save(root / "U5.png")
+    fifth["target"]["mask_sha256"] = sha256_file(root / "U5.png")
+    fifth["interaction"] = {"has_ref": False, "locator": "mask"}
+    case["units"].append(fifth)
+    write_jsonl(manifest, [case])
+    job = prepare(manifest, root, tmp_path / "five")[0]
+    assert job["unit_ids"] == ["U1", "U2", "U3", "U4", "U5"]
+    verify_job(job)
+    with Image.open(job["images"][1]) as im:
+        assert im.getpixel((12, 100)) != (255, 255, 255)

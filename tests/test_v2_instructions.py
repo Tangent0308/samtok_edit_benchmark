@@ -56,12 +56,18 @@ def test_current_instruction_release_is_balanced_bilingual_and_concise():
 
     cases = load_cases(Path(__file__).parents[1] / "data/v2/cases.jsonl")
     units = [u for c in cases for u in c["units"]]
-    assert Counter(u["operation"] for u in units) == dict.fromkeys(
-        ["add", "replace", "remove", "attribute"], 135
-    )
+    assert len(cases) == 200 and len(units) == 785
+    assert {c["source"]["dataset"] for c in cases} == {"SA-1B"}
+    counts = Counter(u["operation"] for u in units)
+    assert sorted(counts.values()) == [196, 196, 196, 197]
+    assert set(counts) == {"add", "replace", "remove", "attribute"}
+    for case in cases:
+        assert len({u["operation"] for u in case["units"]}) == min(4, len(case["units"]))
+        assert case["instruction_review"]["source_viewed"]
+        assert not case["instruction_review"]["independent_human_verified"]
     for u in units:
         for mode in ["ref", "noref"]:
             assert u["instruction_" + mode + "_zh"].strip()
             assert len(u["instruction_" + mode].split()) <= 40
             assert "preserv" not in u["instruction_" + mode].lower()
-        assert u["instruction_design"]["version"] == "2.1.0"
+        assert u["instruction_design"]["version"] == "2.2.0"

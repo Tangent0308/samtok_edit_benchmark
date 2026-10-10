@@ -1,3 +1,3 @@
-from samtok_benchmark.cli import main
+from samtok_benchmark.v2.cli import main
 
 main()

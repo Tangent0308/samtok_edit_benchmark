@@ -1,6 +1,66 @@
-# SAMTok Benchmark v2：SA-1B 多对象细粒度交互编辑
+"""Render the single maintained benchmark document from the frozen release metadata."""
 
-当前唯一版本为 **v2 / release 2.2.0：200 张 SA-1B 源图、785 个独立目标，每图 2–5 个目标**。全部源图与所选 mask 已由 assistant 逐图查看，本轮又逐条查看图片和叠加区域后撰写中英文指令。当前冻结的是源图、任务和交互标注，尚无模型编辑结果或独立人工验收。
+import argparse
+import copy
+import json
+import shutil
+from pathlib import Path
+from PIL import Image
+from samtok_benchmark.io import read_jsonl
+from samtok_benchmark.v2.inputs import render_locators
+
+REPO = Path(__file__).resolve().parents[1]
+
+
+def table(headers, rows):
+    return "\n".join(
+        ["| " + " | ".join(headers) + " |", "| " + " | ".join(["---"] * len(headers)) + " |"]
+        + ["| " + " | ".join(map(str, r)) + " |" for r in rows]
+    )
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset-root", type=Path, required=True)
+    a = parser.parse_args()
+    root = a.dataset_root
+    cases = read_jsonl(REPO / "data/v2/cases.jsonl")
+    s = json.loads((REPO / "data/v2/statistics.json").read_text())
+    release = json.loads((REPO / "data/v2/release.json").read_text())
+    figures = REPO / "docs/assets"
+    figures.mkdir(parents=True, exist_ok=True)
+    examples = []
+    for number in [1, 8, 33, 138, 168, 198, 200]:
+        case = cases[number - 1]
+        dest = figures / f"case_{number:03d}.jpg"
+        if not dest.exists():
+            units = copy.deepcopy(case["units"])
+            for u in units:
+                u["interaction"]["locator"] = "mask"
+            render_locators(case, units, root, dest)
+            with Image.open(dest) as im:
+                im.thumbnail((1200, 1000))
+                im.save(dest, quality=90)
+        rows = []
+        for u in case["units"]:
+            mode = "ref" if u["interaction"]["has_ref"] else "noref"
+            rows.append(
+                [
+                    u["id"],
+                    u["operation"],
+                    mode + "+" + u["interaction"]["locator"],
+                    u["instruction_" + mode],
+                    u["instruction_" + mode + "_zh"],
+                ]
+            )
+        examples.append(
+            f"### Case {number:03d}：{case['difficulty']['scene_zh']}\n\n`{case['id']}`。{case['difficulty']['evidence_zh']}\n\n![源图与所选区域](docs/assets/case_{number:03d}.jpg)\n\n"
+            + table(["目标", "任务", "正式输入", "English", "中文"], rows)
+        )
+    text = (
+        f"""# SAMTok Benchmark v2：SA-1B 多对象细粒度交互编辑
+
+当前唯一版本为 **v2 / release {release["release_version"]}：200 张 SA-1B 源图、785 个独立目标，每图 2–5 个目标**。全部源图与所选 mask 已由 assistant 逐图查看，本轮又逐条查看图片和叠加区域后撰写中英文指令。当前冻结的是源图、任务和交互标注，尚无模型编辑结果或独立人工验收。
 
 此文档是仓库唯一维护的说明，审核包和数据目录中的同名内容是它的发布副本。旧 212 条和旧说明已退出当前清单，历史保存在 Git 与数据归档目录；不与这 200 条混合统计。
 
@@ -29,7 +89,7 @@
 - 图片索引：上述目录的 `sa_000000_unified_tot1000.index`。
 - Dense TFRecord：`/mnt/hdfs/byte_ttlive_strategy_llm/user/haobo.yuan/datasets/sa1b_dense_label/annotation/`。
 - Dense 索引：上述目录的 `all1000.index`。
-- 当前源素材及筛选过程：`/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/sa1b_source_selection/`。
+- 当前源素材及筛选过程：`{root}/sa1b_source_selection/`。
 - 正式来源追溯：仓库 `data/v2/provenance.jsonl`，记录 SA ID、所选原 object_id、原始/解析后的 TFRecord 文件、offset、length、原素材清单 SHA256 和训练目录匹配。
 
 索引中的旧 `/mnt/hdfs/sg_byte_ttlive_strategy_llm/` 前缀解析为本机 `/mnt/hdfs/byte_ttlive_strategy_llm/`。按已给出的偏移读取记录，不重建图片全量索引。原始 RLE 和所选区域清单保存在 `sa1b_source_selection/selected_sources.jsonl`；正式 PNG 记录逐文件 SHA256。
@@ -38,15 +98,7 @@
 
 先按固定 seed 抽样读取标注并安排候选查看顺序，再实际查看图片决定入选。初始 seed 20261011 抽 800 条，取回优先候选 320 张，另外补充器物等方向 74 张；扩充 seed 20261012 再抽不重叠的 2,000 条，取回 850 张。累计数字如下，阶段不是相加关系。
 
-| 阶段 | 数量 |
-| --- | --- |
-| 解析 dense 标注 | 2800 |
-| 取回候选图片 | 1244 |
-| 实际查看原图场景 | 622 |
-| 进一步检查原图、叠加图和局部并记录决定 | 252 |
-| 细查后保留 | 200 |
-| 细查后备用 | 41 |
-| 细查后淘汰 | 11 |
+{table(["阶段", "数量"], [["解析 dense 标注", 2800], ["取回候选图片", 1244], ["实际查看原图场景", 622], ["进一步检查原图、叠加图和局部并记录决定", 252], ["细查后保留", 200], ["细查后备用", 41], ["细查后淘汰", 11]])}
 
 候选召回先排除 sky/ground/wall 等背景类别，并把面积约 0.08%–30%、重复类别、部件关键词、较小区域较多的图片排前。初始排序分数为 `2×min(重复量,12)+min(部件量,15)+min(小区域量,12)+min(候选量,12)`，仅用于安排查看顺序。类别重复、面积小、mask 多都不能单独构成入选证据。
 
@@ -71,15 +123,7 @@ mask 使用 dense annotation 中该目标原始可见区域，转为与原图同
 
 每个对象独立取一种正式模式，无 ref 必须有 point/box/mask；有 ref 可以无区域。冻结时按 manifest 顺序循环七种模式，保证每图至少两种形式；未按模型效果挑模式。
 
-| 正式模式 | 目标数 |
-| --- | --- |
-| noref+point | 113 |
-| ref+box | 112 |
-| noref+mask | 112 |
-| ref+none | 112 |
-| ref+mask | 112 |
-| noref+box | 112 |
-| ref+point | 112 |
+{table(["正式模式", "目标数"], s["interactions"].items())}
 
 `ref+none` 是纯 ref。公开输入不会附送其 point/box/mask；no-ref 不附送私有 full ref。中文翻译默认仅供审核。审核页“全部 ref”会把私有目标标签画到原图，用于复核；**不等同于模型的正式输入**。
 
@@ -104,53 +148,19 @@ mask 使用 dense annotation 中该目标原始可见区域，转为与原图同
 
 ## 6. 当前构建结果
 
-| 编辑类型 | 目标数 | 占比 | 包含该类型的 case |
-| --- | --- | --- | --- |
-| add | 196 | 24.97% | 177 |
-| replace | 196 | 24.97% | 178 |
-| remove | 197 | 25.10% | 178 |
-| attribute | 196 | 24.97% | 167 |
+{table(["编辑类型", "目标数", "占比", "包含该类型的 case"], [[op, s["operations"][op], f"{s['operations'][op] / 785:.2%}", s["case_operation_presence"][op]] for op in ["add", "replace", "remove", "attribute"]])}
 
-| 每图独立目标数 | case 数 | 占比 |
-| --- | --- | --- |
-| 2 | 26 | 13.0% |
-| 3 | 48 | 24.0% |
-| 4 | 41 | 20.5% |
-| 5 | 85 | 42.5% |
+{table(["每图独立目标数", "case 数", "占比"], [[k, v, f"{v / 200:.1%}"] for k, v in s["targets_per_case"].items()])}
 
 平均每图 **3.925** 个目标。4–5 目标图共 **126 条（63%）**。5 目标图的重复类型分别为 add 19、replace 18、remove 19、attribute 29 条；完整组合分布见 `statistics.json` 的 `case_operation_combinations`。
 
-| 难点标签（可重叠） | case 数 |
-| --- | --- |
-| 紧邻保护 | 199 |
-| 同类多实例 | 187 |
-| 遮挡 | 176 |
-| 局部部件 | 148 |
-| 细长狭窄 | 72 |
-| 小目标 | 24 |
-| 孔洞结构 | 16 |
-| 分离可见区域 | 14 |
-| 粒度差异 | 8 |
-| 动态姿态 | 3 |
-| 透明材质 | 1 |
-| 反射干扰 | 1 |
+{table(["难点标签（可重叠）", "case 数"], sorted(s["source_selection"]["difficulty_case_counts"].items(), key=lambda x: -x[1]))}
 
 mask 面积占整图中位数 **0.5725%**，最小 **0.0814%**、最大 **13.1828%**；小于 1% 的有 **535/785** 个目标。**203 个目标 / 115 张图**含多个显著连通块，但仍按 785 个实物目标计数。连通块采用 4 邻接，忽略小于 max(9 像素, mask 面积 0.1%) 的分量；与“分离可见区域”人工场景标签的 14 条不是同一统计。
 
-| 操作子类 | 目标数 |
-| --- | --- |
-| R | 196 |
-| C | 179 |
-| D | 109 |
-| A | 196 |
-| D:part | 56 |
-| D:contents | 11 |
-| C:material | 13 |
-| D:hem | 3 |
-| D:lowerlegs | 18 |
-| C:tint | 4 |
+{table(["操作子类", "目标数"], s["recipes"].items())}
 
-其中 A/R/D/C 分别对应 add/replace/remove/attribute，D:part 指删选中对象的指定子部件，D:contents 包含内容物，D:lowerlegs/D:hem 为裁去服装下段，C:material/C:tint 为材质/透明染色。全部 130 种英文部件类型及数量、操作×交互交叉表均保存在 `statistics.json`，不把近义英文名称当成严格语义 taxonomy。
+其中 A/R/D/C 分别对应 add/replace/remove/attribute，D:part 指删选中对象的指定子部件，D:contents 包含内容物，D:lowerlegs/D:hem 为裁去服装下段，C:material/C:tint 为材质/透明染色。全部 132 种英文部件类型及数量、操作×交互交叉表均保存在 `statistics.json`，不把近义英文名称当成严格语义 taxonomy。
 
 ### 训练目录交集与评测状态
 
@@ -164,8 +174,8 @@ mask 面积占整图中位数 **0.5725%**，最小 **0.0814%**、最大 **13.182
 | --- | --- |
 | 唯一 v2 repo | `/opt/tiger/samtok_edit_benchmark_v2branch`，分支 `v2branch` |
 | 唯一维护文档 | repo `README.md`；`/opt/tiger/SAMTok Benchmark v2.md` 指向它 |
-| 正式版本元数据 | repo `data/v2/`，同步到 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/benchmark/` |
-| 数据总根目录 | `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2` |
+| 正式版本元数据 | repo `data/v2/`，同步到 `{root}/benchmark/` |
+| 数据总根目录 | `{root}` |
 | 正式源图 | `assets/v2-sa_<id>/source.jpg` |
 | 正式单目标 mask | `assets/v2-sa_<id>/U1.png` … `U5.png` |
 | 选区复核图 | `assets/v2-sa_<id>/selection_review.jpg`，原标注 ID 见元数据 |
@@ -200,24 +210,24 @@ python run_review.py --no-browser --port 8766
 cd /opt/tiger/samtok_edit_benchmark_v2branch
 python -m pip install -e '.[dev,review]'
 
-python construction/build_sa1b_v2.py \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
-python construction/write_document.py \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
+python construction/build_sa1b_v2.py \\
+  --dataset-root {root}
+python construction/write_document.py \\
+  --dataset-root {root}
 
-samtok-benchmark-v2 validate --manifest data/v2/cases.jsonl \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2 \
+samtok-benchmark-v2 validate --manifest data/v2/cases.jsonl \\
+  --dataset-root {root} \\
   --minimum-cases 200 --output data/v2/validation.json
 
 # 从冻结标注生成英文模型输入；不能直接把整个审核包喂给编辑模型。
-samtok-benchmark-v2 prepare --manifest data/v2/cases.jsonl \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2 \
-  --protocol native_regions_v2 --variants mixed \
-  --output /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/evaluation/native_mixed
+samtok-benchmark-v2 prepare --manifest data/v2/cases.jsonl \\
+  --dataset-root {root} \\
+  --protocol native_regions_v2 --variants mixed \\
+  --output {root}/evaluation/native_mixed
 
 # output 必须是空目录；已有审核结果不会被覆盖。
-samtok-benchmark-v2 review --manifest data/v2/cases.jsonl \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2 \
+samtok-benchmark-v2 review --manifest data/v2/cases.jsonl \\
+  --dataset-root {root} \\
   --output /opt/tiger/samtok_edit_benchmark_v2_review
 
 python -m pytest -q
@@ -230,90 +240,22 @@ python -m ruff check .
 
 下图展示源图及全部已选 mask，颜色按 U1 红、U2 蓝、U3 金、U4 紫、U5 绿。这里完整展示选区以便审核，正式输入只给每个 U 冻结的形式。**这些是源图标注可视化，不是模型编辑结果。** 表中是正式模式实际发送的英文指令及审核用中文翻译；no-ref 的实例通过图上区域选择。
 
-### Case 001：并肩人物与衣物遮挡
+"""
+        + "\n\n".join(examples)
+        + "\n"
+    )
+    count = len(s["scope_types"])
+    text = text.replace("全部 132 种英文部件类型", f"全部 {count} 种英文部件类型")
+    (REPO / "README.md").write_text(text, encoding="utf-8")
+    shutil.copyfile(REPO / "README.md", root / "BENCHMARK_V2_ZH.md")
+    shutil.copytree(figures, root / "docs/assets", dirs_exist_ok=True)
+    link = Path("/opt/tiger/SAMTok Benchmark v2.md")
+    if link.is_symlink():
+        link.unlink()
+    if not link.exists():
+        link.symlink_to(REPO / "README.md")
+    print("Wrote canonical README and data copy; figures:", len(examples))
 
-`v2-sa_10063996`。两人靠近，左侧仅选一只袖子、右侧选被头发和纸张遮挡的外套；需区分不同编辑粒度并覆盖外套全部可见区域。
 
-![源图与所选区域](docs/assets/case_001.jpg)
-
-| 目标 | 任务 | 正式输入 | English | 中文 |
-| --- | --- | --- | --- | --- |
-| U1 | replace | noref+point | Replace the selected sleeve with a flared bell sleeve. | 将选中的衣袖替换为喇叭袖。 |
-| U2 | attribute | ref+box | Change the color of the red coat of the woman on the right to navy blue. | 将右侧女性红色外套的可见面料改为藏蓝色。 |
-
-### Case 008：图书馆同款木椅与桌腿交错
-
-`v2-sa_6295141`。三把独立椅子的靠背和横撑、细腿与桌腿交错；左椅被桌面及前椅遮挡，编辑必须保持框架空隙中的地毯和其他椅腿。
-
-![源图与所选区域](docs/assets/case_008.jpg)
-
-| 目标 | 任务 | 正式输入 | English | 中文 |
-| --- | --- | --- | --- | --- |
-| U1 | remove | noref+mask | Remove the selected chair. | 移除选中的椅子。 |
-| U2 | add | ref+none | Add one burgundy seat cushion to the chair facing away in front of the nearest table. | 给前景正面背向镜头的木椅加上一个酒红色坐垫。 |
-| U3 | attribute | ref+mask | Change the color of the partly hidden chair on the left of the nearest table to white. | 将前景桌左侧被遮挡的木椅改为白色。 |
-
-### Case 033：食品摊位中交叉的竹签
-
-`v2-sa_3206973`。在大量相似竹签中指定两根；右侧竹签被另一根交叉遮挡，必须覆盖其分离可见部分。
-
-![源图与所选区域](docs/assets/case_033.jpg)
-
-| 目标 | 任务 | 正式输入 | English | 中文 |
-| --- | --- | --- | --- | --- |
-| U1 | remove | noref+box | Remove the selected skewer. | 移除选中的签子。 |
-| U2 | replace | ref+point | Replace the skewer partly crossed by another skewer on the right with a long two-pronged metal serving fork. | 将右侧被斜向竹签遮挡的竹签替换为长柄双齿金属餐叉。 |
-
-### Case 138：装饰物密集的店铺灯具
-
-`v2-sa_37740`。四套独立吊灯只取玻璃灯泡，保护灯座、吊线和贴近的悬挂装饰，亮度与透明反射各不相同。
-
-![源图与所选区域](docs/assets/case_138.jpg)
-
-| 目标 | 任务 | 正式输入 | English | 中文 |
-| --- | --- | --- | --- | --- |
-| U1 | add | ref+none | Add one small silver wire cage around the glass to the glass light bulb on the far right. | 给右侧吊灯的玻璃灯泡加上一个围住玻璃的小银色金属丝护笼。 |
-| U2 | replace | ref+mask | Replace the largest glass light bulb at the upper center with a long tubular glass light bulb. | 将上方中间最大吊灯的玻璃灯泡替换为长管形玻璃灯泡。 |
-| U3 | remove | noref+box | Remove the selected light bulb. | 移除选中的灯泡。 |
-| U4 | attribute | ref+point | Tint the glass light bulb at the middle left pale blue. | 将左侧中间吊灯的玻璃灯泡染成浅蓝色。 |
-
-### Case 168：商店内密集陈列的旅行箱
-
-`v2-sa_6330783`。五个几乎相同提手嵌在密集重复箱体和拉链之间，必须把提手匹配到正确箱子。
-
-![源图与所选区域](docs/assets/case_168.jpg)
-
-| 目标 | 任务 | 正式输入 | English | 中文 |
-| --- | --- | --- | --- | --- |
-| U1 | remove | ref+point | Remove the top handle of the pale-purple suitcase at the front right. | 移除前景右侧淡紫色箱子的顶部提手。 |
-| U2 | replace | noref+point | Replace the selected suitcase handle with a looped brown leather handle. | 将选中的行李箱提手替换为棕色皮革环形提手。 |
-| U3 | add | ref+box | Add one small yellow luggage tag to the top handle of the champagne-colored suitcase behind the bright-pink one. | 给亮粉箱后方香槟色箱子的顶部提手加上一个小黄色行李牌。 |
-| U4 | attribute | noref+mask | Change the color of the selected suitcase handle to black. | 将选中的行李箱提手改为黑色。 |
-| U5 | replace | ref+none | Replace the top handle of the gray suitcase on the right with a curved wooden handle. | 将右侧灰色箱子的顶部提手替换为弧形木提手。 |
-
-### Case 198：狭窄街道上一排踏板摩托车
-
-`v2-sa_8861209`。五块近似挡泥板在车轮与前叉之间重复出现，停车队列相互重叠，禁止连车胎一起改。
-
-![源图与所选区域](docs/assets/case_198.jpg)
-
-| 目标 | 任务 | 正式输入 | English | 中文 |
-| --- | --- | --- | --- | --- |
-| U1 | remove | ref+box | Remove the front fender of the nearest dark scooter in the parked row. | 移除右侧前排靠近镜头黑色踏板车的前挡泥板。 |
-| U2 | attribute | noref+mask | Change the color of the selected motorcycle fender to glossy red. | 将选中的摩托车挡泥板改为亮红色。 |
-| U3 | add | ref+none | Add one small amber reflector on its visible side to the white front fender of the scooter approaching along the road. | 给道路中迎面驶来踏板车的白色前挡泥板加上一个装在可见侧面的小琥珀色反光片。 |
-| U4 | replace | ref+mask | Replace the dark front fender immediately behind the white parked scooter with a short angular black front fender. | 将白色踏板车后方黑车的前挡泥板替换为短款棱角形黑色前挡泥板。 |
-| U5 | replace | noref+box | Replace the selected motorcycle fender with a long rounded chrome front fender. | 将选中的摩托车挡泥板替换为长圆弧形镀铬前挡泥板。 |
-
-### Case 200：石墙上陈列的四把旧木椅
-
-`v2-sa_8981826`。不同椅子分别选择靠背、顶条或座面，细杆、孔洞与强阴影不能混为部件。
-
-![源图与所选区域](docs/assets/case_200.jpg)
-
-| 目标 | 任务 | 正式输入 | English | 中文 |
-| --- | --- | --- | --- | --- |
-| U1 | replace | ref+mask | Replace the visible ladder-back frame of the second green chair from the left with a rounded wooden backrest frame with two upright slats. | 将左起第二把绿椅的梯形靠背可见木框替换为带两根竖条的圆弧形木靠背框。 |
-| U2 | remove | noref+box | Remove the selected chair rail. | 移除选中的椅子横条。 |
-| U3 | attribute | ref+point | Change the color of the seat of the black chair on the far right to dark green. | 将最右黑椅的座面改为深绿色。 |
-| U4 | add | noref+point | Add one small cream-colored seat cushion to the selected chair seat. | 给选中的椅子座面加上一个米白色小坐垫。 |
+if __name__ == "__main__":
+    main()

@@ -1,21 +1,16 @@
 {
-  "release": "2.1.0",
-  "manifest_sha256": "a07c19c0b42ffb0c864f1470669366982e1aecc5b5b757482f994e44aca49028",
-  "assets_bytes": 90283931,
-  "construction_decisions": 288,
-  "admitted": 212,
-  "rejected": 76,
+  "schema_version": "2.0",
+  "release_version": "2.2.0",
+  "name": "SAMTok Benchmark v2 — SA-1B 200",
+  "status": "tasks_frozen_pending_independent_review_and_model_evaluation",
+  "cases": 200,
+  "units": 785,
+  "source_selection": "Latest 200 SA-1B cases only",
+  "supersedes": "2.1.0 non-SA-1B 212-case release (archived)",
+  "manifest": "cases.jsonl",
+  "dataset_root": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2",
+  "annotation_geometry": "unchanged visible masks; tight half-open boxes; deterministic mask-interior points",
   "independent_human_verified": false,
-  "parent_branch": "v1branch",
-  "base_commit": "c72a83c74e8b684040240d487b53d1e6b54b23a8",
-  "input_assignment": "deterministic per-image unit shuffle; seven-mode cyclic schedule with stride 2",
-  "scope": "Four balanced operations: support-anchored addition, component replacement, removal and attribute editing.",
-  "baseline_manifest_sha256": "bfba2cc937bb0711d0858a4a44c6fb39ab0014c57d5adaef37b6fc7ac5ad5316",
-  "instruction_version": "2.1.0",
-  "unit_operations": {
-    "add": 135,
-    "attribute": 135,
-    "replace": 135,
-    "remove": 135
-  }
+  "checkpoint_exposure_audited": false,
+  "manifest_sha256": "fd3672677e8113ce25b9470e31cd1eefec0b8ed61566fccf4fdd33062a0952ec"
 }

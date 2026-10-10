@@ -33,8 +33,8 @@ def load_cases(manifest: Path) -> list[dict]:
             raise ValueError("release cases must use distinct source families")
         families.add(source["family_id"])
         units = case["units"]
-        if not 2 <= len(units) <= 4:
-            raise ValueError("v2 release requires two to four independent units")
+        if not 2 <= len(units) <= 5:
+            raise ValueError("v2 release requires two to five independent units")
         unit_ids, parents = set(), set()
         for unit in units:
             if not unit.get("id") or unit["id"] in unit_ids:

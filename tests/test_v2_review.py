@@ -123,3 +123,14 @@ def test_http_saves_merge_cases_and_export_on_restart(review_package):
         http.shutdown()
         http.server_close()
         thread.join()
+
+
+def test_independent_overlay_flags_persist_and_reject_unknown_layers(review_package):
+    _, meta, server = review_package
+    request = payload(meta)
+    request["overlay_flags"] = {"U1": {"mask": True, "box": True, "ref": True}}
+    record = server.save_record(request)
+    assert record["overlay_flags"] == request["overlay_flags"]
+    request["overlay_flags"]["U1"]["private"] = True
+    with pytest.raises(ValueError, match="overlay"):
+        server.save_record(request)

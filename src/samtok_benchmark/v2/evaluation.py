@@ -11,14 +11,14 @@ from samtok_benchmark.io import asset_path, digest, read_jsonl, sha256_file, wri
 from samtok_benchmark.v2.dataset import load_cases, interaction_name
 from samtok_benchmark.v2.inputs import verify_job
 
-JUDGE_PROTOCOL = "v2_epq_all_units_1"
+JUDGE_PROTOCOL = "v2_epq_all_units_2"
 RUBRIC = """Evaluate only the actual requested units in this job, jointly, against the clean source.
 For EACH unit assign three boolean decisions with concrete visual evidence:
-E: The correct physical instance/part is edited, every requested visible piece is covered, the specified operation/result is complete. No leftover original target or substitute duplicate counts as success.
-P: The other parts of this object's body, neighboring objects, occluders and local background are preserved. Changes explicitly required by another unit in this same job are authorized. Penalize spill beyond the semantic edit boundary. The source target mask is a localization annotation, not a required pixel-difference mask: replacement/removal may naturally alter newly exposed pixels or immediate attachments. Judge the actual request, not IoU alone.
+E: The correct physical instance/part is edited, every requested visible piece is covered, the specified operation/result is complete. For remove/replace, leftover targeted pieces or substitute duplicates fail. For add, the existing support remains and the new accessory must be present in the requested count and location; recoloring or replacing the support fails. For attribute, retain geometry and change the requested appearance.
+P: The other parts of this object's body, neighboring objects, occluders and local background are preserved. Changes explicitly required by another unit in this same job are authorized. Penalize spill beyond the semantic edit boundary. The source target mask is a localization annotation, not a required pixel-difference mask: addition/replacement/removal may naturally alter newly exposed pixels or immediate attachments. Judge the actual request, not IoU alone.
 Q: This unit's edit looks natural: coherent material, shape, attachment, edges, occlusion, lighting, reflections and shadows. Require every visible edited fragment to pass.
 Also assign global_P and global_Q for the complete image. Global_P protects everything outside all authorized targets; global_Q catches scene-wide artifacts and inconsistent joint edits. Allow only physically necessary, local adaptations, not unrelated changes.
-Use the full image AND each paired fixed-coordinate detail crop. Do not reward large/easy units enough to compensate for one failed unit. If evidence is insufficient, mark false and say why. A changed point marker or merely inserted duplicate is not completion. A no-ref instruction still names a part type; its supplied locator chooses the instance. For single-unit diagnostics, all other candidate objects are protected.
+Use the full image AND each paired fixed-coordinate detail crop. Do not reward large/easy units enough to compensate for one failed unit. If evidence is insufficient, mark false and say why. A changed point marker is not completion. An added item must satisfy the stated attachment, count and location; a duplicate beside the support is not sufficient. A no-ref instruction still names a part type; its supplied locator chooses the instance. For single-unit diagnostics, all other candidate objects are protected.
 Return the provided score structure. Every boolean requires nonempty evidence. Do not invent human review: identify judge_kind and judge_name accurately."""
 
 
@@ -132,6 +132,7 @@ def prepare_judge(manifest: Path, root: Path, inputs: Path, outputs: Path, direc
                         u["instruction"] for u in job["units"] if u["id"] == unit["id"]
                     ),
                     "completion_requirement": unit["completion_requirement"],
+                    "edit_contract": unit.get("edit_contract", {}),
                     "preserve": unit["preserve"],
                 }
             )

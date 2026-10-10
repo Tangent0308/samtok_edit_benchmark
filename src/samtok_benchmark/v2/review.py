@@ -28,6 +28,7 @@ def package_review(manifest: Path, root: Path, output: Path):
         "provenance.jsonl",
         "statistics.json",
         "release.json",
+        "instruction_revision.json",
     ):
         source = manifest.parent / name
         if source.exists():
@@ -50,6 +51,10 @@ def package_review(manifest: Path, root: Path, output: Path):
                 "id": u["id"],
                 **u["interaction"],
                 "operation": u["operation"],
+                "instruction_zh": u.get(
+                    "instruction_ref_zh" if u["interaction"]["has_ref"] else "instruction_noref_zh",
+                    "",
+                ),
                 "instruction": u[
                     "instruction_ref" if u["interaction"]["has_ref"] else "instruction_noref"
                 ],
@@ -72,6 +77,8 @@ def package_review(manifest: Path, root: Path, output: Path):
     write_json(output / "cases.json", index)
     metadata = {
         "schema_version": "2.0",
+        "instruction_version": cases[0].get("instruction_review", {}).get("version", "2.0.0"),
+        "unit_operations": summary["unit_operations"],
         "cases": len(cases),
         "units": summary["units"],
         "manifest_sha256": sha256_file(manifest),
@@ -90,7 +97,9 @@ def package_review(manifest: Path, root: Path, output: Path):
 
 左侧选择 case 后才加载对应图片和标注。默认显示干净源图；选中一个 object，在其下拉框中选择不显示、point、box 或 mask。多个 object 可以同时用不同形式显示，未选 object 不显示标注。“正式混合输入”恢复冻结评测的形式；纯 ref 对象在此状态下没有图形提示。查看时自由切换标注不会修改任务定义。
 
-支持来源、对象数和审核状态筛选，上一条/下一条切换，图像缩放，以及逐 case 审核决定、对象备注和指令修改建议。结果写入 `reviews/review_results.json`，刷新后保留；导出按钮下载 JSON。原始 `benchmark/cases.jsonl` 始终保持冻结，指令修改只是审核建议，不会直接改写正式评测集。
+对象卡片同时显示实际英文指令和对应中文翻译。中文仅供审核，不会额外输入英文评测模型。add 的区域标注定位承载物或安装部位，不是新增物的输出轮廓。
+
+支持来源、任务类型、对象数和审核状态筛选，上一条/下一条切换，图像缩放，以及逐 case 审核决定、对象备注和指令修改建议。结果写入 `reviews/review_results.json`，刷新后保留；导出按钮下载 JSON。原始 `benchmark/cases.jsonl` 始终保持冻结，指令修改只是审核建议，不会直接改写正式评测集。
 
 本包是已有源图和标注的审核工具，没有模型编辑结果。源数据经过 assistant 逐图检查，独立人工审核状态未被伪造。审核页包含私有 evaluator 标注，不能将其所有区域自动发给模型。
 """,

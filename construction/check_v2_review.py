@@ -78,6 +78,13 @@ def main():
                     page.wait_for_function(
                         '()=>Object.values(JSON.parse(document.querySelector("#viewer").dataset.modes)).every(v=>v==="none")'
                     )
+                    expected = json.loads((args.root / "cases" / (cid + ".json")).read_text())
+                    translations = page.locator(".instruction-zh").all_text_contents()
+                    assert len(translations) == row["objects"]
+                    assert all(
+                        u["instruction_zh"] in t
+                        for u, t in zip(expected["public_units"], translations)
+                    )
                     visited.append(cid)
                 page.locator(f'[data-case="{first}"]').click()
                 page.wait_for_function(
@@ -108,6 +115,13 @@ def main():
                 assert download.value.suggested_filename == "v2_review_results.json"
                 page.locator("#dataset").select_option("PACO-LVIS")
                 assert page.locator(".case-row").count() == 119
+                for operation in ["add", "replace", "remove", "attribute"]:
+                    page.locator("#dataset").select_option("")
+                    page.locator("#operation").select_option(operation)
+                    assert page.locator(".case-row").count() == sum(
+                        operation in c["operations"] for c in cases
+                    )
+                page.locator("#operation").select_option("")
                 page.locator("#count").select_option("4")
                 assert page.locator(".case-row").count() > 0
                 page.locator("#dataset").select_option("")
@@ -138,7 +152,8 @@ def main():
                 "lazy images: initial clean source only",
                 "every object point/box/mask/none",
                 "mixed per-object display",
-                "case list and source/count filters",
+                "case list and source/count/operation filters",
+                "all 540 actual English instructions and matching Chinese translations",
                 "persistent notes and instruction suggestions",
                 "export",
                 "mobile layout",

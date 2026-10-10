@@ -57,6 +57,13 @@ def load_cases(manifest: Path) -> list[dict]:
             for field in ("instruction_ref", "instruction_noref", "completion_requirement"):
                 if not isinstance(unit.get(field), str) or not unit[field].strip():
                     raise ValueError(f"empty unit field: {field}")
+            if unit["operation"] == "add":
+                if unit.get("edit_contract", {}).get("locator_semantics") != "addition_support":
+                    raise ValueError("add requires an explicit source support locator contract")
+            if "instruction_design" in unit:
+                for field in ("instruction_ref_zh", "instruction_noref_zh"):
+                    if not isinstance(unit.get(field), str) or not unit[field].strip():
+                        raise ValueError(f"missing instruction translation: {field}")
             if not isinstance(unit.get("preserve"), list) or not unit["preserve"]:
                 raise ValueError("unit must specify protected neighboring content")
         if len({interaction_name(u) for u in units}) < 2:

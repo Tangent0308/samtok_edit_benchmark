@@ -186,15 +186,24 @@
     "sink:faucet": 1
   },
   "attribute_kinds": {
-    "color": 420,
-    "material": 40
+    "material": 16,
+    "color": 117,
+    "tint": 2
   },
   "case_operation_sets": {
-    "attribute": 146,
-    "attribute+replace": 27,
-    "attribute+remove": 26,
-    "remove+replace": 5,
-    "attribute+remove+replace": 8
+    "add+attribute+replace": 26,
+    "add+replace": 15,
+    "add+attribute+remove": 13,
+    "add+attribute": 28,
+    "add+attribute+remove+replace": 5,
+    "attribute+replace": 14,
+    "remove+replace": 33,
+    "attribute+remove": 15,
+    "add+remove": 23,
+    "add+remove+replace": 18,
+    "attribute+remove+replace": 19,
+    "attribute": 2,
+    "remove": 1
   },
   "case_interaction_sets": {
     "noref_box+noref_point+ref_mask": 13,
@@ -253,5 +262,23 @@
     "scale_difference": 8,
     "small_target": 13
   },
-  "area_definition": "Official visible-source target mask pixels / image pixels. Multiple components are one physical-object unit. Annotation masks are not ground-truth output pixel changes."
+  "area_definition": "Official visible-source target mask pixels / image pixels. Multiple components are one physical-object unit. Annotation masks are not ground-truth output pixel changes.",
+  "unit_operations": {
+    "add": 135,
+    "attribute": 135,
+    "replace": 135,
+    "remove": 135
+  },
+  "case_operation_presence": {
+    "replace": 130,
+    "attribute": 122,
+    "add": 128,
+    "remove": 127
+  },
+  "instruction_words": {
+    "min": 3,
+    "mean": 12.39,
+    "max": 27
+  },
+  "bilingual_units": 540
 }

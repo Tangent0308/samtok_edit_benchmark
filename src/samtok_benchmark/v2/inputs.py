@@ -9,7 +9,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 from samtok_benchmark.io import asset_path, digest, sha256_file, write_jsonl
-from samtok_benchmark.v2 import PROTOCOLS
+from samtok_benchmark.v2 import OPERATIONS, PROTOCOLS
 from samtok_benchmark.v2.dataset import validate, load_cases
 
 VARIANTS = ("mixed", "all_ref", "all_mask_noref", "single")
@@ -119,6 +119,8 @@ def verify_job(job):
             "locator",
         } <= set(u):
             raise ValueError("private/unknown field in public unit")
+        if u["operation"] not in OPERATIONS:
+            raise ValueError("invalid public operation")
         if type(u["has_ref"]) is not bool or u["locator"] not in {"none", "point", "box", "mask"}:
             raise ValueError("invalid interaction")
         if not u["has_ref"] and u["locator"] == "none":
@@ -225,16 +227,13 @@ def prepare(
                         }
                     )
                 intro = (
-                    "Edit the first image and return one edited image at the same size. Execute every numbered unit completely. "
-                    "Each unit concerns a different physical object. Keep all non-target objects, other parts, people, background, "
-                    "camera framing and pose unchanged. Allow only local appearance/shadow adjustments physically necessary for the requested edits. "
-                    "Ref means a textual referring expression; no reference image is provided. "
+                    "Edit the first image at its original size. Execute all numbered instructions. "
                 )
                 if protocol == "visual_locator_v2":
-                    intro += "If a second image is supplied, it is only a copy with user locators: labeled points, outlined boxes, or translucent masks. Associate each locator with its unit ID. Never reproduce colored locators or labels in the output. "
+                    intro += "The second image, when present, supplies labeled locators only; omit those marks from the result. "
                 else:
-                    intro += "Use each unit's supplied native region (integer pixel point, half-open xyxy box, or binary full-size mask). "
-                intro += "A point or box selects a part/object; it is not a license to change every nearby pixel. Edit every visible piece specified by that unit, including pieces separated by occlusion. A ref-only unit has no region hint."
+                    intro += "Use the supplied per-unit point, box or mask. "
+                intro += "For add, a locator selects the support or attachment site."
                 prompt = (
                     intro
                     + "\n\n"

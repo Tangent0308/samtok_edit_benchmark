@@ -1,65 +1,44 @@
 # SAMTok Edit Benchmark v2
 
-多对象、逐对象混合交互的细粒度图像编辑评测集。当前 `v2branch` 冻结 **212 张新源图、540 个不同物体目标**：每条 2–4 个对象，分别使用 point / box / mask / 文本 ref 的不同组合；正确完整编辑、非目标保持和编辑质量必须对所有目标同时成立。
+多对象、逐对象混合交互的细粒度图像编辑评测集。当前指令发布版 **2.1.0**：212 张独立源图，540 个编辑单元，add / replace / remove / attribute 各 135 个（各 25%）。每图 2–4 个不同物体，至少两种交互形式；所有单元都必须通过目标选择与完整执行、非目标保持、编辑质量检查。
 
-| 构成 | 数量 |
-|---|---:|
-| PACO-LVIS / ADE20K-Part-234 | 119 / 93 条 |
-| 2 / 3 / 4 对象 | 115 / 78 / 19 条 |
-| 颜色 / 材质 / 移除 / 替换 | 420 / 40 / 40 / 40 个单元 |
-| 实际逐图查看 / 最终保留 | 288 / 212 张 |
+**唯一 benchmark 主文档：[SAMTok Benchmark v2](docs/BENCHMARK_V2_ZH.md)**。其中集中说明评测目标、源数据、逐图筛选、指令和区域构造、协议、统计、路径、可视化与复现方法。旧版本文档从当前分支移除，历史可从 Git 查询。
 
-每条使用至少两种交互形式。ref 指文本 referring expression。无 ref 的单元必须给点、框或 mask；纯 ref 单元不获得任何几何提示。一个物体的多个可见碎片仍计为一个对象。
+- [冻结任务](data/v2/cases.jsonl)、[统计](data/v2/statistics.json)、[指令修订记录](data/v2/instruction_revision.json)
+- [来源审计](data/v2/audit/source_audit.json)、[训练排除清单](data/v2/holdout_source_ids.jsonl)
+- [模型适配器](examples/v2_editor_adapter.py)、[开发约定](CONTRIBUTING.md)
 
-- [中文构建结果、难点分布、审阅过程与使用说明](docs/V2_REPORT_ZH.md)
-- [数据格式、公开模型输入与严格计分契约](docs/V2_SCHEMA.md)
-- [冻结任务](data/v2/cases.jsonl)、[统计](data/v2/statistics.json)、[来源审计](data/v2/audit/source_audit.json)
-- [训练扩充排除清单](data/v2/holdout_source_ids.jsonl)
-- [模型适配器入口](examples/v2_editor_adapter.py)、[开发约定](CONTRIBUTING.md)
+ref 是文本指代。无 ref 必须有 point / box / mask；纯 ref 没有区域提示。同一物体的多个 mask 碎片仍算一个单元。当前 add 是在已有物体/部件上添加配件或物品，区域指定承载部位，详见主文档。
 
-本轮是 assistant 逐图源数据审核，已保留原始及二次筛选记录；未声称独立人工审核，也未运行 v2 正式模型对比实验。测试中的 identity 输出只验证管线。
+当前为 assistant 逐图审核的数据与任务发布，未声称独立人工认证，尚无正式 v2 模型成绩。
 
-## 规范目录与审核包
+## 位置与审核包
 
-唯一的本地 v2 Git 仓库：`/opt/tiger/samtok_edit_benchmark_v2branch`。
-数据根目录：`/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2`。
-
-| 位置 | 内容 |
+| 内容 | 位置 |
 |---|---|
-| 本仓库 `data/v2/` | 冻结标注、来源、统计、审阅决定及检查摘要 |
-| 数据根目录 `assets/` | 正式源图与原始 mask；不进入 Git |
-| 数据根目录 `benchmark/` | 正式标注副本及完整审计 |
-| 数据根目录 `construction/` | 候选池、逐图筛选、中间结果及日志 |
-| 数据根目录 `evaluation/` | 两种协议的运行输入与验证产物 |
-| `/opt/tiger/samtok_edit_benchmark_v2_review/` | 独立可下载审核工具，无 `.git` |
+| 唯一 v2 仓库 | `/opt/tiger/samtok_edit_benchmark_v2branch`，`v2branch` |
+| 正式与过程数据 | `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2` |
+| 当前审核工具 | `/opt/tiger/samtok_edit_benchmark_v2_review` |
+| 审核压缩包 | `/opt/tiger/samtok_edit_benchmark_v2_review_20261010.zip` |
 
-审核包已上传至 [Hugging Face 数据集 TTangenty/samtok_edit](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/e1179b57548c48e1e2090990a446c70b1717b9ca/samtok_edit_benchmark_v2_review_20261010.zip)，文件名 `samtok_edit_benchmark_v2_review_20261010.zip`，完整下载链接及 SHA256 见[构建报告](docs/V2_REPORT_ZH.md)。解压进入包目录，运行：
+[下载当前审核包](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_review_20261010.zip)；固定远端 revision 与校验值见 [发布记录](data/v2/review_package.json)。本轮替换远端同名文件，下载时应使用当前版本。
+
+解压进入包目录运行：
 
 ```bash
 python run_review.py
 ```
 
-浏览器自动打开。左侧选择 case 后加载对应图片，每个 object 可单独切换不显示、point、box、mask；支持多对象混合显示、恢复正式输入、缩放、审核决定、对象备注及指令修改建议。记录保存在包内 `reviews/review_results.json`，导出不修改冻结标注。只需 Python 标准库和现代浏览器。
+浏览器自动打开。左侧选择 case，每个对象显示简短英文指令和中文翻译，可分别切换不显示 / point / box / mask。支持任务类型筛选、缩放、备注、指令建议、保存与导出。服务器仅依赖 Python 3.10+ 标准库。审核记录与冻结任务分开；旧版本审核记录不能直接确认新指令。
 
-## 安装与验证
+## 开发与运行
 
 ```bash
 python -m pip install -e '.[dev]'
-BENCH_DATA=/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
-samtok-benchmark-v2 validate --manifest "$BENCH_DATA/benchmark/cases.jsonl" \
-  --dataset-root "$BENCH_DATA" --minimum-cases 200 --output outputs/v2_validation.json
-samtok-benchmark-v2 prepare --manifest "$BENCH_DATA/benchmark/cases.jsonl" \
-  --dataset-root "$BENCH_DATA" --protocol visual_locator_v2 --output outputs/v2_inputs
 ruff check src tests examples construction
 pytest -q
 ```
 
-数据复制到新路径后重新生成 inputs。`native_regions_v2` 使用原生逐单元区域；与视觉标记协议分别评测。运行模型、准备逐目标评审和汇总严格成功率的完整命令见中文报告。
+正式图片和 mask 在数据根目录 `assets/`；标注在 `benchmark/`，仓库镜像在 `data/v2/`；候选与审核过程在 `construction/`；模型输入/输出在 `evaluation/`。完整运行命令见主文档，迁移目录后需重新生成运行输入。
 
-## 冻结的 v1
-
-v1 原始数据、执行入口和结果保持可复现；`samtok-benchmark` 仍为 v1，`samtok-benchmark-v2` 为 v2。本轮没有从 v1 的 450 条正式任务或 433 条扩充任务重组源图。
-
-- [v1 报告与已有实验](docs/V1_REPORT.md)
-- [v1 原 README](docs/V1_LEGACY_README.md)
-- [v1 数据协议](docs/DATASET.md)及[评估协议](docs/EVALUATION.md)
+`samtok-benchmark-v2` 为当前入口；原 v1 执行代码与冻结数据保留兼容，但其旧文档不再混入本分支的当前文档入口。

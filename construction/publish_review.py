@@ -6,7 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import zipfile
-from huggingface_hub import HfApi, CommitOperationAdd, hf_hub_url
+from huggingface_hub import HfApi, CommitOperationAdd, hf_hub_download, hf_hub_url
 from huggingface_hub.utils import disable_progress_bars
 
 REPO = Path(__file__).resolve().parents[1]
@@ -125,6 +125,13 @@ def main():
     assert files[pdf_name].size == pdf.stat().st_size
     for name, old in previous.items():
         if name not in changed:
+            if name == ".gitattributes" and files[name].blob_id != old.blob_id:
+                # HF can append an exact-path LFS rule when adding the first PDF.
+                old_text = Path(hf_hub_download(receipt["repo_id"], name, repo_type="dataset", revision=before.sha)).read_text()
+                new_text = Path(hf_hub_download(receipt["repo_id"], name, repo_type="dataset", revision=after.sha)).read_text()
+                assert new_text == old_text + f"{pdf_name} filter=lfs diff=lfs merge=lfs -text\n"
+                receipt["automatic_pdf_lfs_rule_verified"] = True
+                continue
             assert files[name].blob_id == old.blob_id and files[name].size == old.size, name
     receipt.update(
         status="passed",

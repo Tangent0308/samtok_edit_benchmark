@@ -24,7 +24,12 @@ def main():
     a = parser.parse_args()
     disable_progress_bars()
     meta = json.loads((a.package / "package_metadata.json").read_text())
-    assert meta["cases"] == 200 and meta["units"] == 785 and meta["instruction_version"] == "2.2.0"
+    release = json.loads((REPO / "data/v2/release.json").read_text())
+    assert meta["cases"] == release["cases"] and meta["units"] == release["units"]
+    assert meta["instruction_version"] == release["release_version"]
+    assert meta["manifest_sha256"] == release["manifest_sha256"]
+    pdf = a.package / "benchmark_all_200_cases.pdf"
+    assert pdf.is_file(), "Build the self-contained PDF before publishing"
     assert not (a.package / "reviews").exists(), (
         "Never publish local user review records by accident"
     )
@@ -46,7 +51,8 @@ def main():
     a.zip.with_suffix(".zip.sha256").write_text(f"{sha}  {a.zip.name}\n")
     receipt = {
         "status": "upload_pending",
-        "release_version": "2.2.0",
+        "release_version": release["release_version"],
+        "instruction_protocol_version": release["instruction_protocol_version"],
         "package": str(a.package),
         "archive": str(a.zip),
         "repo_id": "TTangenty/samtok_edit",
@@ -89,6 +95,10 @@ def main():
         + readme
     )
     operations.append(CommitOperationAdd(path_in_repo="README.md", path_or_fileobj=readme.encode()))
+    pdf_name = "samtok_edit_benchmark_v2_all_200_cases.pdf"
+    pdf_sha = hashlib.sha256(pdf.read_bytes()).hexdigest()
+    receipt.update(pdf_name=pdf_name, pdf_sha256=pdf_sha, pdf_size_bytes=pdf.stat().st_size)
+    operations.append(CommitOperationAdd(path_in_repo=pdf_name, path_or_fileobj=str(pdf)))
     public_meta = {k: v for k, v in receipt.items() if k not in {"status", "package", "archive"}}
     operations.append(
         CommitOperationAdd(
@@ -101,8 +111,8 @@ def main():
         repo_id=receipt["repo_id"],
         repo_type="dataset",
         parent_commit=before.sha,
-        commit_message="feat: publish SA-1B v2 bilingual multi-object review",
-        commit_description="Replace current v2 downloads with the same 200-case SA-1B release. Includes 785 balanced add/replace/remove/attribute tasks, Chinese translations, independent mask/box/ref toggles and the consolidated benchmark document.",
+        commit_message=f"feat: publish benchmark {release['release_version']} with instruction protocol 1.0",
+        commit_description="Replace both existing review downloads atomically. Includes 200 sources, 785 tasks, protocol migration, offline full-case PDF and browser-verified mixed interactions.",
         operations=operations,
     )
     after = api.repo_info(receipt["repo_id"], repo_type="dataset", files_metadata=True)
@@ -111,6 +121,8 @@ def main():
     for name in REMOTE_NAMES:
         f = files[name]
         assert f.size == size and f.lfs and f.lfs.sha256 == sha, name
+    assert files[pdf_name].lfs.sha256 == pdf_sha
+    assert files[pdf_name].size == pdf.stat().st_size
     for name, old in previous.items():
         if name not in changed:
             assert files[name].blob_id == old.blob_id and files[name].size == old.size, name
@@ -120,6 +132,8 @@ def main():
         hf_commit_url=result.commit_url,
         remote_sha256_verified=True,
         unrelated_remote_files_unchanged=True,
+        remote_updated=True,
+        pdf_remote_sha256_verified=True,
     )
     for p in [
         local_receipt,

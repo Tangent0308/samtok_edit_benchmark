@@ -233,7 +233,7 @@ def prepare(
                     intro += "The second image, when present, supplies labeled locators only; omit those marks from the result. "
                 else:
                     intro += "Use the supplied per-unit point, box or mask. "
-                intro += "For add, a locator selects the support or attachment site."
+                intro += "A locator selects a source instance; named parts further restrict the edit. For add it selects the support or spatial reference, not the new item outline. Preserve all unrequested content."
                 prompt = (
                     intro
                     + "\n\n"

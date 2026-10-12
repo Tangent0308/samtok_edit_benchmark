@@ -10,6 +10,7 @@ from PIL import Image
 
 from samtok_benchmark.io import asset_path, read_jsonl, sha256_file, write_json
 from samtok_benchmark.v2 import OPERATIONS, SCHEMA_VERSION
+from samtok_benchmark.v2.instruction_protocol import VERSION, validate_pair
 
 
 def interaction_name(unit):
@@ -57,6 +58,13 @@ def load_cases(manifest: Path) -> list[dict]:
             for field in ("instruction_ref", "instruction_noref", "completion_requirement"):
                 if not isinstance(unit.get(field), str) or not unit[field].strip():
                     raise ValueError(f"empty unit field: {field}")
+            if unit.get("instruction_protocol_version") or unit.get("instruction_spec"):
+                spec = unit.get("instruction_spec", {})
+                if unit.get("instruction_protocol_version") != VERSION or spec.get("operation") != unit["operation"]:
+                    raise ValueError("instruction protocol operation/version mismatch")
+                if spec.get("ref") != target.get("ref") or spec.get("scope") != target.get("scope"):
+                    raise ValueError("instruction source selection mismatch")
+                validate_pair(spec, unit["instruction_ref"], unit["instruction_noref"])
             if unit["operation"] == "add":
                 if unit.get("edit_contract", {}).get("locator_semantics") != "addition_support":
                     raise ValueError("add requires an explicit source support locator contract")

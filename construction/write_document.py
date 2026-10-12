@@ -60,7 +60,7 @@ def main():
     text = (
         f"""# SAMTok Benchmark v2：SA-1B 多对象细粒度交互编辑
 
-当前唯一版本为 **v2 / release {release["release_version"]}：200 张 SA-1B 源图、785 个独立目标，每图 2–5 个目标**。全部源图与所选 mask 已由 assistant 逐图查看，本轮又逐条查看图片和叠加区域后撰写中英文指令。当前冻结的是源图、任务和交互标注，尚无模型编辑结果或独立人工验收。
+当前唯一版本为 **v2 / release {release["release_version"]}：200 张 SA-1B 源图、785 个独立目标，每图 2–5 个目标**。全部源图与所选 mask 及任务在 2.2.0 阶段已由 assistant 逐图查看。本次 2.3.0 为协议迁移：保留审图证据、区域和编辑语义，统一双版本渲染并修正添加位置语序，未冒充新的独立人工审图。当前冻结的是源图、任务和交互标注，尚无模型编辑结果或独立人工验收。
 
 此文档是仓库唯一维护的说明，审核包和数据目录中的同名内容是它的发布副本。旧 212 条和旧说明已退出当前清单，历史保存在 Git 与数据归档目录；不与这 200 条混合统计。
 
@@ -133,20 +133,183 @@ mask 使用 dense annotation 中该目标原始可见区域，转为与原图同
 
 ## 5. Instruction 如何撰写
 
-先看具体场景和选区，再决定操作与结果；随后统一句式，最后检查中英文、实例指代、局部范围、单图多样性、四类占比和长度。`construction/instructions/design.tsv` 的 785 行逐对象记录人工式设计内容；构建脚本只拼句、检查和冻结，不依据类别随机生成操作语义。
+本节以冻结的 **benchmark v2 / release 2.3.0，200 张源图、785 个编辑目标，instruction 协议 1.0**为准，规范的是模型收到的公开任务指令。`construction/instructions/design.tsv` 逐对象记录语义设计，`construction/instruction_adapter.py` 将旧 recipe 转成统一语义槽位，`src/samtok_benchmark/v2/instruction_protocol.py` 负责英文双版本拼句与校验；完整验收条件另存于 `completion_requirement`、`preserve` 和 `edit_contract`。训练数据生成器附加的长 prompt 不属于这里的公开 instruction。第 5.1–5.6 节记录冻结版本现状；当前两边共用的完整协议见第 5.7 节。
 
-| 类型 | 主要句式 | 判别原则 |
+本版任务来自逐图查看场景和选区后的设计与冻结。后续按类型扩样应先分配编辑类型，再寻找适合该类型的目标与自然修改；不合适就拒绝或补选，不应为了凑数改成其他类型。本次已将 785 条任务迁移至协议 1.0；119 条添加指令调整位置关系的语序，任务语义、区域与类别保持不变。旧版已归档。
+
+### 5.1 公共写法与 ref/no-ref
+
+每个独立目标 U 只写一条简短、明确、可视觉判定的编辑请求，交代“执行什么操作、作用于什么对象/部件、改成什么或添加什么”。同图多个目标分别通过 U 编号绑定指令与定位信息，不挤进一个含糊长句，也不要求先执行另一个 U 才能理解本 U。
+
+- **ref 版本**：`<target>` 是依据源图编写的完整指代表达，可以包含类别、源颜色、方位、所属人物/物体及部件关系。描述必须与该 U 的区域指向同一实例；不确定的颜色不要猜，不能用编辑后的属性描述源目标。
+- **no-ref 版本**：仅把同一 `<target>` 替换成 `the selected <scope>`，例如 `the selected jacket`。`scope` 保留对象/部件类型与粒度，删除用来定位宿主实例的左右位置、人物身份等信息。新增物、数量、颜色、材质、删除子部件和必要安装位置必须保留。**no-ref 不是无语义指令**，不能把“移除衣服上的徽标”缩成“移除选中的衣服”。
+- 两版本的编辑内容必须等价；差异只在源实例如何定位。no-ref 中允许 `upper back` 等定义新增物安装位置的词，也允许 `white chest emblem` 等明确待删除子部件的词，它们是编辑语义，不是泄露完整宿主 ref。
+- `has_ref=true` 时发送 `instruction_ref`，可以配 `none/point/box/mask`；`has_ref=false` 时发送 `instruction_noref`，必须配 `point/box/mask`。转换定位形式不改变操作和编辑内容。每个 U 只向模型发送实际指定的一种版本，不同时附送私有 full ref。
+- 公开英文句子使用祈使句和句号，写操作必需信息，不反复添加“保留其他内容”，不混入设计理由、审核结论、模型名、生成步骤或重试要求。保持要求是全局默认行为，具体保护关系在私有验收标注中展开。
+- 中文审核翻译须保留相同操作、数量、目标粒度和结果要求；默认正式输入使用英文，中文用于审核。
+
+当前冻结数据的英文 ref 实际长度为 **4–26 词，中位 17**，no-ref 为 **4–16 词，中位 10**，按空白分词。新写作沿用这一简洁预算。两边均已移除最少词数和机械上限，超预算记录 `instruction_length_advice` 供审查，不能为压缩长度丢弃必要语义。长度合格不代表语义正确。
+
+### 5.2 四类及其子类的固定句式
+
+下表中的 `<target>` 在 ref 中取完整指代，在 no-ref 中统一取 `the selected <scope>`。当前构建器兼容 add 的 `to` 句式，并把可明确拆出的安装位置放入 placement，渲染为 `Add <item> <relation> <site of target>.`。
+
+| 类型 / recipe | 英文句式 | 中文含义与语义边界 | 当前数量 |
+| --- | --- | --- | ---: |
+| add / A | `Add <new item> to <target>.` | 给指定承载物添加源图中不存在的物品；必要时写数量、大小和安装位置，原承载物保留 | 196 |
+| replace / R | `Replace <target> with <new object/part>.` | 用结构、形态或品类不同的新物体/部件替代旧目标；只换色不算 replace | 196 |
+| remove / D | `Remove <target>.` | 完整移除指定目标，合理补全显露背景 | 109 |
+| remove / D:contents | `Remove <target>, including its contents.` | 连同容器中的物品一起移除，不能把内容物悬留 | 11 |
+| remove / D:part | `Remove <part> from <target>.` | 只移除所选对象上的明确子部件，宿主其余部分保留 | 56 |
+| remove / D:lowerlegs | `Remove the lower legs of <target> to make knee-length shorts.` | 剪去下段裤腿，改为及膝短裤，保留上部裤装 | 18 |
+| remove / D:hem | `Remove the lower section of <target> to make it knee-length.` | 剪去裙装下段，改为及膝长度 | 3 |
+| attribute / C | `Change the color of <target> to <value>.` | 改颜色，保留对象身份、几何与相关纹理 | 179 |
+| attribute / C:material | `Change the material of <target> to <material>.` | 改为明确材质，保留对象身份和几何；例如 polished gold，不能仅用 matte black 冒充材质 | 13 |
+| attribute / C:tint | `Tint <target> <color>.` | 给透明物体染色，保持合理透光性质；`attribute_kind` 仍为 color | 4 |
+
+### 5.3 各类型必须明确的编辑范围
+
+**add：区域是源锚点。** mask/box/point 指向源图中的承载物或安装面，不是新增物体的预计轮廓。指令中必须能判断新增什么、加到哪个锚点，以及必要数量和附着位置。新增物要与场景用途、体量、支撑/连接关系自洽，不能借添加替换掉宿主。当前 196 个 add 全是局部增添/附着，不包含自由空间新增大型物体。连接、遮挡和必要阴影可以超出源 mask，不能据此任意改变邻近物。
+
+**replace：明确旧目标和新身份。** 替代物应能占据原来的合理位置，尺度、用途和支撑关系可成立；旧身份应消失，不能只是旁边多放一个新物体。若目标是衣袖、提手等部件，只替换该部件，不能把整个人或整件宿主一起改掉。
+
+**remove：先分清删整物还是删子部件。** 普通 D 删除整个指令目标；D:contents 还删除内容物；D:part、D:lowerlegs 和 D:hem 只删除所选宿主中的指定部分。后面三类共 **77 个**，`edit_contract.scope_relation=subregion_of_selected_object`。源 mask 可以定位整件宿主，具体删除范围由文本进一步限定；不能把这些 case 评成“mask 覆盖的全部内容都应消失”。其中删除已有徽标、印花或文字的 7 个任务也是 remove，不应改归 replace。
+
+**attribute：明确属性和值。** 当前只包含颜色/染色和材质，不包含任意属性变化。目标对象及其几何身份应保持，不能趁换色改变款式、形状或文字。颜色要与源图有可判定区别，材质值要是真正的材料；透明物的染色不能直接变成不透明实心块。当前颜色/染色合计 183 个、材质 13 个。
+
+源 mask 在所有类型中都是语义定位依据，不是结果图的逐像素差分真值。实际允许改动由文本目标、操作类型及必要局部物理效应共同决定。
+
+### 5.4 冻结 benchmark 中的真实例子
+
+下面是清单原句，未为解释而改写；中文解释用于说明含义。
+
+| case / U | ref 指令 | no-ref 指令 | 中文含义 |
+| --- | --- | --- | --- |
+| `v2-sa_10146830/U3` · add | Add one small round enamel pin on the upper back of the central girl's leather jacket. | Add one small round enamel pin on the upper back of the selected jacket. | 给皮衣后背上部加一枚小圆形珐琅徽章；no-ref 仍须保留数量与安装位置 |
+| `v2-sa_10063996/U1` · replace | Replace the outer sleeve of the woman on the left with a flared bell sleeve. | Replace the selected sleeve with a flared bell sleeve. | 将指定衣袖替换为喇叭袖 |
+| `v2-sa_10146830/U1` · remove | Remove the hood hanging down the red-clad person's back. | Remove the selected hood. | 移除指定帽兜 |
+| `v2-sa_2566092/U1` · remove 子部件 | Remove the white chest emblem from the foreground drummer's pink T-shirt. | Remove the white chest emblem from the selected T-shirt. | 只删除 T 恤胸前白色徽标，保留 T 恤 |
+| `v2-sa_10063996/U2` · attribute 颜色 | Change the color of the red coat of the woman on the right to navy blue. | Change the color of the selected coat to navy blue. | 将指定外套改为藏蓝色 |
+| `v2-sa_5033895/U1` · attribute 材质 | Change the material of the crown of the front-right elephant-headed statue to polished gold. | Change the material of the selected crown to polished gold. | 将指定冠饰材质改为抛光黄金 |
+| `v2-sa_1580699/U4` · attribute 染色 | Tint the narrow transparent package immediately left of the blue shopping bag amber. | Tint the selected package amber. | 将指定透明包装染成琥珀色，保留透明性质 |
+
+这些例子说明写法与评测语义，不代表已经取得合格目标图。当前 benchmark 冻结的是任务和输入，独立人工验收与模型编辑评测仍待完成。
+
+### 5.5 多目标与训练管线的区别
+
+正式 benchmark 每张源图有 2–5 个不同实物的目标，每个 U 独立绑定自己的指令和交互形式，主评测要求在同一结果图中全部完成。当前冻结分布是：2–4 目标图的操作类型不重复，5 目标图覆盖四类且仅一类重复；全局四类按目标计最多相差 1 个。它们是本版 case 设置，不是单条英文句子的语法规则。
+
+当前训练构造管线已实现统一语义记录、四类及删除子类、Tint 和外观属性扩展，由同一 renderer 生成 ref/no-ref。子部件和内容物范围必须有预处理提供的执行区域；缺失则拒绝，不把“删除宿主上的徽标”降级为整物删除。训练实验中“每源两个目标、同一类、分别生图”也不等同于 benchmark 的混合类型多目标联合任务。对齐 benchmark 需要保留这些范围语义，不能只比较四个 operation 标签。
+
+### 5.6 写完后的核对要求
+
+1. 从干净源图确认 ref、区域、类别和所属实例一致；同类多个目标的方位不能互相矛盾。
+2. 仅比较 ref/no-ref 的目标短语替换后，操作、数量、目标属性、安装位置和删除范围应全部一致。
+3. 确认类别语义成立：添加没有变成替换，替换不是仅换色，删除子部件没有变成删宿主，属性修改没有改几何。
+4. 确认请求符合画面可见内容和常见修图需求，有合理尺度、支撑和遮挡关系；不靠想象的故事解释怪异变化。
+5. 检查句子长度、中英文等价性，以及同图各 U 的独立性、保护关系和联合可执行性。
+
+修改冻结指令需更新设计记录、重新审图并重新冻结版本。本文补充规范不会改写当前任务清单、改变 operation 分类或代替视觉质量验收。
+
+### 5.7 统一 instruction 协议 v1.0（已接入 benchmark 与训练管线）
+
+本协议统一 benchmark 和训练数据的语义设计与英文渲染，已接入 release 2.3.0 及训练管线。沿用四类操作、ref/no-ref 和源区域定位原则。协议版本独立于数据集 release；支持某种句式不等于该子类已经出现在冻结样本中，也不等于已验证生成质量。
+
+#### A. 一条指令表达什么
+
+统一结构为：**操作 + 实际编辑对象 + 新内容/目标值 + 必要的局部关系或范围**。每个 U 对应一个源实例或其部件，以及一种编辑操作。优先一句话；仅在省略信息会产生不同合理结果时，增加短限定语。输入 point/box/mask 负责定位源实例，文字负责明确编辑内容和局部范围。
+
+区分两个概念：`S` 是区域或 ref 选中的源实例；`T` 是实际操作对象，可以直接等于 S，也可以是 S 内文字明确指定的部件。例如区域选中夹克时，T 可以是“该夹克的领口”；区域已精确选中领口时，T 就是“选中的领口”，不能再写“领口的领口”。add 则以 S 或其可见部位为新增物的锚点。
+
+同一种类型使用稳定的主句，不要求所有细节塞进一个不自然的固定短语。不额外写“请”“高质量”“真实自然”“只修改这里”“保持其他不变”等重复套话。数量、接触关系、保留某一易混淆部件、结果长度等若决定任务含义，应保留在公开指令中，不能仅写在 evaluator 私有字段里。
+
+#### B. 分类型句式和边界
+
+| 类型 | 推荐主句 | 可按需补充的内容 | 类型边界 |
+| --- | --- | --- | --- |
+| add | `Add <item> <relation> <anchor>.` | 新物的类别、必要数量/外观，锚点上的部位、放置或连接关系 | 新增实体或实体配件；原锚点保留。输入区域指向源锚点，不指向新增物轮廓 |
+| replace | `Replace <T> with <replacement>.` | 新实体/部件的设计、数量、关键外观；必要连接关系 | 旧对象/部件被替代，不能留下旧物又在旁边增加新物；仅改颜色、图案或材质归 attribute |
+| remove | `Remove <T>.`；宿主定位时用 `Remove <part> from <S>.` | 明确连带移除内容物、移除数量、裁去范围和预期终点 | 删除整物或指定局部，保留未请求的宿主部分；不是把 mask 内全部像素都清空 |
+| attribute | `Change the <property> of <T> to <value>.` | 目标属性值，以及确实必要的属性组合或局部范围 | 保留实体身份及未请求的几何、部件和外观；改变已有对象/表面属性，不添加或替换实体 |
+
+**add 的关系不要一律用模糊的 `to`。** 承载关系可写 `on the seat of`、`inside`，连接可写 `attached to the handle of`；已有 to 句式在位置明确时继续有效。缺省优先依附/承载型添加。为覆盖自然请求，允许以可见源实例为参照的 `under`、`beside` 等位置关系，但必须有可见可用空间及合理落地/支撑条件，必要时写清参照侧。例如 `Add a small wastebasket on the floor beside the left leg of the selected desk.`。这种参照型添加是新协议的表达能力，当前冻结 benchmark 的 add 仍全是局部依附型；训练入口仅在已有明确执行区域时接受参照型任务。
+
+数量可由 `a/an` 表示一个；要求恰好几个时写 `one/two/...`。同一锚点上添加两个相同物品可以是一个 U，不因新增数量变成两个源编辑目标。默认一个 U 只涉及一个新增物类别；“加靠垫并删除包”是两种操作，不能塞进同一 U。
+
+**remove 保留现有灵活子类：**
+
+- 整体与内容物：`Remove <T>, including its contents.`。容器及物品是否一起移除应明确；若只清空容器，写 `Remove the contents from <S>.`，保留容器。
+- 已有标记/局部部件：`Remove the logo from <S>.`、`Remove the hood from <S>.`。保留载体，合理补全被移除处。
+- 裁短：沿用 `Remove the lower section of <T> to make it knee-length.` 等“范围 + 终点”形式，不另增一套操作类型。裁短是 remove 的明确例外，允许因切除产生轮廓变化；不能扩大为任意形状变换。
+- 附件或物品是否连带删除若有多种合理解释，必须在公开句子中消歧；普通背景补全、必要阴影处理属于全局执行要求，无需每条重复。
+
+**attribute 从颜色/材质扩为有限、可核验的外观属性集合：**
+
+| property | 推荐表达 / 示例 | 保持要求 |
 | --- | --- | --- |
-| add | `Add <new item> to <target>.` | 添加实际配件/物件；说明必要数量和安装点，原承载物仍在 |
-| replace | `Replace <target> with <new object/part>.` | 原目标被结构或品类不同的替代物取代；不把单纯换色伪称替换 |
-| remove | `Remove <target>.` / `Remove <part> from <target>.` | 删除目标或明确子部件；必要时说明连同内容物、截去下段等范围 |
-| attribute | `Change the color/material of <target> to <value>.` | 改外观属性；透明物体用 `Tint ...` 表示染色，保留合理透明性质 |
+| color | `Change the color of <T> to navy blue.` | 保留相关纹理、结构与光照关系 |
+| material | `Change the material of <T> to brushed steel.` | 材料必须真实明确；只改变现有表面的材质表现，尺寸和构型不随意变化 |
+| finish | `Change the finish of <T> to matte.` | 区分表面光泽与材料；matte black 是颜色/表面效果，不是材料名 |
+| pattern | `Change the pattern of <T> to thin blue stripes.` | 只改变指定表面图案，保持裁剪、褶皱和遮挡；支持原本纯色表面 |
+| texture | `Change the surface texture of <T> to a fine pebbled texture.` | 目标纹理应具体且适配源对象；不借此改轮廓或结构 |
+| text | `Change the text on <T> to "OPEN".` | 引号内是精确内容；需要特定行/标签时在 T 中明确，保留载体和未指定文字 |
+| tint / opacity | `Tint <T> amber.`；`Make <T> translucent.` | tint 默认保留原透明性质；透明度变化只有明确请求时才允许，不借材质修改隐式改变 |
 
-每条只写操作必需信息，不重复“保留其他内容”。保持要求是全局默认行为，私有验收标注会明确同体部件和邻近对象的保护。英文 full-ref 指令长度 **4–26 词，中位 17**；no-ref **4–16 词，中位 10**。一张图中每个 U 分别一条指令，通过 U 编号绑定，不把多目标任务挤进一个含糊长句。
+保留 `Tint` 作为颜色的自然短式；`Make ... translucent/opaque` 是透明度的受限短式。可自然写 `Recolor <T> navy blue.` 的任务仍优先统一为 `Change the color ...`，不为同一语义增加大量随机同义模板。
 
-2–4 目标的图各任务类型不重复，5 目标图覆盖全部四类且仅一类重复。全局按编辑目标计，四类最多相差 1 个。中文完整保留操作、数量和部件要求；需要纠正源标签颜色/方位时根据图像修正。
+同一 T 上确有必要且兼容的多个外观要求可以合并为一个 attribute，例如 `Change the color of <T> to navy blue and its finish to matte.`；内部仍分别记录属性和值。不要默认把每条扩成多属性任务，也不混入移除、添加或实体替换。
 
-场景适配示例：密集箱包提手分别做移除、换环形皮提手、挂行李牌和换色；玻璃吊灯做金属护笼、长管灯泡、移除单灯泡和浅色染色；衣物做袖型、口袋、布贴或局部裁短。add 当前全部是局部增添/附着，没有自由空间新增大型物体；attribute 中 183 个颜色/染色、13 个材质；remove 有 77 个针对所选对象内部子部件，含裁短服装，7 个为移除已有徽标、印花或文字。需要解读为本版的具体任务分布。
+**分类边界固定：**加实体布贴/徽章是 add；让衣服表面出现条纹是 attribute.pattern；把已有标牌文字改成另一串文字是 attribute.text；删除已有 logo/文字是 remove；把整块标牌换成另一种结构是 replace。翻转、搬移、重新摆姿势等不属于这四类协议，不强行重标。新增属性及参照型添加应分别记录子类，评测时分项统计，不能把新能力混进旧版本结果直接比较。
+
+#### C. ref/no-ref 从同一份语义记录生成
+
+只更换 S 的实例定位表达，其他编辑内容保持一致：
+
+| 内容 | ref | no-ref |
+| --- | --- | --- |
+| 源实例 S | 源图中可准确定位的简短名词短语 | `the selected <scope>` |
+| 源实例内部的操作部位 | 保留 | 保留 |
+| 新物、数量、结果值 | 保留 | 保留 |
+| 放置/附着关系、删除范围 | 保留 | 保留 |
+| 为定位源实例写的左右位置、所属人物等 | 按需保留 | 删除，由定位信息承担 |
+
+`scope` 必须由当前图像和区域确认，不能直接用可能错误的原始类别或其第一个别名。独立确定 scope 与 ref 的一致语义，再渲染两版本；不能让模型分别自由写两条指令后只检查字符串不同。无 ref 必须有 point/box/mask；ref 可单独使用或配区域。同一 U 切换定位形式不应改变上述语义。
+
+以下是**协议示例，不是新增冻结 benchmark 样本**：
+
+| 类型 | ref 示例 | no-ref 示例 |
+| --- | --- | --- |
+| add | Add a beige cushion on the seat of the black chair on the left. | Add a beige cushion on the seat of the selected chair. |
+| replace | Replace the handle of the red suitcase with a rigid black handle. | Replace the handle of the selected suitcase with a rigid black handle. |
+| remove | Remove the logo from the runner's white T-shirt. | Remove the logo from the selected T-shirt. |
+| attribute | Change the color of the collar of the front man's jacket to navy blue. | Change the color of the collar of the selected jacket to navy blue. |
+
+后面三例的区域均假设定位宿主（箱子、T 恤、夹克）。若区域本来就定位提手/徽标/领口，no-ref 应分别改为 `the selected handle/logo/collar`，不能混用宿主粒度。子部件必须在源图上可定位；出现多个同名部件时，保留区分该部件必需的局部方位，例如 `the left pocket of the selected jacket`。
+
+#### D. 简洁性、自然性和多目标规则
+
+- 写足能够区分不同编辑结果的信息，然后停止；不要求每条凑满数量、颜色、材质、大小、位置这几项。对结果没有作用的修饰词删除。
+- 默认一句话；ref 26 词、no-ref 16 词继续作为常规写作目标，不设最低词数，也不为达标删掉必要限定。超过目标先检查冗余，超过 40 词建议重新审查或拆解；长而必要的指代可保留。该协议的长度要求是写作指导；现有训练器已迁移为非空检查、语义校验与长度审查提示。
+- 属性或替代物应与源对象、场景用途、尺度和光照自洽。选择普通人可能提出的修图请求，不能单为明显变化设计奇怪物件/极端颜色。
+- 无 ref 不等于允许随意歧义：指令结合公开定位信息后必须明确。没有足够清晰的源实例、部件或可行支撑关系时，拒绝该任务并按同类补样。
+- 每个 U 可独立理解，所有 U 又须能在同一张结果图联合执行；避免一条删除另一条的宿主、对同一表面要求互斥颜色等冲突。不引用“上一个编辑”“第一步结果”。
+- 全局默认保留未请求内容，并完成必要的背景、边缘、遮挡、连接和光影修复。这些默认项不重复写进每条指令；超出默认含义的要求必须公开，不能由私有验收偷偷增加。
+
+#### E. 实现约定与迁移边界
+
+内部最小语义记录应包含：`operation`、`selection`（源实例 ID、经核对的 ref/scope 和定位信息）、`target_part`（若有）、`change`（新物/替代物/删除范围/属性和值），以及按需的 `placement`（关系与部位）、`qualifiers`（必要数量或保留要求）。这些是作者侧结构化槽位，不要求模型输入暴露 JSON，也不能把内部全量定位信息泄露给 ref-only 任务。放置几何、执行 mask、审核证据独立保存，不塞入公开短句。
+
+模板根据操作和槽位渲染 ref/no-ref，逐项核验语义等价，并记录 `instruction_protocol_version`。旧 release 2.2.0 的语义与四类基础模板继续兼容，无需仅为句式重写历史任务；改变实际编辑语义必须重新审查和冻结版本。
+
+已同步修改规划输出、双版本渲染、schema、生成 prompt、区域范围检查、审核规则与 SAMTok 指令绑定。两个仓库使用逐字一致的无依赖 `instruction_protocol.py`，包括语义槽位校验、ref/no-ref 渲染和漂移拒绝。宿主 mask + 子部件语义必须提供可靠执行区域；若未提供或仍覆盖整个宿主，拒绝执行。参照型 add 也须显式执行区；普通依附型 add 保留现有生成兼容路径。LaMa 仅做删除，重着色后端仅做单一颜色属性，其他属性交给文字条件编辑器。**已完成代码接入和协议验证，未据此宣称新增子类生成质量合格。**
+
+### 5.8 本次迁移验证（2.3.0）
+
+全部 785 个目标写入协议版本和语义记录，119 组 add 指令将原有位置短语显式绑定到源锚点。例如 `Add one small round enamel pin on the upper back to ...` 改为 `Add one small round enamel pin on the upper back of ...`。迁移没有添加新的物品、位置或属性要求；中英文请求的原编辑内容保持一致。
+
+已逐字段核对源图、原始 target/mask/box/point、交互形式、操作类别、中文指令和保护标注均未变。785 组 ref/no-ref 全部从语义记录重渲染校验；200 条正式 native mixed 输入只暴露所选指令和定位形式，不泄露完整 spec 或私有 full ref。1,185 个资产通过哈希及几何核验。差异清单与共享模块摘要见 `data/v2/protocol_migration.json`。
+
+benchmark 测试 95 通过、ruff 全部通过；训练管线全量测试 438 通过、1 跳过。可用 `PYTHONPATH=src python construction/verify_instruction_protocol.py --training-repo ../sa1b-samtok-edit-data` 复核两份协议模块逐字相同与全部双版本一致性。测试覆盖类型/属性拒绝、双版本语义漂移、精确文字、数量与位置、部件执行区域、SAMTok 绑定和元数据往返。2.3.0 审核包已重新完成全部 200 case 的浏览器加载与 mask/box/ref 叠加检查，页面错误和失败请求均为 0；完整 PDF 逐页嵌入全部 200 case 图像。此 benchmark 发布未运行编辑模型。旧 2.2.0 元数据归档于数据根目录的 `archive/release_2.2.0_before_protocol_1.0/`。
 
 ## 6. 当前构建结果
 
@@ -168,7 +331,7 @@ mask 面积占整图中位数 **0.5725%**，最小 **0.0814%**、最大 **13.182
 
 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/SAMTok_Training_Data/sam_info.json` 中匹配到本版 **200/200** 张 SA ID；抽样 2800 条中匹配 2799 条。目录成员关系不等于某个 checkpoint 实际训练过，但本版不能被描述为已经审计过的独立 holdout。正式研究比较前需结合实际训练清单与近重复检查界定模型暴露情况。
 
-当前 81 项测试、全 200 case 浏览器加载与叠加检查通过；生成并校验了 200 个 native mixed 输入 job，未调用模型。源资产/标注校验通过，200 个源图 SHA256 唯一，1185 个资产逐文件核对；无模型运行、无模型得分、独立人工复核为 0。此处统计描述构建完成的任务集，不代表编辑模型已通过它。
+当前 95 项测试、全 200 case 浏览器加载与叠加检查通过；生成并校验了 200 个 native mixed 输入 job，未调用模型。源资产/标注校验通过，200 个源图 SHA256 唯一，1185 个资产逐文件核对；无模型运行、无模型得分、独立人工复核为 0。此处统计描述构建完成的任务集，不代表编辑模型已通过它。
 
 ## 7. 代码、数据与审核包路径
 
@@ -186,13 +349,16 @@ mask 面积占整图中位数 **0.5725%**，最小 **0.0814%**、最大 **13.182
 | 正式模型运行与输出 | `evaluation/`，与任务源资产分开；本版尚无运行 |
 | 历史归档 | `archive/pre_sa1b_212_v2_2.1.0/`、`archive/previous_review_packages/`，不属当前评测 |
 | 本机审核包目录 | `/opt/tiger/samtok_edit_benchmark_v2_review` |
-| 本机审核压缩包 | `/opt/tiger/samtok_edit_benchmark_v2_review_20261010.zip` |
+| 当前本机审核目录 | `evaluation/review_protocol1_release2.3.0/`（相对数据根目录） |
+| 当前正式输入 | `evaluation/inputs_protocol1_native/jobs.jsonl` |
+| 当前审核压缩包 | `/opt/tiger/samtok_edit_benchmark_v2_review_release2.3.0_20261012.zip` |
+| 完整离线 PDF | 审核包内 `benchmark_all_200_cases.pdf`，200 页，每页一个 case |
 
 相对资产路径都以数据总根目录或便携包根目录为基准。仓库只保留当前任务元数据、代码、唯一说明及少量说明插图，不提交正式大图、过程图片、审核 zip、模型结果。历史 v1 单对象 API 的基础兼容代码/合成测试保留；当前数据仅 `data/v2/`，不携带旧评测清单。
 
 正式元数据：`cases.jsonl` 为完整任务；`asset_manifest.jsonl` 为 1185 项资产清单；`provenance.jsonl` 为来源；`instruction_design.jsonl` 和 `instruction_reviews.jsonl` 为逐对象设计/逐图审查；`statistics.json`、`release.json`、`validation.json` 为统计、版本和验证；`selection/` 为选择依据。`release.json` 的 manifest SHA256 绑定当前任务，编辑输入、模型输出与评分均有摘要绑定。
 
-[Hugging Face 当前审核包](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_review_20261010.zip?download=true)。原 `sa1b_source_selection_200cases_review_20261010.zip` 下载名也更新为同一新版内容，作为兼容入口，两个链接 SHA256 相同，不是两套 benchmark。包 SHA256 和 HF revision 信息在 `data/v2/review_package.json`；文件名中的日期是原有稳定下载名，内容版本以 `package_metadata.json` 为准。
+[下载完整 2.3.0 审核包](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_review_20261010.zip?download=true)；[直接查看全部 200 case 的 PDF](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_all_200_cases.pdf?download=true)。此次发布目标为 release 2.3.0 / instruction protocol 1.0，沿用旧下载名与兼容下载名；文件名中的日期不代表内部版本。远端是否已完成替换，以发布回执的 `status` 和 `remote_updated` 为准。发布脚本在单次 HF commit 中替换两个 zip、校验文件、PDF 和说明，并核验远端 SHA256。发布回执见 `data/v2/review_package.json`；包内仅记录归档前内容验证，远端回执存于仓库与 HF 同名 JSON。
 
 解压整个压缩包后，在包内运行：
 

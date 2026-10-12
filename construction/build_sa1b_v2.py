@@ -9,9 +9,11 @@ from pathlib import Path
 import shutil
 import statistics
 from instructions.scopes import SCOPES
+from instruction_adapter import design_spec
+from samtok_benchmark.v2.instruction_protocol import VERSION as PROTOCOL_VERSION, render, length_advice
 from samtok_benchmark.io import sha256_file, write_json, write_jsonl
 
-VERSION = "2.2.0"
+VERSION = "2.3.0"
 REPO = Path(__file__).resolve().parents[1]
 MODES = [
     (False, "point"),
@@ -64,23 +66,7 @@ def instruction(recipe, target, payload, chinese=False):
         if subtype == "hem":
             return f"剪去{target}的下摆部分，改成及膝长度。"
         return f"移除{target}。"
-    if code == "A":
-        return f"Add {payload} to {target}."
-    if code == "R":
-        return f"Replace {target} with {payload}."
-    if code == "C":
-        if subtype == "tint":
-            return f"Tint {target} {payload}."
-        return f"Change the {'material' if subtype == 'material' else 'color'} of {target} to {payload}."
-    if subtype == "contents":
-        return f"Remove {target}, including its contents."
-    if subtype == "part":
-        return f"Remove {payload.replace('its ', 'the ', 1)} from {target}."
-    if subtype == "lowerlegs":
-        return f"Remove the lower legs of {target} to make knee-length shorts."
-    if subtype == "hem":
-        return f"Remove the lower section of {target} to make it knee-length."
-    return f"Remove {target}."
+    return render(design_spec(recipe, target, "object", payload))
 
 
 def copy_asset(src, dst):
@@ -151,17 +137,17 @@ def main():
             has_ref, locator = MODES[counter % len(MODES)]
             counter += 1
             subregion = recipe in {"D:part", "D:lowerlegs", "D:hem"}
+            spec = design_spec(recipe, d["ref"], scope, d["payload"])
             texts = {}
             for mode, t, tzh in [
                 ("ref", d["ref"], refzh),
                 ("noref", "the selected " + scope, "选中的" + SCOPES[scope]),
             ]:
-                texts["instruction_" + mode] = instruction(recipe, t, d["payload"])
+                texts["instruction_" + mode] = render(spec, mode == "ref")
                 texts["instruction_" + mode + "_zh"] = instruction(
                     recipe, tzh, d["payload_zh"], True
                 )
-                if len(texts["instruction_" + mode].split()) > 40:
-                    raise ValueError((key, texts["instruction_" + mode]))
+
             geometry = {
                 "area_fraction": target["area_fraction"],
                 "significant_components": target["significant_components"],
@@ -193,6 +179,9 @@ def main():
             u = {
                 "id": uid,
                 "operation": op,
+                "instruction_protocol_version": PROTOCOL_VERSION,
+                "instruction_spec": spec,
+                "instruction_length_advice": length_advice(texts["instruction_ref"], texts["instruction_noref"]),
                 "attribute_kind": ("material" if recipe == "C:material" else "color")
                 if op == "attribute"
                 else None,
@@ -235,6 +224,8 @@ def main():
                     "case_number": number,
                     "unit_id": uid,
                     **d,
+                    "instruction_protocol_version": PROTOCOL_VERSION,
+                    "instruction_spec": spec,
                     "ref_zh": refzh,
                     **texts,
                 }
@@ -254,6 +245,8 @@ def main():
             "case_id": cid,
             "case_number": number,
             "version": VERSION,
+            "visual_review_version": "2.2.0",
+            "protocol_migration": "semantic_slots_and_placement_reordering; no_new_visual_review",
             "kind": "ai_direct_visual",
             "reviewer": "assistant",
             "source_viewed": True,
@@ -385,7 +378,8 @@ def main():
         "cases": 200,
         "units": 785,
         "source_selection": "Latest 200 SA-1B cases only",
-        "supersedes": "2.1.0 non-SA-1B 212-case release (archived)",
+        "supersedes": "2.2.0 instruction rendering (archived); same 200 sources and 785 tasks",
+        "instruction_protocol_version": PROTOCOL_VERSION,
         "manifest": "cases.jsonl",
         "dataset_root": str(root),
         "annotation_geometry": "unchanged visible masks; tight half-open boxes; deterministic mask-interior points",

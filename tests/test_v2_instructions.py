@@ -70,4 +70,14 @@ def test_current_instruction_release_is_balanced_bilingual_and_concise():
             assert u["instruction_" + mode + "_zh"].strip()
             assert len(u["instruction_" + mode].split()) <= 40
             assert "preserv" not in u["instruction_" + mode].lower()
-        assert u["instruction_design"]["version"] == "2.2.0"
+        assert u["instruction_design"]["version"] == "2.3.0"
+
+
+def test_protocol_release_rejects_silent_noref_drift(tmp_path):
+    cases = load_cases(Path(__file__).parents[1] / "data/v2/cases.jsonl")
+    assert all(u["instruction_protocol_version"] == "1.0" for c in cases for u in c["units"])
+    cases[0]["units"][0]["instruction_noref"] += " Also remove its host."
+    manifest = tmp_path / "cases.jsonl"
+    write_jsonl(manifest, cases)
+    with pytest.raises(ValueError, match="semantic"):
+        load_cases(manifest)

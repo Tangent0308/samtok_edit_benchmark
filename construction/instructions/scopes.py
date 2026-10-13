@@ -51,6 +51,7 @@ fruit bag|水果袋
 garment|衣物
 glass|玻璃杯
 glove|手套
+head covering|头饰
 handbag|手提包
 handle|把手
 hard hat|安全帽
@@ -73,7 +74,7 @@ meal tray|餐盘
 motorcycle fender|摩托车挡泥板
 package|包装
 packet|小包装
-palm|棕榈树
+palm|手掌
 pannier|侧挂包
 parcel|包裹
 parcel wrapping|包裹外包装

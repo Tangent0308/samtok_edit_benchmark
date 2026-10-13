@@ -32,6 +32,7 @@ def package_review(manifest: Path, root: Path, output: Path):
         "instruction_reviews.jsonl",
         "instruction_design.jsonl",
         "storage.json",
+        "protocol_alignment_review.json",
     ):
         source = manifest.parent / name
         if source.exists():
@@ -97,6 +98,9 @@ def package_review(manifest: Path, root: Path, output: Path):
     documentation = root / "BENCHMARK_V2_ZH.md"
     if documentation.exists():
         shutil.copyfile(documentation, output / "BENCHMARK_V2_ZH.md")
+        for doc in (root / "docs").glob("*.md"):
+            (output / "docs").mkdir(exist_ok=True)
+            shutil.copyfile(doc, output / "docs" / doc.name)
         figures = root / "docs/assets"
         if figures.exists():
             shutil.copytree(figures, output / "docs/assets", dirs_exist_ok=True)

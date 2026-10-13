@@ -10,10 +10,16 @@ import shutil
 import statistics
 from instructions.scopes import SCOPES
 from instruction_adapter import design_spec
-from samtok_benchmark.v2.instruction_protocol import VERSION as PROTOCOL_VERSION, render, length_advice
+from samtok_benchmark.v2.instruction_protocol import (
+    VERSION as PROTOCOL_VERSION,
+    render,
+    length_advice,
+    mask_contract,
+    MASK_SEMANTICS_VERSION,
+)
 from samtok_benchmark.io import sha256_file, write_json, write_jsonl
 
-VERSION = "2.3.0"
+VERSION = "2.4.0"
 REPO = Path(__file__).resolve().parents[1]
 MODES = [
     (False, "point"),
@@ -92,6 +98,20 @@ def main():
     meta = args.metadata_dir
     sources = json.loads((selection / "gallery_data.json").read_text())
     design_path = REPO / "construction/instructions/design.tsv"
+    placements_path = REPO / "construction/instructions/add_placements.json"
+    placements = {
+        (v["case_number"], v["unit_id"]): v for v in json.loads(placements_path.read_text())
+    }
+    ref_zh = {
+        (v["case_number"], v["unit_id"]): v["ref_zh"]
+        for v in json.loads(
+            (REPO / "construction/instructions/ref_corrections_zh.json").read_text()
+        )
+    }
+    parts = {
+        (v["case_number"], v["unit_id"]): v
+        for v in json.loads((REPO / "construction/instructions/target_parts.json").read_text())
+    }
     design_hash = sha256_file(design_path)
     source_manifest_hash = sha256_file(selection / "selected_sources.jsonl")
     designs = {}
@@ -131,13 +151,22 @@ def main():
             scope = d["scope"]
             recipe = d["recipe"]
             op = OPS[recipe[0]]
+            if op == "add" and d["payload"] != placements[key]["payload"]:
+                raise ValueError(f"add authoring payload mismatch: {key}")
             mask = base / (uid + ".png")
             paths.append((target["mask"], mask))
-            refzh = REF_ZH.get(key, target["label_zh"])
+            refzh = ref_zh.get(key, REF_ZH.get(key, target["label_zh"]))
             has_ref, locator = MODES[counter % len(MODES)]
             counter += 1
-            subregion = recipe in {"D:part", "D:lowerlegs", "D:hem"}
-            spec = design_spec(recipe, d["ref"], scope, d["payload"])
+            subregion = recipe in {"D:part", "D:lowerlegs", "D:hem"} or key in parts
+            spec = design_spec(
+                recipe,
+                d["ref"],
+                scope,
+                d["payload"],
+                placement=placements[key]["placement"] if op == "add" else None,
+                target_part=parts.get(key, {}).get("target_part", ""),
+            )
             texts = {}
             for mode, t, tzh in [
                 ("ref", d["ref"], refzh),
@@ -145,7 +174,10 @@ def main():
             ]:
                 texts["instruction_" + mode] = render(spec, mode == "ref")
                 texts["instruction_" + mode + "_zh"] = instruction(
-                    recipe, tzh, d["payload_zh"], True
+                    recipe,
+                    tzh + "的" + parts[key]["target_part_zh"] if key in parts else tzh,
+                    d["payload_zh"],
+                    True,
                 )
 
             geometry = {
@@ -181,7 +213,10 @@ def main():
                 "operation": op,
                 "instruction_protocol_version": PROTOCOL_VERSION,
                 "instruction_spec": spec,
-                "instruction_length_advice": length_advice(texts["instruction_ref"], texts["instruction_noref"]),
+                "mask_semantics": mask_contract(spec),
+                "instruction_length_advice": length_advice(
+                    texts["instruction_ref"], texts["instruction_noref"]
+                ),
                 "attribute_kind": ("material" if recipe == "C:material" else "color")
                 if op == "attribute"
                 else None,
@@ -226,6 +261,7 @@ def main():
                     **d,
                     "instruction_protocol_version": PROTOCOL_VERSION,
                     "instruction_spec": spec,
+                    "mask_semantics": mask_contract(spec),
                     "ref_zh": refzh,
                     **texts,
                 }
@@ -246,7 +282,7 @@ def main():
             "case_number": number,
             "version": VERSION,
             "visual_review_version": "2.2.0",
-            "protocol_migration": "semantic_slots_and_placement_reordering; no_new_visual_review",
+            "protocol_migration": "explicit_direct_attachment_and_concise_authoring; see protocol_alignment_review.json",
             "kind": "ai_direct_visual",
             "reviewer": "assistant",
             "source_viewed": True,
@@ -378,8 +414,10 @@ def main():
         "cases": 200,
         "units": 785,
         "source_selection": "Latest 200 SA-1B cases only",
-        "supersedes": "2.2.0 instruction rendering (archived); same 200 sources and 785 tasks",
+        "supersedes": "2.3.0; corrected references and direct attachment metadata, unchanged source geometry",
         "instruction_protocol_version": PROTOCOL_VERSION,
+        "mask_semantics_version": MASK_SEMANTICS_VERSION,
+        "instruction_style_version": "benchmark-concise-2-direct-add-1",
         "manifest": "cases.jsonl",
         "dataset_root": str(root),
         "annotation_geometry": "unchanged visible masks; tight half-open boxes; deterministic mask-interior points",
@@ -402,6 +440,7 @@ def main():
             {
                 "version": VERSION,
                 "design_sha256": design_hash,
+                "placements_sha256": sha256_file(placements_path),
                 "reviewed_cases": 200,
                 "units": 785,
                 "operations": dict(ops),

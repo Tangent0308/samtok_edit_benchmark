@@ -95,6 +95,8 @@ def main():
         + readme
     )
     operations.append(CommitOperationAdd(path_in_repo="README.md", path_or_fileobj=readme.encode()))
+    for doc in (REPO / "docs").glob("*.md"):
+        operations.append(CommitOperationAdd(path_in_repo="docs/" + doc.name, path_or_fileobj=str(doc)))
     pdf_name = "samtok_edit_benchmark_v2_all_200_cases.pdf"
     pdf_sha = hashlib.sha256(pdf.read_bytes()).hexdigest()
     receipt.update(pdf_name=pdf_name, pdf_sha256=pdf_sha, pdf_size_bytes=pdf.stat().st_size)
@@ -111,7 +113,7 @@ def main():
         repo_id=receipt["repo_id"],
         repo_type="dataset",
         parent_commit=before.sha,
-        commit_message=f"feat: publish benchmark {release['release_version']} with instruction protocol 1.0",
+        commit_message=f"feat: publish benchmark {release['release_version']} with unified instructions and direct add anchors",
         commit_description="Replace both existing review downloads atomically. Includes 200 sources, 785 tasks, protocol migration, offline full-case PDF and browser-verified mixed interactions.",
         operations=operations,
     )

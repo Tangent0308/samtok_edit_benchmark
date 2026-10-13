@@ -1,0 +1,478 @@
+[
+  {
+    "case_number": 6,
+    "case_id": "v2-sa_1691871",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "原图确为前起第三把椅子；保留序数，将整椅 selector 与木框 target_part 显式区分。",
+    "original_instruction": "Change the color of the wooden frame of the third bar chair from the front to matte black.",
+    "model_issues": [
+      "The instruction refers to the 'third bar chair from the front', but the mask selects the first (closest) bar chair.",
+      "The mask includes the entire chair (upholstery and frame), whereas the instruction specifically targets only the 'wooden frame'."
+    ]
+  },
+  {
+    "case_number": 13,
+    "case_id": "v2-sa_2566092",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Change the color of the pink T-shirt of the short-haired woman on the left to light turquoise.",
+    "model_issues": [
+      "The reference phrase 'the short-haired woman on the left' is ambiguous because there are multiple women with short hair on the left side of the image (e.g., the woman in the foreground with a black jacket and the woman behind her with blonde hair).",
+      "The mask selects the T-shirt of the woman in the foreground (wearing a black jacket), but the reference does not uniquely identify her over the other short-haired women nearby."
+    ]
+  },
+  {
+    "case_number": 38,
+    "case_id": "v2-sa_604524",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one narrow reflective band around the cuff of the raised sleeve visible at the back right.",
+    "model_issues": [
+      "The source mask selects a person's arm in the background (visible in the bottom right of the full image), not the raised sleeve of the child in the foreground.",
+      "The reference phrase 'the raised sleeve visible at the back right' is ambiguous and likely refers to the child's raised arm, which is not the object selected by the mask."
+    ]
+  },
+  {
+    "case_number": 51,
+    "case_id": "v2-sa_403217",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "retained",
+    "reason_zh": "原图所选上方右侧工人的安全帽为绿色，模型误报。",
+    "original_instruction": "Replace the hard hat of the upper-right worker with a white hard hat with an integrated clear visor.",
+    "model_issues": [
+      "The reference phrase 'the hard hat of the upper-right worker' is ambiguous because there are two workers standing side-by-side in the upper portion of the image, and it is unclear which one is considered 'upper-right'.",
+      "The source mask in Image 2 corresponds to the worker on the left (relative to the pair), not the one on the right."
+    ]
+  },
+  {
+    "case_number": 58,
+    "case_id": "v2-sa_5157199",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one small white fabric badge on the visible back of the partly visible blue T-shirt at the top.",
+    "model_issues": [
+      "The instruction refers to a 'blue T-shirt at the top', but the source mask selects a magenta/pink T-shirt.",
+      "The selected T-shirt is not blue."
+    ]
+  },
+  {
+    "case_number": 59,
+    "case_id": "v2-sa_7813406",
+    "unit_id": "U5",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Remove the lower section of the long skirt of the gold-clad woman in the back row to make it knee-length.",
+    "model_issues": [
+      "The instruction refers to a 'gold-clad woman in the back row', but the selected mask (and the isolated pixels on the right) correspond to a woman wearing a blue skirt and a patterned top, not a gold dress.",
+      "The woman in the gold dress is located on the far left of the image, whereas the selected instance is in the center-right of the group."
+    ]
+  },
+  {
+    "case_number": 61,
+    "case_id": "v2-sa_6933563",
+    "unit_id": "U3",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one silver chain clipped to the waist of the blue bottoms on the far-right mannequin.",
+    "model_issues": [
+      "The source mask selects tan/khaki cargo shorts, not blue bottoms.",
+      "The far-right mannequin in the full scene is wearing tan pants, not blue bottoms."
+    ]
+  },
+  {
+    "case_number": 66,
+    "case_id": "v2-sa_10831959",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Replace the turquoise jacket of the woman in the pink headscarf on the left with a cropped denim jacket with a pointed collar.",
+    "model_issues": [
+      "The source mask selects the black jacket worn by the woman in the pink headscarf, not a turquoise jacket.",
+      "The instruction refers to a 'turquoise jacket' which does not match the black jacket selected in the mask."
+    ]
+  },
+  {
+    "case_number": 71,
+    "case_id": "v2-sa_2207729",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "retained",
+    "reason_zh": "mask 确为画面最左且最高的路灯，模型误报。",
+    "original_instruction": "Replace the tallest streetlamp at the far left with an arched streetlamp with a hanging lantern.",
+    "model_issues": [
+      "The selected streetlamp is not the tallest in the image; the streetlamp further to the right (second from left) is visibly taller.",
+      "The selected streetlamp is not at the far left; there is another streetlamp to its left."
+    ]
+  },
+  {
+    "case_number": 78,
+    "case_id": "v2-sa_7436208",
+    "unit_id": "U3",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one small black seat cushion on the pale chair at the center rear.",
+    "model_issues": [
+      "The source mask selects a green chair, not a 'pale' chair.",
+      "The selected chair is in the foreground/mid-ground, not at the 'center rear'."
+    ]
+  },
+  {
+    "case_number": 79,
+    "case_id": "v2-sa_745831",
+    "unit_id": "U3",
+    "reviewer": "assistant_visual_review",
+    "decision": "retained",
+    "reason_zh": "mask 位于中间举手孩子的右侧背包肩带，与头发/皮肤分离；原指代成立。",
+    "original_instruction": "Add one round reflective tag clipped to the backpack strap of the child raising a hand in the middle.",
+    "model_issues": [
+      "The source mask selects a patch of hair, not a backpack strap.",
+      "The child in the center of the image (wearing a grey shirt) is not raising a hand; the child to their right is the one raising a hand."
+    ]
+  },
+  {
+    "case_number": 87,
+    "case_id": "v2-sa_9359193",
+    "unit_id": "U5",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Remove the yellow shopping bag over the white-clad woman's shoulder at the front left.",
+    "model_issues": [
+      "The instruction refers to a 'yellow' shopping bag, but the bag selected in the mask and visible in the source image is green."
+    ]
+  },
+  {
+    "case_number": 94,
+    "case_id": "v2-sa_2361184",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Change the color of the blue T-shirt of the standing child at the far left to green.",
+    "model_issues": [
+      "The instruction refers to the child as 'standing', but the source image clearly shows the child sitting on a concrete ledge.",
+      "The mask correctly isolates the blue T-shirt, but the reference text contains a factual error regarding the child's posture."
+    ]
+  },
+  {
+    "case_number": 110,
+    "case_id": "v2-sa_1165283",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Change the color of the red T-shirt behind the central woman's green bag to olive green.",
+    "model_issues": [
+      "The instruction refers to the T-shirt 'behind the central woman's green bag', but the mask selects the T-shirt worn by the central woman, which is in front of the bag.",
+      "The T-shirt is not behind the bag; the bag is worn over the T-shirt."
+    ]
+  },
+  {
+    "case_number": 111,
+    "case_id": "v2-sa_1201946",
+    "unit_id": "U3",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one small chest pocket sewn onto the pale top of the woman behind the child at the back right.",
+    "model_issues": [
+      "The instruction refers to a 'pale top', but the selected object in the mask is a dark red or maroon top.",
+      "The selected top is worn by the woman in the foreground of the crop, not the woman 'behind the child' (who is wearing a black top)."
+    ]
+  },
+  {
+    "case_number": 112,
+    "case_id": "v2-sa_1539716",
+    "unit_id": "U4",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one small running-shoe-shaped embroidered patch on the front of the red visor of the sunglasses-wearing woman at the left center.",
+    "model_issues": [
+      "The instruction refers to a 'red visor', but the source image and the isolated crop clearly show a white visor."
+    ]
+  },
+  {
+    "case_number": 112,
+    "case_id": "v2-sa_1539716",
+    "unit_id": "U5",
+    "reviewer": "assistant_visual_review",
+    "decision": "retained",
+    "reason_zh": "选中帽子确在全图最左侧，模型以 crop 居中误判全局位置。",
+    "original_instruction": "Add one small flag patch on the side of the white cap visible at the far left.",
+    "model_issues": [
+      "The instruction refers to the white cap at the 'far left', but the selected cap is located in the center-left of the image, not at the far left edge."
+    ]
+  },
+  {
+    "case_number": 113,
+    "case_id": "v2-sa_1572241",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Replace the pale trousers of the light-blue-clad person on the left with pleated wide-leg culottes.",
+    "model_issues": [
+      "The reference phrase 'pale trousers' contradicts the visual evidence; the selected trousers are dark blue denim.",
+      "The reference phrase 'light-blue-clad person' is ambiguous as there are multiple people wearing light blue or teal shirts in the scene (e.g., the person in the green jacket, the person in the blue shirt at the counter).",
+      "The mask selects dark blue jeans, not pale trousers."
+    ]
+  },
+  {
+    "case_number": 114,
+    "case_id": "v2-sa_1785579",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Change the color of the visible rim of the seafood tray marked 220 on the right to dark red.",
+    "model_issues": [
+      "The instruction refers to a tray marked '220', but the visible price tags in the source image are 170, 180, 120, 60, 200, and 160. There is no tray marked 220.",
+      "The mask selects the rim of the tray marked '120', not a non-existent '220' tray."
+    ]
+  },
+  {
+    "case_number": 115,
+    "case_id": "v2-sa_1810664",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Remove the small chest logo from the orange top of the standing child nearest the front right.",
+    "model_issues": [
+      "The instruction refers to a 'standing child', but the child whose shirt is selected in the mask is clearly seated at the table, like all the other children in the scene."
+    ]
+  },
+  {
+    "case_number": 118,
+    "case_id": "v2-sa_1957971",
+    "unit_id": "U5",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Change the color of the knitted hat of the scarf-wearing woman just right of center to burgundy.",
+    "model_issues": [
+      "The selected object is a headband, not a knitted hat or beanie.",
+      "The woman wearing the selected headband is not wearing a scarf; the woman in the red coat to her left is wearing a scarf."
+    ]
+  },
+  {
+    "case_number": 121,
+    "case_id": "v2-sa_2127869",
+    "unit_id": "U5",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one white carrying loop around the neck of the small red-drink bottle beside the small yellow bottle on the lower shelf.",
+    "model_issues": [
+      "The source mask selects a small bottle with a yellowish liquid and a white label, not a 'red-drink bottle'.",
+      "The reference phrase 'small red-drink bottle' does not match the visual evidence of the selected object."
+    ]
+  },
+  {
+    "case_number": 122,
+    "case_id": "v2-sa_2194487",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Change the color of the hat body of the man in the back row on the right to navy blue.",
+    "model_issues": [
+      "The reference 'the man in the back row on the right' is ambiguous because there are multiple men in the back row on the right side of the image.",
+      "The selected mask corresponds to a hat in the middle ground, not clearly the 'back row'."
+    ]
+  },
+  {
+    "case_number": 122,
+    "case_id": "v2-sa_2194487",
+    "unit_id": "U4",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Remove the brim from the hat of the tall man at the left rear.",
+    "model_issues": [
+      "The reference 'the tall man at the left rear' is ambiguous because there are multiple men in the rear row on the left side of the image.",
+      "The selected mask corresponds to a hat in the middle-left area, not necessarily the 'left rear' as described, making the localization imprecise."
+    ]
+  },
+  {
+    "case_number": 127,
+    "case_id": "v2-sa_2506761",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Replace the tall brown-drink bottle in the front row on the right with a short square glass bottle with a swing-top closure.",
+    "model_issues": [
+      "The reference phrase 'the tall brown-drink bottle in the front row on the right' is ambiguous. The selected bottle (visible in the mask and isolated view) is located in the middle of the front row, not on the right side. There are other brown-drink bottles to its right that are also in the front row, making the 'on the right' descriptor incorrect for the selected instance."
+    ]
+  },
+  {
+    "case_number": 132,
+    "case_id": "v2-sa_2944425",
+    "unit_id": "U5",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "原指代正确，但胸口被纸牌遮挡。改为在可见肩部缝小白布贴，保证编辑可见且直接附着。",
+    "original_instruction": "Add one small white chest pocket sewn onto the black T-shirt visible behind the cardboard sign on the right.",
+    "model_issues": [
+      "The source mask selects the cardboard sign, not the black T-shirt.",
+      "The instruction asks to add a pocket to the T-shirt, but the mask does not cover the T-shirt."
+    ]
+  },
+  {
+    "case_number": 133,
+    "case_id": "v2-sa_3287892",
+    "unit_id": "U3",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one small black tassel attached to the top of the red cap of the back-facing person on the right.",
+    "model_issues": [
+      "The reference phrase 'the red cap of the back-facing person on the right' is ambiguous because there are multiple back-facing persons on the right side of the image wearing red caps.",
+      "The source mask selects a specific cap (the one in the foreground, second from the left), which is not the one on the far right, creating a mismatch between the reference and the actual target."
+    ]
+  },
+  {
+    "case_number": 138,
+    "case_id": "v2-sa_37740",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "retained",
+    "reason_zh": "原图与 mask 均是最右玻璃灯泡，保留；模型误报。",
+    "original_instruction": "Add one small silver wire cage around the glass light bulb on the far right.",
+    "model_issues": [
+      "The source mask selects the central light bulb, not the light bulb on the far right as stated in the reference phrase."
+    ]
+  },
+  {
+    "case_number": 141,
+    "case_id": "v2-sa_4132362",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Replace the dark short-sleeved top of the patterned-hat man across the table with a light-gray sleeveless vest.",
+    "model_issues": [
+      "The reference phrase describes a 'dark short-sleeved top', but the source image shows the man wearing a long-sleeved blue shirt with a grey vest over it.",
+      "The mask selects the vest and the long sleeves of the shirt, which contradicts the 'short-sleeved' description in the reference."
+    ]
+  },
+  {
+    "case_number": 146,
+    "case_id": "v2-sa_4660016",
+    "unit_id": "U5",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one small red cloth patch on the visible shoulder of the white top behind the chin-resting spectator on the left.",
+    "model_issues": [
+      "The source mask selects the black uniformed figure, not the white top behind the chin-resting spectator on the left.",
+      "The ref phrase targets a different garment than the selected pixels."
+    ]
+  },
+  {
+    "case_number": 170,
+    "case_id": "v2-sa_6426125",
+    "unit_id": "U2",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Replace the teal folding chair beneath the second seated person from the left with a low wooden stool.",
+    "model_issues": [
+      "The reference phrase 'the teal folding chair beneath the second seated person from the left' is factually incorrect. The second person from the left is sitting on a black chair, not a teal one.",
+      "The teal folding chair is located beneath the fourth (rightmost) seated person, not the second.",
+      "The source mask (middle image) correctly selects the black chair beneath the second person, which contradicts the reference text."
+    ]
+  },
+  {
+    "case_number": 179,
+    "case_id": "v2-sa_7434362",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Remove the sleeves from the dark-red T-shirt partly hidden by the white-shirted person just right of center.",
+    "model_issues": [
+      "The instruction refers to a 'dark-red T-shirt', but the source mask and the isolated pixels clearly show a dark blue or black short-sleeved shirt.",
+      "The shirt is not 'partly hidden by the white-shirted person'; the person in the white shirt is to the left of the target shirt, and the target shirt is fully visible in the crop."
+    ]
+  },
+  {
+    "case_number": 183,
+    "case_id": "v2-sa_7610563",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Remove the wooden chair partly visible behind the fence at the bottom left.",
+    "model_issues": [
+      "The selected object in the mask is a blue chair, not a wooden chair.",
+      "The instruction refers to a 'wooden chair', but the selected pixels correspond to a blue chair."
+    ]
+  },
+  {
+    "case_number": 184,
+    "case_id": "v2-sa_7620370",
+    "unit_id": "U3",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one small red flower-shaped patch sewn onto the extended yellow sleeve of the child-holding woman at the far right.",
+    "model_issues": [
+      "The source mask selects a white sleeve, not a yellow sleeve.",
+      "The woman wearing the white sleeve is not holding a child; the child is held by a different person in the crowd."
+    ]
+  },
+  {
+    "case_number": 190,
+    "case_id": "v2-sa_8139733",
+    "unit_id": "U5",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Add one small black top hat on the head of the green-waistcoated rabbit figurine at the left rear.",
+    "model_issues": [
+      "The source mask selects a rabbit figurine wearing a blue vest/waistcoat, not a green one.",
+      "The selected figurine is located in the center-right of the display, not at the 'left rear'."
+    ]
+  },
+  {
+    "case_number": 191,
+    "case_id": "v2-sa_8205160",
+    "unit_id": "U1",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Remove the sleeves from the striped long-sleeved top of the sunglasses-wearing man at the right rear.",
+    "model_issues": [
+      "The instruction specifies removing the 'sleeves' (target_part), but the provided source mask selects the entire torso of the striped top, including the body which should remain."
+    ]
+  },
+  {
+    "case_number": 191,
+    "case_id": "v2-sa_8205160",
+    "unit_id": "U3",
+    "reviewer": "assistant_visual_review",
+    "decision": "corrected",
+    "reason_zh": "核对干净原图、局部放大图和独立 mask 后，修正源物体颜色、位置/归属或冗余限定；以最终标注为准。",
+    "original_instruction": "Replace the gray paneled top of the sunglasses-wearing woman on the left with a short-sleeved striped blouse.",
+    "model_issues": [
+      "The reference phrase identifies a 'sunglasses-wearing woman', but the source mask selects the gray paneled top of a man (visible in the source crop, wearing sunglasses and a watch).",
+      "The selected person is male, not female, making the reference description factually incorrect."
+    ]
+  }
+]

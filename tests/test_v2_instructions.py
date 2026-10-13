@@ -70,7 +70,7 @@ def test_current_instruction_release_is_balanced_bilingual_and_concise():
             assert u["instruction_" + mode + "_zh"].strip()
             assert len(u["instruction_" + mode].split()) <= 40
             assert "preserv" not in u["instruction_" + mode].lower()
-        assert u["instruction_design"]["version"] == "2.3.0"
+        assert u["instruction_design"]["version"] == "2.4.0"
 
 
 def test_protocol_release_rejects_silent_noref_drift(tmp_path):

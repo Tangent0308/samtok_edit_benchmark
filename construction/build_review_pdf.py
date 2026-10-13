@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import io
 import json
+import re
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
@@ -33,7 +34,7 @@ def main():
     def wrap(draw, text, xy, width, size=27):
         x, y = xy
         line = ""
-        for char in text:
+        for char in re.findall(r"[A-Za-z0-9][A-Za-z0-9’'-]*|[^\s]|\s+", text):
             if draw.textlength(line + char, font=fonts[size]) > width:
                 draw.text((x, y), line, font=fonts[size], fill="#243650")
                 y += size + 9
@@ -65,7 +66,7 @@ def main():
             end = wrap(draw, unit["instruction"], (575, y + 7), 1750)
             wrap(draw, unit["instruction_zh"], (575, end), 1750, 25)
             y += 128
-        draw.text((45, 1745), "add 区域指已有支撑物或空间锚点；区域不是新增物体轮廓。图像已嵌入，支持离线查看和放大。", font=fonts[25], fill="#526580")
+        draw.text((45, 1745), "add 区域优先指直接承载/附着对象；本版全部使用直接锚点。图像已嵌入，支持离线查看和放大。", font=fonts[25], fill="#526580")
         buffer = io.BytesIO()
         page.save(buffer, format="JPEG", quality=91)
         buffer.seek(0)

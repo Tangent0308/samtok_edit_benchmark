@@ -1,0 +1,661 @@
+[
+  {
+    "source_id": "sa_5827205",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "700d28aa55b98f28aeecb2ae3ba1f13bf9a6337ff2cd12362ab7f049a000e6a7",
+    "review_card_sha256": "2c6651930ee5919f25763790b96ed2c90551545322fb7a45589fb3775c771cd8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "大旗、左前格衫、中央红帽、MY BODY牌四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "密集集会人群",
+      "evidence_zh": "大旗、左前格衫、中央红帽、MY BODY牌四父对象。",
+      "specific_protection_zh": "保留人物身体、其他标语和场地。"
+    },
+    "protected_content_zh": "保留人物身体、其他标语和场地。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the largest American flag near the center",
+        "ref_zh": "中间附近最大的美国国旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "large_flag",
+        "parent_zh": "大旗",
+        "payload": "",
+        "instruction_zh": "移除中间附近最大的美国国旗。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 31,
+        "operation": "attribute",
+        "ref": "the plaid jacket in the lower-left foreground",
+        "ref_zh": "左下方前景的格纹外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_person",
+        "parent_zh": "左人",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下方前景的格纹外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the magenta beanie below the cardboard sign",
+        "ref_zh": "纸板牌下方的洋红色针织帽",
+        "scope": "beanie",
+        "scope_zh": "针织帽",
+        "parent": "beanie_person",
+        "parent_zh": "红帽人",
+        "payload": "a black ribbed beanie",
+        "instruction_zh": "将纸板牌下方的洋红色针织帽替换为一顶黑色罗纹针织帽。",
+        "instruction_noref_zh": "将选中的针织帽替换为一顶黑色罗纹针织帽。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the MY BODY MY CHOICE sign",
+        "ref_zh": "写有MY BODY MY CHOICE的牌子",
+        "scope": "sign",
+        "scope_zh": "牌子",
+        "parent": "body_sign",
+        "parent_zh": "标语牌",
+        "payload": "a small purple flower sticker in its upper-right corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在写有MY BODY MY CHOICE的牌子加上一张位于右上角的小紫花贴纸。",
+        "instruction_noref_zh": "在选中的牌子加上一张位于右上角的小紫花贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5830026",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b0444c82086f9bfd3275c371229f71f377a54fdfd26cece6720d679bfaefd336",
+    "review_card_sha256": "f404a76588557c8877f65cbafab05e7eda4b536ee551ea8095e375b4b5987d26",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "48前轮毂属于车，66花篮旁窗属于住宅，两个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "联排住宅前的旅行车",
+      "evidence_zh": "48前轮毂属于车，66花篮旁窗属于住宅，两个父对象。",
+      "specific_protection_zh": "保留车身、轮胎、建筑和篱笆。"
+    },
+    "protected_content_zh": "保留车身、轮胎、建筑和篱笆。",
+    "targets": [
+      {
+        "object_id": 48,
+        "operation": "attribute",
+        "ref": "the front alloy wheel rim of the parked Volvo",
+        "ref_zh": "停放沃尔沃的前轮合金轮圈",
+        "scope": "wheel rim",
+        "scope_zh": "轮圈",
+        "parent": "car",
+        "parent_zh": "车",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将停放沃尔沃的前轮合金轮圈的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的轮圈的颜色改为古铜色。"
+      },
+      {
+        "object_id": 66,
+        "operation": "add",
+        "ref": "the ground-floor white-framed window beside the hanging basket",
+        "ref_zh": "吊篮旁的底层白框窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "house",
+        "parent_zh": "住宅",
+        "payload": "a white lace curtain",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在吊篮旁的底层白框窗户加上一幅白色蕾丝窗帘。",
+        "instruction_noref_zh": "在选中的窗户加上一幅白色蕾丝窗帘。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5831338",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9ba610712e5f6ff1bf5325c3c57e2afc3a4a0e8d940f45e1805fb411bb32fe45",
+    "review_card_sha256": "429590c1387248d1e68526e1e90eea4da8b24468b5754383d3fc11677694bb76",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "24后SUV、3中央白T人物、86空中滑手鞋、9右栏横幅四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "motion",
+        "occlusion",
+        "crowd"
+      ],
+      "scene_zh": "室内滑板表演",
+      "evidence_zh": "24后SUV、3中央白T人物、86空中滑手鞋、9右栏横幅四父对象。",
+      "specific_protection_zh": "保留人物身体、滑板、栏杆和其他车辆。"
+    },
+    "protected_content_zh": "保留人物身体、滑板、栏杆和其他车辆。",
+    "targets": [
+      {
+        "object_id": 24,
+        "operation": "remove",
+        "ref": "the silver SUV behind the center-right spectators",
+        "ref_zh": "中间偏右观众后方的银色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "silver_suv",
+        "parent_zh": "银SUV",
+        "payload": "",
+        "instruction_zh": "移除中间偏右观众后方的银色SUV。",
+        "instruction_noref_zh": "移除选中的SUV。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the white GRIND T-shirt on the spectator near the center",
+        "ref_zh": "中间附近观众的白色GRIND T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "center_spectator",
+        "parent_zh": "中观众",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近观众的白色GRIND T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 86,
+        "operation": "replace",
+        "ref": "the airborne skateboarder's shoe at the left",
+        "ref_zh": "腾空滑板者左侧的鞋子",
+        "scope": "shoe",
+        "scope_zh": "鞋子",
+        "parent": "skateboarder",
+        "parent_zh": "滑板者",
+        "payload": "a red high-top skate shoe",
+        "instruction_zh": "将腾空滑板者左侧的鞋子替换为一只红色高帮滑板鞋。",
+        "instruction_noref_zh": "将选中的鞋子替换为一只红色高帮滑板鞋。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the dark banner behind the rightmost spectator",
+        "ref_zh": "最右侧观众后方的深色横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "right_banner",
+        "parent_zh": "右横幅",
+        "payload": "a small gold star emblem in its upper-left corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧观众后方的深色横幅加上一个位于左上角的小金色星形徽标。",
+        "instruction_noref_zh": "在选中的横幅加上一个位于左上角的小金色星形徽标。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5851358",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9d58f5f8ec92918319ec19adf3d6d3446c3df2d9874be023cf5972181da4333e",
+    "review_card_sha256": "e441f864ddbca0d9810258473270304759ebff73e29dc6768054ecbc0e095787",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6后右灯、2后左灯、28车格栅、13围挡柱四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structure",
+        "occlusion"
+      ],
+      "scene_zh": "蓝货车与工地围挡",
+      "evidence_zh": "6后右灯、2后左灯、28车格栅、13围挡柱四父对象。",
+      "specific_protection_zh": "保留货车、网笼、电线和其余围挡。"
+    },
+    "protected_content_zh": "保留货车、网笼、电线和其余围挡。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the streetlamp behind the fence at the right",
+        "ref_zh": "右侧围挡后方的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "",
+        "instruction_zh": "移除右侧围挡后方的路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the taller streetlamp behind the truck",
+        "ref_zh": "货车后方较高的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将货车后方较高的路灯的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 28,
+        "operation": "replace",
+        "ref": "the upper front grille of the blue truck",
+        "ref_zh": "蓝色货车前脸的上层格栅",
+        "scope": "grille",
+        "scope_zh": "格栅",
+        "parent": "truck",
+        "parent_zh": "货车",
+        "payload": "a chrome mesh grille",
+        "instruction_zh": "将蓝色货车前脸的上层格栅替换为一个镀铬网格格栅。",
+        "instruction_noref_zh": "将选中的格栅替换为一个镀铬网格格栅。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the fence post immediately right of the truck",
+        "ref_zh": "货车紧右侧的围挡立柱",
+        "scope": "post",
+        "scope_zh": "立柱",
+        "parent": "fence",
+        "parent_zh": "围挡",
+        "payload": "a small yellow CAUTION sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在货车紧右侧的围挡立柱加上一块小黄色CAUTION警示牌。",
+        "instruction_noref_zh": "在选中的立柱加上一块小黄色CAUTION警示牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5856108",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "946f437dca4f594d071afd9634b3ddd462e11d0028c949ed612e05a766c30656",
+    "review_card_sha256": "4c4a78895f282bb3eaebcd89620eb17929b2d8423fbf9776af380a10a27b0c59",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "24左拖箱、14右灰背包、15最近球灯、1左导向牌四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "车站大厅旅行人群",
+      "evidence_zh": "24左拖箱、14右灰背包、15最近球灯、1左导向牌四父对象。",
+      "specific_protection_zh": "保留人物、建筑、其他行李和指示信息。"
+    },
+    "protected_content_zh": "保留人物、建筑、其他行李和指示信息。",
+    "targets": [
+      {
+        "object_id": 24,
+        "operation": "remove",
+        "ref": "the tilted black suitcase being pulled at the left",
+        "ref_zh": "左侧被拖行的倾斜黑色行李箱",
+        "scope": "suitcase",
+        "scope_zh": "行李箱",
+        "parent": "left_suitcase",
+        "parent_zh": "左箱",
+        "payload": "",
+        "instruction_zh": "移除左侧被拖行的倾斜黑色行李箱。",
+        "instruction_noref_zh": "移除选中的行李箱。"
+      },
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the silver-gray backpack at the right edge of the standing group",
+        "ref_zh": "站立人群右边缘的银灰色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "silver_backpack",
+        "parent_zh": "银包",
+        "payload": "a brown leather backpack",
+        "instruction_zh": "将站立人群右边缘的银灰色背包替换为一个棕色皮革背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个棕色皮革背包。"
+      },
+      {
+        "object_id": 15,
+        "operation": "attribute",
+        "ref": "the nearest glass globe lamp on the right wall",
+        "ref_zh": "右墙上最近的玻璃球灯",
+        "scope": "lamp globe",
+        "scope_zh": "球灯",
+        "parent": "nearest_lamp",
+        "parent_zh": "近灯",
+        "payload": "pale blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将右墙上最近的玻璃球灯的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的球灯的色调改为浅蓝色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the left overhead direction sign",
+        "ref_zh": "上方左侧的导向牌",
+        "scope": "sign",
+        "scope_zh": "导向牌",
+        "parent": "left_sign",
+        "parent_zh": "左牌",
+        "payload": "a small blue accessibility symbol",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在上方左侧的导向牌加上一个小蓝色无障碍标识。",
+        "instruction_noref_zh": "在选中的导向牌加上一个小蓝色无障碍标识。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5865465",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4166986f95568102965209c159790e7079935b810cad2adf21eabbd311678edb",
+    "review_card_sha256": "fb0cb802103e1304d70d7495f46fda124d40dcf675a9fa35cf8f88ad0de31afb",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "57前锥篮、9左圆篮、66右绿衫人、32中黑巾人四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "water"
+      ],
+      "scene_zh": "水上市场",
+      "evidence_zh": "57前锥篮、9左圆篮、66右绿衫人、32中黑巾人四父对象。",
+      "specific_protection_zh": "保留船只、人物身体、其他货物及水面。"
+    },
+    "protected_content_zh": "保留船只、人物身体、其他货物及水面。",
+    "targets": [
+      {
+        "object_id": 57,
+        "operation": "remove",
+        "ref": "the dark conical basket in the front center-left canoe",
+        "ref_zh": "前方中间偏左独木舟中的深色锥形篮子",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "conical_basket",
+        "parent_zh": "锥篮",
+        "payload": "",
+        "instruction_zh": "移除前方中间偏左独木舟中的深色锥形篮子。",
+        "instruction_noref_zh": "移除选中的篮子。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the round wicker basket in the far-left foreground canoe",
+        "ref_zh": "最左侧前景独木舟中的圆形藤篮",
+        "scope": "basket",
+        "scope_zh": "藤篮",
+        "parent": "round_basket",
+        "parent_zh": "圆篮",
+        "payload": "a small bunch of yellow bananas",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最左侧前景独木舟中的圆形藤篮加上一小串黄色香蕉。",
+        "instruction_noref_zh": "在选中的藤篮加上一小串黄色香蕉。"
+      },
+      {
+        "object_id": 66,
+        "operation": "attribute",
+        "ref": "the mint-green shirt beneath the largest conical hat at the right",
+        "ref_zh": "右侧最大斗笠下方的薄荷绿上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "right_vendor",
+        "parent_zh": "右摊主",
+        "payload": "pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧最大斗笠下方的薄荷绿上衣的颜色改为粉色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为粉色。"
+      },
+      {
+        "object_id": 32,
+        "operation": "replace",
+        "ref": "the black headscarf on the woman in the long foreground canoe",
+        "ref_zh": "前景长独木舟中女子的黑色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "center_vendor",
+        "parent_zh": "中摊主",
+        "payload": "a beige cotton headscarf",
+        "instruction_zh": "将前景长独木舟中女子的黑色头巾替换为一条米色棉头巾。",
+        "instruction_noref_zh": "将选中的头巾替换为一条米色棉头巾。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5884999",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b737caff99c1571d6b5d555cce52f62da828077bb4f5f1e637736ce01c86c413",
+    "review_card_sha256": "5c644b948d06abcd6ef24c182f62793a7a355bf7b451b94b90fafcf634fb80e8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5前人皮衣、7前蓝桶、36后大广告、27近右灯柱四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "thin_structure",
+        "occlusion"
+      ],
+      "scene_zh": "桥边垂钓人群与广告",
+      "evidence_zh": "5前人皮衣、7前蓝桶、36后大广告、27近右灯柱四父对象。",
+      "specific_protection_zh": "保留人物身体、鱼竿、桥栏和城市背景。"
+    },
+    "protected_content_zh": "保留人物身体、鱼竿、桥栏和城市背景。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the leather jacket on the man in the foreground",
+        "ref_zh": "前景男子的皮夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "front_man",
+        "parent_zh": "前男",
+        "payload": "brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男子的皮夹克的颜色改为棕色。",
+        "instruction_noref_zh": "将选中的夹克的颜色改为棕色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the blue bucket immediately left of the foreground man",
+        "ref_zh": "前景男子紧左侧的蓝色桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "blue_bucket",
+        "parent_zh": "蓝桶",
+        "payload": "",
+        "instruction_zh": "移除前景男子紧左侧的蓝色桶。",
+        "instruction_noref_zh": "移除选中的桶。"
+      },
+      {
+        "object_id": 36,
+        "operation": "replace",
+        "ref": "the large billboard behind the tall streetlamp at the right",
+        "ref_zh": "右侧高路灯后方的大广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "billboard",
+        "parent_zh": "广告牌",
+        "payload": "a blue coastal-travel poster",
+        "instruction_zh": "将右侧高路灯后方的大广告牌替换为一张蓝色海岸旅游海报。",
+        "instruction_noref_zh": "将选中的广告牌替换为一张蓝色海岸旅游海报。"
+      },
+      {
+        "object_id": 27,
+        "operation": "add",
+        "ref": "the tall streetlamp at the right",
+        "ref_zh": "右侧的高路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "tall_lamp",
+        "parent_zh": "高灯",
+        "payload": "a small blue FISHING PERMITTED sign on its pole",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的高路灯加上一块位于灯杆上的小蓝色FISHING PERMITTED牌。",
+        "instruction_noref_zh": "在选中的路灯加上一块位于灯杆上的小蓝色FISHING PERMITTED牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5897884",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "17cabc6b18414af5258da43eedfd0ea296c16bda5d0128ebdaa8f083b3c05032",
+    "review_card_sha256": "271d0e225c6b1484fcb4e2a84b1a34b70f9e78882fe8195df2747a1068636a7a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5蓝SUV、8银车、34近灯、17粉海报四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "small_targets"
+      ],
+      "scene_zh": "城市道路车辆与路牌",
+      "evidence_zh": "5蓝SUV、8银车、34近灯、17粉海报四父对象。",
+      "specific_protection_zh": "保留道路标线、其他车辆、建筑及行人。"
+    },
+    "protected_content_zh": "保留道路标线、其他车辆、建筑及行人。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the blue SUV parked at the left",
+        "ref_zh": "左侧停着的蓝色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "blue_suv",
+        "parent_zh": "蓝SUV",
+        "payload": "",
+        "instruction_zh": "移除左侧停着的蓝色SUV。",
+        "instruction_noref_zh": "移除选中的SUV。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the silver hatchback in the right lane",
+        "ref_zh": "右侧车道中的银色掀背车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "an orange compact hatchback",
+        "instruction_zh": "将右侧车道中的银色掀背车替换为一辆橙色紧凑型掀背车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆橙色紧凑型掀背车。"
+      },
+      {
+        "object_id": 34,
+        "operation": "attribute",
+        "ref": "the nearest streetlamp on the left pavement",
+        "ref_zh": "左侧人行道上最近的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧人行道上最近的路灯的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深绿色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the pink poster on the nearest left streetlamp",
+        "ref_zh": "左侧最近路灯上的粉色海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "pink_poster",
+        "parent_zh": "粉海报",
+        "payload": "a small gold NEW sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧最近路灯上的粉色海报加上一张小金色NEW贴纸。",
+        "instruction_noref_zh": "在选中的海报加上一张小金色NEW贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

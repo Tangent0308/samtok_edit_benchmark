@@ -1,0 +1,128 @@
+{
+  "source_id": "sa_1283721",
+  "reason_zh": "补充保存完整源图候选卡哈希；主要审核卡为原mask范围放大图，二者均实际查看。",
+  "previous_record": {
+    "source_id": "sa_1283721",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7c34d22583f273e82f4286342aa43d88045f06754b87fad33d13ab12c93c9741",
+    "review_card_sha256": "0804553da26256898ee2010863ffaeab79640fdde5fbb98fffc73882b9a92ca0",
+    "review_card_name": "window_scope_followup.jpg",
+    "evidence_zh": "已看candidate原图及补充二值图：2包含对面最左完整窗及红边框，非仅外框；5只覆盖前景从左第二块玻璃，表面可见污痕。前景和对面建筑各一目标，不拆同楼多个窗。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "前景窗玻璃与对面建筑的拱顶窗",
+      "evidence_zh": "已看candidate原图及补充二值图：2包含对面最左完整窗及红边框，非仅外框；5只覆盖前景从左第二块玻璃，表面可见污痕。前景和对面建筑各一目标，不拆同楼多个窗。",
+      "specific_protection_zh": "保留其他窗户、窗框、外墙、屋顶、天空和透视。"
+    },
+    "protected_content_zh": "保留其他窗户、窗框、外墙、屋顶、天空和透视。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the leftmost window on the opposite building",
+        "ref_zh": "对面建筑最左侧的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "opposite_building",
+        "parent_zh": "对面建筑",
+        "payload": "a wood-framed casement window",
+        "instruction_zh": "将对面建筑最左侧的窗户替换为一扇木框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇木框平开窗。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the second foreground windowpane from the left",
+        "ref_zh": "前景从左数第二块窗玻璃",
+        "scope": "windowpane",
+        "scope_zh": "窗玻璃",
+        "parent": "foreground_building",
+        "parent_zh": "前景建筑",
+        "payload": "a small white bird decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景从左数第二块窗玻璃加上一张白色小鸟贴纸。",
+        "instruction_noref_zh": "在选中的窗玻璃加上一张白色小鸟贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1283721",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7c34d22583f273e82f4286342aa43d88045f06754b87fad33d13ab12c93c9741",
+    "review_card_sha256": "0804553da26256898ee2010863ffaeab79640fdde5fbb98fffc73882b9a92ca0",
+    "review_card_name": "window_scope_followup.jpg",
+    "evidence_zh": "已看candidate原图及补充二值图：2包含对面最左完整窗及红边框，非仅外框；5只覆盖前景从左第二块玻璃，表面可见污痕。前景和对面建筑各一目标，不拆同楼多个窗。 全图定位复核：补充保存完整源图候选卡哈希；主要审核卡为原mask范围放大图，二者均实际查看。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "前景窗玻璃与对面建筑的拱顶窗",
+      "evidence_zh": "已看candidate原图及补充二值图：2包含对面最左完整窗及红边框，非仅外框；5只覆盖前景从左第二块玻璃，表面可见污痕。前景和对面建筑各一目标，不拆同楼多个窗。 全图定位复核：补充保存完整源图候选卡哈希；主要审核卡为原mask范围放大图，二者均实际查看。",
+      "specific_protection_zh": "保留其他窗户、窗框、外墙、屋顶、天空和透视。"
+    },
+    "protected_content_zh": "保留其他窗户、窗框、外墙、屋顶、天空和透视。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the leftmost window on the opposite building",
+        "ref_zh": "对面建筑最左侧的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "opposite_building",
+        "parent_zh": "对面建筑",
+        "payload": "a wood-framed casement window",
+        "instruction_zh": "将对面建筑最左侧的窗户替换为一扇木框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇木框平开窗。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the second foreground windowpane from the left",
+        "ref_zh": "前景从左数第二块窗玻璃",
+        "scope": "windowpane",
+        "scope_zh": "窗玻璃",
+        "parent": "foreground_building",
+        "parent_zh": "前景建筑",
+        "payload": "a small white bird decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景从左数第二块窗玻璃加上一张白色小鸟贴纸。",
+        "instruction_noref_zh": "在选中的窗玻璃加上一张白色小鸟贴纸。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_1283721/candidate.jpg",
+        "sha256": "a990b3d8460d1afa688434fedccc074069cc0c0f99ab5487bb4a3b7b3a09f137"
+      }
+    ]
+  }
+}

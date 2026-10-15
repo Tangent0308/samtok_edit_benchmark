@@ -1,0 +1,645 @@
+[
+  {
+    "source_id": "sa_6706957",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8413acb1587da0ffd7fc0b95dfcae3fba43c9c37b694d0ea1f6ba13c82d16a8a",
+    "review_card_sha256": "07d60e37f9bb8d03a74e8ea19267ffc50ac0eab5a7e25ce0b1f93f6d65bfd0e8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7地面贴花、48左侧画架展板、9中间男子上衣、33右侧玻璃展示面板是四个不同物件。",
+    "difficulty": {
+      "mechanisms": [
+        "retail",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "华为门店街景",
+      "evidence_zh": "7地面贴花、48左侧画架展板、9中间男子上衣、33右侧玻璃展示面板是四个不同物件。",
+      "specific_protection_zh": "保留顾客、桌椅、门店结构和其他展示物。"
+    },
+    "protected_content_zh": "保留顾客、桌椅、门店结构和其他展示物。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the red floor sticker in front of the store",
+        "ref_zh": "店前地面的红色贴花",
+        "scope": "sticker",
+        "scope_zh": "贴花",
+        "parent": "floor_sticker",
+        "parent_zh": "地面贴花",
+        "payload": "",
+        "instruction_zh": "移除店前地面的红色贴花。",
+        "instruction_noref_zh": "移除选中的贴花。"
+      },
+      {
+        "object_id": 48,
+        "operation": "replace",
+        "ref": "the black easel display at the left",
+        "ref_zh": "左侧的黑色画架展板",
+        "scope": "display board",
+        "scope_zh": "展板",
+        "parent": "easel_display",
+        "parent_zh": "画架展板",
+        "payload": "a simple black SALE board",
+        "instruction_zh": "将左侧的黑色画架展板替换为一块简洁的黑色SALE展板。",
+        "instruction_noref_zh": "将选中的展板替换为一块简洁的黑色SALE展板。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the cream T-shirt on the man near the center",
+        "ref_zh": "中间附近男子的米色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "center_man",
+        "parent_zh": "中间男子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近男子的米色T恤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 33,
+        "operation": "add",
+        "ref": "the glass display panel at the right",
+        "ref_zh": "右侧的玻璃展示面板",
+        "scope": "display panel",
+        "scope_zh": "展示面板",
+        "parent": "glass_panel",
+        "parent_zh": "玻璃面板",
+        "payload": "a small OPEN decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的玻璃展示面板加上一个小OPEN贴花。",
+        "instruction_noref_zh": "在选中的展示面板加上一个小OPEN贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6720037",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "69e493377c7630b7b128002e2539525c075a657c428fbb9c4eb748bede675826",
+    "review_card_sha256": "63fff6dd59f5817817643e9955a59c4744039afd7aea8940be5d6d651486b895",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12中间白色厢式车、13左侧小白车、9黄色ADAC旗、68入口门是四个不同物件。",
+    "difficulty": {
+      "mechanisms": [
+        "vehicles",
+        "signage",
+        "perspective"
+      ],
+      "scene_zh": "车辆检测站",
+      "evidence_zh": "12中间白色厢式车、13左侧小白车、9黄色ADAC旗、68入口门是四个不同物件。",
+      "specific_protection_zh": "保留检测站建筑、其他车辆和标牌。"
+    },
+    "protected_content_zh": "保留检测站建筑、其他车辆和标牌。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the white panel van in the center",
+        "ref_zh": "中间的白色厢式车",
+        "scope": "panel van",
+        "scope_zh": "厢式车",
+        "parent": "center_van",
+        "parent_zh": "中间厢式车",
+        "payload": "",
+        "instruction_zh": "移除中间的白色厢式车。",
+        "instruction_noref_zh": "移除选中的厢式车。"
+      },
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the small white van at the left",
+        "ref_zh": "左侧的小白色厢式车",
+        "scope": "van",
+        "scope_zh": "厢式车",
+        "parent": "left_van",
+        "parent_zh": "左厢式车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的小白色厢式车的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的厢式车的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the yellow ADAC flag",
+        "ref_zh": "黄色的ADAC旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "adac_flag",
+        "parent_zh": "ADAC旗",
+        "payload": "a plain blue service flag",
+        "instruction_zh": "将黄色的ADAC旗帜替换为一面纯蓝色服务旗。",
+        "instruction_noref_zh": "将选中的旗帜替换为一面纯蓝色服务旗。"
+      },
+      {
+        "object_id": 68,
+        "operation": "add",
+        "ref": "the glass entrance door at the front",
+        "ref_zh": "前方的玻璃入口门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "entrance_door",
+        "parent_zh": "入口门",
+        "payload": "a small OPEN decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前方的玻璃入口门加上一个小OPEN贴花。",
+        "instruction_noref_zh": "在选中的门加上一个小OPEN贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_672356",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "050c9e5dae8c330fc9a5ff245cdca8e7a113702946051f8ae1ec23f9f8a0e6b4",
+    "review_card_sha256": "d0908a32463bb28cae983038ca90560b62638a185c816f2df98a7355e84c204b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11前景女孩的灰色打底裤、27右中行人的花裙、34右侧绿色招牌、26红色促销海报是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "text",
+        "occlusion"
+      ],
+      "scene_zh": "购物广场行人",
+      "evidence_zh": "11前景女孩的灰色打底裤、27右中行人的花裙、34右侧绿色招牌、26红色促销海报是四个不同对象。",
+      "specific_protection_zh": "保留行人、商场建筑和其他招牌。"
+    },
+    "protected_content_zh": "保留行人、商场建筑和其他招牌。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the gray leggings on the blond girl in front",
+        "ref_zh": "前景金发女孩的灰色打底裤",
+        "scope": "leggings",
+        "scope_zh": "打底裤",
+        "parent": "front_girl",
+        "parent_zh": "前景女孩",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景金发女孩的灰色打底裤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的打底裤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 27,
+        "operation": "replace",
+        "ref": "the pink floral dress on the woman walking at the right",
+        "ref_zh": "右侧行走女子的粉色碎花裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "walking_woman",
+        "parent_zh": "行走女子",
+        "payload": "a pale blue sundress",
+        "instruction_zh": "将右侧行走女子的粉色碎花裙替换为一件浅蓝色夏季连衣裙。",
+        "instruction_noref_zh": "将选中的连衣裙替换为一件浅蓝色夏季连衣裙。"
+      },
+      {
+        "object_id": 34,
+        "operation": "remove",
+        "ref": "the green Heineken sign at the right",
+        "ref_zh": "右侧的绿色Heineken招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "heineken_sign",
+        "parent_zh": "Heineken牌",
+        "payload": "",
+        "instruction_zh": "移除右侧的绿色Heineken招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the red SALE poster",
+        "ref_zh": "红色促销海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "sale_poster",
+        "parent_zh": "促销海报",
+        "payload": "a small gold star sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在红色促销海报加上一个小金色星形贴纸。",
+        "instruction_noref_zh": "在选中的海报加上一个小金色星形贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6724758",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "93c2f7e8b7a7e0f5f0990496e277435d1a2a5f09496c016d7e8f05c8f35b3be9",
+    "review_card_sha256": "e4ad157b1aad962d0d092673493b3c708c5ce0d98319eb3d42fe0847272c5875",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1大旗、6右侧男子上衣、7中间女子头巾、37后排蓝色卫衣是四个不同物件。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "backlight",
+        "occlusion"
+      ],
+      "scene_zh": "背光人群与旗帜",
+      "evidence_zh": "1大旗、6右侧男子上衣、7中间女子头巾、37后排蓝色卫衣是四个不同物件。",
+      "specific_protection_zh": "保留人群、旗杆和场景光线。"
+    },
+    "protected_content_zh": "保留人群、旗杆和场景光线。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the large flag at the left",
+        "ref_zh": "左侧的大旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "large_flag",
+        "parent_zh": "大旗",
+        "payload": "",
+        "instruction_zh": "移除左侧的大旗。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the New York T-shirt on the man at the right",
+        "ref_zh": "右侧男子的New York T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_man",
+        "parent_zh": "右侧男子",
+        "payload": "a plain white T-shirt",
+        "instruction_zh": "将右侧男子的New York T恤替换为一件纯白T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯白T恤。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the headscarf on the woman near the center",
+        "ref_zh": "中间附近女子的头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "center_woman",
+        "parent_zh": "中间女子",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近女子的头巾的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 37,
+        "operation": "add",
+        "ref": "the blue sweatshirt on the person in the center background",
+        "ref_zh": "中间后方人物的蓝色卫衣",
+        "scope": "sweatshirt",
+        "scope_zh": "卫衣",
+        "parent": "background_person",
+        "parent_zh": "后排人物",
+        "payload": "a small white circle emblem on the chest",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间后方人物的蓝色卫衣加上一个位于胸前的小白圆徽章。",
+        "instruction_noref_zh": "在选中的卫衣加上一个位于胸前的小白圆徽章。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6725724",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0b190d342380b3bbcc424425a274567b82d6cc978f6e6a7ebb3989d360359be3",
+    "review_card_sha256": "5cac672b0700ee231e297e947b6dab4bd015cac131a8da15736b79e63211208e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8左后方蓝色背包、15中间绿色球衣、23左侧球衣、3左后方路灯是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "体育场球迷",
+      "evidence_zh": "8左后方蓝色背包、15中间绿色球衣、23左侧球衣、3左后方路灯是四个不同对象。",
+      "specific_protection_zh": "保留球迷、体育场和其他随身物。"
+    },
+    "protected_content_zh": "保留球迷、体育场和其他随身物。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the blue backpack in the left background",
+        "ref_zh": "左后方的蓝色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "blue_backpack",
+        "parent_zh": "蓝背包",
+        "payload": "",
+        "instruction_zh": "移除左后方的蓝色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 15,
+        "operation": "attribute",
+        "ref": "the green football jersey on the central fan",
+        "ref_zh": "中间球迷的绿色足球球衣",
+        "scope": "jersey",
+        "scope_zh": "球衣",
+        "parent": "central_fan",
+        "parent_zh": "中间球迷",
+        "payload": "maroon",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间球迷的绿色足球球衣的颜色改为栗红色。",
+        "instruction_noref_zh": "将选中的球衣的颜色改为栗红色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the jersey on the fan at the left",
+        "ref_zh": "左侧球迷的球衣",
+        "scope": "jersey",
+        "scope_zh": "球衣",
+        "parent": "left_fan",
+        "parent_zh": "左球迷",
+        "payload": "a plain white polo shirt",
+        "instruction_zh": "将左侧球迷的球衣替换为一件纯白Polo衫。",
+        "instruction_noref_zh": "将选中的球衣替换为一件纯白Polo衫。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the streetlamp in the left background",
+        "ref_zh": "左后方的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "background_lamp",
+        "parent_zh": "后方路灯",
+        "payload": "a small blue information sign on its pole",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左后方的路灯加上一块位于灯杆上的小蓝色信息牌。",
+        "instruction_noref_zh": "在选中的路灯加上一块位于灯杆上的小蓝色信息牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6737576",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "44e456353c1dd8b36c18962e1138dac7be201168fe89d4fefe507ef0031eedb5",
+    "review_card_sha256": "37cab9435f36521128c1ff59adccfa8fc129e4d76685946fe5294cbbbc92b84a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12后方人物的棕色挎包、11前景人物的外套、15后方人物的黑色长裤是三个不同物件。",
+    "difficulty": {
+      "mechanisms": [
+        "historical",
+        "sepia",
+        "occlusion"
+      ],
+      "scene_zh": "持步枪的历史人物",
+      "evidence_zh": "12后方人物的棕色挎包、11前景人物的外套、15后方人物的黑色长裤是三个不同物件。",
+      "specific_protection_zh": "保留人物姿态、步枪、帽子和历史影像色调。"
+    },
+    "protected_content_zh": "保留人物姿态、步枪、帽子和历史影像色调。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the brown satchel on the background figure",
+        "ref_zh": "后方人物的棕色挎包",
+        "scope": "satchel",
+        "scope_zh": "挎包",
+        "parent": "background_satchel",
+        "parent_zh": "后方挎包",
+        "payload": "",
+        "instruction_zh": "移除后方人物的棕色挎包。",
+        "instruction_noref_zh": "移除选中的挎包。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the tunic on the foreground figure",
+        "ref_zh": "前景人物的外衣",
+        "scope": "tunic",
+        "scope_zh": "外衣",
+        "parent": "foreground_figure",
+        "parent_zh": "前景人物",
+        "payload": "wool texture",
+        "attribute_kind": "texture",
+        "instruction_zh": "将前景人物的外衣的纹理改为羊毛纹理。",
+        "instruction_noref_zh": "将选中的外衣的纹理改为羊毛纹理。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the black trousers on the background figure",
+        "ref_zh": "后方人物的黑色长裤",
+        "scope": "trousers",
+        "scope_zh": "长裤",
+        "parent": "background_trousers",
+        "parent_zh": "后方长裤",
+        "payload": "dark wool trousers",
+        "instruction_zh": "将后方人物的黑色长裤替换为深色羊毛长裤。",
+        "instruction_noref_zh": "将选中的长裤替换为深色羊毛长裤。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6745681",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b511ab3c9b664bf936b6915bb49ea65654abbda7e27a9f29fa4ac73585c15f17",
+    "review_card_sha256": "5597ecef3e641d3183b67bc541cfe07814c28f4fd7c9953552ea5a76d1dae091",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "32主建筑屋顶、17施工区域上方的屋面是两个不同结构。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "occlusion"
+      ],
+      "scene_zh": "清水寺屋顶与施工区域",
+      "evidence_zh": "32主建筑屋顶、17施工区域上方的屋面是两个不同结构。",
+      "specific_protection_zh": "保留寺庙轮廓、树木、脚手架和施工细节。"
+    },
+    "protected_content_zh": "保留寺庙轮廓、树木、脚手架和施工细节。",
+    "targets": [
+      {
+        "object_id": 32,
+        "operation": "attribute",
+        "ref": "the roof of the main temple building",
+        "ref_zh": "主寺庙建筑的屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "main_temple",
+        "parent_zh": "主寺庙",
+        "payload": "dark brown weathered finish",
+        "attribute_kind": "finish",
+        "instruction_zh": "将主寺庙建筑的屋顶的表面效果改为深棕色做旧表面。",
+        "instruction_noref_zh": "将选中的屋顶的表面效果改为深棕色做旧表面。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the visible roof sheet in the construction area",
+        "ref_zh": "施工区域可见的屋面板",
+        "scope": "roof sheet",
+        "scope_zh": "屋面板",
+        "parent": "construction_roof",
+        "parent_zh": "施工屋面",
+        "payload": "a small blue waterproof repair patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在施工区域可见的屋面板加上一小块蓝色防水修补片。",
+        "instruction_noref_zh": "在选中的屋面板加上一小块蓝色防水修补片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6754915",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9fcbdf8a0738ec75c4f7d962598c62cbd649e9d8790623b9e1e44bc02ff25ed6",
+    "review_card_sha256": "240c4974485efc4335fcd90464888105d8d3db1805459265d3b2d9d1b1f4420f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "20左前方背包、27左侧紫色外套、23其右侧格纹连帽衫、34后方Illy招牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "text",
+        "occlusion"
+      ],
+      "scene_zh": "尼泊尔广场行人",
+      "evidence_zh": "20左前方背包、27左侧紫色外套、23其右侧格纹连帽衫、34后方Illy招牌是四个不同对象。",
+      "specific_protection_zh": "保留行人、广场建筑和其他标牌。"
+    },
+    "protected_content_zh": "保留行人、广场建筑和其他标牌。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "remove",
+        "ref": "the blue backpack beside the man in the black hat",
+        "ref_zh": "黑帽男子旁的蓝色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "blue_backpack",
+        "parent_zh": "蓝背包",
+        "payload": "",
+        "instruction_zh": "移除黑帽男子旁的蓝色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 27,
+        "operation": "attribute",
+        "ref": "the purple coat on the seated woman at the left",
+        "ref_zh": "左侧坐着女子的紫色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "seated_woman",
+        "parent_zh": "坐着女子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧坐着女子的紫色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the plaid hoodie on the person immediately right of her",
+        "ref_zh": "她正右侧人物的格纹连帽衫",
+        "scope": "hoodie",
+        "scope_zh": "连帽衫",
+        "parent": "right_person",
+        "parent_zh": "右侧人物",
+        "payload": "a beige fleece jacket",
+        "instruction_zh": "将她正右侧人物的格纹连帽衫替换为一件米色抓绒夹克。",
+        "instruction_noref_zh": "将选中的连帽衫替换为一件米色抓绒夹克。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the Illy coffee sign at the rear right",
+        "ref_zh": "右后方的Illy咖啡招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "illy_sign",
+        "parent_zh": "Illy牌",
+        "payload": "a small white NEW sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右后方的Illy咖啡招牌加上一个小白色NEW贴纸。",
+        "instruction_noref_zh": "在选中的招牌加上一个小白色NEW贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

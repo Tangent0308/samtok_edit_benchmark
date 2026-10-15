@@ -1,0 +1,174 @@
+{
+  "source_id": "sa_1647901",
+  "reason_zh": "全图可由伸手姿态准确区分，删去重复的中央位置说明。",
+  "previous_record": {
+    "source_id": "sa_1647901",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3b900090b62446c57cbc3df452cc772b96311c90701835030e735bf967890e58",
+    "review_card_sha256": "94ce4fad27af8e93413ea2b84dbec90967ecc472ad850b3b16666375a8694dbc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为前景背向者格子衬衫，19为中央伸手者浅衬衫，8为ANCHOR主牌，69为其下小产品广告。暗处仍可清楚划分对象，不用合并人群18。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion"
+      ],
+      "scene_zh": "昏暗电器市场的衣物和招牌",
+      "evidence_zh": "2为前景背向者格子衬衫，19为中央伸手者浅衬衫，8为ANCHOR主牌，69为其下小产品广告。暗处仍可清楚划分对象，不用合并人群18。",
+      "specific_protection_zh": "保留面部、手、人群、灯光氛围、花环和其余商品。"
+    },
+    "protected_content_zh": "保留面部、手、人群、灯光氛围、花环和其余商品。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the foreground checked shirt facing away",
+        "ref_zh": "前景背对镜头者的格子衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "checked_person",
+        "parent_zh": "格子衣者",
+        "payload": "a plain white cotton shirt",
+        "instruction_zh": "将前景背对镜头者的格子衬衫替换为一件纯白棉衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯白棉衬衫。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the light shirt on the man extending his arm in the center",
+        "ref_zh": "中央伸手男子的浅色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "reaching_man",
+        "parent_zh": "伸手男子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央伸手男子的浅色衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the “ANCHOR by Panasonic” sign",
+        "ref_zh": "“ANCHOR by Panasonic”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "anchor_sign",
+        "parent_zh": "主招牌",
+        "payload": "a slim LED light bar",
+        "placement": {
+          "relation": "on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在“ANCHOR by Panasonic”招牌的上沿加上一根细LED灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一根细LED灯条。"
+      },
+      {
+        "object_id": 69,
+        "operation": "remove",
+        "ref": "the small product poster beneath the ANCHOR sign",
+        "ref_zh": "ANCHOR招牌下的小产品海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "product_poster",
+        "parent_zh": "小产品海报",
+        "payload": "",
+        "instruction_zh": "移除ANCHOR招牌下的小产品海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1647901",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3b900090b62446c57cbc3df452cc772b96311c90701835030e735bf967890e58",
+    "review_card_sha256": "94ce4fad27af8e93413ea2b84dbec90967ecc472ad850b3b16666375a8694dbc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为前景背向者格子衬衫，19为中央伸手者浅衬衫，8为ANCHOR主牌，69为其下小产品广告。暗处仍可清楚划分对象，不用合并人群18。 全图复核：全图可由伸手姿态准确区分，删去重复的中央位置说明。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion"
+      ],
+      "scene_zh": "昏暗电器市场的衣物和招牌",
+      "evidence_zh": "2为前景背向者格子衬衫，19为中央伸手者浅衬衫，8为ANCHOR主牌，69为其下小产品广告。暗处仍可清楚划分对象，不用合并人群18。 全图复核：全图可由伸手姿态准确区分，删去重复的中央位置说明。",
+      "specific_protection_zh": "保留面部、手、人群、灯光氛围、花环和其余商品。"
+    },
+    "protected_content_zh": "保留面部、手、人群、灯光氛围、花环和其余商品。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the foreground checked shirt facing away",
+        "ref_zh": "前景背对镜头者的格子衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "checked_person",
+        "parent_zh": "格子衣者",
+        "payload": "a plain white cotton shirt",
+        "instruction_zh": "将前景背对镜头者的格子衬衫替换为一件纯白棉衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯白棉衬衫。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the light shirt on the reaching man",
+        "ref_zh": "伸手男子的浅色上衣",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "reaching_man",
+        "parent_zh": "伸手男子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将伸手男子的浅色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the “ANCHOR by Panasonic” sign",
+        "ref_zh": "“ANCHOR by Panasonic”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "anchor_sign",
+        "parent_zh": "主招牌",
+        "payload": "a slim LED light bar",
+        "placement": {
+          "relation": "on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在“ANCHOR by Panasonic”招牌的上沿加上一根细LED灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一根细LED灯条。"
+      },
+      {
+        "object_id": 69,
+        "operation": "remove",
+        "ref": "the small product poster beneath the ANCHOR sign",
+        "ref_zh": "ANCHOR招牌下的小产品海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "product_poster",
+        "parent_zh": "小产品海报",
+        "payload": "",
+        "instruction_zh": "移除ANCHOR招牌下的小产品海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

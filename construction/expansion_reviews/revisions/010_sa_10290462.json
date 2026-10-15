@@ -1,0 +1,144 @@
+{
+  "source_id": "sa_10290462",
+  "reason_zh": "人物附近可见不止一盏卷曲灯架路灯，用左侧消歧。",
+  "previous_record": {
+    "source_id": "sa_10290462",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9077d9bd237dc61b32083f96047eac1af1108a96d372fd0d0ebb7030092ce810",
+    "review_card_sha256": "69e5d5468b710f483bc9658ba45cc8bad03cd057a97ac0d1ea1bb9e897ccee7b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "路灯11含细长弯曲杆和环形灯架；前景格纹衬衫18避开皮肤和斜挎包；GOFRY牌42是独立实物标牌，而不是把上面的食物图片当作真实食物。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "holes",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "步行街路灯、行人和小店标牌",
+      "evidence_zh": "路灯11含细长弯曲杆和环形灯架；前景格纹衬衫18避开皮肤和斜挎包；GOFRY牌42是独立实物标牌，而不是把上面的食物图片当作真实食物。",
+      "specific_protection_zh": "保留行人皮肤、斜挎包、店面其余文字和建筑窗框。"
+    },
+    "protected_content_zh": "保留行人皮肤、斜挎包、店面其余文字和建筑窗框。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the curled streetlamp beside the foreground man",
+        "ref_zh": "前景男子身旁的卷曲灯架路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "curled_lamp",
+        "parent_zh": "卷曲灯架路灯",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男子身旁的卷曲灯架路灯的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深绿色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the foreground man’s checked shirt",
+        "ref_zh": "前景男子的格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "foreground_man",
+        "parent_zh": "前景男子",
+        "payload": "a plain navy polo shirt",
+        "instruction_zh": "将前景男子的格纹衬衫替换为一件纯藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 42,
+        "operation": "remove",
+        "ref": "the “GOFRY” sign outside the shop",
+        "ref_zh": "店外写有“GOFRY”的招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "gofry_sign",
+        "parent_zh": "GOFRY招牌",
+        "payload": "",
+        "instruction_zh": "移除店外写有“GOFRY”的招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "6e677efd62b33f8e777655c8c12a01b8eab84b88dd0386de7193fc74b61155f5"
+  },
+  "record": {
+    "source_id": "sa_10290462",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9077d9bd237dc61b32083f96047eac1af1108a96d372fd0d0ebb7030092ce810",
+    "review_card_sha256": "69e5d5468b710f483bc9658ba45cc8bad03cd057a97ac0d1ea1bb9e897ccee7b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "路灯11含细长弯曲杆和环形灯架；前景格纹衬衫18避开皮肤和斜挎包；GOFRY牌42是独立实物标牌，而不是把上面的食物图片当作真实食物。 全图定位复核：人物附近可见不止一盏卷曲灯架路灯，用左侧消歧。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "holes",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "步行街路灯、行人和小店标牌",
+      "evidence_zh": "路灯11含细长弯曲杆和环形灯架；前景格纹衬衫18避开皮肤和斜挎包；GOFRY牌42是独立实物标牌，而不是把上面的食物图片当作真实食物。 全图定位复核：人物附近可见不止一盏卷曲灯架路灯，用左侧消歧。",
+      "specific_protection_zh": "保留行人皮肤、斜挎包、店面其余文字和建筑窗框。"
+    },
+    "protected_content_zh": "保留行人皮肤、斜挎包、店面其余文字和建筑窗框。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the curled streetlamp left of the foreground man",
+        "ref_zh": "前景男子左侧的卷曲灯架路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "curled_lamp",
+        "parent_zh": "卷曲灯架路灯",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男子左侧的卷曲灯架路灯的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深绿色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the foreground man’s checked shirt",
+        "ref_zh": "前景男子的格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "foreground_man",
+        "parent_zh": "前景男子",
+        "payload": "a plain navy polo shirt",
+        "instruction_zh": "将前景男子的格纹衬衫替换为一件纯藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 42,
+        "operation": "remove",
+        "ref": "the “GOFRY” sign outside the shop",
+        "ref_zh": "店外写有“GOFRY”的招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "gofry_sign",
+        "parent_zh": "GOFRY招牌",
+        "payload": "",
+        "instruction_zh": "移除店外写有“GOFRY”的招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "6e677efd62b33f8e777655c8c12a01b8eab84b88dd0386de7193fc74b61155f5"
+  }
+}

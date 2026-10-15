@@ -1,0 +1,648 @@
+[
+  {
+    "source_id": "sa_4999349",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "79017d7efb383db832797351e5aadb7b375b14f0f53632421251c70d09e44aea",
+    "review_card_sha256": "622a2c9d531cb76c20ffb3c2ee23eea31471af4738b3edc18cef5ece3f3ee1fd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5近黑背包、6蓝上衣、8荧光黄旗、7建筑前灯四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "游行与粉色大型装置",
+      "evidence_zh": "5近黑背包、6蓝上衣、8荧光黄旗、7建筑前灯四父对象。",
+      "specific_protection_zh": "保留人群身体、大型装置、其他旗及建筑。"
+    },
+    "protected_content_zh": "保留人群身体、大型装置、其他旗及建筑。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the black backpack in the foreground",
+        "ref_zh": "前景的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "front_bag",
+        "parent_zh": "前包",
+        "payload": "",
+        "instruction_zh": "移除前景的黑色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the blue T-shirt behind the foreground backpack",
+        "ref_zh": "前景背包后方的蓝色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "blue_man",
+        "parent_zh": "蓝衣男",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景背包后方的蓝色T恤的颜色改为白色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为白色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the large neon-yellow flag at the left",
+        "ref_zh": "左侧的大荧光黄色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "yellow_flag",
+        "parent_zh": "黄旗",
+        "payload": "a plain orange flag",
+        "instruction_zh": "将左侧的大荧光黄色旗帜替换为一面纯橙色旗帜。",
+        "instruction_noref_zh": "将选中的旗帜替换为一面纯橙色旗帜。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the streetlamp in front of the right-hand building",
+        "ref_zh": "右侧楼房前的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "a small hanging basket of pink flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧楼房前的路灯加上一个种有粉花的小吊篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个种有粉花的小吊篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5004835",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3c47716644a8c92aee2942e66cba6de597cbdd2a42e349a6a20389064c478b40",
+    "review_card_sha256": "19b4cb41dcc8f3fa2f84b5ff5521d8db7ad7909b8d0a03a172c4cfa7cc363233",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17左红海报、57右花卉、34右木门分属牌、植物、建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "text",
+        "repetition"
+      ],
+      "scene_zh": "赌场入口与彩旗",
+      "evidence_zh": "17左红海报、57右花卉、34右木门分属牌、植物、建筑。",
+      "specific_protection_zh": "保留彩旗、建筑和其他招牌。"
+    },
+    "protected_content_zh": "保留彩旗、建筑和其他招牌。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the red poster to the left of the entrances",
+        "ref_zh": "入口左侧的红色海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "red_poster",
+        "parent_zh": "红海报",
+        "payload": "a dark blue event poster reading JAZZ NIGHT",
+        "instruction_zh": "将入口左侧的红色海报替换为一张写有JAZZ NIGHT的深蓝色活动海报。",
+        "instruction_noref_zh": "将选中的海报替换为一张写有JAZZ NIGHT的深蓝色活动海报。"
+      },
+      {
+        "object_id": 57,
+        "operation": "remove",
+        "ref": "the red-flowered plant beside the right entrance",
+        "ref_zh": "右入口旁的红花植物",
+        "scope": "plant",
+        "scope_zh": "植物",
+        "parent": "red_flowers",
+        "parent_zh": "红花",
+        "payload": "",
+        "instruction_zh": "移除右入口旁的红花植物。",
+        "instruction_noref_zh": "移除选中的植物。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the wooden door at the right entrance",
+        "ref_zh": "右入口的木门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a small brass OPEN plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右入口的木门加上一块小黄铜OPEN牌。",
+        "instruction_noref_zh": "在选中的门加上一块小黄铜OPEN牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5005220",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a0652f8cf179315c75cb6af938ae18ce406b93164ee29a88786548511faddbf9",
+    "review_card_sha256": "b7a634e227f8d7ad29947f8405cd9ef629f7a79a09056cf48cce2b50a464643b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1白轿车、2红两厢、68右广告、5黑轿车四独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "small_targets",
+        "text"
+      ],
+      "scene_zh": "高层酒店与路边车辆",
+      "evidence_zh": "1白轿车、2红两厢、68右广告、5黑轿车四独立父对象。",
+      "specific_protection_zh": "保留高楼、道路、其他车辆与交通标识。"
+    },
+    "protected_content_zh": "保留高楼、道路、其他车辆与交通标识。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the white sedan at the right of the red hatchback",
+        "ref_zh": "红色两厢车右侧的白色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "white_sedan",
+        "parent_zh": "白轿车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将红色两厢车右侧的白色轿车的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the red hatchback in front of the hotel",
+        "ref_zh": "酒店前的红色两厢车",
+        "scope": "hatchback",
+        "scope_zh": "两厢车",
+        "parent": "red_hatch",
+        "parent_zh": "红车",
+        "payload": "",
+        "instruction_zh": "移除酒店前的红色两厢车。",
+        "instruction_noref_zh": "移除选中的两厢车。"
+      },
+      {
+        "object_id": 68,
+        "operation": "replace",
+        "ref": "the red-and-white billboard behind the white sedan",
+        "ref_zh": "白色轿车后方的红白广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "billboard",
+        "parent_zh": "广告牌",
+        "payload": "a seaside travel poster reading EXPLORE",
+        "instruction_zh": "将白色轿车后方的红白广告牌替换为一张写有EXPLORE的海滨旅行海报。",
+        "instruction_noref_zh": "将选中的广告牌替换为一张写有EXPLORE的海滨旅行海报。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the black sedan to the left of the red hatchback",
+        "ref_zh": "红色两厢车左侧的黑色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "black_sedan",
+        "parent_zh": "黑车",
+        "payload": "a small white TAXI sign on its roof",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在红色两厢车左侧的黑色轿车加上一块位于车顶的小白色TAXI灯牌。",
+        "instruction_noref_zh": "在选中的轿车加上一块位于车顶的小白色TAXI灯牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5008540",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1ae54edb05f3cbf15aca6eea657ec9d565cde81f8bac2878fc25667c9d879ece",
+    "review_card_sha256": "ea518828f0ae3578f7fac87d2367ba28f6b0dd5f94f8acfafc2e7c172933a478",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "49细黑包、45纪念碑台座、37左后栏杆独立父对象。椅群不误写为单椅。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "园林方尖碑与游客",
+      "evidence_zh": "49细黑包、45纪念碑台座、37左后栏杆独立父对象。椅群不误写为单椅。",
+      "specific_protection_zh": "保留雕像、游客、座椅、植被和道路。"
+    },
+    "protected_content_zh": "保留雕像、游客、座椅、植被和道路。",
+    "targets": [
+      {
+        "object_id": 49,
+        "operation": "remove",
+        "ref": "the upright black bag beside the seated visitors left of the obelisk",
+        "ref_zh": "方尖碑左侧坐客旁竖放的黑色包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "upright_bag",
+        "parent_zh": "竖包",
+        "payload": "",
+        "instruction_zh": "移除方尖碑左侧坐客旁竖放的黑色包。",
+        "instruction_noref_zh": "移除选中的包。"
+      },
+      {
+        "object_id": 45,
+        "operation": "add",
+        "ref": "the pedestal of the central obelisk",
+        "ref_zh": "中央方尖碑的基座",
+        "scope": "pedestal",
+        "scope_zh": "基座",
+        "parent": "obelisk",
+        "parent_zh": "方尖碑",
+        "payload": "a small bronze information plaque on its front",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央方尖碑的基座加上一块位于正面的小青铜说明牌。",
+        "instruction_noref_zh": "在选中的基座加上一块位于正面的小青铜说明牌。"
+      },
+      {
+        "object_id": 37,
+        "operation": "attribute",
+        "ref": "the stone balustrade behind the lawn left of the obelisk",
+        "ref_zh": "方尖碑左侧草坪后方的石栏杆",
+        "scope": "balustrade",
+        "scope_zh": "栏杆",
+        "parent": "left_balustrade",
+        "parent_zh": "左栏",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将方尖碑左侧草坪后方的石栏杆的颜色改为白色。",
+        "instruction_noref_zh": "将选中的栏杆的颜色改为白色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5020470",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c1196ecdc0357514315ece95576e3156676c426a187295bbd9a45115cbd6bce9",
+    "review_card_sha256": "55ea80f932326218c4f27a11bcbac25cef62d85da176918b6e62940c262d9498",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "18前白车座、1后红车、23SALE小牌、32黄绿大牌四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection",
+        "text"
+      ],
+      "scene_zh": "电动摩托车卖场",
+      "evidence_zh": "18前白车座、1后红车、23SALE小牌、32黄绿大牌四父对象。",
+      "specific_protection_zh": "保留车辆结构、地面、电线及背景货品。"
+    },
+    "protected_content_zh": "保留车辆结构、地面、电线及背景货品。",
+    "targets": [
+      {
+        "object_id": 18,
+        "operation": "attribute",
+        "ref": "the gray seat of the white scooter",
+        "ref_zh": "白色踏板车的灰色座椅",
+        "scope": "seat",
+        "scope_zh": "座椅",
+        "parent": "white_scooter",
+        "parent_zh": "白车",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色踏板车的灰色座椅的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的座椅的颜色改为深棕色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the red scooter behind the white scooter",
+        "ref_zh": "白色踏板车后方的红色踏板车",
+        "scope": "scooter",
+        "scope_zh": "踏板车",
+        "parent": "red_scooter",
+        "parent_zh": "红车",
+        "payload": "",
+        "instruction_zh": "移除白色踏板车后方的红色踏板车。",
+        "instruction_noref_zh": "移除选中的踏板车。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the small SALE PREMIUM ACCESSORY sign",
+        "ref_zh": "写有SALE PREMIUM ACCESSORY的小招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "sale_sign",
+        "parent_zh": "SALE牌",
+        "payload": "a white sign reading TEST RIDES AVAILABLE",
+        "instruction_zh": "将写有SALE PREMIUM ACCESSORY的小招牌替换为一块写有TEST RIDES AVAILABLE的白色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有TEST RIDES AVAILABLE的白色招牌。"
+      },
+      {
+        "object_id": 32,
+        "operation": "add",
+        "ref": "the large yellow-and-green display board",
+        "ref_zh": "黄绿相间的大展示牌",
+        "scope": "board",
+        "scope_zh": "展示牌",
+        "parent": "display_board",
+        "parent_zh": "大牌",
+        "payload": "a small white QR-code sticker in its upper-right corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黄绿相间的大展示牌加上一张位于右上角的小白色二维码贴纸。",
+        "instruction_noref_zh": "在选中的展示牌加上一张位于右上角的小白色二维码贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5044363",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c044fa087de5373675c4640e59fb212e6e36f7f95ec21772c857edafd0b16209",
+    "review_card_sha256": "aec29b64f20a5f49c706de8e3b4bc49d44795b105436fb59c4385c92c04ba029",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "25左下蓝短袖、50右下粉裙、163灰提包、48右上条纹棚独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "俯视喷泉广场人群",
+      "evidence_zh": "25左下蓝短袖、50右下粉裙、163灰提包、48右上条纹棚独立父对象。",
+      "specific_protection_zh": "保留人物身体、喷泉、道路、座椅及其余衣物。"
+    },
+    "protected_content_zh": "保留人物身体、喷泉、道路、座椅及其余衣物。",
+    "targets": [
+      {
+        "object_id": 25,
+        "operation": "attribute",
+        "ref": "the light blue short-sleeved shirt at the lower left",
+        "ref_zh": "左下方的浅蓝色短袖衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下方的浅蓝色短袖衬衫的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 50,
+        "operation": "replace",
+        "ref": "the pale pink dress on the woman at the lower right",
+        "ref_zh": "右下方女子的浅粉色连衣裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "right_woman",
+        "parent_zh": "右女",
+        "payload": "a navy sleeveless dress",
+        "instruction_zh": "将右下方女子的浅粉色连衣裙替换为一条藏蓝色无袖连衣裙。",
+        "instruction_noref_zh": "将选中的连衣裙替换为一条藏蓝色无袖连衣裙。"
+      },
+      {
+        "object_id": 163,
+        "operation": "remove",
+        "ref": "the gray handbag carried by the woman in a light gray dress",
+        "ref_zh": "浅灰色连衣裙女子提着的灰色手提包",
+        "scope": "handbag",
+        "scope_zh": "手提包",
+        "parent": "gray_bag",
+        "parent_zh": "灰包",
+        "payload": "",
+        "instruction_zh": "移除浅灰色连衣裙女子提着的灰色手提包。",
+        "instruction_noref_zh": "移除选中的手提包。"
+      },
+      {
+        "object_id": 48,
+        "operation": "add",
+        "ref": "the striped awning at the upper right",
+        "ref_zh": "右上方的条纹遮阳棚",
+        "scope": "awning",
+        "scope_zh": "遮阳棚",
+        "parent": "awning",
+        "parent_zh": "棚",
+        "payload": "a small white CAFE sign along its front edge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方的条纹遮阳棚加上一块位于前缘的小白色CAFE牌。",
+        "instruction_noref_zh": "在选中的遮阳棚加上一块位于前缘的小白色CAFE牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5048336",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2b59544e0c4bcbc730419ecc539afc233d19287ca8c824db7af08c4044a52a47",
+    "review_card_sha256": "ca8738c54b592e1118c878f22177a41d26c0f25ba93f7f8c7ff40ea4413f14b6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7紫衣、8右灰衣、23红购物袋、22左栏杆为不同人物/物品。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "occlusion",
+        "crowd"
+      ],
+      "scene_zh": "雪地冰泳旁观者",
+      "evidence_zh": "7紫衣、8右灰衣、23红购物袋、22左栏杆为不同人物/物品。",
+      "specific_protection_zh": "保留人物身体、冰水、雪地与安全通道。"
+    },
+    "protected_content_zh": "保留人物身体、冰水、雪地与安全通道。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the purple coat on the woman beside the person in yellow",
+        "ref_zh": "黄衣者身旁女子的紫色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "purple_woman",
+        "parent_zh": "紫衣女",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将黄衣者身旁女子的紫色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the gray coat on the rightmost woman",
+        "ref_zh": "最右侧女子的灰色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "right_woman",
+        "parent_zh": "右女",
+        "payload": "a long dark green padded coat",
+        "instruction_zh": "将最右侧女子的灰色外套替换为一件深绿色长款羽绒服。",
+        "instruction_noref_zh": "将选中的外套替换为一件深绿色长款羽绒服。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the red shopping bag behind the towel-wrapped man",
+        "ref_zh": "裹浴巾男子后方的红色购物袋",
+        "scope": "bag",
+        "scope_zh": "购物袋",
+        "parent": "red_bag",
+        "parent_zh": "红包",
+        "payload": "",
+        "instruction_zh": "移除裹浴巾男子后方的红色购物袋。",
+        "instruction_noref_zh": "移除选中的购物袋。"
+      },
+      {
+        "object_id": 22,
+        "operation": "add",
+        "ref": "the left wooden handrail beside the ice hole",
+        "ref_zh": "冰洞旁的左侧木扶手",
+        "scope": "handrail",
+        "scope_zh": "扶手",
+        "parent": "left_rail",
+        "parent_zh": "左扶手",
+        "payload": "a small yellow CAUTION ICE sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在冰洞旁的左侧木扶手加上一块小黄色CAUTION ICE牌。",
+        "instruction_noref_zh": "在选中的扶手加上一块小黄色CAUTION ICE牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5052360",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dbc7701446d807dc6d07988a170ff9026be2868557e52f7368e53accf2f49905",
+    "review_card_sha256": "8ea41b47f3c9caec1d3cda645feba9e051c73324e1f1d92792c85459e19f75b6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0白车、6右蓝棚、21左上三角旗串分属车、棚、旗串。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "thin_structure"
+      ],
+      "scene_zh": "经典白车展位",
+      "evidence_zh": "0白车、6右蓝棚、21左上三角旗串分属车、棚、旗串。",
+      "specific_protection_zh": "保留车形、停车场、背景建筑及其他旗串。"
+    },
+    "protected_content_zh": "保留车形、停车场、背景建筑及其他旗串。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the white classic car in the foreground",
+        "ref_zh": "前景的白色经典轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "classic_car",
+        "parent_zh": "经典车",
+        "payload": "pale turquoise",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的白色经典轿车的颜色改为浅青绿色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为浅青绿色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the blue canopy at the right",
+        "ref_zh": "右侧的蓝色遮阳棚",
+        "scope": "canopy",
+        "scope_zh": "遮阳棚",
+        "parent": "blue_canopy",
+        "parent_zh": "蓝棚",
+        "payload": "a small white CLASSIC CARS banner along its front edge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的蓝色遮阳棚加上一条位于前缘的小白色CLASSIC CARS横幅。",
+        "instruction_noref_zh": "在选中的遮阳棚加上一条位于前缘的小白色CLASSIC CARS横幅。"
+      },
+      {
+        "object_id": 21,
+        "operation": "remove",
+        "ref": "the string of pennants across the upper left",
+        "ref_zh": "左上方横向悬挂的三角旗串",
+        "scope": "pennants",
+        "scope_zh": "旗串",
+        "parent": "left_pennants",
+        "parent_zh": "左旗串",
+        "payload": "",
+        "instruction_zh": "移除左上方横向悬挂的三角旗串。",
+        "instruction_noref_zh": "移除选中的旗串。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

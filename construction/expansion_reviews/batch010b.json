@@ -1,0 +1,615 @@
+[
+  {
+    "source_id": "sa_2431352",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f9cc52508fa1f8707e0b8394db05f784b6d25390ee754527ba457d066d85ccf5",
+    "review_card_sha256": "28144e5adaae4abcb1e83702d50695dd988b05e97cc31a2c5086f41e90e1400e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为女孩完整裙装，9为左黄门上红通知，49为前陈列台橙书。人物、通知、独立书本；不把书封人物当真人。",
+    "difficulty": {
+      "mechanisms": [
+        "defocus",
+        "occlusion"
+      ],
+      "scene_zh": "书店里举手的女孩",
+      "evidence_zh": "3为女孩完整裙装，9为左黄门上红通知，49为前陈列台橙书。人物、通知、独立书本；不把书封人物当真人。",
+      "specific_protection_zh": "保留面部原模糊、人体姿态、书店其他商品与招牌。"
+    },
+    "protected_content_zh": "保留面部原模糊、人体姿态、书店其他商品与招牌。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the girl’s pink-and-navy dress",
+        "ref_zh": "女孩的粉色藏蓝拼色连衣裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "girl",
+        "parent_zh": "女孩",
+        "payload": "a yellow floral sundress",
+        "instruction_zh": "将女孩的粉色藏蓝拼色连衣裙替换为一条黄色碎花太阳裙。",
+        "instruction_noref_zh": "将选中的连衣裙替换为一条黄色碎花太阳裙。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the red notice above the yellow door",
+        "ref_zh": "黄色门上方的红色通知牌",
+        "scope": "notice",
+        "scope_zh": "通知牌",
+        "parent": "red_notice",
+        "parent_zh": "红通知",
+        "payload": "",
+        "instruction_zh": "移除黄色门上方的红色通知牌。",
+        "instruction_noref_zh": "移除选中的通知牌。"
+      },
+      {
+        "object_id": 49,
+        "operation": "add",
+        "ref": "the orange book on the front display",
+        "ref_zh": "前方陈列台上的橙色书",
+        "scope": "book",
+        "scope_zh": "书",
+        "parent": "orange_book",
+        "parent_zh": "橙书",
+        "payload": "a small bestseller sticker",
+        "placement": {
+          "relation": "on",
+          "site": "cover",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前方陈列台上的橙色书的封面上加上一张小畅销书贴纸。",
+        "instruction_noref_zh": "在选中的书的封面上加上一张小畅销书贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2439177",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d3e56074d9209a9ce918fff03a2fb7a169a427ffe4e4194f0269c4af8eb4ea87",
+    "review_card_sha256": "2c8f0717b199434441682add090e92d66bdb4f47f29fd68bd81dba03b3211f63",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为最近大艇后方小白艇，7为左路最近黑车，17为对岸蓝罩艇，31为对岸低矮长楼屋顶。62远岸栏杆内部填充不精确，弃用。船车与建筑独立。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "高处俯瞰河道与码头",
+      "evidence_zh": "3为最近大艇后方小白艇，7为左路最近黑车，17为对岸蓝罩艇，31为对岸低矮长楼屋顶。62远岸栏杆内部填充不精确，弃用。船车与建筑独立。",
+      "specific_protection_zh": "保留桥梁、建筑、其他车辆与船、行人及水面。"
+    },
+    "protected_content_zh": "保留桥梁、建筑、其他车辆与船、行人及水面。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the smaller white yacht behind the nearest yacht",
+        "ref_zh": "最近游艇后方较小的白色游艇",
+        "scope": "yacht",
+        "scope_zh": "游艇",
+        "parent": "small_white_yacht",
+        "parent_zh": "小白艇",
+        "payload": "a blue cabin cruiser",
+        "instruction_zh": "将最近游艇后方较小的白色游艇替换为一艘蓝色舱式游艇。",
+        "instruction_noref_zh": "将选中的游艇替换为一艘蓝色舱式游艇。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the nearest black car on the riverside road",
+        "ref_zh": "河边道路上最近的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "near_car",
+        "parent_zh": "近车",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将河边道路上最近的黑色汽车的颜色改为白色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为白色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the blue-covered boat on the opposite bank",
+        "ref_zh": "对岸罩着蓝布的船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "opposite_boat",
+        "parent_zh": "对岸船",
+        "payload": "",
+        "instruction_zh": "移除对岸罩着蓝布的船。",
+        "instruction_noref_zh": "移除选中的船。"
+      },
+      {
+        "object_id": 31,
+        "operation": "add",
+        "ref": "the roof of the long low building on the opposite bank",
+        "ref_zh": "对岸低矮长建筑的屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "opposite_roof",
+        "parent_zh": "对岸建筑",
+        "payload": "a small solar panel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在对岸低矮长建筑的屋顶加上一块小太阳能板。",
+        "instruction_noref_zh": "在选中的屋顶加上一块小太阳能板。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2458077",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "10dc734f2ffb89ddd07345bc36ddcac2ff6e743b7a8bff3b0098ea2bca797b96",
+    "review_card_sha256": "ae07f8afcf7acbc36d09c2dc9f5462e1374051e491577328665ba1b1adacf519",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为驾车者格衬衫，37为乘客头巾，23为车身含轮与牵引杆但不含马人。两个人与车辆，篮子碎片不额外计完整对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "乡间双人马车",
+      "evidence_zh": "8为驾车者格衬衫，37为乘客头巾，23为车身含轮与牵引杆但不含马人。两个人与车辆，篮子碎片不额外计完整对象。",
+      "specific_protection_zh": "保留人物面部、马与挽具、车轮结构、货物和路面。"
+    },
+    "protected_content_zh": "保留人物面部、马与挽具、车轮结构、货物和路面。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the driver’s plaid shirt",
+        "ref_zh": "驾车者的格子衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "driver",
+        "parent_zh": "驾车者",
+        "payload": "a beige linen shirt",
+        "instruction_zh": "将驾车者的格子衬衫替换为一件米色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件米色亚麻衬衫。"
+      },
+      {
+        "object_id": 37,
+        "operation": "attribute",
+        "ref": "the passenger’s dark headscarf",
+        "ref_zh": "乘客的深色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "passenger",
+        "parent_zh": "乘客",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将乘客的深色头巾的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为酒红色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "add",
+        "ref": "the horse-drawn cart",
+        "ref_zh": "马拉的车厢",
+        "scope": "cart",
+        "scope_zh": "车厢",
+        "parent": "cart",
+        "parent_zh": "车厢",
+        "payload": "a small reflective plate",
+        "placement": {
+          "relation": "on",
+          "site": "rear panel",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在马拉的车厢的后板上加上一块小反光牌。",
+        "instruction_noref_zh": "在选中的车厢的后板上加上一块小反光牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2463867",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "65fdb7cd582443b6865775b2b494eb79f0b30299c80008cb2d88c7ee530d5c00",
+    "review_card_sha256": "7718668d4b45b454e09f6520fcf5c56af911d96ddab9f664c68ce5eeaf3c421d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为右侧背包者深色长外套，20为左浅色羽绒服，11为二层COULTERS待售牌，18为6号蓝门。两人、招牌、建筑不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection",
+        "small_targets"
+      ],
+      "scene_zh": "酒馆门前行人",
+      "evidence_zh": "14为右侧背包者深色长外套，20为左浅色羽绒服，11为二层COULTERS待售牌，18为6号蓝门。两人、招牌、建筑不同父对象。",
+      "specific_protection_zh": "保留背包、人体、其他行人、酒馆招牌与窗户。"
+    },
+    "protected_content_zh": "保留背包、人体、其他行人、酒馆招牌与窗户。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the dark coat beneath the yellow backpack",
+        "ref_zh": "黄色背包下面的深色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "right_person",
+        "parent_zh": "右侧人",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将黄色背包下面的深色外套的颜色改为森林绿。",
+        "instruction_noref_zh": "将选中的外套的颜色改为森林绿。"
+      },
+      {
+        "object_id": 20,
+        "operation": "replace",
+        "ref": "the light-gray puffer jacket on the left",
+        "ref_zh": "左侧的浅灰色羽绒服",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_person",
+        "parent_zh": "左侧人",
+        "payload": "a blue raincoat",
+        "instruction_zh": "将左侧的浅灰色羽绒服替换为一件蓝色雨衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件蓝色雨衣。"
+      },
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the COULTERS for-sale sign",
+        "ref_zh": "COULTERS待售标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "sale_sign",
+        "parent_zh": "待售牌",
+        "payload": "",
+        "instruction_zh": "移除COULTERS待售标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the blue door numbered 6",
+        "ref_zh": "标有6号的蓝色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "pub_building",
+        "parent_zh": "酒馆建筑",
+        "payload": "a brass door knocker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在标有6号的蓝色门加上一个黄铜门环。",
+        "instruction_noref_zh": "在选中的门加上一个黄铜门环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2488241",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8ef58834d9adb0002457f0d3dc911eaeedd7c8ee19c2b1f601d2dfbdf12f0feb",
+    "review_card_sha256": "96ff79e69e180f78aeb16b9adabbcb7b6aa2ff6d5d0a3bb56f3d1fca3f280f5f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为天空最大的鸟，15为对岸岸边小蓝艇，51仅前景渡船顶棚。三独立父对象；16混有相邻船不选择。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "日落水面游船与飞鸟",
+      "evidence_zh": "2为天空最大的鸟，15为对岸岸边小蓝艇，51仅前景渡船顶棚。三独立父对象；16混有相邻船不选择。",
+      "specific_protection_zh": "保留其他鸟、船舷栏杆、乘客、桥梁、天空日落和水面反光。"
+    },
+    "protected_content_zh": "保留其他鸟、船舷栏杆、乘客、桥梁、天空日落和水面反光。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the largest bird in the sky",
+        "ref_zh": "天空中最大的鸟",
+        "scope": "bird",
+        "scope_zh": "鸟",
+        "parent": "sky_bird",
+        "parent_zh": "天鸟",
+        "payload": "",
+        "instruction_zh": "移除天空中最大的鸟。",
+        "instruction_noref_zh": "移除选中的鸟。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the small blue boat beside the opposite quay",
+        "ref_zh": "对岸码头旁的小蓝船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "small_blue_boat",
+        "parent_zh": "小蓝船",
+        "payload": "a white wooden motorboat",
+        "instruction_zh": "将对岸码头旁的小蓝船替换为一艘白色木制机动船。",
+        "instruction_noref_zh": "将选中的船替换为一艘白色木制机动船。"
+      },
+      {
+        "object_id": 51,
+        "operation": "attribute",
+        "ref": "the canopy of the foreground ferry",
+        "ref_zh": "前景渡船的顶棚",
+        "scope": "canopy",
+        "scope_zh": "顶棚",
+        "parent": "foreground_ferry",
+        "parent_zh": "前景渡船",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景渡船的顶棚的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的顶棚的颜色改为酒红色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2497784",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "af5137f55b251ec2028631d0be4a5638c5fef830da8b2c8a559913bd0c1fd270",
+    "review_card_sha256": "e9dbcf639d0b7d1771fa67817386dd544ddfff801cdab495570b1588f1d0c324",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8栏杆右段二值填充背景，改为已查看的39雕像左侧独立栏杆，3为桥长段瓦屋顶。雕像裙与帽是铸造部分，不当真实衣物替换；选择栏杆与桥两个独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "河边雕塑与有顶桥",
+      "evidence_zh": "8栏杆右段二值填充背景，改为已查看的39雕像左侧独立栏杆，3为桥长段瓦屋顶。雕像裙与帽是铸造部分，不当真实衣物替换；选择栏杆与桥两个独立父对象。",
+      "specific_protection_zh": "保留雕塑、底座、河面、桥孔及对岸建筑。"
+    },
+    "protected_content_zh": "保留雕塑、底座、河面、桥孔及对岸建筑。",
+    "targets": [
+      {
+        "object_id": 39,
+        "operation": "add",
+        "ref": "the railing to the left of the statue",
+        "ref_zh": "雕像左侧的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "statue_railing",
+        "parent_zh": "雕像栏杆",
+        "payload": "a small information plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在雕像左侧的栏杆加上一块小介绍牌。",
+        "instruction_noref_zh": "在选中的栏杆加上一块小介绍牌。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the long roof of the covered bridge",
+        "ref_zh": "廊桥的长屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "covered_bridge",
+        "parent_zh": "廊桥",
+        "payload": "slate gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将廊桥的长屋顶的颜色改为石板灰。",
+        "instruction_noref_zh": "将选中的屋顶的颜色改为石板灰。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2510080",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ad9d1616de6f53559a6c1486202005c29f95f9b73c801d07ca497dd487e1c861",
+    "review_card_sha256": "0dc561537be2f5a4fd00500bbb0b098d651f2bd4c65614815f85658f236b3b71",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为右边蓝信息牌，2为最左完整路灯，21为中央大树干，0为右后楼大格窗。4独立父对象，雪未被整体误归为灯或树。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "雪后广场树与设施",
+      "evidence_zh": "4为右边蓝信息牌，2为最左完整路灯，21为中央大树干，0为右后楼大格窗。4独立父对象，雪未被整体误归为灯或树。",
+      "specific_protection_zh": "保留雪层、道路、行人、其他路灯、树枝及建筑墙面。"
+    },
+    "protected_content_zh": "保留雪层、道路、行人、其他路灯、树枝及建筑墙面。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the tall blue information board on the right",
+        "ref_zh": "右侧的蓝色高信息牌",
+        "scope": "board",
+        "scope_zh": "信息牌",
+        "parent": "blue_board",
+        "parent_zh": "蓝牌",
+        "payload": "",
+        "instruction_zh": "移除右侧的蓝色高信息牌。",
+        "instruction_noref_zh": "移除选中的信息牌。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the leftmost lamppost",
+        "ref_zh": "最左侧的路灯",
+        "scope": "lamppost",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "a black lantern lamppost",
+        "instruction_zh": "将最左侧的路灯替换为一盏黑色灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色灯笼式路灯。"
+      },
+      {
+        "object_id": 21,
+        "operation": "add",
+        "ref": "the trunk of the large central tree",
+        "ref_zh": "中央大树的树干",
+        "scope": "trunk",
+        "scope_zh": "树干",
+        "parent": "central_tree",
+        "parent_zh": "中央树",
+        "payload": "a small wooden birdhouse",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央大树的树干加上一个小木鸟屋。",
+        "instruction_noref_zh": "在选中的树干加上一个小木鸟屋。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the large gridded window in the background on the right",
+        "ref_zh": "右后方的大格窗",
+        "scope": "window",
+        "scope_zh": "窗",
+        "parent": "right_building",
+        "parent_zh": "右建筑",
+        "payload": "pale blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将右后方的大格窗的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的窗的色调改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2516758",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6c069d57dfcb5a67816db9cc8243c6d875032d08923bc737162682a0359d1a9e",
+    "review_card_sha256": "4ba410b230653ab8f2b838b3d254756a8e6eb87c337cc78c11128b9f98a5462b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为左工作人员水果围裙，25为右工作人员马甲，4为手持白桶，30为后壁挂黑袋。两人、桶和包；5标签衬衫实际含马甲不选。",
+    "difficulty": {
+      "mechanisms": [
+        "warm_lighting",
+        "occlusion"
+      ],
+      "scene_zh": "棚内食品制作",
+      "evidence_zh": "1为左工作人员水果围裙，25为右工作人员马甲，4为手持白桶，30为后壁挂黑袋。两人、桶和包；5标签衬衫实际含马甲不选。",
+      "specific_protection_zh": "保留人物动作、原脸部模糊、容器内液体、器具及棚架。"
+    },
+    "protected_content_zh": "保留人物动作、原脸部模糊、容器内液体、器具及棚架。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the fruit-patterned apron on the left",
+        "ref_zh": "左侧的水果图案围裙",
+        "scope": "apron",
+        "scope_zh": "围裙",
+        "parent": "left_worker",
+        "parent_zh": "左工作人员",
+        "payload": "a plain white apron",
+        "instruction_zh": "将左侧的水果图案围裙替换为一条纯白色围裙。",
+        "instruction_noref_zh": "将选中的围裙替换为一条纯白色围裙。"
+      },
+      {
+        "object_id": 25,
+        "operation": "attribute",
+        "ref": "the light vest on the worker on the right",
+        "ref_zh": "右侧工作人员的浅色马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "right_worker",
+        "parent_zh": "右工作人员",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧工作人员的浅色马甲的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的马甲的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the white bucket being held",
+        "ref_zh": "手持的白色桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "held_bucket",
+        "parent_zh": "手持桶",
+        "payload": "a small blue inventory label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在手持的白色桶加上一张小蓝色库存标签。",
+        "instruction_noref_zh": "在选中的桶加上一张小蓝色库存标签。"
+      },
+      {
+        "object_id": 30,
+        "operation": "remove",
+        "ref": "the black bag hanging on the back wall",
+        "ref_zh": "后墙挂着的黑色袋子",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "hanging_bag",
+        "parent_zh": "挂袋",
+        "payload": "",
+        "instruction_zh": "移除后墙挂着的黑色袋子。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

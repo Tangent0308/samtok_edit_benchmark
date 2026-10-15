@@ -1,0 +1,476 @@
+[
+  {
+    "source_id": "sa_11150954",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c7401d647f1723a0c039b30f1f6ba53da6f735229135af7ca9aa6f3f61a48ec8",
+    "review_card_sha256": "a0e935ab52e4d77b498cb0536fa588dd0e731c1f4fed0a53a4722c5812832a9b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "58是壁灯头不含支架，2为大门左侧纪念牌，15为中央拱形木双门。不同独立实体；同建筑多窗不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "博物馆门面中的灯具、纪念牌和门",
+      "evidence_zh": "58是壁灯头不含支架，2为大门左侧纪念牌，15为中央拱形木双门。不同独立实体；同建筑多窗不重复计数。",
+      "specific_protection_zh": "保留门框雕刻、灯架、外墙、另一块纪念牌及博物馆字牌。"
+    },
+    "protected_content_zh": "保留门框雕刻、灯架、外墙、另一块纪念牌及博物馆字牌。",
+    "targets": [
+      {
+        "object_id": 58,
+        "operation": "replace",
+        "ref": "the wall lantern beside the main entrance",
+        "ref_zh": "正门旁的壁灯灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "an opal globe light",
+        "instruction_zh": "将正门旁的壁灯灯头替换为一个乳白球形灯。",
+        "instruction_noref_zh": "将选中的灯头替换为一个乳白球形灯。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the plaque left of the main entrance",
+        "ref_zh": "正门左侧的纪念牌",
+        "scope": "plaque",
+        "scope_zh": "纪念牌",
+        "parent": "left_plaque",
+        "parent_zh": "左侧纪念牌",
+        "payload": "",
+        "instruction_zh": "移除正门左侧的纪念牌。",
+        "instruction_noref_zh": "移除选中的纪念牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the arched wooden entrance door",
+        "ref_zh": "拱形木入口门",
+        "scope": "door",
+        "scope_zh": "入口门",
+        "parent": "museum_building",
+        "parent_zh": "博物馆建筑",
+        "payload": "a small bronze ring knocker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在拱形木入口门加上一个小青铜环形门扣。",
+        "instruction_noref_zh": "在选中的入口门加上一个小青铜环形门扣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11170556",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "49f49681e840f03a50546936692380925d55b4cba00d4896c198dce35b160907",
+    "review_card_sha256": "9b7f03a42571be95f6a5e6808238f20f0890403e3a7f3c5e2ce8d15ca6362c65",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为蓝和服，31是手持粉袋且排除手部，0是上方停车牌，15是左边悬挂纸灯笼。手提包为独立携带物，身体与衣服不分计。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "传统小巷中的和服、手袋和标牌",
+      "evidence_zh": "14为蓝和服，31是手持粉袋且排除手部，0是上方停车牌，15是左边悬挂纸灯笼。手提包为独立携带物，身体与衣服不分计。",
+      "specific_protection_zh": "保留人物面部、手部、和服花纹、腰带、街道和其他标牌。"
+    },
+    "protected_content_zh": "保留人物面部、手部、和服花纹、腰带、街道和其他标牌。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the woman’s blue kimono",
+        "ref_zh": "女子的蓝色和服",
+        "scope": "kimono",
+        "scope_zh": "和服",
+        "parent": "kimono_wearer",
+        "parent_zh": "和服女子",
+        "payload": "pale pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将女子的蓝色和服的颜色改为浅粉色。",
+        "instruction_noref_zh": "将选中的和服的颜色改为浅粉色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "replace",
+        "ref": "the woman’s pink handbag",
+        "ref_zh": "女子的粉色手袋",
+        "scope": "handbag",
+        "scope_zh": "手袋",
+        "parent": "pink_handbag",
+        "parent_zh": "粉色手袋",
+        "payload": "a woven bamboo handbag",
+        "instruction_zh": "将女子的粉色手袋替换为一个竹编手袋。",
+        "instruction_noref_zh": "将选中的手袋替换为一个竹编手袋。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the overhead parking sign",
+        "ref_zh": "上方的停车标牌",
+        "scope": "parking sign",
+        "scope_zh": "停车标牌",
+        "parent": "parking_sign",
+        "parent_zh": "停车标牌",
+        "payload": "",
+        "instruction_zh": "移除上方的停车标牌。",
+        "instruction_noref_zh": "移除选中的停车标牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the paper lantern on the left",
+        "ref_zh": "左侧纸灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "paper_lantern",
+        "parent_zh": "纸灯笼",
+        "payload": "a small red tassel",
+        "placement": {
+          "relation": "on",
+          "site": "bottom",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧纸灯笼的底部加上一条红色小流苏。",
+        "instruction_noref_zh": "在选中的灯笼的底部加上一条红色小流苏。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1118244",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8606c6c08863a4c4b956dd72b0a74cd2023402bd7243ad4f65786f5840f375cf",
+    "review_card_sha256": "270dd5f9b491fed999686636bfbaf7c0711b87947b92dd73fdb35eda44e32bc0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4是右下最近蓝凳，18是其左上更远蓝凳，5是最右侧亮着的高路灯。两个凳子可辨、各自独立；不选整楼或大面积栏杆。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "海边步道上的蓝长凳与路灯",
+      "evidence_zh": "4是右下最近蓝凳，18是其左上更远蓝凳，5是最右侧亮着的高路灯。两个凳子可辨、各自独立；不选整楼或大面积栏杆。",
+      "specific_protection_zh": "保留海滩、草坪、波浪形地砖、其他凳子、建筑与傍晚光照。"
+    },
+    "protected_content_zh": "保留海滩、草坪、波浪形地砖、其他凳子、建筑与傍晚光照。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the nearest blue bench",
+        "ref_zh": "最近的蓝色长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "near_blue_bench",
+        "parent_zh": "近处蓝凳",
+        "payload": "a wooden slat bench",
+        "instruction_zh": "将最近的蓝色长凳替换为一把木条长凳。",
+        "instruction_noref_zh": "将选中的长凳替换为一把木条长凳。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the blue bench immediately behind the nearest bench",
+        "ref_zh": "最近长凳紧后方的蓝色长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "rear_blue_bench",
+        "parent_zh": "后方蓝凳",
+        "payload": "",
+        "instruction_zh": "移除最近长凳紧后方的蓝色长凳。",
+        "instruction_noref_zh": "移除选中的长凳。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the illuminated streetlamp at the far right",
+        "ref_zh": "最右侧亮着的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右侧路灯",
+        "payload": "a small blue “BEACH” banner",
+        "placement": {
+          "relation": "on",
+          "site": "pole",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧亮着的路灯的灯杆上加上一面蓝色小“BEACH”旗。",
+        "instruction_noref_zh": "在选中的路灯的灯杆上加上一面蓝色小“BEACH”旗。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11182855",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "db4bb0256fb90a18af29fcc8efc20378eae4094f34c339d3529dd4e460927a03",
+    "review_card_sha256": "b4055008a5dd77b21112f6645b445218adace15afdc3e764ad927980be2847df",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "32为后方船的可见整体，30为前船上独立白色储物箱。两者没有共有父对象；不用14整前船和其多个部件凑目标数，也不使用5混入倒影的轮胎。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "港口前后两艘渔船",
+      "evidence_zh": "32为后方船的可见整体，30为前船上独立白色储物箱。两者没有共有父对象；不用14整前船和其多个部件凑目标数，也不使用5混入倒影的轮胎。",
+      "specific_protection_zh": "保留前船、救生圈、发动机、海水、泊船绳和岸边景物。"
+    },
+    "protected_content_zh": "保留前船、救生圈、发动机、海水、泊船绳和岸边景物。",
+    "targets": [
+      {
+        "object_id": 32,
+        "operation": "remove",
+        "ref": "the fishing boat behind the foreground boat",
+        "ref_zh": "前景船后方的渔船",
+        "scope": "fishing boat",
+        "scope_zh": "渔船",
+        "parent": "rear_fishing_boat",
+        "parent_zh": "后方渔船",
+        "payload": "",
+        "instruction_zh": "移除前景船后方的渔船。",
+        "instruction_noref_zh": "移除选中的渔船。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the white storage box on the foreground boat",
+        "ref_zh": "前景船上的白色储物箱",
+        "scope": "storage box",
+        "scope_zh": "储物箱",
+        "parent": "white_storage_box",
+        "parent_zh": "白色储物箱",
+        "payload": "a small blue “BAIT” label",
+        "placement": {
+          "relation": "on",
+          "site": "front",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景船上的白色储物箱的正面加上一张蓝色小“BAIT”标签。",
+        "instruction_noref_zh": "在选中的储物箱的正面加上一张蓝色小“BAIT”标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1120224",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2beb4b8c53a8fdad54fa66054cdc485413456925c38a32d6505e8179e6b73c84",
+    "review_card_sha256": "0a3f342ba483d71250581a8694b1e6e8b46d94aaff1e9688fefb82aeb13188e0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1是最前方女孩绿上衣，5为最后方人物蓝长袖，8为队伍右侧倾斜浅色石头。12同时包含两只泳圈的部分，弃用。更换为防晒泳衣符合溪流活动，不做不合理去衣。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "溪流涉水者的衣物与独立石块",
+      "evidence_zh": "1是最前方女孩绿上衣，5为最后方人物蓝长袖，8为队伍右侧倾斜浅色石头。12同时包含两只泳圈的部分，弃用。更换为防晒泳衣符合溪流活动，不做不合理去衣。",
+      "specific_protection_zh": "保留人物皮肤、短裤、泳圈、其他石块、树木和溪流水面。"
+    },
+    "protected_content_zh": "保留人物皮肤、短裤、泳圈、其他石块、树木和溪流水面。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the front girl’s green shirt",
+        "ref_zh": "最前方女孩的绿色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "front_girl",
+        "parent_zh": "最前方女孩",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将最前方女孩的绿色上衣的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为黄色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the rear person’s blue long-sleeved shirt",
+        "ref_zh": "最后方人物的蓝色长袖上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "rear_person",
+        "parent_zh": "最后方人物",
+        "payload": "a navy long-sleeved rash guard",
+        "instruction_zh": "将最后方人物的蓝色长袖上衣替换为一件藏蓝色长袖防晒泳衣。",
+        "instruction_noref_zh": "将选中的上衣替换为一件藏蓝色长袖防晒泳衣。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the tilted pale boulder right of the group",
+        "ref_zh": "人群右侧倾斜的浅色大石",
+        "scope": "boulder",
+        "scope_zh": "大石",
+        "parent": "right_boulder",
+        "parent_zh": "右侧大石",
+        "payload": "",
+        "instruction_zh": "移除人群右侧倾斜的浅色大石。",
+        "instruction_noref_zh": "移除选中的大石。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1130541",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3a318a533f6562ed4cd09e799b7d919dccf54cd37d429d26195e4b8b9a0cef13",
+    "review_card_sha256": "7e4d41ab778387530308a4d341c1242023a81d62d926f431c87b74d1a9af9f14",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "前景KLM飞机尾翼和标志清楚且能准确编辑，但都属于同一架模型。14后景飞机mask混入旁侧高光碎片，18主要仅覆盖机身，当前卡片不足以确认第二个独立且范围完整的目标；保留补查而非因为背景虚化整图拒绝。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "浅景深模型机场",
+      "evidence_zh": "前景KLM飞机尾翼和标志清楚且能准确编辑，但都属于同一架模型。14后景飞机mask混入旁侧高光碎片，18主要仅覆盖机身，当前卡片不足以确认第二个独立且范围完整的目标；保留补查而非因为背景虚化整图拒绝。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1131468",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c860605e5ee681ec4f84f2c0748418ef97ffbe45ee188b3415c5a2b97c6e1aa1",
+    "review_card_sha256": "a899c5330a166fb1052700b11dc021757e2697a9de4399f7728bcacd48463f5c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为中央大草帽，1为最前景布帽，4为后排右侧人物白色Polo衫，分别三人。黑白照片使用材质/款式/图案变化并保留灰度。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection",
+        "small_targets"
+      ],
+      "scene_zh": "黑白水上集市中的帽子与衣物",
+      "evidence_zh": "0为中央大草帽，1为最前景布帽，4为后排右侧人物白色Polo衫，分别三人。黑白照片使用材质/款式/图案变化并保留灰度。",
+      "specific_protection_zh": "保留人物面容、手部、船只、餐食、餐盘和黑白影调。"
+    },
+    "protected_content_zh": "保留人物面容、手部、船只、餐食、餐盘和黑白影调。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the large straw hat in the center",
+        "ref_zh": "中央的大草帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "central_hat_wearer",
+        "parent_zh": "中央草帽人物",
+        "payload": "a narrow black ribbon band",
+        "placement": {
+          "relation": "around",
+          "site": "crown",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央的大草帽的帽冠周围加上一圈细黑缎带。",
+        "instruction_noref_zh": "在选中的帽子的帽冠周围加上一圈细黑缎带。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the foreground vendor’s cloth cap",
+        "ref_zh": "前景摊贩的布帽",
+        "scope": "cap",
+        "scope_zh": "布帽",
+        "parent": "foreground_vendor",
+        "parent_zh": "前景摊贩",
+        "payload": "a wide-brimmed canvas hat",
+        "instruction_zh": "将前景摊贩的布帽替换为一顶宽檐帆布帽。",
+        "instruction_noref_zh": "将选中的布帽替换为一顶宽檐帆布帽。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the white polo shirt at the upper right",
+        "ref_zh": "右上方的白色Polo衫",
+        "scope": "polo shirt",
+        "scope_zh": "Polo衫",
+        "parent": "upper_right_person",
+        "parent_zh": "右上方人物",
+        "payload": "narrow vertical stripes",
+        "attribute_kind": "pattern",
+        "instruction_zh": "将右上方的白色Polo衫的图案改为细竖条纹。",
+        "instruction_noref_zh": "将选中的Polo衫的图案改为细竖条纹。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1131498",
+    "decision": "reject",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dc9b2aa9a5989431c1d9317a39262b241e72850e0dd1d26fd1b08ef1cf2835dc",
+    "review_card_sha256": "109e0ab3a701b8c4a9f2f4a5bc637ec7728b584c7c64e900805d723bfba09b47",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "源图只有一张邮票。鸟、花、叶子及数字mask虽然可清楚指代，但都是同一实体邮票上的印刷内容，不能满足至少两个不同物理父对象；不将图案拆成独立实物凑数。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "单张邮票的鸟与花图案",
+      "evidence_zh": "源图只有一张邮票。鸟、花、叶子及数字mask虽然可清楚指代，但都是同一实体邮票上的印刷内容，不能满足至少两个不同物理父对象；不将图案拆成独立实物凑数。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  }
+]

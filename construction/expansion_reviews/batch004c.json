@@ -1,0 +1,563 @@
+[
+  {
+    "source_id": "sa_10776310",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4f490baf93ea4fffba8ef948723b707a2816a07ea6bc5e71eed9a06423c9b6a0",
+    "review_card_sha256": "0ca52035877aca14e856aa79633a8aa134726620196015f190054f2187b3e04a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "102是右侧RATS KELLER入口的双扇门，81是建筑左前方独立的蓝色信息立柱。只取建筑一个部位，与独立设施组成多对象任务；不将多扇建筑窗户重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "历史建筑入口与独立信息立柱",
+      "evidence_zh": "102是右侧RATS KELLER入口的双扇门，81是建筑左前方独立的蓝色信息立柱。只取建筑一个部位，与独立设施组成多对象任务；不将多扇建筑窗户重复计数。",
+      "specific_protection_zh": "保留门上方文字、建筑石雕、窗户、行人与铺地。"
+    },
+    "protected_content_zh": "保留门上方文字、建筑石雕、窗户、行人与铺地。",
+    "targets": [
+      {
+        "object_id": 102,
+        "operation": "add",
+        "ref": "the double door beneath “RATS KELLER”",
+        "ref_zh": "“RATS KELLER”字样下的双扇门",
+        "scope": "double door",
+        "scope_zh": "双扇门",
+        "parent": "building",
+        "parent_zh": "历史建筑",
+        "payload": "a small green wreath",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在“RATS KELLER”字样下的双扇门加上一个小绿色花环。",
+        "instruction_noref_zh": "在选中的双扇门加上一个小绿色花环。"
+      },
+      {
+        "object_id": 81,
+        "operation": "remove",
+        "ref": "the blue information pillar left of the building",
+        "ref_zh": "建筑左侧的蓝色信息立柱",
+        "scope": "information pillar",
+        "scope_zh": "信息立柱",
+        "parent": "information_pillar",
+        "parent_zh": "蓝色信息立柱",
+        "payload": "",
+        "instruction_zh": "移除建筑左侧的蓝色信息立柱。",
+        "instruction_noref_zh": "移除选中的信息立柱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10777785",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7dce6d45f792a7a695d3749d7519c917f2aa4606c74ffbe593b35a05c647ddf1",
+    "review_card_sha256": "0d32c612bf7a1c1d76312692ebb09272f940368037afd8fb1bb583cb6897971e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为左侧蓝色头盔，7为右侧蓝衣者手中的船桨。桨被手遮挡，保留可见断开部分与水花；头盔属于乘员，桨为独立可拿取物体。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "disconnected_parts"
+      ],
+      "scene_zh": "激流漂流中的头盔与船桨",
+      "evidence_zh": "5为左侧蓝色头盔，7为右侧蓝衣者手中的船桨。桨被手遮挡，保留可见断开部分与水花；头盔属于乘员，桨为独立可拿取物体。",
+      "specific_protection_zh": "保留头部、手指、救生衣、橡皮艇和水花；不移除安全装备。"
+    },
+    "protected_content_zh": "保留头部、手指、救生衣、橡皮艇和水花；不移除安全装备。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the blue helmet",
+        "ref_zh": "蓝色头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "blue_helmet_person",
+        "parent_zh": "蓝头盔乘员",
+        "payload": "a small action camera",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在蓝色头盔加上一台小运动相机。",
+        "instruction_noref_zh": "在选中的头盔加上一台小运动相机。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the paddle held by the rightmost blue-shirted rafter",
+        "ref_zh": "最右侧蓝衣乘员手中的船桨",
+        "scope": "paddle",
+        "scope_zh": "船桨",
+        "parent": "right_paddle",
+        "parent_zh": "右侧船桨",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧蓝衣乘员手中的船桨的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的船桨的颜色改为蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10784555",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "473b8f97c0e39101f85da1aac5e403c2112049fba3f0846ab5fb9272f0ce0e35",
+    "review_card_sha256": "2f6ebcd31a1267b0620bbbe5ea1a85ec547fa27ee03bcf9172b58409572752bd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "36为近处完整白色吊花，86为左楼墙面红百叶窗，120为盆栽右后方可见小椅子。避开125、126把栏杆孔洞填为背景的mask。选中对象分别属于花卉、建筑和椅子。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "广场边的吊花、百叶窗和露天餐椅",
+      "evidence_zh": "36为近处完整白色吊花，86为左楼墙面红百叶窗，120为盆栽右后方可见小椅子。避开125、126把栏杆孔洞填为背景的mask。选中对象分别属于花卉、建筑和椅子。",
+      "specific_protection_zh": "保留邻近红粉吊花、花盆、建筑墙面、桌子与行人。"
+    },
+    "protected_content_zh": "保留邻近红粉吊花、花盆、建筑墙面、桌子与行人。",
+    "targets": [
+      {
+        "object_id": 36,
+        "operation": "replace",
+        "ref": "the large white hanging flower cluster",
+        "ref_zh": "那簇较大的白色吊花",
+        "scope": "hanging flowers",
+        "scope_zh": "吊花",
+        "parent": "white_hanging_plant",
+        "parent_zh": "白色吊花植株",
+        "payload": "a cascading ivy plant",
+        "instruction_zh": "将那簇较大的白色吊花替换为一株垂挂常春藤。",
+        "instruction_noref_zh": "将选中的吊花替换为一株垂挂常春藤。"
+      },
+      {
+        "object_id": 86,
+        "operation": "attribute",
+        "ref": "the red shutter on the left building",
+        "ref_zh": "左侧建筑上的红色百叶窗",
+        "scope": "shutter",
+        "scope_zh": "百叶窗",
+        "parent": "left_building",
+        "parent_zh": "左侧建筑",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧建筑上的红色百叶窗的颜色改为青绿色。",
+        "instruction_noref_zh": "将选中的百叶窗的颜色改为青绿色。"
+      },
+      {
+        "object_id": 120,
+        "operation": "remove",
+        "ref": "the chair just behind the rightmost planter",
+        "ref_zh": "最右侧花盆后面的椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "cafe_chair",
+        "parent_zh": "露天椅子",
+        "payload": "",
+        "instruction_zh": "移除最右侧花盆后面的椅子。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10789562",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c7b73253da590fcc728ecedf05cf39432717f4024e1c158caf27e8db5a4914ac",
+    "review_card_sha256": "5c364071c9876e8692a107b67156cf8dcec6654fdf62d35861d6f4f9fe5eb155",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "画面较暗，但0前景银车、25右上近灯头、11右边绿色招牌的边界可辨。未因整体曝光拒绝；不使用难辨的背景车辆。灯头替换不改变弯臂，新增灯条直接固定到招牌。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "背光建筑前的汽车、路灯与商店标牌",
+      "evidence_zh": "画面较暗，但0前景银车、25右上近灯头、11右边绿色招牌的边界可辨。未因整体曝光拒绝；不使用难辨的背景车辆。灯头替换不改变弯臂，新增灯条直接固定到招牌。",
+      "specific_protection_zh": "保留路灯弯臂、建筑、招牌文字、植物与路面。"
+    },
+    "protected_content_zh": "保留路灯弯臂、建筑、招牌文字、植物与路面。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the silver car in front of the building",
+        "ref_zh": "建筑前的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "foreground_car",
+        "parent_zh": "前景银车",
+        "payload": "",
+        "instruction_zh": "移除建筑前的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the nearest streetlamp’s shade",
+        "ref_zh": "最近路灯的灯罩",
+        "scope": "lamp shade",
+        "scope_zh": "灯罩",
+        "parent": "near_streetlamp",
+        "parent_zh": "近处路灯",
+        "payload": "an opal-glass globe shade",
+        "instruction_zh": "将最近路灯的灯罩替换为一个乳白玻璃球形灯罩。",
+        "instruction_noref_zh": "将选中的灯罩替换为一个乳白玻璃球形灯罩。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the green sign at the right edge",
+        "ref_zh": "右侧边缘的绿色招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "green_shop_sign",
+        "parent_zh": "右侧绿色招牌",
+        "payload": "a slim LED light bar",
+        "placement": {
+          "relation": "mounted on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧边缘的绿色招牌的上沿加上一条细LED灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一条细LED灯条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10790861",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c3a59ce766dbfb96d482c722da2306f7ee21d62e2bde406106f9eb7c65d77aed",
+    "review_card_sha256": "0fe5f954b53095476673c30a7ca6bd8b80ed16c47573ae0b0ae6c8547d367761",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7只覆盖橱窗模特的礼服，不含模特身体；13是推车把手悬挂的独立黑包；4为车架与座椅，排除儿童；8为旗布。分别为模特、包、推车与独立旗帜。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "holes",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街角橱窗与婴儿车",
+      "evidence_zh": "7只覆盖橱窗模特的礼服，不含模特身体；13是推车把手悬挂的独立黑包；4为车架与座椅，排除儿童；8为旗布。分别为模特、包、推车与独立旗帜。",
+      "specific_protection_zh": "保留儿童、模特身体、行人、旗杆、窗框和建筑。"
+    },
+    "protected_content_zh": "保留儿童、模特身体、行人、旗杆、窗框和建筑。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the mannequin’s white dress",
+        "ref_zh": "橱窗模特的白色礼服",
+        "scope": "dress",
+        "scope_zh": "礼服",
+        "parent": "mannequin",
+        "parent_zh": "橱窗模特",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将橱窗模特的白色礼服的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的礼服的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the black bag hanging from the stroller",
+        "ref_zh": "挂在婴儿车上的黑包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "stroller_bag",
+        "parent_zh": "推车悬挂包",
+        "payload": "a beige canvas tote",
+        "instruction_zh": "将挂在婴儿车上的黑包替换为一个米色帆布托特包。",
+        "instruction_noref_zh": "将选中的包替换为一个米色帆布托特包。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the stroller",
+        "ref_zh": "婴儿车",
+        "scope": "stroller",
+        "scope_zh": "婴儿车",
+        "parent": "stroller",
+        "parent_zh": "婴儿车",
+        "payload": "a cup holder",
+        "placement": {
+          "relation": "mounted on",
+          "site": "handlebar",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在婴儿车的推把上加上一个杯架。",
+        "instruction_noref_zh": "在选中的婴儿车的推把上加上一个杯架。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the flag above the street",
+        "ref_zh": "街道上方的旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "flag",
+        "parent_zh": "街道旗帜",
+        "payload": "",
+        "instruction_zh": "移除街道上方的旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10791315",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0bcc0c20fcedad787f175251dd1c9c1775c06de63903a7a9db4d0b817afad1e7",
+    "review_card_sha256": "79204ab4641d5959de6b0be9e6356f64ecc8db06fc487ea09dc377cbb478a527",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为举牌儿童的黑帽，15为中央秃头男子的完整太阳镜，6为左侧人物围巾，9为后方UCL Students纸板。不同人物与独立标牌分开计数，保持标语原文。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "拥挤街头集会中的帽子、眼镜、围巾与标牌",
+      "evidence_zh": "3为举牌儿童的黑帽，15为中央秃头男子的完整太阳镜，6为左侧人物围巾，9为后方UCL Students纸板。不同人物与独立标牌分开计数，保持标语原文。",
+      "specific_protection_zh": "保留面部、头发、标语内容、其他衣物与人群。"
+    },
+    "protected_content_zh": "保留面部、头发、标语内容、其他衣物与人群。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the sign-holding child’s black cap",
+        "ref_zh": "举牌儿童的黑色帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "child",
+        "parent_zh": "举牌儿童",
+        "payload": "a beige bucket hat",
+        "instruction_zh": "将举牌儿童的黑色帽子替换为一顶米色渔夫帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶米色渔夫帽。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the bald man’s sunglasses",
+        "ref_zh": "秃头男子的太阳镜",
+        "scope": "sunglasses",
+        "scope_zh": "太阳镜",
+        "parent": "bald_man",
+        "parent_zh": "秃头男子",
+        "payload": "",
+        "instruction_zh": "移除秃头男子的太阳镜。",
+        "instruction_noref_zh": "移除选中的太阳镜。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the scarf at the left edge",
+        "ref_zh": "左侧边缘的围巾",
+        "scope": "scarf",
+        "scope_zh": "围巾",
+        "parent": "left_scarf_person",
+        "parent_zh": "左侧围巾人物",
+        "payload": "maroon",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧边缘的围巾的颜色改为栗红色。",
+        "instruction_noref_zh": "将选中的围巾的颜色改为栗红色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the “UCL Students” cardboard sign",
+        "ref_zh": "写有“UCL Students”的纸板标牌",
+        "scope": "cardboard sign",
+        "scope_zh": "纸板标牌",
+        "parent": "ucl_sign",
+        "parent_zh": "UCL纸板标牌",
+        "payload": "a thin wooden frame",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在写有“UCL Students”的纸板标牌加上一个细木框。",
+        "instruction_noref_zh": "在选中的纸板标牌加上一个细木框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10795587",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a7ca298e940c17b6b4cc3387205d222cc4951b4c6af6f8f990b8a884861694a5",
+    "review_card_sha256": "d2642426aa038adac7c482c4a75f52d90cab9bcced4359efc693a0f620fadc9c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "30是紧邻右侧卫兵左边的粗石块，6是卫兵上臂完整袖章。一个属于纪念碑基座，一个属于真实人物；不把坦克轮子拆成独立目标。加纪念牌与去掉袖章均限定在明确区域。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "纪念碑基座与画面边缘的制服袖章",
+      "evidence_zh": "30是紧邻右侧卫兵左边的粗石块，6是卫兵上臂完整袖章。一个属于纪念碑基座，一个属于真实人物；不把坦克轮子拆成独立目标。加纪念牌与去掉袖章均限定在明确区域。",
+      "specific_protection_zh": "保留卫兵手臂与制服、其他石块、坦克、旗帜和远处建筑。"
+    },
+    "protected_content_zh": "保留卫兵手臂与制服、其他石块、坦克、旗帜和远处建筑。",
+    "targets": [
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the rough stone block immediately left of the guard",
+        "ref_zh": "卫兵紧左侧的粗石块",
+        "scope": "stone block",
+        "scope_zh": "石块",
+        "parent": "monument_base",
+        "parent_zh": "纪念碑基座",
+        "payload": "a small bronze memorial plaque",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在卫兵紧左侧的粗石块加上一块小青铜纪念牌。",
+        "instruction_noref_zh": "在选中的石块加上一块小青铜纪念牌。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the guard’s sleeve patch",
+        "ref_zh": "卫兵的袖章",
+        "scope": "sleeve patch",
+        "scope_zh": "袖章",
+        "parent": "guard",
+        "parent_zh": "卫兵",
+        "payload": "",
+        "instruction_zh": "移除卫兵的袖章。",
+        "instruction_noref_zh": "移除选中的袖章。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10795964",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "283e5197b95d3b1b44d67abb52f838beeb7f441df99299f085e9ef97fc9b1935",
+    "review_card_sha256": "92189b2974d433bafc75adc3688c8a6c764b4fba71610bca8ba2a79095126832",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为完整伞面、伞杆和把手，1为站立者上衣，6为背景手推车护栏并保留主要孔洞。伞为独立手持物，人物和手推车另计，不用服装7混合上衣与裙子的mask。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion",
+        "holes"
+      ],
+      "scene_zh": "寺院中持伞人物与背景手推车",
+      "evidence_zh": "4为完整伞面、伞杆和把手，1为站立者上衣，6为背景手推车护栏并保留主要孔洞。伞为独立手持物，人物和手推车另计，不用服装7混合上衣与裙子的mask。",
+      "specific_protection_zh": "保留人物身体、帽子、裙子、蹲着的人物、雕像和手推车车轮。"
+    },
+    "protected_content_zh": "保留人物身体、帽子、裙子、蹲着的人物、雕像和手推车车轮。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the red plaid umbrella",
+        "ref_zh": "红色格纹雨伞",
+        "scope": "umbrella",
+        "scope_zh": "雨伞",
+        "parent": "umbrella",
+        "parent_zh": "雨伞",
+        "payload": "a clear dome umbrella",
+        "instruction_zh": "将红色格纹雨伞替换为一把透明圆顶伞。",
+        "instruction_noref_zh": "将选中的雨伞替换为一把透明圆顶伞。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the standing person’s cream shirt",
+        "ref_zh": "站立人物的米色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "standing_person",
+        "parent_zh": "站立人物",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将站立人物的米色衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the green cart railing",
+        "ref_zh": "绿色手推车护栏",
+        "scope": "cart railing",
+        "scope_zh": "手推车护栏",
+        "parent": "cart",
+        "parent_zh": "手推车",
+        "payload": "a small yellow reflector",
+        "placement": {
+          "relation": "clipped to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿色手推车护栏加上一个小黄色反光片。",
+        "instruction_noref_zh": "在选中的手推车护栏加上一个小黄色反光片。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

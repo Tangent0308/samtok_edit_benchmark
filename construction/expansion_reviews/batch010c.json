@@ -1,0 +1,627 @@
+[
+  {
+    "source_id": "sa_2525156",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f7a4ca51131abb07ff5e40fb2de24ed5bef129947daba842b5e9eeb8b2fd706d",
+    "review_card_sha256": "71cd84cd388e07112d3062de4ce4793c7fd48a0f127789aec0ca9cf7896ea059",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为上层中央金帽瓶，3为中层右白洗护瓶，16为中层黄罐，1为上层左绿玻璃瓶。各瓶是独立实物，柜中标签并非瓶体。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "机场展示柜内瓶与容器",
+      "evidence_zh": "0为上层中央金帽瓶，3为中层右白洗护瓶，16为中层黄罐，1为上层左绿玻璃瓶。各瓶是独立实物，柜中标签并非瓶体。",
+      "specific_protection_zh": "保留展示柜、所有说明牌、其余样品和玻璃反射。"
+    },
+    "protected_content_zh": "保留展示柜、所有说明牌、其余样品和玻璃反射。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the gold-capped bottle at the top center",
+        "ref_zh": "上层中央的金盖瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶",
+        "parent": "center_bottle",
+        "parent_zh": "中央瓶",
+        "payload": "a round amber glass bottle",
+        "instruction_zh": "将上层中央的金盖瓶替换为一个圆形琥珀色玻璃瓶。",
+        "instruction_noref_zh": "将选中的瓶替换为一个圆形琥珀色玻璃瓶。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the white toiletry bottle on the middle shelf",
+        "ref_zh": "中层的白色洗护瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶",
+        "parent": "toiletry_bottle",
+        "parent_zh": "洗护瓶",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中层的白色洗护瓶的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的瓶的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the yellow can on the middle shelf",
+        "ref_zh": "中层的黄色罐",
+        "scope": "can",
+        "scope_zh": "罐",
+        "parent": "yellow_can",
+        "parent_zh": "黄罐",
+        "payload": "",
+        "instruction_zh": "移除中层的黄色罐。",
+        "instruction_noref_zh": "移除选中的罐。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the green bottle at the upper left",
+        "ref_zh": "左上方的绿色瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶",
+        "parent": "left_green_bottle",
+        "parent_zh": "左绿瓶",
+        "payload": "a small red inventory sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左上方的绿色瓶加上一张小红色库存贴纸。",
+        "instruction_noref_zh": "在选中的瓶加上一张小红色库存贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2527153",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "32ff889dcbc35650102fd98fa093322664b5157d796f8f899f3c8bc2a812a120",
+    "review_card_sha256": "13bcb05076af7cb69359185f76014e92ec665af3b5db91e6330a53dd68c6ed53",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为左银旅行车，4为其左橙车，118为草坪白大型展牌，41为右侧黑短裤者旁自行车。各车展牌独立。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "宫殿广场车与展牌",
+      "evidence_zh": "5为左银旅行车，4为其左橙车，118为草坪白大型展牌，41为右侧黑短裤者旁自行车。各车展牌独立。",
+      "specific_protection_zh": "保留建筑、行人、交通设施、车道与其他车辆。"
+    },
+    "protected_content_zh": "保留建筑、行人、交通设施、车道与其他车辆。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the silver estate car on the left",
+        "ref_zh": "左侧的银色旅行车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_estate",
+        "parent_zh": "银旅行车",
+        "payload": "a dark-blue estate car",
+        "instruction_zh": "将左侧的银色旅行车替换为一辆深蓝色旅行车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆深蓝色旅行车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the orange car beside the silver car",
+        "ref_zh": "银色汽车旁的橙色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "orange_car",
+        "parent_zh": "橙车",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将银色汽车旁的橙色汽车的颜色改为白色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为白色。"
+      },
+      {
+        "object_id": 118,
+        "operation": "remove",
+        "ref": "the large white exhibition panel on the lawn",
+        "ref_zh": "草坪上的白色大展板",
+        "scope": "panel",
+        "scope_zh": "展板",
+        "parent": "lawn_panel",
+        "parent_zh": "草坪展板",
+        "payload": "",
+        "instruction_zh": "移除草坪上的白色大展板。",
+        "instruction_noref_zh": "移除选中的展板。"
+      },
+      {
+        "object_id": 41,
+        "operation": "add",
+        "ref": "the bicycle beside the person in black shorts",
+        "ref_zh": "黑色短裤者旁的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "right_bicycle",
+        "parent_zh": "右自行车",
+        "payload": "a rear wicker basket",
+        "placement": {
+          "relation": "on",
+          "site": "rear rack",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黑色短裤者旁的自行车的后架上加上一个后置藤编车筐。",
+        "instruction_noref_zh": "在选中的自行车的后架上加上一个后置藤编车筐。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2539752",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2f06b0c485663244480c7b22fec76bd50a1a831157906fda839de121653de4b8",
+    "review_card_sha256": "3a35da8d18bc6ec5ee2e28c0494c25bc7b89cd2b58c74a8b552d510b71a105b4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "64为从右数第二个蓝羽饰，18为最近马背上的黑色金边鞍毯；补看高清骑队确认序数。分别属于骑者与坐骑装具，不移除人体或使用中的马。需全图核对重复骑者的方位。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "仪仗骑队",
+      "evidence_zh": "64为从右数第二个蓝羽饰，18为最近马背上的黑色金边鞍毯；补看高清骑队确认序数。分别属于骑者与坐骑装具，不移除人体或使用中的马。需全图核对重复骑者的方位。",
+      "specific_protection_zh": "保留骑者、马、动作、其他羽饰、兵器与背景建筑。"
+    },
+    "protected_content_zh": "保留骑者、马、动作、其他羽饰、兵器与背景建筑。",
+    "targets": [
+      {
+        "object_id": 64,
+        "operation": "attribute",
+        "ref": "the second blue plume from the right",
+        "ref_zh": "从右数第二个蓝色羽饰",
+        "scope": "plume",
+        "scope_zh": "羽饰",
+        "parent": "nearest_rider",
+        "parent_zh": "最近骑者",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将从右数第二个蓝色羽饰的颜色改为红色。",
+        "instruction_noref_zh": "将选中的羽饰的颜色改为红色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the black saddle blanket on the nearest horse",
+        "ref_zh": "最近一匹马上的黑色鞍毯",
+        "scope": "saddle blanket",
+        "scope_zh": "鞍毯",
+        "parent": "embroidered_blanket",
+        "parent_zh": "刺绣鞍毯",
+        "payload": "a gold fringe",
+        "placement": {
+          "relation": "on",
+          "site": "lower edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近一匹马上的黑色鞍毯的下沿加上一圈金色流苏。",
+        "instruction_noref_zh": "在选中的鞍毯的下沿加上一圈金色流苏。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2553111",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6e113046c71979985a87b0fe56b9d2a7ad72a78012d23edab043766747807095",
+    "review_card_sha256": "b8dfbe4b46df5f472279c1a2a0d9eb7556cb46bed950acf649a9e91c3896b498",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为前景男孩米色短裤，4为左后方浅紫外罩衫，31为粉色手持包装，22为后方完整摩托。两个人、袋、车独立；31被手臂遮挡不改变原mask。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "defocus"
+      ],
+      "scene_zh": "市场路上孩子与摩托车",
+      "evidence_zh": "8为前景男孩米色短裤，4为左后方浅紫外罩衫，31为粉色手持包装，22为后方完整摩托。两个人、袋、车独立；31被手臂遮挡不改变原mask。",
+      "specific_protection_zh": "保留人物身体和原面部模糊、手臂姿势、其他衣服与道路。"
+    },
+    "protected_content_zh": "保留人物身体和原面部模糊、手臂姿势、其他衣服与道路。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the foreground boy’s beige shorts",
+        "ref_zh": "前景男孩的米色短裤",
+        "scope": "shorts",
+        "scope_zh": "短裤",
+        "parent": "front_boy",
+        "parent_zh": "前景男孩",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男孩的米色短裤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的短裤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the light-purple overshirt on the left",
+        "ref_zh": "左侧的浅紫色外罩衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_person",
+        "parent_zh": "左侧人",
+        "payload": "a white cotton overshirt",
+        "instruction_zh": "将左侧的浅紫色外罩衬衫替换为一件白色棉质外罩衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件白色棉质外罩衬衫。"
+      },
+      {
+        "object_id": 31,
+        "operation": "add",
+        "ref": "the pink package held by the boy",
+        "ref_zh": "男孩抱着的粉色包装袋",
+        "scope": "package",
+        "scope_zh": "包装袋",
+        "parent": "pink_package",
+        "parent_zh": "粉包装袋",
+        "payload": "a small blue school-logo sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在男孩抱着的粉色包装袋加上一张小蓝色学校标志贴纸。",
+        "instruction_noref_zh": "在选中的包装袋加上一张小蓝色学校标志贴纸。"
+      },
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the motorcycle behind the boy",
+        "ref_zh": "男孩后面的摩托车",
+        "scope": "motorcycle",
+        "scope_zh": "摩托车",
+        "parent": "motorcycle",
+        "parent_zh": "摩托车",
+        "payload": "",
+        "instruction_zh": "移除男孩后面的摩托车。",
+        "instruction_noref_zh": "移除选中的摩托车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2556853",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f434e7941d302daa8b7672d3a92d3241725b65595c017754c80be58d34c3ab79",
+    "review_card_sha256": "c4f296ece29ecb52050e24e9be6f0e9714fb9b49050aa4620f75833bc5449be9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为最左银帽，3为前景中央银帽，43为最右消防员长防水外衣。三个不同人物父对象，不移除使用中的消防水带或手臂。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "消防训练",
+      "evidence_zh": "0为最左银帽，3为前景中央银帽，43为最右消防员长防水外衣。三个不同人物父对象，不移除使用中的消防水带或手臂。",
+      "specific_protection_zh": "保留人体、喷水、水带、反光条和其他防护装备。"
+    },
+    "protected_content_zh": "保留人体、喷水、水带、反光条和其他防护装备。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the helmet on the leftmost firefighter",
+        "ref_zh": "最左侧消防员的头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "left_firefighter",
+        "parent_zh": "左消防员",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧消防员的头盔的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的头盔的颜色改为黄色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the central foreground firefighter’s helmet",
+        "ref_zh": "前景中央消防员的头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "central_firefighter",
+        "parent_zh": "中央消防员",
+        "payload": "a small red number 2 decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景中央消防员的头盔加上一个小红色数字2贴花。",
+        "instruction_noref_zh": "在选中的头盔加上一个小红色数字2贴花。"
+      },
+      {
+        "object_id": 43,
+        "operation": "replace",
+        "ref": "the long dark coat on the rightmost firefighter",
+        "ref_zh": "最右侧消防员的深色长外衣",
+        "scope": "coat",
+        "scope_zh": "外衣",
+        "parent": "right_firefighter",
+        "parent_zh": "右消防员",
+        "payload": "a yellow protective raincoat",
+        "instruction_zh": "将最右侧消防员的深色长外衣替换为一件黄色防护雨衣。",
+        "instruction_noref_zh": "将选中的外衣替换为一件黄色防护雨衣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2564015",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "325399d2e8115bf4efee35d4c99a07157caee7973bcd3fe251a3bb39269066c2",
+    "review_card_sha256": "02b8164f9d55d2d18ee73722f13569fb640d114862f5452fb0444d79d9f4e494",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为摊主花上衣，3为上方打结黑塑料袋，1为后方高藤篮，0为左上空纸箱。四个独立父对象；不随意对相似番茄堆做模糊指代。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "俯拍蔬菜市场摊位",
+      "evidence_zh": "8为摊主花上衣，3为上方打结黑塑料袋，1为后方高藤篮，0为左上空纸箱。四个独立父对象；不随意对相似番茄堆做模糊指代。",
+      "specific_protection_zh": "保留摊主身体、蔬菜摆放、篮内衬、铺布和其他容器。"
+    },
+    "protected_content_zh": "保留摊主身体、蔬菜摆放、篮内衬、铺布和其他容器。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the vendor’s floral blouse",
+        "ref_zh": "摊主的碎花上衣",
+        "scope": "blouse",
+        "scope_zh": "上衣",
+        "parent": "vendor",
+        "parent_zh": "摊主",
+        "payload": "a plain white cotton blouse",
+        "instruction_zh": "将摊主的碎花上衣替换为一件纯白色棉质上衣。",
+        "instruction_noref_zh": "将选中的上衣替换为一件纯白色棉质上衣。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the tied black plastic bag near the top center",
+        "ref_zh": "上方中央附近打结的黑色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "tied_bag",
+        "parent_zh": "打结袋",
+        "payload": "",
+        "instruction_zh": "移除上方中央附近打结的黑色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the tall woven basket at the back",
+        "ref_zh": "后方的高藤编篮",
+        "scope": "basket",
+        "scope_zh": "篮",
+        "parent": "tall_basket",
+        "parent_zh": "高篮",
+        "payload": "a small price tag",
+        "placement": {
+          "relation": "on",
+          "site": "rim",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在后方的高藤编篮的篮沿上加上一张小价签。",
+        "instruction_noref_zh": "在选中的篮的篮沿上加上一张小价签。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the empty cardboard box at the upper left",
+        "ref_zh": "左上方的空纸箱",
+        "scope": "box",
+        "scope_zh": "箱",
+        "parent": "cardboard_box",
+        "parent_zh": "纸箱",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将左上方的空纸箱的颜色改为白色。",
+        "instruction_noref_zh": "将选中的箱的颜色改为白色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2571239",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1d90045925ba76363dbd2323d522f41472b32e5d4b018165692a8d3d3321d581",
+    "review_card_sha256": "b66ac98f91cf83416e87a07f25c18f69a25a0683182bab09ec85e3927f5c9ac2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为主角白礼服，6为左后观众蓝夹克，61为右后白衣观众手持黑相机。不同两人和独立相机；不将同一礼服肩片当第二父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "defocus"
+      ],
+      "scene_zh": "红毯来宾与观众",
+      "evidence_zh": "0为主角白礼服，6为左后观众蓝夹克，61为右后白衣观众手持黑相机。不同两人和独立相机；不将同一礼服肩片当第二父对象。",
+      "specific_protection_zh": "保留原面部模糊、人体、腰带、手包、其他观众与背景文字。"
+    },
+    "protected_content_zh": "保留原面部模糊、人体、腰带、手包、其他观众与背景文字。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the white gown in the foreground",
+        "ref_zh": "前景的白色长礼服",
+        "scope": "gown",
+        "scope_zh": "礼服",
+        "parent": "front_guest",
+        "parent_zh": "前景来宾",
+        "payload": "emerald green",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的白色长礼服的颜色改为祖母绿。",
+        "instruction_noref_zh": "将选中的礼服的颜色改为祖母绿。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the blue jacket in the upper-left crowd",
+        "ref_zh": "左上方人群中的蓝色夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "blue_jacket_spectator",
+        "parent_zh": "蓝衣观众",
+        "payload": "a black blazer",
+        "instruction_zh": "将左上方人群中的蓝色夹克替换为一件黑色西装外套。",
+        "instruction_noref_zh": "将选中的夹克替换为一件黑色西装外套。"
+      },
+      {
+        "object_id": 61,
+        "operation": "remove",
+        "ref": "the black camera held by the white-clad spectator",
+        "ref_zh": "白衣观众手持的黑色相机",
+        "scope": "camera",
+        "scope_zh": "相机",
+        "parent": "held_camera",
+        "parent_zh": "手持相机",
+        "payload": "",
+        "instruction_zh": "移除白衣观众手持的黑色相机。",
+        "instruction_noref_zh": "移除选中的相机。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2580551",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c769e7dfb2b811926246c26cb91c5570a2853e43fd4401de4965cc4d39f9cffc",
+    "review_card_sha256": "0126bde897d2345ac95e70f528a66bf484ec802921e81702c55e7bae312d87f6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为前景白帽，9为8004号跑者衣服，38为左后黑SUV，41为最左背对镜头白T恤。三个不同人物与车辆；不选同一人物的帽与裤重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "路跑终点",
+      "evidence_zh": "14为前景白帽，9为8004号跑者衣服，38为左后黑SUV，41为最左背对镜头白T恤。三个不同人物与车辆；不选同一人物的帽与裤重复计数。",
+      "specific_protection_zh": "保留人体、所有号码布及编号、计时器、路锥和其他参赛者。"
+    },
+    "protected_content_zh": "保留人体、所有号码布及编号、计时器、路锥和其他参赛者。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the white cap in the foreground",
+        "ref_zh": "前景的白色帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "white_cap_runner",
+        "parent_zh": "白帽跑者",
+        "payload": "a small blue star logo",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的白色帽子加上一个小蓝色星形标志。",
+        "instruction_noref_zh": "在选中的帽子加上一个小蓝色星形标志。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "runner 8004’s shirt",
+        "ref_zh": "8004号跑者的上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "runner_8004",
+        "parent_zh": "8004跑者",
+        "payload": "a blue running shirt",
+        "instruction_zh": "将8004号跑者的上衣替换为一件蓝色跑步上衣。",
+        "instruction_noref_zh": "将选中的上衣替换为一件蓝色跑步上衣。"
+      },
+      {
+        "object_id": 38,
+        "operation": "remove",
+        "ref": "the black SUV behind the runners on the left",
+        "ref_zh": "左侧跑者后面的黑色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "black_suv",
+        "parent_zh": "黑SUV",
+        "payload": "",
+        "instruction_zh": "移除左侧跑者后面的黑色SUV。",
+        "instruction_noref_zh": "移除选中的SUV。"
+      },
+      {
+        "object_id": 41,
+        "operation": "attribute",
+        "ref": "the white T-shirt on the back-facing person at the far left",
+        "ref_zh": "最左侧背对镜头者的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "far_left_person",
+        "parent_zh": "最左人",
+        "payload": "orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧背对镜头者的白色T恤的颜色改为橙色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为橙色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

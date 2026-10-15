@@ -1,0 +1,584 @@
+[
+  {
+    "source_id": "sa_2733235",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8a660c3c24b8ba91349b4ac758330361f8ff1b7fb7d0c4335251f595c4f8444e",
+    "review_card_sha256": "1d10620f2f38087aab1058cff3e09c3810088fd23105eb01cb2518918ebc1bb8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为透明袋里的绿色手拿包，18为白卡纸，2为灰毛衣，23为手持咖啡杯。独立包、纸、杯与衣着人物；8透明袋掩膜细碎且覆盖内容，不选。",
+    "difficulty": {
+      "mechanisms": [
+        "transparency",
+        "occlusion"
+      ],
+      "scene_zh": "街头游客与透明购物袋",
+      "evidence_zh": "6为透明袋里的绿色手拿包，18为白卡纸，2为灰毛衣，23为手持咖啡杯。独立包、纸、杯与衣着人物；8透明袋掩膜细碎且覆盖内容，不选。",
+      "specific_protection_zh": "保留面部模糊、双手、牛仔裤、透明外袋及路面。"
+    },
+    "protected_content_zh": "保留面部模糊、双手、牛仔裤、透明外袋及路面。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the green clutch inside the clear bag",
+        "ref_zh": "透明袋里的绿色手拿包",
+        "scope": "clutch",
+        "scope_zh": "手拿包",
+        "parent": "clutch",
+        "parent_zh": "手拿包",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将透明袋里的绿色手拿包的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的手拿包的颜色改为酒红色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the white card inside the clear bag",
+        "ref_zh": "透明袋里的白色卡纸",
+        "scope": "card",
+        "scope_zh": "卡纸",
+        "parent": "card",
+        "parent_zh": "卡纸",
+        "payload": "",
+        "instruction_zh": "移除透明袋里的白色卡纸。",
+        "instruction_noref_zh": "移除选中的卡纸。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the gray sweater",
+        "ref_zh": "灰色毛衣",
+        "scope": "sweater",
+        "scope_zh": "毛衣",
+        "parent": "foreground_woman",
+        "parent_zh": "前景女子",
+        "payload": "a plain cream sweater",
+        "instruction_zh": "将灰色毛衣替换为一件纯米白色毛衣。",
+        "instruction_noref_zh": "将选中的毛衣替换为一件纯米白色毛衣。"
+      },
+      {
+        "object_id": 23,
+        "operation": "add",
+        "ref": "the takeaway coffee cup",
+        "ref_zh": "外带咖啡杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "coffee_cup",
+        "parent_zh": "咖啡杯",
+        "payload": "a small blue coffee-bean logo",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在外带咖啡杯加上一个小蓝色咖啡豆标志。",
+        "instruction_noref_zh": "在选中的杯子加上一个小蓝色咖啡豆标志。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2734741",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5799b12e02162880f638fd6d87ac70a68c363c711502fcb222a24ac2603e8866",
+    "review_card_sha256": "3ca665a467e0c1f931a310fe84c24bb49ce2fa5ecba5f29ef522df1830feb2b2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4中央浅衬衫，5最近条纹上衣，29沙滩废弃塑料瓶，9水边蓝短裤者灰上衣。三个不同人和瓶；不能删正在操作的绳索或脚。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "small_targets"
+      ],
+      "scene_zh": "海滩上拉绳的人们",
+      "evidence_zh": "4中央浅衬衫，5最近条纹上衣，29沙滩废弃塑料瓶，9水边蓝短裤者灰上衣。三个不同人和瓶；不能删正在操作的绳索或脚。",
+      "specific_protection_zh": "保留身体、拉绳、海浪、其余衣着及沙地脚印。"
+    },
+    "protected_content_zh": "保留身体、拉绳、海浪、其余衣着及沙地脚印。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the pale shirt on the central man",
+        "ref_zh": "中央男子的浅色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "central_man",
+        "parent_zh": "中央男子",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央男子的浅色衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the striped shirt on the nearest man",
+        "ref_zh": "最近男子的条纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "nearest_man",
+        "parent_zh": "最近男子",
+        "payload": "a navy polo shirt",
+        "instruction_zh": "将最近男子的条纹上衣替换为一件藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the discarded plastic bottle on the sand",
+        "ref_zh": "沙滩上的废弃塑料瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "bottle",
+        "parent_zh": "瓶子",
+        "payload": "",
+        "instruction_zh": "移除沙滩上的废弃塑料瓶。",
+        "instruction_noref_zh": "移除选中的瓶子。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the gray shirt above the blue shorts",
+        "ref_zh": "蓝色短裤上方的灰色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "waterline_man",
+        "parent_zh": "水边男子",
+        "payload": "a small white stripe across the back",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在蓝色短裤上方的灰色上衣加上一条背部小白横条。",
+        "instruction_noref_zh": "在选中的上衣加上一条背部小白横条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2741974",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "02faa92648fadbd1cd90d2a9a44b093fdf79c33d7216daf08823406cb1ea77e5",
+    "review_card_sha256": "e669d58853dba1feca28877db4a90ca3730520f8263c97d5910964df70603a5e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为黄车前轮轮毂，41为远右深色厢车后门，46为欢迎牌顶部。两辆不同车辆及独立标牌。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "停车场的黄色经典小车",
+      "evidence_zh": "2为黄车前轮轮毂，41为远右深色厢车后门，46为欢迎牌顶部。两辆不同车辆及独立标牌。",
+      "specific_protection_zh": "保留黄车车身、轮胎、各车其他部位、停车场和周围建筑。"
+    },
+    "protected_content_zh": "保留黄车车身、轮胎、各车其他部位、停车场和周围建筑。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the front wheel rim on the yellow car",
+        "ref_zh": "黄色汽车的前轮轮毂",
+        "scope": "wheel rim",
+        "scope_zh": "轮毂",
+        "parent": "yellow_car",
+        "parent_zh": "黄车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将黄色汽车的前轮轮毂的颜色改为银色。",
+        "instruction_noref_zh": "将选中的轮毂的颜色改为银色。"
+      },
+      {
+        "object_id": 41,
+        "operation": "add",
+        "ref": "the rear door of the dark van on the right",
+        "ref_zh": "右侧深色厢式车的后门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "dark_van",
+        "parent_zh": "深厢车",
+        "payload": "a red reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧深色厢式车的后门加上一条红色反光条。",
+        "instruction_noref_zh": "在选中的门加上一条红色反光条。"
+      },
+      {
+        "object_id": 46,
+        "operation": "replace",
+        "ref": "the curved welcome sign behind the yellow car",
+        "ref_zh": "黄色汽车后方的弧顶欢迎牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "welcome_sign",
+        "parent_zh": "欢迎牌",
+        "payload": "a black sign reading Welcome in white",
+        "instruction_zh": "将黄色汽车后方的弧顶欢迎牌替换为一块写有白色Welcome的黑色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有白色Welcome的黑色标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2748410",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "31cc2b9a4bdc47b48ff659bfacaea2171117c3a431e9009db00a3f7c0a96e4c2",
+    "review_card_sha256": "eb1ce5a372d659ebced312ee1af2acee8a864025f340c45ecb397db4845379cf",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为近中央完整紫甘蓝，86为白色转角楼旁行人外套，41为右边黄色售房牌，23为黄楼入口木门。植物、行人、告示和楼四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "similar_instances",
+        "small_targets"
+      ],
+      "scene_zh": "雪中装饰甘蓝与街道",
+      "evidence_zh": "0为近中央完整紫甘蓝，86为白色转角楼旁行人外套，41为右边黄色售房牌，23为黄楼入口木门。植物、行人、告示和楼四父对象。",
+      "specific_protection_zh": "保留积雪、其余甘蓝、行人身体及建筑其他区域。"
+    },
+    "protected_content_zh": "保留积雪、其余甘蓝、行人身体及建筑其他区域。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the round purple ornamental cabbage in the foreground center",
+        "ref_zh": "前景中央的圆形紫色观赏甘蓝",
+        "scope": "plant",
+        "scope_zh": "植物",
+        "parent": "purple_cabbage",
+        "parent_zh": "紫甘蓝",
+        "payload": "a white-and-green ornamental cabbage",
+        "instruction_zh": "将前景中央的圆形紫色观赏甘蓝替换为一株白绿色观赏甘蓝。",
+        "instruction_noref_zh": "将选中的植物替换为一株白绿色观赏甘蓝。"
+      },
+      {
+        "object_id": 86,
+        "operation": "attribute",
+        "ref": "the dark coat beside the white corner building",
+        "ref_zh": "白色转角楼旁的深色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "pedestrian",
+        "parent_zh": "行人",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色转角楼旁的深色外套的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为酒红色。"
+      },
+      {
+        "object_id": 41,
+        "operation": "remove",
+        "ref": "the yellow property sign at the far right",
+        "ref_zh": "最右侧的黄色房产告示牌",
+        "scope": "sign",
+        "scope_zh": "告示牌",
+        "parent": "property_sign",
+        "parent_zh": "房产牌",
+        "payload": "",
+        "instruction_zh": "移除最右侧的黄色房产告示牌。",
+        "instruction_noref_zh": "移除选中的告示牌。"
+      },
+      {
+        "object_id": 23,
+        "operation": "add",
+        "ref": "the wooden entrance door of the yellow building",
+        "ref_zh": "黄色建筑的木质入口门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "yellow_building",
+        "parent_zh": "黄楼",
+        "payload": "a small brass door knocker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黄色建筑的木质入口门加上一个小黄铜门环。",
+        "instruction_noref_zh": "在选中的门加上一个小黄铜门环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2750402",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1f7ae036a74d8478b6febd1e02cb7c8c4519c113777e8ecbfc8768e6c151ab66",
+    "review_card_sha256": "4d64c61a6fdf4cb4d5d5cec565e70baa80be8900db1ab18994dd0bcd6bc21004",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为单独四格窗，3为左入口旁整棵常绿树。栏杆多处包括大片背景不选；跨多个窗的4也不选。两目标分属建筑与树木。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion"
+      ],
+      "scene_zh": "秋叶围栏内的庄园",
+      "evidence_zh": "2为单独四格窗，3为左入口旁整棵常绿树。栏杆多处包括大片背景不选；跨多个窗的4也不选。两目标分属建筑与树木。",
+      "specific_protection_zh": "保留白色立面、树木轮廓、铁围栏、落叶及其他窗户。"
+    },
+    "protected_content_zh": "保留白色立面、树木轮廓、铁围栏、落叶及其他窗户。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the upper window just left of the evergreen tree",
+        "ref_zh": "常绿树左侧紧邻的上层窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "left_building",
+        "parent_zh": "左楼",
+        "payload": "a white wooden casement window",
+        "instruction_zh": "将常绿树左侧紧邻的上层窗户替换为一扇白色木框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇白色木框平开窗。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the evergreen tree just left of the entrance gate",
+        "ref_zh": "入口大门左侧紧邻的常绿树",
+        "scope": "tree",
+        "scope_zh": "树",
+        "parent": "gate_tree",
+        "parent_zh": "门旁树",
+        "payload": "a strand of warm-white fairy lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在入口大门左侧紧邻的常绿树加上一串暖白色小灯。",
+        "instruction_noref_zh": "在选中的树加上一串暖白色小灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2755535",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a2d06003302f977afa1de42930b762b11ba80d175ac551e8b6730391ffecfd00",
+    "review_card_sha256": "3c857ee0c880301f0031a50ef9f4d444d0c61482f66dce7f1af3c69de4c6076e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为黄色前车左侧圆灯，16为其后方左侧完整可见银车。前车其他窗口轮胎同父，不凑多目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "weathering"
+      ],
+      "scene_zh": "旧车堆中的黄色小车",
+      "evidence_zh": "3为黄色前车左侧圆灯，16为其后方左侧完整可见银车。前车其他窗口轮胎同父，不凑多目标。",
+      "specific_protection_zh": "保留锈迹、植物遮挡、落叶、其他车体和镜面反光。"
+    },
+    "protected_content_zh": "保留锈迹、植物遮挡、落叶、其他车体和镜面反光。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the round headlight at the lower left of the yellow car",
+        "ref_zh": "黄色汽车左下方的圆形前灯",
+        "scope": "headlight",
+        "scope_zh": "前灯",
+        "parent": "yellow_car",
+        "parent_zh": "黄车",
+        "payload": "a clear round LED headlight",
+        "instruction_zh": "将黄色汽车左下方的圆形前灯替换为一个透明圆形LED前灯。",
+        "instruction_noref_zh": "将选中的前灯替换为一个透明圆形LED前灯。"
+      },
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the silver car behind the yellow car on the left",
+        "ref_zh": "黄色汽车左后方的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将黄色汽车左后方的银色汽车的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为深蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2775358",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "78972a3176c661a5fb53ad2eeadb766a910f1aac3751ab1d88ea66cb58a68348",
+    "review_card_sha256": "12de10864a9a13626b3366bc5f0d0b7e5766b597c0f9df9da61de7c72c8bcff0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为正在接咖啡的白杯，10为手中铜壶，0为黄挂绳，47为砂盘金属托盘。杯壶挂绳托盘独立；不能移除接液杯或使用手臂。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "liquid_pouring",
+        "reflections"
+      ],
+      "scene_zh": "倒咖啡演示",
+      "evidence_zh": "3为正在接咖啡的白杯，10为手中铜壶，0为黄挂绳，47为砂盘金属托盘。杯壶挂绳托盘独立；不能移除接液杯或使用手臂。",
+      "specific_protection_zh": "保留手部、咖啡液流、盘中砂、人物衣着和背景。"
+    },
+    "protected_content_zh": "保留手部、咖啡液流、盘中砂、人物衣着和背景。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the white cup receiving the coffee",
+        "ref_zh": "正在接咖啡的白色杯子",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "coffee_cup",
+        "parent_zh": "接液杯",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将正在接咖啡的白色杯子的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的杯子的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the copper pot pouring the coffee",
+        "ref_zh": "正在倒咖啡的铜壶",
+        "scope": "pot",
+        "scope_zh": "壶",
+        "parent": "pouring_pot",
+        "parent_zh": "倒液壶",
+        "payload": "a stainless-steel coffee pot",
+        "instruction_zh": "将正在倒咖啡的铜壶替换为一个不锈钢咖啡壶。",
+        "instruction_noref_zh": "将选中的壶替换为一个不锈钢咖啡壶。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the yellow lanyard",
+        "ref_zh": "黄色挂绳",
+        "scope": "lanyard",
+        "scope_zh": "挂绳",
+        "parent": "lanyard",
+        "parent_zh": "挂绳",
+        "payload": "",
+        "instruction_zh": "移除黄色挂绳。",
+        "instruction_noref_zh": "移除选中的挂绳。"
+      },
+      {
+        "object_id": 47,
+        "operation": "add",
+        "ref": "the metal sand tray",
+        "ref_zh": "金属砂盘",
+        "scope": "tray",
+        "scope_zh": "托盘",
+        "parent": "sand_tray",
+        "parent_zh": "砂盘",
+        "payload": "a small wooden label",
+        "placement": {
+          "relation": "on",
+          "site": "front edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在金属砂盘的前沿加上一块小木标签。",
+        "instruction_noref_zh": "在选中的托盘的前沿加上一块小木标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2800852",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b649fac3e359a1aa4bae8a7bbbd1b68966ec89106bd96627f4bd1fa95ae9a338",
+    "review_card_sha256": "89535268347c55d3a3ae883390d4285bfd6aae8d5e6b92187845951e37d3bb40",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为独立OFFICES TO LET租赁牌，3为立面中央拱窗。窗与栏杆都是同楼部件只选一处，租赁牌可单独移除。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "text",
+        "reflections"
+      ],
+      "scene_zh": "伞店立面",
+      "evidence_zh": "2为独立OFFICES TO LET租赁牌，3为立面中央拱窗。窗与栏杆都是同楼部件只选一处，租赁牌可单独移除。",
+      "specific_protection_zh": "保留伞店文字、立面装饰、窗格、其他告示和反射。"
+    },
+    "protected_content_zh": "保留伞店文字、立面装饰、窗格、其他告示和反射。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the OFFICES TO LET sign",
+        "ref_zh": "OFFICES TO LET招租牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "rental_sign",
+        "parent_zh": "租赁牌",
+        "payload": "",
+        "instruction_zh": "移除OFFICES TO LET招租牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the arched window above the shop",
+        "ref_zh": "店铺上方的拱形窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "shop_building",
+        "parent_zh": "店楼",
+        "payload": "pale gray",
+        "attribute_kind": "tint",
+        "instruction_zh": "将店铺上方的拱形窗户的色调改为浅灰色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅灰色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,146 @@
+{
+  "source_id": "sa_10784555",
+  "reason_zh": "全图定位确认椅子位于两长方形花箱之间，原“最右花盆后”会指向另一处堆椅，修正指代。",
+  "previous_record": {
+    "source_id": "sa_10784555",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "473b8f97c0e39101f85da1aac5e403c2112049fba3f0846ab5fb9272f0ce0e35",
+    "review_card_sha256": "2f6ebcd31a1267b0620bbbe5ea1a85ec547fa27ee03bcf9172b58409572752bd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "36为近处完整白色吊花，86为左楼墙面红百叶窗，120为盆栽右后方可见小椅子。避开125、126把栏杆孔洞填为背景的mask。选中对象分别属于花卉、建筑和椅子。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "广场边的吊花、百叶窗和露天餐椅",
+      "evidence_zh": "36为近处完整白色吊花，86为左楼墙面红百叶窗，120为盆栽右后方可见小椅子。避开125、126把栏杆孔洞填为背景的mask。选中对象分别属于花卉、建筑和椅子。",
+      "specific_protection_zh": "保留邻近红粉吊花、花盆、建筑墙面、桌子与行人。"
+    },
+    "protected_content_zh": "保留邻近红粉吊花、花盆、建筑墙面、桌子与行人。",
+    "targets": [
+      {
+        "object_id": 36,
+        "operation": "replace",
+        "ref": "the large white hanging flower cluster",
+        "ref_zh": "那簇较大的白色吊花",
+        "scope": "hanging flowers",
+        "scope_zh": "吊花",
+        "parent": "white_hanging_plant",
+        "parent_zh": "白色吊花植株",
+        "payload": "a cascading ivy plant",
+        "instruction_zh": "将那簇较大的白色吊花替换为一株垂挂常春藤。",
+        "instruction_noref_zh": "将选中的吊花替换为一株垂挂常春藤。"
+      },
+      {
+        "object_id": 86,
+        "operation": "attribute",
+        "ref": "the red shutter on the left building",
+        "ref_zh": "左侧建筑上的红色百叶窗",
+        "scope": "shutter",
+        "scope_zh": "百叶窗",
+        "parent": "left_building",
+        "parent_zh": "左侧建筑",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧建筑上的红色百叶窗的颜色改为青绿色。",
+        "instruction_noref_zh": "将选中的百叶窗的颜色改为青绿色。"
+      },
+      {
+        "object_id": 120,
+        "operation": "remove",
+        "ref": "the chair just behind the rightmost planter",
+        "ref_zh": "最右侧花盆后面的椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "cafe_chair",
+        "parent_zh": "露天椅子",
+        "payload": "",
+        "instruction_zh": "移除最右侧花盆后面的椅子。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10784555",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "473b8f97c0e39101f85da1aac5e403c2112049fba3f0846ab5fb9272f0ce0e35",
+    "review_card_sha256": "2f6ebcd31a1267b0620bbbe5ea1a85ec547fa27ee03bcf9172b58409572752bd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "36为近处完整白色吊花，86为左楼墙面红百叶窗，120为盆栽右后方可见小椅子。避开125、126把栏杆孔洞填为背景的mask。选中对象分别属于花卉、建筑和椅子。 复核修订：全图定位确认椅子位于两长方形花箱之间，原“最右花盆后”会指向另一处堆椅，修正指代。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "广场边的吊花、百叶窗和露天餐椅",
+      "evidence_zh": "36为近处完整白色吊花，86为左楼墙面红百叶窗，120为盆栽右后方可见小椅子。避开125、126把栏杆孔洞填为背景的mask。选中对象分别属于花卉、建筑和椅子。 复核修订：全图定位确认椅子位于两长方形花箱之间，原“最右花盆后”会指向另一处堆椅，修正指代。",
+      "specific_protection_zh": "保留邻近红粉吊花、花盆、建筑墙面、桌子与行人。"
+    },
+    "protected_content_zh": "保留邻近红粉吊花、花盆、建筑墙面、桌子与行人。",
+    "targets": [
+      {
+        "object_id": 36,
+        "operation": "replace",
+        "ref": "the large white hanging flower cluster",
+        "ref_zh": "那簇较大的白色吊花",
+        "scope": "hanging flowers",
+        "scope_zh": "吊花",
+        "parent": "white_hanging_plant",
+        "parent_zh": "白色吊花植株",
+        "payload": "a cascading ivy plant",
+        "instruction_zh": "将那簇较大的白色吊花替换为一株垂挂常春藤。",
+        "instruction_noref_zh": "将选中的吊花替换为一株垂挂常春藤。"
+      },
+      {
+        "object_id": 86,
+        "operation": "attribute",
+        "ref": "the red shutter on the left building",
+        "ref_zh": "左侧建筑上的红色百叶窗",
+        "scope": "shutter",
+        "scope_zh": "百叶窗",
+        "parent": "left_building",
+        "parent_zh": "左侧建筑",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧建筑上的红色百叶窗的颜色改为青绿色。",
+        "instruction_noref_zh": "将选中的百叶窗的颜色改为青绿色。"
+      },
+      {
+        "object_id": 120,
+        "operation": "remove",
+        "ref": "the black chair between the rectangular planters",
+        "ref_zh": "两个长方形花箱之间的黑椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "cafe_chair",
+        "parent_zh": "露天椅子",
+        "payload": "",
+        "instruction_zh": "移除两个长方形花箱之间的黑椅子。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_10784555/chair_spatial_review.jpg",
+        "sha256": "c3ad5e78687a44ec87cf62be0562ebd531afbd4687e20912abe0ace8ab5d39fc"
+      }
+    ]
+  }
+}

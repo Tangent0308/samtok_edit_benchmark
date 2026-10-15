@@ -1,0 +1,637 @@
+[
+  {
+    "source_id": "sa_3208711",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5146c6e9554038b012e8a1dc55112dcde3d07a65b71c73dae216f8e44bab34c5",
+    "review_card_sha256": "1d5b09f61b6a3220aa09926b173c4cfe338e22e2c00f5abf5dae076266589cb7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13为前桌绿水瓶，3为右人白T恤，23为桌上笔记本，35为前桌台面。四独立物体，玻璃圆贴和反射不当新增现场物。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "reflections",
+        "occlusion"
+      ],
+      "scene_zh": "透过玻璃看办公室",
+      "evidence_zh": "13为前桌绿水瓶，3为右人白T恤，23为桌上笔记本，35为前桌台面。四独立物体，玻璃圆贴和反射不当新增现场物。",
+      "specific_protection_zh": "保留玻璃圆贴、电脑、人体、桌上其余物和室内光线。"
+    },
+    "protected_content_zh": "保留玻璃圆贴、电脑、人体、桌上其余物和室内光线。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the green water bottle on the front desk",
+        "ref_zh": "前方桌上的绿色水瓶",
+        "scope": "bottle",
+        "scope_zh": "水瓶",
+        "parent": "water_bottle",
+        "parent_zh": "水瓶",
+        "payload": "a stainless-steel water bottle",
+        "instruction_zh": "将前方桌上的绿色水瓶替换为一个不锈钢水瓶。",
+        "instruction_noref_zh": "将选中的水瓶替换为一个不锈钢水瓶。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the white T-shirt on the man on the right",
+        "ref_zh": "右侧男子的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_man",
+        "parent_zh": "右男子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧男子的白色T恤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the open notebook beside the colorful pencil case",
+        "ref_zh": "彩色笔袋旁摊开的笔记本",
+        "scope": "notebook",
+        "scope_zh": "笔记本",
+        "parent": "notebook",
+        "parent_zh": "笔记本",
+        "payload": "",
+        "instruction_zh": "移除彩色笔袋旁摊开的笔记本。",
+        "instruction_noref_zh": "移除选中的笔记本。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the desktop beside the nearest woman",
+        "ref_zh": "最近女子身旁的桌面",
+        "scope": "desktop",
+        "scope_zh": "桌面",
+        "parent": "front_desk",
+        "parent_zh": "前桌",
+        "payload": "a tiny potted succulent",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近女子身旁的桌面加上一盆小多肉植物。",
+        "instruction_noref_zh": "在选中的桌面加上一盆小多肉植物。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3235049",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b9f7b69fd46507fb4a9c5fda97c3e9a5a5ee8617ccda75a40dcdd145c2b51616",
+    "review_card_sha256": "1430b6ba948a965b8482afeef099224f785f6b600e1bf78e9efbd71f8e662e8b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为左近牛仔外套，3为推车者红上衣，49为后面白衣者背包，0为婴儿车。两个人、背包、婴儿车独立；网栏大面积背景不强选。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "观景塔前推婴儿车的人群",
+      "evidence_zh": "5为左近牛仔外套，3为推车者红上衣，49为后面白衣者背包，0为婴儿车。两个人、背包、婴儿车独立；网栏大面积背景不强选。",
+      "specific_protection_zh": "保留人物、婴儿车内内容、轮子、桥面、栏杆及观景塔。"
+    },
+    "protected_content_zh": "保留人物、婴儿车内内容、轮子、桥面、栏杆及观景塔。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the denim jacket beside the stroller",
+        "ref_zh": "婴儿车旁的牛仔外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_visitor",
+        "parent_zh": "左游客",
+        "payload": "a beige cardigan",
+        "instruction_zh": "将婴儿车旁的牛仔外套替换为一件米色开衫。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色开衫。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the maroon T-shirt on the person pushing the stroller",
+        "ref_zh": "推婴儿车者的酒红色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "stroller_person",
+        "parent_zh": "推车者",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将推婴儿车者的酒红色T恤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 49,
+        "operation": "remove",
+        "ref": "the backpack on the white-shirted visitor behind the stroller",
+        "ref_zh": "婴儿车后方白衣游客的背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "rear_backpack",
+        "parent_zh": "后背包",
+        "payload": "",
+        "instruction_zh": "移除婴儿车后方白衣游客的背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the orange stroller",
+        "ref_zh": "橙色婴儿车",
+        "scope": "stroller",
+        "scope_zh": "婴儿车",
+        "parent": "stroller",
+        "parent_zh": "婴儿车",
+        "payload": "a small hanging plush toy",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在橙色婴儿车加上一个小悬挂毛绒玩具。",
+        "instruction_noref_zh": "在选中的婴儿车加上一个小悬挂毛绒玩具。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3278974",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bae91adb7020abc1917753724acdbd16aa4342277e553813f6c5f1227e5305a5",
+    "review_card_sha256": "3d2afe35d6b70d41bb3351137e8a568479aea1440c03b5ff9d447f0c7f40f082",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为蓝鞋盒，4为白地毯，1为右鞋整物。鞋盒、地毯、右鞋不同物件；不把左鞋多个条纹当多个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "product_scene",
+        "repeated_items"
+      ],
+      "scene_zh": "地毯上的运动鞋和鞋盒",
+      "evidence_zh": "0为蓝鞋盒，4为白地毯，1为右鞋整物。鞋盒、地毯、右鞋不同物件；不把左鞋多个条纹当多个父对象。",
+      "specific_protection_zh": "保留两鞋原有红白配色、鞋型、阴影及地毯纹理。"
+    },
+    "protected_content_zh": "保留两鞋原有红白配色、鞋型、阴影及地毯纹理。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the blue shoebox",
+        "ref_zh": "蓝色鞋盒",
+        "scope": "box",
+        "scope_zh": "鞋盒",
+        "parent": "shoebox",
+        "parent_zh": "鞋盒",
+        "payload": "a plain kraft-cardboard shoebox",
+        "instruction_zh": "将蓝色鞋盒替换为一个素牛皮纸鞋盒。",
+        "instruction_noref_zh": "将选中的鞋盒替换为一个素牛皮纸鞋盒。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the white shag rug",
+        "ref_zh": "白色长绒地毯",
+        "scope": "rug",
+        "scope_zh": "地毯",
+        "parent": "rug",
+        "parent_zh": "地毯",
+        "payload": "light gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色长绒地毯的颜色改为浅灰色。",
+        "instruction_noref_zh": "将选中的地毯的颜色改为浅灰色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the sneaker on the right",
+        "ref_zh": "右侧的运动鞋",
+        "scope": "sneaker",
+        "scope_zh": "运动鞋",
+        "parent": "right_shoe",
+        "parent_zh": "右鞋",
+        "payload": "a small white price tag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的运动鞋加上一张小白色价格吊牌。",
+        "instruction_noref_zh": "在选中的运动鞋加上一张小白色价格吊牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3283229",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8ccc290d743293455efe11dfbfc2cdb02f43dd34d817ee2ea56a32d47a13c552",
+    "review_card_sha256": "54451662d40c354c42b01d770ee8b067fac29b76875db79790e27cbff62494cd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12为左近白头巾，9为右人黄绿头巾，14为左人棕肩包，4为左近弯路灯。两个人、包和灯独立。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "下坡步道和两位游客",
+      "evidence_zh": "12为左近白头巾，9为右人黄绿头巾，14为左人棕肩包，4为左近弯路灯。两个人、包和灯独立。",
+      "specific_protection_zh": "保留人体、其他服饰、围栏、道路、建筑和天空。"
+    },
+    "protected_content_zh": "保留人体、其他服饰、围栏、道路、建筑和天空。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "replace",
+        "ref": "the white headscarf on the nearest woman on the left",
+        "ref_zh": "左侧最近女子的白色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "left_woman",
+        "parent_zh": "左女子",
+        "payload": "a pale-pink silk headscarf",
+        "instruction_zh": "将左侧最近女子的白色头巾替换为一条浅粉色丝绸头巾。",
+        "instruction_noref_zh": "将选中的头巾替换为一条浅粉色丝绸头巾。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the yellow-green headscarf on the woman on the right",
+        "ref_zh": "右侧女子的黄绿色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "right_woman",
+        "parent_zh": "右女子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧女子的黄绿色头巾的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the brown crossbody bag on the nearest woman on the left",
+        "ref_zh": "左侧最近女子的棕色斜挎包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "brown_bag",
+        "parent_zh": "棕包",
+        "payload": "",
+        "instruction_zh": "移除左侧最近女子的棕色斜挎包。",
+        "instruction_noref_zh": "移除选中的包。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the nearest curved streetlamp on the left",
+        "ref_zh": "左侧最近的弯杆路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "curved_lamp",
+        "parent_zh": "弯杆灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧最近的弯杆路灯加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3283366",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a939459aee179a65e214f1f9094f08a7ced5fbde7ec234788cf77f772d803855",
+    "review_card_sha256": "45be09cb5a44f418d3527cdb67563224fca292f0aba3d698a45ae390685a4975",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为前皮卡，1为后银客车。两独立车辆；车轮窗门不多计父对象，保留牵引绳关系。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "reflections",
+        "occlusion"
+      ],
+      "scene_zh": "雪地林间牵引车辆",
+      "evidence_zh": "0为前皮卡，1为后银客车。两独立车辆；车轮窗门不多计父对象，保留牵引绳关系。",
+      "specific_protection_zh": "保留积雪、轮胎、牵引绳、车灯、车牌、树林和人物。"
+    },
+    "protected_content_zh": "保留积雪、轮胎、牵引绳、车灯、车牌、树林和人物。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the pickup truck in front",
+        "ref_zh": "前方的皮卡",
+        "scope": "pickup",
+        "scope_zh": "皮卡",
+        "parent": "pickup",
+        "parent_zh": "皮卡",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前方的皮卡的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的皮卡的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the silver minivan behind the pickup",
+        "ref_zh": "皮卡后方的银色客车",
+        "scope": "minivan",
+        "scope_zh": "客车",
+        "parent": "minivan",
+        "parent_zh": "客车",
+        "payload": "a small roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在皮卡后方的银色客车加上一个小车顶行李架。",
+        "instruction_noref_zh": "在选中的客车加上一个小车顶行李架。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3283788",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "725f964c70c66c5f8d759206913c607de384af3c57824462818abded3282c910",
+    "review_card_sha256": "69bca2dca4982ae44d1727dbc4e543fb7629d7037ab7c1820750167e6305d8c4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左入口红推车，47为左窄促销牌，16为店名字牌，96为左侧玻璃柜端面。四不同物件，不用合并柜台41当单柜。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "text",
+        "repetition"
+      ],
+      "scene_zh": "商场电器店入口",
+      "evidence_zh": "0为左入口红推车，47为左窄促销牌，16为店名字牌，96为左侧玻璃柜端面。四不同物件，不用合并柜台41当单柜。",
+      "specific_protection_zh": "保留其他商品、灯、柜台、通道、门框和店名文字。"
+    },
+    "protected_content_zh": "保留其他商品、灯、柜台、通道、门框和店名文字。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the red shopping cart at the entrance",
+        "ref_zh": "入口处的红色购物车",
+        "scope": "cart",
+        "scope_zh": "购物车",
+        "parent": "shopping_cart",
+        "parent_zh": "购物车",
+        "payload": "",
+        "instruction_zh": "移除入口处的红色购物车。",
+        "instruction_noref_zh": "移除选中的购物车。"
+      },
+      {
+        "object_id": 47,
+        "operation": "replace",
+        "ref": "the narrow promotional poster on the left",
+        "ref_zh": "左侧的窄促销海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "left_poster",
+        "parent_zh": "左海报",
+        "payload": "a navy poster reading SALE in white",
+        "instruction_zh": "将左侧的窄促销海报替换为一张写有白色SALE的藏蓝色海报。",
+        "instruction_noref_zh": "将选中的海报替换为一张写有白色SALE的藏蓝色海报。"
+      },
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the Harvey Norman letters above the entrance",
+        "ref_zh": "入口上方的Harvey Norman字母牌",
+        "scope": "letters",
+        "scope_zh": "字母牌",
+        "parent": "store_sign",
+        "parent_zh": "店牌",
+        "payload": "warm gold",
+        "attribute_kind": "color",
+        "instruction_zh": "将入口上方的Harvey Norman字母牌的颜色改为暖金色。",
+        "instruction_noref_zh": "将选中的字母牌的颜色改为暖金色。"
+      },
+      {
+        "object_id": 96,
+        "operation": "add",
+        "ref": "the narrow illuminated display cabinet on the right",
+        "ref_zh": "右侧窄发光展示柜",
+        "scope": "cabinet",
+        "scope_zh": "展示柜",
+        "parent": "right_cabinet",
+        "parent_zh": "右柜",
+        "payload": "a small white SALE sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧窄发光展示柜加上一张小白色SALE贴纸。",
+        "instruction_noref_zh": "在选中的展示柜加上一张小白色SALE贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3314969",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0f38f2db095e2953f32969c49c5ed7b551bafb36c1e2d809f8da05b863e968ff",
+    "review_card_sha256": "5aefd4fe4b35402a56ba8d98b6acfa4412cbddef1f52504ed2cf2ecdcbf9868d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为雕像右后的近灯头，19为左楼单绿百叶，9为雕像基底大石。灯、左楼、纪念雕像三父对象；多块同底座石不多计。",
+    "difficulty": {
+      "mechanisms": [
+        "backlighting",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "雪山前的雕像与街屋",
+      "evidence_zh": "6为雕像右后的近灯头，19为左楼单绿百叶，9为雕像基底大石。灯、左楼、纪念雕像三父对象；多块同底座石不多计。",
+      "specific_protection_zh": "保留雪山、雕像、楼体、灯杆、其他窗户和石材纹理。"
+    },
+    "protected_content_zh": "保留雪山、雕像、楼体、灯杆、其他窗户和石材纹理。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the streetlamp head just right of the statue",
+        "ref_zh": "雕像右侧紧邻的路灯灯头",
+        "scope": "lamp head",
+        "scope_zh": "灯头",
+        "parent": "near_streetlamp",
+        "parent_zh": "近路灯",
+        "payload": "a white globe lamp head",
+        "instruction_zh": "将雕像右侧紧邻的路灯灯头替换为一个白色球形灯头。",
+        "instruction_noref_zh": "将选中的灯头替换为一个白色球形灯头。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the leftmost upper-floor green shutter on the left building",
+        "ref_zh": "左侧建筑上层最左边的绿色百叶窗板",
+        "scope": "shutter",
+        "scope_zh": "百叶窗板",
+        "parent": "left_building",
+        "parent_zh": "左楼",
+        "payload": "muted blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧建筑上层最左边的绿色百叶窗板的颜色改为灰蓝色。",
+        "instruction_noref_zh": "将选中的百叶窗板的颜色改为灰蓝色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the broad granite base below the statue",
+        "ref_zh": "雕像下方宽大的花岗岩基座",
+        "scope": "base",
+        "scope_zh": "基座",
+        "parent": "statue_monument",
+        "parent_zh": "雕像纪念物",
+        "payload": "a small brass memorial plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在雕像下方宽大的花岗岩基座加上一块小黄铜纪念牌。",
+        "instruction_noref_zh": "在选中的基座加上一块小黄铜纪念牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3317825",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a85f5092299ddf1b556b16d4d9d3f44c20c6e9b45f31e4641525ff99b3492c8d",
+    "review_card_sha256": "cbed9bb33a3aacae7074561600ce6d271342fdb9bf52b77dcc5fbff28b3fbdf7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为靠近女子膝盖的上层卷心菜，5为格纹外套，11为白塑料篮，10为番茄透明袋。菜、人、篮、袋独立。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "shallow_depth_of_field",
+        "clutter"
+      ],
+      "scene_zh": "船上售菜的摊贩",
+      "evidence_zh": "3为靠近女子膝盖的上层卷心菜，5为格纹外套，11为白塑料篮，10为番茄透明袋。菜、人、篮、袋独立。",
+      "specific_protection_zh": "保留女子身体和手、斗笠、其他蔬菜、船和河水。"
+    },
+    "protected_content_zh": "保留女子身体和手、斗笠、其他蔬菜、船和河水。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the cabbage nearest the vendor’s knee",
+        "ref_zh": "最靠近摊贩膝盖的卷心菜",
+        "scope": "cabbage",
+        "scope_zh": "卷心菜",
+        "parent": "cabbage",
+        "parent_zh": "卷心菜",
+        "payload": "a red cabbage",
+        "instruction_zh": "将最靠近摊贩膝盖的卷心菜替换为一颗紫甘蓝。",
+        "instruction_noref_zh": "将选中的卷心菜替换为一颗紫甘蓝。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the vendor’s checked jacket",
+        "ref_zh": "摊贩的格纹外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "vendor",
+        "parent_zh": "摊贩",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将摊贩的格纹外套的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the white plastic basket beside the vendor",
+        "ref_zh": "摊贩身旁的白色塑料篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "plastic_basket",
+        "parent_zh": "塑料篮",
+        "payload": "a small handwritten price tag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在摊贩身旁的白色塑料篮加上一张小手写价格牌。",
+        "instruction_noref_zh": "在选中的篮子加上一张小手写价格牌。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the clear bag of tomatoes in the foreground",
+        "ref_zh": "前景装有番茄的透明袋子",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "tomato_bag",
+        "parent_zh": "番茄袋",
+        "payload": "",
+        "instruction_zh": "移除前景装有番茄的透明袋子。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

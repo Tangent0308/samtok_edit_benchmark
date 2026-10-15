@@ -1,0 +1,621 @@
+[
+  {
+    "source_id": "sa_68727",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "59cef41b3922c81b6f453cb611c98301c2b98d7d0a1818aa9858d6cfe4ff5678",
+    "review_card_sha256": "b015a5d5f925e94624c3873cb96e88261a015783d319cfecdc9e6a3685d0282e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11左侧深蓝外套、19中间棕色外套、21右中浅蓝外套、285LA HALLE招牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "winter",
+        "crowd",
+        "motion blur"
+      ],
+      "scene_zh": "冬季滑冰场",
+      "evidence_zh": "11左侧深蓝外套、19中间棕色外套、21右中浅蓝外套、285LA HALLE招牌是四个不同对象。",
+      "specific_protection_zh": "保留冰面、圣诞树、建筑和其他滑冰者。"
+    },
+    "protected_content_zh": "保留冰面、圣诞树、建筑和其他滑冰者。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the dark blue jacket on the skater at the left",
+        "ref_zh": "左侧滑冰者的深蓝外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_skater",
+        "parent_zh": "左滑冰者",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧滑冰者的深蓝外套的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为酒红色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "replace",
+        "ref": "the tan coat on the skater near the center",
+        "ref_zh": "中间附近滑冰者的棕褐色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "center_skater",
+        "parent_zh": "中间滑冰者",
+        "payload": "a dark green parka",
+        "instruction_zh": "将中间附近滑冰者的棕褐色外套替换为一件深绿色派克大衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件深绿色派克大衣。"
+      },
+      {
+        "object_id": 21,
+        "operation": "remove",
+        "ref": "the light blue jacket on the skater at the right",
+        "ref_zh": "右侧滑冰者的浅蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "right_skater",
+        "parent_zh": "右滑冰者",
+        "payload": "",
+        "instruction_zh": "移除右侧滑冰者的浅蓝色外套。",
+        "instruction_noref_zh": "移除选中的外套。"
+      },
+      {
+        "object_id": 285,
+        "operation": "add",
+        "ref": "the LA HALLE sign behind the rink",
+        "ref_zh": "冰场后方的LA HALLE招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "la_halle_sign",
+        "parent_zh": "LA HALLE牌",
+        "payload": "a small gold star decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在冰场后方的LA HALLE招牌加上一个小金色星形贴花。",
+        "instruction_noref_zh": "在选中的招牌加上一个小金色星形贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6888719",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "319b45b0b242148e3dd9efe0805411a09af163720591efde1ccf5b92fd0f5f98",
+    "review_card_sha256": "855007fc627e72be94467d126b33d56e3b5f945e0594312282a97608382d5f5c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7右侧大型渔船、26中左渔船、43左侧渔船、6后方防波堤石块是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "boats",
+        "occlusion"
+      ],
+      "scene_zh": "渔港船只",
+      "evidence_zh": "7右侧大型渔船、26中左渔船、43左侧渔船、6后方防波堤石块是四个不同对象。",
+      "specific_protection_zh": "保留港口、水面和其他船只。"
+    },
+    "protected_content_zh": "保留港口、水面和其他船只。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the large fishing boat at the right",
+        "ref_zh": "右侧的大型渔船",
+        "scope": "boat",
+        "scope_zh": "渔船",
+        "parent": "right_boat",
+        "parent_zh": "右船",
+        "payload": "",
+        "instruction_zh": "移除右侧的大型渔船。",
+        "instruction_noref_zh": "移除选中的渔船。"
+      },
+      {
+        "object_id": 26,
+        "operation": "attribute",
+        "ref": "the fishing boat near the center-left",
+        "ref_zh": "中间偏左的渔船",
+        "scope": "boat",
+        "scope_zh": "渔船",
+        "parent": "center_left_boat",
+        "parent_zh": "中左船",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间偏左的渔船的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的渔船的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 43,
+        "operation": "replace",
+        "ref": "the smaller fishing boat at the far left",
+        "ref_zh": "最左侧的较小渔船",
+        "scope": "boat",
+        "scope_zh": "渔船",
+        "parent": "far_left_boat",
+        "parent_zh": "左船",
+        "payload": "a red-and-white boat",
+        "instruction_zh": "将最左侧的较小渔船替换为一艘红白相间的渔船。",
+        "instruction_noref_zh": "将选中的渔船替换为一艘红白相间的渔船。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the stone breakwater behind the boats",
+        "ref_zh": "船只后方的石质防波堤",
+        "scope": "breakwater",
+        "scope_zh": "防波堤",
+        "parent": "breakwater",
+        "parent_zh": "防波堤",
+        "payload": "a small red warning marker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在船只后方的石质防波堤加上一个小红色警示标记。",
+        "instruction_noref_zh": "在选中的防波堤加上一个小红色警示标记。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6895502",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fe5240d155bc0df1bf5e9d5c0ed96ca0debc7671dacc1f1a7ff5b6c31f97feaa",
+    "review_card_sha256": "5012c2727996f855826f94e1beb97f126b42e710268a0ec8117a90f5d8af08a3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2左侧巡逻船、1跳水者泳裤、40前景平台边缘是三个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "backlight",
+        "perspective"
+      ],
+      "scene_zh": "海上跳水",
+      "evidence_zh": "2左侧巡逻船、1跳水者泳裤、40前景平台边缘是三个不同对象。",
+      "specific_protection_zh": "保留跳水者、海面和其他船只。"
+    },
+    "protected_content_zh": "保留跳水者、海面和其他船只。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the patrol boat at the left horizon",
+        "ref_zh": "左侧地平线上的巡逻船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "left_patrol_boat",
+        "parent_zh": "左船",
+        "payload": "",
+        "instruction_zh": "移除左侧地平线上的巡逻船。",
+        "instruction_noref_zh": "移除选中的船。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the swim trunks on the jumping person",
+        "ref_zh": "跳水者的泳裤",
+        "scope": "swim trunks",
+        "scope_zh": "泳裤",
+        "parent": "jumper",
+        "parent_zh": "跳水者",
+        "payload": "deep blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将跳水者的泳裤的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的泳裤的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 40,
+        "operation": "replace",
+        "ref": "the orange platform edge in the foreground",
+        "ref_zh": "前景的橙色平台边缘",
+        "scope": "ledge",
+        "scope_zh": "平台边缘",
+        "parent": "foreground_ledge",
+        "parent_zh": "前景边缘",
+        "payload": "a dark wooden edge",
+        "instruction_zh": "将前景的橙色平台边缘替换为一条深色木质边缘。",
+        "instruction_noref_zh": "将选中的平台边缘替换为一条深色木质边缘。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6896269",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9f210f349e02f39ab9cf9249e93d57d14cd17b86a948456877a81752cccf4af9",
+    "review_card_sha256": "d7161125fc7c0af3b9a13c47d4f91312cfe9169a9b6becb736ebfc569bf32e36",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "23中央上方绿篱、111吊挂音箱、145右侧花裙、187后方店铺招牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "commerce",
+        "architecture",
+        "occlusion"
+      ],
+      "scene_zh": "商场中庭",
+      "evidence_zh": "23中央上方绿篱、111吊挂音箱、145右侧花裙、187后方店铺招牌是四个不同对象。",
+      "specific_protection_zh": "保留喷泉、屏幕、商场结构和行人。"
+    },
+    "protected_content_zh": "保留喷泉、屏幕、商场结构和行人。",
+    "targets": [
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the rectangular hedge above the central storefront",
+        "ref_zh": "中央店铺上方的矩形绿篱",
+        "scope": "hedge",
+        "scope_zh": "绿篱",
+        "parent": "central_hedge",
+        "parent_zh": "中央绿篱",
+        "payload": "",
+        "instruction_zh": "移除中央店铺上方的矩形绿篱。",
+        "instruction_noref_zh": "移除选中的绿篱。"
+      },
+      {
+        "object_id": 111,
+        "operation": "attribute",
+        "ref": "the hanging speaker near the upper right",
+        "ref_zh": "右上方附近的吊挂音箱",
+        "scope": "speaker",
+        "scope_zh": "音箱",
+        "parent": "upper_speaker",
+        "parent_zh": "上方音箱",
+        "payload": "matte black",
+        "attribute_kind": "finish",
+        "instruction_zh": "将右上方附近的吊挂音箱的表面效果改为哑光黑色。",
+        "instruction_noref_zh": "将选中的音箱的表面效果改为哑光黑色。"
+      },
+      {
+        "object_id": 145,
+        "operation": "replace",
+        "ref": "the floral dress on the seated woman at the right",
+        "ref_zh": "右侧坐着女子的碎花裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "seated_woman",
+        "parent_zh": "坐着女子",
+        "payload": "a solid navy dress",
+        "instruction_zh": "将右侧坐着女子的碎花裙替换为一件藏蓝色纯色连衣裙。",
+        "instruction_noref_zh": "将选中的连衣裙替换为一件藏蓝色纯色连衣裙。"
+      },
+      {
+        "object_id": 187,
+        "operation": "add",
+        "ref": "the long shop sign on the rear wall",
+        "ref_zh": "后墙上的长店铺招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "rear_sign",
+        "parent_zh": "后方招牌",
+        "payload": "a small white OPEN sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在后墙上的长店铺招牌加上一个小白色OPEN贴纸。",
+        "instruction_noref_zh": "在选中的招牌加上一个小白色OPEN贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6924950",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "36f62c8d671b91dc75b58df9ec5901ea233062da5e4e335b5a70f24dc4538127",
+    "review_card_sha256": "d7e9a83d02f80d4247bcd1b33d87494a58188101ede822663eba9706df0a1769",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 全部属于同一架飞机的舷窗、机轮、机翼和发动机，缺少独立父对象，暂不计入。",
+    "difficulty": {
+      "mechanisms": [
+        "aircraft",
+        "symmetry"
+      ],
+      "scene_zh": "飞机正面",
+      "evidence_zh": "候选 mask 全部属于同一架飞机的舷窗、机轮、机翼和发动机，缺少独立父对象，暂不计入。",
+      "specific_protection_zh": "不将同一架飞机的部件重复计为多个编辑目标。"
+    },
+    "protected_content_zh": "不将同一架飞机的部件重复计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 4,
+        "reason_zh": "同一架飞机部件"
+      },
+      {
+        "object_id": 5,
+        "reason_zh": "同一架飞机部件"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_692643",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "df98325ca2c94ae42b8376828c38837ccbcaf9e13126101ace97d7abfdad472e",
+    "review_card_sha256": "dd94e96d4cdba06715eb5adb3316a1cb9fdea22a951713be7cfc73a15ca994c6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4左侧垂吊植物、5右侧圆形植物、9左墙电箱、31街角路灯是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "意大利小巷",
+      "evidence_zh": "4左侧垂吊植物、5右侧圆形植物、9左墙电箱、31街角路灯是四个不同对象。",
+      "specific_protection_zh": "保留巷道、建筑和其他植物。"
+    },
+    "protected_content_zh": "保留巷道、建筑和其他植物。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the trailing plant on the right wall",
+        "ref_zh": "右墙上的垂吊植物",
+        "scope": "plant",
+        "scope_zh": "植物",
+        "parent": "left_plant",
+        "parent_zh": "左植物",
+        "payload": "",
+        "instruction_zh": "移除右墙上的垂吊植物。",
+        "instruction_noref_zh": "移除选中的植物。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the round plant on the yellow wall",
+        "ref_zh": "黄色墙上的圆形植物",
+        "scope": "plant",
+        "scope_zh": "植物",
+        "parent": "yellow_wall_plant",
+        "parent_zh": "黄墙植物",
+        "payload": "deep green",
+        "attribute_kind": "color",
+        "instruction_zh": "将黄色墙上的圆形植物的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的植物的颜色改为深绿色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the metal utility box on the left wall",
+        "ref_zh": "左墙上的金属电箱",
+        "scope": "utility box",
+        "scope_zh": "电箱",
+        "parent": "left_box",
+        "parent_zh": "左电箱",
+        "payload": "a blue utility box",
+        "instruction_zh": "将左墙上的金属电箱替换为一个蓝色电箱。",
+        "instruction_noref_zh": "将选中的电箱替换为一个蓝色电箱。"
+      },
+      {
+        "object_id": 31,
+        "operation": "add",
+        "ref": "the streetlamp at the right corner",
+        "ref_zh": "右侧街角的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右路灯",
+        "payload": "a small blue street-name plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧街角的路灯加上一块小蓝色街名牌。",
+        "instruction_noref_zh": "在选中的路灯加上一块小蓝色街名牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6935352",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b351da140b80b2210bfa0bc7887e82daea34026c917b0103ffd57942177ff5cc",
+    "review_card_sha256": "9d4958d6de865cfc74556e2d77273c3568753c7578dc07b154f0c2a396f2f6a3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3左侧红色电车、4右侧银色电车、11前景乘客上衣、37站牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "public transit",
+        "occlusion",
+        "perspective"
+      ],
+      "scene_zh": "有轨电车站",
+      "evidence_zh": "3左侧红色电车、4右侧银色电车、11前景乘客上衣、37站牌是四个不同对象。",
+      "specific_protection_zh": "保留轨道、站台、建筑和其他电车。"
+    },
+    "protected_content_zh": "保留轨道、站台、建筑和其他电车。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the red tram in the left background",
+        "ref_zh": "左后方的红色电车",
+        "scope": "tram",
+        "scope_zh": "电车",
+        "parent": "left_tram",
+        "parent_zh": "左电车",
+        "payload": "",
+        "instruction_zh": "移除左后方的红色电车。",
+        "instruction_noref_zh": "移除选中的电车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the silver tram at the right",
+        "ref_zh": "右侧的银色电车",
+        "scope": "tram",
+        "scope_zh": "电车",
+        "parent": "right_tram",
+        "parent_zh": "右电车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的银色电车的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的电车的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the patterned shirt on the passenger at the right",
+        "ref_zh": "右侧乘客的花纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "foreground_passenger",
+        "parent_zh": "前景乘客",
+        "payload": "a plain yellow shirt",
+        "instruction_zh": "将右侧乘客的花纹上衣替换为一件纯黄色上衣。",
+        "instruction_noref_zh": "将选中的上衣替换为一件纯黄色上衣。"
+      },
+      {
+        "object_id": 37,
+        "operation": "add",
+        "ref": "the white station sign near the center",
+        "ref_zh": "中间附近的白色站牌",
+        "scope": "sign",
+        "scope_zh": "站牌",
+        "parent": "station_sign",
+        "parent_zh": "站牌",
+        "payload": "a small blue route number",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的白色站牌加上一个小蓝色线路编号。",
+        "instruction_noref_zh": "在选中的站牌加上一个小蓝色线路编号。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6937647",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f59608cb3048452fcaca5245fbf623687b358dca7f93abb87607ae6a1fd13d0e",
+    "review_card_sha256": "3eb43ae71333ab264285bfae0938dcd10a03ddc8949c5b6eecb70d22f0e9453f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2上排矩形窗、15左侧遮阳伞、33出口标牌、45餐桌旁椅子是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "commerce",
+        "architecture",
+        "night"
+      ],
+      "scene_zh": "餐厅门面",
+      "evidence_zh": "2上排矩形窗、15左侧遮阳伞、33出口标牌、45餐桌旁椅子是四个不同对象。",
+      "specific_protection_zh": "保留餐厅、树木和其他桌椅。"
+    },
+    "protected_content_zh": "保留餐厅、树木和其他桌椅。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the large rectangular window on the upper facade",
+        "ref_zh": "上层立面的矩形大窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "upper_window",
+        "parent_zh": "上层窗",
+        "payload": "warm amber",
+        "attribute_kind": "tint",
+        "instruction_zh": "将上层立面的矩形大窗的色调改为暖琥珀色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为暖琥珀色。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the patio umbrella at the left",
+        "ref_zh": "左侧的露台遮阳伞",
+        "scope": "umbrella",
+        "scope_zh": "遮阳伞",
+        "parent": "left_umbrella",
+        "parent_zh": "左伞",
+        "payload": "a dark green umbrella",
+        "instruction_zh": "将左侧的露台遮阳伞替换为一把深绿色遮阳伞。",
+        "instruction_noref_zh": "将选中的遮阳伞替换为一把深绿色遮阳伞。"
+      },
+      {
+        "object_id": 33,
+        "operation": "remove",
+        "ref": "the EXIT sign above the patio",
+        "ref_zh": "露台上方的EXIT标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "exit_sign",
+        "parent_zh": "EXIT牌",
+        "payload": "",
+        "instruction_zh": "移除露台上方的EXIT标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 45,
+        "operation": "add",
+        "ref": "the chair beside the front table",
+        "ref_zh": "前桌旁的椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "front_chair",
+        "parent_zh": "前椅",
+        "payload": "a small red cushion",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前桌旁的椅子加上一个小红坐垫。",
+        "instruction_noref_zh": "在选中的椅子加上一个小红坐垫。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

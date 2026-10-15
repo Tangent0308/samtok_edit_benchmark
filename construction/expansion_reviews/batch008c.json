@@ -1,0 +1,539 @@
+[
+  {
+    "source_id": "sa_178076",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d3816f8f90f95b090edeed574e4d6bb75566d2ea6db22f625e3a53d827cf4dca",
+    "review_card_sha256": "21d79291ad4912bb4ac2791a3b2f0255f4675f31a6c1c0bc6be5132c034299f1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7为平台上圆金属头盔，11为右柱盘绳，2为后方木门，18为门左边圆木盾。不同可移动器具与建筑，保留黑白画面。",
+    "difficulty": {
+      "mechanisms": [
+        "monochrome",
+        "low_light",
+        "occlusion"
+      ],
+      "scene_zh": "黑白木屋内历史器具",
+      "evidence_zh": "7为平台上圆金属头盔，11为右柱盘绳，2为后方木门，18为门左边圆木盾。不同可移动器具与建筑，保留黑白画面。",
+      "specific_protection_zh": "保持黑白照片；保留木屋结构、其他器具、绳网和原投影。"
+    },
+    "protected_content_zh": "保持黑白照片；保留木屋结构、其他器具、绳网和原投影。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the rounded metal helmet on the right platform",
+        "ref_zh": "右侧台面上的圆顶金属头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "metal_helmet",
+        "parent_zh": "金属头盔",
+        "payload": "a leather helmet",
+        "instruction_zh": "将右侧台面上的圆顶金属头盔替换为一顶皮革头盔。",
+        "instruction_noref_zh": "将选中的头盔替换为一顶皮革头盔。"
+      },
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the coiled rope hanging on the right post",
+        "ref_zh": "右侧柱上悬挂的盘绳",
+        "scope": "rope",
+        "scope_zh": "绳子",
+        "parent": "hanging_rope",
+        "parent_zh": "挂绳",
+        "payload": "",
+        "instruction_zh": "移除右侧柱上悬挂的盘绳。",
+        "instruction_noref_zh": "移除选中的绳子。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the wooden door at the back",
+        "ref_zh": "后方的木门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "wooden_building",
+        "parent_zh": "木屋",
+        "payload": "an iron ring handle",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在后方的木门加上一个铁环把手。",
+        "instruction_noref_zh": "在选中的门加上一个铁环把手。"
+      },
+      {
+        "object_id": 18,
+        "operation": "attribute",
+        "ref": "the round wooden shield left of the back door",
+        "ref_zh": "后门左侧的圆木盾",
+        "scope": "shield",
+        "scope_zh": "盾牌",
+        "parent": "wooden_shield",
+        "parent_zh": "木盾",
+        "payload": "dark-stained wood",
+        "attribute_kind": "finish",
+        "instruction_zh": "将后门左侧的圆木盾的表面效果改为深色染色木质。",
+        "instruction_noref_zh": "将选中的盾牌的表面效果改为深色染色木质。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1792574",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3336de109bae5f8670e411f508c3a5bbf886dc73606a74e613bbcc09c67eccf5",
+    "review_card_sha256": "a8672b051e0d0fd52a75930d21b57e8f38f5857f772d78b483ccc39144a25d0a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选mask为同一人的帽、服装、贴章和绑带，尚无第二个已确认独立父对象；不能把人体衣物零件凑成多目标图。保留待查原始其他物体mask。",
+    "difficulty": {
+      "mechanisms": [
+        "fine_details",
+        "occlusion"
+      ],
+      "scene_zh": "单个人物近景与装备",
+      "evidence_zh": "候选mask为同一人的帽、服装、贴章和绑带，尚无第二个已确认独立父对象；不能把人体衣物零件凑成多目标图。保留待查原始其他物体mask。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1799039",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "07a184d3f041c8785a96d5a349ae4af8cafd93b5bdf8e7fbc45ceb4a9d44dd86",
+    "review_card_sha256": "11ac17f7870b5a79c08be2668321649bb782bc7d4c7868246ac803bb69d33988",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为亮蓝车，3为最近深蓝旅行车，7为左岸近灯，35为中央完整黑船含桅杆。独立车辆、灯与船；不用只含船身6冒充整船。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection"
+      ],
+      "scene_zh": "运河边汽车船和灯",
+      "evidence_zh": "2为亮蓝车，3为最近深蓝旅行车，7为左岸近灯，35为中央完整黑船含桅杆。独立车辆、灯与船；不用只含船身6冒充整船。",
+      "specific_protection_zh": "保留前景栏杆、树、码头、建筑、其余车及水面反射关系。"
+    },
+    "protected_content_zh": "保留前景栏杆、树、码头、建筑、其余车及水面反射关系。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the bright blue car behind the nearest estate car",
+        "ref_zh": "最近旅行车后方的亮蓝色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "bright_blue_car",
+        "parent_zh": "亮蓝车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近旅行车后方的亮蓝色汽车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为红色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the nearest dark blue estate car on the right",
+        "ref_zh": "右侧最近的深蓝色旅行车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "near_estate",
+        "parent_zh": "近旅行车",
+        "payload": "a white estate car",
+        "instruction_zh": "将右侧最近的深蓝色旅行车替换为一辆白色旅行车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆白色旅行车。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the nearest streetlamp on the left bank",
+        "ref_zh": "左岸最近的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_bank_lamp",
+        "parent_zh": "左岸灯",
+        "payload": "",
+        "instruction_zh": "移除左岸最近的路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the black boat with the yellow cabin",
+        "ref_zh": "带黄色船舱的黑色船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "black_boat",
+        "parent_zh": "黑船",
+        "payload": "an orange lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "side railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在带黄色船舱的黑色船的侧面栏杆上加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的船的侧面栏杆上加上一个橙色救生圈。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1824391",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "70d519c85499e9a7210774a8c36d9eb2690deab603606060bbde03930b3e9938",
+    "review_card_sha256": "3fde60b2a6bc539e999f030a5c5e818cc28a43cd4a153812b1dfff03d209c918",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为右侧店前高三灯柱，24为最左墙上Britos广告，22为左教堂入口，137为右侧Nestle牌。不同牌、灯和建筑，保留前景护桩。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "广场教堂与店牌",
+      "evidence_zh": "5为右侧店前高三灯柱，24为最左墙上Britos广告，22为左教堂入口，137为右侧Nestle牌。不同牌、灯和建筑，保留前景护桩。",
+      "specific_protection_zh": "保留建筑、树、道路标志、行人、车辆与护桩。"
+    },
+    "protected_content_zh": "保留建筑、树、道路标志、行人、车辆与护桩。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the tall three-headed streetlamp on the right",
+        "ref_zh": "右侧高大的三头路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_tall_lamp",
+        "parent_zh": "右高灯",
+        "payload": "a black globe streetlamp",
+        "instruction_zh": "将右侧高大的三头路灯替换为一盏黑色球形路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色球形路灯。"
+      },
+      {
+        "object_id": 24,
+        "operation": "remove",
+        "ref": "the far-left green Britos banner",
+        "ref_zh": "最左侧的绿色Britos横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "left_britos_banner",
+        "parent_zh": "左横幅",
+        "payload": "",
+        "instruction_zh": "移除最左侧的绿色Britos横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 22,
+        "operation": "attribute",
+        "ref": "the entrance door of the church on the left",
+        "ref_zh": "左侧教堂的入口门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "left_church",
+        "parent_zh": "左教堂",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧教堂的入口门的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的门的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 137,
+        "operation": "add",
+        "ref": "the Nestlé sign on the right-hand shop",
+        "ref_zh": "右侧店铺的Nestlé招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "nestle_sign",
+        "parent_zh": "雀巢牌",
+        "payload": "a slim white light bar",
+        "placement": {
+          "relation": "on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧店铺的Nestlé招牌的上沿加上一根细白色灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一根细白色灯条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1842292",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fd2d730fa904d38ca1eaeede38efb4efe8a6fa942135fc31c4c1ccbe540bebac",
+    "review_card_sha256": "0665731db4e92bf44b76a985ffbb330720ba52aef0e04ed63667ba79bb83c02f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "两台风机确为独立对象，但13/28候选标注兼有外框、格栅和整机名称，仅轮廓图不足以确认像素范围。单扇叶改色可行，但不强行设计不自然的扇叶替换或新增物；待补看二值mask后决定整机策略。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "温室双风机",
+      "evidence_zh": "两台风机确为独立对象，但13/28候选标注兼有外框、格栅和整机名称，仅轮廓图不足以确认像素范围。单扇叶改色可行，但不强行设计不自然的扇叶替换或新增物；待补看二值mask后决定整机策略。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1843214",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8268559faead78572924214a858c8edb0a47917af7bd12004ee1becfdf5e28e8",
+    "review_card_sha256": "86c7945f32a6e366cf5165c678ef537e748c3febfd3b0d98848f945b2d9acfe7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3左小空瓶、0中间空瓶、5右侧插枝的大瓶。独立容器；右瓶替换保留花枝，新增白花直接插入左空瓶。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion"
+      ],
+      "scene_zh": "自助餐背景三只花瓶",
+      "evidence_zh": "3左小空瓶、0中间空瓶、5右侧插枝的大瓶。独立容器；右瓶替换保留花枝，新增白花直接插入左空瓶。",
+      "specific_protection_zh": "保留食品、餐具、价签、右瓶花枝、百叶窗及光照。"
+    },
+    "protected_content_zh": "保留食品、餐具、价签、右瓶花枝、百叶窗及光照。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the leftmost amber vase",
+        "ref_zh": "最左侧的琥珀色花瓶",
+        "scope": "vase",
+        "scope_zh": "花瓶",
+        "parent": "left_vase",
+        "parent_zh": "左花瓶",
+        "payload": "a small bouquet of white flowers",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最左侧的琥珀色花瓶加上一小束白花。",
+        "instruction_noref_zh": "在选中的花瓶加上一小束白花。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the middle amber vase",
+        "ref_zh": "中间的琥珀色花瓶",
+        "scope": "vase",
+        "scope_zh": "花瓶",
+        "parent": "middle_vase",
+        "parent_zh": "中花瓶",
+        "payload": "cobalt blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间的琥珀色花瓶的颜色改为钴蓝色。",
+        "instruction_noref_zh": "将选中的花瓶的颜色改为钴蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the tall amber vase holding branches on the right",
+        "ref_zh": "右侧插着枝条的琥珀色高花瓶",
+        "scope": "vase",
+        "scope_zh": "花瓶",
+        "parent": "right_vase",
+        "parent_zh": "右花瓶",
+        "payload": "a white ceramic vase",
+        "instruction_zh": "将右侧插着枝条的琥珀色高花瓶替换为一个白色陶瓷花瓶。",
+        "instruction_noref_zh": "将选中的花瓶替换为一个白色陶瓷花瓶。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1850053",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "483b109aa68bfdc552fee3e7082027a47742f342b99ef71629304c8150539bd9",
+    "review_card_sha256": "a4988f71d318cbf611b88d535c1636b6445fa0a419bab9ef118972e58b396c3d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为前景NOW LEASING独立牌，5为门旁THE TIDES牌，78为右侧条纹上衣。62为同楼栏杆不额外凑父对象，78袖部可作为小徽标直接附着面。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "公寓出租标牌和人行道行人",
+      "evidence_zh": "0为前景NOW LEASING独立牌，5为门旁THE TIDES牌，78为右侧条纹上衣。62为同楼栏杆不额外凑父对象，78袖部可作为小徽标直接附着面。",
+      "specific_protection_zh": "保留人体、手持长蓝物、楼体、窗户、栏杆和其他标志。"
+    },
+    "protected_content_zh": "保留人体、手持长蓝物、楼体、窗户、栏杆和其他标志。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the freestanding “NOW LEASING” sign",
+        "ref_zh": "独立摆放的“NOW LEASING”标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "leasing_sign",
+        "parent_zh": "出租牌",
+        "payload": "",
+        "instruction_zh": "移除独立摆放的“NOW LEASING”标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the wall-mounted THE TIDES sign",
+        "ref_zh": "墙上的THE TIDES招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "tides_sign",
+        "parent_zh": "公寓牌",
+        "payload": "a wooden welcome sign",
+        "instruction_zh": "将墙上的THE TIDES招牌替换为一块木质欢迎牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块木质欢迎牌。"
+      },
+      {
+        "object_id": 78,
+        "operation": "add",
+        "ref": "the striped shirt on the right sidewalk",
+        "ref_zh": "右侧人行道上的条纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "striped_person",
+        "parent_zh": "条纹衣者",
+        "payload": "a small white patch",
+        "placement": {
+          "relation": "on",
+          "site": "sleeve",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧人行道上的条纹上衣的袖子上加上一块白色小贴布。",
+        "instruction_noref_zh": "在选中的上衣的袖子上加上一块白色小贴布。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1858329",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "045aba1fc77565746e76db1d1347295d8d9c2c6a5ab9b6e6f88f3880bc024ed6",
+    "review_card_sha256": "e88d4d5854bfb44db02fdd1a20af0d35fbaadfdf851843126fa5a9a5e67f5c5c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为下层平台粉裤，16为上层黄色外套，11为左侧单灯，23为长码头正面栏杆。两个人、灯与码头，身体和栏杆保持遮挡。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "winter_scene"
+      ],
+      "scene_zh": "冰水码头上的衣物与设施",
+      "evidence_zh": "4为下层平台粉裤，16为上层黄色外套，11为左侧单灯，23为长码头正面栏杆。两个人、灯与码头，身体和栏杆保持遮挡。",
+      "specific_protection_zh": "保留人体、泳者、冰雪、水面、码头结构和其他衣物。"
+    },
+    "protected_content_zh": "保留人体、泳者、冰雪、水面、码头结构和其他衣物。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the pink trousers on the lower platform",
+        "ref_zh": "下层平台上的粉色裤子",
+        "scope": "trousers",
+        "scope_zh": "裤子",
+        "parent": "pink_trousers_person",
+        "parent_zh": "粉裤人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将下层平台上的粉色裤子的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的裤子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "replace",
+        "ref": "the yellow jacket on the upper pier",
+        "ref_zh": "上层码头上的黄色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "yellow_jacket_person",
+        "parent_zh": "黄衣人物",
+        "payload": "a blue winter jacket",
+        "instruction_zh": "将上层码头上的黄色外套替换为一件蓝色冬季外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件蓝色冬季外套。"
+      },
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the leftmost lamppost on the pier",
+        "ref_zh": "码头上最左侧的灯柱",
+        "scope": "lamppost",
+        "scope_zh": "灯柱",
+        "parent": "leftmost_pier_lamp",
+        "parent_zh": "最左灯",
+        "payload": "",
+        "instruction_zh": "移除码头上最左侧的灯柱。",
+        "instruction_noref_zh": "移除选中的灯柱。"
+      },
+      {
+        "object_id": 23,
+        "operation": "add",
+        "ref": "the long white railing along the front of the pier",
+        "ref_zh": "码头正面的白色长栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "pier",
+        "parent_zh": "码头",
+        "payload": "an orange lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "section beside the steps",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在码头正面的白色长栏杆靠近台阶的一段加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的栏杆靠近台阶的一段加上一个橙色救生圈。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

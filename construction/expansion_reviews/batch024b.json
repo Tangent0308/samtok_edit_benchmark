@@ -1,0 +1,687 @@
+[
+  {
+    "source_id": "sa_6814925",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d4e3650d13865de6f06c178bb34c9f14f37f991d2191d3ffa61d8edb2b2c82f6",
+    "review_card_sha256": "e2cad7f4b980f4d2b949d6bbdb9a6a7cb4ad194ed43dfa2c7da914db5b1e167a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3左侧深色外套、22右侧白外套、45椅子、81木凳是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "玻璃中庭游客",
+      "evidence_zh": "3左侧深色外套、22右侧白外套、45椅子、81木凳是四个不同对象。",
+      "specific_protection_zh": "保留玻璃幕墙、植物和其他游客。"
+    },
+    "protected_content_zh": "保留玻璃幕墙、植物和其他游客。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the dark jacket on the person at the left",
+        "ref_zh": "左侧人物的深色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_person",
+        "parent_zh": "左侧人物",
+        "payload": "a tan fleece jacket",
+        "instruction_zh": "将左侧人物的深色外套替换为一件棕褐色抓绒外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件棕褐色抓绒外套。"
+      },
+      {
+        "object_id": 22,
+        "operation": "attribute",
+        "ref": "the white jacket on the seated person at the right",
+        "ref_zh": "右侧坐着人物的白色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "right_person",
+        "parent_zh": "右侧人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧坐着人物的白色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 45,
+        "operation": "remove",
+        "ref": "the chair beside the planted path",
+        "ref_zh": "植物步道旁的椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "chair",
+        "parent_zh": "椅子",
+        "payload": "",
+        "instruction_zh": "移除植物步道旁的椅子。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      },
+      {
+        "object_id": 81,
+        "operation": "add",
+        "ref": "the wooden stool near the seated visitors",
+        "ref_zh": "坐着游客附近的木凳",
+        "scope": "stool",
+        "scope_zh": "木凳",
+        "parent": "stool",
+        "parent_zh": "木凳",
+        "payload": "a small red cushion",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在坐着游客附近的木凳加上一个小红色坐垫。",
+        "instruction_noref_zh": "在选中的木凳加上一个小红色坐垫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6823812",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "271e5809e61c3295d03c8032550e9279ccb9895bfe499e18adba88a52f084c40",
+    "review_card_sha256": "8416475aad8a5b38f70011c3bdef03e17c04de65bbb86381802a200b794eb278",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3左侧粉色T恤、13中间格纹衬衫、23左侧摊位托袋、40圣诞标牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "crowd",
+        "motion blur"
+      ],
+      "scene_zh": "夜市摊位与游客",
+      "evidence_zh": "3左侧粉色T恤、13中间格纹衬衫、23左侧摊位托袋、40圣诞标牌是四个不同对象。",
+      "specific_protection_zh": "保留夜景灯光、摊位和其他行人。"
+    },
+    "protected_content_zh": "保留夜景灯光、摊位和其他行人。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the pink T-shirt on the woman at the left",
+        "ref_zh": "左侧女子的粉色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "left_woman",
+        "parent_zh": "左侧女子",
+        "payload": "pale yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧女子的粉色T恤的颜色改为浅黄色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅黄色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the plaid shirt on the person near the center",
+        "ref_zh": "中间附近人物的格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "center_person",
+        "parent_zh": "中间人物",
+        "payload": "a plain black shirt",
+        "instruction_zh": "将中间附近人物的格纹衬衫替换为一件纯黑衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯黑衬衫。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the illustrated tote bag at the left stall",
+        "ref_zh": "左侧摊位的插画托袋",
+        "scope": "tote bag",
+        "scope_zh": "托袋",
+        "parent": "left_tote",
+        "parent_zh": "左托袋",
+        "payload": "",
+        "instruction_zh": "移除左侧摊位的插画托袋。",
+        "instruction_noref_zh": "移除选中的托袋。"
+      },
+      {
+        "object_id": 40,
+        "operation": "add",
+        "ref": "the Christmas banner above the center stall",
+        "ref_zh": "中间摊位上方的圣诞横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "christmas_banner",
+        "parent_zh": "圣诞横幅",
+        "payload": "a small gold star sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间摊位上方的圣诞横幅加上一个小金色星形贴纸。",
+        "instruction_noref_zh": "在选中的横幅加上一个小金色星形贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_682765",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a6703b9a3ac22f8ab4f8b618117a89922eaa7ba4eb6516698bf3dc787674306a",
+    "review_card_sha256": "1d2241f886380cad53d14f73f706a293812a52c9812dcc55484fa3612c00d408",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4前景白衬衫、6中间白衬衫、9右侧黄色T恤、1左侧路灯是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "architecture",
+        "perspective"
+      ],
+      "scene_zh": "查理大桥游客",
+      "evidence_zh": "4前景白衬衫、6中间白衬衫、9右侧黄色T恤、1左侧路灯是四个不同对象。",
+      "specific_protection_zh": "保留桥梁、雕像和其他游客。"
+    },
+    "protected_content_zh": "保留桥梁、雕像和其他游客。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the white shirt on the foreground man at the left",
+        "ref_zh": "左侧前景男子的白衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "foreground_man",
+        "parent_zh": "前景男子",
+        "payload": "a pale blue shirt",
+        "instruction_zh": "将左侧前景男子的白衬衫替换为一件浅蓝色衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件浅蓝色衬衫。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the white button-up shirt on the man near the center",
+        "ref_zh": "中间附近男子的白色纽扣衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "center_man",
+        "parent_zh": "中间男子",
+        "payload": "light green",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近男子的白色纽扣衬衫的颜色改为浅绿色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅绿色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the yellow T-shirt on the man at the right",
+        "ref_zh": "右侧男子的黄色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_man",
+        "parent_zh": "右侧男子",
+        "payload": "",
+        "instruction_zh": "移除右侧男子的黄色T恤。",
+        "instruction_noref_zh": "移除选中的T恤。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the black streetlamp at the far right",
+        "ref_zh": "最右侧的黑色路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左路灯",
+        "payload": "a small blue wayfinding plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的黑色路灯加上一块小蓝色导向牌。",
+        "instruction_noref_zh": "在选中的路灯加上一块小蓝色导向牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6834065",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "866e011d0965df1e964b032d36a75f9e78dba0157eebe1304ebbf4e15962d629",
+    "review_card_sha256": "e5e7f67487e6703ccb93a52a2337e644fe9b66c79f65154390a7454e36bd2cd5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9黑色设备包、1蓝色T恤、45公园长椅、10右侧花坛植被是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "occlusion"
+      ],
+      "scene_zh": "草地旁摄影者",
+      "evidence_zh": "9黑色设备包、1蓝色T恤、45公园长椅、10右侧花坛植被是四个不同对象。",
+      "specific_protection_zh": "保留摄影者、笔记本电脑、相机和背景。"
+    },
+    "protected_content_zh": "保留摄影者、笔记本电脑、相机和背景。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the black equipment bag on the bench",
+        "ref_zh": "长椅上的黑色设备包",
+        "scope": "equipment bag",
+        "scope_zh": "设备包",
+        "parent": "equipment_bag",
+        "parent_zh": "设备包",
+        "payload": "",
+        "instruction_zh": "移除长椅上的黑色设备包。",
+        "instruction_noref_zh": "移除选中的设备包。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the blue T-shirt on the photographer",
+        "ref_zh": "摄影者的蓝色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "photographer",
+        "parent_zh": "摄影者",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将摄影者的蓝色T恤的颜色改为森林绿。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为森林绿。"
+      },
+      {
+        "object_id": 45,
+        "operation": "replace",
+        "ref": "the wooden park bench beneath the laptop",
+        "ref_zh": "笔记本电脑下方的木长椅",
+        "scope": "bench",
+        "scope_zh": "长椅",
+        "parent": "park_bench",
+        "parent_zh": "长椅",
+        "payload": "a dark green bench",
+        "instruction_zh": "将笔记本电脑下方的木长椅替换为一张深绿色长椅。",
+        "instruction_noref_zh": "将选中的长椅替换为一张深绿色长椅。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the foliage in the raised planter at the right",
+        "ref_zh": "右侧高花坛里的植被",
+        "scope": "foliage",
+        "scope_zh": "植被",
+        "parent": "planter_foliage",
+        "parent_zh": "花坛植被",
+        "payload": "a few small white flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧高花坛里的植被加上几朵小白花。",
+        "instruction_noref_zh": "在选中的植被加上几朵小白花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6841406",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "27c35f5258de248edda0841dd6ce98d4ee8db0f7418b7b6a54a0d3c95d03e66f",
+    "review_card_sha256": "a355d5fbd4be14202efbb7551e03a36c48f5431a91670c51d56d87a6c67d4945",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左侧路灯、11中间窗户、2左侧旗帜、91入口雨棚是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "symmetry"
+      ],
+      "scene_zh": "市政建筑正面",
+      "evidence_zh": "0左侧路灯、11中间窗户、2左侧旗帜、91入口雨棚是四个不同对象。",
+      "specific_protection_zh": "保留建筑立面、旗杆和入口结构。"
+    },
+    "protected_content_zh": "保留建筑立面、旗杆和入口结构。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the streetlamp at the left entrance",
+        "ref_zh": "左侧入口的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左路灯",
+        "payload": "matte black",
+        "attribute_kind": "finish",
+        "instruction_zh": "将左侧入口的路灯的表面效果改为哑光黑色。",
+        "instruction_noref_zh": "将选中的路灯的表面效果改为哑光黑色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the small window on the right side of the facade",
+        "ref_zh": "立面右侧的小窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "left_window",
+        "parent_zh": "左窗",
+        "payload": "a warm amber window",
+        "instruction_zh": "将立面右侧的小窗户替换为一扇暖琥珀色的窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇暖琥珀色的窗。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the flag on the left side of the facade",
+        "ref_zh": "立面左侧的旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "left_flag",
+        "parent_zh": "左旗",
+        "payload": "",
+        "instruction_zh": "移除立面左侧的旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 91,
+        "operation": "add",
+        "ref": "the glass canopy above the entrance",
+        "ref_zh": "入口上方的玻璃雨棚",
+        "scope": "canopy",
+        "scope_zh": "雨棚",
+        "parent": "entrance_canopy",
+        "parent_zh": "入口雨棚",
+        "payload": "a small blue OPEN decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在入口上方的玻璃雨棚加上一个小蓝色OPEN贴花。",
+        "instruction_noref_zh": "在选中的雨棚加上一个小蓝色OPEN贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6850445",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9b4fec8a35c38249b22c434633b1077d147d5d1b66835034b7cc736d893ad6f3",
+    "review_card_sha256": "55fbfd0f852626d22468a6e5b831e4ddd2c4b06eaee0ea9836e3c0e8a295215e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0前景大编篮、3右侧小编篮、2门边旗帜、26门口矮凳是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "commerce",
+        "occlusion"
+      ],
+      "scene_zh": "编织篮店门口",
+      "evidence_zh": "0前景大编篮、3右侧小编篮、2门边旗帜、26门口矮凳是四个不同对象。",
+      "specific_protection_zh": "保留店门、其他篮子和室内商品。"
+    },
+    "protected_content_zh": "保留店门、其他篮子和室内商品。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the large woven basket in front",
+        "ref_zh": "前方的大编篮",
+        "scope": "basket",
+        "scope_zh": "编篮",
+        "parent": "large_basket",
+        "parent_zh": "大编篮",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将前方的大编篮的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的编篮的颜色改为深棕色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the small woven basket at the right of the doorway",
+        "ref_zh": "门口右侧的小编篮",
+        "scope": "basket",
+        "scope_zh": "编篮",
+        "parent": "small_basket",
+        "parent_zh": "小编篮",
+        "payload": "a pale blue basket",
+        "instruction_zh": "将门口右侧的小编篮替换为一个浅蓝色编篮。",
+        "instruction_noref_zh": "将选中的编篮替换为一个浅蓝色编篮。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the white flag beside the doorway",
+        "ref_zh": "门旁的白色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "door_flag",
+        "parent_zh": "门旗",
+        "payload": "",
+        "instruction_zh": "移除门旁的白色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the low wooden stool beside the doorway",
+        "ref_zh": "门旁的矮木凳",
+        "scope": "stool",
+        "scope_zh": "木凳",
+        "parent": "door_stool",
+        "parent_zh": "门口凳",
+        "payload": "a small red cushion",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在门旁的矮木凳加上一个小红坐垫。",
+        "instruction_noref_zh": "在选中的木凳加上一个小红坐垫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6859686",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "da53a33e111f0fe0b2f3735b8cc103e53b64f59e6d3e2fa7881adbdba371ff7c",
+    "review_card_sha256": "9b48eea928c6c286a141f6a25fb9c3a0f6b093103459243c0b62dbd927214da7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17左前方蓝色上衣、34中部蓝色上衣、14右侧婴儿车、77前景路面坑洞是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "motion blur",
+        "occlusion"
+      ],
+      "scene_zh": "游行队伍与婴儿车",
+      "evidence_zh": "17左前方蓝色上衣、34中部蓝色上衣、14右侧婴儿车、77前景路面坑洞是四个不同对象。",
+      "specific_protection_zh": "保留队伍、气球、婴儿和道路环境。"
+    },
+    "protected_content_zh": "保留队伍、气球、婴儿和道路环境。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the blue shirt on the woman at the far left",
+        "ref_zh": "最左侧女子的蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "far_left_woman",
+        "parent_zh": "最左女子",
+        "payload": "coral red",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧女子的蓝色上衣的颜色改为珊瑚红色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为珊瑚红色。"
+      },
+      {
+        "object_id": 34,
+        "operation": "replace",
+        "ref": "the blue shirt on the marcher near the center",
+        "ref_zh": "中间附近行进者的蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "center_marcher",
+        "parent_zh": "中间行进者",
+        "payload": "a white polo shirt",
+        "instruction_zh": "将中间附近行进者的蓝色上衣替换为一件白色Polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件白色Polo衫。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the stroller at the right foreground",
+        "ref_zh": "右侧前景的婴儿车",
+        "scope": "stroller",
+        "scope_zh": "婴儿车",
+        "parent": "stroller",
+        "parent_zh": "婴儿车",
+        "payload": "",
+        "instruction_zh": "移除右侧前景的婴儿车。",
+        "instruction_noref_zh": "移除选中的婴儿车。"
+      },
+      {
+        "object_id": 77,
+        "operation": "add",
+        "ref": "the pothole in the foreground pavement",
+        "ref_zh": "前景路面上的坑洞",
+        "scope": "pothole",
+        "scope_zh": "坑洞",
+        "parent": "pothole",
+        "parent_zh": "坑洞",
+        "payload": "a small orange road marker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景路面上的坑洞加上一个小橙色道路标记。",
+        "instruction_noref_zh": "在选中的坑洞加上一个小橙色道路标记。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6868139",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4775b0af1d0724eb1ad2692618da5c6a1067815f960e1b5e3ae6adf44bf2e29e",
+    "review_card_sha256": "e9bf17240f3c9511a9d58ce58163c15f6f2bf893f1e803445a7fad05fbf8d39e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1前景灯箱车轮、23右侧行人夹克、7左侧Avalon招牌、33左侧铁栏杆是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "motion blur",
+        "signage"
+      ],
+      "scene_zh": "夜间街道灯箱与行人",
+      "evidence_zh": "1前景灯箱车轮、23右侧行人夹克、7左侧Avalon招牌、33左侧铁栏杆是四个不同对象。",
+      "specific_protection_zh": "保留街道灯箱、建筑和其他行人。"
+    },
+    "protected_content_zh": "保留街道灯箱、建筑和其他行人。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the front wheel on the nearest illuminated cart",
+        "ref_zh": "最近灯箱车上的前轮",
+        "scope": "wheel",
+        "scope_zh": "车轮",
+        "parent": "front_cart",
+        "parent_zh": "前车",
+        "payload": "",
+        "instruction_zh": "移除最近灯箱车上的前轮。",
+        "instruction_noref_zh": "移除选中的车轮。"
+      },
+      {
+        "object_id": 23,
+        "operation": "attribute",
+        "ref": "the brown jacket on the person at the right",
+        "ref_zh": "右侧人物的棕色夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "right_person",
+        "parent_zh": "右侧人物",
+        "payload": "deep blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧人物的棕色夹克的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的夹克的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the Avalon Bar sign at the upper right",
+        "ref_zh": "右上方的Avalon Bar招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "avalon_sign",
+        "parent_zh": "Avalon牌",
+        "payload": "a blue COFFEE sign",
+        "instruction_zh": "将右上方的Avalon Bar招牌替换为一块蓝色COFFEE招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块蓝色COFFEE招牌。"
+      },
+      {
+        "object_id": 33,
+        "operation": "add",
+        "ref": "the iron railing along the left building",
+        "ref_zh": "左侧建筑旁的铁栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "left_railing",
+        "parent_zh": "左栏杆",
+        "payload": "a small green planter",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧建筑旁的铁栏杆加上一个小绿色花盆。",
+        "instruction_noref_zh": "在选中的栏杆加上一个小绿色花盆。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

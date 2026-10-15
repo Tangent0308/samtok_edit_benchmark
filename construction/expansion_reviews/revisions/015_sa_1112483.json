@@ -1,0 +1,150 @@
+{
+  "source_id": "sa_1112483",
+  "reason_zh": "左岸有多把白伞，补充最右侧消歧。",
+  "previous_record": {
+    "source_id": "sa_1112483",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9eec4db91d153a73fe68105ed16acd74d75ad5a0cf015ae1bbdec9d6a915a81b",
+    "review_card_sha256": "d6ce0bec59b871cd682204e211cf2244c76867844db7594b9e61f0aa0e65c03f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为右岸建筑前紫红长旗，45为左岸完整白伞，35为中央拱桥整体。不同实物，拱桥作为灯串的直接附着锚点。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "河道旁旗帜、遮阳伞与拱桥",
+      "evidence_zh": "14为右岸建筑前紫红长旗，45为左岸完整白伞，35为中央拱桥整体。不同实物，拱桥作为灯串的直接附着锚点。",
+      "specific_protection_zh": "保留河水倒影、游客、建筑、其他旗帜与桥体结构。"
+    },
+    "protected_content_zh": "保留河水倒影、游客、建筑、其他旗帜与桥体结构。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the magenta flag on the right bank",
+        "ref_zh": "右岸的紫红色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "magenta_flag",
+        "parent_zh": "紫红旗帜",
+        "payload": "",
+        "instruction_zh": "移除右岸的紫红色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 45,
+        "operation": "attribute",
+        "ref": "the white parasol beside the left bank",
+        "ref_zh": "左岸旁的白色遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "left_parasol",
+        "parent_zh": "左岸白伞",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左岸旁的白色遮阳伞的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的遮阳伞的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the central arched bridge",
+        "ref_zh": "中央拱桥",
+        "scope": "bridge",
+        "scope_zh": "桥",
+        "parent": "central_bridge",
+        "parent_zh": "中央拱桥",
+        "payload": "a string of warm lights",
+        "placement": {
+          "relation": "along",
+          "site": "railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央拱桥的栏杆上加上一串暖色灯。",
+        "instruction_noref_zh": "在选中的桥的栏杆上加上一串暖色灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1112483",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9eec4db91d153a73fe68105ed16acd74d75ad5a0cf015ae1bbdec9d6a915a81b",
+    "review_card_sha256": "d6ce0bec59b871cd682204e211cf2244c76867844db7594b9e61f0aa0e65c03f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为右岸建筑前紫红长旗，45为左岸完整白伞，35为中央拱桥整体。不同实物，拱桥作为灯串的直接附着锚点。 全图定位复核：左岸有多把白伞，补充最右侧消歧。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "河道旁旗帜、遮阳伞与拱桥",
+      "evidence_zh": "14为右岸建筑前紫红长旗，45为左岸完整白伞，35为中央拱桥整体。不同实物，拱桥作为灯串的直接附着锚点。 全图定位复核：左岸有多把白伞，补充最右侧消歧。",
+      "specific_protection_zh": "保留河水倒影、游客、建筑、其他旗帜与桥体结构。"
+    },
+    "protected_content_zh": "保留河水倒影、游客、建筑、其他旗帜与桥体结构。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the magenta flag on the right bank",
+        "ref_zh": "右岸的紫红色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "magenta_flag",
+        "parent_zh": "紫红旗帜",
+        "payload": "",
+        "instruction_zh": "移除右岸的紫红色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 45,
+        "operation": "attribute",
+        "ref": "the rightmost white parasol on the left bank",
+        "ref_zh": "左岸最右侧的白色遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "left_parasol",
+        "parent_zh": "左岸白伞",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左岸最右侧的白色遮阳伞的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的遮阳伞的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the central arched bridge",
+        "ref_zh": "中央拱桥",
+        "scope": "bridge",
+        "scope_zh": "桥",
+        "parent": "central_bridge",
+        "parent_zh": "中央拱桥",
+        "payload": "a string of warm lights",
+        "placement": {
+          "relation": "along",
+          "site": "railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央拱桥的栏杆上加上一串暖色灯。",
+        "instruction_noref_zh": "在选中的桥的栏杆上加上一串暖色灯。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

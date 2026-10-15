@@ -1,0 +1,601 @@
+[
+  {
+    "source_id": "sa_1577460",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "80bef8508c140b8c6c3cad85e8d97e21b75870a809b4ebab0f8c1ac6ab3b9cdf",
+    "review_card_sha256": "c62dc42a39294ef263ef29681ff7c0b5218c15ea3d903a9be06669b01aa0a80d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为左侧背景马车顶篷，32为近处马车折叠篷背面，23为近处车夫牛仔裤。两辆马车与独立人物；50是车轮倒影，不当独立轮。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "广场上两辆马车",
+      "evidence_zh": "16为左侧背景马车顶篷，32为近处马车折叠篷背面，23为近处车夫牛仔裤。两辆马车与独立人物；50是车轮倒影，不当独立轮。",
+      "specific_protection_zh": "保留马匹、缰绳、车轮、人物身体、地面和对应水洼倒影。"
+    },
+    "protected_content_zh": "保留马匹、缰绳、车轮、人物身体、地面和对应水洼倒影。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the canopy of the carriage on the left",
+        "ref_zh": "左侧马车的顶篷",
+        "scope": "canopy",
+        "scope_zh": "顶篷",
+        "parent": "left_carriage",
+        "parent_zh": "左马车",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧马车的顶篷的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的顶篷的颜色改为酒红色。"
+      },
+      {
+        "object_id": 32,
+        "operation": "add",
+        "ref": "the folded canopy behind the nearest driver",
+        "ref_zh": "最近车夫身后的折叠顶篷",
+        "scope": "canopy",
+        "scope_zh": "顶篷",
+        "parent": "near_carriage",
+        "parent_zh": "近马车",
+        "payload": "a small white horse emblem",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近车夫身后的折叠顶篷加上一个白色小马徽标。",
+        "instruction_noref_zh": "在选中的顶篷加上一个白色小马徽标。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the nearest carriage driver’s blue jeans",
+        "ref_zh": "最近马车车夫的蓝色牛仔裤",
+        "scope": "jeans",
+        "scope_zh": "牛仔裤",
+        "parent": "near_driver",
+        "parent_zh": "近车夫",
+        "payload": "beige trousers",
+        "instruction_zh": "将最近马车车夫的蓝色牛仔裤替换为一条米色长裤。",
+        "instruction_noref_zh": "将选中的牛仔裤替换为一条米色长裤。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_157822",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "93dbaafa7427a6330d275cff8c9c9ee94415299164f6a69a94473613fe3ebe02",
+    "review_card_sha256": "2becf1380b79506afe23e9005ed3b96d056c3113dd0cfa848d45739b23c70120",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13为近处左侧红顶拖船，14为最左远处黑船，56为右侧岸边灯柱。不同船与独立岸灯，船栏杆片段不重复计入。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection",
+        "thin_structures"
+      ],
+      "scene_zh": "港口拖船和岸边路灯",
+      "evidence_zh": "13为近处左侧红顶拖船，14为最左远处黑船，56为右侧岸边灯柱。不同船与独立岸灯，船栏杆片段不重复计入。",
+      "specific_protection_zh": "保留其他船、码头、系泊柱、黄建筑和水面；对应倒影应一致。"
+    },
+    "protected_content_zh": "保留其他船、码头、系泊柱、黄建筑和水面；对应倒影应一致。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the foreground tugboat with the red cabin roof",
+        "ref_zh": "前景红色舱顶的拖船",
+        "scope": "tugboat",
+        "scope_zh": "拖船",
+        "parent": "red_roof_tug",
+        "parent_zh": "红顶拖船",
+        "payload": "an orange lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "side railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景红色舱顶的拖船的侧面栏杆上加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的拖船的侧面栏杆上加上一个橙色救生圈。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the far-left black-hulled ship",
+        "ref_zh": "最左侧黑色船身的船",
+        "scope": "ship",
+        "scope_zh": "船",
+        "parent": "far_left_ship",
+        "parent_zh": "最左船",
+        "payload": "",
+        "instruction_zh": "移除最左侧黑色船身的船。",
+        "instruction_noref_zh": "移除选中的船。"
+      },
+      {
+        "object_id": 56,
+        "operation": "replace",
+        "ref": "the dockside streetlamp in front of the yellow building",
+        "ref_zh": "黄色建筑前的码头路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "dock_lamp",
+        "parent_zh": "码头灯",
+        "payload": "a black globe streetlamp",
+        "instruction_zh": "将黄色建筑前的码头路灯替换为一盏黑色球形路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色球形路灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1582141",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "87b5cf2215b9dbbeab93967db1aa510f4806d8cca076a17a3bd14dcf391b8217",
+    "review_card_sha256": "b5e160f16e535ff089d235913d1836e8917c4f9caa93c9692c6c749e51f92b70",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为手中整杯咖啡，14为右后方背标朝外黑杯，3为最左背景杯绿盖，37为带35价格的货架边。四个物理父对象不重复瓶盖与杯身。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "truncation",
+        "small_targets"
+      ],
+      "scene_zh": "手持咖啡与货架商品",
+      "evidence_zh": "8为手中整杯咖啡，14为右后方背标朝外黑杯，3为最左背景杯绿盖，37为带35价格的货架边。四个物理父对象不重复瓶盖与杯身。",
+      "specific_protection_zh": "保留手指、其余商品、货架结构和冷柜光照。"
+    },
+    "protected_content_zh": "保留手指、其余商品、货架结构和冷柜光照。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the coffee cup held in the hand",
+        "ref_zh": "手中拿着的咖啡杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "held_cup",
+        "parent_zh": "手持杯",
+        "payload": "a clear lidded cup of iced coffee",
+        "instruction_zh": "将手中拿着的咖啡杯替换为一杯带盖透明杯装冰咖啡。",
+        "instruction_noref_zh": "将选中的杯子替换为一杯带盖透明杯装冰咖啡。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the black cup with its back label facing forward behind the hand",
+        "ref_zh": "手后方背标朝前的黑色杯子",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "rear_black_cup",
+        "parent_zh": "后黑杯",
+        "payload": "",
+        "instruction_zh": "移除手后方背标朝前的黑色杯子。",
+        "instruction_noref_zh": "移除选中的杯子。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the green lid on the far-left background cup",
+        "ref_zh": "背景最左侧杯子的绿色杯盖",
+        "scope": "lid",
+        "scope_zh": "杯盖",
+        "parent": "left_background_cup",
+        "parent_zh": "左背景杯",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将背景最左侧杯子的绿色杯盖的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的杯盖的颜色改为黑色。"
+      },
+      {
+        "object_id": 37,
+        "operation": "add",
+        "ref": "the shelf edge displaying the “35” price",
+        "ref_zh": "标有“35”价格的货架边",
+        "scope": "shelf edge",
+        "scope_zh": "货架边",
+        "parent": "display_shelf",
+        "parent_zh": "货架",
+        "payload": "a small red “SALE” sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在标有“35”价格的货架边加上一张红色小“SALE”贴纸。",
+        "instruction_noref_zh": "在选中的货架边加上一张红色小“SALE”贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_159241",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e31889996589263004ee9db109b80aeeabb76a2c826a7e9cd65a2409bf905903",
+    "review_card_sha256": "a0e1114d10df43f121e891ad29dec81bdbc91781dfa17560a95c40ef72b0fcc4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为卡车蓝色集装箱，47为车头后侧中间隔离护栏可见段。卡车零件不拆多目标，新增反光片直接装在护栏上。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "公路集装箱卡车与隔离护栏",
+      "evidence_zh": "16为卡车蓝色集装箱，47为车头后侧中间隔离护栏可见段。卡车零件不拆多目标，新增反光片直接装在护栏上。",
+      "specific_protection_zh": "保留车头、轮胎、集装箱原标志、车道线、植被和护栏结构。"
+    },
+    "protected_content_zh": "保留车头、轮胎、集装箱原标志、车道线、植被和护栏结构。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the truck’s blue shipping container",
+        "ref_zh": "卡车的蓝色集装箱",
+        "scope": "container",
+        "scope_zh": "集装箱",
+        "parent": "container_truck",
+        "parent_zh": "集装箱卡车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将卡车的蓝色集装箱的颜色改为红色。",
+        "instruction_noref_zh": "将选中的集装箱的颜色改为红色。"
+      },
+      {
+        "object_id": 47,
+        "operation": "add",
+        "ref": "the median guardrail behind the truck cab",
+        "ref_zh": "卡车驾驶室后方的中央隔离护栏",
+        "scope": "guardrail",
+        "scope_zh": "护栏",
+        "parent": "median_guardrail",
+        "parent_zh": "中央护栏",
+        "payload": "a white rectangular reflector",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在卡车驾驶室后方的中央隔离护栏加上一块白色长方形反光片。",
+        "instruction_noref_zh": "在选中的护栏加上一块白色长方形反光片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_161512",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "eb8945cd073c753fa231b2654961a16e6cfa0375a4a43ead6b120b16ea7ff5fb",
+    "review_card_sha256": "5df30e0ab83d72d031a635c77c939eabeafee6910243ca05e816474c274772de",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为前景整件花衬衫，23为右后方白色T恤可见部分。印花花朵不是独立实物，未拿多个图案凑父对象；背景虽虚化仍由前景袖子定位。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "depth_of_field",
+        "truncation"
+      ],
+      "scene_zh": "花衬衫近景和背景白衣者",
+      "evidence_zh": "3为前景整件花衬衫，23为右后方白色T恤可见部分。印花花朵不是独立实物，未拿多个图案凑父对象；背景虽虚化仍由前景袖子定位。",
+      "specific_protection_zh": "保留皮肤、手、腕表、裤子、背景景深和原遮挡关系。"
+    },
+    "protected_content_zh": "保留皮肤、手、腕表、裤子、背景景深和原遮挡关系。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the foreground floral shirt",
+        "ref_zh": "前景的花衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "foreground_person",
+        "parent_zh": "前景人物",
+        "payload": "a plain navy linen shirt",
+        "instruction_zh": "将前景的花衬衫替换为一件纯藏蓝色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯藏蓝色亚麻衬衫。"
+      },
+      {
+        "object_id": 23,
+        "operation": "attribute",
+        "ref": "the white T-shirt behind the floral sleeve on the right",
+        "ref_zh": "右侧花袖后方的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "background_person",
+        "parent_zh": "背景人物",
+        "payload": "light gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧花袖后方的白色T恤的颜色改为浅灰色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅灰色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1615968",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3c71207f60ba2af4364fd904ade1d69b6c46fc9c4abe1eccb34a4abfc819a642",
+    "review_card_sha256": "f69edb2aadc1ee4e946b9f23dd7bb5079acd9fea455fbf33fb28f8b85869c91a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为上排最左焦糖桶，2为上排右侧草莓桶，1为下排左数第二桶，14为34.50价签。下排换同类包装维持上方承托，不删除下方支撑桶。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion"
+      ],
+      "scene_zh": "冷柜中叠放的冰淇淋桶",
+      "evidence_zh": "0为上排最左焦糖桶，2为上排右侧草莓桶，1为下排左数第二桶，14为34.50价签。下排换同类包装维持上方承托，不删除下方支撑桶。",
+      "specific_protection_zh": "保留货架、其他桶、堆叠承托关系和冷柜光照。"
+    },
+    "protected_content_zh": "保留货架、其他桶、堆叠承托关系和冷柜光照。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the upper-left salted-caramel ice cream tub",
+        "ref_zh": "左上方的咸焦糖冰淇淋桶",
+        "scope": "tub",
+        "scope_zh": "桶",
+        "parent": "upper_left_tub",
+        "parent_zh": "左上桶",
+        "payload": "a small gold award sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左上方的咸焦糖冰淇淋桶加上一张金色小获奖贴纸。",
+        "instruction_noref_zh": "在选中的桶加上一张金色小获奖贴纸。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the strawberry ice cream tub in the upper row",
+        "ref_zh": "上排的草莓冰淇淋桶",
+        "scope": "tub",
+        "scope_zh": "桶",
+        "parent": "upper_strawberry_tub",
+        "parent_zh": "上草莓桶",
+        "payload": "",
+        "instruction_zh": "移除上排的草莓冰淇淋桶。",
+        "instruction_noref_zh": "移除选中的桶。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the second ice cream tub from the left in the lower row",
+        "ref_zh": "下排从左数第二个冰淇淋桶",
+        "scope": "tub",
+        "scope_zh": "桶",
+        "parent": "lower_second_tub",
+        "parent_zh": "下排第二桶",
+        "payload": "a chocolate ice cream tub",
+        "instruction_zh": "将下排从左数第二个冰淇淋桶替换为一桶巧克力冰淇淋。",
+        "instruction_noref_zh": "将选中的桶替换为一桶巧克力冰淇淋。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the price tag reading “34.50”",
+        "ref_zh": "写着“34.50”的价签",
+        "scope": "price tag",
+        "scope_zh": "价签",
+        "parent": "price_tag",
+        "parent_zh": "价签",
+        "payload": "29.90",
+        "attribute_kind": "text",
+        "instruction_zh": "将写着“34.50”的价签的文字改为29.90。",
+        "instruction_noref_zh": "将选中的价签的文字改为29.90。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1630927",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d32f531491c6654c4f7c56c445258f5b7610abfa82f72aa9f0c13df99f3b3e85",
+    "review_card_sha256": "2ee956121b6b1e939932fcdde28067494b578107f17cdc791b09007335de5d7a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22为米色连肩头巾，15为右上大包干货，2为左前景装袋货的筐体，1为右后方挂白筐。两筐独立，换筐不移除货品。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "干货摊位人物和货筐",
+      "evidence_zh": "22为米色连肩头巾，15为右上大包干货，2为左前景装袋货的筐体，1为右后方挂白筐。两筐独立，换筐不移除货品。",
+      "specific_protection_zh": "保留脸、口罩、手、手机、干货、其他商品及摊位。"
+    },
+    "protected_content_zh": "保留脸、口罩、手、手机、干货、其他商品及摊位。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "attribute",
+        "ref": "the seated person’s beige head covering",
+        "ref_zh": "坐着的人戴的米色头巾",
+        "scope": "head covering",
+        "scope_zh": "头巾",
+        "parent": "seated_person",
+        "parent_zh": "坐者",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将坐着的人戴的米色头巾的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the large bag of dried snacks at the upper right",
+        "ref_zh": "右上方的大袋干货",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "upper_snack_bag",
+        "parent_zh": "上干货袋",
+        "payload": "",
+        "instruction_zh": "移除右上方的大袋干货。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the foreground crate of bagged goods on the left",
+        "ref_zh": "左侧前景装着袋装货物的筐",
+        "scope": "crate",
+        "scope_zh": "筐",
+        "parent": "left_goods_crate",
+        "parent_zh": "左货筐",
+        "payload": "a wicker basket",
+        "instruction_zh": "将左侧前景装着袋装货物的筐替换为一个藤编篮子。",
+        "instruction_noref_zh": "将选中的筐替换为一个藤编篮子。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the hanging white basket behind the person on the right",
+        "ref_zh": "人物右后方悬挂的白色筐",
+        "scope": "basket",
+        "scope_zh": "筐",
+        "parent": "right_hanging_basket",
+        "parent_zh": "右挂筐",
+        "payload": "a small handwritten price tag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在人物右后方悬挂的白色筐加上一张手写小价签。",
+        "instruction_noref_zh": "在选中的筐加上一张手写小价签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1642015",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "77e9c937450397ab8fd5c2df528c2d6ada7cb7dd5b384202f1a325e33039677b",
+    "review_card_sha256": "8a545ad27636ecd1b79f015c5e2b5dca11598c6bb0a04aa90415cf4c26987517",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为左侧完整购物车，4为推车下层左侧空编篮，3为上方黑字牌，30为玻璃柜顶浅绿碗。篮、碗、牌、购物车均独立，不按同推车的两个轮凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "商场食品推车及旁边购物车",
+      "evidence_zh": "6为左侧完整购物车，4为推车下层左侧空编篮，3为上方黑字牌，30为玻璃柜顶浅绿碗。篮、碗、牌、购物车均独立，不按同推车的两个轮凑数。",
+      "specific_protection_zh": "保留推车结构、食品、人物、玻璃柜、扶梯和其他容器。"
+    },
+    "protected_content_zh": "保留推车结构、食品、人物、玻璃柜、扶梯和其他容器。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the shopping cart left of the food stall",
+        "ref_zh": "食品摊左侧的购物车",
+        "scope": "shopping cart",
+        "scope_zh": "购物车",
+        "parent": "left_shopping_cart",
+        "parent_zh": "左购物车",
+        "payload": "",
+        "instruction_zh": "移除食品摊左侧的购物车。",
+        "instruction_noref_zh": "移除选中的购物车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the wicker basket on the stall’s lower-left shelf",
+        "ref_zh": "摊位左下层架上的编织篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "lower_basket",
+        "parent_zh": "下层篮",
+        "payload": "a white ceramic bowl",
+        "instruction_zh": "将摊位左下层架上的编织篮替换为一个白色陶瓷碗。",
+        "instruction_noref_zh": "将选中的篮子替换为一个白色陶瓷碗。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the black sign hanging above the stall",
+        "ref_zh": "摊位上方悬挂的黑色招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "hanging_stall_sign",
+        "parent_zh": "悬挂牌",
+        "payload": "a narrow wooden frame",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在摊位上方悬挂的黑色招牌加上一圈窄木框。",
+        "instruction_noref_zh": "在选中的招牌加上一圈窄木框。"
+      },
+      {
+        "object_id": 30,
+        "operation": "attribute",
+        "ref": "the pale green bowl on top of the glass display case",
+        "ref_zh": "玻璃展示柜顶部的浅绿色碗",
+        "scope": "bowl",
+        "scope_zh": "碗",
+        "parent": "top_bowl",
+        "parent_zh": "顶碗",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将玻璃展示柜顶部的浅绿色碗的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的碗的颜色改为蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

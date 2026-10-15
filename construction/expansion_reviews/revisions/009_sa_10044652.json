@@ -1,0 +1,138 @@
+{
+  "source_id": "sa_10044652",
+  "reason_zh": "白车外形不宜确定称sedan，改用清楚且充分的car指代。",
+  "previous_record": {
+    "source_id": "sa_10044652",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "828cc9fd5a0984e70e687a5de4d8615dab110a531a251b14e1ab197eeaa1326c",
+    "review_card_sha256": "bdf3df138b1a246b567e2bbd386927472a7dcb43df98597156d9f452a91293c2",
+    "evidence_zh": "外套33准确排除手机、手与颈部；白车12的下部被前景轿车遮挡；远处正面朝向镜头的车9单独成物。采用外套替换、白车改色和远处车辆移除。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection",
+        "local_parts"
+      ],
+      "scene_zh": "车辆旁的人群与停放车辆",
+      "evidence_zh": "外套33准确排除手机、手与颈部；白车12的下部被前景轿车遮挡；远处正面朝向镜头的车9单独成物。采用外套替换、白车改色和远处车辆移除。",
+      "specific_protection_zh": "保留人物面部与双手、前景受损车辆及所有未选衣物。"
+    },
+    "protected_content_zh": "保留人物面部与双手、前景受损车辆及所有未选衣物。",
+    "targets": [
+      {
+        "object_id": 33,
+        "operation": "replace",
+        "ref": "the central man’s red-and-blue track jacket",
+        "ref_zh": "中央男子的红蓝运动外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "central_man",
+        "parent_zh": "中央红蓝外套男子",
+        "payload": "a navy bomber jacket",
+        "instruction_zh": "将中央男子的红蓝运动外套替换为一件藏蓝色飞行员夹克。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色飞行员夹克。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the white sedan behind the damaged car",
+        "ref_zh": "受损汽车后方的白色轿车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_sedan",
+        "parent_zh": "后方白色轿车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将受损汽车后方的白色轿车的颜色改为银色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为银色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the distant silver car facing the camera",
+        "ref_zh": "远处正对镜头的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "distant_silver_car",
+        "parent_zh": "远处正对镜头的银车",
+        "payload": "",
+        "instruction_zh": "移除远处正对镜头的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10044652",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "828cc9fd5a0984e70e687a5de4d8615dab110a531a251b14e1ab197eeaa1326c",
+    "review_card_sha256": "bdf3df138b1a246b567e2bbd386927472a7dcb43df98597156d9f452a91293c2",
+    "evidence_zh": "外套33准确排除手机、手与颈部；白车12的下部被前景轿车遮挡；远处正面朝向镜头的车9单独成物。采用外套替换、白车改色和远处车辆移除。 全图定位复核：白车外形不宜确定称sedan，改用清楚且充分的car指代。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection",
+        "local_parts"
+      ],
+      "scene_zh": "车辆旁的人群与停放车辆",
+      "evidence_zh": "外套33准确排除手机、手与颈部；白车12的下部被前景轿车遮挡；远处正面朝向镜头的车9单独成物。采用外套替换、白车改色和远处车辆移除。 全图定位复核：白车外形不宜确定称sedan，改用清楚且充分的car指代。",
+      "specific_protection_zh": "保留人物面部与双手、前景受损车辆及所有未选衣物。"
+    },
+    "protected_content_zh": "保留人物面部与双手、前景受损车辆及所有未选衣物。",
+    "targets": [
+      {
+        "object_id": 33,
+        "operation": "replace",
+        "ref": "the central man’s red-and-blue track jacket",
+        "ref_zh": "中央男子的红蓝运动外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "central_man",
+        "parent_zh": "中央红蓝外套男子",
+        "payload": "a navy bomber jacket",
+        "instruction_zh": "将中央男子的红蓝运动外套替换为一件藏蓝色飞行员夹克。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色飞行员夹克。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the white car behind the damaged car",
+        "ref_zh": "受损汽车后方的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_sedan",
+        "parent_zh": "后方白色汽车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将受损汽车后方的白色汽车的颜色改为银色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为银色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the distant silver car facing the camera",
+        "ref_zh": "远处正对镜头的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "distant_silver_car",
+        "parent_zh": "远处正对镜头的银车",
+        "payload": "",
+        "instruction_zh": "移除远处正对镜头的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

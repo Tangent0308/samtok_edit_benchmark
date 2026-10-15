@@ -1,0 +1,150 @@
+{
+  "source_id": "sa_10677079",
+  "reason_zh": "只看到服装上半部，用top/上衣避免根据裁切画面推断是连衣裙；mask不变。",
+  "previous_record": {
+    "source_id": "sa_10677079",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8003c7309cae79d953988928d5dacd8af9785f1371bb5e1ddcb3fa45017ea411",
+    "review_card_sha256": "cfb6bee74a870bbf5e948bb9f8aee2874d1409541e1986b5333b0e4a68398a4e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13是被长发遮挡的游客红花衣服，10是最左蓝色独立画板，6是最右侧完整佛像绘画板。画板按真实承载板编辑，不把其画中人物当作真实人。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "佛像前的游客与独立展示画板",
+      "evidence_zh": "13是被长发遮挡的游客红花衣服，10是最左蓝色独立画板，6是最右侧完整佛像绘画板。画板按真实承载板编辑，不把其画中人物当作真实人。",
+      "specific_protection_zh": "保留游客头发、皮肤、佛像、其余画板和平台。"
+    },
+    "protected_content_zh": "保留游客头发、皮肤、佛像、其余画板和平台。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the foreground woman’s red floral dress",
+        "ref_zh": "前景女子的红色碎花裙",
+        "scope": "dress",
+        "scope_zh": "裙子",
+        "parent": "foreground_woman",
+        "parent_zh": "前景女子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景女子的红色碎花裙的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的裙子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the blue painted panel at the far left",
+        "ref_zh": "最左侧的蓝色绘画板",
+        "scope": "painted panel",
+        "scope_zh": "绘画板",
+        "parent": "left_panel",
+        "parent_zh": "左侧蓝画板",
+        "payload": "",
+        "instruction_zh": "移除最左侧的蓝色绘画板。",
+        "instruction_noref_zh": "移除选中的绘画板。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the rightmost painted panel",
+        "ref_zh": "最右侧的绘画板",
+        "scope": "painted panel",
+        "scope_zh": "绘画板",
+        "parent": "right_panel",
+        "parent_zh": "最右绘画板",
+        "payload": "a slim gold frame",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的绘画板加上一个细金色框。",
+        "instruction_noref_zh": "在选中的绘画板加上一个细金色框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10677079",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8003c7309cae79d953988928d5dacd8af9785f1371bb5e1ddcb3fa45017ea411",
+    "review_card_sha256": "cfb6bee74a870bbf5e948bb9f8aee2874d1409541e1986b5333b0e4a68398a4e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13是被长发遮挡的游客红花衣服，10是最左蓝色独立画板，6是最右侧完整佛像绘画板。画板按真实承载板编辑，不把其画中人物当作真实人。 复核修订：只看到服装上半部，用top/上衣避免根据裁切画面推断是连衣裙；mask不变。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "佛像前的游客与独立展示画板",
+      "evidence_zh": "13是被长发遮挡的游客红花衣服，10是最左蓝色独立画板，6是最右侧完整佛像绘画板。画板按真实承载板编辑，不把其画中人物当作真实人。 复核修订：只看到服装上半部，用top/上衣避免根据裁切画面推断是连衣裙；mask不变。",
+      "specific_protection_zh": "保留游客头发、皮肤、佛像、其余画板和平台。"
+    },
+    "protected_content_zh": "保留游客头发、皮肤、佛像、其余画板和平台。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the foreground woman’s red floral top",
+        "ref_zh": "前景女子的红色碎花上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "foreground_woman",
+        "parent_zh": "前景女子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景女子的红色碎花上衣的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the blue painted panel at the far left",
+        "ref_zh": "最左侧的蓝色绘画板",
+        "scope": "painted panel",
+        "scope_zh": "绘画板",
+        "parent": "left_panel",
+        "parent_zh": "左侧蓝画板",
+        "payload": "",
+        "instruction_zh": "移除最左侧的蓝色绘画板。",
+        "instruction_noref_zh": "移除选中的绘画板。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the rightmost painted panel",
+        "ref_zh": "最右侧的绘画板",
+        "scope": "painted panel",
+        "scope_zh": "绘画板",
+        "parent": "right_panel",
+        "parent_zh": "最右绘画板",
+        "payload": "a slim gold frame",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的绘画板加上一个细金色框。",
+        "instruction_noref_zh": "在选中的绘画板加上一个细金色框。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

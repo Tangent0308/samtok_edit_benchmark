@@ -1,0 +1,593 @@
+[
+  {
+    "source_id": "sa_6097564",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "261789e85a3727378be70663758110657493beaa3d976837b16f0163cb32daf5",
+    "review_card_sha256": "396740137cfe71715beed7d2e34e95d68628c777b826bfb3ec9a66f8dce1124c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6花棉衣、16前景灰衣属不同人物，12交通标志及24右门独立。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "night",
+        "occlusion"
+      ],
+      "scene_zh": "夜晚签名人群",
+      "evidence_zh": "6花棉衣、16前景灰衣属不同人物，12交通标志及24右门独立。",
+      "specific_protection_zh": "保留人物身体、书本和背景。"
+    },
+    "protected_content_zh": "保留人物身体、书本和背景。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the floral padded coat near the center",
+        "ref_zh": "中间附近的花棉衣",
+        "scope": "coat",
+        "scope_zh": "棉衣",
+        "parent": "floral_person",
+        "parent_zh": "花衣人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的花棉衣的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的棉衣的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "replace",
+        "ref": "the gray coat in the left foreground",
+        "ref_zh": "左侧前景的灰外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "left_person",
+        "parent_zh": "左人物",
+        "payload": "a beige wool coat",
+        "instruction_zh": "将左侧前景的灰外套替换为一件米色羊毛外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色羊毛外套。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the round traffic sign above the crowd",
+        "ref_zh": "人群上方的圆形交通标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "traffic_sign",
+        "parent_zh": "交通标志",
+        "payload": "",
+        "instruction_zh": "移除人群上方的圆形交通标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the gray door at the right",
+        "ref_zh": "右侧的灰门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a small blue ENTRANCE sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的灰门加上一块蓝色小ENTRANCE标牌。",
+        "instruction_noref_zh": "在选中的门加上一块蓝色小ENTRANCE标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6105776",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d6d969ba9a21edb75105897748bc53cbdd4bbe6f6bf09c6a7f221945a4305dc8",
+    "review_card_sha256": "078ae00cef22f5e987e0344b3ab97b07c3b453e2b8f91a2fe9b82128ddfd7399",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12白袋、53手袋为独立物品，32头巾、15头盔属不同人物。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "街头市场行人",
+      "evidence_zh": "12白袋、53手袋为独立物品，32头巾、15头盔属不同人物。",
+      "specific_protection_zh": "保留人物身体、其他商品和摊位。"
+    },
+    "protected_content_zh": "保留人物身体、其他商品和摊位。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the white bag on the ground",
+        "ref_zh": "地上的白袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "ground_bag",
+        "parent_zh": "地袋",
+        "payload": "",
+        "instruction_zh": "移除地上的白袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 53,
+        "operation": "replace",
+        "ref": "the light turquoise handbag hanging from the food cart at the left",
+        "ref_zh": "左侧餐车上挂着的浅青绿色手袋",
+        "scope": "handbag",
+        "scope_zh": "手袋",
+        "parent": "handbag",
+        "parent_zh": "手袋",
+        "payload": "a brown canvas tote bag",
+        "instruction_zh": "将左侧餐车上挂着的浅青绿色手袋替换为一个棕色帆布托特包。",
+        "instruction_noref_zh": "将选中的手袋替换为一个棕色帆布托特包。"
+      },
+      {
+        "object_id": 32,
+        "operation": "attribute",
+        "ref": "the magenta headscarf near the center",
+        "ref_zh": "中间附近的洋红色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "headscarf_person",
+        "parent_zh": "头巾人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的洋红色头巾的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the white helmet in the left foreground",
+        "ref_zh": "左侧前景的白头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "helmet_person",
+        "parent_zh": "头盔人物",
+        "payload": "a small red star sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧前景的白头盔加上一张小红星贴纸。",
+        "instruction_noref_zh": "在选中的头盔加上一张小红星贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_610993",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cf9788f68c832f6d42be28dcb318195d1c83991e4f607b3f9dbe9bbc7e1e4993",
+    "review_card_sha256": "3f2152e12d781a1981e4d8b75b3ab016ec4af2d09c1a50d393b87dd327d156ae",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6女子夹克、2吉他手T恤与25独立项链。",
+    "difficulty": {
+      "mechanisms": [
+        "stage",
+        "occlusion"
+      ],
+      "scene_zh": "摇滚演出",
+      "evidence_zh": "6女子夹克、2吉他手T恤与25独立项链。",
+      "specific_protection_zh": "保留人物身体、吉他和话筒。"
+    },
+    "protected_content_zh": "保留人物身体、吉他和话筒。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the female singer's jacket",
+        "ref_zh": "女歌手的夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "singer",
+        "parent_zh": "歌手",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将女歌手的夹克的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的夹克的颜色改为酒红色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the guitarist's T-shirt",
+        "ref_zh": "吉他手的T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "guitarist",
+        "parent_zh": "吉他手",
+        "payload": "a plain white T-shirt",
+        "instruction_zh": "将吉他手的T恤替换为一件纯白T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯白T恤。"
+      },
+      {
+        "object_id": 25,
+        "operation": "remove",
+        "ref": "the female singer's necklace",
+        "ref_zh": "女歌手的项链",
+        "scope": "necklace",
+        "scope_zh": "项链",
+        "parent": "necklace",
+        "parent_zh": "项链",
+        "payload": "",
+        "instruction_zh": "移除女歌手的项链。",
+        "instruction_noref_zh": "移除选中的项链。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6123226",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1bc0c5478cb9dec0a9a7242f49b6e6b6f0fc24b950166bcabf8032b017bb36a6",
+    "review_card_sha256": "83fe4abb55f5a3e98f1eabe51dfda1c0fecfbc453461c3022ecf4060efa280e1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0车牌38-78出租车、1普锐斯、2最下方出租车、93墙牌四独立对象。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "排队出租车",
+      "evidence_zh": "0车牌38-78出租车、1普锐斯、2最下方出租车、93墙牌四独立对象。",
+      "specific_protection_zh": "保留车道、其他汽车与建筑。"
+    },
+    "protected_content_zh": "保留车道、其他汽车与建筑。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the black taxi with plate 38-78",
+        "ref_zh": "车牌为38-78的黑色出租车",
+        "scope": "taxi",
+        "scope_zh": "出租车",
+        "parent": "taxi_3878",
+        "parent_zh": "38-78车",
+        "payload": "",
+        "instruction_zh": "移除车牌为38-78的黑色出租车。",
+        "instruction_noref_zh": "移除选中的出租车。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the black Prius near the lower right",
+        "ref_zh": "右下方附近的黑色普锐斯",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "prius",
+        "parent_zh": "普锐斯",
+        "payload": "a white minivan",
+        "instruction_zh": "将右下方附近的黑色普锐斯替换为一辆白色小型厢式车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆白色小型厢式车。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the taxi at the bottom center",
+        "ref_zh": "底部中间的出租车",
+        "scope": "taxi",
+        "scope_zh": "出租车",
+        "parent": "front_taxi",
+        "parent_zh": "前车",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将底部中间的出租车的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的出租车的颜色改为黄色。"
+      },
+      {
+        "object_id": 93,
+        "operation": "add",
+        "ref": "the red sign on the wall at the left",
+        "ref_zh": "左侧墙上的红标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "wall_sign",
+        "parent_zh": "墙牌",
+        "payload": "a small blue parking sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧墙上的红标牌加上一张小蓝色停车标志贴纸。",
+        "instruction_noref_zh": "在选中的标牌加上一张小蓝色停车标志贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6129691",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4e96ea1413cd6821dcac3056e8c480d982809dafe094a657b06297118b13a449",
+    "review_card_sha256": "8588af6e5ed4e7995eb74d8779e0377a6cc387404c75f380671f79b227b14bfe",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0右前景招牌、143左蓝屏、330蓝背包、141白连帽衫四独立对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "俯拍街头游行",
+      "evidence_zh": "0右前景招牌、143左蓝屏、330蓝背包、141白连帽衫四独立对象。",
+      "specific_protection_zh": "保留游行人群、其余标语和道路。"
+    },
+    "protected_content_zh": "保留游行人群、其余标语和道路。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the round white shop sign in the lower right",
+        "ref_zh": "右下方的圆形白色店招",
+        "scope": "sign",
+        "scope_zh": "店招",
+        "parent": "round_sign",
+        "parent_zh": "圆招牌",
+        "payload": "a round white sign with a red coffee cup",
+        "instruction_zh": "将右下方的圆形白色店招替换为一块带红色咖啡杯图案的圆形白招牌。",
+        "instruction_noref_zh": "将选中的店招替换为一块带红色咖啡杯图案的圆形白招牌。"
+      },
+      {
+        "object_id": 143,
+        "operation": "attribute",
+        "ref": "the blue advertising panel farthest left under the trees",
+        "ref_zh": "树下最左侧的蓝色广告面板",
+        "scope": "panel",
+        "scope_zh": "面板",
+        "parent": "left_panel",
+        "parent_zh": "左屏",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将树下最左侧的蓝色广告面板的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的面板的颜色改为深绿色。"
+      },
+      {
+        "object_id": 330,
+        "operation": "remove",
+        "ref": "the dark blue backpack beside the yellow road circle",
+        "ref_zh": "黄色道路圆圈旁的深蓝背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "backpack",
+        "parent_zh": "背包",
+        "payload": "",
+        "instruction_zh": "移除黄色道路圆圈旁的深蓝背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 141,
+        "operation": "add",
+        "ref": "the white hoodie worn with a sandwich board",
+        "ref_zh": "夹心广告牌穿戴者的白色连帽衫",
+        "scope": "hoodie",
+        "scope_zh": "连帽衫",
+        "parent": "white_hoodie_person",
+        "parent_zh": "白衫人物",
+        "payload": "a small blue heart patch on its sleeve",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在夹心广告牌穿戴者的白色连帽衫加上一块位于袖子上的小蓝心补丁。",
+        "instruction_noref_zh": "在选中的连帽衫加上一块位于袖子上的小蓝心补丁。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6151826",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "789883b42bd29336897c9c70e4363216fd00451da73c874c06491bcfb2a03c90",
+    "review_card_sha256": "27f621c35ef485cf3ec5c7cdfabd4153e96356451d88c27e46fcf0e59f938d96",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左银车、2白车、8双头灯、10近驴牌为四独立对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "animals"
+      ],
+      "scene_zh": "驴出租与道路",
+      "evidence_zh": "0左银车、2白车、8双头灯、10近驴牌为四独立对象。",
+      "specific_protection_zh": "保留驴身体、马具、其他汽车和棚架。"
+    },
+    "protected_content_zh": "保留驴身体、马具、其他汽车和棚架。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the silver sedan at the far left",
+        "ref_zh": "最左侧的银色轿车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "",
+        "instruction_zh": "移除最左侧的银色轿车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the white hatchback behind the silver sedan",
+        "ref_zh": "银色轿车后方的白色掀背车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_car",
+        "parent_zh": "白车",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将银色轿车后方的白色掀背车的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the two-headed streetlamp above the nearest donkey",
+        "ref_zh": "最近的驴上方的双头路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "double_lamp",
+        "parent_zh": "双灯",
+        "payload": "a black two-headed lantern streetlamp",
+        "instruction_zh": "将最近的驴上方的双头路灯替换为一根黑色双头灯笼路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一根黑色双头灯笼路灯。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the BURRO TAXI sign on the nearest donkey",
+        "ref_zh": "最近的驴身上的BURRO TAXI标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "donkey_sign",
+        "parent_zh": "驴牌",
+        "payload": "a small red heart sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的驴身上的BURRO TAXI标牌加上一张小红心贴纸。",
+        "instruction_noref_zh": "在选中的标牌加上一张小红心贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6202216",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "635bc3fe3814d7ac596cd2d793b8f60cc7880833a90a60c59520fd3d4c5dcd43",
+    "review_card_sha256": "6a2c471ecd64a389d01272998300f6f2e8efe8ed02ab2e32b7998daeb887dbfa",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "可见mask均为同一邮票上的文字及印刷图案，缺少不同物理父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "printed_art"
+      ],
+      "scene_zh": "单张邮票",
+      "evidence_zh": "可见mask均为同一邮票上的文字及印刷图案，缺少不同物理父对象。",
+      "specific_protection_zh": "保留待补充独立对象。"
+    },
+    "protected_content_zh": "保留待补充独立对象。",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6204662",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "79188e50dbc7852e4e96744da7eb5f7074a851894b23faa54cff8ca8bc9566ea",
+    "review_card_sha256": "ef87dd64ce5f720837794ecbb2a40e44878b73234530e9d86ff0c486128c62b2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "52中央长花箱、16收拢伞、73左建筑栏杆为不同实体。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "small_targets"
+      ],
+      "scene_zh": "空广场与建筑",
+      "evidence_zh": "52中央长花箱、16收拢伞、73左建筑栏杆为不同实体。",
+      "specific_protection_zh": "保留建筑结构、其他伞和铺地。"
+    },
+    "protected_content_zh": "保留建筑结构、其他伞和铺地。",
+    "targets": [
+      {
+        "object_id": 52,
+        "operation": "attribute",
+        "ref": "the long planter across the center of the square",
+        "ref_zh": "广场中间横向的长花箱",
+        "scope": "planter",
+        "scope_zh": "花箱",
+        "parent": "planter",
+        "parent_zh": "花箱",
+        "payload": "terracotta orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将广场中间横向的长花箱的颜色改为陶土橙色。",
+        "instruction_noref_zh": "将选中的花箱的颜色改为陶土橙色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the rightmost folded parasol behind the central planter",
+        "ref_zh": "中央花箱后最右侧的收拢遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "parasol",
+        "parent_zh": "遮阳伞",
+        "payload": "",
+        "instruction_zh": "移除中央花箱后最右侧的收拢遮阳伞。",
+        "instruction_noref_zh": "移除选中的遮阳伞。"
+      },
+      {
+        "object_id": 73,
+        "operation": "add",
+        "ref": "the long balcony railing on the left-hand market building",
+        "ref_zh": "左侧市场建筑的长阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "market_building",
+        "parent_zh": "市场楼",
+        "payload": "a small hanging flower box at its center",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧市场建筑的长阳台栏杆加上一个位于中央的小悬挂花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个位于中央的小悬挂花箱。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,621 @@
+[
+  {
+    "source_id": "sa_8012456",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "76f44af0b0c7e11da94ed3fa7a6911144a3d4167f3d6a1cf04e74381d80c2d5d",
+    "review_card_sha256": "253ff6d154a08dc782a17992b8d151358155a532ed44033b8d073bc430d6bbc2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0右侧男子、4右下孩子、48下方长椅和1右侧建筑是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "urban",
+        "crowd"
+      ],
+      "scene_zh": "城市公园",
+      "evidence_zh": "0右侧男子、4右下孩子、48下方长椅和1右侧建筑是四个不同对象。",
+      "specific_protection_zh": "保留公园、人物和建筑环境。"
+    },
+    "protected_content_zh": "保留公园、人物和建筑环境。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the man at the right",
+        "ref_zh": "右侧的男子",
+        "scope": "man",
+        "scope_zh": "男子",
+        "parent": "right_man",
+        "parent_zh": "右侧男子",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的男子的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的男子的颜色改为蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the child at the lower right",
+        "ref_zh": "右下方的孩子",
+        "scope": "child",
+        "scope_zh": "孩子",
+        "parent": "lower_right_child",
+        "parent_zh": "右下孩子",
+        "payload": "a red jacket",
+        "instruction_zh": "将右下方的孩子替换为一件红色夹克。",
+        "instruction_noref_zh": "将选中的孩子替换为一件红色夹克。"
+      },
+      {
+        "object_id": 48,
+        "operation": "remove",
+        "ref": "the bench at the lower center",
+        "ref_zh": "下方中间的长椅",
+        "scope": "bench",
+        "scope_zh": "长椅",
+        "parent": "lower_center_bench",
+        "parent_zh": "下方长椅",
+        "payload": "",
+        "instruction_zh": "移除下方中间的长椅。",
+        "instruction_noref_zh": "移除选中的长椅。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the building at the right",
+        "ref_zh": "右侧的建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "a rooftop flag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的建筑加上一面屋顶旗帜。",
+        "instruction_noref_zh": "在选中的建筑加上一面屋顶旗帜。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8018927",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "22f6cb2df2e86f54d1f998b5eb93eb91fe60f61d858f0b9deca2fa18d23cad37",
+    "review_card_sha256": "528cf71d2b7663903d7c21f83446de9c8206e712e64c02a4a589782ea75c0b0f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左侧人物、1右侧人物、9左侧建筑和29左侧路灯是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "architecture",
+        "crowd"
+      ],
+      "scene_zh": "城市步行街",
+      "evidence_zh": "0左侧人物、1右侧人物、9左侧建筑和29左侧路灯是四个不同对象。",
+      "specific_protection_zh": "保留步行街、人群和建筑环境。"
+    },
+    "protected_content_zh": "保留步行街、人群和建筑环境。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the person at the left",
+        "ref_zh": "左侧的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "left_person",
+        "parent_zh": "左侧人物",
+        "payload": "green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的人物的颜色改为绿色。",
+        "instruction_noref_zh": "将选中的人物的颜色改为绿色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the person at the right",
+        "ref_zh": "右侧的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "right_person",
+        "parent_zh": "右侧人物",
+        "payload": "a blue coat",
+        "instruction_zh": "将右侧的人物替换为一件蓝色外套。",
+        "instruction_noref_zh": "将选中的人物替换为一件蓝色外套。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the building at the left",
+        "ref_zh": "左侧的建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "left_building",
+        "parent_zh": "左侧建筑",
+        "payload": "",
+        "instruction_zh": "移除左侧的建筑。",
+        "instruction_noref_zh": "移除选中的建筑。"
+      },
+      {
+        "object_id": 29,
+        "operation": "add",
+        "ref": "the street lamp at the left",
+        "ref_zh": "左侧的路灯",
+        "scope": "street lamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左侧路灯",
+        "payload": "a hanging banner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧的路灯加上一面悬挂横幅。",
+        "instruction_noref_zh": "在选中的路灯加上一面悬挂横幅。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8022634",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ecdc7645c05a4fbaa064f2e0fd3888bf37d27a8f894f98b7af39b4ed98d5a4b8",
+    "review_card_sha256": "8d6eb201ab83c82da997ddde3d07be95029713ede87e8097a14711c7a1d56e90",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 主要属于同一栋建筑的窗户、灯具和立面装饰，缺少足够独立的父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "detail"
+      ],
+      "scene_zh": "建筑橱窗",
+      "evidence_zh": "候选 mask 主要属于同一栋建筑的窗户、灯具和立面装饰，缺少足够独立的父对象。",
+      "specific_protection_zh": "不把同一栋建筑的结构部件拆成多个目标。"
+    },
+    "protected_content_zh": "不把同一栋建筑的结构部件拆成多个目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 25,
+        "reason_zh": "同一栋建筑主体"
+      },
+      {
+        "object_id": 30,
+        "reason_zh": "同一栋建筑灯具"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_8043384",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7eb142876e91cc897fb80e658695bc5541b7e9873876e18e4c92edec53f1fd41",
+    "review_card_sha256": "c61ff9056679b1b718b76784747e681467ec6f94d2cafcd9955c1ab29c8a97f9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "20中央花车、6中央驾驶员、2最右男子和8最左男子是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "vehicle",
+        "crowd"
+      ],
+      "scene_zh": "游行花车",
+      "evidence_zh": "20中央花车、6中央驾驶员、2最右男子和8最左男子是四个不同对象。",
+      "specific_protection_zh": "保留花车、乘员和游行环境。"
+    },
+    "protected_content_zh": "保留花车、乘员和游行环境。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "attribute",
+        "ref": "the carriage in the center",
+        "ref_zh": "中央的花车",
+        "scope": "carriage",
+        "scope_zh": "花车",
+        "parent": "center_carriage",
+        "parent_zh": "中央花车",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央的花车的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的花车的颜色改为深绿色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the driver near the center",
+        "ref_zh": "中间附近的驾驶员",
+        "scope": "driver",
+        "scope_zh": "驾驶员",
+        "parent": "center_driver",
+        "parent_zh": "中央驾驶员",
+        "payload": "a blue jacket",
+        "instruction_zh": "将中间附近的驾驶员替换为一件蓝色夹克。",
+        "instruction_noref_zh": "将选中的驾驶员替换为一件蓝色夹克。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the man at the far right",
+        "ref_zh": "最右侧的男子",
+        "scope": "man",
+        "scope_zh": "男子",
+        "parent": "far_right_man",
+        "parent_zh": "最右男子",
+        "payload": "",
+        "instruction_zh": "移除最右侧的男子。",
+        "instruction_noref_zh": "移除选中的男子。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the man at the far left",
+        "ref_zh": "最左侧的男子",
+        "scope": "man",
+        "scope_zh": "男子",
+        "parent": "far_left_man",
+        "parent_zh": "最左男子",
+        "payload": "a small badge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最左侧的男子加上一个小徽章。",
+        "instruction_noref_zh": "在选中的男子加上一个小徽章。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_805201",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "725d131502018ede678b672668e1f9251b5e3856bb70e22d164dc53d1be570a1",
+    "review_card_sha256": "9e229420d54ba2fd62bfc888124752abfeb2787c25305fc136db5ac9b68c537b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4上方游泳圈、5左侧金属栏杆、36左下沙滩椅和6中央警示牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "water",
+        "occlusion"
+      ],
+      "scene_zh": "海边游乐场",
+      "evidence_zh": "4上方游泳圈、5左侧金属栏杆、36左下沙滩椅和6中央警示牌是四个不同对象。",
+      "specific_protection_zh": "保留海边设施、船只和游乐场景。"
+    },
+    "protected_content_zh": "保留海边设施、船只和游乐场景。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the inflatable ring near the upper center",
+        "ref_zh": "上方中间附近的游泳圈",
+        "scope": "inflatable ring",
+        "scope_zh": "游泳圈",
+        "parent": "upper_center_ring",
+        "parent_zh": "上中游泳圈",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将上方中间附近的游泳圈的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的游泳圈的颜色改为蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the metal railing at the left",
+        "ref_zh": "左侧的金属栏杆",
+        "scope": "metal railing",
+        "scope_zh": "金属栏杆",
+        "parent": "left_railing",
+        "parent_zh": "左侧栏杆",
+        "payload": "a wooden fence",
+        "instruction_zh": "将左侧的金属栏杆替换为一段木栅栏。",
+        "instruction_noref_zh": "将选中的金属栏杆替换为一段木栅栏。"
+      },
+      {
+        "object_id": 36,
+        "operation": "remove",
+        "ref": "the beach chair at the lower left",
+        "ref_zh": "左下方的沙滩椅",
+        "scope": "beach chair",
+        "scope_zh": "沙滩椅",
+        "parent": "lower_left_chair",
+        "parent_zh": "左下沙滩椅",
+        "payload": "",
+        "instruction_zh": "移除左下方的沙滩椅。",
+        "instruction_noref_zh": "移除选中的沙滩椅。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the caution sign near the center",
+        "ref_zh": "中间附近的警示牌",
+        "scope": "caution sign",
+        "scope_zh": "警示牌",
+        "parent": "center_caution_sign",
+        "parent_zh": "中央警示牌",
+        "payload": "a red border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的警示牌加上一个红色边框。",
+        "instruction_noref_zh": "在选中的警示牌加上一个红色边框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8060797",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c557a91ac6289f40953dca8c2a503b1784227efc70c813a6caec37bb092ccebe",
+    "review_card_sha256": "1047a3fadb3387b5c317a5d5ee1d66b66ae9f35d5022d0ab1632c84bef3b75e5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0前景布料、16左侧雕刻、41右侧雕像和39中央门是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "craft",
+        "architecture"
+      ],
+      "scene_zh": "室内手工店",
+      "evidence_zh": "0前景布料、16左侧雕刻、41右侧雕像和39中央门是四个不同对象。",
+      "specific_protection_zh": "保留手工艺品、门面和室内环境。"
+    },
+    "protected_content_zh": "保留手工艺品、门面和室内环境。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the white shirt at the lower left",
+        "ref_zh": "左下方的白色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "lower_left_shirt",
+        "parent_zh": "左下上衣",
+        "payload": "deep red",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下方的白色上衣的颜色改为深红色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为深红色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "replace",
+        "ref": "the carving on the left",
+        "ref_zh": "左侧的雕刻",
+        "scope": "carving",
+        "scope_zh": "雕刻",
+        "parent": "left_carving",
+        "parent_zh": "左侧雕刻",
+        "payload": "a painted ornament",
+        "instruction_zh": "将左侧的雕刻替换为一个彩绘装饰。",
+        "instruction_noref_zh": "将选中的雕刻替换为一个彩绘装饰。"
+      },
+      {
+        "object_id": 41,
+        "operation": "remove",
+        "ref": "the statue at the right",
+        "ref_zh": "右侧的雕像",
+        "scope": "statue",
+        "scope_zh": "雕像",
+        "parent": "right_statue",
+        "parent_zh": "右侧雕像",
+        "payload": "",
+        "instruction_zh": "移除右侧的雕像。",
+        "instruction_noref_zh": "移除选中的雕像。"
+      },
+      {
+        "object_id": 39,
+        "operation": "add",
+        "ref": "the door near the center",
+        "ref_zh": "中间附近的门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "center_door",
+        "parent_zh": "中央门",
+        "payload": "a brass handle",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的门加上一个黄铜把手。",
+        "instruction_noref_zh": "在选中的门加上一个黄铜把手。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8064958",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "66ceedd05a2bd3a594f9c3d0c53428936eb90a957c43fadcacf1273eebacbb24",
+    "review_card_sha256": "3e5063489b2cd1b765967cbb560fcce535a8fafba2bbad34f13f608f5a06f1b0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1中央钟楼、0左侧路灯和8右下布料是三个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "street"
+      ],
+      "scene_zh": "教堂街景",
+      "evidence_zh": "1中央钟楼、0左侧路灯和8右下布料是三个不同对象。",
+      "specific_protection_zh": "保留教堂、街道设施和人物衣物。"
+    },
+    "protected_content_zh": "保留教堂、街道设施和人物衣物。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the bell tower in the center",
+        "ref_zh": "中央的钟楼",
+        "scope": "bell tower",
+        "scope_zh": "钟楼",
+        "parent": "center_tower",
+        "parent_zh": "中央钟楼",
+        "payload": "warm beige",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央的钟楼的颜色改为暖米色。",
+        "instruction_noref_zh": "将选中的钟楼的颜色改为暖米色。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the street lamp at the left",
+        "ref_zh": "左侧的路灯",
+        "scope": "street lamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左侧路灯",
+        "payload": "black",
+        "instruction_zh": "将左侧的路灯替换为黑色。",
+        "instruction_noref_zh": "将选中的路灯替换为黑色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the fabric at the lower right",
+        "ref_zh": "右下方的布料",
+        "scope": "fabric",
+        "scope_zh": "布料",
+        "parent": "lower_right_fabric",
+        "parent_zh": "右下布料",
+        "payload": "",
+        "instruction_zh": "移除右下方的布料。",
+        "instruction_noref_zh": "移除选中的布料。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8066140",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "66e6c27d84026c1dd3e74fa45a3c6e1f4a50e2a14e1edfc8173cf604d8a100c8",
+    "review_card_sha256": "ac9806e81a3a772e7bbba447934a9b019f0c51d28f722c43a52ffeedd1f7f9c5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11中央游船、24左侧标牌、37上中阳台和40上方屋顶窗是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "water",
+        "architecture"
+      ],
+      "scene_zh": "河岸游船",
+      "evidence_zh": "11中央游船、24左侧标牌、37上中阳台和40上方屋顶窗是四个不同对象。",
+      "specific_protection_zh": "保留游船、河岸建筑和标识。"
+    },
+    "protected_content_zh": "保留游船、河岸建筑和标识。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the boat in the center",
+        "ref_zh": "中央的游船",
+        "scope": "boat",
+        "scope_zh": "游船",
+        "parent": "center_boat",
+        "parent_zh": "中央游船",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央的游船的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的游船的颜色改为蓝色。"
+      },
+      {
+        "object_id": 24,
+        "operation": "replace",
+        "ref": "the sign at the left",
+        "ref_zh": "左侧的标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "left_sign",
+        "parent_zh": "左侧标牌",
+        "payload": "a yellow sign",
+        "instruction_zh": "将左侧的标牌替换为一块黄色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块黄色标牌。"
+      },
+      {
+        "object_id": 37,
+        "operation": "remove",
+        "ref": "the balcony near the upper center",
+        "ref_zh": "上方中间附近的阳台",
+        "scope": "balcony",
+        "scope_zh": "阳台",
+        "parent": "upper_center_balcony",
+        "parent_zh": "上中阳台",
+        "payload": "",
+        "instruction_zh": "移除上方中间附近的阳台。",
+        "instruction_noref_zh": "移除选中的阳台。"
+      },
+      {
+        "object_id": 40,
+        "operation": "add",
+        "ref": "the dormer near the upper left",
+        "ref_zh": "左上方附近的屋顶窗",
+        "scope": "dormer",
+        "scope_zh": "屋顶窗",
+        "parent": "upper_left_dormer",
+        "parent_zh": "左上屋顶窗",
+        "payload": "a flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左上方附近的屋顶窗加上一个花箱。",
+        "instruction_noref_zh": "在选中的屋顶窗加上一个花箱。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

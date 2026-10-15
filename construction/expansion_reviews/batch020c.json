@@ -1,0 +1,687 @@
+[
+  {
+    "source_id": "sa_5609103",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4c02e62cc15c5fa5bc000f45f3a0481a5c96ead5cc93076d6f887d23d6df1d47",
+    "review_card_sha256": "13041ec0fb3fdb2b7f5135a239569aa1975d7ab6b02a31b4f6110f3ce5fa054d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11右坐客衫、22门帘、4右花束、7中桌花瓶四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion",
+        "glass"
+      ],
+      "scene_zh": "烛光咖啡馆",
+      "evidence_zh": "11右坐客衫、22门帘、4右花束、7中桌花瓶四父对象。",
+      "specific_protection_zh": "保留人物身体、烛光、家具与室内布局。"
+    },
+    "protected_content_zh": "保留人物身体、烛光、家具与室内布局。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the plaid shirt on the seated man at the right",
+        "ref_zh": "右侧坐着男子的格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "right_man",
+        "parent_zh": "右男子",
+        "payload": "a white linen shirt",
+        "instruction_zh": "将右侧坐着男子的格纹衬衫替换为一件白色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件白色亚麻衬衫。"
+      },
+      {
+        "object_id": 22,
+        "operation": "attribute",
+        "ref": "the red valance above the rear doorway",
+        "ref_zh": "后方门洞上方的红色帷幔",
+        "scope": "valance",
+        "scope_zh": "帷幔",
+        "parent": "valance",
+        "parent_zh": "帷幔",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将后方门洞上方的红色帷幔的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的帷幔的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the flower arrangement above the oval-backed chair at the right",
+        "ref_zh": "右侧椭圆椅背上方的插花",
+        "scope": "flowers",
+        "scope_zh": "插花",
+        "parent": "right_flowers",
+        "parent_zh": "右花束",
+        "payload": "",
+        "instruction_zh": "移除右侧椭圆椅背上方的插花。",
+        "instruction_noref_zh": "移除选中的插花。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the clear vase between the two seated men",
+        "ref_zh": "两名坐客之间的透明花瓶",
+        "scope": "vase",
+        "scope_zh": "花瓶",
+        "parent": "clear_vase",
+        "parent_zh": "花瓶",
+        "payload": "a sprig of white baby's breath",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在两名坐客之间的透明花瓶加上一枝白色满天星。",
+        "instruction_noref_zh": "在选中的花瓶加上一枝白色满天星。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5614303",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d903cd58c7089b59faa67413ba21791e7b5e05157b3fd651025d3cf2ae68c774",
+    "review_card_sha256": "90215493c66ee908b413542477e20c4f3db26bad5374fe90852e0a0b04a4ef07",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "27前水瓶、0前灰垫、8左绿袋、10左前垫包四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "公园集体瑜伽",
+      "evidence_zh": "27前水瓶、0前灰垫、8左绿袋、10左前垫包四父对象。",
+      "specific_protection_zh": "保留练习者身体、其他垫子及草地。"
+    },
+    "protected_content_zh": "保留练习者身体、其他垫子及草地。",
+    "targets": [
+      {
+        "object_id": 27,
+        "operation": "remove",
+        "ref": "the crushed water bottle beside the brown shoes in the foreground",
+        "ref_zh": "前景棕色鞋子旁的压瘪水瓶",
+        "scope": "bottle",
+        "scope_zh": "水瓶",
+        "parent": "water_bottle",
+        "parent_zh": "水瓶",
+        "payload": "",
+        "instruction_zh": "移除前景棕色鞋子旁的压瘪水瓶。",
+        "instruction_noref_zh": "移除选中的水瓶。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the gray yoga mat under the nearest man",
+        "ref_zh": "最近男子脚下的灰色瑜伽垫",
+        "scope": "mat",
+        "scope_zh": "瑜伽垫",
+        "parent": "front_mat",
+        "parent_zh": "前垫",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近男子脚下的灰色瑜伽垫的颜色改为蓝绿色。",
+        "instruction_noref_zh": "将选中的瑜伽垫的颜色改为蓝绿色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the green tote bag at the left edge",
+        "ref_zh": "左边缘的绿色手提袋",
+        "scope": "bag",
+        "scope_zh": "手提袋",
+        "parent": "green_tote",
+        "parent_zh": "绿袋",
+        "payload": "a beige canvas tote bag",
+        "instruction_zh": "将左边缘的绿色手提袋替换为一个米色帆布手提袋。",
+        "instruction_noref_zh": "将选中的手提袋替换为一个米色帆布手提袋。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the long black mat bag beside the brown shoes",
+        "ref_zh": "棕色鞋子旁的黑色长垫包",
+        "scope": "bag",
+        "scope_zh": "垫包",
+        "parent": "mat_bag",
+        "parent_zh": "垫包",
+        "payload": "a small white name label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在棕色鞋子旁的黑色长垫包加上一张小白色姓名标签。",
+        "instruction_noref_zh": "在选中的垫包加上一张小白色姓名标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5626824",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6bfe7fa8350105e27883968cb48cd8a28b0c22f1f4efc2b0540c20f143932e01",
+    "review_card_sha256": "17a6a1b7223a8b4bde64381eb4541117cc28aa3fc9369587e946032098fce45b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2WC牌、21撑开白伞、185小推车、54左绿栏四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "电车轨道转角广场",
+      "evidence_zh": "2WC牌、21撑开白伞、185小推车、54左绿栏四父对象。",
+      "specific_protection_zh": "保留电车线、人物、轨道和建筑结构。"
+    },
+    "protected_content_zh": "保留电车线、人物、轨道和建筑结构。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the blue WC direction sign at the right",
+        "ref_zh": "右侧的蓝色WC指路牌",
+        "scope": "sign",
+        "scope_zh": "指路牌",
+        "parent": "wc_sign",
+        "parent_zh": "WC牌",
+        "payload": "",
+        "instruction_zh": "移除右侧的蓝色WC指路牌。",
+        "instruction_noref_zh": "移除选中的指路牌。"
+      },
+      {
+        "object_id": 21,
+        "operation": "attribute",
+        "ref": "the open white umbrella beside the green kiosk",
+        "ref_zh": "绿色售货亭旁撑开的白色遮阳伞",
+        "scope": "umbrella",
+        "scope_zh": "遮阳伞",
+        "parent": "open_umbrella",
+        "parent_zh": "撑开伞",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将绿色售货亭旁撑开的白色遮阳伞的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的遮阳伞的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 185,
+        "operation": "replace",
+        "ref": "the small gray wheeled cart at the far left of the square",
+        "ref_zh": "广场最左侧的灰色小推车",
+        "scope": "cart",
+        "scope_zh": "推车",
+        "parent": "small_cart",
+        "parent_zh": "小推车",
+        "payload": "a wooden flower cart",
+        "instruction_zh": "将广场最左侧的灰色小推车替换为一辆木制鲜花推车。",
+        "instruction_noref_zh": "将选中的推车替换为一辆木制鲜花推车。"
+      },
+      {
+        "object_id": 54,
+        "operation": "add",
+        "ref": "the green balcony railing on the left building",
+        "ref_zh": "左侧楼房的绿色阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "left_building",
+        "parent_zh": "左楼",
+        "payload": "a small planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧楼房的绿色阳台栏杆加上一个种有红花的小花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的小花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5628683",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4f741428214c2337a0328f2b8a1eba35470b6096e3fe62cd0188c9a748a20c1b",
+    "review_card_sha256": "1a995604101b81caf909d0f8bfa0b85d3934994729c947499a2061b0dd08e4c7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12右银箱、10左蓝衫、20中蓝箱、2左近灯四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "small_targets",
+        "crowd"
+      ],
+      "scene_zh": "城市绿化塔楼与旅行者",
+      "evidence_zh": "12右银箱、10左蓝衫、20中蓝箱、2左近灯四父对象。",
+      "specific_protection_zh": "保留行人身体、建筑和道路。"
+    },
+    "protected_content_zh": "保留行人身体、建筑和道路。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the silver suitcase at the right of the walking group",
+        "ref_zh": "行走人群右侧的银色行李箱",
+        "scope": "suitcase",
+        "scope_zh": "行李箱",
+        "parent": "silver_case",
+        "parent_zh": "银箱",
+        "payload": "",
+        "instruction_zh": "移除行走人群右侧的银色行李箱。",
+        "instruction_noref_zh": "移除选中的行李箱。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the navy hoodie on the front-left traveler",
+        "ref_zh": "左前方旅客的藏蓝色连帽衫",
+        "scope": "hoodie",
+        "scope_zh": "连帽衫",
+        "parent": "left_traveler",
+        "parent_zh": "左旅客",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左前方旅客的藏蓝色连帽衫的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的连帽衫的颜色改为酒红色。"
+      },
+      {
+        "object_id": 20,
+        "operation": "replace",
+        "ref": "the blue suitcase near the center of the walking group",
+        "ref_zh": "行走人群中间附近的蓝色行李箱",
+        "scope": "suitcase",
+        "scope_zh": "行李箱",
+        "parent": "blue_case",
+        "parent_zh": "蓝箱",
+        "payload": "an orange hard-shell suitcase",
+        "instruction_zh": "将行走人群中间附近的蓝色行李箱替换为一个橙色硬壳行李箱。",
+        "instruction_noref_zh": "将选中的行李箱替换为一个橙色硬壳行李箱。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the nearest streetlamp on the left",
+        "ref_zh": "左侧最近的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "a small hanging basket of purple flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧最近的路灯加上一个种有紫花的小吊篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个种有紫花的小吊篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5636423",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2d83a013fa122b4f8dc1235454297e83b33b7c79176234a4f059e887615ece83",
+    "review_card_sha256": "bd2f67b07ad38cc295293213c3c851a63ee7dd724ff6a5d6030576b6cd56f99a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6左EWM牌、15右海报、2右上窗、101店名牌四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "text",
+        "glass",
+        "repetition"
+      ],
+      "scene_zh": "书店与巧克力橱窗",
+      "evidence_zh": "6左EWM牌、15右海报、2右上窗、101店名牌四父对象。",
+      "specific_protection_zh": "保留人物、建筑结构、书籍和其他标牌。"
+    },
+    "protected_content_zh": "保留人物、建筑结构、书籍和其他标牌。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the projecting EWM sign at the left",
+        "ref_zh": "左侧伸出的EWM招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "ewm_sign",
+        "parent_zh": "EWM牌",
+        "payload": "",
+        "instruction_zh": "移除左侧伸出的EWM招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the tall pale poster beside the man",
+        "ref_zh": "男子身旁的浅色竖海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "poster",
+        "parent_zh": "海报",
+        "payload": "a chocolate gift poster reading AUTUMN GIFTS",
+        "instruction_zh": "将男子身旁的浅色竖海报替换为一张写有AUTUMN GIFTS的巧克力礼品海报。",
+        "instruction_noref_zh": "将选中的海报替换为一张写有AUTUMN GIFTS的巧克力礼品海报。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the upper-right window above the bookshop",
+        "ref_zh": "书店上方右侧的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a small white star decal in its lower corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在书店上方右侧的窗户加上一张位于下角的小白色星形贴花。",
+        "instruction_noref_zh": "在选中的窗户加上一张位于下角的小白色星形贴花。"
+      },
+      {
+        "object_id": 101,
+        "operation": "attribute",
+        "ref": "the central wooden Walkers shop sign",
+        "ref_zh": "中央写有Walkers的木店招",
+        "scope": "sign",
+        "scope_zh": "店招",
+        "parent": "walkers_sign",
+        "parent_zh": "店名牌",
+        "payload": "READERS",
+        "attribute_kind": "text",
+        "instruction_zh": "将中央写有Walkers的木店招的文字改为READERS。",
+        "instruction_noref_zh": "将选中的店招的文字改为READERS。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_564503",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a89c154a25cdf1b466f632218c31113422ea9c3fb50803bb1f828ccf0beac9c8",
+    "review_card_sha256": "428432a01eb6cc8ba369b054a6927cb4d6462a894f770bbd549e12dc1cf7f9a6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5红猫像、3蓝蛋饰、0左白瓷瓶、4小框画四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion",
+        "artwork"
+      ],
+      "scene_zh": "古董摊陈列",
+      "evidence_zh": "5红猫像、3蓝蛋饰、0左白瓷瓶、4小框画四父对象。",
+      "specific_protection_zh": "保留乐器、镜子、其他古董与桌面。"
+    },
+    "protected_content_zh": "保留乐器、镜子、其他古董与桌面。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the reclining red ceramic cat",
+        "ref_zh": "卧着的红色陶瓷猫",
+        "scope": "figurine",
+        "scope_zh": "摆件",
+        "parent": "cat_figurine",
+        "parent_zh": "猫像",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将卧着的红色陶瓷猫的颜色改为白色。",
+        "instruction_noref_zh": "将选中的摆件的颜色改为白色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the blue egg-shaped ornament left of the cat",
+        "ref_zh": "猫像左侧的蓝色蛋形装饰品",
+        "scope": "ornament",
+        "scope_zh": "装饰品",
+        "parent": "egg_ornament",
+        "parent_zh": "蛋饰",
+        "payload": "",
+        "instruction_zh": "移除猫像左侧的蓝色蛋形装饰品。",
+        "instruction_noref_zh": "移除选中的装饰品。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the left of the two white floral vases",
+        "ref_zh": "两个白色花纹瓷瓶中左侧的一个",
+        "scope": "vase",
+        "scope_zh": "瓷瓶",
+        "parent": "floral_vase",
+        "parent_zh": "花瓶",
+        "payload": "a small price sticker reading 10",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在两个白色花纹瓷瓶中左侧的一个加上一张写有10的小价签贴纸。",
+        "instruction_noref_zh": "在选中的瓷瓶加上一张写有10的小价签贴纸。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the small framed picture left of the stringed instrument",
+        "ref_zh": "弦乐器左侧的小装框画",
+        "scope": "picture",
+        "scope_zh": "画",
+        "parent": "framed_picture",
+        "parent_zh": "框画",
+        "payload": "a framed floral still-life painting",
+        "instruction_zh": "将弦乐器左侧的小装框画替换为一幅装框的花卉静物画。",
+        "instruction_noref_zh": "将选中的画替换为一幅装框的花卉静物画。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5648905",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b4fc8a1e5ad882daf9945c87b9e6786867afd1f0200aa9ae6fc086d95fbb6ca1",
+    "review_card_sha256": "5135c687ce6223c65d14bce10742ba212ea553612a2671b90482b8d36059139b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3前黑包、12中篮、0前连衣裙、31后头饰分属袋、篮及两名人物。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "传统服饰女子与提篮",
+      "evidence_zh": "3前黑包、12中篮、0前连衣裙、31后头饰分属袋、篮及两名人物。",
+      "specific_protection_zh": "保留人物身体、刺绣轮廓、其余服饰和石墙。"
+    },
+    "protected_content_zh": "保留人物身体、刺绣轮廓、其余服饰和石墙。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the black handbag carried by the front woman",
+        "ref_zh": "前方女子提着的黑色手提包",
+        "scope": "bag",
+        "scope_zh": "手提包",
+        "parent": "black_bag",
+        "parent_zh": "黑包",
+        "payload": "",
+        "instruction_zh": "移除前方女子提着的黑色手提包。",
+        "instruction_noref_zh": "移除选中的手提包。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the wicker basket carried by the middle woman",
+        "ref_zh": "中间女子提着的柳编篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "basket",
+        "parent_zh": "篮子",
+        "payload": "a small bouquet of white daisies",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间女子提着的柳编篮加上一小束白色雏菊。",
+        "instruction_noref_zh": "在选中的篮子加上一小束白色雏菊。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the cream-and-blue gown on the front woman",
+        "ref_zh": "前方女子的奶油色与蓝色长裙",
+        "scope": "gown",
+        "scope_zh": "长裙",
+        "parent": "front_woman",
+        "parent_zh": "前女子",
+        "payload": "pale pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将前方女子的奶油色与蓝色长裙的颜色改为浅粉色。",
+        "instruction_noref_zh": "将选中的长裙的颜色改为浅粉色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "replace",
+        "ref": "the blue-and-gold headdress on the woman at the far right",
+        "ref_zh": "最右侧女子的蓝金色头饰",
+        "scope": "headdress",
+        "scope_zh": "头饰",
+        "parent": "right_woman",
+        "parent_zh": "右女子",
+        "payload": "a gold filigree tiara",
+        "instruction_zh": "将最右侧女子的蓝金色头饰替换为一顶金色花丝头冠。",
+        "instruction_noref_zh": "将选中的头饰替换为一顶金色花丝头冠。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_56735",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "17f56bdaf64c518f8e6811762d5b36981907d024e41e15af19b3d69fcdee02e9",
+    "review_card_sha256": "dfcb0f02ca8e0581e574c16b3b476a3b425d87e2d8bd8a8eaae6ed3b21df4b0e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4左灰袍、6中蓝袍、2右斗篷分属三人，27左篮独立。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "historical_costume"
+      ],
+      "scene_zh": "历史服饰营地俯视",
+      "evidence_zh": "4左灰袍、6中蓝袍、2右斗篷分属三人，27左篮独立。",
+      "specific_protection_zh": "保留人物身体、帐篷、绳索和草地。"
+    },
+    "protected_content_zh": "保留人物身体、帐篷、绳索和草地。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the gray tunic on the leftmost person",
+        "ref_zh": "最左侧人物的灰色束腰外衣",
+        "scope": "tunic",
+        "scope_zh": "束腰外衣",
+        "parent": "left_person",
+        "parent_zh": "左人",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧人物的灰色束腰外衣的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的束腰外衣的颜色改为深绿色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the long blue coat on the tallest person",
+        "ref_zh": "最高人物的蓝色长外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "tall_person",
+        "parent_zh": "高人",
+        "payload": "a brown wool tunic",
+        "instruction_zh": "将最高人物的蓝色长外套替换为一件棕色羊毛束腰外衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件棕色羊毛束腰外衣。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the cream cloak on the rightmost person",
+        "ref_zh": "最右侧人物的奶油色斗篷",
+        "scope": "cloak",
+        "scope_zh": "斗篷",
+        "parent": "right_person",
+        "parent_zh": "右人",
+        "payload": "a small embroidered gold star on its upper back",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧人物的奶油色斗篷加上一颗位于上背部的小金色刺绣星星。",
+        "instruction_noref_zh": "在选中的斗篷加上一颗位于上背部的小金色刺绣星星。"
+      },
+      {
+        "object_id": 27,
+        "operation": "remove",
+        "ref": "the tall wicker basket at the far left",
+        "ref_zh": "最左侧的高柳编篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "left_basket",
+        "parent_zh": "左篮",
+        "payload": "",
+        "instruction_zh": "移除最左侧的高柳编篮。",
+        "instruction_noref_zh": "移除选中的篮子。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

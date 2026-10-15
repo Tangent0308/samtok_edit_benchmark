@@ -1,0 +1,599 @@
+[
+  {
+    "source_id": "sa_2260735",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dd009c6bedba6593ced8de68d9645a5a47679499a2fcd5c64a6283086c275959",
+    "review_card_sha256": "3df68394e50c864de410f4c7d06c9c400342fd91f2081ee708bbaa37e61ca0e7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左银车，13为路边白设施箱而非空调，14为绿房右上木窗板，19为左邻楼阳台。两栋建筑、车、箱，木窗不重复计算。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "转角小楼汽车和设施",
+      "evidence_zh": "0为左银车，13为路边白设施箱而非空调，14为绿房右上木窗板，19为左邻楼阳台。两栋建筑、车、箱，木窗不重复计算。",
+      "specific_protection_zh": "保留街道、其他车辆、树、花箱、建筑墙面和电线。"
+    },
+    "protected_content_zh": "保留街道、其他车辆、树、花箱、建筑墙面和电线。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the silver car parked on the left",
+        "ref_zh": "左侧停放的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "a blue compact hatchback",
+        "instruction_zh": "将左侧停放的银色汽车替换为一辆蓝色小型掀背车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色小型掀背车。"
+      },
+      {
+        "object_id": 13,
+        "operation": "remove",
+        "ref": "the white utility box beside the bollards",
+        "ref_zh": "护桩旁的白色设施箱",
+        "scope": "utility box",
+        "scope_zh": "设施箱",
+        "parent": "utility_box",
+        "parent_zh": "设施箱",
+        "payload": "",
+        "instruction_zh": "移除护桩旁的白色设施箱。",
+        "instruction_noref_zh": "移除选中的设施箱。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the upper-right wooden shutters on the green house",
+        "ref_zh": "绿色房屋右上方的木制窗板",
+        "scope": "shutters",
+        "scope_zh": "窗板",
+        "parent": "green_house",
+        "parent_zh": "绿房",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将绿色房屋右上方的木制窗板的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的窗板的颜色改为蓝色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the balcony railing at the upper left",
+        "ref_zh": "左上方的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "left_building",
+        "parent_zh": "左邻楼",
+        "payload": "a small flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左上方的阳台栏杆加上一个小花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个小花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2264516",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1c66376a3521524abb28e22f5ef43ad38858a1adb15c18d37c47b074a8d7d8ed",
+    "review_card_sha256": "d658cfaa170db0fca308c0c9c1436a14e0ffef8fb891cfade1a9a6ec255532fb",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为摄影者黑背包，11为其青色外套，9为左侧黄竖旗，12为马路对面长白栏杆。人物与独立包、旗、道路设施。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "樱花道路旁摄影者",
+      "evidence_zh": "3为摄影者黑背包，11为其青色外套，9为左侧黄竖旗，12为马路对面长白栏杆。人物与独立包、旗、道路设施。",
+      "specific_protection_zh": "保留人体、相机、樱花、树干、道路和其他旗帜。"
+    },
+    "protected_content_zh": "保留人体、相机、樱花、树干、道路和其他旗帜。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the photographer’s black backpack",
+        "ref_zh": "摄影者的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "backpack",
+        "parent_zh": "背包",
+        "payload": "a reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在摄影者的黑色背包加上一条反光条。",
+        "instruction_noref_zh": "在选中的背包加上一条反光条。"
+      },
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the photographer’s teal jacket",
+        "ref_zh": "摄影者的青色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "photographer",
+        "parent_zh": "摄影者",
+        "payload": "a beige windbreaker",
+        "instruction_zh": "将摄影者的青色外套替换为一件米色防风外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色防风外套。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the yellow vertical banner on the left",
+        "ref_zh": "左侧的黄色竖幅旗",
+        "scope": "banner",
+        "scope_zh": "旗",
+        "parent": "yellow_banner",
+        "parent_zh": "黄旗",
+        "payload": "",
+        "instruction_zh": "移除左侧的黄色竖幅旗。",
+        "instruction_noref_zh": "移除选中的旗。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the long white railing across the road",
+        "ref_zh": "马路对面的白色长栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "opposite_railing",
+        "parent_zh": "对面栏杆",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将马路对面的白色长栏杆的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的栏杆的颜色改为深绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2278289",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "50ed0e5c930ba654f3b4ff5feb15a0dae249becae87fef80501602c895bfca88",
+    "review_card_sha256": "ea2ef0a65ae1f74e58d0b11e7bb2915ad5addad5c53ff181e7aeb3d02f5ff45b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为卡车左风挡，17为车顶左上云块。车身零件只有一个车辆父对象，另用独立云，新增展览通行证直接贴玻璃。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "thin_structures"
+      ],
+      "scene_zh": "展览卡车与天空",
+      "evidence_zh": "5为卡车左风挡，17为车顶左上云块。车身零件只有一个车辆父对象，另用独立云，新增展览通行证直接贴玻璃。",
+      "specific_protection_zh": "保留车辆结构、轮胎、设备、其他玻璃、建筑和照明。"
+    },
+    "protected_content_zh": "保留车辆结构、轮胎、设备、其他玻璃、建筑和照明。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the truck’s left windshield pane",
+        "ref_zh": "卡车左侧的挡风玻璃",
+        "scope": "windshield",
+        "scope_zh": "挡风玻璃",
+        "parent": "exhibit_truck",
+        "parent_zh": "展览卡车",
+        "payload": "a small exhibition pass sticker",
+        "placement": {
+          "relation": "on",
+          "site": "lower corner",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在卡车左侧的挡风玻璃的下角加上一张小展览通行证贴纸。",
+        "instruction_noref_zh": "在选中的挡风玻璃的下角加上一张小展览通行证贴纸。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the small white cloud above the truck on the left",
+        "ref_zh": "卡车左上方的小白云",
+        "scope": "cloud",
+        "scope_zh": "云",
+        "parent": "left_cloud",
+        "parent_zh": "左云",
+        "payload": "",
+        "instruction_zh": "移除卡车左上方的小白云。",
+        "instruction_noref_zh": "移除选中的云。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2310142",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0b52b2175675d272af9b7257c17bd96cd6528e469e08f081bd3d1577defeaff6",
+    "review_card_sha256": "14e159d6fdac39c3fed281f02b01c49880204ef3dfa4a3acdb47bd60c01428c1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最近黑轿车，2为右路边银皮卡，5为迎面灰面包车，20为高处禁左转牌。不同三车及独立牌。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "城市路口车辆与交通牌",
+      "evidence_zh": "1为最近黑轿车，2为右路边银皮卡，5为迎面灰面包车，20为高处禁左转牌。不同三车及独立牌。",
+      "specific_protection_zh": "保留其他车辆、行人、车道线、建筑和交通灯状态。"
+    },
+    "protected_content_zh": "保留其他车辆、行人、车道线、建筑和交通灯状态。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the nearest black sedan",
+        "ref_zh": "最近的黑色轿车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "nearest_sedan",
+        "parent_zh": "最近轿车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近的黑色轿车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为红色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the silver pickup parked on the right",
+        "ref_zh": "右侧停放的银色皮卡",
+        "scope": "pickup",
+        "scope_zh": "皮卡",
+        "parent": "parked_pickup",
+        "parent_zh": "停放皮卡",
+        "payload": "",
+        "instruction_zh": "移除右侧停放的银色皮卡。",
+        "instruction_noref_zh": "移除选中的皮卡。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the oncoming gray minivan",
+        "ref_zh": "迎面驶来的灰色面包车",
+        "scope": "minivan",
+        "scope_zh": "面包车",
+        "parent": "oncoming_minivan",
+        "parent_zh": "迎面面包车",
+        "payload": "a white minivan",
+        "instruction_zh": "将迎面驶来的灰色面包车替换为一辆白色面包车。",
+        "instruction_noref_zh": "将选中的面包车替换为一辆白色面包车。"
+      },
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the no-left-turn sign above the intersection",
+        "ref_zh": "路口上方的禁止左转标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "no_left_sign",
+        "parent_zh": "禁左牌",
+        "payload": "a reflective border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在路口上方的禁止左转标牌加上一圈反光边框。",
+        "instruction_noref_zh": "在选中的标牌加上一圈反光边框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2313448",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a161e01b910e36644ce92afae7e339c2efdf604a9de0fac4922e41aed72fbf9c",
+    "review_card_sha256": "acd85b56f988f4e0475a1a6370ac96b25dab489b8cf57084d55f4e7266e8d7be",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13为左完整吊灯含线，7为白玫瑰，0为右桶。实物灯、花、桶独立；照片内船11不是现实船。",
+    "difficulty": {
+      "mechanisms": [
+        "warm_lighting",
+        "occlusion"
+      ],
+      "scene_zh": "木墙照片架与吊灯花桶",
+      "evidence_zh": "13为左完整吊灯含线，7为白玫瑰，0为右桶。实物灯、花、桶独立；照片内船11不是现实船。",
+      "specific_protection_zh": "保留相框照片、木墙、架子、其他花和灯光关系。"
+    },
+    "protected_content_zh": "保留相框照片、木墙、架子、其他花和灯光关系。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the pendant light on the left",
+        "ref_zh": "左侧的吊灯",
+        "scope": "pendant light",
+        "scope_zh": "吊灯",
+        "parent": "left_pendant",
+        "parent_zh": "左吊灯",
+        "payload": "a black metal pendant lamp",
+        "instruction_zh": "将左侧的吊灯替换为一盏黑色金属吊灯。",
+        "instruction_noref_zh": "将选中的吊灯替换为一盏黑色金属吊灯。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the white rose in the bucket",
+        "ref_zh": "桶中的白玫瑰",
+        "scope": "rose",
+        "scope_zh": "玫瑰",
+        "parent": "white_rose",
+        "parent_zh": "白玫瑰",
+        "payload": "pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将桶中的白玫瑰的颜色改为粉色。",
+        "instruction_noref_zh": "将选中的玫瑰的颜色改为粉色。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the white metal bucket on the shelf",
+        "ref_zh": "架子上的白色金属桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "flower_bucket",
+        "parent_zh": "花桶",
+        "payload": "a blue ribbon bow",
+        "placement": {
+          "relation": "on",
+          "site": "handle",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在架子上的白色金属桶的提手上加上一个蓝色丝带蝴蝶结。",
+        "instruction_noref_zh": "在选中的桶的提手上加上一个蓝色丝带蝴蝶结。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2316049",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cc79a74b41ce26d0710657bf2e51578e73156ad84a51f05536fa470ecc259b6c",
+    "review_card_sha256": "b786e3f4384969348ea748cd401bf0a8345485e9c44a72bb1510498786d8f8df",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为前景蓝微型车，1为右后蓝掀背车，36为马路对面远车。三个独立车辆，轮胎车门不拆父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "石板广场微型车与后车",
+      "evidence_zh": "0为前景蓝微型车，1为右后蓝掀背车，36为马路对面远车。三个独立车辆，轮胎车门不拆父对象。",
+      "specific_protection_zh": "保留树木、建筑、行人、路面和车辆玻璃反射。"
+    },
+    "protected_content_zh": "保留树木、建筑、行人、路面和车辆玻璃反射。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the blue microcar in the foreground",
+        "ref_zh": "前景的蓝色微型车",
+        "scope": "microcar",
+        "scope_zh": "微型车",
+        "parent": "front_microcar",
+        "parent_zh": "前微型车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的蓝色微型车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的微型车的颜色改为红色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the blue hatchback on the right",
+        "ref_zh": "右侧的蓝色掀背车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "right_hatchback",
+        "parent_zh": "右掀背车",
+        "payload": "a white compact hatchback",
+        "instruction_zh": "将右侧的蓝色掀背车替换为一辆白色小型掀背车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆白色小型掀背车。"
+      },
+      {
+        "object_id": 36,
+        "operation": "remove",
+        "ref": "the dark car across the street",
+        "ref_zh": "马路对面的深色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "opposite_car",
+        "parent_zh": "对面汽车",
+        "payload": "",
+        "instruction_zh": "移除马路对面的深色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2347182",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d68d479afa8e8d133a90b7e2044da6de0e75d5ff239027bc6e89a04687ea1376",
+    "review_card_sha256": "9edb19823f0ed3cdd56d3689aecf666b234d1e335eb659902a99fc21989a3611",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为正立面上层中间铁栏阳台，41为右边缘蓝箭头牌，37为建筑街名牌。建筑、独立交通牌与街名牌；不把多个窗户计成多建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "perspective"
+      ],
+      "scene_zh": "雕饰建筑阳台与路牌",
+      "evidence_zh": "17为正立面上层中间铁栏阳台，41为右边缘蓝箭头牌，37为建筑街名牌。建筑、独立交通牌与街名牌；不把多个窗户计成多建筑。",
+      "specific_protection_zh": "保留建筑雕饰、其他窗与阳台、树木，以及街名牌原文字。"
+    },
+    "protected_content_zh": "保留建筑雕饰、其他窗与阳台、树木，以及街名牌原文字。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the upper central balcony railing",
+        "ref_zh": "上层中央阳台的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "ornate_building",
+        "parent_zh": "雕饰建筑",
+        "payload": "a small flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在上层中央阳台的栏杆加上一个小花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个小花箱。"
+      },
+      {
+        "object_id": 41,
+        "operation": "remove",
+        "ref": "the blue arrow sign at the right edge",
+        "ref_zh": "右边缘的蓝色箭头标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "arrow_sign",
+        "parent_zh": "箭头牌",
+        "payload": "",
+        "instruction_zh": "移除右边缘的蓝色箭头标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 37,
+        "operation": "attribute",
+        "ref": "the street-name plaque on the building",
+        "ref_zh": "建筑上的街名牌",
+        "scope": "plaque",
+        "scope_zh": "牌",
+        "parent": "street_name_plaque",
+        "parent_zh": "街名牌",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将建筑上的街名牌的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的牌的颜色改为蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2347748",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7b0d640f2fd1437856a19303f11438a57aa1cfa35723bbbcc3d233c2b0f3c6cb",
+    "review_card_sha256": "8b24e038b936d6cba755cf6c5fecd8e1763089554eea6661fb97a306f25121f4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为中央入口旁高柏树，28为塔左窗下较矮柏树，15为右侧拱门。两棵独立树与一个建筑父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "塔楼前小柏树与门",
+      "evidence_zh": "16为中央入口旁高柏树，28为塔左窗下较矮柏树，15为右侧拱门。两棵独立树与一个建筑父对象。",
+      "specific_protection_zh": "保留围栏、建筑墙面、其他树木、车道与门框。"
+    },
+    "protected_content_zh": "保留围栏、建筑墙面、其他树木、车道与门框。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "replace",
+        "ref": "the tall cypress beside the central entrance",
+        "ref_zh": "中央入口旁的高柏树",
+        "scope": "cypress",
+        "scope_zh": "柏树",
+        "parent": "central_cypress",
+        "parent_zh": "中央柏树",
+        "payload": "a round-trimmed evergreen shrub",
+        "instruction_zh": "将中央入口旁的高柏树替换为一棵修剪成圆形的常绿灌木。",
+        "instruction_noref_zh": "将选中的柏树替换为一棵修剪成圆形的常绿灌木。"
+      },
+      {
+        "object_id": 28,
+        "operation": "add",
+        "ref": "the shorter cypress beneath the window left of the tower",
+        "ref_zh": "塔楼左侧窗下较矮的柏树",
+        "scope": "cypress",
+        "scope_zh": "柏树",
+        "parent": "left_cypress",
+        "parent_zh": "左柏树",
+        "payload": "a string of warm-white fairy lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在塔楼左侧窗下较矮的柏树加上一串暖白色小灯。",
+        "instruction_noref_zh": "在选中的柏树加上一串暖白色小灯。"
+      },
+      {
+        "object_id": 15,
+        "operation": "attribute",
+        "ref": "the arched wooden door on the right",
+        "ref_zh": "右侧的拱形木门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "tower_building",
+        "parent_zh": "塔楼建筑",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的拱形木门的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的门的颜色改为藏蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

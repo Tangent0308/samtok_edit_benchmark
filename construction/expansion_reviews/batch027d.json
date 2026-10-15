@@ -1,0 +1,455 @@
+[
+  {
+    "source_id": "sa_807381",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "429ed20e455025444a0ec59acba7263fa83d06603aab95cab374f0c436211df5",
+    "review_card_sha256": "04a073c788d3c07d280230f0bd27bee69ac9ecbecd86ac705b6d919d93fa6eb4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左侧厢式车、1左侧轿车、12左侧建筑和14右下花箱是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "vehicles",
+        "architecture"
+      ],
+      "scene_zh": "城市道路",
+      "evidence_zh": "0左侧厢式车、1左侧轿车、12左侧建筑和14右下花箱是四个不同对象。",
+      "specific_protection_zh": "保留道路、车辆、建筑和植物。"
+    },
+    "protected_content_zh": "保留道路、车辆、建筑和植物。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the van at the left",
+        "ref_zh": "左侧的厢式车",
+        "scope": "van",
+        "scope_zh": "厢式车",
+        "parent": "left_van",
+        "parent_zh": "左侧厢式车",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的厢式车的颜色改为白色。",
+        "instruction_noref_zh": "将选中的厢式车的颜色改为白色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the car at the far left",
+        "ref_zh": "最左侧的轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "far_left_car",
+        "parent_zh": "最左轿车",
+        "payload": "a blue sedan",
+        "instruction_zh": "将最左侧的轿车替换为一辆蓝色轿车。",
+        "instruction_noref_zh": "将选中的轿车替换为一辆蓝色轿车。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the building on the left",
+        "ref_zh": "左侧的建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "left_building",
+        "parent_zh": "左侧建筑",
+        "payload": "",
+        "instruction_zh": "移除左侧的建筑。",
+        "instruction_noref_zh": "移除选中的建筑。"
+      },
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the planter at the lower right",
+        "ref_zh": "右下方的花箱",
+        "scope": "planter",
+        "scope_zh": "花箱",
+        "parent": "lower_right_planter",
+        "parent_zh": "右下花箱",
+        "payload": "a flowering plant",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方的花箱加上一株开花植物。",
+        "instruction_noref_zh": "在选中的花箱加上一株开花植物。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8082835",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e8b66f853a01092f7ddab67c43fe3c0513d9f83d79f21760641e7525af0805f4",
+    "review_card_sha256": "2a461a1f859f70fb531efee3c3bac14d1ea88117d28c48c1da21c0449332c307",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 主要属于同一组商品盒和货架展示，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "product"
+      ],
+      "scene_zh": "商品展示",
+      "evidence_zh": "候选 mask 主要属于同一组商品盒和货架展示，缺少独立父对象。",
+      "specific_protection_zh": "不把同一组商品包装和货架部件重复计为多个目标。"
+    },
+    "protected_content_zh": "不把同一组商品包装和货架部件重复计为多个目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 11,
+        "reason_zh": "同一组商品盒"
+      },
+      {
+        "object_id": 45,
+        "reason_zh": "同一货架展示"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_8092195",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "976fe90b156f5b950ce63c21c8f8b7304eb0febff3fc9d4cbdacc6310f02d294",
+    "review_card_sha256": "1344d142346f715c57761328bf56507869b2b0de91e148f1fef14eb89e17ab6f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15左侧桥体和68右上花朵是两个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "bridge"
+      ],
+      "scene_zh": "桥边街景",
+      "evidence_zh": "15左侧桥体和68右上花朵是两个不同对象。",
+      "specific_protection_zh": "保留桥梁、街道设施和植物。"
+    },
+    "protected_content_zh": "保留桥梁、街道设施和植物。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "attribute",
+        "ref": "the bridge on the left",
+        "ref_zh": "左侧的桥体",
+        "scope": "bridge",
+        "scope_zh": "桥体",
+        "parent": "left_bridge",
+        "parent_zh": "左侧桥体",
+        "payload": "dark gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的桥体的颜色改为深灰色。",
+        "instruction_noref_zh": "将选中的桥体的颜色改为深灰色。"
+      },
+      {
+        "object_id": 68,
+        "operation": "remove",
+        "ref": "the flower at the upper right",
+        "ref_zh": "右上方的花朵",
+        "scope": "flower",
+        "scope_zh": "花朵",
+        "parent": "upper_right_flower",
+        "parent_zh": "右上花朵",
+        "payload": "",
+        "instruction_zh": "移除右上方的花朵。",
+        "instruction_noref_zh": "移除选中的花朵。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8097610",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a2fd959f9589eeae7eaa4b84c70d524c522a5df9f30f87bdb70bd5846d104a55",
+    "review_card_sha256": "43354f1c9a828ede1eb4eb6c4163f5c2427c4dda234250d5d912e8649c94f4ec",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 几乎全部是同一组建筑栏杆和横幅，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "detail"
+      ],
+      "scene_zh": "建筑栏杆",
+      "evidence_zh": "候选 mask 几乎全部是同一组建筑栏杆和横幅，缺少独立父对象。",
+      "specific_protection_zh": "不把同一建筑的栏杆重复计为多个编辑目标。"
+    },
+    "protected_content_zh": "不把同一建筑的栏杆重复计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 7,
+        "reason_zh": "同一组栏杆横幅"
+      },
+      {
+        "object_id": 10,
+        "reason_zh": "同一建筑栏杆"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_8099809",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "21c848852d1f0c71486b9a5a54c3059ef7d9dbedf43541b86c15cbff14d4c4fb",
+    "review_card_sha256": "eb2fdaa6deb3bef66227bdaf9033499db65097911e60918aab99c23c231cd58c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左侧灯柱、1中央钟楼、8下方外套和44右下雕像是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "crowd"
+      ],
+      "scene_zh": "教堂广场",
+      "evidence_zh": "0左侧灯柱、1中央钟楼、8下方外套和44右下雕像是四个不同对象。",
+      "specific_protection_zh": "保留教堂、人物和广场设施。"
+    },
+    "protected_content_zh": "保留教堂、人物和广场设施。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the lamp post at the left",
+        "ref_zh": "左侧的灯柱",
+        "scope": "lamppost",
+        "scope_zh": "灯柱",
+        "parent": "left_lamppost",
+        "parent_zh": "左侧灯柱",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的灯柱的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的灯柱的颜色改为黑色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the belfry near the center",
+        "ref_zh": "中间附近的钟楼",
+        "scope": "belfry",
+        "scope_zh": "钟楼",
+        "parent": "center_belfry",
+        "parent_zh": "中央钟楼",
+        "payload": "a white tower",
+        "instruction_zh": "将中间附近的钟楼替换为一座白色塔楼。",
+        "instruction_noref_zh": "将选中的钟楼替换为一座白色塔楼。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the coat near the lower center",
+        "ref_zh": "下方中间附近的外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "lower_center_coat",
+        "parent_zh": "下中外套",
+        "payload": "",
+        "instruction_zh": "移除下方中间附近的外套。",
+        "instruction_noref_zh": "移除选中的外套。"
+      },
+      {
+        "object_id": 44,
+        "operation": "add",
+        "ref": "the sculpture at the lower right",
+        "ref_zh": "右下方的雕像",
+        "scope": "sculpture",
+        "scope_zh": "雕像",
+        "parent": "lower_right_sculpture",
+        "parent_zh": "右下雕像",
+        "payload": "a small plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方的雕像加上一块小铭牌。",
+        "instruction_noref_zh": "在选中的雕像加上一块小铭牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8143873",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "afb8f66ea4aded7f3afb68e0d73612953f95d22c5a2f1b5c332d9482160b3687",
+    "review_card_sha256": "0ef33761db025af35d24adec81611f3a1af4b6acecde9f50bc6233b95c3e1f3a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 全部属于同一建筑的重复栏杆段，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "detail"
+      ],
+      "scene_zh": "楼体栏杆",
+      "evidence_zh": "候选 mask 全部属于同一建筑的重复栏杆段，缺少独立父对象。",
+      "specific_protection_zh": "不把同一建筑的重复栏杆段计为多个编辑目标。"
+    },
+    "protected_content_zh": "不把同一建筑的重复栏杆段计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 4,
+        "reason_zh": "同一建筑栏杆段"
+      },
+      {
+        "object_id": 14,
+        "reason_zh": "同一建筑栏杆段"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_816961",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8bb805afbd25097792eb3f79de7d798469be56858a064d3361458460b25ee41a",
+    "review_card_sha256": "f06e35d63438ed3adbb77b4c8bf69b7fba2322f43e7972ccb1629e9466c4b60b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 全部属于同一品牌商品包装，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "product"
+      ],
+      "scene_zh": "商品包装墙",
+      "evidence_zh": "候选 mask 全部属于同一品牌商品包装，缺少独立父对象。",
+      "specific_protection_zh": "不把同一商品包装墙的重复盒子计为多个编辑目标。"
+    },
+    "protected_content_zh": "不把同一商品包装墙的重复盒子计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 0,
+        "reason_zh": "同一品牌包装"
+      },
+      {
+        "object_id": 13,
+        "reason_zh": "同一品牌包装"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_8188123",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b0b58bf3f74d6f9e294813e61ffb42edbd6d99ba3534fe816a6cc41234663edd",
+    "review_card_sha256": "9142167ca5ea7e46e94d055ed2cbc2b2b09bc5e9c6cc5ed35e67031465c39028",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0中央人物、3右上人物、11左上篷布和16右侧金属栏杆是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "market",
+        "crowd"
+      ],
+      "scene_zh": "集市人群",
+      "evidence_zh": "0中央人物、3右上人物、11左上篷布和16右侧金属栏杆是四个不同对象。",
+      "specific_protection_zh": "保留集市人物、摊位和环境结构。"
+    },
+    "protected_content_zh": "保留集市人物、摊位和环境结构。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the person near the center",
+        "ref_zh": "中间附近的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "center_person",
+        "parent_zh": "中央人物",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的人物的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的人物的颜色改为蓝色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the person at the upper right",
+        "ref_zh": "右上方的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "upper_right_person",
+        "parent_zh": "右上人物",
+        "payload": "a green shirt",
+        "instruction_zh": "将右上方的人物替换为一件绿色上衣。",
+        "instruction_noref_zh": "将选中的人物替换为一件绿色上衣。"
+      },
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the tarp at the upper left",
+        "ref_zh": "左上方的篷布",
+        "scope": "tarp",
+        "scope_zh": "篷布",
+        "parent": "upper_left_tarp",
+        "parent_zh": "左上篷布",
+        "payload": "",
+        "instruction_zh": "移除左上方的篷布。",
+        "instruction_noref_zh": "移除选中的篷布。"
+      },
+      {
+        "object_id": 16,
+        "operation": "add",
+        "ref": "the metal railing at the right",
+        "ref_zh": "右侧的金属栏杆",
+        "scope": "metal railing",
+        "scope_zh": "金属栏杆",
+        "parent": "right_railing",
+        "parent_zh": "右侧栏杆",
+        "payload": "a small sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的金属栏杆加上一个小标牌。",
+        "instruction_noref_zh": "在选中的金属栏杆加上一个小标牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

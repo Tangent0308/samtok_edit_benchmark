@@ -1,0 +1,525 @@
+[
+  {
+    "source_id": "sa_6769026",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a7d0762770e4c91bf3b94fb02733f4cff850ad26778e3de33ea6efffcf54274a",
+    "review_card_sha256": "207d54e8b3cbd636f4201b01d2d651f926dda004ffd8155b52cd4b7860b12407",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0路灯、22橙色招牌、2长椅、24轮椅是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "城市步行街",
+      "evidence_zh": "0路灯、22橙色招牌、2长椅、24轮椅是四个不同对象。",
+      "specific_protection_zh": "保留建筑、行人和街道设施。"
+    },
+    "protected_content_zh": "保留建筑、行人和街道设施。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the double streetlamp at the right",
+        "ref_zh": "右侧的双头路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左路灯",
+        "payload": "matte black",
+        "attribute_kind": "finish",
+        "instruction_zh": "将右侧的双头路灯的表面效果改为哑光黑色。",
+        "instruction_noref_zh": "将选中的路灯的表面效果改为哑光黑色。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the orange sign above the kiosk",
+        "ref_zh": "售货亭上方的橙色招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "kiosk_sign",
+        "parent_zh": "亭招牌",
+        "payload": "a blue OPEN sign",
+        "instruction_zh": "将售货亭上方的橙色招牌替换为一块蓝色OPEN招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块蓝色OPEN招牌。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the wooden bench beside the right planter",
+        "ref_zh": "右侧花箱旁的木长椅",
+        "scope": "bench",
+        "scope_zh": "长椅",
+        "parent": "bench",
+        "parent_zh": "长椅",
+        "payload": "",
+        "instruction_zh": "移除右侧花箱旁的木长椅。",
+        "instruction_noref_zh": "移除选中的长椅。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the wheelchair in the center walkway",
+        "ref_zh": "步道中央的轮椅",
+        "scope": "wheelchair",
+        "scope_zh": "轮椅",
+        "parent": "wheelchair",
+        "parent_zh": "轮椅",
+        "payload": "a small blue cushion on its seat",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在步道中央的轮椅加上一个位于座位上的小蓝色坐垫。",
+        "instruction_noref_zh": "在选中的轮椅加上一个位于座位上的小蓝色坐垫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6776348",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5aeb7e428d8e20cf61b09cdb7d0bda0ad344a2a19db7154b6001882aad7921dd",
+    "review_card_sha256": "6f2d46906247ff055adb93d922a6d0e5619c428101141300ae1188aee4a7a6e1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6左侧黑衬衫、7紫色Polo、8青色Polo、2中央鱼筐是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "commerce"
+      ],
+      "scene_zh": "鱼市摊位与行人",
+      "evidence_zh": "6左侧黑衬衫、7紫色Polo、8青色Polo、2中央鱼筐是四个不同对象。",
+      "specific_protection_zh": "保留鱼、摊位、道路和其他行人。"
+    },
+    "protected_content_zh": "保留鱼、摊位、道路和其他行人。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the black shirt on the man at the far left",
+        "ref_zh": "最左侧男子的黑衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_man",
+        "parent_zh": "左侧男子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧男子的黑衬衫的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the purple polo shirt on the man left of center",
+        "ref_zh": "中间偏左男子的紫色Polo衫",
+        "scope": "polo shirt",
+        "scope_zh": "Polo衫",
+        "parent": "purple_man",
+        "parent_zh": "紫衣男子",
+        "payload": "a plain white polo shirt",
+        "instruction_zh": "将中间偏左男子的紫色Polo衫替换为一件纯白Polo衫。",
+        "instruction_noref_zh": "将选中的Polo衫替换为一件纯白Polo衫。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the turquoise polo shirt on the man at center-right",
+        "ref_zh": "中间偏右男子的青绿色Polo衫",
+        "scope": "polo shirt",
+        "scope_zh": "Polo衫",
+        "parent": "turquoise_man",
+        "parent_zh": "青衣男子",
+        "payload": "",
+        "instruction_zh": "移除中间偏右男子的青绿色Polo衫。",
+        "instruction_noref_zh": "移除选中的Polo衫。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the wicker basket in the middle of the fish display",
+        "ref_zh": "鱼摊中间的藤筐",
+        "scope": "basket",
+        "scope_zh": "筐",
+        "parent": "fish_basket",
+        "parent_zh": "鱼筐",
+        "payload": "a small white price card",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在鱼摊中间的藤筐加上一张小白色价格牌。",
+        "instruction_noref_zh": "在选中的筐加上一张小白色价格牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6776835",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fa1d3b9f22ea214e7e95d405622ed180e5c36a32eb936a7f33e7f0bd137d21a6",
+    "review_card_sha256": "8b5337afaccd249077a6b93e33b0f56a002e64ace84a236499cf806d9e95eb8e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1前起落轮和15驾驶员黄色安全背心属于两个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "aircraft",
+        "perspective"
+      ],
+      "scene_zh": "停机坪直升机",
+      "evidence_zh": "1前起落轮和15驾驶员黄色安全背心属于两个不同对象。",
+      "specific_protection_zh": "保留直升机机身、旋翼和停机坪。"
+    },
+    "protected_content_zh": "保留直升机机身、旋翼和停机坪。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the front landing wheel of the helicopter",
+        "ref_zh": "直升机的前起落轮",
+        "scope": "wheel",
+        "scope_zh": "机轮",
+        "parent": "front_wheel",
+        "parent_zh": "前轮",
+        "payload": "",
+        "instruction_zh": "移除直升机的前起落轮。",
+        "instruction_noref_zh": "移除选中的机轮。"
+      },
+      {
+        "object_id": 15,
+        "operation": "attribute",
+        "ref": "the yellow safety vest on the pilot",
+        "ref_zh": "驾驶员的黄色安全背心",
+        "scope": "vest",
+        "scope_zh": "背心",
+        "parent": "pilot",
+        "parent_zh": "驾驶员",
+        "payload": "orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将驾驶员的黄色安全背心的颜色改为橙色。",
+        "instruction_noref_zh": "将选中的背心的颜色改为橙色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6779549",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "574ce3d1891b0713f95854cbf0caba52171c303effb9a029412fe9872cda745f",
+    "review_card_sha256": "df9b2a8784fbebc936f68839f2c3cd1d4a41005e592c5db28b89336766359805",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左上禁停标志、55右侧窗户、3前景路缘是三个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "low_light",
+        "perspective"
+      ],
+      "scene_zh": "窄巷与交通标识",
+      "evidence_zh": "0左上禁停标志、55右侧窗户、3前景路缘是三个不同对象。",
+      "specific_protection_zh": "保留巷道、建筑和其他交通标识。"
+    },
+    "protected_content_zh": "保留巷道、建筑和其他交通标识。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the no-parking sign at the upper left",
+        "ref_zh": "左上方的禁停标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "upper_left_sign",
+        "parent_zh": "左上牌",
+        "payload": "",
+        "instruction_zh": "移除左上方的禁停标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 55,
+        "operation": "attribute",
+        "ref": "the window on the right-hand building",
+        "ref_zh": "右侧建筑的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "right_window",
+        "parent_zh": "右侧窗",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧建筑的窗户的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的窗户的颜色改为深绿色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the curb along the right side in the foreground",
+        "ref_zh": "前景右侧的路缘",
+        "scope": "curb",
+        "scope_zh": "路缘",
+        "parent": "left_curb",
+        "parent_zh": "左路缘",
+        "payload": "a thin yellow edge line",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景右侧的路缘加上一条细黄色边线。",
+        "instruction_noref_zh": "在选中的路缘加上一条细黄色边线。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6784618",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "97f2624a2e8620eee4737ef6507a18c560fafe5247e38f24da2702956d9fa270",
+    "review_card_sha256": "7faad30eee5ed7a28516bde9d029159d13cc9f34d4fd7663b51d3a04b989f8ab",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 主要集中在同一辆黄色卡车的车轮、车门和车窗，缺少第二个独立父对象，暂不计入。",
+    "difficulty": {
+      "mechanisms": [
+        "vehicle",
+        "occlusion"
+      ],
+      "scene_zh": "货运卡车局部",
+      "evidence_zh": "候选 mask 主要集中在同一辆黄色卡车的车轮、车门和车窗，缺少第二个独立父对象，暂不计入。",
+      "specific_protection_zh": "不将同一辆卡车的局部重复计为多个编辑目标。"
+    },
+    "protected_content_zh": "不将同一辆卡车的局部重复计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 0,
+        "reason_zh": "与其他候选目标属于同一辆卡车"
+      },
+      {
+        "object_id": 7,
+        "reason_zh": "与其他候选目标属于同一辆卡车"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_6791309",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d4799b077b6a28c29f264e47bb0f02ac737f97f0966364d41562d97f0bf7f719",
+    "review_card_sha256": "0107aa4bb6d23d31cafca619770506dfb66dfb398624f2d842a8fd85dead0074",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0白色编织袋、25绿色棚屋窗、72晾挂衣物是三个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "clutter",
+        "outdoor",
+        "occlusion"
+      ],
+      "scene_zh": "水上棚屋与垃圾场",
+      "evidence_zh": "0白色编织袋、25绿色棚屋窗、72晾挂衣物是三个不同对象。",
+      "specific_protection_zh": "保留棚屋、地面垃圾和其他木料。"
+    },
+    "protected_content_zh": "保留棚屋、地面垃圾和其他木料。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the large white woven sack in the foreground",
+        "ref_zh": "前景的大白色编织袋",
+        "scope": "sack",
+        "scope_zh": "编织袋",
+        "parent": "white_sack",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除前景的大白色编织袋。",
+        "instruction_noref_zh": "移除选中的编织袋。"
+      },
+      {
+        "object_id": 25,
+        "operation": "attribute",
+        "ref": "the small window on the green house",
+        "ref_zh": "绿色棚屋上的小窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "green_house_window",
+        "parent_zh": "绿屋窗",
+        "payload": "bright yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将绿色棚屋上的小窗户的颜色改为亮黄色。",
+        "instruction_noref_zh": "将选中的窗户的颜色改为亮黄色。"
+      },
+      {
+        "object_id": 72,
+        "operation": "replace",
+        "ref": "the dark garment hanging at the upper right",
+        "ref_zh": "右上方晾挂的深色衣物",
+        "scope": "garment",
+        "scope_zh": "衣物",
+        "parent": "hanging_garment",
+        "parent_zh": "晾挂衣物",
+        "payload": "a pale blue shirt",
+        "instruction_zh": "将右上方晾挂的深色衣物替换为一件浅蓝色衬衫。",
+        "instruction_noref_zh": "将选中的衣物替换为一件浅蓝色衬衫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_679629",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "45478607b56dee3e6b7613d0b11bc985fd8a1c3cfb6b3dc6c875d8aedb842e52",
+    "review_card_sha256": "8982875304b8b60e96ffc0a6f708410b122ee898cef9739d3b84593f642ceda0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "19黄色购物袋、12浅蓝外套、17灰色长外套、9RAW招牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "motion blur",
+        "commerce"
+      ],
+      "scene_zh": "商业街行人与招牌",
+      "evidence_zh": "19黄色购物袋、12浅蓝外套、17灰色长外套、9RAW招牌是四个不同对象。",
+      "specific_protection_zh": "保留行人、店铺和道路。"
+    },
+    "protected_content_zh": "保留行人、店铺和道路。",
+    "targets": [
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the yellow shopping bag carried by the woman near the center-left",
+        "ref_zh": "中间偏左女子手里的黄色购物袋",
+        "scope": "shopping bag",
+        "scope_zh": "购物袋",
+        "parent": "yellow_bag",
+        "parent_zh": "黄袋",
+        "payload": "",
+        "instruction_zh": "移除中间偏左女子手里的黄色购物袋。",
+        "instruction_noref_zh": "移除选中的购物袋。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the light blue coat on the woman near the left",
+        "ref_zh": "左侧附近女子的浅蓝色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "left_woman",
+        "parent_zh": "左侧女子",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧附近女子的浅蓝色外套的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为酒红色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the gray padded coat on the man at the right",
+        "ref_zh": "右侧男子的灰色棉服",
+        "scope": "coat",
+        "scope_zh": "棉服",
+        "parent": "right_man",
+        "parent_zh": "右侧男子",
+        "payload": "a dark green parka",
+        "instruction_zh": "将右侧男子的灰色棉服替换为一件深绿色派克大衣。",
+        "instruction_noref_zh": "将选中的棉服替换为一件深绿色派克大衣。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the RAW sign above the left storefront",
+        "ref_zh": "左侧店铺上方的RAW招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "raw_sign",
+        "parent_zh": "RAW牌",
+        "payload": "a small white SALE sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧店铺上方的RAW招牌加上一个小白色SALE贴纸。",
+        "instruction_noref_zh": "在选中的招牌加上一个小白色SALE贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6799450",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b8132a2d969803494c0cdfb01a376df627b1e92e0f3d05f4a338c8038b3dd073",
+    "review_card_sha256": "571810ad129ee3935e58b14554b7ce92010ac05b83c52df8080c7fe8864276fa",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 全部属于同一辆黑色轿车的轮胎、车窗、车门和饰条，缺少独立父对象，暂不计入。",
+    "difficulty": {
+      "mechanisms": [
+        "vehicle",
+        "reflection"
+      ],
+      "scene_zh": "黑色轿车局部",
+      "evidence_zh": "候选 mask 全部属于同一辆黑色轿车的轮胎、车窗、车门和饰条，缺少独立父对象，暂不计入。",
+      "specific_protection_zh": "不将同一辆汽车的多个部件重复计为多个编辑目标。"
+    },
+    "protected_content_zh": "不将同一辆汽车的多个部件重复计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 1,
+        "reason_zh": "同一辆黑色轿车部件"
+      },
+      {
+        "object_id": 7,
+        "reason_zh": "同一辆黑色轿车部件"
+      }
+    ]
+  }
+]

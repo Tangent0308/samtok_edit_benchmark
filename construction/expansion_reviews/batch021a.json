@@ -1,0 +1,642 @@
+[
+  {
+    "source_id": "sa_5755405",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d8e8fdbce0b690b2b1cfdb3bcb668b983e5f84719099aaef961d8c5375458659",
+    "review_card_sha256": "821a7e812d66ff3d29fb7178378ae7d7ee63da9eeef3abf800f38aee6c7cf9ba",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "上层水瓶、下层篮子、门把手、右上价牌为独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "货架前的购物者",
+      "evidence_zh": "上层水瓶、下层篮子、门把手、右上价牌为独立父对象。",
+      "specific_protection_zh": "保留人物、其余商品及货架。"
+    },
+    "protected_content_zh": "保留人物、其余商品及货架。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the water bottle in the upper basket at the left",
+        "ref_zh": "左侧上层篮子中的水瓶",
+        "scope": "bottle",
+        "scope_zh": "水瓶",
+        "parent": "upper_bottle",
+        "parent_zh": "上瓶",
+        "payload": "",
+        "instruction_zh": "移除左侧上层篮子中的水瓶。",
+        "instruction_noref_zh": "移除选中的水瓶。"
+      },
+      {
+        "object_id": 34,
+        "operation": "attribute",
+        "ref": "the lower white basket at the left",
+        "ref_zh": "左侧下层白色篮子",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "lower_basket",
+        "parent_zh": "下篮",
+        "payload": "mint green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧下层白色篮子的颜色改为薄荷绿。",
+        "instruction_noref_zh": "将选中的篮子的颜色改为薄荷绿。"
+      },
+      {
+        "object_id": 69,
+        "operation": "replace",
+        "ref": "the silver door handle behind the woman",
+        "ref_zh": "女子身后的银色门把手",
+        "scope": "door handle",
+        "scope_zh": "门把手",
+        "parent": "door",
+        "parent_zh": "门",
+        "payload": "a brass doorknob",
+        "instruction_zh": "将女子身后的银色门把手替换为一个黄铜球形门把手。",
+        "instruction_noref_zh": "将选中的门把手替换为一个黄铜球形门把手。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the largest price card at the upper right",
+        "ref_zh": "右上方最大的价牌",
+        "scope": "price card",
+        "scope_zh": "价牌",
+        "parent": "price_card",
+        "parent_zh": "价牌",
+        "payload": "a small yellow SALE sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方最大的价牌加上一张小黄色SALE贴纸。",
+        "instruction_noref_zh": "在选中的价牌加上一张小黄色SALE贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5761646",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5881407e5f22477505e0311ec76470f593c6cc6bf42d869c3bc7301e7ab53b40",
+    "review_card_sha256": "a04ede586360c9f33962adddd709fa7c80f7c7b4a0db2f61867988421a00c8ed",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "飞机窗、后白帐篷、后深色伞、维护梯四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "glass"
+      ],
+      "scene_zh": "航空展飞机与地面设施",
+      "evidence_zh": "飞机窗、后白帐篷、后深色伞、维护梯四父对象。",
+      "specific_protection_zh": "保留飞机结构、轮胎、螺旋桨和旗帜。"
+    },
+    "protected_content_zh": "保留飞机结构、轮胎、螺旋桨和旗帜。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the upper trapezoidal window on the left side of the glazed nose",
+        "ref_zh": "玻璃机鼻左侧上方的梯形窗",
+        "scope": "window",
+        "scope_zh": "侧窗",
+        "parent": "aircraft",
+        "parent_zh": "飞机",
+        "payload": "a small white inspection decal in its lower corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在玻璃机鼻左侧上方的梯形窗加上一张位于下角的小白色检验贴花。",
+        "instruction_noref_zh": "在选中的侧窗加上一张位于下角的小白色检验贴花。"
+      },
+      {
+        "object_id": 41,
+        "operation": "attribute",
+        "ref": "the white tent behind the landing gear",
+        "ref_zh": "起落架后方的白色帐篷",
+        "scope": "tent",
+        "scope_zh": "帐篷",
+        "parent": "white_tent",
+        "parent_zh": "白篷",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将起落架后方的白色帐篷的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的帐篷的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 54,
+        "operation": "replace",
+        "ref": "the dark parasol in the right background",
+        "ref_zh": "右后方的深色遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "parasol",
+        "parent_zh": "伞",
+        "payload": "a round white parasol",
+        "instruction_zh": "将右后方的深色遮阳伞替换为一顶圆形白色遮阳伞。",
+        "instruction_noref_zh": "将选中的遮阳伞替换为一顶圆形白色遮阳伞。"
+      },
+      {
+        "object_id": 57,
+        "operation": "remove",
+        "ref": "the short metal maintenance ladder behind the plane",
+        "ref_zh": "飞机后方的短金属维护梯",
+        "scope": "ladder",
+        "scope_zh": "梯子",
+        "parent": "ladder",
+        "parent_zh": "梯",
+        "payload": "",
+        "instruction_zh": "移除飞机后方的短金属维护梯。",
+        "instruction_noref_zh": "移除选中的梯子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5785009",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dcda2be25c27cfbf4988f4b7cb1f5e1120596b3190a50f5573a41a7408bc862f",
+    "review_card_sha256": "24b8f1994b501645289a2dcaf9ac3c5ddd7817104fdfa9f879afe3d529b684f5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14礼篮、19后桌布、6左牌、32白礼袋独立。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "transparency",
+        "text"
+      ],
+      "scene_zh": "咨询展台与礼袋",
+      "evidence_zh": "14礼篮、19后桌布、6左牌、32白礼袋独立。",
+      "specific_protection_zh": "保留人物、花束及其余展示用品。"
+    },
+    "protected_content_zh": "保留人物、花束及其余展示用品。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the cellophane-wrapped gift basket at the right",
+        "ref_zh": "右侧透明包装的礼篮",
+        "scope": "gift basket",
+        "scope_zh": "礼篮",
+        "parent": "basket",
+        "parent_zh": "礼篮",
+        "payload": "",
+        "instruction_zh": "移除右侧透明包装的礼篮。",
+        "instruction_noref_zh": "移除选中的礼篮。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the blue tablecloth in the right background",
+        "ref_zh": "右后方的蓝色桌布",
+        "scope": "tablecloth",
+        "scope_zh": "桌布",
+        "parent": "rear_table",
+        "parent_zh": "后桌",
+        "payload": "light green",
+        "attribute_kind": "color",
+        "instruction_zh": "将右后方的蓝色桌布的颜色改为浅绿色。",
+        "instruction_noref_zh": "将选中的桌布的颜色改为浅绿色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the leftmost framed information sign on the table",
+        "ref_zh": "桌上最左侧带框说明牌",
+        "scope": "sign",
+        "scope_zh": "说明牌",
+        "parent": "left_sign",
+        "parent_zh": "左牌",
+        "payload": "a white framed WELCOME sign",
+        "instruction_zh": "将桌上最左侧带框说明牌替换为一块带白框的WELCOME牌。",
+        "instruction_noref_zh": "将选中的说明牌替换为一块带白框的WELCOME牌。"
+      },
+      {
+        "object_id": 32,
+        "operation": "add",
+        "ref": "the white gift bag behind the brown bag",
+        "ref_zh": "棕色袋子后方的白色礼袋",
+        "scope": "bag",
+        "scope_zh": "礼袋",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "a small pink heart sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在棕色袋子后方的白色礼袋加上一张小粉色爱心贴纸。",
+        "instruction_noref_zh": "在选中的礼袋加上一张小粉色爱心贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5785571",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4701e01db81e35bc51fe116790d828195ac68eb579e1bd6282053addd2631a0b",
+    "review_card_sha256": "b685367051e2ebccfe8dc27746ae2faab9b150adce0fed8de6b5e0c27cac69c2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "两面独立旗帜和酒店阳台，不把多扇窗计作不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structure",
+        "occlusion"
+      ],
+      "scene_zh": "帆船旗帜与酒店阳台",
+      "evidence_zh": "两面独立旗帜和酒店阳台，不把多扇窗计作不同父对象。",
+      "specific_protection_zh": "保留桅杆、绳索、建筑和其余旗帜。"
+    },
+    "protected_content_zh": "保留桅杆、绳索、建筑和其余旗帜。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the red-and-yellow flag on the short mast",
+        "ref_zh": "短桅杆上的红黄色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "yellow_flag",
+        "parent_zh": "黄旗",
+        "payload": "",
+        "instruction_zh": "移除短桅杆上的红黄色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the narrow black flag below the red-and-yellow flag",
+        "ref_zh": "红黄色旗帜下方的窄黑旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "black_flag",
+        "parent_zh": "黑旗",
+        "payload": "a white flag with a blue anchor",
+        "instruction_zh": "将红黄色旗帜下方的窄黑旗替换为一面带蓝色船锚图案的白旗。",
+        "instruction_noref_zh": "将选中的旗帜替换为一面带蓝色船锚图案的白旗。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the upper glass balcony railing at the far right",
+        "ref_zh": "最右侧上层的玻璃阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "hotel",
+        "parent_zh": "酒店",
+        "payload": "a narrow flower box with red geraniums",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧上层的玻璃阳台栏杆加上一个种有红色天竺葵的窄花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红色天竺葵的窄花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5788594",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4692acb7d6426c11e07bfe922ee072d640a4f0c5046fbc4367fbcbbcb73677cf",
+    "review_card_sha256": "991df58001d076afc0a0e5e50da02c2669cedf05c5af567cf9ff816f5a035b65",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "前飞机门、后登机梯车、地面涂线三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "停机坪客机与登机梯车",
+      "evidence_zh": "前飞机门、后登机梯车、地面涂线三个父对象。",
+      "specific_protection_zh": "保留飞机、登机桥与地面其他标线。"
+    },
+    "protected_content_zh": "保留飞机、登机桥与地面其他标线。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the front passenger door of the nearest plane",
+        "ref_zh": "最近飞机的前客舱门",
+        "scope": "door",
+        "scope_zh": "舱门",
+        "parent": "front_plane",
+        "parent_zh": "前飞机",
+        "payload": "a small blue accessibility decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近飞机的前客舱门加上一张小蓝色无障碍标识贴花。",
+        "instruction_noref_zh": "在选中的舱门加上一张小蓝色无障碍标识贴花。"
+      },
+      {
+        "object_id": 55,
+        "operation": "attribute",
+        "ref": "the mobile stair truck at the right",
+        "ref_zh": "右侧的移动登机梯车",
+        "scope": "truck",
+        "scope_zh": "梯车",
+        "parent": "stair_truck",
+        "parent_zh": "梯车",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的移动登机梯车的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的梯车的颜色改为黄色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the diagonal yellow line across the lower-left apron",
+        "ref_zh": "停机坪左下方斜穿的黄色标线",
+        "scope": "painted line",
+        "scope_zh": "标线",
+        "parent": "apron",
+        "parent_zh": "地面",
+        "payload": "",
+        "instruction_zh": "移除停机坪左下方斜穿的黄色标线。",
+        "instruction_noref_zh": "移除选中的标线。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5794853",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4d9c181a648e722e024f5203dbddb8ac05367245e26ef84121179ae3e0a15ee5",
+    "review_card_sha256": "bbb2f0994d6992eacc7ed9bb7ca66cb6ccc15c015000b96074d08345b2cad0bf",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "近青色面包车、中银车、远处迎面白面包车三父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "桥上车辆",
+      "evidence_zh": "近青色面包车、中银车、远处迎面白面包车三父对象。",
+      "specific_protection_zh": "保留桥梁、信号灯和其他车辆。"
+    },
+    "protected_content_zh": "保留桥梁、信号灯和其他车辆。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the turquoise minibus in the left foreground",
+        "ref_zh": "左侧前景的青绿色小巴",
+        "scope": "minibus",
+        "scope_zh": "小巴",
+        "parent": "turquoise_bus",
+        "parent_zh": "青小巴",
+        "payload": "a small white CITY SHUTTLE decal on its side panel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧前景的青绿色小巴加上一张位于侧面车身的小白色CITY SHUTTLE贴花。",
+        "instruction_noref_zh": "在选中的小巴加上一张位于侧面车身的小白色CITY SHUTTLE贴花。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the silver sedan directly ahead of the turquoise minibus",
+        "ref_zh": "青绿色小巴正前方的银色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "silver_sedan",
+        "parent_zh": "银车",
+        "payload": "",
+        "instruction_zh": "移除青绿色小巴正前方的银色轿车。",
+        "instruction_noref_zh": "移除选中的轿车。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the oncoming white van at the right",
+        "ref_zh": "右侧迎面驶来的白色面包车",
+        "scope": "van",
+        "scope_zh": "面包车",
+        "parent": "oncoming_van",
+        "parent_zh": "迎面车",
+        "payload": "a white compact SUV",
+        "instruction_zh": "将右侧迎面驶来的白色面包车替换为一辆白色紧凑型SUV。",
+        "instruction_noref_zh": "将选中的面包车替换为一辆白色紧凑型SUV。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5799580",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "63deec781300f64a35531aa56109dda9c4f201e26297769972c317e599a2bdb0",
+    "review_card_sha256": "b91e72d5e4ce4e4bcc7866ae118daf755c6d1b71fd462ba9bac11e98473d0c90",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1白车、11巴士前轮毂、4站牌、5隔离带四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "reflection"
+      ],
+      "scene_zh": "高视角公交站",
+      "evidence_zh": "1白车、11巴士前轮毂、4站牌、5隔离带四父对象。",
+      "specific_protection_zh": "保留公交车、站房和道路。"
+    },
+    "protected_content_zh": "保留公交车、站房和道路。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the white car beside the bus",
+        "ref_zh": "巴士旁的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_car",
+        "parent_zh": "白车",
+        "payload": "",
+        "instruction_zh": "移除巴士旁的白色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the hubcap on the bus front wheel",
+        "ref_zh": "巴士前轮的轮毂盖",
+        "scope": "hubcap",
+        "scope_zh": "轮毂盖",
+        "parent": "bus",
+        "parent_zh": "巴士",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将巴士前轮的轮毂盖的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的轮毂盖的颜色改为古铜色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the large white station sign above the bus",
+        "ref_zh": "巴士上方的大型白色站牌",
+        "scope": "sign",
+        "scope_zh": "站牌",
+        "parent": "station_sign",
+        "parent_zh": "站牌",
+        "payload": "a blue sign reading BUS STATION",
+        "instruction_zh": "将巴士上方的大型白色站牌替换为一块写有BUS STATION的蓝色牌子。",
+        "instruction_noref_zh": "将选中的站牌替换为一块写有BUS STATION的蓝色牌子。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the narrow median between the bus and the car",
+        "ref_zh": "巴士与汽车之间的窄隔离带",
+        "scope": "median",
+        "scope_zh": "隔离带",
+        "parent": "median",
+        "parent_zh": "隔离带",
+        "payload": "a row of small amber reflectors along its top",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在巴士与汽车之间的窄隔离带加上一排沿顶部排列的小琥珀色反光片。",
+        "instruction_noref_zh": "在选中的隔离带加上一排沿顶部排列的小琥珀色反光片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5803931",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b486581166fd36004f0a959f07bbbaefaba6b14ab251c63cb0f33943bb9d943f",
+    "review_card_sha256": "05eadd57e30dbb58f89298c2f69522d870ec34a60be6f01a28aac247937cf019",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5自行车、48骑手马甲、16远处红背包、28儿童外套四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "foliage"
+      ],
+      "scene_zh": "樱花公园骑行",
+      "evidence_zh": "5自行车、48骑手马甲、16远处红背包、28儿童外套四父对象。",
+      "specific_protection_zh": "保留人物身体、樱花、河流和道路。"
+    },
+    "protected_content_zh": "保留人物身体、樱花、河流和道路。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the bicycle in the foreground",
+        "ref_zh": "前景的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "bicycle",
+        "parent_zh": "自行车",
+        "payload": "a small wicker basket on the handlebars",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的自行车加上一个位于车把上的小藤编车篮。",
+        "instruction_noref_zh": "在选中的自行车加上一个位于车把上的小藤编车篮。"
+      },
+      {
+        "object_id": 48,
+        "operation": "attribute",
+        "ref": "the cyclist's black padded vest",
+        "ref_zh": "骑车者的黑色棉马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "cyclist",
+        "parent_zh": "骑手",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将骑车者的黑色棉马甲的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的马甲的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the red backpack on the walker left of the child",
+        "ref_zh": "儿童左侧行人的红色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "red_backpack",
+        "parent_zh": "红包",
+        "payload": "",
+        "instruction_zh": "移除儿童左侧行人的红色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 28,
+        "operation": "replace",
+        "ref": "the child's pink coat",
+        "ref_zh": "儿童的粉色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "child",
+        "parent_zh": "儿童",
+        "payload": "a yellow raincoat",
+        "instruction_zh": "将儿童的粉色外套替换为一件黄色雨衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件黄色雨衣。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

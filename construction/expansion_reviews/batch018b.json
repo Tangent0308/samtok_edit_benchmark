@@ -1,0 +1,635 @@
+[
+  {
+    "source_id": "sa_4841012",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b69e860431fd73da51b8ee8fd431a7339b3011df5c96a523ed6609b056206834",
+    "review_card_sha256": "ded6be2948901e113909508195f448565170b3c9b8415cb77ec07f0cdb0b4af8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3突出白招牌、4右壁灯、2左门玻璃三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "reflection",
+        "thin_structure"
+      ],
+      "scene_zh": "街角酒吧入口",
+      "evidence_zh": "3突出白招牌、4右壁灯、2左门玻璃三个父对象。",
+      "specific_protection_zh": "保留门、墙面、其他招牌及反光。"
+    },
+    "protected_content_zh": "保留门、墙面、其他招牌及反光。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the projecting white BAR sign",
+        "ref_zh": "突出的白色BAR招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "bar_sign",
+        "parent_zh": "酒吧牌",
+        "payload": "a dark green oval sign reading CAFE",
+        "instruction_zh": "将突出的白色BAR招牌替换为一块写有CAFE的深绿色椭圆招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有CAFE的深绿色椭圆招牌。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the black wall lantern above the right door",
+        "ref_zh": "右门上方的黑色壁灯",
+        "scope": "lantern",
+        "scope_zh": "壁灯",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将右门上方的黑色壁灯的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的壁灯的颜色改为古铜色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the glass of the left entrance door",
+        "ref_zh": "左侧入口门的玻璃",
+        "scope": "glass",
+        "scope_zh": "玻璃",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a small white opening-hours sticker near its bottom",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧入口门的玻璃加上一张靠近底部的小白色营业时间贴纸。",
+        "instruction_noref_zh": "在选中的玻璃加上一张靠近底部的小白色营业时间贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4849047",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0f445e745fa17394819677eb9ec609c98268e476ce783a3dee10d00d07c69783",
+    "review_card_sha256": "f37a9f94b2c95facbbc5b448d9cbbb2a52b63e483c99d3730403b8ba819864d9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11MONIN横幅、7右员工红衣、55左花衣、32十二号牌四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "crowd",
+        "thin_structure"
+      ],
+      "scene_zh": "超市收银区",
+      "evidence_zh": "11MONIN横幅、7右员工红衣、55左花衣、32十二号牌四父对象。",
+      "specific_protection_zh": "保留顾客、购物车、收银设备和其他标识。"
+    },
+    "protected_content_zh": "保留顾客、购物车、收银设备和其他标识。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the hanging MONIN banner",
+        "ref_zh": "悬挂的MONIN横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "monin_banner",
+        "parent_zh": "MONIN横幅",
+        "payload": "",
+        "instruction_zh": "移除悬挂的MONIN横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the red polo shirt on the worker at the right",
+        "ref_zh": "右侧工作人员的红色Polo衫",
+        "scope": "polo shirt",
+        "scope_zh": "Polo衫",
+        "parent": "right_worker",
+        "parent_zh": "右员工",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧工作人员的红色Polo衫的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的Polo衫的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 55,
+        "operation": "replace",
+        "ref": "the patterned shirt on the shopper at the left",
+        "ref_zh": "左侧顾客的花纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "left_shopper",
+        "parent_zh": "左顾客",
+        "payload": "a plain white T-shirt",
+        "instruction_zh": "将左侧顾客的花纹上衣替换为一件纯白色T恤。",
+        "instruction_noref_zh": "将选中的上衣替换为一件纯白色T恤。"
+      },
+      {
+        "object_id": 32,
+        "operation": "add",
+        "ref": "the checkout number 12 sign",
+        "ref_zh": "12号收银台标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "checkout12",
+        "parent_zh": "12号牌",
+        "payload": "a small white accessibility sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在12号收银台标牌加上一张小白色无障碍标志贴纸。",
+        "instruction_noref_zh": "在选中的标牌加上一张小白色无障碍标志贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4863786",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2bf174e327957f27af04381f45bdfe001c423e2114ee5f14b40181b6161c3b6e",
+    "review_card_sha256": "f62a98b358c2dc6749266d60e2ac1fe2d231f8918bf2dadddae9cc25c5371a19",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12右边背包、19前方NIKE包、11左前格衫、60中间青色篷边四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "拥挤露天市场",
+      "evidence_zh": "12右边背包、19前方NIKE包、11左前格衫、60中间青色篷边四父对象。",
+      "specific_protection_zh": "保留人群、人物身体、商品和其他店招。"
+    },
+    "protected_content_zh": "保留人群、人物身体、商品和其他店招。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "replace",
+        "ref": "the dark backpack at the right edge",
+        "ref_zh": "右边缘的深色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "right_backpack",
+        "parent_zh": "右背包",
+        "payload": "a beige canvas backpack",
+        "instruction_zh": "将右边缘的深色背包替换为一个米色帆布背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个米色帆布背包。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the NIKE shoulder bag on the foreground man in white",
+        "ref_zh": "前景白衣男子的NIKE肩包",
+        "scope": "bag",
+        "scope_zh": "肩包",
+        "parent": "nike_bag",
+        "parent_zh": "NIKE包",
+        "payload": "",
+        "instruction_zh": "移除前景白衣男子的NIKE肩包。",
+        "instruction_noref_zh": "移除选中的肩包。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the light checked shirt on the man left of the phone user",
+        "ref_zh": "看手机者左侧男子的浅色格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将看手机者左侧男子的浅色格纹衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 60,
+        "operation": "add",
+        "ref": "the small turquoise awning valance behind the phone user",
+        "ref_zh": "看手机者后方的小青绿色遮阳棚垂边",
+        "scope": "valance",
+        "scope_zh": "垂边",
+        "parent": "market_awning",
+        "parent_zh": "棚",
+        "payload": "a small yellow SALE tag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在看手机者后方的小青绿色遮阳棚垂边加上一张小黄色SALE标签。",
+        "instruction_noref_zh": "在选中的垂边加上一张小黄色SALE标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4880528",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0c2c2065b3c0e8ae7dcf08dd0d5f6aed61261b4055d0504ef70cba9f71dab7f5",
+    "review_card_sha256": "de93acc31f98db58813ab8a95ac4643ee21d571ed5d5e0c3c1320e78ee5efbd3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5近侧黑盆、9楼上栏杆、7中左高锥树、15后黄花灌木四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "foliage",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "寺院园林盆景",
+      "evidence_zh": "5近侧黑盆、9楼上栏杆、7中左高锥树、15后黄花灌木四父对象。",
+      "specific_protection_zh": "保留寺院、步道、其他树木和盆器。"
+    },
+    "protected_content_zh": "保留寺院、步道、其他树木和盆器。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the black pot holding the orange-flowered shrub",
+        "ref_zh": "盛放橙花灌木的黑色花盆",
+        "scope": "pot",
+        "scope_zh": "花盆",
+        "parent": "front_pot",
+        "parent_zh": "前花盆",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将盛放橙花灌木的黑色花盆的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的花盆的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the upper balcony railing of the central building",
+        "ref_zh": "中间楼房的上层阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "temple_building",
+        "parent_zh": "寺院楼",
+        "payload": "a narrow planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间楼房的上层阳台栏杆加上一个种有红花的窄花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的窄花箱。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the tall conical evergreen directly below the balcony",
+        "ref_zh": "阳台正下方的高锥形常绿树",
+        "scope": "tree",
+        "scope_zh": "树",
+        "parent": "central_evergreen",
+        "parent_zh": "中树",
+        "payload": "a small olive tree",
+        "instruction_zh": "将阳台正下方的高锥形常绿树替换为一棵小橄榄树。",
+        "instruction_noref_zh": "将选中的树替换为一棵小橄榄树。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the yellow-flowered shrub in the pot behind the orange flowers",
+        "ref_zh": "橙花后方盆中的黄花灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "yellow_shrub",
+        "parent_zh": "黄花灌木",
+        "payload": "",
+        "instruction_zh": "移除橙花后方盆中的黄花灌木。",
+        "instruction_noref_zh": "移除选中的灌木。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4885403",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0be149639a1ba22be47fb0d0852bbfb3f8636d21e7b4e628981a9e3a165fb384",
+    "review_card_sha256": "5b135d626d150ed19d141c5b7db55fe440f859a1461bdd222d286ef990e9fcc3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4前景跑者上衣、14球门旁杆为人物及杆，不取同一跑者鞋短裤充数。",
+    "difficulty": {
+      "mechanisms": [
+        "motion_blur",
+        "small_targets"
+      ],
+      "scene_zh": "操场跑者",
+      "evidence_zh": "4前景跑者上衣、14球门旁杆为人物及杆，不取同一跑者鞋短裤充数。",
+      "specific_protection_zh": "保留跑者身体、球门、跑道和建筑。"
+    },
+    "protected_content_zh": "保留跑者身体、球门、跑道和建筑。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the navy shirt on the foreground runner",
+        "ref_zh": "前景跑者的藏蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "runner",
+        "parent_zh": "跑者",
+        "payload": "a white athletic T-shirt",
+        "instruction_zh": "将前景跑者的藏蓝色上衣替换为一件白色运动T恤。",
+        "instruction_noref_zh": "将选中的上衣替换为一件白色运动T恤。"
+      },
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the tall pole immediately left of the soccer goal",
+        "ref_zh": "足球门紧左侧的高杆",
+        "scope": "pole",
+        "scope_zh": "杆",
+        "parent": "goal_side_pole",
+        "parent_zh": "球门旁杆",
+        "payload": "a small blue pennant near its top",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在足球门紧左侧的高杆加上一面靠近顶部的小蓝色三角旗。",
+        "instruction_noref_zh": "在选中的杆加上一面靠近顶部的小蓝色三角旗。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4888519",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5e7e2c1b78bf0178594e8a7b85516485af1590719dda30fc0e78c8c71ab5bbd2",
+    "review_card_sha256": "1886f3556be843def6c9db31132fe7f97618e82db7c845e475727c0280ccfc61",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0前艺术家T、9左折椅、40后棕袋、24粉笔托盘四父对象，不把画中动物当真实动物。",
+    "difficulty": {
+      "mechanisms": [
+        "artwork",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "街头粉笔画创作",
+      "evidence_zh": "0前艺术家T、9左折椅、40后棕袋、24粉笔托盘四父对象，不把画中动物当真实动物。",
+      "specific_protection_zh": "保留人物、地画、艺术工具和其他用品。"
+    },
+    "protected_content_zh": "保留人物、地画、艺术工具和其他用品。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the white T-shirt on the kneeling artist",
+        "ref_zh": "跪姿画者的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "artist",
+        "parent_zh": "画者",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将跪姿画者的白色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the left striped folding chair",
+        "ref_zh": "左侧条纹折叠椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "left_chair",
+        "parent_zh": "左椅",
+        "payload": "a plain green folding chair",
+        "instruction_zh": "将左侧条纹折叠椅替换为一把纯绿色折叠椅。",
+        "instruction_noref_zh": "将选中的椅子替换为一把纯绿色折叠椅。"
+      },
+      {
+        "object_id": 40,
+        "operation": "remove",
+        "ref": "the brown bag to the right of the striped chairs",
+        "ref_zh": "条纹椅右侧的棕色袋子",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "brown_bag",
+        "parent_zh": "棕袋",
+        "payload": "",
+        "instruction_zh": "移除条纹椅右侧的棕色袋子。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the white chalk tray in front of the artist",
+        "ref_zh": "画者前方的白色粉笔托盘",
+        "scope": "tray",
+        "scope_zh": "托盘",
+        "parent": "chalk_tray",
+        "parent_zh": "粉笔盘",
+        "payload": "two yellow chalk sticks",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在画者前方的白色粉笔托盘加上两根黄色粉笔。",
+        "instruction_noref_zh": "在选中的托盘加上两根黄色粉笔。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4908624",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "60a170ec6fcee5c571baacb8b9e65c81450ef17f6844a77cd3af7fc9d3ca71a9",
+    "review_card_sha256": "46e0f08af7c9a7ca9b22ed0cc0fab5bcb2e98b2be7eef1610b8765226167a817",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1左蓝衬衫、9右红T、27右下男孩T为三个不同人物父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "街边人物合影",
+      "evidence_zh": "1左蓝衬衫、9右红T、27右下男孩T为三个不同人物父对象。",
+      "specific_protection_zh": "保留人物脸部、身体、宗教服饰和背景。"
+    },
+    "protected_content_zh": "保留人物脸部、身体、宗教服饰和背景。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the blue collared shirt on the man at the back left",
+        "ref_zh": "左后方男子的蓝色翻领衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左后方男子的蓝色翻领衬衫的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the red Ferrari T-shirt",
+        "ref_zh": "红色Ferrari T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "red_shirt_man",
+        "parent_zh": "红衣男",
+        "payload": "a plain navy polo shirt",
+        "instruction_zh": "将红色Ferrari T恤替换为一件纯藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 27,
+        "operation": "add",
+        "ref": "the brown T-shirt on the boy at the right",
+        "ref_zh": "右侧男孩的棕色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_boy",
+        "parent_zh": "右男孩",
+        "payload": "a small white star patch on its chest",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧男孩的棕色T恤加上一枚位于胸前的小白色星形布贴。",
+        "instruction_noref_zh": "在选中的T恤加上一枚位于胸前的小白色星形布贴。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4911053",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8f7fd590c58f090ec8868ee1d031ca5b09ba17deebfb6d6867e8740a00f56afa",
+    "review_card_sha256": "82e8069a89ff414531df8c71c9df7bf294aa821a8fe81cbd9b01583506808bf1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14前女牛仔衣、11前男黑背包、1左大广告屏、28左女棕衣四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "商业广场广告屏与行人",
+      "evidence_zh": "14前女牛仔衣、11前男黑背包、1左大广告屏、28左女棕衣四父对象。",
+      "specific_protection_zh": "保留人物身体、建筑、其他广告和广场。"
+    },
+    "protected_content_zh": "保留人物身体、建筑、其他广告和广场。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the denim jacket on the woman in the foreground",
+        "ref_zh": "前景女子的牛仔外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "front_woman",
+        "parent_zh": "前女",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景女子的牛仔外套的颜色改为白色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为白色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the black backpack on the foreground man",
+        "ref_zh": "前景男子的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "black_backpack",
+        "parent_zh": "黑背包",
+        "payload": "",
+        "instruction_zh": "移除前景男子的黑色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the large blue MADRID billboard on the left",
+        "ref_zh": "左侧的大蓝色MADRID广告屏",
+        "scope": "billboard",
+        "scope_zh": "广告屏",
+        "parent": "madrid_board",
+        "parent_zh": "MADRID广告",
+        "payload": "an ocean travel poster reading EXPLORE",
+        "instruction_zh": "将左侧的大蓝色MADRID广告屏替换为一张写有EXPLORE的海洋旅行海报。",
+        "instruction_noref_zh": "将选中的广告屏替换为一张写有EXPLORE的海洋旅行海报。"
+      },
+      {
+        "object_id": 28,
+        "operation": "add",
+        "ref": "the brown jacket on the woman at the left",
+        "ref_zh": "左侧女子的棕色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_woman",
+        "parent_zh": "左女",
+        "payload": "a small embroidered flower on its upper back",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧女子的棕色外套加上一朵位于上背部的小刺绣花。",
+        "instruction_noref_zh": "在选中的外套加上一朵位于上背部的小刺绣花。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

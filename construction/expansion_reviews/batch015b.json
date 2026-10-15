@@ -1,0 +1,651 @@
+[
+  {
+    "source_id": "sa_38691",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5cf91be6950b6121f1f9a277e3e21a834d0a0b1a3526d4deaf3a4b52746e9e8f",
+    "review_card_sha256": "ba923d436b3967d721f64d976a34f37909bd8251b54acef42fb04cfc8210b15f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "35为左岸最靠桥绿楼，13为右近楼阳台，5为桥栏杆。左右两栋楼与桥三父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "perspective",
+        "repetition"
+      ],
+      "scene_zh": "河道与木仓房",
+      "evidence_zh": "35为左岸最靠桥绿楼，13为右近楼阳台，5为桥栏杆。左右两栋楼与桥三父对象。",
+      "specific_protection_zh": "保留河水、建筑窗格、桥墩与其他建筑。"
+    },
+    "protected_content_zh": "保留河水、建筑窗格、桥墩与其他建筑。",
+    "targets": [
+      {
+        "object_id": 35,
+        "operation": "attribute",
+        "ref": "the narrow green building nearest the bridge on the left bank",
+        "ref_zh": "左岸离桥最近的窄绿色建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "left_green_building",
+        "parent_zh": "左绿楼",
+        "payload": "ochre yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将左岸离桥最近的窄绿色建筑的颜色改为赭黄色。",
+        "instruction_noref_zh": "将选中的建筑的颜色改为赭黄色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the nearest balcony railing on the right bank",
+        "ref_zh": "右岸最近的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "right_building",
+        "parent_zh": "右楼",
+        "payload": "a narrow planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右岸最近的阳台栏杆加上一个种有红花的窄花槽。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的窄花槽。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the railing along the distant bridge",
+        "ref_zh": "远处桥上的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "bridge",
+        "parent_zh": "桥",
+        "payload": "a black wrought-iron railing",
+        "instruction_zh": "将远处桥上的栏杆替换为一道黑色锻铁栏杆。",
+        "instruction_noref_zh": "将选中的栏杆替换为一道黑色锻铁栏杆。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3872458",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "df862797417dcf0c63c28913f21b3c73d3b25039c66be7ffbded0f03bab13943",
+    "review_card_sha256": "a609949d887295ccff224d3983f6e0c56a36f4c9638dfed1ffa3bf2dc47db680",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为红塑料袋，7为黑斜挎包，5为橙T恤，19为零食桶。三个独立携带物与人；不把摩托与骑手混编辑。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "street_scene"
+      ],
+      "scene_zh": "沿街挑担的摊贩",
+      "evidence_zh": "2为红塑料袋，7为黑斜挎包，5为橙T恤，19为零食桶。三个独立携带物与人；不把摩托与骑手混编辑。",
+      "specific_protection_zh": "保留摊贩身体、扁担、车辆、树与其他货物。"
+    },
+    "protected_content_zh": "保留摊贩身体、扁担、车辆、树与其他货物。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the red plastic bag hanging on the vendor’s right",
+        "ref_zh": "摊贩右侧悬挂的红色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "red_plastic_bag",
+        "parent_zh": "红塑料袋",
+        "payload": "",
+        "instruction_zh": "移除摊贩右侧悬挂的红色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the black crossbody bag on the vendor’s back",
+        "ref_zh": "摊贩背上的黑色斜挎包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "crossbody_bag",
+        "parent_zh": "斜挎包",
+        "payload": "a blue canvas sling bag",
+        "instruction_zh": "将摊贩背上的黑色斜挎包替换为一个蓝色帆布斜挎包。",
+        "instruction_noref_zh": "将选中的包替换为一个蓝色帆布斜挎包。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the vendor’s orange T-shirt",
+        "ref_zh": "摊贩的橙色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "vendor",
+        "parent_zh": "摊贩",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将摊贩的橙色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the clear snack bucket on the left side of the shoulder pole",
+        "ref_zh": "扁担左侧的透明零食桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "snack_bucket",
+        "parent_zh": "零食桶",
+        "payload": "a small white price label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在扁担左侧的透明零食桶加上一张小白色价格标签。",
+        "instruction_noref_zh": "在选中的桶加上一张小白色价格标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_387615",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8fa1f57d4e39c6dfad183b1ebd5706d39b97707d972c88dc7d9757b89329e2e3",
+    "review_card_sha256": "ffc5850e1227b3e07d8244dd1d1d289d8c82dc723208a0741d4ee10970781199",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为背向白T恤，9为黑绿背包，37为最左近路灯，81为石碑后围栏。人、独立包、灯、桥四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "暮色四条大桥",
+      "evidence_zh": "10为背向白T恤，9为黑绿背包，37为最左近路灯，81为石碑后围栏。人、独立包、灯、桥四父对象。",
+      "specific_protection_zh": "保留河水、石碑文字、行人身体和建筑灯光。"
+    },
+    "protected_content_zh": "保留河水、石碑文字、行人身体和建筑灯光。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the white T-shirt on the back-facing pedestrian beside the railing",
+        "ref_zh": "栏杆旁背向行人的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "white_shirt_person",
+        "parent_zh": "白衣人",
+        "payload": "a light blue polo shirt",
+        "instruction_zh": "将栏杆旁背向行人的白色T恤替换为一件浅蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件浅蓝色Polo衫。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the black-and-green backpack on the left",
+        "ref_zh": "左侧的黑绿色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "green_backpack",
+        "parent_zh": "黑绿包",
+        "payload": "",
+        "instruction_zh": "移除左侧的黑绿色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 37,
+        "operation": "attribute",
+        "ref": "the nearest streetlamp at the far left",
+        "ref_zh": "最左侧最近的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "nearest_lamp",
+        "parent_zh": "最近灯",
+        "payload": "dark bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧最近的路灯的颜色改为深古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深古铜色。"
+      },
+      {
+        "object_id": 81,
+        "operation": "add",
+        "ref": "the sloping fence directly behind the engraved stone",
+        "ref_zh": "刻字石碑正后方倾斜的围栏",
+        "scope": "fence",
+        "scope_zh": "围栏",
+        "parent": "bridge_fence",
+        "parent_zh": "桥围栏",
+        "payload": "a strand of warm-white lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在刻字石碑正后方倾斜的围栏加上一串暖白色小灯。",
+        "instruction_noref_zh": "在选中的围栏加上一串暖白色小灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_388235",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "804e20e48096ed1dea5063709e2ecd4b91a9264fc62226e01095f63c3a78a2ec",
+    "review_card_sha256": "3b3f670632360bed97e0bf5d12dd00cb56472300a2c8f3fd6db3f12b1cb4ffef",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为底部木杆前黑帽，14为右前景黑帽，21为木杆左后方黄夹克。不同三个观众；不选择群体mask或人体局部移除。",
+    "difficulty": {
+      "mechanisms": [
+        "defocus",
+        "occlusion",
+        "crowd"
+      ],
+      "scene_zh": "人群围观爬木杆",
+      "evidence_zh": "10为底部木杆前黑帽，14为右前景黑帽，21为木杆左后方黄夹克。不同三个观众；不选择群体mask或人体局部移除。",
+      "specific_protection_zh": "保留爬杆者与木杆、所有人的头脸和姿态，并保持背景失焦。"
+    },
+    "protected_content_zh": "保留爬杆者与木杆、所有人的头脸和姿态，并保持背景失焦。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the black hat directly in front of the wooden pole",
+        "ref_zh": "木杆正前方的黑色帽子",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "front_spectator",
+        "parent_zh": "前排观众",
+        "payload": "a gray knitted beanie",
+        "instruction_zh": "将木杆正前方的黑色帽子替换为一顶灰色针织帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶灰色针织帽。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the black hat at the lower right",
+        "ref_zh": "右下方的黑色帽子",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "right_spectator",
+        "parent_zh": "右观众",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将右下方的黑色帽子的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为酒红色。"
+      },
+      {
+        "object_id": 21,
+        "operation": "add",
+        "ref": "the pale yellow jacket just left of the wooden pole",
+        "ref_zh": "木杆左侧的浅黄色夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "yellow_jacket_spectator",
+        "parent_zh": "黄衣观众",
+        "payload": "a small blue patch on the chest",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在木杆左侧的浅黄色夹克加上一块胸前的小蓝色布章。",
+        "instruction_noref_zh": "在选中的夹克加上一块胸前的小蓝色布章。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3885316",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b80371ec5c3d8de28965466c238be09144c746f26604c97248c9ca453adabd1b",
+    "review_card_sha256": "78814f8854dd9182f3f43e4c604e7d342a610a4eca478cc38b5ed2db8e764bcc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7为铁门，22为灯头，3为左后建筑窗。门、灯、远处楼三个独立父对象；石柱和门不重复计对象。",
+    "difficulty": {
+      "mechanisms": [
+        "foliage_occlusion",
+        "thin_structure",
+        "perspective"
+      ],
+      "scene_zh": "Somerset石柱入口",
+      "evidence_zh": "7为铁门，22为灯头，3为左后建筑窗。门、灯、远处楼三个独立父对象；石柱和门不重复计对象。",
+      "specific_protection_zh": "保留石柱文字、墙、树叶和窗格。"
+    },
+    "protected_content_zh": "保留石柱文字、墙、树叶和窗格。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the black iron gate between the stone pillars",
+        "ref_zh": "石柱之间的黑色铁门",
+        "scope": "gate",
+        "scope_zh": "铁门",
+        "parent": "entrance_gate",
+        "parent_zh": "入口门",
+        "payload": "a small brass number plaque reading 12",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在石柱之间的黑色铁门加上一块写有12的小黄铜门牌。",
+        "instruction_noref_zh": "在选中的铁门加上一块写有12的小黄铜门牌。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the lantern above the entrance gate",
+        "ref_zh": "入口铁门上方的灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "gate_lantern",
+        "parent_zh": "门灯",
+        "payload": "a brass lantern with clear glass",
+        "instruction_zh": "将入口铁门上方的灯笼替换为一盏透明玻璃黄铜灯笼。",
+        "instruction_noref_zh": "将选中的灯笼替换为一盏透明玻璃黄铜灯笼。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the lower window just left of the left gate pillar",
+        "ref_zh": "左门柱左侧的下层窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "background_house",
+        "parent_zh": "后方楼",
+        "payload": "pale blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将左门柱左侧的下层窗户的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3893247",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "81db57db1fa121194841b6ea01323abd7dceced55de1388f5453acd94eba7020",
+    "review_card_sha256": "a280a9e385837d5db10d726caa48020306be91e302e05fce48ada0bfb388b95d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为远处白车，7为左成人头巾，30为独立名牌，18为成人身旁孩子头巾。车、成人、独立名牌与另一个孩子；服装保持活动适宜。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "老师带领孩子参加活动",
+      "evidence_zh": "5为远处白车，7为左成人头巾，30为独立名牌，18为成人身旁孩子头巾。车、成人、独立名牌与另一个孩子；服装保持活动适宜。",
+      "specific_protection_zh": "保留人物脸部、活动服装轮廓、其他名牌和场景。"
+    },
+    "protected_content_zh": "保留人物脸部、活动服装轮廓、其他名牌和场景。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the white car in the background",
+        "ref_zh": "背景的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "background_car",
+        "parent_zh": "背景车",
+        "payload": "",
+        "instruction_zh": "移除背景的白色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the white headscarf on the adult at the left",
+        "ref_zh": "左侧成人的白色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "left_adult",
+        "parent_zh": "左成人",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧成人的白色头巾的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 30,
+        "operation": "replace",
+        "ref": "the rectangular name badge on the child beside the adult",
+        "ref_zh": "成人身旁孩子的长方形名牌",
+        "scope": "badge",
+        "scope_zh": "名牌",
+        "parent": "child_badge",
+        "parent_zh": "儿童名牌",
+        "payload": "a white badge reading VISITOR",
+        "instruction_zh": "将成人身旁孩子的长方形名牌替换为一张写有VISITOR的白色名牌。",
+        "instruction_noref_zh": "将选中的名牌替换为一张写有VISITOR的白色名牌。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the white headscarf on the child holding the adult’s hand",
+        "ref_zh": "牵着成人手的孩子的白色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "hand_holding_child",
+        "parent_zh": "牵手孩子",
+        "payload": "a small blue flower brooch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在牵着成人手的孩子的白色头巾加上一枚小蓝花胸针。",
+        "instruction_noref_zh": "在选中的头巾加上一枚小蓝花胸针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3907376",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5687534fa89f13b7020bfe7a1a5a91b8c6df570ab0dbcb02fcdb9bd9a42104d5",
+    "review_card_sha256": "03ebda74e56ebd8be2df6937d800d90cc01863a5f2b8aee7632e2d43c25e6ecb",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为近前禁停牌，60为Guthrie’s牌，5为右侧树盆，59为左侧绿顶路灯。牌、牌、盆、灯独立。",
+    "difficulty": {
+      "mechanisms": [
+        "high_angle",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "俯视餐厅小巷",
+      "evidence_zh": "16为近前禁停牌，60为Guthrie’s牌，5为右侧树盆，59为左侧绿顶路灯。牌、牌、盆、灯独立。",
+      "specific_protection_zh": "保留楼梯、树木、行人、建筑与小巷布局。"
+    },
+    "protected_content_zh": "保留楼梯、树木、行人、建筑与小巷布局。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the NO PARKING sign at the near end of the alley",
+        "ref_zh": "小巷近端的NO PARKING标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "no_parking_sign",
+        "parent_zh": "禁停牌",
+        "payload": "",
+        "instruction_zh": "移除小巷近端的NO PARKING标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 60,
+        "operation": "replace",
+        "ref": "the red Guthrie’s sign",
+        "ref_zh": "红色Guthrie’s标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "guthries_sign",
+        "parent_zh": "餐厅牌",
+        "payload": "a red sign reading CAFE in gold",
+        "instruction_zh": "将红色Guthrie’s标牌替换为一块写有金色CAFE的红色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有金色CAFE的红色标牌。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the red planter beside the turquoise restaurant front",
+        "ref_zh": "青蓝色餐厅门面旁的红色花盆",
+        "scope": "planter",
+        "scope_zh": "花盆",
+        "parent": "right_planter",
+        "parent_zh": "右花盆",
+        "payload": "cobalt blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将青蓝色餐厅门面旁的红色花盆的颜色改为钴蓝色。",
+        "instruction_noref_zh": "将选中的花盆的颜色改为钴蓝色。"
+      },
+      {
+        "object_id": 59,
+        "operation": "add",
+        "ref": "the green-topped streetlamp along the left side of the alley",
+        "ref_zh": "小巷左侧的绿顶路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "alley_lamp",
+        "parent_zh": "巷灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在小巷左侧的绿顶路灯加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_391512",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5dd6ef6633cf163868fd11a5d99f1fd208e3fdc1003110de23551718f9b15e6a",
+    "review_card_sha256": "d8613d2824866c5b317ae24e52cc862ecb0c08d78dcbaa4a648b795a1d78bfaf",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7为码头黑车，57为红车，22为悬挂独立救生艇，87为前景客船甲板栏杆。两车、救生艇、客船各独立；不把同船多个窗户计多目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "industrial"
+      ],
+      "scene_zh": "港口停泊的客货船",
+      "evidence_zh": "7为码头黑车，57为红车，22为悬挂独立救生艇，87为前景客船甲板栏杆。两车、救生艇、客船各独立；不把同船多个窗户计多目标。",
+      "specific_protection_zh": "保留船体、码头缆绳、装卸设备和其他船只。"
+    },
+    "protected_content_zh": "保留船体、码头缆绳、装卸设备和其他船只。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the black car at the far end of the quay",
+        "ref_zh": "码头远端的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "black_car",
+        "parent_zh": "黑车",
+        "payload": "a white compact van",
+        "instruction_zh": "将码头远端的黑色汽车替换为一辆白色小型厢式车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆白色小型厢式车。"
+      },
+      {
+        "object_id": 57,
+        "operation": "remove",
+        "ref": "the red vehicle beside the passenger ship",
+        "ref_zh": "客船旁的红色车辆",
+        "scope": "vehicle",
+        "scope_zh": "车辆",
+        "parent": "red_vehicle",
+        "parent_zh": "红车",
+        "payload": "",
+        "instruction_zh": "移除客船旁的红色车辆。",
+        "instruction_noref_zh": "移除选中的车辆。"
+      },
+      {
+        "object_id": 22,
+        "operation": "attribute",
+        "ref": "the enclosed orange lifeboat beside the yellow funnel",
+        "ref_zh": "黄色烟囱旁的橙色封闭救生艇",
+        "scope": "lifeboat",
+        "scope_zh": "救生艇",
+        "parent": "lifeboat",
+        "parent_zh": "救生艇",
+        "payload": "bright yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将黄色烟囱旁的橙色封闭救生艇的颜色改为亮黄色。",
+        "instruction_noref_zh": "将选中的救生艇的颜色改为亮黄色。"
+      },
+      {
+        "object_id": 87,
+        "operation": "add",
+        "ref": "the white bow-deck railing on the foreground passenger ship",
+        "ref_zh": "前景客船船头甲板的白色栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "passenger_ship",
+        "parent_zh": "客船",
+        "payload": "an orange lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景客船船头甲板的白色栏杆加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的栏杆加上一个橙色救生圈。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

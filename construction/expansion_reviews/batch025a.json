@@ -1,0 +1,470 @@
+[
+  {
+    "source_id": "sa_7131117",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "af9aa8386fba72ffe3ddef9c90c9b95423001cd67fb7bccf45e2d3bf4c02030f",
+    "review_card_sha256": "1f09e04fc3ddcd31d790cf424da62dce8f57202ea6f8a8e26d8c7f087ef23c37",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 主要是同一箱啤酒、玻璃杯和木箱的不同部件，缺少第二个独立父对象，暂不计入。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "object detail"
+      ],
+      "scene_zh": "啤酒木箱特写",
+      "evidence_zh": "候选 mask 主要是同一箱啤酒、玻璃杯和木箱的不同部件，缺少第二个独立父对象，暂不计入。",
+      "specific_protection_zh": "不把同一组啤酒及木箱部件重复计为多个编辑目标。"
+    },
+    "protected_content_zh": "不把同一组啤酒及木箱部件重复计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 0,
+        "reason_zh": "同一组啤酒杯部件"
+      },
+      {
+        "object_id": 5,
+        "reason_zh": "同一只木箱"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_7168629",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "629121a525222cb7df93a0695affb48a6327c5b6b16a0762bf110418fb7de0c4",
+    "review_card_sha256": "c0ec3d84020b31b599ef6784a90e6d1b2a38d74120e9f0cd5833e17bf20016ed",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3白衣孩子、5前景棒球帽、8颜料杯、19照片是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "occlusion",
+        "perspective"
+      ],
+      "scene_zh": "儿童绘画桌",
+      "evidence_zh": "3白衣孩子、5前景棒球帽、8颜料杯、19照片是四个不同对象。",
+      "specific_protection_zh": "保留孩子、画具和桌面环境。"
+    },
+    "protected_content_zh": "保留孩子、画具和桌面环境。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the white T-shirt on the child at the top",
+        "ref_zh": "上方孩子的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "top_child",
+        "parent_zh": "上方孩子",
+        "payload": "a yellow T-shirt",
+        "instruction_zh": "将上方孩子的白色T恤替换为一件黄色T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件黄色T恤。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the blue baseball cap in the foreground",
+        "ref_zh": "前景的蓝色棒球帽",
+        "scope": "baseball cap",
+        "scope_zh": "棒球帽",
+        "parent": "foreground_cap",
+        "parent_zh": "前景帽子",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的蓝色棒球帽的颜色改为红色。",
+        "instruction_noref_zh": "将选中的棒球帽的颜色改为红色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the blue paint cup near the center",
+        "ref_zh": "中间附近的蓝色颜料杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "paint_cup",
+        "parent_zh": "颜料杯",
+        "payload": "",
+        "instruction_zh": "移除中间附近的蓝色颜料杯。",
+        "instruction_noref_zh": "移除选中的杯子。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the photo on the lower table",
+        "ref_zh": "桌面下方的照片",
+        "scope": "photo",
+        "scope_zh": "照片",
+        "parent": "table_photo",
+        "parent_zh": "桌面照片",
+        "payload": "a small red sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在桌面下方的照片加上一个小红色贴纸。",
+        "instruction_noref_zh": "在选中的照片加上一个小红色贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_717431",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c4b0fa1859463882941ad8c604a2888e3ad522e2774fc2e9615c6123ceb91a77",
+    "review_card_sha256": "e0b9852415f97be151f6da58155bf95d7d41dca9276854e96279fc13ec50a8c1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左侧人物外套和2中央人物围巾属于两个不同人物。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "occlusion"
+      ],
+      "scene_zh": "冬装人物",
+      "evidence_zh": "0左侧人物外套和2中央人物围巾属于两个不同人物。",
+      "specific_protection_zh": "保留人物姿态、图案和背景。"
+    },
+    "protected_content_zh": "保留人物姿态、图案和背景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the green jacket on the person at the left",
+        "ref_zh": "左侧人物的绿色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_person",
+        "parent_zh": "左侧人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧人物的绿色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the turquoise scarf on the central person",
+        "ref_zh": "中央人物的青绿色围巾",
+        "scope": "scarf",
+        "scope_zh": "围巾",
+        "parent": "central_person",
+        "parent_zh": "中央人物",
+        "payload": "a white scarf",
+        "instruction_zh": "将中央人物的青绿色围巾替换为一条白色围巾。",
+        "instruction_noref_zh": "将选中的围巾替换为一条白色围巾。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7187307",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6eb6951291d8d2e3a991ea790a6b8b0d9909570e5440c5b8d14729ed2a6df186",
+    "review_card_sha256": "935e4420d62aa449f2c0f9b048487f67e292450050e8f351c3a63f26b51360d7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 全部属于同一枚邮票上的人物、衣物和文字局部，缺少独立父对象，暂不计入。",
+    "difficulty": {
+      "mechanisms": [
+        "document",
+        "fine detail"
+      ],
+      "scene_zh": "越南邮票",
+      "evidence_zh": "候选 mask 全部属于同一枚邮票上的人物、衣物和文字局部，缺少独立父对象，暂不计入。",
+      "specific_protection_zh": "不把同一枚邮票内部图案重复计为多个编辑目标。"
+    },
+    "protected_content_zh": "不把同一枚邮票内部图案重复计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 9,
+        "reason_zh": "同一枚邮票图案"
+      },
+      {
+        "object_id": 31,
+        "reason_zh": "同一枚邮票图案"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_7191982",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4c2df740d8d661fb68259b5ede2e39e7c1aec40504e45574908aa1ad1ac2ef5d",
+    "review_card_sha256": "70a7919a2e18de57631abdf25d218b8d3c74c81319587f8e68f4edd45d42790f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1左侧路灯、5交通标志、60行人外套、8左侧轿车是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "architecture",
+        "perspective"
+      ],
+      "scene_zh": "银行门前街景",
+      "evidence_zh": "1左侧路灯、5交通标志、60行人外套、8左侧轿车是四个不同对象。",
+      "specific_protection_zh": "保留银行建筑、行人和道路环境。"
+    },
+    "protected_content_zh": "保留银行建筑、行人和道路环境。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the streetlamp beside the right-hand entrance",
+        "ref_zh": "右侧入口旁的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "upper_left_lamp",
+        "parent_zh": "左上路灯",
+        "payload": "matte black",
+        "attribute_kind": "finish",
+        "instruction_zh": "将右侧入口旁的路灯的表面效果改为哑光黑色。",
+        "instruction_noref_zh": "将选中的路灯的表面效果改为哑光黑色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the no-parking sign near the entrance",
+        "ref_zh": "入口附近的禁停标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "parking_sign",
+        "parent_zh": "禁停标志",
+        "payload": "",
+        "instruction_zh": "移除入口附近的禁停标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 60,
+        "operation": "replace",
+        "ref": "the tan jacket on the pedestrian at the right",
+        "ref_zh": "右侧行人的棕色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "right_pedestrian",
+        "parent_zh": "右侧行人",
+        "payload": "a dark blue coat",
+        "instruction_zh": "将右侧行人的棕色外套替换为一件深蓝色外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件深蓝色外套。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the white car at the left curb",
+        "ref_zh": "左侧路边的白色轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "left_car",
+        "parent_zh": "左车",
+        "payload": "a small roof sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧路边的白色轿车加上一个小车顶标志。",
+        "instruction_noref_zh": "在选中的轿车加上一个小车顶标志。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7205265",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4c8e65cbe18f0e49a7fe9f0656ef100b80a06e2b656ec6069aafc9908b4847e1",
+    "review_card_sha256": "6f97fdd9a9914b5d4e49645e39d241e82478aec651081dc3c8f10b34ef76aa3e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3火盆、1轮胎、25窗口和13立柱是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "fire",
+        "occlusion"
+      ],
+      "scene_zh": "院落火盆",
+      "evidence_zh": "3火盆、1轮胎、25窗口和13立柱是四个不同对象。",
+      "specific_protection_zh": "保留火焰、院落和消防车辆背景。"
+    },
+    "protected_content_zh": "保留火焰、院落和消防车辆背景。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the black fire bowl in the foreground",
+        "ref_zh": "前景的黑色火盆",
+        "scope": "fire bowl",
+        "scope_zh": "火盆",
+        "parent": "fire_bowl",
+        "parent_zh": "火盆",
+        "payload": "dark gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的黑色火盆的颜色改为深灰色。",
+        "instruction_noref_zh": "将选中的火盆的颜色改为深灰色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the tire behind the fire bowl",
+        "ref_zh": "火盆后方的轮胎",
+        "scope": "tire",
+        "scope_zh": "轮胎",
+        "parent": "rear_tire",
+        "parent_zh": "后轮胎",
+        "payload": "",
+        "instruction_zh": "移除火盆后方的轮胎。",
+        "instruction_noref_zh": "移除选中的轮胎。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the window on the building at the upper right",
+        "ref_zh": "右上方建筑的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "upper_right_window",
+        "parent_zh": "右上窗",
+        "payload": "a bright blue window",
+        "instruction_zh": "将右上方建筑的窗户替换为一扇亮蓝色窗户。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇亮蓝色窗户。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the red truck panel at the far right",
+        "ref_zh": "最右侧的红色卡车面板",
+        "scope": "post",
+        "scope_zh": "立柱",
+        "parent": "red_post",
+        "parent_zh": "红柱",
+        "payload": "a small warning sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的红色卡车面板加上一个小警示牌。",
+        "instruction_noref_zh": "在选中的立柱加上一个小警示牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_720948",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a0b5642c05c1ca403faaba43990120ed872c31fc74e3e3a5334cdde675009b84",
+    "review_card_sha256": "e250baafac613a8e8cec3b0f94d6e67a45b6019ad423eb46ffe4dca5c14614a2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0女子、8远处轿车、17遮雨棚、5建筑窗口是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "rain",
+        "occlusion"
+      ],
+      "scene_zh": "雨天路边摊",
+      "evidence_zh": "0女子、8远处轿车、17遮雨棚、5建筑窗口是四个不同对象。",
+      "specific_protection_zh": "保留摊位、道路和人物环境。"
+    },
+    "protected_content_zh": "保留摊位、道路和人物环境。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the red coat on the woman",
+        "ref_zh": "女子的红色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "woman",
+        "parent_zh": "女子",
+        "payload": "deep purple",
+        "attribute_kind": "color",
+        "instruction_zh": "将女子的红色外套的颜色改为深紫色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为深紫色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the white car on the road",
+        "ref_zh": "道路上的白色轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "road_car",
+        "parent_zh": "道路轿车",
+        "payload": "",
+        "instruction_zh": "移除道路上的白色轿车。",
+        "instruction_noref_zh": "移除选中的轿车。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the gray canopy across the top",
+        "ref_zh": "顶部横跨的灰色遮雨棚",
+        "scope": "canopy",
+        "scope_zh": "遮雨棚",
+        "parent": "top_canopy",
+        "parent_zh": "顶部雨棚",
+        "payload": "a blue striped canopy",
+        "instruction_zh": "将顶部横跨的灰色遮雨棚替换为一顶蓝白条纹雨棚。",
+        "instruction_noref_zh": "将选中的遮雨棚替换为一顶蓝白条纹雨棚。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the window on the building at the left",
+        "ref_zh": "左侧建筑的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "left_window",
+        "parent_zh": "左窗",
+        "payload": "a warm yellow glow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧建筑的窗户加上暖黄色灯光。",
+        "instruction_noref_zh": "在选中的窗户加上暖黄色灯光。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

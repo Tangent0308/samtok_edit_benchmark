@@ -1,0 +1,174 @@
+{
+  "source_id": "sa_1954663",
+  "reason_zh": "全图复核确认8位于灰绿色建筑右上方，修正原来的左上方。",
+  "previous_record": {
+    "source_id": "sa_1954663",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c2b847a122d1b9a14cdde07deee92228a209fadc5e56b8db332411d9f1290b5c",
+    "review_card_sha256": "0d5a9ff07f13efb9c1a994855a91c0702029343d9e859e461945d112466742b7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为灰绿小楼二层左窗，6为灯杆旁桶体，7为路灯，1为右浅色建筑白百叶窗。两个建筑、灯和独立垃圾桶。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "街边小楼和路灯垃圾桶",
+      "evidence_zh": "8为灰绿小楼二层左窗，6为灯杆旁桶体，7为路灯，1为右浅色建筑白百叶窗。两个建筑、灯和独立垃圾桶。",
+      "specific_protection_zh": "保留建筑墙面、其他窗户、路面和原有遮挡。"
+    },
+    "protected_content_zh": "保留建筑墙面、其他窗户、路面和原有遮挡。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the upper-left window of the gray-green building",
+        "ref_zh": "灰绿色建筑左上方的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "gray_green_house",
+        "parent_zh": "灰绿小楼",
+        "payload": "a wooden casement window",
+        "instruction_zh": "将灰绿色建筑左上方的窗户替换为一扇木框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇木框平开窗。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the green bin beside the lamppost",
+        "ref_zh": "灯柱旁的绿色垃圾桶",
+        "scope": "bin",
+        "scope_zh": "垃圾桶",
+        "parent": "street_bin",
+        "parent_zh": "街边桶",
+        "payload": "",
+        "instruction_zh": "移除灯柱旁的绿色垃圾桶。",
+        "instruction_noref_zh": "移除选中的垃圾桶。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the streetlamp on the left",
+        "ref_zh": "左侧的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "streetlamp",
+        "parent_zh": "路灯",
+        "payload": "a hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧的路灯加上一个悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个悬挂花篮。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the white shutter at the right edge",
+        "ref_zh": "右边缘的白色百叶窗板",
+        "scope": "shutter",
+        "scope_zh": "百叶窗板",
+        "parent": "right_house",
+        "parent_zh": "右侧建筑",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右边缘的白色百叶窗板的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的百叶窗板的颜色改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1954663",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c2b847a122d1b9a14cdde07deee92228a209fadc5e56b8db332411d9f1290b5c",
+    "review_card_sha256": "0d5a9ff07f13efb9c1a994855a91c0702029343d9e859e461945d112466742b7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为灰绿小楼二层左窗，6为灯杆旁桶体，7为路灯，1为右浅色建筑白百叶窗。两个建筑、灯和独立垃圾桶。 全图复核：全图复核确认8位于灰绿色建筑右上方，修正原来的左上方。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "街边小楼和路灯垃圾桶",
+      "evidence_zh": "8为灰绿小楼二层左窗，6为灯杆旁桶体，7为路灯，1为右浅色建筑白百叶窗。两个建筑、灯和独立垃圾桶。 全图复核：全图复核确认8位于灰绿色建筑右上方，修正原来的左上方。",
+      "specific_protection_zh": "保留建筑墙面、其他窗户、路面和原有遮挡。"
+    },
+    "protected_content_zh": "保留建筑墙面、其他窗户、路面和原有遮挡。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the upper-right window of the gray-green building",
+        "ref_zh": "灰绿色建筑右上方的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "gray_green_house",
+        "parent_zh": "灰绿小楼",
+        "payload": "a wooden casement window",
+        "instruction_zh": "将灰绿色建筑右上方的窗户替换为一扇木框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇木框平开窗。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the green bin beside the lamppost",
+        "ref_zh": "灯柱旁的绿色垃圾桶",
+        "scope": "bin",
+        "scope_zh": "垃圾桶",
+        "parent": "street_bin",
+        "parent_zh": "街边桶",
+        "payload": "",
+        "instruction_zh": "移除灯柱旁的绿色垃圾桶。",
+        "instruction_noref_zh": "移除选中的垃圾桶。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the streetlamp on the left",
+        "ref_zh": "左侧的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "streetlamp",
+        "parent_zh": "路灯",
+        "payload": "a hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧的路灯加上一个悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个悬挂花篮。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the white shutter at the right edge",
+        "ref_zh": "右边缘的白色百叶窗板",
+        "scope": "shutter",
+        "scope_zh": "百叶窗板",
+        "parent": "right_house",
+        "parent_zh": "右侧建筑",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右边缘的白色百叶窗板的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的百叶窗板的颜色改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

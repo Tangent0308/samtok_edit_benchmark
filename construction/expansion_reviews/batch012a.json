@@ -1,0 +1,573 @@
+[
+  {
+    "source_id": "sa_2950591",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a2cea139f6bc3e8bfb5be799c20e47bdaca4d0d19958c3a5b970f45265e3498b",
+    "review_card_sha256": "566b7c3a798e71719cf82fe480414bdd261f6db16ef597428337d48a02a2e28f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为橙色袍，3为面部左侧心形叶。人和同一植物两个父对象；多个叶片不能计多棵植物，不使用手臂删除。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_leaves"
+      ],
+      "scene_zh": "绿叶前的橙袍人物",
+      "evidence_zh": "1为橙色袍，3为面部左侧心形叶。人和同一植物两个父对象；多个叶片不能计多棵植物，不使用手臂删除。",
+      "specific_protection_zh": "保留面部原模糊、人体、黄腰带、其他叶子与背景。"
+    },
+    "protected_content_zh": "保留面部原模糊、人体、黄腰带、其他叶子与背景。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the orange robe",
+        "ref_zh": "橙色袍服",
+        "scope": "robe",
+        "scope_zh": "袍服",
+        "parent": "foreground_person",
+        "parent_zh": "前景人物",
+        "payload": "deep saffron",
+        "attribute_kind": "color",
+        "instruction_zh": "将橙色袍服的颜色改为深藏红花色。",
+        "instruction_noref_zh": "将选中的袍服的颜色改为深藏红花色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the heart-shaped leaf left of the face",
+        "ref_zh": "面部左侧的心形叶片",
+        "scope": "leaf",
+        "scope_zh": "叶片",
+        "parent": "leafy_tree",
+        "parent_zh": "叶树",
+        "payload": "a small ladybug",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在面部左侧的心形叶片加上一只小瓢虫。",
+        "instruction_noref_zh": "在选中的叶片加上一只小瓢虫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2956568",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7556142ec91049172c9c1c10e09d00f5dac4bfd0ac41cf20e18d7d2671e1a0b8",
+    "review_card_sha256": "2af7483fd312d4aa03051110eed168f10e46d0496b5f39978773fa03f8b562d4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为路边银色多用途车，5为摩托上的黑盔，12为右下垃圾袋，7为NEO牌。各为独立物体；车13被挡但不强行凑目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "clutter",
+        "small_targets"
+      ],
+      "scene_zh": "街头垃圾收集车",
+      "evidence_zh": "2为路边银色多用途车，5为摩托上的黑盔，12为右下垃圾袋，7为NEO牌。各为独立物体；车13被挡但不强行凑目标。",
+      "specific_protection_zh": "保留人和回收车、摩托车、道路、其他垃圾及建筑。"
+    },
+    "protected_content_zh": "保留人和回收车、摩托车、道路、其他垃圾及建筑。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the silver minivan parked across the street",
+        "ref_zh": "街对面停放的银色小型客车",
+        "scope": "minivan",
+        "scope_zh": "客车",
+        "parent": "silver_minivan",
+        "parent_zh": "银车",
+        "payload": "a blue compact minivan",
+        "instruction_zh": "将街对面停放的银色小型客车替换为一辆蓝色小型客车。",
+        "instruction_noref_zh": "将选中的客车替换为一辆蓝色小型客车。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the black helmet on the motorcycle",
+        "ref_zh": "摩托车上的黑色头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "helmet",
+        "parent_zh": "头盔",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将摩托车上的黑色头盔的颜色改为白色。",
+        "instruction_noref_zh": "将选中的头盔的颜色改为白色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the black garbage bag beside the cart on the right",
+        "ref_zh": "推车右侧的黑色垃圾袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "garbage_bag",
+        "parent_zh": "垃圾袋",
+        "payload": "",
+        "instruction_zh": "移除推车右侧的黑色垃圾袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the tall NEO sign",
+        "ref_zh": "高大的NEO标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "neo_sign",
+        "parent_zh": "NEO牌",
+        "payload": "a thin gold border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在高大的NEO标牌加上一圈细金色边框。",
+        "instruction_noref_zh": "在选中的标牌加上一圈细金色边框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2957797",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e55caa25c212517c96cc9f3d899126facbbcaf5f0a85f7c641b4d8ec6d96c22e",
+    "review_card_sha256": "25feb8eeb5af8ac20b271e88c33f426c297da3b41cf18df500909f9d19c2c4af",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为左人黑衬衫，10为右人蓝白格上衣，6为中间铁椅。两人和独立长凳；14/59为玻璃里的反射不当外部旗或灯删除。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "occlusion"
+      ],
+      "scene_zh": "玻璃店门外的两名游客",
+      "evidence_zh": "5为左人黑衬衫，10为右人蓝白格上衣，6为中间铁椅。两人和独立长凳；14/59为玻璃里的反射不当外部旗或灯删除。",
+      "specific_protection_zh": "保留原有反射、人物身体、手持物、店名及建筑。"
+    },
+    "protected_content_zh": "保留原有反射、人物身体、手持物、店名及建筑。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the black shirt on the man on the left",
+        "ref_zh": "左侧男子的黑色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_man",
+        "parent_zh": "左男子",
+        "payload": "a cream linen shirt",
+        "instruction_zh": "将左侧男子的黑色衬衫替换为一件米白色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件米白色亚麻衬衫。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the checked shirt on the woman on the right",
+        "ref_zh": "右侧女子的格纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "right_woman",
+        "parent_zh": "右女子",
+        "payload": "red-and-white checks",
+        "attribute_kind": "pattern",
+        "instruction_zh": "将右侧女子的格纹上衣的图案改为红白格纹。",
+        "instruction_noref_zh": "将选中的上衣的图案改为红白格纹。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the metal bench between the two visitors",
+        "ref_zh": "两名游客之间的金属长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "metal_bench",
+        "parent_zh": "金属长凳",
+        "payload": "a small brown seat cushion",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在两名游客之间的金属长凳加上一个小棕色坐垫。",
+        "instruction_noref_zh": "在选中的长凳加上一个小棕色坐垫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2959302",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7df23ee6ec29dfc4a87689aca1b2f32600e7cb46a8e6e34d9826d0851614dde6",
+    "review_card_sha256": "cee6fd4540a1df2e181b64d9b09adcf74ccf2eb80573983f9e2fd74863512f6c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "29为右橱窗左侧模特花裙，19为红上衣模特深色外套，8为左窗30价牌，17为右下三张价格卡中最左一张。两不同模特和两张独立价牌；18/30/36车体是反射不当场内车编辑。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "transparency",
+        "occlusion"
+      ],
+      "scene_zh": "服装店橱窗",
+      "evidence_zh": "29为右橱窗左侧模特花裙，19为红上衣模特深色外套，8为左窗30价牌，17为右下三张价格卡中最左一张。两不同模特和两张独立价牌；18/30/36车体是反射不当场内车编辑。",
+      "specific_protection_zh": "保留模特身体、其余服装、玻璃反射、门店文字和价格板其他内容。"
+    },
+    "protected_content_zh": "保留模特身体、其余服装、玻璃反射、门店文字和价格板其他内容。",
+    "targets": [
+      {
+        "object_id": 29,
+        "operation": "replace",
+        "ref": "the floral skirt on the left mannequin in the right window",
+        "ref_zh": "右橱窗左侧模特的碎花裙",
+        "scope": "skirt",
+        "scope_zh": "裙子",
+        "parent": "left_display_mannequin",
+        "parent_zh": "左展示模特",
+        "payload": "a blue pleated skirt",
+        "instruction_zh": "将右橱窗左侧模特的碎花裙替换为一条蓝色百褶裙。",
+        "instruction_noref_zh": "将选中的裙子替换为一条蓝色百褶裙。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the dark blazer over the red top",
+        "ref_zh": "红色上衣外面的深色西装外套",
+        "scope": "blazer",
+        "scope_zh": "西装外套",
+        "parent": "red_top_mannequin",
+        "parent_zh": "红衣模特",
+        "payload": "cream",
+        "attribute_kind": "color",
+        "instruction_zh": "将红色上衣外面的深色西装外套的颜色改为米白色。",
+        "instruction_noref_zh": "将选中的西装外套的颜色改为米白色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the freestanding 30-percent sign in the left window",
+        "ref_zh": "左橱窗独立摆放的30折扣牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "discount_sign",
+        "parent_zh": "折扣牌",
+        "payload": "",
+        "instruction_zh": "移除左橱窗独立摆放的30折扣牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the leftmost of the three price cards at the lower right",
+        "ref_zh": "右下方三张价格卡中最左侧的一张",
+        "scope": "card",
+        "scope_zh": "卡片",
+        "parent": "right_price_card",
+        "parent_zh": "右价卡",
+        "payload": "a small red SALE sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方三张价格卡中最左侧的一张加上一张小红色SALE贴纸。",
+        "instruction_noref_zh": "在选中的卡片加上一张小红色SALE贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2964423",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2722e9fd3de63df484509d3adaf472e5e9d79c5217774cebac625d8bf8ddbbf8",
+    "review_card_sha256": "a30756eda3c27f5a9f5f1ade1351852ebc0e06e8b4ea26ee219ee1f5fcd0cdb3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为W413选手黄上衣，7为其左蓝上衣，8为最左红上衣。三名不同人，83等号码布和手部不额外凑独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "text",
+        "occlusion"
+      ],
+      "scene_zh": "跑步活动合影",
+      "evidence_zh": "6为W413选手黄上衣，7为其左蓝上衣，8为最左红上衣。三名不同人，83等号码布和手部不额外凑独立父对象。",
+      "specific_protection_zh": "保留所有人、号码布号码、身体、徽标及背景赛事横幅。"
+    },
+    "protected_content_zh": "保留所有人、号码布号码、身体、徽标及背景赛事横幅。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "runner W413’s yellow shirt",
+        "ref_zh": "W413跑者的黄色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "runner_w413",
+        "parent_zh": "W413跑者",
+        "payload": "a small white running-club badge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在W413跑者的黄色上衣加上一枚小白色跑团徽章。",
+        "instruction_noref_zh": "在选中的上衣加上一枚小白色跑团徽章。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the blue shirt on the second runner from the left",
+        "ref_zh": "从左数第二位跑者的蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "second_runner",
+        "parent_zh": "第二跑者",
+        "payload": "green",
+        "attribute_kind": "color",
+        "instruction_zh": "将从左数第二位跑者的蓝色上衣的颜色改为绿色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为绿色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the leftmost runner’s red shirt",
+        "ref_zh": "最左侧跑者的红色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "leftmost_runner",
+        "parent_zh": "最左跑者",
+        "payload": "a plain white running shirt",
+        "instruction_zh": "将最左侧跑者的红色上衣替换为一件纯白色跑步上衣。",
+        "instruction_noref_zh": "将选中的上衣替换为一件纯白色跑步上衣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2969849",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "487acf6a6b689ef9eb673a2b1367af0b75ed903fb4216a2a869dfa70fb636bc8",
+    "review_card_sha256": "b8ac31445b43ee0cb90d9cd2ced47be27eb058c91dad6312624ed2650c042683",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7为站立者浅蓝衬衫，12为蹲者米色上衣，8为手中彩纹提袋。两人及独立提袋，不将10路坑和14地面水果合块生硬当可移除对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "overexposure"
+      ],
+      "scene_zh": "汽车旁拾物的两个人",
+      "evidence_zh": "7为站立者浅蓝衬衫，12为蹲者米色上衣，8为手中彩纹提袋。两人及独立提袋，不将10路坑和14地面水果合块生硬当可移除对象。",
+      "specific_protection_zh": "保留人、姿势、车、地面水果、街道和背景门窗。"
+    },
+    "protected_content_zh": "保留人、姿势、车、地面水果、街道和背景门窗。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the pale-blue shirt on the standing man",
+        "ref_zh": "站立男子的浅蓝色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "standing_man",
+        "parent_zh": "站立男子",
+        "payload": "pale green",
+        "attribute_kind": "color",
+        "instruction_zh": "将站立男子的浅蓝色衬衫的颜色改为浅绿色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅绿色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "replace",
+        "ref": "the cream shirt on the crouching person",
+        "ref_zh": "蹲着的人所穿米色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "crouching_person",
+        "parent_zh": "蹲者",
+        "payload": "a blue checked shirt",
+        "instruction_zh": "将蹲着的人所穿米色上衣替换为一件蓝色格纹衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件蓝色格纹衬衫。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the multicolored shopping bag",
+        "ref_zh": "彩色购物袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "shopping_bag",
+        "parent_zh": "购物袋",
+        "payload": "a small white fabric patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在彩色购物袋加上一块小白色布贴。",
+        "instruction_noref_zh": "在选中的袋子加上一块小白色布贴。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2980326",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6035e2dfbd8d180036358e5d51f90cd2f799e03f7e7faf77fda744ee8b833fc1",
+    "review_card_sha256": "45a214eb22213b49428e10454ec97ccfd55f66865f148ff28903ad75400bfa78",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13为驾驶舱前斜窗，15为机鼻后方白蓝红横条旗。直升机和旗帜两个父对象，机轮与旋翼不可再算独立整机。24围栏包大量草地不选。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "展场上的直升机",
+      "evidence_zh": "13为驾驶舱前斜窗，15为机鼻后方白蓝红横条旗。直升机和旗帜两个父对象，机轮与旋翼不可再算独立整机。24围栏包大量草地不选。",
+      "specific_protection_zh": "保留直升机结构、内部细节、旗杆、其他旗帜、建筑与天空。"
+    },
+    "protected_content_zh": "保留直升机结构、内部细节、旗杆、其他旗帜、建筑与天空。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the slanted front cockpit window",
+        "ref_zh": "驾驶舱前方的倾斜窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "helicopter",
+        "parent_zh": "直升机",
+        "payload": "pale green",
+        "attribute_kind": "tint",
+        "instruction_zh": "将驾驶舱前方的倾斜窗户的色调改为浅绿色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅绿色。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the horizontal white-blue-red flag behind the helicopter",
+        "ref_zh": "直升机后方白蓝红横条纹旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "tricolor_flag",
+        "parent_zh": "三色旗",
+        "payload": "",
+        "instruction_zh": "移除直升机后方白蓝红横条纹旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2981106",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8cb36b431a978cc73c8fbf449e88e95825a8087b63a343e6bef41c401349f7d8",
+    "review_card_sha256": "3bae12dcaf1a18b9dcf55cc332ded870dab4859e7421fdeb84d9936d1626ec9d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为有6F的独立竖牌，1为左侧灯罩，24为PART2和7横牌。三独立物件；保持单色风格，不对黑白图强行彩色化。",
+    "difficulty": {
+      "mechanisms": [
+        "monochrome",
+        "text",
+        "repetition"
+      ],
+      "scene_zh": "黑白商业招牌",
+      "evidence_zh": "0为有6F的独立竖牌，1为左侧灯罩，24为PART2和7横牌。三独立物件；保持单色风格，不对黑白图强行彩色化。",
+      "specific_protection_zh": "保留建筑、其他日文牌、安装支架及黑白摄影风格。"
+    },
+    "protected_content_zh": "保留建筑、其他日文牌、安装支架及黑白摄影风格。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the vertical sign ending in 6F",
+        "ref_zh": "末尾写有6F的竖向标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "sixth_floor_sign",
+        "parent_zh": "六楼牌",
+        "payload": "a black sign reading CAFE 6F in white",
+        "instruction_zh": "将末尾写有6F的竖向标牌替换为一块写有白色CAFE 6F的黑色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有白色CAFE 6F的黑色标牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the uppermost lampshade on the left",
+        "ref_zh": "左侧最上方的灯罩",
+        "scope": "lampshade",
+        "scope_zh": "灯罩",
+        "parent": "upper_lamp",
+        "parent_zh": "上灯",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧最上方的灯罩的颜色改为白色。",
+        "instruction_noref_zh": "将选中的灯罩的颜色改为白色。"
+      },
+      {
+        "object_id": 24,
+        "operation": "remove",
+        "ref": "the small horizontal sign marked PART2 and 7",
+        "ref_zh": "写有PART2和7的小横向标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "part2_sign",
+        "parent_zh": "PART2牌",
+        "payload": "",
+        "instruction_zh": "移除写有PART2和7的小横向标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,596 @@
+[
+  {
+    "source_id": "sa_4432683",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "862d3b950da0867b38206f05f6122f8668c5c051f13806d1be1c3b939fe4406e",
+    "review_card_sha256": "c0927c4a0263861657f8ffbe5d569721184b36ceef1645758134be699b773742",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0上方工厂牌、9前景背向男子衬衫、5中央杆三父对象。人物整体mask7/12不用于衣服编辑。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "crowd",
+        "small_targets"
+      ],
+      "scene_zh": "夜间仪式观众",
+      "evidence_zh": "0上方工厂牌、9前景背向男子衬衫、5中央杆三父对象。人物整体mask7/12不用于衣服编辑。",
+      "specific_protection_zh": "保留仪式人员、观众、火光和建筑。"
+    },
+    "protected_content_zh": "保留仪式人员、观众、火光和建筑。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the BANARAS SAREE FACTORY sign",
+        "ref_zh": "写有BANARAS SAREE FACTORY的招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "factory_sign",
+        "parent_zh": "工厂牌",
+        "payload": "",
+        "instruction_zh": "移除写有BANARAS SAREE FACTORY的招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the olive shirt on the standing spectator in the right foreground",
+        "ref_zh": "右前景站立观众的橄榄绿衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "standing_spectator",
+        "parent_zh": "站立观众",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右前景站立观众的橄榄绿衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the tall pole near the center",
+        "ref_zh": "中间附近的高杆",
+        "scope": "pole",
+        "scope_zh": "杆",
+        "parent": "center_pole",
+        "parent_zh": "中央杆",
+        "payload": "a short marigold garland",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的高杆加上一串短金盏花花环。",
+        "instruction_noref_zh": "在选中的杆加上一串短金盏花花环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4435260",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9fda5be5d424f3ee6e6e17c773024ad173a89acc09b21b8ff8a4eb3caccbf49b",
+    "review_card_sha256": "ca83933888b32bd836a222ca6f02e0a05ba17819e50b3d6832d9c5fee2a9125e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3左侧男子T、19中央蓝袋、6右前推车、7中间坐者裤子为两个人及两个物品。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "购物中心等候人群",
+      "evidence_zh": "3左侧男子T、19中央蓝袋、6右前推车、7中间坐者裤子为两个人及两个物品。",
+      "specific_protection_zh": "保留儿童、人物身体、推车结构和商店。"
+    },
+    "protected_content_zh": "保留儿童、人物身体、推车结构和商店。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the navy T-shirt on the man at the left",
+        "ref_zh": "左侧男子的藏蓝色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "a pale blue polo shirt",
+        "instruction_zh": "将左侧男子的藏蓝色T恤替换为一件浅蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件浅蓝色Polo衫。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the large blue shopping bag beside the seated man in red",
+        "ref_zh": "红衣坐者旁的大蓝色购物袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "blue_bag",
+        "parent_zh": "蓝袋",
+        "payload": "",
+        "instruction_zh": "移除红衣坐者旁的大蓝色购物袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the shopping cart in front of the woman in pink",
+        "ref_zh": "粉衣女子前方的购物车",
+        "scope": "cart",
+        "scope_zh": "购物车",
+        "parent": "front_cart",
+        "parent_zh": "前推车",
+        "payload": "a small yellow number 12 tag on its handle",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在粉衣女子前方的购物车加上一张挂在把手上的小黄色数字12标签。",
+        "instruction_noref_zh": "在选中的购物车加上一张挂在把手上的小黄色数字12标签。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the dark trousers on the seated man in red",
+        "ref_zh": "红衣坐者的深色长裤",
+        "scope": "trousers",
+        "scope_zh": "长裤",
+        "parent": "seated_man",
+        "parent_zh": "坐者",
+        "payload": "beige",
+        "attribute_kind": "color",
+        "instruction_zh": "将红衣坐者的深色长裤的颜色改为米色。",
+        "instruction_noref_zh": "将选中的长裤的颜色改为米色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4435643",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6324abafff6bddd445f2baa10c0788cce45457d1c722bf71f928919793ae71f8",
+    "review_card_sha256": "50d415245094fb3c5fbb1ce406999f0404badfb556c1308adef4b499de6134fc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10前景Polo与13背景三角标牌；远处模糊目标只选择形状明确且唯一的标牌。",
+    "difficulty": {
+      "mechanisms": [
+        "shallow_depth_of_field",
+        "small_targets"
+      ],
+      "scene_zh": "广场独行者",
+      "evidence_zh": "10前景Polo与13背景三角标牌；远处模糊目标只选择形状明确且唯一的标牌。",
+      "specific_protection_zh": "保留人物、背景人群、树木与道路。"
+    },
+    "protected_content_zh": "保留人物、背景人群、树木与道路。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the gray polo shirt on the foreground man",
+        "ref_zh": "前景男子的灰色Polo衫",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "foreground_man",
+        "parent_zh": "前男",
+        "payload": "a pale blue linen shirt",
+        "instruction_zh": "将前景男子的灰色Polo衫替换为一件浅蓝色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件浅蓝色亚麻衬衫。"
+      },
+      {
+        "object_id": 13,
+        "operation": "remove",
+        "ref": "the triangular yellow sign in the background",
+        "ref_zh": "背景中的黄色三角标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "triangle_sign",
+        "parent_zh": "三角牌",
+        "payload": "",
+        "instruction_zh": "移除背景中的黄色三角标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4441086",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0a3b3ef6525110f04f462c168a380105edd1b0b053d9b768ad72cc29b5b40d00",
+    "review_card_sha256": "d9e10be590511b576260004cd0aff98177ac6709ee67c1a5143514bef767300c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "115墙边空轮椅与137下排青绿衣左邻浅灰上衣为独立物体及人物，不拆多个窗户凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "small_targets"
+      ],
+      "scene_zh": "清真寺外祈祷",
+      "evidence_zh": "115墙边空轮椅与137下排青绿衣左邻浅灰上衣为独立物体及人物，不拆多个窗户凑数。",
+      "specific_protection_zh": "保留祈祷者身体姿态、旗帜和建筑。"
+    },
+    "protected_content_zh": "保留祈祷者身体姿态、旗帜和建筑。",
+    "targets": [
+      {
+        "object_id": 115,
+        "operation": "remove",
+        "ref": "the empty wheelchair beside the low wall",
+        "ref_zh": "矮墙旁的空轮椅",
+        "scope": "wheelchair",
+        "scope_zh": "轮椅",
+        "parent": "wheelchair",
+        "parent_zh": "轮椅",
+        "payload": "",
+        "instruction_zh": "移除矮墙旁的空轮椅。",
+        "instruction_noref_zh": "移除选中的轮椅。"
+      },
+      {
+        "object_id": 137,
+        "operation": "attribute",
+        "ref": "the light gray shirt left of the teal shirt in the lower row",
+        "ref_zh": "下排青绿色上衣左邻的浅灰色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "foreground_worshipper",
+        "parent_zh": "前排祈祷者",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将下排青绿色上衣左邻的浅灰色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_445897",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dd305c92bbb93a16c7f751e50920c9918f0ebfa05335ea4b90abf38919fd3522",
+    "review_card_sha256": "88228043fe69c44fe8b5baafd2d9bdd538132b95e85761c76da55f58a69329f1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22左人物短裤、8右太阳镜、6后方木片、5白袋四父对象。避开修改或移动卵和身体。",
+    "difficulty": {
+      "mechanisms": [
+        "hand_object_contact",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "沙滩整理海龟卵",
+      "evidence_zh": "22左人物短裤、8右太阳镜、6后方木片、5白袋四父对象。避开修改或移动卵和身体。",
+      "specific_protection_zh": "保留卵、人物身体、手部操作与沙面。"
+    },
+    "protected_content_zh": "保留卵、人物身体、手部操作与沙面。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "attribute",
+        "ref": "the black shorts on the person at the left",
+        "ref_zh": "左侧人物的黑色短裤",
+        "scope": "shorts",
+        "scope_zh": "短裤",
+        "parent": "left_person",
+        "parent_zh": "左人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧人物的黑色短裤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的短裤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the sunglasses on the person at the right",
+        "ref_zh": "右侧人物的太阳镜",
+        "scope": "sunglasses",
+        "scope_zh": "太阳镜",
+        "parent": "right_person",
+        "parent_zh": "右人物",
+        "payload": "black-framed wraparound sunglasses",
+        "instruction_zh": "将右侧人物的太阳镜替换为一副黑框包覆式太阳镜。",
+        "instruction_noref_zh": "将选中的太阳镜替换为一副黑框包覆式太阳镜。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the wooden strip on the sand behind the two people",
+        "ref_zh": "两人后方沙地上的木条",
+        "scope": "wooden strip",
+        "scope_zh": "木条",
+        "parent": "wood_strip",
+        "parent_zh": "木条",
+        "payload": "",
+        "instruction_zh": "移除两人后方沙地上的木条。",
+        "instruction_noref_zh": "移除选中的木条。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the white plastic bag on the sand",
+        "ref_zh": "沙地上的白色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "a small white inventory label marked 12",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在沙地上的白色塑料袋加上一张标有12的小白色清点标签。",
+        "instruction_noref_zh": "在选中的袋子加上一张标有12的小白色清点标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4462229",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5e8c78370ce57360024e4fabb03223e4a8583f288b7c234d7681c9023ed9da32",
+    "review_card_sha256": "715d4809b50074541ff115fffd96a1d919d0f84689762121cecb7b4a145c88c6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6帽子、17中横杆、12地面扁石三父对象。保留完整围栏，避免动物和危险接触编辑。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structure",
+        "occlusion"
+      ],
+      "scene_zh": "围栏旁饲养员与狮子",
+      "evidence_zh": "6帽子、17中横杆、12地面扁石三父对象。保留完整围栏，避免动物和危险接触编辑。",
+      "specific_protection_zh": "保留狮子、人物、围栏和门锁。"
+    },
+    "protected_content_zh": "保留狮子、人物、围栏和门锁。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the patterned baseball cap on the keeper",
+        "ref_zh": "饲养员的花纹棒球帽",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "keeper",
+        "parent_zh": "饲养员",
+        "payload": "a plain beige baseball cap",
+        "instruction_zh": "将饲养员的花纹棒球帽替换为一顶纯米色棒球帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶纯米色棒球帽。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the horizontal gate bar in front of the lion’s face",
+        "ref_zh": "狮子脸前方的水平门栏",
+        "scope": "bar",
+        "scope_zh": "门栏",
+        "parent": "enclosure_gate",
+        "parent_zh": "围栏门",
+        "payload": "a small yellow KEEP BACK plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在狮子脸前方的水平门栏加上一块小黄色KEEP BACK提示牌。",
+        "instruction_noref_zh": "在选中的门栏加上一块小黄色KEEP BACK提示牌。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the flat stone at the right edge behind the keeper’s feet",
+        "ref_zh": "饲养员脚后方右边缘的扁石",
+        "scope": "stone",
+        "scope_zh": "石头",
+        "parent": "flat_stone",
+        "parent_zh": "扁石",
+        "payload": "",
+        "instruction_zh": "移除饲养员脚后方右边缘的扁石。",
+        "instruction_noref_zh": "移除选中的石头。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_447473",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0acc1e637623142952e3c874b5fa3cc912438ce3d0e7e2ef87b000d0cea06e5d",
+    "review_card_sha256": "33c5235682aea8062b6138b5d3103681030513651ba6f07dc325a31b6dd9d258",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "154右侧瓶装水、9三欧价签、6顾客靴子、3玻璃罩四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "奶酪柜台顾客",
+      "evidence_zh": "154右侧瓶装水、9三欧价签、6顾客靴子、3玻璃罩四父对象。",
+      "specific_protection_zh": "保留顾客身体、商品、其他价签及柜台。"
+    },
+    "protected_content_zh": "保留顾客身体、商品、其他价签及柜台。",
+    "targets": [
+      {
+        "object_id": 154,
+        "operation": "remove",
+        "ref": "the water bottle at the right end of the counter",
+        "ref_zh": "柜台右端的水瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "water_bottle",
+        "parent_zh": "水瓶",
+        "payload": "",
+        "instruction_zh": "移除柜台右端的水瓶。",
+        "instruction_noref_zh": "移除选中的瓶子。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the SPECIAL OFFER sign priced at 3 euros",
+        "ref_zh": "标价3欧元的SPECIAL OFFER标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "offer_sign",
+        "parent_zh": "促销牌",
+        "payload": "a cream sign reading SPECIAL OFFER €4",
+        "instruction_zh": "将标价3欧元的SPECIAL OFFER标牌替换为一块写有SPECIAL OFFER €4的米色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有SPECIAL OFFER €4的米色标牌。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the nearer beige boot on the customer",
+        "ref_zh": "顾客离镜头较近的米色靴子",
+        "scope": "boot",
+        "scope_zh": "靴子",
+        "parent": "customer",
+        "parent_zh": "顾客",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将顾客离镜头较近的米色靴子的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的靴子的颜色改为深棕色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the second tall glass display dome from the right",
+        "ref_zh": "右起第二个高玻璃展示罩",
+        "scope": "glass dome",
+        "scope_zh": "玻璃罩",
+        "parent": "glass_dome",
+        "parent_zh": "玻璃罩",
+        "payload": "a small round gold quality sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右起第二个高玻璃展示罩加上一张小圆形金色品质贴纸。",
+        "instruction_noref_zh": "在选中的玻璃罩加上一张小圆形金色品质贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4477450",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "34941e5fcde42615cf7049603a1c795c5b73bb0caf5a0c286cb03905b1b349dc",
+    "review_card_sha256": "bd652fd03444b0d31fa05e0f165d6a1e2bd6851021a1556941f7b8d55bbf6374",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10右前花裙、21最左男子黑T、31樱桃红牌、1长阳台栏杆四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "perspective",
+        "text"
+      ],
+      "scene_zh": "古城商街",
+      "evidence_zh": "10右前花裙、21最左男子黑T、31樱桃红牌、1长阳台栏杆四父对象。",
+      "specific_protection_zh": "保留人物身体、建筑和其他商铺。"
+    },
+    "protected_content_zh": "保留人物身体、建筑和其他商铺。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the floral dress on the woman in the right foreground",
+        "ref_zh": "右前景女子的碎花连衣裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "right_woman",
+        "parent_zh": "右女子",
+        "payload": "a plain pale blue summer dress",
+        "instruction_zh": "将右前景女子的碎花连衣裙替换为一条纯浅蓝色夏季连衣裙。",
+        "instruction_noref_zh": "将选中的连衣裙替换为一条纯浅蓝色夏季连衣裙。"
+      },
+      {
+        "object_id": 21,
+        "operation": "attribute",
+        "ref": "the black T-shirt on the man at the far left",
+        "ref_zh": "最左侧男子的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧男子的黑色T恤的颜色改为白色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为白色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "remove",
+        "ref": "the red cherry sign above the crowded doorway",
+        "ref_zh": "人群聚集的门口上方的红色樱桃招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "cherry_sign",
+        "parent_zh": "樱桃牌",
+        "payload": "",
+        "instruction_zh": "移除人群聚集的门口上方的红色樱桃招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the long balcony railing above the cherry sign",
+        "ref_zh": "樱桃招牌上方的长阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "balcony_building",
+        "parent_zh": "阳台楼房",
+        "payload": "a narrow planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在樱桃招牌上方的长阳台栏杆加上一个种有红花的窄花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的窄花箱。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,585 @@
+[
+  {
+    "source_id": "sa_258181",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0da6bdb8eec6ace97ddac8c732930cdfaea449771e96f13395e214473e35e2b6",
+    "review_card_sha256": "c92f9cacdfdd8e0142398c3d8ef9fc38a7bf6db549ae342d4520ebff5b958da2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "23为左侧关闭实木门，12为悬挂黑书店牌，1为自行车前轮带部分前叉。建筑、独立牌、车三父对象，不把门窗算不同建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "书店门前自行车",
+      "evidence_zh": "23为左侧关闭实木门，12为悬挂黑书店牌，1为自行车前轮带部分前叉。建筑、独立牌、车三父对象，不把门窗算不同建筑。",
+      "specific_protection_zh": "保留店内书本、其他海报、外墙与自行车结构。"
+    },
+    "protected_content_zh": "保留店内书本、其他海报、外墙与自行车结构。",
+    "targets": [
+      {
+        "object_id": 23,
+        "operation": "attribute",
+        "ref": "the closed wooden door on the left",
+        "ref_zh": "左侧关闭的木门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "bookshop_building",
+        "parent_zh": "书店建筑",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧关闭的木门的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的门的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "replace",
+        "ref": "the hanging black bookshop sign",
+        "ref_zh": "悬挂的黑色书店招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "hanging_sign",
+        "parent_zh": "悬挂招牌",
+        "payload": "a black sign reading BOOKS in gold",
+        "instruction_zh": "将悬挂的黑色书店招牌替换为一块写有金色BOOKS字样的黑色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有金色BOOKS字样的黑色招牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the bicycle’s front wheel",
+        "ref_zh": "自行车的前轮",
+        "scope": "wheel",
+        "scope_zh": "车轮",
+        "parent": "bicycle",
+        "parent_zh": "自行车",
+        "payload": "a pair of spoke reflectors",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在自行车的前轮加上一对辐条反光片。",
+        "instruction_noref_zh": "在选中的车轮加上一对辐条反光片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2597968",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "01ef78ab9a37fc1d89a9c894787b437d445204f95e9114b4769f2a56f74d3057",
+    "review_card_sha256": "a6eeaabb2de7a05a721a997293c0e9e5e747abe290d003dedd7c7a8edadfe7ec",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11为竖琴左侧空椅，33为指挥右侧最左一位坐姿大提琴手的白衬衫，37为指挥左侧谱架。椅、人、谱架独立，不移除演奏中的乐器。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "露天乐团演出",
+      "evidence_zh": "11为竖琴左侧空椅，33为指挥右侧最左一位坐姿大提琴手的白衬衫，37为指挥左侧谱架。椅、人、谱架独立，不移除演奏中的乐器。",
+      "specific_protection_zh": "保留演奏者身体、乐器、其他座椅、乐谱、国旗与观众。"
+    },
+    "protected_content_zh": "保留演奏者身体、乐器、其他座椅、乐谱、国旗与观众。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the empty chair to the left of the harp",
+        "ref_zh": "竖琴左侧的空椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "empty_chair",
+        "parent_zh": "空椅",
+        "payload": "",
+        "instruction_zh": "移除竖琴左侧的空椅子。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      },
+      {
+        "object_id": 33,
+        "operation": "attribute",
+        "ref": "the white shirt on the leftmost seated cellist",
+        "ref_zh": "最左侧坐姿大提琴手的白衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "leftmost_cellist",
+        "parent_zh": "最左大提琴手",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧坐姿大提琴手的白衬衫的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 37,
+        "operation": "add",
+        "ref": "the music stand just left of the conductor",
+        "ref_zh": "指挥左侧紧邻的谱架",
+        "scope": "music stand",
+        "scope_zh": "谱架",
+        "parent": "music_stand",
+        "parent_zh": "谱架",
+        "payload": "a small clip-on light",
+        "placement": {
+          "relation": "on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在指挥左侧紧邻的谱架的上沿加上一盏小夹式灯。",
+        "instruction_noref_zh": "在选中的谱架的上沿加上一盏小夹式灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_259821",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e5741299e574524c7edaf082db508bb9d89ddad79039590da59b1df9949133e0",
+    "review_card_sha256": "d172ad45d38b6aa2c22d9b0a2497c2af89aefa108de355636b88ced9b8a57055",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "原图和候选mask显示前景花团、叶、茎都来自同一株植物；可对单个部位编辑，但尚无第二个确认的独立父对象。背景花虚化且归株不清，保留待补查，不用重复花叶凑目标数。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "马缨丹枝叶特写",
+      "evidence_zh": "原图和候选mask显示前景花团、叶、茎都来自同一株植物；可对单个部位编辑，但尚无第二个确认的独立父对象。背景花虚化且归株不清，保留待补查，不用重复花叶凑目标数。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2599387",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bf3c1e17c61840ed3d96f2fce6ad44b7177a265587650628abe3074f51cbeccf",
+    "review_card_sha256": "fcac355b9d400cf74852188adda2465d992136eb7889f2680ca15d57715873ca",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "34为前景灯笼，50为左下NUDELBRETT字牌，4为钟楼上层圆钟面，69为左邻楼屋檐栏。钟楼建筑与左邻楼独立，字牌和灯独立。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "thin_structures",
+        "small_targets"
+      ],
+      "scene_zh": "教堂钟楼和餐馆街景",
+      "evidence_zh": "34为前景灯笼，50为左下NUDELBRETT字牌，4为钟楼上层圆钟面，69为左邻楼屋檐栏。钟楼建筑与左邻楼独立，字牌和灯独立。",
+      "specific_protection_zh": "保留钟面指针和数字、教堂窗、屋顶、人物与其他招牌。"
+    },
+    "protected_content_zh": "保留钟面指针和数字、教堂窗、屋顶、人物与其他招牌。",
+    "targets": [
+      {
+        "object_id": 34,
+        "operation": "replace",
+        "ref": "the foreground lantern",
+        "ref_zh": "前景的灯笼式路灯",
+        "scope": "lantern",
+        "scope_zh": "路灯",
+        "parent": "front_lantern",
+        "parent_zh": "前景灯",
+        "payload": "a round frosted-glass lamp",
+        "instruction_zh": "将前景的灯笼式路灯替换为一盏圆形磨砂玻璃灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏圆形磨砂玻璃灯。"
+      },
+      {
+        "object_id": 50,
+        "operation": "remove",
+        "ref": "the NUDELBRETT sign at the lower left",
+        "ref_zh": "左下方的NUDELBRETT招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "nudelbrett_sign",
+        "parent_zh": "字牌",
+        "payload": "",
+        "instruction_zh": "移除左下方的NUDELBRETT招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the upper clock face on the tower",
+        "ref_zh": "钟楼上层的钟面",
+        "scope": "clock face",
+        "scope_zh": "钟面",
+        "parent": "clock_tower",
+        "parent_zh": "钟楼",
+        "payload": "cream",
+        "attribute_kind": "color",
+        "instruction_zh": "将钟楼上层的钟面的颜色改为奶油色。",
+        "instruction_noref_zh": "将选中的钟面的颜色改为奶油色。"
+      },
+      {
+        "object_id": 69,
+        "operation": "add",
+        "ref": "the rooftop railing on the left building",
+        "ref_zh": "左侧建筑的屋顶栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "left_building",
+        "parent_zh": "左建筑",
+        "payload": "a string of warm-white lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧建筑的屋顶栏杆加上一串暖白色灯。",
+        "instruction_noref_zh": "在选中的栏杆加上一串暖白色灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2602254",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e74927710e13645fc5f5f2a5be799a190eaffbb5e2d9b2d6130684c085955b71",
+    "review_card_sha256": "be27df80e50668ce0cc5673feab0eb5be9c0dd0ec718dac8c7056ebbd7503778",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为白色帐篷棚顶，15为右侧成排蓝椅最右一把，12为左边绿色医院指示牌，10为近处来宾帽。帐篷椅牌人独立；保持纪念场景自然。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "纪念仪式花园与帐篷",
+      "evidence_zh": "5为白色帐篷棚顶，15为右侧成排蓝椅最右一把，12为左边绿色医院指示牌，10为近处来宾帽。帐篷椅牌人独立；保持纪念场景自然。",
+      "specific_protection_zh": "保留花圈、花坛、人物、旗帜、其他椅子和仪式氛围。"
+    },
+    "protected_content_zh": "保留花圈、花坛、人物、旗帜、其他椅子和仪式氛围。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the white tent canopy",
+        "ref_zh": "白色帐篷的顶棚",
+        "scope": "canopy",
+        "scope_zh": "顶棚",
+        "parent": "tent",
+        "parent_zh": "帐篷",
+        "payload": "light beige",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色帐篷的顶棚的颜色改为浅米色。",
+        "instruction_noref_zh": "将选中的顶棚的颜色改为浅米色。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the rightmost blue chair under the tent",
+        "ref_zh": "帐篷下最右侧的蓝色椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "rightmost_chair",
+        "parent_zh": "最右椅",
+        "payload": "a white folding chair",
+        "instruction_zh": "将帐篷下最右侧的蓝色椅子替换为一把白色折叠椅。",
+        "instruction_noref_zh": "将选中的椅子替换为一把白色折叠椅。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the green HOSPITAL sign on the left",
+        "ref_zh": "左侧绿色HOSPITAL标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "hospital_sign",
+        "parent_zh": "医院牌",
+        "payload": "",
+        "instruction_zh": "移除左侧绿色HOSPITAL标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the foreground visitor’s dark cap",
+        "ref_zh": "前景来宾的深色帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "front_visitor",
+        "parent_zh": "前景来宾",
+        "payload": "a small red poppy pin",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景来宾的深色帽子加上一枚小红色虞美人胸针。",
+        "instruction_noref_zh": "在选中的帽子加上一枚小红色虞美人胸针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2608378",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "415eb3f8acf1071421bd33f34eeb3037a5a85c7866eb532f69d0696cd0783938",
+    "review_card_sha256": "d08872cd1fc95f402fe3c25d33f27d4239a7dbcc6a3a1997917f1528b9053600",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为背对镜头3号白球衣，1为对面酒红短裤，38为左网柱旁蓝空座。两位运动员和独立椅子；不以只覆盖椅背的72移除整椅。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "夜间沙地球赛",
+      "evidence_zh": "2为背对镜头3号白球衣，1为对面酒红短裤，38为左网柱旁蓝空座。两位运动员和独立椅子；不以只覆盖椅背的72移除整椅。",
+      "specific_protection_zh": "保留球衣姓名编号、人体动作、球、球网、场地和其他观众。"
+    },
+    "protected_content_zh": "保留球衣姓名编号、人体动作、球、球网、场地和其他观众。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the white number 3 jersey",
+        "ref_zh": "白色3号球衣",
+        "scope": "jersey",
+        "scope_zh": "球衣",
+        "parent": "number3_player",
+        "parent_zh": "3号球员",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色3号球衣的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的球衣的颜色改为黄色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the maroon shorts across the net",
+        "ref_zh": "球网对面的酒红色短裤",
+        "scope": "shorts",
+        "scope_zh": "短裤",
+        "parent": "opposite_player",
+        "parent_zh": "对面球员",
+        "payload": "black sports shorts",
+        "instruction_zh": "将球网对面的酒红色短裤替换为黑色运动短裤。",
+        "instruction_noref_zh": "将选中的短裤替换为黑色运动短裤。"
+      },
+      {
+        "object_id": 38,
+        "operation": "add",
+        "ref": "the blue seat beside the left net post",
+        "ref_zh": "左侧网柱旁的蓝色座椅",
+        "scope": "seat",
+        "scope_zh": "座椅",
+        "parent": "blue_seat",
+        "parent_zh": "蓝座椅",
+        "payload": "a small white seat-number sticker",
+        "placement": {
+          "relation": "on",
+          "site": "backrest",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧网柱旁的蓝色座椅的靠背上加上一张小白色座位号贴纸。",
+        "instruction_noref_zh": "在选中的座椅的靠背上加上一张小白色座位号贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2618548",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "369c466bb0c69d81ed09e916e8d86dcc600ce53c25dce8688b2cea060cc0b807",
+    "review_card_sha256": "23222de69d711539a8693f5a589bca4d120f2333b07df74bccc698134ad6c834",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为前景持杖者白衬衫，27为右侧牵引者深色衬衫，30为右侧蓝白购物袋，44为粉夹克旁黑手袋。两个人与两个独立袋；不使用牛的被遮挡躯体作服装。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "牛群游行与围观者",
+      "evidence_zh": "16为前景持杖者白衬衫，27为右侧牵引者深色衬衫，30为右侧蓝白购物袋，44为粉夹克旁黑手袋。两个人与两个独立袋；不使用牛的被遮挡躯体作服装。",
+      "specific_protection_zh": "保留牛与饰物、人物、牵引绳、旗帜、原面部模糊和街景。"
+    },
+    "protected_content_zh": "保留牛与饰物、人物、牵引绳、旗帜、原面部模糊和街景。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "replace",
+        "ref": "the white shirt on the foreground stick-holder",
+        "ref_zh": "前景持杖者的白色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "stick_holder",
+        "parent_zh": "持杖者",
+        "payload": "a blue checked shirt",
+        "instruction_zh": "将前景持杖者的白色衬衫替换为一件蓝色格子衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件蓝色格子衬衫。"
+      },
+      {
+        "object_id": 27,
+        "operation": "attribute",
+        "ref": "the dark shirt on the handler on the right",
+        "ref_zh": "右侧牵引者的深色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "right_handler",
+        "parent_zh": "右牵引者",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧牵引者的深色衬衫的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为酒红色。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the blue-and-white shopping bag on the right",
+        "ref_zh": "右侧的蓝白色购物袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "blue_white_bag",
+        "parent_zh": "蓝白袋",
+        "payload": "a small red star sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的蓝白色购物袋加上一张小红色星形贴纸。",
+        "instruction_noref_zh": "在选中的袋子加上一张小红色星形贴纸。"
+      },
+      {
+        "object_id": 44,
+        "operation": "remove",
+        "ref": "the black handbag beside the pink jacket",
+        "ref_zh": "粉色夹克旁的黑色手提包",
+        "scope": "bag",
+        "scope_zh": "手提包",
+        "parent": "black_handbag",
+        "parent_zh": "黑手提包",
+        "payload": "",
+        "instruction_zh": "移除粉色夹克旁的黑色手提包。",
+        "instruction_noref_zh": "移除选中的手提包。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2628193",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a839ee5fa1dd8888480e30a580871870b55027d5e3b34eb217e1e96132397ce8",
+    "review_card_sha256": "c489408f9556c688a8fc32aaa6b0b2862fa14a16ef876bf85f969b54785eae48",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为近处背对镜头者外衣，17为近处白袋，42为对面屋顶山墙窗，26为近处白栅栏。人物、包、建筑、栅栏独立；光学模糊不自动否定样本。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "defocus",
+        "occlusion"
+      ],
+      "scene_zh": "透过玻璃看冬季集市",
+      "evidence_zh": "3为近处背对镜头者外衣，17为近处白袋，42为对面屋顶山墙窗，26为近处白栅栏。人物、包、建筑、栅栏独立；光学模糊不自动否定样本。",
+      "specific_protection_zh": "保留前景窗框、玻璃朦胧效果、人物、屋顶积雪及其他摊位。"
+    },
+    "protected_content_zh": "保留前景窗框、玻璃朦胧效果、人物、屋顶积雪及其他摊位。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the coat on the nearest back-facing man",
+        "ref_zh": "最近背对镜头男子的外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "near_man",
+        "parent_zh": "近男子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近背对镜头男子的外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the white bag beside the nearest hooded visitor",
+        "ref_zh": "最近的戴兜帽游客身旁的白色袋子",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除最近的戴兜帽游客身旁的白色袋子。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 42,
+        "operation": "replace",
+        "ref": "the gabled dormer window across the courtyard",
+        "ref_zh": "庭院对面的山墙老虎窗",
+        "scope": "window",
+        "scope_zh": "窗",
+        "parent": "opposite_building",
+        "parent_zh": "对面建筑",
+        "payload": "a white wooden casement window",
+        "instruction_zh": "将庭院对面的山墙老虎窗替换为一扇白色木制平开窗。",
+        "instruction_noref_zh": "将选中的窗替换为一扇白色木制平开窗。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the white picket fence in the foreground",
+        "ref_zh": "前景的白色尖桩栅栏",
+        "scope": "fence",
+        "scope_zh": "栅栏",
+        "parent": "near_fence",
+        "parent_zh": "近栅栏",
+        "payload": "a string of warm-white lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的白色尖桩栅栏加上一串暖白色灯。",
+        "instruction_noref_zh": "在选中的栅栏加上一串暖白色灯。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

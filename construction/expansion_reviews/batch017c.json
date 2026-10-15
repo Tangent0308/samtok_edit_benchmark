@@ -1,0 +1,618 @@
+[
+  {
+    "source_id": "sa_4555867",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7a4e2b1249ca8eb555e78f0b887165bab84ef1941bf7ff6985589f2551dda9a3",
+    "review_card_sha256": "a7aaeb5c1aeedbcea6da73bf849f75f33e3793d200e4e0dcb6738251d34f9204",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14船夫雨衣、45左乘客上衣、74阳台右盆栽、7右下空船四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "运河贡多拉乘客",
+      "evidence_zh": "14船夫雨衣、45左乘客上衣、74阳台右盆栽、7右下空船四父对象。",
+      "specific_protection_zh": "保留人物、船桨、水面和建筑。"
+    },
+    "protected_content_zh": "保留人物、船桨、水面和建筑。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the gondolier’s dark raincoat",
+        "ref_zh": "船夫的深色雨衣",
+        "scope": "raincoat",
+        "scope_zh": "雨衣",
+        "parent": "gondolier",
+        "parent_zh": "船夫",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将船夫的深色雨衣的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的雨衣的颜色改为黄色。"
+      },
+      {
+        "object_id": 45,
+        "operation": "replace",
+        "ref": "the light blue jacket on the left passenger",
+        "ref_zh": "左侧乘客的浅蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_passenger",
+        "parent_zh": "左乘客",
+        "payload": "a navy denim jacket",
+        "instruction_zh": "将左侧乘客的浅蓝色外套替换为一件藏蓝色牛仔外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色牛仔外套。"
+      },
+      {
+        "object_id": 74,
+        "operation": "remove",
+        "ref": "the rightmost potted plant on the small balcony",
+        "ref_zh": "小阳台上最右侧的盆栽",
+        "scope": "potted plant",
+        "scope_zh": "盆栽",
+        "parent": "balcony_pot",
+        "parent_zh": "阳台盆栽",
+        "payload": "",
+        "instruction_zh": "移除小阳台上最右侧的盆栽。",
+        "instruction_noref_zh": "移除选中的盆栽。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the empty gondola in the lower-right corner",
+        "ref_zh": "右下角的空贡多拉",
+        "scope": "gondola",
+        "scope_zh": "贡多拉",
+        "parent": "empty_gondola",
+        "parent_zh": "空船",
+        "payload": "a small white number 7 decal on its bow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下角的空贡多拉加上一枚位于船头的小白色数字7贴花。",
+        "instruction_noref_zh": "在选中的贡多拉加上一枚位于船头的小白色数字7贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4557102",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b353f9d352b98998a5aa60626719f93da580e435bffe29373f65a18ed11ae01d",
+    "review_card_sha256": "f0dbd491648dede1afa4e6f6ab268e375b5e83bda437c8df22fc53d3a4c830c4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7前景外套、39上层旅行包、32佳能牌、101后方衬衫四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "repetition",
+        "text"
+      ],
+      "scene_zh": "电子产品免税店",
+      "evidence_zh": "7前景外套、39上层旅行包、32佳能牌、101后方衬衫四父对象。",
+      "specific_protection_zh": "保留人物身体、行李箱、商品和店面。"
+    },
+    "protected_content_zh": "保留人物身体、行李箱、商品和店面。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the black jacket on the foreground man",
+        "ref_zh": "前景男子的黑色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "foreground_man",
+        "parent_zh": "前男",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男子的黑色外套的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为深棕色。"
+      },
+      {
+        "object_id": 39,
+        "operation": "remove",
+        "ref": "the duffel bag on top of the wheeled suitcase",
+        "ref_zh": "拉杆箱顶上的旅行袋",
+        "scope": "duffel bag",
+        "scope_zh": "旅行袋",
+        "parent": "upper_duffel",
+        "parent_zh": "上旅行袋",
+        "payload": "",
+        "instruction_zh": "移除拉杆箱顶上的旅行袋。",
+        "instruction_noref_zh": "移除选中的旅行袋。"
+      },
+      {
+        "object_id": 32,
+        "operation": "replace",
+        "ref": "the overhead red Canon sign",
+        "ref_zh": "上方的红色Canon招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "canon_sign",
+        "parent_zh": "佳能牌",
+        "payload": "a blue sign reading CAMERAS in white",
+        "instruction_zh": "将上方的红色Canon招牌替换为一块写有白色CAMERAS的蓝色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有白色CAMERAS的蓝色招牌。"
+      },
+      {
+        "object_id": 101,
+        "operation": "add",
+        "ref": "the beige shirt on the man behind the table",
+        "ref_zh": "桌后男子的米色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "rear_man",
+        "parent_zh": "后男",
+        "payload": "a small white fabric patch on its upper back",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在桌后男子的米色衬衫加上一块位于上背部的小白色布贴。",
+        "instruction_noref_zh": "在选中的衬衫加上一块位于上背部的小白色布贴。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4561526",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b21cb467e8034227d7386a759977a39c65a8459bba2ccd4caa1d8637814bafa7",
+    "review_card_sha256": "3ed11bf1eb307a53112f188d3cfffed6ae5f8d8b613002437c6343bb8853e25d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7烟囱标志属于主船，3/4为两艘独立救生艇，避免把多个栏杆当独立目标。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "small_targets",
+        "maritime"
+      ],
+      "scene_zh": "航行邮轮救生艇",
+      "evidence_zh": "7烟囱标志属于主船，3/4为两艘独立救生艇，避免把多个栏杆当独立目标。",
+      "specific_protection_zh": "保留邮轮、乘客、救生艇结构和海面。"
+    },
+    "protected_content_zh": "保留邮轮、乘客、救生艇结构和海面。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the logo on the cruise ship’s funnel",
+        "ref_zh": "邮轮烟囱上的标志",
+        "scope": "logo",
+        "scope_zh": "标志",
+        "parent": "cruise_ship",
+        "parent_zh": "邮轮",
+        "payload": "",
+        "instruction_zh": "移除邮轮烟囱上的标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the rightmost orange-topped lifeboat",
+        "ref_zh": "最右侧橙顶救生艇",
+        "scope": "lifeboat",
+        "scope_zh": "救生艇",
+        "parent": "right_lifeboat",
+        "parent_zh": "右救生艇",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧橙顶救生艇的颜色改为白色。",
+        "instruction_noref_zh": "将选中的救生艇的颜色改为白色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the lifeboat immediately left of the rightmost one",
+        "ref_zh": "紧邻最右侧救生艇左边的救生艇",
+        "scope": "lifeboat",
+        "scope_zh": "救生艇",
+        "parent": "adjacent_lifeboat",
+        "parent_zh": "邻救生艇",
+        "payload": "a small black number 4 on its hull",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在紧邻最右侧救生艇左边的救生艇加上一个位于船体的小黑色数字4。",
+        "instruction_noref_zh": "在选中的救生艇加上一个位于船体的小黑色数字4。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4582303",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4b827703f758b1c6c77dff70acf03b67933edf810b2ea1a7a86bb1a557a92bda",
+    "review_card_sha256": "16e5f573b075e72d10a017a6548dfc51862796e98b25e08d422b48b400f1dffd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8最右椅子与29棚上窄窗扇两个独立对象，未以同楼阳台扩充数量。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "餐馆窄街",
+      "evidence_zh": "8最右椅子与29棚上窄窗扇两个独立对象，未以同楼阳台扩充数量。",
+      "specific_protection_zh": "保留就餐者、街道、建筑和菜单。"
+    },
+    "protected_content_zh": "保留就餐者、街道、建筑和菜单。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the red chair at the far right",
+        "ref_zh": "最右侧的红色椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "right_chair",
+        "parent_zh": "右椅",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧的红色椅子的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的椅子的颜色改为深绿色。"
+      },
+      {
+        "object_id": 29,
+        "operation": "replace",
+        "ref": "the narrow beige shutter above the awning’s left tip",
+        "ref_zh": "遮阳棚左尖端上方的窄米色百叶窗扇",
+        "scope": "shutter",
+        "scope_zh": "窗扇",
+        "parent": "restaurant_building",
+        "parent_zh": "餐馆楼",
+        "payload": "a blue wooden louvered shutter",
+        "instruction_zh": "将遮阳棚左尖端上方的窄米色百叶窗扇替换为一扇蓝色木百叶窗扇。",
+        "instruction_noref_zh": "将选中的窗扇替换为一扇蓝色木百叶窗扇。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4583482",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "30e701f3ecb50748584139ebae31c9e4cff4445c73b936ea97ebea6a89d17843",
+    "review_card_sha256": "c43a11420d3728918b9b88bed918ce44b19d6090e811a692a80b32bf58c588f3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4雕塑帽、13后方围裙、73椅下袋、12右侧信息板四父对象。雕塑与一体长椅不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflective_surface",
+        "small_targets"
+      ],
+      "scene_zh": "街边长椅雕塑",
+      "evidence_zh": "4雕塑帽、13后方围裙、73椅下袋、12右侧信息板四父对象。雕塑与一体长椅不重复计数。",
+      "specific_protection_zh": "保留雕塑姿态、人物、长椅及背景。"
+    },
+    "protected_content_zh": "保留雕塑姿态、人物、长椅及背景。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the hat on the seated statue",
+        "ref_zh": "坐像头上的帽子",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "statue",
+        "parent_zh": "雕像",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将坐像头上的帽子的颜色改为银色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为银色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the pink apron on the seated person in white",
+        "ref_zh": "白衣坐者的粉色围裙",
+        "scope": "apron",
+        "scope_zh": "围裙",
+        "parent": "background_person",
+        "parent_zh": "后方人物",
+        "payload": "a plain navy apron",
+        "instruction_zh": "将白衣坐者的粉色围裙替换为一条纯藏蓝色围裙。",
+        "instruction_noref_zh": "将选中的围裙替换为一条纯藏蓝色围裙。"
+      },
+      {
+        "object_id": 73,
+        "operation": "remove",
+        "ref": "the green bag under the bench",
+        "ref_zh": "长椅下的绿色袋子",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "green_bag",
+        "parent_zh": "绿袋",
+        "payload": "",
+        "instruction_zh": "移除长椅下的绿色袋子。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the tall information board at the right edge",
+        "ref_zh": "右边缘的高信息板",
+        "scope": "board",
+        "scope_zh": "信息板",
+        "parent": "info_board",
+        "parent_zh": "信息板",
+        "payload": "a small yellow OPEN sticker at its top",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右边缘的高信息板加上一张位于顶部的小黄色OPEN贴纸。",
+        "instruction_noref_zh": "在选中的信息板加上一张位于顶部的小黄色OPEN贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4626706",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8de01b27ba863bc4c3914a4cf3c5a1d99224b4f5901e24c40e747e3e73c2ea33",
+    "review_card_sha256": "6ce455c46137470f7a767a4142caf8a752fcd18978adfd241a6f53a15d481d24",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5右方方形芯片属于电路板，0木工作台为第二父对象；不拆多个电容计数。",
+    "difficulty": {
+      "mechanisms": [
+        "macro",
+        "thin_structure",
+        "shallow_depth_of_field"
+      ],
+      "scene_zh": "电路板维修台",
+      "evidence_zh": "5右方方形芯片属于电路板，0木工作台为第二父对象；不拆多个电容计数。",
+      "specific_protection_zh": "保留工具、其他电子元件、电路板和电线。"
+    },
+    "protected_content_zh": "保留工具、其他电子元件、电路板和电线。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the large square chip at the right side of the circuit board",
+        "ref_zh": "电路板右侧的大方形芯片",
+        "scope": "chip",
+        "scope_zh": "芯片",
+        "parent": "circuit_board",
+        "parent_zh": "电路板",
+        "payload": "",
+        "instruction_zh": "移除电路板右侧的大方形芯片。",
+        "instruction_noref_zh": "移除选中的芯片。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the wooden workbench in front of the circuit board",
+        "ref_zh": "电路板前方的木工作台",
+        "scope": "workbench",
+        "scope_zh": "工作台",
+        "parent": "workbench",
+        "parent_zh": "工作台",
+        "payload": "a small precision screwdriver",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在电路板前方的木工作台加上一把小型精密螺丝刀。",
+        "instruction_noref_zh": "在选中的工作台加上一把小型精密螺丝刀。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_463680",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "630f932aff9e32ebec5f0d198d58cba0241b2c43369a3e41a794d8189a9b15dc",
+    "review_card_sha256": "fd37d2d2899e3188b88b4cc79c1f9e96c3af617d946b69d5035126c71460cf33",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10摊主马甲、1左白桶、4后黄箱、8前鱼箱为人物与三个独立容器。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "码头鱼摊",
+      "evidence_zh": "10摊主马甲、1左白桶、4后黄箱、8前鱼箱为人物与三个独立容器。",
+      "specific_protection_zh": "保留摊主身体、鱼、船、遮阳伞和其他容器。"
+    },
+    "protected_content_zh": "保留摊主身体、鱼、船、遮阳伞和其他容器。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the fish seller’s dark vest",
+        "ref_zh": "鱼贩的深色马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "seller",
+        "parent_zh": "鱼贩",
+        "payload": "a blue quilted vest",
+        "instruction_zh": "将鱼贩的深色马甲替换为一件蓝色绗缝马甲。",
+        "instruction_noref_zh": "将选中的马甲替换为一件蓝色绗缝马甲。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the white bucket beneath the left side of the stall",
+        "ref_zh": "摊位左侧下方的白桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "white_bucket",
+        "parent_zh": "白桶",
+        "payload": "",
+        "instruction_zh": "移除摊位左侧下方的白桶。",
+        "instruction_noref_zh": "移除选中的桶。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the yellow crate at the back of the counter",
+        "ref_zh": "柜台后方的黄色周转箱",
+        "scope": "crate",
+        "scope_zh": "周转箱",
+        "parent": "yellow_crate",
+        "parent_zh": "黄箱",
+        "payload": "green",
+        "attribute_kind": "color",
+        "instruction_zh": "将柜台后方的黄色周转箱的颜色改为绿色。",
+        "instruction_noref_zh": "将选中的周转箱的颜色改为绿色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the frontmost fish crate on the counter",
+        "ref_zh": "柜台最前方的鱼箱",
+        "scope": "crate",
+        "scope_zh": "鱼箱",
+        "parent": "front_crate",
+        "parent_zh": "前鱼箱",
+        "payload": "a small white price label reading 5/kg on its front",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在柜台最前方的鱼箱加上一张位于正面的白色5/kg小价签。",
+        "instruction_noref_zh": "在选中的鱼箱加上一张位于正面的白色5/kg小价签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4644538",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a1193e3434f147a02b31abc06ddde494bde730ffea4085cc615db9e4eea22c2c",
+    "review_card_sha256": "f27942c2be39d416442ac7dbafe7f0b51e2333e2c4d25be6df54c4049a81ec3e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左下洗衣招牌、5黄牌、1前景踏板车、7后方椅子为四独立对象。",
+    "difficulty": {
+      "mechanisms": [
+        "window_view",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "透过车窗看街道",
+      "evidence_zh": "0左下洗衣招牌、5黄牌、1前景踏板车、7后方椅子为四独立对象。",
+      "specific_protection_zh": "保留骑手、车身结构、建筑和前景车窗。"
+    },
+    "protected_content_zh": "保留骑手、车身结构、建筑和前景车窗。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the laundry-service sign at the lower left",
+        "ref_zh": "左下方的洗衣服务招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "laundry_sign",
+        "parent_zh": "洗衣牌",
+        "payload": "",
+        "instruction_zh": "移除左下方的洗衣服务招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the yellow TOUR & LAUNDRY sign",
+        "ref_zh": "黄色TOUR & LAUNDRY招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "yellow_sign",
+        "parent_zh": "黄牌",
+        "payload": "a yellow sign reading TOURIST INFO",
+        "instruction_zh": "将黄色TOUR & LAUNDRY招牌替换为一块写有TOURIST INFO的黄色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有TOURIST INFO的黄色招牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the scooter facing the camera",
+        "ref_zh": "面向镜头的踏板车",
+        "scope": "scooter",
+        "scope_zh": "踏板车",
+        "parent": "foreground_scooter",
+        "parent_zh": "前车",
+        "payload": "a small white number 5 decal on its front panel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在面向镜头的踏板车加上一枚位于前面板的小白色数字5贴花。",
+        "instruction_noref_zh": "在选中的踏板车加上一枚位于前面板的小白色数字5贴花。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the white plastic chair across the street",
+        "ref_zh": "街对面的白色塑料椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "background_chair",
+        "parent_zh": "后椅",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将街对面的白色塑料椅的颜色改为红色。",
+        "instruction_noref_zh": "将选中的椅子的颜色改为红色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

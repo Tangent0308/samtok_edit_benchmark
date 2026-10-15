@@ -1,0 +1,138 @@
+{
+  "source_id": "sa_10030491",
+  "reason_zh": "右侧还有另一艘部分出画的白船，以棕色临水建筑定位更明确。",
+  "previous_record": {
+    "source_id": "sa_10030491",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "46799dc8c24d6df53cb00ede73407c04dd03d8009f42fb9c7e89fb315cec1f53",
+    "review_card_sha256": "1658a391fc2893db09cb7d7533628c04f52bd8258cc4d025048ae397c6e4df29",
+    "evidence_zh": "单独查看二值mask确认20保留细栏杆之间的空隙；右后方小船37与前景渔船清楚区分。灯串直接沿所选栏杆附着，不使用隔空锚点。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "holes",
+        "similar_instances"
+      ],
+      "scene_zh": "港口栏杆与停泊船只",
+      "evidence_zh": "单独查看二值mask确认20保留细栏杆之间的空隙；右后方小船37与前景渔船清楚区分。灯串直接沿所选栏杆附着，不使用隔空锚点。",
+      "specific_protection_zh": "保留栏杆后的人物、码头、前景渔船及其缆绳。"
+    },
+    "protected_content_zh": "保留栏杆后的人物、码头、前景渔船及其缆绳。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the blue dock railing on the left",
+        "ref_zh": "左侧蓝色码头栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "dock_railing",
+        "parent_zh": "左侧码头栏杆",
+        "payload": "warm-white string lights",
+        "placement": {
+          "relation": "along",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "沿左侧蓝色码头栏杆挂上暖白色灯串。",
+        "instruction_noref_zh": "沿选中的栏杆挂上暖白色灯串。"
+      },
+      {
+        "object_id": 37,
+        "operation": "remove",
+        "ref": "the small white boat at the far right of the harbor",
+        "ref_zh": "港口最右侧的小白船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "right_boat",
+        "parent_zh": "港口最右侧小白船",
+        "payload": "",
+        "instruction_zh": "移除港口最右侧的小白船。",
+        "instruction_noref_zh": "移除选中的船。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_10030491/holes_check.jpg",
+        "sha256": "2c601d63f5deac2381d1e06f3e10fea73b4cb47b068aaeacfa696200117574cf"
+      }
+    ],
+    "instruction_revision_zh": "视觉检查后精简add表述，去掉可由新增物体含义确定的重复部位描述；原目标和直接锚点不变。"
+  },
+  "record": {
+    "source_id": "sa_10030491",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "46799dc8c24d6df53cb00ede73407c04dd03d8009f42fb9c7e89fb315cec1f53",
+    "review_card_sha256": "1658a391fc2893db09cb7d7533628c04f52bd8258cc4d025048ae397c6e4df29",
+    "evidence_zh": "单独查看二值mask确认20保留细栏杆之间的空隙；右后方小船37与前景渔船清楚区分。灯串直接沿所选栏杆附着，不使用隔空锚点。 全图定位复核：右侧还有另一艘部分出画的白船，以棕色临水建筑定位更明确。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "holes",
+        "similar_instances"
+      ],
+      "scene_zh": "港口栏杆与停泊船只",
+      "evidence_zh": "单独查看二值mask确认20保留细栏杆之间的空隙；右后方小船37与前景渔船清楚区分。灯串直接沿所选栏杆附着，不使用隔空锚点。 全图定位复核：右侧还有另一艘部分出画的白船，以棕色临水建筑定位更明确。",
+      "specific_protection_zh": "保留栏杆后的人物、码头、前景渔船及其缆绳。"
+    },
+    "protected_content_zh": "保留栏杆后的人物、码头、前景渔船及其缆绳。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the blue dock railing on the left",
+        "ref_zh": "左侧蓝色码头栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "dock_railing",
+        "parent_zh": "左侧码头栏杆",
+        "payload": "warm-white string lights",
+        "placement": {
+          "relation": "along",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "沿左侧蓝色码头栏杆挂上暖白色灯串。",
+        "instruction_noref_zh": "沿选中的栏杆挂上暖白色灯串。"
+      },
+      {
+        "object_id": 37,
+        "operation": "remove",
+        "ref": "the small white boat beneath the brown waterfront building",
+        "ref_zh": "棕色临水建筑下的小白船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "right_boat",
+        "parent_zh": "棕色临水建筑下小白船",
+        "payload": "",
+        "instruction_zh": "移除棕色临水建筑下的小白船。",
+        "instruction_noref_zh": "移除选中的船。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_10030491/holes_check.jpg",
+        "sha256": "2c601d63f5deac2381d1e06f3e10fea73b4cb47b068aaeacfa696200117574cf"
+      },
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_10030491/spatial_followup.jpg",
+        "sha256": "421a4954063c97c6c1a38ae3356338e2a365958f32a983953bed49a6cd0db620"
+      }
+    ],
+    "instruction_revision_zh": "视觉检查后精简add表述，去掉可由新增物体含义确定的重复部位描述；原目标和直接锚点不变。"
+  }
+}

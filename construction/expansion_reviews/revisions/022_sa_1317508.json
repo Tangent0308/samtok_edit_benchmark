@@ -1,0 +1,148 @@
+{
+  "source_id": "sa_1317508",
+  "reason_zh": "岸边银色车辆按通用汽车指代，不依赖SUV类别标签；色彩和位置足以消歧。",
+  "previous_record": {
+    "source_id": "sa_1317508",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9bcdf0856db81f1376fc060fbcb3ee13492a4df3a2c171bbad6bdf168d05f0c9",
+    "review_card_sha256": "3c13af377e5701d8044f570de947841afce70e5e1857327824bf84ae2eac4416",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为左桅橙色广告旗，2为右岸独立SUV，34为右岸靠水大灌木。不同实体；不选整船与船帆并存，也不把云当物体随意替换。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "岸边游船、广告旗和独立汽车灌木",
+      "evidence_zh": "16为左桅橙色广告旗，2为右岸独立SUV，34为右岸靠水大灌木。不同实体；不选整船与船帆并存，也不把云当物体随意替换。",
+      "specific_protection_zh": "保留船体、帆索、乘客、岸线、其他植物和海面。"
+    },
+    "protected_content_zh": "保留船体、帆索、乘客、岸线、其他植物和海面。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the orange banner high on the left mast",
+        "ref_zh": "左桅高处的橙色挂旗",
+        "scope": "banner",
+        "scope_zh": "挂旗",
+        "parent": "orange_banner",
+        "parent_zh": "橙挂旗",
+        "payload": "",
+        "instruction_zh": "移除左桅高处的橙色挂旗。",
+        "instruction_noref_zh": "移除选中的挂旗。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the SUV on the shore to the right of the boat",
+        "ref_zh": "船右侧岸上的SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "shore_suv",
+        "parent_zh": "岸边SUV",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在船右侧岸上的SUV加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的SUV加上一个车顶行李架。"
+      },
+      {
+        "object_id": 34,
+        "operation": "replace",
+        "ref": "the large waterside shrub just right of the boat",
+        "ref_zh": "船紧右侧水边的大灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "waterside_shrub",
+        "parent_zh": "水边灌木",
+        "payload": "a white-flowering hydrangea bush",
+        "instruction_zh": "将船紧右侧水边的大灌木替换为一丛开白花的绣球。",
+        "instruction_noref_zh": "将选中的灌木替换为一丛开白花的绣球。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1317508",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9bcdf0856db81f1376fc060fbcb3ee13492a4df3a2c171bbad6bdf168d05f0c9",
+    "review_card_sha256": "3c13af377e5701d8044f570de947841afce70e5e1857327824bf84ae2eac4416",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为左桅橙色广告旗，2为右岸独立SUV，34为右岸靠水大灌木。不同实体；不选整船与船帆并存，也不把云当物体随意替换。 全图定位复核：岸边银色车辆按通用汽车指代，不依赖SUV类别标签；色彩和位置足以消歧。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "岸边游船、广告旗和独立汽车灌木",
+      "evidence_zh": "16为左桅橙色广告旗，2为右岸独立SUV，34为右岸靠水大灌木。不同实体；不选整船与船帆并存，也不把云当物体随意替换。 全图定位复核：岸边银色车辆按通用汽车指代，不依赖SUV类别标签；色彩和位置足以消歧。",
+      "specific_protection_zh": "保留船体、帆索、乘客、岸线、其他植物和海面。"
+    },
+    "protected_content_zh": "保留船体、帆索、乘客、岸线、其他植物和海面。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the orange banner high on the left mast",
+        "ref_zh": "左桅高处的橙色挂旗",
+        "scope": "banner",
+        "scope_zh": "挂旗",
+        "parent": "orange_banner",
+        "parent_zh": "橙挂旗",
+        "payload": "",
+        "instruction_zh": "移除左桅高处的橙色挂旗。",
+        "instruction_noref_zh": "移除选中的挂旗。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the silver car on the shore right of the boat",
+        "ref_zh": "船右侧岸上的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "shore_suv",
+        "parent_zh": "岸边银色汽车",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在船右侧岸上的银色汽车加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的汽车加上一个车顶行李架。"
+      },
+      {
+        "object_id": 34,
+        "operation": "replace",
+        "ref": "the large waterside shrub just right of the boat",
+        "ref_zh": "船紧右侧水边的大灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "waterside_shrub",
+        "parent_zh": "水边灌木",
+        "payload": "a white-flowering hydrangea bush",
+        "instruction_zh": "将船紧右侧水边的大灌木替换为一丛开白花的绣球。",
+        "instruction_noref_zh": "将选中的灌木替换为一丛开白花的绣球。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

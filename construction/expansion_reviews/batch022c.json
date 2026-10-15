@@ -1,0 +1,661 @@
+[
+  {
+    "source_id": "sa_6208318",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ddbb49094e739b7a97ab29e02689438e19079837fe9a9766c94921e353f3a162",
+    "review_card_sha256": "72c01950cfbf6e6dc530dfa5511e282354919c9721aa13890828a7b598437143",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0男子衬衫、56女子裙、4悬挂SALE牌与9扶梯扶手独立。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "occlusion",
+        "indoor"
+      ],
+      "scene_zh": "商场扶梯",
+      "evidence_zh": "0男子衬衫、56女子裙、4悬挂SALE牌与9扶梯扶手独立。",
+      "specific_protection_zh": "保留人物身体、商铺和扶梯结构。"
+    },
+    "protected_content_zh": "保留人物身体、商铺和扶梯结构。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the white shirt on the man at the left",
+        "ref_zh": "左侧男子的白衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "man",
+        "parent_zh": "男子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧男子的白衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 56,
+        "operation": "replace",
+        "ref": "the patterned skirt on the foreground woman",
+        "ref_zh": "前景女子的花纹长裙",
+        "scope": "skirt",
+        "scope_zh": "长裙",
+        "parent": "woman",
+        "parent_zh": "女子",
+        "payload": "a plain dark green long skirt",
+        "instruction_zh": "将前景女子的花纹长裙替换为一条纯深绿色长裙。",
+        "instruction_noref_zh": "将选中的长裙替换为一条纯深绿色长裙。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the red oval SALE sign upstairs",
+        "ref_zh": "楼上的红色椭圆SALE标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "sale_sign",
+        "parent_zh": "促销牌",
+        "payload": "",
+        "instruction_zh": "移除楼上的红色椭圆SALE标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the long foreground escalator handrail",
+        "ref_zh": "前景扶梯的长扶手",
+        "scope": "handrail",
+        "scope_zh": "扶手",
+        "parent": "escalator",
+        "parent_zh": "扶梯",
+        "payload": "a small yellow safety sticker near its right end",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景扶梯的长扶手加上一张位于右端附近的小黄色安全贴纸。",
+        "instruction_noref_zh": "在选中的扶手加上一张位于右端附近的小黄色安全贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6208840",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "14b90fed622bc9600f24b6d18cba68004859b6f5407728ecde72e2d2728d07c1",
+    "review_card_sha256": "68e4f0e0303356ec4c81aca03178ea634ef42512fd913fd1534067a3a14e5dfe",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "28右餐馆圆牌、9高木电杆、4楼上左窗为不同实体。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "小镇欢迎牌",
+      "evidence_zh": "28右餐馆圆牌、9高木电杆、4楼上左窗为不同实体。",
+      "specific_protection_zh": "保留欢迎牌、灌木、电线和建筑墙面。"
+    },
+    "protected_content_zh": "保留欢迎牌、灌木、电线和建筑墙面。",
+    "targets": [
+      {
+        "object_id": 28,
+        "operation": "remove",
+        "ref": "the round restaurant sign right of the welcome board",
+        "ref_zh": "欢迎牌右侧的圆形餐馆招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "restaurant_sign",
+        "parent_zh": "餐馆牌",
+        "payload": "",
+        "instruction_zh": "移除欢迎牌右侧的圆形餐馆招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the tall wooden utility pole left of the welcome board",
+        "ref_zh": "欢迎牌左侧的高木电杆",
+        "scope": "pole",
+        "scope_zh": "电杆",
+        "parent": "utility_pole",
+        "parent_zh": "电杆",
+        "payload": "a small white PARKING arrow sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在欢迎牌左侧的高木电杆加上一块小白色PARKING箭头标牌。",
+        "instruction_noref_zh": "在选中的电杆加上一块小白色PARKING箭头标牌。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the frame of the left small window above the brick wall",
+        "ref_zh": "砖墙上方左侧小窗的窗框",
+        "scope": "window frame",
+        "scope_zh": "窗框",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将砖墙上方左侧小窗的窗框的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的窗框的颜色改为深棕色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6243390",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8e5c242fb504bc442282246e401b7496f0cc2c2296c677895d80b919f10cc81a",
+    "review_card_sha256": "b3bcf692377033354a4cc44896749a5abfba02450001ffd17e48a7e40ce9fbee",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5近粉衣人物、28左蓝棉衣人物、15左门牌与8中央门独立。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "大教堂与游客",
+      "evidence_zh": "5近粉衣人物、28左蓝棉衣人物、15左门牌与8中央门独立。",
+      "specific_protection_zh": "保留人体、教堂雕刻和其他游客。"
+    },
+    "protected_content_zh": "保留人体、教堂雕刻和其他游客。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the pink coat in the foreground",
+        "ref_zh": "前景的粉外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "pink_person",
+        "parent_zh": "粉衣人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的粉外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 28,
+        "operation": "replace",
+        "ref": "the blue padded jacket near the left entrance",
+        "ref_zh": "左侧入口附近的蓝色棉夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "blue_person",
+        "parent_zh": "蓝衣人物",
+        "payload": "a beige wool jacket",
+        "instruction_zh": "将左侧入口附近的蓝色棉夹克替换为一件米色羊毛夹克。",
+        "instruction_noref_zh": "将选中的夹克替换为一件米色羊毛夹克。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the small red sign right of the main entrance",
+        "ref_zh": "主入口右侧的小红标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "red_sign",
+        "parent_zh": "红牌",
+        "payload": "",
+        "instruction_zh": "移除主入口右侧的小红标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the left door leaf of the central entrance",
+        "ref_zh": "中央入口的左门扇",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "cathedral",
+        "parent_zh": "教堂",
+        "payload": "a small green wreath",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央入口的左门扇加上一个小绿色花环。",
+        "instruction_noref_zh": "在选中的门加上一个小绿色花环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6262299",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9da4c4482d52fe7032d8d0df43a480ab3c31c33b9917c20c69bad4b94c3b51f9",
+    "review_card_sha256": "580d2d9561f97a9b6c8e9d6e4755eff74b2e4171f217d58afcdd613112a4c81a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2前出租、6后黑车、17店招、21公交前窗四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "traffic",
+        "perspective"
+      ],
+      "scene_zh": "纽约出租车与公交",
+      "evidence_zh": "2前出租、6后黑车、17店招、21公交前窗四父对象。",
+      "specific_protection_zh": "保留车身细节、行人与其他车辆。"
+    },
+    "protected_content_zh": "保留车身细节、行人与其他车辆。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the yellow SUV taxi in the foreground",
+        "ref_zh": "前景的黄色SUV出租车",
+        "scope": "taxi",
+        "scope_zh": "出租车",
+        "parent": "taxi",
+        "parent_zh": "出租车",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的黄色SUV出租车的颜色改为白色。",
+        "instruction_noref_zh": "将选中的出租车的颜色改为白色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the black Cadillac approaching behind the taxis",
+        "ref_zh": "出租车后方驶来的黑色凯迪拉克",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "cadillac",
+        "parent_zh": "凯迪拉克",
+        "payload": "",
+        "instruction_zh": "移除出租车后方驶来的黑色凯迪拉克。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the red CHIPOTLE sign on the right",
+        "ref_zh": "右侧的红色CHIPOTLE招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "shop_sign",
+        "parent_zh": "店招",
+        "payload": "a red rectangular BISTRO sign",
+        "instruction_zh": "将右侧的红色CHIPOTLE招牌替换为一块红色矩形BISTRO招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块红色矩形BISTRO招牌。"
+      },
+      {
+        "object_id": 21,
+        "operation": "add",
+        "ref": "the bus windshield",
+        "ref_zh": "公交车的前挡风玻璃",
+        "scope": "windshield",
+        "scope_zh": "挡风玻璃",
+        "parent": "bus",
+        "parent_zh": "公交车",
+        "payload": "a small blue inspection sticker in its lower corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在公交车的前挡风玻璃加上一张位于底角的小蓝色年检贴纸。",
+        "instruction_noref_zh": "在选中的挡风玻璃加上一张位于底角的小蓝色年检贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_626400",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "25a615d3fdfad395e5c645850212fb088381a3d9e713b87c7cdb31a573118d6d",
+    "review_card_sha256": "350c4a217d2116da8c8100d81dae9e91147886c3d59c1b3b4480c6bb87045933",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12银出租、18右人物T恤、14旗帜与11电车窗不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "traffic",
+        "occlusion"
+      ],
+      "scene_zh": "有轨电车街道",
+      "evidence_zh": "12银出租、18右人物T恤、14旗帜与11电车窗不同父对象。",
+      "specific_protection_zh": "保留电车车身、轨道和其他行人。"
+    },
+    "protected_content_zh": "保留电车车身、轨道和其他行人。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the silver taxi immediately right of the cable car",
+        "ref_zh": "有轨电车紧右侧的银色出租车",
+        "scope": "taxi",
+        "scope_zh": "出租车",
+        "parent": "silver_taxi",
+        "parent_zh": "银车",
+        "payload": "",
+        "instruction_zh": "移除有轨电车紧右侧的银色出租车。",
+        "instruction_noref_zh": "移除选中的出租车。"
+      },
+      {
+        "object_id": 18,
+        "operation": "attribute",
+        "ref": "the turquoise T-shirt on the woman at the right",
+        "ref_zh": "右侧女子的青绿色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_woman",
+        "parent_zh": "右女",
+        "payload": "coral pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧女子的青绿色T恤的颜色改为珊瑚粉色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为珊瑚粉色。"
+      },
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the large American flag above the cable car",
+        "ref_zh": "电车上方的大美国国旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "flag",
+        "parent_zh": "旗帜",
+        "payload": "a plain dark blue flag",
+        "instruction_zh": "将电车上方的大美国国旗替换为一面纯深蓝色旗帜。",
+        "instruction_noref_zh": "将选中的旗帜替换为一面纯深蓝色旗帜。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the left front window of the cable car",
+        "ref_zh": "有轨电车正面左窗",
+        "scope": "window",
+        "scope_zh": "车窗",
+        "parent": "cable_car",
+        "parent_zh": "电车",
+        "payload": "a small white accessibility decal in its upper corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在有轨电车正面左窗加上一张位于上角的小白色无障碍标志贴花。",
+        "instruction_noref_zh": "在选中的车窗加上一张位于上角的小白色无障碍标志贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6274646",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7c215185e4ab2a84dcfdba0018ccb00c1c5fb9bf0e82ab3a89778045dcc16e4f",
+    "review_card_sha256": "2d9c9da55706d969cc654b8eee7bf609c060e11649e196a73cff8e041971dfd7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7男孩衬衫、6远摊贩衣、5水瓶、0果箱四对象。",
+    "difficulty": {
+      "mechanisms": [
+        "shallow_depth",
+        "occlusion",
+        "produce"
+      ],
+      "scene_zh": "街边水果摊",
+      "evidence_zh": "7男孩衬衫、6远摊贩衣、5水瓶、0果箱四对象。",
+      "specific_protection_zh": "保留人物身体、水果和道路车辆。"
+    },
+    "protected_content_zh": "保留人物身体、水果和道路车辆。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the boy's blue-and-yellow checked shirt",
+        "ref_zh": "男孩的蓝黄格子衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "boy",
+        "parent_zh": "男孩",
+        "payload": "a plain light green cotton shirt",
+        "instruction_zh": "将男孩的蓝黄格子衬衫替换为一件纯浅绿色棉衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯浅绿色棉衬衫。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the pale shirt on the vendor at the left",
+        "ref_zh": "左侧摊贩的浅色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "vendor",
+        "parent_zh": "摊贩",
+        "payload": "light orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧摊贩的浅色衬衫的颜色改为浅橙色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅橙色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the water bottle cut off at the left edge",
+        "ref_zh": "左边缘被截断的水瓶",
+        "scope": "bottle",
+        "scope_zh": "水瓶",
+        "parent": "bottle",
+        "parent_zh": "水瓶",
+        "payload": "",
+        "instruction_zh": "移除左边缘被截断的水瓶。",
+        "instruction_noref_zh": "移除选中的水瓶。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the red fruit box in front of the boy",
+        "ref_zh": "男孩面前的红色果箱",
+        "scope": "box",
+        "scope_zh": "果箱",
+        "parent": "box",
+        "parent_zh": "果箱",
+        "payload": "a small white FRESH APPLES price card on its front",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在男孩面前的红色果箱加上一张位于正面的小白色FRESH APPLES价签。",
+        "instruction_noref_zh": "在选中的果箱加上一张位于正面的小白色FRESH APPLES价签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6274955",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c76f82651386b6d2e3dcc2a3346c33e420efe22b2b00a55ef2b8726cd5dcc08f",
+    "review_card_sha256": "0204749708cbdee4f40e4e30316b14f54a96fbeecf5662e88b86b05a41e43347",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7道路车、8议会尖屋顶与31右前楼窗属于三父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "haze",
+        "small_targets",
+        "perspective"
+      ],
+      "scene_zh": "俯拍城市议会建筑",
+      "evidence_zh": "7道路车、8议会尖屋顶与31右前楼窗属于三父对象。",
+      "specific_protection_zh": "保留建筑形状、树木和其他道路设施。"
+    },
+    "protected_content_zh": "保留建筑形状、树木和其他道路设施。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the white car on the road below the large building",
+        "ref_zh": "大型建筑下方道路上的白车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_car",
+        "parent_zh": "白车",
+        "payload": "",
+        "instruction_zh": "移除大型建筑下方道路上的白车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the stepped pyramidal roof on the central tower",
+        "ref_zh": "中央塔楼的阶梯金字塔形屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "central_building",
+        "parent_zh": "中央楼",
+        "payload": "copper brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央塔楼的阶梯金字塔形屋顶的颜色改为铜棕色。",
+        "instruction_noref_zh": "将选中的屋顶的颜色改为铜棕色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "add",
+        "ref": "the second top-row window from the left on the foreground building at the right",
+        "ref_zh": "右侧前景建筑顶排从左数第二扇窗",
+        "scope": "window",
+        "scope_zh": "窗",
+        "parent": "foreground_building",
+        "parent_zh": "前景楼",
+        "payload": "a white roller blind",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧前景建筑顶排从左数第二扇窗加上一幅白色卷帘。",
+        "instruction_noref_zh": "在选中的窗加上一幅白色卷帘。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6276448",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "128ed8dd0f455bffce4762a04f43736353b71c9f2f58ea4d606eb4a570473f33",
+    "review_card_sha256": "da8914c840cc19eb33369bcf909780aff8537950288bc294e4439d008e51dd1f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2交通牌、4店牌、141便衣衬衫、208店窗为独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "警队与面馆",
+      "evidence_zh": "2交通牌、4店牌、141便衣衬衫、208店窗为独立父对象。",
+      "specific_protection_zh": "保留警队、店铺结构和其他标牌。"
+    },
+    "protected_content_zh": "保留警队、店铺结构和其他标牌。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the red no-entry sign at the left",
+        "ref_zh": "左侧的红色禁止驶入标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "traffic_sign",
+        "parent_zh": "交通牌",
+        "payload": "",
+        "instruction_zh": "移除左侧的红色禁止驶入标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the large dark restaurant sign above the officers",
+        "ref_zh": "警员上方的大深色餐馆招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "restaurant_sign",
+        "parent_zh": "店牌",
+        "payload": "a dark green sign reading NOODLE HOUSE",
+        "instruction_zh": "将警员上方的大深色餐馆招牌替换为一块写着NOODLE HOUSE的深绿色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写着NOODLE HOUSE的深绿色招牌。"
+      },
+      {
+        "object_id": 141,
+        "operation": "attribute",
+        "ref": "the checked shirt on the man facing the officers at the right",
+        "ref_zh": "右侧面对警员的男子的格子衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "bystander",
+        "parent_zh": "旁观者",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧面对警员的男子的格子衬衫的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为酒红色。"
+      },
+      {
+        "object_id": 208,
+        "operation": "add",
+        "ref": "the broad shop window above the woman in pink",
+        "ref_zh": "粉衣女子上方的宽店窗",
+        "scope": "window",
+        "scope_zh": "店窗",
+        "parent": "shop",
+        "parent_zh": "店铺",
+        "payload": "a small white OPEN decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在粉衣女子上方的宽店窗加上一张小白色OPEN贴花。",
+        "instruction_noref_zh": "在选中的店窗加上一张小白色OPEN贴花。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

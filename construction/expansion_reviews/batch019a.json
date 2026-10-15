@@ -1,0 +1,649 @@
+[
+  {
+    "source_id": "sa_5061008",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fa4a49911b136228b222b438fc3d48d15a1a121040edf00d7f5dfec8ee008c7c",
+    "review_card_sha256": "2d60c4a7cb21287212a4dc6f2f7dd130a481c9aef61ea64d8651efa7620c5c94",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9陶碗、6棕瓶、5修复师衣服、2玻璃罐四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion",
+        "artwork"
+      ],
+      "scene_zh": "油画修复工作台",
+      "evidence_zh": "9陶碗、6棕瓶、5修复师衣服、2玻璃罐四父对象。",
+      "specific_protection_zh": "保留画作、人物身体、工具与其余容器。"
+    },
+    "protected_content_zh": "保留画作、人物身体、工具与其余容器。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the terracotta bowl behind the painting",
+        "ref_zh": "画作后方的陶土色碗",
+        "scope": "bowl",
+        "scope_zh": "碗",
+        "parent": "terracotta_bowl",
+        "parent_zh": "陶碗",
+        "payload": "a white ceramic bowl",
+        "instruction_zh": "将画作后方的陶土色碗替换为一个白色陶瓷碗。",
+        "instruction_noref_zh": "将选中的碗替换为一个白色陶瓷碗。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the brown bottle beside the restorer",
+        "ref_zh": "修复师身旁的棕色瓶子",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "brown_bottle",
+        "parent_zh": "棕瓶",
+        "payload": "",
+        "instruction_zh": "移除修复师身旁的棕色瓶子。",
+        "instruction_noref_zh": "移除选中的瓶子。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the white coat worn by the restorer",
+        "ref_zh": "修复师穿着的白色工作服",
+        "scope": "coat",
+        "scope_zh": "工作服",
+        "parent": "restorer",
+        "parent_zh": "修复师",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将修复师穿着的白色工作服的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的工作服的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the glass jar of cotton behind the painting",
+        "ref_zh": "画作后方装有棉花的玻璃罐",
+        "scope": "jar",
+        "scope_zh": "玻璃罐",
+        "parent": "cotton_jar",
+        "parent_zh": "棉花罐",
+        "payload": "a small white COTTON label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在画作后方装有棉花的玻璃罐加上一张小白色COTTON标签。",
+        "instruction_noref_zh": "在选中的玻璃罐加上一张小白色COTTON标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5072835",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a18f0560412f4b602e26fcf817e8307b92f0f401dc77f5453140e1e1db916fb0",
+    "review_card_sha256": "1d6591748e667f18511bbfa084ce40b0e4c178b7574c7a9e0cac2ab238900a61",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13右模特上衣、22左模特衫、20品牌字牌、1上中玻璃为不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "reflection",
+        "mannequin"
+      ],
+      "scene_zh": "服装店橱窗",
+      "evidence_zh": "13右模特上衣、22左模特衫、20品牌字牌、1上中玻璃为不同父对象。",
+      "specific_protection_zh": "保留模特、裤裙、灯光及橱窗结构。"
+    },
+    "protected_content_zh": "保留模特、裤裙、灯光及橱窗结构。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the knitted top on the rightmost mannequin",
+        "ref_zh": "最右侧模特的针织上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "right_mannequin",
+        "parent_zh": "右模特",
+        "payload": "ivory",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧模特的针织上衣的颜色改为象牙白。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为象牙白。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the brown shirt on the middle mannequin",
+        "ref_zh": "中间模特的棕色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_mannequin",
+        "parent_zh": "左模特",
+        "payload": "a navy linen blazer",
+        "instruction_zh": "将中间模特的棕色衬衫替换为一件藏蓝色亚麻西装外套。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件藏蓝色亚麻西装外套。"
+      },
+      {
+        "object_id": 20,
+        "operation": "remove",
+        "ref": "the oodji store sign",
+        "ref_zh": "oodji店招",
+        "scope": "sign",
+        "scope_zh": "店招",
+        "parent": "oodji_sign",
+        "parent_zh": "店招",
+        "payload": "",
+        "instruction_zh": "移除oodji店招。",
+        "instruction_noref_zh": "移除选中的店招。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the upper middle display window",
+        "ref_zh": "上层中间的橱窗玻璃",
+        "scope": "window",
+        "scope_zh": "窗玻璃",
+        "parent": "storefront",
+        "parent_zh": "店面",
+        "payload": "a small white SALE decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在上层中间的橱窗玻璃加上一张小白色SALE贴花。",
+        "instruction_noref_zh": "在选中的窗玻璃加上一张小白色SALE贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5074342",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5f34da4bd0967a0d8453031d172689e1c905a4a22b25a14f5a090238383f3963",
+    "review_card_sha256": "f60aec50de248b4cedb4a1043132b5c89d70cdd0172cd0f5bcce721662bc3eef",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0红车、2黑车、11近树干、14屋顶分属不同车树建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "foliage",
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "秋日街道与树列",
+      "evidence_zh": "0红车、2黑车、11近树干、14屋顶分属不同车树建筑。",
+      "specific_protection_zh": "保留落叶、路面、其他车辆及树列。"
+    },
+    "protected_content_zh": "保留落叶、路面、其他车辆及树列。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the red car behind the yellow road barrier",
+        "ref_zh": "黄色路障后方的红色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "red_car",
+        "parent_zh": "红车",
+        "payload": "",
+        "instruction_zh": "移除黄色路障后方的红色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the black car immediately behind the red car",
+        "ref_zh": "紧挨红车后方的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "black_car",
+        "parent_zh": "黑车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将紧挨红车后方的黑色汽车的颜色改为银色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为银色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the tree trunk immediately left of the thickest trunk",
+        "ref_zh": "最粗树干紧左侧的树干",
+        "scope": "trunk",
+        "scope_zh": "树干",
+        "parent": "near_tree",
+        "parent_zh": "近树",
+        "payload": "a small wooden birdhouse",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最粗树干紧左侧的树干加上一个小木制鸟屋。",
+        "instruction_noref_zh": "在选中的树干加上一个小木制鸟屋。"
+      },
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the small triangular tiled roof behind the nearest brick house",
+        "ref_zh": "最近砖房后方的小三角瓦屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "left_building",
+        "parent_zh": "左建筑",
+        "payload": "a dark gray slate roof",
+        "instruction_zh": "将最近砖房后方的小三角瓦屋顶替换为一片深灰色板岩屋顶。",
+        "instruction_noref_zh": "将选中的屋顶替换为一片深灰色板岩屋顶。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5075712",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "13e284eaee8cdd3203ea022a60d76f96dbd86ad24515020e7879f6e5c912e225",
+    "review_card_sha256": "9087fbf5203b7f216787f75fc39a247094beb5be3895760e209aa18c96367a85",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4左路灯和28中央楼梯上木门为灯与建筑两个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "thin_structure"
+      ],
+      "scene_zh": "金色宫殿外立面",
+      "evidence_zh": "4左路灯和28中央楼梯上木门为灯与建筑两个父对象。",
+      "specific_protection_zh": "保留建筑结构、石栏、树木与路径。"
+    },
+    "protected_content_zh": "保留建筑结构、石栏、树木与路径。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the streetlamp at the left",
+        "ref_zh": "左侧的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的路灯的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为古铜色。"
+      },
+      {
+        "object_id": 28,
+        "operation": "add",
+        "ref": "the wooden double door above the central steps",
+        "ref_zh": "中央台阶上方的木双门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "palace",
+        "parent_zh": "宫殿",
+        "payload": "a small brass OPEN plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央台阶上方的木双门加上一块小黄铜OPEN牌。",
+        "instruction_noref_zh": "在选中的门加上一块小黄铜OPEN牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5097246",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a3dd5e7e5e30e02c6c174625a93af47f97ba832eafdfa165a62d65e281faa93c",
+    "review_card_sha256": "e15955ece572ad5185eb6418189c7dbc8d097d80886b59957ade327e59dd3eee",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "24轨旁牌、12左列车、23近绿外套、43后蓝外套四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "火车站与乘客",
+      "evidence_zh": "24轨旁牌、12左列车、23近绿外套、43后蓝外套四父对象。",
+      "specific_protection_zh": "保留轨道、电线、站台、人物身体和其他列车。"
+    },
+    "protected_content_zh": "保留轨道、电线、站台、人物身体和其他列车。",
+    "targets": [
+      {
+        "object_id": 24,
+        "operation": "remove",
+        "ref": "the small trackside sign beside the left train nose",
+        "ref_zh": "左侧列车车头旁的小轨旁标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "track_sign",
+        "parent_zh": "轨旁牌",
+        "payload": "",
+        "instruction_zh": "移除左侧列车车头旁的小轨旁标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the red train at the left platform",
+        "ref_zh": "左侧站台的红色列车",
+        "scope": "train",
+        "scope_zh": "列车",
+        "parent": "left_train",
+        "parent_zh": "左列车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧站台的红色列车的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的列车的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the olive jacket on the nearest person at the right",
+        "ref_zh": "右侧最近行人的橄榄绿外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "near_person",
+        "parent_zh": "近人",
+        "payload": "a beige windbreaker",
+        "instruction_zh": "将右侧最近行人的橄榄绿外套替换为一件米色风衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色风衣。"
+      },
+      {
+        "object_id": 43,
+        "operation": "add",
+        "ref": "the light blue jacket on the right platform",
+        "ref_zh": "右侧站台上的浅蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "blue_person",
+        "parent_zh": "蓝衣人",
+        "payload": "a small white patch on its upper back",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧站台上的浅蓝色外套加上一块位于上背部的小白色布贴。",
+        "instruction_noref_zh": "在选中的外套加上一块位于上背部的小白色布贴。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5099188",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2f53ef66f5aa31a6f5ffb144e6eb97638ec635cdf8cfba89cd734a7006f27125",
+    "review_card_sha256": "3a8f0ea4907d7498a3dec518bf5d321651d1a83649c4f777cbaea0199243a584",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2红旅行车、4深绿车、103电车显示屏、8银轿车四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "perspective",
+        "text"
+      ],
+      "scene_zh": "城市草地有轨电车",
+      "evidence_zh": "2红旅行车、4深绿车、103电车显示屏、8银轿车四父对象。",
+      "specific_protection_zh": "保留轨道、建筑、道路、车灯和行人。"
+    },
+    "protected_content_zh": "保留轨道、建筑、道路、车灯和行人。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the red station wagon at the left",
+        "ref_zh": "左侧的红色旅行车",
+        "scope": "station wagon",
+        "scope_zh": "旅行车",
+        "parent": "red_wagon",
+        "parent_zh": "红旅行车",
+        "payload": "",
+        "instruction_zh": "移除左侧的红色旅行车。",
+        "instruction_noref_zh": "移除选中的旅行车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the dark green car immediately right of the red wagon",
+        "ref_zh": "红色旅行车紧右侧的深绿色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "green_car",
+        "parent_zh": "绿车",
+        "payload": "a blue compact SUV",
+        "instruction_zh": "将红色旅行车紧右侧的深绿色汽车替换为一辆蓝色紧凑型SUV。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色紧凑型SUV。"
+      },
+      {
+        "object_id": 103,
+        "operation": "attribute",
+        "ref": "the destination display above the tram windshield",
+        "ref_zh": "电车挡风玻璃上方的目的地显示屏",
+        "scope": "display",
+        "scope_zh": "显示屏",
+        "parent": "tram",
+        "parent_zh": "电车",
+        "payload": "CENTRAL",
+        "attribute_kind": "text",
+        "instruction_zh": "将电车挡风玻璃上方的目的地显示屏的文字改为CENTRAL。",
+        "instruction_noref_zh": "将选中的显示屏的文字改为CENTRAL。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the silver sedan behind the dark green car",
+        "ref_zh": "深绿色汽车后方的银色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "silver_sedan",
+        "parent_zh": "银车",
+        "payload": "a small white TAXI sign on its roof",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在深绿色汽车后方的银色轿车加上一块位于车顶的小白色TAXI灯牌。",
+        "instruction_noref_zh": "在选中的轿车加上一块位于车顶的小白色TAXI灯牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5129234",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c7cae05293d3f24ffc96ee612a1a1e76f30a170a395e092be2e6f2b55f679611",
+    "review_card_sha256": "61396316b906caee38019f24e6862e749fd6a30fe1e22dd6328923ffa96ec095",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2后旅行车、38近轮毂盖、8右建筑窗分属两车及建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "黑色老爷车与后方旅行车",
+      "evidence_zh": "2后旅行车、38近轮毂盖、8右建筑窗分属两车及建筑。",
+      "specific_protection_zh": "保留老爷车结构、砖墙、树影及路面。"
+    },
+    "protected_content_zh": "保留老爷车结构、砖墙、树影及路面。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the modern gray station wagon behind the classic car",
+        "ref_zh": "老爷车后方的现代灰色旅行车",
+        "scope": "station wagon",
+        "scope_zh": "旅行车",
+        "parent": "modern_car",
+        "parent_zh": "现代车",
+        "payload": "",
+        "instruction_zh": "移除老爷车后方的现代灰色旅行车。",
+        "instruction_noref_zh": "移除选中的旅行车。"
+      },
+      {
+        "object_id": 38,
+        "operation": "attribute",
+        "ref": "the hubcap on the classic car wheel nearest the camera",
+        "ref_zh": "老爷车最近处车轮的轮毂盖",
+        "scope": "hubcap",
+        "scope_zh": "轮毂盖",
+        "parent": "classic_car",
+        "parent_zh": "老爷车",
+        "payload": "brass",
+        "attribute_kind": "material",
+        "instruction_zh": "将老爷车最近处车轮的轮毂盖的材质改为黄铜。",
+        "instruction_noref_zh": "将选中的轮毂盖的材质改为黄铜。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the large window at the far right of the brick building",
+        "ref_zh": "砖楼最右侧的大窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "brick_building",
+        "parent_zh": "砖楼",
+        "payload": "a small white OPEN decal in its lower corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在砖楼最右侧的大窗户加上一张位于下角的小白色OPEN贴花。",
+        "instruction_noref_zh": "在选中的窗户加上一张位于下角的小白色OPEN贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5187459",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0bb4702c4a7c894e5d9060e1299c17441281e7759fb3116af519fc6af3d263b1",
+    "review_card_sha256": "579b7b9a12c7cb89e46d561c93f5a6d2852e24610fdeb294e24d65b4ba868a29",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "30最近长凳、49左店招、67雕花木门、149中间弧形凳四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition",
+        "text"
+      ],
+      "scene_zh": "山墙建筑街景",
+      "evidence_zh": "30最近长凳、49左店招、67雕花木门、149中间弧形凳四父对象。",
+      "specific_protection_zh": "保留建筑轮廓、行人、街道与其他店招。"
+    },
+    "protected_content_zh": "保留建筑轮廓、行人、街道与其他店招。",
+    "targets": [
+      {
+        "object_id": 30,
+        "operation": "replace",
+        "ref": "the long rectangular bench at the left",
+        "ref_zh": "左侧的长方形长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "left_bench",
+        "parent_zh": "左凳",
+        "payload": "a wooden slatted bench",
+        "instruction_zh": "将左侧的长方形长凳替换为一张木条长凳。",
+        "instruction_noref_zh": "将选中的长凳替换为一张木条长凳。"
+      },
+      {
+        "object_id": 49,
+        "operation": "remove",
+        "ref": "the long maroon grocery-store sign at the left",
+        "ref_zh": "左侧杂货店的深红色长招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "grocery_sign",
+        "parent_zh": "杂货店牌",
+        "payload": "",
+        "instruction_zh": "移除左侧杂货店的深红色长招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 67,
+        "operation": "attribute",
+        "ref": "the carved wooden door in the narrow white building",
+        "ref_zh": "白色窄楼的雕花木门",
+        "scope": "door",
+        "scope_zh": "木门",
+        "parent": "white_building",
+        "parent_zh": "白楼",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色窄楼的雕花木门的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的木门的颜色改为深绿色。"
+      },
+      {
+        "object_id": 149,
+        "operation": "add",
+        "ref": "the curved bench behind the foreground man",
+        "ref_zh": "前景男子后方的弧形长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "curved_bench",
+        "parent_zh": "弧凳",
+        "payload": "a folded blue jacket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景男子后方的弧形长凳加上一件叠好的蓝色外套。",
+        "instruction_noref_zh": "在选中的长凳加上一件叠好的蓝色外套。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

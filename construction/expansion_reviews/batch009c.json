@@ -1,0 +1,644 @@
+[
+  {
+    "source_id": "sa_215762",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f755947813e75db0f8f2881b13844e260548eb2183a04b9f770765d860e32743",
+    "review_card_sha256": "fddbbc539fdbab840430fa7ab4212f6d04ac93976567f51b1506a330c11ecaa9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为灰Lynchburg衫，2为右数第二黑色印花衫，15为OPEN牌，39为右木框玻璃门。不同独立商品、挂牌与建筑，13/21是反射汽车不当实体目标。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "similar_instances"
+      ],
+      "scene_zh": "纪念品店陈列T恤与玻璃门",
+      "evidence_zh": "0为灰Lynchburg衫，2为右数第二黑色印花衫，15为OPEN牌，39为右木框玻璃门。不同独立商品、挂牌与建筑，13/21是反射汽车不当实体目标。",
+      "specific_protection_zh": "保留其他商品、印花、建筑墙面及玻璃反射。"
+    },
+    "protected_content_zh": "保留其他商品、印花、建筑墙面及玻璃反射。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the gray Lynchburg T-shirt",
+        "ref_zh": "灰色Lynchburg T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "gray_merch_shirt",
+        "parent_zh": "灰商品衫",
+        "payload": "cream",
+        "attribute_kind": "color",
+        "instruction_zh": "将灰色Lynchburg T恤的颜色改为奶油色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为奶油色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the second T-shirt from the right",
+        "ref_zh": "从右数第二件T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "second_right_shirt",
+        "parent_zh": "右二商品衫",
+        "payload": "a plain black T-shirt",
+        "instruction_zh": "将从右数第二件T恤替换为一件纯黑色T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯黑色T恤。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the hanging OPEN sign",
+        "ref_zh": "悬挂的OPEN标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "open_sign",
+        "parent_zh": "营业牌",
+        "payload": "",
+        "instruction_zh": "移除悬挂的OPEN标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 39,
+        "operation": "add",
+        "ref": "the wooden-framed glass door on the right",
+        "ref_zh": "右侧木框玻璃门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "shop_building",
+        "parent_zh": "店铺建筑",
+        "payload": "a small wreath",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧木框玻璃门加上一个小花环。",
+        "instruction_noref_zh": "在选中的门加上一个小花环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2161304",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e2c268ad7487c5e5c28bbe86f6465fc578b3325378e8bbe72996b952b1d7d8b5",
+    "review_card_sha256": "ca5109a9b38584433ec3b8835c4140b6bec2c943dde07754e08fc6499afdef2e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为蓝色套罩轮胎堆，1为黄罩轮胎堆，14为BRAKES牌，36为售货机左蓝门。不同轮胎堆、牌、建筑，套罩不是垃圾桶。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets"
+      ],
+      "scene_zh": "轮胎店门前套罩轮胎与标牌",
+      "evidence_zh": "3为蓝色套罩轮胎堆，1为黄罩轮胎堆，14为BRAKES牌，36为售货机左蓝门。不同轮胎堆、牌、建筑，套罩不是垃圾桶。",
+      "specific_protection_zh": "保留其他轮胎、建筑墙面、自动售货机、护桩和路面。"
+    },
+    "protected_content_zh": "保留其他轮胎、建筑墙面、自动售货机、护桩和路面。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the blue-covered tire stack left of the central red stack",
+        "ref_zh": "中央红色轮胎堆左侧的蓝罩轮胎堆",
+        "scope": "tire stack",
+        "scope_zh": "轮胎堆",
+        "parent": "left_blue_stack",
+        "parent_zh": "左蓝轮胎堆",
+        "payload": "",
+        "instruction_zh": "移除中央红色轮胎堆左侧的蓝罩轮胎堆。",
+        "instruction_noref_zh": "移除选中的轮胎堆。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the yellow-covered tire stack",
+        "ref_zh": "黄色套罩的轮胎堆",
+        "scope": "tire stack",
+        "scope_zh": "轮胎堆",
+        "parent": "yellow_stack",
+        "parent_zh": "黄轮胎堆",
+        "payload": "a small SALE sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黄色套罩的轮胎堆加上一张小SALE贴纸。",
+        "instruction_noref_zh": "在选中的轮胎堆加上一张小SALE贴纸。"
+      },
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the blue BRAKES sign",
+        "ref_zh": "蓝色BRAKES标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "brakes_sign",
+        "parent_zh": "刹车牌",
+        "payload": "a blue WHEEL ALIGNMENT sign",
+        "instruction_zh": "将蓝色BRAKES标牌替换为一块蓝色WHEEL ALIGNMENT标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块蓝色WHEEL ALIGNMENT标牌。"
+      },
+      {
+        "object_id": 36,
+        "operation": "attribute",
+        "ref": "the blue door beside the Pepsi machine",
+        "ref_zh": "百事售货机旁的蓝色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "tire_shop",
+        "parent_zh": "轮胎店",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将百事售货机旁的蓝色门的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的门的颜色改为深绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2161948",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "af8d22288a3f7e807216c5bf7c6c66a345b6a09c6940462c475ea56dd89197bc",
+    "review_card_sha256": "8f38b96461fe9722f728964352f7e194ee990ef9cdb16ff8c964f32457606c59",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为前景左绿路灯，19为树左独站者黑外套，201为树右墙边坐者棕外套，80为右侧白背包。两人物、灯和独立包。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "haze"
+      ],
+      "scene_zh": "秋树广场游客与路灯",
+      "evidence_zh": "10为前景左绿路灯，19为树左独站者黑外套，201为树右墙边坐者棕外套，80为右侧白背包。两人物、灯和独立包。",
+      "specific_protection_zh": "保留人体、树冠、其他衣物、砖墙、城市背景及雾气。"
+    },
+    "protected_content_zh": "保留人体、树冠、其他衣物、砖墙、城市背景及雾气。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the green lamppost in the foreground on the left",
+        "ref_zh": "左侧前景的绿色灯柱",
+        "scope": "lamppost",
+        "scope_zh": "灯柱",
+        "parent": "near_lamppost",
+        "parent_zh": "近灯",
+        "payload": "",
+        "instruction_zh": "移除左侧前景的绿色灯柱。",
+        "instruction_noref_zh": "移除选中的灯柱。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the black coat on the lone person left of the tree",
+        "ref_zh": "树左侧独自站立者的黑色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "lone_left_person",
+        "parent_zh": "树左人物",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将树左侧独自站立者的黑色外套的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为酒红色。"
+      },
+      {
+        "object_id": 201,
+        "operation": "replace",
+        "ref": "the brown jacket on the person seated by the right wall",
+        "ref_zh": "右侧墙边坐着的人的棕色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "seated_right_person",
+        "parent_zh": "右坐者",
+        "payload": "a blue fleece jacket",
+        "instruction_zh": "将右侧墙边坐着的人的棕色外套替换为一件蓝色抓绒外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件蓝色抓绒外套。"
+      },
+      {
+        "object_id": 80,
+        "operation": "add",
+        "ref": "the white backpack on the right",
+        "ref_zh": "右侧的白色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "white_backpack",
+        "parent_zh": "白背包",
+        "payload": "a reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的白色背包加上一条反光条。",
+        "instruction_noref_zh": "在选中的背包加上一条反光条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2176556",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "abb77557ba2ce948265a5ef9d4e7f3b14153f443f2b8fb6de2141b7ed05e8e8f",
+    "review_card_sha256": "6d3cd2cf7eb5ef786d32658638d8458a3496d869bfa89344f97fe3546834335c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13为完整缆车含吊架，16为上方最左观景栏杆。缆车与站房两个父对象，玻璃78兼含门下板不按纯玻璃使用。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "fog",
+        "thin_structures"
+      ],
+      "scene_zh": "山顶缆车与站房",
+      "evidence_zh": "13为完整缆车含吊架，16为上方最左观景栏杆。缆车与站房两个父对象，玻璃78兼含门下板不按纯玻璃使用。",
+      "specific_protection_zh": "保留乘客、缆绳、岩石、建筑玻璃、木平台与原有雾气。"
+    },
+    "protected_content_zh": "保留乘客、缆绳、岩石、建筑玻璃、木平台与原有雾气。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the cable car on the right",
+        "ref_zh": "右侧的缆车",
+        "scope": "cable car",
+        "scope_zh": "缆车",
+        "parent": "cable_car",
+        "parent_zh": "缆车",
+        "payload": "a red panoramic cable car",
+        "instruction_zh": "将右侧的缆车替换为一辆红色全景缆车。",
+        "instruction_noref_zh": "将选中的缆车替换为一辆红色全景缆车。"
+      },
+      {
+        "object_id": 16,
+        "operation": "add",
+        "ref": "the balcony railing at the upper left",
+        "ref_zh": "左上方的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "station_building",
+        "parent_zh": "站房",
+        "payload": "a small blue information plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左上方的阳台栏杆加上一块蓝色小信息牌。",
+        "instruction_noref_zh": "在选中的栏杆加上一块蓝色小信息牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_218962",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "917986a21f7f8b2c0638a8eef6daedee9331ae5a44269aad98e721f76f8c3350",
+    "review_card_sha256": "bc9b501dc53451e2f9e07db15421ea672172773861256658307d5e4417b91245",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为最近中间黑扶手，5为后方岩壁大牌，9为右侧建筑长窄窗，39为左前墙灰牌。栏杆、两牌与右侧建筑为不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "perspective"
+      ],
+      "scene_zh": "彩绘台阶与墙面标牌",
+      "evidence_zh": "0为最近中间黑扶手，5为后方岩壁大牌，9为右侧建筑长窄窗，39为左前墙灰牌。栏杆、两牌与右侧建筑为不同父对象。",
+      "specific_protection_zh": "保留彩绘台阶、其他扶手、墙面、岩石和建筑形状。"
+    },
+    "protected_content_zh": "保留彩绘台阶、其他扶手、墙面、岩石和建筑形状。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the nearest black handrail",
+        "ref_zh": "最近的黑色扶手",
+        "scope": "handrail",
+        "scope_zh": "扶手",
+        "parent": "stair_handrail",
+        "parent_zh": "楼梯扶手",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近的黑色扶手的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的扶手的颜色改为深绿色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the large plaque on the rock wall at the top",
+        "ref_zh": "顶部岩壁上的大标牌",
+        "scope": "plaque",
+        "scope_zh": "标牌",
+        "parent": "rock_plaque",
+        "parent_zh": "岩壁牌",
+        "payload": "",
+        "instruction_zh": "移除顶部岩壁上的大标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the tall narrow window on the right",
+        "ref_zh": "右侧细长的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "right_building",
+        "parent_zh": "右建筑",
+        "payload": "a small flower box",
+        "placement": {
+          "relation": "on",
+          "site": "sill",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧细长的窗户的窗台上加上一个小花箱。",
+        "instruction_noref_zh": "在选中的窗户的窗台上加上一个小花箱。"
+      },
+      {
+        "object_id": 39,
+        "operation": "replace",
+        "ref": "the gray notice board on the left wall",
+        "ref_zh": "左侧墙上的灰色告示板",
+        "scope": "notice board",
+        "scope_zh": "告示板",
+        "parent": "left_notice",
+        "parent_zh": "左告示",
+        "payload": "a blue information board",
+        "instruction_zh": "将左侧墙上的灰色告示板替换为一块蓝色信息板。",
+        "instruction_noref_zh": "将选中的告示板替换为一块蓝色信息板。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2192461",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "69f6a0d482f2aaaccb7bbea7ec938535e8ee2978743a4f061bed90b1851ccb4b",
+    "review_card_sha256": "e031d7b55da638ac1d160bf8e82b0de207731cb4f7ef017b0fe6a24c5483003a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为近右人物酒红围巾，15为近左人物深色羽绒服，23为背景左者白塑料袋，27为原宿站牌。不同两人物、独立袋与牌。",
+    "difficulty": {
+      "mechanisms": [
+        "night_scene",
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "夜间车站前行人",
+      "evidence_zh": "8为近右人物酒红围巾，15为近左人物深色羽绒服，23为背景左者白塑料袋，27为原宿站牌。不同两人物、独立袋与牌。",
+      "specific_protection_zh": "保留人体、其他衣物、背包、车站建筑、灯光和人群。"
+    },
+    "protected_content_zh": "保留人体、其他衣物、背包、车站建筑、灯光和人群。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the burgundy scarf in the foreground",
+        "ref_zh": "前景的酒红色围巾",
+        "scope": "scarf",
+        "scope_zh": "围巾",
+        "parent": "foreground_right_person",
+        "parent_zh": "前景右人物",
+        "payload": "cream",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的酒红色围巾的颜色改为奶油色。",
+        "instruction_noref_zh": "将选中的围巾的颜色改为奶油色。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the nearest person’s dark puffer jacket on the left",
+        "ref_zh": "左侧最近人物的深色羽绒服",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "foreground_left_person",
+        "parent_zh": "前景左人物",
+        "payload": "a gray wool jacket",
+        "instruction_zh": "将左侧最近人物的深色羽绒服替换为一件灰色羊毛外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件灰色羊毛外套。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the white plastic bag held by the person on the left crosswalk",
+        "ref_zh": "左侧斑马线上人物手中的白色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "crosswalk_bag",
+        "parent_zh": "斑马线袋",
+        "payload": "",
+        "instruction_zh": "移除左侧斑马线上人物手中的白色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 27,
+        "operation": "add",
+        "ref": "the “原宿駅” station sign",
+        "ref_zh": "“原宿駅”站牌",
+        "scope": "sign",
+        "scope_zh": "站牌",
+        "parent": "station_sign",
+        "parent_zh": "站牌",
+        "payload": "a narrow wooden frame",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在“原宿駅”站牌加上一圈窄木框。",
+        "instruction_noref_zh": "在选中的站牌加上一圈窄木框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2204968",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1cc9a85d1f23ba08e817261fdf58fd67d6a6be550704ea79fb950cce0197150f",
+    "review_card_sha256": "c777bca2daa9a4b3e8b30ed3d1b0a3ff67e46e4eabf63fd0676b8f08d405e773",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7为骑手灰T恤，18为完整自行车可见部分，34为前景斜坡左后方独立箱台。三父对象，不移除支撑骑手的车或坡面。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "滑板场骑行者与独立箱台",
+      "evidence_zh": "7为骑手灰T恤，18为完整自行车可见部分，34为前景斜坡左后方独立箱台。三父对象，不移除支撑骑手的车或坡面。",
+      "specific_protection_zh": "保留身体、骑行动作、斜坡、围栏、树和相应阴影。"
+    },
+    "protected_content_zh": "保留身体、骑行动作、斜坡、围栏、树和相应阴影。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the cyclist’s gray T-shirt",
+        "ref_zh": "骑车人的灰色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "cyclist",
+        "parent_zh": "骑车人",
+        "payload": "a red T-shirt",
+        "instruction_zh": "将骑车人的灰色T恤替换为一件红色T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件红色T恤。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the bicycle being ridden",
+        "ref_zh": "骑行中的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "bicycle",
+        "parent_zh": "自行车",
+        "payload": "a small white lightning decal",
+        "placement": {
+          "relation": "on",
+          "site": "frame",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在骑行中的自行车的车架上加上一张白色小闪电贴纸。",
+        "instruction_noref_zh": "在选中的自行车的车架上加上一张白色小闪电贴纸。"
+      },
+      {
+        "object_id": 34,
+        "operation": "remove",
+        "ref": "the black rectangular box behind the foreground ramp",
+        "ref_zh": "前景斜坡后方的黑色长方形箱台",
+        "scope": "box",
+        "scope_zh": "箱台",
+        "parent": "freestanding_box",
+        "parent_zh": "独立箱台",
+        "payload": "",
+        "instruction_zh": "移除前景斜坡后方的黑色长方形箱台。",
+        "instruction_noref_zh": "移除选中的箱台。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_222823",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bb6f1bb24a27ab40f8feb6a4ab9d41ee5636ea5d418c8034cae574a44486953c",
+    "review_card_sha256": "bdfc8cae080d098c1abb87291e51002c42fd499e082ea4ee101c65069a42dcce",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为正前方黑布桌，16为右服务窗，6为可拆木牌，40为后方卷帘门。桌、餐车、木牌、建筑为不同父对象；车身图案不当独立实体。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection"
+      ],
+      "scene_zh": "红餐车前桌与背景卷帘门",
+      "evidence_zh": "5为正前方黑布桌，16为右服务窗，6为可拆木牌，40为后方卷帘门。桌、餐车、木牌、建筑为不同父对象；车身图案不当独立实体。",
+      "specific_protection_zh": "保留餐车其他部分、轮胎、建筑、其他桌面及遮挡关系。"
+    },
+    "protected_content_zh": "保留餐车其他部分、轮胎、建筑、其他桌面及遮挡关系。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the black table covering in front of the food trailer",
+        "ref_zh": "餐车正前方的黑色桌布",
+        "scope": "table covering",
+        "scope_zh": "桌布",
+        "parent": "front_table",
+        "parent_zh": "前桌",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将餐车正前方的黑色桌布的颜色改为白色。",
+        "instruction_noref_zh": "将选中的桌布的颜色改为白色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "add",
+        "ref": "the serving window on the right",
+        "ref_zh": "右侧的售卖窗口",
+        "scope": "window",
+        "scope_zh": "窗口",
+        "parent": "food_trailer",
+        "parent_zh": "餐车",
+        "payload": "a small OPEN sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的售卖窗口加上一块小OPEN牌。",
+        "instruction_noref_zh": "在选中的窗口加上一块小OPEN牌。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the wooden sign above the trailer wheels",
+        "ref_zh": "餐车车轮上方的木质标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "wooden_sign",
+        "parent_zh": "木牌",
+        "payload": "",
+        "instruction_zh": "移除餐车车轮上方的木质标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 40,
+        "operation": "replace",
+        "ref": "the roller door behind the trailer on the left",
+        "ref_zh": "餐车左后方的卷帘门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "rear_building",
+        "parent_zh": "后建筑",
+        "payload": "a dark gray steel roller door",
+        "instruction_zh": "将餐车左后方的卷帘门替换为一扇深灰色钢卷帘门。",
+        "instruction_noref_zh": "将选中的门替换为一扇深灰色钢卷帘门。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

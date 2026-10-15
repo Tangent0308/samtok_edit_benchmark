@@ -1,0 +1,591 @@
+[
+  {
+    "source_id": "sa_9006757",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d880e3909248f1ee18eeed9b0e6e896e333087fdc1ed5de350aedeed25e081bc",
+    "review_card_sha256": "46217c113b667306fd764c4a8075b4e02a57dc09b0001062c07000a5829af985",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "左侧列车、中央车门、中央路灯和右上电箱是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "transit",
+        "station"
+      ],
+      "scene_zh": "有轨电车站",
+      "evidence_zh": "左侧列车、中央车门、中央路灯和右上电箱是四个不同对象。",
+      "specific_protection_zh": "保留列车、车站设施和道路设备。"
+    },
+    "protected_content_zh": "保留列车、车站设施和道路设备。",
+    "targets": [
+      {
+        "object_id": 35,
+        "operation": "attribute",
+        "ref": "the train at the left",
+        "ref_zh": "左侧的列车",
+        "scope": "train",
+        "scope_zh": "列车",
+        "parent": "left_train",
+        "parent_zh": "左侧列车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的列车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的列车的颜色改为红色。"
+      },
+      {
+        "object_id": 26,
+        "operation": "replace",
+        "ref": "the door near the center",
+        "ref_zh": "中间附近的车门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "center_door",
+        "parent_zh": "中央车门",
+        "payload": "a blue door",
+        "instruction_zh": "将中间附近的车门替换为一扇蓝色车门。",
+        "instruction_noref_zh": "将选中的车门替换为一扇蓝色车门。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the streetlight near the center",
+        "ref_zh": "中间附近的路灯",
+        "scope": "streetlight",
+        "scope_zh": "路灯",
+        "parent": "center_streetlight",
+        "parent_zh": "中央路灯",
+        "payload": "",
+        "instruction_zh": "移除中间附近的路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 27,
+        "operation": "add",
+        "ref": "the electrical box at the upper right",
+        "ref_zh": "右上方的电箱",
+        "scope": "electrical box",
+        "scope_zh": "电箱",
+        "parent": "upper_right_box",
+        "parent_zh": "右上电箱",
+        "payload": "a warning label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方的电箱加上一个警示标签。",
+        "instruction_noref_zh": "在选中的电箱加上一个警示标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9013170",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "43c0431995710642afe94b2154d93af08a77bdd90f1553be0d2fe8cddabb8197",
+    "review_card_sha256": "257c7a5d98684977aa2995fc305e61c3c60438ec1c7b943d710aaa0f526baa44",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "左下轿车、左下敞篷车、左侧横幅和中部窗户是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "vehicles"
+      ],
+      "scene_zh": "城市公交街景",
+      "evidence_zh": "左下轿车、左下敞篷车、左侧横幅和中部窗户是四个不同对象。",
+      "specific_protection_zh": "保留车辆、建筑和街道标识。"
+    },
+    "protected_content_zh": "保留车辆、建筑和街道标识。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the SUV at the lower left",
+        "ref_zh": "左下方的轿车",
+        "scope": "SUV",
+        "scope_zh": "轿车",
+        "parent": "lower_left_suv",
+        "parent_zh": "左下轿车",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下方的轿车的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为蓝色。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the convertible at the lower left",
+        "ref_zh": "左下方的敞篷车",
+        "scope": "convertible",
+        "scope_zh": "敞篷车",
+        "parent": "lower_left_convertible",
+        "parent_zh": "左下敞篷车",
+        "payload": "a red convertible",
+        "instruction_zh": "将左下方的敞篷车替换为一辆红色敞篷车。",
+        "instruction_noref_zh": "将选中的敞篷车替换为一辆红色敞篷车。"
+      },
+      {
+        "object_id": 46,
+        "operation": "remove",
+        "ref": "the banner at the left",
+        "ref_zh": "左侧的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "left_banner",
+        "parent_zh": "左侧横幅",
+        "payload": "",
+        "instruction_zh": "移除左侧的横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 52,
+        "operation": "add",
+        "ref": "the window near the center",
+        "ref_zh": "中间附近的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "center_window",
+        "parent_zh": "中央窗户",
+        "payload": "a flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的窗户加上一个花箱。",
+        "instruction_noref_zh": "在选中的窗户加上一个花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9015358",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "83f31d59ac15fb0804e64de23d24e029dcca1372d9eb4cbb10bb15bb30793485",
+    "review_card_sha256": "151b2ef6c4920953a5249211cbc2f4805733d4c7c1a583e8a47f9b372943a1e7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "右侧轿车、右侧窗户、右侧横幅和下方石砖是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "architecture"
+      ],
+      "scene_zh": "树旁街景",
+      "evidence_zh": "右侧轿车、右侧窗户、右侧横幅和下方石砖是四个不同对象。",
+      "specific_protection_zh": "保留车辆、建筑和街道细节。"
+    },
+    "protected_content_zh": "保留车辆、建筑和街道细节。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the sedan at the right",
+        "ref_zh": "右侧的轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "right_sedan",
+        "parent_zh": "右侧轿车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的轿车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为红色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the sedan near the center",
+        "ref_zh": "中间附近的轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "center_sedan",
+        "parent_zh": "中央轿车",
+        "payload": "a blue sedan",
+        "instruction_zh": "将中间附近的轿车替换为一辆蓝色轿车。",
+        "instruction_noref_zh": "将选中的轿车替换为一辆蓝色轿车。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the banner at the right",
+        "ref_zh": "右侧的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "right_banner",
+        "parent_zh": "右侧横幅",
+        "payload": "",
+        "instruction_zh": "移除右侧的横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 21,
+        "operation": "add",
+        "ref": "the stone tile at the lower right",
+        "ref_zh": "右下方的石砖",
+        "scope": "stone tile",
+        "scope_zh": "石砖",
+        "parent": "lower_right_tile",
+        "parent_zh": "右下石砖",
+        "payload": "a small flower",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方的石砖加上一朵小花。",
+        "instruction_noref_zh": "在选中的石砖加上一朵小花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9027527",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e1ba3716d6cd3272cba9859929033743f18b9e5c11ab78a59b751367f45cc6a7",
+    "review_card_sha256": "c158d504402b6ca329c04f8fb164e2da2683d77c823e93c961162e7d9cd9e79b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选区域主要是同一组货架和包装商品，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "market",
+        "product"
+      ],
+      "scene_zh": "超市货架",
+      "evidence_zh": "候选区域主要是同一组货架和包装商品，缺少独立父对象。",
+      "specific_protection_zh": "不把同一货架上的包装、标签和层板重复计为独立目标。"
+    },
+    "protected_content_zh": "不把同一货架上的包装、标签和层板重复计为独立目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 1,
+        "reason_zh": "同一货架层板"
+      },
+      {
+        "object_id": 7,
+        "reason_zh": "同一组包装商品"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_9033026",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bef60f86b9091953ace1cffd6de81091fa13fb3c9369a717812e7f93f239bfe1",
+    "review_card_sha256": "9ddcf90851e75c298bed5370752104c3e75543b53337cdf90f3072053bc4a8b1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "右侧人物、左下包装盒、中部标签和中部手提袋是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "market",
+        "people"
+      ],
+      "scene_zh": "超市购物",
+      "evidence_zh": "右侧人物、左下包装盒、中部标签和中部手提袋是四个不同对象。",
+      "specific_protection_zh": "保留购物者、商品包装和购物用品。"
+    },
+    "protected_content_zh": "保留购物者、商品包装和购物用品。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the person at the right",
+        "ref_zh": "右侧的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "right_person",
+        "parent_zh": "右侧人物",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的人物的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的人物的颜色改为蓝色。"
+      },
+      {
+        "object_id": 29,
+        "operation": "replace",
+        "ref": "the package at the lower left",
+        "ref_zh": "左下方的包装盒",
+        "scope": "package",
+        "scope_zh": "包装盒",
+        "parent": "lower_left_package",
+        "parent_zh": "左下包装盒",
+        "payload": "a blue package",
+        "instruction_zh": "将左下方的包装盒替换为一个蓝色包装盒。",
+        "instruction_noref_zh": "将选中的包装盒替换为一个蓝色包装盒。"
+      },
+      {
+        "object_id": 36,
+        "operation": "remove",
+        "ref": "the label near the center",
+        "ref_zh": "中间附近的标签",
+        "scope": "label",
+        "scope_zh": "标签",
+        "parent": "center_label",
+        "parent_zh": "中央标签",
+        "payload": "",
+        "instruction_zh": "移除中间附近的标签。",
+        "instruction_noref_zh": "移除选中的标签。"
+      },
+      {
+        "object_id": 181,
+        "operation": "add",
+        "ref": "the bag near the center",
+        "ref_zh": "中间附近的手提袋",
+        "scope": "bag",
+        "scope_zh": "手提袋",
+        "parent": "center_bag",
+        "parent_zh": "中央手提袋",
+        "payload": "a small logo",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的手提袋加上一个小标志。",
+        "instruction_noref_zh": "在选中的手提袋加上一个小标志。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9033895",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dbeb11c6446be9e3218cc7fea9c45524c10585bc29c7eb972f15ec5d69c805d1",
+    "review_card_sha256": "2f04219e96058edf2c0f9d014a83307eed21e44406fea71cc98d4d7845c911c1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "左下轿车、右侧标牌、右侧门和左侧路灯是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "architecture"
+      ],
+      "scene_zh": "历史街区",
+      "evidence_zh": "左下轿车、右侧标牌、右侧门和左侧路灯是四个不同对象。",
+      "specific_protection_zh": "保留车辆、建筑和街道设施。"
+    },
+    "protected_content_zh": "保留车辆、建筑和街道设施。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the car at the lower left",
+        "ref_zh": "左下方的轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "lower_left_car",
+        "parent_zh": "左下轿车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下方的轿车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为红色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "replace",
+        "ref": "the information sign at the right",
+        "ref_zh": "右侧的信息牌",
+        "scope": "sign",
+        "scope_zh": "信息牌",
+        "parent": "right_information_sign",
+        "parent_zh": "右侧信息牌",
+        "payload": "a blue sign",
+        "instruction_zh": "将右侧的信息牌替换为一块蓝色标牌。",
+        "instruction_noref_zh": "将选中的信息牌替换为一块蓝色标牌。"
+      },
+      {
+        "object_id": 51,
+        "operation": "remove",
+        "ref": "the door at the right",
+        "ref_zh": "右侧的门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "right_door",
+        "parent_zh": "右侧门",
+        "payload": "",
+        "instruction_zh": "移除右侧的门。",
+        "instruction_noref_zh": "移除选中的门。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the streetlight at the left",
+        "ref_zh": "左侧的路灯",
+        "scope": "streetlight",
+        "scope_zh": "路灯",
+        "parent": "left_streetlight",
+        "parent_zh": "左侧路灯",
+        "payload": "a hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧的路灯加上一个悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9037525",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2a29f42976b13f90513dabccea39b02a100f90eaa0ee85e08eeaca5595c1284e",
+    "review_card_sha256": "da8c3c201eac4b468bce564f9c0b2b2df341edb260c6ccae56411f4d1a6d099b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选区域主要是同一排书架上的书本、书脊和货架，属于同一陈列父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "product",
+        "bookstore"
+      ],
+      "scene_zh": "书店货架",
+      "evidence_zh": "候选区域主要是同一排书架上的书本、书脊和货架，属于同一陈列父对象。",
+      "specific_protection_zh": "不把同一书架的书籍局部重复计为独立目标。"
+    },
+    "protected_content_zh": "不把同一书架的书籍局部重复计为独立目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 14,
+        "reason_zh": "同一书架书本"
+      },
+      {
+        "object_id": 19,
+        "reason_zh": "同一书架"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_9042900",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0f8632f08b1973cb8d072baafa9720d8b8765531e3c3ce7aa261df19e8053d78",
+    "review_card_sha256": "48424e7bfb96b7d4b7a661d4bc69e0f30b85126a311578c9f0543daf8e620cd6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "中部轿车、左侧车辆、上方横幅和左侧窗户是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "traffic"
+      ],
+      "scene_zh": "城市路口",
+      "evidence_zh": "中部轿车、左侧车辆、上方横幅和左侧窗户是四个不同对象。",
+      "specific_protection_zh": "保留车辆、街道标识和建筑。"
+    },
+    "protected_content_zh": "保留车辆、街道标识和建筑。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the sedan near the center",
+        "ref_zh": "中间附近的轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "center_sedan",
+        "parent_zh": "中央轿车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的轿车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为红色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the vehicle at the left",
+        "ref_zh": "左侧的车辆",
+        "scope": "car",
+        "scope_zh": "车辆",
+        "parent": "left_vehicle",
+        "parent_zh": "左侧车辆",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的车辆替换为蓝色。",
+        "instruction_noref_zh": "将选中的车辆替换为蓝色。"
+      },
+      {
+        "object_id": 43,
+        "operation": "remove",
+        "ref": "the banner near the top",
+        "ref_zh": "顶部附近的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "top_banner",
+        "parent_zh": "顶部横幅",
+        "payload": "",
+        "instruction_zh": "移除顶部附近的横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 95,
+        "operation": "add",
+        "ref": "the banner at the upper left",
+        "ref_zh": "左上方的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "upper_left_banner",
+        "parent_zh": "左上横幅",
+        "payload": "a small logo",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左上方的横幅加上一个小标志。",
+        "instruction_noref_zh": "在选中的横幅加上一个小标志。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

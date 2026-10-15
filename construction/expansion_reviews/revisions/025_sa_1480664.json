@@ -1,0 +1,174 @@
+{
+  "source_id": "sa_1480664",
+  "reason_zh": "全图显示76在大旗右侧，纠正局部裁剪导致的左右误判。",
+  "previous_record": {
+    "source_id": "sa_1480664",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c4d04192b4f229e5c5077b90784f34e14cd1280bf8c8ff96a4219a8a49e7c3ef",
+    "review_card_sha256": "a872d1afc0a0353028615bd06368ecea846d993d1cfa68fa1542f982e6f619f6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为前景大红旗，4为旗右侧人物红裤，6为旗左侧男子印花黑T恤，76为更左侧人物背包。裤与上衣来自不同人物。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "广场旗帜和行人",
+      "evidence_zh": "0为前景大红旗，4为旗右侧人物红裤，6为旗左侧男子印花黑T恤，76为更左侧人物背包。裤与上衣来自不同人物。",
+      "specific_protection_zh": "保留人物身体、姿态、鞋、其他旗帜、建筑和原有遮挡。"
+    },
+    "protected_content_zh": "保留人物身体、姿态、鞋、其他旗帜、建筑和原有遮挡。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the large red flag in the foreground",
+        "ref_zh": "前景的大红旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "large_flag",
+        "parent_zh": "大红旗",
+        "payload": "",
+        "instruction_zh": "移除前景的大红旗。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the red trousers just right of the large flag",
+        "ref_zh": "大旗右侧的红色裤子",
+        "scope": "trousers",
+        "scope_zh": "裤子",
+        "parent": "red_trousers_person",
+        "parent_zh": "红裤人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将大旗右侧的红色裤子的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的裤子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the black printed T-shirt just left of the large flag",
+        "ref_zh": "大旗左侧的黑色印花T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "black_shirt_person",
+        "parent_zh": "黑T恤人物",
+        "payload": "a plain white cotton T-shirt",
+        "instruction_zh": "将大旗左侧的黑色印花T恤替换为一件纯白棉T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯白棉T恤。"
+      },
+      {
+        "object_id": 76,
+        "operation": "add",
+        "ref": "the black backpack with white lettering on the left",
+        "ref_zh": "左侧带白字的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "lettered_backpack",
+        "parent_zh": "白字背包",
+        "payload": "a small reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧带白字的黑色背包加上一条小反光条。",
+        "instruction_noref_zh": "在选中的背包加上一条小反光条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1480664",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c4d04192b4f229e5c5077b90784f34e14cd1280bf8c8ff96a4219a8a49e7c3ef",
+    "review_card_sha256": "a872d1afc0a0353028615bd06368ecea846d993d1cfa68fa1542f982e6f619f6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为前景大红旗，4为旗右侧人物红裤，6为旗左侧男子印花黑T恤，76为更左侧人物背包。裤与上衣来自不同人物。 全图复核：全图显示76在大旗右侧，纠正局部裁剪导致的左右误判。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "广场旗帜和行人",
+      "evidence_zh": "0为前景大红旗，4为旗右侧人物红裤，6为旗左侧男子印花黑T恤，76为更左侧人物背包。裤与上衣来自不同人物。 全图复核：全图显示76在大旗右侧，纠正局部裁剪导致的左右误判。",
+      "specific_protection_zh": "保留人物身体、姿态、鞋、其他旗帜、建筑和原有遮挡。"
+    },
+    "protected_content_zh": "保留人物身体、姿态、鞋、其他旗帜、建筑和原有遮挡。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the large red flag in the foreground",
+        "ref_zh": "前景的大红旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "large_flag",
+        "parent_zh": "大红旗",
+        "payload": "",
+        "instruction_zh": "移除前景的大红旗。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the red trousers just right of the large flag",
+        "ref_zh": "大旗右侧的红色裤子",
+        "scope": "trousers",
+        "scope_zh": "裤子",
+        "parent": "red_trousers_person",
+        "parent_zh": "红裤人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将大旗右侧的红色裤子的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的裤子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the black printed T-shirt just left of the large flag",
+        "ref_zh": "大旗左侧的黑色印花T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "black_shirt_person",
+        "parent_zh": "黑T恤人物",
+        "payload": "a plain white cotton T-shirt",
+        "instruction_zh": "将大旗左侧的黑色印花T恤替换为一件纯白棉T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯白棉T恤。"
+      },
+      {
+        "object_id": 76,
+        "operation": "add",
+        "ref": "the black backpack with white lettering right of the large flag",
+        "ref_zh": "大旗右侧带白字的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "lettered_backpack",
+        "parent_zh": "白字背包",
+        "payload": "a small reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在大旗右侧带白字的黑色背包加上一条小反光条。",
+        "instruction_noref_zh": "在选中的背包加上一条小反光条。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

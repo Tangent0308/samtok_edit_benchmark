@@ -1,0 +1,672 @@
+[
+  {
+    "source_id": "sa_5987768",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7f74ed4e0456460ee1757c15968ad762db1e7f101fb17384e7d32a880c361643",
+    "review_card_sha256": "f9006cb42077cd493cbf4661b84e87b25e09982d6a2b18ced02602d6385e1773",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8灰背包、7左紫巾人、9中黑巾人、74近门四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "学校走廊人群",
+      "evidence_zh": "8灰背包、7左紫巾人、9中黑巾人、74近门四父对象。",
+      "specific_protection_zh": "保留人物身体、其余衣物和建筑。"
+    },
+    "protected_content_zh": "保留人物身体、其余衣物和建筑。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the light gray backpack on the person at the right",
+        "ref_zh": "右侧人物的浅灰色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "gray_backpack",
+        "parent_zh": "灰包",
+        "payload": "",
+        "instruction_zh": "移除右侧人物的浅灰色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the purple headscarf in the left foreground",
+        "ref_zh": "左侧前景的紫色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "left_person",
+        "parent_zh": "左人",
+        "payload": "mint green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧前景的紫色头巾的颜色改为薄荷绿。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为薄荷绿。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the dark brown headscarf immediately right of the purple headscarf",
+        "ref_zh": "紫色头巾紧右侧的深棕色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "center_person",
+        "parent_zh": "中人",
+        "payload": "a blue floral headscarf",
+        "instruction_zh": "将紫色头巾紧右侧的深棕色头巾替换为一条蓝色碎花头巾。",
+        "instruction_noref_zh": "将选中的头巾替换为一条蓝色碎花头巾。"
+      },
+      {
+        "object_id": 74,
+        "operation": "add",
+        "ref": "the open green door beside the crowd",
+        "ref_zh": "人群旁打开的绿色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a small white CLASSROOM 1 plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在人群旁打开的绿色门加上一块小白色CLASSROOM 1牌。",
+        "instruction_noref_zh": "在选中的门加上一块小白色CLASSROOM 1牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6003979",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5b052c75fa19c20cc6ce40555595608a58f655e72d4824ed111ef189492039c0",
+    "review_card_sha256": "c8c144ac75678be82fed830ab70e652944d721e307822577080b2d22ef39fb6e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0白车、1红SUV、39旅行社招牌、10右灯柱四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "text",
+        "occlusion"
+      ],
+      "scene_zh": "街角店铺与汽车",
+      "evidence_zh": "0白车、1红SUV、39旅行社招牌、10右灯柱四父对象。",
+      "specific_protection_zh": "保留行人、道路、建筑和其余车辆。"
+    },
+    "protected_content_zh": "保留行人、道路、建筑和其余车辆。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the white sedan nearest the corner",
+        "ref_zh": "最靠近街角的白色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "white_car",
+        "parent_zh": "白车",
+        "payload": "",
+        "instruction_zh": "移除最靠近街角的白色轿车。",
+        "instruction_noref_zh": "移除选中的轿车。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the red SUV at the left",
+        "ref_zh": "左侧的红色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "red_suv",
+        "parent_zh": "红SUV",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的红色SUV的颜色改为银色。",
+        "instruction_noref_zh": "将选中的SUV的颜色改为银色。"
+      },
+      {
+        "object_id": 39,
+        "operation": "replace",
+        "ref": "the blue AKW TRAVEL sign",
+        "ref_zh": "蓝色AKW TRAVEL招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "travel_sign",
+        "parent_zh": "旅游牌",
+        "payload": "a white sign reading ISLAND TOURS",
+        "instruction_zh": "将蓝色AKW TRAVEL招牌替换为一块写有ISLAND TOURS的白色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有ISLAND TOURS的白色招牌。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the streetlamp at the far-right corner",
+        "ref_zh": "最右侧街角的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "a small hanging basket of purple flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧街角的路灯加上一篮悬挂的小紫花。",
+        "instruction_noref_zh": "在选中的路灯加上一篮悬挂的小紫花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6004886",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "34be2d83ca5fa1eb056bbc25690f2632ed722d660069f4226fe3c749d624f7ee",
+    "review_card_sha256": "753d046c7a3e26ccdf7b431132a331a94eac24121800f30e4ec9be4d1a54e219",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0绿椭圆牌、8烟斗牌、4近壁灯、1方牌四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "text",
+        "perspective"
+      ],
+      "scene_zh": "欧式街巷店招",
+      "evidence_zh": "0绿椭圆牌、8烟斗牌、4近壁灯、1方牌四父对象。",
+      "specific_protection_zh": "保留建筑、窗户和其他招牌。"
+    },
+    "protected_content_zh": "保留建筑、窗户和其他招牌。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the green oval Davidoff sign",
+        "ref_zh": "绿色椭圆形Davidoff招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "oval_sign",
+        "parent_zh": "椭圆牌",
+        "payload": "",
+        "instruction_zh": "移除绿色椭圆形Davidoff招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the large carved pipe sign",
+        "ref_zh": "大型雕刻烟斗招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "pipe_sign",
+        "parent_zh": "烟斗牌",
+        "payload": "a large carved golden key sign",
+        "instruction_zh": "将大型雕刻烟斗招牌替换为一个大型雕刻金色钥匙招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一个大型雕刻金色钥匙招牌。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the nearest wall-mounted lantern",
+        "ref_zh": "最近的壁挂灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "near_lantern",
+        "parent_zh": "近灯",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近的壁挂灯笼的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的灯笼的颜色改为古铜色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the square Body Line sign",
+        "ref_zh": "方形Body Line招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "square_sign",
+        "parent_zh": "方牌",
+        "payload": "a small gold OPEN sticker in its lower-right corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在方形Body Line招牌加上一张位于右下角的小金色OPEN贴纸。",
+        "instruction_noref_zh": "在选中的招牌加上一张位于右下角的小金色OPEN贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6010155",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "58f99a9d1bc4cd4a06beb446e52b2f751ba118c086c60a68d09383921c5ccd9c",
+    "review_card_sha256": "983780c68bb721ee867d4c80adc71c7ca6d844dc570799306b29b6a1dd9f1172",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3绿旗、19右黄衫人、26左品牌衫人、171右护栏四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "perspective",
+        "text"
+      ],
+      "scene_zh": "赛车展览与围栏人群",
+      "evidence_zh": "3绿旗、19右黄衫人、26左品牌衫人、171右护栏四父对象。",
+      "specific_protection_zh": "保留赛车、人物身体、建筑和其他标识。"
+    },
+    "protected_content_zh": "保留赛车、人物身体、建筑和其他标识。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the green flag above the roof",
+        "ref_zh": "屋顶上方的绿色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "green_flag",
+        "parent_zh": "绿旗",
+        "payload": "",
+        "instruction_zh": "移除屋顶上方的绿色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the yellow polo shirt on the marshal at the right",
+        "ref_zh": "右侧工作人员的黄色Polo衫",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "right_marshal",
+        "parent_zh": "右工作人员",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧工作人员的黄色Polo衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 26,
+        "operation": "replace",
+        "ref": "the white-and-blue Valvoline shirt at the left",
+        "ref_zh": "左侧的白蓝色Valvoline上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "left_spectator",
+        "parent_zh": "左观众",
+        "payload": "a plain red polo shirt",
+        "instruction_zh": "将左侧的白蓝色Valvoline上衣替换为一件纯红色Polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件纯红色Polo衫。"
+      },
+      {
+        "object_id": 171,
+        "operation": "add",
+        "ref": "the crowd barrier on the right side of the car",
+        "ref_zh": "赛车右侧的人群护栏",
+        "scope": "barrier",
+        "scope_zh": "护栏",
+        "parent": "right_barrier",
+        "parent_zh": "右护栏",
+        "payload": "a small white KEEP BACK sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在赛车右侧的人群护栏加上一块小白色KEEP BACK牌。",
+        "instruction_noref_zh": "在选中的护栏加上一块小白色KEEP BACK牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6010367",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5a3c24c332ed85fe19a8637a4204fd1a7f14ec4f01692529eb271d17260fca50",
+    "review_card_sha256": "ceabf9848a016a9516cc7a0edfaec4af9ddf55b22906e15a0b2bc642a6e0d620",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12中人水瓶、14后黄衫人、11前左背包、17中人鞋四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "foliage",
+        "occlusion"
+      ],
+      "scene_zh": "林间徒步",
+      "evidence_zh": "12中人水瓶、14后黄衫人、11前左背包、17中人鞋四父对象。",
+      "specific_protection_zh": "保留人物身体、树林和其他装备。"
+    },
+    "protected_content_zh": "保留人物身体、树林和其他装备。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the white water bottle on the red-shirted hiker's chest",
+        "ref_zh": "红衣徒步者胸前的白色水瓶",
+        "scope": "bottle",
+        "scope_zh": "水瓶",
+        "parent": "white_bottle",
+        "parent_zh": "白瓶",
+        "payload": "",
+        "instruction_zh": "移除红衣徒步者胸前的白色水瓶。",
+        "instruction_noref_zh": "移除选中的水瓶。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the yellow T-shirt on the rear-right hiker",
+        "ref_zh": "右后方徒步者的黄色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "rear_hiker",
+        "parent_zh": "后行人",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右后方徒步者的黄色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the large backpack on the front-left hiker",
+        "ref_zh": "左前方徒步者的大背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "large_backpack",
+        "parent_zh": "大包",
+        "payload": "a small silver reflective patch on its side pocket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左前方徒步者的大背包加上一块位于侧袋上的小银色反光贴片。",
+        "instruction_noref_zh": "在选中的背包加上一块位于侧袋上的小银色反光贴片。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the red-shirted hiker's shoe at the left",
+        "ref_zh": "红衣徒步者左侧的鞋子",
+        "scope": "shoe",
+        "scope_zh": "鞋子",
+        "parent": "red_hiker",
+        "parent_zh": "红衣人",
+        "payload": "a black trail-running shoe",
+        "instruction_zh": "将红衣徒步者左侧的鞋子替换为一只黑色越野跑鞋。",
+        "instruction_noref_zh": "将选中的鞋子替换为一只黑色越野跑鞋。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6014866",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e39f96bea007c7bdbe3398e1f7f1f5d8b8c28a830c5258fb39af2cdc99862525",
+    "review_card_sha256": "4cf61cada0b12f65eaf3472c0c4a9870c3a25afaa68a785a5887f3d46aba28a6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1前女孩裙、18女子肩包、22前男孩衣、13近水手帽四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "军舰参观人群",
+      "evidence_zh": "1前女孩裙、18女子肩包、22前男孩衣、13近水手帽四父对象。",
+      "specific_protection_zh": "保留人物身体、舰体和其他衣物。"
+    },
+    "protected_content_zh": "保留人物身体、舰体和其他衣物。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the floral dress on the girl in the right foreground",
+        "ref_zh": "右侧前景女孩的碎花连衣裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "front_girl",
+        "parent_zh": "前女孩",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧前景女孩的碎花连衣裙的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的连衣裙的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the brown shoulder bag on the woman in blue",
+        "ref_zh": "蓝衣女子的棕色单肩包",
+        "scope": "bag",
+        "scope_zh": "单肩包",
+        "parent": "brown_bag",
+        "parent_zh": "棕包",
+        "payload": "",
+        "instruction_zh": "移除蓝衣女子的棕色单肩包。",
+        "instruction_noref_zh": "移除选中的单肩包。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the black shirt on the boy in the foreground",
+        "ref_zh": "前景男孩的黑色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "front_boy",
+        "parent_zh": "前男孩",
+        "payload": "a gray polo shirt",
+        "instruction_zh": "将前景男孩的黑色上衣替换为一件灰色Polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件灰色Polo衫。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the white cap on the nearest sailor at the right",
+        "ref_zh": "右侧最近水手的白色帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "near_sailor",
+        "parent_zh": "近水手",
+        "payload": "a small navy-blue anchor emblem",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧最近水手的白色帽子加上一个小藏蓝色船锚徽标。",
+        "instruction_noref_zh": "在选中的帽子加上一个小藏蓝色船锚徽标。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6026149",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3817bf481e9cdd1cbf1ba1e537fd0f0f2d139a680e57e7fa737da951128f97a6",
+    "review_card_sha256": "2243e1db27dbfba1d710059068a6ac736d80a7ceccdcff44cba20ac83bd125e9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "35左金字招牌、11中右拱窗、9右竖横幅三父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "reflection",
+        "text"
+      ],
+      "scene_zh": "仰视红砖街屋",
+      "evidence_zh": "35左金字招牌、11中右拱窗、9右竖横幅三父对象。",
+      "specific_protection_zh": "保留砖墙、其余窗户和天空。"
+    },
+    "protected_content_zh": "保留砖墙、其余窗户和天空。",
+    "targets": [
+      {
+        "object_id": 35,
+        "operation": "remove",
+        "ref": "the gold RONNING HAUS lettering",
+        "ref_zh": "金色RONNING HAUS字样",
+        "scope": "lettering",
+        "scope_zh": "字样",
+        "parent": "gold_sign",
+        "parent_zh": "金字牌",
+        "payload": "",
+        "instruction_zh": "移除金色RONNING HAUS字样。",
+        "instruction_noref_zh": "移除选中的字样。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the large black-framed arched window near the lower right",
+        "ref_zh": "右下方附近的大黑框拱窗",
+        "scope": "window",
+        "scope_zh": "拱窗",
+        "parent": "arched_building",
+        "parent_zh": "拱窗楼",
+        "payload": "a small white OPEN decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方附近的大黑框拱窗加上一张小白色OPEN贴花。",
+        "instruction_noref_zh": "在选中的拱窗加上一张小白色OPEN贴花。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the vertical hanging banner at the right",
+        "ref_zh": "右侧竖直悬挂的条幅",
+        "scope": "banner",
+        "scope_zh": "条幅",
+        "parent": "hanging_banner",
+        "parent_zh": "悬挂条幅",
+        "payload": "a burgundy banner reading HOTEL",
+        "instruction_zh": "将右侧竖直悬挂的条幅替换为一条写有HOTEL的酒红色条幅。",
+        "instruction_noref_zh": "将选中的条幅替换为一条写有HOTEL的酒红色条幅。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6027797",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bb114a7bdd718b69c74eae9868d5e8e173dededb33bda09228ca632ecf22bd6c",
+    "review_card_sha256": "4606164a2eb87ae291ce34eb71c262e76dddf3b4d372f00d14441b73bb3453cd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0右花盆、5和7独立躺椅、16灯杆四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "repetition",
+        "reflection"
+      ],
+      "scene_zh": "阴天泳池与躺椅",
+      "evidence_zh": "0右花盆、5和7独立躺椅、16灯杆四父对象。",
+      "specific_protection_zh": "保留泳池、水面、树木和城市天际线。"
+    },
+    "protected_content_zh": "保留泳池、水面、树木和城市天际线。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the large dark planter at the far right",
+        "ref_zh": "最右侧的大深色花盆",
+        "scope": "planter",
+        "scope_zh": "花盆",
+        "parent": "right_planter",
+        "parent_zh": "右盆",
+        "payload": "terracotta orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧的大深色花盆的颜色改为陶土橙色。",
+        "instruction_noref_zh": "将选中的花盆的颜色改为陶土橙色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the left of the two lounge chairs between the large planters at the right",
+        "ref_zh": "右侧大花盆之间两把躺椅中的左边一把",
+        "scope": "lounge chair",
+        "scope_zh": "躺椅",
+        "parent": "right_chair",
+        "parent_zh": "右椅",
+        "payload": "",
+        "instruction_zh": "移除右侧大花盆之间两把躺椅中的左边一把。",
+        "instruction_noref_zh": "移除选中的躺椅。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the right of the two lounge chairs between the large planters at the right",
+        "ref_zh": "右侧大花盆之间两把躺椅中的右边一把",
+        "scope": "lounge chair",
+        "scope_zh": "躺椅",
+        "parent": "back_chair",
+        "parent_zh": "后椅",
+        "payload": "a white wooden sun lounger",
+        "instruction_zh": "将右侧大花盆之间两把躺椅中的右边一把替换为一把白色木制躺椅。",
+        "instruction_noref_zh": "将选中的躺椅替换为一把白色木制躺椅。"
+      },
+      {
+        "object_id": 16,
+        "operation": "add",
+        "ref": "the tall lamppost near the center of the far pool edge",
+        "ref_zh": "泳池远侧边缘中间附近的高灯柱",
+        "scope": "lamppost",
+        "scope_zh": "灯柱",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "a small blue POOL sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在泳池远侧边缘中间附近的高灯柱加上一块小蓝色POOL牌。",
+        "instruction_noref_zh": "在选中的灯柱加上一块小蓝色POOL牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

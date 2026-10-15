@@ -1,0 +1,160 @@
+{
+  "source_id": "sa_11017973",
+  "reason_zh": "放大全图后确认蓝上衣人物戴浅色帽，并非蓝头巾；改用后轮定位。原mask保留手臂和前景头巾的遮挡。",
+  "previous_record": {
+    "source_id": "sa_11017973",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e7d5e35188b02ba19b144fbef28a4294e9345d1dbc33e0f3da02acfe5c6f88cf",
+    "review_card_sha256": "c77a0ded2279e9abe3d7dd805c3a6e4241bb692c32c16542c4e7589eb292127e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "29为左前地面透明废瓶，64为水罐车车门，51为摩托后方蓝头巾人物的蓝上衣可见肩部。不用含整个人的33当单独头巾。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "取水街景的水罐车、路面塑料瓶和衣物",
+      "evidence_zh": "29为左前地面透明废瓶，64为水罐车车门，51为摩托后方蓝头巾人物的蓝上衣可见肩部。不用含整个人的33当单独头巾。",
+      "specific_protection_zh": "保留人物皮肤和头巾、摩托车、水桶、建筑及其他车辆。"
+    },
+    "protected_content_zh": "保留人物皮肤和头巾、摩托车、水桶、建筑及其他车辆。",
+    "targets": [
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the discarded bottle at the lower left",
+        "ref_zh": "左下方丢弃的塑料瓶",
+        "scope": "bottle",
+        "scope_zh": "塑料瓶",
+        "parent": "discarded_bottle",
+        "parent_zh": "废弃塑料瓶",
+        "payload": "",
+        "instruction_zh": "移除左下方丢弃的塑料瓶。",
+        "instruction_noref_zh": "移除选中的塑料瓶。"
+      },
+      {
+        "object_id": 64,
+        "operation": "add",
+        "ref": "the tanker truck’s door",
+        "ref_zh": "水罐车的车门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "tanker_truck",
+        "parent_zh": "水罐车",
+        "payload": "a small blue water-drop decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在水罐车的车门加上一张蓝色小水滴贴纸。",
+        "instruction_noref_zh": "在选中的车门加上一张蓝色小水滴贴纸。"
+      },
+      {
+        "object_id": 51,
+        "operation": "attribute",
+        "ref": "the blue-headscarf wearer’s blue shirt",
+        "ref_zh": "戴蓝色头巾者的蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "blue_headscarf_person",
+        "parent_zh": "蓝头巾人物",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将戴蓝色头巾者的蓝色上衣的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为鼠尾草绿。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_11017973",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e7d5e35188b02ba19b144fbef28a4294e9345d1dbc33e0f3da02acfe5c6f88cf",
+    "review_card_sha256": "c77a0ded2279e9abe3d7dd805c3a6e4241bb692c32c16542c4e7589eb292127e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "29为左前地面透明废瓶，64为水罐车车门，51为摩托后方戴浅色帽的人物的蓝上衣可见肩部。不用含整个人的33当单独头巾。 全图定位复核：放大全图后确认蓝上衣人物戴浅色帽，并非蓝头巾；改用后轮定位。原mask保留手臂和前景头巾的遮挡。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "取水街景的水罐车、路面塑料瓶和衣物",
+      "evidence_zh": "29为左前地面透明废瓶，64为水罐车车门，51为摩托后方戴浅色帽的人物的蓝上衣可见肩部。不用含整个人的33当单独头巾。 全图定位复核：放大全图后确认蓝上衣人物戴浅色帽，并非蓝头巾；改用后轮定位。原mask保留手臂和前景头巾的遮挡。",
+      "specific_protection_zh": "保留人物皮肤和头巾、摩托车、水桶、建筑及其他车辆。"
+    },
+    "protected_content_zh": "保留人物皮肤和头巾、摩托车、水桶、建筑及其他车辆。",
+    "targets": [
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the discarded bottle at the lower left",
+        "ref_zh": "左下方丢弃的塑料瓶",
+        "scope": "bottle",
+        "scope_zh": "塑料瓶",
+        "parent": "discarded_bottle",
+        "parent_zh": "废弃塑料瓶",
+        "payload": "",
+        "instruction_zh": "移除左下方丢弃的塑料瓶。",
+        "instruction_noref_zh": "移除选中的塑料瓶。"
+      },
+      {
+        "object_id": 64,
+        "operation": "add",
+        "ref": "the tanker truck’s door",
+        "ref_zh": "水罐车的车门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "tanker_truck",
+        "parent_zh": "水罐车",
+        "payload": "a small blue water-drop decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在水罐车的车门加上一张蓝色小水滴贴纸。",
+        "instruction_noref_zh": "在选中的车门加上一张蓝色小水滴贴纸。"
+      },
+      {
+        "object_id": 51,
+        "operation": "attribute",
+        "ref": "the blue shirt beside the tanker’s rear wheel",
+        "ref_zh": "水罐车后轮旁的蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "blue_shirt_person",
+        "parent_zh": "后轮旁蓝上衣人物",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将水罐车后轮旁的蓝色上衣的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为鼠尾草绿。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_11017973/identity_followup.jpg",
+        "sha256": "b6b056c73bf99397a7ca440f705314aa643f9143f86d10d95f2c16997e57432b"
+      },
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_11017973/sleeve_followup2.jpg",
+        "sha256": "27fc462553ec4c18b1a0fa5c12bf96a0cb015b8a8ea0db348da9dddcc43b7a67"
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "source_id": "sa_10850788",
+  "reason_zh": "雪景里球形路灯不止一盏，用前景两棵白桦定位长凳、灯与较细树干，减少ref-only歧义。",
+  "previous_record": {
+    "source_id": "sa_10850788",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c0e692d36c37e177643d44d1e21900937e448572f67ed79609b704b5f653cf03",
+    "review_card_sha256": "f5f4c136c520c43d44dce06af493841910baa1c5f8f1d7af8e46a12974604b5b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为左中靠前完整球形路灯，35为其下方长雪凳，12为路灯紧右侧白桦树干。独立灯具、长凳和树分开；不选出画的5或含整块背景的窗户。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "雪中公园的路灯、长凳与树干",
+      "evidence_zh": "2为左中靠前完整球形路灯，35为其下方长雪凳，12为路灯紧右侧白桦树干。独立灯具、长凳和树分开；不选出画的5或含整块背景的窗户。",
+      "specific_protection_zh": "保留雪地、其他长凳、树枝、建筑和冬日光照。"
+    },
+    "protected_content_zh": "保留雪地、其他长凳、树枝、建筑和冬日光照。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the globe streetlamp beside the foreground birch",
+        "ref_zh": "前景白桦旁的球形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "foreground_lamp",
+        "parent_zh": "前景球形路灯",
+        "payload": "a black lantern-style streetlamp",
+        "instruction_zh": "将前景白桦旁的球形路灯替换为一盏黑色灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色灯笼式路灯。"
+      },
+      {
+        "object_id": 35,
+        "operation": "remove",
+        "ref": "the long snow-covered bench below the globe streetlamp",
+        "ref_zh": "球形路灯下方覆雪的长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "long_bench",
+        "parent_zh": "覆雪长凳",
+        "payload": "",
+        "instruction_zh": "移除球形路灯下方覆雪的长凳。",
+        "instruction_noref_zh": "移除选中的长凳。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the birch trunk immediately right of the globe streetlamp",
+        "ref_zh": "球形路灯紧右侧的白桦树干",
+        "scope": "tree trunk",
+        "scope_zh": "树干",
+        "parent": "birch_tree",
+        "parent_zh": "白桦树",
+        "payload": "a small wooden bird feeder",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在球形路灯紧右侧的白桦树干加上一个小木制喂鸟器。",
+        "instruction_noref_zh": "在选中的树干加上一个小木制喂鸟器。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10850788",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c0e692d36c37e177643d44d1e21900937e448572f67ed79609b704b5f653cf03",
+    "review_card_sha256": "f5f4c136c520c43d44dce06af493841910baa1c5f8f1d7af8e46a12974604b5b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为左中靠前完整球形路灯，35为其下方长雪凳，12为路灯紧右侧白桦树干。独立灯具、长凳和树分开；不选出画的5或含整块背景的窗户。 全图定位复核：雪景里球形路灯不止一盏，用前景两棵白桦定位长凳、灯与较细树干，减少ref-only歧义。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "雪中公园的路灯、长凳与树干",
+      "evidence_zh": "2为左中靠前完整球形路灯，35为其下方长雪凳，12为路灯紧右侧白桦树干。独立灯具、长凳和树分开；不选出画的5或含整块背景的窗户。 全图定位复核：雪景里球形路灯不止一盏，用前景两棵白桦定位长凳、灯与较细树干，减少ref-only歧义。",
+      "specific_protection_zh": "保留雪地、其他长凳、树枝、建筑和冬日光照。"
+    },
+    "protected_content_zh": "保留雪地、其他长凳、树枝、建筑和冬日光照。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the globe streetlamp just left of the foreground birches",
+        "ref_zh": "前景白桦紧左侧的球形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "foreground_lamp",
+        "parent_zh": "前景球形路灯",
+        "payload": "a black lantern-style streetlamp",
+        "instruction_zh": "将前景白桦紧左侧的球形路灯替换为一盏黑色灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色灯笼式路灯。"
+      },
+      {
+        "object_id": 35,
+        "operation": "remove",
+        "ref": "the long bench just left of the two foreground birches",
+        "ref_zh": "前景两棵白桦紧左侧的长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "long_bench",
+        "parent_zh": "覆雪长凳",
+        "payload": "",
+        "instruction_zh": "移除前景两棵白桦紧左侧的长凳。",
+        "instruction_noref_zh": "移除选中的长凳。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the thinner of the two foreground birch trunks",
+        "ref_zh": "前景两棵白桦中较细的树干",
+        "scope": "tree trunk",
+        "scope_zh": "树干",
+        "parent": "birch_tree",
+        "parent_zh": "白桦树",
+        "payload": "a small wooden bird feeder",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景两棵白桦中较细的树干加上一个小木制喂鸟器。",
+        "instruction_noref_zh": "在选中的树干加上一个小木制喂鸟器。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

@@ -1,0 +1,575 @@
+[
+  {
+    "source_id": "sa_1471745",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "95d31bf1cb9024a952fdddd61f681a5fc45132d4b973d9a6e469498277ea3f64",
+    "review_card_sha256": "59a391f576fa1533e7e16e79dc965d065d6d6b24747512da2e2eb1b885990051",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为圆形禁停牌，68为左侧栅栏后的黑车，91为楼右侧竖排字牌。避开同楼多个窗户、同杆多个牌拆分。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "街边办公楼和交通标识",
+      "evidence_zh": "2为圆形禁停牌，68为左侧栅栏后的黑车，91为楼右侧竖排字牌。避开同楼多个窗户、同杆多个牌拆分。",
+      "specific_protection_zh": "保留栅栏、车前杆件、建筑、行人、路面和其余标识。"
+    },
+    "protected_content_zh": "保留栅栏、车前杆件、建筑、行人、路面和其余标识。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the circular no-parking sign",
+        "ref_zh": "圆形禁停标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "no_parking_sign",
+        "parent_zh": "禁停牌",
+        "payload": "a thin reflective border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在圆形禁停标志加上一圈细反光边。",
+        "instruction_noref_zh": "在选中的标志加上一圈细反光边。"
+      },
+      {
+        "object_id": 68,
+        "operation": "replace",
+        "ref": "the black car behind the fence on the left",
+        "ref_zh": "左侧栅栏后的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "left_car",
+        "parent_zh": "左黑车",
+        "payload": "a silver hatchback",
+        "instruction_zh": "将左侧栅栏后的黑色汽车替换为一辆银色两厢车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆银色两厢车。"
+      },
+      {
+        "object_id": 91,
+        "operation": "remove",
+        "ref": "the vertical sign on the building’s right side",
+        "ref_zh": "建筑右侧的竖排招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "vertical_sign",
+        "parent_zh": "竖招牌",
+        "payload": "",
+        "instruction_zh": "移除建筑右侧的竖排招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1473610",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b599799631d5f03c48c0e033374db1e5983e5f95e3717b24df272e7fe44b0199",
+    "review_card_sha256": "9b7b24a4e996cbeab178b8904fbea77490c56df6db01b151cb425241e9d9f800",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最近银色厢车，3为其左后方白车，14为Panasonic蓝招牌。两车与独立商铺牌，遮挡保持。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "三轮车街道和商铺",
+      "evidence_zh": "1为最近银色厢车，3为其左后方白车，14为Panasonic蓝招牌。两车与独立商铺牌，遮挡保持。",
+      "specific_protection_zh": "保留司机、行人、三轮车、其他招牌和街道透视。"
+    },
+    "protected_content_zh": "保留司机、行人、三轮车、其他招牌和街道透视。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the nearest silver van",
+        "ref_zh": "最近的银色厢车",
+        "scope": "van",
+        "scope_zh": "厢车",
+        "parent": "silver_van",
+        "parent_zh": "银厢车",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的银色厢车加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的厢车加上一个车顶行李架。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the white car behind the silver van",
+        "ref_zh": "银色厢车后方的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "rear_white_car",
+        "parent_zh": "后方白车",
+        "payload": "",
+        "instruction_zh": "移除银色厢车后方的白色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the blue Panasonic sign on the left",
+        "ref_zh": "左侧蓝色Panasonic招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "panasonic_sign",
+        "parent_zh": "蓝招牌",
+        "payload": "a green electronics-shop sign",
+        "instruction_zh": "将左侧蓝色Panasonic招牌替换为一块绿色电器店招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块绿色电器店招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1480664",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c4d04192b4f229e5c5077b90784f34e14cd1280bf8c8ff96a4219a8a49e7c3ef",
+    "review_card_sha256": "a872d1afc0a0353028615bd06368ecea846d993d1cfa68fa1542f982e6f619f6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为前景大红旗，4为旗右侧人物红裤，6为旗左侧男子印花黑T恤，76为更左侧人物背包。裤与上衣来自不同人物。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "广场旗帜和行人",
+      "evidence_zh": "0为前景大红旗，4为旗右侧人物红裤，6为旗左侧男子印花黑T恤，76为更左侧人物背包。裤与上衣来自不同人物。",
+      "specific_protection_zh": "保留人物身体、姿态、鞋、其他旗帜、建筑和原有遮挡。"
+    },
+    "protected_content_zh": "保留人物身体、姿态、鞋、其他旗帜、建筑和原有遮挡。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the large red flag in the foreground",
+        "ref_zh": "前景的大红旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "large_flag",
+        "parent_zh": "大红旗",
+        "payload": "",
+        "instruction_zh": "移除前景的大红旗。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the red trousers just right of the large flag",
+        "ref_zh": "大旗右侧的红色裤子",
+        "scope": "trousers",
+        "scope_zh": "裤子",
+        "parent": "red_trousers_person",
+        "parent_zh": "红裤人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将大旗右侧的红色裤子的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的裤子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the black printed T-shirt just left of the large flag",
+        "ref_zh": "大旗左侧的黑色印花T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "black_shirt_person",
+        "parent_zh": "黑T恤人物",
+        "payload": "a plain white cotton T-shirt",
+        "instruction_zh": "将大旗左侧的黑色印花T恤替换为一件纯白棉T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯白棉T恤。"
+      },
+      {
+        "object_id": 76,
+        "operation": "add",
+        "ref": "the black backpack with white lettering on the left",
+        "ref_zh": "左侧带白字的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "lettered_backpack",
+        "parent_zh": "白字背包",
+        "payload": "a small reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧带白字的黑色背包加上一条小反光条。",
+        "instruction_noref_zh": "在选中的背包加上一条小反光条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1481159",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d3921d1a86256e90abe4329591511e744bf2a1483a541e6606865ff0c9aca8a2",
+    "review_card_sha256": "e3ed6530fd1cea9d7c7ce06a8b1dc85187c132c52b4245307b70af1e4ec7d207",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为右侧站立者白衬衫，5为左侧人物脚旁桶，38为右侧弯腰者左边白塑料垃圾。仅设计衣物及杂物的常规修改，不改变火堆或仪式内容。",
+    "difficulty": {
+      "mechanisms": [
+        "smoke",
+        "occlusion"
+      ],
+      "scene_zh": "河岸人物衣物与日常物件",
+      "evidence_zh": "3为右侧站立者白衬衫，5为左侧人物脚旁桶，38为右侧弯腰者左边白塑料垃圾。仅设计衣物及杂物的常规修改，不改变火堆或仪式内容。",
+      "specific_protection_zh": "保留人物、烟雾、木堆、火焰、船只和河岸现场。"
+    },
+    "protected_content_zh": "保留人物、烟雾、木堆、火焰、船只和河岸现场。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the standing man’s white shirt on the right",
+        "ref_zh": "右侧站立男子的白衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "right_standing_man",
+        "parent_zh": "右站立男子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧站立男子的白衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the bucket beside the left man’s feet",
+        "ref_zh": "左侧男子脚边的桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "left_bucket",
+        "parent_zh": "左桶",
+        "payload": "a red plastic bucket",
+        "instruction_zh": "将左侧男子脚边的桶替换为一个红色塑料桶。",
+        "instruction_noref_zh": "将选中的桶替换为一个红色塑料桶。"
+      },
+      {
+        "object_id": 38,
+        "operation": "remove",
+        "ref": "the white plastic litter left of the bent-over man",
+        "ref_zh": "弯腰男子左侧的白色塑料垃圾",
+        "scope": "litter",
+        "scope_zh": "垃圾",
+        "parent": "white_litter",
+        "parent_zh": "白垃圾",
+        "payload": "",
+        "instruction_zh": "移除弯腰男子左侧的白色塑料垃圾。",
+        "instruction_noref_zh": "移除选中的垃圾。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1490608",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6f592352653139ae5c050eacb84d8ad8cf5ba25abd8327657d472e4761bf8841",
+    "review_card_sha256": "c09f582f091b9fc6877e7ae9b27c8dfaeabd8bd5d0619f40c9ab4eb2b2ae482e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "33为机鼻下方狭长红色涂装线，36为右下前景黄色标牌。飞机只取一处涂装，不拆发动机、轮胎和机翼来凑多父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "blur"
+      ],
+      "scene_zh": "正面客机与滑行道标牌",
+      "evidence_zh": "33为机鼻下方狭长红色涂装线，36为右下前景黄色标牌。飞机只取一处涂装，不拆发动机、轮胎和机翼来凑多父对象。",
+      "specific_protection_zh": "保留飞机结构、轮胎、窗户、驾驶员、其他涂装和机场环境。"
+    },
+    "protected_content_zh": "保留飞机结构、轮胎、窗户、驾驶员、其他涂装和机场环境。",
+    "targets": [
+      {
+        "object_id": 33,
+        "operation": "attribute",
+        "ref": "the red stripe along the lower nose of the plane",
+        "ref_zh": "飞机机鼻下沿的红色条纹",
+        "scope": "stripe",
+        "scope_zh": "条纹",
+        "parent": "airplane",
+        "parent_zh": "飞机",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将飞机机鼻下沿的红色条纹的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的条纹的颜色改为蓝色。"
+      },
+      {
+        "object_id": 36,
+        "operation": "replace",
+        "ref": "the yellow taxiway sign at the lower right",
+        "ref_zh": "右下方的黄色滑行道标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "taxiway_sign",
+        "parent_zh": "滑行道牌",
+        "payload": "a yellow taxiway sign reading “T2”",
+        "instruction_zh": "将右下方的黄色滑行道标牌替换为一块写着“T2”的黄色滑行道标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写着“T2”的黄色滑行道标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1491783",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d649462f378c831fa4a8fe2105f6ffd9711da1a4fe46bdfb38558f9719196b55",
+    "review_card_sha256": "3a61f407fb64b91d5ace18b4a4a8b218e5d00c037634d006a3058b4cc44b3ce5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为前景戴口罩男子黑T恤，13为右边缘人物独立米色肩包，27为右侧麦当劳招牌，12为入口雨棚。包虽然截断仍可准确指代并局部加贴。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "truncation",
+        "neighbor_protection"
+      ],
+      "scene_zh": "地铁入口前人群和店牌",
+      "evidence_zh": "8为前景戴口罩男子黑T恤，13为右边缘人物独立米色肩包，27为右侧麦当劳招牌，12为入口雨棚。包虽然截断仍可准确指代并局部加贴。",
+      "specific_protection_zh": "保留脸、手、口罩、包带、地铁字牌、建筑结构和其他行人。"
+    },
+    "protected_content_zh": "保留脸、手、口罩、包带、地铁字牌、建筑结构和其他行人。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the foreground masked man’s black T-shirt",
+        "ref_zh": "前景戴口罩男子的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "masked_man",
+        "parent_zh": "口罩男子",
+        "payload": "a white polo shirt",
+        "instruction_zh": "将前景戴口罩男子的黑色T恤替换为一件白色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件白色Polo衫。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the beige shoulder bag at the right edge",
+        "ref_zh": "右边缘的米色肩包",
+        "scope": "bag",
+        "scope_zh": "肩包",
+        "parent": "right_beige_bag",
+        "parent_zh": "右米色包",
+        "payload": "a small flower patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右边缘的米色肩包加上一块小花贴布。",
+        "instruction_noref_zh": "在选中的肩包加上一块小花贴布。"
+      },
+      {
+        "object_id": 27,
+        "operation": "remove",
+        "ref": "the McDonald’s sign on the right",
+        "ref_zh": "右侧的麦当劳招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "mcdonald_sign",
+        "parent_zh": "麦当劳牌",
+        "payload": "",
+        "instruction_zh": "移除右侧的麦当劳招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the canopy over the metro entrance",
+        "ref_zh": "地铁入口上方的雨棚",
+        "scope": "canopy",
+        "scope_zh": "雨棚",
+        "parent": "metro_entrance",
+        "parent_zh": "地铁入口",
+        "payload": "charcoal gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将地铁入口上方的雨棚的颜色改为炭灰色。",
+        "instruction_noref_zh": "将选中的雨棚的颜色改为炭灰色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1499927",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b09f4dda31b0633fe4a6bd51ee459513bc8299893d48003e4650adc4a45ed3ff",
+    "review_card_sha256": "ebc57b5c0d0eb1214e7ed1e93837994cb5e1eb461a3a0d332ae4e6d3538292be",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2和3分别是左、右滴管瓶，13是瓶下托盘可见表面。两瓶独立、托盘归摆件整体，只取一个摆件部件。不把瓶盖和瓶标重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion"
+      ],
+      "scene_zh": "外星人摆件托盘上的两瓶产品",
+      "evidence_zh": "2和3分别是左、右滴管瓶，13是瓶下托盘可见表面。两瓶独立、托盘归摆件整体，只取一个摆件部件。不把瓶盖和瓶标重复计数。",
+      "specific_protection_zh": "保留摆件面部、手指、背景虚化、托盘承托关系和其余物件。"
+    },
+    "protected_content_zh": "保留摆件面部、手指、背景虚化、托盘承托关系和其余物件。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the left dropper bottle",
+        "ref_zh": "左侧的滴管瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "left_bottle",
+        "parent_zh": "左瓶",
+        "payload": "",
+        "instruction_zh": "移除左侧的滴管瓶。",
+        "instruction_noref_zh": "移除选中的瓶子。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the right dropper bottle",
+        "ref_zh": "右侧的滴管瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "right_bottle",
+        "parent_zh": "右瓶",
+        "payload": "a small amber perfume bottle",
+        "instruction_zh": "将右侧的滴管瓶替换为一个琥珀色小香水瓶。",
+        "instruction_noref_zh": "将选中的瓶子替换为一个琥珀色小香水瓶。"
+      },
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the tray held by the alien figurine",
+        "ref_zh": "外星人摆件托着的托盘",
+        "scope": "tray",
+        "scope_zh": "托盘",
+        "parent": "alien_figurine",
+        "parent_zh": "外星人摆件",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将外星人摆件托着的托盘的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的托盘的颜色改为深蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1518260",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c6fcef54884c2fd6e87597e6bf2ea8b6e007648b15f2cfde05dd22613a7fbdad",
+    "review_card_sha256": "3f480f9a6b869eef79283a435715c053ca80ee8ad0a0a0b98afa3de35284209e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "21为右前景坐者深色衬衫，79为中央后方MC大锅，32为右墙蓝白牌。避开盛饭的纸盘和人物头部，保留分餐动作。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "院内分餐场景的衣物锅和墙牌",
+      "evidence_zh": "21为右前景坐者深色衬衫，79为中央后方MC大锅，32为右墙蓝白牌。避开盛饭的纸盘和人物头部，保留分餐动作。",
+      "specific_protection_zh": "保留所有人物、食品、餐盘、手套、窗户和分餐动作。"
+    },
+    "protected_content_zh": "保留所有人物、食品、餐盘、手套、窗户和分餐动作。",
+    "targets": [
+      {
+        "object_id": 21,
+        "operation": "attribute",
+        "ref": "the nearest seated man’s dark shirt",
+        "ref_zh": "最近坐着的男子的深色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "front_seated_man",
+        "parent_zh": "前坐男子",
+        "payload": "olive green",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近坐着的男子的深色衬衫的颜色改为橄榄绿。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为橄榄绿。"
+      },
+      {
+        "object_id": 79,
+        "operation": "replace",
+        "ref": "the large metal pot marked “MC”",
+        "ref_zh": "标着“MC”的大金属锅",
+        "scope": "pot",
+        "scope_zh": "锅",
+        "parent": "mc_pot",
+        "parent_zh": "MC锅",
+        "payload": "a black stockpot",
+        "instruction_zh": "将标着“MC”的大金属锅替换为一口黑色汤锅。",
+        "instruction_noref_zh": "将选中的锅替换为一口黑色汤锅。"
+      },
+      {
+        "object_id": 32,
+        "operation": "add",
+        "ref": "the blue-and-white sign on the right wall",
+        "ref_zh": "右侧墙上的蓝白标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "wall_sign",
+        "parent_zh": "墙牌",
+        "payload": "a narrow wooden frame",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧墙上的蓝白标牌加上一圈窄木框。",
+        "instruction_noref_zh": "在选中的标牌加上一圈窄木框。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,155 @@
+{
+  "source_id": "sa_10631376",
+  "reason_zh": "全量校验发现相邻衣服mask交叠，重新选择无交叠的独立人物大衣。",
+  "previous_record": {
+    "source_id": "sa_10631376",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8dd042255982c959d8e454f2c498e8a3329d67c1ef8ce376108be0b631d4c4a1",
+    "review_card_sha256": "0cb65deac095bf5f1d746cbfdc9deaa24d3e7ff540fe500ebec73885f12be33a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "83是蓝外套左侧举手游客的黑外套，84是唯一鲜蓝外套；146是红兜帽游客背包的可见包身，不是整个人。三个目标都靠近下边缘，保持原有裁切和遮挡，不把细部衣物改成整个人任务。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "教堂广场前景的游客外套与背包",
+      "evidence_zh": "83是蓝外套左侧举手游客的黑外套，84是唯一鲜蓝外套；146是红兜帽游客背包的可见包身，不是整个人。三个目标都靠近下边缘，保持原有裁切和遮挡，不把细部衣物改成整个人任务。",
+      "specific_protection_zh": "保留游客头发、皮肤、兜帽、背包带及教堂。"
+    },
+    "protected_content_zh": "保留游客头发、皮肤、兜帽、背包带及教堂。",
+    "targets": [
+      {
+        "object_id": 83,
+        "operation": "replace",
+        "ref": "the black jacket immediately left of the blue jacket",
+        "ref_zh": "蓝外套紧邻左侧的黑外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "raised_arm_tourist",
+        "parent_zh": "举手游客",
+        "payload": "a red raincoat",
+        "instruction_zh": "将蓝外套紧邻左侧的黑外套替换为一件红色雨衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件红色雨衣。"
+      },
+      {
+        "object_id": 84,
+        "operation": "add",
+        "ref": "the bright blue jacket in the foreground",
+        "ref_zh": "前景的鲜蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "blue_jacket_person",
+        "parent_zh": "蓝外套游客",
+        "payload": "a small white star patch",
+        "placement": {
+          "relation": "sewn onto",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的鲜蓝色外套加上一枚小白星布贴。",
+        "instruction_noref_zh": "在选中的外套加上一枚小白星布贴。"
+      },
+      {
+        "object_id": 146,
+        "operation": "attribute",
+        "ref": "the backpack on the red-hooded tourist",
+        "ref_zh": "红兜帽游客的背包",
+        "scope": "backpack body",
+        "scope_zh": "背包包身",
+        "parent": "backpack",
+        "parent_zh": "红兜帽游客背包",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将红兜帽游客的背包的颜色改为森林绿色。",
+        "instruction_noref_zh": "将选中的背包包身的颜色改为森林绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10631376",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8dd042255982c959d8e454f2c498e8a3329d67c1ef8ce376108be0b631d4c4a1",
+    "review_card_sha256": "0cb65deac095bf5f1d746cbfdc9deaa24d3e7ff540fe500ebec73885f12be33a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "89是蓝外套右侧游客的深色大衣，84是唯一鲜蓝外套；146是红兜帽游客背包的可见包身。原拟83与84的原始mask交叠4.417%，超过4%上限，保留原mask而改选89；89与84、146均无交叠。所有目标保持原有裁切和遮挡。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "教堂广场前景的游客外套与背包",
+      "evidence_zh": "89是蓝外套右侧游客的深色大衣，84是唯一鲜蓝外套；146是红兜帽游客背包的可见包身。原拟83与84的原始mask交叠4.417%，超过4%上限，保留原mask而改选89；89与84、146均无交叠。所有目标保持原有裁切和遮挡。",
+      "specific_protection_zh": "保留游客头发、皮肤、兜帽、背包带及教堂。"
+    },
+    "protected_content_zh": "保留游客头发、皮肤、兜帽、背包带及教堂。",
+    "targets": [
+      {
+        "object_id": 89,
+        "operation": "replace",
+        "ref": "the dark coat to the right of the blue jacket",
+        "ref_zh": "蓝外套右侧的深色大衣",
+        "scope": "coat",
+        "scope_zh": "大衣",
+        "parent": "right_coat_tourist",
+        "parent_zh": "右侧深色大衣游客",
+        "payload": "a red raincoat",
+        "instruction_zh": "将蓝外套右侧的深色大衣替换为一件红色雨衣。",
+        "instruction_noref_zh": "将选中的大衣替换为一件红色雨衣。"
+      },
+      {
+        "object_id": 84,
+        "operation": "add",
+        "ref": "the bright blue jacket in the foreground",
+        "ref_zh": "前景的鲜蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "blue_jacket_person",
+        "parent_zh": "蓝外套游客",
+        "payload": "a small white star patch",
+        "placement": {
+          "relation": "sewn onto",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的鲜蓝色外套加上一枚小白星布贴。",
+        "instruction_noref_zh": "在选中的外套加上一枚小白星布贴。"
+      },
+      {
+        "object_id": 146,
+        "operation": "attribute",
+        "ref": "the backpack on the red-hooded tourist",
+        "ref_zh": "红兜帽游客的背包",
+        "scope": "backpack body",
+        "scope_zh": "背包包身",
+        "parent": "backpack",
+        "parent_zh": "红兜帽游客背包",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将红兜帽游客的背包的颜色改为森林绿色。",
+        "instruction_noref_zh": "将选中的背包包身的颜色改为森林绿色。"
+      }
+    ],
+    "rejected_targets": [
+      {
+        "object_id": 83,
+        "reason_zh": "与84的原始mask交叠占较小mask的4.417%，不裁剪mask、不放宽4%阈值，改选视觉可辨的89。"
+      }
+    ]
+  }
+}

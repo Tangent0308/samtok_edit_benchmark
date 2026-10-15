@@ -1,0 +1,150 @@
+{
+  "source_id": "sa_10771932",
+  "reason_zh": "放大原图确认黑色部分是罩在紫裙外的围裙，纠正服装名称。",
+  "previous_record": {
+    "source_id": "sa_10771932",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d70bdba9a491665f4c4aef719e1cfb602f80ddeb5efba75f0588d153103f399e",
+    "review_card_sha256": "fbc9dd0e8117dcfcb4e48867f16cdef6b3a185337793c9f2dcdbcd76998bd8e1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15为左车金属篮，34为右车把手区域，25为左侧人物的黑裙部位。两辆车和左侧人物为三个不同父实体；不使用把轮内背景填满的整轮mask。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "两位骑滑行车的行人与车篮",
+      "evidence_zh": "15为左车金属篮，34为右车把手区域，25为左侧人物的黑裙部位。两辆车和左侧人物为三个不同父实体；不使用把轮内背景填满的整轮mask。",
+      "specific_protection_zh": "保留人物皮肤、头巾、车轮、车架和道路。"
+    },
+    "protected_content_zh": "保留人物皮肤、头巾、车轮、车架和道路。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the left scooter’s wire basket",
+        "ref_zh": "左侧滑行车的铁丝篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "left_scooter",
+        "parent_zh": "左侧滑行车",
+        "payload": "a wicker basket",
+        "instruction_zh": "将左侧滑行车的铁丝篮替换为一个藤编篮子。",
+        "instruction_noref_zh": "将选中的篮子替换为一个藤编篮子。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the right scooter’s handlebar",
+        "ref_zh": "右侧滑行车的车把",
+        "scope": "handlebar",
+        "scope_zh": "车把",
+        "parent": "right_scooter",
+        "parent_zh": "右侧滑行车",
+        "payload": "a small silver bell",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧滑行车的车把加上一个小银色车铃。",
+        "instruction_noref_zh": "在选中的车把加上一个小银色车铃。"
+      },
+      {
+        "object_id": 25,
+        "operation": "attribute",
+        "ref": "the left rider’s black skirt",
+        "ref_zh": "左侧骑行者的黑裙",
+        "scope": "skirt",
+        "scope_zh": "裙子",
+        "parent": "left_rider",
+        "parent_zh": "左侧骑行者",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧骑行者的黑裙的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的裙子的颜色改为深棕色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10771932",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d70bdba9a491665f4c4aef719e1cfb602f80ddeb5efba75f0588d153103f399e",
+    "review_card_sha256": "fbc9dd0e8117dcfcb4e48867f16cdef6b3a185337793c9f2dcdbcd76998bd8e1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15为左车金属篮，34为右车把手区域，25为左侧人物的黑裙部位。两辆车和左侧人物为三个不同父实体；不使用把轮内背景填满的整轮mask。 复核修订：放大原图确认黑色部分是罩在紫裙外的围裙，纠正服装名称。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "两位骑滑行车的行人与车篮",
+      "evidence_zh": "15为左车金属篮，34为右车把手区域，25为左侧人物的黑裙部位。两辆车和左侧人物为三个不同父实体；不使用把轮内背景填满的整轮mask。 复核修订：放大原图确认黑色部分是罩在紫裙外的围裙，纠正服装名称。",
+      "specific_protection_zh": "保留人物皮肤、头巾、车轮、车架和道路。"
+    },
+    "protected_content_zh": "保留人物皮肤、头巾、车轮、车架和道路。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the left scooter’s wire basket",
+        "ref_zh": "左侧滑行车的铁丝篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "left_scooter",
+        "parent_zh": "左侧滑行车",
+        "payload": "a wicker basket",
+        "instruction_zh": "将左侧滑行车的铁丝篮替换为一个藤编篮子。",
+        "instruction_noref_zh": "将选中的篮子替换为一个藤编篮子。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the right scooter’s handlebar",
+        "ref_zh": "右侧滑行车的车把",
+        "scope": "handlebar",
+        "scope_zh": "车把",
+        "parent": "right_scooter",
+        "parent_zh": "右侧滑行车",
+        "payload": "a small silver bell",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧滑行车的车把加上一个小银色车铃。",
+        "instruction_noref_zh": "在选中的车把加上一个小银色车铃。"
+      },
+      {
+        "object_id": 25,
+        "operation": "attribute",
+        "ref": "the left rider’s black apron",
+        "ref_zh": "左侧骑行者的黑色围裙",
+        "scope": "apron",
+        "scope_zh": "围裙",
+        "parent": "left_rider",
+        "parent_zh": "左侧骑行者",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧骑行者的黑色围裙的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的围裙的颜色改为深棕色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

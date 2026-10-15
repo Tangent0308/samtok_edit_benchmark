@@ -1,0 +1,649 @@
+[
+  {
+    "source_id": "sa_4751236",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "52f4e81ab2d231d41b16462f63fd34bbbb9a511e0401499f14b8055edc3c1caf",
+    "review_card_sha256": "8a6273ab0477b1bb41764d48b175a189d269cf321dfea3fe54e672af30910ad3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14后船波浪图、5前船下层窗、9右码头桩三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion",
+        "maritime"
+      ],
+      "scene_zh": "码头停泊双体船",
+      "evidence_zh": "14后船波浪图、5前船下层窗、9右码头桩三个父对象。",
+      "specific_protection_zh": "保留船体结构、码头、缆绳和水面。"
+    },
+    "protected_content_zh": "保留船体结构、码头、缆绳和水面。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the blue wave graphic on the larger ferry in the background",
+        "ref_zh": "背景较大渡船上的蓝色波浪图案",
+        "scope": "graphic",
+        "scope_zh": "图案",
+        "parent": "rear_ferry",
+        "parent_zh": "后渡船",
+        "payload": "",
+        "instruction_zh": "移除背景较大渡船上的蓝色波浪图案。",
+        "instruction_noref_zh": "移除选中的图案。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the lower row of windows on the SILVERSONIC boat",
+        "ref_zh": "SILVERSONIC船的下排窗户",
+        "scope": "windows",
+        "scope_zh": "窗户",
+        "parent": "front_boat",
+        "parent_zh": "前船",
+        "payload": "light blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将SILVERSONIC船的下排窗户的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅蓝色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the wooden dock piling beside the white boat’s bow",
+        "ref_zh": "白船船头旁的木码头桩",
+        "scope": "piling",
+        "scope_zh": "码头桩",
+        "parent": "dock",
+        "parent_zh": "码头",
+        "payload": "a small white number 3 plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在白船船头旁的木码头桩加上一块小白色数字3牌。",
+        "instruction_noref_zh": "在选中的码头桩加上一块小白色数字3牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4755044",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6d2d4078df35f2abe5688a0588a32074b55d67bd320434966aa7368b45482146",
+    "review_card_sha256": "52b1fb003b5389a34e8acaf649d58a44d544cc6f0508954fac448fee96096e92",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12远处白渡船、25灯头、47帽、30前木栏四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "水边节庆服装游客",
+      "evidence_zh": "12远处白渡船、25灯头、47帽、30前木栏四父对象。",
+      "specific_protection_zh": "保留游客身体、服装、灯杆、栈道和其他船只。"
+    },
+    "protected_content_zh": "保留游客身体、服装、灯杆、栈道和其他船只。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the white passenger ferry behind the wooden pilings",
+        "ref_zh": "木桩后方的白色客渡船",
+        "scope": "ferry",
+        "scope_zh": "渡船",
+        "parent": "white_ferry",
+        "parent_zh": "白渡船",
+        "payload": "",
+        "instruction_zh": "移除木桩后方的白色客渡船。",
+        "instruction_noref_zh": "移除选中的渡船。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the hanging lantern above the costumed visitor",
+        "ref_zh": "盛装游客上方的悬挂灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "hanging_lamp",
+        "parent_zh": "吊灯",
+        "payload": "a frosted-glass globe lamp",
+        "instruction_zh": "将盛装游客上方的悬挂灯笼替换为一盏磨砂玻璃球灯。",
+        "instruction_noref_zh": "将选中的灯笼替换为一盏磨砂玻璃球灯。"
+      },
+      {
+        "object_id": 47,
+        "operation": "attribute",
+        "ref": "the visitor’s black tricorn hat",
+        "ref_zh": "游客的黑色三角帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "visitor",
+        "parent_zh": "游客",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将游客的黑色三角帽的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为酒红色。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the wooden railing in front of the visitor",
+        "ref_zh": "游客前方的木栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "walkway",
+        "parent_zh": "栈道",
+        "payload": "a small brass number 8 plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在游客前方的木栏杆加上一块小型黄铜数字8牌。",
+        "instruction_noref_zh": "在选中的栏杆加上一块小型黄铜数字8牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4789458",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0331cba66ae6766863d314a0e8aeaa0fe0b17d720db61fb5de55e5571ee8ab04",
+    "review_card_sha256": "c11107403279f220eb7d08a9a18fa0c637d5fdd783653740d1e86f6de466739c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1近处后座头盔、6掉头牌、4中间护栏三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "motion_blur",
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "公路摩托车队",
+      "evidence_zh": "1近处后座头盔、6掉头牌、4中间护栏三个父对象。",
+      "specific_protection_zh": "保留骑手身体、摩托车、其他标识和道路。"
+    },
+    "protected_content_zh": "保留骑手身体、摩托车、其他标识和道路。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the black helmet on the nearest motorcycle passenger",
+        "ref_zh": "最近的摩托车后座乘客的黑色头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "near_passenger",
+        "parent_zh": "近乘客",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近的摩托车后座乘客的黑色头盔的颜色改为白色。",
+        "instruction_noref_zh": "将选中的头盔的颜色改为白色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the blue U-turn sign in the distance",
+        "ref_zh": "远处蓝色掉头标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "u_turn_sign",
+        "parent_zh": "掉头牌",
+        "payload": "",
+        "instruction_zh": "移除远处蓝色掉头标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the metal guardrail in the foreground",
+        "ref_zh": "前景的金属护栏",
+        "scope": "guardrail",
+        "scope_zh": "护栏",
+        "parent": "guardrail",
+        "parent_zh": "护栏",
+        "payload": "a small rectangular yellow reflector on its nearest section",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的金属护栏加上一枚位于最近一段的小矩形黄色反光片。",
+        "instruction_noref_zh": "在选中的护栏加上一枚位于最近一段的小矩形黄色反光片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4791630",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3376f3aab48d7c51cbabe64c605208bfbfba7bfdf7ac10e3dce75b3b83b9c015",
+    "review_card_sha256": "eb496008e9eeba708c57ce0b0eb0c25c4d129973295d803714fc67aed95cf989",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0粉框海报、1桌后椅、13墙控器、36柜台托盘四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "interior",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "咖啡店霓虹角落",
+      "evidence_zh": "0粉框海报、1桌后椅、13墙控器、36柜台托盘四父对象。",
+      "specific_protection_zh": "保留霓虹字、植物、桌子和店面。"
+    },
+    "protected_content_zh": "保留霓虹字、植物、桌子和店面。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the framed pink poster below the neon sign",
+        "ref_zh": "霓虹招牌下方的带框粉色海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "pink_poster",
+        "parent_zh": "粉海报",
+        "payload": "a blue poster reading COFFEE TIME",
+        "instruction_zh": "将霓虹招牌下方的带框粉色海报替换为一张写有COFFEE TIME的蓝色海报。",
+        "instruction_noref_zh": "将选中的海报替换为一张写有COFFEE TIME的蓝色海报。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the metal chair behind the round table",
+        "ref_zh": "圆桌后方的金属椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "rear_chair",
+        "parent_zh": "后椅",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将圆桌后方的金属椅的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的椅子的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "remove",
+        "ref": "the small wall control panel above the neon sign",
+        "ref_zh": "霓虹招牌上方的小墙面控制器",
+        "scope": "control panel",
+        "scope_zh": "控制器",
+        "parent": "wall_control",
+        "parent_zh": "墙控器",
+        "payload": "",
+        "instruction_zh": "移除霓虹招牌上方的小墙面控制器。",
+        "instruction_noref_zh": "移除选中的控制器。"
+      },
+      {
+        "object_id": 36,
+        "operation": "add",
+        "ref": "the metal tray on the counter",
+        "ref_zh": "柜台上的金属托盘",
+        "scope": "tray",
+        "scope_zh": "托盘",
+        "parent": "counter_tray",
+        "parent_zh": "托盘",
+        "payload": "a small silver teaspoon",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在柜台上的金属托盘加上一把小银色茶匙。",
+        "instruction_noref_zh": "在选中的托盘加上一把小银色茶匙。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4801592",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "65509179aa2183d4ea3093ed56a3689a0ab3103e38e20bf6922a111384d3ade3",
+    "review_card_sha256": "0cd045b15cad80b6c931e84439a22d49fc598086530829e3e9086dbb822c1806",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1中间SUV、10左上旗、9后方小SUV、13右红车窗四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "sand",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "沙漠越野车聚集",
+      "evidence_zh": "1中间SUV、10左上旗、9后方小SUV、13右红车窗四父对象。",
+      "specific_protection_zh": "保留人员、车辆结构、沙丘和其他旗帜。"
+    },
+    "protected_content_zh": "保留人员、车辆结构、沙丘和其他旗帜。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the black SUV in the center",
+        "ref_zh": "中间的黑色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "central_suv",
+        "parent_zh": "中SUV",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间的黑色SUV的颜色改为白色。",
+        "instruction_noref_zh": "将选中的SUV的颜色改为白色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the large red flag in the upper-left corner",
+        "ref_zh": "左上角的大红旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "upper_left_flag",
+        "parent_zh": "左上旗",
+        "payload": "a black-and-white checkered flag",
+        "instruction_zh": "将左上角的大红旗替换为一面黑白方格旗。",
+        "instruction_noref_zh": "将选中的旗帜替换为一面黑白方格旗。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the small black SUV behind the central SUV at the far left",
+        "ref_zh": "最左侧位于中间SUV后方的小黑色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "rear_suv",
+        "parent_zh": "后SUV",
+        "payload": "",
+        "instruction_zh": "移除最左侧位于中间SUV后方的小黑色SUV。",
+        "instruction_noref_zh": "移除选中的SUV。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the rear side window of the red SUV",
+        "ref_zh": "红色SUV的后侧窗",
+        "scope": "window",
+        "scope_zh": "车窗",
+        "parent": "red_suv",
+        "parent_zh": "红SUV",
+        "payload": "a small white paw-print sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在红色SUV的后侧窗加上一张小白色爪印贴纸。",
+        "instruction_noref_zh": "在选中的车窗加上一张小白色爪印贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4811077",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e674c9775f56e9094ffe9d2bbf64dcb1ef1245b70d45080353d74953584a6b16",
+    "review_card_sha256": "4ded724b2dd49bd40928a686b88271fb4d24d855c4e2813f7b0c6bc83f809c9b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2前景蓝衣、9后方米衣、13右上电线、17写LOVE岩石四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "small_targets",
+        "thin_structure"
+      ],
+      "scene_zh": "雪坡徒步游客",
+      "evidence_zh": "2前景蓝衣、9后方米衣、13右上电线、17写LOVE岩石四父对象。",
+      "specific_protection_zh": "保留游客、山体、雪地和其他设施。"
+    },
+    "protected_content_zh": "保留游客、山体、雪地和其他设施。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the blue jacket on the foreground hiker",
+        "ref_zh": "前景徒步者的蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "front_hiker",
+        "parent_zh": "前游客",
+        "payload": "orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景徒步者的蓝色外套的颜色改为橙色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为橙色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the beige jacket on the hiker with outstretched arms",
+        "ref_zh": "伸展双臂的徒步者的米色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "rear_hiker",
+        "parent_zh": "后游客",
+        "payload": "a red insulated hiking jacket",
+        "instruction_zh": "将伸展双臂的徒步者的米色外套替换为一件红色保暖徒步外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件红色保暖徒步外套。"
+      },
+      {
+        "object_id": 13,
+        "operation": "remove",
+        "ref": "the overhead wire extending to the right of the summit",
+        "ref_zh": "从山顶向右延伸的架空电线",
+        "scope": "wire",
+        "scope_zh": "电线",
+        "parent": "right_wire",
+        "parent_zh": "右电线",
+        "payload": "",
+        "instruction_zh": "移除从山顶向右延伸的架空电线。",
+        "instruction_noref_zh": "移除选中的电线。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the rock marked LOVE beside the snow",
+        "ref_zh": "雪地旁写有LOVE的岩石",
+        "scope": "rock",
+        "scope_zh": "岩石",
+        "parent": "love_rock",
+        "parent_zh": "LOVE岩石",
+        "payload": "a small white painted trail arrow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在雪地旁写有LOVE的岩石加上一个小白色漆绘步道箭头。",
+        "instruction_noref_zh": "在选中的岩石加上一个小白色漆绘步道箭头。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4812017",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cfb1e54fe2400eb6ca390163587e59b58c3c11b78eeb5fd4af8467be0986b59b",
+    "review_card_sha256": "a6ac0d68efd81dd1a75941794f884794a0839f34aa13e5703d97dcad4e4c3353",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "35车顶牌、7后方有顶皮卡、14左银SUV、18燕窝竖牌四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "text",
+        "small_targets"
+      ],
+      "scene_zh": "蓝黄出租车与商铺",
+      "evidence_zh": "35车顶牌、7后方有顶皮卡、14左银SUV、18燕窝竖牌四父对象。",
+      "specific_protection_zh": "保留出租车车身、行李、其他车辆和店铺。"
+    },
+    "protected_content_zh": "保留出租车车身、行李、其他车辆和店铺。",
+    "targets": [
+      {
+        "object_id": 35,
+        "operation": "replace",
+        "ref": "the TAXI-METER roof sign",
+        "ref_zh": "车顶TAXI-METER标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "taxi",
+        "parent_zh": "出租车",
+        "payload": "a yellow sign reading AIRPORT TAXI",
+        "instruction_zh": "将车顶TAXI-METER标牌替换为一块写有AIRPORT TAXI的黄色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有AIRPORT TAXI的黄色标牌。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the gray pickup with a canopy in the left background",
+        "ref_zh": "左后方带车斗罩的灰色皮卡",
+        "scope": "pickup",
+        "scope_zh": "皮卡",
+        "parent": "rear_pickup",
+        "parent_zh": "后皮卡",
+        "payload": "",
+        "instruction_zh": "移除左后方带车斗罩的灰色皮卡。",
+        "instruction_noref_zh": "移除选中的皮卡。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the silver pickup at the far left",
+        "ref_zh": "最左侧的银色皮卡",
+        "scope": "pickup",
+        "scope_zh": "皮卡",
+        "parent": "left_pickup",
+        "parent_zh": "左SUV",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧的银色皮卡的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的皮卡的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the tall white sign with red Chinese characters behind the taxi",
+        "ref_zh": "出租车后方写有红色汉字的白色竖招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "vertical_shop_sign",
+        "parent_zh": "竖店牌",
+        "payload": "a small red OPEN sticker at its bottom",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在出租车后方写有红色汉字的白色竖招牌加上一张位于底部的小红色OPEN贴纸。",
+        "instruction_noref_zh": "在选中的招牌加上一张位于底部的小红色OPEN贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4823091",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2b3d9a4ad5785fa07b3ade109d63161129f4b03edb9714191655ec71f6fc30cd",
+    "review_card_sha256": "09f12f1372d099975dccea76e1a8ef887d10d3cf2ca3db279f795800832bdb2d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5牙科牌、6干细胞牌、19右侧双门为两个独立商牌和建筑；不用多个同楼窗凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "architecture"
+      ],
+      "scene_zh": "商业广场沿街门面",
+      "evidence_zh": "5牙科牌、6干细胞牌、19右侧双门为两个独立商牌和建筑；不用多个同楼窗凑数。",
+      "specific_protection_zh": "保留建筑结构、其他招牌、灯具和停车场。"
+    },
+    "protected_content_zh": "保留建筑结构、其他招牌、灯具和停车场。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the green mint dental sign",
+        "ref_zh": "绿色mint dental招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "dental_sign",
+        "parent_zh": "牙科牌",
+        "payload": "",
+        "instruction_zh": "移除绿色mint dental招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the white STEMSENTIAL sign",
+        "ref_zh": "白色STEMSENTIAL招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "stemsential_sign",
+        "parent_zh": "STEMSENTIAL牌",
+        "payload": "a white sign reading CORNER CAFE in green",
+        "instruction_zh": "将白色STEMSENTIAL招牌替换为一块写有绿色CORNER CAFE的白色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有绿色CORNER CAFE的白色招牌。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the double entrance doors at the far right",
+        "ref_zh": "最右侧的双扇入口门",
+        "scope": "doors",
+        "scope_zh": "门",
+        "parent": "store_building",
+        "parent_zh": "商铺楼",
+        "payload": "a small white OPEN sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的双扇入口门加上一张小白色OPEN贴纸。",
+        "instruction_noref_zh": "在选中的门加上一张小白色OPEN贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

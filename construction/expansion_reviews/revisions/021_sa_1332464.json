@@ -1,0 +1,176 @@
+{
+  "source_id": "sa_1332464",
+  "reason_zh": "右侧有多名深蓝上衣观众，明确背对镜头者，避免仅用紧右侧。",
+  "previous_record": {
+    "source_id": "sa_1332464",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "27733470cb8bbaa8f16bde0931d3ae6aa3678bb2e1a2fa59f8785f3f1b23772f",
+    "review_card_sha256": "14a48006e0f0a65c791700cd21703b6e9e050abe4f962380d93fd86e95f19e8c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为左绿旗，6为象背左骑手花帽，26为左侧绿衣者独立灰挎包，58为象右前景背对镜头人物深蓝上衣。仅选衣物、旗和包，保留象身彩绘与人物动作。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "节庆大象旁的人群衣物和挎包",
+      "evidence_zh": "1为左绿旗，6为象背左骑手花帽，26为左侧绿衣者独立灰挎包，58为象右前景背对镜头人物深蓝上衣。仅选衣物、旗和包，保留象身彩绘与人物动作。",
+      "specific_protection_zh": "保留大象、彩绘、骑乘姿势、面部、手、其他帽子和衣物。"
+    },
+    "protected_content_zh": "保留大象、彩绘、骑乘姿势、面部、手、其他帽子和衣物。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the green flag on the left",
+        "ref_zh": "左侧的绿色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "green_flag",
+        "parent_zh": "绿旗",
+        "payload": "",
+        "instruction_zh": "移除左侧的绿色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the left elephant rider’s floral hat",
+        "ref_zh": "象背左侧骑手的花帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "left_rider",
+        "parent_zh": "左骑手",
+        "payload": "a beige straw hat",
+        "instruction_zh": "将象背左侧骑手的花帽替换为一顶米色草帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶米色草帽。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the green-shirted spectator’s gray shoulder bag",
+        "ref_zh": "绿衣观众的灰色挎包",
+        "scope": "shoulder bag",
+        "scope_zh": "挎包",
+        "parent": "spectator_bag",
+        "parent_zh": "观众灰包",
+        "payload": "a small reflective patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿衣观众的灰色挎包加上一块小反光贴。",
+        "instruction_noref_zh": "在选中的挎包加上一块小反光贴。"
+      },
+      {
+        "object_id": 58,
+        "operation": "attribute",
+        "ref": "the navy shirt directly right of the elephant",
+        "ref_zh": "大象紧右侧的藏蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "right_spectator",
+        "parent_zh": "右侧观众",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将大象紧右侧的藏蓝色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1332464",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "27733470cb8bbaa8f16bde0931d3ae6aa3678bb2e1a2fa59f8785f3f1b23772f",
+    "review_card_sha256": "14a48006e0f0a65c791700cd21703b6e9e050abe4f962380d93fd86e95f19e8c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为左绿旗，6为象背左骑手花帽，26为左侧绿衣者独立灰挎包，58为象右前景背对镜头人物深蓝上衣。仅选衣物、旗和包，保留象身彩绘与人物动作。 全图定位复核：右侧有多名深蓝上衣观众，明确背对镜头者，避免仅用紧右侧。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "节庆大象旁的人群衣物和挎包",
+      "evidence_zh": "1为左绿旗，6为象背左骑手花帽，26为左侧绿衣者独立灰挎包，58为象右前景背对镜头人物深蓝上衣。仅选衣物、旗和包，保留象身彩绘与人物动作。 全图定位复核：右侧有多名深蓝上衣观众，明确背对镜头者，避免仅用紧右侧。",
+      "specific_protection_zh": "保留大象、彩绘、骑乘姿势、面部、手、其他帽子和衣物。"
+    },
+    "protected_content_zh": "保留大象、彩绘、骑乘姿势、面部、手、其他帽子和衣物。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the green flag on the left",
+        "ref_zh": "左侧的绿色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "green_flag",
+        "parent_zh": "绿旗",
+        "payload": "",
+        "instruction_zh": "移除左侧的绿色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the left elephant rider’s floral hat",
+        "ref_zh": "象背左侧骑手的花帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "left_rider",
+        "parent_zh": "左骑手",
+        "payload": "a beige straw hat",
+        "instruction_zh": "将象背左侧骑手的花帽替换为一顶米色草帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶米色草帽。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the green-shirted spectator’s gray shoulder bag",
+        "ref_zh": "绿衣观众的灰色挎包",
+        "scope": "shoulder bag",
+        "scope_zh": "挎包",
+        "parent": "spectator_bag",
+        "parent_zh": "观众灰包",
+        "payload": "a small reflective patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿衣观众的灰色挎包加上一块小反光贴。",
+        "instruction_noref_zh": "在选中的挎包加上一块小反光贴。"
+      },
+      {
+        "object_id": 58,
+        "operation": "attribute",
+        "ref": "the back-facing spectator’s navy shirt right of the elephant",
+        "ref_zh": "大象右侧背对镜头观众的藏蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "right_spectator",
+        "parent_zh": "右侧观众",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将大象右侧背对镜头观众的藏蓝色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

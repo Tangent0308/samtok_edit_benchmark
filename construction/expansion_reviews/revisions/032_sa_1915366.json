@@ -1,0 +1,122 @@
+{
+  "source_id": "sa_1915366",
+  "reason_zh": "补看候选原mask，10除屋顶外还延伸到住宅外墙，不能声称只覆盖屋顶。改用已看过且范围明确的烟囱17改为砖红色，仍属右住宅父对象，保留原始mask。",
+  "previous_record": {
+    "source_id": "sa_1915366",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "320e7c24c6ad33a220938149109afbd2b1eb56eadc760a33bdfd3a2ff039b8b0",
+    "review_card_sha256": "388336c931621316f72d28d7c97f56a9f11b3dfe76f6acaaced9fa969a05352e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3是中央近电杆，10只覆盖右侧住宅红瓦屋顶而非整栋房；屋顶改色与电杆贴反光带，两个独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "施工楼前电杆与旁边住宅",
+      "evidence_zh": "3是中央近电杆，10只覆盖右侧住宅红瓦屋顶而非整栋房；屋顶改色与电杆贴反光带，两个独立父对象。",
+      "specific_protection_zh": "保留电线、施工楼、吊机、草地、烟囱及屋顶瓦片纹理。"
+    },
+    "protected_content_zh": "保留电线、施工楼、吊机、草地、烟囱及屋顶瓦片纹理。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the foreground utility pole in the center",
+        "ref_zh": "中央前景的电线杆",
+        "scope": "utility pole",
+        "scope_zh": "电线杆",
+        "parent": "center_pole",
+        "parent_zh": "中央电杆",
+        "payload": "a yellow reflective band",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央前景的电线杆加上一圈黄色反光带。",
+        "instruction_noref_zh": "在选中的电线杆加上一圈黄色反光带。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the red tiled roof on the right",
+        "ref_zh": "右侧的红色瓦屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "right_house",
+        "parent_zh": "右住宅",
+        "payload": "slate blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的红色瓦屋顶的颜色改为灰蓝色。",
+        "instruction_noref_zh": "将选中的屋顶的颜色改为灰蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1915366",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "320e7c24c6ad33a220938149109afbd2b1eb56eadc760a33bdfd3a2ff039b8b0",
+    "review_card_sha256": "388336c931621316f72d28d7c97f56a9f11b3dfe76f6acaaced9fa969a05352e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3是施工楼前近电杆，17是右住宅的奶油色烟囱。两个独立父对象，直接附着反光带与烟囱改色。补看候选原mask，10除屋顶外还延伸到住宅外墙，不能声称只覆盖屋顶。改用已看过且范围明确的烟囱17改为砖红色，仍属右住宅父对象，保留原始mask。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "施工楼前电杆与旁边住宅",
+      "evidence_zh": "3是施工楼前近电杆，17是右住宅的奶油色烟囱。两个独立父对象，直接附着反光带与烟囱改色。补看候选原mask，10除屋顶外还延伸到住宅外墙，不能声称只覆盖屋顶。改用已看过且范围明确的烟囱17改为砖红色，仍属右住宅父对象，保留原始mask。",
+      "specific_protection_zh": "保留电线、施工楼、吊机、草地、住宅屋顶和外墙。"
+    },
+    "protected_content_zh": "保留电线、施工楼、吊机、草地、住宅屋顶和外墙。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the foreground utility pole in the center",
+        "ref_zh": "中央前景的电线杆",
+        "scope": "utility pole",
+        "scope_zh": "电线杆",
+        "parent": "center_pole",
+        "parent_zh": "中央电杆",
+        "payload": "a yellow reflective band",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央前景的电线杆加上一圈黄色反光带。",
+        "instruction_noref_zh": "在选中的电线杆加上一圈黄色反光带。"
+      },
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the cream chimney on the right",
+        "ref_zh": "右侧的奶油色烟囱",
+        "scope": "chimney",
+        "scope_zh": "烟囱",
+        "parent": "right_house",
+        "parent_zh": "右住宅",
+        "payload": "brick red",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的奶油色烟囱的颜色改为砖红色。",
+        "instruction_noref_zh": "将选中的烟囱的颜色改为砖红色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

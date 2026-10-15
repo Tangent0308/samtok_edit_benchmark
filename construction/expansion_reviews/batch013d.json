@@ -1,0 +1,637 @@
+[
+  {
+    "source_id": "sa_3514872",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c90d38e7f69c73e312e5bf4ed5a0c0ca935711924930bdeb666a667c50dd14d4",
+    "review_card_sha256": "8d00aa0cb45ee17eff7dcdb8495a92b53c2043401b93b1cbd5d4d0e80c7a23a2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为PERONI牌，19为Pool cafe牌，51为CASA DI SERGIO字牌，56为RESTAURANTE字牌，均为独立招牌。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "neon",
+        "text"
+      ],
+      "scene_zh": "夜晚餐饮街",
+      "evidence_zh": "3为PERONI牌，19为Pool cafe牌，51为CASA DI SERGIO字牌，56为RESTAURANTE字牌，均为独立招牌。",
+      "specific_protection_zh": "保留楼体、人群、桌椅、其他霓虹及原夜景光线。"
+    },
+    "protected_content_zh": "保留楼体、人群、桌椅、其他霓虹及原夜景光线。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the blue PERONI sign",
+        "ref_zh": "蓝色PERONI标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "peroni_sign",
+        "parent_zh": "啤酒牌",
+        "payload": "a blue sign reading BAR in white",
+        "instruction_zh": "将蓝色PERONI标牌替换为一块写有白色BAR的蓝色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有白色BAR的蓝色标牌。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the red Pool cafe sign",
+        "ref_zh": "红色Pool cafe标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "pool_sign",
+        "parent_zh": "咖啡牌",
+        "payload": "deep blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将红色Pool cafe标牌的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的标牌的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 51,
+        "operation": "remove",
+        "ref": "the CASA DI SERGIO sign",
+        "ref_zh": "CASA DI SERGIO标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "sergio_sign",
+        "parent_zh": "餐厅牌",
+        "payload": "",
+        "instruction_zh": "移除CASA DI SERGIO标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 56,
+        "operation": "add",
+        "ref": "the white RESTAURANTE sign",
+        "ref_zh": "白色RESTAURANTE标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "restaurante_sign",
+        "parent_zh": "字牌",
+        "payload": "a thin warm-white illuminated border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在白色RESTAURANTE标牌加上一圈细暖白色灯边。",
+        "instruction_noref_zh": "在选中的标牌加上一圈细暖白色灯边。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3526695",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8d1c8efc57531f45102765e85829214f922df4e0ca3022bca3d2fc65ab6d880e",
+    "review_card_sha256": "efa54fd9f3f38784600e51b73752523b2357eefca81ea3fa512d5a966b71553a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "81为右侧教堂拱窗，84为咖啡座椅，32为橙楼下层阳台栏杆，三个独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "古城喷泉广场",
+      "evidence_zh": "81为右侧教堂拱窗，84为咖啡座椅，32为橙楼下层阳台栏杆，三个独立父对象。",
+      "specific_protection_zh": "保留石材、喷泉、人物、其他椅子及楼体。"
+    },
+    "protected_content_zh": "保留石材、喷泉、人物、其他椅子及楼体。",
+    "targets": [
+      {
+        "object_id": 81,
+        "operation": "attribute",
+        "ref": "the arched window on the church at the right",
+        "ref_zh": "右侧教堂的拱形窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "church",
+        "parent_zh": "教堂",
+        "payload": "light blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将右侧教堂的拱形窗户的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅蓝色。"
+      },
+      {
+        "object_id": 84,
+        "operation": "remove",
+        "ref": "the nearest black cafe chair to the right of the fountain",
+        "ref_zh": "喷泉右侧最近的黑色咖啡椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "cafe_chair",
+        "parent_zh": "咖啡椅",
+        "payload": "",
+        "instruction_zh": "移除喷泉右侧最近的黑色咖啡椅。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      },
+      {
+        "object_id": 32,
+        "operation": "add",
+        "ref": "the lower balcony railing on the orange building",
+        "ref_zh": "橙色建筑下层阳台的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "orange_building",
+        "parent_zh": "橙色楼",
+        "payload": "a narrow planter of red geraniums",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在橙色建筑下层阳台的栏杆加上一个种有红天竺葵的窄花槽。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红天竺葵的窄花槽。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3539923",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e4916587dcc2918dfcc0383509e88a40dc4249b826030e4784b6dae65392f614",
+    "review_card_sha256": "be6f48606318e25facf074b629afc57be0582813ca090bffba321852be3405f3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为正立面三角山墙内半圆窗，26为左侧花坛。楼体和独立花坛，不以多根柱子凑目标。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "fine_structure"
+      ],
+      "scene_zh": "砖砌宅邸与花坛",
+      "evidence_zh": "14为正立面三角山墙内半圆窗，26为左侧花坛。楼体和独立花坛，不以多根柱子凑目标。",
+      "specific_protection_zh": "保留窗格、建筑结构、草地、其余植物和天空。"
+    },
+    "protected_content_zh": "保留窗格、建筑结构、草地、其余植物和天空。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the semicircular window in the front pediment",
+        "ref_zh": "正面三角山墙内的半圆窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "mansion",
+        "parent_zh": "宅邸",
+        "payload": "pale amber",
+        "attribute_kind": "tint",
+        "instruction_zh": "将正面三角山墙内的半圆窗的色调改为浅琥珀色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅琥珀色。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the flowerbed beside the entrance ramp",
+        "ref_zh": "入口坡道旁的花坛",
+        "scope": "flowerbed",
+        "scope_zh": "花坛",
+        "parent": "flowerbed",
+        "parent_zh": "花坛",
+        "payload": "a small stone birdbath",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在入口坡道旁的花坛加上一个小石制鸟浴盆。",
+        "instruction_noref_zh": "在选中的花坛加上一个小石制鸟浴盆。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3543118",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "990d0de27ef664d6ade465b35878c27da6a59f9374b8f8e7c92004a4e60ec848",
+    "review_card_sha256": "ce3799372fe5911ca652aafb44af04cee226a48b553f0ff7ce61e77f1f9cf5e8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为左后红车，6为右侧停车组白车，28为左近路灯，77为广场右侧栏杆。两辆车、独立灯和栏杆。",
+    "difficulty": {
+      "mechanisms": [
+        "aerial",
+        "small_targets",
+        "repetition"
+      ],
+      "scene_zh": "纪念塔俯瞰停车场",
+      "evidence_zh": "3为左后红车，6为右侧停车组白车，28为左近路灯，77为广场右侧栏杆。两辆车、独立灯和栏杆。",
+      "specific_protection_zh": "保留纪念塔浮雕、道路、花坛及其他车辆。"
+    },
+    "protected_content_zh": "保留纪念塔浮雕、道路、花坛及其他车辆。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the red car parked behind the monument on the left",
+        "ref_zh": "纪念塔左后方停放的红色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "red_car",
+        "parent_zh": "红车",
+        "payload": "",
+        "instruction_zh": "移除纪念塔左后方停放的红色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the white car at the left end of the three-car row on the right",
+        "ref_zh": "右侧三辆一排中最左边的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_car",
+        "parent_zh": "白车",
+        "payload": "a blue compact car",
+        "instruction_zh": "将右侧三辆一排中最左边的白色汽车替换为一辆蓝色小型汽车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色小型汽车。"
+      },
+      {
+        "object_id": 28,
+        "operation": "add",
+        "ref": "the tall floodlight pole beside the flags on the left",
+        "ref_zh": "左侧旗帜旁的高射灯杆",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧旗帜旁的高射灯杆加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个小悬挂花篮。"
+      },
+      {
+        "object_id": 77,
+        "operation": "attribute",
+        "ref": "the railing along the right edge of the square",
+        "ref_zh": "广场右边缘的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "right_railing",
+        "parent_zh": "右栏杆",
+        "payload": "dark bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将广场右边缘的栏杆的颜色改为深古铜色。",
+        "instruction_noref_zh": "将选中的栏杆的颜色改为深古铜色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3543848",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7205eb8603c68a11aeee20ccc5a54ac7bcaac88b0283bd796613bd092941f600",
+    "review_card_sha256": "dc9125e745aa34049699246c1f090d598ed9e42fa69469fb4f60aeb896482c8d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左边站立者外套，5为中央拉杆箱，27为Song Viet Corp招牌，4为右侧空蓝椅。四个独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "航站楼商店与座位",
+      "evidence_zh": "0为左边站立者外套，5为中央拉杆箱，27为Song Viet Corp招牌，4为右侧空蓝椅。四个独立父对象。",
+      "specific_protection_zh": "保留人物、店内商品、其他座位、地板反光及窗框。"
+    },
+    "protected_content_zh": "保留人物、店内商品、其他座位、地板反光及窗框。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the dark jacket on the standing man on the left",
+        "ref_zh": "左侧站立男子的深色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "standing_man",
+        "parent_zh": "站立男子",
+        "payload": "a beige casual jacket",
+        "instruction_zh": "将左侧站立男子的深色外套替换为一件米色休闲外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色休闲外套。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the black suitcase beside the central chairs",
+        "ref_zh": "中央座椅旁的黑色拉杆箱",
+        "scope": "suitcase",
+        "scope_zh": "拉杆箱",
+        "parent": "suitcase",
+        "parent_zh": "箱子",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央座椅旁的黑色拉杆箱的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的拉杆箱的颜色改为酒红色。"
+      },
+      {
+        "object_id": 27,
+        "operation": "remove",
+        "ref": "the central Song Viet Corp sign",
+        "ref_zh": "中央的Song Viet Corp标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "shop_sign",
+        "parent_zh": "商店牌",
+        "payload": "",
+        "instruction_zh": "移除中央的Song Viet Corp标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the empty blue chair on the right",
+        "ref_zh": "右侧空着的蓝色椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "right_chair",
+        "parent_zh": "右椅",
+        "payload": "a small cream seat cushion",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧空着的蓝色椅子加上一个小米色坐垫。",
+        "instruction_noref_zh": "在选中的椅子加上一个小米色坐垫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3550286",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1fd72ceb94439cbfd2d510ebbb6c2cff148bdd11a104c55d88906bedc79633c4",
+    "review_card_sha256": "c497ef7b2688dab1210deca16a8fe833e4e434704a1df69972ca8d35489d535c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11为中间大阳伞，4为前排空椅，20为上层金字牌，26为店正面遮阳篷。伞、椅、独立牌及建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "backlight",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "街角咖啡馆",
+      "evidence_zh": "11为中间大阳伞，4为前排空椅，20为上层金字牌，26为店正面遮阳篷。伞、椅、独立牌及建筑。",
+      "specific_protection_zh": "保留客人、其他伞椅、建筑和逆光。"
+    },
+    "protected_content_zh": "保留客人、其他伞椅、建筑和逆光。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the large central orange parasol",
+        "ref_zh": "中央的大橙色遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "central_parasol",
+        "parent_zh": "中央伞",
+        "payload": "a cream canvas parasol",
+        "instruction_zh": "将中央的大橙色遮阳伞替换为一把米色帆布遮阳伞。",
+        "instruction_noref_zh": "将选中的遮阳伞替换为一把米色帆布遮阳伞。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the empty front-row chair just right of the central parasol",
+        "ref_zh": "中央遮阳伞右侧前排的空椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "front_chair",
+        "parent_zh": "前椅",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央遮阳伞右侧前排的空椅子的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的椅子的颜色改为深绿色。"
+      },
+      {
+        "object_id": 20,
+        "operation": "remove",
+        "ref": "the gold-lettered CAFE DAGUERRE sign above the awning",
+        "ref_zh": "遮阳篷上方的金字CAFE DAGUERRE标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "gold_sign",
+        "parent_zh": "金字牌",
+        "payload": "",
+        "instruction_zh": "移除遮阳篷上方的金字CAFE DAGUERRE标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the front awning marked CAFE DAGUERRE",
+        "ref_zh": "正面写有CAFE DAGUERRE的遮阳篷",
+        "scope": "awning",
+        "scope_zh": "遮阳篷",
+        "parent": "cafe_building",
+        "parent_zh": "咖啡馆建筑",
+        "payload": "a strand of warm-white lights along its edge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在正面写有CAFE DAGUERRE的遮阳篷加上一串沿边缘布置的暖白色灯。",
+        "instruction_noref_zh": "在选中的遮阳篷加上一串沿边缘布置的暖白色灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3558272",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e1f284c455b049de73f1240571836ac6192cd60c7fed391fb215d82479a50419",
+    "review_card_sha256": "d96fef0b0fc7c3b6bd752316d1b630cd5a92a446ecdfec8ab37e8d0b0ab91b91",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为前方独立拖轮，8为船首后橙楼，9为邮轮船壳。拖轮、建筑和邮轮不同父对象，救生艇不重复计入邮轮。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "scale",
+        "water"
+      ],
+      "scene_zh": "大型邮轮与拖轮",
+      "evidence_zh": "4为前方独立拖轮，8为船首后橙楼，9为邮轮船壳。拖轮、建筑和邮轮不同父对象，救生艇不重复计入邮轮。",
+      "specific_protection_zh": "保留邮轮结构、船名、其他船和海面。"
+    },
+    "protected_content_zh": "保留邮轮结构、船名、其他船和海面。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the tugboat in front of the cruise ship",
+        "ref_zh": "邮轮前方的拖轮",
+        "scope": "tugboat",
+        "scope_zh": "拖轮",
+        "parent": "tugboat",
+        "parent_zh": "拖轮",
+        "payload": "a red-and-white harbor tug",
+        "instruction_zh": "将邮轮前方的拖轮替换为一艘红白相间的港口拖轮。",
+        "instruction_noref_zh": "将选中的拖轮替换为一艘红白相间的港口拖轮。"
+      },
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the orange apartment building immediately behind the bow",
+        "ref_zh": "船首正后方的橙色公寓楼",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "orange_building",
+        "parent_zh": "橙楼",
+        "payload": "pale yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将船首正后方的橙色公寓楼的颜色改为浅黄色。",
+        "instruction_noref_zh": "将选中的建筑的颜色改为浅黄色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the white hull of the cruise ship",
+        "ref_zh": "邮轮的白色船壳",
+        "scope": "hull",
+        "scope_zh": "船壳",
+        "parent": "cruise_ship",
+        "parent_zh": "邮轮",
+        "payload": "a thin navy stripe along the waterline",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在邮轮的白色船壳加上一条沿水线的细藏蓝色条纹。",
+        "instruction_noref_zh": "在选中的船壳加上一条沿水线的细藏蓝色条纹。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3562449",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a6d17390689e043a4111210056a4273c92e02cfe6d4ac785d101cba43729506e",
+    "review_card_sha256": "4277f5cfd54adf389094ff3ef37beab53268ce0eaa29e76fa358e2d1243216a9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为前近白奥迪，3为其后灰车，23为蓝广告牌，15为尖顶河岸塔栏杆。两辆车、独立广告及塔楼。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "河边车流与桥梁",
+      "evidence_zh": "1为前近白奥迪，3为其后灰车，23为蓝广告牌，15为尖顶河岸塔栏杆。两辆车、独立广告及塔楼。",
+      "specific_protection_zh": "保留河流、桥梁、交通、建筑和其他标牌。"
+    },
+    "protected_content_zh": "保留河流、桥梁、交通、建筑和其他标牌。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the white Audi nearest the foreground",
+        "ref_zh": "最靠近前景的白色奥迪",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_audi",
+        "parent_zh": "白奥迪",
+        "payload": "a red compact sedan",
+        "instruction_zh": "将最靠近前景的白色奥迪替换为一辆红色小型轿车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆红色小型轿车。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the gray car immediately behind the white Audi",
+        "ref_zh": "白色奥迪正后方的灰色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "gray_car",
+        "parent_zh": "灰车",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色奥迪正后方的灰色汽车的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the blue advertising board beside the river",
+        "ref_zh": "河边的蓝色广告牌",
+        "scope": "board",
+        "scope_zh": "广告牌",
+        "parent": "ad_board",
+        "parent_zh": "广告牌",
+        "payload": "",
+        "instruction_zh": "移除河边的蓝色广告牌。",
+        "instruction_noref_zh": "移除选中的广告牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the railing around the pointed-roof riverside turret",
+        "ref_zh": "尖顶河岸小塔周围的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "riverside_turret",
+        "parent_zh": "河岸塔",
+        "payload": "a narrow planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在尖顶河岸小塔周围的栏杆加上一个种有红花的窄花槽。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的窄花槽。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

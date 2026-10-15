@@ -1,0 +1,589 @@
+[
+  {
+    "source_id": "sa_590072",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e1c443d466f0ecfb2da69927270c6dfe812b7691ab8938c5973b807513598957",
+    "review_card_sha256": "b86519e32c0685f960eef456b3b087bd0dc822adb1f0537aad9c266b21a7cc79",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1前右灯、2前左灯、17拱架右柱三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "thin_structure"
+      ],
+      "scene_zh": "广场拱架与球灯",
+      "evidence_zh": "1前右灯、2前左灯、17拱架右柱三个父对象。",
+      "specific_protection_zh": "保留植物、建筑、地砖及远处灯具。"
+    },
+    "protected_content_zh": "保留植物、建筑、地砖及远处灯具。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the globe streetlamp in the right foreground",
+        "ref_zh": "右侧前景的球形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "",
+        "instruction_zh": "移除右侧前景的球形路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the globe streetlamp in the left foreground",
+        "ref_zh": "左侧前景的球形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧前景的球形路灯的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为古铜色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the right vertical post of the vine-covered arch",
+        "ref_zh": "藤蔓拱架右侧的竖直立柱",
+        "scope": "post",
+        "scope_zh": "立柱",
+        "parent": "arch",
+        "parent_zh": "拱架",
+        "payload": "a small wooden WELCOME sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在藤蔓拱架右侧的竖直立柱加上一块小木制WELCOME牌。",
+        "instruction_noref_zh": "在选中的立柱加上一块小木制WELCOME牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_591354",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d21f46ad0cd13ffbad64a07ea2b033090b9c89a121c7fc3757735019d0d2cf8f",
+    "review_card_sha256": "6c0090c28db945bdeb7d65e7b904ecae7bde44766455f4b21882d0202cba92de",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2右牛和4赶牛人头巾两个独立父对象；保留飞溅泥水。",
+    "difficulty": {
+      "mechanisms": [
+        "motion",
+        "splash",
+        "occlusion"
+      ],
+      "scene_zh": "泥水中赛牛",
+      "evidence_zh": "2右牛和4赶牛人头巾两个独立父对象；保留飞溅泥水。",
+      "specific_protection_zh": "保留另一头牛、人物身体、缰绳和水花。"
+    },
+    "protected_content_zh": "保留另一头牛、人物身体、缰绳和水花。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the light-colored bull at the right",
+        "ref_zh": "右侧的浅色公牛",
+        "scope": "bull",
+        "scope_zh": "公牛",
+        "parent": "right_bull",
+        "parent_zh": "右牛",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的浅色公牛的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的公牛的颜色改为深棕色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the rider's head wrap",
+        "ref_zh": "赶牛人的头巾",
+        "scope": "head wrap",
+        "scope_zh": "头巾",
+        "parent": "rider",
+        "parent_zh": "赶牛人",
+        "payload": "a red cotton head wrap",
+        "instruction_zh": "将赶牛人的头巾替换为一条红色棉头巾。",
+        "instruction_noref_zh": "将选中的头巾替换为一条红色棉头巾。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5919801",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "18032804fb04009eeff4343d9339053182e568a7486a5ca9ac7b345e18b33862",
+    "review_card_sha256": "5dad4dad4e56cd9e63bc11adc67d2beff5c824e8f2c92a1d03ca84811a102eec",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1右白车、19前黑车门、6左银车、9后导向牌四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "跑车展厅",
+      "evidence_zh": "1右白车、19前黑车门、6左银车、9后导向牌四父对象。",
+      "specific_protection_zh": "保留展厅、车体结构和其余标牌。"
+    },
+    "protected_content_zh": "保留展厅、车体结构和其余标牌。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the white sports car at the right",
+        "ref_zh": "右侧的白色跑车",
+        "scope": "sports car",
+        "scope_zh": "跑车",
+        "parent": "white_car",
+        "parent_zh": "白车",
+        "payload": "",
+        "instruction_zh": "移除右侧的白色跑车。",
+        "instruction_noref_zh": "移除选中的跑车。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the raised right door of the black sports car",
+        "ref_zh": "黑色跑车抬起的右侧车门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "black_car",
+        "parent_zh": "黑车",
+        "payload": "a small white RACING decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黑色跑车抬起的右侧车门加上一张小白色RACING贴花。",
+        "instruction_noref_zh": "在选中的车门加上一张小白色RACING贴花。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the silver sports car at the left edge",
+        "ref_zh": "左边缘的银色跑车",
+        "scope": "sports car",
+        "scope_zh": "跑车",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将左边缘的银色跑车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的跑车的颜色改为红色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the blue direction sign in the upper-right background",
+        "ref_zh": "右上方背景中的蓝色导向牌",
+        "scope": "sign",
+        "scope_zh": "导向牌",
+        "parent": "blue_sign",
+        "parent_zh": "蓝牌",
+        "payload": "a blue EXIT sign with a right arrow",
+        "instruction_zh": "将右上方背景中的蓝色导向牌替换为一块带右箭头的蓝色EXIT牌。",
+        "instruction_noref_zh": "将选中的导向牌替换为一块带右箭头的蓝色EXIT牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5933347",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0380bf75423d5f6f17b3b7ba0e3d646453f2572c972ce3a557fd9c028207f3e2",
+    "review_card_sha256": "dfbac8bd64b83779b8654b2023c99ad1193a618108eb645f0cebd23069eff3de",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "70主楼底层栏杆、43左前信息牌、10独立黄房屋顶三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "small_targets"
+      ],
+      "scene_zh": "俯视红砖建筑与园区",
+      "evidence_zh": "70主楼底层栏杆、43左前信息牌、10独立黄房屋顶三个父对象。",
+      "specific_protection_zh": "保留主楼结构、道路、行人和树木。"
+    },
+    "protected_content_zh": "保留主楼结构、道路、行人和树木。",
+    "targets": [
+      {
+        "object_id": 70,
+        "operation": "add",
+        "ref": "the lowest front railing of the red-brick tower",
+        "ref_zh": "红砖塔楼正面最下层的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "main_building",
+        "parent_zh": "主楼",
+        "payload": "a narrow flower box with red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在红砖塔楼正面最下层的栏杆加上一个种有红花的窄花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的窄花箱。"
+      },
+      {
+        "object_id": 43,
+        "operation": "remove",
+        "ref": "the information board beside the yellow tree at the lower left",
+        "ref_zh": "左下方黄叶树旁的说明牌",
+        "scope": "board",
+        "scope_zh": "说明牌",
+        "parent": "info_board",
+        "parent_zh": "说明牌",
+        "payload": "",
+        "instruction_zh": "移除左下方黄叶树旁的说明牌。",
+        "instruction_noref_zh": "移除选中的说明牌。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the purple roof of the separate yellow building at the upper right",
+        "ref_zh": "右上方独立黄色建筑的紫色屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "yellow_building",
+        "parent_zh": "黄房",
+        "payload": "dark gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将右上方独立黄色建筑的紫色屋顶的颜色改为深灰色。",
+        "instruction_noref_zh": "将选中的屋顶的颜色改为深灰色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5960541",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "970dd2a9e1c88ac3ff55c581f780dc610929858f8817630690b8d449a7223bbb",
+    "review_card_sha256": "405e001808880280263d0e6e59d3c4f3003c8b7fefed91ebc1025bcdba5205d5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4近处独立树和34左近玻璃门两个父对象，不将多窗拆分计数。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "foliage"
+      ],
+      "scene_zh": "公寓前草地与树木",
+      "evidence_zh": "4近处独立树和34左近玻璃门两个父对象，不将多窗拆分计数。",
+      "specific_protection_zh": "保留草地、建筑、步道和后方树木。"
+    },
+    "protected_content_zh": "保留草地、建筑、步道和后方树木。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the large rounded tree in the center foreground",
+        "ref_zh": "前景中央的大圆冠树",
+        "scope": "tree",
+        "scope_zh": "树",
+        "parent": "front_tree",
+        "parent_zh": "前树",
+        "payload": "",
+        "instruction_zh": "移除前景中央的大圆冠树。",
+        "instruction_noref_zh": "移除选中的树。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the nearest glass entrance door at the left",
+        "ref_zh": "左侧最近的玻璃入口门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a small white OPEN decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧最近的玻璃入口门加上一张小白色OPEN贴花。",
+        "instruction_noref_zh": "在选中的门加上一张小白色OPEN贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5967529",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "357b13190fdce8e5a0bd35e0f5a5c03a51b4cc55260eb20494be4b389e7b21ca",
+    "review_card_sha256": "c1e1fdb15760baf5e799fe73faead9b225622b48844e5c1dd8b35961caec71ce",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6左前女子外套、55右蓝袋、20中棕服人物、30教堂左门四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "教堂前冬装游客",
+      "evidence_zh": "6左前女子外套、55右蓝袋、20中棕服人物、30教堂左门四父对象。",
+      "specific_protection_zh": "保留人物身体、教堂装饰、圣诞树和地面。"
+    },
+    "protected_content_zh": "保留人物身体、教堂装饰、圣诞树和地面。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the fur-trimmed coat on the woman in the left foreground",
+        "ref_zh": "左侧前景女子的毛边外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "front_woman",
+        "parent_zh": "前女",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧前景女子的毛边外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 55,
+        "operation": "remove",
+        "ref": "the bright blue shopping bag at the right",
+        "ref_zh": "右侧的亮蓝色购物袋",
+        "scope": "bag",
+        "scope_zh": "购物袋",
+        "parent": "blue_bag",
+        "parent_zh": "蓝袋",
+        "payload": "",
+        "instruction_zh": "移除右侧的亮蓝色购物袋。",
+        "instruction_noref_zh": "移除选中的购物袋。"
+      },
+      {
+        "object_id": 20,
+        "operation": "replace",
+        "ref": "the tan hooded coat on the person near the center",
+        "ref_zh": "中间附近人物的棕黄色连帽外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "center_person",
+        "parent_zh": "中人",
+        "payload": "a burgundy wool coat",
+        "instruction_zh": "将中间附近人物的棕黄色连帽外套替换为一件酒红色羊毛外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件酒红色羊毛外套。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the left wooden leaf of the church's main entrance",
+        "ref_zh": "教堂主入口左侧的木门扇",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "church",
+        "parent_zh": "教堂",
+        "payload": "a small green Christmas wreath",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在教堂主入口左侧的木门扇加上一个小绿色圣诞花环。",
+        "instruction_noref_zh": "在选中的门加上一个小绿色圣诞花环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5969016",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "51ff787abdf4ce54c7d0e85bbfb49254131691ab2a7c7a74fb6d1a39dd7cf7b3",
+    "review_card_sha256": "99cf0c4591ea555f408d42327b855429f06915bec64a1c35ce6698a8549715bc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6弯腰蓝衣人、2中站立人、11右推车、20旋转木马四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "motion_blur",
+        "occlusion"
+      ],
+      "scene_zh": "夜间旋转木马",
+      "evidence_zh": "6弯腰蓝衣人、2中站立人、11右推车、20旋转木马四父对象。",
+      "specific_protection_zh": "保留人物身体、其他推车和周围光照。"
+    },
+    "protected_content_zh": "保留人物身体、其他推车和周围光照。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the padded coat on the person leaning over the stroller",
+        "ref_zh": "俯身靠近婴儿车人物的棉外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "leaning_person",
+        "parent_zh": "弯腰人",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将俯身靠近婴儿车人物的棉外套的颜色改为红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为红色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the dark coat on the tall person standing near the center",
+        "ref_zh": "中间附近高个站立人物的深色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "standing_person",
+        "parent_zh": "站立人",
+        "payload": "a beige wool coat",
+        "instruction_zh": "将中间附近高个站立人物的深色外套替换为一件米色羊毛外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色羊毛外套。"
+      },
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the stroller in the group at the far right",
+        "ref_zh": "最右侧人群中的婴儿车",
+        "scope": "stroller",
+        "scope_zh": "婴儿车",
+        "parent": "right_stroller",
+        "parent_zh": "右推车",
+        "payload": "",
+        "instruction_zh": "移除最右侧人群中的婴儿车。",
+        "instruction_noref_zh": "移除选中的婴儿车。"
+      },
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the carousel",
+        "ref_zh": "旋转木马",
+        "scope": "carousel",
+        "scope_zh": "旋转木马",
+        "parent": "carousel",
+        "parent_zh": "木马",
+        "payload": "a small red TICKETS sign on its front base",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在旋转木马加上一块位于正面底座的小红色TICKETS牌。",
+        "instruction_noref_zh": "在选中的旋转木马加上一块位于正面底座的小红色TICKETS牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5986128",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dbdcbe94cd98489919626123338a044ad12e32c62bc3bf32a705de6acd5b882f",
+    "review_card_sha256": "9a263ec060fb8acf310d60d6142233639985625bc324065da7fcfb656f9b9d60",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "24前左白盘、6悬挂镜球、42右火花三个父对象；不因夜景而拒绝。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "crowd",
+        "glow"
+      ],
+      "scene_zh": "夜间舞台与宴席",
+      "evidence_zh": "24前左白盘、6悬挂镜球、42右火花三个父对象；不因夜景而拒绝。",
+      "specific_protection_zh": "保留观众、舞台、其他火花和餐具。"
+    },
+    "protected_content_zh": "保留观众、舞台、其他火花和餐具。",
+    "targets": [
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the white plate on the table in the lower-left foreground",
+        "ref_zh": "左下方前景桌上的白色盘子",
+        "scope": "plate",
+        "scope_zh": "盘子",
+        "parent": "white_plate",
+        "parent_zh": "白盘",
+        "payload": "a lemon wedge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左下方前景桌上的白色盘子加上一块柠檬角。",
+        "instruction_noref_zh": "在选中的盘子加上一块柠檬角。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the mirrored ball at the upper tip of the right butterfly wing",
+        "ref_zh": "右侧蝴蝶翅膀上端的镜面球",
+        "scope": "mirrored ball",
+        "scope_zh": "镜面球",
+        "parent": "disco_ball",
+        "parent_zh": "镜球",
+        "payload": "gold",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧蝴蝶翅膀上端的镜面球的颜色改为金色。",
+        "instruction_noref_zh": "将选中的镜面球的颜色改为金色。"
+      },
+      {
+        "object_id": 42,
+        "operation": "remove",
+        "ref": "the tall bright sparkler at the right",
+        "ref_zh": "右侧高而明亮的烟花棒火花",
+        "scope": "sparkler flame",
+        "scope_zh": "火花",
+        "parent": "right_sparkler",
+        "parent_zh": "右火花",
+        "payload": "",
+        "instruction_zh": "移除右侧高而明亮的烟花棒火花。",
+        "instruction_noref_zh": "移除选中的火花。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,633 @@
+[
+  {
+    "source_id": "sa_3921311",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "80fbce6bcc29547069180f5b0b0514a56cb5988447781e019ea77aa4cb78b6b2",
+    "review_card_sha256": "7d0052d8183c637def96cb2df972e14c8313c4d4b9dae154fabf35adec536ec4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11为左侧石凳，7为黑背包，1为绿色保洁牌，9为右桥栏。独立凳、包、牌、桥；4与7重叠7.6%，不同时使用。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "wood_texture"
+      ],
+      "scene_zh": "木桥入口与亭子",
+      "evidence_zh": "11为左侧石凳，7为黑背包，1为绿色保洁牌，9为右桥栏。独立凳、包、牌、桥；4与7重叠7.6%，不同时使用。",
+      "specific_protection_zh": "保留行人、桥面、亭子结构和植物。"
+    },
+    "protected_content_zh": "保留行人、桥面、亭子结构和植物。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the low stone bench to the left of the bridge",
+        "ref_zh": "木桥左侧的低石长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "stone_bench",
+        "parent_zh": "石凳",
+        "payload": "a dark wooden garden bench",
+        "instruction_zh": "将木桥左侧的低石长凳替换为一张深色木庭院长凳。",
+        "instruction_noref_zh": "将选中的长凳替换为一张深色木庭院长凳。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the black backpack on the pedestrian entering the pavilion",
+        "ref_zh": "走进亭子行人的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "black_backpack",
+        "parent_zh": "黑包",
+        "payload": "",
+        "instruction_zh": "移除走进亭子行人的黑色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the green KEEP CAMBODIA CLEAN sign",
+        "ref_zh": "绿色KEEP CAMBODIA CLEAN标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "clean_sign",
+        "parent_zh": "保洁牌",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将绿色KEEP CAMBODIA CLEAN标牌的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的标牌的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the wooden bridge railing on the right",
+        "ref_zh": "右侧的木桥栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "wooden_bridge",
+        "parent_zh": "木桥",
+        "payload": "a small planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的木桥栏杆加上一个种有红花的小花槽。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的小花槽。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_392908",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b377a1f5f9221199c83ce80b67b3f7e9b68e196ddcd5c2c73196a3726c222611",
+    "review_card_sha256": "c74f04cb47de816f018f25875d5841847177cf137af980fdd7c0de1b2db21ea8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12为车侧圆羊标志，4为后方石楼窗，29为前景护栏。车、楼、独立地面护栏三父对象；轮胎不分别计数。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "industrial",
+        "occlusion"
+      ],
+      "scene_zh": "啤酒厂罐车",
+      "evidence_zh": "12为车侧圆羊标志，4为后方石楼窗，29为前景护栏。车、楼、独立地面护栏三父对象；轮胎不分别计数。",
+      "specific_protection_zh": "保留车身文字、车辆结构、建筑及管线。"
+    },
+    "protected_content_zh": "保留车身文字、车辆结构、建筑及管线。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the circular sheep logo on the truck cab’s side",
+        "ref_zh": "卡车驾驶室侧面的圆形羊标志",
+        "scope": "logo",
+        "scope_zh": "标志",
+        "parent": "truck",
+        "parent_zh": "卡车",
+        "payload": "",
+        "instruction_zh": "移除卡车驾驶室侧面的圆形羊标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the large window directly above the rear of the tanker",
+        "ref_zh": "罐车尾部正上方的大窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "stone_building",
+        "parent_zh": "石楼",
+        "payload": "pale amber",
+        "attribute_kind": "tint",
+        "instruction_zh": "将罐车尾部正上方的大窗户的色调改为浅琥珀色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅琥珀色。"
+      },
+      {
+        "object_id": 29,
+        "operation": "add",
+        "ref": "the low metal guardrail in front of the tanker",
+        "ref_zh": "罐车前方的低金属护栏",
+        "scope": "guardrail",
+        "scope_zh": "护栏",
+        "parent": "road_guardrail",
+        "parent_zh": "路护栏",
+        "payload": "a small red reflector",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在罐车前方的低金属护栏加上一个小红色反光片。",
+        "instruction_noref_zh": "在选中的护栏加上一个小红色反光片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3946665",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1d00d5cafc165f4684653d15d20fa7dd67334b8129c0e4d6bbac1102d26ee5cd",
+    "review_card_sha256": "9a7d8b347247c51f85c01f16c61be7f89c58b9ed9e5801083e245fbcf5afe015",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "18为白外套观众，8为棕衣摄影者，133为地面运动包，12为黄色椅背。两位观众、独立包和座椅，不改运动员身体。",
+    "difficulty": {
+      "mechanisms": [
+        "motion",
+        "defocus",
+        "repetition"
+      ],
+      "scene_zh": "体操比赛与背景观众",
+      "evidence_zh": "18为白外套观众，8为棕衣摄影者，133为地面运动包，12为黄色椅背。两位观众、独立包和座椅，不改运动员身体。",
+      "specific_protection_zh": "保留运动员及器械、观众姿态、国旗和场地。"
+    },
+    "protected_content_zh": "保留运动员及器械、观众姿态、国旗和场地。",
+    "targets": [
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the white jacket on the seated spectator behind the gymnast",
+        "ref_zh": "体操运动员后方坐着的观众的白色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "seated_spectator",
+        "parent_zh": "坐观众",
+        "payload": "a navy blazer",
+        "instruction_zh": "将体操运动员后方坐着的观众的白色外套替换为一件藏蓝色西装外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色西装外套。"
+      },
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the brown shirt on the photographer at the left",
+        "ref_zh": "左侧摄影者的棕色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "photographer",
+        "parent_zh": "摄影者",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧摄影者的棕色上衣的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为深绿色。"
+      },
+      {
+        "object_id": 133,
+        "operation": "remove",
+        "ref": "the sports bag on the floor behind the gymnast",
+        "ref_zh": "体操运动员后方地面上的运动包",
+        "scope": "bag",
+        "scope_zh": "运动包",
+        "parent": "sports_bag",
+        "parent_zh": "运动包",
+        "payload": "",
+        "instruction_zh": "移除体操运动员后方地面上的运动包。",
+        "instruction_noref_zh": "移除选中的运动包。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the third yellow seat back from the left in the back yellow row",
+        "ref_zh": "最后一排黄色座椅中从左数第三个椅背",
+        "scope": "seat back",
+        "scope_zh": "椅背",
+        "parent": "yellow_seat",
+        "parent_zh": "黄座椅",
+        "payload": "a small white RESERVED label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最后一排黄色座椅中从左数第三个椅背加上一张小白色RESERVED标签。",
+        "instruction_noref_zh": "在选中的椅背加上一张小白色RESERVED标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3965105",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a9905ddc1d00c615f1068179a0fca81d0a08fa09837357fe1636d2e0e8912651",
+    "review_card_sha256": "44cfd8577ec28c940473fae60784fb1571ed71c5c6971ed8fa2b757c33329205",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为前排奇异果水果杯，5为后方红瓶，27为摊主灰上衣，2为右下货架边。杯、瓶、人、货架。",
+    "difficulty": {
+      "mechanisms": [
+        "dense_objects",
+        "occlusion",
+        "transparent_container"
+      ],
+      "scene_zh": "街边鲜果摊",
+      "evidence_zh": "8为前排奇异果水果杯，5为后方红瓶，27为摊主灰上衣，2为右下货架边。杯、瓶、人、货架。",
+      "specific_protection_zh": "保留水果、摊主身体、背心、压汁器和其他商品。"
+    },
+    "protected_content_zh": "保留水果、摊主身体、背心、压汁器和其他商品。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the mixed-fruit cup at the front right of the counter",
+        "ref_zh": "柜台右前方的混合水果杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "fruit_cup",
+        "parent_zh": "水果杯",
+        "payload": "a clear cup of orange juice with a lid",
+        "instruction_zh": "将柜台右前方的混合水果杯替换为一杯带盖的透明杯橙汁。",
+        "instruction_noref_zh": "将选中的杯子替换为一杯带盖的透明杯橙汁。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the tall red bottle immediately left of the yellow bottle",
+        "ref_zh": "黄瓶左侧的高红瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "red_bottle",
+        "parent_zh": "红瓶",
+        "payload": "",
+        "instruction_zh": "移除黄瓶左侧的高红瓶。",
+        "instruction_noref_zh": "移除选中的瓶子。"
+      },
+      {
+        "object_id": 27,
+        "operation": "attribute",
+        "ref": "the vendor’s gray sweater",
+        "ref_zh": "摊主的灰色毛衣",
+        "scope": "sweater",
+        "scope_zh": "毛衣",
+        "parent": "vendor",
+        "parent_zh": "摊主",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将摊主的灰色毛衣的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的毛衣的颜色改为深绿色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the front edge of the lower fruit shelf on the right",
+        "ref_zh": "右侧下层水果架的前缘",
+        "scope": "shelf edge",
+        "scope_zh": "货架边缘",
+        "parent": "fruit_shelf",
+        "parent_zh": "水果架",
+        "payload": "a small white price card",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧下层水果架的前缘加上一张小白色价格卡。",
+        "instruction_noref_zh": "在选中的货架边缘加上一张小白色价格卡。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_396678",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d38316c7693d73a27ad633d55d572aa00e5ddf415acb3b5d12d7c0e7a5e05acd",
+    "review_card_sha256": "68120381f8bf6cb526d90b82a5c2773e2165f91c2547263ae02672ed64aed1ef",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为前景右椅，1为前景左椅，4为右后平躺椅，14为近大草伞。三把独立椅及一把伞。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "sand",
+        "fine_structure"
+      ],
+      "scene_zh": "沙滩躺椅与草伞",
+      "evidence_zh": "0为前景右椅，1为前景左椅，4为右后平躺椅，14为近大草伞。三把独立椅及一把伞。",
+      "specific_protection_zh": "保留沙滩、围挡、棕榈树和其他伞。"
+    },
+    "protected_content_zh": "保留沙滩、围挡、棕榈树和其他伞。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the blue lounger on the right of the foreground pair",
+        "ref_zh": "前景一对躺椅中右侧的蓝色躺椅",
+        "scope": "lounger",
+        "scope_zh": "躺椅",
+        "parent": "right_lounger",
+        "parent_zh": "右椅",
+        "payload": "a wooden lounger with a cream cushion",
+        "instruction_zh": "将前景一对躺椅中右侧的蓝色躺椅替换为一把带米色垫的木躺椅。",
+        "instruction_noref_zh": "将选中的躺椅替换为一把带米色垫的木躺椅。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the blue lounger on the left of the foreground pair",
+        "ref_zh": "前景一对躺椅中左侧的蓝色躺椅",
+        "scope": "lounger",
+        "scope_zh": "躺椅",
+        "parent": "left_lounger",
+        "parent_zh": "左椅",
+        "payload": "turquoise",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景一对躺椅中左侧的蓝色躺椅的颜色改为青蓝色。",
+        "instruction_noref_zh": "将选中的躺椅的颜色改为青蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the flat blue lounger behind the pair on the right",
+        "ref_zh": "右后方平放的蓝色躺椅",
+        "scope": "lounger",
+        "scope_zh": "躺椅",
+        "parent": "rear_lounger",
+        "parent_zh": "后椅",
+        "payload": "",
+        "instruction_zh": "移除右后方平放的蓝色躺椅。",
+        "instruction_noref_zh": "移除选中的躺椅。"
+      },
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the large straw parasol above the foreground loungers",
+        "ref_zh": "前景躺椅上方的大草伞",
+        "scope": "parasol",
+        "scope_zh": "草伞",
+        "parent": "large_parasol",
+        "parent_zh": "大草伞",
+        "payload": "a white gull perched on its canopy",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景躺椅上方的大草伞加上一只停在伞面上的白色海鸥。",
+        "instruction_noref_zh": "在选中的草伞加上一只停在伞面上的白色海鸥。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3978333",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "aa717ac9c9e63f7b6227228c1c8415e59d76216af6f235de54a0bf853ad3b834",
+    "review_card_sha256": "a78874f8e42ef2cc39aed2e39bedd5181d5c084966e54f060284c0891593fefa",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "26为近绿T，29为旁蓝T，7为天空尾迹，5为右侧远灯。两人、尾迹、独立灯；不把雕像肢体拆开。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "crowd",
+        "thin_structure"
+      ],
+      "scene_zh": "雕像桥与城堡",
+      "evidence_zh": "26为近绿T，29为旁蓝T，7为天空尾迹，5为右侧远灯。两人、尾迹、独立灯；不把雕像肢体拆开。",
+      "specific_protection_zh": "保留雕像、城堡、其他行人和天空色调。"
+    },
+    "protected_content_zh": "保留雕像、城堡、其他行人和天空色调。",
+    "targets": [
+      {
+        "object_id": 26,
+        "operation": "attribute",
+        "ref": "the green T-shirt on the nearest back-facing man",
+        "ref_zh": "最近的背向男子的绿色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "green_shirt_man",
+        "parent_zh": "绿衣人",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近的背向男子的绿色T恤的颜色改为白色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为白色。"
+      },
+      {
+        "object_id": 29,
+        "operation": "replace",
+        "ref": "the blue T-shirt on the man beside the green-shirted man",
+        "ref_zh": "绿衣男子身旁男子的蓝色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "blue_shirt_man",
+        "parent_zh": "蓝衣人",
+        "payload": "a burgundy polo shirt",
+        "instruction_zh": "将绿衣男子身旁男子的蓝色T恤替换为一件酒红色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件酒红色Polo衫。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the diagonal aircraft contrail in the sky",
+        "ref_zh": "天空中倾斜的飞机尾迹",
+        "scope": "contrail",
+        "scope_zh": "尾迹",
+        "parent": "contrail",
+        "parent_zh": "尾迹",
+        "payload": "",
+        "instruction_zh": "移除天空中倾斜的飞机尾迹。",
+        "instruction_noref_zh": "移除选中的尾迹。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the streetlamp just left of the right-hand foreground statue",
+        "ref_zh": "右侧前景雕像左边的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧前景雕像左边的路灯加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4003889",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1f5ecc27f0994bcb6b8d725ea67a174dcef69883fa89ec545e5d6bba9f20004c",
+    "review_card_sha256": "971e703983c8c3d50c53ca1ff86857808fd3ae5b3fc5db9481b7b545ae431d06",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为前排牛仔裤人物的深蓝T，12为近处站立者头盔，46为后排白T。三个不同人物，仅服饰编辑，不移除人体或改变动作。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "铁轨旁人群与车辆",
+      "evidence_zh": "17为前排牛仔裤人物的深蓝T，12为近处站立者头盔，46为后排白T。三个不同人物，仅服饰编辑，不移除人体或改变动作。",
+      "specific_protection_zh": "保留所有人物身份、姿态、身体、车辆和铁轨背景。"
+    },
+    "protected_content_zh": "保留所有人物身份、姿态、身体、车辆和铁轨背景。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the navy T-shirt on the crouching person in blue jeans at the front",
+        "ref_zh": "前排穿蓝色牛仔裤的蹲姿人物的藏蓝色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "front_crouching_person",
+        "parent_zh": "前蹲姿人",
+        "payload": "gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将前排穿蓝色牛仔裤的蹲姿人物的藏蓝色T恤的颜色改为灰色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为灰色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the helmet on the nearest standing person",
+        "ref_zh": "最近站立人物的头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "nearest_standing_person",
+        "parent_zh": "近站立人",
+        "payload": "a small white numbered sticker reading 12",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近站立人物的头盔加上一张写有12的小白色编号贴纸。",
+        "instruction_noref_zh": "在选中的头盔加上一张写有12的小白色编号贴纸。"
+      },
+      {
+        "object_id": 46,
+        "operation": "replace",
+        "ref": "the white T-shirt on the crouching person behind the front row",
+        "ref_zh": "前排后方蹲姿人物的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "white_shirt_person",
+        "parent_zh": "白衣人",
+        "payload": "a light gray long-sleeved shirt",
+        "instruction_zh": "将前排后方蹲姿人物的白色T恤替换为一件浅灰色长袖上衣。",
+        "instruction_noref_zh": "将选中的T恤替换为一件浅灰色长袖上衣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4013371",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d96585315e5ca05cd412a6575ad9af51e83e679dd9c3a0b372fa3853d2db413a",
+    "review_card_sha256": "b505c9603636738d2c12768f26fe38d2d9f4eaa7a6d1557d5df1664e447499e9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为整体HAPIK立体招牌，21为下方金属格栅。独立安装招牌与建筑两个父对象；不同字母/窗格不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "glass_reflection",
+        "text",
+        "thin_structure"
+      ],
+      "scene_zh": "攀岩馆玻璃立面",
+      "evidence_zh": "14为整体HAPIK立体招牌，21为下方金属格栅。独立安装招牌与建筑两个父对象；不同字母/窗格不重复计数。",
+      "specific_protection_zh": "保留玻璃反光、窗格结构和室内设施。"
+    },
+    "protected_content_zh": "保留玻璃反光、窗格结构和室内设施。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the red HAPIK sign",
+        "ref_zh": "红色HAPIK招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "hapik_sign",
+        "parent_zh": "招牌",
+        "payload": "red three-dimensional letters spelling CLIMB",
+        "instruction_zh": "将红色HAPIK招牌替换为拼成CLIMB的红色立体字母。",
+        "instruction_noref_zh": "将选中的招牌替换为拼成CLIMB的红色立体字母。"
+      },
+      {
+        "object_id": 21,
+        "operation": "attribute",
+        "ref": "the gold vertical slats at the lower right",
+        "ref_zh": "右下方的金色竖向格栅",
+        "scope": "slats",
+        "scope_zh": "格栅",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "dark gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将右下方的金色竖向格栅的颜色改为深灰色。",
+        "instruction_noref_zh": "将选中的格栅的颜色改为深灰色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

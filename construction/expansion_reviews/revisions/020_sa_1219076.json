@@ -1,0 +1,148 @@
+{
+  "source_id": "sa_1219076",
+  "reason_zh": "全图显示黄色竖牌在塔左侧，修正审核证据的左右记载；指令beside原本无误。",
+  "previous_record": {
+    "source_id": "sa_1219076",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "94326b5a29976fb922aea1f4d567abbf2dfc6ea920ac736674b8a20259edb2c9",
+    "review_card_sha256": "b8f3c6a18c9cb6cf41eda7a3f6dc7d2d38f64a1c3a0c2a0155f32d8d06f5c60a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13为右上大阳台栏杆，3为电梯塔左上浅色建筑单独白框窗，48为塔右侧黄色竖牌。两栋独立建筑与实体招牌分别计数；不将同楼不同窗当独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街道电梯塔与两侧建筑",
+      "evidence_zh": "13为右上大阳台栏杆，3为电梯塔左上浅色建筑单独白框窗，48为塔右侧黄色竖牌。两栋独立建筑与实体招牌分别计数；不将同楼不同窗当独立父对象。",
+      "specific_protection_zh": "保留电梯塔、其他窗户、外墙、栏杆结构和街道透视。"
+    },
+    "protected_content_zh": "保留电梯塔、其他窗户、外墙、栏杆结构和街道透视。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the upper-right balcony railing",
+        "ref_zh": "右上方的阳台栏杆",
+        "scope": "balcony railing",
+        "scope_zh": "阳台栏杆",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "a flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方的阳台栏杆加上一个花箱。",
+        "instruction_noref_zh": "在选中的阳台栏杆加上一个花箱。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the white four-pane window left of the tower",
+        "ref_zh": "塔左侧的白框四格窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "left_pale_building",
+        "parent_zh": "左侧浅色建筑",
+        "payload": "a wood-framed arched window",
+        "instruction_zh": "将塔左侧的白框四格窗替换为一扇木框拱窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇木框拱窗。"
+      },
+      {
+        "object_id": 48,
+        "operation": "remove",
+        "ref": "the yellow vertical sign beside the tower",
+        "ref_zh": "塔旁的黄色竖招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "yellow_vertical_sign",
+        "parent_zh": "黄色竖牌",
+        "payload": "",
+        "instruction_zh": "移除塔旁的黄色竖招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1219076",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "94326b5a29976fb922aea1f4d567abbf2dfc6ea920ac736674b8a20259edb2c9",
+    "review_card_sha256": "b8f3c6a18c9cb6cf41eda7a3f6dc7d2d38f64a1c3a0c2a0155f32d8d06f5c60a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13为右上大阳台栏杆，3为电梯塔左上浅色建筑单独白框窗，48为塔左侧黄色竖牌。两栋独立建筑与实体招牌分别计数；不将同楼不同窗当独立父对象。 全图定位复核：全图显示黄色竖牌在塔左侧，修正审核证据的左右记载；指令beside原本无误。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街道电梯塔与两侧建筑",
+      "evidence_zh": "13为右上大阳台栏杆，3为电梯塔左上浅色建筑单独白框窗，48为塔左侧黄色竖牌。两栋独立建筑与实体招牌分别计数；不将同楼不同窗当独立父对象。 全图定位复核：全图显示黄色竖牌在塔左侧，修正审核证据的左右记载；指令beside原本无误。",
+      "specific_protection_zh": "保留电梯塔、其他窗户、外墙、栏杆结构和街道透视。"
+    },
+    "protected_content_zh": "保留电梯塔、其他窗户、外墙、栏杆结构和街道透视。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the upper-right balcony railing",
+        "ref_zh": "右上方的阳台栏杆",
+        "scope": "balcony railing",
+        "scope_zh": "阳台栏杆",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "a flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方的阳台栏杆加上一个花箱。",
+        "instruction_noref_zh": "在选中的阳台栏杆加上一个花箱。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the white four-pane window left of the tower",
+        "ref_zh": "塔左侧的白框四格窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "left_pale_building",
+        "parent_zh": "左侧浅色建筑",
+        "payload": "a wood-framed arched window",
+        "instruction_zh": "将塔左侧的白框四格窗替换为一扇木框拱窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇木框拱窗。"
+      },
+      {
+        "object_id": 48,
+        "operation": "remove",
+        "ref": "the yellow vertical sign beside the tower",
+        "ref_zh": "塔旁的黄色竖招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "yellow_vertical_sign",
+        "parent_zh": "黄色竖牌",
+        "payload": "",
+        "instruction_zh": "移除塔旁的黄色竖招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

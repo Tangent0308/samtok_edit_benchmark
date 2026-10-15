@@ -1,0 +1,745 @@
+[
+  {
+    "source_id": "sa_10375302",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6a1263b63b9788135fa14b4a6c57a7231817280edcb653e1c707a342613abbc4",
+    "review_card_sha256": "5bf53d533d4ca0e13812d96bc895d7265c75ab243b11d16c0661ad073bd17086",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "钓鱼者衬衫8被鱼竿和腰包遮挡，mask保留分离衣片；23属于右侧另一行人；最右黑袋17和最近白桶40是两个独立物件。避免将同一人的帽子与衬衫重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "桥上钓鱼者、行人和渔具",
+      "evidence_zh": "钓鱼者衬衫8被鱼竿和腰包遮挡，mask保留分离衣片；23属于右侧另一行人；最右黑袋17和最近白桶40是两个独立物件。避免将同一人的帽子与衬衫重复计数。",
+      "specific_protection_zh": "保留鱼竿、腰包、人物身体、相邻手提袋、其他桶及桥栏。"
+    },
+    "protected_content_zh": "保留鱼竿、腰包、人物身体、相邻手提袋、其他桶及桥栏。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the nearest fisherman’s pale shirt",
+        "ref_zh": "最近钓鱼者的浅色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "fisherman",
+        "parent_zh": "最近钓鱼者",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近钓鱼者的浅色衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the rightmost man’s striped T-shirt",
+        "ref_zh": "最右侧男子的条纹T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "striped_man",
+        "parent_zh": "条纹上衣男子",
+        "payload": "a plain orange polo shirt",
+        "instruction_zh": "将最右侧男子的条纹T恤替换为一件纯橙色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯橙色Polo衫。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the rightmost black shopping bag",
+        "ref_zh": "最右侧的黑色购物袋",
+        "scope": "shopping bag",
+        "scope_zh": "购物袋",
+        "parent": "right_bag",
+        "parent_zh": "最右侧购物袋",
+        "payload": "",
+        "instruction_zh": "移除最右侧的黑色购物袋。",
+        "instruction_noref_zh": "移除选中的购物袋。"
+      },
+      {
+        "object_id": 40,
+        "operation": "add",
+        "ref": "the nearest white bucket",
+        "ref_zh": "最近的白桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "white_bucket",
+        "parent_zh": "最近白桶",
+        "payload": "a small “BAIT” label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的白桶加上一张写有“BAIT”的小标签。",
+        "instruction_noref_zh": "在选中的桶加上一张写有“BAIT”的小标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10377507",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b93b66dd17ca7c722b18fe4ac8398b9758c5ad0e6fb52b1859f6e97038473bc6",
+    "review_card_sha256": "77513b1a75bc18167d0d243d9dae13b2f5b0bf61eaeb72bab38073f8ea22c279",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8只选中卡车前轮轮圈，不包含轮胎；灰色SUV5与被立柱遮挡的白SUV6是不同车辆。白车6保留两个分离可见区域，车顶警示灯直接安装到白车上。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "similar_instances",
+        "local_parts"
+      ],
+      "scene_zh": "登机桥下的机场工作车辆",
+      "evidence_zh": "8只选中卡车前轮轮圈，不包含轮胎；灰色SUV5与被立柱遮挡的白SUV6是不同车辆。白车6保留两个分离可见区域，车顶警示灯直接安装到白车上。",
+      "specific_protection_zh": "保留轮胎、卡车车身、登机桥立柱、地面标线和相邻设备。"
+    },
+    "protected_content_zh": "保留轮胎、卡车车身、登机桥立柱、地面标线和相邻设备。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the truck’s front wheel rim",
+        "ref_zh": "卡车前轮的轮圈",
+        "scope": "wheel rim",
+        "scope_zh": "轮圈",
+        "parent": "truck",
+        "parent_zh": "机场卡车",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将卡车前轮的轮圈的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的轮圈的颜色改为黑色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the gray SUV behind the truck",
+        "ref_zh": "卡车后方的灰色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "gray_suv",
+        "parent_zh": "灰色SUV",
+        "payload": "a yellow electric baggage tug",
+        "instruction_zh": "将卡车后方的灰色SUV替换为一辆黄色电动行李牵引车。",
+        "instruction_noref_zh": "将选中的SUV替换为一辆黄色电动行李牵引车。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the white SUV behind the gray SUV",
+        "ref_zh": "灰色SUV后方的白色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "white_suv",
+        "parent_zh": "白色SUV",
+        "payload": "an amber roof beacon",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在灰色SUV后方的白色SUV加上一个琥珀色车顶警示灯。",
+        "instruction_noref_zh": "在选中的SUV加上一个琥珀色车顶警示灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10395853",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ac0812249cbe5c33a9097ecb81f5b62308c4c7c012c1d08b9d0613037ccf8999",
+    "review_card_sha256": "f604907ffa0d358b71e6088b5b6faa5d08b0b4ab3e43c8cc44041f529281ddd3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为RISTORANTE遮篷上方的花丛，22为最下面一排左起第二个花箱内的花丛，6是右侧独立酒店招牌。花丛各属独立花箱，mask并未选择整座建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "irregular_boundaries",
+        "neighbor_protection"
+      ],
+      "scene_zh": "黄色酒店立面的花箱与悬挂招牌",
+      "evidence_zh": "17为RISTORANTE遮篷上方的花丛，22为最下面一排左起第二个花箱内的花丛，6是右侧独立酒店招牌。花丛各属独立花箱，mask并未选择整座建筑。",
+      "specific_protection_zh": "保留花箱容器、窗框、百叶窗、墙面及邻近花丛。"
+    },
+    "protected_content_zh": "保留花箱容器、窗框、百叶窗、墙面及邻近花丛。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the flowers above the “RISTORANTE” awning",
+        "ref_zh": "“RISTORANTE”遮篷上方的花丛",
+        "scope": "flower arrangement",
+        "scope_zh": "花丛",
+        "parent": "awning_flowers",
+        "parent_zh": "餐厅遮篷上方花丛",
+        "payload": "",
+        "instruction_zh": "移除“RISTORANTE”遮篷上方的花丛。",
+        "instruction_noref_zh": "移除选中的花丛。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the flowers in the bottom row’s second window box from the left",
+        "ref_zh": "最下排左起第二个窗台花箱中的花丛",
+        "scope": "flower arrangement",
+        "scope_zh": "花丛",
+        "parent": "second_flowers",
+        "parent_zh": "最下排第二花箱的花丛",
+        "payload": "trailing green ivy",
+        "instruction_zh": "将最下排左起第二个窗台花箱中的花丛替换为垂吊的绿色常春藤。",
+        "instruction_noref_zh": "将选中的花丛替换为垂吊的绿色常春藤。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the hanging hotel sign on the right",
+        "ref_zh": "右侧悬挂的酒店招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "hotel_sign",
+        "parent_zh": "酒店悬挂招牌",
+        "payload": "a string of warm-white fairy lights",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧悬挂的酒店招牌加上一串暖白色小灯。",
+        "instruction_noref_zh": "在选中的招牌加上一串暖白色小灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10398187",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "46c8170ac3ba5ce6c4be0f4df7b67d40718f3dabc8b9d707e83d3fc281ddf8dd",
+    "review_card_sha256": "996612d62bc800159372d966d63f331ac86ae727e440b7671f8ba30ce27a574e",
+    "review_card_name": "supplement_cones.jpg",
+    "evidence_zh": "补充图核实21是更左侧细长交通锥，8是其右方普通锥，两者轮廓及底座清楚。二者分别为独立物件，建筑摄影中移除临时路障、替换为花盆是自然的场景布置。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "建筑入口外的两个交通锥",
+      "evidence_zh": "补充图核实21是更左侧细长交通锥，8是其右方普通锥，两者轮廓及底座清楚。二者分别为独立物件，建筑摄影中移除临时路障、替换为花盆是自然的场景布置。",
+      "specific_protection_zh": "保留地面砖缝、其余路桩、入口台阶和建筑。"
+    },
+    "protected_content_zh": "保留地面砖缝、其余路桩、入口台阶和建筑。",
+    "targets": [
+      {
+        "object_id": 21,
+        "operation": "remove",
+        "ref": "the leftmost orange traffic cone",
+        "ref_zh": "最左侧的橙色交通锥",
+        "scope": "traffic cone",
+        "scope_zh": "交通锥",
+        "parent": "left_cone",
+        "parent_zh": "左侧交通锥",
+        "payload": "",
+        "instruction_zh": "移除最左侧的橙色交通锥。",
+        "instruction_noref_zh": "移除选中的交通锥。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the right orange traffic cone",
+        "ref_zh": "右侧的橙色交通锥",
+        "scope": "traffic cone",
+        "scope_zh": "交通锥",
+        "parent": "right_cone",
+        "parent_zh": "右侧交通锥",
+        "payload": "a terracotta planter with a small boxwood shrub",
+        "instruction_zh": "将右侧的橙色交通锥替换为一个种有小黄杨的陶土花盆。",
+        "instruction_noref_zh": "将选中的交通锥替换为一个种有小黄杨的陶土花盆。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10402853",
+    "decision": "reject",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2f69a0115fd1e4ec1e8fc34be81d566a50bc93462c9721b2f1d16f0cfbf0b25c",
+    "review_card_sha256": "a46e59599e298804c85503111b73b95f9a22be1dbcbccb0b9ca4dd7305ed0683",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选全部属于同一座建筑；多数铁栏杆mask又将孔洞后的窗户填满。不能拿不同楼层凑多个独立父物体。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "石砌建筑立面的窗户和栏杆",
+      "evidence_zh": "候选全部属于同一座建筑；多数铁栏杆mask又将孔洞后的窗户填满。不能拿不同楼层凑多个独立父物体。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10411078",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b9a66ae399f9188fee4f2f84cdc024e201dde7ed1819957ab345e3bb91ed8881",
+    "review_card_sha256": "34f62689b95edd35a42cb41b8c3eb1bdcb8c506f4daa98fd4f0ad787d23c4188",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "驼色大衣5与灰色大衣31分别属于右前景两个人，均绕过手与身体空隙；20是被人物头部遮挡的星巴克实体标牌；21为雕像后方左侧路灯。雕像衣服38不按真人衣服处理。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "holes",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "步行街两名行人的大衣和商店招牌",
+      "evidence_zh": "驼色大衣5与灰色大衣31分别属于右前景两个人，均绕过手与身体空隙；20是被人物头部遮挡的星巴克实体标牌；21为雕像后方左侧路灯。雕像衣服38不按真人衣服处理。",
+      "specific_protection_zh": "保留人物身体、包、雕像、灯上的花篮及其余店招。"
+    },
+    "protected_content_zh": "保留人物身体、包、雕像、灯上的花篮及其余店招。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the camel coat on the right",
+        "ref_zh": "右侧的驼色大衣",
+        "scope": "coat",
+        "scope_zh": "大衣",
+        "parent": "camel_coat_person",
+        "parent_zh": "穿驼色大衣的人",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的驼色大衣的颜色改为森林绿色。",
+        "instruction_noref_zh": "将选中的大衣的颜色改为森林绿色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "replace",
+        "ref": "the gray coat beside the camel coat",
+        "ref_zh": "驼色大衣旁的灰色大衣",
+        "scope": "coat",
+        "scope_zh": "大衣",
+        "parent": "gray_coat_person",
+        "parent_zh": "穿灰色大衣的人",
+        "payload": "a navy duffle coat",
+        "instruction_zh": "将驼色大衣旁的灰色大衣替换为一件藏蓝色牛角扣大衣。",
+        "instruction_noref_zh": "将选中的大衣替换为一件藏蓝色牛角扣大衣。"
+      },
+      {
+        "object_id": 20,
+        "operation": "remove",
+        "ref": "the green Starbucks sign",
+        "ref_zh": "绿色星巴克招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "starbucks_sign",
+        "parent_zh": "星巴克招牌",
+        "payload": "",
+        "instruction_zh": "移除绿色星巴克招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 21,
+        "operation": "add",
+        "ref": "the streetlamp behind the statue",
+        "ref_zh": "雕像后方的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "雕像后方路灯",
+        "payload": "a small “PEDESTRIAN ZONE” plaque",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在雕像后方的路灯加上一块写有“PEDESTRIAN ZONE”的小标牌。",
+        "instruction_noref_zh": "在选中的路灯加上一块写有“PEDESTRIAN ZONE”的小标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10425350",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c76a3c3388e6fb7c2b3eb0a4017b29808e213d551082b4bc066c1be13ab3a6af",
+    "review_card_sha256": "3fe4ef613b4a77f30360f99ac4cf1b854732e285118cb1e6642c0af0e725ef08",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "26仅是货车驾驶室车门，mask排除后视镜；7为右上方蓝色人行横道牌面。反光条直接贴车门，移除独立牌面不牵连车体或行人图案之外的内容。",
+    "difficulty": {
+      "mechanisms": [
+        "holes",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "雪地交通事故中的货车与路牌",
+      "evidence_zh": "26仅是货车驾驶室车门，mask排除后视镜；7为右上方蓝色人行横道牌面。反光条直接贴车门，移除独立牌面不牵连车体或行人图案之外的内容。",
+      "specific_protection_zh": "保留后视镜、车窗已有反射、车辆损伤、路牌杆和其余标牌。"
+    },
+    "protected_content_zh": "保留后视镜、车窗已有反射、车辆损伤、路牌杆和其余标牌。",
+    "targets": [
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the truck’s cab door",
+        "ref_zh": "货车的驾驶室车门",
+        "scope": "cab door",
+        "scope_zh": "驾驶室车门",
+        "parent": "truck",
+        "parent_zh": "货车",
+        "payload": "an orange reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在货车的驾驶室车门加上一条橙色反光条。",
+        "instruction_noref_zh": "在选中的驾驶室车门加上一条橙色反光条。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the blue pedestrian-crossing sign",
+        "ref_zh": "蓝色人行横道标志牌",
+        "scope": "sign",
+        "scope_zh": "标志牌",
+        "parent": "crossing_sign",
+        "parent_zh": "人行横道标志牌",
+        "payload": "",
+        "instruction_zh": "移除蓝色人行横道标志牌。",
+        "instruction_noref_zh": "移除选中的标志牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10428664",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "eb0fade2345aa342ad209e1d1a1e2a8024169f685a3ce09200feffc7bfe3f35f",
+    "review_card_sha256": "93e39396a815f3442ed9cac95f9e27e064601ce18273816e356c61b776eb349e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "避开重影车辆、变形轮胎和光轨，采用轮廓清楚的路灯6、17。6是左侧较矮路灯，17紧邻右侧树干；灯线细长、局部穿过背景亮光，两个灯具独立。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "长曝光街景中的两盏路灯",
+      "evidence_zh": "避开重影车辆、变形轮胎和光轨，采用轮廓清楚的路灯6、17。6是左侧较矮路灯，17紧邻右侧树干；灯线细长、局部穿过背景亮光，两个灯具独立。",
+      "specific_protection_zh": "保留车流光轨、树干、交通灯及左侧最高路灯。"
+    },
+    "protected_content_zh": "保留车流光轨、树干、交通灯及左侧最高路灯。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the shorter streetlamp on the left",
+        "ref_zh": "左侧较矮的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_short_lamp",
+        "parent_zh": "左侧矮路灯",
+        "payload": "a black contemporary LED streetlamp",
+        "instruction_zh": "将左侧较矮的路灯替换为一盏黑色现代LED路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色现代LED路灯。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the streetlamp beside the tree on the right",
+        "ref_zh": "右侧树旁的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右侧树旁路灯",
+        "payload": "a small festive wreath",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧树旁的路灯加上一个小节日花环。",
+        "instruction_noref_zh": "在选中的路灯加上一个小节日花环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1043581",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "33fbc9597ddb4dbce76a58c239ef916badb4e8c6a9061d83bf134a0489ad19a2",
+    "review_card_sha256": "2e51456cdcb95d14a19eb0300ceedcf21caf79bcba3610e6740af435c6bc9d49",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "35为靠建筑最近的带罩小艇，其mask不包含外挂机，添加救生圈直接依附艇身而保留马达；8为远处货船前的另一艘机动艇。小目标处于波浪背景，指代需区分。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "海岸建筑旁的小艇与远处船只",
+      "evidence_zh": "35为靠建筑最近的带罩小艇，其mask不包含外挂机，添加救生圈直接依附艇身而保留马达；8为远处货船前的另一艘机动艇。小目标处于波浪背景，指代需区分。",
+      "specific_protection_zh": "保留外挂机、岸边人物、货船、建筑和桥梁。"
+    },
+    "protected_content_zh": "保留外挂机、岸边人物、货船、建筑和桥梁。",
+    "targets": [
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the covered motorboat nearest the waterfront building",
+        "ref_zh": "离岸边建筑最近的带罩机动艇",
+        "scope": "boat hull",
+        "scope_zh": "艇身",
+        "parent": "near_boat",
+        "parent_zh": "靠岸小艇",
+        "payload": "a small orange life ring",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在离岸边建筑最近的带罩机动艇加上一个小橙色救生圈。",
+        "instruction_noref_zh": "在选中的艇身加上一个小橙色救生圈。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the motorboat in front of the distant cargo ship",
+        "ref_zh": "远处货船前方的机动艇",
+        "scope": "motorboat",
+        "scope_zh": "机动艇",
+        "parent": "far_boat",
+        "parent_zh": "远处机动艇",
+        "payload": "",
+        "instruction_zh": "移除远处货船前方的机动艇。",
+        "instruction_noref_zh": "移除选中的机动艇。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10436904",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "15b7fb19dacc40ca3c411a4cf9384aa0938b5af0d99f7633bf94feed1ab1a609",
+    "review_card_sha256": "5f00804c9ad8fafdc48dc971d5e68e177fb65cbc0d025882d4f51ac3e0eb82a0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "灰T恤1属于前景背对镜头男子，格纹衬衫2属于左侧扶马男子，青色格纹上衣8属于更左侧男孩。三个独立人物，mask均排除手臂和头颈，2还保留手臂遮挡缺口。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "节庆队伍中扶着马形道具的成人与男孩",
+      "evidence_zh": "灰T恤1属于前景背对镜头男子，格纹衬衫2属于左侧扶马男子，青色格纹上衣8属于更左侧男孩。三个独立人物，mask均排除手臂和头颈，2还保留手臂遮挡缺口。",
+      "specific_protection_zh": "保留人物皮肤、帽子、下装和马形道具及背景衣物。"
+    },
+    "protected_content_zh": "保留人物皮肤、帽子、下装和马形道具及背景衣物。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the foreground man’s gray T-shirt",
+        "ref_zh": "前景男子的灰色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "foreground_man",
+        "parent_zh": "前景男子",
+        "payload": "teal blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男子的灰色T恤的颜色改为青蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为青蓝色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the checked shirt left of the horse prop",
+        "ref_zh": "马形道具左侧的格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_man",
+        "parent_zh": "左侧扶道具男子",
+        "payload": "a white polo shirt",
+        "instruction_zh": "将马形道具左侧的格纹衬衫替换为一件白色Polo衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件白色Polo衫。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the boy’s turquoise checked shirt",
+        "ref_zh": "男孩的青色格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "boy",
+        "parent_zh": "左侧男孩",
+        "payload": "a small name badge",
+        "placement": {
+          "relation": "pinned to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在男孩的青色格纹衬衫加上一枚小姓名牌。",
+        "instruction_noref_zh": "在选中的衬衫加上一枚小姓名牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10444048",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "770daa67b30bab285cb414be11e6423c819842f504a8744c7b997c512bb988d9",
+    "review_card_sha256": "cb414238ed402e515425fd70093cbb1acf275f91dc11313214cd04c84b24b443",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "多个候选同时囊括花箱、栏杆和台座；单独花丛10/14/18可能可用，但所在立面、楼层及从左往右次序需更大局部核实，暂不以笼统花箱指代入库。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "俯瞰街角建筑的多个阳台花箱",
+      "evidence_zh": "多个候选同时囊括花箱、栏杆和台座；单独花丛10/14/18可能可用，但所在立面、楼层及从左往右次序需更大局部核实，暂不以笼统花箱指代入库。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10444816",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "08ce5d2c20cc015a73d2b2648f1780cf848677c0786288b21835ba330a7b3abb",
+    "review_card_sha256": "9391dad07e19922eaa950b01b4278f70bfc2f7937bced0d3829b039a04ff06ae",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "黑T恤2是左侧男孩，上衣5为背景背向镜头的橙衣男子；旗幡85是左上方独立竖幡，不是前景表演者衣饰。新增穗直接悬于旗幡下沿，不修改仪式人物的身体。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "仪式队伍旁的普通衣着人物及旗幡",
+      "evidence_zh": "黑T恤2是左侧男孩，上衣5为背景背向镜头的橙衣男子；旗幡85是左上方独立竖幡，不是前景表演者衣饰。新增穗直接悬于旗幡下沿，不修改仪式人物的身体。",
+      "specific_protection_zh": "保留人物皮肤、粉帽、表演服装、幡面纹样和支撑杆。"
+    },
+    "protected_content_zh": "保留人物皮肤、粉帽、表演服装、幡面纹样和支撑杆。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the boy’s black T-shirt on the left",
+        "ref_zh": "左侧男孩的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "boy",
+        "parent_zh": "左侧男孩",
+        "payload": "a white polo shirt",
+        "instruction_zh": "将左侧男孩的黑色T恤替换为一件白色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件白色Polo衫。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the orange T-shirt facing away in the background",
+        "ref_zh": "背景背向镜头的橙色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "orange_shirt_man",
+        "parent_zh": "背景橙衣男子",
+        "payload": "bright blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将背景背向镜头的橙色T恤的颜色改为亮蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为亮蓝色。"
+      },
+      {
+        "object_id": 85,
+        "operation": "add",
+        "ref": "the tall ceremonial banner on the left",
+        "ref_zh": "左侧的高竖式仪式旗幡",
+        "scope": "banner",
+        "scope_zh": "旗幡",
+        "parent": "banner",
+        "parent_zh": "左侧仪式旗幡",
+        "payload": "a gold tassel",
+        "placement": {
+          "relation": "hanging from",
+          "site": "bottom edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧的高竖式仪式旗幡下沿加上一条金色流苏。",
+        "instruction_noref_zh": "在选中的旗幡下沿加上一条金色流苏。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

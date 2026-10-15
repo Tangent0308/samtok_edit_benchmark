@@ -1,0 +1,651 @@
+[
+  {
+    "source_id": "sa_3746390",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c9ccb77138940772069352c32243d2d83b91df5b0f12856a1f049e338ad3e640",
+    "review_card_sha256": "1df09d961fcf76dffa711b857596f2396d22c367cc75d764c775b94995b79824",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左棕SUV，1为其后黑SUV，18为前景皮夹克，16为禁停牌。两车、人、独立牌。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "motion",
+        "small_targets"
+      ],
+      "scene_zh": "有轨电车线下的十字路口",
+      "evidence_zh": "0为左棕SUV，1为其后黑SUV，18为前景皮夹克，16为禁停牌。两车、人、独立牌。",
+      "specific_protection_zh": "保留行人身体、道路、电线及建筑。"
+    },
+    "protected_content_zh": "保留行人身体、道路、电线及建筑。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the brown SUV on the left",
+        "ref_zh": "左侧的棕色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "brown_suv",
+        "parent_zh": "棕SUV",
+        "payload": "a white compact SUV",
+        "instruction_zh": "将左侧的棕色SUV替换为一辆白色小型SUV。",
+        "instruction_noref_zh": "将选中的SUV替换为一辆白色小型SUV。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the dark SUV behind the brown SUV",
+        "ref_zh": "棕色SUV后方的深色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "dark_suv",
+        "parent_zh": "深色SUV",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将棕色SUV后方的深色SUV的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的SUV的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the blue-and-red no-stopping sign",
+        "ref_zh": "蓝红色禁止停车标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "no_stopping_sign",
+        "parent_zh": "禁停牌",
+        "payload": "",
+        "instruction_zh": "移除蓝红色禁止停车标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the black leather jacket on the foreground pedestrian",
+        "ref_zh": "前景行人的黑色皮夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "foreground_pedestrian",
+        "parent_zh": "前景行人",
+        "payload": "a small silver star pin on the lapel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景行人的黑色皮夹克加上一枚别在翻领上的小银星胸针。",
+        "instruction_noref_zh": "在选中的夹克加上一枚别在翻领上的小银星胸针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3751372",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7f75e23484f856acefaa4cfb8f9278a7041795e3c925546e88134c3d4e4b336f",
+    "review_card_sha256": "920728a9fb823352862b639e6844936e11f27faf892c65a953ad399218c18ab1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9为桥边箭头牌，11为左桥灯，76为中间弧形楼下层阳台，12为右石楼拱窗。牌、灯、两栋不同楼。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "塞纳河桥与石砌建筑",
+      "evidence_zh": "9为桥边箭头牌，11为左桥灯，76为中间弧形楼下层阳台，12为右石楼拱窗。牌、灯、两栋不同楼。",
+      "specific_protection_zh": "保留河水、桥梁、各建筑结构和行人。"
+    },
+    "protected_content_zh": "保留河水、桥梁、各建筑结构和行人。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the right-arrow sign attached to the bridge",
+        "ref_zh": "桥上的右箭头标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "arrow_sign",
+        "parent_zh": "箭头牌",
+        "payload": "",
+        "instruction_zh": "移除桥上的右箭头标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the streetlamp at the far left end of the bridge",
+        "ref_zh": "桥最左端的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_bridge_lamp",
+        "parent_zh": "左桥灯",
+        "payload": "a slim black lantern-style streetlamp",
+        "instruction_zh": "将桥最左端的路灯替换为一盏细黑杆灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏细黑杆灯笼式路灯。"
+      },
+      {
+        "object_id": 76,
+        "operation": "add",
+        "ref": "the lower wraparound balcony railing on the rounded building",
+        "ref_zh": "圆弧建筑下层环绕阳台的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "rounded_building",
+        "parent_zh": "弧形楼",
+        "payload": "a narrow planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在圆弧建筑下层环绕阳台的栏杆加上一个种有红花的窄花槽。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的窄花槽。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the rightmost visible arched window on the stone building",
+        "ref_zh": "石砌建筑最右边可见的拱窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "stone_building",
+        "parent_zh": "石楼",
+        "payload": "pale green",
+        "attribute_kind": "tint",
+        "instruction_zh": "将石砌建筑最右边可见的拱窗的色调改为浅绿色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3758475",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3fae25976c936e4ce0fe3fe914fcd5776f882b4e9006bbc3d33b7e478889c56e",
+    "review_card_sha256": "18faccb33c4013b5dc61be32fa2a755f522445072a6d17ee079829b5cafbad06",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为火炮瞄准手轮，25为其右后树干。陈列火炮与独立树，不拆机械多个零件凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "weathering",
+        "thin_structure"
+      ],
+      "scene_zh": "公园陈列的旧火炮",
+      "evidence_zh": "1为火炮瞄准手轮，25为其右后树干。陈列火炮与独立树，不拆机械多个零件凑数。",
+      "specific_protection_zh": "保留陈列火炮结构、底座、草地及其他树。"
+    },
+    "protected_content_zh": "保留陈列火炮结构、底座、草地及其他树。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the large spoked handwheel on the displayed cannon",
+        "ref_zh": "陈列火炮上的大型辐条手轮",
+        "scope": "handwheel",
+        "scope_zh": "手轮",
+        "parent": "displayed_cannon",
+        "parent_zh": "陈列火炮",
+        "payload": "dark bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将陈列火炮上的大型辐条手轮的颜色改为深古铜色。",
+        "instruction_noref_zh": "将选中的手轮的颜色改为深古铜色。"
+      },
+      {
+        "object_id": 25,
+        "operation": "add",
+        "ref": "the slanted tree trunk just right of the cannon",
+        "ref_zh": "火炮右后方倾斜的树干",
+        "scope": "trunk",
+        "scope_zh": "树干",
+        "parent": "right_tree",
+        "parent_zh": "右树",
+        "payload": "a small wooden birdhouse",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在火炮右后方倾斜的树干加上一个小木鸟屋。",
+        "instruction_noref_zh": "在选中的树干加上一个小木鸟屋。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3783196",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "afbbfa10c5c1dd862e2399fe3ae4ff9f56f8d3a8e50e86e737226f3dae612886",
+    "review_card_sha256": "338aae7f9f1aff2e65416063f6112f22ec117db4ace17a4418ba745129b6cc45",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为右下红汽水整包，7为右侧中上红包，64为右列最顶绿包，0为车前轮。三份独立成包货物与一辆车；移除最顶包避免让上层悬空。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "transparent_wrapping",
+        "occlusion"
+      ],
+      "scene_zh": "装满汽水的配送车",
+      "evidence_zh": "5为右下红汽水整包，7为右侧中上红包，64为右列最顶绿包，0为车前轮。三份独立成包货物与一辆车；移除最顶包避免让上层悬空。",
+      "specific_protection_zh": "保留其余堆叠货物、车身、标签及道路。"
+    },
+    "protected_content_zh": "保留其余堆叠货物、车身、标签及道路。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the bottom red-soda pack at the right of the stack",
+        "ref_zh": "货堆右侧最底层的红色汽水整包",
+        "scope": "pack",
+        "scope_zh": "整包饮料",
+        "parent": "bottom_red_pack",
+        "parent_zh": "底层红包",
+        "payload": "a shrink-wrapped pack of mineral-water bottles",
+        "instruction_zh": "将货堆右侧最底层的红色汽水整包替换为一整包塑封矿泉水。",
+        "instruction_noref_zh": "将选中的整包饮料替换为一整包塑封矿泉水。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the rusty rim of the truck’s front wheel",
+        "ref_zh": "卡车前轮生锈的轮圈",
+        "scope": "rim",
+        "scope_zh": "轮圈",
+        "parent": "delivery_truck",
+        "parent_zh": "配送车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将卡车前轮生锈的轮圈的颜色改为银色。",
+        "instruction_noref_zh": "将选中的轮圈的颜色改为银色。"
+      },
+      {
+        "object_id": 64,
+        "operation": "remove",
+        "ref": "the top green-labeled soda pack on the right",
+        "ref_zh": "右侧最顶层绿标签汽水整包",
+        "scope": "pack",
+        "scope_zh": "整包饮料",
+        "parent": "top_green_pack",
+        "parent_zh": "顶部绿包",
+        "payload": "",
+        "instruction_zh": "移除右侧最顶层绿标签汽水整包。",
+        "instruction_noref_zh": "移除选中的整包饮料。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the red-soda pack directly below the top green pack on the right",
+        "ref_zh": "右侧顶部绿包正下方的红色汽水整包",
+        "scope": "pack",
+        "scope_zh": "整包饮料",
+        "parent": "upper_red_pack",
+        "parent_zh": "上层红包",
+        "payload": "a small white inventory label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧顶部绿包正下方的红色汽水整包加上一张小白色库存标签。",
+        "instruction_noref_zh": "在选中的整包饮料加上一张小白色库存标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_378499",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "53562a258abac027a8cba5ca0b910fa6702a709b1314309042169ab07c2e70b8",
+    "review_card_sha256": "b05abc913af323b12f72725ebbea1109c96ea9f0dce53f3ed88529b4c7cfcbbd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "122为窗内乘客绿外套，24为车身地铁标志，108为对面站台显示屏，6为对面灯杆。人、列车、独立屏幕、灯杆。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "glass",
+        "small_targets"
+      ],
+      "scene_zh": "夜间地铁站列车",
+      "evidence_zh": "122为窗内乘客绿外套，24为车身地铁标志，108为对面站台显示屏，6为对面灯杆。人、列车、独立屏幕、灯杆。",
+      "specific_protection_zh": "保留乘客身体、车窗、车门、轨道及其他站台设施。"
+    },
+    "protected_content_zh": "保留乘客身体、车窗、车门、轨道及其他站台设施。",
+    "targets": [
+      {
+        "object_id": 122,
+        "operation": "replace",
+        "ref": "the green jacket on the passenger visible through the middle window",
+        "ref_zh": "中间车窗内可见乘客的绿色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "window_passenger",
+        "parent_zh": "窗内乘客",
+        "payload": "a navy jacket",
+        "instruction_zh": "将中间车窗内可见乘客的绿色外套替换为一件藏蓝色外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色外套。"
+      },
+      {
+        "object_id": 24,
+        "operation": "remove",
+        "ref": "the Underground roundel on the nearest train carriage",
+        "ref_zh": "最近车厢上的Underground圆形标志",
+        "scope": "logo",
+        "scope_zh": "标志",
+        "parent": "train",
+        "parent_zh": "列车",
+        "payload": "",
+        "instruction_zh": "移除最近车厢上的Underground圆形标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 108,
+        "operation": "attribute",
+        "ref": "the yellow lettering on the opposite platform’s electronic board",
+        "ref_zh": "对面站台电子信息牌的黄色文字",
+        "scope": "lettering",
+        "scope_zh": "文字",
+        "parent": "platform_board",
+        "parent_zh": "站台信息牌",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将对面站台电子信息牌的黄色文字的颜色改为白色。",
+        "instruction_noref_zh": "将选中的文字的颜色改为白色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the tall single-arm lamp pole just right of the opposite platform’s display",
+        "ref_zh": "对面站台显示屏右侧的高单臂灯杆",
+        "scope": "lamp pole",
+        "scope_zh": "灯杆",
+        "parent": "platform_lamp",
+        "parent_zh": "站台灯",
+        "payload": "a small white maintenance sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在对面站台显示屏右侧的高单臂灯杆加上一张小白色维护贴纸。",
+        "instruction_noref_zh": "在选中的灯杆加上一张小白色维护贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3792110",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "84fb30b9bdbb227913171a362cbe5a9e4f91d46cd921b991a94c9980fc15da50",
+    "review_card_sha256": "9f5440b0ceace4807f3b77bc52ef2fece703ccd935161b1240446457564a5c99",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11为左侧木货架，25为架上小绿盒，14为黑檀木介绍牌。货架、小盒与独立牌；不选右侧镜像海报为新对象。",
+    "difficulty": {
+      "mechanisms": [
+        "glass_reflection",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "玻璃橱窗中的印章店",
+      "evidence_zh": "11为左侧木货架，25为架上小绿盒，14为黑檀木介绍牌。货架、小盒与独立牌；不选右侧镜像海报为新对象。",
+      "specific_protection_zh": "保留玻璃反光、海报及其镜像、其他商品。"
+    },
+    "protected_content_zh": "保留玻璃反光、海报及其镜像、其他商品。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the wooden shelf directly above the STAR WARS display",
+        "ref_zh": "STAR WARS展示牌正上方的木货架",
+        "scope": "shelf",
+        "scope_zh": "货架",
+        "parent": "wooden_shelf",
+        "parent_zh": "木货架",
+        "payload": "a tiny potted succulent",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在STAR WARS展示牌正上方的木货架加上一小盆多肉植物。",
+        "instruction_noref_zh": "在选中的货架加上一小盆多肉植物。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the small green box beside the tall calligraphy plaque",
+        "ref_zh": "长竖幅书法牌旁的小绿色盒子",
+        "scope": "box",
+        "scope_zh": "盒子",
+        "parent": "green_box",
+        "parent_zh": "绿盒",
+        "payload": "a small dark wooden box",
+        "instruction_zh": "将长竖幅书法牌旁的小绿色盒子替换为一个小深色木盒。",
+        "instruction_noref_zh": "将选中的盒子替换为一个小深色木盒。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the lettering on the BLACK SANDALWOOD sign",
+        "ref_zh": "BLACK SANDALWOOD标牌的文字",
+        "scope": "lettering",
+        "scope_zh": "文字",
+        "parent": "sandalwood_sign",
+        "parent_zh": "黑檀牌",
+        "payload": "gold",
+        "attribute_kind": "color",
+        "instruction_zh": "将BLACK SANDALWOOD标牌的文字的颜色改为金色。",
+        "instruction_noref_zh": "将选中的文字的颜色改为金色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3792618",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "943ce9401ee890f884c5ae681389c4ce078412b1f840396d5d56f100003de322",
+    "review_card_sha256": "c0af56c95df23bc1fa467c93c2438308d9a0ceda337cf56b4ffec5ec22344673",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为右侧雪椅，6为拱廊木凳，10为大石花槽，7为右楼阳台栏杆。椅、凳、花槽、楼体四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "occlusion",
+        "stone_texture"
+      ],
+      "scene_zh": "积雪石砌小院",
+      "evidence_zh": "2为右侧雪椅，6为拱廊木凳，10为大石花槽，7为右楼阳台栏杆。椅、凳、花槽、楼体四父对象。",
+      "specific_protection_zh": "保留雪、植物、石墙、门口和其他家具。"
+    },
+    "protected_content_zh": "保留雪、植物、石墙、门口和其他家具。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the snow-covered chair on the right",
+        "ref_zh": "右侧覆雪的椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "snow_chair",
+        "parent_zh": "雪椅",
+        "payload": "",
+        "instruction_zh": "移除右侧覆雪的椅子。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the wooden bench under the stone arch",
+        "ref_zh": "石拱廊下的木长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "wooden_bench",
+        "parent_zh": "木凳",
+        "payload": "a dark wooden bench with iron legs",
+        "instruction_zh": "将石拱廊下的木长凳替换为一张带铁腿的深色木长凳。",
+        "instruction_noref_zh": "将选中的长凳替换为一张带铁腿的深色木长凳。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the large stone planter beside the doorway",
+        "ref_zh": "门口旁的大石花槽",
+        "scope": "planter",
+        "scope_zh": "花槽",
+        "parent": "stone_planter",
+        "parent_zh": "石花槽",
+        "payload": "terracotta",
+        "attribute_kind": "color",
+        "instruction_zh": "将门口旁的大石花槽的颜色改为陶土色。",
+        "instruction_noref_zh": "将选中的花槽的颜色改为陶土色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the balcony railing above the doorway",
+        "ref_zh": "门口上方的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "right_building",
+        "parent_zh": "右楼",
+        "payload": "a strand of warm-white fairy lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在门口上方的阳台栏杆加上一串暖白色小灯。",
+        "instruction_noref_zh": "在选中的栏杆加上一串暖白色小灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3803667",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b80db0c13860c211526625c94fcc021fca7a39426a91311634a624e319fd0158",
+    "review_card_sha256": "b40028dc2094f2e3e6d09295d6d81bd4a18ab73e349fdef7333ffa54edd2849a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "33为自行车前蓝袋，1为右近黑花箱，125为左壁灯，48为右近门。独立袋、花箱、灯、右楼；袋不与自行车轮重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "perspective",
+        "small_targets"
+      ],
+      "scene_zh": "骑车人经过砖巷",
+      "evidence_zh": "33为自行车前蓝袋，1为右近黑花箱，125为左壁灯，48为右近门。独立袋、花箱、灯、右楼；袋不与自行车轮重复计数。",
+      "specific_protection_zh": "保留骑车人、车轮、植物、街道和其他建筑。"
+    },
+    "protected_content_zh": "保留骑车人、车轮、植物、街道和其他建筑。",
+    "targets": [
+      {
+        "object_id": 33,
+        "operation": "replace",
+        "ref": "the blue bag on the front of the bicycle",
+        "ref_zh": "自行车前方的蓝色袋子",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "front_bag",
+        "parent_zh": "车前袋",
+        "payload": "a brown wicker bicycle basket",
+        "instruction_zh": "将自行车前方的蓝色袋子替换为一个棕色藤编自行车篮。",
+        "instruction_noref_zh": "将选中的袋子替换为一个棕色藤编自行车篮。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the black rectangular planter at the lower right",
+        "ref_zh": "右下方的黑色长方形花箱",
+        "scope": "planter",
+        "scope_zh": "花箱",
+        "parent": "black_planter",
+        "parent_zh": "黑花箱",
+        "payload": "terracotta",
+        "attribute_kind": "color",
+        "instruction_zh": "将右下方的黑色长方形花箱的颜色改为陶土色。",
+        "instruction_noref_zh": "将选中的花箱的颜色改为陶土色。"
+      },
+      {
+        "object_id": 125,
+        "operation": "remove",
+        "ref": "the wall lamp projecting from the left-hand building",
+        "ref_zh": "左侧建筑向外伸出的壁灯",
+        "scope": "lamp",
+        "scope_zh": "壁灯",
+        "parent": "left_wall_lamp",
+        "parent_zh": "左壁灯",
+        "payload": "",
+        "instruction_zh": "移除左侧建筑向外伸出的壁灯。",
+        "instruction_noref_zh": "移除选中的壁灯。"
+      },
+      {
+        "object_id": 48,
+        "operation": "add",
+        "ref": "the nearest doorway on the right",
+        "ref_zh": "右侧最近的门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "right_building",
+        "parent_zh": "右楼",
+        "payload": "a small brass door knocker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧最近的门加上一个小黄铜门环。",
+        "instruction_noref_zh": "在选中的门加上一个小黄铜门环。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

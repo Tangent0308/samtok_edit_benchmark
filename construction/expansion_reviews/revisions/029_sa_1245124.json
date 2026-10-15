@@ -1,0 +1,176 @@
+{
+  "source_id": "sa_1245124",
+  "reason_zh": "PDF预览发现文字替换payload自带弯引号，协议render又加双引号，导致双层引号。payload仅保留实际目标文字Harbor St；中文句子引用标点保留。",
+  "previous_record": {
+    "source_id": "sa_1245124",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d6187c35dec8b52d8358deec8f84f969b0c8e1ee489ec5b92e008f5d09c7b47f",
+    "review_card_sha256": "e9791d63e6aa1e59e95714f600f199d734e477c7fff8b90a9ec33132e884ab17",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为最右前景银色SUV，10为左侧远处深色高顶厢式车，4为道路中部银车；34为Water St实体街名牌。避开灯杆和交通牌重复父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "高楼前道路上独立车辆与街名牌",
+      "evidence_zh": "2为最右前景银色SUV，10为左侧远处深色高顶厢式车，4为道路中部银车；34为Water St实体街名牌。避开灯杆和交通牌重复父对象。",
+      "specific_protection_zh": "保留路灯、其他汽车、行人、建筑、车灯车窗及路面。"
+    },
+    "protected_content_zh": "保留路灯、其他汽车、行人、建筑、车灯车窗及路面。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the nearest silver SUV on the right",
+        "ref_zh": "右侧最近的银色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "near_silver_suv",
+        "parent_zh": "近处银SUV",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧最近的银色SUV加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的SUV加上一个车顶行李架。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the dark high-roof van on the left",
+        "ref_zh": "左侧深色高顶厢式车",
+        "scope": "van",
+        "scope_zh": "厢式车",
+        "parent": "dark_van",
+        "parent_zh": "深色厢式车",
+        "payload": "a white compact van",
+        "instruction_zh": "将左侧深色高顶厢式车替换为一辆白色小型厢式车。",
+        "instruction_noref_zh": "将选中的厢式车替换为一辆白色小型厢式车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the silver car in the middle of the road",
+        "ref_zh": "道路中间的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "middle_silver_car",
+        "parent_zh": "路中银车",
+        "payload": "",
+        "instruction_zh": "移除道路中间的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 34,
+        "operation": "attribute",
+        "ref": "the “Water St” street sign",
+        "ref_zh": "“Water St”街名牌",
+        "scope": "street sign",
+        "scope_zh": "街名牌",
+        "parent": "water_st_sign",
+        "parent_zh": "街名牌",
+        "payload": "“Harbor St”",
+        "attribute_kind": "text",
+        "instruction_zh": "将“Water St”街名牌的文字改为“Harbor St”。",
+        "instruction_noref_zh": "将选中的街名牌的文字改为“Harbor St”。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1245124",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d6187c35dec8b52d8358deec8f84f969b0c8e1ee489ec5b92e008f5d09c7b47f",
+    "review_card_sha256": "e9791d63e6aa1e59e95714f600f199d734e477c7fff8b90a9ec33132e884ab17",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为最右前景银色SUV，10为左侧远处深色高顶厢式车，4为道路中部银车；34为Water St实体街名牌。避开灯杆和交通牌重复父对象。 协议复核：PDF预览发现文字替换payload自带弯引号，协议render又加双引号，导致双层引号。payload仅保留实际目标文字Harbor St；中文句子引用标点保留。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "高楼前道路上独立车辆与街名牌",
+      "evidence_zh": "2为最右前景银色SUV，10为左侧远处深色高顶厢式车，4为道路中部银车；34为Water St实体街名牌。避开灯杆和交通牌重复父对象。 协议复核：PDF预览发现文字替换payload自带弯引号，协议render又加双引号，导致双层引号。payload仅保留实际目标文字Harbor St；中文句子引用标点保留。",
+      "specific_protection_zh": "保留路灯、其他汽车、行人、建筑、车灯车窗及路面。"
+    },
+    "protected_content_zh": "保留路灯、其他汽车、行人、建筑、车灯车窗及路面。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the nearest silver SUV on the right",
+        "ref_zh": "右侧最近的银色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "near_silver_suv",
+        "parent_zh": "近处银SUV",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧最近的银色SUV加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的SUV加上一个车顶行李架。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the dark high-roof van on the left",
+        "ref_zh": "左侧深色高顶厢式车",
+        "scope": "van",
+        "scope_zh": "厢式车",
+        "parent": "dark_van",
+        "parent_zh": "深色厢式车",
+        "payload": "a white compact van",
+        "instruction_zh": "将左侧深色高顶厢式车替换为一辆白色小型厢式车。",
+        "instruction_noref_zh": "将选中的厢式车替换为一辆白色小型厢式车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the silver car in the middle of the road",
+        "ref_zh": "道路中间的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "middle_silver_car",
+        "parent_zh": "路中银车",
+        "payload": "",
+        "instruction_zh": "移除道路中间的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 34,
+        "operation": "attribute",
+        "ref": "the “Water St” street sign",
+        "ref_zh": "“Water St”街名牌",
+        "scope": "street sign",
+        "scope_zh": "街名牌",
+        "parent": "water_st_sign",
+        "parent_zh": "街名牌",
+        "payload": "Harbor St",
+        "attribute_kind": "text",
+        "instruction_zh": "将“Water St”街名牌的文字改为“Harbor St”。",
+        "instruction_noref_zh": "将选中的街名牌的文字改为“Harbor St”。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

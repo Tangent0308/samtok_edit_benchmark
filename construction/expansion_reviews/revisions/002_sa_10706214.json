@@ -1,0 +1,176 @@
+{
+  "source_id": "sa_10706214",
+  "reason_zh": "去掉“背包带的胸带”的重复层级；mask仍是背包在正面可见的带子，胸带为直接附着部位。",
+  "previous_record": {
+    "source_id": "sa_10706214",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6c0a100c1bb0c54535a577ca8587fd67ea964c5daadb0c92c7738c3018e689e6",
+    "review_card_sha256": "9e08bb3fac5979b6e9d75b4bf701ad5b558fcdc65cf0c59d6ffe9d5c4e8ff7ef",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16和17是左右两位徒步者的外套；18是中央人物拿着而非穿着的红外套；34是其背包的外露肩带与胸带。新增指南针直接夹在胸带上，各实体不重复。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "disconnected_parts"
+      ],
+      "scene_zh": "徒步者的户外服装与随身装备",
+      "evidence_zh": "16和17是左右两位徒步者的外套；18是中央人物拿着而非穿着的红外套；34是其背包的外露肩带与胸带。新增指南针直接夹在胸带上，各实体不重复。",
+      "specific_protection_zh": "保留人物身体、手指、背包其余部分、路面与背景徒步者。"
+    },
+    "protected_content_zh": "保留人物身体、手指、背包其余部分、路面与背景徒步者。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the left hiker’s blue jacket",
+        "ref_zh": "左侧徒步者的蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_hiker",
+        "parent_zh": "左侧徒步者",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧徒步者的蓝色外套的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的外套的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the right hiker’s magenta jacket",
+        "ref_zh": "右侧徒步者的品红色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "right_hiker",
+        "parent_zh": "右侧徒步者",
+        "payload": "a navy quilted puffer jacket",
+        "instruction_zh": "将右侧徒步者的品红色外套替换为一件藏蓝色绗缝羽绒服。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色绗缝羽绒服。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the red jacket carried by the central hiker",
+        "ref_zh": "中央徒步者拿着的红色外套",
+        "scope": "carried jacket",
+        "scope_zh": "手持外套",
+        "parent": "carried_jacket",
+        "parent_zh": "手持红外套",
+        "payload": "",
+        "instruction_zh": "移除中央徒步者拿着的红色外套。",
+        "instruction_noref_zh": "移除选中的手持外套。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the central hiker’s backpack straps",
+        "ref_zh": "中央徒步者的背包带",
+        "scope": "backpack straps",
+        "scope_zh": "背包带",
+        "parent": "red_backpack",
+        "parent_zh": "中央红背包",
+        "payload": "a small compass",
+        "placement": {
+          "relation": "clipped to",
+          "site": "chest strap",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央徒步者的背包带的胸带上加上一个小指南针。",
+        "instruction_noref_zh": "在选中的背包带的胸带上加上一个小指南针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10706214",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6c0a100c1bb0c54535a577ca8587fd67ea964c5daadb0c92c7738c3018e689e6",
+    "review_card_sha256": "9e08bb3fac5979b6e9d75b4bf701ad5b558fcdc65cf0c59d6ffe9d5c4e8ff7ef",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16和17是左右两位徒步者的外套；18是中央人物拿着而非穿着的红外套；34是其背包的外露肩带与胸带。新增指南针直接夹在胸带上，各实体不重复。 复核修订：去掉“背包带的胸带”的重复层级；mask仍是背包在正面可见的带子，胸带为直接附着部位。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "disconnected_parts"
+      ],
+      "scene_zh": "徒步者的户外服装与随身装备",
+      "evidence_zh": "16和17是左右两位徒步者的外套；18是中央人物拿着而非穿着的红外套；34是其背包的外露肩带与胸带。新增指南针直接夹在胸带上，各实体不重复。 复核修订：去掉“背包带的胸带”的重复层级；mask仍是背包在正面可见的带子，胸带为直接附着部位。",
+      "specific_protection_zh": "保留人物身体、手指、背包其余部分、路面与背景徒步者。"
+    },
+    "protected_content_zh": "保留人物身体、手指、背包其余部分、路面与背景徒步者。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the left hiker’s blue jacket",
+        "ref_zh": "左侧徒步者的蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_hiker",
+        "parent_zh": "左侧徒步者",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧徒步者的蓝色外套的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的外套的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the right hiker’s magenta jacket",
+        "ref_zh": "右侧徒步者的品红色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "right_hiker",
+        "parent_zh": "右侧徒步者",
+        "payload": "a navy quilted puffer jacket",
+        "instruction_zh": "将右侧徒步者的品红色外套替换为一件藏蓝色绗缝羽绒服。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色绗缝羽绒服。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the red jacket carried by the central hiker",
+        "ref_zh": "中央徒步者拿着的红色外套",
+        "scope": "carried jacket",
+        "scope_zh": "手持外套",
+        "parent": "carried_jacket",
+        "parent_zh": "手持红外套",
+        "payload": "",
+        "instruction_zh": "移除中央徒步者拿着的红色外套。",
+        "instruction_noref_zh": "移除选中的手持外套。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the central hiker’s backpack",
+        "ref_zh": "中央徒步者的背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "red_backpack",
+        "parent_zh": "中央红背包",
+        "payload": "a small compass",
+        "placement": {
+          "relation": "clipped to",
+          "site": "chest strap",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央徒步者的背包的胸带上加上一个小指南针。",
+        "instruction_noref_zh": "在选中的背包的胸带上加上一个小指南针。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

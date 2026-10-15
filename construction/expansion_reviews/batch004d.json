@@ -1,0 +1,540 @@
+[
+  {
+    "source_id": "sa_10803169",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a40197aa15122ec29451171ef0435a67f58c0f11d08e3649cbd9f11b649de213",
+    "review_card_sha256": "738d01a44bf3e97196479cc04aabe144ac6593ee4a32dc8334a3651be961b71f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为赛车整体但排除车外赛道；8为中央黄色PIРELLI广告板，7为其右侧P ZERO黑色板。车与两块独立广告板分开计数，不使用同车多个轮子。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "赛车弯道与赛道广告板",
+      "evidence_zh": "0为赛车整体但排除车外赛道；8为中央黄色PIРELLI广告板，7为其右侧P ZERO黑色板。车与两块独立广告板分开计数，不使用同车多个轮子。",
+      "specific_protection_zh": "保留车手、车轮、赛道标线、其他广告牌和围网。"
+    },
+    "protected_content_zh": "保留车手、车轮、赛道标线、其他广告牌和围网。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the race car",
+        "ref_zh": "赛车",
+        "scope": "race car",
+        "scope_zh": "赛车",
+        "parent": "race_car",
+        "parent_zh": "赛车",
+        "payload": "a small white number “11” decal",
+        "placement": {
+          "relation": "on",
+          "site": "front wing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在赛车的前翼上加上一张白色数字“11”小贴纸。",
+        "instruction_noref_zh": "在选中的赛车的前翼上加上一张白色数字“11”小贴纸。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the central yellow “PIRELLI” board",
+        "ref_zh": "中央黄色“PIRELLI”广告板",
+        "scope": "advertising board",
+        "scope_zh": "广告板",
+        "parent": "central_pirelli_board",
+        "parent_zh": "中央黄色广告板",
+        "payload": "",
+        "instruction_zh": "移除中央黄色“PIRELLI”广告板。",
+        "instruction_noref_zh": "移除选中的广告板。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the black “P ZERO” board above the car",
+        "ref_zh": "赛车上方的黑色“P ZERO”广告板",
+        "scope": "advertising board",
+        "scope_zh": "广告板",
+        "parent": "right_pzero_board",
+        "parent_zh": "右侧黑色广告板",
+        "payload": "RACE DAY",
+        "attribute_kind": "text",
+        "instruction_zh": "将赛车上方的黑色“P ZERO”广告板的文字改为RACE DAY。",
+        "instruction_noref_zh": "将选中的广告板的文字改为RACE DAY。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10803560",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2bf51c9d32af2402e51dbca4b663971f30af15a694ef8acd34851acff4d0eaf7",
+    "review_card_sha256": "1a8f24535d67ce6af2c3c4882dfcd01302b1af74b149c891ec409acf47a62c52",
+    "review_card_name": "selected_review.jpg",
+    "evidence_zh": "补画原始0雕像和5花簇：5是下方三簇粉花中最左一簇，0含完整雕像与裹布。不给同一植株多个花瓣分别计父对象；雕像加花环、单簇花换颜色均自然。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "石雕守护像与三角梅",
+      "evidence_zh": "补画原始0雕像和5花簇：5是下方三簇粉花中最左一簇，0含完整雕像与裹布。不给同一植株多个花瓣分别计父对象；雕像加花环、单簇花换颜色均自然。",
+      "specific_protection_zh": "保留雕像面容、头饰、裹布格纹、其他花簇与叶片。"
+    },
+    "protected_content_zh": "保留雕像面容、头饰、裹布格纹、其他花簇与叶片。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the stone statue",
+        "ref_zh": "石雕像",
+        "scope": "statue",
+        "scope_zh": "雕像",
+        "parent": "statue",
+        "parent_zh": "石雕像",
+        "payload": "a white flower garland",
+        "placement": {
+          "relation": "around",
+          "site": "neck",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在石雕像的颈部加上一条白色花环。",
+        "instruction_noref_zh": "在选中的雕像的颈部加上一条白色花环。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the leftmost flower cluster along the bottom",
+        "ref_zh": "下方最左侧的花簇",
+        "scope": "flower cluster",
+        "scope_zh": "花簇",
+        "parent": "bougainvillea",
+        "parent_zh": "三角梅植株",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将下方最左侧的花簇的颜色改为白色。",
+        "instruction_noref_zh": "将选中的花簇的颜色改为白色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10811552",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5ebb3dcfd9c944f502f68b7ed80785a8b8ac87537058d9c873365dc41063d943",
+    "review_card_sha256": "23c29a8493d60a425931ae661c07144715b5bb59a567beeda80cd6a15461ea14",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5是中央店铺褪色大招牌，8为右邻高木门且排除经过者，10为前景右侧紫上衣，9为店门左边细长红广告牌。独立招牌、建筑门和人物分开计数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "disconnected_parts"
+      ],
+      "scene_zh": "老街商店的招牌、门与行人",
+      "evidence_zh": "5是中央店铺褪色大招牌，8为右邻高木门且排除经过者，10为前景右侧紫上衣，9为店门左边细长红广告牌。独立招牌、建筑门和人物分开计数。",
+      "specific_protection_zh": "保留行人皮肤、墙面装饰、其他标牌与门框。"
+    },
+    "protected_content_zh": "保留行人皮肤、墙面装饰、其他标牌与门框。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the faded sign above the central shop",
+        "ref_zh": "中央商店上方褪色的招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "central_shop_sign",
+        "parent_zh": "中央大招牌",
+        "payload": "a wooden “GROCERY” sign",
+        "instruction_zh": "将中央商店上方褪色的招牌替换为一块写有“GROCERY”的木招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有“GROCERY”的木招牌。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the tall wooden double door",
+        "ref_zh": "高大的木双扇门",
+        "scope": "double door",
+        "scope_zh": "双扇门",
+        "parent": "building_door",
+        "parent_zh": "高门所属建筑",
+        "payload": "a small brass number “28” plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在高大的木双扇门加上一块数字为“28”的小黄铜门牌。",
+        "instruction_noref_zh": "在选中的双扇门加上一块数字为“28”的小黄铜门牌。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the rightmost pedestrian’s purple shirt",
+        "ref_zh": "最右侧行人的紫色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "right_pedestrian",
+        "parent_zh": "右侧行人",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧行人的紫色上衣的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the narrow red sign left of the shop entrance",
+        "ref_zh": "商店入口左侧的细长红色广告牌",
+        "scope": "sign",
+        "scope_zh": "广告牌",
+        "parent": "narrow_red_sign",
+        "parent_zh": "细长红广告牌",
+        "payload": "",
+        "instruction_zh": "移除商店入口左侧的细长红色广告牌。",
+        "instruction_noref_zh": "移除选中的广告牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10813555",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2d0dc9b94ef3fc87bf5bda3c236eba35132fba769310249d760737dfc955b964",
+    "review_card_sha256": "7444c68532bf18a6b0f6e3ad11e2d070b676a173e655a4f53288f0ca18736a27",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为右上完整银车，3为左上被货厢遮住的银车，2为远处水泥搅拌车，21为前景卡车挡风玻璃。四辆车分别计父对象；保留遮挡和玻璃内部结构。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "small_targets"
+      ],
+      "scene_zh": "高速公路上的卡车与不同小汽车",
+      "evidence_zh": "1为右上完整银车，3为左上被货厢遮住的银车，2为远处水泥搅拌车，21为前景卡车挡风玻璃。四辆车分别计父对象；保留遮挡和玻璃内部结构。",
+      "specific_protection_zh": "保留卡车品牌、轮胎、司机、道路、隔离栏和相邻车辆。"
+    },
+    "protected_content_zh": "保留卡车品牌、轮胎、司机、道路、隔离栏和相邻车辆。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the silver sedan at the upper right",
+        "ref_zh": "右上方的银色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "right_sedan",
+        "parent_zh": "右侧银车",
+        "payload": "a white station wagon",
+        "instruction_zh": "将右上方的银色轿车替换为一辆白色旅行车。",
+        "instruction_noref_zh": "将选中的轿车替换为一辆白色旅行车。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the silver car below the cement mixer",
+        "ref_zh": "水泥搅拌车下方的银色小汽车",
+        "scope": "car",
+        "scope_zh": "小汽车",
+        "parent": "left_sedan",
+        "parent_zh": "左侧银车",
+        "payload": "",
+        "instruction_zh": "移除水泥搅拌车下方的银色小汽车。",
+        "instruction_noref_zh": "移除选中的小汽车。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the cement mixer truck",
+        "ref_zh": "水泥搅拌车",
+        "scope": "truck",
+        "scope_zh": "卡车",
+        "parent": "cement_mixer",
+        "parent_zh": "水泥搅拌车",
+        "payload": "a small amber warning beacon",
+        "placement": {
+          "relation": "on",
+          "site": "cab roof",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在水泥搅拌车的驾驶室顶上加上一个小琥珀色警示灯。",
+        "instruction_noref_zh": "在选中的卡车的驾驶室顶上加上一个小琥珀色警示灯。"
+      },
+      {
+        "object_id": 21,
+        "operation": "attribute",
+        "ref": "the blue truck’s windshield",
+        "ref_zh": "蓝色卡车的挡风玻璃",
+        "scope": "windshield",
+        "scope_zh": "挡风玻璃",
+        "parent": "foreground_truck",
+        "parent_zh": "前景蓝卡车",
+        "payload": "light blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将蓝色卡车的挡风玻璃的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的挡风玻璃的色调改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10817186",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "883103f76aeed310a40e5b50ed626a0eaef0aea0c438cfcfc1cc9cffe299ddcc",
+    "review_card_sha256": "4d0100fab0e0f5f844713fae65fa87340b4596816c052b1a07cb7d8b5c9728f1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "长曝光使部分人群严重拖影，但7中央红外套和35右侧短羽绒服仍有明确人物归属和可用轮廓。只选这两个人，不选33拖影较强的长外套及整片灯幕。",
+    "difficulty": {
+      "mechanisms": [
+        "neighbor_protection",
+        "occlusion"
+      ],
+      "scene_zh": "夜间广场较清楚的前景外套",
+      "evidence_zh": "长曝光使部分人群严重拖影，但7中央红外套和35右侧短羽绒服仍有明确人物归属和可用轮廓。只选这两个人，不选33拖影较强的长外套及整片灯幕。",
+      "specific_protection_zh": "保留头部、手部、裤子、夜景曝光和其他游客。"
+    },
+    "protected_content_zh": "保留头部、手部、裤子、夜景曝光和其他游客。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the central person’s red coat",
+        "ref_zh": "中央人物的红色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "central_person",
+        "parent_zh": "中央红外套人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央人物的红色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 35,
+        "operation": "replace",
+        "ref": "the short puffer jacket on the right",
+        "ref_zh": "右侧的短款羽绒服",
+        "scope": "puffer jacket",
+        "scope_zh": "羽绒服",
+        "parent": "right_person",
+        "parent_zh": "右侧短羽绒服人物",
+        "payload": "a tan wool coat",
+        "instruction_zh": "将右侧的短款羽绒服替换为一件棕褐色羊毛大衣。",
+        "instruction_noref_zh": "将选中的羽绒服替换为一件棕褐色羊毛大衣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10822504",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "870848030660f26823d2da730e0827c0d7ab7a2ce04f736b4aed29486c4f11d0",
+    "review_card_sha256": "c7cd7d1f88dc3eabe0e0278a0e2d22e207a08a8212dca73fcaa6fa347c3e4eaa",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为桥斜撑左边的小树，4为斜撑右边的小树；mask均覆盖各自可见树冠和树干，不把同一树枝当作多个对象。不使用填满栏杆孔洞的6或整桥17。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "similar_instances"
+      ],
+      "scene_zh": "步行桥下的两棵独立小树",
+      "evidence_zh": "5为桥斜撑左边的小树，4为斜撑右边的小树；mask均覆盖各自可见树冠和树干，不把同一树枝当作多个对象。不使用填满栏杆孔洞的6或整桥17。",
+      "specific_protection_zh": "保留桥斜撑、木栈道、栏杆、其他树木和建筑。"
+    },
+    "protected_content_zh": "保留桥斜撑、木栈道、栏杆、其他树木和建筑。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the small tree left of the bridge’s slanted support",
+        "ref_zh": "桥梁斜撑左侧的小树",
+        "scope": "tree",
+        "scope_zh": "树",
+        "parent": "left_tree",
+        "parent_zh": "左侧小树",
+        "payload": "a flowering cherry sapling",
+        "instruction_zh": "将桥梁斜撑左侧的小树替换为一棵开花的樱花幼树。",
+        "instruction_noref_zh": "将选中的树替换为一棵开花的樱花幼树。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the small tree right of the bridge’s slanted support",
+        "ref_zh": "桥梁斜撑右侧的小树",
+        "scope": "tree",
+        "scope_zh": "树",
+        "parent": "right_tree",
+        "parent_zh": "右侧小树",
+        "payload": "",
+        "instruction_zh": "移除桥梁斜撑右侧的小树。",
+        "instruction_noref_zh": "移除选中的树。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10824708",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9d3bee63c875f01dec82b1a3a0a48da3ad2d002d605760c47f2ab096131577f1",
+    "review_card_sha256": "8e16ed20ff7cc781f32b864883f319bb2e21a984d4a2ec41c1bb66e481dbf404",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22为红色aisan.co.jp横牌；117为前景看手机者的灰外套；76为其右侧前景行人的黑外套。对应两个人和一块独立广告牌，避开无法区分的小远景衣物。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "夜间十字路口的广告牌与近处行人",
+      "evidence_zh": "22为红色aisan.co.jp横牌；117为前景看手机者的灰外套；76为其右侧前景行人的黑外套。对应两个人和一块独立广告牌，避开无法区分的小远景衣物。",
+      "specific_protection_zh": "保留行人皮肤、手机、其他衣服、广告牌和交通灯。"
+    },
+    "protected_content_zh": "保留行人皮肤、手机、其他衣服、广告牌和交通灯。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the red “aisan.co.jp” sign",
+        "ref_zh": "红色“aisan.co.jp”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "website_sign",
+        "parent_zh": "红色网址招牌",
+        "payload": "",
+        "instruction_zh": "移除红色“aisan.co.jp”招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 117,
+        "operation": "attribute",
+        "ref": "the foreground phone user’s gray jacket",
+        "ref_zh": "前景看手机者的灰色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "phone_user",
+        "parent_zh": "看手机者",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景看手机者的灰色外套的颜色改为青绿色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为青绿色。"
+      },
+      {
+        "object_id": 76,
+        "operation": "replace",
+        "ref": "the black coat immediately right of the phone user",
+        "ref_zh": "看手机者紧右侧的黑色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "black_coat_person",
+        "parent_zh": "右侧黑外套人物",
+        "payload": "a beige trench coat",
+        "instruction_zh": "将看手机者紧右侧的黑色外套替换为一件米色风衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色风衣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10825317",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "25cf29a8170da1dd4302057f69cc60a8fa95f3efee2af44f1a769b2d55a1cc17",
+    "review_card_sha256": "2ae87f75a013d646fdc83e8896c8640a95ca2cfb12eda8b21cd95b0c9ab6fe62",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "49为左侧木墙店铺的深色门，20为右侧咖啡店玻璃内独立CAFE字牌。不是同一建筑的两扇窗；加投信口与替换招牌都是店面改造。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "积雪街道上相邻店铺的门与霓虹字牌",
+      "evidence_zh": "49为左侧木墙店铺的深色门，20为右侧咖啡店玻璃内独立CAFE字牌。不是同一建筑的两扇窗；加投信口与替换招牌都是店面改造。",
+      "specific_protection_zh": "保留门上现有告示、玻璃、窗内其他贴纸、积雪与外墙。"
+    },
+    "protected_content_zh": "保留门上现有告示、玻璃、窗内其他贴纸、积雪与外墙。",
+    "targets": [
+      {
+        "object_id": 49,
+        "operation": "add",
+        "ref": "the left shop’s dark door",
+        "ref_zh": "左侧商店的深色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "left_shop",
+        "parent_zh": "左侧商店",
+        "payload": "a brass mail slot",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧商店的深色门加上一个黄铜投信口。",
+        "instruction_noref_zh": "在选中的门加上一个黄铜投信口。"
+      },
+      {
+        "object_id": 20,
+        "operation": "replace",
+        "ref": "the “CAFE” neon sign",
+        "ref_zh": "“CAFE”霓虹字牌",
+        "scope": "neon sign",
+        "scope_zh": "霓虹字牌",
+        "parent": "cafe_neon_sign",
+        "parent_zh": "咖啡店霓虹牌",
+        "payload": "an oval wooden “CAFE” plaque",
+        "instruction_zh": "将“CAFE”霓虹字牌替换为一块写有“CAFE”的椭圆木牌。",
+        "instruction_noref_zh": "将选中的霓虹字牌替换为一块写有“CAFE”的椭圆木牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,732 @@
+[
+  {
+    "source_id": "sa_10296263",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "df7bd1b06ca0f622dbfec9189f98283f59d82ea2147e0bbdc01cab644d8df03b",
+    "review_card_sha256": "a42d10c5847bb1657a3cbb581e5fc88b4316faa94b659f75153010fec57a3460",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "前景小孩外套19虽暗但边界可辨，排除了脸、手和裤子；Friet Museum广告板7是不含支脚的独立牌面。未采用运动模糊的其他上衣或过曝灯头。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "夜间溜冰场的小孩与广告牌",
+      "evidence_zh": "前景小孩外套19虽暗但边界可辨，排除了脸、手和裤子；Friet Museum广告板7是不含支脚的独立牌面。未采用运动模糊的其他上衣或过曝灯头。",
+      "specific_protection_zh": "保留小孩皮肤、裤子和冰鞋，广告牌支架、邻接牌面及灯树。"
+    },
+    "protected_content_zh": "保留小孩皮肤、裤子和冰鞋，广告牌支架、邻接牌面及灯树。",
+    "targets": [
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the foreground child’s black jacket",
+        "ref_zh": "前景小孩的黑色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "child",
+        "parent_zh": "前景小孩",
+        "payload": "mustard yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景小孩的黑色外套的颜色改为芥末黄色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为芥末黄色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the “friet museum” advertising board",
+        "ref_zh": "写有“friet museum”的广告板",
+        "scope": "advertising board",
+        "scope_zh": "广告板",
+        "parent": "museum_board",
+        "parent_zh": "薯条博物馆广告板",
+        "payload": "",
+        "instruction_zh": "移除写有“friet museum”的广告板。",
+        "instruction_noref_zh": "移除选中的广告板。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "7addf2d11fd2dc362450cbb6115f3be8fe2fc7269eec6ce077592b816865c7fc"
+  },
+  {
+    "source_id": "sa_10307890",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c435d23720f25ad0e95baa6aebdad581d9ba7099cf7367cba7d05164abefab33",
+    "review_card_sha256": "eb2a18994a7ec51b12a9cb7589f5de3b119da21c8b79a6f14842220829136551",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "鞋9是两只相似鞋中较近的一只，遮挡边界沿裤脚；2是较远红地贴，30为左侧货架前排绿色米袋。三者分别属于穿鞋的人、独立地贴和独立包装袋，新增价签直接贴在包装上。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "商店地面的排队标识、鞋和米袋",
+      "evidence_zh": "鞋9是两只相似鞋中较近的一只，遮挡边界沿裤脚；2是较远红地贴，30为左侧货架前排绿色米袋。三者分别属于穿鞋的人、独立地贴和独立包装袋，新增价签直接贴在包装上。",
+      "specific_protection_zh": "保留裤脚、另一只鞋、近处地贴、货架边框和邻接包装。"
+    },
+    "protected_content_zh": "保留裤脚、另一只鞋、近处地贴、货架边框和邻接包装。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the nearer turquoise-and-tan shoe",
+        "ref_zh": "较近的青蓝棕双色鞋",
+        "scope": "shoe",
+        "scope_zh": "鞋",
+        "parent": "shoe_wearer",
+        "parent_zh": "穿鞋的人",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将较近的青蓝棕双色鞋的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的鞋的颜色改为酒红色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the farther red queue label on the floor",
+        "ref_zh": "地上较远的红色排队地贴",
+        "scope": "floor label",
+        "scope_zh": "地贴",
+        "parent": "far_label",
+        "parent_zh": "较远的排队地贴",
+        "payload": "",
+        "instruction_zh": "移除地上较远的红色排队地贴。",
+        "instruction_noref_zh": "移除选中的地贴。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the large green rice bag on the left shelf",
+        "ref_zh": "左侧货架上的大绿色米袋",
+        "scope": "rice bag",
+        "scope_zh": "米袋",
+        "parent": "rice_bag",
+        "parent_zh": "绿色米袋",
+        "payload": "a small yellow price sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧货架上的大绿色米袋加上一张小黄色价签。",
+        "instruction_noref_zh": "在选中的米袋加上一张小黄色价签。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "9fba549487b986450a3d9c083a321ba642f9d25df358e784c0998f8a2aed1c6a"
+  },
+  {
+    "source_id": "sa_10308802",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e262942dda695b99032299dfe6f1d48d4f4dfb56d528cb6c067d381ee9d466a5",
+    "review_card_sha256": "14d678601a10d7f4d540417ec19646460ab048621b73c9230dcd58c386612e11",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "黑车后轮11为单个清楚的轮胎及轮毂，白车7与其属于不同车辆；白车mask避开前景黄护栏。蓝圆牌10只涵盖牌面。轮毂盖直接装在黑车车轮上。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "small_targets"
+      ],
+      "scene_zh": "码头排队卡车与交通指示牌",
+      "evidence_zh": "黑车后轮11为单个清楚的轮胎及轮毂，白车7与其属于不同车辆；白车mask避开前景黄护栏。蓝圆牌10只涵盖牌面。轮毂盖直接装在黑车车轮上。",
+      "specific_protection_zh": "保留黄色护栏、相邻车轮、道路、轮船及交通牌支架。"
+    },
+    "protected_content_zh": "保留黄色护栏、相邻车轮、道路、轮船及交通牌支架。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the rightmost rear wheel of the black truck",
+        "ref_zh": "黑色卡车最靠右的后轮",
+        "scope": "wheel",
+        "scope_zh": "车轮",
+        "parent": "black_truck",
+        "parent_zh": "黑色卡车",
+        "payload": "a silver hubcap",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黑色卡车最靠右的后轮加上一个银色轮毂盖。",
+        "instruction_noref_zh": "在选中的车轮加上一个银色轮毂盖。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the white truck immediately behind the black truck",
+        "ref_zh": "紧接黑色卡车后方的白色卡车",
+        "scope": "truck",
+        "scope_zh": "卡车",
+        "parent": "white_truck",
+        "parent_zh": "紧邻黑车的白车",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将紧接黑色卡车后方的白色卡车的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的卡车的颜色改为深绿色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the blue circular arrow sign",
+        "ref_zh": "蓝色圆形箭头指示牌",
+        "scope": "sign",
+        "scope_zh": "指示牌",
+        "parent": "arrow_sign",
+        "parent_zh": "蓝色圆形指示牌",
+        "payload": "",
+        "instruction_zh": "移除蓝色圆形箭头指示牌。",
+        "instruction_noref_zh": "移除选中的指示牌。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "ee02cc34abf95e5b909302f360a798212513c883df4a19f05580bc12648bb696"
+  },
+  {
+    "source_id": "sa_1031850",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4471502830122be249e5fc8d778fb39f7779d7588328a66443b0399ba0820513",
+    "review_card_sha256": "f90a5fac8eeb69e816429a3be716cd86649eda95355f543027f1d4a970206f77",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "条纹上衣43被白色货物遮挡，mask仅覆盖露出的衣服；5是院墙左起第一幅绿色竖幅，区别于居中的绿色竖幅和白色竖幅。衣着替换和移除宣传物符合街景修图。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "similar_instances"
+      ],
+      "scene_zh": "街上扛货的行人与院墙上的竖幅",
+      "evidence_zh": "条纹上衣43被白色货物遮挡，mask仅覆盖露出的衣服；5是院墙左起第一幅绿色竖幅，区别于居中的绿色竖幅和白色竖幅。衣着替换和移除宣传物符合街景修图。",
+      "specific_protection_zh": "保留行人身体、货物、其他横幅、树木和院墙。"
+    },
+    "protected_content_zh": "保留行人身体、货物、其他横幅、树木和院墙。",
+    "targets": [
+      {
+        "object_id": 43,
+        "operation": "replace",
+        "ref": "the sack carrier’s striped shirt",
+        "ref_zh": "扛货人的条纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "carrier",
+        "parent_zh": "扛货人",
+        "payload": "a gray cotton polo shirt",
+        "instruction_zh": "将扛货人的条纹上衣替换为一件灰色棉质Polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件灰色棉质Polo衫。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the leftmost green vertical banner",
+        "ref_zh": "最左侧的绿色竖幅",
+        "scope": "banner",
+        "scope_zh": "竖幅",
+        "parent": "left_banner",
+        "parent_zh": "最左绿色竖幅",
+        "payload": "",
+        "instruction_zh": "移除最左侧的绿色竖幅。",
+        "instruction_noref_zh": "移除选中的竖幅。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "0ecb9790ecf4436c4f209591723909b3df667c58ebafeb3708eb143e26bb1018"
+  },
+  {
+    "source_id": "sa_10324151",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "111edd9cbe6defcfc8707c1cbe1892026c0af773a274fc1eaf4e06d43fbdf7b3",
+    "review_card_sha256": "62815aee27b302ed2d2e95b6fdc2f6a859f334f80a973b07717f820ff97a4327",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17和46分别为左、右前景舞者的红头巾，排除脸部、颈部和衣领，保留头巾打结后的细长尾部。不把同一个舞者的服饰拆为多个父物体。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街头表演队伍的两名前景舞者",
+      "evidence_zh": "17和46分别为左、右前景舞者的红头巾，排除脸部、颈部和衣领，保留头巾打结后的细长尾部。不把同一个舞者的服饰拆为多个父物体。",
+      "specific_protection_zh": "保留舞者脸、头发、服装、彩带及其他舞者头巾。"
+    },
+    "protected_content_zh": "保留舞者脸、头发、服装、彩带及其他舞者头巾。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the left foreground dancer’s red headscarf",
+        "ref_zh": "前景左侧舞者的红头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "left_dancer",
+        "parent_zh": "左前景舞者",
+        "payload": "golden yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景左侧舞者的红头巾的颜色改为金黄色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为金黄色。"
+      },
+      {
+        "object_id": 46,
+        "operation": "add",
+        "ref": "the right foreground dancer’s red headscarf",
+        "ref_zh": "前景右侧舞者的红头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "right_dancer",
+        "parent_zh": "右前景舞者",
+        "payload": "a small gold brooch",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景右侧舞者的红头巾加上一枚小金色胸针。",
+        "instruction_noref_zh": "在选中的头巾加上一枚小金色胸针。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "99088b97e547e28a197496cbd585b9f527a17a4efb03ec0cc1d90102a21f1373"
+  },
+  {
+    "source_id": "sa_10335421",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "31b7804defebc1b660786cdbb6e978e356f24b7616c3a51e5ef5f8a757182efc",
+    "review_card_sha256": "f0e548de907c5c90cffb8ee8ad7aa5cc66f9e7d7afb73487a52b7f128d78fbaf",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "摊主上衣5被桌面衣物遮挡，mask避开头颈和前景衣物；黑色塑料桶24在摊车右侧。车轮1和2填入辐条间背景，不选用。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "服装摊贩与地面的水桶",
+      "evidence_zh": "摊主上衣5被桌面衣物遮挡，mask避开头颈和前景衣物；黑色塑料桶24在摊车右侧。车轮1和2填入辐条间背景，不选用。",
+      "specific_protection_zh": "保留摊主头颈、桌面衣物、摊车、相邻人物和金属锅。"
+    },
+    "protected_content_zh": "保留摊主头颈、桌面衣物、摊车、相邻人物和金属锅。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the seated vendor’s red shirt",
+        "ref_zh": "坐着的摊主的红上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "vendor",
+        "parent_zh": "坐着的摊主",
+        "payload": "a white collared shirt",
+        "instruction_zh": "将坐着的摊主的红上衣替换为一件白色翻领衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件白色翻领衬衫。"
+      },
+      {
+        "object_id": 24,
+        "operation": "remove",
+        "ref": "the black jerrycan beside the stall",
+        "ref_zh": "摊车旁的黑色塑料桶",
+        "scope": "jerrycan",
+        "scope_zh": "塑料桶",
+        "parent": "jerrycan",
+        "parent_zh": "黑色塑料桶",
+        "payload": "",
+        "instruction_zh": "移除摊车旁的黑色塑料桶。",
+        "instruction_noref_zh": "移除选中的塑料桶。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "70d83f302dbe7336f879a93a0f3a19cc860efcb264618984033e48de5b3aa672"
+  },
+  {
+    "source_id": "sa_10342974",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1f849c1e5728e3ae65f9a427c3b10dcf6aeaa5b4e13c0476ca009e157f7aaab1",
+    "review_card_sha256": "aa1a33481f6f0a402ffb793c5eeafffd0982e699d3e5998d4d567c0a958ddda5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "三个相似灯罩中15是横向居中的完整灯罩，6被上边缘裁切，17在最左边；11是烤箱整体。给烤箱把手挂毛巾属于直接依附，灯罩替换不要求替换整套吊灯。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "弧形厨房里的灯罩和嵌入式烤箱",
+      "evidence_zh": "三个相似灯罩中15是横向居中的完整灯罩，6被上边缘裁切，17在最左边；11是烤箱整体。给烤箱把手挂毛巾属于直接依附，灯罩替换不要求替换整套吊灯。",
+      "specific_protection_zh": "保留吊灯电线、其他灯罩、相邻柜门、窗框和台面。"
+    },
+    "protected_content_zh": "保留吊灯电线、其他灯罩、相邻柜门、窗框和台面。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the middle cylindrical pendant shade",
+        "ref_zh": "中间的圆柱形吊灯罩",
+        "scope": "lampshade",
+        "scope_zh": "灯罩",
+        "parent": "middle_pendant",
+        "parent_zh": "中间吊灯",
+        "payload": "a bell-shaped woven rattan shade",
+        "instruction_zh": "将中间的圆柱形吊灯罩替换为一个钟形藤编灯罩。",
+        "instruction_noref_zh": "将选中的灯罩替换为一个钟形藤编灯罩。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the oven",
+        "ref_zh": "烤箱",
+        "scope": "oven",
+        "scope_zh": "烤箱",
+        "parent": "oven",
+        "parent_zh": "嵌入式烤箱",
+        "payload": "a folded blue dish towel",
+        "placement": {
+          "relation": "on",
+          "site": "handle",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在烤箱的把手上加上一条折叠的蓝色擦碗巾。",
+        "instruction_noref_zh": "在选中的烤箱的把手上加上一条折叠的蓝色擦碗巾。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "97cf5789476a99125348299debd2c9e47026c4324da91a6b78722c48a426989e"
+  },
+  {
+    "source_id": "sa_10360812",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a72bfcfe8f639872aa5b80dd50ba319d47406821584563aba4930673430dc22e",
+    "review_card_sha256": "8a0d89f3c1926654d4f2ea8ab4e56ea00404ad9681fc9d99a79a79adb86ee55a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "前景栏杆2保留多处孔洞并绕过植物遮挡，17是建筑下方高而窄的灌木；二者为独立父物体。标牌固定在栏杆上，灌木替换是自然景观调整。",
+    "difficulty": {
+      "mechanisms": [
+        "holes",
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "海边步道的栏杆与建筑下的灌木",
+      "evidence_zh": "前景栏杆2保留多处孔洞并绕过植物遮挡，17是建筑下方高而窄的灌木；二者为独立父物体。标牌固定在栏杆上，灌木替换是自然景观调整。",
+      "specific_protection_zh": "保留步道、相邻植物、海岸建筑、沙滩及海水。"
+    },
+    "protected_content_zh": "保留步道、相邻植物、海岸建筑、沙滩及海水。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the foreground path railing",
+        "ref_zh": "前景步道栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "path_railing",
+        "parent_zh": "步道栏杆",
+        "payload": "a small “BEACH ACCESS” sign",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景步道栏杆加上一块写有“BEACH ACCESS”的小标牌。",
+        "instruction_noref_zh": "在选中的栏杆加上一块写有“BEACH ACCESS”的小标牌。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the tall shrub beneath the seaside building",
+        "ref_zh": "海边建筑下方的高灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "shrub",
+        "parent_zh": "建筑下高灌木",
+        "payload": "a red-flowering hibiscus bush",
+        "instruction_zh": "将海边建筑下方的高灌木替换为一株开红花的木槿灌木。",
+        "instruction_noref_zh": "将选中的灌木替换为一株开红花的木槿灌木。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "184253f3262888a71001b38421dbee0d9f81dd808d94d9ad7d54f2df372038d7"
+  },
+  {
+    "source_id": "sa_10367798",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6e739c88593dbfae27b99a53c67be95f31c7257af59f49378c1854f819e2ef7d",
+    "review_card_sha256": "451cc5f9c21e3dbb6dca8b0c22d0541ad381a6facddb700ebe37be535950fe43",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "左右灯10和14分别包含细长电线与灯泡，两个真实独立灯具与墙上的花瓶图案不同。左灯替换为黄铜灯笼，右灯直接套乳白玻璃罩，属于自然室内照明调整。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "装饰天井下的两盏悬挂灯",
+      "evidence_zh": "左右灯10和14分别包含细长电线与灯泡，两个真实独立灯具与墙上的花瓶图案不同。左灯替换为黄铜灯笼，右灯直接套乳白玻璃罩，属于自然室内照明调整。",
+      "specific_protection_zh": "保留顶棚纹饰、墙上绘画、窗户和下方另外两盏灯。"
+    },
+    "protected_content_zh": "保留顶棚纹饰、墙上绘画、窗户和下方另外两盏灯。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the left hanging bulb",
+        "ref_zh": "左侧悬挂的灯泡",
+        "scope": "hanging light",
+        "scope_zh": "悬挂灯",
+        "parent": "left_light",
+        "parent_zh": "左侧悬挂灯",
+        "payload": "a traditional brass pendant lantern",
+        "instruction_zh": "将左侧悬挂的灯泡替换为一盏传统黄铜吊灯笼。",
+        "instruction_noref_zh": "将选中的悬挂灯替换为一盏传统黄铜吊灯笼。"
+      },
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the right hanging bulb",
+        "ref_zh": "右侧悬挂的灯泡",
+        "scope": "hanging light",
+        "scope_zh": "悬挂灯",
+        "parent": "right_light",
+        "parent_zh": "右侧悬挂灯",
+        "payload": "an opal-glass shade",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧悬挂的灯泡加上一个乳白玻璃灯罩。",
+        "instruction_noref_zh": "在选中的悬挂灯加上一个乳白玻璃灯罩。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "6b63f1f5b2daa4d971898df6a1444876ab5f7e2f891a8dd0a52f7db076c7cfd0"
+  },
+  {
+    "source_id": "sa_10371278",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1553959970d884867a3fc7a31ab0f942a0b5c8342ba5be834d9efcae8ab93e06",
+    "review_card_sha256": "9997cded6de64189cd1b009cb94dd511370fcc187d52f311c4e152c25854b624",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "24是两个近处背包中右侧灰色裤子行人的包，32是左侧行人的包；1是橱窗两张大菜单中右边写有2 GOOD MENU的海报。背包体积小但边界和邻近衣服可辨。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "快餐店外并行行人的背包和橱窗海报",
+      "evidence_zh": "24是两个近处背包中右侧灰色裤子行人的包，32是左侧行人的包；1是橱窗两张大菜单中右边写有2 GOOD MENU的海报。背包体积小但边界和邻近衣服可辨。",
+      "specific_protection_zh": "保留行人衣服和身体、左侧菜单、玻璃门把手及店招。"
+    },
+    "protected_content_zh": "保留行人衣服和身体、左侧菜单、玻璃门把手及店招。",
+    "targets": [
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the right backpack of the two nearest walkers",
+        "ref_zh": "最近两名行人中右侧的背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "right_backpack",
+        "parent_zh": "近处右侧背包",
+        "payload": "a reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近两名行人中右侧的背包加上一条反光条。",
+        "instruction_noref_zh": "在选中的背包加上一条反光条。"
+      },
+      {
+        "object_id": 32,
+        "operation": "replace",
+        "ref": "the left backpack of the two nearest walkers",
+        "ref_zh": "最近两名行人中左侧的背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "left_backpack",
+        "parent_zh": "近处左侧背包",
+        "payload": "a tan roll-top backpack",
+        "instruction_zh": "将最近两名行人中左侧的背包替换为一个棕褐色卷口背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个棕褐色卷口背包。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the “2 GOOD MENU” window poster",
+        "ref_zh": "橱窗上写有“2 GOOD MENU”的海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "menu_poster",
+        "parent_zh": "右侧菜单海报",
+        "payload": "",
+        "instruction_zh": "移除橱窗上写有“2 GOOD MENU”的海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "65f08caef3751da870b5c1c213ea88c6b62596ecde63d9a9db9fc5643715b45d"
+  },
+  {
+    "source_id": "sa_10307499",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "87dab863f3973c6b886a9bd4a49686e4e9ba48f49f4ced95a70e570ad23590a9",
+    "review_card_sha256": "8451c08407148b60c8b74387e0b3f7c9afe5df1bfe4a0a8437a99f5b1a59f876",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "不采用细节过暗的前景救生衣。9是右侧邻船的蓝色顶棚，mask绕过支撑杆；29为岸边粉色可口可乐牌面，被电杆分为可见两块，mask排除电杆。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "neighbor_protection"
+      ],
+      "scene_zh": "船舱阴影、邻船顶棚与岸边广告",
+      "evidence_zh": "不采用细节过暗的前景救生衣。9是右侧邻船的蓝色顶棚，mask绕过支撑杆；29为岸边粉色可口可乐牌面，被电杆分为可见两块，mask排除电杆。",
+      "specific_protection_zh": "保留顶棚金属杆、船身、岸边电杆及其他招牌。"
+    },
+    "protected_content_zh": "保留顶棚金属杆、船身、岸边电杆及其他招牌。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the neighboring boat’s blue canopy",
+        "ref_zh": "邻船的蓝色顶棚",
+        "scope": "canopy",
+        "scope_zh": "顶棚",
+        "parent": "neighbor_boat",
+        "parent_zh": "右侧邻船",
+        "payload": "sand beige",
+        "attribute_kind": "color",
+        "instruction_zh": "将邻船的蓝色顶棚的颜色改为沙米色。",
+        "instruction_noref_zh": "将选中的顶棚的颜色改为沙米色。"
+      },
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the pink Coca-Cola billboard",
+        "ref_zh": "粉色可口可乐广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "coke_billboard",
+        "parent_zh": "粉色可口可乐广告牌",
+        "payload": "",
+        "instruction_zh": "移除粉色可口可乐广告牌。",
+        "instruction_noref_zh": "移除选中的广告牌。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "f4bdc6038cec9ec00d98f69a1b1bddce03aafeec51409fe99d109416bd12aaaa"
+  },
+  {
+    "source_id": "sa_10306916",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ee4266b05b546db761c59dfabb2f432d1c94a1353eef2d1c3de4d01f058fdfaa",
+    "review_card_sha256": "9a598027c2d855f5a277b3c3294f456d4e0731911ee04bf5fafab23b0185fdd4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选多数属于同一架飞机，不把机翼、轮胎和舱门计作多个独立目标；机库板面候选较粗，暂未组成兼具自然编辑和细粒度难度的多父物体组合。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "起飞飞机与机库",
+      "evidence_zh": "候选多数属于同一架飞机，不把机翼、轮胎和舱门计作多个独立目标；机库板面候选较粗，暂未组成兼具自然编辑和细粒度难度的多父物体组合。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "610f10b8a416ec69666f301181081f07e80950d22b794d3e7ce5f45b1b4b8c7c"
+  },
+  {
+    "source_id": "sa_1033990",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0e1d25705caee2297be986345ab804c4568352c8a40def76c7b5912315c2d65b",
+    "review_card_sha256": "bd5e38c388b7d62c818e49b6a86bc846b649ad259600580103727293a1112e0c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "大量相似白上衣、花饰和供器需要补充定位；不沿用笼统白衬衫指代，也不凭模糊小图给花饰指定错误人物。需补充局部核实再选。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "室外仪式中的密集人群",
+      "evidence_zh": "大量相似白上衣、花饰和供器需要补充定位；不沿用笼统白衬衫指代，也不凭模糊小图给花饰指定错误人物。需补充局部核实再选。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "74f325108abb16fbaf23af8d6735b6f78b92d487255f76ad8ba87c0bc750ee22"
+  }
+]

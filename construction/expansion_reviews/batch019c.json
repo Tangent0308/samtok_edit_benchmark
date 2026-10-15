@@ -1,0 +1,560 @@
+[
+  {
+    "source_id": "sa_5258379",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9f34d96275bcaa8dbea50e5c46860c30f7c00f0e8e7ae681da51dcdf780cb521",
+    "review_card_sha256": "34ffcbab7e4e0ffb017d222990ccdf22b5736ddedf796eee5572157d5a56cc4d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "39远蓝车、30厢车侧门、27近护栏三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "motion_blur"
+      ],
+      "scene_zh": "快递厢车与护栏",
+      "evidence_zh": "39远蓝车、30厢车侧门、27近护栏三个父对象。",
+      "specific_protection_zh": "保留车辆结构、DHL字样、车牌和道路。"
+    },
+    "protected_content_zh": "保留车辆结构、DHL字样、车牌和道路。",
+    "targets": [
+      {
+        "object_id": 39,
+        "operation": "remove",
+        "ref": "the small blue car behind the chevron sign",
+        "ref_zh": "箭头路牌后方的小蓝色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "distant_car",
+        "parent_zh": "远车",
+        "payload": "",
+        "instruction_zh": "移除箭头路牌后方的小蓝色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the sliding side door of the yellow DHL van",
+        "ref_zh": "黄色DHL厢车的侧滑门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "dhl_van",
+        "parent_zh": "快递车",
+        "payload": "a small white fleet-number 12 decal near its bottom",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黄色DHL厢车的侧滑门加上一张靠近底部的小白色车队编号12贴纸。",
+        "instruction_noref_zh": "在选中的车门加上一张靠近底部的小白色车队编号12贴纸。"
+      },
+      {
+        "object_id": 27,
+        "operation": "attribute",
+        "ref": "the guardrail immediately behind the DHL van",
+        "ref_zh": "DHL厢车紧后方的护栏",
+        "scope": "guardrail",
+        "scope_zh": "护栏",
+        "parent": "near_guardrail",
+        "parent_zh": "近护栏",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将DHL厢车紧后方的护栏的颜色改为白色。",
+        "instruction_noref_zh": "将选中的护栏的颜色改为白色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5295383",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3c3472b22455054048862ab6224feee702826a8f4fbed050e993cf9e0361ab56",
+    "review_card_sha256": "16e8c7d89e18bb93be4d564bd785943106bf299b2c75123323da6e6cc2fc43bd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "18右侧蓝头巾和107中右长马尾粉裙分属两名表演者，避免旗群的整体mask。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "密集节庆队列表演",
+      "evidence_zh": "18右侧蓝头巾和107中右长马尾粉裙分属两名表演者，避免旗群的整体mask。",
+      "specific_protection_zh": "保留人物身体、其他服装、旗帜与队列。"
+    },
+    "protected_content_zh": "保留人物身体、其他服装、旗帜与队列。",
+    "targets": [
+      {
+        "object_id": 18,
+        "operation": "attribute",
+        "ref": "the long blue headscarf on the nearest performer at the right edge",
+        "ref_zh": "右边缘最近表演者的蓝色长头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "right_performer",
+        "parent_zh": "右表演者",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将右边缘最近表演者的蓝色长头巾的颜色改为白色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为白色。"
+      },
+      {
+        "object_id": 107,
+        "operation": "replace",
+        "ref": "the pink dress on the long-ponytailed performer just right of center",
+        "ref_zh": "中间偏右长马尾表演者的粉色连衣裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "ponytail_performer",
+        "parent_zh": "马尾表演者",
+        "payload": "a cream performance dress with gold trim",
+        "instruction_zh": "将中间偏右长马尾表演者的粉色连衣裙替换为一条带金色饰边的奶油色表演连衣裙。",
+        "instruction_noref_zh": "将选中的连衣裙替换为一条带金色饰边的奶油色表演连衣裙。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_529970",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "94090ab87ce49bd854352c9b1c2598f18bbff0b3e2ddb4d8087c383179658dec",
+    "review_card_sha256": "8c5f04f0c659f98c8f413c4bea89c352de36ee5785dd3b112c8c9ad8c5185455",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12蓝绿横幅、17悬挂机座舱、32下白围栏三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "航空博物馆悬挂飞机",
+      "evidence_zh": "12蓝绿横幅、17悬挂机座舱、32下白围栏三个父对象。",
+      "specific_protection_zh": "保留飞机结构、历史标识、其他展品与吊索。"
+    },
+    "protected_content_zh": "保留飞机结构、历史标识、其他展品与吊索。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the turquoise banner beneath the suspended plane",
+        "ref_zh": "悬挂飞机下方的青绿色横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "turquoise_banner",
+        "parent_zh": "青横幅",
+        "payload": "",
+        "instruction_zh": "移除悬挂飞机下方的青绿色横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the cockpit canopy of the suspended dark green plane",
+        "ref_zh": "悬挂深绿色飞机的座舱罩",
+        "scope": "canopy",
+        "scope_zh": "座舱罩",
+        "parent": "suspended_plane",
+        "parent_zh": "悬挂机",
+        "payload": "light blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将悬挂深绿色飞机的座舱罩的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的座舱罩的色调改为浅蓝色。"
+      },
+      {
+        "object_id": 32,
+        "operation": "add",
+        "ref": "the white exhibit railing behind the yellow tail",
+        "ref_zh": "黄色机尾后方的白色展区围栏",
+        "scope": "railing",
+        "scope_zh": "围栏",
+        "parent": "exhibit_rail",
+        "parent_zh": "围栏",
+        "payload": "a small white DO NOT TOUCH plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黄色机尾后方的白色展区围栏加上一块小白色DO NOT TOUCH牌。",
+        "instruction_noref_zh": "在选中的围栏加上一块小白色DO NOT TOUCH牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5322779",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b1a0e25292ac640e4af7064b29d78b1a0a6ef5d3c3089f314df41e23fc1fb44a",
+    "review_card_sha256": "7b0aaddab47c9f2b76df3eca78d2fa5a69cf1725008d809160515bc1c9732cc4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11站立白T、20坐姿蓝T、128黑背包、37右灯四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "crowd",
+        "small_targets"
+      ],
+      "scene_zh": "夕阳广场与坐客",
+      "evidence_zh": "11站立白T、20坐姿蓝T、128黑背包、37右灯四父对象。",
+      "specific_protection_zh": "保留人物身体、喷泉、车辆及城市天际线。"
+    },
+    "protected_content_zh": "保留人物身体、喷泉、车辆及城市天际线。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the white T-shirt on the standing man near the center",
+        "ref_zh": "中间附近站立男子的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "standing_man",
+        "parent_zh": "站男",
+        "payload": "a navy polo shirt",
+        "instruction_zh": "将中间附近站立男子的白色T恤替换为一件藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 20,
+        "operation": "attribute",
+        "ref": "the turquoise T-shirt on the seated man at the far left",
+        "ref_zh": "最左侧坐着的男子的青绿色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "left_seated",
+        "parent_zh": "左坐客",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧坐着的男子的青绿色T恤的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为酒红色。"
+      },
+      {
+        "object_id": 128,
+        "operation": "remove",
+        "ref": "the black backpack beside the seated person at the far left",
+        "ref_zh": "最左侧坐客身旁的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "black_bag",
+        "parent_zh": "黑包",
+        "payload": "",
+        "instruction_zh": "移除最左侧坐客身旁的黑色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 37,
+        "operation": "add",
+        "ref": "the streetlamp at the far right of the square",
+        "ref_zh": "广场最右侧的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "a small white number 8 plaque on its pole",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在广场最右侧的路灯加上一块位于灯杆上的小白色编号8牌。",
+        "instruction_noref_zh": "在选中的路灯加上一块位于灯杆上的小白色编号8牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5335541",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "49d5f6c1112028a101226cf0db82e9a142b21e4ea9dcbe8f37cf06cc7205a51a",
+    "review_card_sha256": "3ef6521056adb9fd76c4877235ce9e5e3f84fbb9d7527d9888bc620ad12eb83c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0中层栏杆属建筑，25底层独立盆栽为第二父对象；不把同建筑多窗凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "thin_structure"
+      ],
+      "scene_zh": "多彩房屋与盆栽",
+      "evidence_zh": "0中层栏杆属建筑，25底层独立盆栽为第二父对象；不把同建筑多窗凑数。",
+      "specific_protection_zh": "保留墙面配色、其他栏杆、门窗和花盆。"
+    },
+    "protected_content_zh": "保留墙面配色、其他栏杆、门窗和花盆。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the middle-floor balcony railing on the pink-and-blue facade",
+        "ref_zh": "粉蓝色立面中间楼层的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将粉蓝色立面中间楼层的阳台栏杆的颜色改为白色。",
+        "instruction_noref_zh": "将选中的栏杆的颜色改为白色。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the round leafy plant in front of door 201",
+        "ref_zh": "201号门前的圆形叶簇盆栽",
+        "scope": "plant",
+        "scope_zh": "盆栽",
+        "parent": "potted_plant",
+        "parent_zh": "盆栽",
+        "payload": "a red-flowering geranium plant",
+        "instruction_zh": "将201号门前的圆形叶簇盆栽替换为一株开红花的天竺葵。",
+        "instruction_noref_zh": "将选中的盆栽替换为一株开红花的天竺葵。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5342479",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c96c616ffce916e7559977fb0d164bb7671cb15207d1d5ad38faf25a2f3251ba",
+    "review_card_sha256": "796e57df884ad0b72e6b11c04e39e79177cd3fedaf51f450857ae9a186790271",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10中左灰围巾、9中右头盔、28最左肩带分属三名人物。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "历史装束表演者合影",
+      "evidence_zh": "10中左灰围巾、9中右头盔、28最左肩带分属三名人物。",
+      "specific_protection_zh": "保留人物身体、盔甲、盾牌及其他服装。"
+    },
+    "protected_content_zh": "保留人物身体、盔甲、盾牌及其他服装。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the gray scarf on the second reenactor from the left",
+        "ref_zh": "左起第二名表演者的灰色围巾",
+        "scope": "scarf",
+        "scope_zh": "围巾",
+        "parent": "second_reenactor",
+        "parent_zh": "第二人",
+        "payload": "a red linen scarf",
+        "instruction_zh": "将左起第二名表演者的灰色围巾替换为一条红色亚麻围巾。",
+        "instruction_noref_zh": "将选中的围巾替换为一条红色亚麻围巾。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the helmet on the third reenactor from the left",
+        "ref_zh": "左起第三名表演者的头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "third_reenactor",
+        "parent_zh": "第三人",
+        "payload": "bronze",
+        "attribute_kind": "material",
+        "instruction_zh": "将左起第三名表演者的头盔的材质改为青铜。",
+        "instruction_noref_zh": "将选中的头盔的材质改为青铜。"
+      },
+      {
+        "object_id": 28,
+        "operation": "add",
+        "ref": "the leather shoulder strap on the leftmost reenactor",
+        "ref_zh": "最左侧表演者的皮肩带",
+        "scope": "strap",
+        "scope_zh": "肩带",
+        "parent": "left_reenactor",
+        "parent_zh": "最左人",
+        "payload": "a small brass buckle",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最左侧表演者的皮肩带加上一个小黄铜扣。",
+        "instruction_noref_zh": "在选中的肩带加上一个小黄铜扣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5349278",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "56c35099e7500efb7e81b8e2728da1ecc728697546908228498e444d1a27b19c",
+    "review_card_sha256": "8fb08d42065d6e6a05e01be0b8933e51fa3670713e3390cae3df6624e4de1eec",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1坐车男子黑T、4右条纹T、19车辆弧形保险杠为两人一车。",
+    "difficulty": {
+      "mechanisms": [
+        "foliage",
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "林边车辆与人物",
+      "evidence_zh": "1坐车男子黑T、4右条纹T、19车辆弧形保险杠为两人一车。",
+      "specific_protection_zh": "保留人物身体、车辆结构与背景植物。"
+    },
+    "protected_content_zh": "保留人物身体、车辆结构与背景植物。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the black T-shirt on the seated man",
+        "ref_zh": "坐着的男子的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "seated_man",
+        "parent_zh": "坐男",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将坐着的男子的黑色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the striped T-shirt at the right edge",
+        "ref_zh": "右边缘的条纹T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_person",
+        "parent_zh": "右人",
+        "payload": "a plain white polo shirt",
+        "instruction_zh": "将右边缘的条纹T恤替换为一件纯白色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯白色Polo衫。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the curved metal bumper below the headlight",
+        "ref_zh": "车灯下方的弧形金属保险杠",
+        "scope": "bumper",
+        "scope_zh": "保险杠",
+        "parent": "vehicle",
+        "parent_zh": "车",
+        "payload": "a small yellow reflector",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在车灯下方的弧形金属保险杠加上一枚小黄色反光片。",
+        "instruction_noref_zh": "在选中的保险杠加上一枚小黄色反光片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5365574",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1a70848df7c98bb93d1689eb7098a28f7bafaa2e9df9e257d2035287a995f0fd",
+    "review_card_sha256": "8202c379ac8760d30c1367020af7e9b080e210189d1ed8a3606bf78e21f9b635",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "18右后小艇、11横蓝管、39渡轮船头栏杆分属船、管和另一船。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "water",
+        "thin_structure"
+      ],
+      "scene_zh": "港湾渡轮与前景管道",
+      "evidence_zh": "18右后小艇、11横蓝管、39渡轮船头栏杆分属船、管和另一船。",
+      "specific_protection_zh": "保留渡轮、船名、其他管道及港口。"
+    },
+    "protected_content_zh": "保留渡轮、船名、其他管道及港口。",
+    "targets": [
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the small white-and-blue boat behind the ferry at the right",
+        "ref_zh": "渡轮右后方的小蓝白色船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "rear_boat",
+        "parent_zh": "后船",
+        "payload": "",
+        "instruction_zh": "移除渡轮右后方的小蓝白色船。",
+        "instruction_noref_zh": "移除选中的船。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the horizontal blue pipe across the foreground",
+        "ref_zh": "横穿前景的蓝色管道",
+        "scope": "pipe",
+        "scope_zh": "管道",
+        "parent": "horizontal_pipe",
+        "parent_zh": "横管",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将横穿前景的蓝色管道的颜色改为白色。",
+        "instruction_noref_zh": "将选中的管道的颜色改为白色。"
+      },
+      {
+        "object_id": 39,
+        "operation": "add",
+        "ref": "the front railing along the ferry bow",
+        "ref_zh": "渡轮船头前沿的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "ferry",
+        "parent_zh": "渡轮",
+        "payload": "an orange life ring",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在渡轮船头前沿的栏杆加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的栏杆加上一个橙色救生圈。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

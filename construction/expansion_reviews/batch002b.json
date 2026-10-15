@@ -1,0 +1,613 @@
+[
+  {
+    "source_id": "sa_10202804",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "eb52baaa7440d195a51a3a83315decfe8d411b7fbeb70d7df0d0e01d6c9d4f96",
+    "review_card_sha256": "7b191ef4ce897034a849a0ca241597dde14b8875d7f0399cc2d2f047140b5c86",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "平底锅4包含细长手柄；黑色带盖锅9独立放在另一炉头；烟机横向金属把手41仅是细长金属条，属于不同设备。新增煎蛋直接位于锅内，水壶替换锅具、把手换金属材质符合厨房布置需求。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "厨房内的锅具和抽油烟机",
+      "evidence_zh": "平底锅4包含细长手柄；黑色带盖锅9独立放在另一炉头；烟机横向金属把手41仅是细长金属条，属于不同设备。新增煎蛋直接位于锅内，水壶替换锅具、把手换金属材质符合厨房布置需求。",
+      "specific_protection_zh": "保留炉灶、墙砖、台面、电饭煲、银色锅及调味料。"
+    },
+    "protected_content_zh": "保留炉灶、墙砖、台面、电饭煲、银色锅及调味料。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the frying pan on the left burner",
+        "ref_zh": "左侧炉头上的平底锅",
+        "scope": "frying pan",
+        "scope_zh": "平底锅",
+        "parent": "frying_pan",
+        "parent_zh": "左侧平底锅",
+        "payload": "one fried egg",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧炉头上的平底锅加上一个煎蛋。",
+        "instruction_noref_zh": "在选中的平底锅加上一个煎蛋。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the black lidded pot on the stove",
+        "ref_zh": "炉灶上的黑色带盖锅",
+        "scope": "pot",
+        "scope_zh": "锅",
+        "parent": "black_pot",
+        "parent_zh": "黑色带盖锅",
+        "payload": "a stainless-steel whistling kettle",
+        "instruction_zh": "将炉灶上的黑色带盖锅替换为一把不锈钢鸣笛水壶。",
+        "instruction_noref_zh": "将选中的锅替换为一把不锈钢鸣笛水壶。"
+      },
+      {
+        "object_id": 41,
+        "operation": "attribute",
+        "ref": "the range hood’s horizontal metal handle",
+        "ref_zh": "抽油烟机的横向金属把手",
+        "scope": "handle",
+        "scope_zh": "把手",
+        "parent": "range_hood",
+        "parent_zh": "抽油烟机",
+        "payload": "brass",
+        "attribute_kind": "material",
+        "instruction_zh": "将抽油烟机的横向金属把手的材质改为黄铜。",
+        "instruction_noref_zh": "将选中的把手的材质改为黄铜。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "4ce676838003063240548bb425fcd71faf9269fabef12956c7c2809b5205850b"
+  },
+  {
+    "source_id": "sa_10207241",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d0849cecb5ec5eaff2fac9e6ecab8ba43fdf37bea6c817e596796dd2c8827b64",
+    "review_card_sha256": "fc17c86800379531b3f6f7f6656cf26563be577996e3d2d9955d7b80f2f8fd6b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3是前景停车场最靠下的蓝车，6在其左上方，4位于停车场旁弯道。目标在原图中较小但车辆边界清楚，不能笼统指蓝车。车顶箱直接依附3，移除弯道蓝车4。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "车站停车场中的相似蓝色车辆",
+      "evidence_zh": "3是前景停车场最靠下的蓝车，6在其左上方，4位于停车场旁弯道。目标在原图中较小但车辆边界清楚，不能笼统指蓝车。车顶箱直接依附3，移除弯道蓝车4。",
+      "specific_protection_zh": "保留相邻蓝车、停车位标线、车站列车和道路边界。"
+    },
+    "protected_content_zh": "保留相邻蓝车、停车位标线、车站列车和道路边界。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the lowest blue car in the foreground parking lot",
+        "ref_zh": "前景停车场最靠下的蓝色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "lowest_blue_car",
+        "parent_zh": "前景最靠下蓝车",
+        "payload": "a black roof cargo box",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景停车场最靠下的蓝色汽车加上一个黑色车顶行李箱。",
+        "instruction_noref_zh": "在选中的汽车加上一个黑色车顶行李箱。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the blue car on the bend beside the foreground parking lot",
+        "ref_zh": "前景停车场旁弯道上的蓝色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "bend_blue_car",
+        "parent_zh": "停车场旁弯道蓝车",
+        "payload": "",
+        "instruction_zh": "移除前景停车场旁弯道上的蓝色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "505e49aea9959f4a7215969dd84faf7783e98acaa6fbe02844d742c8b9cbb4e8"
+  },
+  {
+    "source_id": "sa_10209721",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cb4df0feb5715fa59ae67ba5d7eb36e5ac95941ca89c47d7e4741a69bf6b7ef1",
+    "review_card_sha256": "1ab94b5126afe16cbeb32ee974671993cc7ec884978a719616492ed5e817f9f5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "男孩T恤0排除脖颈和手臂；横栏4是羊驼头部下方、男孩伸手处的长横木，准确沿木材边缘并避开人物。标牌直接固定于该横木，衣服改色保留原字样。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "neighbor_protection",
+        "occlusion"
+      ],
+      "scene_zh": "男孩隔木栏喂羊驼",
+      "evidence_zh": "男孩T恤0排除脖颈和手臂；横栏4是羊驼头部下方、男孩伸手处的长横木，准确沿木材边缘并避开人物。标牌直接固定于该横木，衣服改色保留原字样。",
+      "specific_protection_zh": "保留男孩皮肤、头发、羊驼、手中叶片、其余横栏和背景。"
+    },
+    "protected_content_zh": "保留男孩皮肤、头发、羊驼、手中叶片、其余横栏和背景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the boy’s navy T-shirt",
+        "ref_zh": "男孩的藏蓝色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "boy",
+        "parent_zh": "男孩",
+        "payload": "orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将男孩的藏蓝色T恤的颜色改为橙色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为橙色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the fence rail below the alpaca’s head",
+        "ref_zh": "羊驼头部下方的横栏",
+        "scope": "fence rail",
+        "scope_zh": "横栏",
+        "parent": "fence",
+        "parent_zh": "木围栏",
+        "payload": "a small wooden plaque reading “ALPACA”",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在羊驼头部下方的横栏加上一块写有“ALPACA”的小木牌。",
+        "instruction_noref_zh": "在选中的横栏加上一块写有“ALPACA”的小木牌。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "60edabcd13d0ebe94a38d47fcad4a7ff295b21aabb56e829907a5631c3ba2500"
+  },
+  {
+    "source_id": "sa_10217363",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "90f9257f88086e6a1e3c2fd9a3b3f3f1447c8ec3154adfeeac23dc8ab10a493d",
+    "review_card_sha256": "b06058918013fbbc1ec6592573cef54dbdd660ee2d10208fad8a146391cc9a85",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "伞0包括细长伞杆；蓝毛巾10独立搭在中央椅背上，不把整张椅子当成毛巾。椅子15/28/39疑似填入下方背景，未选用。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "沙滩上的阳伞与搭在椅背的毛巾",
+      "evidence_zh": "伞0包括细长伞杆；蓝毛巾10独立搭在中央椅背上，不把整张椅子当成毛巾。椅子15/28/39疑似填入下方背景，未选用。",
+      "specific_protection_zh": "保留椅子、沙滩人物、海鸥、海水和码头。"
+    },
+    "protected_content_zh": "保留椅子、沙滩人物、海鸥、海水和码头。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the turquoise beach umbrella",
+        "ref_zh": "青蓝色沙滩伞",
+        "scope": "umbrella",
+        "scope_zh": "阳伞",
+        "parent": "umbrella",
+        "parent_zh": "青蓝色沙滩伞",
+        "payload": "coral red",
+        "attribute_kind": "color",
+        "instruction_zh": "将青蓝色沙滩伞的颜色改为珊瑚红。",
+        "instruction_noref_zh": "将选中的阳伞的颜色改为珊瑚红。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the blue towel on the middle beach chair",
+        "ref_zh": "中间沙滩椅上的蓝毛巾",
+        "scope": "towel",
+        "scope_zh": "毛巾",
+        "parent": "blue_towel",
+        "parent_zh": "中央椅背的蓝毛巾",
+        "payload": "",
+        "instruction_zh": "移除中间沙滩椅上的蓝毛巾。",
+        "instruction_noref_zh": "移除选中的毛巾。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "41fc600c2977ad002189b2ec1d496350e92b1890c73c3cbd016816e4c801cc8d"
+  },
+  {
+    "source_id": "sa_10227471",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "77fa7ceefc64be626141452c420c963c2f5d60a9efd7c28e2860b0ce0fcc3298",
+    "review_card_sha256": "4496a30493c2dacd0bb3df81544695b38e6bf03051d20bf65bf6dd29d823e51b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "左侧女子上衣20排除背包肩带和皮肤；手提包37属于右侧女子携带的独立包；近处路灯2具细长杆，区别于左后方路灯。采用服装改色、包移除和路灯悬挂花篮。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "白色建筑前的两名游客与路灯",
+      "evidence_zh": "左侧女子上衣20排除背包肩带和皮肤；手提包37属于右侧女子携带的独立包；近处路灯2具细长杆，区别于左后方路灯。采用服装改色、包移除和路灯悬挂花篮。",
+      "specific_protection_zh": "保留两名游客的皮肤、裤子及背包，路灯灯头和背景建筑、长椅。"
+    },
+    "protected_content_zh": "保留两名游客的皮肤、裤子及背包，路灯灯头和背景建筑、长椅。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "attribute",
+        "ref": "the left foreground woman’s green T-shirt",
+        "ref_zh": "前景左侧女子的绿色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "left_woman",
+        "parent_zh": "前景左侧女子",
+        "payload": "terracotta orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景左侧女子的绿色T恤的颜色改为陶土橙色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为陶土橙色。"
+      },
+      {
+        "object_id": 37,
+        "operation": "remove",
+        "ref": "the dark bag carried by the right foreground woman",
+        "ref_zh": "前景右侧女子手提的深色包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "handheld_bag",
+        "parent_zh": "右侧女子手提包",
+        "payload": "",
+        "instruction_zh": "移除前景右侧女子手提的深色包。",
+        "instruction_noref_zh": "移除选中的包。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the nearest streetlamp",
+        "ref_zh": "最近的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "foreground_lamp",
+        "parent_zh": "近处路灯",
+        "payload": "a hanging basket of red flowers",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的路灯加上一篮悬挂的红花。",
+        "instruction_noref_zh": "在选中的路灯加上一篮悬挂的红花。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "b7140357b731d1a28a5f17152c1db9ee2974d8df935fcb902210f1b9634a2291"
+  },
+  {
+    "source_id": "sa_10235725",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0b4b217792260816f289e14afd56c7cb806eb603f4a9f4e5f4ff72e340621f74",
+    "review_card_sha256": "e6052eefc3e9ca1624612f2a2435465ef472fc792826870beff5f44b1ac65f7a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "三件上衣0/4/7属于三个不同人物，均受前景横幅遮挡；7还排除了横在胸前的手。黄色标语牌3是独立手持物体。保留遮挡关系，仅做正常衣着和道具编辑。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "横幅后并排站立的男子与手持牌",
+      "evidence_zh": "三件上衣0/4/7属于三个不同人物，均受前景横幅遮挡；7还排除了横在胸前的手。黄色标语牌3是独立手持物体。保留遮挡关系，仅做正常衣着和道具编辑。",
+      "specific_protection_zh": "保留所有人物脸、脖颈、手及前景大横幅和其他标牌。"
+    },
+    "protected_content_zh": "保留所有人物脸、脖颈、手及前景大横幅和其他标牌。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the leftmost man’s blue shirt",
+        "ref_zh": "最左侧男子的蓝衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "leftmost_man",
+        "parent_zh": "最左侧男子",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧男子的蓝衬衫的颜色改为鼠尾草绿色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为鼠尾草绿色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the white shirt beside the leftmost man",
+        "ref_zh": "最左侧男子身旁的白衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "second_man",
+        "parent_zh": "左起第二名男子",
+        "payload": "a navy polo shirt",
+        "instruction_zh": "将最左侧男子身旁的白衬衫替换为一件藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the black-and-white checked shirt",
+        "ref_zh": "黑白格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "checked_man",
+        "parent_zh": "穿黑白格纹衬衫男子",
+        "payload": "a small silver lapel pin",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黑白格纹衬衫加上一枚小银色领针。",
+        "instruction_noref_zh": "在选中的衬衫加上一枚小银色领针。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the yellow placard at the upper left",
+        "ref_zh": "左上方的黄色标语牌",
+        "scope": "placard",
+        "scope_zh": "标语牌",
+        "parent": "yellow_placard",
+        "parent_zh": "黄色手持标语牌",
+        "payload": "",
+        "instruction_zh": "移除左上方的黄色标语牌。",
+        "instruction_noref_zh": "移除选中的标语牌。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "5180f941cb5172675f534f5213fc72e4fc370c6478207d29799f082f256e1d96"
+  },
+  {
+    "source_id": "sa_10242492",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2ee720d87d7c9d4bed7caf7a2b5971a8702ad3b63f9aa653e011e025d8ebb1ef",
+    "review_card_sha256": "0bb1372a97ca963c896c5c5949de56e92b177ffac93dab6872fa4e056cd15abd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "手轮0保留多处孔洞，部分被机身遮挡；白色布7单独放在机身右侧并被摇柄挡住。手轮修饰表面和清除布料是自然的物品展示修图需求，其他机身零件不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "holes",
+        "occlusion",
+        "local_parts"
+      ],
+      "scene_zh": "老式缝纫机及旁边的布料",
+      "evidence_zh": "手轮0保留多处孔洞，部分被机身遮挡；白色布7单独放在机身右侧并被摇柄挡住。手轮修饰表面和清除布料是自然的物品展示修图需求，其他机身零件不重复计数。",
+      "specific_protection_zh": "保留木台、针、机身、摇柄以及前景布料。"
+    },
+    "protected_content_zh": "保留木台、针、机身、摇柄以及前景布料。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the sewing machine’s handwheel",
+        "ref_zh": "缝纫机的手轮",
+        "scope": "handwheel",
+        "scope_zh": "手轮",
+        "parent": "sewing_machine",
+        "parent_zh": "缝纫机",
+        "payload": "polished",
+        "attribute_kind": "finish",
+        "instruction_zh": "将缝纫机手轮的表面改为抛光效果。",
+        "instruction_noref_zh": "将选中的手轮表面改为抛光效果。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the white cloth to the right of the sewing machine",
+        "ref_zh": "缝纫机右侧的白布",
+        "scope": "cloth",
+        "scope_zh": "布",
+        "parent": "white_cloth",
+        "parent_zh": "右侧白布",
+        "payload": "",
+        "instruction_zh": "移除缝纫机右侧的白布。",
+        "instruction_noref_zh": "移除选中的布。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "152b7e1cd8f31784426cd0a01d5874d6a9a5fc920720cd4b644b92f232bf2cdf"
+  },
+  {
+    "source_id": "sa_10290462",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9077d9bd237dc61b32083f96047eac1af1108a96d372fd0d0ebb7030092ce810",
+    "review_card_sha256": "69e5d5468b710f483bc9658ba45cc8bad03cd057a97ac0d1ea1bb9e897ccee7b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "路灯11含细长弯曲杆和环形灯架；前景格纹衬衫18避开皮肤和斜挎包；GOFRY牌42是独立实物标牌，而不是把上面的食物图片当作真实食物。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "holes",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "步行街路灯、行人和小店标牌",
+      "evidence_zh": "路灯11含细长弯曲杆和环形灯架；前景格纹衬衫18避开皮肤和斜挎包；GOFRY牌42是独立实物标牌，而不是把上面的食物图片当作真实食物。",
+      "specific_protection_zh": "保留行人皮肤、斜挎包、店面其余文字和建筑窗框。"
+    },
+    "protected_content_zh": "保留行人皮肤、斜挎包、店面其余文字和建筑窗框。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the curled streetlamp beside the foreground man",
+        "ref_zh": "前景男子身旁的卷曲灯架路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "curled_lamp",
+        "parent_zh": "卷曲灯架路灯",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男子身旁的卷曲灯架路灯的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深绿色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the foreground man’s checked shirt",
+        "ref_zh": "前景男子的格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "foreground_man",
+        "parent_zh": "前景男子",
+        "payload": "a plain navy polo shirt",
+        "instruction_zh": "将前景男子的格纹衬衫替换为一件纯藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 42,
+        "operation": "remove",
+        "ref": "the “GOFRY” sign outside the shop",
+        "ref_zh": "店外写有“GOFRY”的招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "gofry_sign",
+        "parent_zh": "GOFRY招牌",
+        "payload": "",
+        "instruction_zh": "移除店外写有“GOFRY”的招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "6e677efd62b33f8e777655c8c12a01b8eab84b88dd0386de7193fc74b61155f5"
+  },
+  {
+    "source_id": "sa_10204338",
+    "decision": "reject",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9cb23f10637f57d4e6a03b448da037fc5f3c0e8bbdd10f47892143526ba3b553",
+    "review_card_sha256": "32f898d95d751ebabbe18cfb6ff807a0a843660ac65947dd3cb01332f3a3073d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选人物、衣物、花朵均为同一彩绘玻璃窗上的图案；不能当成多个独立真实物体。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "彩绘玻璃窗",
+      "evidence_zh": "候选人物、衣物、花朵均为同一彩绘玻璃窗上的图案；不能当成多个独立真实物体。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "fcfa2a86b38c0428ce5c92b5ffa7c8d1ac525b82b3b52f840d0e047d9b836d7e"
+  },
+  {
+    "source_id": "sa_10227208",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dfeaf2784dcd389955ba1324fe3aeb36f004ba478e3f52e4dcbf959a015e9547",
+    "review_card_sha256": "16a16f2d25c99a220c1041aaabc8024f0e184eb2ea0288ee0395abd3ce52f525",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "多个栏杆候选填入后方背景；白色悬挂物的具体类别和精确序号需要更大局部图确认，不沿用模型未经核实的物体命名。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "商店阳台与悬挂容器",
+      "evidence_zh": "多个栏杆候选填入后方背景；白色悬挂物的具体类别和精确序号需要更大局部图确认，不沿用模型未经核实的物体命名。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "4c7e2f5604dc5f223fbeb804380598563557ad7a29fe081e3290aef590f564ea"
+  },
+  {
+    "source_id": "sa_102791",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1f27ccbb3c61ae1800f8ed243315e82ead815a16e6734584e34799c2a4596eec",
+    "review_card_sha256": "19745246d9633e90d43633ec908f8fb3457f69e5e7cc28b75e146d2e2475cea4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "大多数候选是同一桅杆和船帆的部件，需核实彩旗是否能提供明确独立父物体及自然编辑，否则不采用。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "帆船桅杆特写",
+      "evidence_zh": "大多数候选是同一桅杆和船帆的部件，需核实彩旗是否能提供明确独立父物体及自然编辑，否则不采用。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "f7b2e2a635f12870403a120a16f3e573cbddf5905b46f6d62c3fd192470bd1f6"
+  }
+]

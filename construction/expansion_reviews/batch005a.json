@@ -1,0 +1,580 @@
+[
+  {
+    "source_id": "sa_10850788",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c0e692d36c37e177643d44d1e21900937e448572f67ed79609b704b5f653cf03",
+    "review_card_sha256": "f5f4c136c520c43d44dce06af493841910baa1c5f8f1d7af8e46a12974604b5b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为左中靠前完整球形路灯，35为其下方长雪凳，12为路灯紧右侧白桦树干。独立灯具、长凳和树分开；不选出画的5或含整块背景的窗户。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "雪中公园的路灯、长凳与树干",
+      "evidence_zh": "2为左中靠前完整球形路灯，35为其下方长雪凳，12为路灯紧右侧白桦树干。独立灯具、长凳和树分开；不选出画的5或含整块背景的窗户。",
+      "specific_protection_zh": "保留雪地、其他长凳、树枝、建筑和冬日光照。"
+    },
+    "protected_content_zh": "保留雪地、其他长凳、树枝、建筑和冬日光照。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the globe streetlamp beside the foreground birch",
+        "ref_zh": "前景白桦旁的球形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "foreground_lamp",
+        "parent_zh": "前景球形路灯",
+        "payload": "a black lantern-style streetlamp",
+        "instruction_zh": "将前景白桦旁的球形路灯替换为一盏黑色灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色灯笼式路灯。"
+      },
+      {
+        "object_id": 35,
+        "operation": "remove",
+        "ref": "the long snow-covered bench below the globe streetlamp",
+        "ref_zh": "球形路灯下方覆雪的长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "long_bench",
+        "parent_zh": "覆雪长凳",
+        "payload": "",
+        "instruction_zh": "移除球形路灯下方覆雪的长凳。",
+        "instruction_noref_zh": "移除选中的长凳。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the birch trunk immediately right of the globe streetlamp",
+        "ref_zh": "球形路灯紧右侧的白桦树干",
+        "scope": "tree trunk",
+        "scope_zh": "树干",
+        "parent": "birch_tree",
+        "parent_zh": "白桦树",
+        "payload": "a small wooden bird feeder",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在球形路灯紧右侧的白桦树干加上一个小木制喂鸟器。",
+        "instruction_noref_zh": "在选中的树干加上一个小木制喂鸟器。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10883114",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e585c634e269107e8a1b5a6a03d346ed694c457f6395409ea5e0e96233018123",
+    "review_card_sha256": "4eadec56f3cd80f8dc2da64b19999fbd61bb2cbe3fa461f653a1ab7cad17cc2a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "20为皮卡前侧门，29为其车头后方真实停放的深色小汽车；不用30广告旗，因为同时包含挡风玻璃中的反射图像。车门贴字与移除背景车各属一辆车。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "白色皮卡与被遮挡的背景小汽车",
+      "evidence_zh": "20为皮卡前侧门，29为其车头后方真实停放的深色小汽车；不用30广告旗，因为同时包含挡风玻璃中的反射图像。车门贴字与移除背景车各属一辆车。",
+      "specific_protection_zh": "保留皮卡形状、玻璃、车镜、车轮和其他背景车辆。"
+    },
+    "protected_content_zh": "保留皮卡形状、玻璃、车镜、车轮和其他背景车辆。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the white pickup’s front door",
+        "ref_zh": "白色皮卡的前车门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "white_pickup",
+        "parent_zh": "白色皮卡",
+        "payload": "a black “DELIVERY” decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在白色皮卡的前车门加上一张黑色“DELIVERY”贴字。",
+        "instruction_noref_zh": "在选中的车门加上一张黑色“DELIVERY”贴字。"
+      },
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the dark car behind the pickup’s hood",
+        "ref_zh": "皮卡引擎盖后方的深色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "background_dark_car",
+        "parent_zh": "背景深色汽车",
+        "payload": "",
+        "instruction_zh": "移除皮卡引擎盖后方的深色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10904916",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "75e74600422ef074d5847d0754535f88b9b711aeb077c0755dee0312e5e0bd55",
+    "review_card_sha256": "8744541ae15486e3e68fed3d529dca7258469fa3d9299f9889946104b2fe566f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3是独立实体名称牌，4是左侧宣礼塔的银色洋葱顶。牌上加照明条和穹顶改金色属于自然维护；不将同建筑多扇窗或多块栏杆计成多个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "清真寺的实体名称牌与宣礼塔穹顶",
+      "evidence_zh": "3是独立实体名称牌，4是左侧宣礼塔的银色洋葱顶。牌上加照明条和穹顶改金色属于自然维护；不将同建筑多扇窗或多块栏杆计成多个父对象。",
+      "specific_protection_zh": "保留名称文字、建筑结构、其他穹顶与周边植物。"
+    },
+    "protected_content_zh": "保留名称文字、建筑结构、其他穹顶与周边植物。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the green mosque nameplate",
+        "ref_zh": "绿色清真寺名称牌",
+        "scope": "nameplate",
+        "scope_zh": "名称牌",
+        "parent": "mosque_nameplate",
+        "parent_zh": "清真寺实体名称牌",
+        "payload": "a slim LED light bar",
+        "placement": {
+          "relation": "on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿色清真寺名称牌的上沿加上一条细长LED灯条。",
+        "instruction_noref_zh": "在选中的名称牌的上沿加上一条细长LED灯条。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the minaret’s silver dome",
+        "ref_zh": "宣礼塔的银色穹顶",
+        "scope": "dome",
+        "scope_zh": "穹顶",
+        "parent": "mosque_structure",
+        "parent_zh": "清真寺建筑",
+        "payload": "gold",
+        "attribute_kind": "color",
+        "instruction_zh": "将宣礼塔的银色穹顶的颜色改为金色。",
+        "instruction_noref_zh": "将选中的穹顶的颜色改为金色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10919112",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1097eca4b9a3f1c8eb278f2d188a8a0670d3d27a8a347063ae89688a2a97a23f",
+    "review_card_sha256": "a68a28ccc6b304383093eb7efda31a5d208b94e51641d53c3da85803d649940d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7为小丑彩格帽，11为前景辫发女孩紫上衣且排除辫子，8为前排男孩深色短袖且保留遮挡手掌，10为表演者后方白椅。四个父对象分别为三个人和椅子。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "neighbor_protection"
+      ],
+      "scene_zh": "小丑表演与围观儿童",
+      "evidence_zh": "7为小丑彩格帽，11为前景辫发女孩紫上衣且排除辫子，8为前排男孩深色短袖且保留遮挡手掌，10为表演者后方白椅。四个父对象分别为三个人和椅子。",
+      "specific_protection_zh": "保留面部、头发、手臂、表演气球和其他观众。"
+    },
+    "protected_content_zh": "保留面部、头发、手臂、表演气球和其他观众。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the performer’s checkered hat",
+        "ref_zh": "表演者的格子帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "performer",
+        "parent_zh": "表演者",
+        "payload": "a small red fabric flower",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在表演者的格子帽加上一朵红色小布花。",
+        "instruction_noref_zh": "在选中的帽子加上一朵红色小布花。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the braided girl’s purple top",
+        "ref_zh": "辫发女孩的紫色上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "braided_girl",
+        "parent_zh": "辫发女孩",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将辫发女孩的紫色上衣的颜色改为青绿色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为青绿色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the front-row boy’s dark T-shirt",
+        "ref_zh": "前排男孩的深色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "front_boy",
+        "parent_zh": "前排男孩",
+        "payload": "a striped polo shirt",
+        "instruction_zh": "将前排男孩的深色T恤替换为一件条纹Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件条纹Polo衫。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the white chair behind the performer",
+        "ref_zh": "表演者后方的白色椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "white_chair",
+        "parent_zh": "后方白椅",
+        "payload": "",
+        "instruction_zh": "移除表演者后方的白色椅子。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1093348",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6bcc7aba4487861098dec104c73b611f5df185ed62b8b2ef1d3f11a6b0e3fc56",
+    "review_card_sha256": "485907464a9a6657188ad63a02492662c808ad007cd32dc889fef6321fb713df",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "26仅灯头不含支架，3为左中卫星天线，2为右墙完整白窗；不选4邮轮，因为其mask混入船下屋顶碎片。灯头、天线与建筑分别计数。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "巷道近处灯具与远处邮轮",
+      "evidence_zh": "26仅灯头不含支架，3为左中卫星天线，2为右墙完整白窗；不选4邮轮，因为其mask混入船下屋顶碎片。灯头、天线与建筑分别计数。",
+      "specific_protection_zh": "保留铁艺灯架、邮轮、屋顶、窗框与邻近电线。"
+    },
+    "protected_content_zh": "保留铁艺灯架、邮轮、屋顶、窗框与邻近电线。",
+    "targets": [
+      {
+        "object_id": 26,
+        "operation": "replace",
+        "ref": "the foreground wall lantern",
+        "ref_zh": "前景壁灯的灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "an opal globe light",
+        "instruction_zh": "将前景壁灯的灯头替换为一个乳白球形灯。",
+        "instruction_noref_zh": "将选中的灯头替换为一个乳白球形灯。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the satellite dish below the cruise ship",
+        "ref_zh": "邮轮下方的卫星天线",
+        "scope": "satellite dish",
+        "scope_zh": "卫星天线",
+        "parent": "satellite_dish",
+        "parent_zh": "卫星天线",
+        "payload": "",
+        "instruction_zh": "移除邮轮下方的卫星天线。",
+        "instruction_noref_zh": "移除选中的卫星天线。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the white-framed window on the right",
+        "ref_zh": "右侧白框窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "a small green wreath",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧白框窗户加上一个绿色小花环。",
+        "instruction_noref_zh": "在选中的窗户加上一个绿色小花环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10935639",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "19503fdb24134aaa3e9fa7f067395c608ed101e22e752b98fc1e5cca1a0b63f7",
+    "review_card_sha256": "69b3c4637fa22a802b48ae64a25258af7e497e9a32029e0580d7f98984bb6d08",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为前排学生衬衫，20为后排学生上衣；32混入前排衣物碎片所以不用。只选两个不同学生，编辑保持黑白摄影风格。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "黑白课堂中的前后两名学生",
+      "evidence_zh": "8为前排学生衬衫，20为后排学生上衣；32混入前排衣物碎片所以不用。只选两个不同学生，编辑保持黑白摄影风格。",
+      "specific_protection_zh": "保留面部、手臂、书本、桌椅、人物姿态和黑白影调。"
+    },
+    "protected_content_zh": "保留面部、手臂、书本、桌椅、人物姿态和黑白影调。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the foreground student’s shirt",
+        "ref_zh": "前排学生的衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "front_student",
+        "parent_zh": "前排学生",
+        "payload": "a small embroidered school badge",
+        "placement": {
+          "relation": "on",
+          "site": "chest",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前排学生的衬衫的胸前加上一枚小刺绣校徽。",
+        "instruction_noref_zh": "在选中的衬衫的胸前加上一枚小刺绣校徽。"
+      },
+      {
+        "object_id": 20,
+        "operation": "replace",
+        "ref": "the rear student’s white top",
+        "ref_zh": "后排学生的白色上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "rear_student",
+        "parent_zh": "后排学生",
+        "payload": "a light knitted sweater",
+        "instruction_zh": "将后排学生的白色上衣替换为一件浅色针织衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件浅色针织衫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10956612",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "424e4cc6a9483bd725ff3cab63c222ef3a6133dd55987698bc74be2bffe6f2b9",
+    "review_card_sha256": "cd5186151013094bf060016183caac66b43895c5436add8858a691abd707b588",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为右侧最近白车，22为左侧蓝色连帽衫，13为最右前排举拳者白T恤，6为中央举起的BLACK LIVES MATTER牌。四个实体分别计数，牌只增加实体边框不改文字。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街头队伍的衣物、实体牌与停放车辆",
+      "evidence_zh": "3为右侧最近白车，22为左侧蓝色连帽衫，13为最右前排举拳者白T恤，6为中央举起的BLACK LIVES MATTER牌。四个实体分别计数，牌只增加实体边框不改文字。",
+      "specific_protection_zh": "保留人物面部、肢体、牌面文字、队伍位置和街景。"
+    },
+    "protected_content_zh": "保留人物面部、肢体、牌面文字、队伍位置和街景。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the nearest white car on the right",
+        "ref_zh": "右侧最近的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "near_white_car",
+        "parent_zh": "近处白车",
+        "payload": "",
+        "instruction_zh": "移除右侧最近的白色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the blue Cubs hoodie on the left",
+        "ref_zh": "左侧蓝色Cubs连帽衫",
+        "scope": "hoodie",
+        "scope_zh": "连帽衫",
+        "parent": "left_hoodie_person",
+        "parent_zh": "左侧连帽衫人物",
+        "payload": "a gray zip-up jacket",
+        "instruction_zh": "将左侧蓝色Cubs连帽衫替换为一件灰色拉链外套。",
+        "instruction_noref_zh": "将选中的连帽衫替换为一件灰色拉链外套。"
+      },
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the raised-fist marcher’s white T-shirt",
+        "ref_zh": "举拳行人的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "raised_fist_person",
+        "parent_zh": "举拳人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将举拳行人的白色T恤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the central “BLACK LIVES MATTER” sign",
+        "ref_zh": "中央“BLACK LIVES MATTER”标语牌",
+        "scope": "sign",
+        "scope_zh": "标语牌",
+        "parent": "central_sign",
+        "parent_zh": "中央标语牌",
+        "payload": "a thin black wooden frame",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央“BLACK LIVES MATTER”标语牌加上一圈细黑木框。",
+        "instruction_noref_zh": "在选中的标语牌加上一圈细黑木框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10965390",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cb46dfc334e78a2332a7f766cf603d2e49fb1c1d5b7282fe2bb98a19dcf0b8f1",
+    "review_card_sha256": "e5835cd4e2a20f4c0468a1efeeb4cb71d36af142945875ed09895fe6ba55139c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为楼上右侧独立五球灯，10为下楼者背包，16为楼下左店铺$25 OFF实体贴牌，125为楼梯右下独立花箱。避开2灯mask多出的细杆。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "商场中庭楼梯、灯具和背包",
+      "evidence_zh": "0为楼上右侧独立五球灯，10为下楼者背包，16为楼下左店铺$25 OFF实体贴牌，125为楼梯右下独立花箱。避开2灯mask多出的细杆。",
+      "specific_protection_zh": "保留人物、衣物、楼梯、棋盘、植物和其他灯具。"
+    },
+    "protected_content_zh": "保留人物、衣物、楼梯、棋盘、植物和其他灯具。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the right globe lamppost on the upper level",
+        "ref_zh": "楼上右侧的球形路灯",
+        "scope": "lamppost",
+        "scope_zh": "路灯",
+        "parent": "upper_right_lamp",
+        "parent_zh": "楼上右灯",
+        "payload": "a single-globe black lamppost",
+        "instruction_zh": "将楼上右侧的球形路灯替换为一盏单球黑色路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏单球黑色路灯。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the stairway walker’s gray backpack",
+        "ref_zh": "楼梯行人的灰色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "gray_backpack",
+        "parent_zh": "灰色背包",
+        "payload": "a reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在楼梯行人的灰色背包加上一条反光条。",
+        "instruction_noref_zh": "在选中的背包加上一条反光条。"
+      },
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the “$25 OFF” sign",
+        "ref_zh": "“$25 OFF”告示牌",
+        "scope": "sign",
+        "scope_zh": "告示牌",
+        "parent": "discount_sign",
+        "parent_zh": "折扣告示牌",
+        "payload": "",
+        "instruction_zh": "移除“$25 OFF”告示牌。",
+        "instruction_noref_zh": "移除选中的告示牌。"
+      },
+      {
+        "object_id": 125,
+        "operation": "attribute",
+        "ref": "the planter box beside the foot of the stairs",
+        "ref_zh": "楼梯底部旁的花箱",
+        "scope": "planter box",
+        "scope_zh": "花箱",
+        "parent": "lower_planter",
+        "parent_zh": "楼梯下花箱",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将楼梯底部旁的花箱的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的花箱的颜色改为藏蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

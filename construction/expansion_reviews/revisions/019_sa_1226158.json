@@ -1,0 +1,148 @@
+{
+  "source_id": "sa_1226158",
+  "reason_zh": "全图定位显示47在红公寓楼左侧白楼下方，原草稿下方定位不准确，改为紧左侧。",
+  "previous_record": {
+    "source_id": "sa_1226158",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a32fc348b40008528797319ad6d29c78ddb28f5ecee35f9be9f12f8127eb034f",
+    "review_card_sha256": "bb7d65fd4e11e15048a4d6b65a242fb589daece89fb42132d2c1bcf2d0458420",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "58为中央白房子蓝色长阳台栏杆，122为右下道路银色厢式车，47为中层道路侧停灰色小车。三件父对象不同，未用160/252等混入邻物碎片的栏杆mask。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "山坡城镇全景中的阳台和车辆",
+      "evidence_zh": "58为中央白房子蓝色长阳台栏杆，122为右下道路银色厢式车，47为中层道路侧停灰色小车。三件父对象不同，未用160/252等混入邻物碎片的栏杆mask。",
+      "specific_protection_zh": "保留所有房屋、其他车辆、道路、阳台承重结构和树木。"
+    },
+    "protected_content_zh": "保留所有房屋、其他车辆、道路、阳台承重结构和树木。",
+    "targets": [
+      {
+        "object_id": 58,
+        "operation": "add",
+        "ref": "the blue balcony railing on the central white house",
+        "ref_zh": "中央白房子的蓝色阳台栏杆",
+        "scope": "balcony railing",
+        "scope_zh": "阳台栏杆",
+        "parent": "white_blue_balcony_house",
+        "parent_zh": "蓝阳台白房子",
+        "payload": "two small flower boxes",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央白房子的蓝色阳台栏杆加上两个小花箱。",
+        "instruction_noref_zh": "在选中的阳台栏杆加上两个小花箱。"
+      },
+      {
+        "object_id": 122,
+        "operation": "remove",
+        "ref": "the silver van at the lower-right edge",
+        "ref_zh": "右下边缘的银色厢式车",
+        "scope": "van",
+        "scope_zh": "厢式车",
+        "parent": "lower_right_van",
+        "parent_zh": "右下厢式车",
+        "payload": "",
+        "instruction_zh": "移除右下边缘的银色厢式车。",
+        "instruction_noref_zh": "移除选中的厢式车。"
+      },
+      {
+        "object_id": 47,
+        "operation": "replace",
+        "ref": "the gray hatchback below the red apartment building",
+        "ref_zh": "红色公寓楼下方的灰色两厢车",
+        "scope": "hatchback",
+        "scope_zh": "两厢车",
+        "parent": "gray_hatchback",
+        "parent_zh": "灰两厢车",
+        "payload": "a blue compact car",
+        "instruction_zh": "将红色公寓楼下方的灰色两厢车替换为一辆蓝色小汽车。",
+        "instruction_noref_zh": "将选中的两厢车替换为一辆蓝色小汽车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1226158",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a32fc348b40008528797319ad6d29c78ddb28f5ecee35f9be9f12f8127eb034f",
+    "review_card_sha256": "bb7d65fd4e11e15048a4d6b65a242fb589daece89fb42132d2c1bcf2d0458420",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "58为中央白房子蓝色长阳台栏杆，122为右下道路银色厢式车，47为中层道路侧停灰色小车。三件父对象不同，未用160/252等混入邻物碎片的栏杆mask。 全图定位复核：全图定位显示47在红公寓楼左侧白楼下方，原草稿下方定位不准确，改为紧左侧。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "山坡城镇全景中的阳台和车辆",
+      "evidence_zh": "58为中央白房子蓝色长阳台栏杆，122为右下道路银色厢式车，47为中层道路侧停灰色小车。三件父对象不同，未用160/252等混入邻物碎片的栏杆mask。 全图定位复核：全图定位显示47在红公寓楼左侧白楼下方，原草稿下方定位不准确，改为紧左侧。",
+      "specific_protection_zh": "保留所有房屋、其他车辆、道路、阳台承重结构和树木。"
+    },
+    "protected_content_zh": "保留所有房屋、其他车辆、道路、阳台承重结构和树木。",
+    "targets": [
+      {
+        "object_id": 58,
+        "operation": "add",
+        "ref": "the blue balcony railing on the central white house",
+        "ref_zh": "中央白房子的蓝色阳台栏杆",
+        "scope": "balcony railing",
+        "scope_zh": "阳台栏杆",
+        "parent": "white_blue_balcony_house",
+        "parent_zh": "蓝阳台白房子",
+        "payload": "two small flower boxes",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央白房子的蓝色阳台栏杆加上两个小花箱。",
+        "instruction_noref_zh": "在选中的阳台栏杆加上两个小花箱。"
+      },
+      {
+        "object_id": 122,
+        "operation": "remove",
+        "ref": "the silver van at the lower-right edge",
+        "ref_zh": "右下边缘的银色厢式车",
+        "scope": "van",
+        "scope_zh": "厢式车",
+        "parent": "lower_right_van",
+        "parent_zh": "右下厢式车",
+        "payload": "",
+        "instruction_zh": "移除右下边缘的银色厢式车。",
+        "instruction_noref_zh": "移除选中的厢式车。"
+      },
+      {
+        "object_id": 47,
+        "operation": "replace",
+        "ref": "the gray hatchback just left of the red apartment building",
+        "ref_zh": "红色公寓楼紧左侧的灰色两厢车",
+        "scope": "hatchback",
+        "scope_zh": "两厢车",
+        "parent": "gray_hatchback",
+        "parent_zh": "灰两厢车",
+        "payload": "a blue compact car",
+        "instruction_zh": "将红色公寓楼紧左侧的灰色两厢车替换为一辆蓝色小汽车。",
+        "instruction_noref_zh": "将选中的两厢车替换为一辆蓝色小汽车。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

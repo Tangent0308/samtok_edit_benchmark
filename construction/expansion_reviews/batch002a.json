@@ -1,0 +1,326 @@
+[
+  {
+    "source_id": "sa_10119096",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b1df413c61773e20d25f502964aa158d7854e8517a26371a7ebf3c56eb704ecb",
+    "review_card_sha256": "405ea97a65686743d1ae5d534ab170af215149a39a82a45acb334d1a6950dc2e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "背包3包括细肩带和提手，外套9准确排除背包；两mask重叠占较小mask的0.01%。背包是独立配件，与穿衣者分开计数。模型提议的兜帽下戴帽不采用。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "两名滑板车骑行者",
+      "evidence_zh": "背包3包括细肩带和提手，外套9准确排除背包；两mask重叠占较小mask的0.01%。背包是独立配件，与穿衣者分开计数。模型提议的兜帽下戴帽不采用。",
+      "specific_protection_zh": "保留头发、皮肤、袜子、滑板车与背景行人。"
+    },
+    "protected_content_zh": "保留头发、皮肤、袜子、滑板车与背景行人。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the foreground woman’s backpack",
+        "ref_zh": "前景女子的背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "backpack",
+        "parent_zh": "前景女子的独立背包",
+        "payload": "a tan canvas roll-top backpack",
+        "instruction_zh": "将前景女子的背包替换为一个棕色帆布卷口背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个棕色帆布卷口背包。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the foreground woman’s coat",
+        "ref_zh": "前景女子的大衣",
+        "scope": "coat",
+        "scope_zh": "大衣",
+        "parent": "woman",
+        "parent_zh": "前景女子",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景女子的大衣的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的大衣的颜色改为酒红色。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "7be638feda147fe43ff6e22c9d83cc8e838c5444bef780b328ddb29385abae4a"
+  },
+  {
+    "source_id": "sa_10140975",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "357c4ac54421d0efc134c5e7db51df819373e856c363ec7b2c66ebfbbc494876",
+    "review_card_sha256": "c1639c7ce235121e47bd2d9577206113c49ca0e05f2d64a1ee16db3b240d70f8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "近处壁灯20为完整灯具头部，独立于竖直教会告示0；二者位于密集建筑细节中，目标较小、紧邻墙面及相似建筑附属物。模型的阳台2/62包含栏杆后背景，不采用。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection",
+        "similar_instances"
+      ],
+      "scene_zh": "狭街店面的告示和壁灯",
+      "evidence_zh": "近处壁灯20为完整灯具头部，独立于竖直教会告示0；二者位于密集建筑细节中，目标较小、紧邻墙面及相似建筑附属物。模型的阳台2/62包含栏杆后背景，不采用。",
+      "specific_protection_zh": "保留门框、店门、墙面纹理和未选标牌及所有阳台。"
+    },
+    "protected_content_zh": "保留门框、店门、墙面纹理和未选标牌及所有阳台。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "replace",
+        "ref": "the nearest wall lantern on the right",
+        "ref_zh": "右侧最近的壁灯",
+        "scope": "lantern",
+        "scope_zh": "壁灯",
+        "parent": "wall_lantern",
+        "parent_zh": "右侧近处独立壁灯",
+        "payload": "a round frosted-glass wall light",
+        "instruction_zh": "将右侧最近的壁灯替换为一盏圆形磨砂玻璃壁灯。",
+        "instruction_noref_zh": "将选中的壁灯替换为一盏圆形磨砂玻璃壁灯。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the vertical church notice on the right",
+        "ref_zh": "右侧竖向教会告示牌",
+        "scope": "sign",
+        "scope_zh": "告示牌",
+        "parent": "vertical_notice",
+        "parent_zh": "竖向教会告示牌",
+        "payload": "",
+        "instruction_zh": "移除右侧竖向教会告示牌。",
+        "instruction_noref_zh": "移除选中的告示牌。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "1ac5c51e057eddd687c2266fb575eec28ac939e8d622d6e09fd15ceea68c7ca8"
+  },
+  {
+    "source_id": "sa_10153046",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dd9437cc4d5c80c5231a36d07f229bedb4913801fc1d4ba593f045fabc2c8935",
+    "review_card_sha256": "f281aa8dba2dedcd914f7653d0e5473d8a245388785bc1765812f56d6d943b89",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "模型将30错认成相机；实际mask为持相机男子的米色T恤，排除了相机、背带、手与皮肤。5是蓝裙女子所持标语牌，与人物衣服是独立物体；改变T恤颜色、将矩形牌换成圆形言论自由标语牌均自然。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection",
+        "similar_instances"
+      ],
+      "scene_zh": "人群手持标语牌与相机",
+      "evidence_zh": "模型将30错认成相机；实际mask为持相机男子的米色T恤，排除了相机、背带、手与皮肤。5是蓝裙女子所持标语牌，与人物衣服是独立物体；改变T恤颜色、将矩形牌换成圆形言论自由标语牌均自然。",
+      "specific_protection_zh": "保留相机、背带、所有人物面部和手、蓝裙与背景雕像。"
+    },
+    "protected_content_zh": "保留相机、背带、所有人物面部和手、蓝裙与背景雕像。",
+    "targets": [
+      {
+        "object_id": 30,
+        "operation": "attribute",
+        "ref": "the camera-holding man’s beige T-shirt",
+        "ref_zh": "持相机男子的米色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "camera_man",
+        "parent_zh": "持相机的男子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将持相机男子的米色T恤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the blue-dressed woman’s placard",
+        "ref_zh": "蓝裙女子的标语牌",
+        "scope": "placard",
+        "scope_zh": "标语牌",
+        "parent": "blue_woman_placard",
+        "parent_zh": "蓝裙女子手持标语牌",
+        "payload": "a round placard reading “FREE SPEECH”",
+        "instruction_zh": "将蓝裙女子的标语牌替换为一块写有“FREE SPEECH”的圆形标语牌。",
+        "instruction_noref_zh": "将选中的标语牌替换为一块写有“FREE SPEECH”的圆形标语牌。"
+      }
+    ],
+    "rejected_targets": [
+      {
+        "object_id": 14,
+        "reason_zh": "横幅中印刷照片里的衣服，不是真实三维衣物。"
+      }
+    ],
+    "assisted_proposal_sha256": "8bae795918e5f4907cac9053adaa816281e66f425055fad7d01f52a1efcf7b07"
+  },
+  {
+    "source_id": "sa_1019099",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c14e8443e0650048a9ed8a0d8f71550730c24366d3e502afd36b539b326fb039",
+    "review_card_sha256": "9fbb5fa726f2da26325d5d7bb4a07ee86a3d10721b74bdf36718c3df879e9ccc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "扶梯54保留两根弯曲扶手及横档间空隙；前景40是同一支架两侧成对旗幅，mask排除中央杆。属性只改扶梯，移除整组成对旗幅，两个目标为独立设施。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "holes",
+        "disconnected_parts"
+      ],
+      "scene_zh": "公共建筑外的水池扶梯和成对旗幅",
+      "evidence_zh": "扶梯54保留两根弯曲扶手及横档间空隙；前景40是同一支架两侧成对旗幅，mask排除中央杆。属性只改扶梯，移除整组成对旗幅，两个目标为独立设施。",
+      "specific_protection_zh": "保留水池、旗杆、建筑玻璃、其他标牌及广场座椅。"
+    },
+    "protected_content_zh": "保留水池、旗杆、建筑玻璃、其他标牌及广场座椅。",
+    "targets": [
+      {
+        "object_id": 54,
+        "operation": "attribute",
+        "ref": "the pool ladder in the lower left",
+        "ref_zh": "左下角水池扶梯",
+        "scope": "pool ladder",
+        "scope_zh": "水池扶梯",
+        "parent": "pool_ladder",
+        "parent_zh": "水池扶梯",
+        "payload": "matte black",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下角水池扶梯的颜色改为哑光黑色。",
+        "instruction_noref_zh": "将选中的水池扶梯的颜色改为哑光黑色。"
+      },
+      {
+        "object_id": 40,
+        "operation": "remove",
+        "ref": "the paired pink-and-white banners in the foreground",
+        "ref_zh": "前景成对的粉白色旗幅",
+        "scope": "pair of banners",
+        "scope_zh": "成对旗幅",
+        "parent": "paired_banner_fixture",
+        "parent_zh": "同一旗杆上的成对旗幅",
+        "payload": "",
+        "instruction_zh": "移除前景成对的粉白色旗幅。",
+        "instruction_noref_zh": "移除选中的成对旗幅。"
+      }
+    ],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "2233d96bedc6e540786940cc54139800e6eea409b4f290dfefec24171e763fa7"
+  },
+  {
+    "source_id": "sa_10128926",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "156ebd71afd5920e48866d094af04ebae97056d0afdc785874f8af7a44e4e2b2",
+    "review_card_sha256": "dfb70a9bf59e3d8e32e9b0789146a3545a2329f2369a3a6e98c154dee36e5af9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "模型建议围栏19和塔顶栏杆102；孔洞质量与编辑自然性仍待复核。不能为凑数使用同一斜塔的多个部件。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "待补查候选",
+      "evidence_zh": "模型建议围栏19和塔顶栏杆102；孔洞质量与编辑自然性仍待复核。不能为凑数使用同一斜塔的多个部件。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "06dffb34d80e09a288e40b9faa72db4b2d51e12c33c46f68699a28c71bfa3a59"
+  },
+  {
+    "source_id": "sa_10130067",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c8d226f535ca55821a008965ccbadca43f90ab2a28604fd9443e62d1e752b589",
+    "review_card_sha256": "4410a2fa814220d113f45f82d83512069cd29de98494d3d24189567d1df4d17d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "logo30包括星形与多行文字，模型scope仅称文字不完整；将红领结加在远处JOY广告牌上不自然。需要重选目标与复核字间孔洞。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "待补查候选",
+      "evidence_zh": "logo30包括星形与多行文字，模型scope仅称文字不完整；将红领结加在远处JOY广告牌上不自然。需要重选目标与复核字间孔洞。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "e36456a5d9cc83614faaffed0a7f769f6ff30851c9fc17966c70ff18010c85ec"
+  },
+  {
+    "source_id": "sa_10138061",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "85562ff3707e88307386ecbcebd05f26a32f839b1ce4194533f11070ba52897a",
+    "review_card_sha256": "292c1f99ab3ec1b6bfe5ff09aa078e2a5d69e77908d8cfa91e85e6f3089e6d48",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "需要补看衣服2与独立纸幡；模型同时使用栏杆柱0和同一栏杆段10，违反父对象独立性。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "待补查候选",
+      "evidence_zh": "需要补看衣服2与独立纸幡；模型同时使用栏杆柱0和同一栏杆段10，违反父对象独立性。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "cfba5b14ec3b6f58f3b8144f101135834129ec2a264573938367f78ad132c255"
+  },
+  {
+    "source_id": "sa_10152860",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2bc344f8681153aa12c7961be1b8c3869eacad6043a1b494bcba3293bfd4b824",
+    "review_card_sha256": "850ebb7aa1f187d8d54e060874b685b916cc8ced243f64aa20b723b81ee819ba",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "旅行袋16的mask包含前景栏杆；左侧花箱68有额外无关小块，且将喷壶放在狭窄箱沿不自然。当前可靠的右侧花箱0不足以独立构成细粒度多目标任务。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "待补查候选",
+      "evidence_zh": "旅行袋16的mask包含前景栏杆；左侧花箱68有额外无关小块，且将喷壶放在狭窄箱沿不自然。当前可靠的右侧花箱0不足以独立构成细粒度多目标任务。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": [],
+    "assisted_proposal_sha256": "4f5d8133121b759dd428d20b8effd4ed669bdf9e822b82c3a7eb6eb8be2476e8"
+  }
+]

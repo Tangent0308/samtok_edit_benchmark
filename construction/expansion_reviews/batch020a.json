@@ -1,0 +1,550 @@
+[
+  {
+    "source_id": "sa_5462658",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0f3b531d0c204729615dae27d2654b02cc55ced35a93acbf6e7a36a32d6cac62",
+    "review_card_sha256": "021e446633e3847cab6993baf1db1df9c2926a818bd3208f0f9776f310822363",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2汽车、17围巾所属人物、53左灯、18右雪堆四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "occlusion"
+      ],
+      "scene_zh": "雪中庭院人物与汽车",
+      "evidence_zh": "2汽车、17围巾所属人物、53左灯、18右雪堆四父对象。",
+      "specific_protection_zh": "保留人物身体、建筑、道路及其他灯具。"
+    },
+    "protected_content_zh": "保留人物身体、建筑、道路及其他灯具。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the black Audi parked at the left",
+        "ref_zh": "左侧停着的黑色奥迪",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "audi",
+        "parent_zh": "奥迪",
+        "payload": "",
+        "instruction_zh": "移除左侧停着的黑色奥迪。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the patterned scarf on the woman",
+        "ref_zh": "女子的花纹围巾",
+        "scope": "scarf",
+        "scope_zh": "围巾",
+        "parent": "woman",
+        "parent_zh": "女子",
+        "payload": "a burgundy wool scarf",
+        "instruction_zh": "将女子的花纹围巾替换为一条酒红色羊毛围巾。",
+        "instruction_noref_zh": "将选中的围巾替换为一条酒红色羊毛围巾。"
+      },
+      {
+        "object_id": 53,
+        "operation": "attribute",
+        "ref": "the double-globe streetlamp at the far left",
+        "ref_zh": "最左侧的双球路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧的双球路灯的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为古铜色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the snowbank below the red wall box",
+        "ref_zh": "红色壁挂箱下方的雪堆",
+        "scope": "snowbank",
+        "scope_zh": "雪堆",
+        "parent": "snowbank",
+        "parent_zh": "雪堆",
+        "payload": "a small snowman",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在红色壁挂箱下方的雪堆加上一个小雪人。",
+        "instruction_noref_zh": "在选中的雪堆加上一个小雪人。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5478678",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ad66ac4d3d9f0f3dab5f27d5dda62621dfc264b578babd686b83ca9684294437",
+    "review_card_sha256": "9c22513c522248a9418429b296dedf9f2c8111d5450e1ec3ed204580bc4b282d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7左纸牌、30白衫人物、1捐款箱面牌、15桌面四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "transparency",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "礼篮摊位与捐款箱",
+      "evidence_zh": "7左纸牌、30白衫人物、1捐款箱面牌、15桌面四父对象。",
+      "specific_protection_zh": "保留礼篮、人物身体、捐款箱结构和地面。"
+    },
+    "protected_content_zh": "保留礼篮、人物身体、捐款箱结构和地面。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the white handwritten price card at the left",
+        "ref_zh": "左侧的白色手写价牌",
+        "scope": "card",
+        "scope_zh": "价牌",
+        "parent": "price_card",
+        "parent_zh": "价牌",
+        "payload": "",
+        "instruction_zh": "移除左侧的白色手写价牌。",
+        "instruction_noref_zh": "移除选中的价牌。"
+      },
+      {
+        "object_id": 30,
+        "operation": "attribute",
+        "ref": "the white blouse on the long-haired woman behind the baskets",
+        "ref_zh": "礼篮后方长发女子的白色上衣",
+        "scope": "blouse",
+        "scope_zh": "上衣",
+        "parent": "longhair_woman",
+        "parent_zh": "长发女子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将礼篮后方长发女子的白色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the cream sign on the wooden donation box",
+        "ref_zh": "木制捐款箱上的奶油色标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "box_sign",
+        "parent_zh": "箱牌",
+        "payload": "a brass plaque reading DONATIONS",
+        "instruction_zh": "将木制捐款箱上的奶油色标牌替换为一块写有DONATIONS的黄铜牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有DONATIONS的黄铜牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the front display table",
+        "ref_zh": "前排展示桌",
+        "scope": "table",
+        "scope_zh": "桌子",
+        "parent": "display_table",
+        "parent_zh": "展示桌",
+        "payload": "a small red flower sticker on its front edge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前排展示桌加上一张位于前沿的小红花贴纸。",
+        "instruction_noref_zh": "在选中的桌子加上一张位于前沿的小红花贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5485685",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dcb12514a9d43f548b2d7e5b9a954faca0df84d904ee60ef2e9e14a509641e5c",
+    "review_card_sha256": "2f9847beef73757d5a4115eb75dc2024434d4697fba6410eaf1ed61daf115fe8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22蓝包独立配件、23最右摄影者外套、14收起长伞三父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "backlighting",
+        "occlusion"
+      ],
+      "scene_zh": "逆光广场游客",
+      "evidence_zh": "22蓝包独立配件、23最右摄影者外套、14收起长伞三父对象。",
+      "specific_protection_zh": "保留人物身体、广场、其他服装和建筑。"
+    },
+    "protected_content_zh": "保留人物身体、广场、其他服装和建筑。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the blue drawstring backpack near the center",
+        "ref_zh": "中间附近的蓝色抽绳背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "blue_backpack",
+        "parent_zh": "蓝包",
+        "payload": "",
+        "instruction_zh": "移除中间附近的蓝色抽绳背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the dark coat on the photographer at the right",
+        "ref_zh": "右侧摄影者的深色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "photographer",
+        "parent_zh": "摄影者",
+        "payload": "a beige padded coat",
+        "instruction_zh": "将右侧摄影者的深色外套替换为一件米色棉外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色棉外套。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the tallest folded umbrella at the right",
+        "ref_zh": "右侧最高的收起遮阳伞",
+        "scope": "umbrella",
+        "scope_zh": "遮阳伞",
+        "parent": "tall_umbrella",
+        "parent_zh": "高伞",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧最高的收起遮阳伞的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的遮阳伞的颜色改为深蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5488393",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3e054bd8c52e5395b7dde8708bc7651e585252cad5ecf431156b63c877437699",
+    "review_card_sha256": "1adcfe6dfa267848752b66e78fd73c23adb5a2631698153dde8596c334c7189f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15价签、0下排左罐、2上排中罐、1下排右罐四父对象，不拆罐口字样凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "text",
+        "reflection"
+      ],
+      "scene_zh": "超市可乐罐货架",
+      "evidence_zh": "15价签、0下排左罐、2上排中罐、1下排右罐四父对象，不拆罐口字样凑数。",
+      "specific_protection_zh": "保留其他罐、货架和照明。"
+    },
+    "protected_content_zh": "保留其他罐、货架和照明。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the yellow price label between the two rows of cans",
+        "ref_zh": "两排饮料罐之间的黄色价签",
+        "scope": "label",
+        "scope_zh": "价签",
+        "parent": "price_label",
+        "parent_zh": "价签",
+        "payload": "",
+        "instruction_zh": "移除两排饮料罐之间的黄色价签。",
+        "instruction_noref_zh": "移除选中的价签。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the second can from the left on the bottom shelf",
+        "ref_zh": "下层左起第二个饮料罐",
+        "scope": "can",
+        "scope_zh": "饮料罐",
+        "parent": "lower_left_can",
+        "parent_zh": "下左罐",
+        "payload": "a slim orange-juice can",
+        "instruction_zh": "将下层左起第二个饮料罐替换为一个细长的橙汁罐。",
+        "instruction_noref_zh": "将选中的饮料罐替换为一个细长的橙汁罐。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the second can from the left on the top shelf",
+        "ref_zh": "上层左起第二个饮料罐",
+        "scope": "can",
+        "scope_zh": "饮料罐",
+        "parent": "upper_middle_can",
+        "parent_zh": "上中罐",
+        "payload": "a small white promotional sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在上层左起第二个饮料罐加上一张小白色促销贴纸。",
+        "instruction_noref_zh": "在选中的饮料罐加上一张小白色促销贴纸。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the second can from the right on the bottom shelf",
+        "ref_zh": "下层右起第二个饮料罐",
+        "scope": "can",
+        "scope_zh": "饮料罐",
+        "parent": "lower_right_can",
+        "parent_zh": "下右罐",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将下层右起第二个饮料罐的颜色改为银色。",
+        "instruction_noref_zh": "将选中的饮料罐的颜色改为银色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5490754",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d08312626b175679ecde27c7239fd594bef5755de07fda4a1db64fb84153fb16",
+    "review_card_sha256": "f0982d42b1805873bc99b6490d5ef65d3b0e6f7735d893426c44781b29da5837",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "33蓝立牌、5左WC柱灯、14底层篷分属牌、灯及建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "text",
+        "repetition"
+      ],
+      "scene_zh": "城市喷泉与店铺",
+      "evidence_zh": "33蓝立牌、5左WC柱灯、14底层篷分属牌、灯及建筑。",
+      "specific_protection_zh": "保留喷泉雕像、建筑结构、其他店招及行人。"
+    },
+    "protected_content_zh": "保留喷泉雕像、建筑结构、其他店招及行人。",
+    "targets": [
+      {
+        "object_id": 33,
+        "operation": "remove",
+        "ref": "the blue ERSTE sign at the upper left",
+        "ref_zh": "左上方的蓝色ERSTE招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "bank_sign",
+        "parent_zh": "银行牌",
+        "payload": "",
+        "instruction_zh": "移除左上方的蓝色ERSTE招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the green WC signpost left of the fountain",
+        "ref_zh": "喷泉左侧的绿色WC标牌柱",
+        "scope": "signpost",
+        "scope_zh": "标牌柱",
+        "parent": "left_post",
+        "parent_zh": "左柱",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将喷泉左侧的绿色WC标牌柱的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的标牌柱的颜色改为古铜色。"
+      },
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the middle of the three upper-floor white HERMES awnings",
+        "ref_zh": "楼上三个白色HERMES遮阳篷中间的一个",
+        "scope": "awning",
+        "scope_zh": "遮阳篷",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a dark green canvas awning",
+        "instruction_zh": "将楼上三个白色HERMES遮阳篷中间的一个替换为一顶深绿色帆布遮阳篷。",
+        "instruction_noref_zh": "将选中的遮阳篷替换为一顶深绿色帆布遮阳篷。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5490820",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bcf02d316a320fe5af652eb25e06b748baaa74be27656560ef14f01cc617372d",
+    "review_card_sha256": "c8f4c4432c0b96c93fef8b051baad931ea85d2be9c4f06d1e5d9e669f5800d38",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选mask均为同一壁画上的描绘人物、衣帽及马匹，尚不能确认符合不同物理父对象要求，不以多个画内局部充数。",
+    "difficulty": {
+      "mechanisms": [
+        "artwork"
+      ],
+      "scene_zh": "古代骑马人物壁画",
+      "evidence_zh": "候选mask均为同一壁画上的描绘人物、衣帽及马匹，尚不能确认符合不同物理父对象要求，不以多个画内局部充数。",
+      "specific_protection_zh": "保留原图，等待规则复核。"
+    },
+    "protected_content_zh": "保留原图，等待规则复核。",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5505559",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e7877f60c2c8087a32c1f8937d002a282663e5ed22f656a5f5d892bf0c5a5a62",
+    "review_card_sha256": "c689f308ace68ba4ffc3fc297155fab8fc1b202efe81cdeb0cee7e78b31ded68",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13门洞属于建筑，28独立地面石块是另一父对象，不把同楼多窗当独立对象。",
+    "difficulty": {
+      "mechanisms": [
+        "weathering",
+        "repetition"
+      ],
+      "scene_zh": "石城堡遗址与散落石块",
+      "evidence_zh": "13门洞属于建筑，28独立地面石块是另一父对象，不把同楼多窗当独立对象。",
+      "specific_protection_zh": "保留石墙、窗户、植被与其余石块。"
+    },
+    "protected_content_zh": "保留石墙、窗户、植被与其余石块。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the arched doorway at the base of the castle",
+        "ref_zh": "城堡底部的拱形门洞",
+        "scope": "doorway",
+        "scope_zh": "门洞",
+        "parent": "castle",
+        "parent_zh": "城堡",
+        "payload": "a black wrought-iron gate",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在城堡底部的拱形门洞加上一扇黑色锻铁门。",
+        "instruction_noref_zh": "在选中的门洞加上一扇黑色锻铁门。"
+      },
+      {
+        "object_id": 28,
+        "operation": "remove",
+        "ref": "the largest pale rock in the cluster below the right tower",
+        "ref_zh": "右侧塔楼下方石堆中最大的浅色石块",
+        "scope": "rock",
+        "scope_zh": "石块",
+        "parent": "right_rock",
+        "parent_zh": "右石",
+        "payload": "",
+        "instruction_zh": "移除右侧塔楼下方石堆中最大的浅色石块。",
+        "instruction_noref_zh": "移除选中的石块。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5508914",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bd743b701ba205c44dbd3d4d6be0ed279dfdadae8e901155928d7b0f61c52e9e",
+    "review_card_sha256": "cec5f9cfc15474d45b1dfc39c610af33c259ad4c3f8ed75c426175ac36adc129",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "43前灰帽衫人物、4前推车篷、22大巴车窗三父对象；不选混入行人的3车mask。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "旅游巴士与密集人群",
+      "evidence_zh": "43前灰帽衫人物、4前推车篷、22大巴车窗三父对象；不选混入行人的3车mask。",
+      "specific_protection_zh": "保留人物身体、其他服装、巴士及场地。"
+    },
+    "protected_content_zh": "保留人物身体、其他服装、巴士及场地。",
+    "targets": [
+      {
+        "object_id": 43,
+        "operation": "attribute",
+        "ref": "the light gray hoodie on the child in the lower-left foreground",
+        "ref_zh": "左下方前景儿童的浅灰色连帽衫",
+        "scope": "hoodie",
+        "scope_zh": "连帽衫",
+        "parent": "child",
+        "parent_zh": "儿童",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下方前景儿童的浅灰色连帽衫的颜色改为红色。",
+        "instruction_noref_zh": "将选中的连帽衫的颜色改为红色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the patterned canopy on the cart in the foreground",
+        "ref_zh": "前景推车的花纹顶篷",
+        "scope": "canopy",
+        "scope_zh": "顶篷",
+        "parent": "cart",
+        "parent_zh": "推车",
+        "payload": "a plain blue canvas canopy",
+        "instruction_zh": "将前景推车的花纹顶篷替换为一顶纯蓝色帆布顶篷。",
+        "instruction_noref_zh": "将选中的顶篷替换为一顶纯蓝色帆布顶篷。"
+      },
+      {
+        "object_id": 22,
+        "operation": "add",
+        "ref": "the middle side window of the large white coach",
+        "ref_zh": "大型白色客车侧面的中间车窗",
+        "scope": "window",
+        "scope_zh": "车窗",
+        "parent": "coach",
+        "parent_zh": "客车",
+        "payload": "a small white EMERGENCY EXIT decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在大型白色客车侧面的中间车窗加上一张小白色EMERGENCY EXIT贴花。",
+        "instruction_noref_zh": "在选中的车窗加上一张小白色EMERGENCY EXIT贴花。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

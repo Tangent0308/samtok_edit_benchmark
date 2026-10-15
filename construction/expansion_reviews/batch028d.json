@@ -1,0 +1,400 @@
+[
+  {
+    "source_id": "sa_8430740",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "06348701dfe5d2af398055f23aca16fa5c0e7b145d73cafc44781d7a4c72dc5c",
+    "review_card_sha256": "8dc433833b546f8870bbb2f1014247770135be5475cad650ecc4d4ca731a2e44",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1左上横幅、4右侧人物、16左侧食物和48中央野餐桌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "food"
+      ],
+      "scene_zh": "街边餐馆",
+      "evidence_zh": "1左上横幅、4右侧人物、16左侧食物和48中央野餐桌是四个不同对象。",
+      "specific_protection_zh": "保留餐馆招牌、人物和街边设施。"
+    },
+    "protected_content_zh": "保留餐馆招牌、人物和街边设施。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the banner at the upper left",
+        "ref_zh": "左上方的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "upper_left_banner",
+        "parent_zh": "左上横幅",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将左上方的横幅的颜色改为红色。",
+        "instruction_noref_zh": "将选中的横幅的颜色改为红色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the person at the right",
+        "ref_zh": "右侧的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "right_person",
+        "parent_zh": "右侧人物",
+        "payload": "a blue jacket",
+        "instruction_zh": "将右侧的人物替换为一件蓝色夹克。",
+        "instruction_noref_zh": "将选中的人物替换为一件蓝色夹克。"
+      },
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the food at the left",
+        "ref_zh": "左侧的食物",
+        "scope": "food",
+        "scope_zh": "食物",
+        "parent": "left_food",
+        "parent_zh": "左侧食物",
+        "payload": "",
+        "instruction_zh": "移除左侧的食物。",
+        "instruction_noref_zh": "移除选中的食物。"
+      },
+      {
+        "object_id": 48,
+        "operation": "add",
+        "ref": "the picnic table near the center",
+        "ref_zh": "中间附近的野餐桌",
+        "scope": "picnic table",
+        "scope_zh": "野餐桌",
+        "parent": "center_table",
+        "parent_zh": "中央野餐桌",
+        "payload": "a small vase",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的野餐桌加上一个小花瓶。",
+        "instruction_noref_zh": "在选中的野餐桌加上一个小花瓶。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8437246",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "272a3f3bd0a238c0c926b919643df050d25e26d5e429b799b691fe45062b39a3",
+    "review_card_sha256": "f1fbfe4872d3c8d2adf83054228b865aad7b668559473c5f8a8fc4466703db03",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 主要属于同一辆轿车的车身、车轮、车门和车窗，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "vehicle",
+        "detail"
+      ],
+      "scene_zh": "白色轿车",
+      "evidence_zh": "候选 mask 主要属于同一辆轿车的车身、车轮、车门和车窗，缺少独立父对象。",
+      "specific_protection_zh": "不把同一辆车的部件拆成多个编辑目标。"
+    },
+    "protected_content_zh": "不把同一辆车的部件拆成多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 0,
+        "reason_zh": "同一辆轿车主体"
+      },
+      {
+        "object_id": 2,
+        "reason_zh": "同一辆轿车车轮"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_8448822",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4980a7c783a71bcaa243743879286b441da762a7ed1c15d421a9f566a479ce1b",
+    "review_card_sha256": "16283362f5be99ea9fa6eebb6f441d7a112e211beead210f5fe4657eb758ff3b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0右侧男子、2中央男子、1左上屋顶和18中央圆顶是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "crowd"
+      ],
+      "scene_zh": "城市广场人群",
+      "evidence_zh": "0右侧男子、2中央男子、1左上屋顶和18中央圆顶是四个不同对象。",
+      "specific_protection_zh": "保留建筑、人物和广场环境。"
+    },
+    "protected_content_zh": "保留建筑、人物和广场环境。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the man at the right",
+        "ref_zh": "右侧的男子",
+        "scope": "man",
+        "scope_zh": "男子",
+        "parent": "right_man",
+        "parent_zh": "右侧男子",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的男子的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的男子的颜色改为蓝色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the man near the center",
+        "ref_zh": "中间附近的男子",
+        "scope": "man",
+        "scope_zh": "男子",
+        "parent": "center_man",
+        "parent_zh": "中央男子",
+        "payload": "a red coat",
+        "instruction_zh": "将中间附近的男子替换为一件红色外套。",
+        "instruction_noref_zh": "将选中的男子替换为一件红色外套。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the roof at the upper left",
+        "ref_zh": "左上方的屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "upper_left_roof",
+        "parent_zh": "左上屋顶",
+        "payload": "",
+        "instruction_zh": "移除左上方的屋顶。",
+        "instruction_noref_zh": "移除选中的屋顶。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the dome near the upper center",
+        "ref_zh": "上方中间附近的圆顶",
+        "scope": "dome",
+        "scope_zh": "圆顶",
+        "parent": "upper_center_dome",
+        "parent_zh": "上中圆顶",
+        "payload": "a small flag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在上方中间附近的圆顶加上一面小旗帜。",
+        "instruction_noref_zh": "在选中的圆顶加上一面小旗帜。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8452982",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d423533134b592997fd1eabd97d22fc785f6f4fa2ff6ab8e7efc61cb7ff63550",
+    "review_card_sha256": "aff816ae40142888470cd6835af60fe499c6753cc3aa61e144f731d46e9c7dd2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 主要属于同一组服装、布料和模特，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "clothing"
+      ],
+      "scene_zh": "服装展示",
+      "evidence_zh": "候选 mask 主要属于同一组服装、布料和模特，缺少独立父对象。",
+      "specific_protection_zh": "不把同一组服装部件重复计为多个目标。"
+    },
+    "protected_content_zh": "不把同一组服装部件重复计为多个目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 7,
+        "reason_zh": "同一件服装"
+      },
+      {
+        "object_id": 8,
+        "reason_zh": "同一组布料"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_8470984",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "19468260cef1274789b4f3025616fcbbf6c2c4268df0cf30e0413209e94b88be",
+    "review_card_sha256": "f035f912370420f197766df0f822a36189f572ad76c7ceb6571be1dc363c6d47",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 全部属于同一组饮料包装，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "product"
+      ],
+      "scene_zh": "饮料货架",
+      "evidence_zh": "候选 mask 全部属于同一组饮料包装，缺少独立父对象。",
+      "specific_protection_zh": "不把同一组饮料包装重复计为多个目标。"
+    },
+    "protected_content_zh": "不把同一组饮料包装重复计为多个目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 4,
+        "reason_zh": "同一组饮料包装"
+      },
+      {
+        "object_id": 5,
+        "reason_zh": "同一组饮料包装"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_8489034",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a60f4c5a11d31d71343c1949b179ef7ad5d169a57ac4a9047fdfac71db8049bb",
+    "review_card_sha256": "0e81a3ae4ddea44525632c0a9c93892b29485192566d4114dc998f69ae973237",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4左侧人物、7右侧人物、10中央旗帜和35中央标牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "crowd",
+        "event"
+      ],
+      "scene_zh": "户外人群",
+      "evidence_zh": "4左侧人物、7右侧人物、10中央旗帜和35中央标牌是四个不同对象。",
+      "specific_protection_zh": "保留人群、旗帜和活动环境。"
+    },
+    "protected_content_zh": "保留人群、旗帜和活动环境。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the person at the left",
+        "ref_zh": "左侧的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "left_person",
+        "parent_zh": "左侧人物",
+        "payload": "green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的人物的颜色改为绿色。",
+        "instruction_noref_zh": "将选中的人物的颜色改为绿色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the person at the right",
+        "ref_zh": "右侧的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "right_person",
+        "parent_zh": "右侧人物",
+        "payload": "a blue jacket",
+        "instruction_zh": "将右侧的人物替换为一件蓝色夹克。",
+        "instruction_noref_zh": "将选中的人物替换为一件蓝色夹克。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the flag near the center",
+        "ref_zh": "中间附近的旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "center_flag",
+        "parent_zh": "中央旗帜",
+        "payload": "",
+        "instruction_zh": "移除中间附近的旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the sign near the center",
+        "ref_zh": "中间附近的标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "center_sign",
+        "parent_zh": "中央标牌",
+        "payload": "a white arrow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的标牌加上一个白色箭头。",
+        "instruction_noref_zh": "在选中的标牌加上一个白色箭头。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8491998",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ecdbbe4a8e1bb26ef3bcef1bf8571f7eb7d7ff26486ca6f753a2300dbd507fba",
+    "review_card_sha256": "884728476fc4344bd0eab98480bbe61909b8e5387f626094b217c3a854acf4a5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 主要属于同一片花园中的花朵、灌木和装饰点，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "plants"
+      ],
+      "scene_zh": "花园装饰",
+      "evidence_zh": "候选 mask 主要属于同一片花园中的花朵、灌木和装饰点，缺少独立父对象。",
+      "specific_protection_zh": "不把同一片花园中的相似花饰重复计为多个目标。"
+    },
+    "protected_content_zh": "不把同一片花园中的相似花饰重复计为多个目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 3,
+        "reason_zh": "同一片花园花饰"
+      },
+      {
+        "object_id": 4,
+        "reason_zh": "同一片灌木"
+      }
+    ]
+  }
+]

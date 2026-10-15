@@ -1,0 +1,556 @@
+[
+  {
+    "source_id": "sa_7374523",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "636472285daf431ffdc852fd3bf385e385f2b793b3ad80576c9674ff95fc04e7",
+    "review_card_sha256": "61676e6c2ccafa6c6cf84357816f7c499bf4b5197f0efe8bfa69f721d7f0b843",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4中央紫色服装、10右侧黑色服装、15背景茅草屋顶、22稻草扫帚是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "crowd",
+        "costume"
+      ],
+      "scene_zh": "节庆队伍",
+      "evidence_zh": "4中央紫色服装、10右侧黑色服装、15背景茅草屋顶、22稻草扫帚是四个不同对象。",
+      "specific_protection_zh": "保留队伍、旗帜和村落背景。"
+    },
+    "protected_content_zh": "保留队伍、旗帜和村落背景。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the purple costume on the central performer",
+        "ref_zh": "中央表演者的紫色服装",
+        "scope": "costume",
+        "scope_zh": "服装",
+        "parent": "central_performer",
+        "parent_zh": "中央表演者",
+        "payload": "deep blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央表演者的紫色服装的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的服装的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the black costume on the person behind the performer",
+        "ref_zh": "表演者后方人物的黑色服装",
+        "scope": "costume",
+        "scope_zh": "服装",
+        "parent": "rear_person",
+        "parent_zh": "后方人物",
+        "payload": "a white costume",
+        "instruction_zh": "将表演者后方人物的黑色服装替换为一套白色服装。",
+        "instruction_noref_zh": "将选中的服装替换为一套白色服装。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the thatched roof in the upper right",
+        "ref_zh": "右上方的茅草屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "upper_right_roof",
+        "parent_zh": "右上屋顶",
+        "payload": "",
+        "instruction_zh": "移除右上方的茅草屋顶。",
+        "instruction_noref_zh": "移除选中的屋顶。"
+      },
+      {
+        "object_id": 22,
+        "operation": "add",
+        "ref": "the straw broom beside the performer",
+        "ref_zh": "表演者旁的稻草扫帚",
+        "scope": "broom",
+        "scope_zh": "扫帚",
+        "parent": "straw_broom",
+        "parent_zh": "稻草扫帚",
+        "payload": "a blue ribbon",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在表演者旁的稻草扫帚加上一条蓝色丝带。",
+        "instruction_noref_zh": "在选中的扫帚加上一条蓝色丝带。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7381987",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "41a29ad2131c0293db0083e55eec3e63960ea7df040081c18fb03d64def22147",
+    "review_card_sha256": "ecf6bebd18784b539e011cd3d8474c9538f3a7cf1903c21921f2bbf0c1fe078b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1染缸液体、4晾晒皮革、66石阶、115远处建筑是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "perspective"
+      ],
+      "scene_zh": "皮革染坊",
+      "evidence_zh": "1染缸液体、4晾晒皮革、66石阶、115远处建筑是四个不同对象。",
+      "specific_protection_zh": "保留染坊、建筑和其他染缸。"
+    },
+    "protected_content_zh": "保留染坊、建筑和其他染缸。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the brown dye in the foreground vat",
+        "ref_zh": "前景染缸里的棕色染液",
+        "scope": "dye",
+        "scope_zh": "染液",
+        "parent": "foreground_vat",
+        "parent_zh": "前景染缸",
+        "payload": "deep blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景染缸里的棕色染液的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的染液的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the hanging hide on the left",
+        "ref_zh": "左侧晾晒的皮革",
+        "scope": "hide",
+        "scope_zh": "皮革",
+        "parent": "left_hide",
+        "parent_zh": "左皮革",
+        "payload": "",
+        "instruction_zh": "移除左侧晾晒的皮革。",
+        "instruction_noref_zh": "移除选中的皮革。"
+      },
+      {
+        "object_id": 66,
+        "operation": "replace",
+        "ref": "the stone staircase in the center",
+        "ref_zh": "中央的石阶",
+        "scope": "staircase",
+        "scope_zh": "石阶",
+        "parent": "center_staircase",
+        "parent_zh": "中央石阶",
+        "payload": "a wooden staircase",
+        "instruction_zh": "将中央的石阶替换为一段木楼梯。",
+        "instruction_noref_zh": "将选中的石阶替换为一段木楼梯。"
+      },
+      {
+        "object_id": 115,
+        "operation": "add",
+        "ref": "the pale building in the distance",
+        "ref_zh": "远处的浅色建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "distant_building",
+        "parent_zh": "远处建筑",
+        "payload": "a small red flag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在远处的浅色建筑加上一面小红旗。",
+        "instruction_noref_zh": "在选中的建筑加上一面小红旗。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7383524",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d71b9b8f0667227ad55e01eb94a7c59e457b6e0a1f0bc21891e4bbb96d680359",
+    "review_card_sha256": "99f539dea70e7e83c4212470f0bd19fc1af029e25880c0c24f61b17871359f0d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 大多是同一盆花卉的花瓣、花茎、叶片和花盆部件，缺少独立父对象，暂不计入。",
+    "difficulty": {
+      "mechanisms": [
+        "nature",
+        "fine detail"
+      ],
+      "scene_zh": "热带花卉特写",
+      "evidence_zh": "候选 mask 大多是同一盆花卉的花瓣、花茎、叶片和花盆部件，缺少独立父对象，暂不计入。",
+      "specific_protection_zh": "不把同一盆植物的多个部件重复计为独立编辑目标。"
+    },
+    "protected_content_zh": "不把同一盆植物的多个部件重复计为独立编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 1,
+        "reason_zh": "同一盆花卉的花瓣"
+      },
+      {
+        "object_id": 40,
+        "reason_zh": "同一盆花卉的花盆"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_7385744",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7903e82d564361f219866429a50d465d2357bf03a5bad6e6c8da48e2cfc59e86",
+    "review_card_sha256": "37a89b8062c5a7e74c635ae9cc5136adca6bc7830c0587e8d05414b8c642720c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 全部属于同一架飞机驾驶舱的舷窗、仪表、飞行员制服和徽章，缺少独立父对象，暂不计入。",
+    "difficulty": {
+      "mechanisms": [
+        "aircraft",
+        "interior"
+      ],
+      "scene_zh": "飞机驾驶舱",
+      "evidence_zh": "候选 mask 全部属于同一架飞机驾驶舱的舷窗、仪表、飞行员制服和徽章，缺少独立父对象，暂不计入。",
+      "specific_protection_zh": "不把同一架飞机及机组服饰部件重复计为多个编辑目标。"
+    },
+    "protected_content_zh": "不把同一架飞机及机组服饰部件重复计为多个编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 35,
+        "reason_zh": "同一架飞机舷窗"
+      },
+      {
+        "object_id": 19,
+        "reason_zh": "同一架飞机飞行员制服"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_738866",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e6cfc249697d23ec25d9e56240cca4b176b542c59fccaf7a09e251ce73a0afb9",
+    "review_card_sha256": "5622295171218208de107cb3d76b6ccf5b7e6529a95fcb4413f4e908b0eecc1e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2飞鸟、20白外套、19栏杆、10婴儿车是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "湖边喂鸟",
+      "evidence_zh": "2飞鸟、20白外套、19栏杆、10婴儿车是四个不同对象。",
+      "specific_protection_zh": "保留湖面、人物和岸边环境。"
+    },
+    "protected_content_zh": "保留湖面、人物和岸边环境。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the large gull flying above the railing",
+        "ref_zh": "栏杆上方飞行的大海鸥",
+        "scope": "gull",
+        "scope_zh": "海鸥",
+        "parent": "upper_left_gull",
+        "parent_zh": "左上海鸥",
+        "payload": "",
+        "instruction_zh": "移除栏杆上方飞行的大海鸥。",
+        "instruction_noref_zh": "移除选中的海鸥。"
+      },
+      {
+        "object_id": 20,
+        "operation": "replace",
+        "ref": "the white coat on the woman near the center",
+        "ref_zh": "中间附近女子的白色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "center_woman",
+        "parent_zh": "中间女子",
+        "payload": "a yellow coat",
+        "instruction_zh": "将中间附近女子的白色外套替换为一件黄色外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件黄色外套。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the metal railing across the water",
+        "ref_zh": "横跨水面的金属栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "water_railing",
+        "parent_zh": "水边栏杆",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将横跨水面的金属栏杆的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的栏杆的颜色改为深绿色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the stroller in the foreground",
+        "ref_zh": "前景的婴儿车",
+        "scope": "stroller",
+        "scope_zh": "婴儿车",
+        "parent": "foreground_stroller",
+        "parent_zh": "前景车",
+        "payload": "a small blue blanket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的婴儿车加上一条小蓝色毯子。",
+        "instruction_noref_zh": "在选中的婴儿车加上一条小蓝色毯子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7420848",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "32a03cd6e06012d02fd1a386b4f64b590d07ee65980b7ee1351262ccadedd4b0",
+    "review_card_sha256": "584ca3fdd5f9811f3118e94c0cd8e6941f94c37c6eeeefbcb4f640704d126f9c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8红色轿车、21紫色运动衫、17禁停标志、13骑行者是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "crowd",
+        "street"
+      ],
+      "scene_zh": "路跑活动",
+      "evidence_zh": "8红色轿车、21紫色运动衫、17禁停标志、13骑行者是四个不同对象。",
+      "specific_protection_zh": "保留跑者、道路和交通设施。"
+    },
+    "protected_content_zh": "保留跑者、道路和交通设施。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the red car at the left",
+        "ref_zh": "左侧的红色轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "left_car",
+        "parent_zh": "左车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的红色轿车的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 21,
+        "operation": "replace",
+        "ref": "the purple hoodie on the runner at the right",
+        "ref_zh": "右侧跑者的紫色连帽衫",
+        "scope": "hoodie",
+        "scope_zh": "连帽衫",
+        "parent": "right_runner",
+        "parent_zh": "右侧跑者",
+        "payload": "a red running jacket",
+        "instruction_zh": "将右侧跑者的紫色连帽衫替换为一件红色跑步夹克。",
+        "instruction_noref_zh": "将选中的连帽衫替换为一件红色跑步夹克。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the no-parking sign near the center",
+        "ref_zh": "中央附近的禁停标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "no_parking_sign",
+        "parent_zh": "禁停标志",
+        "payload": "",
+        "instruction_zh": "移除中央附近的禁停标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the cyclist on the road near the center",
+        "ref_zh": "中央附近道路上的骑行者",
+        "scope": "cyclist",
+        "scope_zh": "骑行者",
+        "parent": "right_cyclist",
+        "parent_zh": "右侧骑行者",
+        "payload": "a yellow helmet",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央附近道路上的骑行者加上一顶黄色头盔。",
+        "instruction_noref_zh": "在选中的骑行者加上一顶黄色头盔。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7429655",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "47be0e5d53061267f4b32f7a996b468595e10d2c1804385810695b2310913e74",
+    "review_card_sha256": "9bb784a3cba68a57e953101a5d9f5761bf97d9addfacc09115e93b733b19da04",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0前景奔驰车、1后方SUV、18盆栽、96木栅栏是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "vehicle",
+        "architecture"
+      ],
+      "scene_zh": "石村巷道",
+      "evidence_zh": "0前景奔驰车、1后方SUV、18盆栽、96木栅栏是四个不同对象。",
+      "specific_protection_zh": "保留石墙、道路和建筑。"
+    },
+    "protected_content_zh": "保留石墙、道路和建筑。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the Mercedes sedan in the foreground",
+        "ref_zh": "前景的奔驰轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "foreground_mercedes",
+        "parent_zh": "前景奔驰车",
+        "payload": "",
+        "instruction_zh": "移除前景的奔驰轿车。",
+        "instruction_noref_zh": "移除选中的轿车。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the dark SUV behind the sedan",
+        "ref_zh": "轿车后方的深色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "rear_suv",
+        "parent_zh": "后方SUV",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将轿车后方的深色SUV的颜色改为白色。",
+        "instruction_noref_zh": "将选中的SUV的颜色改为白色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the potted tree beside the doorway",
+        "ref_zh": "门旁的盆栽树",
+        "scope": "potted tree",
+        "scope_zh": "盆栽树",
+        "parent": "doorway_tree",
+        "parent_zh": "门旁盆栽",
+        "payload": "a flowering shrub",
+        "instruction_zh": "将门旁的盆栽树替换为一盆开花灌木。",
+        "instruction_noref_zh": "将选中的盆栽树替换为一盆开花灌木。"
+      },
+      {
+        "object_id": 96,
+        "operation": "add",
+        "ref": "the wooden railing on the left wall",
+        "ref_zh": "左墙上的木栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "right_railing",
+        "parent_zh": "右墙栏杆",
+        "payload": "a small blue sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左墙上的木栏杆加上一块小蓝色标牌。",
+        "instruction_noref_zh": "在选中的栏杆加上一块小蓝色标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7448541",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5a4b77eed6668ca5e3986ee1e17232c5f289a800db536683f50810d55811ff71",
+    "review_card_sha256": "eae2f8d75afff882881fa106cf4c584f8224047de5803fe31c80157eaa0fce75",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2车旁的乌克兰旗帜和7车顶人员头盔是两个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "vehicle",
+        "outdoor"
+      ],
+      "scene_zh": "军车街景",
+      "evidence_zh": "2车旁的乌克兰旗帜和7车顶人员头盔是两个不同对象。",
+      "specific_protection_zh": "保留军车、建筑和道路环境。"
+    },
+    "protected_content_zh": "保留军车、建筑和道路环境。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the Ukrainian flag beside the vehicle",
+        "ref_zh": "军车旁的乌克兰旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "vehicle_flag",
+        "parent_zh": "车旁旗帜",
+        "payload": "white and blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将军车旁的乌克兰旗帜的颜色改为白蓝色。",
+        "instruction_noref_zh": "将选中的旗帜的颜色改为白蓝色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the helmeted head above the vehicle",
+        "ref_zh": "车顶上方戴头盔的头部",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "vehicle_crew",
+        "parent_zh": "车顶人员",
+        "payload": "a blue helmet",
+        "instruction_zh": "将车顶上方戴头盔的头部替换为一顶蓝色头盔。",
+        "instruction_noref_zh": "将选中的头盔替换为一顶蓝色头盔。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

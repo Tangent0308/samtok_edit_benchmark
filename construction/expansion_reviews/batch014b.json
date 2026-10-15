@@ -1,0 +1,664 @@
+[
+  {
+    "source_id": "sa_3650367",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8c473f6b4012fb48b1f201c65f63f4d5326f1001f353eb680ffb486138a03732",
+    "review_card_sha256": "5b770170801f9278891ddf43245b66cf317b7d270025dc34d159928530f342bc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "18与19分别为左右独立宣传牌，29为中央扶手。仅用一处建筑结构，另外两块牌为独立标牌。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "体育场入口阶梯",
+      "evidence_zh": "18与19分别为左右独立宣传牌，29为中央扶手。仅用一处建筑结构，另外两块牌为独立标牌。",
+      "specific_protection_zh": "保留台阶、两侧墙、天空以及扶手结构。"
+    },
+    "protected_content_zh": "保留台阶、两侧墙、天空以及扶手结构。",
+    "targets": [
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the blue banner on the left wall",
+        "ref_zh": "左墙的蓝色宣传牌",
+        "scope": "banner",
+        "scope_zh": "宣传牌",
+        "parent": "left_banner",
+        "parent_zh": "左牌",
+        "payload": "a blue banner reading STADIUM ENTRANCE in white",
+        "instruction_zh": "将左墙的蓝色宣传牌替换为一块写有白色STADIUM ENTRANCE的蓝色宣传牌。",
+        "instruction_noref_zh": "将选中的宣传牌替换为一块写有白色STADIUM ENTRANCE的蓝色宣传牌。"
+      },
+      {
+        "object_id": 29,
+        "operation": "attribute",
+        "ref": "the central stair handrail",
+        "ref_zh": "楼梯中央的扶手",
+        "scope": "handrail",
+        "scope_zh": "扶手",
+        "parent": "stair_structure",
+        "parent_zh": "阶梯结构",
+        "payload": "dark navy",
+        "attribute_kind": "color",
+        "instruction_zh": "将楼梯中央的扶手的颜色改为深藏蓝色。",
+        "instruction_noref_zh": "将选中的扶手的颜色改为深藏蓝色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the blue banner on the right wall",
+        "ref_zh": "右墙的蓝色宣传牌",
+        "scope": "banner",
+        "scope_zh": "宣传牌",
+        "parent": "right_banner",
+        "parent_zh": "右牌",
+        "payload": "a small white upward arrow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右墙的蓝色宣传牌加上一个小白色向上箭头。",
+        "instruction_noref_zh": "在选中的宣传牌加上一个小白色向上箭头。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3662681",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "716605c8ec010c48a120baf654b846208710deeaed5bad317e315917000b2e1c",
+    "review_card_sha256": "8fa0d4963a0657a4f772a4ae6191b822d0978ef77075737c894a1257affb655d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为圆披萨牌，1为下方墙灯，34为前阳台栏杆，35为远处蓝小牌。两独立牌、灯、楼体。",
+    "difficulty": {
+      "mechanisms": [
+        "foliage_occlusion",
+        "ornament",
+        "small_targets"
+      ],
+      "scene_zh": "蓝色木阳台与披萨店",
+      "evidence_zh": "0为圆披萨牌，1为下方墙灯，34为前阳台栏杆，35为远处蓝小牌。两独立牌、灯、楼体。",
+      "specific_protection_zh": "保留藤蔓、蓝木结构、瓷砖和背景树。"
+    },
+    "protected_content_zh": "保留藤蔓、蓝木结构、瓷砖和背景树。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the round wooden pizza sign",
+        "ref_zh": "圆形木质披萨标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "pizza_sign",
+        "parent_zh": "披萨牌",
+        "payload": "an oval wooden sign reading PIZZA",
+        "instruction_zh": "将圆形木质披萨标牌替换为一块写有PIZZA的椭圆木牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有PIZZA的椭圆木牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the wall lantern above the pizza sign",
+        "ref_zh": "披萨标牌上方的壁灯",
+        "scope": "lantern",
+        "scope_zh": "壁灯",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将披萨标牌上方的壁灯的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的壁灯的颜色改为黑色。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the front railing of the near blue balcony",
+        "ref_zh": "近处蓝色阳台的正面栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "blue_building",
+        "parent_zh": "蓝楼",
+        "payload": "a narrow planter of red geraniums",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在近处蓝色阳台的正面栏杆加上一个种有红天竺葵的窄花槽。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红天竺葵的窄花槽。"
+      },
+      {
+        "object_id": 35,
+        "operation": "remove",
+        "ref": "the small blue hanging sign in the distance",
+        "ref_zh": "远处悬挂的小蓝色标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "small_sign",
+        "parent_zh": "小蓝牌",
+        "payload": "",
+        "instruction_zh": "移除远处悬挂的小蓝色标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3678394",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4b3530f38130f941cbf32e387f5495946a48bfbd2a36a1817fffce6ba94ed6b2",
+    "review_card_sha256": "06299cc969ee79b7df76d540de8344a812475ca1e232e30a300bba030b221e8b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为整辆皮卡，22为右上独立屏幕内容，20为车后木栏杆。车、显示屏、围栏三个父对象，车轮窗户不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "occlusion",
+        "display_content"
+      ],
+      "scene_zh": "车展蓝色皮卡",
+      "evidence_zh": "1为整辆皮卡，22为右上独立屏幕内容，20为车后木栏杆。车、显示屏、围栏三个父对象，车轮窗户不重复计数。",
+      "specific_protection_zh": "保留车辆结构、屏幕边框、另一块屏幕和展台。"
+    },
+    "protected_content_zh": "保留车辆结构、屏幕边框、另一块屏幕和展台。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the blue pickup truck",
+        "ref_zh": "蓝色皮卡",
+        "scope": "pickup truck",
+        "scope_zh": "皮卡",
+        "parent": "pickup",
+        "parent_zh": "皮卡",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将蓝色皮卡的颜色改为森林绿。",
+        "instruction_noref_zh": "将选中的皮卡的颜色改为森林绿。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the coastal image on the upper-right display",
+        "ref_zh": "右上方显示屏中的海岸图像",
+        "scope": "display image",
+        "scope_zh": "屏幕图像",
+        "parent": "right_display",
+        "parent_zh": "右屏幕",
+        "payload": "a photograph of a mountain road",
+        "instruction_zh": "将右上方显示屏中的海岸图像替换为一张山间公路照片。",
+        "instruction_noref_zh": "将选中的屏幕图像替换为一张山间公路照片。"
+      },
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the wooden fence rail behind the front of the pickup",
+        "ref_zh": "皮卡车头后方的木围栏横杆",
+        "scope": "fence rail",
+        "scope_zh": "围栏横杆",
+        "parent": "wooden_fence",
+        "parent_zh": "木围栏",
+        "payload": "a small TEST DRIVE plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在皮卡车头后方的木围栏横杆加上一块小TEST DRIVE牌。",
+        "instruction_noref_zh": "在选中的围栏横杆加上一块小TEST DRIVE牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3682685",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7633bc33aac6adc1d1bbdfca3f3696b736d0a944b8f1f2d27fb72d73db99070e",
+    "review_card_sha256": "42b4191db568e5ecd3045621656534619f9ff0f11221f1f3a5b31d3c7d413b8b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为左近行人黑裤，28为怀中小孩橙衣，6为OCBC牌，120为近前白篷。两个不同人物、独立牌、摊位篷。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "室内临时销售市集",
+      "evidence_zh": "3为左近行人黑裤，28为怀中小孩橙衣，6为OCBC牌，120为近前白篷。两个不同人物、独立牌、摊位篷。",
+      "specific_protection_zh": "保留人物姿态、抱持关系、商品、其他招牌与建筑。"
+    },
+    "protected_content_zh": "保留人物姿态、抱持关系、商品、其他招牌与建筑。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the black trousers on the walking shopper at the left",
+        "ref_zh": "左侧行走顾客的黑色长裤",
+        "scope": "trousers",
+        "scope_zh": "长裤",
+        "parent": "walking_shopper",
+        "parent_zh": "行走顾客",
+        "payload": "beige chinos",
+        "instruction_zh": "将左侧行走顾客的黑色长裤替换为米色休闲长裤。",
+        "instruction_noref_zh": "将选中的长裤替换为米色休闲长裤。"
+      },
+      {
+        "object_id": 28,
+        "operation": "attribute",
+        "ref": "the orange shirt on the child being carried",
+        "ref_zh": "被抱着的孩子的橙色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "carried_child",
+        "parent_zh": "怀中孩子",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将被抱着的孩子的橙色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the red OCBC Bank sign upstairs",
+        "ref_zh": "楼上的红色OCBC Bank标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "bank_sign",
+        "parent_zh": "银行牌",
+        "payload": "",
+        "instruction_zh": "移除楼上的红色OCBC Bank标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 120,
+        "operation": "add",
+        "ref": "the white stall canopy nearest the left foreground",
+        "ref_zh": "最靠近左前景摊位的白色篷边",
+        "scope": "canopy",
+        "scope_zh": "篷边",
+        "parent": "front_stall",
+        "parent_zh": "前摊位",
+        "payload": "a small red SALE placard",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最靠近左前景摊位的白色篷边加上一块小红色SALE牌。",
+        "instruction_noref_zh": "在选中的篷边加上一块小红色SALE牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_368308",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4ed0694d6dec28adc2931f4c265116ab844ecdafb9bf79e999c8def8bc18b1dd",
+    "review_card_sha256": "674dc660ca4f63a8dc31af3644557bc6d101897adda3c29506703affd2f0c45c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为左侧银SUV，4为右白轿车，31为左于白车行人手袋，108为头顶黄篮。两辆车和两个独立袋篮。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "repetition"
+      ],
+      "scene_zh": "绿白立面大楼前的街道",
+      "evidence_zh": "1为左侧银SUV，4为右白轿车，31为左于白车行人手袋，108为头顶黄篮。两辆车和两个独立袋篮。",
+      "specific_protection_zh": "保留所有行人、车辆遮挡关系、建筑和街道。"
+    },
+    "protected_content_zh": "保留所有行人、车辆遮挡关系、建筑和街道。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the silver SUV on the left",
+        "ref_zh": "左侧的银色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "silver_suv",
+        "parent_zh": "银SUV",
+        "payload": "a dark green SUV",
+        "instruction_zh": "将左侧的银色SUV替换为一辆深绿色SUV。",
+        "instruction_noref_zh": "将选中的SUV替换为一辆深绿色SUV。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the white sedan behind the pedestrians on the right",
+        "ref_zh": "右侧行人后方的白色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "white_sedan",
+        "parent_zh": "白轿车",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧行人后方的白色轿车的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "remove",
+        "ref": "the white shopping bag carried beside the white sedan",
+        "ref_zh": "白色轿车旁行人手提的白色购物袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除白色轿车旁行人手提的白色购物袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 108,
+        "operation": "add",
+        "ref": "the yellow basket carried on the woman’s head",
+        "ref_zh": "女子头顶的黄色篮子",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "yellow_basket",
+        "parent_zh": "黄篮",
+        "payload": "a small red flower sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在女子头顶的黄色篮子加上一张小红花贴纸。",
+        "instruction_noref_zh": "在选中的篮子加上一张小红花贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3689823",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cedce5a928a20a99c78d3d9ac1c84db856069ca662fcfdfd653d482a8e197435",
+    "review_card_sha256": "f59253416be581db928a6e9804f364ec1abe4409db522e7c86915cc12c7922ef",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为右后银轿车，3为教堂前白掀背，41为红楼圆牌，39为右侧黄护栏。两辆车、独立牌和护栏。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "mist"
+      ],
+      "scene_zh": "雪山小镇雕塑广场",
+      "evidence_zh": "0为右后银轿车，3为教堂前白掀背，41为红楼圆牌，39为右侧黄护栏。两辆车、独立牌和护栏。",
+      "specific_protection_zh": "保留雕像、教堂、雪山、其他车辆和护栏结构。"
+    },
+    "protected_content_zh": "保留雕像、教堂、雪山、其他车辆和护栏结构。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the silver sedan in front of the red building",
+        "ref_zh": "红色建筑前的银色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "silver_sedan",
+        "parent_zh": "银轿车",
+        "payload": "a blue compact sedan",
+        "instruction_zh": "将红色建筑前的银色轿车替换为一辆蓝色小型轿车。",
+        "instruction_noref_zh": "将选中的轿车替换为一辆蓝色小型轿车。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the white hatchback in front of the church",
+        "ref_zh": "教堂前的白色掀背车",
+        "scope": "hatchback",
+        "scope_zh": "掀背车",
+        "parent": "white_hatchback",
+        "parent_zh": "白车",
+        "payload": "pale yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将教堂前的白色掀背车的颜色改为浅黄色。",
+        "instruction_noref_zh": "将选中的掀背车的颜色改为浅黄色。"
+      },
+      {
+        "object_id": 41,
+        "operation": "remove",
+        "ref": "the round sign on the red building at the right",
+        "ref_zh": "右侧红色建筑上的圆形标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "round_sign",
+        "parent_zh": "圆牌",
+        "payload": "",
+        "instruction_zh": "移除右侧红色建筑上的圆形标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 39,
+        "operation": "add",
+        "ref": "the yellow roadside guardrail on the right",
+        "ref_zh": "右侧黄色路边护栏",
+        "scope": "guardrail",
+        "scope_zh": "护栏",
+        "parent": "yellow_guardrail",
+        "parent_zh": "黄护栏",
+        "payload": "a small red reflector",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧黄色路边护栏加上一个小红色反光片。",
+        "instruction_noref_zh": "在选中的护栏加上一个小红色反光片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3709594",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9bd4373417ea9e093f4c285f1ed24b8d4726b3bba14b70cb5900f6b6288c4501",
+    "review_card_sha256": "cc7f1474c325fb1917821569c88d1388ed4e3e7602b1752b13575a4ba7a90cee",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为右侧白红游船，16为岸边蓝渡船船壳，5为右近浮标，28为左帆船桅杆。四个独立船/浮标父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "scale",
+        "fine_structure"
+      ],
+      "scene_zh": "海港帆船与游船",
+      "evidence_zh": "3为右侧白红游船，16为岸边蓝渡船船壳，5为右近浮标，28为左帆船桅杆。四个独立船/浮标父对象。",
+      "specific_protection_zh": "保留建筑、其他浮标、船帆和海水。"
+    },
+    "protected_content_zh": "保留建筑、其他浮标、船帆和海水。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the white-and-red tour boat on the right",
+        "ref_zh": "右侧红白相间的游船",
+        "scope": "tour boat",
+        "scope_zh": "游船",
+        "parent": "tour_boat",
+        "parent_zh": "游船",
+        "payload": "a white two-deck sightseeing boat",
+        "instruction_zh": "将右侧红白相间的游船替换为一艘白色双层观光船。",
+        "instruction_noref_zh": "将选中的游船替换为一艘白色双层观光船。"
+      },
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the blue hull of the ferry near the far shore",
+        "ref_zh": "远岸附近渡船的蓝色船壳",
+        "scope": "hull",
+        "scope_zh": "船壳",
+        "parent": "blue_ferry",
+        "parent_zh": "蓝渡船",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将远岸附近渡船的蓝色船壳的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的船壳的颜色改为深绿色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the blue buoy at the lower right",
+        "ref_zh": "右下方的蓝色浮标",
+        "scope": "buoy",
+        "scope_zh": "浮标",
+        "parent": "blue_buoy",
+        "parent_zh": "蓝浮标",
+        "payload": "",
+        "instruction_zh": "移除右下方的蓝色浮标。",
+        "instruction_noref_zh": "移除选中的浮标。"
+      },
+      {
+        "object_id": 28,
+        "operation": "add",
+        "ref": "the mast of the sailboat on the left",
+        "ref_zh": "左侧帆船的桅杆",
+        "scope": "mast",
+        "scope_zh": "桅杆",
+        "parent": "sailboat",
+        "parent_zh": "帆船",
+        "payload": "a small red pennant at the top",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧帆船的桅杆加上一面位于顶端的小红色三角旗。",
+        "instruction_noref_zh": "在选中的桅杆加上一面位于顶端的小红色三角旗。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3712023",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9d22c2fac35682afeed922fa57ee8a90d3bf9df0f32e9eea3811d73e63fa767f",
+    "review_card_sha256": "6301e49c81848984fdaa6b8284550f6dbd7d5510b5744f85c3e56b111bb15829",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为白polo，18为蓝绿条纹上衣，27为左门口GORDITAS菜单牌，8为右侧真实狗。不同两人、独立牌和狗；114是印刷犬图不用。",
+    "difficulty": {
+      "mechanisms": [
+        "backlight",
+        "occlusion",
+        "printed_graphic"
+      ],
+      "scene_zh": "动物保护步行活动",
+      "evidence_zh": "10为白polo，18为蓝绿条纹上衣，27为左门口GORDITAS菜单牌，8为右侧真实狗。不同两人、独立牌和狗；114是印刷犬图不用。",
+      "specific_protection_zh": "保留人群、横幅、其余犬只、道路和树荫。"
+    },
+    "protected_content_zh": "保留人群、横幅、其余犬只、道路和树荫。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the white polo shirt on the marcher beside the banner",
+        "ref_zh": "横幅旁步行者的白色polo衫",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "polo_marcher",
+        "parent_zh": "白衣步行者",
+        "payload": "a pale blue polo shirt",
+        "instruction_zh": "将横幅旁步行者的白色polo衫替换为一件浅蓝色polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件浅蓝色polo衫。"
+      },
+      {
+        "object_id": 18,
+        "operation": "attribute",
+        "ref": "the turquoise striped shirt behind the banner on the right",
+        "ref_zh": "横幅右后方的青蓝色条纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "striped_marcher",
+        "parent_zh": "条纹衣人",
+        "payload": "pale yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将横幅右后方的青蓝色条纹上衣的颜色改为浅黄色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅黄色。"
+      },
+      {
+        "object_id": 27,
+        "operation": "remove",
+        "ref": "the GORDITAS menu board by the left doorway",
+        "ref_zh": "左侧门口的GORDITAS菜单牌",
+        "scope": "board",
+        "scope_zh": "菜单牌",
+        "parent": "menu_board",
+        "parent_zh": "菜单牌",
+        "payload": "",
+        "instruction_zh": "移除左侧门口的GORDITAS菜单牌。",
+        "instruction_noref_zh": "移除选中的菜单牌。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the large brown dog on the right",
+        "ref_zh": "右侧的大棕狗",
+        "scope": "dog",
+        "scope_zh": "狗",
+        "parent": "brown_dog",
+        "parent_zh": "棕狗",
+        "payload": "a small blue bandana around its neck",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的大棕狗加上一条系在脖子上的小蓝色方巾。",
+        "instruction_noref_zh": "在选中的狗加上一条系在脖子上的小蓝色方巾。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

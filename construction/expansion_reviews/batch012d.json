@@ -1,0 +1,677 @@
+[
+  {
+    "source_id": "sa_3164185",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "70b9f62854c965e550494291961233fe439e0417df9e50941c67337d89996f17",
+    "review_card_sha256": "d6c9871f3292ea4d3faf54bcd352a3de9b962c001fe666ad552bb428c55ca1dd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为后右男子格纹衬衣，0为近跑车前轮，28为花篮旁竖幅，39为后方银车车门。两辆车、人及独立横幅，0仅改轮圈保留轮胎和卡钳。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "occlusion",
+        "cropping"
+      ],
+      "scene_zh": "蝴蝶门跑车展览",
+      "evidence_zh": "14为后右男子格纹衬衣，0为近跑车前轮，28为花篮旁竖幅，39为后方银车车门。两辆车、人及独立横幅，0仅改轮圈保留轮胎和卡钳。",
+      "specific_protection_zh": "保留汽车姿态、轮胎、橙色卡钳、人和其他衣物、花篮。"
+    },
+    "protected_content_zh": "保留汽车姿态、轮胎、橙色卡钳、人和其他衣物、花篮。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the plaid shirt on the man in the background on the right",
+        "ref_zh": "右后方男子的格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "plaid_man",
+        "parent_zh": "格衣男子",
+        "payload": "a pale-blue linen shirt",
+        "instruction_zh": "将右后方男子的格纹衬衫替换为一件浅蓝色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件浅蓝色亚麻衬衫。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the front wheel rim on the nearest white sports car",
+        "ref_zh": "最近白色跑车的前轮轮圈",
+        "scope": "wheel rim",
+        "scope_zh": "轮圈",
+        "parent": "front_sports_car",
+        "parent_zh": "前跑车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近白色跑车的前轮轮圈的颜色改为银色。",
+        "instruction_noref_zh": "将选中的轮圈的颜色改为银色。"
+      },
+      {
+        "object_id": 28,
+        "operation": "remove",
+        "ref": "the upright banner beside the hanging flowers",
+        "ref_zh": "悬挂花篮旁的竖幅",
+        "scope": "banner",
+        "scope_zh": "竖幅",
+        "parent": "upright_banner",
+        "parent_zh": "竖幅",
+        "payload": "",
+        "instruction_zh": "移除悬挂花篮旁的竖幅。",
+        "instruction_noref_zh": "移除选中的竖幅。"
+      },
+      {
+        "object_id": 39,
+        "operation": "add",
+        "ref": "the visible door of the silver car behind the white car",
+        "ref_zh": "白车后方银色汽车的可见车门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "a small black number 8 racing roundel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在白车后方银色汽车的可见车门加上一个小黑色8号赛车圆标。",
+        "instruction_noref_zh": "在选中的车门加上一个小黑色8号赛车圆标。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3165942",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "61926de688bb1485d31bd2fe40fedaaefc32181f3c9758642e0fbc32d185c4ca",
+    "review_card_sha256": "ebe6a9228b9897c8140ce86710c6f9acf09bba9070d5b68598d8f9cb6d976187",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为右下小巴，1为下方停车位银车，23为白皮卡，27为AIRPORT字牌。三辆车和标牌，不把一个字母另作目标。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "light_trails",
+        "perspective"
+      ],
+      "scene_zh": "机场夜景与车流",
+      "evidence_zh": "0为右下小巴，1为下方停车位银车，23为白皮卡，27为AIRPORT字牌。三辆车和标牌，不把一个字母另作目标。",
+      "specific_protection_zh": "保留光轨、照明、机场楼体、其他车辆、字牌拼写和天空。"
+    },
+    "protected_content_zh": "保留光轨、照明、机场楼体、其他车辆、字牌拼写和天空。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the minibus at the lower right",
+        "ref_zh": "右下方的小巴",
+        "scope": "minibus",
+        "scope_zh": "小巴",
+        "parent": "minibus",
+        "parent_zh": "小巴",
+        "payload": "a white electric minibus",
+        "instruction_zh": "将右下方的小巴替换为一辆白色电动小巴。",
+        "instruction_noref_zh": "将选中的小巴替换为一辆白色电动小巴。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the silver sedan in the foreground parking spaces",
+        "ref_zh": "前景停车位里的银色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "silver_sedan",
+        "parent_zh": "银轿车",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景停车位里的银色轿车的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the white pickup in the parking area",
+        "ref_zh": "停车区域的白色皮卡",
+        "scope": "pickup",
+        "scope_zh": "皮卡",
+        "parent": "white_pickup",
+        "parent_zh": "白皮卡",
+        "payload": "",
+        "instruction_zh": "移除停车区域的白色皮卡。",
+        "instruction_noref_zh": "移除选中的皮卡。"
+      },
+      {
+        "object_id": 27,
+        "operation": "add",
+        "ref": "the illuminated AIRPORT letters",
+        "ref_zh": "发光的AIRPORT字母牌",
+        "scope": "letters",
+        "scope_zh": "字母牌",
+        "parent": "airport_sign",
+        "parent_zh": "机场牌",
+        "payload": "a thin blue illuminated outline",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在发光的AIRPORT字母牌加上一圈细蓝色发光轮廓。",
+        "instruction_noref_zh": "在选中的字母牌加上一圈细蓝色发光轮廓。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3171541",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "74104d75edb439b5a31b6424eb07e0291e1fab620cdef8f13e49b6a74d42b847",
+    "review_card_sha256": "e81cfd3a87198559e805648f6352bae44c7d8cb5ddc9b45d8b7c08d0353a1da9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为前排中央两人中左侧外套，1为其右外套，3为左人白袋，7为左侧坐者绿背包。两个人和两个独立包，不把衣服局部多计。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "寺庙入口的游客",
+      "evidence_zh": "2为前排中央两人中左侧外套，1为其右外套，3为左人白袋，7为左侧坐者绿背包。两个人和两个独立包，不把衣服局部多计。",
+      "specific_protection_zh": "保留人、姿势、寺庙建筑、指示牌、其他背包和栏杆。"
+    },
+    "protected_content_zh": "保留人、姿势、寺庙建筑、指示牌、其他背包和栏杆。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the coat over the checked shirt in the foreground",
+        "ref_zh": "前景格纹衬衫外的外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "checked_shirt_person",
+        "parent_zh": "格衣人",
+        "payload": "a beige trench coat",
+        "instruction_zh": "将前景格纹衬衫外的外套替换为一件米色风衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色风衣。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the dark coat beside the checked-shirt visitor",
+        "ref_zh": "格纹衬衫游客旁的深色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "right_central_person",
+        "parent_zh": "右中人物",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将格纹衬衫游客旁的深色外套的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为酒红色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the white shopping bag held by the checked-shirt visitor",
+        "ref_zh": "格纹衬衫游客手提的白色购物袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除格纹衬衫游客手提的白色购物袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the green backpack on the seated visitor on the left",
+        "ref_zh": "左侧坐着游客的绿色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "green_backpack",
+        "parent_zh": "绿背包",
+        "payload": "a small red reflective patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧坐着游客的绿色背包加上一块小红色反光贴。",
+        "instruction_noref_zh": "在选中的背包加上一块小红色反光贴。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3176315",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "11f0e144e590bab84ae67379aeec9c9dba75aae185c2f8c8534532cbca0979a6",
+    "review_card_sha256": "ce82d93a8a9915da97296d63a1874596ca41adc111b5a49f88a4db04840cd297",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为中央独立广告柱面，11为右前白上衣，7为黄色游览牌，4为牌右路灯。四独立物体，不选择高度相似的楼窗凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "历史建筑前广场",
+      "evidence_zh": "3为中央独立广告柱面，11为右前白上衣，7为黄色游览牌，4为牌右路灯。四独立物体，不选择高度相似的楼窗凑数。",
+      "specific_protection_zh": "保留建筑、人物、其他上衣、石板和远景。"
+    },
+    "protected_content_zh": "保留建筑、人物、其他上衣、石板和远景。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the tall gray advertising board in the middle",
+        "ref_zh": "中间的高灰色广告牌",
+        "scope": "board",
+        "scope_zh": "广告牌",
+        "parent": "central_ad",
+        "parent_zh": "中广告牌",
+        "payload": "a cream poster reading Welcome to Dresden in navy",
+        "instruction_zh": "将中间的高灰色广告牌替换为一张写有藏蓝色Welcome to Dresden的米色海报。",
+        "instruction_noref_zh": "将选中的广告牌替换为一张写有藏蓝色Welcome to Dresden的米色海报。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the white T-shirt on the woman at the right",
+        "ref_zh": "右侧女子的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "white_shirt_woman",
+        "parent_zh": "白衣女子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧女子的白色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the small yellow sightseeing sign",
+        "ref_zh": "小黄色观光标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "yellow_sign",
+        "parent_zh": "黄牌",
+        "payload": "",
+        "instruction_zh": "移除小黄色观光标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the streetlamp beside the yellow sign",
+        "ref_zh": "黄色标牌旁的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "streetlamp",
+        "parent_zh": "路灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黄色标牌旁的路灯加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3183045",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "320bbd515f86992ba13e730f65dbf285696616d75f7455d4174eceb74ef65c92",
+    "review_card_sha256": "09512f1b5e83e65ffd76101a35e98e8d6096519a86c18e43bdb0e9227f41dcc1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "55为左侧印花提袋，31为中右灰T恤，56为右侧绿凳叠，16为店铺横向发光牌。包、人、凳叠和标牌独立。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "夜间小吃店前人群",
+      "evidence_zh": "55为左侧印花提袋，31为中右灰T恤，56为右侧绿凳叠，16为店铺横向发光牌。包、人、凳叠和标牌独立。",
+      "specific_protection_zh": "保留人脸原模糊、人体、其他摊位、标牌文字和夜间灯光。"
+    },
+    "protected_content_zh": "保留人脸原模糊、人体、其他摊位、标牌文字和夜间灯光。",
+    "targets": [
+      {
+        "object_id": 55,
+        "operation": "replace",
+        "ref": "the printed tote bag on the woman on the left",
+        "ref_zh": "左侧女子的印花托特包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "printed_tote",
+        "parent_zh": "印花包",
+        "payload": "a plain beige canvas tote",
+        "instruction_zh": "将左侧女子的印花托特包替换为一个纯米色帆布托特包。",
+        "instruction_noref_zh": "将选中的包替换为一个纯米色帆布托特包。"
+      },
+      {
+        "object_id": 31,
+        "operation": "attribute",
+        "ref": "the gray T-shirt near the center-right",
+        "ref_zh": "中部偏右的灰色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "gray_shirt_man",
+        "parent_zh": "灰衣男子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中部偏右的灰色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 56,
+        "operation": "remove",
+        "ref": "the stack of green stools on the right",
+        "ref_zh": "右侧的一叠绿色凳子",
+        "scope": "stools",
+        "scope_zh": "凳子",
+        "parent": "stool_stack",
+        "parent_zh": "凳叠",
+        "payload": "",
+        "instruction_zh": "移除右侧的一叠绿色凳子。",
+        "instruction_noref_zh": "移除选中的凳子。"
+      },
+      {
+        "object_id": 16,
+        "operation": "add",
+        "ref": "the horizontal illuminated sign above the left shop",
+        "ref_zh": "左侧店铺上方的横向发光标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "left_shop_sign",
+        "parent_zh": "左店牌",
+        "payload": "a thin navy border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧店铺上方的横向发光标牌加上一圈细藏蓝色边框。",
+        "instruction_noref_zh": "在选中的标牌加上一圈细藏蓝色边框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3193124",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0636789b0125554c69b5f076f26a9c21922eb3256a8f27d2412a07fe5919c3d9",
+    "review_card_sha256": "5dac7256654c678ae62af860085736672383b0f9ba8026df39cd1911f5433a6e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11为最近舞者粉裙，42为右后红格上衣，14为左墙横幅，57为中间舞者白袖。三个不同舞者和独立横幅，不删除人体或将同人的上下装多计。",
+    "difficulty": {
+      "mechanisms": [
+        "motion",
+        "occlusion",
+        "colored_light"
+      ],
+      "scene_zh": "室内社交舞活动",
+      "evidence_zh": "11为最近舞者粉裙，42为右后红格上衣，14为左墙横幅，57为中间舞者白袖。三个不同舞者和独立横幅，不删除人体或将同人的上下装多计。",
+      "specific_protection_zh": "保留舞者身体、姿态、其余服装、奖杯和地面灯光。"
+    },
+    "protected_content_zh": "保留舞者身体、姿态、其余服装、奖杯和地面灯光。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the pink skirt on the nearest dancer",
+        "ref_zh": "最近舞者的粉色裙子",
+        "scope": "skirt",
+        "scope_zh": "裙子",
+        "parent": "front_dancer",
+        "parent_zh": "前舞者",
+        "payload": "a navy swing skirt",
+        "instruction_zh": "将最近舞者的粉色裙子替换为一条藏蓝色摆裙。",
+        "instruction_noref_zh": "将选中的裙子替换为一条藏蓝色摆裙。"
+      },
+      {
+        "object_id": 42,
+        "operation": "attribute",
+        "ref": "the red checked blouse on the dancer at the back right",
+        "ref_zh": "右后方舞者的红色格纹上衣",
+        "scope": "blouse",
+        "scope_zh": "上衣",
+        "parent": "back_right_dancer",
+        "parent_zh": "右后舞者",
+        "payload": "blue-and-white checks",
+        "attribute_kind": "pattern",
+        "instruction_zh": "将右后方舞者的红色格纹上衣的图案改为蓝白格纹。",
+        "instruction_noref_zh": "将选中的上衣的图案改为蓝白格纹。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the large blue banner on the left wall",
+        "ref_zh": "左侧墙面上的大蓝色横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "blue_banner",
+        "parent_zh": "蓝幅",
+        "payload": "",
+        "instruction_zh": "移除左侧墙面上的大蓝色横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 57,
+        "operation": "add",
+        "ref": "the white flutter sleeve on the dancer in the middle",
+        "ref_zh": "中间舞者的白色荷叶袖",
+        "scope": "sleeve",
+        "scope_zh": "衣袖",
+        "parent": "middle_dancer",
+        "parent_zh": "中舞者",
+        "payload": "a small silver star brooch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间舞者的白色荷叶袖加上一枚小银星胸针。",
+        "instruction_noref_zh": "在选中的衣袖加上一枚小银星胸针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3193863",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "91464fb1fa6140fd45d08c3e1aa359ef077a7816b69d8e1def66ad367e91d877",
+    "review_card_sha256": "3589c68edda052052566fd37db828274fb6ac14a7df078fbdcf1ffd374b8d42e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为前景蓝衣女子上衣，17为右侧花上衣，22为长杆红流苏，13为后左老人米色马甲。三个不同人物及独立仪仗杆，不移除帽翎当另一人体。",
+    "difficulty": {
+      "mechanisms": [
+        "shallow_depth_of_field",
+        "occlusion",
+        "crowd"
+      ],
+      "scene_zh": "宫殿卫士前的游客",
+      "evidence_zh": "4为前景蓝衣女子上衣，17为右侧花上衣，22为长杆红流苏，13为后左老人米色马甲。三个不同人物及独立仪仗杆，不移除帽翎当另一人体。",
+      "specific_protection_zh": "保留卫士服饰、帽子、游客身体、头发和宫殿背景。"
+    },
+    "protected_content_zh": "保留卫士服饰、帽子、游客身体、头发和宫殿背景。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the blue blouse with a white collar in the foreground",
+        "ref_zh": "前景带白领的蓝色上衣",
+        "scope": "blouse",
+        "scope_zh": "上衣",
+        "parent": "blue_blouse_woman",
+        "parent_zh": "蓝衣女子",
+        "payload": "a cream blouse",
+        "instruction_zh": "将前景带白领的蓝色上衣替换为一件米白色衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件米白色衬衫。"
+      },
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the dark floral blouse on the woman on the right",
+        "ref_zh": "右侧女子的深色碎花上衣",
+        "scope": "blouse",
+        "scope_zh": "上衣",
+        "parent": "floral_blouse_woman",
+        "parent_zh": "花衣女子",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧女子的深色碎花上衣的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为深绿色。"
+      },
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the red tassel on the pole left of the guard",
+        "ref_zh": "卫士左侧长杆上的红色流苏",
+        "scope": "tassel",
+        "scope_zh": "流苏",
+        "parent": "ceremonial_pole",
+        "parent_zh": "仪仗杆",
+        "payload": "",
+        "instruction_zh": "移除卫士左侧长杆上的红色流苏。",
+        "instruction_noref_zh": "移除选中的流苏。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the cream vest on the background visitor on the left",
+        "ref_zh": "左后方游客的米色马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "older_visitor",
+        "parent_zh": "年长游客",
+        "payload": "a small red flower brooch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左后方游客的米色马甲加上一枚小红花胸针。",
+        "instruction_noref_zh": "在选中的马甲加上一枚小红花胸针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_320821",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1073803bb61e1b26ed4e2a34abb91eb2510e0bf9ca346c11a5241df9a76a7b06",
+    "review_card_sha256": "0ec7b44eadc47b26f84bdf846ad38500b778cdf3384a0392c3c9315ba3639c22",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为下方苹果发光标，28为顶部门店字牌，17为宽木质挑檐。两块独立招牌加建筑，不将多个玻璃片或字母凑父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "perspective",
+        "text"
+      ],
+      "scene_zh": "商场入口的玻璃幕墙",
+      "evidence_zh": "0为下方苹果发光标，28为顶部门店字牌，17为宽木质挑檐。两块独立招牌加建筑，不将多个玻璃片或字母凑父对象。",
+      "specific_protection_zh": "保留玻璃、楼体、ICONSIAM文字、其余照明与天空。"
+    },
+    "protected_content_zh": "保留玻璃、楼体、ICONSIAM文字、其余照明与天空。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the illuminated Apple logo below the canopy",
+        "ref_zh": "挑檐下方发光的苹果标志",
+        "scope": "logo",
+        "scope_zh": "标志",
+        "parent": "apple_sign",
+        "parent_zh": "苹果标",
+        "payload": "",
+        "instruction_zh": "移除挑檐下方发光的苹果标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 28,
+        "operation": "attribute",
+        "ref": "the ICONSIAM letters above the terrace",
+        "ref_zh": "露台上方的ICONSIAM字母牌",
+        "scope": "letters",
+        "scope_zh": "字母牌",
+        "parent": "iconsiam_sign",
+        "parent_zh": "商场字牌",
+        "payload": "warm gold",
+        "attribute_kind": "color",
+        "instruction_zh": "将露台上方的ICONSIAM字母牌的颜色改为暖金色。",
+        "instruction_noref_zh": "将选中的字母牌的颜色改为暖金色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the wide wooden canopy above the glass entrance",
+        "ref_zh": "玻璃入口上方的宽木质挑檐",
+        "scope": "canopy",
+        "scope_zh": "挑檐",
+        "parent": "mall_building",
+        "parent_zh": "商场建筑",
+        "payload": "a thin warm-white LED strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在玻璃入口上方的宽木质挑檐加上一条细暖白色LED灯带。",
+        "instruction_noref_zh": "在选中的挑檐加上一条细暖白色LED灯带。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

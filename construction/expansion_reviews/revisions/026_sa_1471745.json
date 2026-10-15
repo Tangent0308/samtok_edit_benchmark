@@ -1,0 +1,146 @@
+{
+  "source_id": "sa_1471745",
+  "reason_zh": "用牌本身的形状消歧，删除不必要的建筑右侧判断。",
+  "previous_record": {
+    "source_id": "sa_1471745",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "95d31bf1cb9024a952fdddd61f681a5fc45132d4b973d9a6e469498277ea3f64",
+    "review_card_sha256": "59a391f576fa1533e7e16e79dc965d065d6d6b24747512da2e2eb1b885990051",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为圆形禁停牌，68为左侧栅栏后的黑车，91为楼右侧竖排字牌。避开同楼多个窗户、同杆多个牌拆分。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "街边办公楼和交通标识",
+      "evidence_zh": "2为圆形禁停牌，68为左侧栅栏后的黑车，91为楼右侧竖排字牌。避开同楼多个窗户、同杆多个牌拆分。",
+      "specific_protection_zh": "保留栅栏、车前杆件、建筑、行人、路面和其余标识。"
+    },
+    "protected_content_zh": "保留栅栏、车前杆件、建筑、行人、路面和其余标识。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the circular no-parking sign",
+        "ref_zh": "圆形禁停标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "no_parking_sign",
+        "parent_zh": "禁停牌",
+        "payload": "a thin reflective border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在圆形禁停标志加上一圈细反光边。",
+        "instruction_noref_zh": "在选中的标志加上一圈细反光边。"
+      },
+      {
+        "object_id": 68,
+        "operation": "replace",
+        "ref": "the black car behind the fence on the left",
+        "ref_zh": "左侧栅栏后的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "left_car",
+        "parent_zh": "左黑车",
+        "payload": "a silver hatchback",
+        "instruction_zh": "将左侧栅栏后的黑色汽车替换为一辆银色两厢车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆银色两厢车。"
+      },
+      {
+        "object_id": 91,
+        "operation": "remove",
+        "ref": "the vertical sign on the building’s right side",
+        "ref_zh": "建筑右侧的竖排招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "vertical_sign",
+        "parent_zh": "竖招牌",
+        "payload": "",
+        "instruction_zh": "移除建筑右侧的竖排招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1471745",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "95d31bf1cb9024a952fdddd61f681a5fc45132d4b973d9a6e469498277ea3f64",
+    "review_card_sha256": "59a391f576fa1533e7e16e79dc965d065d6d6b24747512da2e2eb1b885990051",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为圆形禁停牌，68为左侧栅栏后的黑车，91为楼右侧竖排字牌。避开同楼多个窗户、同杆多个牌拆分。 全图复核：用牌本身的形状消歧，删除不必要的建筑右侧判断。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "街边办公楼和交通标识",
+      "evidence_zh": "2为圆形禁停牌，68为左侧栅栏后的黑车，91为楼右侧竖排字牌。避开同楼多个窗户、同杆多个牌拆分。 全图复核：用牌本身的形状消歧，删除不必要的建筑右侧判断。",
+      "specific_protection_zh": "保留栅栏、车前杆件、建筑、行人、路面和其余标识。"
+    },
+    "protected_content_zh": "保留栅栏、车前杆件、建筑、行人、路面和其余标识。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the circular no-parking sign",
+        "ref_zh": "圆形禁停标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "no_parking_sign",
+        "parent_zh": "禁停牌",
+        "payload": "a thin reflective border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在圆形禁停标志加上一圈细反光边。",
+        "instruction_noref_zh": "在选中的标志加上一圈细反光边。"
+      },
+      {
+        "object_id": 68,
+        "operation": "replace",
+        "ref": "the black car behind the fence on the left",
+        "ref_zh": "左侧栅栏后的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "left_car",
+        "parent_zh": "左黑车",
+        "payload": "a silver hatchback",
+        "instruction_zh": "将左侧栅栏后的黑色汽车替换为一辆银色两厢车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆银色两厢车。"
+      },
+      {
+        "object_id": 91,
+        "operation": "remove",
+        "ref": "the narrow vertical sign on the white building",
+        "ref_zh": "白色建筑上细长的竖排招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "vertical_sign",
+        "parent_zh": "竖招牌",
+        "payload": "",
+        "instruction_zh": "移除白色建筑上细长的竖排招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

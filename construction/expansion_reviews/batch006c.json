@@ -1,0 +1,623 @@
+[
+  {
+    "source_id": "sa_1245124",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d6187c35dec8b52d8358deec8f84f969b0c8e1ee489ec5b92e008f5d09c7b47f",
+    "review_card_sha256": "e9791d63e6aa1e59e95714f600f199d734e477c7fff8b90a9ec33132e884ab17",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为最右前景银色SUV，10为左侧远处深色高顶厢式车，4为道路中部银车；34为Water St实体街名牌。避开灯杆和交通牌重复父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "高楼前道路上独立车辆与街名牌",
+      "evidence_zh": "2为最右前景银色SUV，10为左侧远处深色高顶厢式车，4为道路中部银车；34为Water St实体街名牌。避开灯杆和交通牌重复父对象。",
+      "specific_protection_zh": "保留路灯、其他汽车、行人、建筑、车灯车窗及路面。"
+    },
+    "protected_content_zh": "保留路灯、其他汽车、行人、建筑、车灯车窗及路面。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the nearest silver SUV on the right",
+        "ref_zh": "右侧最近的银色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "near_silver_suv",
+        "parent_zh": "近处银SUV",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧最近的银色SUV加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的SUV加上一个车顶行李架。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the dark high-roof van on the left",
+        "ref_zh": "左侧深色高顶厢式车",
+        "scope": "van",
+        "scope_zh": "厢式车",
+        "parent": "dark_van",
+        "parent_zh": "深色厢式车",
+        "payload": "a white compact van",
+        "instruction_zh": "将左侧深色高顶厢式车替换为一辆白色小型厢式车。",
+        "instruction_noref_zh": "将选中的厢式车替换为一辆白色小型厢式车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the silver car in the middle of the road",
+        "ref_zh": "道路中间的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "middle_silver_car",
+        "parent_zh": "路中银车",
+        "payload": "",
+        "instruction_zh": "移除道路中间的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 34,
+        "operation": "attribute",
+        "ref": "the “Water St” street sign",
+        "ref_zh": "“Water St”街名牌",
+        "scope": "street sign",
+        "scope_zh": "街名牌",
+        "parent": "water_st_sign",
+        "parent_zh": "街名牌",
+        "payload": "“Harbor St”",
+        "attribute_kind": "text",
+        "instruction_zh": "将“Water St”街名牌的文字改为“Harbor St”。",
+        "instruction_noref_zh": "将选中的街名牌的文字改为“Harbor St”。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1247398",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "349b538da062c55380869241b989f6edb881d5bdedbb3d7512f5a475d5ab555d",
+    "review_card_sha256": "6ea4a3915678f1eefbfbfb4ffb18bf5f66e21c995e5345921e599ef02bd202e8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0是前景白色距离提示牌，3为右侧蹦床含支腿，5为背景蓝白提示牌。整蹦床配色编辑不误称只选护垫；89自行车mask有多余背景碎片，不使用。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街头蹦床及独立提示牌",
+      "evidence_zh": "0是前景白色距离提示牌，3为右侧蹦床含支腿，5为背景蓝白提示牌。整蹦床配色编辑不误称只选护垫；89自行车mask有多余背景碎片，不使用。",
+      "specific_protection_zh": "保留提示文字、绳索、支撑杆、蹦床结构和其他牌子。"
+    },
+    "protected_content_zh": "保留提示文字、绳索、支撑杆、蹦床结构和其他牌子。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the large foreground distancing sign",
+        "ref_zh": "前景的大幅间距提示牌",
+        "scope": "sign",
+        "scope_zh": "提示牌",
+        "parent": "foreground_sign",
+        "parent_zh": "前景提示牌",
+        "payload": "a thin wooden frame",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的大幅间距提示牌加上一圈细木框。",
+        "instruction_noref_zh": "在选中的提示牌加上一圈细木框。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the trampoline on the right",
+        "ref_zh": "右侧的蹦床",
+        "scope": "trampoline",
+        "scope_zh": "蹦床",
+        "parent": "right_trampoline",
+        "parent_zh": "右蹦床",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的蹦床的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的蹦床的颜色改为蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the small blue-and-white sign in the background",
+        "ref_zh": "背景中的蓝白小提示牌",
+        "scope": "sign",
+        "scope_zh": "提示牌",
+        "parent": "rear_blue_sign",
+        "parent_zh": "后方蓝白牌",
+        "payload": "",
+        "instruction_zh": "移除背景中的蓝白小提示牌。",
+        "instruction_noref_zh": "移除选中的提示牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1252975",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "07fe19b222268f2e319a61cc84e6125d3318314a858ef47a025d04df871d2791",
+    "review_card_sha256": "db12278166b1d17232c6d4efe7072e367952ddcad38b4c11abcfb871859ec89f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为前景背对镜头男子黑外套，82为他左侧女子牛仔外套，83为左后白皮卡，106为最左广告牌。90/92仅包含汽车局部，未作为整车移除。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "世界杯装置广场的衣物、车辆和广告",
+      "evidence_zh": "2为前景背对镜头男子黑外套，82为他左侧女子牛仔外套，83为左后白皮卡，106为最左广告牌。90/92仅包含汽车局部，未作为整车移除。",
+      "specific_protection_zh": "保留人脸、手、裤子、世界杯装置文字、灯具及其他车辆。"
+    },
+    "protected_content_zh": "保留人脸、手、裤子、世界杯装置文字、灯具及其他车辆。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the foreground man’s black jacket",
+        "ref_zh": "前景男子的黑色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "foreground_man",
+        "parent_zh": "前景男子",
+        "payload": "tan",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男子的黑色外套的颜色改为棕褐色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为棕褐色。"
+      },
+      {
+        "object_id": 82,
+        "operation": "replace",
+        "ref": "the denim jacket left of the foreground man",
+        "ref_zh": "前景男子左侧的牛仔外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_woman",
+        "parent_zh": "左侧女子",
+        "payload": "a cream cardigan",
+        "instruction_zh": "将前景男子左侧的牛仔外套替换为一件奶油色开衫。",
+        "instruction_noref_zh": "将选中的外套替换为一件奶油色开衫。"
+      },
+      {
+        "object_id": 83,
+        "operation": "add",
+        "ref": "the white pickup behind the display",
+        "ref_zh": "展示装置后方的白色皮卡",
+        "scope": "pickup",
+        "scope_zh": "皮卡",
+        "parent": "white_pickup",
+        "parent_zh": "白皮卡",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在展示装置后方的白色皮卡加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的皮卡加上一个车顶行李架。"
+      },
+      {
+        "object_id": 106,
+        "operation": "remove",
+        "ref": "the advertising poster at the far left",
+        "ref_zh": "最左侧的广告海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "left_ad_poster",
+        "parent_zh": "左广告牌",
+        "payload": "",
+        "instruction_zh": "移除最左侧的广告海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1254142",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cd2f0893ae2c399dea99fe0e3c306827c8cae9ab3bd2513ff057255a710715ca",
+    "review_card_sha256": "ece0f078a7082163fe92c4a8041b586b008eb5ab8e2545a196fb17149919ae7c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为右下行李箱，12为其左侧独立红手袋，7为左下女子白上衣，33为右下背对镜头的蓝上衣。33的肩带原始遮挡保留；不更换接触人体的行李箱以免破坏坐姿。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "夜间喷泉旁旅客衣物与行李",
+      "evidence_zh": "3为右下行李箱，12为其左侧独立红手袋，7为左下女子白上衣，33为右下背对镜头的蓝上衣。33的肩带原始遮挡保留；不更换接触人体的行李箱以免破坏坐姿。",
+      "specific_protection_zh": "保留人物、头发、挎包带、喷泉、夜景光照和地面。"
+    },
+    "protected_content_zh": "保留人物、头发、挎包带、喷泉、夜景光照和地面。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the suitcase in the lower-right corner",
+        "ref_zh": "右下角的行李箱",
+        "scope": "suitcase",
+        "scope_zh": "行李箱",
+        "parent": "right_suitcase",
+        "parent_zh": "右下行李箱",
+        "payload": "a red luggage tag",
+        "placement": {
+          "relation": "on",
+          "site": "handle",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下角的行李箱的提手上加上一个红色行李牌。",
+        "instruction_noref_zh": "在选中的行李箱的提手上加上一个红色行李牌。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the red handbag beside the suitcase",
+        "ref_zh": "行李箱旁的红色手袋",
+        "scope": "handbag",
+        "scope_zh": "手袋",
+        "parent": "red_handbag",
+        "parent_zh": "红手袋",
+        "payload": "",
+        "instruction_zh": "移除行李箱旁的红色手袋。",
+        "instruction_noref_zh": "移除选中的手袋。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the seated woman’s white top on the left",
+        "ref_zh": "左侧坐着的女子的白色上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "left_seated_woman",
+        "parent_zh": "左侧坐姿女子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧坐着的女子的白色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 33,
+        "operation": "replace",
+        "ref": "the seated woman’s blue top on the right",
+        "ref_zh": "右侧坐着的女子的蓝色上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "right_seated_woman",
+        "parent_zh": "右侧坐姿女子",
+        "payload": "a beige knitted sweater",
+        "instruction_zh": "将右侧坐着的女子的蓝色上衣替换为一件米色针织衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件米色针织衫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1260231",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b0902394707a6af63aa74995bf3812203bdf553425a93e9e69084ea2737de860",
+    "review_card_sha256": "9d05b1f50f8f905dd8416ca0eb672e36bacc9f643a0943b96a573c9686b43683",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为男子T恤，12为他左后方墙插。椅子7/16/19遮挡复杂，未用移除空椅方案；墙插是建筑实体设施，与人物分开计数。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "坐在折叠椅上的男子与墙插",
+      "evidence_zh": "0为男子T恤，12为他左后方墙插。椅子7/16/19遮挡复杂，未用移除空椅方案；墙插是建筑实体设施，与人物分开计数。",
+      "specific_protection_zh": "保留人物身材、脸、手、短裤、椅子、鞋和墙面。"
+    },
+    "protected_content_zh": "保留人物身材、脸、手、短裤、椅子、鞋和墙面。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the seated man’s white T-shirt",
+        "ref_zh": "坐着的男子的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "seated_man",
+        "parent_zh": "坐姿男子",
+        "payload": "a navy polo shirt",
+        "instruction_zh": "将坐着的男子的白色T恤替换为一件藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the wall outlet behind the seated man",
+        "ref_zh": "坐姿男子后方的墙插",
+        "scope": "wall outlet",
+        "scope_zh": "墙插",
+        "parent": "rear_wall",
+        "parent_zh": "后方墙体",
+        "payload": "a hinged safety cover",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在坐姿男子后方的墙插加上一个翻盖式安全盖。",
+        "instruction_noref_zh": "在选中的墙插加上一个翻盖式安全盖。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1276111",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "548f608733e9406e5ff5611ccedce4675f0b6b5d2495f44a2ecf75037f542e51",
+    "review_card_sha256": "083b51c8555195d9cb43fb6c93658416ce45904fd412a21cbff10ebfbac1019e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "46为独立木偶的橙布身体，23为右侧表演者草帽，0为左街灯太阳挂旗，10为左墙椭圆牌。木偶独立于操作者，帽属于右侧人；不把木偶手当真人手。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街头游行木偶、表演者帽和街边旗牌",
+      "evidence_zh": "46为独立木偶的橙布身体，23为右侧表演者草帽，0为左街灯太阳挂旗，10为左墙椭圆牌。木偶独立于操作者，帽属于右侧人；不把木偶手当真人手。",
+      "specific_protection_zh": "保留木偶结构和红纸头发、操作者、游行人群、灯杆及交通灯。"
+    },
+    "protected_content_zh": "保留木偶结构和红纸头发、操作者、游行人群、灯杆及交通灯。",
+    "targets": [
+      {
+        "object_id": 46,
+        "operation": "attribute",
+        "ref": "the puppet’s orange drape",
+        "ref_zh": "木偶的橙色垂布",
+        "scope": "drape",
+        "scope_zh": "垂布",
+        "parent": "parade_puppet",
+        "parent_zh": "游行木偶",
+        "payload": "purple",
+        "attribute_kind": "color",
+        "instruction_zh": "将木偶的橙色垂布的颜色改为紫色。",
+        "instruction_noref_zh": "将选中的垂布的颜色改为紫色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "add",
+        "ref": "the right performer’s straw hat",
+        "ref_zh": "右侧表演者的草帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "right_performer",
+        "parent_zh": "右侧表演者",
+        "payload": "a small fabric flower",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧表演者的草帽加上一朵小布花。",
+        "instruction_noref_zh": "在选中的帽子加上一朵小布花。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the sun banner on the left",
+        "ref_zh": "左侧的太阳图案挂旗",
+        "scope": "banner",
+        "scope_zh": "挂旗",
+        "parent": "sun_banner",
+        "parent_zh": "太阳挂旗",
+        "payload": "a green “WELCOME” banner",
+        "instruction_zh": "将左侧的太阳图案挂旗替换为一面绿色“WELCOME”挂旗。",
+        "instruction_noref_zh": "将选中的挂旗替换为一面绿色“WELCOME”挂旗。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the oval plaque on the left building",
+        "ref_zh": "左侧建筑上的椭圆牌",
+        "scope": "plaque",
+        "scope_zh": "牌子",
+        "parent": "oval_plaque",
+        "parent_zh": "椭圆牌",
+        "payload": "",
+        "instruction_zh": "移除左侧建筑上的椭圆牌。",
+        "instruction_noref_zh": "移除选中的牌子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1280549",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fd4dfbd885addd8b26609cf53d33bf5de0e634ed991ffc123ca38a4fd308d150",
+    "review_card_sha256": "2675c9426a6dba51c14a924fc52ac9a7e5350d3999f4954f1edbe0549dfb13ae",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为黄拉面牌，35为TAKE OUT小牌，8为警员白衬衫且排除背心，18为上方独立广告板。四个实体分别计数，保留电线和人物遮挡。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "拉面店门前警员与多块独立牌",
+      "evidence_zh": "5为黄拉面牌，35为TAKE OUT小牌，8为警员白衬衫且排除背心，18为上方独立广告板。四个实体分别计数，保留电线和人物遮挡。",
+      "specific_protection_zh": "保留警员背心文字、脸、手、店铺其余文字、原有电线和行人。"
+    },
+    "protected_content_zh": "保留警员背心文字、脸、手、店铺其余文字、原有电线和行人。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the large yellow ramen sign",
+        "ref_zh": "黄色大幅拉面招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "yellow_ramen_sign",
+        "parent_zh": "黄拉面牌",
+        "payload": "a thin black frame",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黄色大幅拉面招牌加上一圈细黑框。",
+        "instruction_noref_zh": "在选中的招牌加上一圈细黑框。"
+      },
+      {
+        "object_id": 35,
+        "operation": "remove",
+        "ref": "the “TAKE OUT” sign",
+        "ref_zh": "“TAKE OUT”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "takeout_sign",
+        "parent_zh": "外带牌",
+        "payload": "",
+        "instruction_zh": "移除“TAKE OUT”招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the foreground officer’s white shirt",
+        "ref_zh": "前景警员的白色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "foreground_officer",
+        "parent_zh": "前景警员",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景警员的白色衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the billboard above the yellow ramen sign",
+        "ref_zh": "黄色拉面牌上方的广告板",
+        "scope": "billboard",
+        "scope_zh": "广告板",
+        "parent": "upper_billboard",
+        "parent_zh": "上方广告板",
+        "payload": "a bakery advertisement",
+        "instruction_zh": "将黄色拉面牌上方的广告板替换为一幅面包店广告。",
+        "instruction_noref_zh": "将选中的广告板替换为一幅面包店广告。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1283721",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7c34d22583f273e82f4286342aa43d88045f06754b87fad33d13ab12c93c9741",
+    "review_card_sha256": "0804553da26256898ee2010863ffaeab79640fdde5fbb98fffc73882b9a92ca0",
+    "review_card_name": "window_scope_followup.jpg",
+    "evidence_zh": "已看candidate原图及补充二值图：2包含对面最左完整窗及红边框，非仅外框；5只覆盖前景从左第二块玻璃，表面可见污痕。前景和对面建筑各一目标，不拆同楼多个窗。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "前景窗玻璃与对面建筑的拱顶窗",
+      "evidence_zh": "已看candidate原图及补充二值图：2包含对面最左完整窗及红边框，非仅外框；5只覆盖前景从左第二块玻璃，表面可见污痕。前景和对面建筑各一目标，不拆同楼多个窗。",
+      "specific_protection_zh": "保留其他窗户、窗框、外墙、屋顶、天空和透视。"
+    },
+    "protected_content_zh": "保留其他窗户、窗框、外墙、屋顶、天空和透视。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the leftmost window on the opposite building",
+        "ref_zh": "对面建筑最左侧的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "opposite_building",
+        "parent_zh": "对面建筑",
+        "payload": "a wood-framed casement window",
+        "instruction_zh": "将对面建筑最左侧的窗户替换为一扇木框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇木框平开窗。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the second foreground windowpane from the left",
+        "ref_zh": "前景从左数第二块窗玻璃",
+        "scope": "windowpane",
+        "scope_zh": "窗玻璃",
+        "parent": "foreground_building",
+        "parent_zh": "前景建筑",
+        "payload": "a small white bird decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景从左数第二块窗玻璃加上一张白色小鸟贴纸。",
+        "instruction_noref_zh": "在选中的窗玻璃加上一张白色小鸟贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,589 @@
+[
+  {
+    "source_id": "sa_2366400",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "94f003ae5e05e71e80ce153274a9335f915d3dc36d2be465fef74b730736413d",
+    "review_card_sha256": "fb6fe2bb0e65535ee15971d249168fceb3c356a82f18d4833646c10010522ce4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9只含台阶下白花盆，0为台阶左完整球灯，63为右侧橙色立式菜单，53为右上双窗板，窗下已有花箱，改加直接附着的小黄铜插销。盆、灯、菜单和建筑独立。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "餐厅门前台阶与盆栽",
+      "evidence_zh": "9只含台阶下白花盆，0为台阶左完整球灯，63为右侧橙色立式菜单，53为右上双窗板，窗下已有花箱，改加直接附着的小黄铜插销。盆、灯、菜单和建筑独立。",
+      "specific_protection_zh": "保留植物、其他窗户、台阶、栏杆与所有其他招牌。"
+    },
+    "protected_content_zh": "保留植物、其他窗户、台阶、栏杆与所有其他招牌。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the white planter at the foot of the stairs",
+        "ref_zh": "台阶下的白色花盆",
+        "scope": "planter",
+        "scope_zh": "花盆",
+        "parent": "planter",
+        "parent_zh": "花盆",
+        "payload": "terracotta orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将台阶下的白色花盆的颜色改为陶土橙色。",
+        "instruction_noref_zh": "将选中的花盆的颜色改为陶土橙色。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the globe lamppost beside the stairs",
+        "ref_zh": "台阶旁的球形路灯",
+        "scope": "lamppost",
+        "scope_zh": "路灯",
+        "parent": "stair_lamp",
+        "parent_zh": "台阶灯",
+        "payload": "a black lantern lamppost",
+        "instruction_zh": "将台阶旁的球形路灯替换为一盏黑色灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色灯笼式路灯。"
+      },
+      {
+        "object_id": 63,
+        "operation": "remove",
+        "ref": "the orange menu board on the right",
+        "ref_zh": "右侧的橙色菜单牌",
+        "scope": "menu board",
+        "scope_zh": "菜单牌",
+        "parent": "orange_menu",
+        "parent_zh": "橙菜单",
+        "payload": "",
+        "instruction_zh": "移除右侧的橙色菜单牌。",
+        "instruction_noref_zh": "移除选中的菜单牌。"
+      },
+      {
+        "object_id": 53,
+        "operation": "add",
+        "ref": "the paired white shutters at the upper right",
+        "ref_zh": "右上方的成对白色窗板",
+        "scope": "shutters",
+        "scope_zh": "窗板",
+        "parent": "restaurant_building",
+        "parent_zh": "餐厅建筑",
+        "payload": "a small brass latch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方的成对白色窗板加上一个小黄铜插销。",
+        "instruction_noref_zh": "在选中的窗板加上一个小黄铜插销。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2369719",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "eab2c2772d11618190279a3b9151f89e7ca968a43a58c02e943b158d6d4c783d",
+    "review_card_sha256": "0b44aae6cde9f646fa41fd8cb135fe502b58e895863f36824a28d9e9a899013c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最大右艇的上层椭圆玻璃，25为中间较小白游艇，13为最左裁切船头。3个车辆父对象；不把同一大艇多个窗与雷达球算成不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion",
+        "cropped_objects"
+      ],
+      "scene_zh": "码头并排游艇",
+      "evidence_zh": "1为最大右艇的上层椭圆玻璃，25为中间较小白游艇，13为最左裁切船头。3个车辆父对象；不把同一大艇多个窗与雷达球算成不同对象。",
+      "specific_protection_zh": "保留码头、绳索、其他船、楼房及水面光照。"
+    },
+    "protected_content_zh": "保留码头、绳索、其他船、楼房及水面光照。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the oval upper window of the largest yacht",
+        "ref_zh": "最大游艇上层的椭圆窗",
+        "scope": "window",
+        "scope_zh": "窗",
+        "parent": "largest_yacht",
+        "parent_zh": "最大游艇",
+        "payload": "dark gray",
+        "attribute_kind": "tint",
+        "instruction_zh": "将最大游艇上层的椭圆窗的色调改为深灰色。",
+        "instruction_noref_zh": "将选中的窗的色调改为深灰色。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the smaller white yacht behind the dock",
+        "ref_zh": "码头后方较小的白色游艇",
+        "scope": "yacht",
+        "scope_zh": "游艇",
+        "parent": "middle_yacht",
+        "parent_zh": "中间游艇",
+        "payload": "a white cabin cruiser",
+        "instruction_zh": "将码头后方较小的白色游艇替换为一艘白色舱式游艇。",
+        "instruction_noref_zh": "将选中的游艇替换为一艘白色舱式游艇。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the cropped yacht at the left edge",
+        "ref_zh": "左边缘被截断的游艇",
+        "scope": "yacht",
+        "scope_zh": "游艇",
+        "parent": "left_yacht",
+        "parent_zh": "左游艇",
+        "payload": "a white lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "bow railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左边缘被截断的游艇的船头栏杆上加上一个白色救生圈。",
+        "instruction_noref_zh": "在选中的游艇的船头栏杆上加上一个白色救生圈。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2373849",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ce610780114d2707259fd36a24a5ae9564fd439f74283b8a4e42d521eca41bb4",
+    "review_card_sha256": "f146d2b16d92f1cda95570b90329e65eb994ab740914e22b1413c0d1211ad96b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为右工人红裤，5为左工人黑上衣，2为前景铝梯。不同两个人与独立梯子，保留梯子遮挡。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "similar_instances"
+      ],
+      "scene_zh": "两名工人清理店铺窗栏",
+      "evidence_zh": "3为右工人红裤，5为左工人黑上衣，2为前景铝梯。不同两个人与独立梯子，保留梯子遮挡。",
+      "specific_protection_zh": "保留人体、动作、窗栏、店铺海报和建筑雕饰。"
+    },
+    "protected_content_zh": "保留人体、动作、窗栏、店铺海报和建筑雕饰。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the red trousers on the worker on the right",
+        "ref_zh": "右侧工人的红色长裤",
+        "scope": "trousers",
+        "scope_zh": "长裤",
+        "parent": "right_worker",
+        "parent_zh": "右工人",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧工人的红色长裤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的长裤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the black shirt behind the ladder",
+        "ref_zh": "梯子后面的黑色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "left_worker",
+        "parent_zh": "左工人",
+        "payload": "a blue work shirt",
+        "instruction_zh": "将梯子后面的黑色上衣替换为一件蓝色工作衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件蓝色工作衬衫。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the tall ladder on the left",
+        "ref_zh": "左侧的高梯子",
+        "scope": "ladder",
+        "scope_zh": "梯子",
+        "parent": "ladder",
+        "parent_zh": "梯子",
+        "payload": "a reflective safety strip",
+        "placement": {
+          "relation": "on",
+          "site": "side rail",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧的高梯子的侧杆上加上一条安全反光条。",
+        "instruction_noref_zh": "在选中的梯子的侧杆上加上一条安全反光条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2387512",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5b8fe0ef88329f461178824364a718d22b35d06762181d7f48cccb64d2214d71",
+    "review_card_sha256": "e94b834d518be8b7d2052ff909cd24bfc2fad2dd2bf89848cb0cbc6cd741844d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为最近粉上衣者牛仔裤，8为最近戴帽者白T恤，9为其手持绿色收拢雨伞。两个人与独立伞三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "perspective"
+      ],
+      "scene_zh": "红色廊道内游客",
+      "evidence_zh": "0为最近粉上衣者牛仔裤，8为最近戴帽者白T恤，9为其手持绿色收拢雨伞。两个人与独立伞三个父对象。",
+      "specific_protection_zh": "保留人体、帽子、其他游客、廊道红门与雕饰。"
+    },
+    "protected_content_zh": "保留人体、帽子、其他游客、廊道红门与雕饰。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the jeans on the nearest woman in pink",
+        "ref_zh": "最近的粉衣女子所穿牛仔裤",
+        "scope": "jeans",
+        "scope_zh": "牛仔裤",
+        "parent": "pink_top_visitor",
+        "parent_zh": "粉衣游客",
+        "payload": "gray linen trousers",
+        "instruction_zh": "将最近的粉衣女子所穿牛仔裤替换为灰色亚麻长裤。",
+        "instruction_noref_zh": "将选中的牛仔裤替换为灰色亚麻长裤。"
+      },
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the white T-shirt on the nearest hat-wearing visitor",
+        "ref_zh": "最近的戴帽游客所穿白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "hat_visitor",
+        "parent_zh": "戴帽游客",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近的戴帽游客所穿白色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the folded green umbrella",
+        "ref_zh": "收拢的绿色雨伞",
+        "scope": "umbrella",
+        "scope_zh": "雨伞",
+        "parent": "green_umbrella",
+        "parent_zh": "绿伞",
+        "payload": "",
+        "instruction_zh": "移除收拢的绿色雨伞。",
+        "instruction_noref_zh": "移除选中的雨伞。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2403090",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e83cd3d69f46b97ce1675142a8fc7b1a898756ea27d5adf6f33253821c69d532",
+    "review_card_sha256": "215a4a06a2d1364ce97f9f9f1dedf12daf5a4b0400564141a5f5cd835980e2e2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "二值复查发现0把阳台栏杆内部背景填满，弃用并改为已查看的23主砖房前门。5为左邻楼上层白栏，1为Tuman牌。两栋房与可拆招牌独立；不拆多个窗为多父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "reflection"
+      ],
+      "scene_zh": "砖房阳台和邻楼",
+      "evidence_zh": "二值复查发现0把阳台栏杆内部背景填满，弃用并改为已查看的23主砖房前门。5为左邻楼上层白栏，1为Tuman牌。两栋房与可拆招牌独立；不拆多个窗为多父对象。",
+      "specific_protection_zh": "保留房屋、门窗、玻璃反射、地面及其他栏杆。"
+    },
+    "protected_content_zh": "保留房屋、门窗、玻璃反射、地面及其他栏杆。",
+    "targets": [
+      {
+        "object_id": 23,
+        "operation": "add",
+        "ref": "the front door of the brick house",
+        "ref_zh": "砖房的前门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "brick_house",
+        "parent_zh": "砖房",
+        "payload": "a brass door knocker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在砖房的前门加上一个黄铜门环。",
+        "instruction_noref_zh": "在选中的门加上一个黄铜门环。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the white upper balcony railing on the left",
+        "ref_zh": "左侧上层阳台的白色栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "left_house",
+        "parent_zh": "左邻楼",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧上层阳台的白色栏杆的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的栏杆的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the Tuman sign beside the front door",
+        "ref_zh": "前门旁的Tuman标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "tuman_sign",
+        "parent_zh": "Tuman牌",
+        "payload": "",
+        "instruction_zh": "移除前门旁的Tuman标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2405164",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6d592025f70034948cac75d13cd956d459c9a1605b822d75c63589784bc3737c",
+    "review_card_sha256": "b9aa1f464e5dee5586b50d44851464e010fd0492195039f61a6b88c28018f84b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为人物格子衬衫，22为前景花丛前竹栏。人物外套不能再计一个父对象，新增小木牌直接挂竹栏；虚化背景不妨碍指代。",
+    "difficulty": {
+      "mechanisms": [
+        "defocus",
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "庭院前自拍与竹栏",
+      "evidence_zh": "0为人物格子衬衫，22为前景花丛前竹栏。人物外套不能再计一个父对象，新增小木牌直接挂竹栏；虚化背景不妨碍指代。",
+      "specific_protection_zh": "保留原有面部模糊、外套、人体、花丛与寺院建筑。"
+    },
+    "protected_content_zh": "保留原有面部模糊、外套、人体、花丛与寺院建筑。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the plaid shirt under the gray jacket",
+        "ref_zh": "灰色外套里的格子衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "selfie_person",
+        "parent_zh": "自拍者",
+        "payload": "a plain white shirt",
+        "instruction_zh": "将灰色外套里的格子衬衫替换为一件纯白色衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯白色衬衫。"
+      },
+      {
+        "object_id": 22,
+        "operation": "add",
+        "ref": "the bamboo railing in front of the flowers",
+        "ref_zh": "花丛前的竹栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "garden_railing",
+        "parent_zh": "花园栏杆",
+        "payload": "a small wooden garden sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在花丛前的竹栏杆加上一块小木制花园标牌。",
+        "instruction_noref_zh": "在选中的栏杆加上一块小木制花园标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2407836",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f5352d62ee0b9eaf6400fb83e80a8986d9b698af4c85c9088e702bb39d9b5cc8",
+    "review_card_sha256": "5259de2c1c1b227e9d78d0607adf0540b3255c8531bdac135f1a4d20621b4156",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为左绿色车，2为中间深蓝车，8为右侧禁止掉头牌，1为右白微型车。3车加独立交通牌，重复楼窗不计。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection"
+      ],
+      "scene_zh": "广场前车流",
+      "evidence_zh": "3为左绿色车，2为中间深蓝车，8为右侧禁止掉头牌，1为右白微型车。3车加独立交通牌，重复楼窗不计。",
+      "specific_protection_zh": "保留公交车、行人、建筑、其他标牌和原交通方向。"
+    },
+    "protected_content_zh": "保留公交车、行人、建筑、其他标牌和原交通方向。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the green hatchback on the left",
+        "ref_zh": "左侧的绿色掀背车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "green_car",
+        "parent_zh": "绿车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的绿色掀背车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为红色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the dark-blue hatchback in the middle",
+        "ref_zh": "中间的深蓝色掀背车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "blue_car",
+        "parent_zh": "蓝车",
+        "payload": "a white compact sedan",
+        "instruction_zh": "将中间的深蓝色掀背车替换为一辆白色小型轿车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆白色小型轿车。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the no-U-turn sign on the right",
+        "ref_zh": "右侧的禁止掉头标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "no_u_turn",
+        "parent_zh": "禁掉头牌",
+        "payload": "",
+        "instruction_zh": "移除右侧的禁止掉头标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the white microcar on the right",
+        "ref_zh": "右侧的白色微型车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_microcar",
+        "parent_zh": "白微型车",
+        "payload": "a small parking permit sticker",
+        "placement": {
+          "relation": "on",
+          "site": "windshield corner",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的白色微型车的挡风玻璃角落加上一张小停车许可贴纸。",
+        "instruction_noref_zh": "在选中的汽车的挡风玻璃角落加上一张小停车许可贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2430216",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "72735f9c6c83ef2342c6d9f489a36d4f4b61c6227a94f070625a046493324ac0",
+    "review_card_sha256": "445f86986a1c9f5b8b51caa12d620b37d16d9b2c5d139c2546d8f831892c1713",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左前完整手表，9仅上方中间手表的蓝色表圈，10为左前表座。两只表与独立展示座，表带不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "similar_instances",
+        "defocus"
+      ],
+      "scene_zh": "橱窗内多只手表与表座",
+      "evidence_zh": "0为左前完整手表，9仅上方中间手表的蓝色表圈，10为左前表座。两只表与独立展示座，表带不重复计数。",
+      "specific_protection_zh": "保留其他手表、表针、表盘数字和展示柜。"
+    },
+    "protected_content_zh": "保留其他手表、表针、表盘数字和展示柜。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the watch on the front-left stand",
+        "ref_zh": "左前方展台上的手表",
+        "scope": "watch",
+        "scope_zh": "手表",
+        "parent": "left_watch",
+        "parent_zh": "左表",
+        "payload": "a silver watch with a simple black dial",
+        "instruction_zh": "将左前方展台上的手表替换为一只简洁黑表盘的银色手表。",
+        "instruction_noref_zh": "将选中的手表替换为一只简洁黑表盘的银色手表。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the blue bezel of the upper-middle watch",
+        "ref_zh": "上方中间手表的蓝色表圈",
+        "scope": "bezel",
+        "scope_zh": "表圈",
+        "parent": "upper_watch",
+        "parent_zh": "上方表",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将上方中间手表的蓝色表圈的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的表圈的颜色改为黑色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the front-left watch stand",
+        "ref_zh": "左前方的手表展台",
+        "scope": "stand",
+        "scope_zh": "展台",
+        "parent": "left_stand",
+        "parent_zh": "左展台",
+        "payload": "a small price label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左前方的手表展台加上一张小价签。",
+        "instruction_noref_zh": "在选中的展台加上一张小价签。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

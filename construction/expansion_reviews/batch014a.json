@@ -1,0 +1,650 @@
+[
+  {
+    "source_id": "sa_3570130",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "30b1e378118802560e079a8bdc0ca54198d8cd9b9881700ad74a03010e622825",
+    "review_card_sha256": "308f04e3cffe99023c58bf9af02612f0f05f13f52adb73c0499a0834565a39b6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为路中央车，4为右近蓝轿车，7为右绿车，50为路灯。三辆独立车和灯，山体/云不凑多目标。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "暮色山城街道",
+      "evidence_zh": "2为路中央车，4为右近蓝轿车，7为右绿车，50为路灯。三辆独立车和灯，山体/云不凑多目标。",
+      "specific_protection_zh": "保留山峰、云、道路黄线和晚霞色调。"
+    },
+    "protected_content_zh": "保留山峰、云、道路黄线和晚霞色调。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the car in the middle of the road",
+        "ref_zh": "道路中央的汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "road_car",
+        "parent_zh": "路中央车",
+        "payload": "",
+        "instruction_zh": "移除道路中央的汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the blue sedan parked near the right edge",
+        "ref_zh": "右侧边缘附近停放的蓝色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "blue_sedan",
+        "parent_zh": "蓝轿车",
+        "payload": "a white compact sedan",
+        "instruction_zh": "将右侧边缘附近停放的蓝色轿车替换为一辆白色小型轿车。",
+        "instruction_noref_zh": "将选中的轿车替换为一辆白色小型轿车。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the green hatchback on the right",
+        "ref_zh": "右侧的绿色掀背车",
+        "scope": "hatchback",
+        "scope_zh": "掀背车",
+        "parent": "green_car",
+        "parent_zh": "绿车",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的绿色掀背车的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的掀背车的颜色改为酒红色。"
+      },
+      {
+        "object_id": 50,
+        "operation": "add",
+        "ref": "the nearest globe-topped streetlamp on the left",
+        "ref_zh": "左侧最近的球形顶路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "globe_lamp",
+        "parent_zh": "球形灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧最近的球形顶路灯加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3583216",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "191acca614636b816b3337b4b8e9182ee6403fe3284126d1150817f613a6984b",
+    "review_card_sha256": "63d86e6a98a81eb422cebca417e6e1183f6197926ea0f6ca412ba12897577c26",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为背景橙车，4为背景红车，37为Chicken Chicken牌，7为近前右转箭头牌。两车两独立牌，古董车不拆多个目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "text",
+        "perspective"
+      ],
+      "scene_zh": "古董跑车经过环岛",
+      "evidence_zh": "3为背景橙车，4为背景红车，37为Chicken Chicken牌，7为近前右转箭头牌。两车两独立牌，古董车不拆多个目标。",
+      "specific_protection_zh": "保留古董车及驾驶者、路况、标牌箭头与楼体。"
+    },
+    "protected_content_zh": "保留古董车及驾驶者、路况、标牌箭头与楼体。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the orange car behind the vintage roadster",
+        "ref_zh": "古董敞篷车后方的橙色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "orange_car",
+        "parent_zh": "橙车",
+        "payload": "a blue compact hatchback",
+        "instruction_zh": "将古董敞篷车后方的橙色汽车替换为一辆蓝色小型掀背车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色小型掀背车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the red car in the background on the right",
+        "ref_zh": "右后方的红色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "red_car",
+        "parent_zh": "红车",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将右后方的红色汽车的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为深绿色。"
+      },
+      {
+        "object_id": 37,
+        "operation": "remove",
+        "ref": "the Chicken Chicken PIZZA & KEBAB sign",
+        "ref_zh": "Chicken Chicken PIZZA & KEBAB标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "restaurant_sign",
+        "parent_zh": "餐厅牌",
+        "payload": "",
+        "instruction_zh": "移除Chicken Chicken PIZZA & KEBAB标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the nearest blue keep-right sign",
+        "ref_zh": "最近的蓝色靠右行驶标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "keep_right_sign",
+        "parent_zh": "靠右牌",
+        "payload": "a small white inspection sticker near the rim",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的蓝色靠右行驶标牌加上一张靠近边缘的小白色检验贴纸。",
+        "instruction_noref_zh": "在选中的标牌加上一张靠近边缘的小白色检验贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_359558",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7daa5754598953d572e69bf894f3d7e555215ae2f273351524d933050d52bd45",
+    "review_card_sha256": "ffea90fa9de1ddb2877052b18421e36d32df8a6b978ebbce3169a7204d314a5b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左蓝车，1为中银车，13为左侧自行车，35为黄色超市招牌。四个独立物体。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "occlusion",
+        "urban"
+      ],
+      "scene_zh": "有轨电车道旁商铺街道",
+      "evidence_zh": "0为左蓝车，1为中银车，13为左侧自行车，35为黄色超市招牌。四个独立物体。",
+      "specific_protection_zh": "保留人物、轨道、其他车辆和商铺文字。"
+    },
+    "protected_content_zh": "保留人物、轨道、其他车辆和商铺文字。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the dark blue car on the left",
+        "ref_zh": "左侧的深蓝色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "blue_car",
+        "parent_zh": "蓝车",
+        "payload": "a white compact electric car",
+        "instruction_zh": "将左侧的深蓝色汽车替换为一辆白色小型电动车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆白色小型电动车。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the silver hatchback beside the blue car",
+        "ref_zh": "蓝色汽车旁的银色掀背车",
+        "scope": "hatchback",
+        "scope_zh": "掀背车",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将蓝色汽车旁的银色掀背车的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的掀背车的颜色改为酒红色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "remove",
+        "ref": "the bicycle beside the pedestrian on the left",
+        "ref_zh": "左侧行人身旁的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "bicycle",
+        "parent_zh": "自行车",
+        "payload": "",
+        "instruction_zh": "移除左侧行人身旁的自行车。",
+        "instruction_noref_zh": "移除选中的自行车。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the yellow Biedronka sign",
+        "ref_zh": "黄色Biedronka标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "biedronka_sign",
+        "parent_zh": "超市牌",
+        "payload": "a thin white illuminated border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黄色Biedronka标牌加上一圈细白色灯边。",
+        "instruction_noref_zh": "在选中的标牌加上一圈细白色灯边。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3616046",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d494da60cbf2ba4fd3b17bf7d7598ff34aab3419f3099626cca3c6804642a516",
+    "review_card_sha256": "9cbbaa1ca822c589ce96f65df81760e9d5bf30478026ec222f9921bb5dc462cb",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "26为中左文字海报，1为上排第二组中间玻璃，73为右侧独立钟。海报、楼体、挂钟三个父对象；自行车mask仅部分不移除整车。",
+    "difficulty": {
+      "mechanisms": [
+        "glass_reflection",
+        "repetition",
+        "text"
+      ],
+      "scene_zh": "银行正立面",
+      "evidence_zh": "26为中左文字海报，1为上排第二组中间玻璃，73为右侧独立钟。海报、楼体、挂钟三个父对象；自行车mask仅部分不移除整车。",
+      "specific_protection_zh": "保留银行标志、ATM、门、其他海报和玻璃反射。"
+    },
+    "protected_content_zh": "保留银行标志、ATM、门、其他海报和玻璃反射。",
+    "targets": [
+      {
+        "object_id": 26,
+        "operation": "replace",
+        "ref": "the tall text poster beside the display bicycle",
+        "ref_zh": "展示自行车旁的长幅文字海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "text_poster",
+        "parent_zh": "文字海报",
+        "payload": "a white poster reading WELCOME in red",
+        "instruction_zh": "将展示自行车旁的长幅文字海报替换为一张写有红色WELCOME的白色海报。",
+        "instruction_noref_zh": "将选中的海报替换为一张写有红色WELCOME的白色海报。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the central windowpane directly above the display bicycle",
+        "ref_zh": "展示自行车正上方的中间窗玻璃",
+        "scope": "pane",
+        "scope_zh": "玻璃",
+        "parent": "bank_building",
+        "parent_zh": "银行建筑",
+        "payload": "pale green",
+        "attribute_kind": "tint",
+        "instruction_zh": "将展示自行车正上方的中间窗玻璃的色调改为浅绿色。",
+        "instruction_noref_zh": "将选中的玻璃的色调改为浅绿色。"
+      },
+      {
+        "object_id": 73,
+        "operation": "add",
+        "ref": "the projecting black-and-gold wall clock",
+        "ref_zh": "向外悬挑的黑金色挂钟",
+        "scope": "clock",
+        "scope_zh": "挂钟",
+        "parent": "wall_clock",
+        "parent_zh": "挂钟",
+        "payload": "a thin warm-white light ring around its face",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在向外悬挑的黑金色挂钟加上一圈沿钟面边缘的细暖白色灯。",
+        "instruction_noref_zh": "在选中的挂钟加上一圈沿钟面边缘的细暖白色灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3628858",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d4ab144b6b497974524b166a1acf5f9eec034af7a689a17cb945c151d483c1e4",
+    "review_card_sha256": "be74ae0d9bf32b9bcf59b11795cea021278208088ac64462bcf3e62a75448132",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为蓝箱，2为左侧粉船，6为左近轮胎，1为水面绿船。两个独立船、箱、轮胎。",
+    "difficulty": {
+      "mechanisms": [
+        "weathered_surfaces",
+        "water",
+        "occlusion"
+      ],
+      "scene_zh": "海滩渔船与杂物",
+      "evidence_zh": "10为蓝箱，2为左侧粉船，6为左近轮胎，1为水面绿船。两个独立船、箱、轮胎。",
+      "specific_protection_zh": "保留海水、渔具、其他船及沙滩纹理。"
+    },
+    "protected_content_zh": "保留海水、渔具、其他船及沙滩纹理。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the blue box in the foreground",
+        "ref_zh": "前景的蓝色箱子",
+        "scope": "box",
+        "scope_zh": "箱子",
+        "parent": "blue_box",
+        "parent_zh": "蓝箱",
+        "payload": "a weathered wooden storage chest",
+        "instruction_zh": "将前景的蓝色箱子替换为一个风化的木储物箱。",
+        "instruction_noref_zh": "将选中的箱子替换为一个风化的木储物箱。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the pale pink boat on the left",
+        "ref_zh": "左侧的浅粉色船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "pink_boat",
+        "parent_zh": "粉船",
+        "payload": "turquoise",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的浅粉色船的颜色改为青蓝色。",
+        "instruction_noref_zh": "将选中的船的颜色改为青蓝色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the tire resting on the striped cloth at the lower left",
+        "ref_zh": "左下方条纹布上的轮胎",
+        "scope": "tire",
+        "scope_zh": "轮胎",
+        "parent": "left_tire",
+        "parent_zh": "左轮胎",
+        "payload": "",
+        "instruction_zh": "移除左下方条纹布上的轮胎。",
+        "instruction_noref_zh": "移除选中的轮胎。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the green boat floating near the upper middle",
+        "ref_zh": "中上方漂浮的绿色船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "green_boat",
+        "parent_zh": "绿船",
+        "payload": "a coiled rope inside",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中上方漂浮的绿色船加上一卷放在船内的绳子。",
+        "instruction_noref_zh": "在选中的船加上一卷放在船内的绳子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3633381",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bfe448ec7c657a68b7ea78ff1cf28683c324b1f47f6472abe4c70a91dd939b8f",
+    "review_card_sha256": "daab9d043cfad4261eaa3eb9b72c8f199b9406d2ec17c23c50b92e9db3271126",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "41为前排印花背包，88为黄T恤，22为牌背，1为左灯。背包、人、独立手牌、灯分别计数；135含背心和包不用。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "旗帜密集的游行街道",
+      "evidence_zh": "41为前排印花背包，88为黄T恤，22为牌背，1为左灯。背包、人、独立手牌、灯分别计数；135含背心和包不用。",
+      "specific_protection_zh": "保留人群、旗帜、道路红黄条纹和活动环境。"
+    },
+    "protected_content_zh": "保留人群、旗帜、道路红黄条纹和活动环境。",
+    "targets": [
+      {
+        "object_id": 41,
+        "operation": "replace",
+        "ref": "the patterned backpack on the front-row woman in red",
+        "ref_zh": "前排红衣女子背上的印花背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "patterned_backpack",
+        "parent_zh": "花背包",
+        "payload": "a plain navy backpack",
+        "instruction_zh": "将前排红衣女子背上的印花背包替换为一个纯藏蓝色背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个纯藏蓝色背包。"
+      },
+      {
+        "object_id": 88,
+        "operation": "attribute",
+        "ref": "the yellow T-shirt on the front-row participant",
+        "ref_zh": "前排参与者的黄色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "yellow_participant",
+        "parent_zh": "黄衣人",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将前排参与者的黄色T恤的颜色改为白色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为白色。"
+      },
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the gray-backed placard just left of the large yellow-and-red striped flag",
+        "ref_zh": "大幅黄红条纹旗左侧的灰背手牌",
+        "scope": "placard",
+        "scope_zh": "手牌",
+        "parent": "gray_placard",
+        "parent_zh": "灰手牌",
+        "payload": "",
+        "instruction_zh": "移除大幅黄红条纹旗左侧的灰背手牌。",
+        "instruction_noref_zh": "移除选中的手牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the curved streetlamp on the left",
+        "ref_zh": "左侧的弯杆路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "curved_lamp",
+        "parent_zh": "弯灯",
+        "payload": "a small hanging basket of white flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧的弯杆路灯加上一个装有白花的小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个装有白花的小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3633416",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "eb1eda185f2b36d1459f2b437660820ff63acb1946210aac2855dff8121bdb8b",
+    "review_card_sha256": "307134f513472d1815e0274de6ea4f5f0740dad88d2fa812e4473df0eefc5cf1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "29为中央门右边木框落地窗，41为右侧紫花坛。建筑、独立花坛两个父对象；不拆柱子/烟囱凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "fine_structure"
+      ],
+      "scene_zh": "黄色古典庭院",
+      "evidence_zh": "29为中央门右边木框落地窗，41为右侧紫花坛。建筑、独立花坛两个父对象；不拆柱子/烟囱凑数。",
+      "specific_protection_zh": "保留建筑、柱子、雕像、其他花草及庭院布局。"
+    },
+    "protected_content_zh": "保留建筑、柱子、雕像、其他花草及庭院布局。",
+    "targets": [
+      {
+        "object_id": 29,
+        "operation": "attribute",
+        "ref": "the tall wooden-framed window to the right of the central doorway",
+        "ref_zh": "中央门口右侧的木框落地窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "yellow_building",
+        "parent_zh": "黄色楼",
+        "payload": "pale blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将中央门口右侧的木框落地窗的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅蓝色。"
+      },
+      {
+        "object_id": 41,
+        "operation": "add",
+        "ref": "the purple flowerbed on the right",
+        "ref_zh": "右侧的紫色花坛",
+        "scope": "flowerbed",
+        "scope_zh": "花坛",
+        "parent": "purple_flowerbed",
+        "parent_zh": "紫花坛",
+        "payload": "a small solar garden light",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的紫色花坛加上一盏小太阳能庭院灯。",
+        "instruction_noref_zh": "在选中的花坛加上一盏小太阳能庭院灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3647055",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "19a7897cc10fec6f6b58868fac9471ad854bad9623b7c3c9264ab7abba0964c4",
+    "review_card_sha256": "f0e6d4e9f2dcce6162537a619a12f6237410775784f3cdd413e1ac60ab5d42a7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为自行车后银车，3为最近左灯，43为左侧牌背，32为桥面栏杆。车、灯、独立牌、桥四个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "backlight",
+        "occlusion",
+        "reflection"
+      ],
+      "scene_zh": "运河吊桥与街灯",
+      "evidence_zh": "2为自行车后银车，3为最近左灯，43为左侧牌背，32为桥面栏杆。车、灯、独立牌、桥四个父对象。",
+      "specific_protection_zh": "保留自行车、行人、桥梁结构、运河及房屋。"
+    },
+    "protected_content_zh": "保留自行车、行人、桥梁结构、运河及房屋。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the silver car behind the foreground bicycles",
+        "ref_zh": "前景自行车后方的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "a dark blue compact car",
+        "instruction_zh": "将前景自行车后方的银色汽车替换为一辆深蓝色小型汽车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆深蓝色小型汽车。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the nearest streetlamp on the left",
+        "ref_zh": "左侧最近的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "nearest_lamp",
+        "parent_zh": "近灯",
+        "payload": "dark bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧最近的路灯的颜色改为深古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深古铜色。"
+      },
+      {
+        "object_id": 43,
+        "operation": "remove",
+        "ref": "the back-facing rectangular sign just left of the drawbridge",
+        "ref_zh": "吊桥左侧背向镜头的矩形标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "left_sign",
+        "parent_zh": "左牌",
+        "payload": "",
+        "instruction_zh": "移除吊桥左侧背向镜头的矩形标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 32,
+        "operation": "add",
+        "ref": "the railing along the canal bridge",
+        "ref_zh": "运河桥沿线的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "canal_bridge",
+        "parent_zh": "运河桥",
+        "payload": "a narrow planter of red geraniums",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在运河桥沿线的栏杆加上一个种有红天竺葵的窄花槽。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红天竺葵的窄花槽。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

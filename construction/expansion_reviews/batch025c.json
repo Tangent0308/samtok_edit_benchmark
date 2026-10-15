@@ -1,0 +1,707 @@
+[
+  {
+    "source_id": "sa_7279175",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7434662f0f6e27653e70a5c212b450c323921b7fa01e9eca67b55d27cec1501f",
+    "review_card_sha256": "99d9132e6f35b705ca0e722f555506a8c0a4ffbfe907e39dd026cc609ae0fa4f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2前景鸽子、16白色鞋子、18背包、25百叶窗是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "crowd",
+        "architecture"
+      ],
+      "scene_zh": "议会广场鸽群",
+      "evidence_zh": "2前景鸽子、16白色鞋子、18背包、25百叶窗是四个不同对象。",
+      "specific_protection_zh": "保留广场、人群和建筑立面。"
+    },
+    "protected_content_zh": "保留广场、人群和建筑立面。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the pigeon in the foreground",
+        "ref_zh": "前景的鸽子",
+        "scope": "pigeon",
+        "scope_zh": "鸽子",
+        "parent": "foreground_pigeon",
+        "parent_zh": "前景鸽子",
+        "payload": "",
+        "instruction_zh": "移除前景的鸽子。",
+        "instruction_noref_zh": "移除选中的鸽子。"
+      },
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the white sneaker near the center",
+        "ref_zh": "中间附近的白色运动鞋",
+        "scope": "sneaker",
+        "scope_zh": "运动鞋",
+        "parent": "center_sneaker",
+        "parent_zh": "中间鞋",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的白色运动鞋的颜色改为红色。",
+        "instruction_noref_zh": "将选中的运动鞋的颜色改为红色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the brown backpack on the woman at the right",
+        "ref_zh": "右侧女子的棕色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "right_woman",
+        "parent_zh": "右侧女子",
+        "payload": "a black backpack",
+        "instruction_zh": "将右侧女子的棕色背包替换为一个黑色背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个黑色背包。"
+      },
+      {
+        "object_id": 25,
+        "operation": "add",
+        "ref": "the shuttered window on the building",
+        "ref_zh": "建筑上的百叶窗",
+        "scope": "window shutter",
+        "scope_zh": "百叶窗",
+        "parent": "building_shutter",
+        "parent_zh": "建筑百叶窗",
+        "payload": "a small flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在建筑上的百叶窗加上一个小花箱。",
+        "instruction_noref_zh": "在选中的百叶窗加上一个小花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7306562",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "27c8a4e2a9bf8d2b2786eb7761efce83aff7434d3a88e25700df1295636a4bfc",
+    "review_card_sha256": "cf24ccc8ccbb8fef7d1f11ad9aaf9a472dae9cb52f516de85ac1e6925ee0216c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选 mask 主要是同一座拱廊的灯、柱、瓷砖和管线，均属于同一建筑结构，暂不计入。",
+    "difficulty": {
+      "mechanisms": [
+        "architecture",
+        "low light"
+      ],
+      "scene_zh": "历史拱廊内部",
+      "evidence_zh": "候选 mask 主要是同一座拱廊的灯、柱、瓷砖和管线，均属于同一建筑结构，暂不计入。",
+      "specific_protection_zh": "不把同一建筑结构的多个部件重复计为独立编辑目标。"
+    },
+    "protected_content_zh": "不把同一建筑结构的多个部件重复计为独立编辑目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 0,
+        "reason_zh": "同一建筑内部灯具"
+      },
+      {
+        "object_id": 1,
+        "reason_zh": "同一建筑柱体"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_7307193",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6c29894b1c95d34057c60d8aef76003b728a5103e0563b7e8227acf9e618b2c0",
+    "review_card_sha256": "fea1ffd9d3c4878f59b0550162f0299b606080755fd40207098b8726976952cf",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1树木、0信息牌、8木栅栏、4拱门是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "perspective"
+      ],
+      "scene_zh": "城堡入口",
+      "evidence_zh": "1树木、0信息牌、8木栅栏、4拱门是四个不同对象。",
+      "specific_protection_zh": "保留城堡、道路和入口环境。"
+    },
+    "protected_content_zh": "保留城堡、道路和入口环境。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the tree at the upper left",
+        "ref_zh": "左上方的树",
+        "scope": "tree",
+        "scope_zh": "树",
+        "parent": "upper_left_tree",
+        "parent_zh": "左上树",
+        "payload": "autumn gold",
+        "attribute_kind": "color",
+        "instruction_zh": "将左上方的树的颜色改为秋金色。",
+        "instruction_noref_zh": "将选中的树的颜色改为秋金色。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the information sign by the gate",
+        "ref_zh": "城门旁的信息牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "gate_sign",
+        "parent_zh": "城门牌",
+        "payload": "a blue visitor sign",
+        "instruction_zh": "将城门旁的信息牌替换为一块蓝色游客牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块蓝色游客牌。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the wooden fence in the foreground",
+        "ref_zh": "前景的木栅栏",
+        "scope": "fence",
+        "scope_zh": "栅栏",
+        "parent": "foreground_fence",
+        "parent_zh": "前景栅栏",
+        "payload": "",
+        "instruction_zh": "移除前景的木栅栏。",
+        "instruction_noref_zh": "移除选中的栅栏。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the arched gateway in the center",
+        "ref_zh": "中央的拱形门洞",
+        "scope": "gateway",
+        "scope_zh": "拱门",
+        "parent": "central_gateway",
+        "parent_zh": "中央拱门",
+        "payload": "a small red banner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央的拱形门洞加上一面小红旗。",
+        "instruction_noref_zh": "在选中的拱门加上一面小红旗。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7311948",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fe0af75d5457c137320f0b72784c22f2d3e87e807b021d850468fa8eeedc68b3",
+    "review_card_sha256": "238348fa0f416023c85683ca39c5f4269113827efe42b50229d6033f0bd3f846",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0长椅、5餐厅立牌、64遮阳伞、102折叠椅是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "commerce",
+        "crowd"
+      ],
+      "scene_zh": "广场休闲区",
+      "evidence_zh": "0长椅、5餐厅立牌、64遮阳伞、102折叠椅是四个不同对象。",
+      "specific_protection_zh": "保留树木、建筑和广场人群。"
+    },
+    "protected_content_zh": "保留树木、建筑和广场人群。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the wooden bench in the foreground",
+        "ref_zh": "前景的木长椅",
+        "scope": "bench",
+        "scope_zh": "长椅",
+        "parent": "foreground_bench",
+        "parent_zh": "前景长椅",
+        "payload": "a dark green bench",
+        "instruction_zh": "将前景的木长椅替换为一张深绿色长椅。",
+        "instruction_noref_zh": "将选中的长椅替换为一张深绿色长椅。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the seafood restaurant sign near the center",
+        "ref_zh": "中央附近的海鲜餐厅立牌",
+        "scope": "sign",
+        "scope_zh": "立牌",
+        "parent": "restaurant_sign",
+        "parent_zh": "餐厅牌",
+        "payload": "",
+        "instruction_zh": "移除中央附近的海鲜餐厅立牌。",
+        "instruction_noref_zh": "移除选中的立牌。"
+      },
+      {
+        "object_id": 64,
+        "operation": "attribute",
+        "ref": "the blue patio umbrella in the middle",
+        "ref_zh": "中间的蓝色遮阳伞",
+        "scope": "umbrella",
+        "scope_zh": "遮阳伞",
+        "parent": "middle_umbrella",
+        "parent_zh": "中间伞",
+        "payload": "yellow and white",
+        "attribute_kind": "pattern",
+        "instruction_zh": "将中间的蓝色遮阳伞的图案改为黄白相间。",
+        "instruction_noref_zh": "将选中的遮阳伞的图案改为黄白相间。"
+      },
+      {
+        "object_id": 102,
+        "operation": "add",
+        "ref": "the folding chair at the right tables",
+        "ref_zh": "右侧桌旁的折叠椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "right_chair",
+        "parent_zh": "右侧椅子",
+        "payload": "a red seat cushion",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧桌旁的折叠椅加上一个红色坐垫。",
+        "instruction_noref_zh": "在选中的椅子加上一个红色坐垫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7316567",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "951729e9538af5d86d43e35a0b35bb6849f6d031dd52f39b0986f093844972f4",
+    "review_card_sha256": "df2b98492f1eabb110f2676a2bd6c0aca893e3909f4dd062612811589413ef13",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17制服工作人员、1黄色指示牌、37站台信息屏是三个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "transport",
+        "perspective"
+      ],
+      "scene_zh": "地铁站列车",
+      "evidence_zh": "17制服工作人员、1黄色指示牌、37站台信息屏是三个不同对象。",
+      "specific_protection_zh": "保留列车、站台和轨道。"
+    },
+    "protected_content_zh": "保留列车、站台和轨道。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the dark jacket on the station worker",
+        "ref_zh": "车站工作人员的深色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "station_worker",
+        "parent_zh": "车站人员",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将车站工作人员的深色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the yellow direction board above the platform",
+        "ref_zh": "站台上方的黄色指示牌",
+        "scope": "direction board",
+        "scope_zh": "指示牌",
+        "parent": "direction_board",
+        "parent_zh": "方向牌",
+        "payload": "a blue direction board",
+        "instruction_zh": "将站台上方的黄色指示牌替换为一块蓝色方向牌。",
+        "instruction_noref_zh": "将选中的指示牌替换为一块蓝色方向牌。"
+      },
+      {
+        "object_id": 37,
+        "operation": "remove",
+        "ref": "the blue station information screen at the upper left",
+        "ref_zh": "左上方的蓝色站台信息屏",
+        "scope": "screen",
+        "scope_zh": "信息屏",
+        "parent": "station_screen",
+        "parent_zh": "站台屏",
+        "payload": "",
+        "instruction_zh": "移除左上方的蓝色站台信息屏。",
+        "instruction_noref_zh": "移除选中的信息屏。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7337463",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e3e1d4bf8ebb40b93a6a2e5c019431ad9ee43f78234e2876ce39a5f9351e9f5b",
+    "review_card_sha256": "abd5a24f29e190ef95e5433a4bb1856bb9ccc241096196bcabcf24d23b7cddc8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4中央画廊招牌、39右侧灯杆、1白色SUV、9中央木门是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "commerce",
+        "architecture"
+      ],
+      "scene_zh": "木屋画廊街景",
+      "evidence_zh": "4中央画廊招牌、39右侧灯杆、1白色SUV、9中央木门是四个不同对象。",
+      "specific_protection_zh": "保留画廊建筑、道路和其他车辆。"
+    },
+    "protected_content_zh": "保留画廊建筑、道路和其他车辆。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the Legacy Gallery sign above the entrance",
+        "ref_zh": "入口上方的Legacy Gallery招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "gallery_sign",
+        "parent_zh": "画廊牌",
+        "payload": "a blue ART GALLERY sign",
+        "instruction_zh": "将入口上方的Legacy Gallery招牌替换为一块蓝色ART GALLERY招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块蓝色ART GALLERY招牌。"
+      },
+      {
+        "object_id": 39,
+        "operation": "attribute",
+        "ref": "the lamp at the right storefront",
+        "ref_zh": "右侧店面的灯",
+        "scope": "lamp",
+        "scope_zh": "灯",
+        "parent": "right_lamp",
+        "parent_zh": "右侧灯",
+        "payload": "warm amber",
+        "attribute_kind": "tint",
+        "instruction_zh": "将右侧店面的灯的色调改为暖琥珀色。",
+        "instruction_noref_zh": "将选中的灯的色调改为暖琥珀色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the white SUV at the left",
+        "ref_zh": "左侧的白色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "left_suv",
+        "parent_zh": "左SUV",
+        "payload": "",
+        "instruction_zh": "移除左侧的白色SUV。",
+        "instruction_noref_zh": "移除选中的SUV。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the wooden entrance door in the center",
+        "ref_zh": "中央的木质入口门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "center_door",
+        "parent_zh": "中央木门",
+        "payload": "a brass handle",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央的木质入口门加上一个黄铜门把手。",
+        "instruction_noref_zh": "在选中的门加上一个黄铜门把手。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7362739",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6d4469e270fa7c81e86d22f0de2bfc7b0043b5df8e664d1994179b1a227ab306",
+    "review_card_sha256": "bd30e6477288dc187a205bcd43d16df78a11bbb1d634fbea6e57733332bc26d0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1左侧广告牌、2中央游船、10船上乘客、64河岸护栏是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "water",
+        "crowd"
+      ],
+      "scene_zh": "夜间游船",
+      "evidence_zh": "1左侧广告牌、2中央游船、10船上乘客、64河岸护栏是四个不同对象。",
+      "specific_protection_zh": "保留河面、城市灯光和码头。"
+    },
+    "protected_content_zh": "保留河面、城市灯光和码头。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the turquoise billboard at the left",
+        "ref_zh": "左侧的青绿色广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "left_billboard",
+        "parent_zh": "左广告牌",
+        "payload": "orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的青绿色广告牌的颜色改为橙色。",
+        "instruction_noref_zh": "将选中的广告牌的颜色改为橙色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the purple tour boat in the center",
+        "ref_zh": "中央的紫色游船",
+        "scope": "boat",
+        "scope_zh": "游船",
+        "parent": "tour_boat",
+        "parent_zh": "游船",
+        "payload": "",
+        "instruction_zh": "移除中央的紫色游船。",
+        "instruction_noref_zh": "移除选中的游船。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the passenger seated near the right side of the boat",
+        "ref_zh": "船右侧附近的乘客",
+        "scope": "passenger",
+        "scope_zh": "乘客",
+        "parent": "boat_passenger",
+        "parent_zh": "船上乘客",
+        "payload": "a yellow raincoat",
+        "instruction_zh": "将船右侧附近的乘客替换为一件黄色雨衣。",
+        "instruction_noref_zh": "将选中的乘客替换为一件黄色雨衣。"
+      },
+      {
+        "object_id": 64,
+        "operation": "add",
+        "ref": "the metal railing along the river",
+        "ref_zh": "河边的金属护栏",
+        "scope": "railing",
+        "scope_zh": "护栏",
+        "parent": "river_railing",
+        "parent_zh": "河岸护栏",
+        "payload": "a small blue sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在河边的金属护栏加上一块小蓝色标牌。",
+        "instruction_noref_zh": "在选中的护栏加上一块小蓝色标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7365220",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a4a69e2435b4a83aa224bc919c702813dbef1839c9a379f0f12fbfef21460936",
+    "review_card_sha256": "9c73b23e2380286cb96042d51883c943c6439182c619f07b5cc0257347d25c43",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11黑色信息牌、14行人夹克、15高杆路灯、24门是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "commerce",
+        "architecture"
+      ],
+      "scene_zh": "商业街",
+      "evidence_zh": "11黑色信息牌、14行人夹克、15高杆路灯、24门是四个不同对象。",
+      "specific_protection_zh": "保留店铺、道路和其他建筑。"
+    },
+    "protected_content_zh": "保留店铺、道路和其他建筑。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the black information sign at the left",
+        "ref_zh": "左侧的黑色信息牌",
+        "scope": "sign",
+        "scope_zh": "牌子",
+        "parent": "left_sign",
+        "parent_zh": "左牌",
+        "payload": "a red OPEN sign",
+        "instruction_zh": "将左侧的黑色信息牌替换为一块红色OPEN招牌。",
+        "instruction_noref_zh": "将选中的牌子替换为一块红色OPEN招牌。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the gray jacket on the pedestrian",
+        "ref_zh": "行人的灰色夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "pedestrian",
+        "parent_zh": "行人",
+        "payload": "deep green",
+        "attribute_kind": "color",
+        "instruction_zh": "将行人的灰色夹克的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的夹克的颜色改为深绿色。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the tall streetlamp on the left",
+        "ref_zh": "左侧的高杆路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "tall_lamp",
+        "parent_zh": "高杆灯",
+        "payload": "",
+        "instruction_zh": "移除左侧的高杆路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the white door beside the storefront",
+        "ref_zh": "店铺旁的白色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "storefront_door",
+        "parent_zh": "店铺门",
+        "payload": "a small brass handle",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在店铺旁的白色门加上一个小黄铜门把手。",
+        "instruction_noref_zh": "在选中的门加上一个小黄铜门把手。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7374194",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f6e7e8920a200a0da5c097336ee01737933334975039d2ec6b342a3ec9df5162",
+    "review_card_sha256": "d0ddf63e58f951a1fde233e71d2848d06ebee8e09beca395c0d5b4b56956acb3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2推车男子T恤、27航班屏、31出发指示牌、81右侧护栏是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "transport",
+        "crowd"
+      ],
+      "scene_zh": "机场大厅",
+      "evidence_zh": "2推车男子T恤、27航班屏、31出发指示牌、81右侧护栏是四个不同对象。",
+      "specific_protection_zh": "保留机场大厅、旅客和航站楼结构。"
+    },
+    "protected_content_zh": "保留机场大厅、旅客和航站楼结构。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the black T-shirt on the man with the stroller",
+        "ref_zh": "推婴儿车男子的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "stroller_man",
+        "parent_zh": "推车男子",
+        "payload": "a white T-shirt",
+        "instruction_zh": "将推婴儿车男子的黑色T恤替换为一件白色T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件白色T恤。"
+      },
+      {
+        "object_id": 27,
+        "operation": "attribute",
+        "ref": "the departure screen on the left",
+        "ref_zh": "左侧的出发屏",
+        "scope": "screen",
+        "scope_zh": "屏幕",
+        "parent": "departure_screen",
+        "parent_zh": "出发屏",
+        "payload": "blue and white",
+        "attribute_kind": "tint",
+        "instruction_zh": "将左侧的出发屏的色调改为蓝白色。",
+        "instruction_noref_zh": "将选中的屏幕的色调改为蓝白色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "remove",
+        "ref": "the green departure sign above the hall",
+        "ref_zh": "大厅上方的绿色出发标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "hall_sign",
+        "parent_zh": "大厅牌",
+        "payload": "",
+        "instruction_zh": "移除大厅上方的绿色出发标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 81,
+        "operation": "add",
+        "ref": "the overhead metal railing across the top of the hall",
+        "ref_zh": "大厅顶部横跨的金属护栏",
+        "scope": "railing",
+        "scope_zh": "护栏",
+        "parent": "right_railing",
+        "parent_zh": "右护栏",
+        "payload": "a small red safety sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在大厅顶部横跨的金属护栏加上一个小红色安全标志。",
+        "instruction_noref_zh": "在选中的护栏加上一个小红色安全标志。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

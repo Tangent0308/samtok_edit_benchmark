@@ -1,0 +1,174 @@
+{
+  "source_id": "sa_1570474",
+  "reason_zh": "多个牛仔衣目标由距离足以区分，删除不必要的正面人物描述。",
+  "previous_record": {
+    "source_id": "sa_1570474",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0f32022dc17eb76b9faa6a5dee125231bbcc117965c6624207a17832e3632195",
+    "review_card_sha256": "3245f3e0b79faf2094ca39a8b9bb52a9870176ac963eb06b315d24f763b10ff3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最近正面女子牛仔马甲，69为其腰侧独立蓝花包，0为左店Jack Daniel’s牌，33为庭院中央男子黑T恤。95混入手机和包不选。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "庭院前景牛仔马甲与手袋",
+      "evidence_zh": "1为最近正面女子牛仔马甲，69为其腰侧独立蓝花包，0为左店Jack Daniel’s牌，33为庭院中央男子黑T恤。95混入手机和包不选。",
+      "specific_protection_zh": "保留脸、手、手机、内搭、裤子、建筑和其他行人。"
+    },
+    "protected_content_zh": "保留脸、手、手机、内搭、裤子、建筑和其他行人。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the nearest front-facing woman’s denim vest",
+        "ref_zh": "最近面向镜头女子的牛仔马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "front_woman",
+        "parent_zh": "前景女子",
+        "payload": "a cream linen vest",
+        "instruction_zh": "将最近面向镜头女子的牛仔马甲替换为一件奶油色亚麻马甲。",
+        "instruction_noref_zh": "将选中的马甲替换为一件奶油色亚麻马甲。"
+      },
+      {
+        "object_id": 69,
+        "operation": "add",
+        "ref": "the blue floral bag beside the denim vest",
+        "ref_zh": "牛仔马甲旁的蓝色花纹包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "floral_bag",
+        "parent_zh": "蓝花包",
+        "payload": "a small sunflower patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在牛仔马甲旁的蓝色花纹包加上一块小向日葵贴布。",
+        "instruction_noref_zh": "在选中的包加上一块小向日葵贴布。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the Jack Daniel’s sign above the left shop",
+        "ref_zh": "左侧店铺上方的Jack Daniel’s招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "jack_sign",
+        "parent_zh": "店牌",
+        "payload": "",
+        "instruction_zh": "移除左侧店铺上方的Jack Daniel’s招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 33,
+        "operation": "attribute",
+        "ref": "the lone man’s black T-shirt in the middle of the courtyard",
+        "ref_zh": "庭院中央独自行走男子的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "middle_man",
+        "parent_zh": "中央男子",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将庭院中央独自行走男子的黑色T恤的颜色改为蓝绿色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为蓝绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1570474",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0f32022dc17eb76b9faa6a5dee125231bbcc117965c6624207a17832e3632195",
+    "review_card_sha256": "3245f3e0b79faf2094ca39a8b9bb52a9870176ac963eb06b315d24f763b10ff3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最近正面女子牛仔马甲，69为其腰侧独立蓝花包，0为左店Jack Daniel’s牌，33为庭院中央男子黑T恤。95混入手机和包不选。 全图复核：多个牛仔衣目标由距离足以区分，删除不必要的正面人物描述。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "庭院前景牛仔马甲与手袋",
+      "evidence_zh": "1为最近正面女子牛仔马甲，69为其腰侧独立蓝花包，0为左店Jack Daniel’s牌，33为庭院中央男子黑T恤。95混入手机和包不选。 全图复核：多个牛仔衣目标由距离足以区分，删除不必要的正面人物描述。",
+      "specific_protection_zh": "保留脸、手、手机、内搭、裤子、建筑和其他行人。"
+    },
+    "protected_content_zh": "保留脸、手、手机、内搭、裤子、建筑和其他行人。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the nearest denim vest",
+        "ref_zh": "最近的牛仔马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "front_woman",
+        "parent_zh": "前景女子",
+        "payload": "a cream linen vest",
+        "instruction_zh": "将最近的牛仔马甲替换为一件奶油色亚麻马甲。",
+        "instruction_noref_zh": "将选中的马甲替换为一件奶油色亚麻马甲。"
+      },
+      {
+        "object_id": 69,
+        "operation": "add",
+        "ref": "the blue floral bag beside the denim vest",
+        "ref_zh": "牛仔马甲旁的蓝色花纹包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "floral_bag",
+        "parent_zh": "蓝花包",
+        "payload": "a small sunflower patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在牛仔马甲旁的蓝色花纹包加上一块小向日葵贴布。",
+        "instruction_noref_zh": "在选中的包加上一块小向日葵贴布。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the Jack Daniel’s sign above the left shop",
+        "ref_zh": "左侧店铺上方的Jack Daniel’s招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "jack_sign",
+        "parent_zh": "店牌",
+        "payload": "",
+        "instruction_zh": "移除左侧店铺上方的Jack Daniel’s招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 33,
+        "operation": "attribute",
+        "ref": "the lone man’s black T-shirt in the middle of the courtyard",
+        "ref_zh": "庭院中央独自行走男子的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "middle_man",
+        "parent_zh": "中央男子",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将庭院中央独自行走男子的黑色T恤的颜色改为蓝绿色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为蓝绿色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

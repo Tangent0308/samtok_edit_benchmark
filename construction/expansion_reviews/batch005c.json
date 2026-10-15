@@ -1,0 +1,573 @@
+[
+  {
+    "source_id": "sa_11045567",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "85c6e7c0f29c01764df6bb4b95f0ec6ea83981f60083e84704ab868af008819f",
+    "review_card_sha256": "7b475364126152feb1be9ac948cb17fa23c6f977117e923a88f11edf4ba28a96",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11为右侧倒三角灯，27为其左侧、玻璃立面前的路灯，两盏独立实体；不选含植物和背景的整片阳台mask。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "thin_structures",
+        "small_targets"
+      ],
+      "scene_zh": "城市花园内两盏相似路灯",
+      "evidence_zh": "11为右侧倒三角灯，27为其左侧、玻璃立面前的路灯，两盏独立实体；不选含植物和背景的整片阳台mask。",
+      "specific_protection_zh": "保留绿化、雕塑、建筑立面、汽车和人行道。"
+    },
+    "protected_content_zh": "保留绿化、雕塑、建筑立面、汽车和人行道。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the rightmost triangular streetlamp",
+        "ref_zh": "最右侧的三角形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右侧路灯",
+        "payload": "",
+        "instruction_zh": "移除最右侧的三角形路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 27,
+        "operation": "replace",
+        "ref": "the triangular streetlamp before the glass facade",
+        "ref_zh": "玻璃立面前的三角形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "玻璃立面前路灯",
+        "payload": "a black globe streetlamp",
+        "instruction_zh": "将玻璃立面前的三角形路灯替换为一盏黑色球形路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色球形路灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11061187",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cb4752fc95dadbc95be4b71d35598e4d635634a17d697527c2be73060ebf149b",
+    "review_card_sha256": "48a5421aca4069d2b724c095dec4a3ecc9c2cbcfd10ea9079f96d37d9fccdaad",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为前景工人的白色安全帽，13为右侧工人反光背心，分别属于两人；不移除工作中的防护装备，不把同人的帽与衣计作两父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "铁路维修人员的安全装备",
+      "evidence_zh": "16为前景工人的白色安全帽，13为右侧工人反光背心，分别属于两人；不移除工作中的防护装备，不把同人的帽与衣计作两父对象。",
+      "specific_protection_zh": "保留反光条、防护装备结构、工人皮肤、机械、轨道和电车。"
+    },
+    "protected_content_zh": "保留反光条、防护装备结构、工人皮肤、机械、轨道和电车。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "add",
+        "ref": "the foreground worker’s white hard hat",
+        "ref_zh": "前景工人的白色安全帽",
+        "scope": "hard hat",
+        "scope_zh": "安全帽",
+        "parent": "front_worker",
+        "parent_zh": "前景工人",
+        "payload": "a compact headlamp",
+        "placement": {
+          "relation": "on",
+          "site": "front",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景工人的白色安全帽的前部加上一个小型头灯。",
+        "instruction_noref_zh": "在选中的安全帽的前部加上一个小型头灯。"
+      },
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the right worker’s orange safety vest",
+        "ref_zh": "右侧工人的橙色反光背心",
+        "scope": "safety vest",
+        "scope_zh": "反光背心",
+        "parent": "right_worker",
+        "parent_zh": "右侧工人",
+        "payload": "fluorescent yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧工人的橙色反光背心的颜色改为荧光黄色。",
+        "instruction_noref_zh": "将选中的反光背心的颜色改为荧光黄色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11072880",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "226fd1f9b6b8bf79b89657701272801234d681415662c6e7cc2b3003b9342324",
+    "review_card_sha256": "ebcd5b32c1f937d6cc91f65a4be51abeae471d37187811ddee740e6534530bb4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为背对镜头右侧人物橄榄色羽绒服，14为最左近景行人的帽子，20橙色店牌，6为左侧完整双臂路灯。暗光没有使目标归属模糊；51灯mask碎裂不使用。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "冬日街道的衣物、招牌与路灯",
+      "evidence_zh": "10为背对镜头右侧人物橄榄色羽绒服，14为最左近景行人的帽子，20橙色店牌，6为左侧完整双臂路灯。暗光没有使目标归属模糊；51灯mask碎裂不使用。",
+      "specific_protection_zh": "保留人物皮肤、其他衣物、路面和建筑脚手架。"
+    },
+    "protected_content_zh": "保留人物皮肤、其他衣物、路面和建筑脚手架。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the olive puffer jacket in the foreground",
+        "ref_zh": "前景橄榄色羽绒服",
+        "scope": "puffer jacket",
+        "scope_zh": "羽绒服",
+        "parent": "olive_jacket_person",
+        "parent_zh": "橄榄羽绒服人物",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景橄榄色羽绒服的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的羽绒服的颜色改为酒红色。"
+      },
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the leftmost pedestrian’s cap",
+        "ref_zh": "最左侧行人的帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "left_pedestrian",
+        "parent_zh": "最左行人",
+        "payload": "a gray knitted beanie",
+        "instruction_zh": "将最左侧行人的帽子替换为一顶灰色针织帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶灰色针织帽。"
+      },
+      {
+        "object_id": 20,
+        "operation": "remove",
+        "ref": "the orange shop sign",
+        "ref_zh": "橙色商店招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "orange_sign",
+        "parent_zh": "橙色招牌",
+        "payload": "",
+        "instruction_zh": "移除橙色商店招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the tall two-armed streetlamp",
+        "ref_zh": "高大的双臂路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "tall_lamp",
+        "parent_zh": "双臂路灯",
+        "payload": "a small street-name plate",
+        "placement": {
+          "relation": "on",
+          "site": "pole",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在高大的双臂路灯的灯杆上加上一块小街名牌。",
+        "instruction_noref_zh": "在选中的路灯的灯杆上加上一块小街名牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1110518",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5371f121fe19714110cd2402513f0d1301559616b8e39e7731ed813a67867672",
+    "review_card_sha256": "0f09bdb518a36277975f11f770eb2f565b83e709876dc60aebd19078266116f2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0演讲者蓝领带，4其左后方女子浅黄西装，12其右侧女子黑色西装，分别三个人。前景举手造成遮挡但选中衣物轮廓清楚。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "neighbor_protection"
+      ],
+      "scene_zh": "演讲者与旁侧人物的正式服饰",
+      "evidence_zh": "0演讲者蓝领带，4其左后方女子浅黄西装，12其右侧女子黑色西装，分别三个人。前景举手造成遮挡但选中衣物轮廓清楚。",
+      "specific_protection_zh": "保留人物面部、姿势、讲台、现有文字与观众。"
+    },
+    "protected_content_zh": "保留人物面部、姿势、讲台、现有文字与观众。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the speaker’s blue tie",
+        "ref_zh": "演讲者的蓝色领带",
+        "scope": "tie",
+        "scope_zh": "领带",
+        "parent": "speaker",
+        "parent_zh": "演讲者",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将演讲者的蓝色领带的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的领带的颜色改为酒红色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the pale yellow blazer behind the speaker",
+        "ref_zh": "演讲者后方的浅黄色西装外套",
+        "scope": "blazer",
+        "scope_zh": "西装外套",
+        "parent": "yellow_blazer_person",
+        "parent_zh": "浅黄外套人物",
+        "payload": "a cream cardigan",
+        "instruction_zh": "将演讲者后方的浅黄色西装外套替换为一件奶油色开衫。",
+        "instruction_noref_zh": "将选中的西装外套替换为一件奶油色开衫。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the woman’s black blazer on the right",
+        "ref_zh": "右侧女子的黑色西装外套",
+        "scope": "blazer",
+        "scope_zh": "西装外套",
+        "parent": "right_blazer_person",
+        "parent_zh": "右侧黑外套人物",
+        "payload": "a small silver brooch",
+        "placement": {
+          "relation": "on",
+          "site": "lapel",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧女子的黑色西装外套的翻领上加上一枚小银胸针。",
+        "instruction_noref_zh": "在选中的西装外套的翻领上加上一枚小银胸针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11105802",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e304fbbd34e0dbba591192c7bb787fb899cbea421414f8fc642f9c6715ab762a",
+    "review_card_sha256": "344419d2241894f03f6375d473a8af731794d21baee57ea5a3814372616fff4c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为中央侧向黑车，3为其左侧迎面黑车，4为右侧灰色车，34为左侧转角方形道路牌。三辆车独立，不选择同楼多个阳台凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "路口三辆车与独立标牌",
+      "evidence_zh": "1为中央侧向黑车，3为其左侧迎面黑车，4为右侧灰色车，34为左侧转角方形道路牌。三辆车独立，不选择同楼多个阳台凑数。",
+      "specific_protection_zh": "保留行人、其他车辆、建筑、路面标线与树木。"
+    },
+    "protected_content_zh": "保留行人、其他车辆、建筑、路面标线与树木。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the central black hatchback",
+        "ref_zh": "中央黑色掀背车",
+        "scope": "hatchback",
+        "scope_zh": "掀背车",
+        "parent": "central_car",
+        "parent_zh": "中央黑车",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央黑色掀背车的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的掀背车的颜色改为酒红色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the black car left of the central hatchback",
+        "ref_zh": "中央掀背车左侧的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "left_car",
+        "parent_zh": "左侧黑车",
+        "payload": "a white compact van",
+        "instruction_zh": "将中央掀背车左侧的黑色汽车替换为一辆白色小型厢式车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆白色小型厢式车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the gray car on the right",
+        "ref_zh": "右侧灰色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "right_gray_car",
+        "parent_zh": "右侧灰车",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧灰色汽车加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的汽车加上一个车顶行李架。"
+      },
+      {
+        "object_id": 34,
+        "operation": "remove",
+        "ref": "the square road sign at the left corner",
+        "ref_zh": "左侧街角的方形道路标牌",
+        "scope": "sign",
+        "scope_zh": "道路标牌",
+        "parent": "corner_sign",
+        "parent_zh": "街角道路标牌",
+        "payload": "",
+        "instruction_zh": "移除左侧街角的方形道路标牌。",
+        "instruction_noref_zh": "移除选中的道路标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1112483",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9eec4db91d153a73fe68105ed16acd74d75ad5a0cf015ae1bbdec9d6a915a81b",
+    "review_card_sha256": "d6ce0bec59b871cd682204e211cf2244c76867844db7594b9e61f0aa0e65c03f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为右岸建筑前紫红长旗，45为左岸完整白伞，35为中央拱桥整体。不同实物，拱桥作为灯串的直接附着锚点。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "河道旁旗帜、遮阳伞与拱桥",
+      "evidence_zh": "14为右岸建筑前紫红长旗，45为左岸完整白伞，35为中央拱桥整体。不同实物，拱桥作为灯串的直接附着锚点。",
+      "specific_protection_zh": "保留河水倒影、游客、建筑、其他旗帜与桥体结构。"
+    },
+    "protected_content_zh": "保留河水倒影、游客、建筑、其他旗帜与桥体结构。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the magenta flag on the right bank",
+        "ref_zh": "右岸的紫红色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "magenta_flag",
+        "parent_zh": "紫红旗帜",
+        "payload": "",
+        "instruction_zh": "移除右岸的紫红色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 45,
+        "operation": "attribute",
+        "ref": "the white parasol beside the left bank",
+        "ref_zh": "左岸旁的白色遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "left_parasol",
+        "parent_zh": "左岸白伞",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左岸旁的白色遮阳伞的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的遮阳伞的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the central arched bridge",
+        "ref_zh": "中央拱桥",
+        "scope": "bridge",
+        "scope_zh": "桥",
+        "parent": "central_bridge",
+        "parent_zh": "中央拱桥",
+        "payload": "a string of warm lights",
+        "placement": {
+          "relation": "along",
+          "site": "railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央拱桥的栏杆上加上一串暖色灯。",
+        "instruction_noref_zh": "在选中的桥的栏杆上加上一串暖色灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11136243",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "089e4bfc2aae7b7bdcb33822445fb24176440892e2e53672abf49605ba73fc18",
+    "review_card_sha256": "8fbdb8655e8e6800e6432389152668e99ced0600b17e8bb6ed41521862ca8e84",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1是广告柱右侧空椅，49为柱上黄色啤酒广告，14为有人坐的另一椅子不选。20混入另一张同样标语的碎片，弃用。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街头露天餐区的独立空椅与柱上广告",
+      "evidence_zh": "1是广告柱右侧空椅，49为柱上黄色啤酒广告，14为有人坐的另一椅子不选。20混入另一张同样标语的碎片，弃用。",
+      "specific_protection_zh": "保留顾客、桌子、遮阳伞、广告柱本体和建筑。"
+    },
+    "protected_content_zh": "保留顾客、桌子、遮阳伞、广告柱本体和建筑。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the empty chair immediately right of the advertising column",
+        "ref_zh": "广告柱紧右侧的空椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "empty_chair",
+        "parent_zh": "空椅",
+        "payload": "a wooden folding chair",
+        "instruction_zh": "将广告柱紧右侧的空椅替换为一把木折叠椅。",
+        "instruction_noref_zh": "将选中的椅子替换为一把木折叠椅。"
+      },
+      {
+        "object_id": 49,
+        "operation": "remove",
+        "ref": "the yellow beer poster on the column",
+        "ref_zh": "柱上的黄色啤酒海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "beer_poster",
+        "parent_zh": "啤酒海报",
+        "payload": "",
+        "instruction_zh": "移除柱上的黄色啤酒海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11136335",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d5ffe2a690843aa2ec9c444a7fb9ea2fef2dbb5fcdb78a19ace989069b57782c",
+    "review_card_sha256": "736e29833e93d09652951e13a71e6f535351a2636e9685942cf224a947f2e78e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为最左侧装饰双灯，10为最右侧弯杆灯，28为左中橙车，12为雕像左侧的三头灯。30白厢式车与10灯mask重叠4.4345%，不用该配对。避免将单座雕像的人与马拆分父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "纪念雕像广场的灯具与背景车辆",
+      "evidence_zh": "2为最左侧装饰双灯，10为最右侧弯杆灯，28为左中橙车，12为雕像左侧的三头灯。30白厢式车与10灯mask重叠4.4345%，不用该配对。避免将单座雕像的人与马拆分父对象。",
+      "specific_protection_zh": "保留雕像、草地、行人、栏杆、建筑和其他车辆。"
+    },
+    "protected_content_zh": "保留雕像、草地、行人、栏杆、建筑和其他车辆。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the decorative streetlamp at the far left",
+        "ref_zh": "最左侧的装饰路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_decorative_lamp",
+        "parent_zh": "左侧装饰灯",
+        "payload": "a black lantern-style streetlamp",
+        "instruction_zh": "将最左侧的装饰路灯替换为一盏黑色灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色灯笼式路灯。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the curved streetlamp at the far right",
+        "ref_zh": "最右侧的弯杆路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_curved_lamp",
+        "parent_zh": "右侧弯杆灯",
+        "payload": "",
+        "instruction_zh": "移除最右侧的弯杆路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 28,
+        "operation": "attribute",
+        "ref": "the orange car behind the fence",
+        "ref_zh": "围栏后方的橙色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "orange_car",
+        "parent_zh": "橙色汽车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将围栏后方的橙色汽车的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the three-lantern streetlamp left of the statue",
+        "ref_zh": "雕像左侧的三头路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "three_lantern_lamp",
+        "parent_zh": "三头路灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "pole",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在雕像左侧的三头路灯的灯杆上加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯的灯杆上加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

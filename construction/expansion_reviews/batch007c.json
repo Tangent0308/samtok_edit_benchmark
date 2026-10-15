@@ -1,0 +1,630 @@
+[
+  {
+    "source_id": "sa_1528858",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "83644f9aa48c0f2a3811f489f57ed48baeb7ff0c80ab984ba13b36d086586561",
+    "review_card_sha256": "d910e75cc6cae6685e0f4c7e1d7e2904e0778fbd004b47e083c599e4f7225a46",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为右侧棕榈树，27为后方白楼最高层可见阳台栏杆，6为左上狭长云。护栏同一设施片段不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures"
+      ],
+      "scene_zh": "遗址与后方住宅",
+      "evidence_zh": "1为右侧棕榈树，27为后方白楼最高层可见阳台栏杆，6为左上狭长云。护栏同一设施片段不重复计数。",
+      "specific_protection_zh": "保留遗址、栏杆结构、住宅、其他树木和天气光照。"
+    },
+    "protected_content_zh": "保留遗址、栏杆结构、住宅、其他树木和天气光照。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the palm tree on the right of the ruins",
+        "ref_zh": "遗址右侧的棕榈树",
+        "scope": "tree",
+        "scope_zh": "树",
+        "parent": "palm_tree",
+        "parent_zh": "棕榈树",
+        "payload": "a mature olive tree",
+        "instruction_zh": "将遗址右侧的棕榈树替换为一棵成年的橄榄树。",
+        "instruction_noref_zh": "将选中的树替换为一棵成年的橄榄树。"
+      },
+      {
+        "object_id": 27,
+        "operation": "add",
+        "ref": "the top balcony railing on the rear white apartment building",
+        "ref_zh": "后方白色公寓楼最上层阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "rear_apartment",
+        "parent_zh": "后方公寓",
+        "payload": "a flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在后方白色公寓楼最上层阳台栏杆加上一个花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个花箱。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the long thin cloud in the upper-left sky",
+        "ref_zh": "左上方天空中细长的云",
+        "scope": "cloud",
+        "scope_zh": "云",
+        "parent": "thin_cloud",
+        "parent_zh": "细长云",
+        "payload": "",
+        "instruction_zh": "移除左上方天空中细长的云。",
+        "instruction_noref_zh": "移除选中的云。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1539625",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "85563e8565163fc53fe0fadedecce953ebc73550bbf337da832247b79b493020",
+    "review_card_sha256": "7a14a3055d6d4007548389846396a157de10d010bea285ffcad3172e7776d663",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为右前方灰绿T恤，57为中央前景黑上衣，18为190字样方牌，0为左上蓝箭头交通牌。保留运动模糊而不因模糊误选人体。",
+    "difficulty": {
+      "mechanisms": [
+        "motion_blur",
+        "small_targets"
+      ],
+      "scene_zh": "傍晚路口行人与广告牌",
+      "evidence_zh": "6为右前方灰绿T恤，57为中央前景黑上衣，18为190字样方牌，0为左上蓝箭头交通牌。保留运动模糊而不因模糊误选人体。",
+      "specific_protection_zh": "保留人脸、四肢、道路标线、红绿灯及其他广告。"
+    },
+    "protected_content_zh": "保留人脸、四肢、道路标线、红绿灯及其他广告。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the gray-green T-shirt on the rightmost foreground pedestrian",
+        "ref_zh": "最右侧前景行人的灰绿色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_walker",
+        "parent_zh": "右行人",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧前景行人的灰绿色T恤的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为酒红色。"
+      },
+      {
+        "object_id": 57,
+        "operation": "replace",
+        "ref": "the black shirt on the central foreground pedestrian",
+        "ref_zh": "中央前景行人的黑色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "center_walker",
+        "parent_zh": "中央行人",
+        "payload": "a white polo shirt",
+        "instruction_zh": "将中央前景行人的黑色上衣替换为一件白色Polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件白色Polo衫。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the square billboard showing “190”",
+        "ref_zh": "写着“190”的方形广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "price_billboard",
+        "parent_zh": "190广告牌",
+        "payload": "",
+        "instruction_zh": "移除写着“190”的方形广告牌。",
+        "instruction_noref_zh": "移除选中的广告牌。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the blue direction sign at the upper left",
+        "ref_zh": "左上方的蓝色方向标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "direction_sign",
+        "parent_zh": "方向牌",
+        "payload": "a thin reflective border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左上方的蓝色方向标志加上一圈细反光边。",
+        "instruction_noref_zh": "在选中的标志加上一圈细反光边。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1546067",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "55fccb9d7b3d73231c5c8872148e2120d9512504a2182351b0a3f5df6e298d8f",
+    "review_card_sha256": "0d6be9a3680295a95f4bf4990912914eccd89c6096b2227b946ba54c54e6e235",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "73为右侧背向镜头蓝衣者，67为橙色上衣右边的蓝外套，10为单行标志。两个人和一个路牌，不把同一人号码布另算目标。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances"
+      ],
+      "scene_zh": "草地上跑步活动参与者",
+      "evidence_zh": "73为右侧背向镜头蓝衣者，67为橙色上衣右边的蓝外套，10为单行标志。两个人和一个路牌，不把同一人号码布另算目标。",
+      "specific_protection_zh": "保留脸、手、运动号码、其他服装、树木、建筑和标志箭头。"
+    },
+    "protected_content_zh": "保留脸、手、运动号码、其他服装、树木、建筑和标志箭头。",
+    "targets": [
+      {
+        "object_id": 73,
+        "operation": "attribute",
+        "ref": "the back-facing person’s blue jacket on the right",
+        "ref_zh": "右侧背对镜头者的蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "back_facing_person",
+        "parent_zh": "背向人物",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧背对镜头者的蓝色外套的颜色改为红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为红色。"
+      },
+      {
+        "object_id": 67,
+        "operation": "replace",
+        "ref": "the blue jacket just right of the orange shirt",
+        "ref_zh": "橙色上衣右侧的蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "blue_runner",
+        "parent_zh": "蓝衣跑者",
+        "payload": "a navy windbreaker",
+        "instruction_zh": "将橙色上衣右侧的蓝色外套替换为一件藏蓝色防风衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色防风衣。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the “ONE WAY” sign",
+        "ref_zh": "“ONE WAY”标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "one_way_sign",
+        "parent_zh": "单行牌",
+        "payload": "a narrow reflective border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在“ONE WAY”标志加上一圈窄反光边。",
+        "instruction_noref_zh": "在选中的标志加上一圈窄反光边。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1564236",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4a71e292def6304849f28606f89f991afc5572b44cd7578d95b43d90780b7f45",
+    "review_card_sha256": "57e2703461fafccdaf51ee1dc0e966493d8986c806af4f422f12c1c246be3463",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为船头撑篙者棕T恤，4为船右边坐者白T恤，10为前船完整船体排除乘客。船上新增救生圈直接依附船头。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "河边撑船者与乘客",
+      "evidence_zh": "3为船头撑篙者棕T恤，4为船右边坐者白T恤，10为前船完整船体排除乘客。船上新增救生圈直接依附船头。",
+      "specific_protection_zh": "保留脸、手、篙、乘客姿态、河岸和原船体承载关系。"
+    },
+    "protected_content_zh": "保留脸、手、篙、乘客姿态、河岸和原船体承载关系。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the boatman’s brown T-shirt",
+        "ref_zh": "撑船者的棕色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "boatman",
+        "parent_zh": "撑船者",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将撑船者的棕色T恤的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the seated passenger’s white T-shirt on the right",
+        "ref_zh": "右侧坐着的乘客的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_passenger",
+        "parent_zh": "右乘客",
+        "payload": "a pale green polo shirt",
+        "instruction_zh": "将右侧坐着的乘客的白色T恤替换为一件浅绿色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件浅绿色Polo衫。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the foreground passenger boat",
+        "ref_zh": "前景的载客船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "passenger_boat",
+        "parent_zh": "载客船",
+        "payload": "an orange lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "bow",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的载客船的船头上加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的船的船头上加上一个橙色救生圈。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1569171",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "81ba2854f610f109ca42a027a681a12fce7f7da2da763d0944f37ae8c68f24bb",
+    "review_card_sha256": "d956ddcf13a5d4ef074634a0f0d508bf3c194a111a0935de1e9585aacf33fffd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为左侧完整灯柱且排除蓝牌，1为绿双门，8为门旁一株修剪灌木，0为门右侧黑牌。牌与建筑构件各自实体，灯头49不重复选。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "similar_instances"
+      ],
+      "scene_zh": "礼拜堂入口和灯柱",
+      "evidence_zh": "3为左侧完整灯柱且排除蓝牌，1为绿双门，8为门旁一株修剪灌木，0为门右侧黑牌。牌与建筑构件各自实体，灯头49不重复选。",
+      "specific_protection_zh": "保留建筑结构、窗户、无障碍牌、其他牌文和另一株灌木。"
+    },
+    "protected_content_zh": "保留建筑结构、窗户、无障碍牌、其他牌文和另一株灌木。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the lantern post left of the entrance",
+        "ref_zh": "入口左侧的灯柱",
+        "scope": "lamppost",
+        "scope_zh": "灯柱",
+        "parent": "entrance_lamp",
+        "parent_zh": "入口灯",
+        "payload": "a black globe-topped lamppost",
+        "instruction_zh": "将入口左侧的灯柱替换为一根黑色球灯灯柱。",
+        "instruction_noref_zh": "将选中的灯柱替换为一根黑色球灯灯柱。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the green double entrance doors",
+        "ref_zh": "绿色双扇入口门",
+        "scope": "doors",
+        "scope_zh": "门",
+        "parent": "chapel_building",
+        "parent_zh": "礼拜堂建筑",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将绿色双扇入口门的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的门的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the trimmed shrub right of the entrance doors",
+        "ref_zh": "入口门右侧修剪整齐的灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "right_shrub",
+        "parent_zh": "右灌木",
+        "payload": "warm white fairy lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在入口门右侧修剪整齐的灌木加上一串暖白色小彩灯。",
+        "instruction_noref_zh": "在选中的灌木加上一串暖白色小彩灯。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the black “THE WHALEMAN’S CHAPEL” plaque",
+        "ref_zh": "黑色“THE WHALEMAN’S CHAPEL”牌匾",
+        "scope": "plaque",
+        "scope_zh": "牌匾",
+        "parent": "whaleman_plaque",
+        "parent_zh": "黑牌匾",
+        "payload": "",
+        "instruction_zh": "移除黑色“THE WHALEMAN’S CHAPEL”牌匾。",
+        "instruction_noref_zh": "移除选中的牌匾。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1570474",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0f32022dc17eb76b9faa6a5dee125231bbcc117965c6624207a17832e3632195",
+    "review_card_sha256": "3245f3e0b79faf2094ca39a8b9bb52a9870176ac963eb06b315d24f763b10ff3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最近正面女子牛仔马甲，69为其腰侧独立蓝花包，0为左店Jack Daniel’s牌，33为庭院中央男子黑T恤。95混入手机和包不选。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "庭院前景牛仔马甲与手袋",
+      "evidence_zh": "1为最近正面女子牛仔马甲，69为其腰侧独立蓝花包，0为左店Jack Daniel’s牌，33为庭院中央男子黑T恤。95混入手机和包不选。",
+      "specific_protection_zh": "保留脸、手、手机、内搭、裤子、建筑和其他行人。"
+    },
+    "protected_content_zh": "保留脸、手、手机、内搭、裤子、建筑和其他行人。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the nearest front-facing woman’s denim vest",
+        "ref_zh": "最近面向镜头女子的牛仔马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "front_woman",
+        "parent_zh": "前景女子",
+        "payload": "a cream linen vest",
+        "instruction_zh": "将最近面向镜头女子的牛仔马甲替换为一件奶油色亚麻马甲。",
+        "instruction_noref_zh": "将选中的马甲替换为一件奶油色亚麻马甲。"
+      },
+      {
+        "object_id": 69,
+        "operation": "add",
+        "ref": "the blue floral bag beside the denim vest",
+        "ref_zh": "牛仔马甲旁的蓝色花纹包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "floral_bag",
+        "parent_zh": "蓝花包",
+        "payload": "a small sunflower patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在牛仔马甲旁的蓝色花纹包加上一块小向日葵贴布。",
+        "instruction_noref_zh": "在选中的包加上一块小向日葵贴布。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the Jack Daniel’s sign above the left shop",
+        "ref_zh": "左侧店铺上方的Jack Daniel’s招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "jack_sign",
+        "parent_zh": "店牌",
+        "payload": "",
+        "instruction_zh": "移除左侧店铺上方的Jack Daniel’s招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 33,
+        "operation": "attribute",
+        "ref": "the lone man’s black T-shirt in the middle of the courtyard",
+        "ref_zh": "庭院中央独自行走男子的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "middle_man",
+        "parent_zh": "中央男子",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将庭院中央独自行走男子的黑色T恤的颜色改为蓝绿色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为蓝绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1571336",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "79fd6e2fddab09aeea97917a8370ee6e23d0e951f50b49c7715047c458503d23",
+    "review_card_sha256": "ce9b0ffce4d698b9938f612f43e7f080bad84b43797d004f4c3c3738294ff847",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为红窗帘白舱船，3为近处米色顶舱船，5为中央黑桩左侧蓝灰船罩，78为右侧棕舱船栏杆。四个目标属于不同船。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "thin_structures"
+      ],
+      "scene_zh": "码头上的多艘独立船只",
+      "evidence_zh": "2为红窗帘白舱船，3为近处米色顶舱船，5为中央黑桩左侧蓝灰船罩，78为右侧棕舱船栏杆。四个目标属于不同船。",
+      "specific_protection_zh": "保留水面、码头、系泊柱、船体遮挡和其他船只；对应倒影应一致。"
+    },
+    "protected_content_zh": "保留水面、码头、系泊柱、船体遮挡和其他船只；对应倒影应一致。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the white cabin boat with red curtains on the left",
+        "ref_zh": "左侧带红窗帘的白色舱船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "red_curtain_boat",
+        "parent_zh": "红帘船",
+        "payload": "",
+        "instruction_zh": "移除左侧带红窗帘的白色舱船。",
+        "instruction_noref_zh": "移除选中的船。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the cream-roofed cabin boat in the foreground",
+        "ref_zh": "前景米色舱顶的船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "cream_roof_boat",
+        "parent_zh": "米顶船",
+        "payload": "a small solar panel",
+        "placement": {
+          "relation": "on",
+          "site": "cabin roof",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景米色舱顶的船的舱顶上加上一块小太阳能板。",
+        "instruction_noref_zh": "在选中的船的舱顶上加上一块小太阳能板。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the blue-gray boat cover just left of the central black post",
+        "ref_zh": "中央黑柱左侧的蓝灰色船罩",
+        "scope": "cover",
+        "scope_zh": "船罩",
+        "parent": "covered_boat",
+        "parent_zh": "罩船",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央黑柱左侧的蓝灰色船罩的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的船罩的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 78,
+        "operation": "replace",
+        "ref": "the deck railing around the brown houseboat on the right",
+        "ref_zh": "右侧棕色船屋周围的甲板栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "brown_houseboat",
+        "parent_zh": "棕船屋",
+        "payload": "a wooden deck railing",
+        "instruction_zh": "将右侧棕色船屋周围的甲板栏杆替换为一道木质甲板栏杆。",
+        "instruction_noref_zh": "将选中的栏杆替换为一道木质甲板栏杆。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1572095",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fc72f6c8698b4363bbf9588a742e417ac496a44befad2bf56951d98153bb00ab",
+    "review_card_sha256": "9d509c34eb652a3e45fccc3940be475402f61a0c3723ca9952a2daa7b66d966d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7为前景女子右后方背向男子外套，12为左后方女子米色西装外套，17为前景女子独立金色手包。避免只改前景上衣一个袖子造成不自然配色。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "活动现场的西装外套和手包",
+      "evidence_zh": "7为前景女子右后方背向男子外套，12为左后方女子米色西装外套，17为前景女子独立金色手包。避免只改前景上衣一个袖子造成不自然配色。",
+      "specific_protection_zh": "保留人脸、手、内搭、裤子、前景彩色上衣、地毯及现场光照。"
+    },
+    "protected_content_zh": "保留人脸、手、内搭、裤子、前景彩色上衣、地毯及现场光照。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the back-facing man’s dark blazer",
+        "ref_zh": "背对镜头男子的深色西装外套",
+        "scope": "blazer",
+        "scope_zh": "西装外套",
+        "parent": "back_man",
+        "parent_zh": "背向男子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将背对镜头男子的深色西装外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的西装外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "replace",
+        "ref": "the beige blazer behind the foreground woman on the left",
+        "ref_zh": "前景女子左后方的米色西装外套",
+        "scope": "blazer",
+        "scope_zh": "西装外套",
+        "parent": "rear_left_woman",
+        "parent_zh": "左后女子",
+        "payload": "a pale gray satin blazer",
+        "instruction_zh": "将前景女子左后方的米色西装外套替换为一件浅灰色缎面西装外套。",
+        "instruction_noref_zh": "将选中的西装外套替换为一件浅灰色缎面西装外套。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the foreground woman’s gold clutch",
+        "ref_zh": "前景女子的金色手包",
+        "scope": "clutch",
+        "scope_zh": "手包",
+        "parent": "gold_clutch",
+        "parent_zh": "金手包",
+        "payload": "a small pearl charm",
+        "placement": {
+          "relation": "on",
+          "site": "clasp",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景女子的金色手包的搭扣上加上一个小珍珠挂饰。",
+        "instruction_noref_zh": "在选中的手包的搭扣上加上一个小珍珠挂饰。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

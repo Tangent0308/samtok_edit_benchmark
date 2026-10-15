@@ -1,0 +1,576 @@
+[
+  {
+    "source_id": "sa_5536770",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d04c5ada568410c2a3a3400c36b1381b70b975443646078732eaefbbfe7d8380",
+    "review_card_sha256": "09eca081f1e06eedf81873994c3892921e3ec46f6b54d91e5a4e4de96430de52",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0轮椅与8左落地玻璃属于独立物体及建筑，倒影不另算。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "glass",
+        "thin_structure"
+      ],
+      "scene_zh": "航站楼轮椅与落地窗",
+      "evidence_zh": "0轮椅与8左落地玻璃属于独立物体及建筑，倒影不另算。",
+      "specific_protection_zh": "保留地面反射、窗框和机场背景。"
+    },
+    "protected_content_zh": "保留地面反射、窗框和机场背景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the wheelchair beside the window",
+        "ref_zh": "窗边的轮椅",
+        "scope": "wheelchair",
+        "scope_zh": "轮椅",
+        "parent": "wheelchair",
+        "parent_zh": "轮椅",
+        "payload": "a lightweight silver wheelchair",
+        "instruction_zh": "将窗边的轮椅替换为一把轻便银色轮椅。",
+        "instruction_noref_zh": "将选中的轮椅替换为一把轻便银色轮椅。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the leftmost floor-to-ceiling window",
+        "ref_zh": "最左侧的落地窗",
+        "scope": "window",
+        "scope_zh": "落地窗",
+        "parent": "terminal",
+        "parent_zh": "航站楼",
+        "payload": "a small white accessibility decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最左侧的落地窗加上一张小白色无障碍标志贴花。",
+        "instruction_noref_zh": "在选中的落地窗加上一张小白色无障碍标志贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5550721",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d1dec37d4f0647319de660f2d7e1c49a340242626eca8ac33997d0b7340697b1",
+    "review_card_sha256": "d49f7f37bcec8cfc2446d5098d688ba1c32248b6296374ab38700e2baa3111e2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5店牌、19绿靠垫、17圆点靠垫、4阳台四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "glass",
+        "perspective"
+      ],
+      "scene_zh": "粉色楼房与家居橱窗",
+      "evidence_zh": "5店牌、19绿靠垫、17圆点靠垫、4阳台四父对象。",
+      "specific_protection_zh": "保留建筑结构、橱窗其他商品和窗帘。"
+    },
+    "protected_content_zh": "保留建筑结构、橱窗其他商品和窗帘。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the vertical black KAHIRI sign",
+        "ref_zh": "黑色竖向KAHIRI招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "shop_sign",
+        "parent_zh": "店牌",
+        "payload": "",
+        "instruction_zh": "移除黑色竖向KAHIRI招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 19,
+        "operation": "replace",
+        "ref": "the green cushion in the shop window",
+        "ref_zh": "店铺橱窗里的绿色靠垫",
+        "scope": "cushion",
+        "scope_zh": "靠垫",
+        "parent": "green_cushion",
+        "parent_zh": "绿靠垫",
+        "payload": "a navy velvet cushion",
+        "instruction_zh": "将店铺橱窗里的绿色靠垫替换为一个藏蓝色天鹅绒靠垫。",
+        "instruction_noref_zh": "将选中的靠垫替换为一个藏蓝色天鹅绒靠垫。"
+      },
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the white cushion with large black dots in the shop window",
+        "ref_zh": "店铺橱窗里带大黑圆点的白色靠垫",
+        "scope": "cushion",
+        "scope_zh": "靠垫",
+        "parent": "dotted_cushion",
+        "parent_zh": "圆点靠垫",
+        "payload": "pale pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将店铺橱窗里带大黑圆点的白色靠垫的颜色改为浅粉色。",
+        "instruction_noref_zh": "将选中的靠垫的颜色改为浅粉色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the upper-right balcony railing on the pink facade",
+        "ref_zh": "粉色立面右上方的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a narrow planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在粉色立面右上方的阳台栏杆加上一个种有红花的窄花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的窄花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5552382",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "78f275e7d58e324487818b77fd2ab30e7d3ec3a5dd95c3426df6412d28fd8208",
+    "review_card_sha256": "acf9922c647d55ec2e6447d5b275742d0209982ac6fdcc7d60b993ee0c99f8cd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3电子屏、7一层导向牌、116红霓虹牌、0右玻璃栏四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "perspective",
+        "text"
+      ],
+      "scene_zh": "商场中庭与导向牌",
+      "evidence_zh": "3电子屏、7一层导向牌、116红霓虹牌、0右玻璃栏四父对象。",
+      "specific_protection_zh": "保留建筑曲线、顾客、其他店铺标识与楼层结构。"
+    },
+    "protected_content_zh": "保留建筑曲线、顾客、其他店铺标识与楼层结构。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the blue digital display at the lower right",
+        "ref_zh": "右下方的蓝色电子显示屏",
+        "scope": "display",
+        "scope_zh": "显示屏",
+        "parent": "display",
+        "parent_zh": "电子屏",
+        "payload": "WELCOME",
+        "attribute_kind": "text",
+        "instruction_zh": "将右下方的蓝色电子显示屏的文字改为WELCOME。",
+        "instruction_noref_zh": "将选中的显示屏的文字改为WELCOME。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the hanging direction sign marked 1",
+        "ref_zh": "标有1的悬挂导向牌",
+        "scope": "sign",
+        "scope_zh": "导向牌",
+        "parent": "level_one_sign",
+        "parent_zh": "一层牌",
+        "payload": "a black sign reading INFORMATION",
+        "instruction_zh": "将标有1的悬挂导向牌替换为一块写有INFORMATION的黑色标牌。",
+        "instruction_noref_zh": "将选中的导向牌替换为一块写有INFORMATION的黑色标牌。"
+      },
+      {
+        "object_id": 116,
+        "operation": "remove",
+        "ref": "the pink illuminated logo at the bottom center",
+        "ref_zh": "底部中间的粉色发光标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "pink_logo",
+        "parent_zh": "粉标",
+        "payload": "",
+        "instruction_zh": "移除底部中间的粉色发光标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the glass balcony railing at the upper right",
+        "ref_zh": "右上方的玻璃阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "mall",
+        "parent_zh": "商场",
+        "payload": "a small white NO LEANING notice",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方的玻璃阳台栏杆加上一张小白色NO LEANING告示。",
+        "instruction_noref_zh": "在选中的栏杆加上一张小白色NO LEANING告示。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5561778",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f49879c5ccf917bc1938902acf13bebc4e939469fd67e13708d75ea532047565",
+    "review_card_sha256": "663f3fde5ce333d27e7806a19759b5da4a36bb82bd5f510dec450179f01315fa",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "19人物背包、25左红门、16右石兽、14左石兽四父对象，柱身不另算。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "carving",
+        "occlusion"
+      ],
+      "scene_zh": "寺庙红门与石雕",
+      "evidence_zh": "19人物背包、25左红门、16右石兽、14左石兽四父对象，柱身不另算。",
+      "specific_protection_zh": "保留寺庙结构、人物身体、其他雕刻与石阶。"
+    },
+    "protected_content_zh": "保留寺庙结构、人物身体、其他雕刻与石阶。",
+    "targets": [
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the black backpack worn by the person beside the right dragon column",
+        "ref_zh": "右侧龙柱旁行人背着的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "backpack",
+        "parent_zh": "背包",
+        "payload": "",
+        "instruction_zh": "移除右侧龙柱旁行人背着的黑色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 25,
+        "operation": "attribute",
+        "ref": "the large red door at the far left",
+        "ref_zh": "最左侧的大红门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "temple",
+        "parent_zh": "寺庙",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧的大红门的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的门的颜色改为酒红色。"
+      },
+      {
+        "object_id": 16,
+        "operation": "replace",
+        "ref": "the right-hand guardian-beast statue beside the central red door",
+        "ref_zh": "中央红门旁右侧的守护兽石像",
+        "scope": "statue",
+        "scope_zh": "雕像",
+        "parent": "right_guardian",
+        "parent_zh": "右石兽",
+        "payload": "a bronze guardian-lion statue",
+        "instruction_zh": "将中央红门旁右侧的守护兽石像替换为一尊青铜守护狮像。",
+        "instruction_noref_zh": "将选中的雕像替换为一尊青铜守护狮像。"
+      },
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the left-hand guardian-beast statue beside the central red door",
+        "ref_zh": "中央红门旁左侧的守护兽石像",
+        "scope": "statue",
+        "scope_zh": "雕像",
+        "parent": "left_guardian",
+        "parent_zh": "左石兽",
+        "payload": "a red ribbon around its neck",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央红门旁左侧的守护兽石像加上一条环绕颈部的红丝带。",
+        "instruction_noref_zh": "在选中的雕像加上一条环绕颈部的红丝带。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5563395",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "13d07e85da5f15f4a165295d2b784d4d12801591f943de01b582b69a886a64a0",
+    "review_card_sha256": "bf49deab143cfaa6a2be571d01f712bbbefc2fcc3452f1d785abaa208df346b0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0烤炉顶把手与1桌面两父对象，不拆炉腿作为多目标。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "thin_structure"
+      ],
+      "scene_zh": "桌上的便携烤炉",
+      "evidence_zh": "0烤炉顶把手与1桌面两父对象，不拆炉腿作为多目标。",
+      "specific_protection_zh": "保留烤炉结构、支架、背景和桌面纹理。"
+    },
+    "protected_content_zh": "保留烤炉结构、支架、背景和桌面纹理。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the white handle on top of the grill",
+        "ref_zh": "烤炉顶部的白色把手",
+        "scope": "handle",
+        "scope_zh": "把手",
+        "parent": "grill",
+        "parent_zh": "烤炉",
+        "payload": "wood",
+        "attribute_kind": "material",
+        "instruction_zh": "将烤炉顶部的白色把手的材质改为木质。",
+        "instruction_noref_zh": "将选中的把手的材质改为木质。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the wooden table beneath the grill",
+        "ref_zh": "烤炉下方的木桌",
+        "scope": "table",
+        "scope_zh": "桌子",
+        "parent": "table",
+        "parent_zh": "木桌",
+        "payload": "a small white plate at its front-right corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在烤炉下方的木桌加上一个位于右前角的小白盘。",
+        "instruction_noref_zh": "在选中的桌子加上一个位于右前角的小白盘。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5584818",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1382ab2d685b8c80a73d0459eb1f8167815dd3451e264ab8a2acc4aaef882819",
+    "review_card_sha256": "5360ceb2e2a3e19da204eff61beaff18dd92ba7bf25efe7e4c675c3155d712d6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左蓝椅、22门前盆树、68人像霓虹牌、30门玻璃四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "glass",
+        "foliage"
+      ],
+      "scene_zh": "白色玻璃咖啡屋",
+      "evidence_zh": "0左蓝椅、22门前盆树、68人像霓虹牌、30门玻璃四父对象。",
+      "specific_protection_zh": "保留树、建筑结构、室内人物和其他家具。"
+    },
+    "protected_content_zh": "保留树、建筑结构、室内人物和其他家具。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the blue folding chair at the far left",
+        "ref_zh": "最左侧的蓝色折叠椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "blue_chair",
+        "parent_zh": "蓝椅",
+        "payload": "",
+        "instruction_zh": "移除最左侧的蓝色折叠椅。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the conical potted plant beside the central window",
+        "ref_zh": "中央窗户旁的锥形盆栽",
+        "scope": "plant",
+        "scope_zh": "盆栽",
+        "parent": "conical_plant",
+        "parent_zh": "锥盆栽",
+        "payload": "a red-flowering hibiscus plant",
+        "instruction_zh": "将中央窗户旁的锥形盆栽替换为一株开红花的木槿。",
+        "instruction_noref_zh": "将选中的盆栽替换为一株开红花的木槿。"
+      },
+      {
+        "object_id": 68,
+        "operation": "attribute",
+        "ref": "the yellow neon portrait in the central window",
+        "ref_zh": "中央窗户里的黄色霓虹人像",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "neon_sign",
+        "parent_zh": "霓虹牌",
+        "payload": "pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央窗户里的黄色霓虹人像的颜色改为粉色。",
+        "instruction_noref_zh": "将选中的标志的颜色改为粉色。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the narrow glass door left of the potted plant",
+        "ref_zh": "盆栽左侧的窄玻璃门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "cafe",
+        "parent_zh": "咖啡屋",
+        "payload": "a small white OPEN decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在盆栽左侧的窄玻璃门加上一张小白色OPEN贴花。",
+        "instruction_noref_zh": "在选中的门加上一张小白色OPEN贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5589230",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "11205a697a3d38f5a6ef49f0d2d19bd28d8b1202810f56b342a3a3bb9827e1f6",
+    "review_card_sha256": "6a1d544e171ea53093bc7f30190b7b033537eb7de79c3ba47c41d3dc4061c6cf",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0右广告屏、6左圆店招、1中央路灯、51屋顶栏杆四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "text",
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "城市影院与广告屏",
+      "evidence_zh": "0右广告屏、6左圆店招、1中央路灯、51屋顶栏杆四父对象。",
+      "specific_protection_zh": "保留建筑结构、道路和其他店招。"
+    },
+    "protected_content_zh": "保留建筑结构、道路和其他店招。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the large eBay billboard on the right",
+        "ref_zh": "右侧的大型eBay广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "billboard",
+        "parent_zh": "广告屏",
+        "payload": "a blue movie poster reading COMING SOON",
+        "instruction_zh": "将右侧的大型eBay广告牌替换为一张写有COMING SOON的蓝色电影海报。",
+        "instruction_noref_zh": "将选中的广告牌替换为一张写有COMING SOON的蓝色电影海报。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the round turquoise GINO sign at the left",
+        "ref_zh": "左侧青绿色圆形GINO招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "gino_sign",
+        "parent_zh": "GINO牌",
+        "payload": "",
+        "instruction_zh": "移除左侧青绿色圆形GINO招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the tallest streetlamp in the center",
+        "ref_zh": "中央最高的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "central_lamp",
+        "parent_zh": "中央灯",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央最高的路灯的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为黑色。"
+      },
+      {
+        "object_id": 51,
+        "operation": "add",
+        "ref": "the rooftop railing left of the clock",
+        "ref_zh": "时钟左侧的屋顶栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "a string of warm white lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在时钟左侧的屋顶栏杆加上一串暖白色灯串。",
+        "instruction_noref_zh": "在选中的栏杆加上一串暖白色灯串。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5600731",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "91d8e96cda6415732acd929cfe551ac1f578959cfcb3f157daf19076bbad7012",
+    "review_card_sha256": "860a144e96441bc6e82da6306379cb4ad3bf10857bdb9c137d42649c4aadf977",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "当前卡片目标均为同一连通寺庙的门、柱、窗、屋顶及栏杆，未找到第二独立物理父对象；不拆建筑计数。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "architecture"
+      ],
+      "scene_zh": "对称寺庙建筑",
+      "evidence_zh": "当前卡片目标均为同一连通寺庙的门、柱、窗、屋顶及栏杆，未找到第二独立物理父对象；不拆建筑计数。",
+      "specific_protection_zh": "保留源图待追加独立对象候选。"
+    },
+    "protected_content_zh": "保留源图待追加独立对象候选。",
+    "targets": [],
+    "rejected_targets": []
+  }
+]

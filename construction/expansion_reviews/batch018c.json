@@ -1,0 +1,595 @@
+[
+  {
+    "source_id": "sa_4915826",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5a51416f042d5ce70c26ad7df851dd5a68d93bc323f08e97760daeef3419de11",
+    "review_card_sha256": "96c5bfdf6d262234292a0f200fbab0f0c3d6fd7e39e6934c4df71a4172521a1c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0金属花瓶、1前水瓶、9白台布、3右绿篮为独立物品。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection"
+      ],
+      "scene_zh": "佛像前供台",
+      "evidence_zh": "0金属花瓶、1前水瓶、9白台布、3右绿篮为独立物品。",
+      "specific_protection_zh": "保留佛像、枝叶、其他供品。"
+    },
+    "protected_content_zh": "保留佛像、枝叶、其他供品。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the silver vase on the altar",
+        "ref_zh": "供台上的银色花瓶",
+        "scope": "vase",
+        "scope_zh": "花瓶",
+        "parent": "vase",
+        "parent_zh": "花瓶",
+        "payload": "a blue-and-white porcelain vase",
+        "instruction_zh": "将供台上的银色花瓶替换为一个青花瓷瓶。",
+        "instruction_noref_zh": "将选中的花瓶替换为一个青花瓷瓶。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the front water bottle with the blue cap",
+        "ref_zh": "最前方的蓝盖水瓶",
+        "scope": "bottle",
+        "scope_zh": "水瓶",
+        "parent": "water_bottle",
+        "parent_zh": "水瓶",
+        "payload": "",
+        "instruction_zh": "移除最前方的蓝盖水瓶。",
+        "instruction_noref_zh": "移除选中的水瓶。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the white altar cloth beneath the vase",
+        "ref_zh": "花瓶下的白色供台布",
+        "scope": "cloth",
+        "scope_zh": "台布",
+        "parent": "altar_cloth",
+        "parent_zh": "台布",
+        "payload": "saffron yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将花瓶下的白色供台布的颜色改为藏红花黄色。",
+        "instruction_noref_zh": "将选中的台布的颜色改为藏红花黄色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the green plastic basket at the right",
+        "ref_zh": "右侧的绿色塑料篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "green_basket",
+        "parent_zh": "绿篮",
+        "payload": "a small white inventory label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的绿色塑料篮加上一张小白色物品标签。",
+        "instruction_noref_zh": "在选中的篮子加上一张小白色物品标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4928748",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e7b54e23f66f2c04058859499a545e1ca43620d34475e69c4a15058e97aedd73",
+    "review_card_sha256": "eedc4e5fc527f81bcf6c74fbc967a6414ea1f71bc7c59c255b6d794a1ccac9d4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0前景白SUV、14后奶白篷车分属两车，避开同车轮窗拆分。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "越野车与背景车辆",
+      "evidence_zh": "0前景白SUV、14后奶白篷车分属两车，避开同车轮窗拆分。",
+      "specific_protection_zh": "保留道路、树木、车标和其余车辆。"
+    },
+    "protected_content_zh": "保留道路、树木、车标和其余车辆。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the cream-colored covered vehicle behind the SUV roof",
+        "ref_zh": "SUV车顶后方的奶白色篷车",
+        "scope": "vehicle",
+        "scope_zh": "车辆",
+        "parent": "rear_vehicle",
+        "parent_zh": "后车",
+        "payload": "",
+        "instruction_zh": "移除SUV车顶后方的奶白色篷车。",
+        "instruction_noref_zh": "移除选中的车辆。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the white Volkswagen SUV in the foreground",
+        "ref_zh": "前景白色大众SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "front_suv",
+        "parent_zh": "前车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景白色大众SUV的颜色改为银色。",
+        "instruction_noref_zh": "将选中的SUV的颜色改为银色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4933977",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3315534cffbb77838b82f47c9d3531ce05d068c9803c70e00a6374d2bc2ae6c8",
+    "review_card_sha256": "1d7e67105644406cf31d1ac4a7edb93e473a4ce0207e0a6f0fe4897c5fe59ced",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22背向深蓝外套、39前景左女子花衣、140右红台布、96左下红台布；两个不同摊桌。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "perspective"
+      ],
+      "scene_zh": "俯视艺术品市集",
+      "evidence_zh": "22背向深蓝外套、39前景左女子花衣、140右红台布、96左下红台布；两个不同摊桌。",
+      "specific_protection_zh": "保留人群身体、画作、商品和摊桌。"
+    },
+    "protected_content_zh": "保留人群身体、画作、商品和摊桌。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "attribute",
+        "ref": "the navy blazer on the man walking away in the center",
+        "ref_zh": "中央背向行走男子的藏蓝色西装外套",
+        "scope": "blazer",
+        "scope_zh": "外套",
+        "parent": "center_man",
+        "parent_zh": "中男",
+        "payload": "brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央背向行走男子的藏蓝色西装外套的颜色改为棕色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为棕色。"
+      },
+      {
+        "object_id": 39,
+        "operation": "replace",
+        "ref": "the floral blouse on the left of the two foreground women",
+        "ref_zh": "前景两名女子中左侧女子的花卉衬衫",
+        "scope": "blouse",
+        "scope_zh": "衬衫",
+        "parent": "left_front_woman",
+        "parent_zh": "前左女",
+        "payload": "a pale blue linen blouse",
+        "instruction_zh": "将前景两名女子中左侧女子的花卉衬衫替换为一件浅蓝色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件浅蓝色亚麻衬衫。"
+      },
+      {
+        "object_id": 140,
+        "operation": "add",
+        "ref": "the red tablecloth behind the striped-shirted person at the right",
+        "ref_zh": "右侧条纹上衣者身后的红色台布",
+        "scope": "tablecloth",
+        "scope_zh": "台布",
+        "parent": "right_table",
+        "parent_zh": "右桌",
+        "payload": "a small white SALE card at its front edge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧条纹上衣者身后的红色台布加上一张位于前缘的小白色SALE卡片。",
+        "instruction_noref_zh": "在选中的台布加上一张位于前缘的小白色SALE卡片。"
+      },
+      {
+        "object_id": 96,
+        "operation": "remove",
+        "ref": "the red tablecloth beside the framed pictures at the lower left",
+        "ref_zh": "左下方画框旁的红色台布",
+        "scope": "tablecloth",
+        "scope_zh": "台布",
+        "parent": "lower_left_table",
+        "parent_zh": "左下桌",
+        "payload": "",
+        "instruction_zh": "移除左下方画框旁的红色台布。",
+        "instruction_noref_zh": "移除选中的台布。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4945419",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e48c9c98ccb0e1c6b6e204057827fc5b29e1545aa9b98f1f60526916e15154e6",
+    "review_card_sha256": "200b166d1606a5dbbd3edb7887e78f1a87c77bfad93e6dd9cf5949cdf2714d7a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4中间、5右侧、6左侧三名舞者的帽子分属不同人物。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "repetition"
+      ],
+      "scene_zh": "儿童制服舞蹈",
+      "evidence_zh": "4中间、5右侧、6左侧三名舞者的帽子分属不同人物。",
+      "specific_protection_zh": "保留儿童身体、制服、背景合唱队及旗帜。"
+    },
+    "protected_content_zh": "保留儿童身体、制服、背景合唱队及旗帜。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the cap on the middle foreground dancer",
+        "ref_zh": "前景中间舞者的帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "middle_dancer",
+        "parent_zh": "中舞者",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景中间舞者的帽子的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为深棕色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the cap on the right foreground dancer",
+        "ref_zh": "前景右侧舞者的帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "right_dancer",
+        "parent_zh": "右舞者",
+        "payload": "a black beret",
+        "instruction_zh": "将前景右侧舞者的帽子替换为一顶黑色贝雷帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶黑色贝雷帽。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the cap on the left foreground dancer",
+        "ref_zh": "前景左侧舞者的帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "left_dancer",
+        "parent_zh": "左舞者",
+        "payload": "a small gold star badge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景左侧舞者的帽子加上一枚小金色星形徽章。",
+        "instruction_noref_zh": "在选中的帽子加上一枚小金色星形徽章。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_495948",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bcfadfbafa0216dfa4abe39a878e144b2969ae4f700418e645a69470db87a074",
+    "review_card_sha256": "cb1d825e48935c0729bcc3d4635a9f458ce0b1d34128022e813d6a82a6a5f698",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10左行走男子白衫、20近男孩蓝帽、44黑肩包分属男、孩、独立包。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "教堂前游客",
+      "evidence_zh": "10左行走男子白衫、20近男孩蓝帽、44黑肩包分属男、孩、独立包。",
+      "specific_protection_zh": "保留人物身体、教堂及其余游客。"
+    },
+    "protected_content_zh": "保留人物身体、教堂及其余游客。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the white shirt on the man walking at the left",
+        "ref_zh": "左侧行走男子的白衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "a pale blue linen shirt",
+        "instruction_zh": "将左侧行走男子的白衬衫替换为一件浅蓝色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件浅蓝色亚麻衬衫。"
+      },
+      {
+        "object_id": 20,
+        "operation": "attribute",
+        "ref": "the light blue cap on the nearest boy",
+        "ref_zh": "最近处男孩的浅蓝色帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "nearest_boy",
+        "parent_zh": "近男孩",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近处男孩的浅蓝色帽子的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 44,
+        "operation": "remove",
+        "ref": "the black shoulder bag on the woman walking at the left",
+        "ref_zh": "左侧行走女子的黑色肩包",
+        "scope": "bag",
+        "scope_zh": "肩包",
+        "parent": "shoulder_bag",
+        "parent_zh": "肩包",
+        "payload": "",
+        "instruction_zh": "移除左侧行走女子的黑色肩包。",
+        "instruction_noref_zh": "移除选中的肩包。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4966808",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "febe8b0c119399b8e8d90c87f3cbd810cc18c2db195b33b127b2a2b366153c59",
+    "review_card_sha256": "0fe0e5856825e67c08e7d90db59d39873bc2cef77c8f86375667b9087f36ef58",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0前景整朵花及35左上背景门；不以同花多花瓣充作多父对象。背景门虚化但位置独立明确。",
+    "difficulty": {
+      "mechanisms": [
+        "shallow_depth_of_field",
+        "foliage"
+      ],
+      "scene_zh": "金盏花近景与虚化建筑",
+      "evidence_zh": "0前景整朵花及35左上背景门；不以同花多花瓣充作多父对象。背景门虚化但位置独立明确。",
+      "specific_protection_zh": "保留花瓣形状、枝叶和背景虚化程度。"
+    },
+    "protected_content_zh": "保留花瓣形状、枝叶和背景虚化程度。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the large orange flower in the foreground",
+        "ref_zh": "前景的大橙色花朵",
+        "scope": "flower",
+        "scope_zh": "花朵",
+        "parent": "flower",
+        "parent_zh": "花",
+        "payload": "a small bee at its center",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的大橙色花朵加上一只位于花心的小蜜蜂。",
+        "instruction_noref_zh": "在选中的花朵加上一只位于花心的小蜜蜂。"
+      },
+      {
+        "object_id": 35,
+        "operation": "attribute",
+        "ref": "the dark door in the upper-left background",
+        "ref_zh": "左上方背景中的深色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "building",
+        "parent_zh": "建筑",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左上方背景中的深色门的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的门的颜色改为深绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4976159",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "65e46e904337913ac1adcabb9f159f1578929a8821865f46cd515df352cbee91",
+    "review_card_sha256": "5f7bd1be12309139248f2079ae1ca4a502a5e624bbc37f99159cd2460b206f2d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2右白皮卡、4左红皮卡、28ENGEN字牌、31近白厢车后门四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "text",
+        "occlusion"
+      ],
+      "scene_zh": "加油站与多辆车",
+      "evidence_zh": "2右白皮卡、4左红皮卡、28ENGEN字牌、31近白厢车后门四父对象。",
+      "specific_protection_zh": "保留加油站建筑、路面、车灯和其他车辆。"
+    },
+    "protected_content_zh": "保留加油站建筑、路面、车灯和其他车辆。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the white pickup at the right of the gas station",
+        "ref_zh": "加油站右侧的白色皮卡",
+        "scope": "pickup",
+        "scope_zh": "皮卡",
+        "parent": "right_pickup",
+        "parent_zh": "右皮卡",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将加油站右侧的白色皮卡的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的皮卡的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the red pickup under the left side of the canopy",
+        "ref_zh": "雨棚左侧下方的红色皮卡",
+        "scope": "pickup",
+        "scope_zh": "皮卡",
+        "parent": "red_pickup",
+        "parent_zh": "红皮卡",
+        "payload": "",
+        "instruction_zh": "移除雨棚左侧下方的红色皮卡。",
+        "instruction_noref_zh": "移除选中的皮卡。"
+      },
+      {
+        "object_id": 28,
+        "operation": "replace",
+        "ref": "the ENGEN sign on the canopy",
+        "ref_zh": "雨棚上的ENGEN招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "engen_sign",
+        "parent_zh": "招牌",
+        "payload": "a sign reading FUEL STOP in white letters",
+        "instruction_zh": "将雨棚上的ENGEN招牌替换为一块写有白色FUEL STOP字样的招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有白色FUEL STOP字样的招牌。"
+      },
+      {
+        "object_id": 31,
+        "operation": "add",
+        "ref": "the right rear door of the nearest white van",
+        "ref_zh": "最近处白色厢车的右后门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "near_van",
+        "parent_zh": "近厢车",
+        "payload": "a small blue fleet-number 12 decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近处白色厢车的右后门加上一张小蓝色车队编号12贴纸。",
+        "instruction_noref_zh": "在选中的车门加上一张小蓝色车队编号12贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_49886",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "23660286749655748d5e08a3012502eed61f153b029542e470ad23526986e7d2",
+    "review_card_sha256": "1c081df4c072e3890ace8f1c12c344cbc3ae3d9f6282abe9042876b04f32a55c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3前广告牌、10左绿伞、14左灯、44塔楼阳台四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "thin_structure"
+      ],
+      "scene_zh": "木塔楼旅馆",
+      "evidence_zh": "3前广告牌、10左绿伞、14左灯、44塔楼阳台四父对象。",
+      "specific_protection_zh": "保留建筑结构、其他招牌、树木及道路。"
+    },
+    "protected_content_zh": "保留建筑结构、其他招牌、树木及道路。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the advertising placard in the foreground",
+        "ref_zh": "前景的广告立牌",
+        "scope": "placard",
+        "scope_zh": "立牌",
+        "parent": "front_ad",
+        "parent_zh": "广告牌",
+        "payload": "",
+        "instruction_zh": "移除前景的广告立牌。",
+        "instruction_noref_zh": "移除选中的立牌。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the green umbrella beneath the left balcony",
+        "ref_zh": "左侧阳台下的绿色遮阳伞",
+        "scope": "umbrella",
+        "scope_zh": "遮阳伞",
+        "parent": "green_umbrella",
+        "parent_zh": "绿伞",
+        "payload": "a cream patio umbrella",
+        "instruction_zh": "将左侧阳台下的绿色遮阳伞替换为一把奶油色庭院遮阳伞。",
+        "instruction_noref_zh": "将选中的遮阳伞替换为一把奶油色庭院遮阳伞。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the streetlamp to the left of the tower",
+        "ref_zh": "塔楼左侧的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将塔楼左侧的路灯的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为古铜色。"
+      },
+      {
+        "object_id": 44,
+        "operation": "add",
+        "ref": "the top balcony railing of the wooden tower",
+        "ref_zh": "木塔楼顶层的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "tower",
+        "parent_zh": "塔楼",
+        "payload": "a small planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在木塔楼顶层的阳台栏杆加上一个种有红花的小花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的小花箱。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

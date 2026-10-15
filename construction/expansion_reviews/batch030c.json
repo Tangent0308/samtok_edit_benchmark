@@ -1,0 +1,572 @@
+[
+  {
+    "source_id": "sa_9066871",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d0554ddbf58fbfd75ccc3435a8fe1f0c54770c1ddc50371bc21db00552d358f4",
+    "review_card_sha256": "fd6a50b260b3632512019d45814be8bfa7e4184e54f19c02136d241320c8ae5a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "左下轿车、右侧路灯、左下外套和右下标牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "city"
+      ],
+      "scene_zh": "坡道街景",
+      "evidence_zh": "左下轿车、右侧路灯、左下外套和右下标牌是四个不同对象。",
+      "specific_protection_zh": "保留车辆、行人服装和街道设施。"
+    },
+    "protected_content_zh": "保留车辆、行人服装和街道设施。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the sedan at the lower left",
+        "ref_zh": "左下方的轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "lower_left_sedan",
+        "parent_zh": "左下轿车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下方的轿车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为红色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the streetlight at the right",
+        "ref_zh": "右侧的路灯",
+        "scope": "streetlight",
+        "scope_zh": "路灯",
+        "parent": "right_streetlight",
+        "parent_zh": "右侧路灯",
+        "payload": "black",
+        "instruction_zh": "将右侧的路灯替换为黑色。",
+        "instruction_noref_zh": "将选中的路灯替换为黑色。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the coat at the lower left",
+        "ref_zh": "左下方的外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "lower_left_coat",
+        "parent_zh": "左下外套",
+        "payload": "",
+        "instruction_zh": "移除左下方的外套。",
+        "instruction_noref_zh": "移除选中的外套。"
+      },
+      {
+        "object_id": 33,
+        "operation": "add",
+        "ref": "the sign at the lower right",
+        "ref_zh": "右下方的标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "lower_right_sign",
+        "parent_zh": "右下标牌",
+        "payload": "a small arrow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方的标牌加上一个小箭头。",
+        "instruction_noref_zh": "在选中的标牌加上一个小箭头。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9068084",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e92b297e433b2dd084599bcc5e4c95ad294ea35081e8e9796773437ac417b1eb",
+    "review_card_sha256": "fea4568b6125d57a24a217deb21d06312939e7c72be59bb9e4877e7a36f63e13",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "中央旗帜、右侧背包、右侧横幅和右上窗户是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "parade",
+        "crowd"
+      ],
+      "scene_zh": "街头游行",
+      "evidence_zh": "中央旗帜、右侧背包、右侧横幅和右上窗户是四个不同对象。",
+      "specific_protection_zh": "保留游行旗帜、人物随身物和建筑。"
+    },
+    "protected_content_zh": "保留游行旗帜、人物随身物和建筑。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the flag near the center",
+        "ref_zh": "中间附近的旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "center_flag",
+        "parent_zh": "中央旗帜",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的旗帜的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的旗帜的颜色改为蓝色。"
+      },
+      {
+        "object_id": 29,
+        "operation": "replace",
+        "ref": "the backpack at the right",
+        "ref_zh": "右侧的背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "right_backpack",
+        "parent_zh": "右侧背包",
+        "payload": "a red backpack",
+        "instruction_zh": "将右侧的背包替换为一个红色背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个红色背包。"
+      },
+      {
+        "object_id": 33,
+        "operation": "remove",
+        "ref": "the banner at the right",
+        "ref_zh": "右侧的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "right_banner",
+        "parent_zh": "右侧横幅",
+        "payload": "",
+        "instruction_zh": "移除右侧的横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 52,
+        "operation": "add",
+        "ref": "the window at the upper right",
+        "ref_zh": "右上方的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "upper_right_window",
+        "parent_zh": "右上窗户",
+        "payload": "a flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方的窗户加上一个花箱。",
+        "instruction_noref_zh": "在选中的窗户加上一个花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9068591",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "405d4c020c4476b280792afd5af1ea687159e0207051e00f531faf594c6d7ba4",
+    "review_card_sha256": "ebbc59353c6d973489cf73fff32e639a14bba394bf126d54a650ad4c4714bd11",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "左上标牌、左侧围栏、上方灯具和中央垃圾桶是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "winter"
+      ],
+      "scene_zh": "冬季街道",
+      "evidence_zh": "左上标牌、左侧围栏、上方灯具和中央垃圾桶是四个不同对象。",
+      "specific_protection_zh": "保留街道设施和冬季环境。"
+    },
+    "protected_content_zh": "保留街道设施和冬季环境。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the sign at the upper left",
+        "ref_zh": "左上方的标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "upper_left_sign",
+        "parent_zh": "左上标牌",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左上方的标牌的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的标牌的颜色改为蓝色。"
+      },
+      {
+        "object_id": 41,
+        "operation": "replace",
+        "ref": "the fence at the left",
+        "ref_zh": "左侧的围栏",
+        "scope": "fence",
+        "scope_zh": "围栏",
+        "parent": "left_fence",
+        "parent_zh": "左侧围栏",
+        "payload": "a black fence",
+        "instruction_zh": "将左侧的围栏替换为一段黑色围栏。",
+        "instruction_noref_zh": "将选中的围栏替换为一段黑色围栏。"
+      },
+      {
+        "object_id": 78,
+        "operation": "remove",
+        "ref": "the lamp near the top",
+        "ref_zh": "顶部附近的灯具",
+        "scope": "lamp",
+        "scope_zh": "灯具",
+        "parent": "top_lamp",
+        "parent_zh": "顶部灯具",
+        "payload": "",
+        "instruction_zh": "移除顶部附近的灯具。",
+        "instruction_noref_zh": "移除选中的灯具。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the trash bin near the center",
+        "ref_zh": "中间附近的垃圾桶",
+        "scope": "trash bin",
+        "scope_zh": "垃圾桶",
+        "parent": "center_bin",
+        "parent_zh": "中央垃圾桶",
+        "payload": "a small label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的垃圾桶加上一个小标签。",
+        "instruction_noref_zh": "在选中的垃圾桶加上一个小标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9071097",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5011f7daf766f920855b477248331e200ea4aac1c0abb8d3b990b80a40a4bfd9",
+    "review_card_sha256": "b542c1a6bcf412318f2aae59dbcdf64428b7d80d6959303951ddcc6806e3d502",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "中部表演者、左侧上衣、中部标志和右侧盆栽是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "performance",
+        "crowd"
+      ],
+      "scene_zh": "街头表演",
+      "evidence_zh": "中部表演者、左侧上衣、中部标志和右侧盆栽是四个不同对象。",
+      "specific_protection_zh": "保留表演者、标志和街头植物。"
+    },
+    "protected_content_zh": "保留表演者、标志和街头植物。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the performer near the center",
+        "ref_zh": "中间附近的表演者",
+        "scope": "person",
+        "scope_zh": "表演者",
+        "parent": "center_performer",
+        "parent_zh": "中央表演者",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的表演者的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的表演者的颜色改为蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the shirt at the left",
+        "ref_zh": "左侧的上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "left_shirt",
+        "parent_zh": "左侧上衣",
+        "payload": "a red shirt",
+        "instruction_zh": "将左侧的上衣替换为一件红色上衣。",
+        "instruction_noref_zh": "将选中的上衣替换为一件红色上衣。"
+      },
+      {
+        "object_id": 30,
+        "operation": "remove",
+        "ref": "the sign near the center",
+        "ref_zh": "中间附近的标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "center_sign",
+        "parent_zh": "中央标志",
+        "payload": "",
+        "instruction_zh": "移除中间附近的标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 112,
+        "operation": "add",
+        "ref": "the potted plant at the right",
+        "ref_zh": "右侧的盆栽",
+        "scope": "potted plant",
+        "scope_zh": "盆栽",
+        "parent": "right_plant",
+        "parent_zh": "右侧盆栽",
+        "payload": "a small flower",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的盆栽加上一朵小花。",
+        "instruction_noref_zh": "在选中的盆栽加上一朵小花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9074952",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "33afe3998d105f5f87ec4e19aac130f434c61c07eb0597323d5ec42a431480da",
+    "review_card_sha256": "5966f03e8146b0193afd82dbd0faaf87b9f2afcbcb328a64711d77f2671ce6f3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选区域主要是同一栋建筑的窗户、门和标牌，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "street"
+      ],
+      "scene_zh": "历史建筑立面",
+      "evidence_zh": "候选区域主要是同一栋建筑的窗户、门和标牌，缺少独立父对象。",
+      "specific_protection_zh": "不把同一建筑立面细节重复计为独立目标。"
+    },
+    "protected_content_zh": "不把同一建筑立面细节重复计为独立目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 3,
+        "reason_zh": "同一建筑窗户"
+      },
+      {
+        "object_id": 22,
+        "reason_zh": "同一建筑入口"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_9086959",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bdab5776a5c700b93ad7096ef340014c89156502c845ae233422d81fcbdc09df",
+    "review_card_sha256": "ada1a8f78f4cec41f3a9f99b07024c6c0c11b65a2cc85c1cb4e3cfa6e946dc45",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "上方横幅、右侧上衣、中央龙形装饰和右下鞋子是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "parade",
+        "crowd"
+      ],
+      "scene_zh": "节庆游行",
+      "evidence_zh": "上方横幅、右侧上衣、中央龙形装饰和右下鞋子是四个不同对象。",
+      "specific_protection_zh": "保留游行服装、装饰和标识。"
+    },
+    "protected_content_zh": "保留游行服装、装饰和标识。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the banner near the top",
+        "ref_zh": "顶部附近的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "top_banner",
+        "parent_zh": "顶部横幅",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将顶部附近的横幅的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的横幅的颜色改为蓝色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the shirt at the right",
+        "ref_zh": "右侧的上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "right_shirt",
+        "parent_zh": "右侧上衣",
+        "payload": "a yellow shirt",
+        "instruction_zh": "将右侧的上衣替换为一件黄色上衣。",
+        "instruction_noref_zh": "将选中的上衣替换为一件黄色上衣。"
+      },
+      {
+        "object_id": 48,
+        "operation": "remove",
+        "ref": "the dragon decoration near the center",
+        "ref_zh": "中间附近的龙形装饰",
+        "scope": "dragon decoration",
+        "scope_zh": "龙形装饰",
+        "parent": "center_dragon",
+        "parent_zh": "中央龙形装饰",
+        "payload": "",
+        "instruction_zh": "移除中间附近的龙形装饰。",
+        "instruction_noref_zh": "移除选中的龙形装饰。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the shoe at the lower right",
+        "ref_zh": "右下方的鞋子",
+        "scope": "shoe",
+        "scope_zh": "鞋子",
+        "parent": "lower_right_shoe",
+        "parent_zh": "右下鞋子",
+        "payload": "a white stripe",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方的鞋子加上一条白色条纹。",
+        "instruction_noref_zh": "在选中的鞋子加上一条白色条纹。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9089846",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "92108043ce763d9c5d09f353f017f8210d40432df02e36ad15a2ea5725a21f51",
+    "review_card_sha256": "5c756f3e3cb4406c6ceccb01ac4cac99fe42d779975e32573d4c42279be4ed4b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "右侧横幅、左下裙子和中下裙子属于三个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "storefront"
+      ],
+      "scene_zh": "商业街建筑",
+      "evidence_zh": "右侧横幅、左下裙子和中下裙子属于三个不同对象。",
+      "specific_protection_zh": "保留店面标识和不同人物服装。"
+    },
+    "protected_content_zh": "保留店面标识和不同人物服装。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the banner at the right",
+        "ref_zh": "右侧的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "right_banner",
+        "parent_zh": "右侧横幅",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的横幅的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的横幅的颜色改为蓝色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the dress at the lower left",
+        "ref_zh": "左下方的连衣裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "lower_left_dress",
+        "parent_zh": "左下连衣裙",
+        "payload": "a blue dress",
+        "instruction_zh": "将左下方的连衣裙替换为一件蓝色连衣裙。",
+        "instruction_noref_zh": "将选中的连衣裙替换为一件蓝色连衣裙。"
+      },
+      {
+        "object_id": 13,
+        "operation": "remove",
+        "ref": "the skirt near the lower center",
+        "ref_zh": "下方中部的裙子",
+        "scope": "skirt",
+        "scope_zh": "裙子",
+        "parent": "lower_center_skirt",
+        "parent_zh": "下方中部裙子",
+        "payload": "",
+        "instruction_zh": "移除下方中部的裙子。",
+        "instruction_noref_zh": "移除选中的裙子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9090752",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0a431c1a5776d746440ed7b7fb8a09e4ace6c023389d61c6f5b2775d5610a080",
+    "review_card_sha256": "833422362f19f0c38bf6576758653e3aecebafce4b5c47a51a7dd7546a487182",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选区域主要是同一位红毯人物的衣物与鞋子，其他区域属于背景人群，父对象不够独立。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "people",
+        "portrait"
+      ],
+      "scene_zh": "红毯人物",
+      "evidence_zh": "候选区域主要是同一位红毯人物的衣物与鞋子，其他区域属于背景人群，父对象不够独立。",
+      "specific_protection_zh": "不把同一人物服装部件重复计为独立目标。"
+    },
+    "protected_content_zh": "不把同一人物服装部件重复计为独立目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 67,
+        "reason_zh": "同一人物连衣裙"
+      },
+      {
+        "object_id": 2,
+        "reason_zh": "同一人物鞋子"
+      }
+    ]
+  }
+]

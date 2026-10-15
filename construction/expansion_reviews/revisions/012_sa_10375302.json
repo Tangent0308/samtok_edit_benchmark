@@ -1,0 +1,184 @@
+{
+  "source_id": "sa_10375302",
+  "reason_zh": "更靠前还有白色冷藏箱和其他容器，以紧邻折叠凳消除最近白桶的歧义。",
+  "previous_record": {
+    "source_id": "sa_10375302",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6a1263b63b9788135fa14b4a6c57a7231817280edcb653e1c707a342613abbc4",
+    "review_card_sha256": "5bf53d533d4ca0e13812d96bc895d7265c75ab243b11d16c0661ad073bd17086",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "钓鱼者衬衫8被鱼竿和腰包遮挡，mask保留分离衣片；23属于右侧另一行人；最右黑袋17和最近白桶40是两个独立物件。避免将同一人的帽子与衬衫重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "桥上钓鱼者、行人和渔具",
+      "evidence_zh": "钓鱼者衬衫8被鱼竿和腰包遮挡，mask保留分离衣片；23属于右侧另一行人；最右黑袋17和最近白桶40是两个独立物件。避免将同一人的帽子与衬衫重复计数。",
+      "specific_protection_zh": "保留鱼竿、腰包、人物身体、相邻手提袋、其他桶及桥栏。"
+    },
+    "protected_content_zh": "保留鱼竿、腰包、人物身体、相邻手提袋、其他桶及桥栏。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the nearest fisherman’s pale shirt",
+        "ref_zh": "最近钓鱼者的浅色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "fisherman",
+        "parent_zh": "最近钓鱼者",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近钓鱼者的浅色衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the rightmost man’s striped T-shirt",
+        "ref_zh": "最右侧男子的条纹T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "striped_man",
+        "parent_zh": "条纹上衣男子",
+        "payload": "a plain orange polo shirt",
+        "instruction_zh": "将最右侧男子的条纹T恤替换为一件纯橙色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯橙色Polo衫。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the rightmost black shopping bag",
+        "ref_zh": "最右侧的黑色购物袋",
+        "scope": "shopping bag",
+        "scope_zh": "购物袋",
+        "parent": "right_bag",
+        "parent_zh": "最右侧购物袋",
+        "payload": "",
+        "instruction_zh": "移除最右侧的黑色购物袋。",
+        "instruction_noref_zh": "移除选中的购物袋。"
+      },
+      {
+        "object_id": 40,
+        "operation": "add",
+        "ref": "the nearest white bucket",
+        "ref_zh": "最近的白桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "white_bucket",
+        "parent_zh": "最近白桶",
+        "payload": "a small “BAIT” label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的白桶加上一张写有“BAIT”的小标签。",
+        "instruction_noref_zh": "在选中的桶加上一张写有“BAIT”的小标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10375302",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6a1263b63b9788135fa14b4a6c57a7231817280edcb653e1c707a342613abbc4",
+    "review_card_sha256": "5bf53d533d4ca0e13812d96bc895d7265c75ab243b11d16c0661ad073bd17086",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "钓鱼者衬衫8被鱼竿和腰包遮挡，mask保留分离衣片；23属于右侧另一行人；最右黑袋17和最近白桶40是两个独立物件。避免将同一人的帽子与衬衫重复计数。 全图定位复核：更靠前还有白色冷藏箱和其他容器，以紧邻折叠凳消除最近白桶的歧义。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "桥上钓鱼者、行人和渔具",
+      "evidence_zh": "钓鱼者衬衫8被鱼竿和腰包遮挡，mask保留分离衣片；23属于右侧另一行人；最右黑袋17和最近白桶40是两个独立物件。避免将同一人的帽子与衬衫重复计数。 全图定位复核：更靠前还有白色冷藏箱和其他容器，以紧邻折叠凳消除最近白桶的歧义。",
+      "specific_protection_zh": "保留鱼竿、腰包、人物身体、相邻手提袋、其他桶及桥栏。"
+    },
+    "protected_content_zh": "保留鱼竿、腰包、人物身体、相邻手提袋、其他桶及桥栏。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the nearest fisherman’s pale shirt",
+        "ref_zh": "最近钓鱼者的浅色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "fisherman",
+        "parent_zh": "最近钓鱼者",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近钓鱼者的浅色衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the rightmost man’s striped T-shirt",
+        "ref_zh": "最右侧男子的条纹T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "striped_man",
+        "parent_zh": "条纹上衣男子",
+        "payload": "a plain orange polo shirt",
+        "instruction_zh": "将最右侧男子的条纹T恤替换为一件纯橙色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯橙色Polo衫。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the rightmost black shopping bag",
+        "ref_zh": "最右侧的黑色购物袋",
+        "scope": "shopping bag",
+        "scope_zh": "购物袋",
+        "parent": "right_bag",
+        "parent_zh": "最右侧购物袋",
+        "payload": "",
+        "instruction_zh": "移除最右侧的黑色购物袋。",
+        "instruction_noref_zh": "移除选中的购物袋。"
+      },
+      {
+        "object_id": 40,
+        "operation": "add",
+        "ref": "the white bucket beside the folding stool",
+        "ref_zh": "折叠凳旁的白桶",
+        "scope": "bucket",
+        "scope_zh": "桶",
+        "parent": "white_bucket",
+        "parent_zh": "折叠凳旁白桶",
+        "payload": "a small “BAIT” label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在折叠凳旁的白桶加上一张写有“BAIT”的小标签。",
+        "instruction_noref_zh": "在选中的桶加上一张写有“BAIT”的小标签。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_10375302/spatial_followup.jpg",
+        "sha256": "f870bdc1f2662064789939d4c8080cbffd6ef03c1cff4b47072454e9308fa7ec"
+      }
+    ]
+  }
+}

@@ -1,0 +1,690 @@
+[
+  {
+    "source_id": "sa_3438403",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "96a2f5d9c9042ede064293cf4285bada5b9b27020338ba324dce1a381db160f9",
+    "review_card_sha256": "3449787cf390180825ec9b04cfb5db1cb0e53ea0e14eaf4744ef90b9cab2f378",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为左中黑背包，3为右前牛仔裤，30为Resto霓虹，72为右上明亮窗。包、人、独立字牌、楼体不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "motion",
+        "occlusion"
+      ],
+      "scene_zh": "夜市街道和三轮车",
+      "evidence_zh": "5为左中黑背包，3为右前牛仔裤，30为Resto霓虹，72为右上明亮窗。包、人、独立字牌、楼体不同父对象。",
+      "specific_protection_zh": "保留人物、车、其他招牌和暖色夜景照明。"
+    },
+    "protected_content_zh": "保留人物、车、其他招牌和暖色夜景照明。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the black backpack on the visitor walking away",
+        "ref_zh": "背向镜头行走游客的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "black_backpack",
+        "parent_zh": "黑背包",
+        "payload": "a tan roll-top backpack",
+        "instruction_zh": "将背向镜头行走游客的黑色背包替换为一个棕褐色卷口背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个棕褐色卷口背包。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the jeans at the right edge",
+        "ref_zh": "右侧边缘的牛仔裤",
+        "scope": "jeans",
+        "scope_zh": "牛仔裤",
+        "parent": "right_person",
+        "parent_zh": "右人物",
+        "payload": "dark navy",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧边缘的牛仔裤的颜色改为深藏蓝色。",
+        "instruction_noref_zh": "将选中的牛仔裤的颜色改为深藏蓝色。"
+      },
+      {
+        "object_id": 30,
+        "operation": "remove",
+        "ref": "the red Resto neon sign",
+        "ref_zh": "红色Resto霓虹灯牌",
+        "scope": "sign",
+        "scope_zh": "灯牌",
+        "parent": "resto_sign",
+        "parent_zh": "Resto牌",
+        "payload": "",
+        "instruction_zh": "移除红色Resto霓虹灯牌。",
+        "instruction_noref_zh": "移除选中的灯牌。"
+      },
+      {
+        "object_id": 72,
+        "operation": "add",
+        "ref": "the upper window directly below the round wall vent",
+        "ref_zh": "圆形墙面通风口正下方的上层窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "right_building",
+        "parent_zh": "右楼",
+        "payload": "a small gold star window sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在圆形墙面通风口正下方的上层窗户加上一张小金星窗贴。",
+        "instruction_noref_zh": "在选中的窗户加上一张小金星窗贴。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3441948",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "be50da48566322b056aff2bf541607b56a4de82a1c03b02328b083f6761718da",
+    "review_card_sha256": "ff587f0dec7b6905794563b3d90adbef8393ed8ef1dc0ad429bf35849d6af92c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15为中间白肩袋，6为最左青T恤，53为左中黄提袋，29为中间人物右边蓝袋。三个独立包和一人，身体衣物不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "motion_blur",
+        "occlusion",
+        "crowd"
+      ],
+      "scene_zh": "繁忙斑马线",
+      "evidence_zh": "15为中间白肩袋，6为最左青T恤，53为左中黄提袋，29为中间人物右边蓝袋。三个独立包和一人，身体衣物不重复计数。",
+      "specific_protection_zh": "保留人群、步态、道路、招牌及其他行李。"
+    },
+    "protected_content_zh": "保留人群、步态、道路、招牌及其他行李。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the cream shoulder bag on the central woman",
+        "ref_zh": "中央女子的米色单肩包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "cream_bag",
+        "parent_zh": "米色包",
+        "payload": "a brown leather tote",
+        "instruction_zh": "将中央女子的米色单肩包替换为一个棕色皮革托特包。",
+        "instruction_noref_zh": "将选中的包替换为一个棕色皮革托特包。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the teal T-shirt at the far left",
+        "ref_zh": "最左侧的青色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "left_person",
+        "parent_zh": "左人物",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧的青色T恤的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为酒红色。"
+      },
+      {
+        "object_id": 53,
+        "operation": "remove",
+        "ref": "the yellow shopping bag left of the central child",
+        "ref_zh": "中央孩子左侧的黄色购物袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "yellow_bag",
+        "parent_zh": "黄袋",
+        "payload": "",
+        "instruction_zh": "移除中央孩子左侧的黄色购物袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 29,
+        "operation": "add",
+        "ref": "the turquoise bag beside the central woman",
+        "ref_zh": "中央女子身旁的青蓝色包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "turquoise_bag",
+        "parent_zh": "青蓝包",
+        "payload": "a small white rabbit keychain",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央女子身旁的青蓝色包加上一个小白兔钥匙扣。",
+        "instruction_noref_zh": "在选中的包加上一个小白兔钥匙扣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3450828",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "14970a7654000fa28081f4359982645f11a7578cb8f3d4c079b6499f9c1599f2",
+    "review_card_sha256": "6327176a4df291fae1d48e93309389059ea2864dbdbd48656059650dc0b659fd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为左边购物车，32为左斜放番茄箱，21为纸袋，4为顶端ЛЁН-ГРЕЧКА条牌。四个独立物件；只改具体纸袋不整排货物。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "text",
+        "occlusion"
+      ],
+      "scene_zh": "超市木制销售车",
+      "evidence_zh": "17为左边购物车，32为左斜放番茄箱，21为纸袋，4为顶端ЛЁН-ГРЕЧКА条牌。四个独立物件；只改具体纸袋不整排货物。",
+      "specific_protection_zh": "保留商品、其他纸袋、推车木结构、地砖及照明。"
+    },
+    "protected_content_zh": "保留商品、其他纸袋、推车木结构、地砖及照明。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the shopping cart on the left",
+        "ref_zh": "左侧的购物车",
+        "scope": "cart",
+        "scope_zh": "购物车",
+        "parent": "shopping_cart",
+        "parent_zh": "购物车",
+        "payload": "",
+        "instruction_zh": "移除左侧的购物车。",
+        "instruction_noref_zh": "移除选中的购物车。"
+      },
+      {
+        "object_id": 32,
+        "operation": "replace",
+        "ref": "the tilted tomato box to the left of the wooden stand",
+        "ref_zh": "木货架左侧倾斜的番茄箱",
+        "scope": "box",
+        "scope_zh": "箱子",
+        "parent": "tomato_box",
+        "parent_zh": "番茄箱",
+        "payload": "a wooden produce crate",
+        "instruction_zh": "将木货架左侧倾斜的番茄箱替换为一个木质果蔬箱。",
+        "instruction_noref_zh": "将选中的箱子替换为一个木质果蔬箱。"
+      },
+      {
+        "object_id": 21,
+        "operation": "attribute",
+        "ref": "the sixth paper bag from the left in the front row",
+        "ref_zh": "前排从左数第六个纸袋",
+        "scope": "bag",
+        "scope_zh": "纸袋",
+        "parent": "paper_bag",
+        "parent_zh": "纸袋",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将前排从左数第六个纸袋的颜色改为森林绿。",
+        "instruction_noref_zh": "将选中的纸袋的颜色改为森林绿。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the narrow ЛЁН-ГРЕЧКА sign at the top",
+        "ref_zh": "顶部写有ЛЁН-ГРЕЧКА的窄标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "grain_sign",
+        "parent_zh": "谷物牌",
+        "payload": "a thin gold border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在顶部写有ЛЁН-ГРЕЧКА的窄标牌加上一圈细金色边框。",
+        "instruction_noref_zh": "在选中的标牌加上一圈细金色边框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3460138",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a68eda362e629d21e3065ee2a3e718c3139db4d92d36baff3102827ebce5a0a8",
+    "review_card_sha256": "769c794ab0fabbb43daa81499651a418988800abac1145ebdac28be5ef7f7e03",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11为右近红背包，34为中间紫外套，19为紫衣人白塑料袋，14为左近白帽。两个不同人物和两个独立包。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "branches",
+        "small_targets"
+      ],
+      "scene_zh": "樱花树下的步道",
+      "evidence_zh": "11为右近红背包，34为中间紫外套，19为紫衣人白塑料袋，14为左近白帽。两个不同人物和两个独立包。",
+      "specific_protection_zh": "保留樱花、枝条遮挡、人物身体、路和栏杆。"
+    },
+    "protected_content_zh": "保留樱花、枝条遮挡、人物身体、路和栏杆。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the red backpack on the visitor on the right",
+        "ref_zh": "右侧游客的红色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "red_backpack",
+        "parent_zh": "红背包",
+        "payload": "a gray hiking backpack",
+        "instruction_zh": "将右侧游客的红色背包替换为一个灰色徒步背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个灰色徒步背包。"
+      },
+      {
+        "object_id": 34,
+        "operation": "attribute",
+        "ref": "the purple jacket in the middle",
+        "ref_zh": "中间的紫色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "purple_visitor",
+        "parent_zh": "紫衣游客",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间的紫色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the white plastic bag held by the visitor in purple",
+        "ref_zh": "紫衣游客手提的白色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除紫衣游客手提的白色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the white cap on the nearest visitor on the left",
+        "ref_zh": "左侧最近游客的白色帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "left_capped_visitor",
+        "parent_zh": "左白帽游客",
+        "payload": "a small navy cherry-blossom embroidery",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧最近游客的白色帽子加上一朵小藏蓝色樱花刺绣。",
+        "instruction_noref_zh": "在选中的帽子加上一朵小藏蓝色樱花刺绣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3470503",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "16474194f8b92aa5ca55ccafede0e3bc563badc5fefd0f7bad0dfbbdc39ab7df",
+    "review_card_sha256": "8e2451899a6658f0badb9dd3c3aa96ad856f8722305a7c36050be57df6614de0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11为Service牌，25为电杆小号牌，74为卡车门，9为后车轮圈。两块独立牌、卡车和后车，轮圈不是同卡车的轮。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflections",
+        "small_targets"
+      ],
+      "scene_zh": "经过服务站的卡车",
+      "evidence_zh": "11为Service牌，25为电杆小号牌，74为卡车门，9为后车轮圈。两块独立牌、卡车和后车，轮圈不是同卡车的轮。",
+      "specific_protection_zh": "保留车辆结构、轮胎、原车牌模糊、道路、其余门贴和电线。"
+    },
+    "protected_content_zh": "保留车辆结构、轮胎、原车牌模糊、道路、其余门贴和电线。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the Service sign on the building",
+        "ref_zh": "建筑上的Service标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "service_sign",
+        "parent_zh": "服务牌",
+        "payload": "a black sign reading SERVICE in white",
+        "instruction_zh": "将建筑上的Service标牌替换为一块写有白色SERVICE的黑色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有白色SERVICE的黑色标牌。"
+      },
+      {
+        "object_id": 25,
+        "operation": "remove",
+        "ref": "the small AS-3 sign on the utility pole",
+        "ref_zh": "电线杆上的小AS-3标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "pole_sign",
+        "parent_zh": "杆牌",
+        "payload": "",
+        "instruction_zh": "移除电线杆上的小AS-3标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 74,
+        "operation": "add",
+        "ref": "the visible truck door",
+        "ref_zh": "卡车可见的车门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "truck",
+        "parent_zh": "卡车",
+        "payload": "a yellow reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在卡车可见的车门加上一条黄色反光条。",
+        "instruction_noref_zh": "在选中的车门加上一条黄色反光条。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the silver wheel rim on the car behind the truck",
+        "ref_zh": "卡车后方汽车的银色轮圈",
+        "scope": "rim",
+        "scope_zh": "轮圈",
+        "parent": "rear_car",
+        "parent_zh": "后车",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将卡车后方汽车的银色轮圈的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的轮圈的颜色改为黑色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3474620",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bec9d6adea426accbc6933817d7c949a4a937f36698a8247d8e0e89e427d5ad5",
+    "review_card_sha256": "c5dae728d5ec21e4b1e2202aa6dea1fcde85827dbdc3bbba4310a588c7df5f7a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最近银掀背车，4为其前黑车，28为右楼标，9为中左背向圆牌。两辆车及两独立标牌，不改火烟情境。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "repetition",
+        "smoke"
+      ],
+      "scene_zh": "远处冒烟的拥堵路段",
+      "evidence_zh": "1为最近银掀背车，4为其前黑车，28为右楼标，9为中左背向圆牌。两辆车及两独立标牌，不改火烟情境。",
+      "specific_protection_zh": "保留远处烟、车辆队列、道路、草地及其他交通标志。"
+    },
+    "protected_content_zh": "保留远处烟、车辆队列、道路、草地及其他交通标志。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the nearest silver hatchback",
+        "ref_zh": "最近的银色掀背车",
+        "scope": "hatchback",
+        "scope_zh": "掀背车",
+        "parent": "silver_hatchback",
+        "parent_zh": "银车",
+        "payload": "a blue compact hatchback",
+        "instruction_zh": "将最近的银色掀背车替换为一辆蓝色小型掀背车。",
+        "instruction_noref_zh": "将选中的掀背车替换为一辆蓝色小型掀背车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the black car directly ahead of the silver hatchback",
+        "ref_zh": "银色掀背车正前方的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "black_car",
+        "parent_zh": "黑车",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将银色掀背车正前方的黑色汽车的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为酒红色。"
+      },
+      {
+        "object_id": 28,
+        "operation": "remove",
+        "ref": "the logo high on the right-hand building",
+        "ref_zh": "右侧建筑高处的标志",
+        "scope": "logo",
+        "scope_zh": "标志",
+        "parent": "building_logo",
+        "parent_zh": "楼标",
+        "payload": "",
+        "instruction_zh": "移除右侧建筑高处的标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the back of the round sign beside the nearest streetlamp",
+        "ref_zh": "最近路灯旁圆形标牌的背面",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "round_sign",
+        "parent_zh": "圆牌",
+        "payload": "a small white maintenance sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近路灯旁圆形标牌的背面加上一张小白色维护贴纸。",
+        "instruction_noref_zh": "在选中的标牌加上一张小白色维护贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3474930",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d5b6691621108c394d12f66fa76618e92580b25aed8bce9e3979f2c707b4db8d",
+    "review_card_sha256": "d93eb35d9c30562acd10e657aa4ce554f145c3e0cb02c1481f59e6f033efbf13",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为左前大艇，19为其左后小白艇，5为右侧棕榈，8为最左蓝屋顶白楼。两条独立船、树和不同建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "water_reflections",
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "河岸住宅与停泊游艇",
+      "evidence_zh": "2为左前大艇，19为其左后小白艇，5为右侧棕榈，8为最左蓝屋顶白楼。两条独立船、树和不同建筑。",
+      "specific_protection_zh": "保留河水、码头、建筑结构、其他船和树木。"
+    },
+    "protected_content_zh": "保留河水、码头、建筑结构、其他船和树木。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the large motorboat at the front left",
+        "ref_zh": "左前方的大型摩托艇",
+        "scope": "boat",
+        "scope_zh": "艇",
+        "parent": "front_motorboat",
+        "parent_zh": "前艇",
+        "payload": "a classic white motor launch",
+        "instruction_zh": "将左前方的大型摩托艇替换为一艘经典白色机动游艇。",
+        "instruction_noref_zh": "将选中的艇替换为一艘经典白色机动游艇。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the small white boat behind the large motorboat on the left",
+        "ref_zh": "左侧大型摩托艇后面的小白船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "small_boat",
+        "parent_zh": "小船",
+        "payload": "",
+        "instruction_zh": "移除左侧大型摩托艇后面的小白船。",
+        "instruction_noref_zh": "移除选中的船。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the tall palm just right of the riverside house",
+        "ref_zh": "河边住宅右侧的高棕榈树",
+        "scope": "palm tree",
+        "scope_zh": "棕榈树",
+        "parent": "right_palm",
+        "parent_zh": "右棕榈",
+        "payload": "a strand of warm-white lights around the trunk",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在河边住宅右侧的高棕榈树加上一串缠绕树干的暖白色灯。",
+        "instruction_noref_zh": "在选中的棕榈树加上一串缠绕树干的暖白色灯。"
+      },
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the walls of the blue-roofed building at the far left",
+        "ref_zh": "最左侧蓝屋顶建筑的墙面",
+        "scope": "walls",
+        "scope_zh": "墙面",
+        "parent": "blue_roof_building",
+        "parent_zh": "蓝屋顶楼",
+        "payload": "cream",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧蓝屋顶建筑的墙面的颜色改为米色。",
+        "instruction_noref_zh": "将选中的墙面的颜色改为米色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3476898",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9d47b69eb2f4df85582194b2c42ae2baa7fa0d6f8af955f071cfdcccb8e6c10f",
+    "review_card_sha256": "b5b60412ebc031c6abf8f0d01127a90621d8a6b56e96f89070244357874e8340",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为中央服务客车，8为前排货柜，23为151停机位黄牌，3为SAS尾翼。服务车、货柜、标牌、客机各一个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "机场停机坪货柜与客机",
+      "evidence_zh": "0为中央服务客车，8为前排货柜，23为151停机位黄牌，3为SAS尾翼。服务车、货柜、标牌、客机各一个父对象。",
+      "specific_protection_zh": "保留机位、货柜标签、SAS文字、登机桥、其他车辆和飞机。"
+    },
+    "protected_content_zh": "保留机位、货柜标签、SAS文字、登机桥、其他车辆和飞机。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the white service minivan in the middle",
+        "ref_zh": "中间的白色地勤客车",
+        "scope": "minivan",
+        "scope_zh": "客车",
+        "parent": "service_minivan",
+        "parent_zh": "地勤车",
+        "payload": "a blue electric service van",
+        "instruction_zh": "将中间的白色地勤客车替换为一辆蓝色电动地勤车。",
+        "instruction_noref_zh": "将选中的客车替换为一辆蓝色电动地勤车。"
+      },
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the second cargo container from the right in the front row",
+        "ref_zh": "前排从右数第二个货柜",
+        "scope": "container",
+        "scope_zh": "货柜",
+        "parent": "cargo_container",
+        "parent_zh": "货柜",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前排从右数第二个货柜的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的货柜的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the yellow stand 151 sign",
+        "ref_zh": "黄色151机位标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "stand_sign",
+        "parent_zh": "机位牌",
+        "payload": "",
+        "instruction_zh": "移除黄色151机位标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the blue SAS tail fin",
+        "ref_zh": "蓝色SAS垂直尾翼",
+        "scope": "tail fin",
+        "scope_zh": "尾翼",
+        "parent": "sas_plane",
+        "parent_zh": "SAS飞机",
+        "payload": "a small white anniversary decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在蓝色SAS垂直尾翼加上一张小白色周年纪念贴花。",
+        "instruction_noref_zh": "在选中的尾翼加上一张小白色周年纪念贴花。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

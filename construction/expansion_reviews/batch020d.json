@@ -1,0 +1,586 @@
+[
+  {
+    "source_id": "sa_5683564",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6c2df1e43985557b428631b43ff74137dc3899742268fdcb0af24d2c33245e66",
+    "review_card_sha256": "ff9ac54e1493aca143a71a54e06a94faab6fb9603a755f30f73c5c1cc70c42dd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "花瓣、花蕾和花朵均连接同一花枝；不能以同一植株的多个局部计作不同物理父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "macro",
+        "repetition"
+      ],
+      "scene_zh": "红色凌霄花簇",
+      "evidence_zh": "花瓣、花蕾和花朵均连接同一花枝；不能以同一植株的多个局部计作不同物理父对象。",
+      "specific_protection_zh": "保留源图待独立对象补充。"
+    },
+    "protected_content_zh": "保留源图待独立对象补充。",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5686312",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4461928bbb53b2ccd540f22a5b943a96b0305d46289f9efdfb81b955205404ad",
+    "review_card_sha256": "3430b77430a53f8897afee0dc608f2b85e5884bdf7fe9fc71592cb0ad51f7816",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4最左单球灯和7台阶中段单球灯为两个独立灯，不拆纪念墙或楼窗。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition"
+      ],
+      "scene_zh": "纪念广场与球形路灯",
+      "evidence_zh": "4最左单球灯和7台阶中段单球灯为两个独立灯，不拆纪念墙或楼窗。",
+      "specific_protection_zh": "保留纪念文字、花圈、建筑及人。"
+    },
+    "protected_content_zh": "保留纪念文字、花圈、建筑及人。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the globe streetlamp at the far left",
+        "ref_zh": "最左侧的球形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧的球形路灯的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为古铜色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the globe streetlamp beside the middle of the stairs",
+        "ref_zh": "台阶中段旁的球形路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "stair_lamp",
+        "parent_zh": "台阶灯",
+        "payload": "a small white number 4 plaque on its pole",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在台阶中段旁的球形路灯加上一块位于灯杆上的小白色编号4牌。",
+        "instruction_noref_zh": "在选中的路灯加上一块位于灯杆上的小白色编号4牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5694648",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dd03ea238ba0834e352b5038ee96c5b95807c673537c54f80c76b20364bdff3e",
+    "review_card_sha256": "00c643e8e99aea78ddbff92bbb4c333b2cdd946db1cf2aecb9a44cdfd02b686e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5广告牌、12后绿车、19车夫上衣、24马车顶篷四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "城市马车与广告牌",
+      "evidence_zh": "5广告牌、12后绿车、19车夫上衣、24马车顶篷四父对象。",
+      "specific_protection_zh": "保留马匹、车轮、街道和其他车辆。"
+    },
+    "protected_content_zh": "保留马匹、车轮、街道和其他车辆。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the large billboard behind the carriage",
+        "ref_zh": "马车后方的大广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "billboard",
+        "parent_zh": "广告牌",
+        "payload": "a blue coastal-tour poster reading EXPLORE",
+        "instruction_zh": "将马车后方的大广告牌替换为一张写有EXPLORE的蓝色海岸旅游海报。",
+        "instruction_noref_zh": "将选中的广告牌替换为一张写有EXPLORE的蓝色海岸旅游海报。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the dark green car behind the carriage at the left",
+        "ref_zh": "马车左后方的深绿色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "green_car",
+        "parent_zh": "绿车",
+        "payload": "",
+        "instruction_zh": "移除马车左后方的深绿色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the black T-shirt on the carriage driver",
+        "ref_zh": "马车车夫的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "driver",
+        "parent_zh": "车夫",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将马车车夫的黑色T恤的颜色改为白色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为白色。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the carriage canopy",
+        "ref_zh": "马车顶篷",
+        "scope": "canopy",
+        "scope_zh": "顶篷",
+        "parent": "carriage",
+        "parent_zh": "马车",
+        "payload": "a small black TOURS sign along its rear edge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在马车顶篷加上一块位于后沿的小黑色TOURS牌。",
+        "instruction_noref_zh": "在选中的顶篷加上一块位于后沿的小黑色TOURS牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5705294",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ddaaa4c8973b87ffa1fa7605c4e131698ff8845c954b98c3736ef08a9c36b522",
+    "review_card_sha256": "6abf8059ba6b25789e92d36357eaa7990e2d6c1ff0a66860c1e293afbc81692b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11车后枯干、43左后塑料椅、29前轮毂、21右后树干四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "蓝白巴士与路旁树木",
+      "evidence_zh": "11车后枯干、43左后塑料椅、29前轮毂、21右后树干四父对象。",
+      "specific_protection_zh": "保留巴士结构、树叶、建筑及道路。"
+    },
+    "protected_content_zh": "保留巴士结构、树叶、建筑及道路。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the dead tree trunk rising above the bus roof",
+        "ref_zh": "伸出巴士车顶上方的枯树干",
+        "scope": "trunk",
+        "scope_zh": "树干",
+        "parent": "dead_tree",
+        "parent_zh": "枯树",
+        "payload": "",
+        "instruction_zh": "移除伸出巴士车顶上方的枯树干。",
+        "instruction_noref_zh": "移除选中的树干。"
+      },
+      {
+        "object_id": 43,
+        "operation": "replace",
+        "ref": "the plastic chair behind the bus at the left",
+        "ref_zh": "巴士左后方的塑料椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "plastic_chair",
+        "parent_zh": "塑料椅",
+        "payload": "a wooden folding chair",
+        "instruction_zh": "将巴士左后方的塑料椅替换为一把木制折叠椅。",
+        "instruction_noref_zh": "将选中的椅子替换为一把木制折叠椅。"
+      },
+      {
+        "object_id": 29,
+        "operation": "attribute",
+        "ref": "the hubcap on the bus front wheel nearest the camera",
+        "ref_zh": "巴士最近处前轮的轮毂盖",
+        "scope": "hubcap",
+        "scope_zh": "轮毂盖",
+        "parent": "bus",
+        "parent_zh": "巴士",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将巴士最近处前轮的轮毂盖的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的轮毂盖的颜色改为古铜色。"
+      },
+      {
+        "object_id": 21,
+        "operation": "add",
+        "ref": "the tree trunk at the far right behind the bus",
+        "ref_zh": "巴士后方最右侧的树干",
+        "scope": "trunk",
+        "scope_zh": "树干",
+        "parent": "right_tree",
+        "parent_zh": "右树",
+        "payload": "a small wooden birdhouse",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在巴士后方最右侧的树干加上一个小木制鸟屋。",
+        "instruction_noref_zh": "在选中的树干加上一个小木制鸟屋。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_571477",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1aa65aa8fc432db8737bf1b5d820e19206b360465fabf892584b259111763d35",
+    "review_card_sha256": "d66ec7744d9186f524556c71ce9c2cf0a74c105734310923dde60d555e3f8741",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0玩具车、1儿童上衣、19后椅背三个父对象，不编辑手指。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "儿童与掌上玩具车",
+      "evidence_zh": "0玩具车、1儿童上衣、19后椅背三个父对象，不编辑手指。",
+      "specific_protection_zh": "保留儿童身体、表情和其他物品。"
+    },
+    "protected_content_zh": "保留儿童身体、表情和其他物品。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the red toy car on the child's hand",
+        "ref_zh": "儿童手上的红色玩具汽车",
+        "scope": "toy car",
+        "scope_zh": "玩具车",
+        "parent": "toy_car",
+        "parent_zh": "玩具车",
+        "payload": "a small blue toy bus",
+        "instruction_zh": "将儿童手上的红色玩具汽车替换为一辆小蓝色玩具巴士。",
+        "instruction_noref_zh": "将选中的玩具车替换为一辆小蓝色玩具巴士。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the child's orange T-shirt",
+        "ref_zh": "儿童的橙色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "child",
+        "parent_zh": "儿童",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将儿童的橙色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the curved blue chair back behind the child",
+        "ref_zh": "儿童后方的蓝色弧形椅背",
+        "scope": "chair back",
+        "scope_zh": "椅背",
+        "parent": "blue_chair",
+        "parent_zh": "蓝椅",
+        "payload": "a small yellow star sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在儿童后方的蓝色弧形椅背加上一张小黄色星形贴纸。",
+        "instruction_noref_zh": "在选中的椅背加上一张小黄色星形贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5716467",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "39ed115c210a35e11cf4e1aceeb5ebc1c2f73b2bcb717314475aa3f5740e1907",
+    "review_card_sha256": "3ee51e63aafaf628f68ff5b1bd8a8376874d88adbe887235f62bb334aba65055",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0饮料瓶、1银笔电、20右椅、19左笔记本四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "glass",
+        "occlusion"
+      ],
+      "scene_zh": "隔玻璃学习场景",
+      "evidence_zh": "0饮料瓶、1银笔电、20右椅、19左笔记本四父对象。",
+      "specific_protection_zh": "保留人物身体、头巾、反射与其他文具。"
+    },
+    "protected_content_zh": "保留人物身体、头巾、反射与其他文具。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the orange drink bottle beside the laptops",
+        "ref_zh": "笔记本电脑旁的橙色饮料瓶",
+        "scope": "bottle",
+        "scope_zh": "饮料瓶",
+        "parent": "drink_bottle",
+        "parent_zh": "饮料瓶",
+        "payload": "",
+        "instruction_zh": "移除笔记本电脑旁的橙色饮料瓶。",
+        "instruction_noref_zh": "移除选中的饮料瓶。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the silver laptop facing the camera",
+        "ref_zh": "背面朝向镜头的银色笔记本电脑",
+        "scope": "laptop",
+        "scope_zh": "笔记本电脑",
+        "parent": "silver_laptop",
+        "parent_zh": "银电脑",
+        "payload": "a small sunflower sticker on its lid",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在背面朝向镜头的银色笔记本电脑加上一张位于背盖上的小向日葵贴纸。",
+        "instruction_noref_zh": "在选中的笔记本电脑加上一张位于背盖上的小向日葵贴纸。"
+      },
+      {
+        "object_id": 20,
+        "operation": "attribute",
+        "ref": "the gray chair behind the woman in a headscarf",
+        "ref_zh": "戴头巾女子身后的灰色椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "gray_chair",
+        "parent_zh": "灰椅",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将戴头巾女子身后的灰色椅子的颜色改为蓝绿色。",
+        "instruction_noref_zh": "将选中的椅子的颜色改为蓝绿色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "replace",
+        "ref": "the open notebook at the left edge of the table",
+        "ref_zh": "桌面左边缘摊开的笔记本",
+        "scope": "notebook",
+        "scope_zh": "笔记本",
+        "parent": "left_notebook",
+        "parent_zh": "左本",
+        "payload": "an open white spiral notebook",
+        "instruction_zh": "将桌面左边缘摊开的笔记本替换为一本摊开的白色螺旋装订笔记本。",
+        "instruction_noref_zh": "将选中的笔记本替换为一本摊开的白色螺旋装订笔记本。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5735756",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "73ff25bd7b48d9d2cd484bd761b319ad86684ae0d38a5736495c28e5f2f86d20",
+    "review_card_sha256": "159d3086ba7a637375a687cdcf23c8e1373ccd7e6a9cf7b16d40b0428a3d84f4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5前白包、9格头巾、25中草帽、105前立盒四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "集市购物者与手袋",
+      "evidence_zh": "5前白包、9格头巾、25中草帽、105前立盒四父对象。",
+      "specific_protection_zh": "保留人物身体、市场结构、其他商品与推车。"
+    },
+    "protected_content_zh": "保留人物身体、市场结构、其他商品与推车。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the cream handbag carried by the woman in red",
+        "ref_zh": "红衣女子提着的奶油色手提包",
+        "scope": "bag",
+        "scope_zh": "手提包",
+        "parent": "cream_bag",
+        "parent_zh": "白包",
+        "payload": "",
+        "instruction_zh": "移除红衣女子提着的奶油色手提包。",
+        "instruction_noref_zh": "移除选中的手提包。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the checked headscarf on the woman in red",
+        "ref_zh": "红衣女子的格纹头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "red_woman",
+        "parent_zh": "红衣女",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将红衣女子的格纹头巾的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the straw hat on the woman near the center",
+        "ref_zh": "中间附近女子的草帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "center_woman",
+        "parent_zh": "中间女",
+        "payload": "a beige cotton sunhat",
+        "instruction_zh": "将中间附近女子的草帽替换为一顶米色棉布遮阳帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶米色棉布遮阳帽。"
+      },
+      {
+        "object_id": 105,
+        "operation": "add",
+        "ref": "the upright cream box in the lower-left foreground",
+        "ref_zh": "左下方前景竖立的奶油色盒子",
+        "scope": "box",
+        "scope_zh": "盒子",
+        "parent": "cream_box",
+        "parent_zh": "白盒",
+        "payload": "a small gold SALE sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左下方前景竖立的奶油色盒子加上一张小金色SALE贴纸。",
+        "instruction_noref_zh": "在选中的盒子加上一张小金色SALE贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_5747139",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "308c1a4e9b89c1721229a9407e11c298b2e89fc40268c8c27ea3ebbd597e8f89",
+    "review_card_sha256": "073098190a948138aa935e2520fc46a0cf3c948239019054c91040faffc35137",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4前童T、22后童裤、5前黑盆、6右后植株四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "foliage",
+        "occlusion"
+      ],
+      "scene_zh": "儿童与庭院盆栽",
+      "evidence_zh": "4前童T、22后童裤、5前黑盆、6右后植株四父对象。",
+      "specific_protection_zh": "保留儿童身体、其余植物、花盆及地面。"
+    },
+    "protected_content_zh": "保留儿童身体、其余植物、花盆及地面。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the yellow T-shirt on the front boy",
+        "ref_zh": "前方男孩的黄色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "front_boy",
+        "parent_zh": "前男孩",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前方男孩的黄色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the yellow trousers on the boy at the back",
+        "ref_zh": "后方男孩的黄色长裤",
+        "scope": "trousers",
+        "scope_zh": "长裤",
+        "parent": "rear_boy",
+        "parent_zh": "后男孩",
+        "payload": "olive cotton trousers",
+        "instruction_zh": "将后方男孩的黄色长裤替换为一条橄榄绿棉长裤。",
+        "instruction_noref_zh": "将选中的长裤替换为一条橄榄绿棉长裤。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the black planter immediately left of the front boy",
+        "ref_zh": "前方男孩紧左侧的黑色花盆",
+        "scope": "planter",
+        "scope_zh": "花盆",
+        "parent": "front_planter",
+        "parent_zh": "前盆",
+        "payload": "a small white plant-name label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前方男孩紧左侧的黑色花盆加上一张小白色植物名称标签。",
+        "instruction_noref_zh": "在选中的花盆加上一张小白色植物名称标签。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the bright green shrub in the far-right black pot",
+        "ref_zh": "最右侧黑盆中的亮绿色灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "right_shrub",
+        "parent_zh": "右灌木",
+        "payload": "",
+        "instruction_zh": "移除最右侧黑盆中的亮绿色灌木。",
+        "instruction_noref_zh": "移除选中的灌木。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

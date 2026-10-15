@@ -1,0 +1,609 @@
+[
+  {
+    "source_id": "sa_1725557",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c65e52c8d6ab24c0e1704d4129535499b5e5fa6bd43f140554a952439f1c0b0e",
+    "review_card_sha256": "c34d0c889e4fd47d24d1c4c4b019cafd51d8ba6eabcd10c0342fc38ab0047898",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为左站立者白衬衫，0为左墙完整蓝箱，15为前景最右白鱼，71为右后方白袋。鱼尾部件23不另计目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "鱼市场衣物鱼和周转箱",
+      "evidence_zh": "4为左站立者白衬衫，0为左墙完整蓝箱，15为前景最右白鱼，71为右后方白袋。鱼尾部件23不另计目标。",
+      "specific_protection_zh": "保留人物、其他鱼、箱子、橙色垫布和场景光照。"
+    },
+    "protected_content_zh": "保留人物、其他鱼、箱子、橙色垫布和场景光照。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the standing person’s white shirt on the left",
+        "ref_zh": "左侧站立者的白色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_person",
+        "parent_zh": "左人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧站立者的白色衬衫的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the fully visible blue crate against the left wall",
+        "ref_zh": "左墙边完整可见的蓝色箱子",
+        "scope": "crate",
+        "scope_zh": "箱子",
+        "parent": "left_crate",
+        "parent_zh": "左箱",
+        "payload": "a white inventory label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左墙边完整可见的蓝色箱子加上一张白色库存标签。",
+        "instruction_noref_zh": "在选中的箱子加上一张白色库存标签。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the rightmost silver fish in the foreground",
+        "ref_zh": "前景最右侧的银色鱼",
+        "scope": "fish",
+        "scope_zh": "鱼",
+        "parent": "front_fish",
+        "parent_zh": "前鱼",
+        "payload": "a whole flounder",
+        "instruction_zh": "将前景最右侧的银色鱼替换为一条完整的比目鱼。",
+        "instruction_noref_zh": "将选中的鱼替换为一条完整的比目鱼。"
+      },
+      {
+        "object_id": 71,
+        "operation": "remove",
+        "ref": "the white plastic bag beside the crates on the right",
+        "ref_zh": "右侧箱子旁的白色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除右侧箱子旁的白色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1735673",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "604dd5de15fcbb5ff68b9144c73168c32b99e2e80430646406988a15f636be65",
+    "review_card_sha256": "10f4e4e83d5b0b5899342473b7ee97b301f17f0bd33146742b757d7d348aeda2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为左前景大粉花，3为右上蓝灯笼，0为左上黄灯笼，43为绿灯笼下白牌。花朵只取一个父植物，两个灯笼独立。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "花园与彩色灯笼",
+      "evidence_zh": "2为左前景大粉花，3为右上蓝灯笼，0为左上黄灯笼，43为绿灯笼下白牌。花朵只取一个父植物，两个灯笼独立。",
+      "specific_protection_zh": "保留花瓣形态、茎叶、其他花朵、灯笼和景深。"
+    },
+    "protected_content_zh": "保留花瓣形态、茎叶、其他花朵、灯笼和景深。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the large pink flower in the lower left",
+        "ref_zh": "左下方的大朵粉花",
+        "scope": "flower",
+        "scope_zh": "花",
+        "parent": "front_flowering_plant",
+        "parent_zh": "前花植株",
+        "payload": "a small bee",
+        "placement": {
+          "relation": "on",
+          "site": "petal",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左下方的大朵粉花的花瓣上加上一只小蜜蜂。",
+        "instruction_noref_zh": "在选中的花的花瓣上加上一只小蜜蜂。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the blue lantern at the upper right",
+        "ref_zh": "右上方的蓝色灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "blue_lantern",
+        "parent_zh": "蓝灯笼",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将右上方的蓝色灯笼的颜色改为红色。",
+        "instruction_noref_zh": "将选中的灯笼的颜色改为红色。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the yellow lantern at the upper left",
+        "ref_zh": "左上方的黄色灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "yellow_lantern",
+        "parent_zh": "黄灯笼",
+        "payload": "a white oval paper lantern",
+        "instruction_zh": "将左上方的黄色灯笼替换为一个白色椭圆纸灯笼。",
+        "instruction_noref_zh": "将选中的灯笼替换为一个白色椭圆纸灯笼。"
+      },
+      {
+        "object_id": 43,
+        "operation": "remove",
+        "ref": "the white sign beneath the green lantern",
+        "ref_zh": "绿色灯笼下的白色标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "white_sign",
+        "parent_zh": "白牌",
+        "payload": "",
+        "instruction_zh": "移除绿色灯笼下的白色标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1738298",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "076434d40e5b425473a390546a1615fc822a6f5b0c774e127f386797a914d2fa",
+    "review_card_sha256": "5d235e120587be4b94b3cca0018535cf9e50bcddf882568a743a0ed9e0197ac5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选主要是同一红色建筑的窗、栏杆和屋顶，不能将其拆成多个父对象。最右29仅为相邻白楼的狭窄可见片段，建筑独立性尚未确认；保留待补查植物或其他独立物体原mask，不因遮挡直接否决。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "红色建筑与遮挡树木",
+      "evidence_zh": "候选主要是同一红色建筑的窗、栏杆和屋顶，不能将其拆成多个父对象。最右29仅为相邻白楼的狭窄可见片段，建筑独立性尚未确认；保留待补查植物或其他独立物体原mask，不因遮挡直接否决。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1752343",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7e02757bd4224f1a6a0892fbcee06cf8110e6ad41a3710cc616161d28b9e8a6c",
+    "review_card_sha256": "c733e67d6b79cb1a6d187044e7d8bb865f898345e2cef0c8343ca6f71e34d28c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为右侧红车左边银轿车，2为大灌木下黑厢式车，3为其右侧黑旅行车。三辆独立汽车，前景栏杆必须保留。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "连排建筑前车辆",
+      "evidence_zh": "1为右侧红车左边银轿车，2为大灌木下黑厢式车，3为其右侧黑旅行车。三辆独立汽车，前景栏杆必须保留。",
+      "specific_protection_zh": "保留前景铁栏、其他车、建筑和草地。"
+    },
+    "protected_content_zh": "保留前景铁栏、其他车、建筑和草地。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the silver sedan immediately left of the red car",
+        "ref_zh": "红色汽车紧左侧的银色轿车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_sedan",
+        "parent_zh": "银轿车",
+        "payload": "",
+        "instruction_zh": "移除红色汽车紧左侧的银色轿车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the black minivan beneath the large bush",
+        "ref_zh": "大灌木下的黑色厢式车",
+        "scope": "minivan",
+        "scope_zh": "厢式车",
+        "parent": "black_minivan",
+        "parent_zh": "黑厢车",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在大灌木下的黑色厢式车加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的厢式车加上一个车顶行李架。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the black estate car immediately right of the minivan",
+        "ref_zh": "厢式车紧右侧的黑色旅行车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "black_estate",
+        "parent_zh": "黑旅行车",
+        "payload": "a blue estate car",
+        "instruction_zh": "将厢式车紧右侧的黑色旅行车替换为一辆蓝色旅行车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色旅行车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1756782",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c821f52cf0ce7c44a47160b2282a08483f1189379d4bf081b8f00c3bb5c9ce4a",
+    "review_card_sha256": "8906ed9d6c1df07c2780374530101167986998083c69f99eff1fb92a45807d93",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为前景红花纹男上衣，3为左侧浅蓝衬衫，9为4for10红牌，8为右边女子独立棕包含带。包与上衣来自不同人物且目标互不重叠。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "night_lighting"
+      ],
+      "scene_zh": "夜市行人与商品牌",
+      "evidence_zh": "1为前景红花纹男上衣，3为左侧浅蓝衬衫，9为4for10红牌，8为右边女子独立棕包含带。包与上衣来自不同人物且目标互不重叠。",
+      "specific_protection_zh": "保留脸、手、商品、灯笼、包带和原夜市照明。"
+    },
+    "protected_content_zh": "保留脸、手、商品、灯笼、包带和原夜市照明。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the foreground man’s red patterned shirt",
+        "ref_zh": "前景男子的红色花纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "red_pattern_man",
+        "parent_zh": "红纹衣男子",
+        "payload": "a white polo shirt",
+        "instruction_zh": "将前景男子的红色花纹上衣替换为一件白色Polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件白色Polo衫。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the light blue shirt by the left shop",
+        "ref_zh": "左侧店铺旁的浅蓝色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_shop_man",
+        "parent_zh": "左店旁男子",
+        "payload": "olive green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧店铺旁的浅蓝色衬衫的颜色改为橄榄绿。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为橄榄绿。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the red “4 for $10” sign",
+        "ref_zh": "红色“4 for $10”标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "sale_sign",
+        "parent_zh": "促销牌",
+        "payload": "",
+        "instruction_zh": "移除红色“4 for $10”标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the rightmost woman’s brown shoulder bag",
+        "ref_zh": "最右侧女子的棕色肩包",
+        "scope": "bag",
+        "scope_zh": "肩包",
+        "parent": "right_brown_bag",
+        "parent_zh": "右棕包",
+        "payload": "a small gold charm",
+        "placement": {
+          "relation": "on",
+          "site": "strap",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧女子的棕色肩包的肩带上加上一个小金色挂饰。",
+        "instruction_noref_zh": "在选中的肩包的肩带上加上一个小金色挂饰。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1762291",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fc7d850abd5808f8e1ffa85b58317466744cbf05f41acdddf02683a898f32e7f",
+    "review_card_sha256": "d043510e8a35e68243c0221a59f8661143b8db91c9f5e879dd2b5613f4af17be",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为右侧白T恤，7为中央俯身者棕条纹上衣，12为左地面塑料瓶，10为手持蓝塑料托盘。托盘竖持仅加标贴，不添加会掉落的食品。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion"
+      ],
+      "scene_zh": "夜间户外烤玉米场景",
+      "evidence_zh": "0为右侧白T恤，7为中央俯身者棕条纹上衣，12为左地面塑料瓶，10为手持蓝塑料托盘。托盘竖持仅加标贴，不添加会掉落的食品。",
+      "specific_protection_zh": "保留人体、手、火堆、玉米、玉米皮、锅盖和夜间光照。"
+    },
+    "protected_content_zh": "保留人体、手、火堆、玉米、玉米皮、锅盖和夜间光照。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the white T-shirt on the right",
+        "ref_zh": "右侧的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_person",
+        "parent_zh": "右人物",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的白色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the bent-over person’s brown striped shirt",
+        "ref_zh": "俯身者的棕色条纹上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "bent_person",
+        "parent_zh": "俯身者",
+        "payload": "a gray polo shirt",
+        "instruction_zh": "将俯身者的棕色条纹上衣替换为一件灰色Polo衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件灰色Polo衫。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the plastic bottle lying among the corn husks on the left",
+        "ref_zh": "左侧玉米皮中的塑料瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "discarded_bottle",
+        "parent_zh": "废瓶",
+        "payload": "",
+        "instruction_zh": "移除左侧玉米皮中的塑料瓶。",
+        "instruction_noref_zh": "移除选中的瓶子。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the handheld blue plastic tray",
+        "ref_zh": "手持的蓝色塑料托盘",
+        "scope": "tray",
+        "scope_zh": "托盘",
+        "parent": "blue_tray",
+        "parent_zh": "蓝托盘",
+        "payload": "a small white name label",
+        "placement": {
+          "relation": "on",
+          "site": "corner",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在手持的蓝色塑料托盘的一角加上一张白色小姓名标签。",
+        "instruction_noref_zh": "在选中的托盘的一角加上一张白色小姓名标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1767317",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a351cc5a3d70216287db74ec556e86938ecb66c1eb0d90d5a86eae2c3a228ad0",
+    "review_card_sha256": "9f6aaba10327a83a3e93d4032a7c0ead7b2d2ea6e3d4cf01da93e1cc4a8f507e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1近处红跑车，2左边银两厢，6远处正面来车，13SALVO GRIMA下绿色双门。不同车辆与一个建筑门，车身零件不重复。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "perspective"
+      ],
+      "scene_zh": "沿海老街上的汽车和入口",
+      "evidence_zh": "1近处红跑车，2左边银两厢，6远处正面来车，13SALVO GRIMA下绿色双门。不同车辆与一个建筑门，车身零件不重复。",
+      "specific_protection_zh": "保留车灯、车轮、玻璃、牌照、其他车辆、门框和建筑。"
+    },
+    "protected_content_zh": "保留车灯、车轮、玻璃、牌照、其他车辆、门框和建筑。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the red sports car in the foreground",
+        "ref_zh": "前景的红色跑车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "red_sports_car",
+        "parent_zh": "红跑车",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的红色跑车的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为黑色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the silver hatchback left of the sports car",
+        "ref_zh": "跑车左侧的银色两厢车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_hatchback",
+        "parent_zh": "银两厢车",
+        "payload": "a blue compact hatchback",
+        "instruction_zh": "将跑车左侧的银色两厢车替换为一辆蓝色小型两厢车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色小型两厢车。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the oncoming car on the right",
+        "ref_zh": "右侧迎面驶来的汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "oncoming_car",
+        "parent_zh": "迎面车",
+        "payload": "",
+        "instruction_zh": "移除右侧迎面驶来的汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the green doors beneath the SALVO GRIMA sign",
+        "ref_zh": "SALVO GRIMA招牌下的绿色门",
+        "scope": "doors",
+        "scope_zh": "门",
+        "parent": "salvo_building",
+        "parent_zh": "入口建筑",
+        "payload": "a brass door knocker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在SALVO GRIMA招牌下的绿色门加上一个黄铜门环。",
+        "instruction_noref_zh": "在选中的门加上一个黄铜门环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_17741",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f94b8b934ef37e906f0c79d28ab7411dacdd899ebe60f77e35d0df66179c687a",
+    "review_card_sha256": "61752b0fe7d2f7e7a2813467d9d1622b1be7a1581bb8d670f9ab2d8da09c1f35",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为跪坐卖者蓝上衣，1为左侧绿矮凳，102为凳后白袋，4为顾客手持粉袋。不同可移动实体，柠檬堆不拆小果凑目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "路边果蔬摊的衣物袋子和凳子",
+      "evidence_zh": "0为跪坐卖者蓝上衣，1为左侧绿矮凳，102为凳后白袋，4为顾客手持粉袋。不同可移动实体，柠檬堆不拆小果凑目标。",
+      "specific_protection_zh": "保留皮肤、手、手持物关系、果蔬、布垫、其他袋子和车辆。"
+    },
+    "protected_content_zh": "保留皮肤、手、手持物关系、果蔬、布垫、其他袋子和车辆。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the kneeling vendor’s blue shirt",
+        "ref_zh": "跪坐摊主的蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "kneeling_vendor",
+        "parent_zh": "跪坐摊主",
+        "payload": "a white linen shirt",
+        "instruction_zh": "将跪坐摊主的蓝色上衣替换为一件白色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件白色亚麻衬衫。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the green stool beside the vendor",
+        "ref_zh": "摊主旁的绿色矮凳",
+        "scope": "stool",
+        "scope_zh": "矮凳",
+        "parent": "green_stool",
+        "parent_zh": "绿矮凳",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将摊主旁的绿色矮凳的颜色改为红色。",
+        "instruction_noref_zh": "将选中的矮凳的颜色改为红色。"
+      },
+      {
+        "object_id": 102,
+        "operation": "remove",
+        "ref": "the white sack behind the green stool",
+        "ref_zh": "绿色矮凳后方的白色袋子",
+        "scope": "sack",
+        "scope_zh": "袋子",
+        "parent": "white_sack",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除绿色矮凳后方的白色袋子。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the pink shopping bag held by the customer",
+        "ref_zh": "顾客手持的粉色购物袋",
+        "scope": "bag",
+        "scope_zh": "购物袋",
+        "parent": "pink_bag",
+        "parent_zh": "粉袋",
+        "payload": "a small black shop logo",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在顾客手持的粉色购物袋加上一个黑色小店标。",
+        "instruction_noref_zh": "在选中的购物袋加上一个黑色小店标。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

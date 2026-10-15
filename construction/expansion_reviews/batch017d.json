@@ -1,0 +1,594 @@
+[
+  {
+    "source_id": "sa_4667828",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f2993ea2c7d960c47367f7542a6f97634d7de6e6d9d362dba990b31f4149dc8c",
+    "review_card_sha256": "8e2e7eac370f7012cdda748702f6c33750760ba8a44aeb3be9845e230ab075f6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22中间行李车、39后方配餐车字牌、14左起第二位工人背心、24右方工人背心四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "机场停机坪",
+      "evidence_zh": "22中间行李车、39后方配餐车字牌、14左起第二位工人背心、24右方工人背心四父对象。",
+      "specific_protection_zh": "保留飞机、人员、反光条和地面设备。"
+    },
+    "protected_content_zh": "保留飞机、人员、反光条和地面设备。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the small baggage cart left of the aircraft engine",
+        "ref_zh": "飞机发动机左侧的小行李车",
+        "scope": "cart",
+        "scope_zh": "行李车",
+        "parent": "baggage_cart",
+        "parent_zh": "行李车",
+        "payload": "",
+        "instruction_zh": "移除飞机发动机左侧的小行李车。",
+        "instruction_noref_zh": "移除选中的行李车。"
+      },
+      {
+        "object_id": 39,
+        "operation": "replace",
+        "ref": "the gategourmet sign on the catering truck",
+        "ref_zh": "配餐车上的gategourmet标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "catering_truck",
+        "parent_zh": "配餐车",
+        "payload": "a white sign reading CATERING in blue",
+        "instruction_zh": "将配餐车上的gategourmet标牌替换为一块写有蓝色CATERING的白色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有蓝色CATERING的白色标牌。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the safety vest on the second ground worker from the left",
+        "ref_zh": "左起第二位地勤人员的安全背心",
+        "scope": "vest",
+        "scope_zh": "背心",
+        "parent": "left_worker",
+        "parent_zh": "左工人",
+        "payload": "orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将左起第二位地勤人员的安全背心的颜色改为橙色。",
+        "instruction_noref_zh": "将选中的背心的颜色改为橙色。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the safety vest on the worker beside the aircraft’s nose",
+        "ref_zh": "机头旁工作人员的安全背心",
+        "scope": "vest",
+        "scope_zh": "背心",
+        "parent": "nose_worker",
+        "parent_zh": "机头工人",
+        "payload": "a small round white name badge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在机头旁工作人员的安全背心加上一枚小圆形白色姓名牌。",
+        "instruction_noref_zh": "在选中的背心加上一枚小圆形白色姓名牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4673059",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "054e2cd9f68fddd382f9d1d8462e895b7534bd541acd74ae9355797db94037ea",
+    "review_card_sha256": "e1139db4c28f6f00896c9c1f9b52de5fe710dcf3bdbe9088ea37879b096d4727",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16背景红T与41左前围巾属不同人物；保持旗帜、手持物及事件语境。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "smoke",
+        "occlusion"
+      ],
+      "scene_zh": "街头聚集人群",
+      "evidence_zh": "16背景红T与41左前围巾属不同人物；保持旗帜、手持物及事件语境。",
+      "specific_protection_zh": "保留人物身体、旗帜、手持物、火光和背景。"
+    },
+    "protected_content_zh": "保留人物身体、旗帜、手持物、火光和背景。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the red T-shirt behind the rightmost man",
+        "ref_zh": "最右侧男子身后的红色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "red_shirt_man",
+        "parent_zh": "红衣男",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧男子身后的红色T恤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 41,
+        "operation": "remove",
+        "ref": "the checked scarf on the man at the far left",
+        "ref_zh": "最左侧男子的格纹围巾",
+        "scope": "scarf",
+        "scope_zh": "围巾",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "",
+        "instruction_zh": "移除最左侧男子的格纹围巾。",
+        "instruction_noref_zh": "移除选中的围巾。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4678016",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "822e26ac632c6d00319de39c440b27a4b9e81cd7af05dae3e1b24bbad3a6123a",
+    "review_card_sha256": "0012061697f274ba2b91a6d0c6349a2ef1e751bb7f592856cd226ab31396b58f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "58中间大吊灯、43左侧小吊灯与108地毯三个独立陈设，不用多个窗户/柱子计数。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "interior",
+        "thin_structure"
+      ],
+      "scene_zh": "清真寺吊灯大厅",
+      "evidence_zh": "58中间大吊灯、43左侧小吊灯与108地毯三个独立陈设，不用多个窗户/柱子计数。",
+      "specific_protection_zh": "保留祈祷者、建筑、书法纹样和其他吊灯。"
+    },
+    "protected_content_zh": "保留祈祷者、建筑、书法纹样和其他吊灯。",
+    "targets": [
+      {
+        "object_id": 58,
+        "operation": "replace",
+        "ref": "the large unlit chandelier near the center",
+        "ref_zh": "中间附近未亮的大吊灯",
+        "scope": "chandelier",
+        "scope_zh": "吊灯",
+        "parent": "central_chandelier",
+        "parent_zh": "中吊灯",
+        "payload": "a large ornate brass pendant lantern",
+        "instruction_zh": "将中间附近未亮的大吊灯替换为一盏大型雕花黄铜吊灯。",
+        "instruction_noref_zh": "将选中的吊灯替换为一盏大型雕花黄铜吊灯。"
+      },
+      {
+        "object_id": 43,
+        "operation": "remove",
+        "ref": "the small lit chandelier at the left",
+        "ref_zh": "左侧亮着的小吊灯",
+        "scope": "chandelier",
+        "scope_zh": "吊灯",
+        "parent": "left_chandelier",
+        "parent_zh": "左吊灯",
+        "payload": "",
+        "instruction_zh": "移除左侧亮着的小吊灯。",
+        "instruction_noref_zh": "移除选中的吊灯。"
+      },
+      {
+        "object_id": 108,
+        "operation": "attribute",
+        "ref": "the blue floor carpet",
+        "ref_zh": "地面的蓝色地毯",
+        "scope": "carpet",
+        "scope_zh": "地毯",
+        "parent": "carpet",
+        "parent_zh": "地毯",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将地面的蓝色地毯的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的地毯的颜色改为酒红色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4686433",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ff036d285a664fae7a81310e4449ceb2d7686ea0855cbf41dd4f1e98393bd594",
+    "review_card_sha256": "678a6b1a1b8df518c34c7c9192ef4489fbcf34d3e9385d613d0693df3e1f6a40",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16右骑手上衣、4长旅店牌、7路边灰车、3右侧红摩托四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "motion_blur",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "路口摩托车与旅店",
+      "evidence_zh": "16右骑手上衣、4长旅店牌、7路边灰车、3右侧红摩托四父对象。",
+      "specific_protection_zh": "保留骑手身体、车辆结构、道路和其他招牌。"
+    },
+    "protected_content_zh": "保留骑手身体、车辆结构、道路和其他招牌。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the black T-shirt on the rider of the red motorcycle",
+        "ref_zh": "红色摩托车骑手的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_rider",
+        "parent_zh": "右骑手",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将红色摩托车骑手的黑色T恤的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the long red SANDEE ROOM sign",
+        "ref_zh": "长条红色SANDEE ROOM招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "long_hotel_sign",
+        "parent_zh": "长旅店牌",
+        "payload": "a red sign reading GUESTHOUSE in white",
+        "instruction_zh": "将长条红色SANDEE ROOM招牌替换为一块写有白色GUESTHOUSE的红色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有白色GUESTHOUSE的红色招牌。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the gray hatchback parked across the street",
+        "ref_zh": "停在街对面的灰色两厢车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "gray_car",
+        "parent_zh": "灰车",
+        "payload": "",
+        "instruction_zh": "移除停在街对面的灰色两厢车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the red motorcycle on the right",
+        "ref_zh": "右侧的红色摩托车",
+        "scope": "motorcycle",
+        "scope_zh": "摩托车",
+        "parent": "red_motorcycle",
+        "parent_zh": "红摩托",
+        "payload": "a small white number 5 decal on its front panel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的红色摩托车加上一枚位于前面板的小白色数字5贴花。",
+        "instruction_noref_zh": "在选中的摩托车加上一枚位于前面板的小白色数字5贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4688703",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6dae270c106660dff6232d531a80fdca4f74d09e8d6860930216bc62af3e137b",
+    "review_card_sha256": "22ad09a7f836dda93fd514702306490009e2e4905fd6a6c4b4d466c44610de96",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "30左端驾驶室门、9上方RA字牌、7左侧立柱为机车、标牌和建筑三父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "industrial",
+        "thin_structure"
+      ],
+      "scene_zh": "机车检修车间",
+      "evidence_zh": "30左端驾驶室门、9上方RA字牌、7左侧立柱为机车、标牌和建筑三父对象。",
+      "specific_protection_zh": "保留机车结构、维修设备、人员和轨道。"
+    },
+    "protected_content_zh": "保留机车结构、维修设备、人员和轨道。",
+    "targets": [
+      {
+        "object_id": 30,
+        "operation": "attribute",
+        "ref": "the white cab door at the locomotive’s left end",
+        "ref_zh": "机车左端的白色驾驶室门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "locomotive",
+        "parent_zh": "机车",
+        "payload": "orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将机车左端的白色驾驶室门的颜色改为橙色。",
+        "instruction_noref_zh": "将选中的车门的颜色改为橙色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the large RA letters above the locomotive",
+        "ref_zh": "机车上方的大型RA字牌",
+        "scope": "sign",
+        "scope_zh": "字牌",
+        "parent": "ra_sign",
+        "parent_zh": "RA字牌",
+        "payload": "",
+        "instruction_zh": "移除机车上方的大型RA字牌。",
+        "instruction_noref_zh": "移除选中的字牌。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the vertical steel column left of the locomotive",
+        "ref_zh": "机车左侧的竖直钢柱",
+        "scope": "column",
+        "scope_zh": "钢柱",
+        "parent": "workshop",
+        "parent_zh": "车间",
+        "payload": "a small yellow SAFETY FIRST plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在机车左侧的竖直钢柱加上一块小黄色SAFETY FIRST提示牌。",
+        "instruction_noref_zh": "在选中的钢柱加上一块小黄色SAFETY FIRST提示牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4688841",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "57bb9522b2c870bbdfaed6304873a3781681cdcb182787ede28b30a5fe9f459a",
+    "review_card_sha256": "748a006ed0267307e76f74deef8d2d33918fe83ad7f13764add9dfc389a18ef9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1左侧白车、5前方圆交通牌、90车站字标三父对象。mask3混合多车不可用。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "车站前街景",
+      "evidence_zh": "1左侧白车、5前方圆交通牌、90车站字标三父对象。mask3混合多车不可用。",
+      "specific_protection_zh": "保留行人、其他车辆、站房结构和道路。"
+    },
+    "protected_content_zh": "保留行人、其他车辆、站房结构和道路。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the white car at the far left",
+        "ref_zh": "最左侧的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "left_car",
+        "parent_zh": "左车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧的白色汽车的颜色改为银色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为银色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the large circular no-stopping sign in the foreground",
+        "ref_zh": "前景的大圆形禁止停车标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "front_traffic_sign",
+        "parent_zh": "前交通牌",
+        "payload": "",
+        "instruction_zh": "移除前景的大圆形禁止停车标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 90,
+        "operation": "replace",
+        "ref": "the HAKATA STATION lettering near the roof",
+        "ref_zh": "靠近屋顶的HAKATA STATION字牌",
+        "scope": "sign",
+        "scope_zh": "字牌",
+        "parent": "station_lettering",
+        "parent_zh": "车站字牌",
+        "payload": "blue lettering reading CENTRAL STATION",
+        "instruction_zh": "将靠近屋顶的HAKATA STATION字牌替换为写有CENTRAL STATION的蓝色字牌。",
+        "instruction_noref_zh": "将选中的字牌替换为写有CENTRAL STATION的蓝色字牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4697965",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fbff8223b288ffdd5a07629dc6542ce6526e18a3300a706986b811f9fce734cd",
+    "review_card_sha256": "0017c1f35495abda0383bc34c95de2097610b6b68368887aa452bddcf737e2a4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1校舍牌、64上方窗框、47右侧围栏板三个父对象；木校舍和独立围栏不混同。",
+    "difficulty": {
+      "mechanisms": [
+        "weathered_texture",
+        "thin_structure"
+      ],
+      "scene_zh": "历史木校舍与围栏",
+      "evidence_zh": "1校舍牌、64上方窗框、47右侧围栏板三个父对象；木校舍和独立围栏不混同。",
+      "specific_protection_zh": "保留历史建筑结构、植物、链条和其余标识。"
+    },
+    "protected_content_zh": "保留历史建筑结构、植物、链条和其余标识。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the wooden schoolhouse sign",
+        "ref_zh": "木质校舍招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "school_sign",
+        "parent_zh": "校舍牌",
+        "payload": "a weathered wooden sign reading SCHOOLHOUSE MUSEUM",
+        "instruction_zh": "将木质校舍招牌替换为一块写有SCHOOLHOUSE MUSEUM的风化木牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有SCHOOLHOUSE MUSEUM的风化木牌。"
+      },
+      {
+        "object_id": 64,
+        "operation": "attribute",
+        "ref": "the wooden frame of the upper window",
+        "ref_zh": "上方窗户的木框",
+        "scope": "window frame",
+        "scope_zh": "窗框",
+        "parent": "school_building",
+        "parent_zh": "校舍",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将上方窗户的木框的颜色改为白色。",
+        "instruction_noref_zh": "将选中的窗框的颜色改为白色。"
+      },
+      {
+        "object_id": 47,
+        "operation": "add",
+        "ref": "the fence plank directly below the small white finial",
+        "ref_zh": "小白色柱顶正下方的围栏木板",
+        "scope": "plank",
+        "scope_zh": "木板",
+        "parent": "fence",
+        "parent_zh": "围栏",
+        "payload": "a small brass number 14 plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在小白色柱顶正下方的围栏木板加上一块小型黄铜数字14牌。",
+        "instruction_noref_zh": "在选中的木板加上一块小型黄铜数字14牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4740557",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4e2335b11edd8e2447edfd8bf4613ee9bd9f75b531729bcfad64c765d6fee9bc",
+    "review_card_sha256": "9bb609ff1713a3205a2f100d6b280860f74872ac968834d61f3df1449f74ce9f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15左儿童T、22左前花包、31中间蓝裙、11复印店门四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "pattern"
+      ],
+      "scene_zh": "广场行人与儿童",
+      "evidence_zh": "15左儿童T、22左前花包、31中间蓝裙、11复印店门四父对象。",
+      "specific_protection_zh": "保留人物身体、传统服装轮廓、树木和广场。"
+    },
+    "protected_content_zh": "保留人物身体、传统服装轮廓、树木和广场。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the Hello Kitty T-shirt on the girl at the left",
+        "ref_zh": "左侧女孩的Hello Kitty T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "left_girl",
+        "parent_zh": "左女孩",
+        "payload": "a plain pale pink T-shirt",
+        "instruction_zh": "将左侧女孩的Hello Kitty T恤替换为一件纯浅粉色T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯浅粉色T恤。"
+      },
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the floral handbag on the woman beside the girl",
+        "ref_zh": "女孩旁女子的碎花手提包",
+        "scope": "handbag",
+        "scope_zh": "手提包",
+        "parent": "floral_bag",
+        "parent_zh": "花包",
+        "payload": "",
+        "instruction_zh": "移除女孩旁女子的碎花手提包。",
+        "instruction_noref_zh": "移除选中的手提包。"
+      },
+      {
+        "object_id": 31,
+        "operation": "attribute",
+        "ref": "the blue skirt on the woman with the long yellow shoulder bag",
+        "ref_zh": "背长黄色肩包女子的蓝色裙子",
+        "scope": "skirt",
+        "scope_zh": "裙子",
+        "parent": "middle_woman",
+        "parent_zh": "中女子",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将背长黄色肩包女子的蓝色裙子的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的裙子的颜色改为酒红色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the door below the COPIAS sign",
+        "ref_zh": "COPIAS招牌下的门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "copy_shop",
+        "parent_zh": "复印店",
+        "payload": "a small blue OPEN plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在COPIAS招牌下的门加上一块小蓝色OPEN门牌。",
+        "instruction_noref_zh": "在选中的门加上一块小蓝色OPEN门牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

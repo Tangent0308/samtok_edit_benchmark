@@ -1,0 +1,662 @@
+[
+  {
+    "source_id": "sa_3317928",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "00f9da6fc44ee3bd3133f058dfce8db66e9621efb39d69b4f291d970f92eca8f",
+    "review_card_sha256": "50cd7c3c99b83c51923f977f31e721dd96101e37addb403af771623937ae8900",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为花纹调料罐，5为摊贩头巾，4为白色调料杯，14为玻璃后蓝盖盒。人及三个独立容器；远景车和玻璃反射不强行编辑。",
+    "difficulty": {
+      "mechanisms": [
+        "transparency",
+        "reflections",
+        "occlusion"
+      ],
+      "scene_zh": "蓝棚下的小吃摊",
+      "evidence_zh": "1为花纹调料罐，5为摊贩头巾，4为白色调料杯，14为玻璃后蓝盖盒。人及三个独立容器；远景车和玻璃反射不强行编辑。",
+      "specific_protection_zh": "保留手、食品、勺子、玻璃和蓝色环境光。"
+    },
+    "protected_content_zh": "保留手、食品、勺子、玻璃和蓝色环境光。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the floral condiment jar on the counter",
+        "ref_zh": "柜台上的花纹调料罐",
+        "scope": "jar",
+        "scope_zh": "罐子",
+        "parent": "condiment_jar",
+        "parent_zh": "调料罐",
+        "payload": "a plain cylindrical glass jar",
+        "instruction_zh": "将柜台上的花纹调料罐替换为一个素面圆柱玻璃罐。",
+        "instruction_noref_zh": "将选中的罐子替换为一个素面圆柱玻璃罐。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the vendor’s blue headscarf",
+        "ref_zh": "摊贩的蓝色头巾",
+        "scope": "headscarf",
+        "scope_zh": "头巾",
+        "parent": "vendor",
+        "parent_zh": "摊贩",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将摊贩的蓝色头巾的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的头巾的颜色改为酒红色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the white condiment cup beside the floral jar",
+        "ref_zh": "花纹罐旁的白色调料杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "condiment_cup",
+        "parent_zh": "调料杯",
+        "payload": "a small ingredient label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在花纹罐旁的白色调料杯加上一张小配料标签。",
+        "instruction_noref_zh": "在选中的杯子加上一张小配料标签。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the round blue-lidded container behind the glass",
+        "ref_zh": "玻璃后带蓝盖的圆容器",
+        "scope": "container",
+        "scope_zh": "容器",
+        "parent": "blue_container",
+        "parent_zh": "蓝容器",
+        "payload": "",
+        "instruction_zh": "移除玻璃后带蓝盖的圆容器。",
+        "instruction_noref_zh": "移除选中的容器。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3354609",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a027b6e745c94763c37941ab94c052089ed7cc273fd5ac560013523044ac80e1",
+    "review_card_sha256": "9cf381d4c4d21d41e44768fd21b9fa8bb81d1df2e81043202e594b085a4d3017",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9为摊主灰帽，19为秤盘，4为右边挂肉，2为左边大挂肉。人、秤与两块独立肉，不拆同人内外衣。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "food_display"
+      ],
+      "scene_zh": "肉摊与悬挂秤盘",
+      "evidence_zh": "9为摊主灰帽，19为秤盘，4为右边挂肉，2为左边大挂肉。人、秤与两块独立肉，不拆同人内外衣。",
+      "specific_protection_zh": "保留摊主姿势、手、秤架刻度、其他肉和墙砖。"
+    },
+    "protected_content_zh": "保留摊主姿势、手、秤架刻度、其他肉和墙砖。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the butcher’s gray cap",
+        "ref_zh": "肉贩的灰色帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "butcher",
+        "parent_zh": "肉贩",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将肉贩的灰色帽子的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "replace",
+        "ref": "the hanging metal weighing pan",
+        "ref_zh": "悬挂的金属秤盘",
+        "scope": "pan",
+        "scope_zh": "秤盘",
+        "parent": "weighing_scale",
+        "parent_zh": "秤",
+        "payload": "a deeper stainless-steel weighing pan",
+        "instruction_zh": "将悬挂的金属秤盘替换为一个较深的不锈钢秤盘。",
+        "instruction_noref_zh": "将选中的秤盘替换为一个较深的不锈钢秤盘。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the rightmost hanging slab of meat",
+        "ref_zh": "最右侧悬挂的一块肉",
+        "scope": "meat",
+        "scope_zh": "肉块",
+        "parent": "right_meat",
+        "parent_zh": "右肉块",
+        "payload": "",
+        "instruction_zh": "移除最右侧悬挂的一块肉。",
+        "instruction_noref_zh": "移除选中的肉块。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the broad slab of meat beside the butcher",
+        "ref_zh": "肉贩身旁宽大的一块肉",
+        "scope": "meat",
+        "scope_zh": "肉块",
+        "parent": "left_meat",
+        "parent_zh": "左肉块",
+        "payload": "a small white price tag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在肉贩身旁宽大的一块肉加上一张小白色价格牌。",
+        "instruction_noref_zh": "在选中的肉块加上一张小白色价格牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3358386",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "276af2ea51f11e0a0720d6f14c9dfc79be48dbf777ae245f9f62fffff2e4583f",
+    "review_card_sha256": "4ff409156224b893dbd34d64972ad46f347770f80ee29beae77844a55f6f0662",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "7为前方偏左木凳，0为后墙较窄窗，199为左中蓝绿包，20为最前桌。凳、教室、包和桌独立；局部袖子不指整人。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion",
+        "repetition"
+      ],
+      "scene_zh": "教室内成排课桌与学生",
+      "evidence_zh": "7为前方偏左木凳，0为后墙较窄窗，199为左中蓝绿包，20为最前桌。凳、教室、包和桌独立；局部袖子不指整人。",
+      "specific_protection_zh": "保留学生、坐姿、课本、其他课桌和室内自然光。"
+    },
+    "protected_content_zh": "保留学生、坐姿、课本、其他课桌和室内自然光。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the wooden bench at the front left",
+        "ref_zh": "前方偏左的木长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "front_bench",
+        "parent_zh": "前凳",
+        "payload": "a new light-wood bench",
+        "instruction_zh": "将前方偏左的木长凳替换为一张新的浅木色长凳。",
+        "instruction_noref_zh": "将选中的长凳替换为一张新的浅木色长凳。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the smaller window on the back wall",
+        "ref_zh": "后墙上较小的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "classroom",
+        "parent_zh": "教室",
+        "payload": "pale green",
+        "attribute_kind": "tint",
+        "instruction_zh": "将后墙上较小的窗户的色调改为浅绿色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅绿色。"
+      },
+      {
+        "object_id": 199,
+        "operation": "remove",
+        "ref": "the blue-and-green backpack left of the front row",
+        "ref_zh": "前排左侧的蓝绿色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "colorful_backpack",
+        "parent_zh": "彩色背包",
+        "payload": "",
+        "instruction_zh": "移除前排左侧的蓝绿色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the nearest classroom desk",
+        "ref_zh": "最近的课桌",
+        "scope": "desk",
+        "scope_zh": "课桌",
+        "parent": "front_desk",
+        "parent_zh": "前桌",
+        "payload": "a small blue pencil cup",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的课桌加上一个小蓝色笔筒。",
+        "instruction_noref_zh": "在选中的课桌加上一个小蓝色笔筒。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3365528",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2b6bd0610cdd7d40b2bead7b33002d8848d6b7eadbb5f6e02844de1616415e08",
+    "review_card_sha256": "44ccb1deb0369e419d5ba1ea3d833b5a4545171b10bf194cc680cc80f38b55dc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "36为斜吊臂ANEKA字幅，0为右侧竖起设备，3为前混凝土块，5为前景黑线。独立设备、标幅、路障块及线缆；不删承重柱。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "thin_structure",
+        "small_targets"
+      ],
+      "scene_zh": "桥梁施工现场",
+      "evidence_zh": "36为斜吊臂ANEKA字幅，0为右侧竖起设备，3为前混凝土块，5为前景黑线。独立设备、标幅、路障块及线缆；不删承重柱。",
+      "specific_protection_zh": "保留施工机械结构、工人、其他路障、承重柱与场地。"
+    },
+    "protected_content_zh": "保留施工机械结构、工人、其他路障、承重柱与场地。",
+    "targets": [
+      {
+        "object_id": 36,
+        "operation": "replace",
+        "ref": "the ANEKA banner on the slanted crane",
+        "ref_zh": "斜吊车上的ANEKA竖幅",
+        "scope": "banner",
+        "scope_zh": "竖幅",
+        "parent": "crane_banner",
+        "parent_zh": "吊车幅",
+        "payload": "a white banner reading SAFETY FIRST in black",
+        "instruction_zh": "将斜吊车上的ANEKA竖幅替换为一条写有黑色SAFETY FIRST的白色竖幅。",
+        "instruction_noref_zh": "将选中的竖幅替换为一条写有黑色SAFETY FIRST的白色竖幅。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the upright drilling rig on the right",
+        "ref_zh": "右侧竖起的钻机",
+        "scope": "rig",
+        "scope_zh": "钻机",
+        "parent": "right_rig",
+        "parent_zh": "右钻机",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧竖起的钻机的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的钻机的颜色改为黄色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the fourth concrete barrier block to the right of the large pier",
+        "ref_zh": "大桥墩右侧第四块混凝土隔离墩",
+        "scope": "block",
+        "scope_zh": "路障块",
+        "parent": "concrete_block",
+        "parent_zh": "混凝土块",
+        "payload": "a yellow reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在大桥墩右侧第四块混凝土隔离墩加上一条黄色反光条。",
+        "instruction_noref_zh": "在选中的路障块加上一条黄色反光条。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the black cable crossing the foreground",
+        "ref_zh": "横跨前景的黑色线缆",
+        "scope": "cable",
+        "scope_zh": "线缆",
+        "parent": "foreground_cable",
+        "parent_zh": "前线缆",
+        "payload": "",
+        "instruction_zh": "移除横跨前景的黑色线缆。",
+        "instruction_noref_zh": "移除选中的线缆。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3376573",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bc9fae9cabbe62fca5acee6684861f411d8bcc5c633a8869e5b7a34b7c59653d",
+    "review_card_sha256": "f609e2b40732f6c2585caaa3cb425b19f8a76d2c133f1c0b3f0a5513da2fd5b7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为NAPAPIJRI牌，7为左侧双头壁灯，30为上层栏扶手。独立牌、灯、建筑三父对象，不把同楼窗户多计。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "perspective",
+        "reflections"
+      ],
+      "scene_zh": "室内商场的拱窗和壁灯",
+      "evidence_zh": "2为NAPAPIJRI牌，7为左侧双头壁灯，30为上层栏扶手。独立牌、灯、建筑三父对象，不把同楼窗户多计。",
+      "specific_protection_zh": "保留拱形建筑、玻璃、其余灯、栏杆和其他店牌。"
+    },
+    "protected_content_zh": "保留拱形建筑、玻璃、其余灯、栏杆和其他店牌。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the NAPAPIJRI sign above the shop",
+        "ref_zh": "店铺上方的NAPAPIJRI标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "shop_sign",
+        "parent_zh": "店牌",
+        "payload": "a black sign reading CAFE in white",
+        "instruction_zh": "将店铺上方的NAPAPIJRI标牌替换为一块写有白色CAFE的黑色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有白色CAFE的黑色标牌。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the metal frame of the nearest double wall sconce on the left",
+        "ref_zh": "左侧最近双头壁灯的金属架",
+        "scope": "sconce frame",
+        "scope_zh": "壁灯架",
+        "parent": "near_sconce",
+        "parent_zh": "近壁灯",
+        "payload": "brass",
+        "attribute_kind": "material",
+        "instruction_zh": "将左侧最近双头壁灯的金属架的材质改为黄铜。",
+        "instruction_noref_zh": "将选中的壁灯架的材质改为黄铜。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the upper-level handrail on the left",
+        "ref_zh": "左侧上层栏杆扶手",
+        "scope": "handrail",
+        "scope_zh": "扶手",
+        "parent": "mall_building",
+        "parent_zh": "商场建筑",
+        "payload": "a thin warm-white LED strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧上层栏杆扶手加上一条细暖白色LED灯带。",
+        "instruction_noref_zh": "在选中的扶手加上一条细暖白色LED灯带。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3385627",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "27f0939e40953564a9d7b1f5c90ba8ec945eb2e8bd586c7341db7d477ff6a956",
+    "review_card_sha256": "d9f548d0b3d524bf82378325dc48d4bea80eded4e3bd556ef9c27d2049ca9eb6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为前景卷发女子黑上衣，5为左侧格衬衫，15为后方手写牌，25为舞台聚光灯。两个人、独立牌和灯，不把帽子与同人上衣分计。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "cropping",
+        "crowd"
+      ],
+      "scene_zh": "旗帜前的集会人群",
+      "evidence_zh": "2为前景卷发女子黑上衣，5为左侧格衬衫，15为后方手写牌，25为舞台聚光灯。两个人、独立牌和灯，不把帽子与同人上衣分计。",
+      "specific_protection_zh": "保留旗帜、人脸原模糊、真实身体、舞台和其他标牌。"
+    },
+    "protected_content_zh": "保留旗帜、人脸原模糊、真实身体、舞台和其他标牌。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the black shirt on the curly-haired woman in front",
+        "ref_zh": "前景卷发女子的黑色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "front_woman",
+        "parent_zh": "前女子",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景卷发女子的黑色上衣的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为深绿色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the checked shirt on the left",
+        "ref_zh": "左侧的格纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_person",
+        "parent_zh": "左人物",
+        "payload": "a white linen shirt",
+        "instruction_zh": "将左侧的格纹衬衫替换为一件白色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件白色亚麻衬衫。"
+      },
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the handwritten placard behind the crowd",
+        "ref_zh": "人群后方的手写标牌",
+        "scope": "placard",
+        "scope_zh": "标牌",
+        "parent": "handwritten_sign",
+        "parent_zh": "手写牌",
+        "payload": "",
+        "instruction_zh": "移除人群后方的手写标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 25,
+        "operation": "add",
+        "ref": "the right stage spotlight above the crowd",
+        "ref_zh": "人群上方右侧的舞台聚光灯",
+        "scope": "spotlight",
+        "scope_zh": "聚光灯",
+        "parent": "stage_spotlight",
+        "parent_zh": "舞台灯",
+        "payload": "a blue lighting gel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在人群上方右侧的舞台聚光灯加上一片蓝色灯光滤色片。",
+        "instruction_noref_zh": "在选中的聚光灯加上一片蓝色灯光滤色片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3390115",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "79434e8633b6dac710f1e6f1201bba7b1a0c6fb28e1a8b51bf591a04611e3e76",
+    "review_card_sha256": "fa10fc288ffe4845ba35eb485350cc9e35f5f6e5c1238511b82252bc1c5a3314",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为蓝头盔，2为100号码板，12为背后完整白隔离带。人、装在车上的号码牌、隔离带三父对象；不把鞋和上衣再计另一人。",
+    "difficulty": {
+      "mechanisms": [
+        "motion",
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "山地车比赛选手",
+      "evidence_zh": "4为蓝头盔，2为100号码板，12为背后完整白隔离带。人、装在车上的号码牌、隔离带三父对象；不把鞋和上衣再计另一人。",
+      "specific_protection_zh": "保留选手身体、号码100、自行车结构、树林和道路。"
+    },
+    "protected_content_zh": "保留选手身体、号码100、自行车结构、树林和道路。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the cyclist’s blue helmet",
+        "ref_zh": "骑手的蓝色头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "cyclist",
+        "parent_zh": "骑手",
+        "payload": "a white cycling helmet",
+        "instruction_zh": "将骑手的蓝色头盔替换为一顶白色骑行头盔。",
+        "instruction_noref_zh": "将选中的头盔替换为一顶白色骑行头盔。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the number 100 race plate",
+        "ref_zh": "100号比赛号码板",
+        "scope": "plate",
+        "scope_zh": "号码板",
+        "parent": "race_plate",
+        "parent_zh": "号码板",
+        "payload": "a small red reflective sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在100号比赛号码板加上一张小红色反光贴纸。",
+        "instruction_noref_zh": "在选中的号码板加上一张小红色反光贴纸。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the white barrier tape behind the cyclist",
+        "ref_zh": "骑手后方的白色隔离带",
+        "scope": "tape",
+        "scope_zh": "隔离带",
+        "parent": "barrier_tape",
+        "parent_zh": "隔离带",
+        "payload": "",
+        "instruction_zh": "移除骑手后方的白色隔离带。",
+        "instruction_noref_zh": "移除选中的隔离带。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3427381",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7f481cfa60a4718858ec5835c6e1ac24bad672458f740da9b17e1c7a8afc84f1",
+    "review_card_sha256": "346ce4eff565840b2831b72a48a06695dae54ddccd50ffd9c7bec1974fc28da3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为中间塑料膜包裹的搅拌杯，1为左侧榨汁机，5为右侧盒，19为前排窄盒。独立搅拌杯、榨汁机和两个包装盒。饭菜/盘子mask是包装印刷，不当真实食物。",
+    "difficulty": {
+      "mechanisms": [
+        "reflections",
+        "transparent_wrapping",
+        "printed_graphic"
+      ],
+      "scene_zh": "电器商店节庆橱窗",
+      "evidence_zh": "0为中间塑料膜包裹的搅拌杯，1为左侧榨汁机，5为右侧盒，19为前排窄盒。独立搅拌杯、榨汁机和两个包装盒。饭菜/盘子mask是包装印刷，不当真实食物。",
+      "specific_protection_zh": "保留其他电器、灯串、包装文字及绿色装饰背景。"
+    },
+    "protected_content_zh": "保留其他电器、灯串、包装文字及绿色装饰背景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the plastic-wrapped blender jug in the middle",
+        "ref_zh": "中间塑料膜包裹的搅拌杯",
+        "scope": "blender jug",
+        "scope_zh": "搅拌杯",
+        "parent": "blender_jug",
+        "parent_zh": "搅拌杯",
+        "payload": "a clear glass blender jug with a black handle",
+        "instruction_zh": "将中间塑料膜包裹的搅拌杯替换为一个带黑色把手的透明玻璃搅拌杯。",
+        "instruction_noref_zh": "将选中的搅拌杯替换为一个带黑色把手的透明玻璃搅拌杯。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the silver body of the juicer on the left",
+        "ref_zh": "左侧榨汁机的银色机身",
+        "scope": "juicer body",
+        "scope_zh": "榨汁机机身",
+        "parent": "juicer",
+        "parent_zh": "榨汁机",
+        "payload": "matte black",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧榨汁机的银色机身的颜色改为哑光黑色。",
+        "instruction_noref_zh": "将选中的榨汁机机身的颜色改为哑光黑色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the upright Philips box at the far right",
+        "ref_zh": "最右侧竖放的Philips包装盒",
+        "scope": "box",
+        "scope_zh": "包装盒",
+        "parent": "right_box",
+        "parent_zh": "右盒",
+        "payload": "a small red SALE sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧竖放的Philips包装盒加上一张小红色SALE贴纸。",
+        "instruction_noref_zh": "在选中的包装盒加上一张小红色SALE贴纸。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the narrow white box behind the front display strip",
+        "ref_zh": "前方展示条后面的窄白色盒子",
+        "scope": "box",
+        "scope_zh": "盒子",
+        "parent": "narrow_box",
+        "parent_zh": "窄盒",
+        "payload": "",
+        "instruction_zh": "移除前方展示条后面的窄白色盒子。",
+        "instruction_noref_zh": "移除选中的盒子。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

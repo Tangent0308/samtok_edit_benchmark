@@ -1,0 +1,182 @@
+{
+  "source_id": "sa_1386075",
+  "reason_zh": "补看40高清局部，确认独立悬挂蓝盒，并记录补充图哈希。",
+  "previous_record": {
+    "source_id": "sa_1386075",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dc961c042c2667c454465cd24f036c5fee2f22d66d3bb722c495ced5125e89df",
+    "review_card_sha256": "8bb0cd5d8b27cc0fb8ccc707c6575e27377ef2a0796cf26117d3d9bda7a0b96c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9为左侧近处背对镜头者大衣，1为OUTLAND实体店牌，40为店门边蓝色挂盒，30为最近路灯灯头。107黄物体身份不确认，不当布袋使用；灯头加装饰符合节庆环境。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "雪中圣诞集市的衣物、独立牌和灯",
+      "evidence_zh": "9为左侧近处背对镜头者大衣，1为OUTLAND实体店牌，40为店门边蓝色挂盒，30为最近路灯灯头。107黄物体身份不确认，不当布袋使用；灯头加装饰符合节庆环境。",
+      "specific_protection_zh": "保留飘雪、行人、店铺商品、灯杆、其他装饰与暖色照明。"
+    },
+    "protected_content_zh": "保留飘雪、行人、店铺商品、灯杆、其他装饰与暖色照明。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the nearest walker’s dark coat on the left",
+        "ref_zh": "左侧最近行人的深色大衣",
+        "scope": "coat",
+        "scope_zh": "大衣",
+        "parent": "nearest_walker",
+        "parent_zh": "近处行人",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧最近行人的深色大衣的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的大衣的颜色改为酒红色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the “OUTLAND” sign above the stall",
+        "ref_zh": "摊位上方的“OUTLAND”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "outland_sign",
+        "parent_zh": "OUTLAND牌",
+        "payload": "a wooden “WINTER GIFTS” sign",
+        "instruction_zh": "将摊位上方的“OUTLAND”招牌替换为一块木质“WINTER GIFTS”招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块木质“WINTER GIFTS”招牌。"
+      },
+      {
+        "object_id": 40,
+        "operation": "remove",
+        "ref": "the blue box hanging beside the stall entrance",
+        "ref_zh": "摊位入口旁悬挂的蓝色盒子",
+        "scope": "box",
+        "scope_zh": "盒子",
+        "parent": "blue_hanging_box",
+        "parent_zh": "蓝挂盒",
+        "payload": "",
+        "instruction_zh": "移除摊位入口旁悬挂的蓝色盒子。",
+        "instruction_noref_zh": "移除选中的盒子。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the nearest streetlamp’s lantern",
+        "ref_zh": "最近路灯的灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "nearest_streetlamp",
+        "parent_zh": "最近路灯",
+        "payload": "a small red ribbon bow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近路灯的灯头加上一个红色小丝带蝴蝶结。",
+        "instruction_noref_zh": "在选中的灯头加上一个红色小丝带蝴蝶结。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1386075",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dc961c042c2667c454465cd24f036c5fee2f22d66d3bb722c495ced5125e89df",
+    "review_card_sha256": "8bb0cd5d8b27cc0fb8ccc707c6575e27377ef2a0796cf26117d3d9bda7a0b96c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9为左侧近处背对镜头者大衣，1为OUTLAND实体店牌，40为店门边蓝色挂盒，30为最近路灯灯头。107黄物体身份不确认，不当布袋使用；灯头加装饰符合节庆环境。 全图定位复核：补看40高清局部，确认独立悬挂蓝盒，并记录补充图哈希。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "雪中圣诞集市的衣物、独立牌和灯",
+      "evidence_zh": "9为左侧近处背对镜头者大衣，1为OUTLAND实体店牌，40为店门边蓝色挂盒，30为最近路灯灯头。107黄物体身份不确认，不当布袋使用；灯头加装饰符合节庆环境。 全图定位复核：补看40高清局部，确认独立悬挂蓝盒，并记录补充图哈希。",
+      "specific_protection_zh": "保留飘雪、行人、店铺商品、灯杆、其他装饰与暖色照明。"
+    },
+    "protected_content_zh": "保留飘雪、行人、店铺商品、灯杆、其他装饰与暖色照明。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the nearest walker’s dark coat on the left",
+        "ref_zh": "左侧最近行人的深色大衣",
+        "scope": "coat",
+        "scope_zh": "大衣",
+        "parent": "nearest_walker",
+        "parent_zh": "近处行人",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧最近行人的深色大衣的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的大衣的颜色改为酒红色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the “OUTLAND” sign above the stall",
+        "ref_zh": "摊位上方的“OUTLAND”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "outland_sign",
+        "parent_zh": "OUTLAND牌",
+        "payload": "a wooden “WINTER GIFTS” sign",
+        "instruction_zh": "将摊位上方的“OUTLAND”招牌替换为一块木质“WINTER GIFTS”招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块木质“WINTER GIFTS”招牌。"
+      },
+      {
+        "object_id": 40,
+        "operation": "remove",
+        "ref": "the blue box hanging beside the stall entrance",
+        "ref_zh": "摊位入口旁悬挂的蓝色盒子",
+        "scope": "box",
+        "scope_zh": "盒子",
+        "parent": "blue_hanging_box",
+        "parent_zh": "蓝挂盒",
+        "payload": "",
+        "instruction_zh": "移除摊位入口旁悬挂的蓝色盒子。",
+        "instruction_noref_zh": "移除选中的盒子。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the nearest streetlamp’s lantern",
+        "ref_zh": "最近路灯的灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "nearest_streetlamp",
+        "parent_zh": "最近路灯",
+        "payload": "a small red ribbon bow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近路灯的灯头加上一个红色小丝带蝴蝶结。",
+        "instruction_noref_zh": "在选中的灯头加上一个红色小丝带蝴蝶结。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_1386075/blue_item_followup.jpg",
+        "sha256": "f34d9e1da64a6bd8b330690c56c315c95110a03ecfae96bf854e1fbf076926cd"
+      }
+    ]
+  }
+}

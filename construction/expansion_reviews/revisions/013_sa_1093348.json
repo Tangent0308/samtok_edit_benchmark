@@ -1,0 +1,148 @@
+{
+  "source_id": "sa_1093348",
+  "reason_zh": "明确只替换灯头，保留不在26范围内的灯架。",
+  "previous_record": {
+    "source_id": "sa_1093348",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6bcc7aba4487861098dec104c73b611f5df185ed62b8b2ef1d3f11a6b0e3fc56",
+    "review_card_sha256": "485907464a9a6657188ad63a02492662c808ad007cd32dc889fef6321fb713df",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "26仅灯头不含支架，3为左中卫星天线，2为右墙完整白窗；不选4邮轮，因为其mask混入船下屋顶碎片。灯头、天线与建筑分别计数。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "巷道近处灯具与远处邮轮",
+      "evidence_zh": "26仅灯头不含支架，3为左中卫星天线，2为右墙完整白窗；不选4邮轮，因为其mask混入船下屋顶碎片。灯头、天线与建筑分别计数。",
+      "specific_protection_zh": "保留铁艺灯架、邮轮、屋顶、窗框与邻近电线。"
+    },
+    "protected_content_zh": "保留铁艺灯架、邮轮、屋顶、窗框与邻近电线。",
+    "targets": [
+      {
+        "object_id": 26,
+        "operation": "replace",
+        "ref": "the foreground wall lantern",
+        "ref_zh": "前景壁灯的灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "an opal globe light",
+        "instruction_zh": "将前景壁灯的灯头替换为一个乳白球形灯。",
+        "instruction_noref_zh": "将选中的灯头替换为一个乳白球形灯。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the satellite dish below the cruise ship",
+        "ref_zh": "邮轮下方的卫星天线",
+        "scope": "satellite dish",
+        "scope_zh": "卫星天线",
+        "parent": "satellite_dish",
+        "parent_zh": "卫星天线",
+        "payload": "",
+        "instruction_zh": "移除邮轮下方的卫星天线。",
+        "instruction_noref_zh": "移除选中的卫星天线。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the white-framed window on the right",
+        "ref_zh": "右侧白框窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "a small green wreath",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧白框窗户加上一个绿色小花环。",
+        "instruction_noref_zh": "在选中的窗户加上一个绿色小花环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1093348",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6bcc7aba4487861098dec104c73b611f5df185ed62b8b2ef1d3f11a6b0e3fc56",
+    "review_card_sha256": "485907464a9a6657188ad63a02492662c808ad007cd32dc889fef6321fb713df",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "26仅灯头不含支架，3为左中卫星天线，2为右墙完整白窗；不选4邮轮，因为其mask混入船下屋顶碎片。灯头、天线与建筑分别计数。 全图定位复核：明确只替换灯头，保留不在26范围内的灯架。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "巷道近处灯具与远处邮轮",
+      "evidence_zh": "26仅灯头不含支架，3为左中卫星天线，2为右墙完整白窗；不选4邮轮，因为其mask混入船下屋顶碎片。灯头、天线与建筑分别计数。 全图定位复核：明确只替换灯头，保留不在26范围内的灯架。",
+      "specific_protection_zh": "保留铁艺灯架、邮轮、屋顶、窗框与邻近电线。"
+    },
+    "protected_content_zh": "保留铁艺灯架、邮轮、屋顶、窗框与邻近电线。",
+    "targets": [
+      {
+        "object_id": 26,
+        "operation": "replace",
+        "ref": "the foreground wall lantern’s light head",
+        "ref_zh": "前景壁灯的灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "an opal globe light",
+        "instruction_zh": "将前景壁灯的灯头替换为一个乳白球形灯。",
+        "instruction_noref_zh": "将选中的灯头替换为一个乳白球形灯。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the satellite dish below the cruise ship",
+        "ref_zh": "邮轮下方的卫星天线",
+        "scope": "satellite dish",
+        "scope_zh": "卫星天线",
+        "parent": "satellite_dish",
+        "parent_zh": "卫星天线",
+        "payload": "",
+        "instruction_zh": "移除邮轮下方的卫星天线。",
+        "instruction_noref_zh": "移除选中的卫星天线。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the white-framed window on the right",
+        "ref_zh": "右侧白框窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "a small green wreath",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧白框窗户加上一个绿色小花环。",
+        "instruction_noref_zh": "在选中的窗户加上一个绿色小花环。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

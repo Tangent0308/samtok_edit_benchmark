@@ -1,0 +1,578 @@
+[
+  {
+    "source_id": "sa_8910733",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c33e570389d53a613d76061ce63c972a0f91e7f4173c1b70c0f1b81abf3c9e72",
+    "review_card_sha256": "92dc352ab739be29410a5ea76c6ef66af47ef622ce211dacfa8a94bd9663a760",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "中央自行车和后方砖墙是两个独立对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "bicycle",
+        "street"
+      ],
+      "scene_zh": "街边自行车",
+      "evidence_zh": "中央自行车和后方砖墙是两个独立对象。",
+      "specific_protection_zh": "保留自行车及其环境背景。"
+    },
+    "protected_content_zh": "保留自行车及其环境背景。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the bicycle near the center",
+        "ref_zh": "中间附近的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "center_bicycle",
+        "parent_zh": "中央自行车",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的自行车的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的自行车的颜色改为黑色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the brick wall at the right",
+        "ref_zh": "右侧的砖墙",
+        "scope": "brick wall",
+        "scope_zh": "砖墙",
+        "parent": "right_brick_wall",
+        "parent_zh": "右侧砖墙",
+        "payload": "a white wall",
+        "instruction_zh": "将右侧的砖墙替换为一面白墙。",
+        "instruction_noref_zh": "将选中的砖墙替换为一面白墙。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8915261",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "46a8f837a774db5a432a9ef8eac5225d2daa178795a2a8dc4a441f27c0176bbe",
+    "review_card_sha256": "b3693ddf46ee7cee66f1aa66ae294e2045a81d62ab3b8fe195502da85853331a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "上方横幅和下方鞋子属于两个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "street"
+      ],
+      "scene_zh": "拱廊街",
+      "evidence_zh": "上方横幅和下方鞋子属于两个不同对象。",
+      "specific_protection_zh": "保留街道标识和行人细节。"
+    },
+    "protected_content_zh": "保留街道标识和行人细节。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the banner at the upper left",
+        "ref_zh": "左上方的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "upper_left_banner",
+        "parent_zh": "左上横幅",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左上方的横幅的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的横幅的颜色改为蓝色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the shoe at the lower center",
+        "ref_zh": "下方中部的鞋子",
+        "scope": "shoe",
+        "scope_zh": "鞋子",
+        "parent": "lower_center_shoe",
+        "parent_zh": "下方中部鞋子",
+        "payload": "a white sneaker",
+        "instruction_zh": "将下方中部的鞋子替换为一只白色运动鞋。",
+        "instruction_noref_zh": "将选中的鞋子替换为一只白色运动鞋。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8945299",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1c5d745d724fad7d88b0ed92a66b46dec915c87cde9d283937f0c210571adeba",
+    "review_card_sha256": "d479edff51f83454fdc923eb4abd1168eb93f0570be50d7c22ad09174e12be85",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "右侧人物、左侧茅草屋顶、右上路灯和右侧手提袋是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "temple",
+        "courtyard"
+      ],
+      "scene_zh": "寺庙庭院",
+      "evidence_zh": "右侧人物、左侧茅草屋顶、右上路灯和右侧手提袋是四个不同对象。",
+      "specific_protection_zh": "保留人物、建筑和庭院细节。"
+    },
+    "protected_content_zh": "保留人物、建筑和庭院细节。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the person at the right",
+        "ref_zh": "右侧的人物",
+        "scope": "person",
+        "scope_zh": "人物",
+        "parent": "right_person",
+        "parent_zh": "右侧人物",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的人物的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的人物的颜色改为蓝色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the thatched roof at the left",
+        "ref_zh": "左侧的茅草屋顶",
+        "scope": "roof",
+        "scope_zh": "茅草屋顶",
+        "parent": "left_thatch_roof",
+        "parent_zh": "左侧茅草屋顶",
+        "payload": "a dark roof",
+        "instruction_zh": "将左侧的茅草屋顶替换为一片深色屋顶。",
+        "instruction_noref_zh": "将选中的茅草屋顶替换为一片深色屋顶。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the streetlight at the upper right",
+        "ref_zh": "右上方的路灯",
+        "scope": "streetlight",
+        "scope_zh": "路灯",
+        "parent": "upper_right_streetlight",
+        "parent_zh": "右上路灯",
+        "payload": "",
+        "instruction_zh": "移除右上方的路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the handbag at the right",
+        "ref_zh": "右侧的手提袋",
+        "scope": "handbag",
+        "scope_zh": "手提袋",
+        "parent": "right_handbag",
+        "parent_zh": "右侧手提袋",
+        "payload": "a small tag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的手提袋加上一个小标签。",
+        "instruction_noref_zh": "在选中的手提袋加上一个小标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8962292",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "139ab63e4f43bfeb49e2e8253d4ae90892661c803b7649e75d7493a222746389",
+    "review_card_sha256": "b0135847cfe8dfef48e4aecad885a320c56ae6b6f05e570ed5692ba53d4b5991",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "中央自行车、左侧摩托车、中部草帽和中部塑料袋是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "bicycles"
+      ],
+      "scene_zh": "街头骑行",
+      "evidence_zh": "中央自行车、左侧摩托车、中部草帽和中部塑料袋是四个不同对象。",
+      "specific_protection_zh": "保留骑行者、车辆和随身物品。"
+    },
+    "protected_content_zh": "保留骑行者、车辆和随身物品。",
+    "targets": [
+      {
+        "object_id": 26,
+        "operation": "attribute",
+        "ref": "the bicycle near the center",
+        "ref_zh": "中间附近的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "center_bicycle",
+        "parent_zh": "中央自行车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的自行车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的自行车的颜色改为红色。"
+      },
+      {
+        "object_id": 69,
+        "operation": "replace",
+        "ref": "the motorbike at the left",
+        "ref_zh": "左侧的摩托车",
+        "scope": "motorbike",
+        "scope_zh": "摩托车",
+        "parent": "left_motorbike",
+        "parent_zh": "左侧摩托车",
+        "payload": "a blue motorbike",
+        "instruction_zh": "将左侧的摩托车替换为一辆蓝色摩托车。",
+        "instruction_noref_zh": "将选中的摩托车替换为一辆蓝色摩托车。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the straw hat near the center",
+        "ref_zh": "中间附近的草帽",
+        "scope": "hat",
+        "scope_zh": "草帽",
+        "parent": "center_hat",
+        "parent_zh": "中央草帽",
+        "payload": "",
+        "instruction_zh": "移除中间附近的草帽。",
+        "instruction_noref_zh": "移除选中的草帽。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the plastic bag near the center",
+        "ref_zh": "中间附近的塑料袋",
+        "scope": "bag",
+        "scope_zh": "塑料袋",
+        "parent": "center_bag",
+        "parent_zh": "中央塑料袋",
+        "payload": "a small logo",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的塑料袋加上一个小标志。",
+        "instruction_noref_zh": "在选中的塑料袋加上一个小标志。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8963199",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d4d3f01dc3d7b2cbecb321528b043820b31bcaee96553cb263dace72ba1cbcb5",
+    "review_card_sha256": "08cf51eccf9bc560e743893f5573c2c424b2ad75e62313f53471481eb1bebf25",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "中部厢式车、右上交通标牌、中部自行车和中部上衣是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "bicycles"
+      ],
+      "scene_zh": "城市自行车道",
+      "evidence_zh": "中部厢式车、右上交通标牌、中部自行车和中部上衣是四个不同对象。",
+      "specific_protection_zh": "保留车辆、骑行者和道路设施。"
+    },
+    "protected_content_zh": "保留车辆、骑行者和道路设施。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the van near the center",
+        "ref_zh": "中间附近的厢式车",
+        "scope": "van",
+        "scope_zh": "厢式车",
+        "parent": "center_van",
+        "parent_zh": "中央厢式车",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的厢式车的颜色改为白色。",
+        "instruction_noref_zh": "将选中的厢式车的颜色改为白色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the traffic sign at the upper right",
+        "ref_zh": "右上方的交通标牌",
+        "scope": "traffic sign",
+        "scope_zh": "交通标牌",
+        "parent": "upper_right_traffic_sign",
+        "parent_zh": "右上交通标牌",
+        "payload": "a blue sign",
+        "instruction_zh": "将右上方的交通标牌替换为一块蓝色标牌。",
+        "instruction_noref_zh": "将选中的交通标牌替换为一块蓝色标牌。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the bicycle near the center",
+        "ref_zh": "中间附近的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "center_bicycle",
+        "parent_zh": "中央自行车",
+        "payload": "",
+        "instruction_zh": "移除中间附近的自行车。",
+        "instruction_noref_zh": "移除选中的自行车。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the shirt near the center",
+        "ref_zh": "中间附近的上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "center_shirt",
+        "parent_zh": "中央上衣",
+        "payload": "a small badge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的上衣加上一个小徽章。",
+        "instruction_noref_zh": "在选中的上衣加上一个小徽章。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_8964793",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "75383e5f718ac943feb9984a71eec537b850ac30383b3206b7e5ba7f33b2f6d1",
+    "review_card_sha256": "08f972976d378bcfc61afa49ed5f43090b91b87a14e5a027274d19a1f98d305f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选区域几乎都是同一货架上的罐头、标签和货架层，缺少独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "product",
+        "closeup"
+      ],
+      "scene_zh": "罐头货架特写",
+      "evidence_zh": "候选区域几乎都是同一货架上的罐头、标签和货架层，缺少独立父对象。",
+      "specific_protection_zh": "不把同一产品陈列的局部重复计为独立目标。"
+    },
+    "protected_content_zh": "不把同一产品陈列的局部重复计为独立目标。",
+    "targets": [],
+    "rejected_targets": [
+      {
+        "object_id": 0,
+        "reason_zh": "同一组罐头包装"
+      },
+      {
+        "object_id": 36,
+        "reason_zh": "同一货架"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_8998938",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "86b633f0032b68b05c2969edafa192226e57792ac5f2e23d5988bb8e19def2ef",
+    "review_card_sha256": "27d88cd3f527a7c1a7d1ee3ae137e31852318ac4e4fb8e68baee0da04bf67bfc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "中央步道、右上建筑、左侧灌木和右下栏杆属于四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "waterfront",
+        "park"
+      ],
+      "scene_zh": "河滨步道",
+      "evidence_zh": "中央步道、右上建筑、左侧灌木和右下栏杆属于四个不同对象。",
+      "specific_protection_zh": "保留步道、建筑和绿化环境。"
+    },
+    "protected_content_zh": "保留步道、建筑和绿化环境。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the boardwalk near the center",
+        "ref_zh": "中间附近的步道",
+        "scope": "boardwalk",
+        "scope_zh": "步道",
+        "parent": "center_boardwalk",
+        "parent_zh": "中央步道",
+        "payload": "brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的步道的颜色改为棕色。",
+        "instruction_noref_zh": "将选中的步道的颜色改为棕色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the building at the upper right",
+        "ref_zh": "右上方的建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "upper_right_building",
+        "parent_zh": "右上建筑",
+        "payload": "a white building",
+        "instruction_zh": "将右上方的建筑替换为一座白色建筑。",
+        "instruction_noref_zh": "将选中的建筑替换为一座白色建筑。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the bushes at the left",
+        "ref_zh": "左侧的灌木",
+        "scope": "bushes",
+        "scope_zh": "灌木",
+        "parent": "left_bushes",
+        "parent_zh": "左侧灌木",
+        "payload": "",
+        "instruction_zh": "移除左侧的灌木。",
+        "instruction_noref_zh": "移除选中的灌木。"
+      },
+      {
+        "object_id": 40,
+        "operation": "add",
+        "ref": "the railing at the lower right",
+        "ref_zh": "右下方的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "lower_right_railing",
+        "parent_zh": "右下栏杆",
+        "payload": "a small flower pot",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方的栏杆加上一个小花盆。",
+        "instruction_noref_zh": "在选中的栏杆加上一个小花盆。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_9006288",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "2eea739a2ef1f1769c5be451fd39675a5dbbbacdfdd5986041f0afbd672bf911",
+    "review_card_sha256": "fe004ce371b5f54e715073941c301b33d745856c910c0833b9f90ea950792e63",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "中央人力车、上方雨伞、左上横幅和下方花朵是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "street",
+        "people"
+      ],
+      "scene_zh": "街头人力车",
+      "evidence_zh": "中央人力车、上方雨伞、左上横幅和下方花朵是四个不同对象。",
+      "specific_protection_zh": "保留人力车、遮阳物和街头装饰。"
+    },
+    "protected_content_zh": "保留人力车、遮阳物和街头装饰。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the rickshaw near the center",
+        "ref_zh": "中间附近的人力车",
+        "scope": "rickshaw",
+        "scope_zh": "人力车",
+        "parent": "center_rickshaw",
+        "parent_zh": "中央人力车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近的人力车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的人力车的颜色改为红色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the umbrella at the upper center",
+        "ref_zh": "上方中部的雨伞",
+        "scope": "umbrella",
+        "scope_zh": "雨伞",
+        "parent": "upper_center_umbrella",
+        "parent_zh": "上方中部雨伞",
+        "payload": "a blue umbrella",
+        "instruction_zh": "将上方中部的雨伞替换为一把蓝色雨伞。",
+        "instruction_noref_zh": "将选中的雨伞替换为一把蓝色雨伞。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the banner at the upper left",
+        "ref_zh": "左上方的横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "upper_left_banner",
+        "parent_zh": "左上横幅",
+        "payload": "",
+        "instruction_zh": "移除左上方的横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the sleeve near the center",
+        "ref_zh": "中间附近的衣袖",
+        "scope": "sleeve",
+        "scope_zh": "衣袖",
+        "parent": "center_sleeve",
+        "parent_zh": "中央衣袖",
+        "payload": "a small badge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的衣袖加上一个小徽章。",
+        "instruction_noref_zh": "在选中的衣袖加上一个小徽章。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

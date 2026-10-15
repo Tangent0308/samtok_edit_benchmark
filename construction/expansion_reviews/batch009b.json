@@ -1,0 +1,572 @@
+[
+  {
+    "source_id": "sa_2054422",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "51b7c64220db4d0ce4b4d2d7a952631ff1549a6dd8eb0ac4707f44a1d5bb8dc4",
+    "review_card_sha256": "ade0fe60560a724daedbf9134481679435d4e5a3b5ca07e933e33abbb329c5a2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为完整消毒液瓶，13为蓝手套，11为横放试管，15为手套下杯形口罩。各为独立物品；瓶盖/标签不单独算父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "桌面防护与清洁用品",
+      "evidence_zh": "4为完整消毒液瓶，13为蓝手套，11为横放试管，15为手套下杯形口罩。各为独立物品；瓶盖/标签不单独算父对象。",
+      "specific_protection_zh": "保留桌面、其他器具、手套与口罩之间的遮挡关系。"
+    },
+    "protected_content_zh": "保留桌面、其他器具、手套与口罩之间的遮挡关系。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the white disinfectant bottle",
+        "ref_zh": "白色消毒液瓶",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "disinfectant_bottle",
+        "parent_zh": "消毒液瓶",
+        "payload": "a small inventory sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在白色消毒液瓶加上一张小库存标签。",
+        "instruction_noref_zh": "在选中的瓶子加上一张小库存标签。"
+      },
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the blue gloves on the right",
+        "ref_zh": "右侧的蓝色手套",
+        "scope": "gloves",
+        "scope_zh": "手套",
+        "parent": "gloves",
+        "parent_zh": "手套",
+        "payload": "purple",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的蓝色手套的颜色改为紫色。",
+        "instruction_noref_zh": "将选中的手套的颜色改为紫色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "remove",
+        "ref": "the horizontal sample tube",
+        "ref_zh": "横放的样本试管",
+        "scope": "tube",
+        "scope_zh": "试管",
+        "parent": "sample_tube",
+        "parent_zh": "样本管",
+        "payload": "",
+        "instruction_zh": "移除横放的样本试管。",
+        "instruction_noref_zh": "移除选中的试管。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the cup-shaped mask beneath the gloves",
+        "ref_zh": "手套下方的杯形口罩",
+        "scope": "mask",
+        "scope_zh": "口罩",
+        "parent": "respirator",
+        "parent_zh": "口罩",
+        "payload": "a white foldable respirator",
+        "instruction_zh": "将手套下方的杯形口罩替换为一个白色折叠式口罩。",
+        "instruction_noref_zh": "将选中的口罩替换为一个白色折叠式口罩。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_208495",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6bbbb6c820cd6a98f9baa967caae8a066b2081f200458a6d934376d72337d0f8",
+    "review_card_sha256": "82cadc14267151b23446ba35cd3d99ca9ed3e263d8c293820ee7cab9c6b50d10",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15为最近表演者蓝上衣，13为画面中最大粉旗，19为其右下方前排表演者银冠。两个人与独立旗，保留表演动作。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "蓝衣粉旗游行队列",
+      "evidence_zh": "15为最近表演者蓝上衣，13为画面中最大粉旗，19为其右下方前排表演者银冠。两个人与独立旗，保留表演动作。",
+      "specific_protection_zh": "保留人体、其他服装、手持道具、观众和街景。"
+    },
+    "protected_content_zh": "保留人体、其他服装、手持道具、观众和街景。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "attribute",
+        "ref": "the nearest marcher’s blue top",
+        "ref_zh": "最近游行者的蓝色上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "nearest_marcher",
+        "parent_zh": "近游行者",
+        "payload": "purple",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近游行者的蓝色上衣的颜色改为紫色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为紫色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the largest pink flag",
+        "ref_zh": "最大的粉色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "largest_flag",
+        "parent_zh": "最大旗",
+        "payload": "a gold star emblem",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最大的粉色旗帜加上一个金色星形徽标。",
+        "instruction_noref_zh": "在选中的旗帜加上一个金色星形徽标。"
+      },
+      {
+        "object_id": 19,
+        "operation": "replace",
+        "ref": "the silver crown below the largest pink flag",
+        "ref_zh": "最大粉旗下方的银色王冠",
+        "scope": "crown",
+        "scope_zh": "王冠",
+        "parent": "central_marcher",
+        "parent_zh": "中央游行者",
+        "payload": "a gold paper crown",
+        "instruction_zh": "将最大粉旗下方的银色王冠替换为一顶金色纸王冠。",
+        "instruction_noref_zh": "将选中的王冠替换为一顶金色纸王冠。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_210703",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "501cc33827be4f0c71e97abea6cb895f763130844e321f1da6b12411b5d564ed",
+    "review_card_sha256": "13868f482d7893390fd0b98622411ed7217c1e56bf5ed146c2cabeb3ffe4a8b4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最近红边游船，2为其后蓝游船，3为左岸码头绿篷，8为最右远处橙白小船。三艘船与码头设施，保留水上乘客及遮挡。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection",
+        "small_targets"
+      ],
+      "scene_zh": "河边游船队列与码头篷",
+      "evidence_zh": "1为最近红边游船，2为其后蓝游船，3为左岸码头绿篷，8为最右远处橙白小船。三艘船与码头设施，保留水上乘客及遮挡。",
+      "specific_protection_zh": "保留其他船、乘客、岸边人群、建筑、栏杆与水面反射。"
+    },
+    "protected_content_zh": "保留其他船、乘客、岸边人群、建筑、栏杆与水面反射。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the nearest red-trimmed tour boat",
+        "ref_zh": "最近的红边游船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "nearest_boat",
+        "parent_zh": "近游船",
+        "payload": "an orange lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "side railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的红边游船的侧面栏杆上加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的船的侧面栏杆上加上一个橙色救生圈。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the blue tour boat behind the nearest boat",
+        "ref_zh": "最近游船后方的蓝色游船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "second_boat",
+        "parent_zh": "第二船",
+        "payload": "a white glass-roofed tour boat",
+        "instruction_zh": "将最近游船后方的蓝色游船替换为一艘白色玻璃顶游船。",
+        "instruction_noref_zh": "将选中的船替换为一艘白色玻璃顶游船。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the green dock canopy on the left",
+        "ref_zh": "左侧码头的绿色顶篷",
+        "scope": "canopy",
+        "scope_zh": "顶篷",
+        "parent": "dock",
+        "parent_zh": "码头",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧码头的绿色顶篷的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的顶篷的颜色改为蓝色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the small orange-and-white boat at the far right",
+        "ref_zh": "最右侧远处的橙白色小船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "far_right_boat",
+        "parent_zh": "最右远船",
+        "payload": "",
+        "instruction_zh": "移除最右侧远处的橙白色小船。",
+        "instruction_noref_zh": "移除选中的船。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2110922",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "90c52733dd261105e54d40b941cac492382cf1838f7b2f4ef3625ead193d85de",
+    "review_card_sha256": "8376467e9f7d9a039534ad788654a8072a72e00407770c6edf6cac435b7cc6d9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为前景帽，10为左侧可乐标遮阳伞篷，39为其右侧绿帐篷侧壁。两个不同篷体与人物，火焰和烟雾保留，不把衣袖帽子作不同人物。",
+    "difficulty": {
+      "mechanisms": [
+        "smoke",
+        "occlusion",
+        "low_contrast"
+      ],
+      "scene_zh": "前景迷彩人物与背景帐篷",
+      "evidence_zh": "3为前景帽，10为左侧可乐标遮阳伞篷，39为其右侧绿帐篷侧壁。两个不同篷体与人物，火焰和烟雾保留，不把衣袖帽子作不同人物。",
+      "specific_protection_zh": "保留人物脸与身体、火焰、烟雾、其他帐篷和背景结构。"
+    },
+    "protected_content_zh": "保留人物脸与身体、火焰、烟雾、其他帐篷和背景结构。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the foreground person’s camouflage cap",
+        "ref_zh": "前景人物的迷彩帽",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "foreground_person",
+        "parent_zh": "前景人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景人物的迷彩帽的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the Coca-Cola umbrella canopy in the background",
+        "ref_zh": "背景中的可口可乐遮阳伞篷",
+        "scope": "canopy",
+        "scope_zh": "伞篷",
+        "parent": "cola_umbrella",
+        "parent_zh": "可乐伞",
+        "payload": "a blue-and-white striped canopy",
+        "instruction_zh": "将背景中的可口可乐遮阳伞篷替换为一顶蓝白条纹伞篷。",
+        "instruction_noref_zh": "将选中的伞篷替换为一顶蓝白条纹伞篷。"
+      },
+      {
+        "object_id": 39,
+        "operation": "add",
+        "ref": "the green tent wall on the right",
+        "ref_zh": "右侧的绿色帐篷侧壁",
+        "scope": "tent wall",
+        "scope_zh": "帐篷侧壁",
+        "parent": "green_tent",
+        "parent_zh": "绿帐篷",
+        "payload": "a small white repair patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的绿色帐篷侧壁加上一块白色小修补布。",
+        "instruction_noref_zh": "在选中的帐篷侧壁加上一块白色小修补布。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2123093",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9367c02c8a3af6bfb691d375df4787e4a163e84df33745802f2db294a5b79131",
+    "review_card_sha256": "18257baaab642493ac84c94edfc9ac48de4eb74e2154ca1f9f389cd14f579625",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为左侧水中游客黑短裤，31为中央高处倾水桶。设施所有柱栏楼梯只算同一父对象，因此仅配独立游客。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "水上游乐设施与水中游客",
+      "evidence_zh": "6为左侧水中游客黑短裤，31为中央高处倾水桶。设施所有柱栏楼梯只算同一父对象，因此仅配独立游客。",
+      "specific_protection_zh": "保留人体、水花、游乐设施结构、其他游客和水面。"
+    },
+    "protected_content_zh": "保留人体、水花、游乐设施结构、其他游客和水面。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the black shorts beneath the left pavilion",
+        "ref_zh": "左侧亭子下方的黑色短裤",
+        "scope": "shorts",
+        "scope_zh": "短裤",
+        "parent": "left_visitor",
+        "parent_zh": "左游客",
+        "payload": "blue swimming shorts",
+        "instruction_zh": "将左侧亭子下方的黑色短裤替换为一条蓝色泳裤。",
+        "instruction_noref_zh": "将选中的短裤替换为一条蓝色泳裤。"
+      },
+      {
+        "object_id": 31,
+        "operation": "add",
+        "ref": "the tipping bucket above the central walkway",
+        "ref_zh": "中央通道上方的翻斗水桶",
+        "scope": "bucket",
+        "scope_zh": "水桶",
+        "parent": "water_play_structure",
+        "parent_zh": "水上游乐设施",
+        "payload": "a white whale decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央通道上方的翻斗水桶加上一张白色鲸鱼贴纸。",
+        "instruction_noref_zh": "在选中的水桶加上一张白色鲸鱼贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2136264",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8fd5fcf005641fd4fc99e9a4619f187276b54d64d5faeb29784732f7b3fbc681",
+    "review_card_sha256": "595929d2e09711ed783cf45ad621c427eb55ffdf8ec0423fded9beeeb7623e75",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为左行人橄榄色衬衫，17为中央坐者黑T恤，14为吧台黑包，9为坐者右边金属凳。两人物与独立包、凳。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "indoor_clutter"
+      ],
+      "scene_zh": "室内餐厅人物和吧台",
+      "evidence_zh": "8为左行人橄榄色衬衫，17为中央坐者黑T恤，14为吧台黑包，9为坐者右边金属凳。两人物与独立包、凳。",
+      "specific_protection_zh": "保留人体、桌面、食品、餐厅设施与其他顾客。"
+    },
+    "protected_content_zh": "保留人体、桌面、食品、餐厅设施与其他顾客。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the olive shirt on the walking person at the left",
+        "ref_zh": "左侧行人的橄榄色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_walker",
+        "parent_zh": "左行人",
+        "payload": "a white linen shirt",
+        "instruction_zh": "将左侧行人的橄榄色衬衫替换为一件白色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件白色亚麻衬衫。"
+      },
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the seated man’s black T-shirt at the counter",
+        "ref_zh": "吧台旁坐着的男子的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "counter_man",
+        "parent_zh": "吧台男子",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将吧台旁坐着的男子的黑色T恤的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为酒红色。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the black bag lying on the counter",
+        "ref_zh": "吧台上平放的黑色包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "counter_bag",
+        "parent_zh": "吧台黑包",
+        "payload": "",
+        "instruction_zh": "移除吧台上平放的黑色包。",
+        "instruction_noref_zh": "移除选中的包。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the empty metal stool beside the seated man",
+        "ref_zh": "坐着的男子旁的空金属凳",
+        "scope": "stool",
+        "scope_zh": "凳子",
+        "parent": "empty_stool",
+        "parent_zh": "空凳",
+        "payload": "a round seat cushion",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在坐着的男子旁的空金属凳加上一个圆形坐垫。",
+        "instruction_noref_zh": "在选中的凳子加上一个圆形坐垫。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2137778",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "90af89466bb74be359feab49a6d9ca7308a4063247a770ac164ba8261fc6f1f5",
+    "review_card_sha256": "5a2283a63ab1e2c5087ea868dd010b00bfa5ba157c953ee3c1e7fc0591f96c6b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为最左孩子黄长袖，7为中央成人黄衣，2为右上编篮，41为朝向蓝椅的竖向地面裂缝。不同两人物、篮和地面；修补裂缝为自然局部修图。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "门前合影人物与篮子",
+      "evidence_zh": "6为最左孩子黄长袖，7为中央成人黄衣，2为右上编篮，41为朝向蓝椅的竖向地面裂缝。不同两人物、篮和地面；修补裂缝为自然局部修图。",
+      "specific_protection_zh": "保留身体、脸、其他服装、篮内商品、椅子和其他地面纹理。"
+    },
+    "protected_content_zh": "保留身体、脸、其他服装、篮内商品、椅子和其他地面纹理。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the leftmost child’s yellow long-sleeved shirt",
+        "ref_zh": "最左侧孩子的黄色长袖上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "left_child",
+        "parent_zh": "左孩子",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧孩子的黄色长袖上衣的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为蓝色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the seated adult’s yellow top",
+        "ref_zh": "坐着的成人的黄色上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "seated_adult",
+        "parent_zh": "坐着的成人",
+        "payload": "a white linen shirt",
+        "instruction_zh": "将坐着的成人的黄色上衣替换为一件白色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件白色亚麻衬衫。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the wicker basket held at the upper right",
+        "ref_zh": "右上方手持的编织篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "wicker_basket",
+        "parent_zh": "编篮",
+        "payload": "a red ribbon bow",
+        "placement": {
+          "relation": "on",
+          "site": "handle",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方手持的编织篮的提手上加上一个红色丝带蝴蝶结。",
+        "instruction_noref_zh": "在选中的篮子的提手上加上一个红色丝带蝴蝶结。"
+      },
+      {
+        "object_id": 41,
+        "operation": "remove",
+        "ref": "the pavement crack leading toward the blue chair",
+        "ref_zh": "朝蓝色椅子延伸的地面裂缝",
+        "scope": "crack",
+        "scope_zh": "裂缝",
+        "parent": "pavement",
+        "parent_zh": "路面",
+        "payload": "",
+        "instruction_zh": "移除朝蓝色椅子延伸的地面裂缝。",
+        "instruction_noref_zh": "移除选中的裂缝。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2137941",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f67bd96f7ecd427eac685feb0db554775af77a4296b60c34d30350162e6a4172",
+    "review_card_sha256": "b20c05114a80c141b73e04723bf68bbc114d0282bcbbaa2e03dc26d92d0a4dba",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "候选虽有多个头枕、座椅、安全带和窗，但都属于同一辆车；不能按座椅部件凑成独立父对象。保留待查其他独立随身物品mask。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion"
+      ],
+      "scene_zh": "单辆汽车内部座椅",
+      "evidence_zh": "候选虽有多个头枕、座椅、安全带和窗，但都属于同一辆车；不能按座椅部件凑成独立父对象。保留待查其他独立随身物品mask。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  }
+]

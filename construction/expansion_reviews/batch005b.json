@@ -1,0 +1,621 @@
+[
+  {
+    "source_id": "sa_10965932",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f3c82dc4ed5bd039bc7487c3ab468fbbdd63e84ed47a4cf74a6dda814344749b",
+    "review_card_sha256": "c167713af8474bb230dee4c131ed6a7b00769fc691d304ab4c8cb3fcca251dfc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左侧白色多用途车，1为其紧右侧银色掀背车，2为右侧银色轿车，24为楼顶独立HOTEL标牌。车辆实例靠颜色与相邻关系消歧，不使用大面积栏杆。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "旅馆外停车场相邻车辆",
+      "evidence_zh": "0左侧白色多用途车，1为其紧右侧银色掀背车，2为右侧银色轿车，24为楼顶独立HOTEL标牌。车辆实例靠颜色与相邻关系消歧，不使用大面积栏杆。",
+      "specific_protection_zh": "保留其他车辆、行人、建筑、车道与植被。"
+    },
+    "protected_content_zh": "保留其他车辆、行人、建筑、车道与植被。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the white minivan on the left",
+        "ref_zh": "左侧白色多用途车",
+        "scope": "minivan",
+        "scope_zh": "多用途车",
+        "parent": "white_minivan",
+        "parent_zh": "白色多用途车",
+        "payload": "a dark blue station wagon",
+        "instruction_zh": "将左侧白色多用途车替换为一辆深蓝色旅行车。",
+        "instruction_noref_zh": "将选中的多用途车替换为一辆深蓝色旅行车。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the silver hatchback beside the white minivan",
+        "ref_zh": "白色多用途车旁的银色掀背车",
+        "scope": "hatchback",
+        "scope_zh": "掀背车",
+        "parent": "silver_hatchback",
+        "parent_zh": "银色掀背车",
+        "payload": "",
+        "instruction_zh": "移除白色多用途车旁的银色掀背车。",
+        "instruction_noref_zh": "移除选中的掀背车。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the silver sedan beneath the green umbrella",
+        "ref_zh": "绿色遮阳伞下方的银色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "silver_sedan",
+        "parent_zh": "银色轿车",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将绿色遮阳伞下方的银色轿车的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为深绿色。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the rooftop “HOTEL” sign",
+        "ref_zh": "楼顶“HOTEL”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "hotel_sign",
+        "parent_zh": "旅馆招牌",
+        "payload": "a slim light bar",
+        "placement": {
+          "relation": "on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在楼顶“HOTEL”招牌的上沿加上一条细长灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一条细长灯条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10972565",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "23753d5edbddaa012b04f22d267640f87367a269bbe867a61038adb0e1ecb7ed",
+    "review_card_sha256": "6ce4fdaa31922ae5d32af19fb183e690172c3e7c8605b8015496d27180a5c3bf",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为左侧加盟海报，72为咖啡广告贴图整体而非广告中实体咖啡杯，20为右侧入口玻璃门。独立广告贴和建筑分别计数，19纸面杯不当实体杯。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "便利店实体海报和入口",
+      "evidence_zh": "3为左侧加盟海报，72为咖啡广告贴图整体而非广告中实体咖啡杯，20为右侧入口玻璃门。独立广告贴和建筑分别计数，19纸面杯不当实体杯。",
+      "specific_protection_zh": "保留商店主招牌、顾客、门把手、其他广告和扶手。"
+    },
+    "protected_content_zh": "保留商店主招牌、顾客、门把手、其他广告和扶手。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the “Franchise Opportunities Available” poster",
+        "ref_zh": "“Franchise Opportunities Available”海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "franchise_poster",
+        "parent_zh": "加盟海报",
+        "payload": "",
+        "instruction_zh": "移除“Franchise Opportunities Available”海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      },
+      {
+        "object_id": 72,
+        "operation": "replace",
+        "ref": "the “BRAZILIAN” coffee advertisement",
+        "ref_zh": "“BRAZILIAN”咖啡广告",
+        "scope": "advertisement",
+        "scope_zh": "广告",
+        "parent": "coffee_ad",
+        "parent_zh": "咖啡广告",
+        "payload": "a fresh-bread advertisement",
+        "instruction_zh": "将“BRAZILIAN”咖啡广告替换为一张新鲜面包广告。",
+        "instruction_noref_zh": "将选中的广告替换为一张新鲜面包广告。"
+      },
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the right entrance door",
+        "ref_zh": "右侧入口门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "shop_building",
+        "parent_zh": "便利店建筑",
+        "payload": "a small “OPEN” sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧入口门加上一张小“OPEN”贴纸。",
+        "instruction_noref_zh": "在选中的门加上一张小“OPEN”贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10974884",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3e5b85dea64074923ce304135bcaaeb607a3d620e224b64855d4d0fefe2504fd",
+    "review_card_sha256": "79743003712c37d49ca9f50588f5aae08275a0e4743ed80f1c6c48c953766f09",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3是右侧红船整船，45是中央红船紧右侧的白拖船，177是后方MENDEPARTEMENTET独立店牌。53船跨出画面，208合并两船均不用。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "thin_structures"
+      ],
+      "scene_zh": "港口中的红船、白拖船和商铺招牌",
+      "evidence_zh": "3是右侧红船整船，45是中央红船紧右侧的白拖船，177是后方MENDEPARTEMENTET独立店牌。53船跨出画面，208合并两船均不用。",
+      "specific_protection_zh": "保留其他船、缆绳、水面、岸边建筑与树木。"
+    },
+    "protected_content_zh": "保留其他船、缆绳、水面、岸边建筑与树木。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the red ship on the right",
+        "ref_zh": "右侧红色船只",
+        "scope": "ship",
+        "scope_zh": "船只",
+        "parent": "right_red_ship",
+        "parent_zh": "右侧红船",
+        "payload": "a white life ring",
+        "placement": {
+          "relation": "on",
+          "site": "bow railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧红色船只的船首栏杆上加上一个白色救生圈。",
+        "instruction_noref_zh": "在选中的船只的船首栏杆上加上一个白色救生圈。"
+      },
+      {
+        "object_id": 45,
+        "operation": "remove",
+        "ref": "the white tugboat immediately right of the central red boat",
+        "ref_zh": "中央红船紧右侧的白色拖船",
+        "scope": "tugboat",
+        "scope_zh": "拖船",
+        "parent": "white_tug",
+        "parent_zh": "白拖船",
+        "payload": "",
+        "instruction_zh": "移除中央红船紧右侧的白色拖船。",
+        "instruction_noref_zh": "移除选中的拖船。"
+      },
+      {
+        "object_id": 177,
+        "operation": "replace",
+        "ref": "the “MENDEPARTEMENTET” shop sign",
+        "ref_zh": "“MENDEPARTEMENTET”商店招牌",
+        "scope": "shop sign",
+        "scope_zh": "商店招牌",
+        "parent": "shop_sign",
+        "parent_zh": "商店招牌",
+        "payload": "a wooden “MARINA” sign",
+        "instruction_zh": "将“MENDEPARTEMENTET”商店招牌替换为一块写有“MARINA”的木招牌。",
+        "instruction_noref_zh": "将选中的商店招牌替换为一块写有“MARINA”的木招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10984053",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0a6eccf7652687390b705f315b0bac65ac861f7b3a00d2d21b28122dce079630",
+    "review_card_sha256": "56081b04b44f2391e33f40516b524f3c90fcf31d27923e4cddd4ad770638f8b6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最近吊挂水果海报，18为右侧花椰菜箱前排左边一颗，9为CLEMENTINE价格牌，17为花椰菜纸箱本体。箱mask排除蔬菜，蔬菜和容器独立。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "超市蔬果货架",
+      "evidence_zh": "1为最近吊挂水果海报，18为右侧花椰菜箱前排左边一颗，9为CLEMENTINE价格牌，17为花椰菜纸箱本体。箱mask排除蔬菜，蔬菜和容器独立。",
+      "specific_protection_zh": "保留其他蔬菜、纸箱图案、货架、灯具和其他价签。"
+    },
+    "protected_content_zh": "保留其他蔬菜、纸箱图案、货架、灯具和其他价签。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the nearest hanging fruit banner",
+        "ref_zh": "最近的悬挂水果海报",
+        "scope": "banner",
+        "scope_zh": "海报",
+        "parent": "fruit_banner",
+        "parent_zh": "水果海报",
+        "payload": "",
+        "instruction_zh": "移除最近的悬挂水果海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the front-left cauliflower in the right-hand display",
+        "ref_zh": "右侧货架前排左边的花椰菜",
+        "scope": "cauliflower",
+        "scope_zh": "花椰菜",
+        "parent": "front_cauliflower",
+        "parent_zh": "前排花椰菜",
+        "payload": "a head of broccoli",
+        "instruction_zh": "将右侧货架前排左边的花椰菜替换为一颗西兰花。",
+        "instruction_noref_zh": "将选中的花椰菜替换为一颗西兰花。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the “CLEMENTINE” price tag",
+        "ref_zh": "“CLEMENTINE”价签",
+        "scope": "price tag",
+        "scope_zh": "价签",
+        "parent": "clementine_tag",
+        "parent_zh": "小柑橘价签",
+        "payload": "CLEMENTINE €1.79",
+        "attribute_kind": "text",
+        "instruction_zh": "将“CLEMENTINE”价签的文字改为CLEMENTINE €1.79。",
+        "instruction_noref_zh": "将选中的价签的文字改为CLEMENTINE €1.79。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the green cauliflower carton",
+        "ref_zh": "绿色花椰菜纸箱",
+        "scope": "carton",
+        "scope_zh": "纸箱",
+        "parent": "cauliflower_carton",
+        "parent_zh": "花椰菜纸箱",
+        "payload": "a small “SPECIAL” sticker",
+        "placement": {
+          "relation": "on",
+          "site": "front",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿色花椰菜纸箱的正面加上一张小“SPECIAL”贴纸。",
+        "instruction_noref_zh": "在选中的纸箱的正面加上一张小“SPECIAL”贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10984745",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "748c4b05adf299113174e5d6f6e5a98d5db77d9cc6092bf297801563e786b7f9",
+    "review_card_sha256": "54d49df2bf687a85a207c317ec4f5439b1be0cd9423b7a3610d8c3aad9a0f6db",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4前景大石排除两道遮挡绳索，5为石后右侧平顶灌木，6为池塘左边独立修剪灌木。保留原始孔洞与枝间结构，不将建筑多个窗算多个对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "日式庭园中的景观石和独立灌木",
+      "evidence_zh": "4前景大石排除两道遮挡绳索，5为石后右侧平顶灌木，6为池塘左边独立修剪灌木。保留原始孔洞与枝间结构，不将建筑多个窗算多个对象。",
+      "specific_protection_zh": "保留绳索、围栏柱、寺院、池塘和其他植物。"
+    },
+    "protected_content_zh": "保留绳索、围栏柱、寺院、池塘和其他植物。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the large foreground boulder",
+        "ref_zh": "前景大石",
+        "scope": "boulder",
+        "scope_zh": "大石",
+        "parent": "foreground_boulder",
+        "parent_zh": "前景大石",
+        "payload": "a small bronze garden plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景大石加上一块小青铜园林铭牌。",
+        "instruction_noref_zh": "在选中的大石加上一块小青铜园林铭牌。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the flat-topped shrub right of the large boulder",
+        "ref_zh": "大石右侧的平顶灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "right_shrub",
+        "parent_zh": "右侧灌木",
+        "payload": "a flowering azalea bush",
+        "instruction_zh": "将大石右侧的平顶灌木替换为一丛开花的杜鹃。",
+        "instruction_noref_zh": "将选中的灌木替换为一丛开花的杜鹃。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the pruned shrub beside the pond on the left",
+        "ref_zh": "左侧池塘边的修剪灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "left_shrub",
+        "parent_zh": "左侧池边灌木",
+        "payload": "",
+        "instruction_zh": "移除左侧池塘边的修剪灌木。",
+        "instruction_noref_zh": "移除选中的灌木。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11017973",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e7d5e35188b02ba19b144fbef28a4294e9345d1dbc33e0f3da02acfe5c6f88cf",
+    "review_card_sha256": "c77a0ded2279e9abe3d7dd805c3a6e4241bb692c32c16542c4e7589eb292127e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "29为左前地面透明废瓶，64为水罐车车门，51为摩托后方蓝头巾人物的蓝上衣可见肩部。不用含整个人的33当单独头巾。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "取水街景的水罐车、路面塑料瓶和衣物",
+      "evidence_zh": "29为左前地面透明废瓶，64为水罐车车门，51为摩托后方蓝头巾人物的蓝上衣可见肩部。不用含整个人的33当单独头巾。",
+      "specific_protection_zh": "保留人物皮肤和头巾、摩托车、水桶、建筑及其他车辆。"
+    },
+    "protected_content_zh": "保留人物皮肤和头巾、摩托车、水桶、建筑及其他车辆。",
+    "targets": [
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the discarded bottle at the lower left",
+        "ref_zh": "左下方丢弃的塑料瓶",
+        "scope": "bottle",
+        "scope_zh": "塑料瓶",
+        "parent": "discarded_bottle",
+        "parent_zh": "废弃塑料瓶",
+        "payload": "",
+        "instruction_zh": "移除左下方丢弃的塑料瓶。",
+        "instruction_noref_zh": "移除选中的塑料瓶。"
+      },
+      {
+        "object_id": 64,
+        "operation": "add",
+        "ref": "the tanker truck’s door",
+        "ref_zh": "水罐车的车门",
+        "scope": "door",
+        "scope_zh": "车门",
+        "parent": "tanker_truck",
+        "parent_zh": "水罐车",
+        "payload": "a small blue water-drop decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在水罐车的车门加上一张蓝色小水滴贴纸。",
+        "instruction_noref_zh": "在选中的车门加上一张蓝色小水滴贴纸。"
+      },
+      {
+        "object_id": 51,
+        "operation": "attribute",
+        "ref": "the blue-headscarf wearer’s blue shirt",
+        "ref_zh": "戴蓝色头巾者的蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "blue_headscarf_person",
+        "parent_zh": "蓝头巾人物",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将戴蓝色头巾者的蓝色上衣的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为鼠尾草绿。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11029628",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3b0fdc85f2bc256a9322e086e6d3ca01ac3b9c082234d4856ec9394c3c4ba847",
+    "review_card_sha256": "68d4c793dd2a00be77d8fe2b2db31bf871a34ee0962131fe51fe229d57127179",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为上方Little Hanoi独立牌，5为左侧细长红菜单牌，30为情侣右侧黑摩托整车，6为上方青色百叶窗。人物和车的遮挡不要求补全mask。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街头摄影场景中的招牌、摩托和百叶窗",
+      "evidence_zh": "3为上方Little Hanoi独立牌，5为左侧细长红菜单牌，30为情侣右侧黑摩托整车，6为上方青色百叶窗。人物和车的遮挡不要求补全mask。",
+      "specific_protection_zh": "保留情侣、摄影者、其他车辆、门、电线和招牌文字。"
+    },
+    "protected_content_zh": "保留情侣、摄影者、其他车辆、门、电线和招牌文字。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the upper “Little Hanoi” sign",
+        "ref_zh": "上方“Little Hanoi”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "upper_restaurant_sign",
+        "parent_zh": "上方餐馆招牌",
+        "payload": "a thin wooden frame",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在上方“Little Hanoi”招牌加上一圈细木框。",
+        "instruction_noref_zh": "在选中的招牌加上一圈细木框。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the narrow red menu sign on the left",
+        "ref_zh": "左侧细长红色菜单牌",
+        "scope": "sign",
+        "scope_zh": "菜单牌",
+        "parent": "narrow_menu",
+        "parent_zh": "细长菜单牌",
+        "payload": "",
+        "instruction_zh": "移除左侧细长红色菜单牌。",
+        "instruction_noref_zh": "移除选中的菜单牌。"
+      },
+      {
+        "object_id": 30,
+        "operation": "replace",
+        "ref": "the black scooter right of the couple",
+        "ref_zh": "情侣右侧的黑色踏板摩托",
+        "scope": "scooter",
+        "scope_zh": "踏板摩托",
+        "parent": "black_scooter",
+        "parent_zh": "黑色摩托",
+        "payload": "a blue city bicycle",
+        "instruction_zh": "将情侣右侧的黑色踏板摩托替换为一辆蓝色城市自行车。",
+        "instruction_noref_zh": "将选中的踏板摩托替换为一辆蓝色城市自行车。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the turquoise shutters above the couple",
+        "ref_zh": "情侣上方的青色百叶窗",
+        "scope": "shutters",
+        "scope_zh": "百叶窗",
+        "parent": "shop_building",
+        "parent_zh": "店铺建筑",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将情侣上方的青色百叶窗的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的百叶窗的颜色改为深蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_11029699",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8f620dbbbddd4490a45fe00e135513fd2fa0ceeb7336e8b067de95d268b52993",
+    "review_card_sha256": "7a6760fd63134c6707a2681685a991ec5c11fe27e687707a1819cd9f993316b7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "97为下层上排左侧完整木槿茶盒，0为上层覆盆子茶盒之一，1为覆盆子区下方独立价签。仅按完整包装实体选择，不把印刷果子12/13/14当实体水果。实例序数需全图框定位二次核实。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "超市茶盒与独立货架价签",
+      "evidence_zh": "97为下层上排左侧完整木槿茶盒，0为上层覆盆子茶盒之一，1为覆盆子区下方独立价签。仅按完整包装实体选择，不把印刷果子12/13/14当实体水果。实例序数需全图框定位二次核实。",
+      "specific_protection_zh": "保留其余茶盒、透明挡条、货架与邻近价签。"
+    },
+    "protected_content_zh": "保留其余茶盒、透明挡条、货架与邻近价签。",
+    "targets": [
+      {
+        "object_id": 97,
+        "operation": "replace",
+        "ref": "the upper-left complete hibiscus tea box",
+        "ref_zh": "左上方完整的木槿茶盒",
+        "scope": "tea box",
+        "scope_zh": "茶盒",
+        "parent": "hibiscus_box",
+        "parent_zh": "木槿茶盒",
+        "payload": "a green metal tea tin",
+        "instruction_zh": "将左上方完整的木槿茶盒替换为一个绿色金属茶罐。",
+        "instruction_noref_zh": "将选中的茶盒替换为一个绿色金属茶罐。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the third raspberry tea box from the left",
+        "ref_zh": "从左往右第三盒覆盆子茶",
+        "scope": "tea box",
+        "scope_zh": "茶盒",
+        "parent": "raspberry_box",
+        "parent_zh": "覆盆子茶盒",
+        "payload": "a small round “ORGANIC” sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在从左往右第三盒覆盆子茶加上一张圆形小“ORGANIC”贴纸。",
+        "instruction_noref_zh": "在选中的茶盒加上一张圆形小“ORGANIC”贴纸。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the price tag beneath the raspberry tea",
+        "ref_zh": "覆盆子茶下方的价签",
+        "scope": "price tag",
+        "scope_zh": "价签",
+        "parent": "raspberry_tag",
+        "parent_zh": "覆盆子茶价签",
+        "payload": "RM4.50",
+        "attribute_kind": "text",
+        "instruction_zh": "将覆盆子茶下方的价签的文字改为RM4.50。",
+        "instruction_noref_zh": "将选中的价签的文字改为RM4.50。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

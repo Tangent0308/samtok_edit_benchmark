@@ -1,0 +1,591 @@
+[
+  {
+    "source_id": "sa_139991",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ae1272ab709cf0153181f65970ecb466b36f979c3cc3e206161ce3a94d058ff0",
+    "review_card_sha256": "5fd70dfa9e7f423a33d0e2903dc1567b424d16e56f0a00e9ed0e001016b2f362",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10是最近黄色缆车前窗玻璃，4是左侧支架旁较高缆车舱，2是下方右侧球灯。不同缆车和独立灯；只换客舱不误删承载索具。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "thin_structures"
+      ],
+      "scene_zh": "山坡缆车与下方路灯",
+      "evidence_zh": "10是最近黄色缆车前窗玻璃，4是左侧支架旁较高缆车舱，2是下方右侧球灯。不同缆车和独立灯；只换客舱不误删承载索具。",
+      "specific_protection_zh": "保留缆索、吊架、支撑塔、其他客舱、树林及窗内乘客。"
+    },
+    "protected_content_zh": "保留缆索、吊架、支撑塔、其他客舱、树林及窗内乘客。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the nearest cable car’s front window",
+        "ref_zh": "最近缆车的前窗",
+        "scope": "window",
+        "scope_zh": "窗玻璃",
+        "parent": "near_cable_car",
+        "parent_zh": "最近缆车",
+        "payload": "a small white mountain decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近缆车的前窗加上一张白色小山峰贴纸。",
+        "instruction_noref_zh": "在选中的窗玻璃加上一张白色小山峰贴纸。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the upper cabin beside the left support tower",
+        "ref_zh": "左侧支撑塔旁较高的缆车舱",
+        "scope": "cable car cabin",
+        "scope_zh": "缆车舱",
+        "parent": "upper_left_cabin",
+        "parent_zh": "左上缆车舱",
+        "payload": "a red rectangular gondola cabin",
+        "instruction_zh": "将左侧支撑塔旁较高的缆车舱替换为一个红色长方形缆车舱。",
+        "instruction_noref_zh": "将选中的缆车舱替换为一个红色长方形缆车舱。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the globe lamp at the lower right",
+        "ref_zh": "右下方的球形路灯",
+        "scope": "lamp",
+        "scope_zh": "路灯",
+        "parent": "lower_right_lamp",
+        "parent_zh": "右下灯",
+        "payload": "",
+        "instruction_zh": "移除右下方的球形路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1400223",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9dc6acee0e8fa18cece1b2ddd1913b3430fdefd33a064cfa379655f85cfdfb12",
+    "review_card_sha256": "8dc8f7eb3a999394f0b7f84d9775ed3b9246beea59ca353da7cf0fdebb007b5c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为左侧最近旅客的蓝外套，3为右侧旅客独立黑背包和可见肩带。两件不同父对象，未将同一人裤子和上衣拆成多个目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection",
+        "neighbor_protection"
+      ],
+      "scene_zh": "下行扶梯上的旅客外套与背包",
+      "evidence_zh": "4为左侧最近旅客的蓝外套，3为右侧旅客独立黑背包和可见肩带。两件不同父对象，未将同一人裤子和上衣拆成多个目标。",
+      "specific_protection_zh": "保留脸、手、帽、裤子、扶梯、其他旅客及无关反射；必要对应反射应与编辑一致。"
+    },
+    "protected_content_zh": "保留脸、手、帽、裤子、扶梯、其他旅客及无关反射；必要对应反射应与编辑一致。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the left escalator rider’s blue jacket",
+        "ref_zh": "扶梯左侧旅客的蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_rider",
+        "parent_zh": "左侧旅客",
+        "payload": "a cream windbreaker",
+        "instruction_zh": "将扶梯左侧旅客的蓝色外套替换为一件奶油色防风衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件奶油色防风衣。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the right escalator rider’s black backpack",
+        "ref_zh": "扶梯右侧旅客的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "right_backpack",
+        "parent_zh": "右旅客黑背包",
+        "payload": "a white reflective patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在扶梯右侧旅客的黑色背包加上一块白色反光贴。",
+        "instruction_noref_zh": "在选中的背包加上一块白色反光贴。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1408122",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6f516189eef59065464cb1f3ddf1b5ec1d3b0e79fd3a8ac2c197f1d630152ecf",
+    "review_card_sha256": "5bde359ac4c30f84d6ece5bce020a161aa0f0a85be24d3571d6b0192457c35bb",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "81为右前景黑色羽绒外套，169为其右侧女子白上衣；56为黑外套者背后独立蓝背包，57为左侧建筑报社文字招牌。门窗有邻物碎片，不用它们凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "歌剧院前行人的衣物和独立背包",
+      "evidence_zh": "81为右前景黑色羽绒外套，169为其右侧女子白上衣；56为黑外套者背后独立蓝背包，57为左侧建筑报社文字招牌。门窗有邻物碎片，不用它们凑数。",
+      "specific_protection_zh": "保留人脸、手、头发、裤子、歌剧院、旗帜和街景。"
+    },
+    "protected_content_zh": "保留人脸、手、头发、裤子、歌剧院、旗帜和街景。",
+    "targets": [
+      {
+        "object_id": 81,
+        "operation": "attribute",
+        "ref": "the foreground man’s black puffer jacket",
+        "ref_zh": "前景男子的黑色羽绒外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "puffer_man",
+        "parent_zh": "羽绒衣男子",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景男子的黑色羽绒外套的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为酒红色。"
+      },
+      {
+        "object_id": 169,
+        "operation": "replace",
+        "ref": "the white top beside the black puffer jacket",
+        "ref_zh": "黑色羽绒外套旁的白色上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "white_top_person",
+        "parent_zh": "白上衣人物",
+        "payload": "a blue knitted sweater",
+        "instruction_zh": "将黑色羽绒外套旁的白色上衣替换为一件蓝色针织衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件蓝色针织衫。"
+      },
+      {
+        "object_id": 56,
+        "operation": "add",
+        "ref": "the puffer-jacketed man’s blue backpack",
+        "ref_zh": "羽绒衣男子的蓝色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "blue_backpack",
+        "parent_zh": "蓝背包",
+        "payload": "a small reflective strip",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在羽绒衣男子的蓝色背包加上一条小反光条。",
+        "instruction_noref_zh": "在选中的背包加上一条小反光条。"
+      },
+      {
+        "object_id": 57,
+        "operation": "remove",
+        "ref": "the “Neue Zürcher Zeitung” sign",
+        "ref_zh": "“Neue Zürcher Zeitung”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "newspaper_sign",
+        "parent_zh": "报社招牌",
+        "payload": "",
+        "instruction_zh": "移除“Neue Zürcher Zeitung”招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1415852",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e4e61f0b184bb27c8c01b5820e2b91fb28399f9a1a8f75acef876748db6d2ed8",
+    "review_card_sha256": "0bf85578f825a5b8a900d8e9c82bf41246cf743e27f3b7292f59c965eacbc0a5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为表演者蓝头盔，29为头盔后方独立彩旗，3为红摩托整车且排除腿，17为右后方粉花灌木。不同人物、车辆、旗、盆栽实体。",
+    "difficulty": {
+      "mechanisms": [
+        "motion_blur",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "摩托表演者与路边盆栽",
+      "evidence_zh": "2为表演者蓝头盔，29为头盔后方独立彩旗，3为红摩托整车且排除腿，17为右后方粉花灌木。不同人物、车辆、旗、盆栽实体。",
+      "specific_protection_zh": "保留表演姿态、手套、脸、车轮和镀铬件、花盆及其他植物。"
+    },
+    "protected_content_zh": "保留表演姿态、手套、脸、车轮和镀铬件、花盆及其他植物。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the rider’s blue helmet",
+        "ref_zh": "骑手的蓝色头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "stunt_rider",
+        "parent_zh": "表演骑手",
+        "payload": "a small action camera",
+        "placement": {
+          "relation": "on",
+          "site": "top",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在骑手的蓝色头盔的顶部加上一台小运动相机。",
+        "instruction_noref_zh": "在选中的头盔的顶部加上一台小运动相机。"
+      },
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the vertical banner behind the rider",
+        "ref_zh": "骑手后方的竖挂旗",
+        "scope": "banner",
+        "scope_zh": "挂旗",
+        "parent": "vertical_banner",
+        "parent_zh": "竖挂旗",
+        "payload": "",
+        "instruction_zh": "移除骑手后方的竖挂旗。",
+        "instruction_noref_zh": "移除选中的挂旗。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the red motorcycle",
+        "ref_zh": "红色摩托车",
+        "scope": "motorcycle",
+        "scope_zh": "摩托车",
+        "parent": "red_motorcycle",
+        "parent_zh": "红摩托",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将红色摩托车的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的摩托车的颜色改为蓝色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the pink-flowered bush behind the rider on the right",
+        "ref_zh": "骑手右后方开粉花的灌木",
+        "scope": "bush",
+        "scope_zh": "灌木",
+        "parent": "right_flowering_bush",
+        "parent_zh": "右后花灌木",
+        "payload": "a white-flowering hydrangea bush",
+        "instruction_zh": "将骑手右后方开粉花的灌木替换为一丛开白花的绣球。",
+        "instruction_noref_zh": "将选中的灌木替换为一丛开白花的绣球。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1458556",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f293e8f8b33cc61d9d6797e72f3209cd565ffc1606708ce853285f1f396a5065",
+    "review_card_sha256": "89894e208741066b96c330959e07e273190008a9231146bf476a22732abe6d06",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为前景花坛后右边完整空长凳，4为左侧木条垃圾桶，1为右侧蓝路灯。18椅背带坐人，不作整椅移除；43合并多段绿篱不用。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "广场花坛边长凳垃圾桶和路灯",
+      "evidence_zh": "0为前景花坛后右边完整空长凳，4为左侧木条垃圾桶，1为右侧蓝路灯。18椅背带坐人，不作整椅移除；43合并多段绿篱不用。",
+      "specific_protection_zh": "保留花坛、花草、行人、其他长凳、天桥和灯头。"
+    },
+    "protected_content_zh": "保留花坛、花草、行人、其他长凳、天桥和灯头。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the right bench behind the foreground flowerbed",
+        "ref_zh": "前景花坛后方右侧的长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "right_bench",
+        "parent_zh": "右长凳",
+        "payload": "a wooden slat bench",
+        "instruction_zh": "将前景花坛后方右侧的长凳替换为一张木条长凳。",
+        "instruction_noref_zh": "将选中的长凳替换为一张木条长凳。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the wooden trash bin on the left",
+        "ref_zh": "左侧的木条垃圾桶",
+        "scope": "trash bin",
+        "scope_zh": "垃圾桶",
+        "parent": "left_trash_bin",
+        "parent_zh": "左垃圾桶",
+        "payload": "",
+        "instruction_zh": "移除左侧的木条垃圾桶。",
+        "instruction_noref_zh": "移除选中的垃圾桶。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the tall blue lamppost on the right",
+        "ref_zh": "右侧高大的蓝色路灯",
+        "scope": "lamppost",
+        "scope_zh": "路灯",
+        "parent": "right_blue_lamp",
+        "parent_zh": "右蓝路灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "pole",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧高大的蓝色路灯的灯杆上加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯的灯杆上加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1459915",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "86c10b48d15fa0060a4b5854ebef19c2e4d6b1699781bfbeb3511ca67cb7ef40",
+    "review_card_sha256": "38ef5aeb770c709a6f4cacebb4e76e43adabc84b84fa1919705beb63faa7f94e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13实际是背心外露的黑上衣，虽category含tactical vest但不依其错指背心；19是门后右侧木框窗，原mask保留铁艺遮挡。两父对象为人物与建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "neighbor_protection"
+      ],
+      "scene_zh": "铁门旁人物衣物和门后窗户",
+      "evidence_zh": "13实际是背心外露的黑上衣，虽category含tactical vest但不依其错指背心；19是门后右侧木框窗，原mask保留铁艺遮挡。两父对象为人物与建筑。",
+      "specific_protection_zh": "保留人物面部、手、防护背心、装备、门上铁艺及原遮挡。"
+    },
+    "protected_content_zh": "保留人物面部、手、防护背心、装备、门上铁艺及原遮挡。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the black shirt beneath the vest",
+        "ref_zh": "背心下面的黑色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "gate_person",
+        "parent_zh": "门旁人物",
+        "payload": "gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将背心下面的黑色上衣的颜色改为灰色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为灰色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "replace",
+        "ref": "the brown-framed window behind the gate on the right",
+        "ref_zh": "铁门右后方的棕框窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "rear_building",
+        "parent_zh": "后方建筑",
+        "payload": "a white-framed casement window",
+        "instruction_zh": "将铁门右后方的棕框窗户替换为一扇白框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇白框平开窗。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_14654",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8a4dcaeba2fdf32da2e2c45ac710f4399bd64d77f78a67002822f82e1098a4d3",
+    "review_card_sha256": "fdf38867a59b3d892a74dd3dd0b77d2e94df35beec1f86e0a999de8dfcb5b109",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为中排从右数第二瓶，2为中排棕标签瓶，3为同排最左蓝封口瓶。三瓶独立，不把瓶贴另算父对象。0受近处虚化遮挡，未选。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "木酒架上横放的相似酒瓶",
+      "evidence_zh": "1为中排从右数第二瓶，2为中排棕标签瓶，3为同排最左蓝封口瓶。三瓶独立，不把瓶贴另算父对象。0受近处虚化遮挡，未选。",
+      "specific_protection_zh": "保留酒架、其他瓶子、原有标签、镜头虚化和反光。"
+    },
+    "protected_content_zh": "保留酒架、其他瓶子、原有标签、镜头虚化和反光。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the second bottle from the right in the middle row",
+        "ref_zh": "中排从右数第二个酒瓶",
+        "scope": "bottle",
+        "scope_zh": "酒瓶",
+        "parent": "second_right_bottle",
+        "parent_zh": "中排右二酒瓶",
+        "payload": "",
+        "instruction_zh": "移除中排从右数第二个酒瓶。",
+        "instruction_noref_zh": "移除选中的酒瓶。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the tan-labeled bottle in the middle row",
+        "ref_zh": "中排贴棕色标签的酒瓶",
+        "scope": "bottle",
+        "scope_zh": "酒瓶",
+        "parent": "tan_label_bottle",
+        "parent_zh": "棕标签酒瓶",
+        "payload": "a small gold vintage seal",
+        "placement": {
+          "relation": "on",
+          "site": "label",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中排贴棕色标签的酒瓶的标签上加上一张金色小年份封贴。",
+        "instruction_noref_zh": "在选中的酒瓶的标签上加上一张金色小年份封贴。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the blue-capped bottle at the left of the middle row",
+        "ref_zh": "中排最左侧蓝封口的酒瓶",
+        "scope": "bottle",
+        "scope_zh": "酒瓶",
+        "parent": "left_blue_cap_bottle",
+        "parent_zh": "左蓝封口酒瓶",
+        "payload": "green glass",
+        "attribute_kind": "material",
+        "instruction_zh": "将中排最左侧蓝封口的酒瓶的材质改为绿色玻璃。",
+        "instruction_noref_zh": "将选中的酒瓶的材质改为绿色玻璃。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1467894",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bb9b70c235eeae85571b1abf19eac5f2ed8c1f60db93c816f63f81da90c3c277",
+    "review_card_sha256": "42153425dcd600d720c8143ea339c13bce0cc849f1ae4f6f00006ea31d83c446",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为前景右侧白长外套，18为其右边橄榄绿外套，63为白衣者独立几何纹手袋，7为路对面银轿车。两个人、一件包和一辆车；保持手袋及身体原遮挡。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "首尔路口的衣物、手袋和车辆",
+      "evidence_zh": "17为前景右侧白长外套，18为其右边橄榄绿外套，63为白衣者独立几何纹手袋，7为路对面银轿车。两个人、一件包和一辆车；保持手袋及身体原遮挡。",
+      "specific_protection_zh": "保留脸、手、裤子、路口标识、其他行人和车辆。"
+    },
+    "protected_content_zh": "保留脸、手、裤子、路口标识、其他行人和车辆。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the white coat beside the geometric handbag",
+        "ref_zh": "几何纹手袋旁的白色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "white_coat_person",
+        "parent_zh": "白衣人物",
+        "payload": "a camel trench coat",
+        "instruction_zh": "将几何纹手袋旁的白色外套替换为一件驼色风衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件驼色风衣。"
+      },
+      {
+        "object_id": 18,
+        "operation": "attribute",
+        "ref": "the olive jacket at the front-right of the crowd",
+        "ref_zh": "人群右前方的橄榄绿外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "olive_jacket_person",
+        "parent_zh": "橄榄绿衣人物",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将人群右前方的橄榄绿外套的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为酒红色。"
+      },
+      {
+        "object_id": 63,
+        "operation": "add",
+        "ref": "the white geometric handbag",
+        "ref_zh": "白色几何纹手袋",
+        "scope": "handbag",
+        "scope_zh": "手袋",
+        "parent": "geometric_bag",
+        "parent_zh": "几何纹手袋",
+        "payload": "a blue silk bow",
+        "placement": {
+          "relation": "on",
+          "site": "handle",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在白色几何纹手袋的提手上加上一个蓝色丝绸蝴蝶结。",
+        "instruction_noref_zh": "在选中的手袋的提手上加上一个蓝色丝绸蝴蝶结。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the silver sedan across the intersection",
+        "ref_zh": "路口对面的银色轿车",
+        "scope": "sedan",
+        "scope_zh": "轿车",
+        "parent": "silver_sedan",
+        "parent_zh": "银轿车",
+        "payload": "",
+        "instruction_zh": "移除路口对面的银色轿车。",
+        "instruction_noref_zh": "移除选中的轿车。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

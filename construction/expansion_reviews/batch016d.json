@@ -1,0 +1,575 @@
+[
+  {
+    "source_id": "sa_4363641",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ca2f2dfd4ee2eb0d96ed0f3430ee4372764c74f2826d7d9bc105f1fb5f0b626c",
+    "review_card_sha256": "b2609366ed8d0f92f97db0299025517d59ce88a5b31966e34bf1c364f235a745",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "叶片mask本身可用，但无法确认来自不同植株；不能把同株多叶算多个独立对象。",
+    "difficulty": {
+      "mechanisms": [
+        "same_parent_parts"
+      ],
+      "scene_zh": "枝叶近景",
+      "evidence_zh": "叶片mask本身可用，但无法确认来自不同植株；不能把同株多叶算多个独立对象。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4371531",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e5ce06c83079c7f66518f697fa0c0ad7dfb8034b0ce5dc4a08ecb53b242a2193",
+    "review_card_sha256": "2e73cc83aac9c1169d21e27c3b82f919d10bf6d811b4561cab024fad20f2a6b1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为左H&M广告牌，4右Asahi牌，1桥栏杆。两块独立广告牌与桥。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "text",
+        "perspective"
+      ],
+      "scene_zh": "大阪夜景广告牌",
+      "evidence_zh": "3为左H&M广告牌，4右Asahi牌，1桥栏杆。两块独立广告牌与桥。",
+      "specific_protection_zh": "保留城市建筑、桥、行人与其他文字。"
+    },
+    "protected_content_zh": "保留城市建筑、桥、行人与其他文字。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the tall H&M billboard on the left",
+        "ref_zh": "左侧高大的H&M广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "left_billboard",
+        "parent_zh": "左广告牌",
+        "payload": "a blue travel poster showing a snowy mountain",
+        "instruction_zh": "将左侧高大的H&M广告牌替换为一幅展示雪山的蓝色旅游海报。",
+        "instruction_noref_zh": "将选中的广告牌替换为一幅展示雪山的蓝色旅游海报。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the yellow Asahi billboard on the right",
+        "ref_zh": "右侧黄色Asahi广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "right_billboard",
+        "parent_zh": "右广告牌",
+        "payload": "black and white",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧黄色Asahi广告牌的颜色改为黑白色。",
+        "instruction_noref_zh": "将选中的广告牌的颜色改为黑白色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the railing along the top of the bridge",
+        "ref_zh": "桥顶沿线的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "bridge",
+        "parent_zh": "桥",
+        "payload": "a strand of small warm-white lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在桥顶沿线的栏杆加上一串暖白色小灯。",
+        "instruction_noref_zh": "在选中的栏杆加上一串暖白色小灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4393371",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7683b02f35db09724a84a4bbf2ab77fa276511684196ef713286ed25dda23dbb",
+    "review_card_sha256": "8fc8332a0ec922d38cb8b2b3cc72a827fc017413ca5c59525d24439b2938917a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13背向夹克、18迎面夹克、19左侧积雪、74迎面车把四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structure",
+        "distance"
+      ],
+      "scene_zh": "冬季桥上骑行",
+      "evidence_zh": "13背向夹克、18迎面夹克、19左侧积雪、74迎面车把四父对象。",
+      "specific_protection_zh": "保留人物身体、护具、车辆和桥结构。"
+    },
+    "protected_content_zh": "保留人物身体、护具、车辆和桥结构。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the padded jacket on the cyclist riding away",
+        "ref_zh": "背向骑行者的棉服",
+        "scope": "jacket",
+        "scope_zh": "棉服",
+        "parent": "away_cyclist",
+        "parent_zh": "背向骑者",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将背向骑行者的棉服的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的棉服的颜色改为酒红色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the black jacket on the approaching cyclist",
+        "ref_zh": "迎面骑行者的黑色夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "approaching_cyclist",
+        "parent_zh": "迎面骑者",
+        "payload": "a dark blue cycling jacket",
+        "instruction_zh": "将迎面骑行者的黑色夹克替换为一件深蓝色骑行夹克。",
+        "instruction_noref_zh": "将选中的夹克替换为一件深蓝色骑行夹克。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the strip of snow along the left fence",
+        "ref_zh": "左侧围栏旁的条状积雪",
+        "scope": "snow",
+        "scope_zh": "积雪",
+        "parent": "snow_strip",
+        "parent_zh": "积雪带",
+        "payload": "",
+        "instruction_zh": "移除左侧围栏旁的条状积雪。",
+        "instruction_noref_zh": "移除选中的积雪。"
+      },
+      {
+        "object_id": 74,
+        "operation": "add",
+        "ref": "the handlebars of the approaching bicycle",
+        "ref_zh": "迎面自行车的车把",
+        "scope": "handlebars",
+        "scope_zh": "车把",
+        "parent": "approaching_bike",
+        "parent_zh": "迎面自行车",
+        "payload": "a small silver bicycle bell",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在迎面自行车的车把加上一个小银色自行车铃。",
+        "instruction_noref_zh": "在选中的车把加上一个小银色自行车铃。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4399039",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cae68aa867943bb4b2ee200416f6f8c030e8846bfe7ac37b2cc8c56cb410ee34",
+    "review_card_sha256": "14e12f7a585ceef036268761b667584e3260789bb69c25e0ca5ae5e670d55e19",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0中央蓝帽、2左草帽、35右黑花包、9白手牌四父对象；只做外观编辑不改政治观点。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "街头游行人群",
+      "evidence_zh": "0中央蓝帽、2左草帽、35右黑花包、9白手牌四父对象；只做外观编辑不改政治观点。",
+      "specific_protection_zh": "保留人物、标语文字与场景。"
+    },
+    "protected_content_zh": "保留人物、标语文字与场景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the blue sunhat beside the white placard",
+        "ref_zh": "白色手牌旁的蓝色遮阳帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "center_person",
+        "parent_zh": "中间人物",
+        "payload": "beige",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色手牌旁的蓝色遮阳帽的颜色改为米色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为米色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the straw fedora on the left",
+        "ref_zh": "左侧的草编礼帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "left_person",
+        "parent_zh": "左人物",
+        "payload": "a plain white sunhat",
+        "instruction_zh": "将左侧的草编礼帽替换为一顶纯白色遮阳帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶纯白色遮阳帽。"
+      },
+      {
+        "object_id": 35,
+        "operation": "remove",
+        "ref": "the black floral backpack on the right",
+        "ref_zh": "右侧的黑色花纹背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "floral_backpack",
+        "parent_zh": "花背包",
+        "payload": "",
+        "instruction_zh": "移除右侧的黑色花纹背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the white EVIDENCE BASED POLICY placard",
+        "ref_zh": "写有EVIDENCE BASED POLICY的白色手牌",
+        "scope": "placard",
+        "scope_zh": "手牌",
+        "parent": "white_placard",
+        "parent_zh": "白手牌",
+        "payload": "a small yellow star sticker in its lower corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在写有EVIDENCE BASED POLICY的白色手牌加上一张贴在下角的小黄星贴纸。",
+        "instruction_noref_zh": "在选中的手牌加上一张贴在下角的小黄星贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4402790",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bd59e619998476bc102f5a6c6bdc50e12e2c8840c0f55b476973e848ab915d9f",
+    "review_card_sha256": "6880b3994aaace922372ae8304a3983c58f5ebe7750baca3370e0a75d61027ff",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0正面紫牌、11右行人T、8楼上右海报、15右商品架四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "text",
+        "glass",
+        "small_targets"
+      ],
+      "scene_zh": "服装商店街角",
+      "evidence_zh": "0正面紫牌、11右行人T、8楼上右海报、15右商品架四父对象。",
+      "specific_protection_zh": "保留行人、建筑、商品与其他招牌。"
+    },
+    "protected_content_zh": "保留行人、建筑、商品与其他招牌。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the horizontal purple liberty sign above the entrance",
+        "ref_zh": "入口上方横向的紫色liberty招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "entrance_sign",
+        "parent_zh": "入口招牌",
+        "payload": "a navy sign reading BOUTIQUE in white",
+        "instruction_zh": "将入口上方横向的紫色liberty招牌替换为一块写有白色BOUTIQUE的藏蓝色招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有白色BOUTIQUE的藏蓝色招牌。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the gray T-shirt on the man at the right",
+        "ref_zh": "右侧男子的灰色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "right_man",
+        "parent_zh": "右男",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧男子的灰色T恤的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为深绿色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the office-rental poster in the upper-right window",
+        "ref_zh": "右上方窗内的办公室出租海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "rental_poster",
+        "parent_zh": "出租海报",
+        "payload": "",
+        "instruction_zh": "移除右上方窗内的办公室出租海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the clothing rack right of the shop entrance",
+        "ref_zh": "商店入口右侧的服装架",
+        "scope": "rack",
+        "scope_zh": "服装架",
+        "parent": "right_rack",
+        "parent_zh": "右架",
+        "payload": "a small red SALE tag on its top bar",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在商店入口右侧的服装架加上一张挂在顶杆上的小红色SALE标签。",
+        "instruction_noref_zh": "在选中的服装架加上一张挂在顶杆上的小红色SALE标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4417376",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "59462da2a2bef610261858360fdadc93af75d676a697dee398b13ba32405f3a1",
+    "review_card_sha256": "c156ab879459cb69e0c35b78e92116f5726bc789c5929d11e0ae7b80bf0c9266",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "19蓝凳、85塑料袋、0右盘蔬菜、6白锅。四父对象，不把同一道菜的胡萝卜切片拆成独立目标。",
+    "difficulty": {
+      "mechanisms": [
+        "food",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "街头熟食桌",
+      "evidence_zh": "19蓝凳、85塑料袋、0右盘蔬菜、6白锅。四父对象，不把同一道菜的胡萝卜切片拆成独立目标。",
+      "specific_protection_zh": "保留其他菜品、餐具、食物卫生状态与桌面。"
+    },
+    "protected_content_zh": "保留其他菜品、餐具、食物卫生状态与桌面。",
+    "targets": [
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the blue stool at the right edge",
+        "ref_zh": "右边缘的蓝色凳子",
+        "scope": "stool",
+        "scope_zh": "凳子",
+        "parent": "blue_stool",
+        "parent_zh": "蓝凳",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将右边缘的蓝色凳子的颜色改为红色。",
+        "instruction_noref_zh": "将选中的凳子的颜色改为红色。"
+      },
+      {
+        "object_id": 85,
+        "operation": "remove",
+        "ref": "the white plastic bag behind the fish plate",
+        "ref_zh": "鱼盘后方的白色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "plastic_bag",
+        "parent_zh": "塑料袋",
+        "payload": "",
+        "instruction_zh": "移除鱼盘后方的白色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the mixed vegetables in the rightmost rectangular tray",
+        "ref_zh": "最右侧长方形餐盘中的混合蔬菜",
+        "scope": "vegetables",
+        "scope_zh": "蔬菜",
+        "parent": "right_dish",
+        "parent_zh": "右菜品",
+        "payload": "stir-fried broccoli and carrot slices",
+        "instruction_zh": "将最右侧长方形餐盘中的混合蔬菜替换为清炒西兰花和胡萝卜片。",
+        "instruction_noref_zh": "将选中的蔬菜替换为清炒西兰花和胡萝卜片。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the white pot near the center-left",
+        "ref_zh": "中间偏左的白色锅",
+        "scope": "pot",
+        "scope_zh": "锅",
+        "parent": "white_pot",
+        "parent_zh": "白锅",
+        "payload": "a small price label on its outer side",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间偏左的白色锅加上一张贴在外侧的小价签。",
+        "instruction_noref_zh": "在选中的锅加上一张贴在外侧的小价签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4418977",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cc9fa0354435a2a4b1303091c7ce674af43203d3856c61ece7e4a3d79bd50ad4",
+    "review_card_sha256": "aa646f58c89704c2d6787a32a47f222df853290d30a7658357e5a79e56ab36eb",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "20前景上衣与6背景最右靴子属于不同人物。避开枪械、枪套及肢体移除。",
+    "difficulty": {
+      "mechanisms": [
+        "partial_visibility",
+        "occlusion"
+      ],
+      "scene_zh": "制服人员局部",
+      "evidence_zh": "20前景上衣与6背景最右靴子属于不同人物。避开枪械、枪套及肢体移除。",
+      "specific_protection_zh": "保留人物、制服形制、装备和姿态。"
+    },
+    "protected_content_zh": "保留人物、制服形制、装备和姿态。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the navy shirt in the foreground",
+        "ref_zh": "前景的藏蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "foreground_person",
+        "parent_zh": "前景人物",
+        "payload": "a small rectangular white cloth patch on the upper back",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的藏蓝色上衣加上一块缝在上背部的小长方形白色布贴。",
+        "instruction_noref_zh": "在选中的上衣加上一块缝在上背部的小长方形白色布贴。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the rightmost visible boot in the background",
+        "ref_zh": "背景最右侧可见的靴子",
+        "scope": "boot",
+        "scope_zh": "靴子",
+        "parent": "background_person",
+        "parent_zh": "背景人物",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将背景最右侧可见的靴子的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的靴子的颜色改为深棕色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4421546",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "84e5ddaa21296635e1ce4e5382f6fdc9d258596c410a5535e6efe9d41010a155",
+    "review_card_sha256": "2391889ebc72fe162f1342f59c3d2933b203455cd8034813e46776679b49c01e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9绿连帽衣、38近景坐者帽子、42左侧红伞为两个人和独立伞。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion"
+      ],
+      "scene_zh": "水果市场",
+      "evidence_zh": "9绿连帽衣、38近景坐者帽子、42左侧红伞为两个人和独立伞。",
+      "specific_protection_zh": "保留人物身体、果物、车辆与建筑。"
+    },
+    "protected_content_zh": "保留人物身体、果物、车辆与建筑。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the green hoodie behind the orange cart",
+        "ref_zh": "橙子推车后方的绿色连帽衫",
+        "scope": "hoodie",
+        "scope_zh": "连帽衫",
+        "parent": "green_vendor",
+        "parent_zh": "绿衣摊主",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将橙子推车后方的绿色连帽衫的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的连帽衫的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 38,
+        "operation": "replace",
+        "ref": "the dark knit cap on the seated vendor in the foreground",
+        "ref_zh": "前景坐着的摊主的深色针织帽",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "seated_vendor",
+        "parent_zh": "坐摊主",
+        "payload": "a gray wool beanie",
+        "instruction_zh": "将前景坐着的摊主的深色针织帽替换为一顶灰色羊毛针织帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶灰色羊毛针织帽。"
+      },
+      {
+        "object_id": 42,
+        "operation": "add",
+        "ref": "the domed red umbrella on the left",
+        "ref_zh": "左侧圆顶的红色遮阳伞",
+        "scope": "umbrella",
+        "scope_zh": "遮阳伞",
+        "parent": "red_umbrella",
+        "parent_zh": "红伞",
+        "payload": "a small white cloth patch on its front edge",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧圆顶的红色遮阳伞加上一块缝在前缘的小白色布贴。",
+        "instruction_noref_zh": "在选中的遮阳伞加上一块缝在前缘的小白色布贴。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

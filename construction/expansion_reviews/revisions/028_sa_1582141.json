@@ -1,0 +1,176 @@
+{
+  "source_id": "sa_1582141",
+  "reason_zh": "用最近邻杯定位，删除冗长的背标朝向表述；不改变目标。",
+  "previous_record": {
+    "source_id": "sa_1582141",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "87b5cf2215b9dbbeab93967db1aa510f4806d8cca076a17a3bd14dcf391b8217",
+    "review_card_sha256": "b5e160f16e535ff089d235913d1836e8917c4f9caa93c9692c6c749e51f92b70",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为手中整杯咖啡，14为右后方背标朝外黑杯，3为最左背景杯绿盖，37为带35价格的货架边。四个物理父对象不重复瓶盖与杯身。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "truncation",
+        "small_targets"
+      ],
+      "scene_zh": "手持咖啡与货架商品",
+      "evidence_zh": "8为手中整杯咖啡，14为右后方背标朝外黑杯，3为最左背景杯绿盖，37为带35价格的货架边。四个物理父对象不重复瓶盖与杯身。",
+      "specific_protection_zh": "保留手指、其余商品、货架结构和冷柜光照。"
+    },
+    "protected_content_zh": "保留手指、其余商品、货架结构和冷柜光照。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the coffee cup held in the hand",
+        "ref_zh": "手中拿着的咖啡杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "held_cup",
+        "parent_zh": "手持杯",
+        "payload": "a clear lidded cup of iced coffee",
+        "instruction_zh": "将手中拿着的咖啡杯替换为一杯带盖透明杯装冰咖啡。",
+        "instruction_noref_zh": "将选中的杯子替换为一杯带盖透明杯装冰咖啡。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the black cup with its back label facing forward behind the hand",
+        "ref_zh": "手后方背标朝前的黑色杯子",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "rear_black_cup",
+        "parent_zh": "后黑杯",
+        "payload": "",
+        "instruction_zh": "移除手后方背标朝前的黑色杯子。",
+        "instruction_noref_zh": "移除选中的杯子。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the green lid on the far-left background cup",
+        "ref_zh": "背景最左侧杯子的绿色杯盖",
+        "scope": "lid",
+        "scope_zh": "杯盖",
+        "parent": "left_background_cup",
+        "parent_zh": "左背景杯",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将背景最左侧杯子的绿色杯盖的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的杯盖的颜色改为黑色。"
+      },
+      {
+        "object_id": 37,
+        "operation": "add",
+        "ref": "the shelf edge displaying the “35” price",
+        "ref_zh": "标有“35”价格的货架边",
+        "scope": "shelf edge",
+        "scope_zh": "货架边",
+        "parent": "display_shelf",
+        "parent_zh": "货架",
+        "payload": "a small red “SALE” sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在标有“35”价格的货架边加上一张红色小“SALE”贴纸。",
+        "instruction_noref_zh": "在选中的货架边加上一张红色小“SALE”贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_1582141",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "87b5cf2215b9dbbeab93967db1aa510f4806d8cca076a17a3bd14dcf391b8217",
+    "review_card_sha256": "b5e160f16e535ff089d235913d1836e8917c4f9caa93c9692c6c749e51f92b70",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为手中整杯咖啡，14为右后方背标朝外黑杯，3为最左背景杯绿盖，37为带35价格的货架边。四个物理父对象不重复瓶盖与杯身。 全图复核：用最近邻杯定位，删除冗长的背标朝向表述；不改变目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "truncation",
+        "small_targets"
+      ],
+      "scene_zh": "手持咖啡与货架商品",
+      "evidence_zh": "8为手中整杯咖啡，14为右后方背标朝外黑杯，3为最左背景杯绿盖，37为带35价格的货架边。四个物理父对象不重复瓶盖与杯身。 全图复核：用最近邻杯定位，删除冗长的背标朝向表述；不改变目标。",
+      "specific_protection_zh": "保留手指、其余商品、货架结构和冷柜光照。"
+    },
+    "protected_content_zh": "保留手指、其余商品、货架结构和冷柜光照。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the coffee cup held in the hand",
+        "ref_zh": "手中拿着的咖啡杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "held_cup",
+        "parent_zh": "手持杯",
+        "payload": "a clear lidded cup of iced coffee",
+        "instruction_zh": "将手中拿着的咖啡杯替换为一杯带盖透明杯装冰咖啡。",
+        "instruction_noref_zh": "将选中的杯子替换为一杯带盖透明杯装冰咖啡。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the black coffee cup just right of the held cup",
+        "ref_zh": "手持杯右侧紧邻的黑色咖啡杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "rear_black_cup",
+        "parent_zh": "后黑杯",
+        "payload": "",
+        "instruction_zh": "移除手持杯右侧紧邻的黑色咖啡杯。",
+        "instruction_noref_zh": "移除选中的杯子。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the green lid on the far-left background cup",
+        "ref_zh": "背景最左侧杯子的绿色杯盖",
+        "scope": "lid",
+        "scope_zh": "杯盖",
+        "parent": "left_background_cup",
+        "parent_zh": "左背景杯",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将背景最左侧杯子的绿色杯盖的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的杯盖的颜色改为黑色。"
+      },
+      {
+        "object_id": 37,
+        "operation": "add",
+        "ref": "the shelf edge displaying the “35” price",
+        "ref_zh": "标有“35”价格的货架边",
+        "scope": "shelf edge",
+        "scope_zh": "货架边",
+        "parent": "display_shelf",
+        "parent_zh": "货架",
+        "payload": "a small red “SALE” sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在标有“35”价格的货架边加上一张红色小“SALE”贴纸。",
+        "instruction_noref_zh": "在选中的货架边加上一张红色小“SALE”贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

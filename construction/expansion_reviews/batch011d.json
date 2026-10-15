@@ -1,0 +1,618 @@
+[
+  {
+    "source_id": "sa_2861934",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "df30db28caa99f4f8cd5cb38b9d791902cb105e5da4a3fa4b5a467690d299c4b",
+    "review_card_sha256": "072fa3aaf4df74249b7a07fb576c1186ea331801b26e325b447e31ebcdb6ffd9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为彩色泳帽，2为右前白篮，4为后方绿椅，10为后景竖幅。人、篮、椅、竖幅不同父对象；不选细碎人体皮肤或近椅局部5作为整椅移除。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "shallow_depth_of_field"
+      ],
+      "scene_zh": "泳池赛场边的运动员",
+      "evidence_zh": "0为彩色泳帽，2为右前白篮，4为后方绿椅，10为后景竖幅。人、篮、椅、竖幅不同父对象；不选细碎人体皮肤或近椅局部5作为整椅移除。",
+      "specific_protection_zh": "保留泳者身体、面部模糊、护目镜、其他器材和地毯。"
+    },
+    "protected_content_zh": "保留泳者身体、面部模糊、护目镜、其他器材和地毯。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the multicolored swim cap",
+        "ref_zh": "彩色泳帽",
+        "scope": "swim cap",
+        "scope_zh": "泳帽",
+        "parent": "swimmer",
+        "parent_zh": "泳者",
+        "payload": "a plain blue silicone swim cap",
+        "instruction_zh": "将彩色泳帽替换为一顶纯蓝色硅胶泳帽。",
+        "instruction_noref_zh": "将选中的泳帽替换为一顶纯蓝色硅胶泳帽。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the white laundry basket at the lower right",
+        "ref_zh": "右下方的白色衣物篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "laundry_basket",
+        "parent_zh": "衣物篮",
+        "payload": "a small numbered label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方的白色衣物篮加上一张小编号标签。",
+        "instruction_noref_zh": "在选中的篮子加上一张小编号标签。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the green chair behind the laundry basket",
+        "ref_zh": "衣物篮后方的绿色椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "rear_chair",
+        "parent_zh": "后椅",
+        "payload": "light gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将衣物篮后方的绿色椅子的颜色改为浅灰色。",
+        "instruction_noref_zh": "将选中的椅子的颜色改为浅灰色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the upright banner behind the swimmer",
+        "ref_zh": "泳者后方的竖幅",
+        "scope": "banner",
+        "scope_zh": "竖幅",
+        "parent": "rear_banner",
+        "parent_zh": "后幅",
+        "payload": "",
+        "instruction_zh": "移除泳者后方的竖幅。",
+        "instruction_noref_zh": "移除选中的竖幅。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_287526",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5c2be40b15a2b6d9983283d1c61af77afb55580d39d18870177f503bd1ee71af",
+    "review_card_sha256": "68282d45e00187d1b21e68029cca76fcc9b2b48b7a047ecf62637ec1a8a43bed",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "19为左前屋顶矩形天窗，4为左侧较远露台浅色遮棚。两处分属不同建筑/露台设施；长栏杆分割容易填充背景不使用。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "small_targets",
+        "repeated_roofs"
+      ],
+      "scene_zh": "俯瞰红瓦城市屋顶",
+      "evidence_zh": "19为左前屋顶矩形天窗，4为左侧较远露台浅色遮棚。两处分属不同建筑/露台设施；长栏杆分割容易填充背景不使用。",
+      "specific_protection_zh": "保留屋瓦、城区建筑、栏杆和原有日照阴影。"
+    },
+    "protected_content_zh": "保留屋瓦、城区建筑、栏杆和原有日照阴影。",
+    "targets": [
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the rectangular skylight on the foreground roof at the left",
+        "ref_zh": "左侧前景屋顶上的长方形天窗",
+        "scope": "skylight",
+        "scope_zh": "天窗",
+        "parent": "foreground_roof_building",
+        "parent_zh": "前景屋顶建筑",
+        "payload": "pale green",
+        "attribute_kind": "tint",
+        "instruction_zh": "将左侧前景屋顶上的长方形天窗的色调改为浅绿色。",
+        "instruction_noref_zh": "将选中的天窗的色调改为浅绿色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the cream awning on the terrace at the far left",
+        "ref_zh": "最左侧露台上的米色遮阳篷",
+        "scope": "awning",
+        "scope_zh": "遮阳篷",
+        "parent": "terrace_awning",
+        "parent_zh": "露台棚",
+        "payload": "a charcoal canvas awning",
+        "instruction_zh": "将最左侧露台上的米色遮阳篷替换为一块炭灰色帆布遮阳篷。",
+        "instruction_noref_zh": "将选中的遮阳篷替换为一块炭灰色帆布遮阳篷。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2891743",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a6abe58a170c322a8c2f16d8bcded4ffbdc5d1820cc82dc6e527378a21090e6a",
+    "review_card_sha256": "6faf21d26b92ea14b7add336e293b71f4141766378388bf33efcacdebb49d672",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "35为右近工作人员白帽，21为左前选手腰带，39为左后青色T恤，6为最左广告。三个不同人和独立牌；43与35同人不重复。",
+    "difficulty": {
+      "mechanisms": [
+        "motion",
+        "occlusion",
+        "shallow_depth_of_field"
+      ],
+      "scene_zh": "户外摔跤比赛",
+      "evidence_zh": "35为右近工作人员白帽，21为左前选手腰带，39为左后青色T恤，6为最左广告。三个不同人和独立牌；43与35同人不重复。",
+      "specific_protection_zh": "保留运动员身体、动作、裤子主体、观众及草场。"
+    },
+    "protected_content_zh": "保留运动员身体、动作、裤子主体、观众及草场。",
+    "targets": [
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the white cap on the official at the right",
+        "ref_zh": "右侧工作人员的白色帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "right_official",
+        "parent_zh": "右工作人员",
+        "payload": "a small red star patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧工作人员的白色帽子加上一块小红星布贴。",
+        "instruction_noref_zh": "在选中的帽子加上一块小红星布贴。"
+      },
+      {
+        "object_id": 21,
+        "operation": "attribute",
+        "ref": "the decorated waistband on the left wrestler",
+        "ref_zh": "左侧摔跤选手的装饰腰带",
+        "scope": "waistband",
+        "scope_zh": "腰带",
+        "parent": "left_wrestler",
+        "parent_zh": "左选手",
+        "payload": "brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧摔跤选手的装饰腰带的颜色改为棕色。",
+        "instruction_noref_zh": "将选中的腰带的颜色改为棕色。"
+      },
+      {
+        "object_id": 39,
+        "operation": "replace",
+        "ref": "the turquoise T-shirt in the background on the left",
+        "ref_zh": "左后方的青色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "turquoise_spectator",
+        "parent_zh": "青衣观众",
+        "payload": "a plain white T-shirt",
+        "instruction_zh": "将左后方的青色T恤替换为一件纯白色T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯白色T恤。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the cropped white advertising sign at the far left",
+        "ref_zh": "最左侧被画面截断的白色广告牌",
+        "scope": "sign",
+        "scope_zh": "广告牌",
+        "parent": "left_sign",
+        "parent_zh": "左牌",
+        "payload": "",
+        "instruction_zh": "移除最左侧被画面截断的白色广告牌。",
+        "instruction_noref_zh": "移除选中的广告牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2901296",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0efe2d7bb0157aba6cc8a9497c57ff72597de6d7925787f091c5c17818857660",
+    "review_card_sha256": "b9fd44283349b4281533def18d45ba444204c91ee412dd98d6d830a0de8feac1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "39为最近游客的格纹挎包，10为地面方向贴，35为右门旁窄玻璃板，23为后方游客黑红挎包。两只不同包、独立地贴和建筑玻璃。19像衬衫下摆而非包，不采用类别猜测。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflections",
+        "cropping"
+      ],
+      "scene_zh": "大厅入口与扶梯",
+      "evidence_zh": "39为最近游客的格纹挎包，10为地面方向贴，35为右门旁窄玻璃板，23为后方游客黑红挎包。两只不同包、独立地贴和建筑玻璃。19像衬衫下摆而非包，不采用类别猜测。",
+      "specific_protection_zh": "保留游客身体、鞋袜、扶梯、其他玻璃和地贴原文字箭头。"
+    },
+    "protected_content_zh": "保留游客身体、鞋袜、扶梯、其他玻璃和地贴原文字箭头。",
+    "targets": [
+      {
+        "object_id": 39,
+        "operation": "replace",
+        "ref": "the plaid shoulder bag on the nearest visitor",
+        "ref_zh": "最近游客的格纹单肩包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "plaid_bag",
+        "parent_zh": "格纹包",
+        "payload": "a plain black messenger bag",
+        "instruction_zh": "将最近游客的格纹单肩包替换为一个纯黑色邮差包。",
+        "instruction_noref_zh": "将选中的包替换为一个纯黑色邮差包。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the blue floor direction sticker",
+        "ref_zh": "蓝色地面导向贴",
+        "scope": "sticker",
+        "scope_zh": "地贴",
+        "parent": "floor_sticker",
+        "parent_zh": "地贴",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将蓝色地面导向贴的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的地贴的颜色改为深绿色。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the narrow glass panel beside the doorway on the right",
+        "ref_zh": "右侧门口旁的窄玻璃板",
+        "scope": "panel",
+        "scope_zh": "玻璃板",
+        "parent": "entrance_building",
+        "parent_zh": "入口建筑",
+        "payload": "a horizontal row of white safety dots",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧门口旁的窄玻璃板加上一排白色水平防撞圆点。",
+        "instruction_noref_zh": "在选中的玻璃板加上一排白色水平防撞圆点。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the black-and-red bag behind the nearest visitor",
+        "ref_zh": "最近游客后方的黑红色包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "rear_bag",
+        "parent_zh": "后包",
+        "payload": "",
+        "instruction_zh": "移除最近游客后方的黑红色包。",
+        "instruction_noref_zh": "移除选中的包。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2901819",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3f082c26498582342a6dda2283311193c155cc543ed2f740121056d8e21325e8",
+    "review_card_sha256": "f6e0a2fa9c57480e0e818d137fbff926a3ae151daa14b4f13831b05ff3362e37",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15为走道远处背向游客深T恤，11为右店旁灰上衣，10为PRENOTATEVI QUI牌，5为右近最高FETA盒。两个人、独立牌和盒；2/3承重堆箱不强制移除。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion",
+        "text"
+      ],
+      "scene_zh": "室内食品市场",
+      "evidence_zh": "15为走道远处背向游客深T恤，11为右店旁灰上衣，10为PRENOTATEVI QUI牌，5为右近最高FETA盒。两个人、独立牌和盒；2/3承重堆箱不强制移除。",
+      "specific_protection_zh": "保留人体、食品陈列、其他纸箱、货架和顶棚光线。"
+    },
+    "protected_content_zh": "保留人体、食品陈列、其他纸箱、货架和顶棚光线。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the dark T-shirt on the visitor farther down the aisle",
+        "ref_zh": "走道深处游客的深色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "far_visitor",
+        "parent_zh": "远游客",
+        "payload": "a navy polo shirt",
+        "instruction_zh": "将走道深处游客的深色T恤替换为一件藏蓝色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件藏蓝色Polo衫。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the gray shirt beside the right-hand counter",
+        "ref_zh": "右侧柜台旁的灰色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "gray_shirt_person",
+        "parent_zh": "灰衣者",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧柜台旁的灰色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the PRENOTATEVI QUI sign",
+        "ref_zh": "PRENOTATEVI QUI标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "reservation_sign",
+        "parent_zh": "预约牌",
+        "payload": "",
+        "instruction_zh": "移除PRENOTATEVI QUI标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the FETA box at the top of the foreground stack",
+        "ref_zh": "前景箱堆最上方的FETA盒",
+        "scope": "box",
+        "scope_zh": "盒子",
+        "parent": "feta_box",
+        "parent_zh": "FETA盒",
+        "payload": "a small white inventory label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景箱堆最上方的FETA盒加上一张小白色库存标签。",
+        "instruction_noref_zh": "在选中的盒子加上一张小白色库存标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2917269",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "344daad56cd2abf87c2956e8c77b44ce82a26fc425ef5e909217ba2c3a513fc7",
+    "review_card_sha256": "8c5ad6927d0478975875e6d976cfc640b7db2ab1839176aac8c5478a8a88d95b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "67为前景橙墙长窗，97为近处白色水罐，49为酒店塔顶环形玻璃护栏。前排楼、独立水罐和后酒店各一个父对象；不将多阳台74当单件。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "高层酒店与前排建筑",
+      "evidence_zh": "67为前景橙墙长窗，97为近处白色水罐，49为酒店塔顶环形玻璃护栏。前排楼、独立水罐和后酒店各一个父对象；不将多阳台74当单件。",
+      "specific_protection_zh": "保留楼体、酒店招牌、其他阳台、棕榈与天空。"
+    },
+    "protected_content_zh": "保留楼体、酒店招牌、其他阳台、棕榈与天空。",
+    "targets": [
+      {
+        "object_id": 67,
+        "operation": "replace",
+        "ref": "the wide window in the orange foreground wall",
+        "ref_zh": "前景橙色墙面的宽窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "orange_building",
+        "parent_zh": "橙墙建筑",
+        "payload": "a white wooden casement window",
+        "instruction_zh": "将前景橙色墙面的宽窗替换为一扇白色木框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇白色木框平开窗。"
+      },
+      {
+        "object_id": 97,
+        "operation": "attribute",
+        "ref": "the white cylindrical tank above the orange wall",
+        "ref_zh": "橙色墙上方的白色圆柱水罐",
+        "scope": "tank",
+        "scope_zh": "水罐",
+        "parent": "water_tank",
+        "parent_zh": "水罐",
+        "payload": "light gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将橙色墙上方的白色圆柱水罐的颜色改为浅灰色。",
+        "instruction_noref_zh": "将选中的水罐的颜色改为浅灰色。"
+      },
+      {
+        "object_id": 49,
+        "operation": "add",
+        "ref": "the circular railing at the top of the hotel tower",
+        "ref_zh": "酒店塔楼顶部的环形栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "hotel_tower",
+        "parent_zh": "酒店塔",
+        "payload": "a strand of warm-white lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在酒店塔楼顶部的环形栏杆加上一串暖白色灯。",
+        "instruction_noref_zh": "在选中的栏杆加上一串暖白色灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2922373",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bf239b35e3e28a373669b69ede3c1039ed50f90914b951abaf0f793f0a1c1a8f",
+    "review_card_sha256": "d48c8883011a29a3b300648174ec3656032ffd02c7a1f05498ebb97669ff2f83",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "31为中间开门右侧灰门，7为右墙电箱，83为门外条纹收拢伞。门属于大厅，箱和伞独立；其他门窗不能多计建筑父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "perspective",
+        "small_targets"
+      ],
+      "scene_zh": "空大厅与门外遮阳伞",
+      "evidence_zh": "31为中间开门右侧灰门，7为右墙电箱，83为门外条纹收拢伞。门属于大厅，箱和伞独立；其他门窗不能多计建筑父对象。",
+      "specific_protection_zh": "保留大厅石柱、窗户、其他门、地面反光和门外景物。"
+    },
+    "protected_content_zh": "保留大厅石柱、窗户、其他门、地面反光和门外景物。",
+    "targets": [
+      {
+        "object_id": 31,
+        "operation": "attribute",
+        "ref": "the gray door immediately right of the central opening",
+        "ref_zh": "中央开口右侧紧邻的灰色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "hall_building",
+        "parent_zh": "大厅建筑",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央开口右侧紧邻的灰色门的颜色改为森林绿。",
+        "instruction_noref_zh": "将选中的门的颜色改为森林绿。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the electrical box on the right wall",
+        "ref_zh": "右侧墙上的电箱",
+        "scope": "electrical box",
+        "scope_zh": "电箱",
+        "parent": "electrical_box",
+        "parent_zh": "电箱",
+        "payload": "a small yellow warning sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧墙上的电箱加上一张小黄色警示贴纸。",
+        "instruction_noref_zh": "在选中的电箱加上一张小黄色警示贴纸。"
+      },
+      {
+        "object_id": 83,
+        "operation": "replace",
+        "ref": "the rightmost folded parasol through the central opening",
+        "ref_zh": "中央开口外最右侧的收拢遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "outside_parasol",
+        "parent_zh": "外伞",
+        "payload": "a folded cream canvas parasol",
+        "instruction_zh": "将中央开口外最右侧的收拢遮阳伞替换为一把收拢的米色帆布遮阳伞。",
+        "instruction_noref_zh": "将选中的遮阳伞替换为一把收拢的米色帆布遮阳伞。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2938886",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "199a6bc56598439363d35c30ccb7a9fcb9654188129adbe667f5fddc1173933e",
+    "review_card_sha256": "a26b273340450c0294e445b5f347d39302528366bb08c5558d030528fce69747",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左墙独立灰信箱，10为左近蓝门，5为右近大窗下窗台。信箱、左屋、右屋不同父对象；新增花盆直接落窗台。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repeated_structures"
+      ],
+      "scene_zh": "红色木屋之间的小路",
+      "evidence_zh": "0为左墙独立灰信箱，10为左近蓝门，5为右近大窗下窗台。信箱、左屋、右屋不同父对象；新增花盆直接落窗台。",
+      "specific_protection_zh": "保留窗户玻璃、红色木墙、石子、排水管、路径和远处港口。"
+    },
+    "protected_content_zh": "保留窗户玻璃、红色木墙、石子、排水管、路径和远处港口。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the gray mailbox beside the nearest left-hand door",
+        "ref_zh": "左侧最近门旁的灰色信箱",
+        "scope": "mailbox",
+        "scope_zh": "信箱",
+        "parent": "mailbox",
+        "parent_zh": "信箱",
+        "payload": "a dark-green metal mailbox",
+        "instruction_zh": "将左侧最近门旁的灰色信箱替换为一个深绿色金属信箱。",
+        "instruction_noref_zh": "将选中的信箱替换为一个深绿色金属信箱。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the nearest blue door on the left",
+        "ref_zh": "左侧最近的蓝色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "left_building",
+        "parent_zh": "左木屋",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧最近的蓝色门的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的门的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the sill beneath the nearest window on the right",
+        "ref_zh": "右侧最近窗户下的窗台",
+        "scope": "sill",
+        "scope_zh": "窗台",
+        "parent": "right_building",
+        "parent_zh": "右木屋",
+        "payload": "a small terracotta pot of herbs",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧最近窗户下的窗台加上一盆小陶盆香草。",
+        "instruction_noref_zh": "在选中的窗台加上一盆小陶盆香草。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

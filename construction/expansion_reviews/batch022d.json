@@ -1,0 +1,578 @@
+[
+  {
+    "source_id": "sa_6282163",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "de40257d07ab48cee5d90a803b2c379dd5d0958e3869dc091069a8f43a4d5f88",
+    "review_card_sha256": "a2a62681992bb5390d93bbf87fe6f27e9b1a0d4f001dbf730977a24d7375ca73",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1划船者衣、24独立包、6后船与26棚屋不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "occlusion"
+      ],
+      "scene_zh": "河上船只与渔屋",
+      "evidence_zh": "1划船者衣、24独立包、6后船与26棚屋不同父对象。",
+      "specific_protection_zh": "保留人物身体、前船、竹筏和水面。"
+    },
+    "protected_content_zh": "保留人物身体、前船、竹筏和水面。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the rower's checked shirt",
+        "ref_zh": "划船者的格子衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "rower",
+        "parent_zh": "划船者",
+        "payload": "a plain light blue long-sleeved shirt",
+        "instruction_zh": "将划船者的格子衬衫替换为一件纯浅蓝色长袖衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯浅蓝色长袖衬衫。"
+      },
+      {
+        "object_id": 24,
+        "operation": "remove",
+        "ref": "the dark bag beside the boat motor",
+        "ref_zh": "船用马达旁的深色包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "bag",
+        "parent_zh": "包",
+        "payload": "",
+        "instruction_zh": "移除船用马达旁的深色包。",
+        "instruction_noref_zh": "移除选中的包。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the blue canoe behind the bamboo raft",
+        "ref_zh": "竹筏后方的蓝色独木舟",
+        "scope": "canoe",
+        "scope_zh": "独木舟",
+        "parent": "rear_canoe",
+        "parent_zh": "后舟",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将竹筏后方的蓝色独木舟的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的独木舟的颜色改为深绿色。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the blue-and-green waterside hut",
+        "ref_zh": "蓝绿色水边棚屋",
+        "scope": "hut",
+        "scope_zh": "棚屋",
+        "parent": "hut",
+        "parent_zh": "棚屋",
+        "payload": "a small wooden FRESH FISH sign on its side wall",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在蓝绿色水边棚屋加上一块位于侧墙上的小木制FRESH FISH标牌。",
+        "instruction_noref_zh": "在选中的棚屋加上一块位于侧墙上的小木制FRESH FISH标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6283149",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e51646a9d0051ccd17884abfbf449ed169958758b0e3992dae6989c017141eed",
+    "review_card_sha256": "9895ad9dacd60b5cb9675cbe159ac2bbad10d8a2c3b62390e9da3a8b6dcbefb2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6船体与1对岸独立盆植两个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "rope",
+        "occlusion"
+      ],
+      "scene_zh": "彩绘木船与岸边绿植",
+      "evidence_zh": "6船体与1对岸独立盆植两个父对象。",
+      "specific_protection_zh": "保留绳索、船中文字图案和岸边设施。"
+    },
+    "protected_content_zh": "保留绳索、船中文字图案和岸边设施。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the green trim of the foreground wooden boat",
+        "ref_zh": "前景木船的绿色饰边",
+        "scope": "boat trim",
+        "scope_zh": "船饰边",
+        "parent": "boat",
+        "parent_zh": "船",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景木船的绿色饰边的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的船饰边的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the leafy potted plant across the water near the top center",
+        "ref_zh": "水对岸顶部中间附近的多叶盆栽",
+        "scope": "plant",
+        "scope_zh": "盆栽",
+        "parent": "plant",
+        "parent_zh": "盆栽",
+        "payload": "",
+        "instruction_zh": "移除水对岸顶部中间附近的多叶盆栽。",
+        "instruction_noref_zh": "移除选中的盆栽。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6315997",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "19c87ccae645cdfd2bcd88c83ec7ddadeb0a6f37de853a827d959f87dbf90f0c",
+    "review_card_sha256": "27b7585aba7744d0109fb3104c7ec9639aefcd1c7299478dfb74dff0b6ec5f3e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2车后轮毂、24车库门和17后灌木三父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "橙色老式轿车",
+      "evidence_zh": "2车后轮毂、24车库门和17后灌木三父对象。",
+      "specific_protection_zh": "保留车身、轮胎、院落和建筑结构。"
+    },
+    "protected_content_zh": "保留车身、轮胎、院落和建筑结构。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the rear wheel rim of the orange car",
+        "ref_zh": "橙色汽车的后轮毂",
+        "scope": "wheel rim",
+        "scope_zh": "轮毂",
+        "parent": "car",
+        "parent_zh": "汽车",
+        "payload": "glossy black",
+        "attribute_kind": "color",
+        "instruction_zh": "将橙色汽车的后轮毂的颜色改为亮黑色。",
+        "instruction_noref_zh": "将选中的轮毂的颜色改为亮黑色。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the open white garage door behind the car",
+        "ref_zh": "汽车后方打开的白色车库门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "garage",
+        "parent_zh": "车库",
+        "payload": "a small red PRIVATE sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在汽车后方打开的白色车库门加上一块小红色PRIVATE标牌。",
+        "instruction_noref_zh": "在选中的门加上一块小红色PRIVATE标牌。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the low pale shrub behind the car",
+        "ref_zh": "汽车后方的低矮浅色灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "shrub",
+        "parent_zh": "灌木",
+        "payload": "",
+        "instruction_zh": "移除汽车后方的低矮浅色灌木。",
+        "instruction_noref_zh": "移除选中的灌木。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6329048",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f3e4a1d1944c231f93fd6e7fabc1d42325e11c0ba8f81bd7cff369b033e64a2b",
+    "review_card_sha256": "e2cfec80841ab7258b0085d0634b3dd8622b5845bbf32bfbe23a689637bb13ed",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "39红包、0左白车、4右灯、22后银车门四独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "occlusion",
+        "reflection"
+      ],
+      "scene_zh": "喷泉边人物与车辆",
+      "evidence_zh": "39红包、0左白车、4右灯、22后银车门四独立父对象。",
+      "specific_protection_zh": "保留人物身体、喷泉和建筑。"
+    },
+    "protected_content_zh": "保留人物身体、喷泉和建筑。",
+    "targets": [
+      {
+        "object_id": 39,
+        "operation": "replace",
+        "ref": "the seated woman's red shoulder bag",
+        "ref_zh": "坐着的女子的红色肩包",
+        "scope": "bag",
+        "scope_zh": "肩包",
+        "parent": "bag",
+        "parent_zh": "肩包",
+        "payload": "a small black leather shoulder bag",
+        "instruction_zh": "将坐着的女子的红色肩包替换为一个小黑色皮肩包。",
+        "instruction_noref_zh": "将选中的肩包替换为一个小黑色皮肩包。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the white hatchback at the left",
+        "ref_zh": "左侧的白色掀背车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "left_car",
+        "parent_zh": "左车",
+        "payload": "",
+        "instruction_zh": "移除左侧的白色掀背车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the pole of the rightmost globe streetlamp",
+        "ref_zh": "最右侧球形路灯的灯杆",
+        "scope": "lamp pole",
+        "scope_zh": "灯杆",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧球形路灯的灯杆的颜色改为古铜色。",
+        "instruction_noref_zh": "将选中的灯杆的颜色改为古铜色。"
+      },
+      {
+        "object_id": 22,
+        "operation": "add",
+        "ref": "the visible front door of the silver car behind the seated woman",
+        "ref_zh": "坐着的女子身后银色汽车的可见前门",
+        "scope": "car door",
+        "scope_zh": "车门",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "a small blue wave decal on its lower panel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在坐着的女子身后银色汽车的可见前门加上一张位于下部门板的小蓝色波浪贴花。",
+        "instruction_noref_zh": "在选中的车门加上一张位于下部门板的小蓝色波浪贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_633200",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ffba8a28982209c770ec33e9356b517c519174f7a8785ce7683cc9f30ac47ae6",
+    "review_card_sha256": "dca550b6cd8c768f7118fdfde12b895f9bac4aefd1f417b1577fc9fef4d78a9a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2前轮毂属于车辆，30后方电杆标签独立。",
+    "difficulty": {
+      "mechanisms": [
+        "traffic",
+        "occlusion"
+      ],
+      "scene_zh": "银色客货车",
+      "evidence_zh": "2前轮毂属于车辆，30后方电杆标签独立。",
+      "specific_protection_zh": "保留车身、人体、轮胎、电杆和电线。"
+    },
+    "protected_content_zh": "保留车身、人体、轮胎、电杆和电线。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the front wheel rim of the silver van",
+        "ref_zh": "银色客货车的前轮毂",
+        "scope": "wheel rim",
+        "scope_zh": "轮毂",
+        "parent": "van",
+        "parent_zh": "客货车",
+        "payload": "glossy black",
+        "attribute_kind": "color",
+        "instruction_zh": "将银色客货车的前轮毂的颜色改为亮黑色。",
+        "instruction_noref_zh": "将选中的轮毂的颜色改为亮黑色。"
+      },
+      {
+        "object_id": 30,
+        "operation": "remove",
+        "ref": "the small white label on the utility pole behind the van",
+        "ref_zh": "客货车后方电杆上的小白标签",
+        "scope": "label",
+        "scope_zh": "标签",
+        "parent": "pole_label",
+        "parent_zh": "电杆标签",
+        "payload": "",
+        "instruction_zh": "移除客货车后方电杆上的小白标签。",
+        "instruction_noref_zh": "移除选中的标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6347272",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e971a400245b5822f6c3bfccc9f3f89cab2c487164a54526bd67bcd2131c65b9",
+    "review_card_sha256": "9503b0f68720807b40af19ca369fa2b4f0630fca507bb2098d387702c73dc5db",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "11蓝T人物、18黑T人物、0饮料牌、10松饼牌独立。",
+    "difficulty": {
+      "mechanisms": [
+        "glass",
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "咖啡店玻璃橱窗",
+      "evidence_zh": "11蓝T人物、18黑T人物、0饮料牌、10松饼牌独立。",
+      "specific_protection_zh": "保留人体、玻璃反射、店招和其余菜单。"
+    },
+    "protected_content_zh": "保留人体、玻璃反射、店招和其余菜单。",
+    "targets": [
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the blue T-shirt on the customer near the center",
+        "ref_zh": "中间附近顾客的蓝色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "blue_customer",
+        "parent_zh": "蓝衣客",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近顾客的蓝色T恤的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为深绿色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the black graphic T-shirt on the customer to the right",
+        "ref_zh": "右侧顾客的黑色图案T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "black_customer",
+        "parent_zh": "黑衣客",
+        "payload": "a plain gray polo shirt",
+        "instruction_zh": "将右侧顾客的黑色图案T恤替换为一件纯灰色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件纯灰色Polo衫。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the colorful cold-drink poster behind the customer in black",
+        "ref_zh": "黑衣顾客后方的彩色冷饮海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "drink_poster",
+        "parent_zh": "饮料海报",
+        "payload": "",
+        "instruction_zh": "移除黑衣顾客后方的彩色冷饮海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the pancake poster near the right end of the menu row",
+        "ref_zh": "菜单一排右端附近的松饼海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "pancake_poster",
+        "parent_zh": "松饼海报",
+        "payload": "a small red NEW sticker in its upper corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在菜单一排右端附近的松饼海报加上一张位于上角的小红色NEW贴纸。",
+        "instruction_noref_zh": "在选中的海报加上一张位于上角的小红色NEW贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6391751",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "18c1a492ec72aa17a5dc5c84a69db3026249535f729229768d3b9844c68dc7a9",
+    "review_card_sha256": "d80d0006918602005050a7b902e24bf463c4aad36d0322448507a9a0f9a406f6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8左红凳、33白椅、0房产牌与1红楼栏杆独立。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "small_targets"
+      ],
+      "scene_zh": "彩色店铺与广场",
+      "evidence_zh": "8左红凳、33白椅、0房产牌与1红楼栏杆独立。",
+      "specific_protection_zh": "保留其他店招、建筑和广场家具。"
+    },
+    "protected_content_zh": "保留其他店招、建筑和广场家具。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the left red stool beneath the KAMINI canopy",
+        "ref_zh": "KAMINI棚下左侧的红凳",
+        "scope": "stool",
+        "scope_zh": "凳子",
+        "parent": "red_stool",
+        "parent_zh": "红凳",
+        "payload": "",
+        "instruction_zh": "移除KAMINI棚下左侧的红凳。",
+        "instruction_noref_zh": "移除选中的凳子。"
+      },
+      {
+        "object_id": 33,
+        "operation": "replace",
+        "ref": "the left of the two white chairs immediately right of the left cafe table",
+        "ref_zh": "左侧咖啡桌紧右方两把白椅中的左椅",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "white_chair",
+        "parent_zh": "白椅",
+        "payload": "a natural wood cafe chair",
+        "instruction_zh": "将左侧咖啡桌紧右方两把白椅中的左椅替换为一把原木色咖啡椅。",
+        "instruction_noref_zh": "将选中的椅子替换为一把原木色咖啡椅。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the background of the IONION real-estate sign",
+        "ref_zh": "IONION房产招牌的底色",
+        "scope": "sign background",
+        "scope_zh": "招牌底色",
+        "parent": "real_estate_sign",
+        "parent_zh": "房产牌",
+        "payload": "pale yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将IONION房产招牌的底色的颜色改为浅黄色。",
+        "instruction_noref_zh": "将选中的招牌底色的颜色改为浅黄色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the balcony railing on the red building",
+        "ref_zh": "红色建筑的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "red_building",
+        "parent_zh": "红楼",
+        "payload": "a small hanging flower box at its center",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在红色建筑的阳台栏杆加上一个位于中央的小悬挂花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个位于中央的小悬挂花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6400522",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1fbb7b65b19846f2580c8e11ff01c6161014277d8dfec3428c41e3c7cba1b484",
+    "review_card_sha256": "bddc089e2b1e45358957b0c0fe4b319dc23d5e81ed72f3ad81c119db8d5bcbf3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左袖属于衣服，7椭圆肖像胸针为可拆独立饰物，不把同衣部件作为多父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "pattern",
+        "costume"
+      ],
+      "scene_zh": "复古服饰人物",
+      "evidence_zh": "0左袖属于衣服，7椭圆肖像胸针为可拆独立饰物，不把同衣部件作为多父对象。",
+      "specific_protection_zh": "保留人物身体、头饰、其他饰物和背景。"
+    },
+    "protected_content_zh": "保留人物身体、头饰、其他饰物和背景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the floral sleeve at the left",
+        "ref_zh": "左侧的花纹衣袖",
+        "scope": "sleeve",
+        "scope_zh": "衣袖",
+        "parent": "person_clothing",
+        "parent_zh": "人物服装",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的花纹衣袖的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的衣袖的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the oval portrait brooch on the bodice",
+        "ref_zh": "胸衣上的椭圆肖像胸针",
+        "scope": "brooch",
+        "scope_zh": "胸针",
+        "parent": "portrait_brooch",
+        "parent_zh": "肖像胸针",
+        "payload": "",
+        "instruction_zh": "移除胸衣上的椭圆肖像胸针。",
+        "instruction_noref_zh": "移除选中的胸针。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

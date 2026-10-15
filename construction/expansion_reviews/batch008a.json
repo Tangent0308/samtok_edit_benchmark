@@ -1,0 +1,637 @@
+[
+  {
+    "source_id": "sa_1647901",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3b900090b62446c57cbc3df452cc772b96311c90701835030e735bf967890e58",
+    "review_card_sha256": "94ce4fad27af8e93413ea2b84dbec90967ecc472ad850b3b16666375a8694dbc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为前景背向者格子衬衫，19为中央伸手者浅衬衫，8为ANCHOR主牌，69为其下小产品广告。暗处仍可清楚划分对象，不用合并人群18。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "occlusion"
+      ],
+      "scene_zh": "昏暗电器市场的衣物和招牌",
+      "evidence_zh": "2为前景背向者格子衬衫，19为中央伸手者浅衬衫，8为ANCHOR主牌，69为其下小产品广告。暗处仍可清楚划分对象，不用合并人群18。",
+      "specific_protection_zh": "保留面部、手、人群、灯光氛围、花环和其余商品。"
+    },
+    "protected_content_zh": "保留面部、手、人群、灯光氛围、花环和其余商品。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the foreground checked shirt facing away",
+        "ref_zh": "前景背对镜头者的格子衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "checked_person",
+        "parent_zh": "格子衣者",
+        "payload": "a plain white cotton shirt",
+        "instruction_zh": "将前景背对镜头者的格子衬衫替换为一件纯白棉衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件纯白棉衬衫。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the light shirt on the man extending his arm in the center",
+        "ref_zh": "中央伸手男子的浅色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "reaching_man",
+        "parent_zh": "伸手男子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央伸手男子的浅色衬衫的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the “ANCHOR by Panasonic” sign",
+        "ref_zh": "“ANCHOR by Panasonic”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "anchor_sign",
+        "parent_zh": "主招牌",
+        "payload": "a slim LED light bar",
+        "placement": {
+          "relation": "on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在“ANCHOR by Panasonic”招牌的上沿加上一根细LED灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一根细LED灯条。"
+      },
+      {
+        "object_id": 69,
+        "operation": "remove",
+        "ref": "the small product poster beneath the ANCHOR sign",
+        "ref_zh": "ANCHOR招牌下的小产品海报",
+        "scope": "poster",
+        "scope_zh": "海报",
+        "parent": "product_poster",
+        "parent_zh": "小产品海报",
+        "payload": "",
+        "instruction_zh": "移除ANCHOR招牌下的小产品海报。",
+        "instruction_noref_zh": "移除选中的海报。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1649043",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "31caabcea6e15bb6a227fddd68cbcedd2db199f86dc17d872c79cc1d82609214",
+    "review_card_sha256": "939798010eac12e705dba14d773837dc57d3d515c0e64abdee533066a1ff9690",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左Heineken圆牌，1右Peroni牌，2左楼白门，3右侧30限速牌。店牌和交通牌为独立实物，建筑只取一扇门。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "perspective"
+      ],
+      "scene_zh": "空街上的酒吧牌和门",
+      "evidence_zh": "0左Heineken圆牌，1右Peroni牌，2左楼白门，3右侧30限速牌。店牌和交通牌为独立实物，建筑只取一扇门。",
+      "specific_protection_zh": "保留砖墙、门框、窗户、标志杆及其他街道设施。"
+    },
+    "protected_content_zh": "保留砖墙、门框、窗户、标志杆及其他街道设施。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the round Heineken sign on the left",
+        "ref_zh": "左侧圆形Heineken招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "heineken_sign",
+        "parent_zh": "左圆牌",
+        "payload": "a round coffee-shop sign",
+        "instruction_zh": "将左侧圆形Heineken招牌替换为一块圆形咖啡店招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块圆形咖啡店招牌。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the Peroni sign on the right",
+        "ref_zh": "右侧的Peroni招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "peroni_sign",
+        "parent_zh": "右店牌",
+        "payload": "",
+        "instruction_zh": "移除右侧的Peroni招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the white door above the steps on the left",
+        "ref_zh": "左侧台阶上方的白门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "left_building",
+        "parent_zh": "左建筑",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧台阶上方的白门的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的门的颜色改为酒红色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the “ZONE 30” sign on the right",
+        "ref_zh": "右侧的“ZONE 30”标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "speed_sign",
+        "parent_zh": "限速牌",
+        "payload": "a thin reflective border",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的“ZONE 30”标志加上一圈细反光边。",
+        "instruction_noref_zh": "在选中的标志加上一圈细反光边。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1659747",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "de73ac771d4f225d04592aa0745602beab63391f097d853709efcfdb2068579f",
+    "review_card_sha256": "6e2b1a5bb60af889e81ee343bb2d946bc165e452846692693e085df3d4843fe7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1红色小车可见整车，4蓝色老爷车挡风玻璃，20最左远处车。三个独立车辆，不把同一辆车牌轮胎拆开。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection"
+      ],
+      "scene_zh": "停车场老爷车与房车",
+      "evidence_zh": "1红色小车可见整车，4蓝色老爷车挡风玻璃，20最左远处车。三个独立车辆，不把同一辆车牌轮胎拆开。",
+      "specific_protection_zh": "保留人物、玻璃反射、蓝车结构、房车及其他车辆。"
+    },
+    "protected_content_zh": "保留人物、玻璃反射、蓝车结构、房车及其他车辆。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the red hatchback beside the blue vintage car",
+        "ref_zh": "蓝色老爷车旁的红色两厢车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "red_hatchback",
+        "parent_zh": "红两厢车",
+        "payload": "a yellow compact hatchback",
+        "instruction_zh": "将蓝色老爷车旁的红色两厢车替换为一辆黄色小型两厢车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆黄色小型两厢车。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the blue vintage car’s windshield",
+        "ref_zh": "蓝色老爷车的挡风玻璃",
+        "scope": "windshield",
+        "scope_zh": "挡风玻璃",
+        "parent": "blue_vintage_car",
+        "parent_zh": "蓝老爷车",
+        "payload": "a small parking-permit sticker",
+        "placement": {
+          "relation": "on",
+          "site": "lower corner",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在蓝色老爷车的挡风玻璃的下角加上一张小停车许可贴纸。",
+        "instruction_noref_zh": "在选中的挡风玻璃的下角加上一张小停车许可贴纸。"
+      },
+      {
+        "object_id": 20,
+        "operation": "remove",
+        "ref": "the distant car at the far-left edge",
+        "ref_zh": "最左边缘远处的汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "far_left_car",
+        "parent_zh": "最左远车",
+        "payload": "",
+        "instruction_zh": "移除最左边缘远处的汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_167171",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "04ba44d4fb8675453e0abed903201473a7f8af79e8169783ee8c533fdb070b97",
+    "review_card_sha256": "661ec4e338433ff20a9907c66cde0a0d09848cd278f7b136e5b01ba6106c102d",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为空长凳，1为两栋楼间绿灯柱，34为白门左侧窄电箱，122为白色双门。3有人坐的长凳不做删除。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "粉色房子前长凳和路灯",
+      "evidence_zh": "0为空长凳，1为两栋楼间绿灯柱，34为白门左侧窄电箱，122为白色双门。3有人坐的长凳不做删除。",
+      "specific_protection_zh": "保留坐者、其他长凳、墙面、窗户和门旁其他箱体。"
+    },
+    "protected_content_zh": "保留坐者、其他长凳、墙面、窗户和门旁其他箱体。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the empty bench in front of the pink house",
+        "ref_zh": "粉色房屋前的空长凳",
+        "scope": "bench",
+        "scope_zh": "长凳",
+        "parent": "empty_bench",
+        "parent_zh": "空长凳",
+        "payload": "a wooden slat bench",
+        "instruction_zh": "将粉色房屋前的空长凳替换为一张木条长凳。",
+        "instruction_noref_zh": "将选中的长凳替换为一张木条长凳。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the green lamppost between the houses",
+        "ref_zh": "房屋之间的绿色灯柱",
+        "scope": "lamppost",
+        "scope_zh": "灯柱",
+        "parent": "green_lamp",
+        "parent_zh": "绿灯柱",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将房屋之间的绿色灯柱的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的灯柱的颜色改为黑色。"
+      },
+      {
+        "object_id": 34,
+        "operation": "remove",
+        "ref": "the narrow utility box immediately left of the white doors",
+        "ref_zh": "白门紧左侧的窄电箱",
+        "scope": "utility box",
+        "scope_zh": "电箱",
+        "parent": "narrow_box",
+        "parent_zh": "窄电箱",
+        "payload": "",
+        "instruction_zh": "移除白门紧左侧的窄电箱。",
+        "instruction_noref_zh": "移除选中的电箱。"
+      },
+      {
+        "object_id": 122,
+        "operation": "add",
+        "ref": "the white double doors",
+        "ref_zh": "白色双扇门",
+        "scope": "doors",
+        "scope_zh": "门",
+        "parent": "pink_house",
+        "parent_zh": "粉房",
+        "payload": "a brass door knocker",
+        "placement": {
+          "relation": "on",
+          "site": "left leaf",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在白色双扇门的左扇门上加上一个黄铜门环。",
+        "instruction_noref_zh": "在选中的门的左扇门上加上一个黄铜门环。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1674826",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "556c0897ff0f54b5b3b053c03d02fccbbaeb1c4548e9fe74df80d09cbc14af6d",
+    "review_card_sha256": "e8154f3a89f5714a65aa5d07a79dfe15876db71598d90e53409ba68d3ba8d4ba",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为前景照片展示板，9为街中灰衣者上衣，14为后方红小车，24为左边较远盆栽花盆。花盆加表面贴花，不在已种植物的盆里硬添大物体。",
+    "difficulty": {
+      "mechanisms": [
+        "blur",
+        "occlusion"
+      ],
+      "scene_zh": "旧城巷口展示牌与行人",
+      "evidence_zh": "2为前景照片展示板，9为街中灰衣者上衣，14为后方红小车，24为左边较远盆栽花盆。花盆加表面贴花，不在已种植物的盆里硬添大物体。",
+      "specific_protection_zh": "保留人脸、手、盆内植物、前景红车、建筑及遮挡关系。"
+    },
+    "protected_content_zh": "保留人脸、手、盆内植物、前景红车、建筑及遮挡关系。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the freestanding photo board in the foreground",
+        "ref_zh": "前景独立摆放的照片展示板",
+        "scope": "board",
+        "scope_zh": "展示板",
+        "parent": "front_photo_board",
+        "parent_zh": "前照片板",
+        "payload": "a chalkboard menu",
+        "instruction_zh": "将前景独立摆放的照片展示板替换为一块黑板菜单。",
+        "instruction_noref_zh": "将选中的展示板替换为一块黑板菜单。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the walking man’s gray shirt in the street",
+        "ref_zh": "街中行走男子的灰色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "walking_man",
+        "parent_zh": "行走男子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将街中行走男子的灰色上衣的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the small red car behind the walking man",
+        "ref_zh": "行走男子后方的小红车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "rear_red_car",
+        "parent_zh": "后红车",
+        "payload": "",
+        "instruction_zh": "移除行走男子后方的小红车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the terracotta pot farther down the left sidewalk",
+        "ref_zh": "左侧人行道上较远的陶土花盆",
+        "scope": "pot",
+        "scope_zh": "花盆",
+        "parent": "far_left_pot",
+        "parent_zh": "左远花盆",
+        "payload": "a small white flower decal",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧人行道上较远的陶土花盆加上一张白色小花贴纸。",
+        "instruction_noref_zh": "在选中的花盆加上一张白色小花贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_167566",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fb36981582c8f999e80915f8ca4b81fd008d75a0c2a0132b977917f4c4478e15",
+    "review_card_sha256": "e7627b70406d74bb3f74b6bd2ff9eb704c2d5a5f990e5742f9266d772bb4d944",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0中央敞篷跑车，1右侧红车，2左侧黑车，三车独立且边缘截断仍可准确指代。",
+    "difficulty": {
+      "mechanisms": [
+        "truncation",
+        "reflection"
+      ],
+      "scene_zh": "三辆停放的汽车",
+      "evidence_zh": "0中央敞篷跑车，1右侧红车，2左侧黑车，三车独立且边缘截断仍可准确指代。",
+      "specific_protection_zh": "保留车轮、车灯、玻璃、路面、墙及车体必要反射。"
+    },
+    "protected_content_zh": "保留车轮、车灯、玻璃、路面、墙及车体必要反射。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the central convertible sports car",
+        "ref_zh": "中央的敞篷跑车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "central_convertible",
+        "parent_zh": "中央敞篷车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将中央的敞篷跑车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为红色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the red car on the right",
+        "ref_zh": "右侧的红色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "right_car",
+        "parent_zh": "右车",
+        "payload": "",
+        "instruction_zh": "移除右侧的红色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the black car on the left",
+        "ref_zh": "左侧的黑色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "left_car",
+        "parent_zh": "左车",
+        "payload": "a white compact hatchback",
+        "instruction_zh": "将左侧的黑色汽车替换为一辆白色小型两厢车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆白色小型两厢车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_168719",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "99e5c46d893c5c14b2470521b27048c3f108e25b1fb34ba3601638979ef4c33a",
+    "review_card_sha256": "5fdf5a5d756083b53299350b572ea06aec64f50d439272e5ef1a39345399aab6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12为两人身后中央花束，38为左侧人物红帽，83为右侧人物红金礼服可见部分。不把同花束的多朵花拆成多个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "fine_details"
+      ],
+      "scene_zh": "婚礼人物服装和花饰",
+      "evidence_zh": "12为两人身后中央花束，38为左侧人物红帽，83为右侧人物红金礼服可见部分。不把同花束的多朵花拆成多个父对象。",
+      "specific_protection_zh": "保留脸、手、姿势、首饰、头巾、金色刺绣和沙发。"
+    },
+    "protected_content_zh": "保留脸、手、姿势、首饰、头巾、金色刺绣和沙发。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "replace",
+        "ref": "the central flower arrangement behind the couple",
+        "ref_zh": "两人身后的中央花饰",
+        "scope": "arrangement",
+        "scope_zh": "花饰",
+        "parent": "central_flowers",
+        "parent_zh": "中央花饰",
+        "payload": "an arrangement of white roses and greenery",
+        "instruction_zh": "将两人身后的中央花饰替换为一组白玫瑰与绿叶花饰。",
+        "instruction_noref_zh": "将选中的花饰替换为一组白玫瑰与绿叶花饰。"
+      },
+      {
+        "object_id": 38,
+        "operation": "add",
+        "ref": "the red cap worn by the person on the left",
+        "ref_zh": "左侧人物戴的红帽",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "left_person",
+        "parent_zh": "左人物",
+        "payload": "a small gold brooch",
+        "placement": {
+          "relation": "on",
+          "site": "front",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧人物戴的红帽的正面加上一枚小金色胸针。",
+        "instruction_noref_zh": "在选中的帽子的正面加上一枚小金色胸针。"
+      },
+      {
+        "object_id": 83,
+        "operation": "attribute",
+        "ref": "the red embroidered dress on the right",
+        "ref_zh": "右侧的红色刺绣礼服",
+        "scope": "dress",
+        "scope_zh": "礼服",
+        "parent": "right_person",
+        "parent_zh": "右人物",
+        "payload": "ivory",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的红色刺绣礼服的颜色改为象牙白。",
+        "instruction_noref_zh": "将选中的礼服的颜色改为象牙白。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1710300",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7b8d6df27605fe0e1850435c1a764a3a26b6eb5f752151b008289a2bdb2a27bd",
+    "review_card_sha256": "cc2c8f4fad0a5202bf7f2bacce5f504cf6f2903447c1f5ad158a6ab63d39617f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为整个橙色背心，6为右后红塑料袋，30为左后蓝色线圈本，13为后方黄罐。背心反光条不另算父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "椅背反光背心和桌面物品",
+      "evidence_zh": "1为整个橙色背心，6为右后红塑料袋，30为左后蓝色线圈本，13为后方黄罐。背心反光条不另算父对象。",
+      "specific_protection_zh": "保留反光条、椅子、纸张、线缆、桌面和其余物品。"
+    },
+    "protected_content_zh": "保留反光条、椅子、纸张、线缆、桌面和其余物品。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the orange safety vest on the chair",
+        "ref_zh": "椅子上的橙色安全背心",
+        "scope": "vest",
+        "scope_zh": "背心",
+        "parent": "safety_vest",
+        "parent_zh": "安全背心",
+        "payload": "lime green",
+        "attribute_kind": "color",
+        "instruction_zh": "将椅子上的橙色安全背心的颜色改为荧光绿。",
+        "instruction_noref_zh": "将选中的背心的颜色改为荧光绿。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the red plastic bag on the desk",
+        "ref_zh": "桌上的红色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "red_bag",
+        "parent_zh": "红袋",
+        "payload": "",
+        "instruction_zh": "移除桌上的红色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 30,
+        "operation": "replace",
+        "ref": "the blue spiral notebook at the upper left",
+        "ref_zh": "左上方的蓝色线圈笔记本",
+        "scope": "notebook",
+        "scope_zh": "笔记本",
+        "parent": "blue_notebook",
+        "parent_zh": "蓝笔记本",
+        "payload": "a brown hardcover notebook",
+        "instruction_zh": "将左上方的蓝色线圈笔记本替换为一本棕色硬壳笔记本。",
+        "instruction_noref_zh": "将选中的笔记本替换为一本棕色硬壳笔记本。"
+      },
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the yellow jar behind the vest",
+        "ref_zh": "背心后方的黄色罐子",
+        "scope": "jar",
+        "scope_zh": "罐子",
+        "parent": "yellow_jar",
+        "parent_zh": "黄罐",
+        "payload": "a small white name label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在背心后方的黄色罐子加上一张白色小姓名标签。",
+        "instruction_noref_zh": "在选中的罐子加上一张白色小姓名标签。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

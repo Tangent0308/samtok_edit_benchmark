@@ -1,0 +1,140 @@
+{
+  "source_id": "sa_10824708",
+  "reason_zh": "放大夜景原图发现同网址招牌不止一块，增加“上方”消歧。",
+  "previous_record": {
+    "source_id": "sa_10824708",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9d3bee63c875f01dec82b1a3a0a48da3ad2d002d605760c47f2ab096131577f1",
+    "review_card_sha256": "8e16ed20ff7cc781f32b864883f319bb2e21a984d4a2ec41c1bb66e481dbf404",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22为红色aisan.co.jp横牌；117为前景看手机者的灰外套；76为其右侧前景行人的黑外套。对应两个人和一块独立广告牌，避开无法区分的小远景衣物。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "夜间十字路口的广告牌与近处行人",
+      "evidence_zh": "22为红色aisan.co.jp横牌；117为前景看手机者的灰外套；76为其右侧前景行人的黑外套。对应两个人和一块独立广告牌，避开无法区分的小远景衣物。",
+      "specific_protection_zh": "保留行人皮肤、手机、其他衣服、广告牌和交通灯。"
+    },
+    "protected_content_zh": "保留行人皮肤、手机、其他衣服、广告牌和交通灯。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the red “aisan.co.jp” sign",
+        "ref_zh": "红色“aisan.co.jp”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "website_sign",
+        "parent_zh": "红色网址招牌",
+        "payload": "",
+        "instruction_zh": "移除红色“aisan.co.jp”招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 117,
+        "operation": "attribute",
+        "ref": "the foreground phone user’s gray jacket",
+        "ref_zh": "前景看手机者的灰色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "phone_user",
+        "parent_zh": "看手机者",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景看手机者的灰色外套的颜色改为青绿色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为青绿色。"
+      },
+      {
+        "object_id": 76,
+        "operation": "replace",
+        "ref": "the black coat immediately right of the phone user",
+        "ref_zh": "看手机者紧右侧的黑色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "black_coat_person",
+        "parent_zh": "右侧黑外套人物",
+        "payload": "a beige trench coat",
+        "instruction_zh": "将看手机者紧右侧的黑色外套替换为一件米色风衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色风衣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10824708",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9d3bee63c875f01dec82b1a3a0a48da3ad2d002d605760c47f2ab096131577f1",
+    "review_card_sha256": "8e16ed20ff7cc781f32b864883f319bb2e21a984d4a2ec41c1bb66e481dbf404",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22为红色aisan.co.jp横牌；117为前景看手机者的灰外套；76为其右侧前景行人的黑外套。对应两个人和一块独立广告牌，避开无法区分的小远景衣物。 复核修订：放大夜景原图发现同网址招牌不止一块，增加“上方”消歧。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "夜间十字路口的广告牌与近处行人",
+      "evidence_zh": "22为红色aisan.co.jp横牌；117为前景看手机者的灰外套；76为其右侧前景行人的黑外套。对应两个人和一块独立广告牌，避开无法区分的小远景衣物。 复核修订：放大夜景原图发现同网址招牌不止一块，增加“上方”消歧。",
+      "specific_protection_zh": "保留行人皮肤、手机、其他衣服、广告牌和交通灯。"
+    },
+    "protected_content_zh": "保留行人皮肤、手机、其他衣服、广告牌和交通灯。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "remove",
+        "ref": "the upper red “aisan.co.jp” sign",
+        "ref_zh": "上方红色“aisan.co.jp”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "website_sign",
+        "parent_zh": "红色网址招牌",
+        "payload": "",
+        "instruction_zh": "移除上方红色“aisan.co.jp”招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 117,
+        "operation": "attribute",
+        "ref": "the foreground phone user’s gray jacket",
+        "ref_zh": "前景看手机者的灰色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "phone_user",
+        "parent_zh": "看手机者",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景看手机者的灰色外套的颜色改为青绿色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为青绿色。"
+      },
+      {
+        "object_id": 76,
+        "operation": "replace",
+        "ref": "the black coat immediately right of the phone user",
+        "ref_zh": "看手机者紧右侧的黑色外套",
+        "scope": "coat",
+        "scope_zh": "外套",
+        "parent": "black_coat_person",
+        "parent_zh": "右侧黑外套人物",
+        "payload": "a beige trench coat",
+        "instruction_zh": "将看手机者紧右侧的黑色外套替换为一件米色风衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件米色风衣。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

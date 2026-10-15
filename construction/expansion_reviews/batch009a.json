@@ -1,0 +1,639 @@
+[
+  {
+    "source_id": "sa_1939173",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ee1e0d569b23abaf51f2ddbefebb2f6cab0136a0cbaefce24d616295cce2898a",
+    "review_card_sha256": "886c3dd26ed9de1837111bceddd93d2a1869213ceda755c9174aa823029b270c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "21为上方施救者蓝袖，16为左侧另一人红袖，43为左下橙色担架绑带。仅编辑独立人物衣物和器械绑带，不移除身体或改变救助手势。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "多人急救场景中的服装和担架绑带",
+      "evidence_zh": "21为上方施救者蓝袖，16为左侧另一人红袖，43为左下橙色担架绑带。仅编辑独立人物衣物和器械绑带，不移除身体或改变救助手势。",
+      "specific_protection_zh": "保留人物身体、手势、脸、服装其他部位和担架功能结构。"
+    },
+    "protected_content_zh": "保留人物身体、手势、脸、服装其他部位和担架功能结构。",
+    "targets": [
+      {
+        "object_id": 21,
+        "operation": "add",
+        "ref": "the striped blue sleeve above the patient",
+        "ref_zh": "躺着的人上方的蓝色条纹袖子",
+        "scope": "sleeve",
+        "scope_zh": "袖子",
+        "parent": "upper_rescuer",
+        "parent_zh": "上方施救者",
+        "payload": "a small white first-aid patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在躺着的人上方的蓝色条纹袖子加上一块白色小急救标识贴布。",
+        "instruction_noref_zh": "在选中的袖子加上一块白色小急救标识贴布。"
+      },
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the red sleeve on the left",
+        "ref_zh": "左侧的红色袖子",
+        "scope": "sleeve",
+        "scope_zh": "袖子",
+        "parent": "left_rescuer",
+        "parent_zh": "左侧施救者",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的红色袖子的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的袖子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 43,
+        "operation": "replace",
+        "ref": "the orange stretcher strap at the lower left",
+        "ref_zh": "左下方的橙色担架绑带",
+        "scope": "strap",
+        "scope_zh": "绑带",
+        "parent": "stretcher",
+        "parent_zh": "担架",
+        "payload": "a black nylon strap",
+        "instruction_zh": "将左下方的橙色担架绑带替换为一条黑色尼龙绑带。",
+        "instruction_noref_zh": "将选中的绑带替换为一条黑色尼龙绑带。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1954663",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c2b847a122d1b9a14cdde07deee92228a209fadc5e56b8db332411d9f1290b5c",
+    "review_card_sha256": "0d5a9ff07f13efb9c1a994855a91c0702029343d9e859e461945d112466742b7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为灰绿小楼二层左窗，6为灯杆旁桶体，7为路灯，1为右浅色建筑白百叶窗。两个建筑、灯和独立垃圾桶。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "街边小楼和路灯垃圾桶",
+      "evidence_zh": "8为灰绿小楼二层左窗，6为灯杆旁桶体，7为路灯，1为右浅色建筑白百叶窗。两个建筑、灯和独立垃圾桶。",
+      "specific_protection_zh": "保留建筑墙面、其他窗户、路面和原有遮挡。"
+    },
+    "protected_content_zh": "保留建筑墙面、其他窗户、路面和原有遮挡。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the upper-left window of the gray-green building",
+        "ref_zh": "灰绿色建筑左上方的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "gray_green_house",
+        "parent_zh": "灰绿小楼",
+        "payload": "a wooden casement window",
+        "instruction_zh": "将灰绿色建筑左上方的窗户替换为一扇木框平开窗。",
+        "instruction_noref_zh": "将选中的窗户替换为一扇木框平开窗。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the green bin beside the lamppost",
+        "ref_zh": "灯柱旁的绿色垃圾桶",
+        "scope": "bin",
+        "scope_zh": "垃圾桶",
+        "parent": "street_bin",
+        "parent_zh": "街边桶",
+        "payload": "",
+        "instruction_zh": "移除灯柱旁的绿色垃圾桶。",
+        "instruction_noref_zh": "移除选中的垃圾桶。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the streetlamp on the left",
+        "ref_zh": "左侧的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "streetlamp",
+        "parent_zh": "路灯",
+        "payload": "a hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧的路灯加上一个悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个悬挂花篮。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the white shutter at the right edge",
+        "ref_zh": "右边缘的白色百叶窗板",
+        "scope": "shutter",
+        "scope_zh": "百叶窗板",
+        "parent": "right_house",
+        "parent_zh": "右侧建筑",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右边缘的白色百叶窗板的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的百叶窗板的颜色改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_196909",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "42a2620e2a666f2987fc94b18818cfe81bada7ffa9c3cb9dfa7a6bf27bc2a3f3",
+    "review_card_sha256": "1f9838b1a53ebcf8a267bc5a0c98d1688536f186c512ca8d0d0769cfb554f1f0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12为白T恤，15为手中黑包，27为肩上白袋，2为玻璃上的黄告示。人物、两个独立包和告示，不把相邻玻璃板拆成多个建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "玻璃办公入口与携包行人",
+      "evidence_zh": "12为白T恤，15为手中黑包，27为肩上白袋，2为玻璃上的黄告示。人物、两个独立包和告示，不把相邻玻璃板拆成多个建筑。",
+      "specific_protection_zh": "保留人体、玻璃反射、入口、其他告示和人行道。"
+    },
+    "protected_content_zh": "保留人体、玻璃反射、入口、其他告示和人行道。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the walking person’s white T-shirt",
+        "ref_zh": "行人的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "walking_person",
+        "parent_zh": "行人",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将行人的白色T恤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the black bag carried in the hand",
+        "ref_zh": "手中提着的黑色包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "handheld_bag",
+        "parent_zh": "手提黑包",
+        "payload": "a wicker shopping basket",
+        "instruction_zh": "将手中提着的黑色包替换为一个藤编购物篮。",
+        "instruction_noref_zh": "将选中的包替换为一个藤编购物篮。"
+      },
+      {
+        "object_id": 27,
+        "operation": "add",
+        "ref": "the white shoulder bag",
+        "ref_zh": "白色肩包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "white_shoulder_bag",
+        "parent_zh": "白肩包",
+        "payload": "a small blue flower patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在白色肩包加上一块蓝色小花贴布。",
+        "instruction_noref_zh": "在选中的包加上一块蓝色小花贴布。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the yellow notice on the glass",
+        "ref_zh": "玻璃上的黄色告示",
+        "scope": "notice",
+        "scope_zh": "告示",
+        "parent": "yellow_notice",
+        "parent_zh": "黄告示",
+        "payload": "",
+        "instruction_zh": "移除玻璃上的黄色告示。",
+        "instruction_noref_zh": "移除选中的告示。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_200777",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "66ce285fd0388640e8a99e4c3c22947d08ee82f38ec48d17c3b35ef39ca10bed",
+    "review_card_sha256": "3e7833d1ede22172b93464023477b22a231856c12606791568543cff559a9485",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "20仅帆船船身，19左后船屋，8右侧深灰船屋，3前景左黑色机动船。四艘不同船；不把帆与船身作两个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion",
+        "truncation"
+      ],
+      "scene_zh": "河中帆船与多艘船屋",
+      "evidence_zh": "20仅帆船船身，19左后船屋，8右侧深灰船屋，3前景左黑色机动船。四艘不同船；不把帆与船身作两个父对象。",
+      "specific_protection_zh": "保留人物、船帆、岸边树木、其他船及水面反射一致性。"
+    },
+    "protected_content_zh": "保留人物、船帆、岸边树木、其他船及水面反射一致性。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "attribute",
+        "ref": "the sailboat’s white hull",
+        "ref_zh": "帆船的白色船身",
+        "scope": "hull",
+        "scope_zh": "船身",
+        "parent": "sailboat",
+        "parent_zh": "帆船",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将帆船的白色船身的颜色改为红色。",
+        "instruction_noref_zh": "将选中的船身的颜色改为红色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the low houseboat left of the cream cabin boat",
+        "ref_zh": "奶油色舱船左侧的低矮船屋",
+        "scope": "houseboat",
+        "scope_zh": "船屋",
+        "parent": "left_houseboat",
+        "parent_zh": "左船屋",
+        "payload": "",
+        "instruction_zh": "移除奶油色舱船左侧的低矮船屋。",
+        "instruction_noref_zh": "移除选中的船屋。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the dark gray houseboat on the right",
+        "ref_zh": "右侧的深灰色船屋",
+        "scope": "houseboat",
+        "scope_zh": "船屋",
+        "parent": "right_houseboat",
+        "parent_zh": "右船屋",
+        "payload": "a solar panel",
+        "placement": {
+          "relation": "on",
+          "site": "roof",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的深灰色船屋的屋顶上加上一块太阳能板。",
+        "instruction_noref_zh": "在选中的船屋的屋顶上加上一块太阳能板。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the black motorboat at the front left",
+        "ref_zh": "左前方的黑色机动船",
+        "scope": "motorboat",
+        "scope_zh": "机动船",
+        "parent": "front_motorboat",
+        "parent_zh": "前机动船",
+        "payload": "a white fiberglass motorboat",
+        "instruction_zh": "将左前方的黑色机动船替换为一艘白色玻璃钢机动船。",
+        "instruction_noref_zh": "将选中的机动船替换为一艘白色玻璃钢机动船。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2012261",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fc46abc559015b711a7520dac9db34735a867edefca9656efc15fb432e86b44f",
+    "review_card_sha256": "3508af41fa451dd3d2b9cb63db12ff2f2ed59d084c74a4b2eb5e71db0bb67c72",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为左后白色掀背车，9为欢迎横幅，17为中央人物黑T恤，12为前景车风挡。四个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflection"
+      ],
+      "scene_zh": "车展上的汽车横幅和人物",
+      "evidence_zh": "2为左后白色掀背车，9为欢迎横幅，17为中央人物黑T恤，12为前景车风挡。四个父对象。",
+      "specific_protection_zh": "保留人物身体、其他汽车、轮胎、树影和车窗反射。"
+    },
+    "protected_content_zh": "保留人物身体、其他汽车、轮胎、树影和车窗反射。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the white hatchback behind the foreground car",
+        "ref_zh": "前景汽车后方的白色掀背车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "rear_hatchback",
+        "parent_zh": "后掀背车",
+        "payload": "a blue compact hatchback",
+        "instruction_zh": "将前景汽车后方的白色掀背车替换为一辆蓝色小型掀背车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色小型掀背车。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the green “Welcome to Charge Up LA!” banner",
+        "ref_zh": "绿色的“Welcome to Charge Up LA!”横幅",
+        "scope": "banner",
+        "scope_zh": "横幅",
+        "parent": "welcome_banner",
+        "parent_zh": "欢迎横幅",
+        "payload": "",
+        "instruction_zh": "移除绿色的“Welcome to Charge Up LA!”横幅。",
+        "instruction_noref_zh": "移除选中的横幅。"
+      },
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the black T-shirt behind the foreground windshield",
+        "ref_zh": "前景挡风玻璃后方的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "black_shirt_person",
+        "parent_zh": "黑衣人物",
+        "payload": "light gray",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景挡风玻璃后方的黑色T恤的颜色改为浅灰色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅灰色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the foreground car’s windshield",
+        "ref_zh": "前景汽车的挡风玻璃",
+        "scope": "windshield",
+        "scope_zh": "挡风玻璃",
+        "parent": "front_car",
+        "parent_zh": "前景汽车",
+        "payload": "a small parking permit sticker",
+        "placement": {
+          "relation": "on",
+          "site": "lower corner",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景汽车的挡风玻璃的下角加上一张小停车许可贴纸。",
+        "instruction_noref_zh": "在选中的挡风玻璃的下角加上一张小停车许可贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2019278",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "65673f762e748798cdf6758c5f30f6df7ee76c66937b93d36a6e4a6664fcef52",
+    "review_card_sha256": "6f1732864ce218f818052207e15074f3d3dfb1ff4d9409f70fae58f862f1a341",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为前景人物外套，19为车把黑袋，28为下方高车筐，25为上方中央建筑阳台。不同人物、袋、自行车和建筑。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "truncation"
+      ],
+      "scene_zh": "窄街骑车人与街边摊",
+      "evidence_zh": "10为前景人物外套，19为车把黑袋，28为下方高车筐，25为上方中央建筑阳台。不同人物、袋、自行车和建筑。",
+      "specific_protection_zh": "保留人体、自行车结构、车筐内商品、摊位、其他篷布和电线。"
+    },
+    "protected_content_zh": "保留人体、自行车结构、车筐内商品、摊位、其他篷布和电线。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the foreground cyclist’s patterned jacket",
+        "ref_zh": "前景骑车人的花纹外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "foreground_cyclist",
+        "parent_zh": "前景骑车人",
+        "payload": "a navy raincoat",
+        "instruction_zh": "将前景骑车人的花纹外套替换为一件藏蓝色雨衣。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色雨衣。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the black plastic bag hanging from the handlebars",
+        "ref_zh": "车把上挂着的黑色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "handlebar_bag",
+        "parent_zh": "车把袋",
+        "payload": "",
+        "instruction_zh": "移除车把上挂着的黑色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 28,
+        "operation": "attribute",
+        "ref": "the tall white bicycle basket",
+        "ref_zh": "高高的白色自行车筐",
+        "scope": "basket",
+        "scope_zh": "车筐",
+        "parent": "bicycle",
+        "parent_zh": "自行车",
+        "payload": "green",
+        "attribute_kind": "color",
+        "instruction_zh": "将高高的白色自行车筐的颜色改为绿色。",
+        "instruction_noref_zh": "将选中的车筐的颜色改为绿色。"
+      },
+      {
+        "object_id": 25,
+        "operation": "add",
+        "ref": "the balcony railing on the central orange building",
+        "ref_zh": "中央橙色建筑的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "orange_building",
+        "parent_zh": "橙色建筑",
+        "payload": "a small flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央橙色建筑的阳台栏杆加上一个小花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个小花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2051059",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3c32ce287dd74f3aa8314afac3933edfef12ac170697a468d48e8c2f7e6be3d3",
+    "review_card_sha256": "a6e83f61bb1a5e161458ffa39684b4534e73b6c16c0ad1522c48d5beac274ef4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左恐龙连体服，3为中间斑马纹头箍，27是下方手提罐红盖不是帽，29为左背景黄牌。不同两人物、独立罐和招牌。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "动物主题装扮聚会",
+      "evidence_zh": "0为左恐龙连体服，3为中间斑马纹头箍，27是下方手提罐红盖不是帽，29为左背景黄牌。不同两人物、独立罐和招牌。",
+      "specific_protection_zh": "保留身体、脸、手持饮料、其他服装、罐体和聚会场景。"
+    },
+    "protected_content_zh": "保留身体、脸、手持饮料、其他服装、罐体和聚会场景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the green dinosaur costume on the left",
+        "ref_zh": "左侧的绿色恐龙服装",
+        "scope": "costume",
+        "scope_zh": "服装",
+        "parent": "dinosaur_person",
+        "parent_zh": "恐龙服人物",
+        "payload": "a brown bear costume",
+        "instruction_zh": "将左侧的绿色恐龙服装替换为一套棕色熊服装。",
+        "instruction_noref_zh": "将选中的服装替换为一套棕色熊服装。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the zebra-striped headband in the center",
+        "ref_zh": "中央的斑马纹头箍",
+        "scope": "headband",
+        "scope_zh": "头箍",
+        "parent": "zebra_person",
+        "parent_zh": "斑马服人物",
+        "payload": "a small white fabric flower",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央的斑马纹头箍加上一朵白色小布花。",
+        "instruction_noref_zh": "在选中的头箍加上一朵白色小布花。"
+      },
+      {
+        "object_id": 27,
+        "operation": "attribute",
+        "ref": "the red lid of the hanging tin at the bottom",
+        "ref_zh": "下方悬挂罐子的红色盖子",
+        "scope": "lid",
+        "scope_zh": "盖子",
+        "parent": "hanging_tin",
+        "parent_zh": "悬挂罐",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将下方悬挂罐子的红色盖子的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的盖子的颜色改为蓝色。"
+      },
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the yellow sign in the upper-left background",
+        "ref_zh": "左上方背景中的黄色招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "yellow_background_sign",
+        "parent_zh": "背景黄牌",
+        "payload": "",
+        "instruction_zh": "移除左上方背景中的黄色招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_2052480",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "221d77bfbb4c667912136fb9602116e17d1530d6234d67b7bcf28366b8bc03d8",
+    "review_card_sha256": "b77db8d94c270f33b417dd58c931a0cfd3b8b086884b2b51b8b9cfc9c6cae825",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1是左下棕色白盖瓶，10为右上大白袋。不同实物，采用清除塑料瓶与以纸袋替换塑料袋的场景一致要求，不为凑四类强加装饰。",
+    "difficulty": {
+      "mechanisms": [
+        "clutter",
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "户外垃圾堆中的瓶子和袋",
+      "evidence_zh": "1是左下棕色白盖瓶，10为右上大白袋。不同实物，采用清除塑料瓶与以纸袋替换塑料袋的场景一致要求，不为凑四类强加装饰。",
+      "specific_protection_zh": "保留其他垃圾、枝条、草地和原有遮挡。"
+    },
+    "protected_content_zh": "保留其他垃圾、枝条、草地和原有遮挡。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the brown bottle with a white cap at the lower left",
+        "ref_zh": "左下方带白盖的棕色瓶子",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "brown_bottle",
+        "parent_zh": "棕瓶",
+        "payload": "",
+        "instruction_zh": "移除左下方带白盖的棕色瓶子。",
+        "instruction_noref_zh": "移除选中的瓶子。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the large white plastic bag at the upper right",
+        "ref_zh": "右上方的大白色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "upper_white_bag",
+        "parent_zh": "右上白袋",
+        "payload": "a crumpled brown paper bag",
+        "instruction_zh": "将右上方的大白色塑料袋替换为一个皱褶的棕色纸袋。",
+        "instruction_noref_zh": "将选中的袋子替换为一个皱褶的棕色纸袋。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

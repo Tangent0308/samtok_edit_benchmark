@@ -1,0 +1,659 @@
+[
+  {
+    "source_id": "sa_3074511",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "fa18c03b2d0b6f6dc43d1b2cd958f8e44798d28d5ce95c6d3edfd1b365cabaa3",
+    "review_card_sha256": "3f4d32b99a6e3a9ec1ca4e20db755f078ad6604c1906bb2d1241538ce1ba6ca3",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "49为最近纸箱，0为右近上窗，9为悬出方形eva牌。纸箱、建筑和独立标牌三父对象，不拆同楼多扇窗。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "店门口堆纸箱的街道",
+      "evidence_zh": "49为最近纸箱，0为右近上窗，9为悬出方形eva牌。纸箱、建筑和独立标牌三父对象，不拆同楼多扇窗。",
+      "specific_protection_zh": "保留其他纸箱、门面、其余招牌和街道。"
+    },
+    "protected_content_zh": "保留其他纸箱、门面、其余招牌和街道。",
+    "targets": [
+      {
+        "object_id": 49,
+        "operation": "remove",
+        "ref": "the open cardboard box at the front of the pile",
+        "ref_zh": "箱堆最前面的敞口纸箱",
+        "scope": "box",
+        "scope_zh": "纸箱",
+        "parent": "front_box",
+        "parent_zh": "前箱",
+        "payload": "",
+        "instruction_zh": "移除箱堆最前面的敞口纸箱。",
+        "instruction_noref_zh": "移除选中的纸箱。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the window above the nearest eva sign",
+        "ref_zh": "最近的eva标牌上方的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "shop_building",
+        "parent_zh": "店楼",
+        "payload": "pale green",
+        "attribute_kind": "tint",
+        "instruction_zh": "将最近的eva标牌上方的窗户的色调改为浅绿色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅绿色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the square eva sign projecting from the wall",
+        "ref_zh": "从墙上伸出的方形eva标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "projecting_sign",
+        "parent_zh": "悬出标牌",
+        "payload": "a black sign reading Welcome in white",
+        "instruction_zh": "将从墙上伸出的方形eva标牌替换为一块写有白色Welcome的黑色标牌。",
+        "instruction_noref_zh": "将选中的标牌替换为一块写有白色Welcome的黑色标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3081992",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5c7a33f05dc73b2b3aa65e98850321c3fdff77cb16c4ebe823f2a0aea7eee8fa",
+    "review_card_sha256": "b3e9a887008d5d9e0bd81273bbf1048d993debb15e268299a232c2c1e8be8604",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为后上方完整西瓜，2为中部草莓2for5价格板，54为上方香蕉把，1为左下蓝莓价格牌。水果和两块独立牌，不把篮内多个水果作同一mask替换。",
+    "difficulty": {
+      "mechanisms": [
+        "clutter",
+        "text",
+        "occlusion"
+      ],
+      "scene_zh": "密集水果摊",
+      "evidence_zh": "6为后上方完整西瓜，2为中部草莓2for5价格板，54为上方香蕉把，1为左下蓝莓价格牌。水果和两块独立牌，不把篮内多个水果作同一mask替换。",
+      "specific_protection_zh": "保留其他水果、透明盒、篮子和价格文字。"
+    },
+    "protected_content_zh": "保留其他水果、透明盒、篮子和价格文字。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the whole watermelon at the top",
+        "ref_zh": "顶部的完整西瓜",
+        "scope": "watermelon",
+        "scope_zh": "西瓜",
+        "parent": "watermelon",
+        "parent_zh": "西瓜",
+        "payload": "a cantaloupe",
+        "instruction_zh": "将顶部的完整西瓜替换为一个哈密瓜。",
+        "instruction_noref_zh": "将选中的西瓜替换为一个哈密瓜。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the STRAWBERRY 2 for £5 price board",
+        "ref_zh": "写有STRAWBERRY 2 for £5的价格板",
+        "scope": "board",
+        "scope_zh": "价格板",
+        "parent": "strawberry_board",
+        "parent_zh": "草莓牌",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将写有STRAWBERRY 2 for £5的价格板的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的价格板的颜色改为深绿色。"
+      },
+      {
+        "object_id": 54,
+        "operation": "add",
+        "ref": "the bunch of bananas near the top",
+        "ref_zh": "上方的一把香蕉",
+        "scope": "bananas",
+        "scope_zh": "香蕉",
+        "parent": "banana_bunch",
+        "parent_zh": "香蕉把",
+        "payload": "a small red organic-produce band",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在上方的一把香蕉加上一条小红色有机产品标签带。",
+        "instruction_noref_zh": "在选中的香蕉加上一条小红色有机产品标签带。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the BLUEBERRY £2.50 sign at the lower left",
+        "ref_zh": "左下角的BLUEBERRY £2.50标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "blueberry_sign",
+        "parent_zh": "蓝莓牌",
+        "payload": "",
+        "instruction_zh": "移除左下角的BLUEBERRY £2.50标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3084517",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cffeba6ab48ed36b20d43f7e53a176ac4e175278a05974919295be2bc8bd7629",
+    "review_card_sha256": "b20e3d952408f8f98c209eaeb41c28337b926dd3ee1ebfaaeb76977d9e0454cc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为左表演者西装，11为右表演者西装，23为后左Levis牌，46为前排观众蓝帽兜。三个不同人加独立品牌牌。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "haze",
+        "occlusion"
+      ],
+      "scene_zh": "烟雾灯光下的舞台",
+      "evidence_zh": "10为左表演者西装，11为右表演者西装，23为后左Levis牌，46为前排观众蓝帽兜。三个不同人加独立品牌牌。",
+      "specific_protection_zh": "保留人脸原模糊、身体动作、领带、舞台灯光及其余观众。"
+    },
+    "protected_content_zh": "保留人脸原模糊、身体动作、领带、舞台灯光及其余观众。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the suit jacket on the performer on the left",
+        "ref_zh": "左侧表演者的西装外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_performer",
+        "parent_zh": "左表演者",
+        "payload": "a burgundy velvet blazer",
+        "instruction_zh": "将左侧表演者的西装外套替换为一件酒红色天鹅绒西装外套。",
+        "instruction_noref_zh": "将选中的外套替换为一件酒红色天鹅绒西装外套。"
+      },
+      {
+        "object_id": 11,
+        "operation": "attribute",
+        "ref": "the suit jacket on the performer on the right",
+        "ref_zh": "右侧表演者的西装外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "right_performer",
+        "parent_zh": "右表演者",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧表演者的西装外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "remove",
+        "ref": "the red Levi’s sign in the background",
+        "ref_zh": "背景中的红色Levi’s标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "levis_sign",
+        "parent_zh": "品牌牌",
+        "payload": "",
+        "instruction_zh": "移除背景中的红色Levi’s标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 46,
+        "operation": "add",
+        "ref": "the blue hood on the foreground spectator",
+        "ref_zh": "前景观众的蓝色帽兜",
+        "scope": "hood",
+        "scope_zh": "帽兜",
+        "parent": "blue_hood_spectator",
+        "parent_zh": "蓝帽兜观众",
+        "payload": "a small white star patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景观众的蓝色帽兜加上一块小白星布贴。",
+        "instruction_noref_zh": "在选中的帽兜加上一块小白星布贴。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3110521",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4160226b934718f3150df4466b4082bf99c39f0933ebc04501b939550e448822",
+    "review_card_sha256": "c504727c92e649d00c6a8c68b958945b6ac6007fd17996e80dda1b958b105e48",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为左中紫帽，15为右侧黑外套，36为中间披肩拳头印花，4为右上手机。三个不同人及独立手机；移除的是图案不是手。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "cropping",
+        "printed_graphic"
+      ],
+      "scene_zh": "紫色衣服的街头人群",
+      "evidence_zh": "14为左中紫帽，15为右侧黑外套，36为中间披肩拳头印花，4为右上手机。三个不同人及独立手机；移除的是图案不是手。",
+      "specific_protection_zh": "保留人物、真实身体和手、披肩紫底白圆环及背景。"
+    },
+    "protected_content_zh": "保留人物、真实身体和手、披肩紫底白圆环及背景。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "replace",
+        "ref": "the purple hat on the left",
+        "ref_zh": "左侧的紫色帽子",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "purple_hat_person",
+        "parent_zh": "紫帽人",
+        "payload": "a white bucket hat",
+        "instruction_zh": "将左侧的紫色帽子替换为一顶白色渔夫帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶白色渔夫帽。"
+      },
+      {
+        "object_id": 15,
+        "operation": "attribute",
+        "ref": "the black jacket at the right edge",
+        "ref_zh": "右侧边缘的黑色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "right_person",
+        "parent_zh": "右人物",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧边缘的黑色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 36,
+        "operation": "remove",
+        "ref": "the white fist graphic on the purple cape",
+        "ref_zh": "紫色披肩上的白色拳头图案",
+        "scope": "graphic",
+        "scope_zh": "图案",
+        "parent": "cape_person",
+        "parent_zh": "披肩人物",
+        "payload": "",
+        "instruction_zh": "移除紫色披肩上的白色拳头图案。",
+        "instruction_noref_zh": "移除选中的图案。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the phone held at the upper right",
+        "ref_zh": "右上方手持的手机",
+        "scope": "phone",
+        "scope_zh": "手机",
+        "parent": "held_phone",
+        "parent_zh": "手机",
+        "payload": "a small red heart sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方手持的手机加上一张小红心贴纸。",
+        "instruction_noref_zh": "在选中的手机加上一张小红心贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3124476",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c0fd5bd557eaa9ee5917f28bbbc5b34a4e920dcb397d2975b642385edb26d872",
+    "review_card_sha256": "52a031e338a235029feee4ee769ae8d4a024df2e64d5ad9a91ec910c42e87e10",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "46为右前白衬衣，102为后方灰便帽，1为Abortion is a Human Right牌，32为左前墨镜。三个不同人物和独立牌；保留原有标语含义，仅改物件外观。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "crowd",
+        "repeated_signs"
+      ],
+      "scene_zh": "密集举牌人群",
+      "evidence_zh": "46为右前白衬衣，102为后方灰便帽，1为Abortion is a Human Right牌，32为左前墨镜。三个不同人物和独立牌；保留原有标语含义，仅改物件外观。",
+      "specific_protection_zh": "保留人脸模糊、标语文字、人物身体、话筒和其他牌。"
+    },
+    "protected_content_zh": "保留人脸模糊、标语文字、人物身体、话筒和其他牌。",
+    "targets": [
+      {
+        "object_id": 46,
+        "operation": "replace",
+        "ref": "the white shirt behind the front-right placard",
+        "ref_zh": "右前方标牌后面的白色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "white_shirt_person",
+        "parent_zh": "白衣人",
+        "payload": "a pale-blue cotton blouse",
+        "instruction_zh": "将右前方标牌后面的白色上衣替换为一件浅蓝色棉质衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件浅蓝色棉质衬衫。"
+      },
+      {
+        "object_id": 102,
+        "operation": "attribute",
+        "ref": "the gray flat cap in the middle-right crowd",
+        "ref_zh": "人群中部偏右的灰色鸭舌帽",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "gray_cap_person",
+        "parent_zh": "灰帽人",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将人群中部偏右的灰色鸭舌帽的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为酒红色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the Abortion is a Human Right placard",
+        "ref_zh": "写有Abortion is a Human Right的标牌",
+        "scope": "placard",
+        "scope_zh": "标牌",
+        "parent": "human_right_placard",
+        "parent_zh": "人权牌",
+        "payload": "a small white flower sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在写有Abortion is a Human Right的标牌加上一张小白花贴纸。",
+        "instruction_noref_zh": "在选中的标牌加上一张小白花贴纸。"
+      },
+      {
+        "object_id": 32,
+        "operation": "remove",
+        "ref": "the sunglasses on the woman at the lower left",
+        "ref_zh": "左下方女子戴的墨镜",
+        "scope": "sunglasses",
+        "scope_zh": "墨镜",
+        "parent": "left_woman",
+        "parent_zh": "左女子",
+        "payload": "",
+        "instruction_zh": "移除左下方女子戴的墨镜。",
+        "instruction_noref_zh": "移除选中的墨镜。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3125315",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "34586600e1b92f5a391a2853e919e3d706c10637b7ac826748c21bc74b816702",
+    "review_card_sha256": "1b092699e5179ca20234e9156d072cb95d4766eec49fb1b45c5e0915d2955edc",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为粉色蝴蝶壳，7为蓝豹纹壳，8为上排黑Chelsea壳，4为其左浅色足球壳。四个独立商品，图案不另计父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "small_targets",
+        "text"
+      ],
+      "scene_zh": "手机壳陈列墙",
+      "evidence_zh": "5为粉色蝴蝶壳，7为蓝豹纹壳，8为上排黑Chelsea壳，4为其左浅色足球壳。四个独立商品，图案不另计父对象。",
+      "specific_protection_zh": "保留挂钩、架子、其他手机壳及豹纹图案。"
+    },
+    "protected_content_zh": "保留挂钩、架子、其他手机壳及豹纹图案。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the pink butterfly phone case",
+        "ref_zh": "粉色蝴蝶图案手机壳",
+        "scope": "case",
+        "scope_zh": "手机壳",
+        "parent": "butterfly_case",
+        "parent_zh": "蝴蝶壳",
+        "payload": "a plain lavender silicone phone case",
+        "instruction_zh": "将粉色蝴蝶图案手机壳替换为一个纯淡紫色硅胶手机壳。",
+        "instruction_noref_zh": "将选中的手机壳替换为一个纯淡紫色硅胶手机壳。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the blue leopard-print phone case",
+        "ref_zh": "蓝色豹纹手机壳",
+        "scope": "case",
+        "scope_zh": "手机壳",
+        "parent": "leopard_case",
+        "parent_zh": "豹纹壳",
+        "payload": "pale pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将蓝色豹纹手机壳的颜色改为浅粉色。",
+        "instruction_noref_zh": "将选中的手机壳的颜色改为浅粉色。"
+      },
+      {
+        "object_id": 8,
+        "operation": "remove",
+        "ref": "the black Chelsea phone case in the top row",
+        "ref_zh": "顶排黑色Chelsea手机壳",
+        "scope": "case",
+        "scope_zh": "手机壳",
+        "parent": "chelsea_case",
+        "parent_zh": "Chelsea壳",
+        "payload": "",
+        "instruction_zh": "移除顶排黑色Chelsea手机壳。",
+        "instruction_noref_zh": "移除选中的手机壳。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the cream football phone case left of the Chelsea case",
+        "ref_zh": "Chelsea壳左侧的米色足球手机壳",
+        "scope": "case",
+        "scope_zh": "手机壳",
+        "parent": "cream_case",
+        "parent_zh": "米色壳",
+        "payload": "a small white price sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在Chelsea壳左侧的米色足球手机壳加上一张小白色价格贴纸。",
+        "instruction_noref_zh": "在选中的手机壳加上一张小白色价格贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3126499",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "494bb32ef5a3b7f5328712a58b87fc06bcb2b5c26f8e2b4f07ce217d5790fdff",
+    "review_card_sha256": "53bb893916acba5981ec41f9007227675734df0330697a80fb21706c1641dade",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "19为左中淡蓝裙，41为中部黑T恤，28为最左粉衣人的深色肩包，0为右近多头路灯。两个不同人物、独立肩包和灯。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion",
+        "repeated_people"
+      ],
+      "scene_zh": "广场石柱与游客",
+      "evidence_zh": "19为左中淡蓝裙，41为中部黑T恤，28为最左粉衣人的深色肩包，0为右近多头路灯。两个不同人物、独立肩包和灯。",
+      "specific_protection_zh": "保留人物身体、广场石柱、雕像、其他灯、远景及建筑。"
+    },
+    "protected_content_zh": "保留人物身体、广场石柱、雕像、其他灯、远景及建筑。",
+    "targets": [
+      {
+        "object_id": 19,
+        "operation": "replace",
+        "ref": "the pale-blue dress left of the stone column",
+        "ref_zh": "石柱左侧的浅蓝色连衣裙",
+        "scope": "dress",
+        "scope_zh": "连衣裙",
+        "parent": "blue_dress_person",
+        "parent_zh": "蓝裙人",
+        "payload": "a yellow cotton sundress",
+        "instruction_zh": "将石柱左侧的浅蓝色连衣裙替换为一条黄色棉质吊带连衣裙。",
+        "instruction_noref_zh": "将选中的连衣裙替换为一条黄色棉质吊带连衣裙。"
+      },
+      {
+        "object_id": 41,
+        "operation": "attribute",
+        "ref": "the black T-shirt just right of the stone column",
+        "ref_zh": "石柱右侧紧邻的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "black_shirt_man",
+        "parent_zh": "黑衣男子",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将石柱右侧紧邻的黑色T恤的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为酒红色。"
+      },
+      {
+        "object_id": 28,
+        "operation": "remove",
+        "ref": "the dark shoulder bag on the person in pink",
+        "ref_zh": "粉衣人物的深色单肩包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "shoulder_bag",
+        "parent_zh": "肩包",
+        "payload": "",
+        "instruction_zh": "移除粉衣人物的深色单肩包。",
+        "instruction_noref_zh": "移除选中的包。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the nearest multi-lantern streetlamp on the right",
+        "ref_zh": "右侧最近的多灯头路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_streetlamp",
+        "parent_zh": "右路灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧最近的多灯头路灯加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3145616",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0012f968767257709599558a4dd77d84e66e1a57bfcdcc766374fc7b59d2eaf1",
+    "review_card_sha256": "0c0734bbcdb82acb4487c1220e9261a06b5e5f5cfd6affa21dd8ce9c235d66f1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为右近黄花盆，4为左小双门，51为路灯最右灯笼。花盆、建筑、路灯三个父对象，不拆同灯多个灯头重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "symmetry",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "黄色建筑前的院落",
+      "evidence_zh": "1为右近黄花盆，4为左小双门，51为路灯最右灯笼。花盆、建筑、路灯三个父对象，不拆同灯多个灯头重复计数。",
+      "specific_protection_zh": "保留植物、其他门窗、黄色墙、石板、路灯结构和光照。"
+    },
+    "protected_content_zh": "保留植物、其他门窗、黄色墙、石板、路灯结构和光照。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the large yellow planter in the foreground",
+        "ref_zh": "前景的大黄色花盆",
+        "scope": "planter",
+        "scope_zh": "花盆",
+        "parent": "front_planter",
+        "parent_zh": "前花盆",
+        "payload": "terracotta orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的大黄色花盆的颜色改为陶土橙色。",
+        "instruction_noref_zh": "将选中的花盆的颜色改为陶土橙色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the small double door on the left",
+        "ref_zh": "左侧的小双门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "yellow_building",
+        "parent_zh": "黄楼",
+        "payload": "a dark-green paneled double door",
+        "instruction_zh": "将左侧的小双门替换为一扇深绿色镶板双门。",
+        "instruction_noref_zh": "将选中的门替换为一扇深绿色镶板双门。"
+      },
+      {
+        "object_id": 51,
+        "operation": "add",
+        "ref": "the rightmost lantern on the streetlamp",
+        "ref_zh": "路灯上最右侧的灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "streetlamp",
+        "parent_zh": "路灯",
+        "payload": "thin gold trim",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在路灯上最右侧的灯笼加上细金色饰边。",
+        "instruction_noref_zh": "在选中的灯笼加上细金色饰边。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

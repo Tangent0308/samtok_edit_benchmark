@@ -1,0 +1,738 @@
+[
+  {
+    "source_id": "sa_10006079",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "142051db418fe4d08698de750d4b7760185357a39ffe77da94d62a649401bf65",
+    "review_card_sha256": "946265df75e1dd0518e52c8e5cbe448ebb598cc00da6017201a0fa35773404d5",
+    "evidence_zh": "上衣包含细肩带、弯曲衣缘，手臂与裤子不在选区；背包紧邻腿和船板。两项分别属于乘客和独立行李，改变上衣颜色及移除背包都自然。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "neighbor_protection",
+        "local_parts"
+      ],
+      "scene_zh": "带篷小船上的乘客与行李",
+      "evidence_zh": "上衣包含细肩带、弯曲衣缘，手臂与裤子不在选区；背包紧邻腿和船板。两项分别属于乘客和独立行李，改变上衣颜色及移除背包都自然。",
+      "specific_protection_zh": "保留人物皮肤、头发、短裤、船体及河岸背景。"
+    },
+    "protected_content_zh": "保留人物皮肤、头发、短裤、船体及河岸背景。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the woman’s checked tank top",
+        "ref_zh": "女子的格纹背心",
+        "scope": "tank top",
+        "scope_zh": "背心",
+        "parent": "woman",
+        "parent_zh": "坐着的女子",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将女子的格纹背心的颜色改为蓝绿色。",
+        "instruction_noref_zh": "将选中的背心的颜色改为蓝绿色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the black backpack beside the woman",
+        "ref_zh": "女子身旁的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "backpack",
+        "parent_zh": "女子身旁的背包",
+        "payload": "",
+        "instruction_zh": "移除女子身旁的黑色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10017795",
+    "decision": "reject",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "review_card_sha256": "e65fdfa263e280561efa20915413a69a66cb6c5042b62c72c6324ce5a22c8b9c",
+    "evidence_zh": "本轮候选均为同一建筑的窗户，不能把同一父物体的多个部件计作多个独立编辑目标。",
+    "targets": []
+  },
+  {
+    "source_id": "sa_10027143",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "review_card_sha256": "878af88ba375d0ce022666da2c9f028c099b04a1f3548fb7d4a470d2cdbcc676",
+    "evidence_zh": "当前候选集中于同一建筑的玻璃与招牌，需要额外目标才能充分支持当前精细多父物体设定。",
+    "targets": []
+  },
+  {
+    "source_id": "sa_10029202",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "066d537eed8370af833c323a279632b961d9a302e1fadd1f1df184e5b61f3934",
+    "review_card_sha256": "6e261d5d4a806cd280c232f737ddef4641091227c8b33cb06044bf0029516ddb",
+    "evidence_zh": "补看花箱后，选择入口右侧唯一高花箱与最左侧花箱；二者都是独立容器，周边植物与栏杆不属编辑内容。围栏2和18的孔洞被填实，明确弃用。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "咖啡店外重复排列的木花箱",
+      "evidence_zh": "补看花箱后，选择入口右侧唯一高花箱与最左侧花箱；二者都是独立容器，周边植物与栏杆不属编辑内容。围栏2和18的孔洞被填实，明确弃用。",
+      "specific_protection_zh": "保留花箱中的植物、店面玻璃、树木以及所有栏杆。"
+    },
+    "protected_content_zh": "保留花箱中的植物、店面玻璃、树木以及所有栏杆。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the planter right of the cafe entrance",
+        "ref_zh": "咖啡店入口右侧的花箱",
+        "scope": "planter",
+        "scope_zh": "花箱",
+        "parent": "right_planter",
+        "parent_zh": "入口右侧花箱",
+        "payload": "a small brass menu plaque",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "给咖啡店入口右侧的花箱加一块小黄铜菜单牌。",
+        "instruction_noref_zh": "给选中的花箱加一块小黄铜菜单牌。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the leftmost wooden planter",
+        "ref_zh": "最左侧的木花箱",
+        "scope": "planter",
+        "scope_zh": "花箱",
+        "parent": "leftmost_planter",
+        "parent_zh": "最左侧花箱",
+        "payload": "a square terracotta planter",
+        "instruction_zh": "将最左侧的木花箱替换为一个方形陶土花箱。",
+        "instruction_noref_zh": "将选中的花箱替换为一个方形陶土花箱。"
+      }
+    ],
+    "rejected_targets": [
+      {
+        "object_id": 2,
+        "reason_zh": "栏杆内部空隙全部填入mask。"
+      },
+      {
+        "object_id": 18,
+        "reason_zh": "镂空网格内部背景全部填入mask。"
+      }
+    ],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_10029202/holes_check.jpg",
+        "sha256": "34f24df061fb2571e457ea46c33d2d104967005f339121a349800d5ef8a036ba"
+      }
+    ],
+    "instruction_revision_zh": "视觉检查后精简add表述，去掉可由新增物体含义确定的重复部位描述；原目标和直接锚点不变。"
+  },
+  {
+    "source_id": "sa_10030491",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "46799dc8c24d6df53cb00ede73407c04dd03d8009f42fb9c7e89fb315cec1f53",
+    "review_card_sha256": "1658a391fc2893db09cb7d7533628c04f52bd8258cc4d025048ae397c6e4df29",
+    "evidence_zh": "单独查看二值mask确认20保留细栏杆之间的空隙；右后方小船37与前景渔船清楚区分。灯串直接沿所选栏杆附着，不使用隔空锚点。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "holes",
+        "similar_instances"
+      ],
+      "scene_zh": "港口栏杆与停泊船只",
+      "evidence_zh": "单独查看二值mask确认20保留细栏杆之间的空隙；右后方小船37与前景渔船清楚区分。灯串直接沿所选栏杆附着，不使用隔空锚点。",
+      "specific_protection_zh": "保留栏杆后的人物、码头、前景渔船及其缆绳。"
+    },
+    "protected_content_zh": "保留栏杆后的人物、码头、前景渔船及其缆绳。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the blue dock railing on the left",
+        "ref_zh": "左侧蓝色码头栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "dock_railing",
+        "parent_zh": "左侧码头栏杆",
+        "payload": "warm-white string lights",
+        "placement": {
+          "relation": "along",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "沿左侧蓝色码头栏杆挂上暖白色灯串。",
+        "instruction_noref_zh": "沿选中的栏杆挂上暖白色灯串。"
+      },
+      {
+        "object_id": 37,
+        "operation": "remove",
+        "ref": "the small white boat at the far right of the harbor",
+        "ref_zh": "港口最右侧的小白船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "right_boat",
+        "parent_zh": "港口最右侧小白船",
+        "payload": "",
+        "instruction_zh": "移除港口最右侧的小白船。",
+        "instruction_noref_zh": "移除选中的船。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_10030491/holes_check.jpg",
+        "sha256": "2c601d63f5deac2381d1e06f3e10fea73b4cb47b068aaeacfa696200117574cf"
+      }
+    ],
+    "instruction_revision_zh": "视觉检查后精简add表述，去掉可由新增物体含义确定的重复部位描述；原目标和直接锚点不变。"
+  },
+  {
+    "source_id": "sa_10044652",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "828cc9fd5a0984e70e687a5de4d8615dab110a531a251b14e1ab197eeaa1326c",
+    "review_card_sha256": "bdf3df138b1a246b567e2bbd386927472a7dcb43df98597156d9f452a91293c2",
+    "evidence_zh": "外套33准确排除手机、手与颈部；白车12的下部被前景轿车遮挡；远处正面朝向镜头的车9单独成物。采用外套替换、白车改色和远处车辆移除。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection",
+        "local_parts"
+      ],
+      "scene_zh": "车辆旁的人群与停放车辆",
+      "evidence_zh": "外套33准确排除手机、手与颈部；白车12的下部被前景轿车遮挡；远处正面朝向镜头的车9单独成物。采用外套替换、白车改色和远处车辆移除。",
+      "specific_protection_zh": "保留人物面部与双手、前景受损车辆及所有未选衣物。"
+    },
+    "protected_content_zh": "保留人物面部与双手、前景受损车辆及所有未选衣物。",
+    "targets": [
+      {
+        "object_id": 33,
+        "operation": "replace",
+        "ref": "the central man’s red-and-blue track jacket",
+        "ref_zh": "中央男子的红蓝运动外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "central_man",
+        "parent_zh": "中央红蓝外套男子",
+        "payload": "a navy bomber jacket",
+        "instruction_zh": "将中央男子的红蓝运动外套替换为一件藏蓝色飞行员夹克。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色飞行员夹克。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the white sedan behind the damaged car",
+        "ref_zh": "受损汽车后方的白色轿车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_sedan",
+        "parent_zh": "后方白色轿车",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将受损汽车后方的白色轿车的颜色改为银色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为银色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the distant silver car facing the camera",
+        "ref_zh": "远处正对镜头的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "distant_silver_car",
+        "parent_zh": "远处正对镜头的银车",
+        "payload": "",
+        "instruction_zh": "移除远处正对镜头的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10047011",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4cace543c99da169e028ec2606fdfb6c643c72d1b64692fb9ab3c2b2e4842a5a",
+    "review_card_sha256": "6912d56baa7aee8a73eedac51dd096d1b5e6f81076f9fc767b143323e15cc1a6",
+    "evidence_zh": "背包7被卷发遮挡，mask沿头发边缘截断；标语牌5排除手掌；右侧近处SUV0独立于人群。补丁直接加在背包正面，指令通过原有牌面文字和车的位置区分目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection",
+        "similar_instances"
+      ],
+      "scene_zh": "街头人群中的背包、手持牌与车辆",
+      "evidence_zh": "背包7被卷发遮挡，mask沿头发边缘截断；标语牌5排除手掌；右侧近处SUV0独立于人群。补丁直接加在背包正面，指令通过原有牌面文字和车的位置区分目标。",
+      "specific_protection_zh": "保留卷发、人物身体和手、其他标语牌以及背景车辆。"
+    },
+    "protected_content_zh": "保留卷发、人物身体和手、其他标语牌以及背景车辆。",
+    "targets": [
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the red-haired woman’s backpack",
+        "ref_zh": "红发女子的背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "black_backpack",
+        "parent_zh": "红发女子的背包",
+        "payload": "a reflective patch",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "给红发女子的背包加一块反光贴。",
+        "instruction_noref_zh": "给选中的背包加一块反光贴。"
+      },
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the foreground “NO JUSTICE NO PEACE” placard",
+        "ref_zh": "前景写有“NO JUSTICE NO PEACE”的标语牌",
+        "scope": "placard",
+        "scope_zh": "标语牌",
+        "parent": "foreground_placard",
+        "parent_zh": "前景竖向标语牌",
+        "payload": "",
+        "instruction_zh": "移除前景写有“NO JUSTICE NO PEACE”的标语牌。",
+        "instruction_noref_zh": "移除选中的标语牌。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the black SUV on the right",
+        "ref_zh": "右侧黑色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "right_suv",
+        "parent_zh": "右侧近处黑色SUV",
+        "payload": "a silver station wagon",
+        "instruction_zh": "将右侧黑色SUV替换为一辆银色旅行车。",
+        "instruction_noref_zh": "将选中的SUV替换为一辆银色旅行车。"
+      }
+    ],
+    "rejected_targets": [],
+    "instruction_revision_zh": "视觉检查后精简add表述，去掉可由新增物体含义确定的重复部位描述；原目标和直接锚点不变。"
+  },
+  {
+    "source_id": "sa_1005356",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "329e7c4db281301ade3da78ff8f6578c0669eb1c28c22781ac7ced0fcb0b28a6",
+    "review_card_sha256": "e4089b5d11c8eb5b13c49b7afe74cd5fb1893e00e03476a3ff5226807be76581",
+    "evidence_zh": "车夫白衬衫30被牛背遮成两块可见区域；左侧红T恤6属于另一名观众；近侧车轮0的二值mask保留大部分辐条孔洞。轮毂盖直接安装在轮毂，不在轮旁凭空添加。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "holes",
+        "thin_structures"
+      ],
+      "scene_zh": "牛车游行中的观众衣服",
+      "evidence_zh": "车夫白衬衫30被牛背遮成两块可见区域；左侧红T恤6属于另一名观众；近侧车轮0的二值mask保留大部分辐条孔洞。轮毂盖直接安装在轮毂，不在轮旁凭空添加。",
+      "specific_protection_zh": "保留牛、帽子、所有人物皮肤、远侧车轮及未选衣物。"
+    },
+    "protected_content_zh": "保留牛、帽子、所有人物皮肤、远侧车轮及未选衣物。",
+    "targets": [
+      {
+        "object_id": 30,
+        "operation": "attribute",
+        "ref": "the hatted handler’s white shirt",
+        "ref_zh": "戴帽车夫的白衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "handler",
+        "parent_zh": "戴帽车夫",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将戴帽车夫的白衬衫的颜色改为森林绿。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为森林绿。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the red T-shirt worn by the man in blue shorts",
+        "ref_zh": "穿蓝色短裤男子的红T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "red_shirt_spectator",
+        "parent_zh": "蓝色短裤红T恤观众",
+        "payload": "a white polo shirt",
+        "instruction_zh": "将穿蓝色短裤男子的红T恤替换为一件白色Polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件白色Polo衫。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the near-side wagon wheel",
+        "ref_zh": "近侧车轮",
+        "scope": "wheel",
+        "scope_zh": "车轮",
+        "parent": "wagon",
+        "parent_zh": "牛车",
+        "payload": "a small brass hubcap",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "给近侧车轮加一个小黄铜轮毂盖。",
+        "instruction_noref_zh": "给选中的车轮加一个小黄铜轮毂盖。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_1005356/holes_check.jpg",
+        "sha256": "54996f00db41951c891ec11e4c841422a524094ab1eae43d1da702c668202f36"
+      }
+    ],
+    "instruction_revision_zh": "视觉检查后精简add表述，去掉可由新增物体含义确定的重复部位描述；原目标和直接锚点不变。"
+  },
+  {
+    "source_id": "sa_10054848",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "review_card_sha256": "16423ef3126ed9d8a19af43e0b771c479c07ef7dec8f4e3c133fb82090de9908",
+    "evidence_zh": "栏杆多处疑似填孔；需另行审查水箱等其他目标，不因城市背景繁杂直接认定难例。",
+    "targets": []
+  },
+  {
+    "source_id": "sa_10071617",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d7aa3c82cace1cbe46061deb56c9dac6c2b883ea2e02b260fb8fc3b51493e4a8",
+    "review_card_sha256": "fb8a32a4e31b18691f425cb8fe6256a87381e6dae312fc5f24be73cc5040cc04",
+    "evidence_zh": "绿色背景轿车5被两根竖杆遮成多个可见片段；白色老爷车8位于画面右缘，与主体掀盖汽车是独立车辆。新增行李架安装于该车车顶。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "similar_instances"
+      ],
+      "scene_zh": "汽车展示场的前景老爷车与背景轿车",
+      "evidence_zh": "绿色背景轿车5被两根竖杆遮成多个可见片段；白色老爷车8位于画面右缘，与主体掀盖汽车是独立车辆。新增行李架安装于该车车顶。",
+      "specific_protection_zh": "保留电杆、主体掀盖汽车、蓝色背景车辆和路面。"
+    },
+    "protected_content_zh": "保留电杆、主体掀盖汽车、蓝色背景车辆和路面。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the green sedan behind the raised hood",
+        "ref_zh": "掀起的引擎盖后方的绿色轿车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "green_sedan",
+        "parent_zh": "背景绿色轿车",
+        "payload": "",
+        "instruction_zh": "移除掀起的引擎盖后方的绿色轿车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 8,
+        "operation": "add",
+        "ref": "the white vintage car on the right",
+        "ref_zh": "右侧白色老爷车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "white_vintage_car",
+        "parent_zh": "右侧白色老爷车",
+        "payload": "a chrome roof rack",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "给右侧白色老爷车加一个镀铬车顶行李架。",
+        "instruction_noref_zh": "给选中的汽车加一个镀铬车顶行李架。"
+      }
+    ],
+    "rejected_targets": [],
+    "instruction_revision_zh": "视觉检查后精简add表述，去掉可由新增物体含义确定的重复部位描述；原目标和直接锚点不变。"
+  },
+  {
+    "source_id": "sa_10072920",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "80b8fb3b862e447455dfb482676560ccbf4378c66da02b06d99746d7bd8eb9d7",
+    "review_card_sha256": "e60e27875ea53b55dbbabcb6998c404f4fa9548a6f14067b21b7a97b352bd274",
+    "evidence_zh": "最下方黄色店主声明贴纸2紧邻多张公告，原有文字可无歧义指代；Ivy Room立体悬挂招牌0有非矩形轮廓，替换为同名椭圆木招牌自然。反射汽车7不作为真实车辆选用。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection",
+        "similar_instances"
+      ],
+      "scene_zh": "酒吧招牌与密集贴纸",
+      "evidence_zh": "最下方黄色店主声明贴纸2紧邻多张公告，原有文字可无歧义指代；Ivy Room立体悬挂招牌0有非矩形轮廓，替换为同名椭圆木招牌自然。反射汽车7不作为真实车辆选用。",
+      "specific_protection_zh": "保留玻璃反射、其他公告、建筑和交通灯。"
+    },
+    "protected_content_zh": "保留玻璃反射、其他公告、建筑和交通灯。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the yellow “Proud to be a WOMAN OWNED” sticker",
+        "ref_zh": "黄色“Proud to be a WOMAN OWNED”贴纸",
+        "scope": "sticker",
+        "scope_zh": "贴纸",
+        "parent": "yellow_sticker",
+        "parent_zh": "黄色店主声明贴纸",
+        "payload": "",
+        "instruction_zh": "移除黄色“Proud to be a WOMAN OWNED”贴纸。",
+        "instruction_noref_zh": "移除选中的贴纸。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the projecting Ivy Room sign",
+        "ref_zh": "向外悬挂的Ivy Room招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "ivy_room_sign",
+        "parent_zh": "悬挂Ivy Room招牌",
+        "payload": "an oval wooden sign reading “Ivy Room”",
+        "instruction_zh": "将向外悬挂的Ivy Room招牌替换为一块写有“Ivy Room”的椭圆木招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有“Ivy Room”的椭圆木招牌。"
+      }
+    ],
+    "rejected_targets": [
+      {
+        "object_id": 7,
+        "reason_zh": "玻璃中的车辆倒影，不是真实独立车辆。"
+      }
+    ]
+  },
+  {
+    "source_id": "sa_10081169",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "review_card_sha256": "3ebc9f488e4ffc865e287f8226f66b6c444e56210f29ec7392c083a87b7b671c",
+    "evidence_zh": "夜景存在运动模糊，椅背部分mask混入手；需补查前景裙装等候选。",
+    "targets": []
+  },
+  {
+    "source_id": "sa_10085700",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "review_card_sha256": "099a7f716055967e282fe028bac69cb0ec28d6366d2c8f689acff86fa7a05a86",
+    "evidence_zh": "同车重叠候选多且远处车辆模糊，另有倒影车辆，需重新选择明确的独立实体。",
+    "targets": []
+  },
+  {
+    "source_id": "sa_10086904",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "996c1743519e929dd3d041f70f4555d32c95861de9250caa5e4a29738d690ed3",
+    "review_card_sha256": "4a36661fe713ceb602eac741ebe137bef3b1f8bfd9b440acd5c86186b9868560",
+    "evidence_zh": "右侧单柱双层灯头路灯23与多盏双臂灯可区分，细杆被人群遮挡；5%广告牌7下缘被人头遮挡，移除时需保护前景人群。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "商业路口的路灯与广告牌",
+      "evidence_zh": "右侧单柱双层灯头路灯23与多盏双臂灯可区分，细杆被人群遮挡；5%广告牌7下缘被人头遮挡，移除时需保护前景人群。",
+      "specific_protection_zh": "保留所有行人、其余路灯、交通信号与大楼窗框。"
+    },
+    "protected_content_zh": "保留所有行人、其余路灯、交通信号与大楼窗框。",
+    "targets": [
+      {
+        "object_id": 23,
+        "operation": "attribute",
+        "ref": "the streetlamp beneath the SEIBU sign on the right",
+        "ref_zh": "右侧SEIBU招牌下的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_streetlamp",
+        "parent_zh": "右侧SEIBU下路灯",
+        "payload": "matte black",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧SEIBU招牌下的路灯的颜色改为哑光黑色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为哑光黑色。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the large white billboard advertising 5%",
+        "ref_zh": "写有5%的白色大广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "discount_billboard",
+        "parent_zh": "5%广告牌",
+        "payload": "",
+        "instruction_zh": "移除写有5%的白色大广告牌。",
+        "instruction_noref_zh": "移除选中的广告牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10109272",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "review_card_sha256": "40e6be1b78b58b5f0b3f467b92ed5170853c35a36005555fd343bdd48c83259e",
+    "evidence_zh": "衣服候选与红领巾边界需要放大复核；不得仅凭shirt标签接受。",
+    "targets": []
+  },
+  {
+    "source_id": "sa_10109700",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "50873807ba00dba38d78d494f114f9a2980cebf16d868b253f28233b63f36517",
+    "review_card_sha256": "af3ac50c0ecf49e44f8b584ad65937823eb6c69fc432ad956b67b6f67c98965a",
+    "evidence_zh": "餐盘6排除四个面点，形成多个孔洞；右侧面点4与前后面点分离；横放酒瓶1被木架遮挡；直立裸瓶0是另一独立容器。没有使用轮10，其mask有明显填孔风险。",
+    "difficulty": {
+      "mechanisms": [
+        "holes",
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "餐盘、褶皱面点与酒瓶陈列",
+      "evidence_zh": "餐盘6排除四个面点，形成多个孔洞；右侧面点4与前后面点分离；横放酒瓶1被木架遮挡；直立裸瓶0是另一独立容器。没有使用轮10，其mask有明显填孔风险。",
+      "specific_protection_zh": "保留未选面点、木制酒架、桌布以及穿装饰套的右侧酒瓶。"
+    },
+    "protected_content_zh": "保留未选面点、木制酒架、桌布以及穿装饰套的右侧酒瓶。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the white plate",
+        "ref_zh": "白色餐盘",
+        "scope": "plate",
+        "scope_zh": "餐盘",
+        "parent": "plate",
+        "parent_zh": "白色餐盘",
+        "payload": "cobalt blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将白色餐盘的颜色改为钴蓝色。",
+        "instruction_noref_zh": "将选中的餐盘的颜色改为钴蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the rightmost dumpling",
+        "ref_zh": "最右侧的面点",
+        "scope": "dumpling",
+        "scope_zh": "面点",
+        "parent": "right_dumpling",
+        "parent_zh": "最右侧面点",
+        "payload": "a lemon wedge",
+        "instruction_zh": "将最右侧的面点替换为一瓣柠檬。",
+        "instruction_noref_zh": "将选中的面点替换为一瓣柠檬。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the wine bottle lying on the wooden rack",
+        "ref_zh": "横放在木架上的酒瓶",
+        "scope": "bottle",
+        "scope_zh": "酒瓶",
+        "parent": "horizontal_bottle",
+        "parent_zh": "木架上横放酒瓶",
+        "payload": "",
+        "instruction_zh": "移除横放在木架上的酒瓶。",
+        "instruction_noref_zh": "移除选中的酒瓶。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the green-capped wine bottle",
+        "ref_zh": "绿瓶盖酒瓶",
+        "scope": "bottle",
+        "scope_zh": "酒瓶",
+        "parent": "upright_bottle",
+        "parent_zh": "绿瓶盖直立裸瓶",
+        "payload": "a burgundy ribbon bow",
+        "placement": {
+          "relation": "around",
+          "site": "neck",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿瓶盖酒瓶的瓶颈上系一个酒红色丝带蝴蝶结。",
+        "instruction_noref_zh": "在选中的酒瓶瓶颈上系一个酒红色丝带蝴蝶结。"
+      }
+    ],
+    "rejected_targets": [],
+    "instruction_revision_zh": "视觉检查后精简add表述，去掉可由新增物体含义确定的重复部位描述；原目标和直接锚点不变。"
+  }
+]

@@ -1,0 +1,690 @@
+[
+  {
+    "source_id": "sa_7639254",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e570f8847f93c2e8e40e2d2628858337cbbd3dfd359df9db02d8a5192d7c3b88",
+    "review_card_sha256": "e27c2ba8fe32181436fe718db0f167c9da262e9233b67a645c01cb6616167031",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "49左侧救援车、17右侧救护车、1前景救援人员和73右上树木是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "emergency",
+        "crowd"
+      ],
+      "scene_zh": "雪地救援现场",
+      "evidence_zh": "49左侧救援车、17右侧救护车、1前景救援人员和73右上树木是四个不同对象。",
+      "specific_protection_zh": "保留救援车辆、人员和雪地环境。"
+    },
+    "protected_content_zh": "保留救援车辆、人员和雪地环境。",
+    "targets": [
+      {
+        "object_id": 49,
+        "operation": "attribute",
+        "ref": "the rescue truck at the left",
+        "ref_zh": "左侧的救援车",
+        "scope": "rescue truck",
+        "scope_zh": "救援车",
+        "parent": "left_rescue_truck",
+        "parent_zh": "左侧救援车",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的救援车的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的救援车的颜色改为黄色。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the ambulance at the upper right",
+        "ref_zh": "右上方的救护车",
+        "scope": "ambulance",
+        "scope_zh": "救护车",
+        "parent": "upper_right_ambulance",
+        "parent_zh": "右上救护车",
+        "payload": "a blue van",
+        "instruction_zh": "将右上方的救护车替换为一辆蓝色厢式车。",
+        "instruction_noref_zh": "将选中的救护车替换为一辆蓝色厢式车。"
+      },
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the firefighter in the foreground",
+        "ref_zh": "前景的消防员",
+        "scope": "firefighter",
+        "scope_zh": "消防员",
+        "parent": "foreground_firefighter",
+        "parent_zh": "前景消防员",
+        "payload": "",
+        "instruction_zh": "移除前景的消防员。",
+        "instruction_noref_zh": "移除选中的消防员。"
+      },
+      {
+        "object_id": 73,
+        "operation": "add",
+        "ref": "the tree at the upper right",
+        "ref_zh": "右上方的树",
+        "scope": "tree",
+        "scope_zh": "树",
+        "parent": "upper_right_tree",
+        "parent_zh": "右上树木",
+        "payload": "a small bird",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右上方的树加上一只小鸟。",
+        "instruction_noref_zh": "在选中的树加上一只小鸟。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7643197",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "801f590257905d2ff57a11bf54af79c0baa8e6b711875e09fdb394117b179483",
+    "review_card_sha256": "8059f75aff8aecaa8ea4e68c17b774eabfe5729754e8c10fd2a234e81bc90f58",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6左侧人物、13下方中间人物、14右侧人物和7顶部屋檐是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "figurines",
+        "occlusion"
+      ],
+      "scene_zh": "室内人物展示",
+      "evidence_zh": "6左侧人物、13下方中间人物、14右侧人物和7顶部屋檐是四个不同对象。",
+      "specific_protection_zh": "保留人物展示、木结构和室内环境。"
+    },
+    "protected_content_zh": "保留人物展示、木结构和室内环境。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the figurine on the left",
+        "ref_zh": "左侧的人物摆件",
+        "scope": "figurine",
+        "scope_zh": "人物摆件",
+        "parent": "left_figurine",
+        "parent_zh": "左侧摆件",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的人物摆件的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的人物摆件的颜色改为蓝色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the figurine near the lower center",
+        "ref_zh": "下方中间附近的人物摆件",
+        "scope": "figurine",
+        "scope_zh": "人物摆件",
+        "parent": "lower_center_figurine",
+        "parent_zh": "下方摆件",
+        "payload": "a wooden figure",
+        "instruction_zh": "将下方中间附近的人物摆件替换为一个木制人物摆件。",
+        "instruction_noref_zh": "将选中的人物摆件替换为一个木制人物摆件。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the figurine on the right",
+        "ref_zh": "右侧的人物摆件",
+        "scope": "figurine",
+        "scope_zh": "人物摆件",
+        "parent": "right_figurine",
+        "parent_zh": "右侧摆件",
+        "payload": "",
+        "instruction_zh": "移除右侧的人物摆件。",
+        "instruction_noref_zh": "移除选中的人物摆件。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the roof across the top",
+        "ref_zh": "顶部横跨的屋檐",
+        "scope": "roof",
+        "scope_zh": "屋檐",
+        "parent": "top_roof",
+        "parent_zh": "顶部屋檐",
+        "payload": "a string of lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在顶部横跨的屋檐加上一串灯饰。",
+        "instruction_noref_zh": "在选中的屋檐加上一串灯饰。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7650202",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "52d65c279fc2dc021a130f46b9258e8618091ce85bd244b2d9ae1cb92243743d",
+    "review_card_sha256": "c0d143e14d6a7a802c8408a07515a7b6ecc8681cdbeb6226d3a435c1a8a5370a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左侧轿车、2右侧轿车、33中间行人和47右侧建筑是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "vehicles",
+        "perspective"
+      ],
+      "scene_zh": "城市街道",
+      "evidence_zh": "0左侧轿车、2右侧轿车、33中间行人和47右侧建筑是四个不同对象。",
+      "specific_protection_zh": "保留街道、车辆和建筑背景。"
+    },
+    "protected_content_zh": "保留街道、车辆和建筑背景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the car at the far left",
+        "ref_zh": "最左侧的轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "far_left_car",
+        "parent_zh": "最左轿车",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧的轿车的颜色改为红色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为红色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the car near the right",
+        "ref_zh": "右侧附近的轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "right_car",
+        "parent_zh": "右侧轿车",
+        "payload": "a blue hatchback",
+        "instruction_zh": "将右侧附近的轿车替换为一辆蓝色掀背车。",
+        "instruction_noref_zh": "将选中的轿车替换为一辆蓝色掀背车。"
+      },
+      {
+        "object_id": 33,
+        "operation": "remove",
+        "ref": "the pedestrian near the center",
+        "ref_zh": "中间附近的行人",
+        "scope": "person",
+        "scope_zh": "行人",
+        "parent": "center_pedestrian",
+        "parent_zh": "中央行人",
+        "payload": "",
+        "instruction_zh": "移除中间附近的行人。",
+        "instruction_noref_zh": "移除选中的行人。"
+      },
+      {
+        "object_id": 47,
+        "operation": "add",
+        "ref": "the building at the right",
+        "ref_zh": "右侧的建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "a shop sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的建筑加上一个店铺招牌。",
+        "instruction_noref_zh": "在选中的建筑加上一个店铺招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7650355",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1a43c5898a76b159ae18a0d52edb4f2506085b47dbbde6023b8a9923c7980d15",
+    "review_card_sha256": "4ced8098dd25bee56ffc6d30bfa4121403a8d41123adaf8d2ce8d6bda288aa84",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5左侧摩托车、21左侧纸箱、18右侧标牌和70右侧建筑是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "vehicles",
+        "occlusion"
+      ],
+      "scene_zh": "摩托车街景",
+      "evidence_zh": "5左侧摩托车、21左侧纸箱、18右侧标牌和70右侧建筑是四个不同对象。",
+      "specific_protection_zh": "保留摩托车、街道设施和建筑环境。"
+    },
+    "protected_content_zh": "保留摩托车、街道设施和建筑环境。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the motorbike at the lower left",
+        "ref_zh": "左下方的摩托车",
+        "scope": "motorbike",
+        "scope_zh": "摩托车",
+        "parent": "lower_left_motorbike",
+        "parent_zh": "左下摩托车",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将左下方的摩托车的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的摩托车的颜色改为蓝色。"
+      },
+      {
+        "object_id": 21,
+        "operation": "replace",
+        "ref": "the box near the lower left",
+        "ref_zh": "左下方附近的纸箱",
+        "scope": "box",
+        "scope_zh": "纸箱",
+        "parent": "lower_left_box",
+        "parent_zh": "左下纸箱",
+        "payload": "a wooden crate",
+        "instruction_zh": "将左下方附近的纸箱替换为一个木箱。",
+        "instruction_noref_zh": "将选中的纸箱替换为一个木箱。"
+      },
+      {
+        "object_id": 79,
+        "operation": "remove",
+        "ref": "the utility box at the far left",
+        "ref_zh": "最左侧的设备箱",
+        "scope": "utility box",
+        "scope_zh": "设备箱",
+        "parent": "far_left_box",
+        "parent_zh": "最左设备箱",
+        "payload": "",
+        "instruction_zh": "移除最左侧的设备箱。",
+        "instruction_noref_zh": "移除选中的设备箱。"
+      },
+      {
+        "object_id": 70,
+        "operation": "add",
+        "ref": "the building on the right",
+        "ref_zh": "右侧的建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "a striped awning",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的建筑加上一顶条纹遮阳篷。",
+        "instruction_noref_zh": "在选中的建筑加上一顶条纹遮阳篷。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7677069",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "52e89c719ab57b1ed7e0789e6af3eb1b56ead74f3f1e8a74decd2065f3ca762e",
+    "review_card_sha256": "6fd6a20c7f1a2bc076e9abd6bf283107c7b789c759a7e46b4ff30b3873513f69",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1右侧篮子、3中央镰刀、7中央人物和0左上斗笠是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "craft",
+        "occlusion"
+      ],
+      "scene_zh": "传统手工场景",
+      "evidence_zh": "1右侧篮子、3中央镰刀、7中央人物和0左上斗笠是四个不同对象。",
+      "specific_protection_zh": "保留人物、手工工具和木结构环境。"
+    },
+    "protected_content_zh": "保留人物、手工工具和木结构环境。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the basket at the right",
+        "ref_zh": "右侧的篮子",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "right_basket",
+        "parent_zh": "右侧篮子",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的篮子的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的篮子的颜色改为深棕色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the sickle near the center",
+        "ref_zh": "中间附近的镰刀",
+        "scope": "sickle",
+        "scope_zh": "镰刀",
+        "parent": "center_sickle",
+        "parent_zh": "中央镰刀",
+        "payload": "a wooden tool",
+        "instruction_zh": "将中间附近的镰刀替换为一件木制工具。",
+        "instruction_noref_zh": "将选中的镰刀替换为一件木制工具。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the woman near the center",
+        "ref_zh": "中间附近的女子",
+        "scope": "woman",
+        "scope_zh": "女子",
+        "parent": "center_woman",
+        "parent_zh": "中央女子",
+        "payload": "",
+        "instruction_zh": "移除中间附近的女子。",
+        "instruction_noref_zh": "移除选中的女子。"
+      },
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the conical hat at the upper left",
+        "ref_zh": "左上方的斗笠",
+        "scope": "conical hat",
+        "scope_zh": "斗笠",
+        "parent": "upper_left_hat",
+        "parent_zh": "左上斗笠",
+        "payload": "a red ribbon",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左上方的斗笠加上一条红色丝带。",
+        "instruction_noref_zh": "在选中的斗笠加上一条红色丝带。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7685764",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6e18e7e1caa23f220329ca227a502daf060efbc0909ecc38e03748710443352d",
+    "review_card_sha256": "ace10ded77dcde5a15a61d7468ec795ad300a0a989f21d1656355a7156982775",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1右侧路灯、6左侧骑行者、7右侧建筑和2中间路灯是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "street"
+      ],
+      "scene_zh": "历史建筑街景",
+      "evidence_zh": "1右侧路灯、6左侧骑行者、7右侧建筑和2中间路灯是四个不同对象。",
+      "specific_protection_zh": "保留历史建筑、骑行者和街道设施。"
+    },
+    "protected_content_zh": "保留历史建筑、骑行者和街道设施。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the lamp post at the right",
+        "ref_zh": "右侧的路灯",
+        "scope": "lamp post",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右侧路灯",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的路灯的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为黑色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the cyclist near the lower left",
+        "ref_zh": "左下方附近的骑行者",
+        "scope": "cyclist",
+        "scope_zh": "骑行者",
+        "parent": "lower_left_cyclist",
+        "parent_zh": "左下骑行者",
+        "payload": "a pedestrian",
+        "instruction_zh": "将左下方附近的骑行者替换为一名行人。",
+        "instruction_noref_zh": "将选中的骑行者替换为一名行人。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the building on the right",
+        "ref_zh": "右侧的建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "",
+        "instruction_zh": "移除右侧的建筑。",
+        "instruction_noref_zh": "移除选中的建筑。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the lamp post near the center",
+        "ref_zh": "中间附近的路灯",
+        "scope": "lamp post",
+        "scope_zh": "路灯",
+        "parent": "center_lamp",
+        "parent_zh": "中央路灯",
+        "payload": "a hanging banner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间附近的路灯加上一面悬挂横幅。",
+        "instruction_noref_zh": "在选中的路灯加上一面悬挂横幅。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7698269",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c40f382c8d0dcd568546ab116845ea8f1250487bc6bf6e0f8350a7fbaecfd46e",
+    "review_card_sha256": "00cfc61b5262c72f0915b9a1ba2c7c693f1c2984fe51bc376de8ed3a8afee611",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "29左侧路灯、6中央门、33右侧摩托车和17左下盆栽是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "street",
+        "architecture",
+        "perspective"
+      ],
+      "scene_zh": "狭窄街巷",
+      "evidence_zh": "29左侧路灯、6中央门、33右侧摩托车和17左下盆栽是四个不同对象。",
+      "specific_protection_zh": "保留街巷建筑、车辆和植物。"
+    },
+    "protected_content_zh": "保留街巷建筑、车辆和植物。",
+    "targets": [
+      {
+        "object_id": 29,
+        "operation": "attribute",
+        "ref": "the street lamp on the left",
+        "ref_zh": "左侧的路灯",
+        "scope": "street lamp",
+        "scope_zh": "路灯",
+        "parent": "left_street_lamp",
+        "parent_zh": "左侧路灯",
+        "payload": "black",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的路灯的颜色改为黑色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为黑色。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the door near the center",
+        "ref_zh": "中间附近的门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "center_door",
+        "parent_zh": "中央门",
+        "payload": "a blue door",
+        "instruction_zh": "将中间附近的门替换为一扇蓝色门。",
+        "instruction_noref_zh": "将选中的门替换为一扇蓝色门。"
+      },
+      {
+        "object_id": 33,
+        "operation": "remove",
+        "ref": "the motorbike at the right",
+        "ref_zh": "右侧的摩托车",
+        "scope": "motorbike",
+        "scope_zh": "摩托车",
+        "parent": "right_motorbike",
+        "parent_zh": "右侧摩托车",
+        "payload": "",
+        "instruction_zh": "移除右侧的摩托车。",
+        "instruction_noref_zh": "移除选中的摩托车。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the potted plant at the lower left",
+        "ref_zh": "左下方的盆栽",
+        "scope": "potted plant",
+        "scope_zh": "盆栽",
+        "parent": "lower_left_plant",
+        "parent_zh": "左下盆栽",
+        "payload": "a ceramic pot",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左下方的盆栽加上一个陶瓷花盆。",
+        "instruction_noref_zh": "在选中的盆栽加上一个陶瓷花盆。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_7711079",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "23839d6672b3239f5561cc481aefc6faa8b7dd9942435a4f56a3be7386c18e2e",
+    "review_card_sha256": "5a116605ccfa86bf6002aeb256111eb83fd8ef4d34d637176347a6bc1c4adeee",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1右侧建筑、11左下长椅、18下方椅子和47右侧标牌是四个不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "outdoor",
+        "architecture",
+        "perspective"
+      ],
+      "scene_zh": "建筑庭院",
+      "evidence_zh": "1右侧建筑、11左下长椅、18下方椅子和47右侧标牌是四个不同对象。",
+      "specific_protection_zh": "保留建筑、庭院座椅和环境标识。"
+    },
+    "protected_content_zh": "保留建筑、庭院座椅和环境标识。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the building on the right",
+        "ref_zh": "右侧的建筑",
+        "scope": "building",
+        "scope_zh": "建筑",
+        "parent": "right_building",
+        "parent_zh": "右侧建筑",
+        "payload": "warm beige",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的建筑的颜色改为暖米色。",
+        "instruction_noref_zh": "将选中的建筑的颜色改为暖米色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the bench at the lower left",
+        "ref_zh": "左下方的长椅",
+        "scope": "bench",
+        "scope_zh": "长椅",
+        "parent": "lower_left_bench",
+        "parent_zh": "左下长椅",
+        "payload": "a wooden bench",
+        "instruction_zh": "将左下方的长椅替换为一张木制长椅。",
+        "instruction_noref_zh": "将选中的长椅替换为一张木制长椅。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the chair near the lower center",
+        "ref_zh": "下方中间附近的椅子",
+        "scope": "chair",
+        "scope_zh": "椅子",
+        "parent": "lower_center_chair",
+        "parent_zh": "下方椅子",
+        "payload": "",
+        "instruction_zh": "移除下方中间附近的椅子。",
+        "instruction_noref_zh": "移除选中的椅子。"
+      },
+      {
+        "object_id": 47,
+        "operation": "add",
+        "ref": "the sign at the far right",
+        "ref_zh": "最右侧的标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "far_right_sign",
+        "parent_zh": "最右标牌",
+        "payload": "a directional arrow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的标牌加上一个方向箭头。",
+        "instruction_noref_zh": "在选中的标牌加上一个方向箭头。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,568 @@
+[
+  {
+    "source_id": "sa_3712240",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "26992d03510a78560f08aa6f022319795db02c2a320fd2c2f21e410c83116785",
+    "review_card_sha256": "4e05e2ee20af8823b28494787d8320ffc7664cb1e926a06024f43fe198cdc9db",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为近前黑面包车，1为其后黑SUV，4为大FOREVER21牌，20为Crocs牌前路灯。两车、独立牌、路灯。",
+    "difficulty": {
+      "mechanisms": [
+        "deep_shadow",
+        "occlusion",
+        "scale"
+      ],
+      "scene_zh": "纽约高楼下的街道",
+      "evidence_zh": "0为近前黑面包车，1为其后黑SUV，4为大FOREVER21牌，20为Crocs牌前路灯。两车、独立牌、路灯。",
+      "specific_protection_zh": "保留城市建筑、其他广告、行人和车流。"
+    },
+    "protected_content_zh": "保留城市建筑、其他广告、行人和车流。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the black van nearest the camera",
+        "ref_zh": "最靠近镜头的黑色面包车",
+        "scope": "van",
+        "scope_zh": "面包车",
+        "parent": "black_van",
+        "parent_zh": "黑面包车",
+        "payload": "a white electric van",
+        "instruction_zh": "将最靠近镜头的黑色面包车替换为一辆白色电动面包车。",
+        "instruction_noref_zh": "将选中的面包车替换为一辆白色电动面包车。"
+      },
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the black SUV immediately behind the van",
+        "ref_zh": "面包车正后方的黑色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "black_suv",
+        "parent_zh": "黑SUV",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将面包车正后方的黑色SUV的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的SUV的颜色改为酒红色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the large FOREVER 21 billboard",
+        "ref_zh": "大型FOREVER 21广告牌",
+        "scope": "billboard",
+        "scope_zh": "广告牌",
+        "parent": "forever_billboard",
+        "parent_zh": "广告牌",
+        "payload": "",
+        "instruction_zh": "移除大型FOREVER 21广告牌。",
+        "instruction_noref_zh": "移除选中的广告牌。"
+      },
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the streetlamp in front of the green Crocs sign",
+        "ref_zh": "绿色Crocs标牌前的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "crocs_lamp",
+        "parent_zh": "路灯",
+        "payload": "a small hanging flower basket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿色Crocs标牌前的路灯加上一个小悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个小悬挂花篮。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3717579",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "57cb2a9d228647812c0c06dfd2b179aa3b3fdaaa30aa34ceb6511f6ce4610094",
+    "review_card_sha256": "14896a3aed9c5b4a5e940f179f4269e90cccc74e6ee98fb5cd11da5ba0268a1c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为货车前车厢UPS标志，44为背景斜窗。货车及建筑两个父对象，不把相连拖挂的轮胎拆开计数。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "reflections",
+        "diagonal_structure"
+      ],
+      "scene_zh": "配送货车与现代建筑",
+      "evidence_zh": "0为货车前车厢UPS标志，44为背景斜窗。货车及建筑两个父对象，不把相连拖挂的轮胎拆开计数。",
+      "specific_protection_zh": "保留货车车身、后挂标志、道路、建筑外壳与窗框。"
+    },
+    "protected_content_zh": "保留货车车身、后挂标志、道路、建筑外壳与窗框。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the UPS logo on the truck’s front cargo box",
+        "ref_zh": "货车前方货厢上的UPS标志",
+        "scope": "logo",
+        "scope_zh": "标志",
+        "parent": "delivery_truck",
+        "parent_zh": "配送车",
+        "payload": "",
+        "instruction_zh": "移除货车前方货厢上的UPS标志。",
+        "instruction_noref_zh": "移除选中的标志。"
+      },
+      {
+        "object_id": 44,
+        "operation": "attribute",
+        "ref": "the long diagonal window above the truck",
+        "ref_zh": "货车上方的斜长窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "modern_building",
+        "parent_zh": "现代建筑",
+        "payload": "pale blue",
+        "attribute_kind": "tint",
+        "instruction_zh": "将货车上方的斜长窗户的色调改为浅蓝色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3719015",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "22bf21f14003263b9fa5e386cef680e7fe78c82dfccdbac8c75302aa137bcac0",
+    "review_card_sha256": "50ba8f89290b3fee67e3f8007c888035c9b6d34f875c36c3ea37fee2459d76da",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为酒保T恤，6为右上红瓶，16为右近玻璃杯，54为左中黄瓶广告牌。人、独立瓶杯、独立牌。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "glass",
+        "repetition"
+      ],
+      "scene_zh": "吧台与饮料冰柜",
+      "evidence_zh": "1为酒保T恤，6为右上红瓶，16为右近玻璃杯，54为左中黄瓶广告牌。人、独立瓶杯、独立牌。",
+      "specific_protection_zh": "保留酒保姿势、调酒器、冰柜内容、其他饮料及照明。"
+    },
+    "protected_content_zh": "保留酒保姿势、调酒器、冰柜内容、其他饮料及照明。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the bartender’s white T-shirt",
+        "ref_zh": "酒保的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "bartender",
+        "parent_zh": "酒保",
+        "payload": "a navy polo shirt",
+        "instruction_zh": "将酒保的白色T恤替换为一件藏蓝色polo衫。",
+        "instruction_noref_zh": "将选中的T恤替换为一件藏蓝色polo衫。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the red bottle at the far upper right",
+        "ref_zh": "右上方最右侧的红色瓶子",
+        "scope": "bottle",
+        "scope_zh": "瓶子",
+        "parent": "red_bottle",
+        "parent_zh": "红瓶",
+        "payload": "",
+        "instruction_zh": "移除右上方最右侧的红色瓶子。",
+        "instruction_noref_zh": "移除选中的瓶子。"
+      },
+      {
+        "object_id": 16,
+        "operation": "add",
+        "ref": "the glass of dark liquid at the front right",
+        "ref_zh": "右前方装有深色液体的玻璃杯",
+        "scope": "glass",
+        "scope_zh": "玻璃杯",
+        "parent": "front_glass",
+        "parent_zh": "前杯",
+        "payload": "a white paper straw",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右前方装有深色液体的玻璃杯加上一根白色纸吸管。",
+        "instruction_noref_zh": "在选中的玻璃杯加上一根白色纸吸管。"
+      },
+      {
+        "object_id": 54,
+        "operation": "attribute",
+        "ref": "the yellow-bottle advertising panel above the left-center fridge",
+        "ref_zh": "左中冰柜上方印有黄瓶的广告板",
+        "scope": "panel",
+        "scope_zh": "广告板",
+        "parent": "yellow_panel",
+        "parent_zh": "黄瓶广告板",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左中冰柜上方印有黄瓶的广告板的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的广告板的颜色改为深绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3733354",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "afa807cd868ae77950f131b25cccba8532d868eaa7a7ef7740ad1cc2f0da3af0",
+    "review_card_sha256": "d1afe58cf4636e4adabcdff684f78666fa6f8dc22739909f998aa7c89c365bdd",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "mask准确对应花纹，但都来自同一块装饰板/织物；多个花纹不等于不同物理父对象。保留用于其他单对象局部任务，不计当前扩充。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "ornament"
+      ],
+      "scene_zh": "金色装饰纹样特写",
+      "evidence_zh": "mask准确对应花纹，但都来自同一块装饰板/织物；多个花纹不等于不同物理父对象。保留用于其他单对象局部任务，不计当前扩充。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3733639",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3ed555f04e50e5f348312bd197cc193dfc7ae8e940180eb09bae270ee998e662",
+    "review_card_sha256": "293eb4776ec0091831722aedbe691b30ba89f5d7bc08343d8e4e978d9622c858",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为右下独立伞，36为左楼上层拱窗，33为右后楼烟囱。伞与两栋不同建筑；不把同一楼的多处栏杆作为不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "low_light",
+        "perspective",
+        "repetition"
+      ],
+      "scene_zh": "古典街角建筑与咖啡伞",
+      "evidence_zh": "2为右下独立伞，36为左楼上层拱窗，33为右后楼烟囱。伞与两栋不同建筑；不把同一楼的多处栏杆作为不同父对象。",
+      "specific_protection_zh": "保留楼体、其他窗户、铁栏花纹和街景。"
+    },
+    "protected_content_zh": "保留楼体、其他窗户、铁栏花纹和街景。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the dark cafe parasol at the lower right",
+        "ref_zh": "右下方的深色咖啡馆遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "cafe_parasol",
+        "parent_zh": "咖啡伞",
+        "payload": "a cream canvas parasol",
+        "instruction_zh": "将右下方的深色咖啡馆遮阳伞替换为一把米色帆布遮阳伞。",
+        "instruction_noref_zh": "将选中的遮阳伞替换为一把米色帆布遮阳伞。"
+      },
+      {
+        "object_id": 36,
+        "operation": "attribute",
+        "ref": "the upper arched window just left of the rounded corner",
+        "ref_zh": "圆弧楼角左侧的上层拱窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "ornate_building",
+        "parent_zh": "装饰楼",
+        "payload": "pale green",
+        "attribute_kind": "tint",
+        "instruction_zh": "将圆弧楼角左侧的上层拱窗的色调改为浅绿色。",
+        "instruction_noref_zh": "将选中的窗户的色调改为浅绿色。"
+      },
+      {
+        "object_id": 33,
+        "operation": "add",
+        "ref": "the leftmost chimney on the lower building at the right",
+        "ref_zh": "右侧较矮建筑最左边的烟囱",
+        "scope": "chimney",
+        "scope_zh": "烟囱",
+        "parent": "rear_building",
+        "parent_zh": "后楼",
+        "payload": "a small pigeon perched on top",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧较矮建筑最左边的烟囱加上一只停在顶端的小鸽子。",
+        "instruction_noref_zh": "在选中的烟囱加上一只停在顶端的小鸽子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3737364",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1e170e5c6f47a57c81c0546229c42d9dd77da959e7fe7b1fd01d81ed0cccc74a",
+    "review_card_sha256": "8014ec666c0b2457da41d9397b16f298d5f99629d0a6121cb5951dfd974ee672",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为招牌左灯罩，0为右下灯罩，19为PIZZA板。两盏独立灯与一个招牌，霓虹不同字母不拆多个对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "occlusion",
+        "neon"
+      ],
+      "scene_zh": "披萨霓虹店牌",
+      "evidence_zh": "1为招牌左灯罩，0为右下灯罩，19为PIZZA板。两盏独立灯与一个招牌，霓虹不同字母不拆多个对象。",
+      "specific_protection_zh": "保留其他霓虹、吊线、立柱和暖色室内光。"
+    },
+    "protected_content_zh": "保留其他霓虹、吊线、立柱和暖色室内光。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the pendant lampshade to the left of the neon sign",
+        "ref_zh": "霓虹招牌左侧的吊灯罩",
+        "scope": "lampshade",
+        "scope_zh": "灯罩",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "a brass dome lampshade",
+        "instruction_zh": "将霓虹招牌左侧的吊灯罩替换为一个黄铜圆顶灯罩。",
+        "instruction_noref_zh": "将选中的灯罩替换为一个黄铜圆顶灯罩。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the pendant lampshade at the lower right",
+        "ref_zh": "右下方的吊灯罩",
+        "scope": "lampshade",
+        "scope_zh": "灯罩",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将右下方的吊灯罩的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的灯罩的颜色改为深绿色。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the red PIZZA sign below the neon oven",
+        "ref_zh": "霓虹烤炉下方的红色PIZZA标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "pizza_sign",
+        "parent_zh": "披萨牌",
+        "payload": "",
+        "instruction_zh": "移除霓虹烤炉下方的红色PIZZA标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3739190",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0bdd71d07cd3b2848d283b1f6158a30e28e46ed412b8fc5ae87576ea7e469f1c",
+    "review_card_sha256": "407afbe37593560ce37cfd513e8139b41f3fb18ac887b42adf263f44bbbee5ec",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6为中近黑polo，18为其左灰polo，13为最左红袋，24为右摊篷。两人、独立袋、摊位。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "广场行人和食品摊",
+      "evidence_zh": "6为中近黑polo，18为其左灰polo，13为最左红袋，24为右摊篷。两人、独立袋、摊位。",
+      "specific_protection_zh": "保留所有身体、姿态、鸽子、摊位商品及建筑。"
+    },
+    "protected_content_zh": "保留所有身体、姿态、鸽子、摊位商品及建筑。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the black polo shirt on the nearest man",
+        "ref_zh": "最近男子的黑色polo衫",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "nearest_man",
+        "parent_zh": "最近男子",
+        "payload": "a light blue linen shirt",
+        "instruction_zh": "将最近男子的黑色polo衫替换为一件浅蓝色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的上衣替换为一件浅蓝色亚麻衬衫。"
+      },
+      {
+        "object_id": 18,
+        "operation": "attribute",
+        "ref": "the gray polo shirt just left of the nearest man",
+        "ref_zh": "最近男子左侧的灰色polo衫",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "gray_polo_man",
+        "parent_zh": "灰衣男子",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近男子左侧的灰色polo衫的颜色改为鼠尾草绿色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为鼠尾草绿色。"
+      },
+      {
+        "object_id": 13,
+        "operation": "remove",
+        "ref": "the red shopping bag at the far left",
+        "ref_zh": "最左侧的红色购物袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "red_bag",
+        "parent_zh": "红袋",
+        "payload": "",
+        "instruction_zh": "移除最左侧的红色购物袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the striped canopy of the food stall on the right",
+        "ref_zh": "右侧食品摊的条纹篷",
+        "scope": "canopy",
+        "scope_zh": "篷",
+        "parent": "right_food_stall",
+        "parent_zh": "右食品摊",
+        "payload": "a small hanging MENU sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧食品摊的条纹篷加上一块悬挂的小MENU牌。",
+        "instruction_noref_zh": "在选中的篷加上一块悬挂的小MENU牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3745541",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e91721201b3aeb0a63049cc882caa4c0f7a097ced4d61d4cabade9ef8c978371",
+    "review_card_sha256": "d5a66affa62e2f983cab6b17e8c92b26c4aad297abf7b6a0e9ba70c24ff42ed5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9为最近右侧灰上衣，5为其左黑红外套，29为右墙牌，35为最近吊灯玻璃。不同两人、牌、灯。",
+    "difficulty": {
+      "mechanisms": [
+        "warm_light",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "挂满灯串的拱廊",
+      "evidence_zh": "9为最近右侧灰上衣，5为其左黑红外套，29为右墙牌，35为最近吊灯玻璃。不同两人、牌、灯。",
+      "specific_protection_zh": "保留人物、店铺、灯串、灯架及拱廊透视。"
+    },
+    "protected_content_zh": "保留人物、店铺、灯串、灯架及拱廊透视。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the gray sweater on the nearest visitor on the right",
+        "ref_zh": "右侧最近游客的灰色毛衣",
+        "scope": "sweater",
+        "scope_zh": "毛衣",
+        "parent": "gray_visitor",
+        "parent_zh": "灰衣游客",
+        "payload": "a beige knitted cardigan",
+        "instruction_zh": "将右侧最近游客的灰色毛衣替换为一件米色针织开衫。",
+        "instruction_noref_zh": "将选中的毛衣替换为一件米色针织开衫。"
+      },
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the dark jacket with red panels beside the gray sweater",
+        "ref_zh": "灰色毛衣旁拼有红色面料的深色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "red_panel_visitor",
+        "parent_zh": "红拼片游客",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将灰色毛衣旁拼有红色面料的深色外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the white wall plaque above the nearest lit shop window",
+        "ref_zh": "最近明亮店窗上方的白色墙牌",
+        "scope": "plaque",
+        "scope_zh": "墙牌",
+        "parent": "white_plaque",
+        "parent_zh": "白墙牌",
+        "payload": "",
+        "instruction_zh": "移除最近明亮店窗上方的白色墙牌。",
+        "instruction_noref_zh": "移除选中的墙牌。"
+      },
+      {
+        "object_id": 35,
+        "operation": "add",
+        "ref": "the glass body of the nearest hanging lantern",
+        "ref_zh": "最近吊灯的玻璃灯体",
+        "scope": "lantern body",
+        "scope_zh": "灯体",
+        "parent": "nearest_lantern",
+        "parent_zh": "近吊灯",
+        "payload": "a thin brass decorative band",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近吊灯的玻璃灯体加上一圈细黄铜装饰环。",
+        "instruction_noref_zh": "在选中的灯体加上一圈细黄铜装饰环。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

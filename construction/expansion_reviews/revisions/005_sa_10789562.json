@@ -1,0 +1,146 @@
+{
+  "source_id": "sa_10789562",
+  "reason_zh": "场景仅一块绿色商店招牌，省略重复右侧方位，保留灯条在上沿的必要位置。",
+  "previous_record": {
+    "source_id": "sa_10789562",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c7b73253da590fcc728ecedf05cf39432717f4024e1c158caf27e8db5a4914ac",
+    "review_card_sha256": "5c364071c9876e8692a107b67156cf8dcec6654fdf62d35861d6f4f9fe5eb155",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "画面较暗，但0前景银车、25右上近灯头、11右边绿色招牌的边界可辨。未因整体曝光拒绝；不使用难辨的背景车辆。灯头替换不改变弯臂，新增灯条直接固定到招牌。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "背光建筑前的汽车、路灯与商店标牌",
+      "evidence_zh": "画面较暗，但0前景银车、25右上近灯头、11右边绿色招牌的边界可辨。未因整体曝光拒绝；不使用难辨的背景车辆。灯头替换不改变弯臂，新增灯条直接固定到招牌。",
+      "specific_protection_zh": "保留路灯弯臂、建筑、招牌文字、植物与路面。"
+    },
+    "protected_content_zh": "保留路灯弯臂、建筑、招牌文字、植物与路面。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the silver car in front of the building",
+        "ref_zh": "建筑前的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "foreground_car",
+        "parent_zh": "前景银车",
+        "payload": "",
+        "instruction_zh": "移除建筑前的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the nearest streetlamp’s shade",
+        "ref_zh": "最近路灯的灯罩",
+        "scope": "lamp shade",
+        "scope_zh": "灯罩",
+        "parent": "near_streetlamp",
+        "parent_zh": "近处路灯",
+        "payload": "an opal-glass globe shade",
+        "instruction_zh": "将最近路灯的灯罩替换为一个乳白玻璃球形灯罩。",
+        "instruction_noref_zh": "将选中的灯罩替换为一个乳白玻璃球形灯罩。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the green sign at the right edge",
+        "ref_zh": "右侧边缘的绿色招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "green_shop_sign",
+        "parent_zh": "右侧绿色招牌",
+        "payload": "a slim LED light bar",
+        "placement": {
+          "relation": "mounted on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧边缘的绿色招牌的上沿加上一条细LED灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一条细LED灯条。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_10789562",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c7b73253da590fcc728ecedf05cf39432717f4024e1c158caf27e8db5a4914ac",
+    "review_card_sha256": "5c364071c9876e8692a107b67156cf8dcec6654fdf62d35861d6f4f9fe5eb155",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "画面较暗，但0前景银车、25右上近灯头、11右边绿色招牌的边界可辨。未因整体曝光拒绝；不使用难辨的背景车辆。灯头替换不改变弯臂，新增灯条直接固定到招牌。 复核修订：场景仅一块绿色商店招牌，省略重复右侧方位，保留灯条在上沿的必要位置。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "背光建筑前的汽车、路灯与商店标牌",
+      "evidence_zh": "画面较暗，但0前景银车、25右上近灯头、11右边绿色招牌的边界可辨。未因整体曝光拒绝；不使用难辨的背景车辆。灯头替换不改变弯臂，新增灯条直接固定到招牌。 复核修订：场景仅一块绿色商店招牌，省略重复右侧方位，保留灯条在上沿的必要位置。",
+      "specific_protection_zh": "保留路灯弯臂、建筑、招牌文字、植物与路面。"
+    },
+    "protected_content_zh": "保留路灯弯臂、建筑、招牌文字、植物与路面。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the silver car in front of the building",
+        "ref_zh": "建筑前的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "foreground_car",
+        "parent_zh": "前景银车",
+        "payload": "",
+        "instruction_zh": "移除建筑前的银色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the nearest streetlamp’s shade",
+        "ref_zh": "最近路灯的灯罩",
+        "scope": "lamp shade",
+        "scope_zh": "灯罩",
+        "parent": "near_streetlamp",
+        "parent_zh": "近处路灯",
+        "payload": "an opal-glass globe shade",
+        "instruction_zh": "将最近路灯的灯罩替换为一个乳白玻璃球形灯罩。",
+        "instruction_noref_zh": "将选中的灯罩替换为一个乳白玻璃球形灯罩。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the green shop sign",
+        "ref_zh": "绿色商店招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "green_shop_sign",
+        "parent_zh": "右侧绿色招牌",
+        "payload": "a slim LED light bar",
+        "placement": {
+          "relation": "mounted on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿色商店招牌的上沿加上一条细LED灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一条细LED灯条。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

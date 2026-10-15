@@ -1,0 +1,634 @@
+[
+  {
+    "source_id": "sa_1301427",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "687292b7a96021b995d3fca62872b39e99d40541075e9f3cef70f953f059307e",
+    "review_card_sha256": "4408bcd5e601f533250c721db292f810d98f7d30b21d5b24d661623148dce57f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为右侧大黄招牌，38为蓝色NOKIA伞面，42为中央骑车者棕衬衫，44为右店铺Anh Tuyet独立牌。没有删除有人骑乘的摩托车；各mask实体清楚。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "摩托车经过的集市店铺",
+      "evidence_zh": "2为右侧大黄招牌，38为蓝色NOKIA伞面，42为中央骑车者棕衬衫，44为右店铺Anh Tuyet独立牌。没有删除有人骑乘的摩托车；各mask实体清楚。",
+      "specific_protection_zh": "保留骑手、车辆、店铺商品、其他招牌文字和伞的支撑结构。"
+    },
+    "protected_content_zh": "保留骑手、车辆、店铺商品、其他招牌文字和伞的支撑结构。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the large yellow sign on the right",
+        "ref_zh": "右侧的黄色大招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "right_yellow_sign",
+        "parent_zh": "右黄牌",
+        "payload": "a slim light bar",
+        "placement": {
+          "relation": "on",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的黄色大招牌的上沿加上一条细灯条。",
+        "instruction_noref_zh": "在选中的招牌的上沿加上一条细灯条。"
+      },
+      {
+        "object_id": 38,
+        "operation": "attribute",
+        "ref": "the blue “NOKIA” parasol canopy",
+        "ref_zh": "蓝色“NOKIA”遮阳伞的伞面",
+        "scope": "parasol canopy",
+        "scope_zh": "伞面",
+        "parent": "nokia_parasol",
+        "parent_zh": "NOKIA遮阳伞",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将蓝色“NOKIA”遮阳伞的伞面的颜色改为红色。",
+        "instruction_noref_zh": "将选中的伞面的颜色改为红色。"
+      },
+      {
+        "object_id": 42,
+        "operation": "replace",
+        "ref": "the central rider’s brown shirt",
+        "ref_zh": "中央骑车人的棕色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "central_rider",
+        "parent_zh": "中央骑车人",
+        "payload": "a green polo shirt",
+        "instruction_zh": "将中央骑车人的棕色衬衫替换为一件绿色Polo衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件绿色Polo衫。"
+      },
+      {
+        "object_id": 44,
+        "operation": "remove",
+        "ref": "the “Anh Tuyet” shop sign",
+        "ref_zh": "“Anh Tuyet”店铺招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "anh_tuyet_sign",
+        "parent_zh": "Anh Tuyet牌",
+        "payload": "",
+        "instruction_zh": "移除“Anh Tuyet”店铺招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1309983",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "67d6ae7a27d3b2d7b8307f8eca1c07d7928da2f16f0752f356e572893b4058ec",
+    "review_card_sha256": "9b2ac9bfc2fab5d0fd95effc2ad48984f320d94ff33e766b6c50d5cf7df49be0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为中间工人白帽，10为左侧背对镜头工人的反光外套，11为右侧弯腰工人的反光背心，48为后方蓝色无穷符号霓虹牌。每个人只选一个目标，保留防护功能。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "施工人员防护服与后方店牌",
+      "evidence_zh": "14为中间工人白帽，10为左侧背对镜头工人的反光外套，11为右侧弯腰工人的反光背心，48为后方蓝色无穷符号霓虹牌。每个人只选一个目标，保留防护功能。",
+      "specific_protection_zh": "保留面部、手、反光带、裤子、施工工具、围栏和店铺。"
+    },
+    "protected_content_zh": "保留面部、手、反光带、裤子、施工工具、围栏和店铺。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the central worker’s white hard hat",
+        "ref_zh": "中间工人的白色安全帽",
+        "scope": "hard hat",
+        "scope_zh": "安全帽",
+        "parent": "central_worker",
+        "parent_zh": "中间工人",
+        "payload": "a compact headlamp",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中间工人的白色安全帽加上一盏小头灯。",
+        "instruction_noref_zh": "在选中的安全帽加上一盏小头灯。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the left worker’s high-visibility jacket",
+        "ref_zh": "左侧工人的高可视外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_worker",
+        "parent_zh": "左工人",
+        "payload": "orange",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧工人的高可视外套的颜色改为橙色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为橙色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "replace",
+        "ref": "the bent-over worker’s safety vest",
+        "ref_zh": "弯腰工人的安全背心",
+        "scope": "safety vest",
+        "scope_zh": "安全背心",
+        "parent": "right_worker",
+        "parent_zh": "右工人",
+        "payload": "an orange reflective safety vest",
+        "instruction_zh": "将弯腰工人的安全背心替换为一件橙色反光安全背心。",
+        "instruction_noref_zh": "将选中的安全背心替换为一件橙色反光安全背心。"
+      },
+      {
+        "object_id": 48,
+        "operation": "remove",
+        "ref": "the blue infinity-shaped neon sign",
+        "ref_zh": "蓝色无穷符号霓虹牌",
+        "scope": "neon sign",
+        "scope_zh": "霓虹牌",
+        "parent": "infinity_neon",
+        "parent_zh": "无穷霓虹牌",
+        "payload": "",
+        "instruction_zh": "移除蓝色无穷符号霓虹牌。",
+        "instruction_noref_zh": "移除选中的霓虹牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1317508",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9bcdf0856db81f1376fc060fbcb3ee13492a4df3a2c171bbad6bdf168d05f0c9",
+    "review_card_sha256": "3c13af377e5701d8044f570de947841afce70e5e1857327824bf84ae2eac4416",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为左桅橙色广告旗，2为右岸独立SUV，34为右岸靠水大灌木。不同实体；不选整船与船帆并存，也不把云当物体随意替换。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "岸边游船、广告旗和独立汽车灌木",
+      "evidence_zh": "16为左桅橙色广告旗，2为右岸独立SUV，34为右岸靠水大灌木。不同实体；不选整船与船帆并存，也不把云当物体随意替换。",
+      "specific_protection_zh": "保留船体、帆索、乘客、岸线、其他植物和海面。"
+    },
+    "protected_content_zh": "保留船体、帆索、乘客、岸线、其他植物和海面。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "remove",
+        "ref": "the orange banner high on the left mast",
+        "ref_zh": "左桅高处的橙色挂旗",
+        "scope": "banner",
+        "scope_zh": "挂旗",
+        "parent": "orange_banner",
+        "parent_zh": "橙挂旗",
+        "payload": "",
+        "instruction_zh": "移除左桅高处的橙色挂旗。",
+        "instruction_noref_zh": "移除选中的挂旗。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the SUV on the shore to the right of the boat",
+        "ref_zh": "船右侧岸上的SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "shore_suv",
+        "parent_zh": "岸边SUV",
+        "payload": "a roof rack",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在船右侧岸上的SUV加上一个车顶行李架。",
+        "instruction_noref_zh": "在选中的SUV加上一个车顶行李架。"
+      },
+      {
+        "object_id": 34,
+        "operation": "replace",
+        "ref": "the large waterside shrub just right of the boat",
+        "ref_zh": "船紧右侧水边的大灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "waterside_shrub",
+        "parent_zh": "水边灌木",
+        "payload": "a white-flowering hydrangea bush",
+        "instruction_zh": "将船紧右侧水边的大灌木替换为一丛开白花的绣球。",
+        "instruction_noref_zh": "将选中的灌木替换为一丛开白花的绣球。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1318943",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1b1520641ac6a52dede948cae8b07a21d072fa9d60d80d5cf22b5ecbdacf1d5c",
+    "review_card_sha256": "da6cfb599056c6a8a68ef3bb8168d85765d7f7a7cc659e5832a37b4e60a457d5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5与7为右岸最前排左右两白车，31为后方第三辆被挡车；56为船尾完整可见栏杆。两辆车和一艘船，保留遮挡孔洞与船上其他设备。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "thin_structures"
+      ],
+      "scene_zh": "港口巡逻船与岸上相似白车",
+      "evidence_zh": "5与7为右岸最前排左右两白车，31为后方第三辆被挡车；56为船尾完整可见栏杆。两辆车和一艘船，保留遮挡孔洞与船上其他设备。",
+      "specific_protection_zh": "保留第三辆车、船体文字、桅杆、其他救生设备、岸线与水面。"
+    },
+    "protected_content_zh": "保留第三辆车、船体文字、桅杆、其他救生设备、岸线与水面。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the left white car beside the boat",
+        "ref_zh": "船旁左侧的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "left_white_car",
+        "parent_zh": "左白车",
+        "payload": "a blue compact van",
+        "instruction_zh": "将船旁左侧的白色汽车替换为一辆蓝色小型厢式车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色小型厢式车。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the rightmost white car on the quay",
+        "ref_zh": "码头最右侧的白色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "right_white_car",
+        "parent_zh": "右白车",
+        "payload": "",
+        "instruction_zh": "移除码头最右侧的白色汽车。",
+        "instruction_noref_zh": "移除选中的汽车。"
+      },
+      {
+        "object_id": 56,
+        "operation": "add",
+        "ref": "the boat’s stern railing",
+        "ref_zh": "船尾栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "patrol_boat",
+        "parent_zh": "巡逻船",
+        "payload": "an orange lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在船尾栏杆加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的栏杆加上一个橙色救生圈。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1332464",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "27733470cb8bbaa8f16bde0931d3ae6aa3678bb2e1a2fa59f8785f3f1b23772f",
+    "review_card_sha256": "14a48006e0f0a65c791700cd21703b6e9e050abe4f962380d93fd86e95f19e8c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为左绿旗，6为象背左骑手花帽，26为左侧绿衣者独立灰挎包，58为象右前景背对镜头人物深蓝上衣。仅选衣物、旗和包，保留象身彩绘与人物动作。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "节庆大象旁的人群衣物和挎包",
+      "evidence_zh": "1为左绿旗，6为象背左骑手花帽，26为左侧绿衣者独立灰挎包，58为象右前景背对镜头人物深蓝上衣。仅选衣物、旗和包，保留象身彩绘与人物动作。",
+      "specific_protection_zh": "保留大象、彩绘、骑乘姿势、面部、手、其他帽子和衣物。"
+    },
+    "protected_content_zh": "保留大象、彩绘、骑乘姿势、面部、手、其他帽子和衣物。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the green flag on the left",
+        "ref_zh": "左侧的绿色旗帜",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "green_flag",
+        "parent_zh": "绿旗",
+        "payload": "",
+        "instruction_zh": "移除左侧的绿色旗帜。",
+        "instruction_noref_zh": "移除选中的旗帜。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the left elephant rider’s floral hat",
+        "ref_zh": "象背左侧骑手的花帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "left_rider",
+        "parent_zh": "左骑手",
+        "payload": "a beige straw hat",
+        "instruction_zh": "将象背左侧骑手的花帽替换为一顶米色草帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶米色草帽。"
+      },
+      {
+        "object_id": 26,
+        "operation": "add",
+        "ref": "the green-shirted spectator’s gray shoulder bag",
+        "ref_zh": "绿衣观众的灰色挎包",
+        "scope": "shoulder bag",
+        "scope_zh": "挎包",
+        "parent": "spectator_bag",
+        "parent_zh": "观众灰包",
+        "payload": "a small reflective patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在绿衣观众的灰色挎包加上一块小反光贴。",
+        "instruction_noref_zh": "在选中的挎包加上一块小反光贴。"
+      },
+      {
+        "object_id": 58,
+        "operation": "attribute",
+        "ref": "the navy shirt directly right of the elephant",
+        "ref_zh": "大象紧右侧的藏蓝色上衣",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "right_spectator",
+        "parent_zh": "右侧观众",
+        "payload": "light blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将大象紧右侧的藏蓝色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1352572",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e9153d6cf44df4fb19535826874d9d2549d0c83fc5d93f0e173a6b8bf0bf8dbf",
+    "review_card_sha256": "f5260881c9f3d2fbeed003ae0bf2ecf13858b66135433a941fb444817722abda",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "23为右侧大白游艇，4为前景岸边大白石，62为桥后较靠左的小机动艇。不同船和石头；59桥栏不与41整桥并列。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "码头桥后的小艇与前景巨石",
+      "evidence_zh": "23为右侧大白游艇，4为前景岸边大白石，62为桥后较靠左的小机动艇。不同船和石头；59桥栏不与41整桥并列。",
+      "specific_protection_zh": "保留桥梁、行人、其他船、船桅、岸边小石和水面。"
+    },
+    "protected_content_zh": "保留桥梁、行人、其他船、船桅、岸边小石和水面。",
+    "targets": [
+      {
+        "object_id": 23,
+        "operation": "add",
+        "ref": "the large white yacht on the right",
+        "ref_zh": "右侧的大型白色游艇",
+        "scope": "yacht",
+        "scope_zh": "游艇",
+        "parent": "right_white_yacht",
+        "parent_zh": "右白游艇",
+        "payload": "an orange lifebuoy",
+        "placement": {
+          "relation": "on",
+          "site": "stern railing",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的大型白色游艇的船尾栏杆上加上一个橙色救生圈。",
+        "instruction_noref_zh": "在选中的游艇的船尾栏杆上加上一个橙色救生圈。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the large pale boulder in the foreground",
+        "ref_zh": "前景的大块浅色巨石",
+        "scope": "boulder",
+        "scope_zh": "巨石",
+        "parent": "foreground_boulder",
+        "parent_zh": "前景巨石",
+        "payload": "",
+        "instruction_zh": "移除前景的大块浅色巨石。",
+        "instruction_noref_zh": "移除选中的巨石。"
+      },
+      {
+        "object_id": 62,
+        "operation": "replace",
+        "ref": "the small cabin boat left of the large white yacht",
+        "ref_zh": "大型白色游艇左侧的小客舱船",
+        "scope": "boat",
+        "scope_zh": "船",
+        "parent": "small_cabin_boat",
+        "parent_zh": "小客舱船",
+        "payload": "a wooden fishing boat",
+        "instruction_zh": "将大型白色游艇左侧的小客舱船替换为一艘木制钓鱼船。",
+        "instruction_noref_zh": "将选中的船替换为一艘木制钓鱼船。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1386075",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dc961c042c2667c454465cd24f036c5fee2f22d66d3bb722c495ced5125e89df",
+    "review_card_sha256": "8bb0cd5d8b27cc0fb8ccc707c6575e27377ef2a0796cf26117d3d9bda7a0b96c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9为左侧近处背对镜头者大衣，1为OUTLAND实体店牌，40为店门边蓝色挂盒，30为最近路灯灯头。107黄物体身份不确认，不当布袋使用；灯头加装饰符合节庆环境。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "雪中圣诞集市的衣物、独立牌和灯",
+      "evidence_zh": "9为左侧近处背对镜头者大衣，1为OUTLAND实体店牌，40为店门边蓝色挂盒，30为最近路灯灯头。107黄物体身份不确认，不当布袋使用；灯头加装饰符合节庆环境。",
+      "specific_protection_zh": "保留飘雪、行人、店铺商品、灯杆、其他装饰与暖色照明。"
+    },
+    "protected_content_zh": "保留飘雪、行人、店铺商品、灯杆、其他装饰与暖色照明。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the nearest walker’s dark coat on the left",
+        "ref_zh": "左侧最近行人的深色大衣",
+        "scope": "coat",
+        "scope_zh": "大衣",
+        "parent": "nearest_walker",
+        "parent_zh": "近处行人",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧最近行人的深色大衣的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的大衣的颜色改为酒红色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the “OUTLAND” sign above the stall",
+        "ref_zh": "摊位上方的“OUTLAND”招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "outland_sign",
+        "parent_zh": "OUTLAND牌",
+        "payload": "a wooden “WINTER GIFTS” sign",
+        "instruction_zh": "将摊位上方的“OUTLAND”招牌替换为一块木质“WINTER GIFTS”招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块木质“WINTER GIFTS”招牌。"
+      },
+      {
+        "object_id": 40,
+        "operation": "remove",
+        "ref": "the blue box hanging beside the stall entrance",
+        "ref_zh": "摊位入口旁悬挂的蓝色盒子",
+        "scope": "box",
+        "scope_zh": "盒子",
+        "parent": "blue_hanging_box",
+        "parent_zh": "蓝挂盒",
+        "payload": "",
+        "instruction_zh": "移除摊位入口旁悬挂的蓝色盒子。",
+        "instruction_noref_zh": "移除选中的盒子。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the nearest streetlamp’s lantern",
+        "ref_zh": "最近路灯的灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "nearest_streetlamp",
+        "parent_zh": "最近路灯",
+        "payload": "a small red ribbon bow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近路灯的灯头加上一个红色小丝带蝴蝶结。",
+        "instruction_noref_zh": "在选中的灯头加上一个红色小丝带蝴蝶结。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1394848",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e61cb7a04d183df981fe8841a18a110d54a4e617ad94efefb347e88f265c3a06",
+    "review_card_sha256": "a3f17d828ce4a4ee1a110aa0d7cf83855ed9daacd0e662a6b9ae1ae21f184107",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为中左Y形灯，49为码头游船广告牌，7为右侧斜坡被树挡开的木栏。三个独立实体；30灌木合并两个实例，53灯残片未用。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "湖边公园的灯具、招牌和斜坡栏杆",
+      "evidence_zh": "3为中左Y形灯，49为码头游船广告牌，7为右侧斜坡被树挡开的木栏。三个独立实体；30灌木合并两个实例，53灯残片未用。",
+      "specific_protection_zh": "保留其他路灯、楼梯、树木、建筑、湖面及栏杆承重结构。"
+    },
+    "protected_content_zh": "保留其他路灯、楼梯、树木、建筑、湖面及栏杆承重结构。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the Y-shaped lamppost left of the park entrance",
+        "ref_zh": "公园入口左侧的Y形路灯",
+        "scope": "lamppost",
+        "scope_zh": "路灯",
+        "parent": "y_lamppost",
+        "parent_zh": "Y形灯",
+        "payload": "a black globe lamppost",
+        "instruction_zh": "将公园入口左侧的Y形路灯替换为一盏黑色球形路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色球形路灯。"
+      },
+      {
+        "object_id": 49,
+        "operation": "remove",
+        "ref": "the boat-tour sign beside the pier",
+        "ref_zh": "码头旁的游船广告牌",
+        "scope": "sign",
+        "scope_zh": "广告牌",
+        "parent": "boat_tour_sign",
+        "parent_zh": "游船广告牌",
+        "payload": "",
+        "instruction_zh": "移除码头旁的游船广告牌。",
+        "instruction_noref_zh": "移除选中的广告牌。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the wooden railing on the right-hand slope",
+        "ref_zh": "右侧斜坡上的木栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "slope_railing",
+        "parent_zh": "坡面栏杆",
+        "payload": "a warm-white LED strip",
+        "placement": {
+          "relation": "along",
+          "site": "top edge",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧斜坡上的木栏杆的上沿加上一条暖白色LED灯带。",
+        "instruction_noref_zh": "在选中的栏杆的上沿加上一条暖白色LED灯带。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

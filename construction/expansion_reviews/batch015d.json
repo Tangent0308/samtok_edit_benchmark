@@ -1,0 +1,566 @@
+[
+  {
+    "source_id": "sa_4017210",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a44683d45afe1d7d06544fe820c272aaafd5aa498e4e759884ff1a771069ea17",
+    "review_card_sha256": "360d9aea6abc008893f99c91c47f83874b228026b9e0c35500878971f26f929a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为红花短裤，14为白塑料袋，18为橙篮，6为船壳。人、独立袋、篮、船；不拆同一人的帽/上衣凑数。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "河上划船摊贩",
+      "evidence_zh": "5为红花短裤，14为白塑料袋，18为橙篮，6为船壳。人、独立袋、篮、船；不拆同一人的帽/上衣凑数。",
+      "specific_protection_zh": "保留划桨者身体、桨、商品和水面波纹。"
+    },
+    "protected_content_zh": "保留划桨者身体、桨、商品和水面波纹。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the rower’s red floral shorts",
+        "ref_zh": "划船者的红色花纹短裤",
+        "scope": "shorts",
+        "scope_zh": "短裤",
+        "parent": "rower",
+        "parent_zh": "划船者",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将划船者的红色花纹短裤的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的短裤的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the small white plastic bag among the goods in the boat",
+        "ref_zh": "船内货物中的小白色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除船内货物中的小白色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the orange basket in the middle of the boat",
+        "ref_zh": "船中部的橙色篮子",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "orange_basket",
+        "parent_zh": "橙篮",
+        "payload": "a brown wicker basket",
+        "instruction_zh": "将船中部的橙色篮子替换为一个棕色藤编篮子。",
+        "instruction_noref_zh": "将选中的篮子替换为一个棕色藤编篮子。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the wooden hull of the rowboat",
+        "ref_zh": "小划艇的木船壳",
+        "scope": "hull",
+        "scope_zh": "船壳",
+        "parent": "rowboat",
+        "parent_zh": "小船",
+        "payload": "a thin white painted stripe above the waterline",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在小划艇的木船壳加上一道画在水线上方的细白色条纹。",
+        "instruction_noref_zh": "在选中的船壳加上一道画在水线上方的细白色条纹。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4018051",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6c963f6452574c5911d0531248b1e5390397066fbd25fea15a3da1d1415146ad",
+    "review_card_sha256": "c97d7a8a8fbb22b0cd77e86248c95c958666720f2855c8efc760fa7bb9349355",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为条纹方靠垫，7为冰淇淋筒形花盆，83为黑包，12为菜单支架。独立靠垫、花盆、包、支架。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "shadow",
+        "small_targets"
+      ],
+      "scene_zh": "广场咖啡馆露天座位",
+      "evidence_zh": "3为条纹方靠垫，7为冰淇淋筒形花盆，83为黑包，12为菜单支架。独立靠垫、花盆、包、支架。",
+      "specific_protection_zh": "保留食客、桌椅、其他靠垫、广场与建筑。"
+    },
+    "protected_content_zh": "保留食客、桌椅、其他靠垫、广场与建筑。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the striped square cushion on the nearest bench",
+        "ref_zh": "最近长椅上的条纹方靠垫",
+        "scope": "cushion",
+        "scope_zh": "靠垫",
+        "parent": "square_cushion",
+        "parent_zh": "方靠垫",
+        "payload": "a plain sage-green cushion",
+        "instruction_zh": "将最近长椅上的条纹方靠垫替换为一个纯鼠尾草绿色靠垫。",
+        "instruction_noref_zh": "将选中的靠垫替换为一个纯鼠尾草绿色靠垫。"
+      },
+      {
+        "object_id": 7,
+        "operation": "attribute",
+        "ref": "the tall cone-shaped planter beside the tables",
+        "ref_zh": "餐桌旁的高圆锥形花盆",
+        "scope": "planter",
+        "scope_zh": "花盆",
+        "parent": "cone_planter",
+        "parent_zh": "锥花盆",
+        "payload": "cobalt blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将餐桌旁的高圆锥形花盆的颜色改为钴蓝色。",
+        "instruction_noref_zh": "将选中的花盆的颜色改为钴蓝色。"
+      },
+      {
+        "object_id": 83,
+        "operation": "remove",
+        "ref": "the black handbag resting beside the seated woman",
+        "ref_zh": "坐着女子身旁放着的黑色手提包",
+        "scope": "handbag",
+        "scope_zh": "手提包",
+        "parent": "black_handbag",
+        "parent_zh": "黑包",
+        "payload": "",
+        "instruction_zh": "移除坐着女子身旁放着的黑色手提包。",
+        "instruction_noref_zh": "移除选中的手提包。"
+      },
+      {
+        "object_id": 12,
+        "operation": "add",
+        "ref": "the empty metal menu stand at the edge of the seating area",
+        "ref_zh": "座位区边缘的空金属菜单架",
+        "scope": "stand",
+        "scope_zh": "菜单架",
+        "parent": "menu_stand",
+        "parent_zh": "菜单架",
+        "payload": "a small black menu board on its tilted top",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在座位区边缘的空金属菜单架加上一块放在倾斜顶面上的小黑色菜单板。",
+        "instruction_noref_zh": "在选中的菜单架加上一块放在倾斜顶面上的小黑色菜单板。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4022159",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "3e312f49215e211f1f54c2dc822391e8f0302255bd9605facda2ea3c7c5c4e4e",
+    "review_card_sha256": "feffaa4a4c700d195568fb4143e4b33398ec7ecab3b9e4720f71c8cd95f752fa",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "卡片可见多个准确桃子和叶片mask，但都来自同一树枝/树。背景树只露模糊片段，暂不以一株树多个部位凑不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "foliage_occlusion"
+      ],
+      "scene_zh": "挂满桃子的树枝",
+      "evidence_zh": "卡片可见多个准确桃子和叶片mask，但都来自同一树枝/树。背景树只露模糊片段，暂不以一株树多个部位凑不同父对象。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4023756",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "0eaa826805e483ee6ec25f6c21e3a3858ce1086d33c8ad3dbc6c5d1ece767187",
+    "review_card_sha256": "80879457d31f3e04538b1361c0d7bf7cb677c69abbbf6d845d9667e005cb2743",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为最右衫骷髅图案，56为下方黑包，0为右上铁丝篮，49为商品挂架横板。衣服、包、独立篮与货架；同衫多袖mask不分别计数。",
+    "difficulty": {
+      "mechanisms": [
+        "dense_repetition",
+        "occlusion",
+        "thin_structure"
+      ],
+      "scene_zh": "海盗服装商品陈列",
+      "evidence_zh": "1为最右衫骷髅图案，56为下方黑包，0为右上铁丝篮，49为商品挂架横板。衣服、包、独立篮与货架；同衫多袖mask不分别计数。",
+      "specific_protection_zh": "保留衣服条纹、衣架、篮内货物与其他商品。"
+    },
+    "protected_content_zh": "保留衣服条纹、衣架、篮内货物与其他商品。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the skull graphic on the rightmost striped shirt",
+        "ref_zh": "最右侧条纹上衣上的骷髅图案",
+        "scope": "graphic",
+        "scope_zh": "图案",
+        "parent": "rightmost_shirt",
+        "parent_zh": "最右衫",
+        "payload": "",
+        "instruction_zh": "移除最右侧条纹上衣上的骷髅图案。",
+        "instruction_noref_zh": "移除选中的图案。"
+      },
+      {
+        "object_id": 56,
+        "operation": "replace",
+        "ref": "the black bag below the striped shirts",
+        "ref_zh": "条纹上衣下方的黑色袋子",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "black_bag",
+        "parent_zh": "黑袋",
+        "payload": "a brown canvas drawstring bag",
+        "instruction_zh": "将条纹上衣下方的黑色袋子替换为一个棕色帆布抽绳袋。",
+        "instruction_noref_zh": "将选中的袋子替换为一个棕色帆布抽绳袋。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the wire basket directly above the pirate costume packs",
+        "ref_zh": "海盗服装包装正上方的铁丝篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "wire_basket",
+        "parent_zh": "铁丝篮",
+        "payload": "dark bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将海盗服装包装正上方的铁丝篮的颜色改为深古铜色。",
+        "instruction_noref_zh": "将选中的篮子的颜色改为深古铜色。"
+      },
+      {
+        "object_id": 49,
+        "operation": "add",
+        "ref": "the wooden rail holding the packaged pirate costumes",
+        "ref_zh": "悬挂海盗服装包装的木横杆",
+        "scope": "rail",
+        "scope_zh": "横杆",
+        "parent": "display_rack",
+        "parent_zh": "陈列架",
+        "payload": "a small red SALE card",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在悬挂海盗服装包装的木横杆加上一张小红色SALE卡。",
+        "instruction_noref_zh": "在选中的横杆加上一张小红色SALE卡。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4029105",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b5ad3946fef2e23e56ba47f449a3187d6e90aa978201b0e6fdb0deea669ca86e",
+    "review_card_sha256": "05d3e8eca83c09291b816bafe022bfd364762c51549251809fbc193c479f2a6b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为左前景灯，2为正中灯，18为楼顶文字牌，19为建筑小阳台栏杆。两灯、独立招牌、楼体。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "small_targets",
+        "symmetry"
+      ],
+      "scene_zh": "酒店正面与广场路灯",
+      "evidence_zh": "1为左前景灯，2为正中灯，18为楼顶文字牌，19为建筑小阳台栏杆。两灯、独立招牌、楼体。",
+      "specific_protection_zh": "保留窗格、建筑外观、广场布局与行人。"
+    },
+    "protected_content_zh": "保留窗格、建筑外观、广场布局与行人。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the ornate streetlamp beside the glass dome on the left",
+        "ref_zh": "左侧玻璃穹顶旁的装饰路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_lamp",
+        "parent_zh": "左灯",
+        "payload": "a black three-lantern streetlamp",
+        "instruction_zh": "将左侧玻璃穹顶旁的装饰路灯替换为一盏黑色三灯笼路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色三灯笼路灯。"
+      },
+      {
+        "object_id": 2,
+        "operation": "attribute",
+        "ref": "the streetlamp directly in front of the main entrance",
+        "ref_zh": "正门正前方的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "central_lamp",
+        "parent_zh": "中灯",
+        "payload": "dark bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将正门正前方的路灯的颜色改为深古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深古铜色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the Cyrillic rooftop hotel sign",
+        "ref_zh": "楼顶的西里尔字母酒店招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "rooftop_sign",
+        "parent_zh": "楼顶牌",
+        "payload": "",
+        "instruction_zh": "移除楼顶的西里尔字母酒店招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 19,
+        "operation": "add",
+        "ref": "the second balcony railing from the bottom on the hotel’s right wing",
+        "ref_zh": "酒店右翼从下数第二层的阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "hotel",
+        "parent_zh": "酒店",
+        "payload": "a narrow planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在酒店右翼从下数第二层的阳台栏杆加上一个种有红花的窄花槽。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的窄花槽。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4034031",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "15b3056d5d8d5b3a14db04fa61a9741f7861d703554b5ace50cc42f8d8db5632",
+    "review_card_sha256": "e3f118fc9f5f4deeb6b5503c7d9ed120c2d417691f518cd6de066c6a114e7a49",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为顶部星形风铃整体，26为右后虚焦星形风铃。两件独立悬挂装饰；不把一条风铃的多个心形吊片当不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "defocus",
+        "thin_structure",
+        "repetition"
+      ],
+      "scene_zh": "金色悬挂装饰品",
+      "evidence_zh": "17为顶部星形风铃整体，26为右后虚焦星形风铃。两件独立悬挂装饰；不把一条风铃的多个心形吊片当不同父对象。",
+      "specific_protection_zh": "保留中央大鱼挂饰、其他悬挂饰品及景深。"
+    },
+    "protected_content_zh": "保留中央大鱼挂饰、其他悬挂饰品及景深。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the star-shaped wind chime at the top center",
+        "ref_zh": "顶部中央的星形风铃",
+        "scope": "wind chime",
+        "scope_zh": "风铃",
+        "parent": "top_wind_chime",
+        "parent_zh": "顶部风铃",
+        "payload": "a silver crescent-moon wind chime",
+        "instruction_zh": "将顶部中央的星形风铃替换为一串银色弯月风铃。",
+        "instruction_noref_zh": "将选中的风铃替换为一串银色弯月风铃。"
+      },
+      {
+        "object_id": 26,
+        "operation": "remove",
+        "ref": "the blurred star-shaped wind chime behind the fish on the right",
+        "ref_zh": "鱼形挂饰右后方虚焦的星形风铃",
+        "scope": "wind chime",
+        "scope_zh": "风铃",
+        "parent": "rear_wind_chime",
+        "parent_zh": "后风铃",
+        "payload": "",
+        "instruction_zh": "移除鱼形挂饰右后方虚焦的星形风铃。",
+        "instruction_noref_zh": "移除选中的风铃。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4034728",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "40c21ff7e90e6741d6ea864ffc3613ad33158a8addc11ff3bdd3d5a8d536ea82",
+    "review_card_sha256": "d8d11b1c7ffc1a32ea1196ddb1d0aa75a2a846d388f312ba31924e850daafc78",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "22为前排单人帽，145为背景车可见部分。人物与背景车辆两个父对象；密集袖子/帽子不按同人多个部件计数。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "广场上的迷彩队列",
+      "evidence_zh": "22为前排单人帽，145为背景车可见部分。人物与背景车辆两个父对象；密集袖子/帽子不按同人多个部件计数。",
+      "specific_protection_zh": "保留所有人物姿态、制服、队列间距与其他车辆。"
+    },
+    "protected_content_zh": "保留所有人物姿态、制服、队列间距与其他车辆。",
+    "targets": [
+      {
+        "object_id": 22,
+        "operation": "replace",
+        "ref": "the camouflage cap on the leftmost fully visible person in the front row",
+        "ref_zh": "前排最左侧完整可见人物的迷彩帽",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "front_row_person",
+        "parent_zh": "前排人物",
+        "payload": "a plain khaki patrol cap",
+        "instruction_zh": "将前排最左侧完整可见人物的迷彩帽替换为一顶纯卡其色巡逻帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶纯卡其色巡逻帽。"
+      },
+      {
+        "object_id": 145,
+        "operation": "remove",
+        "ref": "the dark SUV visible behind the center of the formation",
+        "ref_zh": "队列中央后方可见的深色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "background_suv",
+        "parent_zh": "背景SUV",
+        "payload": "",
+        "instruction_zh": "移除队列中央后方可见的深色SUV。",
+        "instruction_noref_zh": "移除选中的SUV。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4034922",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1c6431ec23b016108340182e4994258a1de2daeac36dbf557217bc048880c18b",
+    "review_card_sha256": "df23478aabff27dffdd0bb51ad9b4353cefb258cd43360226f351d773f2f0fed",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为红绿巴士，85为地上竖纹包，19为粉色伞，64为近前白T恤。车、独立包、伞、人。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets",
+        "repetition"
+      ],
+      "scene_zh": "彩色巴士停车场",
+      "evidence_zh": "3为红绿巴士，85为地上竖纹包，19为粉色伞，64为近前白T恤。车、独立包、伞、人。",
+      "specific_protection_zh": "保留其他巴士、行人身体、道路和摊点。"
+    },
+    "protected_content_zh": "保留其他巴士、行人身体、道路和摊点。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the red-and-green bus near the center",
+        "ref_zh": "中间附近的红绿色巴士",
+        "scope": "bus",
+        "scope_zh": "巴士",
+        "parent": "red_green_bus",
+        "parent_zh": "红绿巴士",
+        "payload": "a blue-and-white bus of similar size",
+        "instruction_zh": "将中间附近的红绿色巴士替换为一辆相近大小的蓝白色巴士。",
+        "instruction_noref_zh": "将选中的巴士替换为一辆相近大小的蓝白色巴士。"
+      },
+      {
+        "object_id": 85,
+        "operation": "remove",
+        "ref": "the striped bag on the ground beside the green-fronted bus",
+        "ref_zh": "绿色车头巴士旁地面上的条纹袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "striped_bag",
+        "parent_zh": "条纹袋",
+        "payload": "",
+        "instruction_zh": "移除绿色车头巴士旁地面上的条纹袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the pink parasol in front of the yellow buses",
+        "ref_zh": "黄色巴士前方的粉色遮阳伞",
+        "scope": "parasol",
+        "scope_zh": "遮阳伞",
+        "parent": "pink_parasol",
+        "parent_zh": "粉伞",
+        "payload": "turquoise",
+        "attribute_kind": "color",
+        "instruction_zh": "将黄色巴士前方的粉色遮阳伞的颜色改为青蓝色。",
+        "instruction_noref_zh": "将选中的遮阳伞的颜色改为青蓝色。"
+      },
+      {
+        "object_id": 64,
+        "operation": "add",
+        "ref": "the white T-shirt on the foreground man beside the parasol",
+        "ref_zh": "遮阳伞旁前景男子的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "foreground_man",
+        "parent_zh": "前景男",
+        "payload": "a small blue chest pocket",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在遮阳伞旁前景男子的白色T恤加上一个小蓝色胸前口袋。",
+        "instruction_noref_zh": "在选中的T恤加上一个小蓝色胸前口袋。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

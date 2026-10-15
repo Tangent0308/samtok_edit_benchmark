@@ -1,0 +1,671 @@
+[
+  {
+    "source_id": "sa_659057",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "aa8fcdc5c8ce44dab11ec1b42462a4aa3ad8303faee17fa81e6b7890f4b990dd",
+    "review_card_sha256": "6eb691fabbaf7189cc5e7a04716bdfe94c5157ba4fa2b88c6a803621935d1674",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13背心人物、27罐、18旧牌及33架板独立。",
+    "difficulty": {
+      "mechanisms": [
+        "indoor",
+        "shade",
+        "occlusion"
+      ],
+      "scene_zh": "传统工坊工匠",
+      "evidence_zh": "13背心人物、27罐、18旧牌及33架板独立。",
+      "specific_protection_zh": "保留人体、工具、其他容器和工坊。"
+    },
+    "protected_content_zh": "保留人体、工具、其他容器和工坊。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the craftsman's green waistcoat",
+        "ref_zh": "工匠的绿色背心",
+        "scope": "waistcoat",
+        "scope_zh": "背心",
+        "parent": "craftsman",
+        "parent_zh": "工匠",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将工匠的绿色背心的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的背心的颜色改为酒红色。"
+      },
+      {
+        "object_id": 27,
+        "operation": "remove",
+        "ref": "the white cylindrical tin on the floor at the right",
+        "ref_zh": "右侧地上的白色圆罐",
+        "scope": "tin",
+        "scope_zh": "罐",
+        "parent": "white_tin",
+        "parent_zh": "白罐",
+        "payload": "",
+        "instruction_zh": "移除右侧地上的白色圆罐。",
+        "instruction_noref_zh": "移除选中的罐。"
+      },
+      {
+        "object_id": 18,
+        "operation": "replace",
+        "ref": "the old yellow sign on the upper-left shelf",
+        "ref_zh": "左上方架子上的旧黄色招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "old_sign",
+        "parent_zh": "旧牌",
+        "payload": "a weathered wooden WORKSHOP sign",
+        "instruction_zh": "将左上方架子上的旧黄色招牌替换为一块做旧木制WORKSHOP招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块做旧木制WORKSHOP招牌。"
+      },
+      {
+        "object_id": 33,
+        "operation": "add",
+        "ref": "the empty wooden shelf at the left",
+        "ref_zh": "左侧空着的木架板",
+        "scope": "shelf",
+        "scope_zh": "架板",
+        "parent": "shelf",
+        "parent_zh": "架子",
+        "payload": "a small brown wooden box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧空着的木架板加上一个小棕色木盒。",
+        "instruction_noref_zh": "在选中的架板加上一个小棕色木盒。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6616672",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a51b049d0ca2a02c0ebf0a7e8abc38933b83e51b6ea43f38c4fe286b09aa3d83",
+    "review_card_sha256": "34eb4ffaae265678376e4c1d8afd297330c873814723daedb302ca528388b000",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "26前车立标、12左蓝衫人物、10后右白衫人物与17后白车独立。",
+    "difficulty": {
+      "mechanisms": [
+        "reflection",
+        "occlusion"
+      ],
+      "scene_zh": "经典汽车展",
+      "evidence_zh": "26前车立标、12左蓝衫人物、10后右白衫人物与17后白车独立。",
+      "specific_protection_zh": "保留人体、汽车结构、展馆与其他车辆。"
+    },
+    "protected_content_zh": "保留人体、汽车结构、展馆与其他车辆。",
+    "targets": [
+      {
+        "object_id": 26,
+        "operation": "remove",
+        "ref": "the winged hood ornament on the foreground car",
+        "ref_zh": "前景汽车引擎盖上的展翼立标",
+        "scope": "ornament",
+        "scope_zh": "立标",
+        "parent": "front_car",
+        "parent_zh": "前车",
+        "payload": "",
+        "instruction_zh": "移除前景汽车引擎盖上的展翼立标。",
+        "instruction_noref_zh": "移除选中的立标。"
+      },
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the navy shirt on the man at the left",
+        "ref_zh": "左侧男子的藏蓝衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧男子的藏蓝衬衫的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为酒红色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the white shirt on the man beside the van in the rear right",
+        "ref_zh": "右后方厢式车旁男子的白衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "rear_man",
+        "parent_zh": "后男",
+        "payload": "a pale blue button-up shirt",
+        "instruction_zh": "将右后方厢式车旁男子的白衬衫替换为一件浅蓝色纽扣衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件浅蓝色纽扣衬衫。"
+      },
+      {
+        "object_id": 17,
+        "operation": "add",
+        "ref": "the small white car behind the foreground car at the right",
+        "ref_zh": "前景汽车右后方的小白车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "small_car",
+        "parent_zh": "小车",
+        "payload": "a small blue flower decal on its visible front body panel",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景汽车右后方的小白车加上一张位于可见前部车身面板的小蓝花贴花。",
+        "instruction_noref_zh": "在选中的汽车加上一张位于可见前部车身面板的小蓝花贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6624578",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c14f51334bb610bac0a166a7a0503f937700eab40f34b31f3204f379d207c161",
+    "review_card_sha256": "88f13919c95068080510c6975d383125f543dcb79f9b19753910bd57d6541133",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13左地背包、19中男子衣、25右红包、9右灯杆独立。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "perspective"
+      ],
+      "scene_zh": "广场喷泉游客",
+      "evidence_zh": "13左地背包、19中男子衣、25右红包、9右灯杆独立。",
+      "specific_protection_zh": "保留人体、喷泉、建筑和其他游客。"
+    },
+    "protected_content_zh": "保留人体、喷泉、建筑和其他游客。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "remove",
+        "ref": "the backpack on the ground beside the seated pair at the left",
+        "ref_zh": "左侧坐着的两人旁地上的背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "backpack",
+        "parent_zh": "背包",
+        "payload": "",
+        "instruction_zh": "移除左侧坐着的两人旁地上的背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the blue T-shirt on the man leaning against the fountain",
+        "ref_zh": "倚靠喷泉的男子的蓝色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "leaning_man",
+        "parent_zh": "男子",
+        "payload": "dark green",
+        "attribute_kind": "color",
+        "instruction_zh": "将倚靠喷泉的男子的蓝色T恤的颜色改为深绿色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为深绿色。"
+      },
+      {
+        "object_id": 25,
+        "operation": "replace",
+        "ref": "the small red bag carried by the woman walking at the right",
+        "ref_zh": "右侧行走女子携带的小红包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "red_bag",
+        "parent_zh": "红包",
+        "payload": "a small tan leather handbag",
+        "instruction_zh": "将右侧行走女子携带的小红包替换为一个小棕黄色皮手袋。",
+        "instruction_noref_zh": "将选中的包替换为一个小棕黄色皮手袋。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the streetlamp at the far right",
+        "ref_zh": "最右侧的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "right_lamp",
+        "parent_zh": "右灯",
+        "payload": "a small blue tourist-information sign on its pole",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的路灯加上一块位于灯杆上的小蓝色旅游咨询标牌。",
+        "instruction_noref_zh": "在选中的路灯加上一块位于灯杆上的小蓝色旅游咨询标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6641776",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "23117684b598d430a15569c603d5dd74753c9d1d6148170fbbb6ed5ee08074f3",
+    "review_card_sha256": "c5756e9bba66b9aaa5b023c185e5587fd224568b039d17612d58d3992a16e3f6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13自行车、29左肩包、27中红衣人物、23后深衣人物独立。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "石色现代建筑前游客",
+      "evidence_zh": "13自行车、29左肩包、27中红衣人物、23后深衣人物独立。",
+      "specific_protection_zh": "保留人体、建筑和其他随身物。"
+    },
+    "protected_content_zh": "保留人体、建筑和其他随身物。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "add",
+        "ref": "the bicycle leaning against the wall",
+        "ref_zh": "靠墙的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "bicycle",
+        "parent_zh": "自行车",
+        "payload": "a small silver bell on its handlebar",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在靠墙的自行车加上一个位于车把上的小银色车铃。",
+        "instruction_noref_zh": "在选中的自行车加上一个位于车把上的小银色车铃。"
+      },
+      {
+        "object_id": 29,
+        "operation": "remove",
+        "ref": "the black shoulder bag on the woman at the far left",
+        "ref_zh": "最左侧女子的黑肩包",
+        "scope": "bag",
+        "scope_zh": "肩包",
+        "parent": "black_bag",
+        "parent_zh": "黑包",
+        "payload": "",
+        "instruction_zh": "移除最左侧女子的黑肩包。",
+        "instruction_noref_zh": "移除选中的肩包。"
+      },
+      {
+        "object_id": 27,
+        "operation": "attribute",
+        "ref": "the red jacket on the woman near the center",
+        "ref_zh": "中间附近女子的红夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "red_woman",
+        "parent_zh": "红衣女",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近女子的红夹克的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的夹克的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 23,
+        "operation": "replace",
+        "ref": "the dark jacket on the man behind the woman in red",
+        "ref_zh": "红衣女子后方男子的深色夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "rear_man",
+        "parent_zh": "后男",
+        "payload": "a gray wool jacket",
+        "instruction_zh": "将红衣女子后方男子的深色夹克替换为一件灰色羊毛夹克。",
+        "instruction_noref_zh": "将选中的夹克替换为一件灰色羊毛夹克。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6665557",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c13f5a5f736068e1acfa2e19ba71e2e69e4a6f5b3cb6338d18f7a206b1d2a652",
+    "review_card_sha256": "e89916b4ed4f2482275f1c9adea134e3e7b7c164786c8d352871380efff24a08",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "96座椅堆、19建筑拱窗、45独立前方临时围栏为不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "small_targets",
+        "architecture"
+      ],
+      "scene_zh": "夜晚圣堂与座椅",
+      "evidence_zh": "96座椅堆、19建筑拱窗、45独立前方临时围栏为不同父对象。",
+      "specific_protection_zh": "保留建筑轮廓、雕像和行人。"
+    },
+    "protected_content_zh": "保留建筑轮廓、雕像和行人。",
+    "targets": [
+      {
+        "object_id": 96,
+        "operation": "remove",
+        "ref": "the stack of chairs below the leftmost large arched window",
+        "ref_zh": "最左侧大拱窗下方的一摞椅子",
+        "scope": "stack of chairs",
+        "scope_zh": "椅子摞",
+        "parent": "chairs",
+        "parent_zh": "椅子",
+        "payload": "",
+        "instruction_zh": "移除最左侧大拱窗下方的一摞椅子。",
+        "instruction_noref_zh": "移除选中的椅子摞。"
+      },
+      {
+        "object_id": 19,
+        "operation": "attribute",
+        "ref": "the frame of the leftmost large arched window",
+        "ref_zh": "最左侧大拱窗的窗框",
+        "scope": "window frame",
+        "scope_zh": "窗框",
+        "parent": "basilica",
+        "parent_zh": "圣堂",
+        "payload": "dark bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧大拱窗的窗框的颜色改为深古铜色。",
+        "instruction_noref_zh": "将选中的窗框的颜色改为深古铜色。"
+      },
+      {
+        "object_id": 45,
+        "operation": "add",
+        "ref": "the long white barrier in the foreground",
+        "ref_zh": "前景的长白色围栏",
+        "scope": "barrier",
+        "scope_zh": "围栏",
+        "parent": "barrier",
+        "parent_zh": "围栏",
+        "payload": "a small blue EXIT arrow sign near its center",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的长白色围栏加上一块位于中央附近的小蓝色EXIT箭头标牌。",
+        "instruction_noref_zh": "在选中的围栏加上一块位于中央附近的小蓝色EXIT箭头标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6670486",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "270b3b095f19e9ab4f387aaf732707e5e54af0cd5a6d3396ebe6e345879f5644",
+    "review_card_sha256": "7ff6af000f87ec084d34c90ac57bd06d0e8118da8a591595df9a0248bc24e24e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1轿车、2SUV、14木匾、58左石狮四独立实体。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "寺庙门前汽车",
+      "evidence_zh": "1轿车、2SUV、14木匾、58左石狮四独立实体。",
+      "specific_protection_zh": "保留行人、寺庙墙体与其他装饰。"
+    },
+    "protected_content_zh": "保留行人、寺庙墙体与其他装饰。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "attribute",
+        "ref": "the silver sedan nearest the camera",
+        "ref_zh": "离镜头最近的银色轿车",
+        "scope": "car",
+        "scope_zh": "轿车",
+        "parent": "sedan",
+        "parent_zh": "轿车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将离镜头最近的银色轿车的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的轿车的颜色改为深蓝色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the silver SUV behind the sedan",
+        "ref_zh": "轿车后方的银色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "suv",
+        "parent_zh": "SUV",
+        "payload": "a white compact SUV",
+        "instruction_zh": "将轿车后方的银色SUV替换为一辆白色紧凑型SUV。",
+        "instruction_noref_zh": "将选中的SUV替换为一辆白色紧凑型SUV。"
+      },
+      {
+        "object_id": 14,
+        "operation": "remove",
+        "ref": "the dark red plaque with gold lettering above the red doors",
+        "ref_zh": "红门上方带金字的暗红色牌匾",
+        "scope": "plaque",
+        "scope_zh": "牌匾",
+        "parent": "plaque",
+        "parent_zh": "牌匾",
+        "payload": "",
+        "instruction_zh": "移除红门上方带金字的暗红色牌匾。",
+        "instruction_noref_zh": "移除选中的牌匾。"
+      },
+      {
+        "object_id": 58,
+        "operation": "add",
+        "ref": "the stone lion left of the first red door",
+        "ref_zh": "第一扇红门左侧的石狮",
+        "scope": "statue",
+        "scope_zh": "石狮",
+        "parent": "left_lion",
+        "parent_zh": "左狮",
+        "payload": "a small red ribbon around its neck",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在第一扇红门左侧的石狮加上一条绕在颈部的小红丝带。",
+        "instruction_noref_zh": "在选中的石狮加上一条绕在颈部的小红丝带。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6678734",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c03aec9967891a270af777543cd615a5e03188d6352de58acf0c4b5b8999ab09",
+    "review_card_sha256": "1c15a061b71d5541fc5b1c6385be54fa0dbf72a660aa8a1ee672aae51d611df5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "24人物上衣、12塑料袋、6上招牌、30右筐四独立对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "clutter"
+      ],
+      "scene_zh": "蒸汽机车旁摊贩",
+      "evidence_zh": "24人物上衣、12塑料袋、6上招牌、30右筐四独立对象。",
+      "specific_protection_zh": "保留人体、机车结构、摩托和其余杂物。"
+    },
+    "protected_content_zh": "保留人体、机车结构、摩托和其余杂物。",
+    "targets": [
+      {
+        "object_id": 24,
+        "operation": "attribute",
+        "ref": "the seated vendor's pale blue shirt",
+        "ref_zh": "坐着的摊贩的浅蓝色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "vendor",
+        "parent_zh": "摊贩",
+        "payload": "pale yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将坐着的摊贩的浅蓝色衬衫的颜色改为浅黄色。",
+        "instruction_noref_zh": "将选中的衬衫的颜色改为浅黄色。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the white plastic bag immediately behind the vendor's hands",
+        "ref_zh": "摊贩双手紧后方的白塑料袋",
+        "scope": "bag",
+        "scope_zh": "塑料袋",
+        "parent": "plastic_bag",
+        "parent_zh": "塑料袋",
+        "payload": "",
+        "instruction_zh": "移除摊贩双手紧后方的白塑料袋。",
+        "instruction_noref_zh": "移除选中的塑料袋。"
+      },
+      {
+        "object_id": 6,
+        "operation": "replace",
+        "ref": "the blue sign along the upper-right edge",
+        "ref_zh": "右上边缘的蓝色招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "blue_sign",
+        "parent_zh": "蓝牌",
+        "payload": "a blue rectangular FOOD AND DRINKS sign",
+        "instruction_zh": "将右上边缘的蓝色招牌替换为一块蓝色矩形FOOD AND DRINKS招牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块蓝色矩形FOOD AND DRINKS招牌。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the blue basket at the far right",
+        "ref_zh": "最右侧的蓝筐",
+        "scope": "basket",
+        "scope_zh": "筐",
+        "parent": "basket",
+        "parent_zh": "蓝筐",
+        "payload": "a folded white towel inside it",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的蓝筐加上一条放在里面的折叠白毛巾。",
+        "instruction_noref_zh": "在选中的筐加上一条放在里面的折叠白毛巾。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_6690415",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "41a7301898376ce89de74cd2e9b1b6226bd66ac7632807ddf9a0648394088d27",
+    "review_card_sha256": "e8f4485a7f93c25c46546d485d0fc5b2b82121961710d7c830350eabf5fd08e6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15左白旅行车、9行人牌、51木门、42后棕车四实体。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "occlusion"
+      ],
+      "scene_zh": "拱廊街角与停放汽车",
+      "evidence_zh": "15左白旅行车、9行人牌、51木门、42后棕车四实体。",
+      "specific_protection_zh": "保留建筑、自行车、行人和道路。"
+    },
+    "protected_content_zh": "保留建筑、自行车、行人和道路。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "remove",
+        "ref": "the white station wagon at the far left",
+        "ref_zh": "最左侧的白色旅行车",
+        "scope": "car",
+        "scope_zh": "旅行车",
+        "parent": "left_car",
+        "parent_zh": "左车",
+        "payload": "",
+        "instruction_zh": "移除最左侧的白色旅行车。",
+        "instruction_noref_zh": "移除选中的旅行车。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the white pedestrian-zone sign near the street corner",
+        "ref_zh": "街角附近的白色步行区标志",
+        "scope": "sign",
+        "scope_zh": "标志",
+        "parent": "pedestrian_sign",
+        "parent_zh": "行人牌",
+        "payload": "a white sign with a blue pedestrian symbol and PEDESTRIAN AREA text",
+        "instruction_zh": "将街角附近的白色步行区标志替换为一块带蓝色行人符号及PEDESTRIAN AREA文字的白标牌。",
+        "instruction_noref_zh": "将选中的标志替换为一块带蓝色行人符号及PEDESTRIAN AREA文字的白标牌。"
+      },
+      {
+        "object_id": 51,
+        "operation": "add",
+        "ref": "the large wooden door beneath the arcade",
+        "ref_zh": "拱廊下的大木门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "arcade",
+        "parent_zh": "拱廊",
+        "payload": "a small green wreath",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在拱廊下的大木门加上一个小绿色花环。",
+        "instruction_noref_zh": "在选中的门加上一个小绿色花环。"
+      },
+      {
+        "object_id": 42,
+        "operation": "attribute",
+        "ref": "the brown SUV near the bend in the road",
+        "ref_zh": "道路转弯处附近的棕色SUV",
+        "scope": "SUV",
+        "scope_zh": "SUV",
+        "parent": "brown_suv",
+        "parent_zh": "棕车",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将道路转弯处附近的棕色SUV的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的SUV的颜色改为深蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

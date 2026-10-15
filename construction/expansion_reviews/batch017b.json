@@ -1,0 +1,577 @@
+[
+  {
+    "source_id": "sa_448771",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "dc252ef897fda55a8378e564584a3d755496fd342c78e455e2f3fd9f88b9c2b0",
+    "review_card_sha256": "5b760ae968ed4ab430caed7a20d53c24501e7eb976be51ca2cb4006564f75f8f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "20车身标志、9红旗、14左绿旗三个父对象，不用多个车轮重复计目标。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "small_targets"
+      ],
+      "scene_zh": "雪地赛车",
+      "evidence_zh": "20车身标志、9红旗、14左绿旗三个父对象，不用多个车轮重复计目标。",
+      "specific_protection_zh": "保留车辆结构、车手、赛道和其他旗帜。"
+    },
+    "protected_content_zh": "保留车辆结构、车手、赛道和其他旗帜。",
+    "targets": [
+      {
+        "object_id": 20,
+        "operation": "remove",
+        "ref": "the yellow dog decal on the car’s rear door",
+        "ref_zh": "赛车后车门上的黄色狗形贴花",
+        "scope": "decal",
+        "scope_zh": "贴花",
+        "parent": "rally_car",
+        "parent_zh": "赛车",
+        "payload": "",
+        "instruction_zh": "移除赛车后车门上的黄色狗形贴花。",
+        "instruction_noref_zh": "移除选中的贴花。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the red flag beside the yellow flag",
+        "ref_zh": "黄旗旁的红旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "red_flag",
+        "parent_zh": "红旗",
+        "payload": "a black-and-white checkered flag",
+        "instruction_zh": "将黄旗旁的红旗替换为一面黑白方格旗。",
+        "instruction_noref_zh": "将选中的旗帜替换为一面黑白方格旗。"
+      },
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the green flag at the far left",
+        "ref_zh": "最左侧的绿旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "green_flag",
+        "parent_zh": "绿旗",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧的绿旗的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的旗帜的颜色改为蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4488234",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bae91de901f16bc82169697422caecbe73411b514c8688086be45ce336b7c485",
+    "review_card_sha256": "0a689bbdf5f5e9ae9c29482366afcc60c01693da71eb6e7b9b73c6dbe12fa230",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "46右边缘桥栏板为直接附着锚点，0温室前圆灌木为独立植物。温室遮挡复杂，不强凑第三目标。",
+    "difficulty": {
+      "mechanisms": [
+        "foliage",
+        "thin_structure",
+        "occlusion"
+      ],
+      "scene_zh": "植物园小桥",
+      "evidence_zh": "46右边缘桥栏板为直接附着锚点，0温室前圆灌木为独立植物。温室遮挡复杂，不强凑第三目标。",
+      "specific_protection_zh": "保留桥、温室、其余植物和步道。"
+    },
+    "protected_content_zh": "保留桥、温室、其余植物和步道。",
+    "targets": [
+      {
+        "object_id": 46,
+        "operation": "add",
+        "ref": "the bridge railing panel at the right edge",
+        "ref_zh": "右边缘的桥栏板",
+        "scope": "railing panel",
+        "scope_zh": "栏板",
+        "parent": "bridge",
+        "parent_zh": "桥",
+        "payload": "a small wooden GARDEN label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右边缘的桥栏板加上一块写有GARDEN的小木牌。",
+        "instruction_noref_zh": "在选中的栏板加上一块写有GARDEN的小木牌。"
+      },
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the rounded shrub in front of the greenhouse",
+        "ref_zh": "温室前的圆形灌木",
+        "scope": "shrub",
+        "scope_zh": "灌木",
+        "parent": "round_shrub",
+        "parent_zh": "圆灌木",
+        "payload": "a flowering white hydrangea bush",
+        "instruction_zh": "将温室前的圆形灌木替换为一丛开白花的绣球。",
+        "instruction_noref_zh": "将选中的灌木替换为一丛开白花的绣球。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4505880",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "05e428cf2f1b141d6404993bcb66989e501d6e75995c435e9458ee2e56588047",
+    "review_card_sha256": "fbe03b217f661304b6f035923d9bb6ccac0a88e914835b8854e98d90bc61c38a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "83下方A字招牌、6右侧较低窗扇、94左近端石扶墙顶三个父对象。避开只有亮斑的壁灯mask。",
+    "difficulty": {
+      "mechanisms": [
+        "perspective",
+        "repetition",
+        "small_targets"
+      ],
+      "scene_zh": "陡坡石阶巷道",
+      "evidence_zh": "83下方A字招牌、6右侧较低窗扇、94左近端石扶墙顶三个父对象。避开只有亮斑的壁灯mask。",
+      "specific_protection_zh": "保留行人、石阶、扶手和其余建筑。"
+    },
+    "protected_content_zh": "保留行人、石阶、扶手和其余建筑。",
+    "targets": [
+      {
+        "object_id": 83,
+        "operation": "remove",
+        "ref": "the white A-board sign at the bottom of the steps",
+        "ref_zh": "台阶底部的白色A字招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "a_board",
+        "parent_zh": "A字牌",
+        "payload": "",
+        "instruction_zh": "移除台阶底部的白色A字招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the lower shutter on the right-hand building",
+        "ref_zh": "右侧楼房较低的百叶窗扇",
+        "scope": "shutter",
+        "scope_zh": "窗扇",
+        "parent": "right_building",
+        "parent_zh": "右楼",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧楼房较低的百叶窗扇的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的窗扇的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 94,
+        "operation": "add",
+        "ref": "the stone cap at the near end of the left stair wall",
+        "ref_zh": "左侧楼梯矮墙近端的石顶",
+        "scope": "stone cap",
+        "scope_zh": "石顶",
+        "parent": "stair_wall",
+        "parent_zh": "楼梯墙",
+        "payload": "a small terracotta pot of red geraniums",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧楼梯矮墙近端的石顶加上一盆小型红花天竺葵陶盆。",
+        "instruction_noref_zh": "在选中的石顶加上一盆小型红花天竺葵陶盆。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4535071",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a149c212c76b399b72c992f434585002fc0b491773a9ffc8ff04e05bde827cc5",
+    "review_card_sha256": "fd56a9ed4054ebc6dfffac291701941395118cc6f8007025cbee1587b4f93926",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3最近浅灰椅背、7最左GUESS字牌、18木隔栏三父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "wide_angle",
+        "small_targets"
+      ],
+      "scene_zh": "购物中心中庭",
+      "evidence_zh": "3最近浅灰椅背、7最左GUESS字牌、18木隔栏三父对象。",
+      "specific_protection_zh": "保留商场结构、顾客、广告和其他椅子。"
+    },
+    "protected_content_zh": "保留商场结构、顾客、广告和其他椅子。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the nearest light gray tufted chair back",
+        "ref_zh": "最近的浅灰色拉扣椅背",
+        "scope": "chair back",
+        "scope_zh": "椅背",
+        "parent": "front_chair",
+        "parent_zh": "前椅",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将最近的浅灰色拉扣椅背的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的椅背的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 7,
+        "operation": "remove",
+        "ref": "the leftmost GUESS sign",
+        "ref_zh": "最左侧的GUESS招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "left_guess",
+        "parent_zh": "左GUESS",
+        "payload": "",
+        "instruction_zh": "移除最左侧的GUESS招牌。",
+        "instruction_noref_zh": "移除选中的招牌。"
+      },
+      {
+        "object_id": 18,
+        "operation": "add",
+        "ref": "the wooden partition in the foreground",
+        "ref_zh": "前景的木隔栏",
+        "scope": "partition",
+        "scope_zh": "隔栏",
+        "parent": "cafe_partition",
+        "parent_zh": "咖啡区隔栏",
+        "payload": "a small RESERVED sign",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的木隔栏加上一块小型RESERVED标牌。",
+        "instruction_noref_zh": "在选中的隔栏加上一块小型RESERVED标牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4536573",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6a9efd4712b8c0f46e1273f96b609d3e1d8d76623c719f631d49c2c260ba630e",
+    "review_card_sha256": "58d2b5ce08d391ef738ef7b66aaf4ab7fcf2c94596cafae270cc11ba3456a02a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3桌面整块布、13左门把手、11人物服装为独立布料、建筑、人物。",
+    "difficulty": {
+      "mechanisms": [
+        "hand_object_contact",
+        "occlusion"
+      ],
+      "scene_zh": "缝纫工作台",
+      "evidence_zh": "3桌面整块布、13左门把手、11人物服装为独立布料、建筑、人物。",
+      "specific_protection_zh": "保留人物身体、缝纫机、剪刀和布料褶皱。"
+    },
+    "protected_content_zh": "保留人物身体、缝纫机、剪刀和布料褶皱。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the turquoise fabric under the sewing machine needle",
+        "ref_zh": "缝纫机针下的青绿色布料",
+        "scope": "fabric",
+        "scope_zh": "布料",
+        "parent": "table_fabric",
+        "parent_zh": "桌布料",
+        "payload": "ivory white",
+        "attribute_kind": "color",
+        "instruction_zh": "将缝纫机针下的青绿色布料的颜色改为象牙白。",
+        "instruction_noref_zh": "将选中的布料的颜色改为象牙白。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the handle on the left door",
+        "ref_zh": "左门的把手",
+        "scope": "handle",
+        "scope_zh": "把手",
+        "parent": "door",
+        "parent_zh": "门",
+        "payload": "a brass lever handle",
+        "instruction_zh": "将左门的把手替换为一个黄铜压杆把手。",
+        "instruction_noref_zh": "将选中的把手替换为一个黄铜压杆把手。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the seamstress’s pink vest",
+        "ref_zh": "缝纫者的粉色马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "seamstress",
+        "parent_zh": "缝纫者",
+        "payload": "a small white name badge on its chest",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在缝纫者的粉色马甲加上一枚位于胸前的小白色姓名牌。",
+        "instruction_noref_zh": "在选中的马甲加上一枚位于胸前的小白色姓名牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4550787",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "524bb9c881cb06e7ed4a96906d041e5511fabcd88f82959d58a1a27eae6bda2c",
+    "review_card_sha256": "d75ff9c9f5a67bca3f0a929685f96fb62b358c9796eb4dc3866d1cf8e1e64456",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6中间灰西服、56左红马甲、51右棕马甲三个人物父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "occlusion",
+        "firelight"
+      ],
+      "scene_zh": "夜间持火炬人群",
+      "evidence_zh": "6中间灰西服、56左红马甲、51右棕马甲三个人物父对象。",
+      "specific_protection_zh": "保留人物、火炬、火焰和握持关系。"
+    },
+    "protected_content_zh": "保留人物、火炬、火焰和握持关系。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the gray suit jacket on the central man",
+        "ref_zh": "中间男子的灰色西装外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "middle_man",
+        "parent_zh": "中男",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间男子的灰色西装外套的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 56,
+        "operation": "replace",
+        "ref": "the red vest on the man at the left",
+        "ref_zh": "左侧男子的红色马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "left_man",
+        "parent_zh": "左男",
+        "payload": "a plain dark gray waistcoat",
+        "instruction_zh": "将左侧男子的红色马甲替换为一件纯深灰色马甲。",
+        "instruction_noref_zh": "将选中的马甲替换为一件纯深灰色马甲。"
+      },
+      {
+        "object_id": 51,
+        "operation": "add",
+        "ref": "the brown vest on the man at the right",
+        "ref_zh": "右侧男子的棕色马甲",
+        "scope": "vest",
+        "scope_zh": "马甲",
+        "parent": "right_man",
+        "parent_zh": "右男",
+        "payload": "a small white name badge on its chest",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧男子的棕色马甲加上一枚位于胸前的小白色姓名牌。",
+        "instruction_noref_zh": "在选中的马甲加上一枚位于胸前的小白色姓名牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4551219",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1839e180ef77ccabd850c0b93267e6244b2e6e49ffd71c1ba3416c93d4c145c7",
+    "review_card_sha256": "1afcdcd3d7a2fa1dc67fa179121ed5da544e49eeb9cd56b2f71bc35fe80097d7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17右端灰大衣、20粉色肩包、13舞台前黑伞、29左侧黑衣人四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "crowd",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "节庆火堆观众",
+      "evidence_zh": "17右端灰大衣、20粉色肩包、13舞台前黑伞、29左侧黑衣人四父对象。",
+      "specific_protection_zh": "保留人物身体、仪式火焰、围栏与观众。"
+    },
+    "protected_content_zh": "保留人物身体、仪式火焰、围栏与观众。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "attribute",
+        "ref": "the gray coat on the spectator near the far right",
+        "ref_zh": "靠近最右端观众的灰色大衣",
+        "scope": "coat",
+        "scope_zh": "大衣",
+        "parent": "right_spectator",
+        "parent_zh": "右观众",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将靠近最右端观众的灰色大衣的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的大衣的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 20,
+        "operation": "remove",
+        "ref": "the small pink shoulder bag beside the red coat",
+        "ref_zh": "红色大衣旁的小粉色肩包",
+        "scope": "bag",
+        "scope_zh": "肩包",
+        "parent": "pink_bag",
+        "parent_zh": "粉包",
+        "payload": "",
+        "instruction_zh": "移除红色大衣旁的小粉色肩包。",
+        "instruction_noref_zh": "移除选中的肩包。"
+      },
+      {
+        "object_id": 13,
+        "operation": "replace",
+        "ref": "the open black umbrella in front of the stage",
+        "ref_zh": "舞台前撑开的黑伞",
+        "scope": "umbrella",
+        "scope_zh": "雨伞",
+        "parent": "stage_umbrella",
+        "parent_zh": "舞台前伞",
+        "payload": "a dark green umbrella",
+        "instruction_zh": "将舞台前撑开的黑伞替换为一把深绿色雨伞。",
+        "instruction_noref_zh": "将选中的雨伞替换为一把深绿色雨伞。"
+      },
+      {
+        "object_id": 29,
+        "operation": "add",
+        "ref": "the black jacket on the person holding the umbrella",
+        "ref_zh": "持伞者的黑色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "umbrella_holder",
+        "parent_zh": "持伞者",
+        "payload": "a small round yellow badge on its chest",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在持伞者的黑色外套加上一枚位于胸前的小圆形黄色徽章。",
+        "instruction_noref_zh": "在选中的外套加上一枚位于胸前的小圆形黄色徽章。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_455310",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c0eca357ef0d9c2cb8e174fb53c0e9857df792213878bacba7adf2d3d4116308",
+    "review_card_sha256": "56cdcdd13e1785afa645a26f3c6b06fadaafc2caf81e09607c862b033e599aab",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9不发光近左路灯、37顶层长阳台、49竖向路牌三个父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "night",
+        "repetition",
+        "thin_structure"
+      ],
+      "scene_zh": "夜间阳台建筑街景",
+      "evidence_zh": "9不发光近左路灯、37顶层长阳台、49竖向路牌三个父对象。",
+      "specific_protection_zh": "保留建筑结构、其余路灯和路面反光。"
+    },
+    "protected_content_zh": "保留建筑结构、其余路灯和路面反光。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the unlit streetlamp in front of the building’s left half",
+        "ref_zh": "楼房左半部前方未亮的路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "unlit_lamp",
+        "parent_zh": "未亮路灯",
+        "payload": "",
+        "instruction_zh": "移除楼房左半部前方未亮的路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      },
+      {
+        "object_id": 37,
+        "operation": "add",
+        "ref": "the long top-floor balcony railing on the left",
+        "ref_zh": "顶层左侧长阳台的栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "balcony_building",
+        "parent_zh": "阳台建筑",
+        "payload": "a narrow planter of green foliage",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在顶层左侧长阳台的栏杆加上一个种有绿植的窄花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有绿植的窄花箱。"
+      },
+      {
+        "object_id": 49,
+        "operation": "replace",
+        "ref": "the tall freestanding sign below the building",
+        "ref_zh": "楼房下方独立竖立的高招牌",
+        "scope": "sign",
+        "scope_zh": "招牌",
+        "parent": "street_sign",
+        "parent_zh": "街牌",
+        "payload": "a black wayfinding sign reading HOTEL with a right arrow",
+        "instruction_zh": "将楼房下方独立竖立的高招牌替换为一块写有HOTEL并带右箭头的黑色指路牌。",
+        "instruction_noref_zh": "将选中的招牌替换为一块写有HOTEL并带右箭头的黑色指路牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

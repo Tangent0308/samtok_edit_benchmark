@@ -1,0 +1,556 @@
+[
+  {
+    "source_id": "sa_10698354",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "469c65e94f3b573c7fa0ab495b27f1b8c0d3bf7c9c522e4a94bddcbf18938037",
+    "review_card_sha256": "3a097ff4e2a61bf176b55b79717ab206a9f332f8cebbdc20fbba3224bd228267",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9是绿衬衫人物头顶的完整太阳镜；54为左侧人物的独立手袋及肩带；41是前景黑白夹克的衣领。避开把手臂误标为包带的26和被手遮住的手机42。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "neighbor_protection"
+      ],
+      "scene_zh": "彩粉活动中的眼镜、手袋和衣领",
+      "evidence_zh": "9是绿衬衫人物头顶的完整太阳镜；54为左侧人物的独立手袋及肩带；41是前景黑白夹克的衣领。避开把手臂误标为包带的26和被手遮住的手机42。",
+      "specific_protection_zh": "保留人物头发、皮肤、彩粉、相机和其他服装。"
+    },
+    "protected_content_zh": "保留人物头发、皮肤、彩粉、相机和其他服装。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the sunglasses on the green-shirted person’s head",
+        "ref_zh": "绿衬衫人物头顶的太阳镜",
+        "scope": "sunglasses",
+        "scope_zh": "太阳镜",
+        "parent": "green_person",
+        "parent_zh": "绿衬衫人物",
+        "payload": "round black sunglasses",
+        "instruction_zh": "将绿衬衫人物头顶的太阳镜替换为一副黑色圆框太阳镜。",
+        "instruction_noref_zh": "将选中的太阳镜替换为一副黑色圆框太阳镜。"
+      },
+      {
+        "object_id": 54,
+        "operation": "attribute",
+        "ref": "the leftmost woman’s handbag",
+        "ref_zh": "最左侧女子的手袋",
+        "scope": "handbag",
+        "scope_zh": "手袋",
+        "parent": "left_handbag",
+        "parent_zh": "左侧手袋",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将最左侧女子的手袋的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的手袋的颜色改为酒红色。"
+      },
+      {
+        "object_id": 41,
+        "operation": "add",
+        "ref": "the black-and-white jacket’s collar",
+        "ref_zh": "黑白夹克的衣领",
+        "scope": "collar",
+        "scope_zh": "衣领",
+        "parent": "jacket_person",
+        "parent_zh": "穿黑白夹克的人物",
+        "payload": "a small silver collar pin",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在黑白夹克的衣领加上一枚小银色领针。",
+        "instruction_noref_zh": "在选中的衣领加上一枚小银色领针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10706214",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "6c0a100c1bb0c54535a577ca8587fd67ea964c5daadb0c92c7738c3018e689e6",
+    "review_card_sha256": "9e08bb3fac5979b6e9d75b4bf701ad5b558fcdc65cf0c59d6ffe9d5c4e8ff7ef",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16和17是左右两位徒步者的外套；18是中央人物拿着而非穿着的红外套；34是其背包的外露肩带与胸带。新增指南针直接夹在胸带上，各实体不重复。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "disconnected_parts"
+      ],
+      "scene_zh": "徒步者的户外服装与随身装备",
+      "evidence_zh": "16和17是左右两位徒步者的外套；18是中央人物拿着而非穿着的红外套；34是其背包的外露肩带与胸带。新增指南针直接夹在胸带上，各实体不重复。",
+      "specific_protection_zh": "保留人物身体、手指、背包其余部分、路面与背景徒步者。"
+    },
+    "protected_content_zh": "保留人物身体、手指、背包其余部分、路面与背景徒步者。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "attribute",
+        "ref": "the left hiker’s blue jacket",
+        "ref_zh": "左侧徒步者的蓝色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_hiker",
+        "parent_zh": "左侧徒步者",
+        "payload": "sage green",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧徒步者的蓝色外套的颜色改为鼠尾草绿。",
+        "instruction_noref_zh": "将选中的外套的颜色改为鼠尾草绿。"
+      },
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the right hiker’s magenta jacket",
+        "ref_zh": "右侧徒步者的品红色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "right_hiker",
+        "parent_zh": "右侧徒步者",
+        "payload": "a navy quilted puffer jacket",
+        "instruction_zh": "将右侧徒步者的品红色外套替换为一件藏蓝色绗缝羽绒服。",
+        "instruction_noref_zh": "将选中的外套替换为一件藏蓝色绗缝羽绒服。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the red jacket carried by the central hiker",
+        "ref_zh": "中央徒步者拿着的红色外套",
+        "scope": "carried jacket",
+        "scope_zh": "手持外套",
+        "parent": "carried_jacket",
+        "parent_zh": "手持红外套",
+        "payload": "",
+        "instruction_zh": "移除中央徒步者拿着的红色外套。",
+        "instruction_noref_zh": "移除选中的手持外套。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the central hiker’s backpack straps",
+        "ref_zh": "中央徒步者的背包带",
+        "scope": "backpack straps",
+        "scope_zh": "背包带",
+        "parent": "red_backpack",
+        "parent_zh": "中央红背包",
+        "payload": "a small compass",
+        "placement": {
+          "relation": "clipped to",
+          "site": "chest strap",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央徒步者的背包带的胸带上加上一个小指南针。",
+        "instruction_noref_zh": "在选中的背包带的胸带上加上一个小指南针。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10716780",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5e351dce99b2cf6bc913468c1b1dd8587f1701b9307626cd9cc00951a4558951",
+    "review_card_sha256": "6e39bc3ec1f3f63d6e488bd04857e263c99eed86e7973643daf0497b4c0dadb4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为最近的橙色躺椅；23为第二张并排除其上白毛巾；48为第三张躺椅上的毛巾。用前后序号指代相似躺椅；新增靠垫直接放在第二张椅子的靠背处，避开已有毛巾。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "邮轮甲板上的躺椅与毛巾",
+      "evidence_zh": "17为最近的橙色躺椅；23为第二张并排除其上白毛巾；48为第三张躺椅上的毛巾。用前后序号指代相似躺椅；新增靠垫直接放在第二张椅子的靠背处，避开已有毛巾。",
+      "specific_protection_zh": "保留甲板、人物、白毛巾15、栏杆和相邻躺椅。"
+    },
+    "protected_content_zh": "保留甲板、人物、白毛巾15、栏杆和相邻躺椅。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the nearest orange lounger",
+        "ref_zh": "最近的橙色躺椅",
+        "scope": "lounger",
+        "scope_zh": "躺椅",
+        "parent": "nearest_lounger",
+        "parent_zh": "最近躺椅",
+        "payload": "a white wicker lounger",
+        "instruction_zh": "将最近的橙色躺椅替换为一张白色藤编躺椅。",
+        "instruction_noref_zh": "将选中的躺椅替换为一张白色藤编躺椅。"
+      },
+      {
+        "object_id": 23,
+        "operation": "add",
+        "ref": "the second lounger from the front",
+        "ref_zh": "从前往后第二张躺椅",
+        "scope": "lounger",
+        "scope_zh": "躺椅",
+        "parent": "second_lounger",
+        "parent_zh": "第二张躺椅",
+        "payload": "a small blue cushion",
+        "placement": {
+          "relation": "on",
+          "site": "backrest",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在从前往后第二张躺椅的靠背上加上一个小蓝色靠垫。",
+        "instruction_noref_zh": "在选中的躺椅的靠背上加上一个小蓝色靠垫。"
+      },
+      {
+        "object_id": 48,
+        "operation": "remove",
+        "ref": "the towel on the third lounger from the front",
+        "ref_zh": "从前往后第三张躺椅上的毛巾",
+        "scope": "towel",
+        "scope_zh": "毛巾",
+        "parent": "third_towel",
+        "parent_zh": "第三张躺椅上的毛巾",
+        "payload": "",
+        "instruction_zh": "移除从前往后第三张躺椅上的毛巾。",
+        "instruction_noref_zh": "移除选中的毛巾。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10728064",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "319e5333e1f182e2ec7c70174850a0b0a9738bce123cbffa5bce970dfd9aadfd",
+    "review_card_sha256": "6abeab7217e57a674ac741ee22214cef1341cf24a86d05fb8dd7beadb06bebfd",
+    "review_card_name": "selected_review.jpg",
+    "evidence_zh": "补充查看0、1、3、9原始mask：0为最前罐，1为从前数第二排左罐，3为最后排最左罐，9为第二排右罐的罐盖。不同罐的局部不混作同一对象；产品贴标、包装替换与重排均合理。",
+    "difficulty": {
+      "mechanisms": [
+        "similar_instances",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "三角形排列的相似啤酒罐",
+      "evidence_zh": "补充查看0、1、3、9原始mask：0为最前罐，1为从前数第二排左罐，3为最后排最左罐，9为第二排右罐的罐盖。不同罐的局部不混作同一对象；产品贴标、包装替换与重排均合理。",
+      "specific_protection_zh": "保留未编辑罐体、文字、其他罐盖与白色背景。"
+    },
+    "protected_content_zh": "保留未编辑罐体、文字、其他罐盖与白色背景。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "add",
+        "ref": "the frontmost can",
+        "ref_zh": "最前面的罐子",
+        "scope": "can",
+        "scope_zh": "罐子",
+        "parent": "front_can",
+        "parent_zh": "最前罐",
+        "payload": "a small round “LIMITED EDITION” sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最前面的罐子加上一张写有“LIMITED EDITION”的小圆贴纸。",
+        "instruction_noref_zh": "在选中的罐子加上一张写有“LIMITED EDITION”的小圆贴纸。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the left can in the second row from the front",
+        "ref_zh": "从前数第二排左侧的罐子",
+        "scope": "can",
+        "scope_zh": "罐子",
+        "parent": "second_left_can",
+        "parent_zh": "第二排左罐",
+        "payload": "a green glass beer bottle",
+        "instruction_zh": "将从前数第二排左侧的罐子替换为一个绿色玻璃啤酒瓶。",
+        "instruction_noref_zh": "将选中的罐子替换为一个绿色玻璃啤酒瓶。"
+      },
+      {
+        "object_id": 3,
+        "operation": "remove",
+        "ref": "the far-left can in the back row",
+        "ref_zh": "最后一排最左侧的罐子",
+        "scope": "can",
+        "scope_zh": "罐子",
+        "parent": "back_left_can",
+        "parent_zh": "后排最左罐",
+        "payload": "",
+        "instruction_zh": "移除最后一排最左侧的罐子。",
+        "instruction_noref_zh": "移除选中的罐子。"
+      },
+      {
+        "object_id": 9,
+        "operation": "attribute",
+        "ref": "the lid of the right can in the second row",
+        "ref_zh": "第二排右侧罐子的罐盖",
+        "scope": "can lid",
+        "scope_zh": "罐盖",
+        "parent": "second_right_can",
+        "parent_zh": "第二排右罐",
+        "payload": "silver",
+        "attribute_kind": "color",
+        "instruction_zh": "将第二排右侧罐子的罐盖的颜色改为银色。",
+        "instruction_noref_zh": "将选中的罐盖的颜色改为银色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10733610",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8cf75fcbeb7dcd979013b320a37f26ff1396140907cd8f10cc8f2002154bdbda",
+    "review_card_sha256": "db81b6481e79c9a7adbd60fe8c3887b15aeb97badfa28f896423d3d7eaa651d8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "66是右侧骑马雕像头盔；21是两尊雕像之间行人的黑背包；31为最右侧人物旁的橙色篮。雕塑头盔可作表面修饰，不把同一雕像的多个部件计成多个实体。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "雕塑广场中的游客与雕塑",
+      "evidence_zh": "66是右侧骑马雕像头盔；21是两尊雕像之间行人的黑背包；31为最右侧人物旁的橙色篮。雕塑头盔可作表面修饰，不把同一雕像的多个部件计成多个实体。",
+      "specific_protection_zh": "保留雕像面部、马身、游客身体、其他包袋和绿植。"
+    },
+    "protected_content_zh": "保留雕像面部、马身、游客身体、其他包袋和绿植。",
+    "targets": [
+      {
+        "object_id": 66,
+        "operation": "attribute",
+        "ref": "the mounted statue’s helmet",
+        "ref_zh": "骑马雕像的头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "mounted_statue",
+        "parent_zh": "骑马雕像",
+        "payload": "gold",
+        "attribute_kind": "color",
+        "instruction_zh": "将骑马雕像的头盔的颜色改为金色。",
+        "instruction_noref_zh": "将选中的头盔的颜色改为金色。"
+      },
+      {
+        "object_id": 21,
+        "operation": "replace",
+        "ref": "the black backpack between the statues",
+        "ref_zh": "两尊雕像之间的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "middle_backpack",
+        "parent_zh": "中间背包",
+        "payload": "a gray roll-top backpack",
+        "instruction_zh": "将两尊雕像之间的黑色背包替换为一个灰色卷口背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个灰色卷口背包。"
+      },
+      {
+        "object_id": 31,
+        "operation": "add",
+        "ref": "the orange basket at the right edge",
+        "ref_zh": "右侧边缘的橙色篮子",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "orange_basket",
+        "parent_zh": "橙色篮",
+        "payload": "a water bottle",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧边缘的橙色篮子加上一瓶水。",
+        "instruction_noref_zh": "在选中的篮子加上一瓶水。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10744750",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5c79f577a5b7cff878f582204f1a78fff4d1b70399d9616e2cf6bc5e7e9640d8",
+    "review_card_sha256": "76ee5636605169f3171d5a1f0e7021e60043c16da7d0c268812cda5901cf3a35",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为完整DO NOT ENTER标牌面；23是右侧红色polo上衣，被前方人物遮挡；41是车辆后方灰色羽绒外套，两块衣片保留遮挡关系。避开整车mask中的乘客边界与远处微小包袋。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "disconnected_parts",
+        "neighbor_protection"
+      ],
+      "scene_zh": "巡游车辆旁的人群与路牌",
+      "evidence_zh": "2为完整DO NOT ENTER标牌面；23是右侧红色polo上衣，被前方人物遮挡；41是车辆后方灰色羽绒外套，两块衣片保留遮挡关系。避开整车mask中的乘客边界与远处微小包袋。",
+      "specific_protection_zh": "保留路牌立柱、人物皮肤、车辆和其余观众。"
+    },
+    "protected_content_zh": "保留路牌立柱、人物皮肤、车辆和其余观众。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the “DO NOT ENTER” sign",
+        "ref_zh": "写有“DO NOT ENTER”的路牌",
+        "scope": "sign",
+        "scope_zh": "路牌",
+        "parent": "road_sign",
+        "parent_zh": "禁止驶入标牌",
+        "payload": "",
+        "instruction_zh": "移除写有“DO NOT ENTER”的路牌。",
+        "instruction_noref_zh": "移除选中的路牌。"
+      },
+      {
+        "object_id": 23,
+        "operation": "attribute",
+        "ref": "the red polo shirt behind the car",
+        "ref_zh": "车辆后方的红色polo衫",
+        "scope": "polo shirt",
+        "scope_zh": "polo衫",
+        "parent": "red_polo_person",
+        "parent_zh": "红polo人物",
+        "payload": "forest green",
+        "attribute_kind": "color",
+        "instruction_zh": "将车辆后方的红色polo衫的颜色改为森林绿。",
+        "instruction_noref_zh": "将选中的polo衫的颜色改为森林绿。"
+      },
+      {
+        "object_id": 41,
+        "operation": "replace",
+        "ref": "the gray puffer jacket behind the car",
+        "ref_zh": "车辆后方的灰色羽绒外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "gray_puffer_person",
+        "parent_zh": "灰外套人物",
+        "payload": "a black leather jacket",
+        "instruction_zh": "将车辆后方的灰色羽绒外套替换为一件黑色皮夹克。",
+        "instruction_noref_zh": "将选中的外套替换为一件黑色皮夹克。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10771932",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d70bdba9a491665f4c4aef719e1cfb602f80ddeb5efba75f0588d153103f399e",
+    "review_card_sha256": "fbc9dd0e8117dcfcb4e48867f16cdef6b3a185337793c9f2dcdbcd76998bd8e1",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "15为左车金属篮，34为右车把手区域，25为左侧人物的黑裙部位。两辆车和左侧人物为三个不同父实体；不使用把轮内背景填满的整轮mask。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "两位骑滑行车的行人与车篮",
+      "evidence_zh": "15为左车金属篮，34为右车把手区域，25为左侧人物的黑裙部位。两辆车和左侧人物为三个不同父实体；不使用把轮内背景填满的整轮mask。",
+      "specific_protection_zh": "保留人物皮肤、头巾、车轮、车架和道路。"
+    },
+    "protected_content_zh": "保留人物皮肤、头巾、车轮、车架和道路。",
+    "targets": [
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the left scooter’s wire basket",
+        "ref_zh": "左侧滑行车的铁丝篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "left_scooter",
+        "parent_zh": "左侧滑行车",
+        "payload": "a wicker basket",
+        "instruction_zh": "将左侧滑行车的铁丝篮替换为一个藤编篮子。",
+        "instruction_noref_zh": "将选中的篮子替换为一个藤编篮子。"
+      },
+      {
+        "object_id": 34,
+        "operation": "add",
+        "ref": "the right scooter’s handlebar",
+        "ref_zh": "右侧滑行车的车把",
+        "scope": "handlebar",
+        "scope_zh": "车把",
+        "parent": "right_scooter",
+        "parent_zh": "右侧滑行车",
+        "payload": "a small silver bell",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧滑行车的车把加上一个小银色车铃。",
+        "instruction_noref_zh": "在选中的车把加上一个小银色车铃。"
+      },
+      {
+        "object_id": 25,
+        "operation": "attribute",
+        "ref": "the left rider’s black skirt",
+        "ref_zh": "左侧骑行者的黑裙",
+        "scope": "skirt",
+        "scope_zh": "裙子",
+        "parent": "left_rider",
+        "parent_zh": "左侧骑行者",
+        "payload": "dark brown",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧骑行者的黑裙的颜色改为深棕色。",
+        "instruction_noref_zh": "将选中的裙子的颜色改为深棕色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10774878",
+    "decision": "reserve",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8b6cadcee9be9b34b853ff8d26a161c3406b24e2cb1323f92c6da73e0c514fbf",
+    "review_card_sha256": "9ad0a08db5a75eca0b1090f1ccd3cc93b0a76614dd756b2c58148ae6d089067f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "主体mask集中在同一摩托车的轮胎、排气管、弹簧与挡泥板；左侧局部轮子可能属于侧挂车架，无法仅据本图可靠判定不同父实体。暂存而不凑成多目标样本。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "摩托车后轮及侧边车架",
+      "evidence_zh": "主体mask集中在同一摩托车的轮胎、排气管、弹簧与挡泥板；左侧局部轮子可能属于侧挂车架，无法仅据本图可靠判定不同父实体。暂存而不凑成多目标样本。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  }
+]

@@ -1,0 +1,616 @@
+[
+  {
+    "source_id": "sa_1863775",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1835d8fdf78307cd5ed145f675162a29c03a63ad2bc03a2273ca255b08612381",
+    "review_card_sha256": "fa7463d635c6cb5452992308cad296d75064bc1bfaa389aa0ef8bda711d9983c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为左前方大木卷盘，1为其右前方小木卷盘。两个独立卷盘，电缆与工作人员保留。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "电缆卷盘堆场",
+      "evidence_zh": "0为左前方大木卷盘，1为其右前方小木卷盘。两个独立卷盘，电缆与工作人员保留。",
+      "specific_protection_zh": "保留线缆、工作人员、金属支架和遮挡关系。"
+    },
+    "protected_content_zh": "保留线缆、工作人员、金属支架和遮挡关系。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the large wooden cable spool at the front left",
+        "ref_zh": "左前方的大木制电缆卷盘",
+        "scope": "cable spool",
+        "scope_zh": "电缆卷盘",
+        "parent": "large_spool",
+        "parent_zh": "大卷盘",
+        "payload": "a black plastic cable spool",
+        "instruction_zh": "将左前方的大木制电缆卷盘替换为一个黑色塑料电缆卷盘。",
+        "instruction_noref_zh": "将选中的电缆卷盘替换为一个黑色塑料电缆卷盘。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the small wooden cable spool at the front",
+        "ref_zh": "前方的小木制电缆卷盘",
+        "scope": "cable spool",
+        "scope_zh": "电缆卷盘",
+        "parent": "small_spool",
+        "parent_zh": "小卷盘",
+        "payload": "a white inventory label",
+        "placement": {
+          "relation": "on",
+          "site": "front face",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前方的小木制电缆卷盘的正面加上一张白色库存标签。",
+        "instruction_noref_zh": "在选中的电缆卷盘的正面加上一张白色库存标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_190256",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c125ad3e77cb28daa4ba8ba85a2f42a142d7229ef27e065750867af71273709c",
+    "review_card_sha256": "cb8e816348553c3d101025d25db94f8a9376a49b04c62f2d8a152929088cd93e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3为上方人物蓝色Polo衫，7为下方浅紫T恤，5为独立黑肩包，17为右上白塑料袋。两个人和两个独立袋，衣服不拆重复人物。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "overhead_view"
+      ],
+      "scene_zh": "俯拍旧货市场",
+      "evidence_zh": "3为上方人物蓝色Polo衫，7为下方浅紫T恤，5为独立黑肩包，17为右上白塑料袋。两个人和两个独立袋，衣服不拆重复人物。",
+      "specific_protection_zh": "保留人物身体、商品、其他书籍和容器。"
+    },
+    "protected_content_zh": "保留人物身体、商品、其他书籍和容器。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the blue polo shirt at the top",
+        "ref_zh": "上方的蓝色Polo衫",
+        "scope": "shirt",
+        "scope_zh": "上衣",
+        "parent": "upper_person",
+        "parent_zh": "上方人物",
+        "payload": "olive green",
+        "attribute_kind": "color",
+        "instruction_zh": "将上方的蓝色Polo衫的颜色改为橄榄绿。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为橄榄绿。"
+      },
+      {
+        "object_id": 7,
+        "operation": "replace",
+        "ref": "the light purple T-shirt at the bottom",
+        "ref_zh": "下方的浅紫色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "lower_person",
+        "parent_zh": "下方人物",
+        "payload": "a white cotton T-shirt",
+        "instruction_zh": "将下方的浅紫色T恤替换为一件白色棉T恤。",
+        "instruction_noref_zh": "将选中的T恤替换为一件白色棉T恤。"
+      },
+      {
+        "object_id": 5,
+        "operation": "add",
+        "ref": "the black shoulder bag beside the light purple T-shirt",
+        "ref_zh": "浅紫色T恤旁的黑色肩包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "black_shoulder_bag",
+        "parent_zh": "黑肩包",
+        "payload": "a small reflective patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在浅紫色T恤旁的黑色肩包加上一块小反光贴。",
+        "instruction_noref_zh": "在选中的包加上一块小反光贴。"
+      },
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the white plastic bag at the upper right",
+        "ref_zh": "右上方的白色塑料袋",
+        "scope": "bag",
+        "scope_zh": "袋子",
+        "parent": "white_bag",
+        "parent_zh": "白袋",
+        "payload": "",
+        "instruction_zh": "移除右上方的白色塑料袋。",
+        "instruction_noref_zh": "移除选中的袋子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1904012",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "eb872263c6a7f96ec03209dd6534e3404d763d8fa6bf28143ad5f55f67f7a83b",
+    "review_card_sha256": "a573ba64f5c30ba32f8f25efd1a75ca2de7e42ee57dcd5eaec83382ad59b8e53",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为前景蓝色骑行上衣，1为前景自行车，9为禁停板，36为最右黄骑行服。两个人、自行车和独立牌。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "花田旁骑行者",
+      "evidence_zh": "4为前景蓝色骑行上衣，1为前景自行车，9为禁停板，36为最右黄骑行服。两个人、自行车和独立牌。",
+      "specific_protection_zh": "保留身体、头盔、道路、花田、护栏及其他骑行者。"
+    },
+    "protected_content_zh": "保留身体、头盔、道路、花田、护栏及其他骑行者。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "attribute",
+        "ref": "the foreground cyclist’s blue jersey",
+        "ref_zh": "前景骑行者的蓝色上衣",
+        "scope": "jersey",
+        "scope_zh": "骑行上衣",
+        "parent": "foreground_cyclist",
+        "parent_zh": "前景骑行者",
+        "payload": "red",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景骑行者的蓝色上衣的颜色改为红色。",
+        "instruction_noref_zh": "将选中的骑行上衣的颜色改为红色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the foreground bicycle",
+        "ref_zh": "前景的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "foreground_bicycle",
+        "parent_zh": "前景自行车",
+        "payload": "a small handlebar bag",
+        "placement": {
+          "relation": "on",
+          "site": "handlebars",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景的自行车的车把上加上一个小车把包。",
+        "instruction_noref_zh": "在选中的自行车的车把上加上一个小车把包。"
+      },
+      {
+        "object_id": 9,
+        "operation": "remove",
+        "ref": "the white no-parking board",
+        "ref_zh": "白色禁停告示板",
+        "scope": "board",
+        "scope_zh": "告示板",
+        "parent": "no_parking_board",
+        "parent_zh": "禁停板",
+        "payload": "",
+        "instruction_zh": "移除白色禁停告示板。",
+        "instruction_noref_zh": "移除选中的告示板。"
+      },
+      {
+        "object_id": 36,
+        "operation": "replace",
+        "ref": "the yellow cycling jersey at the far right",
+        "ref_zh": "最右侧的黄色骑行上衣",
+        "scope": "jersey",
+        "scope_zh": "骑行上衣",
+        "parent": "right_cyclist",
+        "parent_zh": "右骑行者",
+        "payload": "a white cycling jersey",
+        "instruction_zh": "将最右侧的黄色骑行上衣替换为一件白色骑行上衣。",
+        "instruction_noref_zh": "将选中的骑行上衣替换为一件白色骑行上衣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1911434",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "36d30cfbcf920cf626b71c872499bb14390a244fa49ac130b635f27abdd0cf59",
+    "review_card_sha256": "d65594c9cbb68c5885b7836e8d53bf5ff6fc364659c4f3f2ebf640e5c3d0f155",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "1为左黄警示牌，5为竖菜单板，24为孩子粉上衣，4为前方白栅栏。菜单、警示牌、人物和栅栏独立。",
+    "difficulty": {
+      "mechanisms": [
+        "low_viewpoint",
+        "occlusion"
+      ],
+      "scene_zh": "茶饮餐车与栅栏",
+      "evidence_zh": "1为左黄警示牌，5为竖菜单板，24为孩子粉上衣，4为前方白栅栏。菜单、警示牌、人物和栅栏独立。",
+      "specific_protection_zh": "保留餐车、轮胎、人物身体、遮阳伞及其他标志。"
+    },
+    "protected_content_zh": "保留餐车、轮胎、人物身体、遮阳伞及其他标志。",
+    "targets": [
+      {
+        "object_id": 1,
+        "operation": "remove",
+        "ref": "the yellow warning sign on the left",
+        "ref_zh": "左侧的黄色警示牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "yellow_warning",
+        "parent_zh": "黄警示牌",
+        "payload": "",
+        "instruction_zh": "移除左侧的黄色警示牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the vertical menu board on the food truck",
+        "ref_zh": "餐车上的竖直菜单板",
+        "scope": "menu board",
+        "scope_zh": "菜单板",
+        "parent": "menu_board",
+        "parent_zh": "菜单板",
+        "payload": "a black chalkboard menu",
+        "instruction_zh": "将餐车上的竖直菜单板替换为一块黑色粉笔菜单板。",
+        "instruction_noref_zh": "将选中的菜单板替换为一块黑色粉笔菜单板。"
+      },
+      {
+        "object_id": 24,
+        "operation": "attribute",
+        "ref": "the child’s pink top",
+        "ref_zh": "孩子的粉色上衣",
+        "scope": "top",
+        "scope_zh": "上衣",
+        "parent": "child",
+        "parent_zh": "孩子",
+        "payload": "pale blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将孩子的粉色上衣的颜色改为浅蓝色。",
+        "instruction_noref_zh": "将选中的上衣的颜色改为浅蓝色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the white fence in front of the food truck",
+        "ref_zh": "餐车前的白色栅栏",
+        "scope": "fence",
+        "scope_zh": "栅栏",
+        "parent": "front_fence",
+        "parent_zh": "前栅栏",
+        "payload": "a small flower box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在餐车前的白色栅栏加上一个小花箱。",
+        "instruction_noref_zh": "在选中的栅栏加上一个小花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1915366",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "320e7c24c6ad33a220938149109afbd2b1eb56eadc760a33bdfd3a2ff039b8b0",
+    "review_card_sha256": "388336c931621316f72d28d7c97f56a9f11b3dfe76f6acaaced9fa969a05352e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "3是中央近电杆，10只覆盖右侧住宅红瓦屋顶而非整栋房；屋顶改色与电杆贴反光带，两个独立父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "occlusion"
+      ],
+      "scene_zh": "施工楼前电杆与旁边住宅",
+      "evidence_zh": "3是中央近电杆，10只覆盖右侧住宅红瓦屋顶而非整栋房；屋顶改色与电杆贴反光带，两个独立父对象。",
+      "specific_protection_zh": "保留电线、施工楼、吊机、草地、烟囱及屋顶瓦片纹理。"
+    },
+    "protected_content_zh": "保留电线、施工楼、吊机、草地、烟囱及屋顶瓦片纹理。",
+    "targets": [
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the foreground utility pole in the center",
+        "ref_zh": "中央前景的电线杆",
+        "scope": "utility pole",
+        "scope_zh": "电线杆",
+        "parent": "center_pole",
+        "parent_zh": "中央电杆",
+        "payload": "a yellow reflective band",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在中央前景的电线杆加上一圈黄色反光带。",
+        "instruction_noref_zh": "在选中的电线杆加上一圈黄色反光带。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the red tiled roof on the right",
+        "ref_zh": "右侧的红色瓦屋顶",
+        "scope": "roof",
+        "scope_zh": "屋顶",
+        "parent": "right_house",
+        "parent_zh": "右住宅",
+        "payload": "slate blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧的红色瓦屋顶的颜色改为灰蓝色。",
+        "instruction_noref_zh": "将选中的屋顶的颜色改为灰蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1923359",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "5eadabc8ca51e6dd593ff098e5bbceaf385500b38198967aaf196a00b0294370",
+    "review_card_sha256": "ed32900f8d50f982c52a6bd33b52bd920e481d7c69b6c07f61b49d57d4a79d38",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "10为前景花裙，15为其旁蓝布肩包，23为左侧男子灰外套。两个不同人物与独立肩包，不把同一人的裙和靴算两目标。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances"
+      ],
+      "scene_zh": "旋转木马旁游客",
+      "evidence_zh": "10为前景花裙，15为其旁蓝布肩包，23为左侧男子灰外套。两个不同人物与独立肩包，不把同一人的裙和靴算两目标。",
+      "specific_protection_zh": "保留人物身体、靴子、旋转木马、广场和建筑。"
+    },
+    "protected_content_zh": "保留人物身体、靴子、旋转木马、广场和建筑。",
+    "targets": [
+      {
+        "object_id": 10,
+        "operation": "replace",
+        "ref": "the floral skirt in the foreground",
+        "ref_zh": "前景的花裙子",
+        "scope": "skirt",
+        "scope_zh": "裙子",
+        "parent": "skirt_person",
+        "parent_zh": "花裙人物",
+        "payload": "a plain navy skirt",
+        "instruction_zh": "将前景的花裙子替换为一条纯藏蓝色裙子。",
+        "instruction_noref_zh": "将选中的裙子替换为一条纯藏蓝色裙子。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the blue cloth shoulder bag",
+        "ref_zh": "蓝色布肩包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "blue_shoulder_bag",
+        "parent_zh": "蓝肩包",
+        "payload": "a small embroidered sunflower",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在蓝色布肩包加上一朵小向日葵刺绣。",
+        "instruction_noref_zh": "在选中的包加上一朵小向日葵刺绣。"
+      },
+      {
+        "object_id": 23,
+        "operation": "attribute",
+        "ref": "the gray jacket on the left",
+        "ref_zh": "左侧的灰色外套",
+        "scope": "jacket",
+        "scope_zh": "外套",
+        "parent": "left_man",
+        "parent_zh": "左男子",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将左侧的灰色外套的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的外套的颜色改为酒红色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1928951",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1dc077db4693d0a45550d6b339fbe4411387c7447021e8499c48dedb68d7a9ac",
+    "review_card_sha256": "3b0059bb7b3cf909db85be5c104d2fde98b6edabd28af99c9a31e06e664b5ff8",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2是孩子红卫衣，6是后方俯身成人白T恤，9是灰盆，36是远处黄色塑料容器。服装属于不同人物，图案19/20不误作独立实物。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "depth_of_field"
+      ],
+      "scene_zh": "树旁孩子与盆",
+      "evidence_zh": "2是孩子红卫衣，6是后方俯身成人白T恤，9是灰盆，36是远处黄色塑料容器。服装属于不同人物，图案19/20不误作独立实物。",
+      "specific_protection_zh": "保留脸、身体、树木、盆内内容、其他衣物与原有景深。"
+    },
+    "protected_content_zh": "保留脸、身体、树木、盆内内容、其他衣物与原有景深。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the child’s red sweatshirt",
+        "ref_zh": "孩子的红色卫衣",
+        "scope": "sweatshirt",
+        "scope_zh": "卫衣",
+        "parent": "child",
+        "parent_zh": "孩子",
+        "payload": "a plain blue sweatshirt",
+        "instruction_zh": "将孩子的红色卫衣替换为一件纯蓝色卫衣。",
+        "instruction_noref_zh": "将选中的卫衣替换为一件纯蓝色卫衣。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the white T-shirt behind the child",
+        "ref_zh": "孩子身后的白色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "bending_adult",
+        "parent_zh": "俯身成人",
+        "payload": "light green",
+        "attribute_kind": "color",
+        "instruction_zh": "将孩子身后的白色T恤的颜色改为浅绿色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为浅绿色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the gray basin behind the child",
+        "ref_zh": "孩子身后的灰色盆",
+        "scope": "basin",
+        "scope_zh": "盆",
+        "parent": "gray_basin",
+        "parent_zh": "灰盆",
+        "payload": "a small white flower decal",
+        "placement": {
+          "relation": "on",
+          "site": "outer wall",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在孩子身后的灰色盆的外壁加上一张白色小花贴纸。",
+        "instruction_noref_zh": "在选中的盆的外壁加上一张白色小花贴纸。"
+      },
+      {
+        "object_id": 36,
+        "operation": "remove",
+        "ref": "the yellow container in the background",
+        "ref_zh": "背景中的黄色容器",
+        "scope": "container",
+        "scope_zh": "容器",
+        "parent": "yellow_container",
+        "parent_zh": "黄容器",
+        "payload": "",
+        "instruction_zh": "移除背景中的黄色容器。",
+        "instruction_noref_zh": "移除选中的容器。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_1939144",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "9e410511d418b5463cf0b05f95663ae7769f38795a3f7a58814bf99acb5c543d",
+    "review_card_sha256": "a8408579dc4c1ad9577d226a43c0f287a91829c65e8fc890c7badf3f892d44f9",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "6是左骑车者自行车，4为雕像前花坛花簇，15为雕像左侧行人短裤，18为最右云块。不同父对象，雕塑与底座不重复。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures"
+      ],
+      "scene_zh": "街心雕像花坛与骑行者",
+      "evidence_zh": "6是左骑车者自行车，4为雕像前花坛花簇，15为雕像左侧行人短裤，18为最右云块。不同父对象，雕塑与底座不重复。",
+      "specific_protection_zh": "保留雕像、底座、花坛边框、人物身体、树木与其他车辆。"
+    },
+    "protected_content_zh": "保留雕像、底座、花坛边框、人物身体、树木与其他车辆。",
+    "targets": [
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the bicycle ridden on the left",
+        "ref_zh": "左侧骑行者的自行车",
+        "scope": "bicycle",
+        "scope_zh": "自行车",
+        "parent": "left_bicycle",
+        "parent_zh": "左自行车",
+        "payload": "a small rear basket",
+        "placement": {
+          "relation": "on",
+          "site": "rear rack",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧骑行者的自行车的后货架上加上一个小后车筐。",
+        "instruction_noref_zh": "在选中的自行车的后货架上加上一个小后车筐。"
+      },
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the flowers in front of the monument",
+        "ref_zh": "纪念碑前的花丛",
+        "scope": "flowers",
+        "scope_zh": "花丛",
+        "parent": "flower_bed",
+        "parent_zh": "花坛",
+        "payload": "red geraniums",
+        "instruction_zh": "将纪念碑前的花丛替换为红色天竺葵。",
+        "instruction_noref_zh": "将选中的花丛替换为红色天竺葵。"
+      },
+      {
+        "object_id": 15,
+        "operation": "attribute",
+        "ref": "the blue shorts just left of the monument",
+        "ref_zh": "纪念碑左侧紧邻的蓝色短裤",
+        "scope": "shorts",
+        "scope_zh": "短裤",
+        "parent": "standing_person",
+        "parent_zh": "站立人物",
+        "payload": "beige",
+        "attribute_kind": "color",
+        "instruction_zh": "将纪念碑左侧紧邻的蓝色短裤的颜色改为米色。",
+        "instruction_noref_zh": "将选中的短裤的颜色改为米色。"
+      },
+      {
+        "object_id": 18,
+        "operation": "remove",
+        "ref": "the cloud above the white building on the right",
+        "ref_zh": "右侧白色建筑上方的云",
+        "scope": "cloud",
+        "scope_zh": "云",
+        "parent": "right_cloud",
+        "parent_zh": "右云",
+        "payload": "",
+        "instruction_zh": "移除右侧白色建筑上方的云。",
+        "instruction_noref_zh": "移除选中的云。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

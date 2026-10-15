@@ -1,0 +1,146 @@
+{
+  "source_id": "sa_11150954",
+  "reason_zh": "英文也明确只替换灯头，保留原灯架，与中文和mask范围一致。",
+  "previous_record": {
+    "source_id": "sa_11150954",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c7401d647f1723a0c039b30f1f6ba53da6f735229135af7ca9aa6f3f61a48ec8",
+    "review_card_sha256": "a0e935ab52e4d77b498cb0536fa588dd0e731c1f4fed0a53a4722c5812832a9b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "58是壁灯头不含支架，2为大门左侧纪念牌，15为中央拱形木双门。不同独立实体；同建筑多窗不重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "博物馆门面中的灯具、纪念牌和门",
+      "evidence_zh": "58是壁灯头不含支架，2为大门左侧纪念牌，15为中央拱形木双门。不同独立实体；同建筑多窗不重复计数。",
+      "specific_protection_zh": "保留门框雕刻、灯架、外墙、另一块纪念牌及博物馆字牌。"
+    },
+    "protected_content_zh": "保留门框雕刻、灯架、外墙、另一块纪念牌及博物馆字牌。",
+    "targets": [
+      {
+        "object_id": 58,
+        "operation": "replace",
+        "ref": "the wall lantern beside the main entrance",
+        "ref_zh": "正门旁的壁灯灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "an opal globe light",
+        "instruction_zh": "将正门旁的壁灯灯头替换为一个乳白球形灯。",
+        "instruction_noref_zh": "将选中的灯头替换为一个乳白球形灯。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the plaque left of the main entrance",
+        "ref_zh": "正门左侧的纪念牌",
+        "scope": "plaque",
+        "scope_zh": "纪念牌",
+        "parent": "left_plaque",
+        "parent_zh": "左侧纪念牌",
+        "payload": "",
+        "instruction_zh": "移除正门左侧的纪念牌。",
+        "instruction_noref_zh": "移除选中的纪念牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the arched wooden entrance door",
+        "ref_zh": "拱形木入口门",
+        "scope": "door",
+        "scope_zh": "入口门",
+        "parent": "museum_building",
+        "parent_zh": "博物馆建筑",
+        "payload": "a small bronze ring knocker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在拱形木入口门加上一个小青铜环形门扣。",
+        "instruction_noref_zh": "在选中的入口门加上一个小青铜环形门扣。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_11150954",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c7401d647f1723a0c039b30f1f6ba53da6f735229135af7ca9aa6f3f61a48ec8",
+    "review_card_sha256": "a0e935ab52e4d77b498cb0536fa588dd0e731c1f4fed0a53a4722c5812832a9b",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "58是壁灯头不含支架，2为大门左侧纪念牌，15为中央拱形木双门。不同独立实体；同建筑多窗不重复计数。 全图定位复核：英文也明确只替换灯头，保留原灯架，与中文和mask范围一致。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "博物馆门面中的灯具、纪念牌和门",
+      "evidence_zh": "58是壁灯头不含支架，2为大门左侧纪念牌，15为中央拱形木双门。不同独立实体；同建筑多窗不重复计数。 全图定位复核：英文也明确只替换灯头，保留原灯架，与中文和mask范围一致。",
+      "specific_protection_zh": "保留门框雕刻、灯架、外墙、另一块纪念牌及博物馆字牌。"
+    },
+    "protected_content_zh": "保留门框雕刻、灯架、外墙、另一块纪念牌及博物馆字牌。",
+    "targets": [
+      {
+        "object_id": 58,
+        "operation": "replace",
+        "ref": "the entrance wall lantern’s light head",
+        "ref_zh": "入口壁灯的灯头",
+        "scope": "lantern",
+        "scope_zh": "灯头",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "an opal globe light",
+        "instruction_zh": "将入口壁灯的灯头替换为一个乳白球形灯。",
+        "instruction_noref_zh": "将选中的灯头替换为一个乳白球形灯。"
+      },
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the plaque left of the main entrance",
+        "ref_zh": "正门左侧的纪念牌",
+        "scope": "plaque",
+        "scope_zh": "纪念牌",
+        "parent": "left_plaque",
+        "parent_zh": "左侧纪念牌",
+        "payload": "",
+        "instruction_zh": "移除正门左侧的纪念牌。",
+        "instruction_noref_zh": "移除选中的纪念牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the arched wooden entrance door",
+        "ref_zh": "拱形木入口门",
+        "scope": "door",
+        "scope_zh": "入口门",
+        "parent": "museum_building",
+        "parent_zh": "博物馆建筑",
+        "payload": "a small bronze ring knocker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在拱形木入口门加上一个小青铜环形门扣。",
+        "instruction_noref_zh": "在选中的入口门加上一个小青铜环形门扣。"
+      }
+    ],
+    "rejected_targets": []
+  }
+}

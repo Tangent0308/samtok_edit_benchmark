@@ -1,0 +1,578 @@
+[
+  {
+    "source_id": "sa_404443",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "81021473af698a3dfd2e0ea56c0928977d5f72def6c23fc587f63f5e896da5c7",
+    "review_card_sha256": "a631e64d81bc2926cf0a1f601d6ff03cb6eb2611a95d16214974007ae2987d16",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "壳牌标识属于油罐车，左侧背景护栏独立；不把轮胎等车部件算多个物体。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "公路油罐车",
+      "evidence_zh": "壳牌标识属于油罐车，左侧背景护栏独立；不把轮胎等车部件算多个物体。",
+      "specific_protection_zh": "保留卡车结构、车牌、道路和背景。"
+    },
+    "protected_content_zh": "保留卡车结构、车牌、道路和背景。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the Shell emblem on the tanker",
+        "ref_zh": "油罐车上的壳牌图案",
+        "scope": "emblem",
+        "scope_zh": "图案",
+        "parent": "tanker",
+        "parent_zh": "油罐车",
+        "payload": "",
+        "instruction_zh": "移除油罐车上的壳牌图案。",
+        "instruction_noref_zh": "移除选中的图案。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the roadside guardrail left of the truck cab",
+        "ref_zh": "卡车驾驶室左侧的路边护栏",
+        "scope": "guardrail",
+        "scope_zh": "护栏",
+        "parent": "road_guardrail",
+        "parent_zh": "道路护栏",
+        "payload": "a small red reflector",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在卡车驾驶室左侧的路边护栏加上一个小红色反光片。",
+        "instruction_noref_zh": "在选中的护栏加上一个小红色反光片。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4057910",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "a8418ffbf130167a9b00ffb468ad312e96b658ffbeae3688168032b9910fc3e7",
+    "review_card_sha256": "56c80f5aa84c15a7c633702469a4c152051c1901556909a6ec1150bafaa91ff5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为红旗，7为右侧独立坐像；不把骑马雕像的马腿与骑手作为不同对象。",
+    "difficulty": {
+      "mechanisms": [
+        "fine_structure",
+        "distance"
+      ],
+      "scene_zh": "博物馆与雕像",
+      "evidence_zh": "17为红旗，7为右侧独立坐像；不把骑马雕像的马腿与骑手作为不同对象。",
+      "specific_protection_zh": "保留建筑和其他雕像。"
+    },
+    "protected_content_zh": "保留建筑和其他雕像。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "replace",
+        "ref": "the red flag above the museum",
+        "ref_zh": "博物馆上方的红旗",
+        "scope": "flag",
+        "scope_zh": "旗帜",
+        "parent": "red_flag",
+        "parent_zh": "红旗",
+        "payload": "a plain white flag",
+        "instruction_zh": "将博物馆上方的红旗替换为一面纯白旗帜。",
+        "instruction_noref_zh": "将选中的旗帜替换为一面纯白旗帜。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the seated stone statue at the far right",
+        "ref_zh": "最右侧的石质坐像",
+        "scope": "statue",
+        "scope_zh": "雕像",
+        "parent": "right_statue",
+        "parent_zh": "右侧雕像",
+        "payload": "a small pigeon perched on its head",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的石质坐像加上一只停在头顶的小鸽子。",
+        "instruction_noref_zh": "在选中的雕像加上一只停在头顶的小鸽子。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4063118",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "cd5f34decca9a0122e9607481e7c317dc37f7a75104e7ad01d446126e777e840",
+    "review_card_sha256": "65f8a878e8a7c62f42850ad76673187d74febb6b80bd30cb1afa8a7a2f69afd5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2银车、3后方深色车、4烟草牌和28阳台属于不同父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "distance",
+        "perspective"
+      ],
+      "scene_zh": "山城傍晚小街",
+      "evidence_zh": "2银车、3后方深色车、4烟草牌和28阳台属于不同父对象。",
+      "specific_protection_zh": "保留街道、山体、行人与建筑结构。"
+    },
+    "protected_content_zh": "保留街道、山体、行人与建筑结构。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the silver car on the left",
+        "ref_zh": "左侧的银色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "silver_car",
+        "parent_zh": "银车",
+        "payload": "a blue compact car",
+        "instruction_zh": "将左侧的银色汽车替换为一辆蓝色小轿车。",
+        "instruction_noref_zh": "将选中的汽车替换为一辆蓝色小轿车。"
+      },
+      {
+        "object_id": 3,
+        "operation": "attribute",
+        "ref": "the dark car behind the silver car",
+        "ref_zh": "银车后方的深色汽车",
+        "scope": "car",
+        "scope_zh": "汽车",
+        "parent": "dark_car",
+        "parent_zh": "深色车",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将银车后方的深色汽车的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的汽车的颜色改为酒红色。"
+      },
+      {
+        "object_id": 4,
+        "operation": "remove",
+        "ref": "the hanging tobacco sign marked T",
+        "ref_zh": "写有T的悬挂烟草标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "tobacco_sign",
+        "parent_zh": "烟草牌",
+        "payload": "",
+        "instruction_zh": "移除写有T的悬挂烟草标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 28,
+        "operation": "add",
+        "ref": "the upper balcony railing on the right",
+        "ref_zh": "右侧上层阳台栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "right_building",
+        "parent_zh": "右侧楼房",
+        "payload": "a small planter of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧上层阳台栏杆加上一个种有红花的小花箱。",
+        "instruction_noref_zh": "在选中的栏杆加上一个种有红花的小花箱。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4088923",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "be066141ef3a2f22b3df8b73f1c0b3e1a802f750331d987ac34c053ca3472256",
+    "review_card_sha256": "266acf508080d4866fdd4b712213d5bd137971273644d541e396f8f4194d8fd6",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "71为地面松散菜梗，6为人字拖，3为龟壳。三个不同父对象，避开移除动物肢体。",
+    "difficulty": {
+      "mechanisms": [
+        "organic_boundary",
+        "partial_visibility"
+      ],
+      "scene_zh": "陆龟吃菜",
+      "evidence_zh": "71为地面松散菜梗，6为人字拖，3为龟壳。三个不同父对象，避开移除动物肢体。",
+      "specific_protection_zh": "保留陆龟身体、人物脚部、其他菜叶及路面。"
+    },
+    "protected_content_zh": "保留陆龟身体、人物脚部、其他菜叶及路面。",
+    "targets": [
+      {
+        "object_id": 71,
+        "operation": "remove",
+        "ref": "the long loose vegetable stalk in front of the tortoise",
+        "ref_zh": "陆龟前方的长条散落菜梗",
+        "scope": "stalk",
+        "scope_zh": "菜梗",
+        "parent": "loose_stalk",
+        "parent_zh": "散落菜梗",
+        "payload": "",
+        "instruction_zh": "移除陆龟前方的长条散落菜梗。",
+        "instruction_noref_zh": "移除选中的菜梗。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the flip-flop in the corner",
+        "ref_zh": "角落里的人字拖",
+        "scope": "flip-flop",
+        "scope_zh": "人字拖",
+        "parent": "person",
+        "parent_zh": "人物",
+        "payload": "blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将角落里的人字拖的颜色改为蓝色。",
+        "instruction_noref_zh": "将选中的人字拖的颜色改为蓝色。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the tortoise’s shell",
+        "ref_zh": "陆龟的壳",
+        "scope": "shell",
+        "scope_zh": "龟壳",
+        "parent": "tortoise",
+        "parent_zh": "陆龟",
+        "payload": "a small fallen brown leaf",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在陆龟的壳加上一片掉落的小棕色树叶。",
+        "instruction_noref_zh": "在选中的龟壳加上一片掉落的小棕色树叶。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4106294",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "e483dcbf85e4a15580f21169bd526c81194f0edf99ff8472630fc8baab8fb92e",
+    "review_card_sha256": "4521852dd6c3a3a9a7c7bb956ddeeb10ad61c2e82e9d6dd829d923411a80a4ab",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "4为浮筒、6为近景泳者帽子、1为摩托艇船体。分属浮筒、人物及艇。",
+    "difficulty": {
+      "mechanisms": [
+        "water",
+        "small_targets",
+        "occlusion"
+      ],
+      "scene_zh": "海上游乐",
+      "evidence_zh": "4为浮筒、6为近景泳者帽子、1为摩托艇船体。分属浮筒、人物及艇。",
+      "specific_protection_zh": "保留泳者、船上人物、救生衣功能与波浪。"
+    },
+    "protected_content_zh": "保留泳者、船上人物、救生衣功能与波浪。",
+    "targets": [
+      {
+        "object_id": 4,
+        "operation": "replace",
+        "ref": "the orange barrel-shaped buoy on the right",
+        "ref_zh": "右侧橙色桶状浮标",
+        "scope": "buoy",
+        "scope_zh": "浮标",
+        "parent": "buoy",
+        "parent_zh": "浮标",
+        "payload": "a round yellow buoy",
+        "instruction_zh": "将右侧橙色桶状浮标替换为一个黄色圆浮标。",
+        "instruction_noref_zh": "将选中的浮标替换为一个黄色圆浮标。"
+      },
+      {
+        "object_id": 6,
+        "operation": "attribute",
+        "ref": "the beige hat on the foreground swimmer",
+        "ref_zh": "前景游泳者的米色帽子",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "foreground_swimmer",
+        "parent_zh": "前景泳者",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景游泳者的米色帽子的颜色改为白色。",
+        "instruction_noref_zh": "将选中的帽子的颜色改为白色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "add",
+        "ref": "the jet ski on the right",
+        "ref_zh": "右侧的摩托艇",
+        "scope": "jet ski",
+        "scope_zh": "摩托艇",
+        "parent": "jet_ski",
+        "parent_zh": "摩托艇",
+        "payload": "a small red number 7 decal on its bow",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧的摩托艇加上一张贴在艇首的小红色数字7贴花。",
+        "instruction_noref_zh": "在选中的摩托艇加上一张贴在艇首的小红色数字7贴花。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_412302",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c352c0e9abdd312b33183d510c1151452353add290b9c5093b2861e7263087e6",
+    "review_card_sha256": "bfa2985dab3f4ce0edbbad1496f7fab70ceb9cc65d4005e2c5de31b12cb76080",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为最高方形灯、10为中部圆灯、30为右前景花坛。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "thin_structure"
+      ],
+      "scene_zh": "议会广场花坛",
+      "evidence_zh": "2为最高方形灯、10为中部圆灯、30为右前景花坛。",
+      "specific_protection_zh": "保留建筑、旗帜、行人及其他景观。"
+    },
+    "protected_content_zh": "保留建筑、旗帜、行人及其他景观。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "replace",
+        "ref": "the tallest angular streetlamp",
+        "ref_zh": "最高的折角造型路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "angular_lamp",
+        "parent_zh": "折角灯",
+        "payload": "a slender black lantern-style streetlamp",
+        "instruction_zh": "将最高的折角造型路灯替换为一盏细长黑色灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏细长黑色灯笼式路灯。"
+      },
+      {
+        "object_id": 10,
+        "operation": "attribute",
+        "ref": "the round-headed streetlamp just left of the tallest lamp",
+        "ref_zh": "最高路灯左侧的圆头路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "round_lamp",
+        "parent_zh": "圆头灯",
+        "payload": "dark bronze",
+        "attribute_kind": "color",
+        "instruction_zh": "将最高路灯左侧的圆头路灯的颜色改为深古铜色。",
+        "instruction_noref_zh": "将选中的路灯的颜色改为深古铜色。"
+      },
+      {
+        "object_id": 30,
+        "operation": "add",
+        "ref": "the large flowerbed in the right foreground",
+        "ref_zh": "右前景的大花坛",
+        "scope": "flowerbed",
+        "scope_zh": "花坛",
+        "parent": "right_flowerbed",
+        "parent_zh": "右花坛",
+        "payload": "a small wooden garden label among the flowers",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右前景的大花坛加上一块插在花丛中的小木制园艺标签。",
+        "instruction_noref_zh": "在选中的花坛加上一块插在花丛中的小木制园艺标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4154844",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "4c687a4032baffa8257578f500a26e803576d88b71bdf8fdd622895cfb681ceb",
+    "review_card_sha256": "f60e025b9ffd0f7b120e643968f5a75a76b38da0ae20844bef2791c28fc8a5d0",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为会议室标牌，36为球形吊灯，7为前景敞书。三个父对象，避免多个建筑部件重复计数。",
+    "difficulty": {
+      "mechanisms": [
+        "interior",
+        "occlusion",
+        "small_targets"
+      ],
+      "scene_zh": "礼拜堂室内楼梯",
+      "evidence_zh": "5为会议室标牌，36为球形吊灯，7为前景敞书。三个父对象，避免多个建筑部件重复计数。",
+      "specific_protection_zh": "保留建筑、蜡烛、仪式用品和台阶。"
+    },
+    "protected_content_zh": "保留建筑、蜡烛、仪式用品和台阶。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "remove",
+        "ref": "the Chapel Meeting Room sign",
+        "ref_zh": "写有Chapel Meeting Room的标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "room_sign",
+        "parent_zh": "房间牌",
+        "payload": "",
+        "instruction_zh": "移除写有Chapel Meeting Room的标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 36,
+        "operation": "replace",
+        "ref": "the round ceiling light",
+        "ref_zh": "圆形吸顶灯",
+        "scope": "light",
+        "scope_zh": "灯",
+        "parent": "ceiling_light",
+        "parent_zh": "顶灯",
+        "payload": "a small frosted-glass ceiling light",
+        "instruction_zh": "将圆形吸顶灯替换为一盏小磨砂玻璃吸顶灯。",
+        "instruction_noref_zh": "将选中的灯替换为一盏小磨砂玻璃吸顶灯。"
+      },
+      {
+        "object_id": 7,
+        "operation": "add",
+        "ref": "the open book in the lower right",
+        "ref_zh": "右下方敞开的书",
+        "scope": "book",
+        "scope_zh": "书",
+        "parent": "open_book",
+        "parent_zh": "敞书",
+        "payload": "a narrow red ribbon bookmark",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右下方敞开的书加上一条窄红色丝带书签。",
+        "instruction_noref_zh": "在选中的书加上一条窄红色丝带书签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_4165969",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "1edfbdff5580c3c3f92c2d26bd029324ae73e0c699120fe9bfb107947e208add",
+    "review_card_sha256": "de7d607b8a84f6554a3015eedb0aa8c07cac93cbbf0844d75bb1163fa504d9b7",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0左前花篮主体、1右前花篮主体、10最后侧绿椅背、50墙灯。独立容器、椅子及灯具。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "occlusion"
+      ],
+      "scene_zh": "街边雕像餐桌",
+      "evidence_zh": "0左前花篮主体、1右前花篮主体、10最后侧绿椅背、50墙灯。独立容器、椅子及灯具。",
+      "specific_protection_zh": "保留花卉、雕像、桌面和建筑。"
+    },
+    "protected_content_zh": "保留花卉、雕像、桌面和建筑。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the wicker planter left of the statue",
+        "ref_zh": "雕像左侧的藤编花篮",
+        "scope": "planter",
+        "scope_zh": "花篮",
+        "parent": "left_planter",
+        "parent_zh": "左花篮",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将雕像左侧的藤编花篮的颜色改为白色。",
+        "instruction_noref_zh": "将选中的花篮的颜色改为白色。"
+      },
+      {
+        "object_id": 1,
+        "operation": "replace",
+        "ref": "the wicker planter right of the statue",
+        "ref_zh": "雕像右侧的藤编花篮",
+        "scope": "planter",
+        "scope_zh": "花篮",
+        "parent": "right_planter",
+        "parent_zh": "右花篮",
+        "payload": "a rectangular terracotta planter",
+        "instruction_zh": "将雕像右侧的藤编花篮替换为一个长方形陶土花盆。",
+        "instruction_noref_zh": "将选中的花篮替换为一个长方形陶土花盆。"
+      },
+      {
+        "object_id": 10,
+        "operation": "add",
+        "ref": "the rearmost green chair back",
+        "ref_zh": "最后方的绿色椅背",
+        "scope": "chair back",
+        "scope_zh": "椅背",
+        "parent": "rear_chair",
+        "parent_zh": "后椅",
+        "payload": "a small RESERVED tag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最后方的绿色椅背加上一张小RESERVED标签。",
+        "instruction_noref_zh": "在选中的椅背加上一张小RESERVED标签。"
+      },
+      {
+        "object_id": 50,
+        "operation": "remove",
+        "ref": "the wall-mounted lantern behind the statue",
+        "ref_zh": "雕像后方墙上的灯笼式壁灯",
+        "scope": "lantern",
+        "scope_zh": "壁灯",
+        "parent": "wall_lantern",
+        "parent_zh": "壁灯",
+        "payload": "",
+        "instruction_zh": "移除雕像后方墙上的灯笼式壁灯。",
+        "instruction_noref_zh": "移除选中的壁灯。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

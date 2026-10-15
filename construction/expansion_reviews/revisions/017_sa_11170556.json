@@ -1,0 +1,182 @@
+{
+  "source_id": "sa_11170556",
+  "reason_zh": "补看人物高清局部：31是独立手持粉色布袋，14为其后的蓝色和服，并非将袖子误作手袋。",
+  "previous_record": {
+    "source_id": "sa_11170556",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "49f49681e840f03a50546936692380925d55b4cba00d4896c198dce35b160907",
+    "review_card_sha256": "9b7f03a42571be95f6a5e6808238f20f0890403e3a7f3c5e2ce8d15ca6362c65",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为蓝和服，31是手持粉袋且排除手部，0是上方停车牌，15是左边悬挂纸灯笼。手提包为独立携带物，身体与衣服不分计。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "传统小巷中的和服、手袋和标牌",
+      "evidence_zh": "14为蓝和服，31是手持粉袋且排除手部，0是上方停车牌，15是左边悬挂纸灯笼。手提包为独立携带物，身体与衣服不分计。",
+      "specific_protection_zh": "保留人物面部、手部、和服花纹、腰带、街道和其他标牌。"
+    },
+    "protected_content_zh": "保留人物面部、手部、和服花纹、腰带、街道和其他标牌。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the woman’s blue kimono",
+        "ref_zh": "女子的蓝色和服",
+        "scope": "kimono",
+        "scope_zh": "和服",
+        "parent": "kimono_wearer",
+        "parent_zh": "和服女子",
+        "payload": "pale pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将女子的蓝色和服的颜色改为浅粉色。",
+        "instruction_noref_zh": "将选中的和服的颜色改为浅粉色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "replace",
+        "ref": "the woman’s pink handbag",
+        "ref_zh": "女子的粉色手袋",
+        "scope": "handbag",
+        "scope_zh": "手袋",
+        "parent": "pink_handbag",
+        "parent_zh": "粉色手袋",
+        "payload": "a woven bamboo handbag",
+        "instruction_zh": "将女子的粉色手袋替换为一个竹编手袋。",
+        "instruction_noref_zh": "将选中的手袋替换为一个竹编手袋。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the overhead parking sign",
+        "ref_zh": "上方的停车标牌",
+        "scope": "parking sign",
+        "scope_zh": "停车标牌",
+        "parent": "parking_sign",
+        "parent_zh": "停车标牌",
+        "payload": "",
+        "instruction_zh": "移除上方的停车标牌。",
+        "instruction_noref_zh": "移除选中的停车标牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the paper lantern on the left",
+        "ref_zh": "左侧纸灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "paper_lantern",
+        "parent_zh": "纸灯笼",
+        "payload": "a small red tassel",
+        "placement": {
+          "relation": "on",
+          "site": "bottom",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧纸灯笼的底部加上一条红色小流苏。",
+        "instruction_noref_zh": "在选中的灯笼的底部加上一条红色小流苏。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  "record": {
+    "source_id": "sa_11170556",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "49f49681e840f03a50546936692380925d55b4cba00d4896c198dce35b160907",
+    "review_card_sha256": "9b7f03a42571be95f6a5e6808238f20f0890403e3a7f3c5e2ce8d15ca6362c65",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "14为蓝和服，31是手持粉袋且排除手部，0是上方停车牌，15是左边悬挂纸灯笼。手提包为独立携带物，身体与衣服不分计。 全图定位复核：补看人物高清局部：31是独立手持粉色布袋，14为其后的蓝色和服，并非将袖子误作手袋。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "传统小巷中的和服、手袋和标牌",
+      "evidence_zh": "14为蓝和服，31是手持粉袋且排除手部，0是上方停车牌，15是左边悬挂纸灯笼。手提包为独立携带物，身体与衣服不分计。 全图定位复核：补看人物高清局部：31是独立手持粉色布袋，14为其后的蓝色和服，并非将袖子误作手袋。",
+      "specific_protection_zh": "保留人物面部、手部、和服花纹、腰带、街道和其他标牌。"
+    },
+    "protected_content_zh": "保留人物面部、手部、和服花纹、腰带、街道和其他标牌。",
+    "targets": [
+      {
+        "object_id": 14,
+        "operation": "attribute",
+        "ref": "the woman’s blue kimono",
+        "ref_zh": "女子的蓝色和服",
+        "scope": "kimono",
+        "scope_zh": "和服",
+        "parent": "kimono_wearer",
+        "parent_zh": "和服女子",
+        "payload": "pale pink",
+        "attribute_kind": "color",
+        "instruction_zh": "将女子的蓝色和服的颜色改为浅粉色。",
+        "instruction_noref_zh": "将选中的和服的颜色改为浅粉色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "replace",
+        "ref": "the woman’s pink handbag",
+        "ref_zh": "女子的粉色手袋",
+        "scope": "handbag",
+        "scope_zh": "手袋",
+        "parent": "pink_handbag",
+        "parent_zh": "粉色手袋",
+        "payload": "a woven bamboo handbag",
+        "instruction_zh": "将女子的粉色手袋替换为一个竹编手袋。",
+        "instruction_noref_zh": "将选中的手袋替换为一个竹编手袋。"
+      },
+      {
+        "object_id": 0,
+        "operation": "remove",
+        "ref": "the overhead parking sign",
+        "ref_zh": "上方的停车标牌",
+        "scope": "parking sign",
+        "scope_zh": "停车标牌",
+        "parent": "parking_sign",
+        "parent_zh": "停车标牌",
+        "payload": "",
+        "instruction_zh": "移除上方的停车标牌。",
+        "instruction_noref_zh": "移除选中的停车标牌。"
+      },
+      {
+        "object_id": 15,
+        "operation": "add",
+        "ref": "the paper lantern on the left",
+        "ref_zh": "左侧纸灯笼",
+        "scope": "lantern",
+        "scope_zh": "灯笼",
+        "parent": "paper_lantern",
+        "parent_zh": "纸灯笼",
+        "payload": "a small red tassel",
+        "placement": {
+          "relation": "on",
+          "site": "bottom",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在左侧纸灯笼的底部加上一条红色小流苏。",
+        "instruction_noref_zh": "在选中的灯笼的底部加上一条红色小流苏。"
+      }
+    ],
+    "rejected_targets": [],
+    "additional_review_cards": [
+      {
+        "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2_expansion_20261014/candidates/sa_11170556/identity_followup.jpg",
+        "sha256": "7eb56888d5391f7df8e0c6a568939be000d17d41b7798829b9902a90098afcf4"
+      }
+    ]
+  }
+}

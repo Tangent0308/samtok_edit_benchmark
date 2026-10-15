@@ -1,0 +1,637 @@
+[
+  {
+    "source_id": "sa_3804406",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "abb5ba8baf9eca1afe7b895ce50101d0f62ab75d83d101bc418ec6d619d876c5",
+    "review_card_sha256": "ae290ab850fd38cddf14fdfd6c8c1302a10ead4c2eccf8eff46409ccf90e16b4",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "17为1号候餐牌，9为塔楼下大窗，37为左庭院独立灯，54为地面箭头。牌、建筑、灯与道路四父对象。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "glass",
+        "perspective"
+      ],
+      "scene_zh": "快餐店转角与露台",
+      "evidence_zh": "17为1号候餐牌，9为塔楼下大窗，37为左庭院独立灯，54为地面箭头。牌、建筑、灯与道路四父对象。",
+      "specific_protection_zh": "保留人物、建筑结构、其他标识和道路。"
+    },
+    "protected_content_zh": "保留人物、建筑结构、其他标识和道路。",
+    "targets": [
+      {
+        "object_id": 17,
+        "operation": "remove",
+        "ref": "the red parking sign marked 1",
+        "ref_zh": "标有1的红色停车牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "parking_sign",
+        "parent_zh": "停车牌",
+        "payload": "",
+        "instruction_zh": "移除标有1的红色停车牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 9,
+        "operation": "add",
+        "ref": "the tall window below the right-hand McDonald’s logo",
+        "ref_zh": "右侧麦当劳标志下方的高窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "restaurant",
+        "parent_zh": "餐厅",
+        "payload": "a small opening-hours sticker in its lower corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧麦当劳标志下方的高窗加上一张贴在下角的小营业时间贴纸。",
+        "instruction_noref_zh": "在选中的窗户加上一张贴在下角的小营业时间贴纸。"
+      },
+      {
+        "object_id": 37,
+        "operation": "replace",
+        "ref": "the freestanding lamp beside the diners on the left",
+        "ref_zh": "左侧食客旁的独立路灯",
+        "scope": "lamp",
+        "scope_zh": "路灯",
+        "parent": "patio_lamp",
+        "parent_zh": "庭院灯",
+        "payload": "a black lantern-style lamp",
+        "instruction_zh": "将左侧食客旁的独立路灯替换为一盏黑色灯笼式路灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏黑色灯笼式路灯。"
+      },
+      {
+        "object_id": 54,
+        "operation": "attribute",
+        "ref": "the white arrow painted on the road",
+        "ref_zh": "路面上的白色箭头",
+        "scope": "arrow",
+        "scope_zh": "箭头",
+        "parent": "road",
+        "parent_zh": "道路",
+        "payload": "yellow",
+        "attribute_kind": "color",
+        "instruction_zh": "将路面上的白色箭头的颜色改为黄色。",
+        "instruction_noref_zh": "将选中的箭头的颜色改为黄色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3817024",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "88c321ce8d0ed70a29c8cf3a59e5a4fd3aab39955ebc05435e82eada226fc2d2",
+    "review_card_sha256": "bc3438c6efcf8a8cd3e4ce0068504854e495a8f03a6c2a691831197cb0526c72",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为路人衬衫，12为右窗圆牌，0为左侧34号门，31为门旁篮子。人、标牌、建筑、独立篮。",
+    "difficulty": {
+      "mechanisms": [
+        "glass_reflection",
+        "text",
+        "occlusion"
+      ],
+      "scene_zh": "红色伦敦纪念品店",
+      "evidence_zh": "5为路人衬衫，12为右窗圆牌，0为左侧34号门，31为门旁篮子。人、标牌、建筑、独立篮。",
+      "specific_protection_zh": "保留行人身体、橱窗商品、建筑结构和其他文字。"
+    },
+    "protected_content_zh": "保留行人身体、橱窗商品、建筑结构和其他文字。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "replace",
+        "ref": "the striped shirt on the passing man",
+        "ref_zh": "路过男子的条纹衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "passing_man",
+        "parent_zh": "路人",
+        "payload": "a pale blue linen shirt",
+        "instruction_zh": "将路过男子的条纹衬衫替换为一件浅蓝色亚麻衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件浅蓝色亚麻衬衫。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the round blue sign in the rightmost shop window",
+        "ref_zh": "最右侧橱窗内的蓝色圆牌",
+        "scope": "sign",
+        "scope_zh": "圆牌",
+        "parent": "round_sign",
+        "parent_zh": "圆牌",
+        "payload": "",
+        "instruction_zh": "移除最右侧橱窗内的蓝色圆牌。",
+        "instruction_noref_zh": "移除选中的圆牌。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the black door marked 34",
+        "ref_zh": "标有34的黑色门",
+        "scope": "door",
+        "scope_zh": "门",
+        "parent": "shop_building",
+        "parent_zh": "商店楼",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将标有34的黑色门的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的门的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 31,
+        "operation": "add",
+        "ref": "the wire merchandise basket left of the shop entrance",
+        "ref_zh": "商店入口左侧的铁丝商品篮",
+        "scope": "basket",
+        "scope_zh": "篮子",
+        "parent": "wire_basket",
+        "parent_zh": "商品篮",
+        "payload": "a small red SALE tag",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在商店入口左侧的铁丝商品篮加上一张小红色SALE标签。",
+        "instruction_noref_zh": "在选中的篮子加上一张小红色SALE标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3819573",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d1f33b0fe5e5bd96d75b8f9c5533a197356cb663eac0dea445d5593a1973066c",
+    "review_card_sha256": "76abfc8f89fb1c891a983772df41aafcd1028711fe2da34c2befe3238dfc65ba",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "2为底部槽内松散纸板，15为NEW标签左侧高蓝白杯，3为上层架边。三个不同父对象；17纸箱在堆叠中指代过繁，取消该目标。",
+    "difficulty": {
+      "mechanisms": [
+        "dense_repetition",
+        "small_targets",
+        "perspective"
+      ],
+      "scene_zh": "超市乳制品货架",
+      "evidence_zh": "2为底部槽内松散纸板，15为NEW标签左侧高蓝白杯，3为上层架边。三个不同父对象；17纸箱在堆叠中指代过繁，取消该目标。",
+      "specific_protection_zh": "保留其他商品、价格标识和货架结构。"
+    },
+    "protected_content_zh": "保留其他商品、价格标识和货架结构。",
+    "targets": [
+      {
+        "object_id": 2,
+        "operation": "remove",
+        "ref": "the loose cardboard in the bottom refrigeration channel",
+        "ref_zh": "底部冷柜槽内的松散纸板",
+        "scope": "cardboard",
+        "scope_zh": "纸板",
+        "parent": "loose_cardboard",
+        "parent_zh": "散纸板",
+        "payload": "",
+        "instruction_zh": "移除底部冷柜槽内的松散纸板。",
+        "instruction_noref_zh": "移除选中的纸板。"
+      },
+      {
+        "object_id": 15,
+        "operation": "replace",
+        "ref": "the tall blue-and-white yogurt cup just left of the NEW label",
+        "ref_zh": "NEW标签左侧的高蓝白酸奶杯",
+        "scope": "cup",
+        "scope_zh": "杯子",
+        "parent": "yogurt_cup",
+        "parent_zh": "酸奶杯",
+        "payload": "a small glass yogurt jar with a blue lid",
+        "instruction_zh": "将NEW标签左侧的高蓝白酸奶杯替换为一个带蓝盖的小玻璃酸奶罐。",
+        "instruction_noref_zh": "将选中的杯子替换为一个带蓝盖的小玻璃酸奶罐。"
+      },
+      {
+        "object_id": 3,
+        "operation": "add",
+        "ref": "the uppermost long shelf edge",
+        "ref_zh": "最上方的长货架边缘",
+        "scope": "shelf edge",
+        "scope_zh": "货架边缘",
+        "parent": "refrigerator_shelf",
+        "parent_zh": "冷柜货架",
+        "payload": "a small red SPECIAL OFFER label",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最上方的长货架边缘加上一张小红色SPECIAL OFFER标签。",
+        "instruction_noref_zh": "在选中的货架边缘加上一张小红色SPECIAL OFFER标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3824138",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "74641581f7c8c90e2a439405efb6cbc77687cabc09e7b2a13b71f24503d6add4",
+    "review_card_sha256": "108538989d082bf0a9aa52fc8af2f41a42dff298b55caab172a1aed833254f98",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为举牌者黑T，9为女子深蓝外套，4为独立纸板牌。两个不同人物及一个手牌；不把背心徽章当不同人。",
+    "difficulty": {
+      "mechanisms": [
+        "motion_blur",
+        "occlusion",
+        "handheld_object"
+      ],
+      "scene_zh": "举手牌者与路过女子",
+      "evidence_zh": "5为举牌者黑T，9为女子深蓝外套，4为独立纸板牌。两个不同人物及一个手牌；不把背心徽章当不同人。",
+      "specific_protection_zh": "保留人物姿态、手指、脸、围巾和道路。"
+    },
+    "protected_content_zh": "保留人物姿态、手指、脸、围巾和道路。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the black T-shirt worn by the sign holder",
+        "ref_zh": "举牌者穿的黑色T恤",
+        "scope": "T-shirt",
+        "scope_zh": "T恤",
+        "parent": "sign_holder",
+        "parent_zh": "举牌者",
+        "payload": "white",
+        "attribute_kind": "color",
+        "instruction_zh": "将举牌者穿的黑色T恤的颜色改为白色。",
+        "instruction_noref_zh": "将选中的T恤的颜色改为白色。"
+      },
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the navy blazer on the woman passing by",
+        "ref_zh": "路过女子的藏蓝色西装外套",
+        "scope": "blazer",
+        "scope_zh": "西装外套",
+        "parent": "passing_woman",
+        "parent_zh": "路过女子",
+        "payload": "a beige linen blazer",
+        "instruction_zh": "将路过女子的藏蓝色西装外套替换为一件米色亚麻西装外套。",
+        "instruction_noref_zh": "将选中的西装外套替换为一件米色亚麻西装外套。"
+      },
+      {
+        "object_id": 4,
+        "operation": "add",
+        "ref": "the raised cardboard placard",
+        "ref_zh": "举起的纸板手牌",
+        "scope": "placard",
+        "scope_zh": "手牌",
+        "parent": "cardboard_placard",
+        "parent_zh": "纸板牌",
+        "payload": "a small yellow star sticker in the lower corner",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在举起的纸板手牌加上一张贴在下角的小黄星贴纸。",
+        "instruction_noref_zh": "在选中的手牌加上一张贴在下角的小黄星贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3825192",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "638342a45a55ebee78689458a5b5e3e3823f29efa38d87a09b6a6f8d103bfd4e",
+    "review_card_sha256": "66b15819b81198b5b239feb5d7f6ee1d18c5fe9cba42705f2553404fa3458a6c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "0为远处圆亭，2为木屋右侧单棵杉树，41为近中间竖牌，8为前景灰棚。不同建筑、树、标牌。",
+    "difficulty": {
+      "mechanisms": [
+        "snow",
+        "small_targets",
+        "distance"
+      ],
+      "scene_zh": "雪中滑雪场",
+      "evidence_zh": "0为远处圆亭，2为木屋右侧单棵杉树，41为近中间竖牌，8为前景灰棚。不同建筑、树、标牌。",
+      "specific_protection_zh": "保留积雪、滑雪者、森林、栏网和其他建筑。"
+    },
+    "protected_content_zh": "保留积雪、滑雪者、森林、栏网和其他建筑。",
+    "targets": [
+      {
+        "object_id": 0,
+        "operation": "replace",
+        "ref": "the round yellow-and-blue pavilion in the distance",
+        "ref_zh": "远处黄蓝色圆亭",
+        "scope": "pavilion",
+        "scope_zh": "亭子",
+        "parent": "round_pavilion",
+        "parent_zh": "圆亭",
+        "payload": "an octagonal wooden pavilion",
+        "instruction_zh": "将远处黄蓝色圆亭替换为一座八角木亭。",
+        "instruction_noref_zh": "将选中的亭子替换为一座八角木亭。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the tall fir just right of the wooden hut",
+        "ref_zh": "木屋右侧的高杉树",
+        "scope": "fir",
+        "scope_zh": "杉树",
+        "parent": "tall_fir",
+        "parent_zh": "高杉树",
+        "payload": "a strand of warm-white lights",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在木屋右侧的高杉树加上一串暖白色小灯。",
+        "instruction_noref_zh": "在选中的杉树加上一串暖白色小灯。"
+      },
+      {
+        "object_id": 41,
+        "operation": "remove",
+        "ref": "the tall blue sign near the center foreground",
+        "ref_zh": "中间近前方的蓝色高标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "blue_sign",
+        "parent_zh": "蓝牌",
+        "payload": "",
+        "instruction_zh": "移除中间近前方的蓝色高标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      },
+      {
+        "object_id": 8,
+        "operation": "attribute",
+        "ref": "the gray shed in the foreground",
+        "ref_zh": "前景的灰色棚屋",
+        "scope": "shed",
+        "scope_zh": "棚屋",
+        "parent": "gray_shed",
+        "parent_zh": "灰棚",
+        "payload": "dark blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景的灰色棚屋的颜色改为深蓝色。",
+        "instruction_noref_zh": "将选中的棚屋的颜色改为深蓝色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3849600",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "c0b4e5c85660e5bc138ee9fd835a999ffde97bc3f115b2ea499cb174a09f3ca3",
+    "review_card_sha256": "652fcea6a255b4a495125fe11d296020c465a91e85d9b5ebac8ca2735317fb2c",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "8为左侧白衬衫，43为格纹包主体，11为右侧车窗。人、独立随身包与车三父对象；不选择安全带移除。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "glass",
+        "partial_visibility"
+      ],
+      "scene_zh": "车内两名乘客",
+      "evidence_zh": "8为左侧白衬衫，43为格纹包主体，11为右侧车窗。人、独立随身包与车三父对象；不选择安全带移除。",
+      "specific_protection_zh": "保留人脸、身体、书本、包带、安全带及车辆结构。"
+    },
+    "protected_content_zh": "保留人脸、身体、书本、包带、安全带及车辆结构。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the white shirt on the passenger at the left",
+        "ref_zh": "左侧乘客的白色衬衫",
+        "scope": "shirt",
+        "scope_zh": "衬衫",
+        "parent": "left_passenger",
+        "parent_zh": "左乘客",
+        "payload": "a pale blue collared shirt",
+        "instruction_zh": "将左侧乘客的白色衬衫替换为一件浅蓝色翻领衬衫。",
+        "instruction_noref_zh": "将选中的衬衫替换为一件浅蓝色翻领衬衫。"
+      },
+      {
+        "object_id": 43,
+        "operation": "attribute",
+        "ref": "the plaid handbag on the right passenger’s lap",
+        "ref_zh": "右侧乘客腿上的格纹手提包",
+        "scope": "handbag",
+        "scope_zh": "手提包",
+        "parent": "plaid_bag",
+        "parent_zh": "格纹包",
+        "payload": "burgundy",
+        "attribute_kind": "color",
+        "instruction_zh": "将右侧乘客腿上的格纹手提包的颜色改为酒红色。",
+        "instruction_noref_zh": "将选中的手提包的颜色改为酒红色。"
+      },
+      {
+        "object_id": 11,
+        "operation": "add",
+        "ref": "the side window above the orange barrier",
+        "ref_zh": "橙色挡板上方的侧窗",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "vehicle",
+        "parent_zh": "车辆",
+        "payload": "a small circular sun sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在橙色挡板上方的侧窗加上一张小圆形太阳贴纸。",
+        "instruction_noref_zh": "在选中的窗户加上一张小圆形太阳贴纸。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3855278",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "7282995d4d5ad21b76b6a736af438886484defb07cbdea54d77a744e05643c16",
+    "review_card_sha256": "52e34ea5415ce4f5be3c13b095603ec1c635cbebe1ad123b77403edaaa1ab7a5",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "30为左白夹克，29为中间绿夹克，2为右近大路灯，6为左小路灯。两个人、两盏灯；不选26夹克混人头mask。",
+    "difficulty": {
+      "mechanisms": [
+        "repetition",
+        "occlusion",
+        "fine_structure"
+      ],
+      "scene_zh": "古典剧院前行人",
+      "evidence_zh": "30为左白夹克，29为中间绿夹克，2为右近大路灯，6为左小路灯。两个人、两盏灯；不选26夹克混人头mask。",
+      "specific_protection_zh": "保留建筑、人物姿态与身体、其他路灯。"
+    },
+    "protected_content_zh": "保留建筑、人物姿态与身体、其他路灯。",
+    "targets": [
+      {
+        "object_id": 30,
+        "operation": "replace",
+        "ref": "the white jacket on the pedestrian at the left",
+        "ref_zh": "左侧行人的白色夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "white_jacket_person",
+        "parent_zh": "白衣人",
+        "payload": "a blue wool coat",
+        "instruction_zh": "将左侧行人的白色夹克替换为一件蓝色羊毛大衣。",
+        "instruction_noref_zh": "将选中的夹克替换为一件蓝色羊毛大衣。"
+      },
+      {
+        "object_id": 29,
+        "operation": "attribute",
+        "ref": "the olive jacket on the pedestrian near the center",
+        "ref_zh": "中间附近行人的橄榄绿夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "olive_jacket_person",
+        "parent_zh": "绿衣人",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将中间附近行人的橄榄绿夹克的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的夹克的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 2,
+        "operation": "add",
+        "ref": "the large ornate streetlamp in the foreground on the right",
+        "ref_zh": "右侧前景的大型装饰路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "large_lamp",
+        "parent_zh": "大路灯",
+        "payload": "a hanging basket of red flowers",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在右侧前景的大型装饰路灯加上一个装有红花的悬挂花篮。",
+        "instruction_noref_zh": "在选中的路灯加上一个装有红花的悬挂花篮。"
+      },
+      {
+        "object_id": 6,
+        "operation": "remove",
+        "ref": "the small ornate streetlamp at the far left",
+        "ref_zh": "最左侧的小型装饰路灯",
+        "scope": "streetlamp",
+        "scope_zh": "路灯",
+        "parent": "left_small_lamp",
+        "parent_zh": "左小灯",
+        "payload": "",
+        "instruction_zh": "移除最左侧的小型装饰路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_3868330",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "ca1380afa59d5e4dd8452e5897ac35c7b696e03c0a8084bb761ea40f6fdb0426",
+    "review_card_sha256": "75d5fb17f6e52d73f51a379d802495fb66413c3919b3cee5f249ae84f408e59a",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "37为告示板右侧面板，66为前排背向绿夹克，65为阶梯旁橙栏。告示板、人、训练设施不同父对象；多块牌归一板。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "thin_structure",
+        "occlusion"
+      ],
+      "scene_zh": "冬季户外训练设施",
+      "evidence_zh": "37为告示板右侧面板，66为前排背向绿夹克，65为阶梯旁橙栏。告示板、人、训练设施不同父对象；多块牌归一板。",
+      "specific_protection_zh": "保留训练人员、楼梯、设施承重结构和雪地。"
+    },
+    "protected_content_zh": "保留训练人员、楼梯、设施承重结构和雪地。",
+    "targets": [
+      {
+        "object_id": 37,
+        "operation": "replace",
+        "ref": "the rightmost panel of the large noticeboard",
+        "ref_zh": "大型告示板最右侧的面板",
+        "scope": "panel",
+        "scope_zh": "面板",
+        "parent": "noticeboard",
+        "parent_zh": "告示板",
+        "payload": "a white sign reading TRAINING AREA in red",
+        "instruction_zh": "将大型告示板最右侧的面板替换为一块写有红色TRAINING AREA的白色标牌。",
+        "instruction_noref_zh": "将选中的面板替换为一块写有红色TRAINING AREA的白色标牌。"
+      },
+      {
+        "object_id": 66,
+        "operation": "attribute",
+        "ref": "the olive jacket on the back-facing person nearest the noticeboard",
+        "ref_zh": "离告示板最近的背向人物的橄榄绿夹克",
+        "scope": "jacket",
+        "scope_zh": "夹克",
+        "parent": "back_facing_person",
+        "parent_zh": "背向人",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将离告示板最近的背向人物的橄榄绿夹克的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的夹克的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 65,
+        "operation": "add",
+        "ref": "the orange railing just left of the noticeboard",
+        "ref_zh": "告示板左侧的橙色栏杆",
+        "scope": "railing",
+        "scope_zh": "栏杆",
+        "parent": "training_structure",
+        "parent_zh": "训练设施",
+        "payload": "a small yellow safety plaque",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在告示板左侧的橙色栏杆加上一块小黄色安全提示牌。",
+        "instruction_noref_zh": "在选中的栏杆加上一块小黄色安全提示牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

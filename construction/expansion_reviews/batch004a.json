@@ -1,0 +1,512 @@
+[
+  {
+    "source_id": "sa_10653390",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "b74d928110416ceef8f342da6b3ef7dd0a4af139769791cf5e4db9e799034c19",
+    "review_card_sha256": "9d143c47c859fa85e9dd2062646de7e0ce2ed3a8dbef9b995b66cf9e4b00218e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "帽8属于农夫，55是独立背负设备主体，分割避开肩膀和手臂。保持黑白摄影，不为颜色制造任务；换遮阳帽和给设备贴编号都符合农务场景。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "黑白农田照片中的农夫与背负喷雾器",
+      "evidence_zh": "帽8属于农夫，55是独立背负设备主体，分割避开肩膀和手臂。保持黑白摄影，不为颜色制造任务；换遮阳帽和给设备贴编号都符合农务场景。",
+      "specific_protection_zh": "保留黑白影调、农夫身体、喷雾软管、喷头和植物。"
+    },
+    "protected_content_zh": "保留黑白影调、农夫身体、喷雾软管、喷头和植物。",
+    "targets": [
+      {
+        "object_id": 8,
+        "operation": "replace",
+        "ref": "the farmer’s cap",
+        "ref_zh": "农夫的帽子",
+        "scope": "cap",
+        "scope_zh": "帽子",
+        "parent": "farmer",
+        "parent_zh": "农夫",
+        "payload": "a wide-brimmed canvas field hat",
+        "instruction_zh": "将农夫的帽子替换为一顶宽檐帆布田间帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶宽檐帆布田间帽。"
+      },
+      {
+        "object_id": 55,
+        "operation": "add",
+        "ref": "the backpack sprayer",
+        "ref_zh": "背负式喷雾器",
+        "scope": "sprayer",
+        "scope_zh": "喷雾器",
+        "parent": "sprayer",
+        "parent_zh": "背负式喷雾器",
+        "payload": "a small white label reading “A-12”",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在背负式喷雾器加上一张写有“A-12”的小白标签。",
+        "instruction_noref_zh": "在选中的喷雾器加上一张写有“A-12”的小白标签。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10656930",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "867e3ba6f4f6ad1629a7b7c94f8d5f53d57284c7cd654e075b75dbbbfed2ff38",
+    "review_card_sha256": "ade3218cc59d11f53f124f25c987fb2e00b9dbe43bd5222b4b642e293e0f48d2",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12是左前景拍摄者的背包；20是其身后被手臂分割的白手袋；61是横幅右端人物的紫色小包；83是最右侧人的棕色开衫。各包为独立实体，不依赖标语内容来编造编辑。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "thin_structures",
+        "disconnected_parts",
+        "neighbor_protection"
+      ],
+      "scene_zh": "街头集会中的包袋与右侧上衣",
+      "evidence_zh": "12是左前景拍摄者的背包；20是其身后被手臂分割的白手袋；61是横幅右端人物的紫色小包；83是最右侧人的棕色开衫。各包为独立实体，不依赖标语内容来编造编辑。",
+      "specific_protection_zh": "保留人物皮肤、头饰、横幅文字、手机、扩音器和相邻服装。"
+    },
+    "protected_content_zh": "保留人物皮肤、头饰、横幅文字、手机、扩音器和相邻服装。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "replace",
+        "ref": "the foreground photographer’s patterned backpack",
+        "ref_zh": "前景拍摄者的花纹背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "patterned_backpack",
+        "parent_zh": "前景花纹背包",
+        "payload": "a black roll-top backpack",
+        "instruction_zh": "将前景拍摄者的花纹背包替换为一个黑色卷口背包。",
+        "instruction_noref_zh": "将选中的背包替换为一个黑色卷口背包。"
+      },
+      {
+        "object_id": 20,
+        "operation": "add",
+        "ref": "the white handbag behind the backpack wearer",
+        "ref_zh": "背包佩戴者身后的白色手袋",
+        "scope": "handbag",
+        "scope_zh": "手袋",
+        "parent": "white_bag",
+        "parent_zh": "白色手袋",
+        "payload": "a small pink ribbon bow",
+        "placement": {
+          "relation": "to",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在背包佩戴者身后的白色手袋加上一个小粉色丝带蝴蝶结。",
+        "instruction_noref_zh": "在选中的手袋加上一个小粉色丝带蝴蝶结。"
+      },
+      {
+        "object_id": 61,
+        "operation": "remove",
+        "ref": "the purple bag at the banner’s right edge",
+        "ref_zh": "横幅右端的紫色包",
+        "scope": "bag",
+        "scope_zh": "包",
+        "parent": "purple_bag",
+        "parent_zh": "横幅右端紫包",
+        "payload": "",
+        "instruction_zh": "移除横幅右端的紫色包。",
+        "instruction_noref_zh": "移除选中的包。"
+      },
+      {
+        "object_id": 83,
+        "operation": "attribute",
+        "ref": "the rightmost person’s brown cardigan",
+        "ref_zh": "最右侧人物的棕色开衫",
+        "scope": "cardigan",
+        "scope_zh": "开衫",
+        "parent": "right_person",
+        "parent_zh": "最右侧人物",
+        "payload": "teal",
+        "attribute_kind": "color",
+        "instruction_zh": "将最右侧人物的棕色开衫的颜色改为青绿色。",
+        "instruction_noref_zh": "将选中的开衫的颜色改为青绿色。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10659195",
+    "decision": "reject",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d4104d74dccbce7639ea7dc07f0a8c3288a42d2da16c3e3f0f22455e522d5125",
+    "review_card_sha256": "6eb00aaf0ec968fa42cd3e4612dbd34f3328677e168a162aafe5c894ce26e562",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "图中的衣物、人物和光环均属于同一块实物彩绘窗的图案，不能作为多个独立实体对象。",
+    "difficulty": {
+      "mechanisms": [],
+      "scene_zh": "彩绘玻璃窗",
+      "evidence_zh": "图中的衣物、人物和光环均属于同一块实物彩绘窗的图案，不能作为多个独立实体对象。",
+      "specific_protection_zh": ""
+    },
+    "protected_content_zh": "",
+    "targets": [],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10662912",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "f53be516c06dc4454de79bf0199318bddd2b74f8964f8447f87a32c4d771a6d7",
+    "review_card_sha256": "9eb7430bb4114b934f0d26ec47576f8e2aafcd3d434f03dc1f86333321455268",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "16为近处吊灯及细长悬挂线；0为最右上方完整窗格，属于建筑，与灯具父对象不同。不选择填入背景的阳台栏杆。磨砂玻璃和球形灯罩替换是正常室内设计修改。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "大厅顶棚的吊灯与侧窗",
+      "evidence_zh": "16为近处吊灯及细长悬挂线；0为最右上方完整窗格，属于建筑，与灯具父对象不同。不选择填入背景的阳台栏杆。磨砂玻璃和球形灯罩替换是正常室内设计修改。",
+      "specific_protection_zh": "保留窗框结构、墙面、阳台栏杆、其他灯具和顶棚。"
+    },
+    "protected_content_zh": "保留窗框结构、墙面、阳台栏杆、其他灯具和顶棚。",
+    "targets": [
+      {
+        "object_id": 16,
+        "operation": "replace",
+        "ref": "the nearest pendant light",
+        "ref_zh": "最近的吊灯",
+        "scope": "pendant light",
+        "scope_zh": "吊灯",
+        "parent": "nearest_pendant",
+        "parent_zh": "近处吊灯",
+        "payload": "an opal-glass globe pendant",
+        "instruction_zh": "将最近的吊灯替换为一盏乳白玻璃球形吊灯。",
+        "instruction_noref_zh": "将选中的吊灯替换为一盏乳白玻璃球形吊灯。"
+      },
+      {
+        "object_id": 0,
+        "operation": "attribute",
+        "ref": "the upper-right window",
+        "ref_zh": "右上方的窗户",
+        "scope": "window",
+        "scope_zh": "窗户",
+        "parent": "building",
+        "parent_zh": "大厅建筑",
+        "payload": "frosted glass",
+        "attribute_kind": "material",
+        "instruction_zh": "将右上方的窗户的材质改为磨砂玻璃。",
+        "instruction_noref_zh": "将选中的窗户的材质改为磨砂玻璃。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10669918",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "d6e7bb289b990b22a2f823c690ce98843f12d7cc9c7011e5c787c5d64b43d718",
+    "review_card_sha256": "e8182bd6d4f0b2051c55f8e495933fc4a1fcdc0eb2da04251d102a29217fb610",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "12为武士金属头盔，3为最左边观众的条纹软帽，35为木栏后地面的独立黑背包，14为带多处空隙的整个围栏。不同人物和独立设施分开计数，标牌固定在栏杆上。",
+    "difficulty": {
+      "mechanisms": [
+        "holes",
+        "thin_structures",
+        "occlusion",
+        "neighbor_protection"
+      ],
+      "scene_zh": "历史表演场的武士、观众和木栏",
+      "evidence_zh": "12为武士金属头盔，3为最左边观众的条纹软帽，35为木栏后地面的独立黑背包，14为带多处空隙的整个围栏。不同人物和独立设施分开计数，标牌固定在栏杆上。",
+      "specific_protection_zh": "保留盔甲其余部分、观众皮肤、草地和被木栏遮挡的衣服。"
+    },
+    "protected_content_zh": "保留盔甲其余部分、观众皮肤、草地和被木栏遮挡的衣服。",
+    "targets": [
+      {
+        "object_id": 12,
+        "operation": "attribute",
+        "ref": "the foreground knight’s helmet",
+        "ref_zh": "前景武士的头盔",
+        "scope": "helmet",
+        "scope_zh": "头盔",
+        "parent": "knight",
+        "parent_zh": "前景武士",
+        "payload": "brass",
+        "attribute_kind": "material",
+        "instruction_zh": "将前景武士的头盔的材质改为黄铜。",
+        "instruction_noref_zh": "将选中的头盔的材质改为黄铜。"
+      },
+      {
+        "object_id": 3,
+        "operation": "replace",
+        "ref": "the striped floppy hat at the far left",
+        "ref_zh": "最左侧的条纹软帽",
+        "scope": "hat",
+        "scope_zh": "帽子",
+        "parent": "left_spectator",
+        "parent_zh": "最左侧戴帽观众",
+        "payload": "a plain straw sunhat",
+        "instruction_zh": "将最左侧的条纹软帽替换为一顶素色草编遮阳帽。",
+        "instruction_noref_zh": "将选中的帽子替换为一顶素色草编遮阳帽。"
+      },
+      {
+        "object_id": 35,
+        "operation": "remove",
+        "ref": "the black backpack on the ground behind the fence",
+        "ref_zh": "围栏后地上的黑色背包",
+        "scope": "backpack",
+        "scope_zh": "背包",
+        "parent": "ground_backpack",
+        "parent_zh": "地面黑背包",
+        "payload": "",
+        "instruction_zh": "移除围栏后地上的黑色背包。",
+        "instruction_noref_zh": "移除选中的背包。"
+      },
+      {
+        "object_id": 14,
+        "operation": "add",
+        "ref": "the foreground wooden fence",
+        "ref_zh": "前景木围栏",
+        "scope": "fence",
+        "scope_zh": "围栏",
+        "parent": "fence",
+        "parent_zh": "木围栏",
+        "payload": "a small wooden “VIEWING AREA” sign",
+        "placement": {
+          "relation": "mounted on",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在前景木围栏加上一块写有“VIEWING AREA”的小木牌。",
+        "instruction_noref_zh": "在选中的围栏加上一块写有“VIEWING AREA”的小木牌。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10677079",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8003c7309cae79d953988928d5dacd8af9785f1371bb5e1ddcb3fa45017ea411",
+    "review_card_sha256": "cfb6bee74a870bbf5e948bb9f8aee2874d1409541e1986b5333b0e4a68398a4e",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "13是被长发遮挡的游客红花衣服，10是最左蓝色独立画板，6是最右侧完整佛像绘画板。画板按真实承载板编辑，不把其画中人物当作真实人。",
+    "difficulty": {
+      "mechanisms": [
+        "occlusion",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "佛像前的游客与独立展示画板",
+      "evidence_zh": "13是被长发遮挡的游客红花衣服，10是最左蓝色独立画板，6是最右侧完整佛像绘画板。画板按真实承载板编辑，不把其画中人物当作真实人。",
+      "specific_protection_zh": "保留游客头发、皮肤、佛像、其余画板和平台。"
+    },
+    "protected_content_zh": "保留游客头发、皮肤、佛像、其余画板和平台。",
+    "targets": [
+      {
+        "object_id": 13,
+        "operation": "attribute",
+        "ref": "the foreground woman’s red floral dress",
+        "ref_zh": "前景女子的红色碎花裙",
+        "scope": "dress",
+        "scope_zh": "裙子",
+        "parent": "foreground_woman",
+        "parent_zh": "前景女子",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将前景女子的红色碎花裙的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的裙子的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 10,
+        "operation": "remove",
+        "ref": "the blue painted panel at the far left",
+        "ref_zh": "最左侧的蓝色绘画板",
+        "scope": "painted panel",
+        "scope_zh": "绘画板",
+        "parent": "left_panel",
+        "parent_zh": "左侧蓝画板",
+        "payload": "",
+        "instruction_zh": "移除最左侧的蓝色绘画板。",
+        "instruction_noref_zh": "移除选中的绘画板。"
+      },
+      {
+        "object_id": 6,
+        "operation": "add",
+        "ref": "the rightmost painted panel",
+        "ref_zh": "最右侧的绘画板",
+        "scope": "painted panel",
+        "scope_zh": "绘画板",
+        "parent": "right_panel",
+        "parent_zh": "最右绘画板",
+        "payload": "a slim gold frame",
+        "placement": {
+          "relation": "around",
+          "site": "",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最右侧的绘画板加上一个细金色框。",
+        "instruction_noref_zh": "在选中的绘画板加上一个细金色框。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10682062",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "8ca7454ed3f9bf94d0d758449df66fee4ac713b82e2c0ca857f5e40f042dff71",
+    "review_card_sha256": "fbba0a68b9c8fd630e79b575958a5cfdc15cce3fdd393f19327b8fae987776ec",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "9为画面右上近处的吊线灯，12为教堂尖顶左侧中距离的另一盏。两者属于不同灯具，mask只包含灯头、不包含共用电线；不把教堂屋顶拆成多目标。",
+    "difficulty": {
+      "mechanisms": [
+        "small_targets",
+        "similar_instances",
+        "neighbor_protection"
+      ],
+      "scene_zh": "教堂前道路上不同距离的悬吊路灯",
+      "evidence_zh": "9为画面右上近处的吊线灯，12为教堂尖顶左侧中距离的另一盏。两者属于不同灯具，mask只包含灯头、不包含共用电线；不把教堂屋顶拆成多目标。",
+      "specific_protection_zh": "保留悬挂电线、教堂、沿街建筑及更远灯具。"
+    },
+    "protected_content_zh": "保留悬挂电线、教堂、沿街建筑及更远灯具。",
+    "targets": [
+      {
+        "object_id": 9,
+        "operation": "replace",
+        "ref": "the top-right suspended streetlight",
+        "ref_zh": "右上方悬吊的路灯",
+        "scope": "streetlight",
+        "scope_zh": "路灯",
+        "parent": "top_right_light",
+        "parent_zh": "右上吊线路灯",
+        "payload": "a round opal-glass pendant light",
+        "instruction_zh": "将右上方悬吊的路灯替换为一盏圆形乳白玻璃吊灯。",
+        "instruction_noref_zh": "将选中的路灯替换为一盏圆形乳白玻璃吊灯。"
+      },
+      {
+        "object_id": 12,
+        "operation": "remove",
+        "ref": "the suspended streetlight left of the church spire",
+        "ref_zh": "教堂尖顶左侧悬吊的路灯",
+        "scope": "streetlight",
+        "scope_zh": "路灯",
+        "parent": "middle_light",
+        "parent_zh": "中距离吊线路灯",
+        "payload": "",
+        "instruction_zh": "移除教堂尖顶左侧悬吊的路灯。",
+        "instruction_noref_zh": "移除选中的路灯。"
+      }
+    ],
+    "rejected_targets": []
+  },
+  {
+    "source_id": "sa_10688179",
+    "decision": "accept",
+    "review_kind": "ai_direct_visual",
+    "reviewer": "assistant",
+    "review_date": "2026-10-14",
+    "independent_human_verified": false,
+    "source_viewed": true,
+    "selected_mask_overlays_viewed": true,
+    "source_sha256": "bbf5fa318055ec4239bc2515b1400aced3bc69cdc0322311c6230a730e204b14",
+    "review_card_sha256": "0cf288400cb8aa0a1593098f32fe30675df30ab047682defb45c1f7ec237745f",
+    "review_card_name": "candidate.jpg",
+    "evidence_zh": "5为红绿骑术背心，不含白衬衫；24为最近的黄色绕杆；19为背景CATERING文字牌面。三个实体归属骑手、独立绕杆和独立横牌。旗子直接安在绕杆顶。",
+    "difficulty": {
+      "mechanisms": [
+        "thin_structures",
+        "small_targets",
+        "neighbor_protection"
+      ],
+      "scene_zh": "骑马儿童与绕杆场地",
+      "evidence_zh": "5为红绿骑术背心，不含白衬衫；24为最近的黄色绕杆；19为背景CATERING文字牌面。三个实体归属骑手、独立绕杆和独立横牌。旗子直接安在绕杆顶。",
+      "specific_protection_zh": "保留骑手皮肤、白衬衫、马匹、其他绕杆和背景人物。"
+    },
+    "protected_content_zh": "保留骑手皮肤、白衬衫、马匹、其他绕杆和背景人物。",
+    "targets": [
+      {
+        "object_id": 5,
+        "operation": "attribute",
+        "ref": "the rider’s red-and-green vest",
+        "ref_zh": "骑手的红绿背心",
+        "scope": "vest",
+        "scope_zh": "背心",
+        "parent": "rider",
+        "parent_zh": "骑手",
+        "payload": "navy blue",
+        "attribute_kind": "color",
+        "instruction_zh": "将骑手的红绿背心的颜色改为藏蓝色。",
+        "instruction_noref_zh": "将选中的背心的颜色改为藏蓝色。"
+      },
+      {
+        "object_id": 24,
+        "operation": "add",
+        "ref": "the nearest yellow slalom pole",
+        "ref_zh": "最近的黄色绕杆",
+        "scope": "pole",
+        "scope_zh": "绕杆",
+        "parent": "near_pole",
+        "parent_zh": "最近黄色绕杆",
+        "payload": "a small red flag",
+        "placement": {
+          "relation": "on",
+          "site": "top",
+          "anchor_mode": "support"
+        },
+        "instruction_zh": "在最近的黄色绕杆顶部加上一面小红旗。",
+        "instruction_noref_zh": "在选中的绕杆顶部加上一面小红旗。"
+      },
+      {
+        "object_id": 19,
+        "operation": "remove",
+        "ref": "the “CATERING” sign",
+        "ref_zh": "写有“CATERING”的标牌",
+        "scope": "sign",
+        "scope_zh": "标牌",
+        "parent": "catering_sign",
+        "parent_zh": "CATERING牌",
+        "payload": "",
+        "instruction_zh": "移除写有“CATERING”的标牌。",
+        "instruction_noref_zh": "移除选中的标牌。"
+      }
+    ],
+    "rejected_targets": []
+  }
+]

@@ -81,3 +81,21 @@ def test_protocol_release_rejects_silent_noref_drift(tmp_path):
     write_jsonl(manifest, cases)
     with pytest.raises(ValueError, match="semantic"):
         load_cases(manifest)
+
+
+def test_blind_protocol_is_checked_without_rewriting_legacy_release(tmp_path):
+    from samtok_benchmark.v2.instruction_protocol import render, mask_contract
+
+    cases = load_cases(Path(__file__).parents[1] / 'data/v2/cases.jsonl')[:1]
+    unit = cases[0]['units'][0]
+    unit['instruction_spec']['version'] = '2.0'
+    unit['instruction_protocol_version'] = '2.0'
+    unit['instruction_noref'] = render(unit['instruction_spec'], False)
+    unit['mask_semantics'] = mask_contract(unit['instruction_spec'])
+    manifest = tmp_path / 'mixed_versions.jsonl'
+    write_jsonl(manifest, cases)
+    assert load_cases(manifest)[0]['units'][0]['instruction_protocol_version'] == '2.0'
+    unit['instruction_noref'] = unit['instruction_noref'].replace('the selected region', 'the selected object')
+    write_jsonl(manifest, cases)
+    with pytest.raises(ValueError, match='blind'):
+        load_cases(manifest)

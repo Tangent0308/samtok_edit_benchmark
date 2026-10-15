@@ -26,12 +26,13 @@ def test_direct_attachment_site_below_does_not_become_remote_anchor():
         },
     )
     assert mask_contract(spec)["anchor_mode"] == "support"
-    assert "area below the cuff of the selected sleeve" in render(spec, False)
+    assert render(spec, False) == "Add a red patch sewn onto the selected region."
+    assert mask_contract(spec)["source_region_resolution_required"]
     with pytest.raises(ValueError, match="explicitly reviewed"):
         design_spec("A", "the left sleeve", "sleeve", "a red patch below its cuff")
 
 
-def test_host_subpart_requires_local_execution_but_keeps_host_selector():
+def test_host_subpart_requires_resolution_and_blind_region_selector():
     spec = make_spec(
         "attribute",
         "the third chair from the front",
@@ -43,7 +44,7 @@ def test_host_subpart_requires_local_execution_but_keeps_host_selector():
     assert mask_contract(spec)["execution_region_required"]
     assert (
         render(spec, False)
-        == "Change the color of the wooden frame of the selected chair to white."
+        == "Change the color of the selected region to white."
     )
 
 

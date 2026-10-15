@@ -10,7 +10,8 @@ from PIL import Image
 
 from samtok_benchmark.io import asset_path, read_jsonl, sha256_file, write_json
 from samtok_benchmark.v2 import OPERATIONS, SCHEMA_VERSION
-from samtok_benchmark.v2.instruction_protocol import VERSION, validate_pair, mask_contract
+from samtok_benchmark.v2 import instruction_protocol
+from samtok_benchmark.v2 import _legacy_instruction_protocol_v1
 
 
 def interaction_name(unit):
@@ -60,15 +61,20 @@ def load_cases(manifest: Path) -> list[dict]:
                     raise ValueError(f"empty unit field: {field}")
             if unit.get("instruction_protocol_version") or unit.get("instruction_spec"):
                 spec = unit.get("instruction_spec", {})
+                # Validate frozen releases under their declared protocol;
+                # never silently re-render historical annotations as 2.0.
+                protocol = {"1.0": _legacy_instruction_protocol_v1,
+                            "2.0": instruction_protocol}.get(spec.get("version"))
                 if (
-                    unit.get("instruction_protocol_version") != VERSION
+                    protocol is None
+                    or unit.get("instruction_protocol_version") != protocol.VERSION
                     or spec.get("operation") != unit["operation"]
                 ):
                     raise ValueError("instruction protocol operation/version mismatch")
                 if spec.get("ref") != target.get("ref") or spec.get("scope") != target.get("scope"):
                     raise ValueError("instruction source selection mismatch")
-                validate_pair(spec, unit["instruction_ref"], unit["instruction_noref"])
-                if unit.get("mask_semantics") and unit["mask_semantics"] != mask_contract(spec):
+                protocol.validate_pair(spec, unit["instruction_ref"], unit["instruction_noref"])
+                if unit.get("mask_semantics") and unit["mask_semantics"] != protocol.mask_contract(spec):
                     raise ValueError("mask semantics differ from instruction contract")
             if unit["operation"] == "add":
                 if unit.get("edit_contract", {}).get("locator_semantics") != "addition_support":

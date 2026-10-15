@@ -1,0 +1,28 @@
+{
+  "status": "open",
+  "review_scope": "publication layout spot check; not an exhaustive new semantic audit",
+  "manifest_unchanged": true,
+  "affected_cases": 1,
+  "affected_units": 2,
+  "issues": [
+    {
+      "case_id": "v2-sa_9357354",
+      "pdf_page": 1084,
+      "unit_id": "U1",
+      "severity": "instruction_semantics",
+      "instruction": "Change the color of the selected dancer to blue.",
+      "problem_zh": "源 mask 选择整个人，指令直接给舞者改色，未明确服装或具体部件；不符合人物/服装层级和自然编辑要求。",
+      "recommendation_zh": "回到作者记录，将所改服装及其 target_part 明确写出，或改用准确服装 mask；随后重走可视复核及构建校验。"
+    },
+    {
+      "case_id": "v2-sa_9357354",
+      "pdf_page": 1084,
+      "unit_id": "U2",
+      "severity": "instruction_semantics",
+      "instruction": "Replace the dancer near the center with a red outfit.",
+      "problem_zh": "被替换对象是舞者，替换物却是服装，源对象与结果层级不一致。",
+      "recommendation_zh": "明确替换舞者的某件衣物，保留人物身份与其余部位；同步作者记录、Ref/No-ref、中文和 mask 语义契约，再复核。"
+    }
+  ],
+  "independent_human_verified": false
+}

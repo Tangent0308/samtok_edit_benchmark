@@ -1,8 +1,8 @@
 # SAMTok Benchmark v2：SA-1B 多对象细粒度交互编辑
 
-当前唯一版本为 **v2 / release 2.4.0：200 张 SA-1B 源图、785 个独立目标，每图 2–5 个目标**。全部源图与所选 mask 及任务在 2.2.0 阶段已由 assistant 逐图查看。本次 2.4.0 原地修正指代、直接附着关系和安装部位，统一 benchmark 与训练数据的 instruction / mask 协议。原图、区域和交互形式保持不变；核查证据见 data/v2/protocol_alignment_review.json。当前冻结的是源图、任务和交互标注，尚无模型编辑结果或独立人工验收。
+当前版本为 **v2 / release 2.5.0：1,084 张不同 SA-1B 源图、3,872 个独立编辑目标，每图 2–5 个目标**。包括原版 200 张和新增 884 张；所有 case 至少混合两种交互形式。四类任务基本均衡，全部 980 条 add 使用直接承载或附着锚点。源图、mask、任务和交互已冻结，完成构建与全量资产校验；尚无模型编辑结果和独立人工验收。
 
-此文档是仓库主说明；[统一协议](docs/INSTRUCTION_PROTOCOL_ZH.md)与[本次核查记录](docs/INSTRUCTION_ALIGNMENT_20261013_ZH.md)分别维护规范正文和检查证据。审核包和数据目录中的同名内容是发布副本。旧 212 条和旧说明已退出当前清单，历史保存在 Git 与数据归档目录；不与这 200 条混合统计。
+此文档维护当前规模、任务设置与发布入口；[统一协议](docs/INSTRUCTION_PROTOCOL_ZH.md)维护 instruction / mask 规范，[扩充过程](docs/BENCHMARK_EXPANSION_1K_ZH.md)记录视觉审核依据，[原版协议迁移记录](docs/INSTRUCTION_ALIGNMENT_20261013_ZH.md)仅描述原版 200 张。当前完整元数据为 `data/v2_1084/`；`data/v2/` 保留原版 200 张供追溯，旧 `data/v2_1k/` 是未验收模板草稿，不用于评测。
 
 ## 1. 评测目标与判定方式
 
@@ -30,23 +30,22 @@
 - Dense TFRecord：`/mnt/hdfs/byte_ttlive_strategy_llm/user/haobo.yuan/datasets/sa1b_dense_label/annotation/`。
 - Dense 索引：上述目录的 `all1000.index`。
 - 当前源素材及筛选过程：`/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/sa1b_source_selection/`。
-- 正式来源追溯：仓库 `data/v2/provenance.jsonl`，记录 SA ID、所选原 object_id、原始/解析后的 TFRecord 文件、offset、length、原素材清单 SHA256 和训练目录匹配。
+- 正式来源追溯：当前 `data/v2_1084/cases.jsonl` 保存 SA ID、原 object_id、源图与 mask 哈希以及审查记录。原版详细 TFRecord 追溯保留在 `data/v2/provenance.jsonl`；新增作者记录及修订保存在 `construction/expansion_reviews/`。
 
 索引中的旧 `/mnt/hdfs/sg_byte_ttlive_strategy_llm/` 前缀解析为本机 `/mnt/hdfs/byte_ttlive_strategy_llm/`。按已给出的偏移读取记录，不重建图片全量索引。原始 RLE 和所选区域清单保存在 `sa1b_source_selection/selected_sources.jsonl`；正式 PNG 记录逐文件 SHA256。
 
 ## 3. 如何挑选和筛选
 
-先按固定 seed 抽样读取标注并安排候选查看顺序，再实际查看图片决定入选。初始 seed 20261011 抽 800 条，取回优先候选 320 张，另外补充器物等方向 74 张；扩充 seed 20261012 再抽不重叠的 2,000 条，取回 850 张。累计数字如下，阶段不是相加关系。
+原版通过场景初筛和逐目标细查保留 200 张；扩充阶段逐图查看原图、mask 裁剪和全图定位，并冻结决定。两阶段统计单独记录，不把取回图片、模型提议或备用样本算作正式样本。
 
-| 阶段 | 数量 |
-| --- | --- |
-| 解析 dense 标注 | 2800 |
-| 取回候选图片 | 1244 |
-| 实际查看原图场景 | 622 |
-| 进一步检查原图、叠加图和局部并记录决定 | 252 |
-| 细查后保留 | 200 |
-| 细查后备用 | 41 |
-| 细查后淘汰 | 11 |
+| 阶段 | 原版 | 扩充阶段 |
+| --- | ---: | ---: |
+| 逐图细查并冻结决定 | 252 | 964 |
+| 接受且完成构建校验 | 200 | 884 |
+| 保留待补查 | 41 | 75 |
+| 不采用 | 11 | 5 |
+
+扩充阶段视觉接受率 884/964 = 91.7%；该值是 benchmark 输入筛选结果。新增接受样本的构建校验为 884/884；两者均不是训练 pipeline 的目标图审核通过率。累计 1,084 个源图 SHA256 唯一。
 
 候选召回先排除 sky/ground/wall 等背景类别，并把面积约 0.08%–30%、重复类别、部件关键词、较小区域较多的图片排前。初始排序分数为 `2×min(重复量,12)+min(部件量,15)+min(小区域量,12)+min(候选量,12)`，仅用于安排查看顺序。类别重复、面积小、mask 多都不能单独构成入选证据。
 
@@ -57,7 +56,7 @@
 3. 对照较大原图、mask 叠加和目标局部，检查实物归属、全部可见部分、遮挡关系、孔洞、边缘及需要保护的邻居。同一对象分离的可见块保留为一个 U。
 4. 目标足够清晰且指代可写；纯 ref 使用方位、所属人物/物体及部件关系区分实例。point/box 可以含更强的干扰，但真实目标必须可识别。
 5. 舍弃 mask 把背景孔洞填满、整个人误标为衣物、错误覆盖邻居、目标明显失焦、镜面/印刷物冒充实物、同一实物重复计数等问题；可只剔除某张图的不合格 mask。
-6. 未看过、未记录 accept、备用及淘汰项均不进入正式 200 条。所有入选图本轮又查看并写任务；审查归属如实记录为 `ai_direct_visual`，不冒充人工验收。
+6. 未看过、未记录 accept、备用及淘汰项均不进入正式集合。所有入选图均有实际看图与任务记录；审查归属如实记录为 `ai_direct_visual`，不冒充人工验收。
 
 场景初筛 `review/scene_review.tsv`、细查决定 `review/decisions.jsonl`、候选图片 `candidates/`、检索/审图脚本 `scripts/` 均在源素材过程目录。仓库 `data/v2/selection/` 保存关键筛选日志、统计及原 RLE 验证结果。指令审查记录在 `data/v2/instruction_reviews.jsonl`，对应 50 张四图审查页的路径和 SHA256；大图回看保留在各源图的 `review.jpg`。
 
@@ -67,7 +66,7 @@
 
 mask 使用 dense annotation 中该目标原始可见区域，转为与原图同尺寸的 0/255 PNG；逐像素与原 RLE 核对，不扩张、补画或合并不同实物。box 为 mask 紧致轴对齐框，整数 xyxy，右下不含。point 取 mask 内距边界最远的像素，保证落在目标内；这是确定性构造点，不代表真实用户点击分布。
 
-英文 ref 由本轮逐图编写，中文给出对应实例/部件；无 ref 的指令仅用 `the selected <part type>` 表明粒度，不泄露完整位置描述。mask 是所选对象/部件的定位范围：196 个 add 定位承载物或安装部位，77 个 remove 进一步明确其中子部件，余下 512 个直接针对所选可见对象或部件。衣领、logo、衣袖等子部件任务不能被误评为“必须改完整件衣服”。
+英文 ref 由本轮逐图编写，中文给出对应实例/部件；无 ref 的指令仅用 `the selected <part type>` 表明粒度，不泄露完整位置描述。mask 是所选对象/部件的定位范围。全部 980 个 add 定位现有承载物或附着部位；remove、replace、attribute 定位被编辑的对象或包含指定子部件的宿主。子部件必须在指令中明确，不能将其扩大为整个宿主。
 
 **Add 的区域语义（benchmark DCO contract）：** add 的公开 mask、box 或 point 标记的是源图中已经存在的承载物/安装面，即新增物体的锚点（host/attachment anchor），不标记新增物体在结果图中的预计轮廓，也不是输出差分金标准。新增物体在 source 中不存在；因此 instruction 使用 `Add <new item> to/on/onto <target>.`，其中 `<target>` 与该锚点绑定，原承载物必须保留，新增物体必须以指令要求的数量、位置和接触关系附着到该锚点。add 的 `edit_contract.locator_semantics` 为 `addition_support`；其允许的结果变化可以因连接、遮挡、边缘、光照或阴影而超出锚点，但不能借此改动无关对象。评测时应检查新增物体是否出现、是否附着在指定锚点、原承载物及邻近内容是否保持，以及整体编辑质量。
 
@@ -75,13 +74,13 @@ mask 使用 dense annotation 中该目标原始可见区域，转为与原图同
 
 | 正式模式 | 目标数 |
 | --- | --- |
-| noref+point | 113 |
-| ref+box | 112 |
-| noref+mask | 112 |
-| ref+none | 112 |
-| ref+mask | 112 |
-| noref+box | 112 |
-| ref+point | 112 |
+| noref+point | 554 |
+| ref+box | 553 |
+| noref+mask | 553 |
+| ref+none | 553 |
+| ref+mask | 553 |
+| noref+box | 553 |
+| ref+point | 553 |
 
 `ref+none` 是纯 ref。公开输入不会附送其 point/box/mask；no-ref 不附送私有 full ref。中文翻译默认仅供审核。审核页“全部 ref”会把私有目标标签画到原图，用于复核；**不等同于模型的正式输入**。
 
@@ -141,136 +140,100 @@ Attribute 支持 color/material/finish/pattern/texture/text；透明物染色用
 
 检查依次覆盖：原图/mask 绑定及几何；逐条 Ref/No-ref 等价与规范；图像中的实例归属和最接近竞争目标；操作自然性与类别边界；add 接触关系和局部位置；生成后完成度、非目标保护和自然质量。自动校验、模型视觉审核、assistant 目视复核和独立人工验收分别记录，不能互相冒充。
 
-本版 785 条正式英文指令：Ref 平均 16.63 词、中位 17、最长 27；No-ref 平均 9.75 词、中位 10、最长 18。属性任务当前覆盖颜色/染色与材质，协议允许的其他属性不等于本版全部覆盖。四类按目标计最多相差 1 个；2–4 目标图不重复操作类型，5 目标图覆盖四类且一类重复。这是 benchmark case 组合设置，不是单条 instruction 的语法要求。
+本版 3,872 组 Ref / No-ref：Ref 平均 13.19 词、中位 13、最长 27；No-ref 平均 8.65 词、中位 9、最长 18。指令遵循精简单句和最短无歧义目标短语；必要的部件、数量、位置与替换结果保留。长度是描述性统计，不证明语义无歧义。
 
-`construction/instructions/design.tsv` 是逐目标作者记录，`add_placements.json` 显式保存 196 条 add 的附着关系与宿主内位置，`target_parts.json` 表达必要的宿主—部件层级，`ref_corrections_zh.json` 同步中英文修订。`instruction_adapter.py` 不再扫描介词猜测锚点。自动校验与逐图核查证据见 [本次修复核查](docs/INSTRUCTION_ALIGNMENT_20261013_ZH.md)及 `data/v2/protocol_alignment_review.json`。
+原版作者记录保留于 `construction/instructions/`；新增记录、视觉审核依据与显式修订位于 `construction/expansion_reviews/`。不重写历史审核版本。当前发布清单与全量统计见 `data/v2_1084/`。
+
 
 ## 6. 当前构建结果
 
 | 编辑类型 | 目标数 | 占比 | 包含该类型的 case |
-| --- | --- | --- | --- |
-| add | 196 | 24.97% | 177 |
-| replace | 196 | 24.97% | 178 |
-| remove | 197 | 25.10% | 178 |
-| attribute | 196 | 24.97% | 167 |
+| --- | ---: | ---: | ---: |
+| add | 980 | 25.31% | 961 |
+| replace | 969 | 25.03% | 951 |
+| remove | 935 | 24.15% | 916 |
+| attribute | 988 | 25.52% | 959 |
+
+![Editing type and targets per image](docs/assets/editing_distribution_1084.png)
+
+图中内环为编辑类型，外环为该类型所在源图的目标总数，均按编辑目标计数；图片分布见下表。
 
 | 每图独立目标数 | case 数 | 占比 |
-| --- | --- | --- |
-| 2 | 26 | 13.0% |
-| 3 | 48 | 24.0% |
-| 4 | 41 | 20.5% |
-| 5 | 85 | 42.5% |
+| --- | ---: | ---: |
+| 2 | 147 | 13.56% |
+| 3 | 255 | 23.52% |
+| 4 | 597 | 55.07% |
+| 5 | 85 | 7.84% |
 
-平均每图 **3.925** 个目标。4–5 目标图共 **126 条（63%）**。5 目标图的重复类型分别为 add 19、replace 18、remove 19、attribute 29 条；完整组合分布见 `statistics.json` 的 `case_operation_combinations`。
+平均每图 **3.572** 个目标；4–5 目标图 **682 张（62.92%）**。原版与新增的目标数分布不同：新增 884 张中，2/3/4 目标分别 121/207/556 张，没有新增 5 目标图。因此总规模和编辑类型均衡不代表目标数均衡。
 
-| 难点标签（可重叠） | case 数 |
-| --- | --- |
-| 紧邻保护 | 199 |
-| 同类多实例 | 187 |
-| 遮挡 | 176 |
-| 局部部件 | 148 |
-| 细长狭窄 | 72 |
-| 小目标 | 24 |
-| 孔洞结构 | 16 |
-| 分离可见区域 | 14 |
-| 粒度差异 | 8 |
-| 动态姿态 | 3 |
-| 透明材质 | 1 |
-| 反射干扰 | 1 |
+| 主要难点标签（可重叠） | case 数 |
+| --- | ---: |
+| 同类多实例 | 279 |
+| 遮挡 | 687 |
+| 紧邻保护 | 328 |
+| 局部部件 | 152 |
+| 细长狭窄 | 156 |
+| 小目标 | 238 |
+| 孔洞结构 | 29 |
+| 分离可见区域 | 34 |
+| 反射干扰 | 56 |
+| 透视 | 117 |
 
-mask 面积占整图中位数 **0.5725%**，最小 **0.0814%**、最大 **13.1828%**；小于 1% 的有 **535/785** 个目标。**203 个目标 / 115 张图**含多个显著连通块，但仍按 785 个实物目标计数。连通块采用 4 邻接，忽略小于 max(9 像素, mask 面积 0.1%) 的分量；与“分离可见区域”人工场景标签的 14 条不是同一统计。
+展示统计合并原版中文与新增英文的同义标签，每张图每个标签只计一次；原始标签和完整映射后统计均保存在 `statistics.json`。标签依赖作者记录，不表示所有相关难点均被穷尽标注。
 
-| 操作子类 | 目标数 |
-| --- | --- |
-| R | 196 |
-| C | 179 |
-| D | 109 |
-| A | 196 |
-| D:part | 56 |
-| D:contents | 11 |
-| C:material | 13 |
-| D:hem | 3 |
-| D:lowerlegs | 18 |
-| C:tint | 4 |
+mask 面积占整图中位数 **0.5558%**，范围 **0.0097%–60.5229%**；小于 1% 的有 **2512/3872** 个目标。**586 个目标 / 418 张图**含多个显著连通块。连通块采用 4 邻接，忽略小于 max(9 像素, mask 面积 0.1%) 的分量；它与视觉难点标签不是同一统计。
 
-其中 A/R/D/C 分别对应 add/replace/remove/attribute，D:part 指删选中对象的指定子部件，D:contents 包含内容物，D:lowerlegs/D:hem 为裁去服装下段，C:material/C:tint 为材质/透明染色。全部 130 种英文部件类型及数量、操作×交互交叉表均保存在 `statistics.json`，不把近义英文名称当成严格语义 taxonomy。
+### 质量核查与评测状态
 
-### 训练目录交集与评测状态
+累计 1,084 张源图、3,872 个目标及 6,040 项源资产完成全量构建校验，manifest SHA256 为 `f90849e776ce6269d4851f4c4b1380226de65ce68a7ce4739c4769e2be609d38`。校验覆盖二值 mask、原始像素、尺寸、point/box 几何、独立目标重叠、混合交互、协议绑定、资产哈希和源图去重。每张图具有 assistant 直接视觉审核依据；**独立人工复核为 0，尚无编辑模型输出或评分**。原版 95 项测试和 200 case 浏览器检查是历史证据，不能冒充 1,084 case 的浏览器验收。
 
-`/mnt/bn/strategy-mllm-train/user/tanyue/datasets/SAMTok_Training_Data/sam_info.json` 中匹配到本版 **200/200** 张 SA ID；抽样 2800 条中匹配 2799 条。目录成员关系不等于某个 checkpoint 实际训练过，但本版不能被描述为已经审计过的独立 holdout。正式研究比较前需结合实际训练清单与近重复检查界定模型暴露情况。
+发布排版抽查发现 **1 个 case 的 2 条指令仍需修复**：`v2-sa_9357354`（完整 PDF 第 1,084 页）U1 将整个人含糊写成改蓝色，U2 将舞者替换成服装，均涉及人物与衣物层级错误。详情见 `data/v2_1084/known_issues.json`。当前包保留冻结清单供审核，未静默改写作者记录；结构/哈希校验通过不代表语义全部合格。该问题清单来自有限抽查，不能当作全量问题数，正式评测前仍需修复与复核。
 
-当前 95 项测试、全 200 case 浏览器加载与叠加检查通过；生成并校验了 200 个 native mixed 输入 job，未调用模型。源资产/标注校验通过，200 个源图 SHA256 唯一，1185 个资产逐文件核对；无模型运行、无模型得分、独立人工复核为 0。此处统计描述构建完成的任务集，不代表编辑模型已通过它。
+新增源图排除了原版和当前正式四机训练的冻结 reservoir。原版 200 张均曾匹配 `SAMTok_Training_Data/sam_info.json`；目录成员关系不等于某个 checkpoint 实际训练过。全量历史训练暴露和近重复尚未审计，不能将本版声明为已验证的独立 holdout。
 
 ## 7. 代码、数据与审核包路径
 
 | 内容 | 路径 |
 | --- | --- |
-| 唯一 v2 repo | `/opt/tiger/tanyue/samtok_edit_benchmark_v2branch`，分支 `v2branch` |
-| 唯一维护文档 | repo `README.md`；`/opt/tiger/SAMTok Benchmark v2.md` 指向它 |
-| 正式版本元数据 | repo `data/v2/`，同步到 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/benchmark/` |
-| 数据总根目录 | `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2` |
-| 正式源图 | `assets/v2-sa_<id>/source.jpg` |
-| 正式单目标 mask | `assets/v2-sa_<id>/U1.png` … `U5.png` |
-| 选区复核图 | `assets/v2-sa_<id>/selection_review.jpg`，原标注 ID 见元数据 |
-| 源素材筛选过程 | `sa1b_source_selection/`，候选/备用/原 RLE/检索日志 |
-| 指令过程 | `construction/instructions/`，design.tsv、审图 sheets、进度记录 |
-| 正式模型运行与输出 | `evaluation/`，与任务源资产分开；本版尚无运行 |
-| 历史归档 | `archive/pre_sa1b_212_v2_2.1.0/`、`archive/previous_review_packages/`，不属当前评测 |
-| 本机审核包目录 | `/opt/tiger/samtok_edit_benchmark_v2_review` |
-| 当前本机审核目录 | `evaluation/review_protocol1_release2.4.0/`（相对数据根目录） |
-| 当前正式输入 | `evaluation/inputs_release2.4.0_native/jobs.jsonl` |
-| 当前审核压缩包 | `/opt/tiger/tanyue/samtok_edit_benchmark_v2_review_release2.4.0_20261013.zip` |
-| 完整离线 PDF | 审核包内 `benchmark_all_200_cases.pdf`，200 页，每页一个 case |
+| v2 repo | `/opt/tiger/tanyue/samtok_edit_benchmark_v2branch`，分支 `v2branch` |
+| 当前完整元数据 | repo `data/v2_1084/` |
+| 当前数据根目录 | `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2` |
+| 正式源图、mask、复核图 | 数据根目录 `assets/v2-sa_<id>/` |
+| 原版 200 张追溯 | repo `data/v2/`，原始数据根 `samtok_edit_benchmark_v2/` |
+| 新增审核与修订 | repo `construction/expansion_reviews/`；扩充目录 `decisions/`、`revisions/` |
+| 当前便携审核目录 | 扩充目录 `publication_20261015/review_1084/` |
+| 当前审核压缩包 | 扩充目录 `publication_20261015/samtok_edit_benchmark_v2_review_1084_20261015.zip` |
+| 完整离线 PDF | 审核包 `benchmark_all_1084_cases.pdf`，1,084 页，每页一个 case |
 
-相对资产路径都以数据总根目录或便携包根目录为基准。仓库只保留当前任务元数据、代码、唯一说明及少量说明插图，不提交正式大图、过程图片、审核 zip、模型结果。历史 v1 单对象 API 的基础兼容代码/合成测试保留；当前数据仅 `data/v2/`，不携带旧评测清单。
+[下载全部 1,084 case 审核包](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_review_1084_20261015.zip?download=true)；[直接查看全部 case 的 PDF](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_all_1084_cases.pdf?download=true)。旧审核 zip 下载名同步指向此次完整包；旧 `all_200_cases.pdf` 保留为原版历史文件。远端状态以 `data/v2_1084/review_package.json` 发布回执为准。
 
-正式元数据：`cases.jsonl` 为完整任务；`asset_manifest.jsonl` 为 1185 项资产清单；`provenance.jsonl` 为来源；`instruction_design.jsonl` 和 `instruction_reviews.jsonl` 为逐对象设计/逐图审查；`statistics.json`、`release.json`、`validation.json` 为统计、版本和验证；`selection/` 为选择依据。`release.json` 的 manifest SHA256 绑定当前任务，编辑输入、模型输出与评分均有摘要绑定。
+相对资产路径以数据根目录或便携包根目录为基准。审核包包含全部源图、原始 mask、正式混合定位图、中英指令、全量 PDF、校验报告和冻结审核记录；大图和 zip 不纳入 Git。没有模型生成后的目标图，不附带虚构的用户审核记录。
 
-[下载完整 2.4.0 审核包](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_review_20261010.zip?download=true)；[直接查看全部 200 case 的 PDF](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_all_200_cases.pdf?download=true)。此次发布目标为 release 2.4.0 / instruction protocol 1.0，沿用旧下载名与兼容下载名；文件名中的日期不代表内部版本。远端是否已完成替换，以发布回执的 `status` 和 `remote_updated` 为准。发布脚本在单次 HF commit 中替换两个 zip、校验文件、PDF 和说明，并核验远端 SHA256。发布回执见 `data/v2/review_package.json`；包内仅记录归档前内容验证，远端回执存于仓库与 HF 同名 JSON。
-
-解压整个压缩包后，在包内运行：
-
-```bash
-python run_review.py
-# 不自动打开浏览器时：
-python run_review.py --no-browser --port 8766
-```
-
-打开 `http://127.0.0.1:8766/`。只需 Python 3.10+ 标准库与现代浏览器，不依赖编辑器的 html.showPreview 扩展。左侧选 case 后再加载图片。支持按目标数（含 5）、任务、来源、状态搜索；默认原图；一键全部 point/mask/box/ref，也可点击“全部 mask + box + ref”同时开启三层，各层可叠加，第二次点击关闭该层；逐对象也可切换。英文和中文指令同时展示，正式混合输入可恢复冻结交互形式。
-
-审核决定、每对象问题和指令建议写入包内 `reviews/review_results.json`，刷新保留，可导出 JSON。正式任务清单不会被审核建议直接改写。发布包初始没有虚构的用户复核记录。
+解压整个压缩包后运行 `python run_review.py --no-browser --port 8766`，访问 `http://127.0.0.1:8766/`。仅需 Python 3.10+ 标准库和浏览器；图片按 case 加载。也可直接打开嵌入图片的 PDF，无需启动服务。用户审核保存于 `reviews/review_results.json`，不直接改写冻结清单。
 
 ## 8. 构建、验证与运行
 
 ```bash
 cd /opt/tiger/tanyue/samtok_edit_benchmark_v2branch
 python -m pip install -e '.[dev,review]'
+export SAMTOK_BENCHMARK_ROOT=/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
 
-python construction/build_sa1b_v2.py \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
-python construction/write_document.py \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
+samtok-benchmark-v2 validate --manifest data/v2_1084/cases.jsonl \
+  --dataset-root "$SAMTOK_BENCHMARK_ROOT" --minimum-cases 1000 \
+  --output data/v2_1084/validation.json
 
-samtok-benchmark-v2 validate --manifest data/v2/cases.jsonl \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2 \
-  --minimum-cases 200 --output data/v2/validation.json
+# 只从冻结标注构造模型正式输入。
+samtok-benchmark-v2 prepare --manifest data/v2_1084/cases.jsonl \
+  --dataset-root "$SAMTOK_BENCHMARK_ROOT" --protocol native_regions_v2 \
+  --variants mixed --output /tmp/samtok_1084_native_mixed
 
-# 从冻结标注生成英文模型输入；不能直接把整个审核包喂给编辑模型。
-samtok-benchmark-v2 prepare --manifest data/v2/cases.jsonl \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2 \
-  --protocol native_regions_v2 --variants mixed \
-  --output /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/evaluation/native_mixed
-
-# output 必须是空目录；已有审核结果不会被覆盖。
-samtok-benchmark-v2 review --manifest data/v2/cases.jsonl \
-  --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2 \
-  --output /opt/tiger/samtok_edit_benchmark_v2_review
-
-python -m pytest -q
-python -m ruff check .
+# 新目录，避免覆盖已有用户审核。
+samtok-benchmark-v2 review --manifest data/v2_1084/cases.jsonl \
+  --dataset-root "$SAMTOK_BENCHMARK_ROOT" --output /tmp/samtok_1084_review
 ```
 
-重新冻结需要现有 `sa1b_source_selection/gallery_data.json`、selected 资产和指令审查 sheets；不会重新随机抽图。若改写指令，需回看相应 case、更新设计记录、重新冻结并重建审核包，不能仅改网页文案。浏览器验证还需先运行 `python -m playwright install chromium`。`construction/check_review_browser.py` 检查真实浏览器中的全部 case、图像和叠加交互；`construction/publish_review.py` 归档并校验 HF 远程 SHA256。Git 提交遵循 `feat: ...` 等标准类型信息。
+扩充与冻结记录的重放方式见 [扩充文档](docs/BENCHMARK_EXPANSION_1K_ZH.md)。原版构造器 `build_sa1b_v2.py` 和 `write_document.py` 用于复现 200 张历史版本，不用于重写当前 1,084 张文档。修改指令时须回看对应图片、更新作者记录并重新校验和打包。浏览器验收、构建校验、视觉审核和模型评测分别记录。
 
 ## 9. 可视化样例与实际双语指令
 

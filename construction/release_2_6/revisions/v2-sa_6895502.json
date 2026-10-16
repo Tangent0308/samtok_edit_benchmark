@@ -1,0 +1,31 @@
+{
+  "case_id": "v2-sa_6895502",
+  "reviewer": "shard3-b1",
+  "notes": "U1 ref named a patrol boat at the left horizon but the mask is a canopied wooden boat right of center; ref rewritten. U2 backlit trunks are already dark, value changed to bright red. U3 replace was a material change only (no natural structural replacement for a ledge someone sits on) -> attribute material. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_6895502/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["water", "backlight", "perspective"], "scene_zh": "海上跳水", "evidence_zh": "2中间偏右带篷木船、1跳水男孩泳裤、40左下前景平台边缘是三个不同对象。", "specific_protection_zh": "保留跳水者、海面和其他船只。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the right one of the two canopied wooden boats near the center", "scope": "boat"},
+     "ref_zh": "中间附近两艘带篷木船中右边的那艘",
+     "physical_parent_zh": "右侧带篷木船",
+     "parent_instance_id": "sa_6895502:canopied_boat",
+     "instruction_ref_zh": "移除中间附近两艘带篷木船中右边的那艘。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Mask (box 1354,715,1590,798, cx 0.60) is a canopied wooden boat; another canopied boat sits just left of it (x~1075-1280); the ship at the left horizon is a different vessel."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the swim trunks of the boy jumping into the sea", "payload": "bright red", "attributes": [{"property": "color", "value": "bright red"}]},
+     "ref_zh": "跳入海中的男孩的泳裤",
+     "instruction_ref_zh": "将跳入海中的男孩的泳裤的颜色改为鲜红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为鲜红色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Backlit trunks are already dark navy/purple; 'deep blue' would be a near no-op."},
+    {"id": "U3", "action": "revise",
+     "spec": {"operation": "attribute", "ref": "the orange-lit platform edge in the lower-left foreground", "payload": "dark weathered wood", "attributes": [{"property": "material", "value": "dark weathered wood"}]},
+     "ref_zh": "左下前景被照成橙色的平台边缘",
+     "instruction_ref_zh": "将左下前景被照成橙色的平台边缘的材质改为深色旧木。",
+     "instruction_noref_zh": "将选中区域的材质改为深色旧木。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Replacing the concrete ledge with a 'dark wooden edge' is a material change; a seated person rests on it, so a structural replacement is not natural. Converted to attribute material."}
+  ]
+}

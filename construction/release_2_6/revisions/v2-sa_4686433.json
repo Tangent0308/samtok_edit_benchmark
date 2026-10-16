@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_4686433",
+  "reviewer": "shard2-b7",
+  "notes": "U4 payload had a dangling 'its front panel'; the blurred motorcycle front panel cannot be segmented cleanly (SAM3 gave fragments), so the site was dropped and the payload made self-contained; mask stays the whole motorcycle (anchor). Other units checked on the case sheet, fine.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4686433/case_sheet.jpg", "release_2_6_work/v2-sa_4686433/U4/t1.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white number 5 decal", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给右侧的红色摩托车加上一枚白色数字5小贴花。",
+     "instruction_noref_zh": "给选中区域加上一枚白色数字5小贴花。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its front panel' from the payload; anchor is the whole motorcycle."}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_3824138",
+  "reviewer": "shard2-b2",
+  "notes": "U2 replace was colour/material only (navy -> beige linen blazer); now a hooded rain parka. U3 payload carried a location ('in the lower corner') that depends on the where; payload is now just the sticker (mask = whole placard). U1 mask extended with the T-shirt front visible between the vest lapels (SAM3 'black t-shirt').",
+  "reviewed_views": ["release_2_6_work/v2-sa_3824138/case_sheet.jpg", "release_2_6_work/v2-sa_3824138/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep", "reason": "Mask now includes the visible T-shirt front (x~500-650, y~1000-1260) besides both sleeves."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a hooded rain parka"},
+     "instruction_ref_zh": "将路过女子的藏蓝色西装外套替换为一件带帽防雨派克大衣。",
+     "instruction_noref_zh": "将选中区域替换为一件带帽防雨派克大衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Beige linen blazer kept category and structure; a hooded parka is a real garment change."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small yellow star sticker"},
+     "instruction_ref_zh": "在举起的纸板手牌上加上一张小黄星贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小黄星贴纸。",
+     "reason": "Protocol 2.0: payload must not carry a location relative to the anchor; dropped 'in the lower corner'."}
+  ]
+}

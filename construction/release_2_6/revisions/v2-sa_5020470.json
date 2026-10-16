@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_5020470",
+  "reviewer": "shard2-b8",
+  "notes": "U1 mask trimmed to the seat cushion (2.5.0 mask also covered the black body panel below the seat); handlebar grip/lever stay excluded; seat is dark gray on clean source. U3 replace was text/colour only; now a chalkboard easel. U4 dangling 'its upper-right corner' moved to placement.site; mask = upper-right corner of the box (host ∩ box).",
+  "reviewed_views": ["release_2_6_work/v2-sa_5020470/case_sheet.jpg", "release_2_6_work/v2-sa_5020470/U1/t1.jpg", "release_2_6_work/v2-sa_5020470/U1/p3.jpg", "release_2_6_work/v2-sa_5020470/U1/p5.jpg", "release_2_6_work/v2-sa_5020470/U1/final.jpg", "release_2_6_work/v2-sa_5020470/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the dark gray seat of the white scooter"},
+     "ref_zh": "白色踏板车的深灰色座椅",
+     "instruction_ref_zh": "将白色踏板车的深灰色座椅的颜色改为深棕色。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Mask trimmed to the seat cushion; seat colour named precisely (dark gray)."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small chalkboard easel"},
+     "instruction_ref_zh": "将写有SALE PREMIUM ACCESSORY的小招牌替换为一个小黑板画架。",
+     "instruction_noref_zh": "将选中区域替换为一个小黑板画架。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "White sign with new text only changed colour/text; a chalkboard easel is a structural replacement."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white QR-code sticker", "placement": {"relation": "on", "site": "upper-right corner", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在黄绿相间的大展示牌的右上角贴上一张小白色二维码贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小白色二维码贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its upper-right corner' removed; site mask is that corner."}
+  ]
+}

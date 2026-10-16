@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_3165942",
+  "reviewer": "shard1b-b5",
+  "notes": "U1 payload (white electric minibus) was visually identical to the existing white van; now a black SUV. U2 ref ambiguous among several silver/white sedans; target (x862-975,y1365-1447) is the end car of the bottom parking row next to the black-and-white striped curb. New: U4 blue outline on letters that already glow blue/white would be near-invisible; payload changed to a red aviation warning light. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3165942/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a black SUV"},
+     "instruction_ref_zh": "将右下方的小巴替换为一辆黑色SUV。",
+     "instruction_noref_zh": "将选中区域替换为一辆黑色SUV。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Existing van is already white; an SUV is a visible category change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the silver sedan at the end of the bottom parking row beside the striped curb"},
+     "ref_zh": "底部停车排末端条纹路缘旁的银色轿车",
+     "instruction_ref_zh": "将底部停车排末端条纹路缘旁的银色轿车的颜色改为蓝色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Several silver/white sedans in the lot; only this one sits at the row end by the striped curb. Avoids referencing the pickup that U3 removes."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "one small red aviation warning light"},
+     "instruction_ref_zh": "在发光的AIRPORT字母牌上加上一盏小红色航空警示灯。",
+     "instruction_noref_zh": "给选中区域加上一盏小红色航空警示灯。",
+     "reason": "Blue outline on blue-glowing letters is not a visible edit; a red warning light is a natural, visible item mounted on a tall rooftop sign."}
+  ]
+}

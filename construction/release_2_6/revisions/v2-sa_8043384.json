@@ -1,0 +1,116 @@
+{
+ "case_id": "v2-sa_8043384",
+ "reviewer": "shard4-b3",
+ "notes": "Tail case, all units rewritten. U1 whole carriage (already green canopy) -> its green canopy to red, mask = canopy with the window opening excluded. U2 'driver' replaced by a jacket -> the side-step passenger's padded jacket replaced by a wool overcoat. U3 ref made specific (backpack hiker). U4 badge on a tiny far-left man -> red wool blanket over the nearer carriage horse.",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_8043384/case_sheet.jpg",
+  "release_2_6_work/v2-sa_8043384/U1/t1.jpg",
+  "release_2_6_work/v2-sa_8043384/U2/t1.jpg",
+  "release_2_6_work/v2-sa_8043384/U4/t1.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "outdoor",
+   "vehicle",
+   "crowd"
+  ],
+  "scene_zh": "雪林中的马车",
+  "evidence_zh": "马车的绿色篷布、侧踏板乘客的夹克、最右侧背包徒步者和较近的那匹拉车马是四个不同对象；篷布窗口内可见乘客，需排除。",
+  "specific_protection_zh": "保留马车、乘员和林间道路环境。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the green canopy of the horse carriage",
+    "scope": "canopy",
+    "payload": "red",
+    "attributes": [
+     {
+      "property": "color",
+      "value": "red"
+     }
+    ]
+   },
+   "ref_zh": "马车的绿色篷布",
+   "scope_zh": "篷布",
+   "physical_parent_zh": "马车",
+   "parent_instance_id": "sa_8043384:马车",
+   "instruction_ref_zh": "将马车的绿色篷布的颜色改为红色。",
+   "instruction_noref_zh": "将选中区域的颜色改为红色。",
+   "preserve": [
+    "保留透过窗口可见的乘客、车厢底盘和车轮。"
+   ],
+   "findings_addressed": [
+    "attribute_value"
+   ],
+   "reason": "Canopy is already green so 'dark green' was a near no-op; now red. Mask = canopy only (v2, SAM3), window and passengers excluded, no speckles."
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the dark green padded jacket of the passenger sitting on the carriage's side step",
+    "scope": "jacket",
+    "payload": "a long beige wool overcoat"
+   },
+   "ref_zh": "坐在马车侧踏板上的乘客的深绿色棉夹克",
+   "scope_zh": "夹克",
+   "physical_parent_zh": "侧踏板乘客",
+   "parent_instance_id": "sa_8043384:侧踏板乘客",
+   "instruction_ref_zh": "将坐在马车侧踏板上的乘客的深绿色棉夹克替换为一件米色羊毛长大衣。",
+   "instruction_noref_zh": "将选中区域替换为一件米色羊毛长大衣。",
+   "preserve": [
+    "保留该乘客的头部、围巾、裤子，以及前座的车夫和马车。"
+   ],
+   "findings_addressed": [
+    "person_clothing_level"
+   ],
+   "reason": "Masked person is a passenger on the side step, not the driver, and a person was replaced by a garment. Now his padded jacket -> long overcoat (structural), v2 mask = jacket."
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the hiker with a backpack walking at the far right"
+   },
+   "ref_zh": "最右侧背着背包行走的徒步者",
+   "scope_zh": "男子",
+   "physical_parent_zh": "最右侧徒步者",
+   "parent_instance_id": "sa_8043384:最右侧徒步者",
+   "instruction_ref_zh": "移除最右侧背着背包行走的徒步者。",
+   "instruction_noref_zh": "移除选中区域。",
+   "findings_addressed": [],
+   "reason": "Ref tightened; mask (whole hiker incl. backpack) verified, unchanged."
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the nearer of the two dark brown carriage horses",
+    "scope": "horse",
+    "payload": "a red wool blanket",
+    "placement": {
+     "relation": "over",
+     "site": "",
+     "anchor_mode": "support"
+    }
+   },
+   "ref_zh": "两匹深棕色拉车马中较近的那匹",
+   "scope_zh": "马",
+   "physical_parent_zh": "较近的拉车马",
+   "parent_instance_id": "sa_8043384:较近的拉车马",
+   "instruction_ref_zh": "给两匹深棕色拉车马中较近的那匹披上一条红色羊毛毯。",
+   "instruction_noref_zh": "给选中区域披上一条红色羊毛毯。",
+   "preserve": [
+    "保留马具、另一匹马、马车和后方行人。"
+   ],
+   "findings_addressed": [
+    "add_anchor",
+    "grammar_style"
+   ],
+   "reason": "Far-left man is tiny and 'a small badge' was vague with no site. Retargeted add to the nearer horse (anchor = horse, v2 mask SAM3) with a specific payload."
+  }
+ ]
+}

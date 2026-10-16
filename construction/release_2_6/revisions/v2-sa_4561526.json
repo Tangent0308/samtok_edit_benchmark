@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_4561526",
+  "reviewer": "shard2-b6",
+  "notes": "U2 value 'white' was near no-op (hull already white) -> whole lifeboat to bright yellow. U3 dangling 'on its hull' removed. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4561526/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "bright yellow", "attributes": [{"property": "color", "value": "bright yellow"}]},
+     "instruction_ref_zh": "将最右侧橙顶救生艇的颜色改为亮黄色。",
+     "instruction_noref_zh": "将选中区域的颜色改为亮黄色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Lifeboat is white hull + orange canopy; white was a partial no-op. Bright yellow differs from both parts; mask stays the whole lifeboat."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small black number 4"},
+     "instruction_ref_zh": "在紧邻最右侧救生艇左边的救生艇上加上一个小黑色数字4。",
+     "instruction_noref_zh": "给选中区域加上一个小黑色数字4。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its hull'; anchor stays the whole lifeboat."}
+  ]
+}

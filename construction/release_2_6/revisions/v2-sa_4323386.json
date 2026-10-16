@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_4323386",
+  "reviewer": "shard0-b3",
+  "notes": "No audit findings. U1 remove part 'the hood' -> v2 mask = fur-trimmed hood of the orange jacket (SAM3 'hood' inside host). U3 jacket is black; navy blue is barely distinguishable, value changed to light gray.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4323386/case_sheet.jpg", "release_2_6_work/v2-sa_4323386/U1/t1.jpg", "release_2_6_work/v2-sa_4323386/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "ref_zh": "低头女子的橙色外套",
+     "instruction_ref_zh": "移除低头女子橙色外套的帽兜。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask = hood; zh ref aligned with English (no 中间)."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"attributes": [{"property": "color", "value": "light gray"}]},
+     "instruction_ref_zh": "将橙衣女子身后背身者的外套的颜色改为浅灰色。",
+     "instruction_noref_zh": "将选中区域的颜色改为浅灰色。",
+     "findings_addressed": [],
+     "reason": "The jacket is a black puffer; navy blue would not be a clearly visible change."}
+  ]
+}

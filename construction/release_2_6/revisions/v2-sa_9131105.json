@@ -1,0 +1,36 @@
+{
+  "case_id": "v2-sa_9131105",
+  "reviewer": "shard7",
+  "notes": "Tail case: both refs pointed to the wrong place (sign is upper right, door leaf is lower left) and U1 value 'dark' had no hue. Viewed case sheet and clean crops; both 2.5.0 masks are the edited regions and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9131105/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "street"], "scene_zh": "石砌老屋", "evidence_zh": "右上方墙面上绘制的圆形招牌和左下方门廊下的敞开门扇是两个不同对象。", "specific_protection_zh": "保留建筑立面、窗户和其他标识。"},
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {"ref": "the round orange Dirty Bottles sign painted on the upper right of the white facade", "scope": "sign", "payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+      "ref_zh": "白色立面右上方绘制的圆形橙色 Dirty Bottles 招牌",
+      "scope_zh": "招牌",
+      "physical_parent_zh": "右上方圆形招牌",
+      "parent_instance_id": "sa_9131105:右上方圆形招牌",
+      "instruction_ref_zh": "将白色立面右上方绘制的圆形橙色 Dirty Bottles 招牌的颜色改为深绿色。",
+      "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+      "preserve": ["保留招牌周围的白色石墙、窗户和吊篮。"],
+      "findings_addressed": ["wrong_instance_spatial", "attribute_value"],
+      "reason": "Masked sign is the round painted sign at the upper right (cx=0.79); value 'dark' replaced with a concrete hue."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {"ref": "the open pale green door leaf under the small gabled canopy at the lower left", "scope": "door"},
+      "ref_zh": "左下方小山形门廊下敞开的淡绿色门扇",
+      "scope_zh": "门扇",
+      "physical_parent_zh": "左下方门廊门扇",
+      "parent_instance_id": "sa_9131105:左下方门廊门扇",
+      "instruction_ref_zh": "移除左下方小山形门廊下敞开的淡绿色门扇。",
+      "preserve": ["保留门框、门廊顶篷、门上方黑色告示牌和周围墙面。"],
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked door leaf is at the lower left (cx=0.19) under the gabled canopy, not lower center; removal leaves an open doorway."
+    }
+  ]
+}

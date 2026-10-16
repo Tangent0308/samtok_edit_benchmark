@@ -1,0 +1,70 @@
+{
+  "case_id": "v2-sa_2992365",
+  "reviewer": "shard0-b5",
+  "notes": "No audit findings. U5 lowerlegs -> v2 mask = shins of the jeans below the knees (host ∩ box 1255-1352 x 258-360); U5 ref fixed (the man holds a red cup, the bag stands beside him) . U1 value charcoal gray ~ current black trousers -> khaki beige. zh fields aligned. U4 ref sharpened (several long-haired women in that row).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2992365/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2992365/U5/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "attributes": [
+          {
+            "property": "color",
+            "value": "khaki beige"
+          }
+        ]
+      },
+      "instruction_ref_zh": "将左中站立男子的长裤的颜色改为卡其米色。",
+      "instruction_noref_zh": "将选中区域的颜色改为卡其米色。",
+      "findings_addressed": [],
+      "reason": "Trousers are black on the clean source; charcoal gray is barely a visible change."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "前排手持红杯男子的衬衫",
+      "instruction_ref_zh": "给前排手持红杯男子的衬衫缝上一个小胸袋。",
+      "instruction_noref_zh": "给选中区域缝上一个小胸袋。",
+      "findings_addressed": [],
+      "reason": "zh ref added 短袖 not in the English; verb aligned with 'sewn onto'."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the blue jeans of the woman in a black top in the middle row on the right",
+        "scope": "jeans"
+      },
+      "ref_zh": "右侧中排黑色上衣女子的蓝色牛仔裤",
+      "scope_zh": "牛仔裤",
+      "physical_parent_zh": "右侧中排黑衣女子",
+      "parent_instance_id": "sa_2992365:右侧中排黑衣女子",
+      "instruction_ref_zh": "将右侧中排黑色上衣女子的蓝色牛仔裤替换为藏蓝色百褶中长裙。",
+      "findings_addressed": [],
+      "reason": "Several long-haired women sit in the middle row on the right; the masked trousers are the blue jeans of the one in a black top."
+    },
+    {
+      "id": "U5",
+      "action": "revise",
+      "spec": {
+        "ref": "the blue jeans of the man in the brown T-shirt on the top row",
+        "scope": "jeans"
+      },
+      "ref_zh": "最上排棕色T恤男子的蓝色牛仔裤",
+      "scope_zh": "牛仔裤",
+      "physical_parent_zh": "最上排棕色T恤男子",
+      "parent_instance_id": "sa_2992365:最上排棕色T恤男子",
+      "instruction_ref_zh": "剪去最上排棕色T恤男子的蓝色牛仔裤的下段裤腿，改成及膝短裤。",
+      "findings_addressed": [],
+      "reason": "Masked jeans belong to the top-row man in a brown T-shirt, who holds a red cup (the paper bag stands beside him; his neighbour also has one). Protocol 2.0: mask = lower legs."
+    }
+  ]
+}

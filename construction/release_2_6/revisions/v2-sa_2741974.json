@@ -1,0 +1,14 @@
+{
+  "case_id": "v2-sa_2741974",
+  "reviewer": "shard1b-b2",
+  "notes": "U3 replace target was already a dark curved-top sign with white text, so the payload was nearly a no-op; payload now a rectangular green wooden PARKING sign. U1 (black multi-spoke front rim -> silver) and U2 (open rear door of the dark van) verified; no S!=T unit.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2741974/case_sheet.jpg"],
+  "units": [
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a rectangular green wooden sign reading \"PARKING\" in white"},
+     "instruction_ref_zh": "将黄色汽车后方的弧顶欢迎牌替换为一块写有白色“PARKING”字样的绿色长方形木牌。",
+     "instruction_noref_zh": "将选中区域替换为一块写有白色“PARKING”字样的绿色长方形木牌。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Old payload (black sign reading Welcome in white) nearly matched the existing sign."}
+  ]
+}

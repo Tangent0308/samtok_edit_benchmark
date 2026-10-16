@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_1901719",
+  "reviewer": "shard0b-b2",
+  "notes": "U1 site = image-right outer thigh of the adult's dark jeans (host box 822-880 x 755-880). U2 child reaches toward the flowers rather than pointing. U4 v2 mask = lower jeans leg above the image-right shoe (y1120-1183), which also removes the pink-jacket hem the old mask included. U5 mask = printed lettering (SAM3 'lettering').",
+  "reviewed_views": ["release_2_6_work/v2-sa_1901719/case_sheet.jpg", "release_2_6_work/v2-sa_1901719/U1/final.jpg", "release_2_6_work/v2-sa_1901719/U4/final.jpg", "release_2_6_work/v2-sa_1901719/U5/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "image-right outer thigh", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给左中背灰色大包成人的长裤画面右侧的大腿外侧缝上一个大袋盖口袋。",
+     "instruction_noref_zh": "给选中区域加上一个大袋盖口袋。",
+     "findings_addressed": [],
+     "reason": "Back-facing adult; site names which thigh, matching the v2 mask."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the pale gray trousers of the child in black reaching toward the flowers at the right rear"},
+     "ref_zh": "右后方伸手够花的黑衣孩子的浅灰色长裤",
+     "physical_parent_zh": "右后黑衣孩子",
+     "parent_instance_id": "sa_1901719:右后黑衣孩子",
+     "instruction_ref_zh": "将右后方伸手够花的黑衣孩子的浅灰色长裤替换为带侧袋的及膝徒步短裤。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Child at x~1560-1700 reaches a hand toward the camellia flowers; not pointing."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"placement": {"relation": "around", "site": "image-right ankle", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给右前弯腰粉衣孩子的牛仔裤画面右侧的脚踝处裤腿套上一圈反光带。",
+     "instruction_noref_zh": "给选中区域加上一圈反光带。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "v2 mask is only the jeans just above the image-right shoe, no pink jacket hem; 'nearer' was unclear between two overlapping legs."},
+    {"id": "U5", "action": "keep"}
+  ]
+}

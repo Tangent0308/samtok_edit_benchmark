@@ -1,0 +1,56 @@
+{
+  "case_id": "v2-sa_9865645",
+  "reviewer": "round2",
+  "notes": "U2改掉悬空him；SAM对顶部三个单词可稳定分割，指令明确只移除该行。U3原图为黄色衣物；U5以最右列排除并列货袋。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_9865645/case_sheet.jpg",
+    "release_2_6_work/v2-sa_9865645/U2/t1.jpg",
+    "release_2_6_work/v2-sa_9865645/U2/t2.jpg",
+    "release_2_6_work/v2-sa_9865645/U2/final.jpg",
+    "release_2_6_work/v2-sa_9865645/U5/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the green T-shirt of the man standing behind the bending man",
+        "target_part": "the white THE DENIM BROS text across the upper back"
+      },
+      "ref_zh": "弯腰男子身后站立男子的绿色T恤",
+      "instruction_ref_zh": "移除弯腰男子身后站立男子绿色T恤后背上方的白色 THE DENIM BROS 字样。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "ref独立完整；只选择顶部三词，不覆盖下方其余文字。第二次白字提示无候选，首轮顶部三词准确可用。"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the yellow long-sleeved garment hanging high inside the doorway"
+      },
+      "ref_zh": "门内上方悬挂的黄色长袖衣物",
+      "instruction_ref_zh": "移除门内上方悬挂的黄色长袖衣物。",
+      "reason": "干净原图该衣物为黄色，明确颜色排除右侧灰白衣物。"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    },
+    {
+      "id": "U5",
+      "action": "revise",
+      "spec": {
+        "ref": "the top yellow packet in the image-rightmost column of the foreground stack"
+      },
+      "ref_zh": "前方货堆画面最右列顶部的黄色食品袋",
+      "instruction_ref_zh": "给前方货堆画面最右列顶部的黄色食品袋中部系上一条红丝带。",
+      "reason": "货堆顶部并排三袋，最右列唯一定位；中部支持mask排除上下邻袋。"
+    }
+  ]
+}

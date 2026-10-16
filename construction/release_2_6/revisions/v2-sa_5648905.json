@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_5648905",
+  "reviewer": "shard2-b12",
+  "notes": "Audit: U1 (front woman's black handbag, removed) hangs in front of U3 (front woman's gown, recoloured) -> coupled edits on one person. Retargeted U3 to the red dress of the woman in the red cap (separate person, SAM3 'red dress' mask verified, no overlap with other units).",
+  "reviewed_views": ["release_2_6_work/v2-sa_5648905/case_sheet.jpg", "release_2_6_work/v2-sa_5648905/U3/t1.jpg", "release_2_6_work/v2-sa_5648905/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["repetition", "occlusion"], "scene_zh": "传统服饰女子与提篮", "evidence_zh": "前方女子黑包、中间女子提篮、戴红帽女子红色长裙、最右女子头饰分属袋、篮及两名人物。", "specific_protection_zh": "保留人物身体、刺绣轮廓、其余服饰和石墙。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the long red dress of the woman in the red cap", "scope": "dress", "payload": "emerald green", "attributes": [{"property": "color", "value": "emerald green"}]},
+     "ref_zh": "戴红帽女子的红色长裙",
+     "scope_zh": "长裙",
+     "physical_parent_zh": "戴红帽女子",
+     "parent_instance_id": "sa_5648905:戴红帽女子",
+     "instruction_ref_zh": "将戴红帽女子的红色长裙的颜色改为翠绿色。",
+     "instruction_noref_zh": "将选中区域的颜色改为翠绿色。",
+     "preserve": ["保留人物身体、刺绣花纹轮廓、其他女子的服饰和石墙。"],
+     "findings_addressed": ["independence_violation"],
+     "reason": "U1 bag and old U3 gown were on the same front woman with the bag in front of the gown; U3 moved to the red dress of the woman in the red cap (x 1088-1303)."}
+  ]
+}

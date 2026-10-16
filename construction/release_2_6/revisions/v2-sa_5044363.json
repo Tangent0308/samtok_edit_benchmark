@@ -1,0 +1,28 @@
+{
+  "case_id": "v2-sa_5044363",
+  "reviewer": "shard2-b8",
+  "notes": "U2 ref tightened (another woman at the lower right wears a white top with a pink skirt) and payload changed from a navy sleeveless dress (colour-only) to a long-sleeved jumpsuit. U3 bag is a beige canvas tote, not gray. U4 dangling 'its front edge' removed; sign now hangs from the awning (no site, mask = awning anchor unchanged).",
+  "reviewed_views": ["release_2_6_work/v2-sa_5044363/case_sheet.jpg"],
+  "units": [
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the pale pink sleeveless dress on the woman left of the floral-dress woman at the lower right", "payload": "a long-sleeved navy jumpsuit"},
+     "ref_zh": "右下方花裙女子左侧女子的浅粉色无袖连衣裙",
+     "instruction_ref_zh": "将右下方花裙女子左侧女子的浅粉色无袖连衣裙替换为一件藏蓝色长袖连体裤。",
+     "instruction_noref_zh": "将选中区域替换为一件藏蓝色长袖连体裤。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Second pale-pink woman at x~0.92W wears a top and skirt; also the old payload only changed the dress colour."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the beige tote bag carried by the woman in a light gray dress", "scope": "tote bag"},
+     "ref_zh": "浅灰色连衣裙女子提着的米色手提袋",
+     "scope_zh": "手提袋",
+     "instruction_ref_zh": "移除浅灰色连衣裙女子提着的米色手提袋。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Bag at [1446,711,1508,787] is a beige/khaki canvas tote on the clean source."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white CAFE sign", "placement": {"relation": "hanging from", "site": "", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在右上方的条纹遮阳棚下挂上一块小白色CAFE牌。",
+     "instruction_noref_zh": "给选中区域挂上一块小白色CAFE牌。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its front edge' removed; a sign hanging from the awning needs no separate site."}
+  ]
+}

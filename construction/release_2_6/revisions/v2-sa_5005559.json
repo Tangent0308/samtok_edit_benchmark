@@ -1,0 +1,70 @@
+{
+  "case_id": "v2-sa_5005559",
+  "reviewer": "round2",
+  "notes": "瓶体与可见内容物同轮廓，核实手指遮挡已排除后提交原host作v2；饮料呈橙色，改用铝箔封口描述。U2定位纸盒左侧实际空盘区域，mask不含纸盒、米饭及锅柄。U4改用可见圆形花纹描述，避免把橙黄果肉笼统描述为黄色食物。",
+  "reviewed_views": [
+    "assets/v2-sa_5005559/source.jpg",
+    "release_2_6_work/v2-sa_5005559/case_sheet.jpg",
+    "release_2_6_work/v2-sa_5005559/U1/final.jpg",
+    "release_2_6_work/v2-sa_5005559/U2/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "取餐队列与重叠餐具",
+    "evidence_zh": "不同源对象：中间女孩手里横放的铝箔封口饮料瓶；左侧女孩手持的分格金属餐盘可见部分；右侧画面边缘手持的分格餐盘可见部分；右下方的大圆形花纹盛菜盘。",
+    "specific_protection_zh": "盘中食物、手指、瓶旁餐具和衣物"
+  },
+  "units": [
+    {
+      "spec": {
+        "ref": "the foil-capped drink bottle held sideways by the middle girl"
+      },
+      "ref_zh": "中间女孩手里横放的铝箔封口饮料瓶",
+      "instruction_ref_zh": "移除中间女孩手里横放的铝箔封口饮料瓶及其中的物品。",
+      "id": "U1",
+      "action": "revise",
+      "scope_zh": "瓶子",
+      "physical_parent_zh": "手持饮料瓶",
+      "parent_instance_id": "sa_5005559:手持饮料瓶",
+      "category": "bottle"
+    },
+    {
+      "spec": {
+        "placement": {
+          "relation": "in",
+          "site": "empty section left of the carton",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在左侧女孩手持分格餐盘的纸盒左侧空处加上一个小面包卷。",
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "左侧女孩手持的分格金属餐盘可见部分",
+      "scope_zh": "餐盘",
+      "physical_parent_zh": "左侧分格餐盘",
+      "parent_instance_id": "sa_5005559:左侧分格餐盘",
+      "category": "meal tray"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "ref": "the large round floral serving dish at the bottom right"
+      },
+      "ref_zh": "右下方的大圆形花纹盛菜盘",
+      "instruction_ref_zh": "将右下方的大圆形花纹盛菜盘替换为一个椭圆形不锈钢餐盘。",
+      "id": "U4",
+      "action": "revise",
+      "scope_zh": "盘子",
+      "physical_parent_zh": "右下大圆盘",
+      "parent_instance_id": "sa_5005559:右下大圆盘",
+      "category": "dish"
+    }
+  ]
+}

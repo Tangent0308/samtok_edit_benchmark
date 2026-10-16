@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9111693",
+  "reviewer": "shard6-b6",
+  "notes": "Tail case, all units re-examined; all four masks are already the edited regions (no S!=T unit). U1 'car at the lower left' fit the taxi better -> silver sedan at the curb. U2 replace was a recolour -> white delivery van. U3 'window at the left' fit a whole column of windows -> leftmost window in the third row from the top. U4 'jacket at the lower right' fit the man's beige jacket better -> blonde woman's dark navy coat (mask holes are her handbag occluding the coat, correctly excluded); generic badge -> gold brooch.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9111693/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "architecture"], "scene_zh": "城市建筑与车辆", "evidence_zh": "粉色楼前路边的银色轿车、左下角的棕色出租车、粉色楼第三排最左侧的窗户和金发女子的深蓝色大衣是四个不同对象。", "specific_protection_zh": "保留车辆、建筑和行人服装。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the silver sedan parked at the curb in front of the pink building", "scope": "sedan"},
+      "ref_zh": "停在粉色楼前路边的银色轿车",
+      "scope_zh": "轿车",
+      "physical_parent_zh": "银色轿车",
+      "parent_instance_id": "sa_9111693:银色轿车",
+      "instruction_ref_zh": "将停在粉色楼前路边的银色轿车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Mask is the silver sedan (cx=0.41W); the brown taxi is nearer the lower-left corner. Only silver car in the foreground."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the brown taxi cut off at the bottom-left corner", "scope": "taxi", "payload": "a white delivery van"},
+      "ref_zh": "左下角被画面截断的棕色出租车",
+      "scope_zh": "出租车",
+      "physical_parent_zh": "棕色出租车",
+      "parent_instance_id": "sa_9111693:棕色出租车",
+      "instruction_ref_zh": "将左下角被画面截断的棕色出租车替换为一辆白色厢式货车。",
+      "instruction_noref_zh": "将选中区域替换为一辆白色厢式货车。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "'a blue car' was only a recolour; a delivery van is a structural vehicle-type change."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the leftmost window in the third row from the top of the pink building", "scope": "window"},
+      "ref_zh": "粉色楼从上数第三排最左侧的窗户",
+      "scope_zh": "窗户",
+      "physical_parent_zh": "粉色楼第三排最左侧窗户",
+      "parent_instance_id": "sa_9111693:粉色楼第三排最左侧窗户",
+      "instruction_ref_zh": "移除粉色楼从上数第三排最左侧的窗户。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Mask (x 0-118, y 1050-1300) is the edge-cut window of the third window row from the top (rows at y~280, ~640, ~1060, ~1550); every row has a window at the left edge."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the dark navy coat of the blonde woman standing beside the man with a backpack", "scope": "coat", "payload": "one small round gold brooch", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "站在背包男子身旁的金发女子的深蓝色大衣",
+      "scope_zh": "大衣",
+      "physical_parent_zh": "金发女子",
+      "parent_instance_id": "sa_9111693:金发女子",
+      "instruction_ref_zh": "在站在背包男子身旁的金发女子的深蓝色大衣上加一枚小圆形金色胸针。",
+      "instruction_noref_zh": "在选中区域上加一枚小圆形金色胸针。",
+      "findings_addressed": ["ambiguous_ref", "grammar_style"],
+      "reason": "Mask is the woman's coat, not the man's beige jacket; payload made concrete. Internal hole in the mask is her black handbag occluding the coat, so it is correctly excluded."
+    }
+  ]
+}

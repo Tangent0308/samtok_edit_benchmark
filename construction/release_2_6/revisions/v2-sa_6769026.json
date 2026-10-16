@@ -1,0 +1,80 @@
+{
+  "case_id": "v2-sa_6769026",
+  "reviewer": "round2",
+  "notes": "Verified source and individual targets. Replace sign with a round panel for real structural change. Lamp gets bright red color. Wheelchair seat is occupied, so add a visible flag attached to backrest; SAM3 backrest mask reviewed.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6769026/case_sheet.jpg",
+    "assets/v2-sa_6769026/source.jpg",
+    "release_2_6_work/v2-sa_6769026/U4/t1.jpg",
+    "release_2_6_work/v2-sa_6769026/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "bright red",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "bright red"
+          }
+        ]
+      },
+      "physical_parent_zh": "右侧双头路灯",
+      "parent_instance_id": "sa_6769026:右侧双头路灯",
+      "instruction_ref_zh": "将右侧双头路灯的颜色改为鲜红色。",
+      "findings_addressed": [
+        "attribute_value"
+      ],
+      "reason": "Bright red visibly differs from existing black coating; correct left/right parent metadata."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the rectangular WOK TO WALK sign above the kiosk",
+        "payload": "a round blue OPEN sign"
+      },
+      "ref_zh": "售货亭上方的长方形WOK TO WALK标牌",
+      "instruction_ref_zh": "将售货亭上方的长方形WOK TO WALK标牌替换为一块蓝色圆形OPEN标牌。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Round replacement changes rectangular sign structure; source has orange lettering on dark panel."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the left one of the two wooden benches in front of the WOK TO WALK kiosk"
+      },
+      "ref_zh": "WOK TO WALK售货亭前两条木长椅中左侧的一条",
+      "instruction_ref_zh": "移除WOK TO WALK售货亭前两条木长椅中左侧的一条。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Masked bench is left of the bench directly beside planter."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the wheelchair on the left side of the walkway",
+        "payload": "one small blue flag on a thin pole",
+        "placement": {
+          "relation": "attached to",
+          "site": "backrest",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "步道左侧的轮椅",
+      "instruction_ref_zh": "在步道左侧轮椅的靠背上装上一面带细旗杆的小蓝旗。",
+      "findings_addressed": [
+        "ill_posed_edit",
+        "grammar_style"
+      ],
+      "reason": "Occupied seat cannot take a visible cushion; exposed rear backrest can support a flag pole."
+    }
+  ]
+}

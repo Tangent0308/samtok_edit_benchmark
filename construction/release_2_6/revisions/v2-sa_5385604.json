@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_5385604",
+  "reviewer": "shard2-b10",
+  "notes": "U4 dangling 'at its center' removed from payload (handlebar centre is cut off at the right edge anyway). U2 ref reworded to avoid the double 'with'. Colours verified on the clean image. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5385604/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the red helmet of the white-sleeved cyclist at front right"},
+     "ref_zh": "右前方白袖骑手的红色头盔",
+     "instruction_ref_zh": "将右前方白袖骑手的红色头盔替换为一顶黑色气动骑行头盔。",
+     "findings_addressed": [],
+     "reason": "'...cyclist with white sleeves with a black...' read ambiguously; same instance, clearer phrasing."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small black cycling computer"},
+     "instruction_ref_zh": "给右边缘的弯把车把加上一个小黑色骑行码表。",
+     "instruction_noref_zh": "给选中区域加上一个小黑色骑行码表。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'at its center'; anchor stays the visible handlebar."}
+  ]
+}

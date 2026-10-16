@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_3885316",
+  "reviewer": "shard2-b3",
+  "notes": "U2 replace was only a material change -> structural replacement (globe lamp). U3 ref pointed to the window next to the pillar; mask is the leftmost window at the image edge -> ref rewritten. U1 add has no site; mask (gate) unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3885316/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a white frosted globe lamp"},
+     "instruction_ref_zh": "将入口铁门上方的灯笼替换为一盏白色磨砂球形灯。",
+     "instruction_noref_zh": "将选中区域替换为一盏白色磨砂球形灯。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Mask is a black metal carriage lantern with clear glass; a brass lantern with clear glass is only a material change. A frosted globe lamp is a genuine structural replacement."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the lowest window behind the iron railing at the far left edge of the image"},
+     "ref_zh": "画面最左边缘铁栏后最下方的窗户",
+     "instruction_ref_zh": "将画面最左边缘铁栏后最下方的窗户的色调改为浅蓝色。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked window is at source x~25-108 at the image edge; the window just left of the SOMERSET HOUSE pillar (x~135-210) is a different one."}
+  ]
+}

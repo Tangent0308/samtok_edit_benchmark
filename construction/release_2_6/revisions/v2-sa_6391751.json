@@ -1,0 +1,55 @@
+{
+  "case_id": "v2-sa_6391751",
+  "notes": "All units reviewed; source chair openings and sign foreground graphics avoided through explicit part instructions.",
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "target_part": "seat",
+        "payload": "a round padded seat"
+      },
+      "instruction_ref_zh": "将左侧咖啡桌紧右方两把白椅中的左椅的座面替换为一个圆形软垫座面。",
+      "reason": "Material-only whole-chair replacement changed to rectangular seat versus round padded seat. Both selected components belong to the left chair seat, split by its near vertical frame; neighbouring right chair seat at x1419–1438,y1287–1294 is excluded."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "category": "sign",
+      "spec": {
+        "ref": "the IONION real-estate sign",
+        "scope": "sign",
+        "target_part": "upper-right background area"
+      },
+      "ref_zh": "IONION房产招牌",
+      "scope_zh": "招牌",
+      "instruction_ref_zh": "将IONION房产招牌的右上方背景区域的颜色改为浅黄色。",
+      "reason": "Original whole-sign mask included letters and logo despite background-only instruction; explicit upper-right blank area allows exact region mask excluding all graphics."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one small hanging flower box",
+        "placement": {
+          "relation": "on",
+          "site": "central section of the top rail"
+        }
+      },
+      "instruction_ref_zh": "给红色建筑的阳台栏杆的顶部横杆中央加上一个小悬挂花箱。",
+      "reason": "Removed dangling its; mask selects solid top rail and excludes openwork gaps."
+    }
+  ],
+  "reviewer": "round2",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6391751/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6391751/U2/final.jpg",
+    "release_2_6_work/v2-sa_6391751/U3/final.jpg",
+    "release_2_6_work/v2-sa_6391751/U4/final.jpg",
+    "release_2_6_work/v2-sa_6391751/seat_clean_grid.jpg"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_4394942",
+  "reviewer": "shard0-b2",
+  "notes": "U3 removed a worn jacket (ill-posed); now replaces the jacket with a different garment (cardigan), mask unchanged (the jacket). U1 helmet verified blue on clean view; U2 T-shirt verified dark. No S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4394942/case_sheet.jpg", "release_2_6_work/v2-sa_4394942/zoom_U1.jpg", "release_2_6_work/v2-sa_4394942/zoom_U3.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"operation": "replace", "payload": "a gray knitted cardigan", "remove_mode": "whole"},
+     "instruction_ref_zh": "将右后方骑手的橙色外套替换为一件灰色针织开衫。",
+     "instruction_noref_zh": "将选中区域替换为一件灰色针织开衫。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Removing a worn garment is ill-posed; replaced by a natural structural garment change (jacket -> knitted cardigan) instead of a pure recolour to keep the operation mix."}
+  ]
+}

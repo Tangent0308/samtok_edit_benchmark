@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_5405364",
+  "reviewer": "shard2-b10",
+  "notes": "U4 masked balcony is the farthest one on the second balcony level (not the nearest at upper left); ref rewritten. U1 'potted' dropped (tree is planted in the ground). Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5405364/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the conical evergreen beside the flagpoles"},
+     "ref_zh": "旗杆旁的锥形常绿树",
+     "instruction_ref_zh": "将旗杆旁的锥形常绿树替换为一棵小橄榄树。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Tree stands in the ground by the low wall; only a separate small pot is at its base."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the farthest balcony railing on the building's second balcony level"},
+     "ref_zh": "楼房第二层阳台中最远的阳台栏杆",
+     "instruction_ref_zh": "给楼房第二层阳台中最远的阳台栏杆加上一个种有红花的小花箱。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Mask box [643,918,779,1112] is the far-end balcony one level above the lowest balcony row; the nearest balconies are at the left edge."}
+  ]
+}

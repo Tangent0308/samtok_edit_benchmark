@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_10781767",
+  "reviewer": "shard0-b1",
+  "notes": "No audit findings. U2 'reflective border around the housing' duplicated the existing yellow reflective backplate border and its site was the whole light; rewritten as a pigeon on the top of the light with a top-strip site mask. U1 ref narrowed to the three lights on the overhead arm (a fourth light is on the far-left pole).",
+  "reviewed_views": ["release_2_6_work/v2-sa_10781767/case_sheet.jpg", "release_2_6_work/v2-sa_10781767/U2/t1.jpg", "release_2_6_work/v2-sa_10781767/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the middle traffic light on the overhead arm"},
+     "ref_zh": "横杆上中间的交通灯",
+     "instruction_ref_zh": "移除横杆上中间的交通灯。",
+     "findings_addressed": [],
+     "reason": "Four traffic lights are visible (three on the overhead arm, one on the far-left pole); 'middle' needs its counting group."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "one small gray pigeon", "placement": {"relation": "on", "site": "top", "anchor_mode": "support"}},
+     "ref_zh": "画面最右侧的交通灯",
+     "instruction_ref_zh": "在画面最右侧交通灯的顶部加上一只灰色小鸽子。",
+     "instruction_noref_zh": "给选中区域加上一只灰色小鸽子。",
+     "findings_addressed": [],
+     "reason": "The light already has a yellow reflective backplate border (adding what exists); site 'housing' was the whole object. New natural add on the top of the housing; v2 mask = host ∩ top strip (y 488-520)."}
+  ]
+}

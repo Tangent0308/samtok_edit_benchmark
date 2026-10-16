@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_1118244",
+  "reviewer": "shard1-b6",
+  "notes": "Audit: 'nearest blue bench' not unique (a third bench is cut off at the right image edge, lower and nearer). U1/U2 refs rewritten; U3 add site 'pole' -> v2 mask = pole only (lamp head excluded).",
+  "reviewed_views": ["release_2_6_work/v2-sa_1118244/case_sheet.jpg", "release_2_6_work/v2-sa_1118244/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the nearest fully visible blue bench"},
+     "ref_zh": "最近的完整可见的蓝色长凳",
+     "instruction_ref_zh": "将最近的完整可见的蓝色长凳替换为一把木条长凳。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "A partly cut-off dark-blue bench at the right image edge (x~2120-2152, y~1150-1200) is nearer; the masked bench is the nearest fully visible one."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the blue bench on the upper lawn beside the steps"},
+     "ref_zh": "台阶旁上方草坪上的蓝色长凳",
+     "instruction_ref_zh": "移除台阶旁上方草坪上的蓝色长凳。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Old ref chained on the ambiguous 'nearest bench'; masked bench sits on the upper lawn right next to the stone steps (only bench there)."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

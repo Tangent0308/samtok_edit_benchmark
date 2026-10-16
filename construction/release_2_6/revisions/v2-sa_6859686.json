@@ -1,0 +1,81 @@
+{
+  "case_id": "v2-sa_6859686",
+  "reviewer": "shard3-b1",
+  "notes": "U2 ref disambiguated (dozen identical blue shirts). U3 stroller removal was ill-posed (toddler seated in it) and the mask was fragmented and included the orange balloon/blanket; retargeted to removing the green polka-dot balloon (new SAM3 mask, reviewed). U4 payload made a natural item in the pothole.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6859686/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6859686/U3/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "crowd",
+      "motion blur",
+      "occlusion"
+    ],
+    "scene_zh": "游行队伍与婴儿车",
+    "evidence_zh": "17最左侧女子蓝色上衣、34搭黑外套行进者的蓝色上衣、婴儿前方的绿色圆点气球、77前景路面坑洞是四个不同对象。",
+    "specific_protection_zh": "保留队伍、婴儿、婴儿车、橙色气球和道路环境。"
+  },
+  "units": [
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the blue shirt on the marcher carrying a black jacket over her arm",
+        "payload": "a white sleeveless tank top"
+      },
+      "ref_zh": "臂上搭着黑色外套的行进者的蓝色上衣",
+      "physical_parent_zh": "搭黑外套的行进者",
+      "parent_instance_id": "sa_6859686:jacket_marcher",
+      "instruction_ref_zh": "将臂上搭着黑色外套的行进者的蓝色上衣替换为一件白色无袖背心。",
+      "findings_addressed": [
+        "ambiguous_ref",
+        "replace_is_attribute"
+      ],
+      "reason": "Masked shirt (cx~0.27W) is not near the center; she is the only marcher carrying a black jacket (with yellow lining) over her arm. Mask is the shirt only (bag and jacket excluded) - kept. The shirt is already a polo, so 'white polo shirt' was only a recolor; now a sleeveless tank top.",
+      "instruction_noref_zh": "将选中区域替换为一件白色无袖背心。"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the green polka-dot balloon",
+        "scope": "balloon"
+      },
+      "ref_zh": "绿色圆点气球",
+      "scope_zh": "气球",
+      "physical_parent_zh": "绿色气球",
+      "parent_instance_id": "sa_6859686:green_balloon",
+      "category": "balloon",
+      "source_category": "balloon",
+      "instruction_ref_zh": "移除绿色圆点气球。",
+      "preserve": [
+        "保留队伍、婴儿、婴儿车、橙色气球和道路环境。"
+      ],
+      "findings_addressed": [
+        "ill_posed_edit",
+        "mask_quality"
+      ],
+      "reason": "Retarget: removing the stroller would leave the seated toddler floating and its mask was fragmented (balloon+blanket). The green polka-dot balloon is a single clear independent object; SAM3 text mask t1_1 (box 1139,321,1532,730) reviewed."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the pothole in the foreground pavement",
+        "payload": "one small orange traffic cone",
+        "placement": {
+          "relation": "in",
+          "site": "",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在前景路面上的坑洞里放上一个小橙色交通锥。",
+      "instruction_noref_zh": "给选中区域放上一个小橙色交通锥。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "'small orange road marker' was vague; a traffic cone placed in the pothole is a natural, concrete addition."
+    }
+  ]
+}

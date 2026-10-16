@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9042900",
+  "reviewer": "shard6-b4",
+  "notes": "Tail case, all units re-examined. U1 is a white Kia SUV (not a sedan) and a second white SUV stands left of it. U2 replace payload was a bare colour -> white pickup truck. U3 mask is a pair of white banners on the central lamp pole -> plural ref. U4 mask covered both banners of the upper-left pair -> v2 mask of the left banner only, concrete payload.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9042900/case_sheet.jpg", "release_2_6_work/v2-sa_9042900/U4/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "traffic"], "scene_zh": "城市路口", "evidence_zh": "两辆白色 SUV 中右边的一辆、左边缘的白色小型面包车、中部灯杆上的一对白色横幅和左上灯杆上左边的横幅是四个不同对象。", "specific_protection_zh": "保留车辆、交警、街道标识和建筑。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the right one of the two white SUVs side by side near the center", "scope": "SUV"},
+      "ref_zh": "中部并排的两辆白色 SUV 中右边的一辆",
+      "scope_zh": "SUV",
+      "physical_parent_zh": "右侧白色 SUV",
+      "parent_instance_id": "sa_9042900:右侧白色SUV",
+      "instruction_ref_zh": "将中部并排的两辆白色 SUV 中右边的一辆的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["category_mismatch"],
+      "reason": "Masked vehicle (x 848-1266) is a white compact SUV; a white Kia Niro SUV stands directly left of it, so the ref uses the pair ordinal."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the white minivan cut off at the left edge", "scope": "minivan", "payload": "a white pickup truck"},
+      "ref_zh": "左边缘被截断的白色小型面包车",
+      "scope_zh": "小型面包车",
+      "physical_parent_zh": "左边缘白色面包车",
+      "parent_instance_id": "sa_9042900:左边缘白色面包车",
+      "instruction_ref_zh": "将左边缘被截断的白色小型面包车替换为一辆白色皮卡。",
+      "instruction_noref_zh": "将选中区域替换为一辆白色皮卡。",
+      "findings_addressed": ["ill_posed_edit"],
+      "reason": "Payload 'blue' was a bare colour; a pickup truck is a real structural replacement of the minivan."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the pair of white banners on the lamp pole above the white van near the center", "scope": "banners"},
+      "ref_zh": "中部白色厢式车上方灯杆上的一对白色横幅",
+      "scope_zh": "横幅",
+      "physical_parent_zh": "中部灯杆横幅",
+      "parent_instance_id": "sa_9042900:中部灯杆横幅",
+      "instruction_ref_zh": "移除中部白色厢式车上方灯杆上的一对白色横幅。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Two banner pairs hang on two poles; the mask covers both banners on the central pole (x 943-1053), above the white van."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the left banner on the lamp pole at the upper left", "scope": "banner", "payload": "one small red circular emblem", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "左上方灯杆上左边的横幅",
+      "scope_zh": "横幅",
+      "physical_parent_zh": "左上灯杆左侧横幅",
+      "parent_instance_id": "sa_9042900:左上灯杆左侧横幅",
+      "instruction_ref_zh": "给左上方灯杆上左边的横幅加上一个红色小圆形徽标。",
+      "instruction_noref_zh": "给选中区域加上一个红色小圆形徽标。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "Old mask covered both banners of the pair while the ref named one banner; v2 mask = host ∩ box [140,120,224,340] (left banner only, pole excluded). Payload made concrete."
+    }
+  ]
+}

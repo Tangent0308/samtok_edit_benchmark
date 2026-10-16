@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_5987768",
+  "reviewer": "shard2b-b1",
+  "notes": "U3 replace was only a colour/pattern change of the same headscarf; no natural structural replacement for a girl's hijab, so converted to a two-property attribute (color + pattern). Clean image checked: U1 backpack light grey, U2 headscarf purple, U3 dark brown, U4 open green glazed door. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5987768/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"operation": "attribute", "payload": "light blue", "attributes": [{"property": "color", "value": "light blue"}, {"property": "pattern", "value": "a small white floral print"}]},
+     "instruction_ref_zh": "将紫色头巾紧右侧的深棕色头巾的颜色改为浅蓝色，并将其图案改为白色小碎花。",
+     "instruction_noref_zh": "将选中区域的颜色改为浅蓝色，并将其图案改为白色小碎花。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same garment, only colour/pattern changed; replacing a hijab with a different structure would be unnatural, so it is an attribute edit."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_6003979",
+  "reviewer": "shard2b-b1",
+  "notes": "U3 replace was a colour/text change of the same sign; payload rewritten to a round wall-mounted clock. Clean image checked: U1 white sedan, U2 red SUV (only red car), U3 blue AKW TRAVEL sign. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_6003979/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a round wall-mounted clock"},
+     "instruction_ref_zh": "将蓝色AKW TRAVEL招牌替换为一个圆形壁挂时钟。",
+     "instruction_noref_zh": "将选中区域替换为一个圆形壁挂时钟。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Blue sign -> white ISLAND TOURS sign kept the category and shape; a clock is a genuine object replacement of similar size on the facade."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

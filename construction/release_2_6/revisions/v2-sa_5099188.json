@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_5099188",
+  "reviewer": "shard2-b9",
+  "notes": "U4 payload had a dangling 'on its roof'; roof moved to placement.site and v2 mask = visible roof strip of the silver sedan (SAM3 'car roof', x425-508, y1526-1532). U1-U3 checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5099188/case_sheet.jpg", "release_2_6_work/v2-sa_5099188/U4/t1.jpg", "release_2_6_work/v2-sa_5099188/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white TAXI sign", "placement": {"relation": "on", "site": "roof", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在深绿色汽车后方的银色轿车的车顶上加上一块小白色TAXI灯牌。",
+     "instruction_noref_zh": "给选中区域加上一块小白色TAXI灯牌。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its' removed; roof is the site and the mask is the roof."}
+  ]
+}

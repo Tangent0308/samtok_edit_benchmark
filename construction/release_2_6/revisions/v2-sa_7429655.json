@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_7429655",
+  "reviewer": "shard3-b5",
+  "notes": "U2 SUV is champagne/silver not dark; recolour to dark red. U4 is a wooden balcony railing on the left building (physical_parent_zh wrongly said 右墙). Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7429655/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the champagne-colored SUV behind the sedan", "payload": "dark red", "attributes": [{"property": "color", "value": "dark red"}]},
+     "ref_zh": "轿车后方的香槟色SUV",
+     "instruction_ref_zh": "将轿车后方的香槟色SUV的颜色改为深红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深红色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Clean crop: the Jeep-style SUV is light champagne/silver; 'dark' was wrong and white would be barely visible."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the wooden balcony railing on the left building"},
+     "ref_zh": "左侧建筑上的木制阳台栏杆",
+     "scope_zh": "栏杆",
+     "physical_parent_zh": "左侧建筑阳台栏杆",
+     "parent_instance_id": "sa_7429655:左侧建筑阳台栏杆",
+     "instruction_ref_zh": "在左侧建筑上的木制阳台栏杆上加上一块小蓝色标牌。",
+     "instruction_noref_zh": "给选中区域加上一块小蓝色标牌。",
+     "findings_addressed": [],
+     "reason": "Railing is a balcony railing on the left building, not on a wall; physical_parent_zh said 右墙栏杆 (wrong side)."}
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "case_id": "v2-sa_6129691",
+  "reviewer": "round2",
+  "notes": "U1 is a round white no-turn traffic sign (EXCEPT MUNI & TAXIS), not a shop sign; payload made a structural sign change. U4 marcher wears a light-gray hoodie with hood up and holds a white placard; dangling 'its sleeve' removed (sleeve is ~30px from the top-down view), mask stays the hoodie. Round2: rechecked source and all unit masks; confirmed prior revision before logging.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6129691/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the round white no-turn traffic sign at the lower right",
+        "scope": "traffic sign",
+        "payload": "a rectangular blue bus stop sign"
+      },
+      "ref_zh": "右下方的圆形白色禁止转弯交通标志",
+      "scope_zh": "交通标志",
+      "physical_parent_zh": "圆形交通标志",
+      "parent_instance_id": "sa_6129691:圆形交通标志",
+      "instruction_ref_zh": "将右下方的圆形白色禁止转弯交通标志替换为一块蓝色长方形公交站牌。",
+      "findings_addressed": [
+        "category_mismatch"
+      ],
+      "reason": "Mask is a traffic regulation sign.",
+      "category": "traffic sign"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the light-gray hoodie of the hooded marcher holding a white placard at the lower left",
+        "payload": "a small blue heart patch",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "左下方戴着兜帽、手持白色标语牌的游行者的浅灰色连帽衫",
+      "physical_parent_zh": "浅灰连帽衫游行者",
+      "parent_instance_id": "sa_6129691:浅灰连帽衫游行者",
+      "instruction_ref_zh": "给左下方戴着兜帽、手持白色标语牌的游行者的浅灰色连帽衫加上一块小蓝心补丁。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "No sandwich board; hoodie is light gray. Payload no longer carries a dangling 'its sleeve'."
+    }
+  ]
+}

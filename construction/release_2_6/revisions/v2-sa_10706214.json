@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_10706214",
+  "reviewer": "shard1-b4",
+  "notes": "No audit findings. Protocol 2.0: U4 add site 'chest strap' -> v2 mask = sternum strap with buckle/tail of the red backpack. 'Central hiker' was weak (the hiker with bib 480 is nearer the image center); U3/U4 refs now name the hiker in the purple T-shirt.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10706214/case_sheet.jpg", "release_2_6_work/v2-sa_10706214/U4/t1.jpg", "release_2_6_work/v2-sa_10706214/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the red jacket carried by the hiker in a purple T-shirt"},
+     "ref_zh": "紫色T恤徒步者拿着的红色外套",
+     "instruction_ref_zh": "移除紫色T恤徒步者拿着的红色外套。",
+     "findings_addressed": [],
+     "reason": "'central hiker' was ambiguous: the hiker with bib 480 stands nearer the image center; the jacket carrier is the one in a purple T-shirt."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the red backpack of the hiker in a purple T-shirt"},
+     "ref_zh": "紫色T恤徒步者的红色背包",
+     "instruction_ref_zh": "在紫色T恤徒步者的红色背包的胸带上加上一个小指南针。",
+     "instruction_noref_zh": "给选中区域加上一个小指南针。",
+     "findings_addressed": [],
+     "reason": "Same ambiguity as U3; protocol 2.0 v2 mask = chest strap (site)."}
+  ]
+}

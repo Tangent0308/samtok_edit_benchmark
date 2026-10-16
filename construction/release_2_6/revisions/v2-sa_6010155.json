@@ -1,0 +1,12 @@
+{
+  "case_id": "v2-sa_6010155",
+  "reviewer": "shard2b-b1",
+  "notes": "U4 barrier mask re-segmented with SAM3 'metal crowd barrier' (t1_2): now only the barrier panels (src y715-1223); the spectators' legs and shoes below/outside the panels are excluded (frac of old mask 0.65). The see-through panel mesh interior stays as the mounting face. Other units verified on clean image (green flag, yellow polo marshal, Valvoline shirt).",
+  "reviewed_views": ["release_2_6_work/v2-sa_6010155/case_sheet.jpg", "release_2_6_work/v2-sa_6010155/U4/t1.jpg", "release_2_6_work/v2-sa_6010155/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep", "findings_addressed": ["mask_quality"], "reason": "v2 mask restricted to the metal barrier panels, excluding spectators below them."}
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "case_id": "v2-sa_9172711",
+  "reviewer": "shard7",
+  "notes": "Tail case: U1 basket and U4 drum ambiguous (pairs), U1 value brown on a tan basket, U2 'load near the center' is a ground pile of sulfur at the bottom, U3 an indistinct grey rock on a rocky slope. U3 retargeted to the red-shirted sulfur porter with his two baskets (SAM3, v2 mask). U1/U2/U4 masks checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9172711/case_sheet.jpg", "release_2_6_work/v2-sa_9172711/U3/t1.jpg", "release_2_6_work/v2-sa_9172711/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "mine", "worksite"], "scene_zh": "硫磺矿作业现场", "evidence_zh": "油桶上的右侧藤筐、地上的硫磺块堆、红衣挑夫和右侧 IDEMITSU 油桶是四个不同对象。", "specific_protection_zh": "保留作业物件和矿坑岩壁。"},
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {"ref": "the right wicker basket of the two resting on the oil drums at the lower left", "scope": "basket", "payload": "dark red", "attributes": [{"property": "color", "value": "dark red"}]},
+      "ref_zh": "左下方油桶上两只藤筐中右侧的那只",
+      "scope_zh": "藤筐",
+      "physical_parent_zh": "油桶上右侧藤筐",
+      "parent_instance_id": "sa_9172711:油桶上右侧藤筐",
+      "instruction_ref_zh": "将左下方油桶上两只藤筐中右侧的那只的颜色改为深红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为深红色。",
+      "preserve": ["保留筐中的硫磺块、左侧藤筐和下方油桶。"],
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Several baskets; mask is the right basket of the pair on the drums. 'brown' on a tan basket was weak, now dark red."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {"ref": "the pile of yellow sulfur chunks on the ground right of the oil drums", "scope": "sulfur pile"},
+      "ref_zh": "油桶右侧地上的黄色硫磺块堆",
+      "scope_zh": "硫磺块堆",
+      "physical_parent_zh": "地上硫磺块堆",
+      "parent_instance_id": "sa_9172711:地上硫磺块堆",
+      "instruction_ref_zh": "将油桶右侧地上的黄色硫磺块堆替换为一个木箱。",
+      "instruction_noref_zh": "将选中区域替换为一个木箱。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Masked object is the ground pile of sulfur at the bottom (0.47W, 0.94H), not near the image center."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {"ref": "the sulfur porter in a red shirt carrying two baskets on a shoulder pole", "scope": "porter"},
+      "ref_zh": "用扁担挑着两只筐的红衣硫磺挑夫",
+      "scope_zh": "挑夫",
+      "physical_parent_zh": "红衣挑夫",
+      "parent_instance_id": "sa_9172711:红衣挑夫",
+      "instruction_ref_zh": "移除用扁担挑着两只筐的红衣硫磺挑夫。",
+      "preserve": ["保留其左侧架在木桩上的藤筐、右侧地上的硫磺块和岩壁。"],
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Retarget: the grey rock at the upper-right edge is not identifiable on an all-rock slope and its removal is barely visible. New target is the porter with his baskets and load (SAM3 person ∪ baskets ∪ sulfur, verified)."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {"ref": "the black-topped IDEMITSU oil drum beside the red drum at the lower left", "scope": "oil drum", "payload": "a yellow triangular hazard warning label"},
+      "ref_zh": "左下方红色油桶旁的黑顶 IDEMITSU 油桶",
+      "scope_zh": "油桶",
+      "physical_parent_zh": "右侧 IDEMITSU 油桶",
+      "parent_instance_id": "sa_9172711:右侧IDEMITSU油桶",
+      "instruction_ref_zh": "给左下方红色油桶旁的黑顶 IDEMITSU 油桶加上一张黄色三角形危险警示标签。",
+      "instruction_noref_zh": "给选中区域加上一张黄色三角形危险警示标签。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "'the oil drum at the lower left' most naturally picks the red PE drum; mask is the IDEMITSU drum. Payload made specific."
+    }
+  ]
+}

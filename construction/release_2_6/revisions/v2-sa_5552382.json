@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_5552382",
+  "reviewer": "shard2-b11",
+  "notes": "U2 ref was ambiguous: two hanging '1' direction signs on the same gallery (left one at x~290-380). Masked one is the right one. Payload 'black sign reading INFORMATION' was a sign-to-sign text change; now a hanging round clock.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5552382/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the right one of the two hanging direction signs marked 1", "payload": "a hanging round wall clock"},
+     "ref_zh": "两块标有1的悬挂导向牌中右侧的那块",
+     "instruction_ref_zh": "将两块标有1的悬挂导向牌中右侧的那块替换为一只悬挂的圆形挂钟。",
+     "instruction_noref_zh": "将选中区域替换为一只悬挂的圆形挂钟。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Another '1' sign hangs at the far left of the same level; the masked one (x1420-1543) is the right one. Sign->sign text change also replaced by a structural object change."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

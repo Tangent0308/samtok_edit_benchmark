@@ -1,0 +1,12 @@
+{
+  "case_id": "v2-sa_6014866",
+  "reviewer": "shard2b-b1",
+  "notes": "U3 finding checked: the handheld camera body (src ~400-500, 2030-2160) is already outside the 2.5.0 shirt mask (notch around it); the only foreign item inside was the thin Nikon camera strap, which is now subtracted (SAM3 'camera strap' t1_1). Other units verified on clean image.",
+  "reviewed_views": ["release_2_6_work/v2-sa_6014866/case_sheet.jpg", "release_2_6_work/v2-sa_6014866/U3/t1.jpg", "release_2_6_work/v2-sa_6014866/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep", "findings_addressed": ["mask_quality"], "reason": "Camera was already excluded; v2 mask also removes the camera strap crossing the shirt."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

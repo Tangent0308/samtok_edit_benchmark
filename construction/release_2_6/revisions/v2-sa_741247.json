@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_741247",
+  "reviewer": "shard0-b3",
+  "notes": "No audit findings. Protocol 2.0 masks: U1 = both sleeves of the rightmost man's blue T-shirt (SAM3 'sleeve' t1_1|t1_3), U3 = upper back of the far-left man's T-shirt (host ∩ box), U5 = camera-facing side of the bench's left end (host ∩ box). U5 site 'front edge below the seats' was vague over a 1800 px bench and 'front' is wrong (camera sees the back side of the seated people); rewritten to a specific site. zh no-ref of U3/U5 carried site words.",
+  "reviewed_views": ["release_2_6_work/v2-sa_741247/case_sheet.jpg", "release_2_6_work/v2-sa_741247/U1/t1.jpg", "release_2_6_work/v2-sa_741247/U1/final.jpg", "release_2_6_work/v2-sa_741247/zoom_U3.jpg", "release_2_6_work/v2-sa_741247/U3/final.jpg", "release_2_6_work/v2-sa_741247/zoom_U5.jpg", "release_2_6_work/v2-sa_741247/U5/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "ref_zh": "最右侧男子的蓝色T恤",
+     "instruction_ref_zh": "移除最右侧男子蓝色T恤的衣袖。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask = the two sleeves; zh ref cleaned (短袖的衣袖 -> T恤的衣袖)."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "instruction_ref_zh": "给最左侧戴帽男子深色T恤的后背上部加上一块银色反光贴布。",
+     "instruction_noref_zh": "给选中区域加上一块银色反光贴布。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask = upper back; blind zh no-ref without site."},
+    {"id": "U4", "action": "keep"},
+    {"id": "U5", "action": "revise",
+     "spec": {"placement": {"relation": "mounted on", "site": "camera-facing side of the left end", "anchor_mode": "support"}},
+     "ref_zh": "多人所坐的长木凳",
+     "instruction_ref_zh": "在多人所坐长木凳左端朝向镜头的侧面装上一块小黄铜铭牌。",
+     "instruction_noref_zh": "给选中区域装上一块小黄铜铭牌。",
+     "findings_addressed": [],
+     "reason": "Site 'front edge below the seats' was vague and the visible face is the back side; specific site matches the v2 mask (left end, x 195-460)."}
+  ]
+}

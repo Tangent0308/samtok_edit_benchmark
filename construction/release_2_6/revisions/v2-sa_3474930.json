@@ -1,0 +1,62 @@
+{
+  "case_id": "v2-sa_3474930",
+  "reviewer": "round2",
+  "notes": "Structural wheelhouse replacement; move trunk placement out of light payload into site and segment actual trunk. Wall mask excludes blue roof and windows, recoloring to visibly distinct terracotta.",
+  "reviewed_views": [
+    "assets/v2-sa_3474930/source.jpg",
+    "release_2_6_work/v2-sa_3474930/case_sheet.jpg",
+    "release_2_6_work/v2-sa_3474930/U3/t1.jpg",
+    "release_2_6_work/v2-sa_3474930/U3/final.jpg",
+    "release_2_6_work/v2-sa_3474930/U4/t1.jpg",
+    "release_2_6_work/v2-sa_3474930/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a white motor launch with a tall rectangular wheelhouse and large upright windows"
+      },
+      "instruction_ref_zh": "将左前方的大型摩托艇替换为一艘带高方形驾驶室和大竖窗的白色机动游艇。",
+      "reason": "Tall rigid wheelhouse differs from source low rounded canvas-and-clear-curtain cockpit."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the tall palm in front of the left edge of the high-rise on the right",
+        "payload": "a strand of warm-white lights",
+        "placement": {
+          "relation": "around",
+          "site": "trunk",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "右侧高层建筑左边缘前的高棕榈树",
+      "instruction_ref_zh": "在右侧高层建筑左边缘前的高棕榈树的树干周围加上一串暖白色灯。",
+      "reason": "Tree trunk belongs in placement.site and T mask, not in payload."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "terracotta",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "terracotta"
+          }
+        ]
+      },
+      "instruction_ref_zh": "将最左侧蓝屋顶建筑的墙面的颜色改为赤陶色。",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "Source walls already off white; terracotta is distinct. SAM union covers wall faces only, excluding roof and glazing."
+    }
+  ]
+}

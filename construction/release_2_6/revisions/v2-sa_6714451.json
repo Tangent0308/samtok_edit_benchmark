@@ -1,0 +1,32 @@
+{
+  "case_id": "v2-sa_6714451",
+  "reviewer": "shard0-b6",
+  "notes": "U1 rim removal was ill-posed: now removes the whole front red tray including its ice and scallops (v2 mask = tray with contents, hole-filled). U3 site narrowed to the front edge (v2). U3/U4 both hold squid: refs now use tray colour + squid. Chinese refs dropped stray '可见边框' on whole-tray units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_6714451/case_sheet.jpg", "release_2_6_work/v2-sa_6714451/U1/p1.jpg", "release_2_6_work/v2-sa_6714451/U1/final.jpg", "release_2_6_work/v2-sa_6714451/U3/t2.jpg", "release_2_6_work/v2-sa_6714451/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"remove_mode": "contents", "target_part": ""},
+     "ref_zh": "前景中间盛贝壳和碎冰的红色托盘",
+     "instruction_ref_zh": "移除前景中间盛贝壳和碎冰的红色托盘及其中的物品。",
+     "instruction_noref_zh": "移除选中区域及其中的物品。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Removing the raised rim of a heaped tray is physically undefined; removing the tray with its contents keeps a remove unit and is a natural edit (basket below is revealed). Mask = tray ∪ contents."},
+    {"id": "U2", "action": "revise",
+     "spec": {},
+     "ref_zh": "右下盛塑料杯的蓝色托盘",
+     "instruction_ref_zh": "将右下盛塑料杯的蓝色托盘替换为浅口椭圆形不锈钢托盘。",
+     "reason": "Chinese ref said '可见边框' while the English names the whole tray."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the light-blue squid tray at the lower left", "placement": {"relation": "clipped to", "site": "front edge", "anchor_mode": "support"}},
+     "ref_zh": "左下盛鱿鱼的浅蓝色托盘",
+     "instruction_ref_zh": "给左下盛鱿鱼的浅蓝色托盘的前沿夹上一个小空白价签架。",
+     "instruction_noref_zh": "给选中区域夹上一个小空白价签架。",
+     "reason": "Site 'rim' covered the whole tray frame; narrowed to the front edge (v2 mask = front corner wall, x 0-175, y 1780-1938). Both left trays hold squid; colour distinguishes them."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the visible rim of the dark-blue squid tray at the middle left"},
+     "ref_zh": "左中盛鱿鱼的深蓝色托盘的可见边框",
+     "instruction_ref_zh": "将左中盛鱿鱼的深蓝色托盘的可见边框的颜色改为白色。",
+     "reason": "The tray holds squid, not fish; colour added to separate it from the light-blue squid tray (U3)."},
+    {"id": "U5", "action": "keep"}
+  ]
+}

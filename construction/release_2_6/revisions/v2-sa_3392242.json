@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_3392242",
+  "reviewer": "shard0-b1",
+  "notes": "Audit U2 ambiguous_ref fixed: the bag is the gray rolling bag with a red stripe pulled by the man in the gray jacket (an olive/gray suitcase is more central). Protocol 2.0: U2 site 'side' made 'image-left side' (red-striped edge), v2 mask = host ∩ x<=792. U1 zh matched to English (it described body + handle of a 'left black suitcase').",
+  "reviewed_views": ["release_2_6_work/v2-sa_3392242/case_sheet.jpg", "release_2_6_work/v2-sa_3392242/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise", "spec": {},
+     "ref_zh": "左侧男子拖着的拉杆箱",
+     "instruction_ref_zh": "移除左侧男子拖着的拉杆箱。",
+     "findings_addressed": [],
+     "reason": "zh ref did not match the English ref."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the gray rolling bag with a red stripe pulled by the man in the gray jacket",
+              "placement": {"relation": "attached to", "site": "image-left side", "anchor_mode": "support"}},
+     "ref_zh": "灰夹克男子拖着的带红色条纹的灰色拉杆包",
+     "physical_parent_zh": "灰夹克男子拖着的灰色拉杆包",
+     "parent_instance_id": "sa_3392242:灰夹克男子拖着的灰色拉杆包",
+     "instruction_ref_zh": "在灰夹克男子拖着的带红色条纹的灰色拉杆包画面左侧挂上一个黄色行李牌。",
+     "instruction_noref_zh": "给选中区域挂上一个黄色行李牌。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "'near the center' loose (another gray/olive case is more central); bag identified by owner and stripe; site specified for the 2.0 mask."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

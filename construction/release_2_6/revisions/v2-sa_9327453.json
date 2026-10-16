@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9327453",
+  "reviewer": "shard7",
+  "notes": "Tail case, all units rewritten. U1 whole-ferris-wheel mask was a filled disc (~39% sky between spokes) -> recolour of the round 'B' hub emblem (SAM3 v2). U2 game-booth mask was a ragged, heavily occluded fragment and the payload a recolour -> retargeted to the pink plush rabbit, replaced by a teddy bear (v2). U3 was a tiny pennant among many identical ones (ref said left, it is at the right edge) -> retargeted to removing the large plush eagle at the top left (v2). U4 tag is under the toy machine gun, not 'the sign at the left'; payload made specific.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9327453/case_sheet.jpg", "release_2_6_work/v2-sa_9327453/U1/t1.jpg", "release_2_6_work/v2-sa_9327453/U1/t3.jpg", "release_2_6_work/v2-sa_9327453/U1/t6.jpg", "release_2_6_work/v2-sa_9327453/U1/final.jpg", "release_2_6_work/v2-sa_9327453/U2/final.jpg", "release_2_6_work/v2-sa_9327453/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "fairground", "clutter"], "scene_zh": "游乐场摊位", "evidence_zh": "摩天轮中心的圆形B字徽标、悬挂的粉色毛绒兔子、左上方的棕色毛绒老鹰和前景玩具机枪下挂着的黄色标签是四个不同对象。", "specific_protection_zh": "保留摩天轮、摊位和其他毛绒玩具。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the round 'B' emblem at the hub of the ferris wheel", "scope": "emblem", "payload": "bright red", "attributes": [{"property": "color", "value": "bright red"}]},
+      "ref_zh": "摩天轮中心的圆形B字徽标",
+      "scope_zh": "徽标",
+      "physical_parent_zh": "摩天轮",
+      "parent_instance_id": "sa_9327453:摩天轮",
+      "instruction_ref_zh": "将摩天轮中心的圆形B字徽标的颜色改为鲜红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为鲜红色。",
+      "findings_addressed": [],
+      "reason": "New problem: the 2.5.0 wheel mask filled the whole disc, about 39% sky between spokes, and the wheel already has a red rim and multicoloured gondolas. The light-blue hub emblem is a clean single region (SAM3 t6_1, v2) and bright red is clearly visible."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the pink plush rabbit in a black vest hanging at the left", "scope": "plush rabbit", "payload": "a brown plush teddy bear"},
+      "ref_zh": "左侧悬挂的穿黑色背心的粉色毛绒兔子",
+      "scope_zh": "毛绒兔子",
+      "physical_parent_zh": "粉色毛绒兔子",
+      "parent_instance_id": "sa_9327453:粉色毛绒兔子",
+      "instruction_ref_zh": "将左侧悬挂的穿黑色背心的粉色毛绒兔子替换为一只棕色毛绒泰迪熊。",
+      "instruction_noref_zh": "将选中区域替换为一只棕色毛绒泰迪熊。",
+      "findings_addressed": ["replace_is_attribute", "mask_quality"],
+      "reason": "Retarget: the degli Anelli booth is heavily occluded (rabbit, gun, man) and its mask fragmented. The pink rabbit is the only pink rabbit plush and clearly bounded (SAM3 t1_1, v2, includes its vest); teddy bear is a genuine structural replace."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the large brown plush eagle with spread wings at the top left", "scope": "plush eagle"},
+      "ref_zh": "左上方展开翅膀的大型棕色毛绒老鹰",
+      "scope_zh": "毛绒老鹰",
+      "physical_parent_zh": "棕色毛绒老鹰",
+      "parent_instance_id": "sa_9327453:棕色毛绒老鹰",
+      "instruction_ref_zh": "移除左上方展开翅膀的大型棕色毛绒老鹰。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Retarget: the old pennant (cx=0.97, ref said upper left) is a tiny flag among many identical ones on the same line. The plush eagle is unique and clearly bounded (SAM3 t1_1 minus U2, v2); removal reveals sky and the stall roof."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the yellow tag hanging from the black toy machine gun in the foreground", "scope": "tag", "payload": "one small red warning-triangle sticker"},
+      "ref_zh": "前景黑色玩具机枪下挂着的黄色标签",
+      "scope_zh": "标签",
+      "physical_parent_zh": "黄色标签",
+      "parent_instance_id": "sa_9327453:黄色标签",
+      "instruction_ref_zh": "在前景黑色玩具机枪下挂着的黄色标签上加上一枚小红色警示三角贴纸。",
+      "instruction_noref_zh": "给选中区域加上一枚小红色警示三角贴纸。",
+      "findings_addressed": ["ambiguous_ref", "grammar_style"],
+      "reason": "Masked tag hangs under the toy gun at lower center (cx=0.37), not 'the sign at the left'; payload made specific. Mask is the tag (add site = anchor, unchanged)."
+    }
+  ]
+}

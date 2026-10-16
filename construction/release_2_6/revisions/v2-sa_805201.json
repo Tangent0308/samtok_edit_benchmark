@@ -1,0 +1,100 @@
+{
+ "case_id": "v2-sa_805201",
+ "reviewer": "shard4-b3",
+ "notes": "Tail case, all units rewritten. U1 ref names the yellow ring on the swimmer statue. U2 mask was the whole staircase incl. people -> re-segmented to the staircase railings only; payload made a structural replacement. U3 occupied lounger with a 2-fragment mask -> retargeted to the left white bin with a blue lid by the pool bar (lead review narrowed from the pair). U4 ref names the yellow 'Watch Your Step' sign (a second yellow sign exists near the stairs).",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_805201/case_sheet.jpg",
+  "release_2_6_work/v2-sa_805201/U2/t1.jpg",
+  "release_2_6_work/v2-sa_805201/U2/final.jpg",
+  "release_2_6_work/v2-sa_805201/U3/t1.jpg",
+  "release_2_6_work/v2-sa_805201/U3/final.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "outdoor",
+   "water",
+   "occlusion"
+  ],
+  "scene_zh": "邮轮泳池甲板",
+  "evidence_zh": "泳池边雕像上的黄色游泳圈、左侧楼梯的白色金属栏杆、泳池吧旁左边的蓝盖白色垃圾桶和甲板中央的黄色警示牌是四个不同对象；栏杆为细镂空结构，楼梯上有行人。",
+  "specific_protection_zh": "保留甲板设施、躺椅、泳池和人物。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the yellow inflatable ring around the swimmer statue by the pool"
+   },
+   "ref_zh": "泳池边游泳者雕像身上的黄色游泳圈",
+   "scope_zh": "游泳圈",
+   "physical_parent_zh": "游泳者雕像",
+   "parent_instance_id": "sa_805201:游泳者雕像",
+   "instruction_ref_zh": "将泳池边游泳者雕像身上的黄色游泳圈的颜色改为蓝色。",
+   "instruction_noref_zh": "将选中区域的颜色改为蓝色。",
+   "findings_addressed": [],
+   "reason": "'near the upper center' was vague; ring is on the statue at mid-image. Mask (ring) verified, unchanged."
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the white metal railing of the staircase at the left",
+    "scope": "railing",
+    "payload": "a frameless glass balustrade"
+   },
+   "ref_zh": "左侧楼梯的白色金属栏杆",
+   "scope_zh": "栏杆",
+   "physical_parent_zh": "左侧楼梯",
+   "parent_instance_id": "sa_805201:左侧楼梯",
+   "instruction_ref_zh": "将左侧楼梯的白色金属栏杆替换为无框玻璃护栏。",
+   "instruction_noref_zh": "将选中区域替换为无框玻璃护栏。",
+   "preserve": [
+    "保留楼梯台阶和楼梯上的行人。"
+   ],
+   "findings_addressed": [
+    "mask_quality"
+   ],
+   "reason": "Mask covered the whole stair flight with steps and two people; v2 mask = both railing sides only (SAM3 'railing' inside host). 'wooden fence' replaced by a natural structural replacement."
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the left one of the two white bins with blue lids beside the pool bar",
+    "scope": "bin",
+    "payload": "",
+    "remove_mode": "whole"
+   },
+   "ref_zh": "泳池吧旁两个蓝盖白色垃圾桶中左边的那个",
+   "scope_zh": "垃圾桶",
+   "physical_parent_zh": "左侧蓝盖白色垃圾桶",
+   "parent_instance_id": "sa_805201:左侧蓝盖白色垃圾桶",
+   "instruction_ref_zh": "移除泳池吧旁两个蓝盖白色垃圾桶中左边的那个。",
+   "instruction_noref_zh": "移除选中区域。",
+   "preserve": [
+    "保留右边的垃圾桶、泳池吧墙面、旁边的立牌和躺椅。"
+   ],
+   "findings_addressed": [
+    "ambiguous_ref"
+   ],
+   "reason": "Masked lounger was mid-left, occupied by a sunbather and only two tiny fragments. Retargeted remove to the two blue bins (v2 mask, SAM3). Lead review: bins are white with blue lids (clean source), and a pair is two instances; narrowed to the left bin (SAM3 tracker box+pos/neg, re-committed U3_v2)."
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the yellow 'Watch Your Step' sign standing on the deck near the center",
+    "payload": "a thin red border"
+   },
+   "ref_zh": "甲板中央附近立着的黄色“Watch Your Step”警示牌",
+   "scope_zh": "警示牌",
+   "physical_parent_zh": "中央警示牌",
+   "parent_instance_id": "sa_805201:中央警示牌",
+   "instruction_ref_zh": "给甲板中央附近立着的黄色“Watch Your Step”警示牌加上一圈细红边。",
+   "instruction_noref_zh": "给选中区域加上一圈细红边。",
+   "findings_addressed": [],
+   "reason": "Another yellow caution sign stands near the stairs; ref now names text, colour and location. Mask (sign) verified, unchanged."
+  }
+ ]
+}

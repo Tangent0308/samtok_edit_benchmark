@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_6065460",
+  "reviewer": "shard0-b6",
+  "notes": "U2 mask had detached fragments on the chair beyond (removed, v2). U2 chair is occupied by the man in the maroon T-shirt, so a seat cushion would be hidden: payload changed to a blanket draped over it. U4 remove-part: v2 mask = both sleeves.",
+  "reviewed_views": ["release_2_6_work/v2-sa_6065460/case_sheet.jpg", "release_2_6_work/v2-sa_6065460/U2/final.jpg", "release_2_6_work/v2-sa_6065460/U4/t1.jpg", "release_2_6_work/v2-sa_6065460/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "one folded dark-red blanket", "placement": {"relation": "over", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给中间靠右被前方空椅挡住的椅子搭上一条折叠的深红色毯子。",
+     "instruction_noref_zh": "给选中区域搭上一条折叠的深红色毯子。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Removed detached fragments (x 1403-1480, y 1225-1243) on the chair beyond the table from the mask; the chair is occupied so a seat cushion would be invisible, payload changed to a blanket draped over the backrest."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"},
+    {"id": "U5", "action": "keep"}
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9068084",
+  "reviewer": "shard6-b5",
+  "notes": "Tail case, all units re-examined on the clean image. U1 flag ref made precise. U2 replace was a recolour -> brown leather shoulder bag, ref names the hoodie wearer. U3 mask was the flag worn as a cape (calling it 'banner' was wrong and removing a worn cape is near-garment removal) -> retargeted to the long white banner held between the hoodie woman and the cape woman (SAM3 v2 mask). U4 window ref was ambiguous among many windows; payload made concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9068084/case_sheet.jpg", "release_2_6_work/v2-sa_9068084/U3/t1.jpg", "release_2_6_work/v2-sa_9068084/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "parade", "crowd"], "scene_zh": "街头集会", "evidence_zh": "深色大衣男子举着的白红白大旗、浅蓝色连帽衫女子的黑色束口背包、两人之间举着的白色长横幅和黑色立柱右侧的高层窗户是四个不同对象。", "specific_protection_zh": "保留集会人群、其他旗帜和建筑。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the large white-red-white flag raised on a pole by the man in the dark coat", "scope": "flag"},
+      "ref_zh": "深色大衣男子用旗杆举起的白红白大旗",
+      "scope_zh": "旗帜",
+      "physical_parent_zh": "白红白大旗",
+      "parent_instance_id": "sa_9068084:白红白大旗",
+      "instruction_ref_zh": "将深色大衣男子用旗杆举起的白红白大旗的颜色改为蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为蓝色。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: many white-red-white flags/capes in the scene; the masked one is the only flag raised on a pole (by the man in the dark coat)."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the black drawstring backpack of the woman in the light blue hoodie", "scope": "backpack", "payload": "a brown leather shoulder bag"},
+      "ref_zh": "浅蓝色连帽衫女子背的黑色束口背包",
+      "scope_zh": "背包",
+      "physical_parent_zh": "黑色束口背包",
+      "parent_instance_id": "sa_9068084:黑色束口背包",
+      "instruction_ref_zh": "将浅蓝色连帽衫女子背的黑色束口背包替换为一个棕色皮革单肩包。",
+      "instruction_noref_zh": "将选中区域替换为一个棕色皮革单肩包。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "'a red backpack' was only a recolour; mask is the black drawstring backpack (box [1721,835,1806,955])."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the long white banner held between the woman in the light blue hoodie and the woman wearing a flag as a cape", "scope": "banner"},
+      "ref_zh": "浅蓝色连帽衫女子与披着旗帜的女子之间举着的白色长横幅",
+      "scope_zh": "横幅",
+      "physical_parent_zh": "白色长横幅",
+      "parent_instance_id": "sa_9068084:白色长横幅",
+      "instruction_ref_zh": "移除浅蓝色连帽衫女子与披着旗帜的女子之间举着的白色长横幅。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["category_mismatch"],
+      "reason": "Old mask was the flag worn as a cape on the woman's back. Retargeted (per audit alternative) to the long white banner: SAM3 text 'white banner' t1_1, box [1810,841,1980,961], visually verified (in front of the black pillar, ends at the hoodie woman's arm and behind the cape)."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the upper-floor window just right of the tall black pillar at the right", "scope": "window", "payload": "one wooden flower box with red flowers", "placement": {"relation": "attached to", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "右侧高大黑色立柱右边紧邻的高层窗户",
+      "scope_zh": "窗户",
+      "physical_parent_zh": "高层窗户",
+      "parent_instance_id": "sa_9068084:高层窗户",
+      "instruction_ref_zh": "给右侧高大黑色立柱右边紧邻的高层窗户加上一个种着红花的木制花箱。",
+      "instruction_noref_zh": "给选中区域加上一个种着红花的木制花箱。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: the white building has many identical windows; the masked one (box [2006,153,2050,370]) is the upper-floor window immediately right of the tall black pillar. Payload made specific."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_7506005",
+  "reviewer": "shard3-b6",
+  "notes": "U1/U2 masks were whole runners for shirt edits: re-segmented singlets. U2 payload was only a recolour of a red singlet; now a long-sleeved cycling jersey. U3 removed a scooter's front wheel under a seated rider (physically absurd, and 'tire at the lower left' ambiguous with the scooter's rear wheel): retargeted to the spectator in a white hoodie. U4 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7506005/case_sheet.jpg", "release_2_6_work/v2-sa_7506005/U1/final.jpg", "release_2_6_work/v2-sa_7506005/U2/final.jpg", "release_2_6_work/v2-sa_7506005/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "sports", "crowd"], "scene_zh": "街头跑步活动", "evidence_zh": "前景跑者的背心、最右侧跑者的背心、跑者身后穿白色连帽衫的人和道路标志是四个不同对象。", "specific_protection_zh": "保留跑者、道路和交通环境。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the singlet of the foreground runner", "scope": "singlet"},
+     "ref_zh": "前景跑者的背心", "scope_zh": "背心", "physical_parent_zh": "前景跑者", "parent_instance_id": "sa_7506005:前景跑者",
+     "instruction_ref_zh": "将前景跑者的背心的颜色改为亮蓝色。",
+     "findings_addressed": ["mask_quality"], "reason": "Mask was the whole runner; now the singlet only (v2 mask); garment named as singlet."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the singlet of the runner at the far right", "scope": "singlet", "payload": "a long-sleeved cycling jersey"},
+     "ref_zh": "最右侧跑者的背心", "scope_zh": "背心", "physical_parent_zh": "最右侧跑者", "parent_instance_id": "sa_7506005:最右侧跑者",
+     "instruction_ref_zh": "将最右侧跑者的背心替换为一件长袖骑行服。",
+     "instruction_noref_zh": "将选中区域替换为一件长袖骑行服。",
+     "findings_addressed": ["mask_quality"], "reason": "Mask was the whole runner; now the singlet. 'a red jersey' on a red singlet was near a recolour; now a structural garment change."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the person in a white hoodie standing behind the runners", "scope": "person"},
+     "ref_zh": "跑者身后站着的穿白色连帽衫的人", "scope_zh": "人", "physical_parent_zh": "白色连帽衫行人", "parent_instance_id": "sa_7506005:白色连帽衫行人",
+     "instruction_ref_zh": "移除跑者身后站着的穿白色连帽衫的人。",
+     "findings_addressed": [], "reason": "Retarget: removing the front wheel of a parked scooter with a rider seated on it is physically absurd and the ref was ambiguous with the scooter's rear wheel. New target segmented with SAM3 and checked."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

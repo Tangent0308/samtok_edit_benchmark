@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_6814925",
+  "reviewer": "round2",
+  "notes": "椅子定位到最右边缘；为防止移椅后外套悬空，将移除范围明确为椅子及搭着的绿色外套，SAM3 green jacket候选与椅子host并集后审核提交。U1额外改成有帽、无前开襟的套头衫结构替换。",
+  "reviewed_views": [
+    "assets/v2-sa_6814925/source.jpg",
+    "release_2_6_work/v2-sa_6814925/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6814925/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "spec": {
+        "payload": "a tan hooded pullover with a kangaroo pocket"
+      },
+      "instruction_ref_zh": "将左侧人物的深色外套替换为一件带袋鼠兜的棕褐色套头连帽衫。",
+      "id": "U1",
+      "action": "revise",
+      "ref_zh": "左侧人物的深色外套",
+      "scope_zh": "外套",
+      "physical_parent_zh": "左侧人物",
+      "parent_instance_id": "sa_6814925:left_person",
+      "category": "jacket"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "ref": "the black café chair and draped green jacket at the far-right edge",
+        "scope": "chair with draped jacket"
+      },
+      "category": "chair with draped jacket",
+      "ref_zh": "画面最右边缘的黑色咖啡椅及其椅背上搭着的绿外套",
+      "scope_zh": "椅子及搭着的外套",
+      "instruction_ref_zh": "移除画面最右边缘的黑色咖啡椅及其椅背上搭着的绿外套。",
+      "id": "U3",
+      "action": "revise",
+      "physical_parent_zh": "椅子",
+      "parent_instance_id": "sa_6814925:chair"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "architecture",
+      "crowd",
+      "occlusion"
+    ],
+    "scene_zh": "玻璃中庭游客",
+    "evidence_zh": "四个不同对象：左侧人物的深色外套；右侧坐着人物的白色外套；画面最右边缘的黑色咖啡椅及其椅背上搭着的绿外套；坐着游客附近的木凳。",
+    "specific_protection_zh": "保留玻璃幕墙、植物和其他游客。"
+  }
+}

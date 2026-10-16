@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_777091",
+  "reviewer": "shard4-b1",
+  "notes": "Tail case re-examined. U1 obelisk is copper-brown, light gray is a visible change and the ref is unique (kept). U2 is the white hatchback in front of the yellow bus at lower right (ref was 'lower left'); payload changed to a different vehicle type. U3 ref position fixed. U4 is the back-facing signal head on the leftmost pole above the red taxi; generic 'pedestrian signal' payload replaced by a natural fitting. Masks verified on case sheet; no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_777091/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "urban", "perspective"], "scene_zh": "城市纪念碑大道", "evidence_zh": "中央尖碑、黄色公交车前的白色掀背车、右下方黄色公交车和红色出租车上方的交通信号灯是四个不同对象。", "specific_protection_zh": "保留纪念碑、道路和城市环境。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the white hatchback in front of the yellow bus", "scope": "car", "payload": "a red pickup truck"},
+     "ref_zh": "黄色公交车前的白色掀背车", "scope_zh": "汽车", "physical_parent_zh": "白色掀背车",
+     "parent_instance_id": "sa_777091:白色掀背车",
+     "instruction_ref_zh": "将黄色公交车前的白色掀背车替换为一辆红色皮卡。",
+     "instruction_noref_zh": "将选中区域替换为一辆红色皮卡。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked car is the white hatchback at lower right (x 981-1177) in front of the bus; lower left holds a red taxi and a white sedan. 'a white sedan' was nearly a no-op."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the yellow bus at the lower right"},
+     "ref_zh": "右下方的黄色公交车", "scope_zh": "公交车", "physical_parent_zh": "黄色公交车",
+     "parent_instance_id": "sa_777091:黄色公交车",
+     "instruction_ref_zh": "移除右下方的黄色公交车。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "The bus is at the lower right (cx=0.76), not near the center."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the traffic signal on the pole above the red taxi", "scope": "traffic light", "payload": "a yellow rectangular backplate", "placement": {"relation": "attached to", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "红色出租车上方灯杆上的交通信号灯", "scope_zh": "交通信号灯", "physical_parent_zh": "红色出租车上方的交通信号灯",
+     "parent_instance_id": "sa_777091:红色出租车上方的交通信号灯",
+     "instruction_ref_zh": "给红色出租车上方灯杆上的交通信号灯加上一块黄色矩形背板。",
+     "instruction_noref_zh": "给选中区域加上一块黄色矩形背板。",
+     "findings_addressed": ["tail_rewrite"],
+     "reason": "Three other signal heads are visible (red one at x~555 bottom, others right); 'at the left' was loose. A signal head already is a signal, so adding 'a pedestrian signal' on it was odd; a backplate is a natural attachment."}
+  ]
+}

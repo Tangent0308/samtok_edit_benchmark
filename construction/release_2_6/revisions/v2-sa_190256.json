@@ -1,0 +1,37 @@
+{
+  "case_id": "v2-sa_190256",
+  "reviewer": "round2",
+  "notes": "Source and masks reviewed. Bag is a distinct worn accessory (explicitly allowed by authoring rules), with only 90 overlapping pixels (0.28% of smaller mask). U2 T-shirt replacement made structural; U3 ref corrected from beside to worn.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_190256/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "payload": "a white short-sleeved collared shirt"
+      },
+      "instruction_ref_zh": "将下方的浅紫色T恤替换为一件白色短袖有领衬衫。",
+      "reason": "Self-found: T-shirt to cotton T-shirt only changed color/material; collar/button-front changes structure."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the black shoulder bag worn by the man in a light-purple T-shirt"
+      },
+      "ref_zh": "浅紫色T恤男子背着的黑色单肩包",
+      "instruction_ref_zh": "给浅紫色T恤男子背着的黑色单肩包加上一块小反光贴。",
+      "reason": "The separate bag is worn, not lying beside the shirt; independent accessory with negligible mask overlap."
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ]
+}

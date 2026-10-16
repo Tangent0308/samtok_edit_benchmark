@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_2680554",
+  "reviewer": "shard1b-b2",
+  "notes": "U1 van -> blue compact van was a recolour; payload now a small open-back pickup truck. U3: several dark bell-shaped lamps hang along the left facades; masked one (box ~542-608 x 918-1023) is the nearest/largest, ref now says so. Other units verified; no S!=T unit.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2680554/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a small open-back pickup truck"},
+     "instruction_ref_zh": "将前景的白色厢式车替换为一辆小型敞篷货斗皮卡。",
+     "instruction_noref_zh": "将选中区域替换为一辆小型敞篷货斗皮卡。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same category/size van in a new colour is only an attribute change; an open-back pickup is a structural vehicle change that fits the street."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the nearest hanging streetlamp on the left wall"},
+     "ref_zh": "左侧墙上最近的悬挂路灯",
+     "instruction_ref_zh": "将左侧墙上最近的悬挂路灯的颜色改为黑色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Many similar lamps hang along the left wall; the masked one is the nearest."}
+  ]
+}

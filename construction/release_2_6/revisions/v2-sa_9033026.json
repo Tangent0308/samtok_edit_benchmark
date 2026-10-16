@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9033026",
+  "reviewer": "shard6-b4",
+  "notes": "Tail case, all units re-examined. U1 mask is the beige trench coat, not the person -> garment-level attribute. U2 one oat box among dozens -> precise ref, structural replacement (wooden crate), v2 mask drops a 6-px stray fragment. U3 price label is on the pillar beside the KIRKLAND DELI sign, not the centre. U4 mask is only the khaki shoulder strap (no bag visible) -> strap ref with concrete pin payload.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9033026/case_sheet.jpg", "release_2_6_work/v2-sa_9033026/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "market", "people"], "scene_zh": "超市购物", "evidence_zh": "右侧女子的米色风衣、左下燕麦箱堆中的一个箱子、DELI 招牌旁柱子上的价签和中偏左男子的卡其色肩带是四个不同对象。", "specific_protection_zh": "保留购物者、商品包装和购物用品。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the beige trench coat of the woman behind the girl in pink at the right edge", "scope": "trench coat", "payload": "navy blue", "attributes": [{"property": "color", "value": "navy blue"}]},
+      "ref_zh": "右侧边缘粉衣女孩身后女子的米色风衣",
+      "scope_zh": "风衣",
+      "physical_parent_zh": "右侧米色风衣女子",
+      "parent_instance_id": "sa_9033026:右侧米色风衣女子",
+      "instruction_ref_zh": "将右侧边缘粉衣女孩身后女子的米色风衣的颜色改为藏蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为藏蓝色。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Mask (box 1792-1970 x) is the beige trench coat only; the ref named the whole person."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the oat box cut off by the bottom edge, second from the left in the lower-left stack", "scope": "box", "payload": "a wooden slatted crate"},
+      "ref_zh": "左下方箱堆中被画面底边截断、从左数第二个燕麦箱",
+      "scope_zh": "燕麦箱",
+      "physical_parent_zh": "左下燕麦箱",
+      "parent_instance_id": "sa_9033026:左下燕麦箱",
+      "instruction_ref_zh": "将左下方箱堆中被画面底边截断、从左数第二个燕麦箱替换为一个木条板条箱。",
+      "instruction_noref_zh": "将选中区域替换为一个木条板条箱。",
+      "findings_addressed": ["replace_is_attribute", "ambiguous_ref"],
+      "reason": "Mask is the bottom-row box (x 64-216) of the second column from the left edge (a partial column sits at x 0-64). Blue package was a recolour; a crate of the same size is a structural replacement that still supports the box above. v2 mask = original minus a 6-px stray fragment at (174-179,1200)."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the white price label on the pillar next to the KIRKLAND DELI sign", "scope": "label"},
+      "ref_zh": "KIRKLAND DELI 招牌旁柱子上的白色价签",
+      "scope_zh": "价签",
+      "physical_parent_zh": "DELI 旁柱子价签",
+      "parent_instance_id": "sa_9033026:DELI旁柱子价签",
+      "instruction_ref_zh": "移除 KIRKLAND DELI 招牌旁柱子上的白色价签。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Label (center 0.26W,0.51H) hangs on the concrete pillar right of the KIRKLAND DELI sign; other price labels hang on other pillars."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the khaki shoulder strap worn by the man in the fleece jacket at center-left", "scope": "shoulder strap", "payload": "one small round silver pin badge", "placement": {"relation": "pinned to", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "中偏左穿抓绒外套男子身上的卡其色肩带",
+      "scope_zh": "肩带",
+      "physical_parent_zh": "卡其色肩带",
+      "parent_instance_id": "sa_9033026:卡其色肩带",
+      "instruction_ref_zh": "在中偏左穿抓绒外套男子身上的卡其色肩带上别一枚小圆形银色徽章。",
+      "instruction_noref_zh": "在选中区域上别一枚小圆形银色徽章。",
+      "findings_addressed": ["category_mismatch", "grammar_style"],
+      "reason": "Mask (633-694 x, 1053-1233 y) is the khaki strap across the man's fleece; no bag body is visible. Payload made concrete."
+    }
+  ]
+}

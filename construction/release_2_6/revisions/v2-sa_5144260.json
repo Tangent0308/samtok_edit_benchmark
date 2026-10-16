@@ -1,0 +1,48 @@
+{
+  "case_id": "v2-sa_5144260",
+  "reviewer": "round2",
+  "notes": "U1 SAM3两侧袖子候选t1_1|t1_2与host相交，排除上衣躯干和头发，审核final后提交5759px衣袖mask。U3原长围巾到方巾仍易退化为颜色材质变化，改为清晰蝴蝶形领结结构替换。",
+  "reviewed_views": [
+    "assets/v2-sa_5144260/source.jpg",
+    "release_2_6_work/v2-sa_5144260/case_sheet.jpg",
+    "release_2_6_work/v2-sa_5144260/U1/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "夜市水果摊前顾客",
+    "evidence_zh": "不同源对象：中央长发女士的白色上衣；左侧顾客的深色无袖上衣；中后方白衣顾客颈前的围巾；背景背向镜头男子的浅色短袖上衣。",
+    "specific_protection_zh": "头发、手持食品、腰包、招牌与竹签"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a blue bow tie"
+      },
+      "instruction_ref_zh": "将中后方白衣顾客颈前的围巾替换为一个蓝色领结。",
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "中后方白衣顾客颈前的围巾",
+      "scope_zh": "围巾",
+      "physical_parent_zh": "中后方白衣顾客",
+      "parent_instance_id": "sa_5144260:中后方白衣顾客",
+      "category": "scarf"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ]
+}

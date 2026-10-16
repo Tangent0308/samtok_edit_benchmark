@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_1915366",
+  "reviewer": "round2",
+  "notes": "Clean source verifies tall foreground pole is left of center, in front of construction; chimney is cream. Masks already select independent objects.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_1915366/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the tall foreground utility pole left of center"
+      },
+      "ref_zh": "中间偏左的前景高电线杆",
+      "instruction_ref_zh": "给中间偏左的前景高电线杆加上一条黄色反光带。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Pole is near x=0.29W, not centered; tall foreground location excludes other poles."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    }
+  ]
+}

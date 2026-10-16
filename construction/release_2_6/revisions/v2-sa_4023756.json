@@ -1,0 +1,28 @@
+{
+  "case_id": "v2-sa_4023756",
+  "reviewer": "shard2-b3",
+  "notes": "U1 mask only covered the skull; now skull-and-crossbones (SAM3, verified) and ref names the full print. U2 drawstring bag -> drawstring bag was colour/material only; now a woven straw tote, ref tightened (a second black bag hangs next to it). U3 ref disambiguated between the two wire baskets. U4 add without site kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4023756/case_sheet.jpg", "release_2_6_work/v2-sa_4023756/U1/t1.jpg", "release_2_6_work/v2-sa_4023756/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the skull-and-crossbones graphic on the rightmost striped shirt"},
+     "ref_zh": "最右侧条纹上衣上的骷髅交叉骨图案",
+     "instruction_ref_zh": "移除最右侧条纹上衣上的骷髅交叉骨图案。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "The print is a skull with crossbones beneath (source y 506-832); mask now covers both so no orphaned crossbones remain."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the large black drawstring bag hanging below the striped shirts", "payload": "a woven straw tote bag"},
+     "ref_zh": "条纹上衣下方悬挂的大黑色抽绳袋",
+     "instruction_ref_zh": "将条纹上衣下方悬挂的大黑色抽绳袋替换为一个草编托特包。",
+     "instruction_noref_zh": "将选中区域替换为一个草编托特包。",
+     "findings_addressed": [],
+     "reason": "The bag already is a drawstring bag, so 'brown canvas drawstring bag' was a colour/material change; a straw tote is structural. A smaller black bag hangs on a hook just right of it, so 'large' is added."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the wire basket of wooden swords next to the striped shirts"},
+     "ref_zh": "紧邻条纹上衣的那只装木剑的铁丝篮",
+     "instruction_ref_zh": "将紧邻条纹上衣的那只装木剑的铁丝篮的颜色改为深古铜色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Two wire baskets of wooden swords stand on the rail (x~230-450 and the masked one x445-982); the masked one is the right one beside the shirts."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

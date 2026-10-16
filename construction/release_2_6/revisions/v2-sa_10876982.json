@@ -1,0 +1,67 @@
+{
+  "case_id": "v2-sa_10876982",
+  "reviewer": "shard0-b4",
+  "notes": "U1 'behind' -> 'to the image-right of' the yellow-capped runner; v2 mask = his two visible sleeves (image-right sleeve x1753-1800 plus the image-left shoulder sleeve sliver x1652-1690 beside the yellow cap). U5 'sleeve nearest the camera' ambiguous for a symmetric open-armed runner -> 'image-left sleeve'; v2 mask = that sleeve (x475-536,y782-867).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_10876982/case_sheet.jpg",
+    "release_2_6_work/v2-sa_10876982/U1/t1.jpg",
+    "release_2_6_work/v2-sa_10876982/U1/final.jpg",
+    "release_2_6_work/v2-sa_10876982/U5/t1.jpg",
+    "release_2_6_work/v2-sa_10876982/U5/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "reviewer": "shard0-b4",
+      "spec": {
+        "ref": "the race shirt of the man to the image-right of the yellow-capped runner"
+      },
+      "ref_zh": "黄帽跑者画面右侧男子的比赛上衣",
+      "physical_parent_zh": "黄帽跑者右侧男子",
+      "parent_instance_id": "sa_10876982:黄帽跑者右侧男子",
+      "instruction_ref_zh": "移除黄帽跑者画面右侧男子的比赛上衣的衣袖。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "He stands beside (image-right of) the yellow-capped runner at the same depth, not behind her. Sleeve mask committed (protocol 2.0 remove part)."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "reviewer": "shard0-b4",
+      "spec": {
+        "ref": "the race shirt of the center man with the red waist pack"
+      },
+      "instruction_ref_zh": "给中间戴红腰包男子的比赛上衣加上一个小拉链胸袋。",
+      "findings_addressed": [],
+      "reason": "Self-found: the front-left runner also wears an (orange) waist pack; added 'center' so EN matches ref_zh (中间)."
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    },
+    {
+      "id": "U5",
+      "action": "revise",
+      "reviewer": "shard0-b4",
+      "spec": {
+        "placement": {
+          "relation": "around",
+          "site": "image-left sleeve",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给红毯上张开手臂跑者的比赛上衣加上一圈套在画面左侧衣袖上的反光臂带。",
+      "instruction_noref_zh": "给选中区域加上一圈反光臂带。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Both sleeves are equally near the camera; site now the image-left sleeve, which is the v2 mask."
+    }
+  ]
+}

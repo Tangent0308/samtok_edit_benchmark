@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_7944519",
+  "reviewer": "shard4-b2",
+  "notes": "Tail case, both units re-examined. U1 cluster is already vivid pink: value changed to white; ref tied to the bell-striking log since several blurry clusters are at the left. U2 is the cloud-pattern carved panel above the main beam; ref made precise. Masks verified (U2 excludes the crossing rope/tape as occluders).",
+  "reviewed_views": ["release_2_6_work/v2-sa_7944519/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "plants", "detail"], "scene_zh": "樱花钟楼", "evidence_zh": "撞木上方的粉色花簇和主梁上方的云纹木雕是两个不同对象。", "specific_protection_zh": "保留樱花、铜钟、撞木和钟楼木结构。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the pink blossom cluster just above the wooden bell-striking log", "payload": "white", "attributes": [{"property": "color", "value": "white"}]},
+     "ref_zh": "木制撞钟木正上方的粉色花簇",
+     "physical_parent_zh": "撞钟木上方花簇",
+     "parent_instance_id": "sa_7944519:撞钟木上方花簇",
+     "instruction_ref_zh": "将木制撞钟木正上方的粉色花簇的颜色改为白色。",
+     "instruction_noref_zh": "将选中区域的颜色改为白色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Pale pink was barely different from the current vivid pink; several blurry clusters are at the left, the masked one sits right above the striking log."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the cloud-pattern carved wooden panel above the main beam over the bell"},
+     "ref_zh": "铜钟上方主梁之上的云纹雕花木板",
+     "physical_parent_zh": "主梁上方云纹木雕",
+     "parent_instance_id": "sa_7944519:主梁上方云纹木雕",
+     "instruction_ref_zh": "移除铜钟上方主梁之上的云纹雕花木板。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Several carved panels are visible; the masked one is the cloud-pattern panel above the main beam."}
+  ]
+}

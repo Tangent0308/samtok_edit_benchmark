@@ -1,0 +1,45 @@
+{
+  "case_id": "v2-sa_9357354",
+  "reviewer": "shard7",
+  "notes": "Tail case, known issue (known_issues.json U1/U2). U1 recoloured a whole person and said 'left' for the front-right dancer -> recolour her black bolero jacket (SAM3 v2 garment mask). U2 replaced a dancer with an outfit -> replace the red-haired center dancer's gold cropped jacket (SAM3 v2, bikini top excluded) with a white fringed vest. U3 speaker was between U1's legs (not center) and mostly occluded -> retargeted to the unoccluded small black equipment box on the stage floor at the left (v2).",
+  "reviewed_views": ["release_2_6_work/v2-sa_9357354/case_sheet.jpg", "release_2_6_work/v2-sa_9357354/U1/t1.jpg", "release_2_6_work/v2-sa_9357354/U1/final.jpg", "release_2_6_work/v2-sa_9357354/U2/t1.jpg", "release_2_6_work/v2-sa_9357354/U2/p2.jpg", "release_2_6_work/v2-sa_9357354/U2/final.jpg", "release_2_6_work/v2-sa_9357354/U3/t1.jpg", "release_2_6_work/v2-sa_9357354/U3/p2.jpg", "release_2_6_work/v2-sa_9357354/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "performance", "people"], "scene_zh": "舞台表演", "evidence_zh": "右前方舞者的黑色波莱罗短外套、中间红发舞者的金色短夹克和左侧舞台地面上的黑色小设备箱分属三个不同对象。", "specific_protection_zh": "保留舞者本人、其他服装和舞台设备。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the black bolero jacket of the dancer at the front right", "scope": "bolero jacket", "payload": "royal blue", "attributes": [{"property": "color", "value": "royal blue"}]},
+      "ref_zh": "右前方舞者的黑色波莱罗短外套",
+      "scope_zh": "波莱罗短外套",
+      "physical_parent_zh": "右前方舞者",
+      "parent_instance_id": "sa_9357354:右前方舞者",
+      "instruction_ref_zh": "将右前方舞者的黑色波莱罗短外套的颜色改为宝蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为宝蓝色。",
+      "findings_addressed": ["person_clothing_level", "wrong_instance_spatial"],
+      "reason": "Known issue: whole-person recolour with a wrong 'left' ref. The masked dancer is at the front right (cx=0.75); the edit now names her black bolero, and the mask is the bolero only (SAM3 t1_1 within the old person mask, v2)."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the gold cropped jacket of the red-haired dancer in the center", "scope": "cropped jacket", "payload": "a white fringed suede vest"},
+      "ref_zh": "中间红发舞者的金色短夹克",
+      "scope_zh": "短夹克",
+      "physical_parent_zh": "中间红发舞者",
+      "parent_instance_id": "sa_9357354:中间红发舞者",
+      "instruction_ref_zh": "将中间红发舞者的金色短夹克替换为一件白色流苏麂皮背心。",
+      "instruction_noref_zh": "将选中区域替换为一件白色流苏麂皮背心。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Known issue: person replaced with clothing. Now replaces her long-sleeved gold jacket with a sleeveless fringed vest (structural). Mask = SAM3 p2_1|t1_1 minus the bikini top and specks (v2), sleeves and fronts included. 'red-haired' excludes the dark-haired dancer in a similar gold jacket."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the small black equipment box on the stage floor at the left, beside the white stage light", "scope": "equipment box"},
+      "ref_zh": "左侧舞台地面上白色舞台灯旁的黑色小设备箱",
+      "scope_zh": "设备箱",
+      "physical_parent_zh": "左侧黑色设备箱",
+      "parent_instance_id": "sa_9357354:左侧黑色设备箱",
+      "instruction_ref_zh": "移除左侧舞台地面上白色舞台灯旁的黑色小设备箱。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Old speaker sat between the front-right dancer's legs (cx=0.77, not center), mostly occluded and inside U1's box. Retargeted to an unoccluded black device box at the left of the stage floor (SAM3 p2_2, v2); removal reveals stage floor and wall."
+    }
+  ]
+}

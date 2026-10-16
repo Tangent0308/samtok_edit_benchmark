@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_911936",
+  "reviewer": "shard6-b6",
+  "notes": "Tail case, all units re-examined. U1/U2 masks are olive T-shirts but refs named whole 'officers' (and U2 replaced a person with a uniform): refs now name the T-shirts; U2 v2 mask = T-shirt with the crossed forearms excluded (SAM3 t1_1), payload a structural garment change. U3 dog ref made specific. U4 boot belonged to the same marine as U1 (independence violation) and ref said 'boots' for one boot: retargeted to the woman marine's front boot (SAM3 tracker, v2 mask) with a concrete payload.",
+  "reviewed_views": ["release_2_6_work/v2-sa_911936/case_sheet.jpg", "release_2_6_work/v2-sa_911936/U2/t1.jpg", "release_2_6_work/v2-sa_911936/U2/final.jpg", "release_2_6_work/v2-sa_911936/U4/p1.jpg", "release_2_6_work/v2-sa_911936/U4/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "crowd", "animals"], "scene_zh": "警犬队列", "evidence_zh": "女子左侧高个队员的橄榄色T恤、双臂交叉队员的橄榄色T恤、德国牧羊警犬和女队员最靠前的靴子分属四个不同对象。", "specific_protection_zh": "保留队列人物、警犬和制服细节。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the olive T-shirt of the tall marine standing just left of the woman", "scope": "T-shirt", "payload": "royal blue", "attributes": [{"property": "color", "value": "royal blue"}]},
+      "ref_zh": "紧挨女子左侧站立的高个队员的橄榄色T恤",
+      "scope_zh": "T恤",
+      "physical_parent_zh": "女子左侧高个队员",
+      "parent_instance_id": "sa_911936:女子左侧高个队员",
+      "instruction_ref_zh": "将紧挨女子左侧站立的高个队员的橄榄色T恤的颜色改为宝蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为宝蓝色。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Mask is the T-shirt of the marine directly image-left of the only woman; ref named a whole 'officer at the right' (also ambiguous, two olive-shirted men further right)."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the olive T-shirt of the marine with crossed arms", "scope": "T-shirt", "payload": "a white short-sleeved polo shirt"},
+      "ref_zh": "双臂交叉的队员的橄榄色T恤",
+      "scope_zh": "T恤",
+      "physical_parent_zh": "双臂交叉的队员",
+      "parent_instance_id": "sa_911936:双臂交叉的队员",
+      "instruction_ref_zh": "将双臂交叉的队员的橄榄色T恤替换为一件白色短袖Polo衫。",
+      "instruction_noref_zh": "将选中区域替换为一件白色短袖Polo衫。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Person was replaced by clothing; now the T-shirt is replaced by a collared polo shirt. Only one marine has crossed arms. v2 mask = SAM3 't-shirt' t1_1 (forearms excluded)."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the German shepherd police dog sitting at the officer's side", "scope": "dog"},
+      "ref_zh": "坐在警察身旁的德国牧羊警犬",
+      "scope_zh": "警犬",
+      "physical_parent_zh": "德国牧羊警犬",
+      "parent_instance_id": "sa_911936:德国牧羊警犬",
+      "instruction_ref_zh": "移除坐在警察身旁的德国牧羊警犬。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: the only dog; ref made descriptive instead of a template position."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the woman marine's front tan combat boot nearest the camera", "scope": "boot", "payload": "one thin silver reflective stripe", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "女队员最靠近镜头的那只棕褐色作战靴",
+      "scope_zh": "作战靴",
+      "physical_parent_zh": "女队员",
+      "parent_instance_id": "sa_911936:女队员",
+      "instruction_ref_zh": "在女队员最靠近镜头的那只棕褐色作战靴上加一条细银色反光条。",
+      "instruction_noref_zh": "在选中区域上加一条细银色反光条。",
+      "findings_addressed": ["independence_violation"],
+      "reason": "Retarget: old boot (box 825-979 x 1777-1957) is worn by the U1 marine and the ref said 'boots'. New SAM3 tracker mask of the woman's forward boot (box 1191-1306 x 1957-2163), rear boot heel cut away, visually verified."
+    }
+  ]
+}

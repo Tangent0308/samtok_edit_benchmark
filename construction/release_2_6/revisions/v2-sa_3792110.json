@@ -1,0 +1,28 @@
+{
+  "case_id": "v2-sa_3792110",
+  "reviewer": "shard2-b2",
+  "notes": "U2 replace was colour/material only and 'small green box beside the plaque' was ambiguous among several green boxes (red boxes sit directly beside the plaque); now the leftmost green box beside the red boxes, replaced by a ceramic vase. U3 mask is the whole sign plate and its lettering is already gold-tan, so the edit is now a material change of the whole sign (mask unchanged). U1 verified.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3792110/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the leftmost green box on the upper shelf, beside the red boxes", "payload": "a small ceramic vase"},
+     "ref_zh": "上层货架上紧挨红色盒子的最左侧绿色盒子",
+     "scope_zh": "盒子",
+     "physical_parent_zh": "绿盒",
+     "instruction_ref_zh": "将上层货架上紧挨红色盒子的最左侧绿色盒子替换为一个小陶瓷花瓶。",
+     "instruction_noref_zh": "将选中区域替换为一个小陶瓷花瓶。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Dark wooden box kept the category; vase is a real category change. Ref disambiguated: mask (575-636 x 136-181) is the leftmost green box, right of a stack of red boxes."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the BLACK SANDALWOOD sign", "scope": "sign", "payload": "polished brass", "attributes": [{"property": "material", "value": "polished brass"}]},
+     "ref_zh": "BLACK SANDALWOOD标牌",
+     "scope_zh": "标牌",
+     "physical_parent_zh": "黑檀牌",
+     "category": "sign",
+     "instruction_ref_zh": "将BLACK SANDALWOOD标牌的材质改为抛光黄铜。",
+     "instruction_noref_zh": "将选中区域的材质改为抛光黄铜。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Mask covers the whole sign plate (869-1105 x 199-301); lettering is already gold-tan so 'to gold' was not visible. Edit now targets the whole sign."}
+  ]
+}

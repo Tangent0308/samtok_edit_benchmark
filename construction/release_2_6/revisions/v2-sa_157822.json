@@ -1,0 +1,19 @@
+{
+  "case_id": "v2-sa_157822",
+  "reviewer": "shard1-b8",
+  "notes": "No audit findings. U1 add site 'side railing' -> the white upper-deck railing around the wheelhouse roof (only railing on the tug), v2 mask from SAM3 'railing'; the tug already carries a lifebuoy, so payload changed to a coiled mooring rope. U3 lamp is already a black two-globe streetlamp, so replacing with 'a black globe streetlamp' was no change; now a modern single-arm LED street light.",
+  "reviewed_views": ["release_2_6_work/v2-sa_157822/case_sheet.jpg", "release_2_6_work/v2-sa_157822/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a coiled white mooring rope", "placement": {"relation": "hanging from", "site": "upper deck railing", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在前景红色舱顶的拖船的上层甲板栏杆上挂一卷白色系泊缆绳。",
+     "instruction_noref_zh": "给选中区域挂上一卷白色系泊缆绳。",
+     "reason": "Existing lifebuoy on the tug; railing visible is the upper-deck railing; v2 mask = that railing."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a modern single-arm LED street light"},
+     "instruction_ref_zh": "将黄色建筑前的码头路灯替换为一盏现代单臂LED路灯。",
+     "instruction_noref_zh": "将选中区域替换为一盏现代单臂LED路灯。",
+     "reason": "Existing lamp is already a black two-globe lamp; payload was not a visible change."}
+  ]
+}

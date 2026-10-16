@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_3712023",
+  "reviewer": "shard2-b1",
+  "notes": "U1 shirt->shirt recolour replaced by a hoodie; U4 dangling 'its neck' removed and, since the dog already wears a red vest and red neck item, payload changed to a party hat. U2/U3 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3712023/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a red zip-up hoodie"},
+     "instruction_ref_zh": "将横幅旁步行者的白色polo衫替换为一件红色拉链连帽衫。",
+     "instruction_noref_zh": "将选中区域替换为一件红色拉链连帽衫。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Polo -> polo of another colour is a recolour; a zip-up hoodie is a garment-type change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small yellow party hat", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给右侧的大棕狗戴上一顶黄色小派对帽。",
+     "instruction_noref_zh": "给选中区域加上一顶黄色小派对帽。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Payload had a dangling 'its neck'; clean crop shows the dog already wears a red vest and red item at the neck, so a neck bandana is near-duplicate. A party hat on the dog is self-contained; mask stays the dog (anchor)."}
+  ]
+}

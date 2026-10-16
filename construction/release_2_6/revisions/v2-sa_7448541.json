@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_7448541",
+  "reviewer": "shard3-b5",
+  "notes": "U1 flag is on the pole at the front vehicle's side mirror (another Ukrainian flag further right); colour value made unambiguous (solid red). U2 'head' ref fixed to the helmet; replace now a real structure change (boonie hat). Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7448541/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the Ukrainian flag on the pole at the front vehicle's side mirror", "payload": "solid red", "attributes": [{"property": "color", "value": "solid red"}]},
+     "ref_zh": "前方军车后视镜处旗杆上的乌克兰旗帜",
+     "physical_parent_zh": "后视镜旗杆上的旗帜",
+     "parent_instance_id": "sa_7448541:后视镜旗杆上的旗帜",
+     "instruction_ref_zh": "将前方军车后视镜处旗杆上的乌克兰旗帜的颜色改为纯红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为纯红色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "'white and blue' did not say which stripe gets which colour; a single solid colour is unambiguous. Flag is mounted on the mirror pole and a second Ukrainian flag is at x~0.68W, so the ref names the mirror pole."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the camouflage helmet of the soldier in the front vehicle's turret", "payload": "a tan boonie hat"},
+     "ref_zh": "前方军车炮塔里士兵的迷彩头盔",
+     "scope_zh": "头盔",
+     "physical_parent_zh": "炮塔里的士兵",
+     "parent_instance_id": "sa_7448541:炮塔里的士兵",
+     "instruction_ref_zh": "将前方军车炮塔里士兵的迷彩头盔替换为一顶棕褐色奔尼帽。",
+     "instruction_noref_zh": "将选中区域替换为一顶棕褐色奔尼帽。",
+     "findings_addressed": ["person_clothing_level", "replace_is_attribute"],
+     "reason": "Mask is only the helmet; ref named the head. Helmet->blue helmet was colour-only; a soft brimmed boonie hat is a genuine structural replacement (kept replace for op balance)."}
+  ]
+}

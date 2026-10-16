@@ -1,0 +1,19 @@
+{
+  "case_id": "v2-sa_388235",
+  "reviewer": "shard2-b2",
+  "notes": "U2 stray sliver at x 517-519 (overlapping U1's hat) removed; box now 983-1229. U1 hat is already a knitted beanie, so 'gray knitted beanie' was only a recolour; payload changed to a fur trapper hat. U3 payload carried a site ('on the chest') inside the payload; reduced to the patch itself (mask = whole jacket, no site).",
+  "reviewed_views": ["release_2_6_work/v2-sa_388235/case_sheet.jpg", "release_2_6_work/v2-sa_388235/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a brown fur trapper hat with ear flaps"},
+     "instruction_ref_zh": "将木杆正前方的黑色帽子替换为一顶带护耳的棕色毛皮雷锋帽。",
+     "instruction_noref_zh": "将选中区域替换为一顶带护耳的棕色毛皮雷锋帽。",
+     "reason": "Masked hat is a black knit beanie; replacing it with a gray knitted beanie was colour-only."},
+    {"id": "U2", "action": "keep", "findings_addressed": ["mask_quality"], "reason": "Stray 3-px component near U1 removed (minus box 450-900)."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small blue patch"},
+     "instruction_ref_zh": "在木杆左侧的浅黄色夹克上加上一块小蓝色布章。",
+     "instruction_noref_zh": "给选中区域加上一块小蓝色布章。",
+     "reason": "Protocol 2.0: payload must not carry a where ('on the chest'); mask stays the whole jacket."}
+  ]
+}

@@ -1,0 +1,105 @@
+{
+ "case_id": "v2-sa_807381",
+ "reviewer": "shard4-b4",
+ "notes": "Tail case: all four units re-examined. U1 recolour was a no-op (van already white) -> dark green. U2 same-category sedan swap -> pickup truck. U3 removed a whole office building (ill-posed) -> retargeted to the orange-and-white plastic sheet lying on the front planters (SAM3 tracker, v2 mask, minus U4). U4 planter ref made unique (middle box of the front row) and payload made specific.",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_807381/case_sheet.jpg",
+  "release_2_6_work/v2-sa_807381/U3/p2.jpg",
+  "release_2_6_work/v2-sa_807381/U3/final.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "street",
+   "vehicles",
+   "planters"
+  ],
+  "scene_zh": "城市道路",
+  "evidence_zh": "左侧FedEx厢式车、最左侧深色掀背车、花箱上的塑料布和前排中间木花箱是四个不同对象。",
+  "specific_protection_zh": "保留道路、其余车辆、建筑和植物。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the white FedEx van at the left",
+    "payload": "dark green",
+    "attributes": [
+     {
+      "property": "color",
+      "value": "dark green"
+     }
+    ]
+   },
+   "ref_zh": "左侧的白色FedEx厢式车",
+   "instruction_ref_zh": "将左侧的白色FedEx厢式车的颜色改为深绿色。",
+   "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+   "findings_addressed": [
+    "attribute_value"
+   ],
+   "reason": "Van is already white; new value differs visibly."
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the dark hatchback parked at the far left edge",
+    "payload": "a white compact pickup truck"
+   },
+   "ref_zh": "停在最左边缘的深色掀背车",
+   "physical_parent_zh": "最左深色掀背车",
+   "parent_instance_id": "sa_807381:最左深色掀背车",
+   "instruction_ref_zh": "将停在最左边缘的深色掀背车替换为一辆白色紧凑型皮卡。",
+   "instruction_noref_zh": "将选中区域替换为一辆白色紧凑型皮卡。",
+   "findings_addressed": [
+    "tail_rewrite"
+   ],
+   "reason": "Car-to-sedan was nearly same category; a pickup truck is a real structural change."
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the orange-and-white plastic sheet lying on the front planter boxes",
+    "scope": "plastic sheet",
+    "payload": "",
+    "remove_mode": "whole"
+   },
+   "ref_zh": "前排木花箱上铺着的橙白色塑料布",
+   "scope_zh": "塑料布",
+   "physical_parent_zh": "花箱上的塑料布",
+   "parent_instance_id": "sa_807381:花箱上的塑料布",
+   "instruction_ref_zh": "移除前排木花箱上铺着的橙白色塑料布。",
+   "preserve": [
+    "保留道路、车辆、建筑和植物。",
+    "保留花箱本身和其中的植物。"
+   ],
+   "findings_addressed": [
+    "ill_posed_edit"
+   ],
+   "reason": "Removing a whole multi-storey building is ill-posed; retargeted to a removable plastic sheet (v2 mask by SAM3 tracker, verified)."
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the middle one of the three large wooden planter boxes in the front row at the lower right",
+    "payload": "a cluster of yellow chrysanthemums",
+    "placement": {
+     "relation": "in",
+     "site": "",
+     "anchor_mode": "support"
+    }
+   },
+   "ref_zh": "右下方前排三个大木质花箱中间的那个",
+   "physical_parent_zh": "前排中间花箱",
+   "parent_instance_id": "sa_807381:前排中间花箱",
+   "instruction_ref_zh": "在右下方前排三个大木质花箱中间的那个里加上一丛黄色菊花。",
+   "instruction_noref_zh": "在选中区域里加上一丛黄色菊花。",
+   "findings_addressed": [
+    "ambiguous_ref"
+   ],
+   "reason": "Three planter boxes in the front row; masked one is the middle (x 1197-1367). Lead review: a smaller fourth box stands at the left of the row, so the ref now counts the three large boxes."
+  }
+ ]
+}

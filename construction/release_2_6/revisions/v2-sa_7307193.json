@@ -1,0 +1,19 @@
+{
+  "case_id": "v2-sa_7307193",
+  "reviewer": "shard3-b4",
+  "notes": "U2 replacement made structural; U3 ref disambiguated from the larger wooden ramp railing at center-right. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7307193/case_sheet.jpg"],
+  "units": [
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a carved wooden notice board"},
+     "instruction_ref_zh": "将城门旁的信息牌替换为一块雕花木制告示板。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "The board is already light blue; 'a blue visitor sign' was a near no-op. A carved wooden notice board is a structural/material object replacement."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the wooden railing at the left edge of the path", "scope": "railing"},
+     "ref_zh": "道路左边缘的木栏杆", "scope_zh": "栏杆",
+     "instruction_ref_zh": "移除道路左边缘的木栏杆。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Two wooden railings in the foreground; the masked one is at the left edge (x0-292), not the ramp railing at center-right."}
+  ]
+}

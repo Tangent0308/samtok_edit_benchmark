@@ -1,0 +1,107 @@
+{
+  "case_id": "v2-sa_9006288",
+  "reviewer": "shard6-b3",
+  "notes": "Tail case, all units rewritten. U1 recolouring a multicoloured, child-occupied rickshaw 'red' was vague: now the folded lilac canopy of the rickshaw -> dark green (SAM3 canopy mask, v2; a small canopy fragment visible behind the boy's hand is not included). U2 red oil-paper parasol -> large woven palm-leaf fan. U3 is a small white opening-hours sign, not a banner. U4 moved off the boy (who already holds U2) to the girl's silver offering bowl (SAM3 v2 mask, hands excluded); payload specific. [shard6 lead spot-check: U1 canopy v2 mask extended with the lilac canopy fragment visible between the two children (SAM3 tracker p9_2, minus U2/U4).]",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_9006288/case_sheet.jpg",
+    "release_2_6_work/v2-sa_9006288/U1/final.jpg",
+    "release_2_6_work/v2-sa_9006288/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "outdoor",
+      "street",
+      "people"
+    ],
+    "scene_zh": "街头人力车",
+    "evidence_zh": "人力车上折叠的淡紫色车篷、男孩举着的红色油纸伞、左上方写有营业时间的白色小告示牌和女孩捧着的银色供碗是四个不同对象。",
+    "specific_protection_zh": "保留人力车、两个孩子、遮阳物和街头装饰。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the folded lilac canopy of the rickshaw",
+        "scope": "canopy",
+        "payload": "dark green",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "dark green"
+          }
+        ]
+      },
+      "ref_zh": "人力车折叠的淡紫色车篷",
+      "scope_zh": "车篷",
+      "physical_parent_zh": "人力车",
+      "parent_instance_id": "sa_9006288:人力车",
+      "instruction_ref_zh": "将人力车折叠的淡紫色车篷的颜色改为深绿色。",
+      "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+      "findings_addressed": [],
+      "reason": "Whole rickshaw is multicoloured (chrome, painted tulips, pink seat) and occupied; a clean recolour target is its folded canopy. New mask = canopy."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the red oil-paper parasol held by the boy",
+        "scope": "parasol",
+        "payload": "a large woven palm-leaf fan"
+      },
+      "ref_zh": "男孩举着的红色油纸伞",
+      "scope_zh": "油纸伞",
+      "physical_parent_zh": "红色油纸伞",
+      "parent_instance_id": "sa_9006288:红色油纸伞",
+      "instruction_ref_zh": "将男孩举着的红色油纸伞替换为一把大号棕榈叶编织扇。",
+      "instruction_noref_zh": "将选中区域替换为一把大号棕榈叶编织扇。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "'blue umbrella' was only a recolour; a hand-held palm-leaf fan is a real category change the boy can hold."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the small white sign with opening hours at the upper left",
+        "scope": "sign"
+      },
+      "ref_zh": "左上方写有营业时间的白色小告示牌",
+      "scope_zh": "告示牌",
+      "physical_parent_zh": "白色告示牌",
+      "parent_instance_id": "sa_9006288:白色告示牌",
+      "instruction_ref_zh": "移除左上方写有营业时间的白色小告示牌。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": [
+        "category_mismatch"
+      ],
+      "reason": "Mask is the white notice sign (0630-0800 / 1530-1700); the green-white banner further left is a different object."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the silver offering bowl held by the girl",
+        "scope": "offering bowl",
+        "payload": "one thin red ribbon",
+        "placement": {
+          "relation": "tied around",
+          "site": "",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "女孩捧着的银色供碗",
+      "scope_zh": "供碗",
+      "physical_parent_zh": "银色供碗",
+      "parent_instance_id": "sa_9006288:银色供碗",
+      "instruction_ref_zh": "给女孩捧着的银色供碗系上一条细红丝带。",
+      "instruction_noref_zh": "给选中区域系上一条细红丝带。",
+      "findings_addressed": [
+        "independence_violation",
+        "grammar_style"
+      ],
+      "reason": "Retarget: old U4 was the sleeve of the boy who also holds the U2 parasol; the girl's silver offering bowl is a separate object (SAM3 t1_1|t1_2, hands excluded). Payload specific."
+    }
+  ]
+}

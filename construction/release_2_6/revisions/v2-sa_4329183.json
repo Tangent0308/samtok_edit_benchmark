@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4329183",
+  "reviewer": "shard2-b5",
+  "notes": "U1 replace was a near no-op pattern change (checked light-blue shirt -> plain pale blue shirt); now a structural garment replacement. U4 payload had a dangling 'its lower edge'; moved to placement.site and the mask is now the blanket's dark lower border band. U2 (gray shirt, clean image confirms gray) and U3 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4329183/case_sheet.jpg", "release_2_6_work/v2-sa_4329183/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a dark green zip-up windbreaker"},
+     "instruction_ref_zh": "将中间附近顾客的格子衬衫替换为一件深绿色拉链风衣。",
+     "instruction_noref_zh": "将选中区域替换为一件深绿色拉链风衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Masked shirt (box [1344,835,1495,1019]) is already a short-sleeved light blue/white checked shirt; replacing with a plain pale blue short-sleeved shirt is only a pattern change. Now a structural change to a zip-up windbreaker."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white price tag", "placement": {"relation": "on", "site": "the lower edge", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在蓝色包边毯子右侧悬挂的红花毯子的下缘加上一张小白色价签。",
+     "instruction_noref_zh": "给选中区域加上一张小白色价签。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its lower edge' in payload moved to placement.site; v2 mask = host ∩ box [340,560,500,640], the dark lower border band of the blanket (y 560-630)."}
+  ]
+}

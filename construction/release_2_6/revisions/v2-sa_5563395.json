@@ -1,0 +1,15 @@
+{
+  "case_id": "v2-sa_5563395",
+  "reviewer": "shard2-b11",
+  "notes": "U2 payload had dangling 'at its front-right corner' (and the table's front corner is outside the frame); site dropped, the anchor table mask is unchanged. U1 fine.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5563395/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "one small white plate", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给烤炉下方的木桌加上一个小白盘。",
+     "instruction_noref_zh": "给选中区域加上一个小白盘。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'its front-right corner'; the table's front corners are cut off by the frame, so the plate simply goes on the visible table top (anchor mask)."}
+  ]
+}

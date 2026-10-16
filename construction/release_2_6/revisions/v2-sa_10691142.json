@@ -1,0 +1,25 @@
+{
+  "case_id": "v2-sa_10691142",
+  "reviewer": "shard0b-b1",
+  "notes": "U4 (backpack strap on the same shoulder as U2's sleeve) retargeted to an independent object: the white 'FR' T-shirt of the woman in denim shorts visible between the masked fan and the sombrero-wearing fan (SAM3 'white t-shirt', box 1398,916,1555,1124). Other units checked, no S!=T unit.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10691142/case_sheet.jpg", "release_2_6_work/v2-sa_10691142/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the white T-shirt of the woman in denim shorts between the masked fan and the sombrero-wearing fan",
+              "scope": "T-shirt", "payload": "one small round Mexican-flag pin",
+              "placement": {"relation": "on", "anchor_mode": "support"}},
+     "ref_zh": "面具者与戴宽檐墨西哥帽者之间穿牛仔短裤女子的白色T恤",
+     "scope_zh": "T恤",
+     "physical_parent_zh": "牛仔短裤女子",
+     "parent_instance_id": "sa_10691142:牛仔短裤女子",
+     "category": "shirt",
+     "source_category": "t-shirt",
+     "instruction_ref_zh": "给面具者与戴宽檐墨西哥帽者之间穿牛仔短裤女子的白色T恤别上一枚小圆形墨西哥国旗徽章。",
+     "instruction_noref_zh": "给选中区域别上一枚小圆形墨西哥国旗徽章。",
+     "findings_addressed": ["independence_violation"],
+     "reason": "Strap and U2 sleeve were on the same shoulder of the same fan; retargeted to another person's T-shirt, keeping add and ref+box."}
+  ]
+}

@@ -1,0 +1,108 @@
+{
+ "case_id": "v2-sa_8018927",
+ "reviewer": "shard4-b3",
+ "notes": "Tail case, all units rewritten with new v2 masks. U1 whole person 'at the left' (actually right foreground) -> his gray sweater. U2 person->coat -> the gray jacket of the man with hands in pockets, replaced by a long overcoat. U3 remove the far-end building (mislocated, ill-posed) -> remove the nearest stone bollard on the left. U4 tiny cut-off lamp at the edge -> add a red flag to the white ornate building at the far end of the street.",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_8018927/case_sheet.jpg",
+  "release_2_6_work/v2-sa_8018927/U1/t1.jpg",
+  "release_2_6_work/v2-sa_8018927/U2/t1.jpg",
+  "release_2_6_work/v2-sa_8018927/U3/p1.jpg",
+  "release_2_6_work/v2-sa_8018927/U4/t1.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "street",
+   "architecture",
+   "crowd"
+  ],
+  "scene_zh": "城市步行街",
+  "evidence_zh": "右前景光头男子的灰色毛衣、右侧插兜男子的灰色夹克、左侧最近的石墩和街道尽头的白色华丽建筑是四个不同对象。",
+  "specific_protection_zh": "保留步行街、人群和建筑环境。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the gray sweater of the bald man walking away in the right foreground",
+    "scope": "sweater"
+   },
+   "ref_zh": "右前景背对镜头行走的光头男子的灰色毛衣",
+   "scope_zh": "毛衣",
+   "physical_parent_zh": "右前景光头男子",
+   "parent_instance_id": "sa_8018927:右前景光头男子",
+   "instruction_ref_zh": "将右前景背对镜头行走的光头男子的灰色毛衣的颜色改为绿色。",
+   "instruction_noref_zh": "将选中区域的颜色改为绿色。",
+   "preserve": [
+    "保留该男子的头部、手、牛仔裤，以及旁边的女子和街景。"
+   ],
+   "findings_addressed": [
+    "person_clothing_level",
+    "wrong_instance_spatial"
+   ],
+   "reason": "Whole-person colour edit with wrong side ('at the left'); now his sweater in the right foreground, v2 mask = sweater (SAM3)."
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the gray jacket of the man standing with his hands in his pockets at the right",
+    "scope": "jacket",
+    "payload": "a long navy wool overcoat"
+   },
+   "ref_zh": "右侧双手插兜站立男子的灰色夹克",
+   "scope_zh": "夹克",
+   "physical_parent_zh": "右侧插兜男子",
+   "parent_instance_id": "sa_8018927:右侧插兜男子",
+   "instruction_ref_zh": "将右侧双手插兜站立男子的灰色夹克替换为一件藏青色羊毛长大衣。",
+   "instruction_noref_zh": "将选中区域替换为一件藏青色羊毛长大衣。",
+   "preserve": [
+    "保留该男子的头部和裤子，以及旁边白衬衫男子和露天餐座。"
+   ],
+   "findings_addressed": [
+    "person_clothing_level"
+   ],
+   "reason": "Person was replaced by a coat and 'the person at the right' was ambiguous; now his short gray jacket -> long overcoat (structural), v2 mask = jacket."
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the nearest stone bollard on the left side of the street",
+    "scope": "bollard",
+    "payload": "",
+    "remove_mode": "whole"
+   },
+   "ref_zh": "街道左侧最近的石墩",
+   "scope_zh": "石墩",
+   "physical_parent_zh": "左侧最近的石墩",
+   "parent_instance_id": "sa_8018927:左侧最近的石墩",
+   "instruction_ref_zh": "移除街道左侧最近的石墩。",
+   "instruction_noref_zh": "移除选中区域。",
+   "preserve": [
+    "保留其他石墩、铁栅栏、路面和行人。"
+   ],
+   "findings_addressed": [
+    "wrong_instance_spatial"
+   ],
+   "reason": "Masked building is at the far end (center), not 'at the left', and removing a whole building is ill-posed. Retargeted remove to the foreground bollard (v2 mask, SAM3 tracker)."
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the white ornate building at the far end of the street",
+    "scope": "building",
+    "payload": "a red flag on a short pole"
+   },
+   "ref_zh": "街道尽头的白色华丽建筑",
+   "scope_zh": "建筑",
+   "physical_parent_zh": "街道尽头的白色建筑",
+   "parent_instance_id": "sa_8018927:街道尽头的白色建筑",
+   "instruction_ref_zh": "给街道尽头的白色华丽建筑加上一面挂在短杆上的红旗。",
+   "instruction_noref_zh": "给选中区域加上一面挂在短杆上的红旗。",
+   "findings_addressed": [],
+   "reason": "Lamp at the left was a tiny lantern cut by the image edge (banner on it unnatural). Retargeted add to the far-end building (anchor = whole building, no site), v2 mask SAM3 excluding the crowd."
+  }
+ ]
+}

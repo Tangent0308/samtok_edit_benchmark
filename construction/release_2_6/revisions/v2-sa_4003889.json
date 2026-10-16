@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4003889",
+  "reviewer": "shard2-b3",
+  "notes": "U1 T-shirt is black on the clean source, not navy. U3 T-shirt is pale gray (not white) and the gray long-sleeved payload barely differed; payload made a clear structural change. U2 unchanged (add without site).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4003889/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the black T-shirt on the crouching person in blue jeans at the front"},
+     "ref_zh": "前排穿蓝色牛仔裤的蹲姿人物的黑色T恤",
+     "instruction_ref_zh": "将前排穿蓝色牛仔裤的蹲姿人物的黑色T恤的颜色改为灰色。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Clean source crop shows the T-shirt (box 886,725-1143,923) is black."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the pale gray T-shirt on the crouching person behind the front row", "payload": "a dark green hooded sweatshirt"},
+     "ref_zh": "前排后方蹲姿人物的浅灰色T恤",
+     "instruction_ref_zh": "将前排后方蹲姿人物的浅灰色T恤替换为一件深绿色连帽卫衣。",
+     "instruction_noref_zh": "将选中区域替换为一件深绿色连帽卫衣。",
+     "findings_addressed": [],
+     "reason": "Shirt is pale gray on the clean source; 'light gray long-sleeved shirt' was nearly the current look. A dark green hooded sweatshirt is a clear structural garment change."}
+  ]
+}

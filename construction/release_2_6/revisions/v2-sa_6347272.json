@@ -1,0 +1,49 @@
+{
+  "case_id": "v2-sa_6347272",
+  "notes": "Source posters verified; replacement targets clearly visible sleeves to avoid the printed torso and diagonal strap ambiguity.",
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "target_part": "sleeves",
+        "payload": "long gray sleeves with buttoned cuffs"
+      },
+      "instruction_ref_zh": "将右侧顾客的黑色图案T恤的衣袖替换为灰色带纽扣袖口的长衣袖。",
+      "reason": "Whole-shirt source mask ambiguously omitted printed torso areas around diagonal strap; rewrite to structural short-to-long cuffed sleeves and segment both visible sleeves excluding skin, neighbouring customer and torso."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the colorful frozen-tea poster to the right of the menu boards"
+      },
+      "ref_zh": "菜单板右侧的彩色冻茶海报",
+      "instruction_ref_zh": "移除菜单板右侧的彩色冻茶海报。",
+      "reason": "Poster is above and right of black-shirt customer rather than directly behind; shortest clear board-relative location."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one small red NEW sticker",
+        "placement": {
+          "relation": "on",
+          "site": "upper-left corner"
+        }
+      },
+      "instruction_ref_zh": "给菜单一排右端附近的松饼海报的左上角加上一张红色小NEW贴纸。",
+      "reason": "Removed dangling its; specify visible upper-left paper support and submit v2 site mask."
+    }
+  ],
+  "reviewer": "round2",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6347272/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6347272/U2/final.jpg",
+    "release_2_6_work/v2-sa_6347272/U4/final.jpg"
+  ]
+}

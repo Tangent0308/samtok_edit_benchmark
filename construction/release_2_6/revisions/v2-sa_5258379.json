@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_5258379",
+  "reviewer": "shard2-b10",
+  "notes": "U2 payload had dangling 'near its bottom'; made self-contained, door mask unchanged. U1/U3 verified on clean image (car is blue, guardrail grey).",
+  "reviewed_views": ["release_2_6_work/v2-sa_5258379/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a small white fleet-number 12 decal"},
+     "instruction_ref_zh": "给黄色DHL厢车的侧滑门加上一张小白色车队编号12贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小白色车队编号12贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'near its bottom' from the payload; anchor stays the whole sliding door."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "case_id": "v2-sa_200777",
+  "reviewer": "round2",
+  "notes": "Source reviewed. U3 roof deck is edge-on/hidden behind railing; SAM3 roof query returned no candidate, so rewrote add as a small brass nameplate on a visible upper-front-wall patch. U4 replacement changed to wooden rowboat; leaf occluders reviewed and removed from mask.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_200777/case_sheet.jpg",
+    "release_2_6_work/v2-sa_200777/U3/final.jpg",
+    "release_2_6_work/v2-sa_200777/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "payload": "one small brass nameplate",
+        "placement": {
+          "relation": "on",
+          "site": "upper front wall",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给右侧深灰色船屋的正面墙壁上部加上一块小黄铜铭牌。",
+      "reason": "Roof surface cannot be separated reliably from near-edge-on view; directly visible wall supports a natural add with reviewed compact site."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "a small wooden rowboat"
+      },
+      "instruction_ref_zh": "将左前方的黑色摩托艇替换为一艘小木划艇。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Rowboat removes motor/windshield and changes boat construction; same-level structural replacement."
+    }
+  ]
+}

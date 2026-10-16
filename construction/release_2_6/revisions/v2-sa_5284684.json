@@ -1,0 +1,51 @@
+{
+  "case_id": "v2-sa_5284684",
+  "reviewer": "round2",
+  "notes": "U1原图为青绿色T恤，更新颜色与儿童相对位置，不改源对象；SAM3袖子分割为11841px，并排除成人胳膊及儿童躯干。U2 SAM3仅可见单侧袖子8467px，排除手臂、椅背及上衣躯干。两张final逐一审核后提交。",
+  "reviewed_views": [
+    "assets/v2-sa_5284684/source.jpg",
+    "release_2_6_work/v2-sa_5284684/case_sheet.jpg",
+    "release_2_6_work/v2-sa_5284684/U1/final.jpg",
+    "release_2_6_work/v2-sa_5284684/U2/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "细长狭窄",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "并排赛车模拟器上的玩家",
+    "evidence_zh": "不同源对象：坐在成人前方儿童的青绿色T恤；右侧座椅玩家的深色短袖上衣；右侧模拟器方向盘的可见部分；前景模拟器方向盘的上沿可见部分。",
+    "specific_protection_zh": "手指、屏幕、盘内背景与座椅"
+  },
+  "units": [
+    {
+      "spec": {
+        "ref": "the turquoise T-shirt on the child sitting in front of the adult",
+        "scope": "T-shirt"
+      },
+      "ref_zh": "坐在成人前方儿童的青绿色T恤",
+      "scope_zh": "T恤",
+      "instruction_ref_zh": "在坐在成人前方儿童青绿色T恤的可见衣袖上加上一块小红布贴。",
+      "id": "U1",
+      "action": "revise",
+      "physical_parent_zh": "前景儿童",
+      "parent_instance_id": "sa_5284684:前景儿童",
+      "category": "T-shirt"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ]
+}

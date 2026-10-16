@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_4228887",
+  "reviewer": "shard2-b4",
+  "notes": "U3: 2.5.0 mask covered only the soft bag on top plus the suitcase handle; ref said 'wheeled bag'. Retargeted (same object group) to the whole luggage stack (suitcase + bag on top), re-segmented with SAM3 and verified. U4 payload carried a dangling 'its lower corner'; simplified. U1 replace (white hooded coat -> navy hooded raincoat) was essentially a recolour; payload changed to a sleeveless vest.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4228887/case_sheet.jpg", "release_2_6_work/v2-sa_4228887/U3/p1.jpg", "release_2_6_work/v2-sa_4228887/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a black quilted puffer vest"},
+     "instruction_ref_zh": "将售票机前的白色连帽外套替换为一件黑色绗缝羽绒背心。",
+     "instruction_noref_zh": "将选中区域替换为一件黑色绗缝羽绒背心。",
+     "findings_addressed": [],
+     "reason": "Self-found: hooded coat -> navy hooded raincoat kept the garment structure (colour change only); a sleeveless puffer vest is a structural change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the stacked black suitcase and bag beside the traveler at the far left", "scope": "luggage"},
+     "ref_zh": "最左侧旅客旁叠放在一起的黑色行李箱和包",
+     "scope_zh": "行李",
+     "physical_parent_zh": "最左侧行李箱",
+     "parent_instance_id": "sa_4228887:左行李箱",
+     "instruction_ref_zh": "移除最左侧旅客旁叠放在一起的黑色行李箱和包。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Mask now covers the whole stack (suitcase body, wheels, handle and bag on top; box 6-104 x 963-1184), matching the ref."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white information sticker"},
+     "instruction_ref_zh": "在显示10 min和30 min的大屏幕上贴上一张小的白色信息贴纸。",
+     "instruction_noref_zh": "给选中区域贴上一张小的白色信息贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its lower corner' removed from the payload; sticker placed on the display (mask unchanged)."}
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "case_id": "v2-sa_3689823",
+  "reviewer": "shard2-b1",
+  "notes": "U3 mask trimmed so the occluding blue street-name sign is excluded (v2 mask). U1 sedan->blue sedan was only a recolour; now sedan -> white camper van. U2/U4 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3689823/case_sheet.jpg", "release_2_6_work/v2-sa_3689823/U3/t1.jpg", "release_2_6_work/v2-sa_3689823/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a small white camper van"},
+     "instruction_ref_zh": "将红色建筑前的银色轿车替换为一辆白色小型露营车。",
+     "instruction_noref_zh": "将选中区域替换为一辆白色小型露营车。",
+     "findings_addressed": [],
+     "reason": "Sedan -> blue compact sedan was a same-category recolour; a camper van is a structural change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Instruction fine; v2 mask = SAM3 round sign minus the street-name sign box [2110,700,2196,768] that occludes it."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

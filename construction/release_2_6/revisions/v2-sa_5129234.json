@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_5129234",
+  "reviewer": "shard2-b9",
+  "notes": "U3 payload had a dangling 'in its lower corner'; the window is cut by the right image edge, so the visible lower corner is the lower-left one. Site = 'lower-left corner', v2 mask = host ∩ box (2090,125,2170,205). U1/U2 checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5129234/case_sheet.jpg", "release_2_6_work/v2-sa_5129234/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small white OPEN decal", "placement": {"relation": "on", "site": "lower-left corner", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在砖楼最右侧的大窗户的左下角加上一张小白色OPEN贴花。",
+     "instruction_noref_zh": "给选中区域加上一张小白色OPEN贴花。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its' removed; the corner is the site and the mask is that corner of the window."}
+  ]
+}

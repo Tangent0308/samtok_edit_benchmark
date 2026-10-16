@@ -1,0 +1,58 @@
+{
+  "case_id": "v2-sa_2207729",
+  "reviewer": "shard0-b5",
+  "notes": "Audit U1 (lamp at 0.52W, not left of center) and U4 (double-headed lamp further right also near the canopy) fixed. U3 add site 'lantern top' -> v2 mask = lantern roof cap, host ∩ box 780-850 x 325-360. zh no-ref blind.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2207729/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2207729/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the tall streetlamp near the image center"
+      },
+      "ref_zh": "画面中间附近的高街灯",
+      "instruction_ref_zh": "移除画面中间附近的高街灯。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Lamp center x≈1178 (0.52W), at/just right of center."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "instruction_ref_zh": "给左后方较矮的街灯的灯笼顶部装上一块小太阳能板。",
+      "instruction_noref_zh": "给选中区域装上一块小太阳能板。",
+      "findings_addressed": [],
+      "reason": "Protocol 2.0: mask = lantern top; blind zh no-ref without site; zh ref names the site like the English."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the slender streetlamp in front of the movie-poster kiosk",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "white"
+          }
+        ]
+      },
+      "ref_zh": "电影海报亭前的细街灯",
+      "physical_parent_zh": "海报亭前街灯",
+      "parent_instance_id": "sa_2207729:海报亭前街灯",
+      "instruction_ref_zh": "将电影海报亭前的细街灯的颜色改为白色。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Lamp at 0.66W stands in front of the poster kiosk; the double-headed lamp at ~0.76W is also at the right rear near the canopy. The lamps are already dark/near-black on the clean source, so matte black was not a visible change; value now white.",
+      "instruction_noref_zh": "将选中区域的颜色改为白色。"
+    }
+  ]
+}

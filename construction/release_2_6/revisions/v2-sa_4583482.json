@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_4583482",
+  "reviewer": "shard2-b6",
+  "notes": "U1 value 'silver' was a near no-op (statue hat is already polished silvery metal) -> glossy black. U2 replace was colour-only apron->apron; converted to colour attribute (no natural structural replacement for a worn apron). U4 dangling 'at its top' removed. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4583482/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "glossy black", "attributes": [{"property": "color", "value": "glossy black"}]},
+     "instruction_ref_zh": "将坐像头上的帽子的颜色改为亮黑色。",
+     "instruction_noref_zh": "将选中区域的颜色改为亮黑色。",
+     "findings_addressed": [],
+     "reason": "New problem: hat (x659-919,y0-152) is already silvery polished metal, so 'silver' was not a visible change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"operation": "attribute", "payload": "navy blue", "attributes": [{"property": "color", "value": "navy blue"}]},
+     "instruction_ref_zh": "将白衣坐者的粉色围裙的颜色改为藏蓝色。",
+     "instruction_noref_zh": "将选中区域的颜色改为藏蓝色。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Payload 'plain navy apron' was the same garment in another colour; converted to a colour attribute."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small yellow OPEN sticker"},
+     "instruction_ref_zh": "在右边缘的高信息板上加上一张小黄色OPEN贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小黄色OPEN贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'at its top'; anchor stays the whole board."}
+  ]
+}

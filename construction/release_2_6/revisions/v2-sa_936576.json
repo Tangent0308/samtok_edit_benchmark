@@ -1,0 +1,63 @@
+{
+  "case_id": "v2-sa_936576",
+  "reviewer": "round2",
+  "notes": "U1 SAM重新分割裤子，排除龙头白杆；U2原裤腿在画面下方被裁断，缺乏可辨膝下裁剪区域，保留remove及point交互改为同一女子手持的独立蓝色沙锤。U4选牛仔裤大腿外缘支持区。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_936576/case_sheet.jpg",
+    "release_2_6_work/v2-sa_936576/U1/t1.jpg",
+    "release_2_6_work/v2-sa_936576/U1/final.jpg",
+    "release_2_6_work/v2-sa_936576/U2/t1.jpg",
+    "release_2_6_work/v2-sa_936576/U2/final.jpg",
+    "release_2_6_work/v2-sa_936576/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "SAM裤装候选与原host交集，去除719像素误选边缘，包括白色道具延伸。"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "category": "maraca",
+      "spec": {
+        "ref": "the blue maraca in the image-right hand of the back-facing woman at the front left",
+        "scope": "maraca",
+        "target_part": "",
+        "remove_mode": "whole"
+      },
+      "ref_zh": "左前背对镜头女子画面右侧手中的蓝色沙锤",
+      "scope_zh": "沙锤",
+      "physical_parent_zh": "左前女子右侧手持蓝色沙锤",
+      "parent_instance_id": "sa_936576:左前女子右侧手持蓝色沙锤",
+      "instruction_ref_zh": "移除左前背对镜头女子画面右侧手中的蓝色沙锤。",
+      "reason": "原图只见上段裤装、裤腿被底边裁断，不能可靠指定及膝剪裁段。改选独立手持道具，SAM候选去除手部孤立碎片后覆盖沙锤本体及露出手柄。"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "街头花车旁的表演者",
+    "evidence_zh": "四人衣物与前景独立手持蓝色沙锤相互紧邻，裤装被白色道具或花车装饰局部遮挡。",
+    "specific_protection_zh": "面具道具、手、花车装饰、项链、其他衣物"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "case_id": "v2-sa_922772",
+  "reviewer": "shard7",
+  "notes": "Tail case. Two parent collisions (U2 collar + U3 skirt on the same girl; U1 bouquet + U4 backpack on the same far-left boy), U2 replace was a bare colour, U3 removed a worn skirt, U4 backpack is at the far LEFT. U2 kept on the girl's collar (lace-collar replace); U3 retargeted to the low blue balloon behind her; U4 retargeted to the navy suit jacket of the central boy (boutonniere). SAM3 v2 masks committed for U3/U4.",
+  "reviewed_views": ["release_2_6_work/v2-sa_922772/case_sheet.jpg", "release_2_6_work/v2-sa_922772/U3/t1.jpg", "release_2_6_work/v2-sa_922772/U4/t1.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "school", "crowd"], "scene_zh": "校园开学典礼", "evidence_zh": "左边缘男孩的彩色花束、手捧橙色玫瑰女孩的白色衣领、人群中较低的蓝色气球和中间男孩的藏青色西装外套是四个不同对象。", "specific_protection_zh": "保留学生服装、花束和气球。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the multicolored bouquet held by the boy at the left edge", "scope": "bouquet", "payload": "pure white", "attributes": [{"property": "color", "value": "pure white"}]},
+      "ref_zh": "左边缘男孩手中的彩色花束",
+      "scope_zh": "花束",
+      "physical_parent_zh": "左边缘男孩的花束",
+      "parent_instance_id": "sa_922772:左边缘男孩的花束",
+      "instruction_ref_zh": "将左边缘男孩手中的彩色花束的颜色改为纯白色。",
+      "instruction_noref_zh": "将选中区域的颜色改为纯白色。",
+      "findings_addressed": ["independence_violation"],
+      "reason": "Bouquet stays; its former sibling unit (the same boy's backpack) was retargeted. Multicoloured flowers -> pure white is a visible change."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the white collar of the blonde girl holding orange roses", "scope": "collar", "payload": "a large white ruffled lace collar"},
+      "ref_zh": "手捧橙色玫瑰的金发女孩的白色衣领",
+      "scope_zh": "衣领",
+      "physical_parent_zh": "手捧橙色玫瑰的金发女孩",
+      "parent_instance_id": "sa_922772:手捧橙色玫瑰的金发女孩",
+      "instruction_ref_zh": "将手捧橙色玫瑰的金发女孩的白色衣领替换为一个白色大荷叶边蕾丝领。",
+      "instruction_noref_zh": "将选中区域替换为一个白色大荷叶边蕾丝领。",
+      "findings_addressed": ["replace_is_attribute", "independence_violation"],
+      "reason": "Mask is the white blouse collar (0.28W, not the centre); payload was a bare colour, now a structural collar replacement."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the low blue balloon in the crowd behind the girl holding orange roses", "scope": "balloon"},
+      "ref_zh": "手捧橙色玫瑰女孩身后人群中较低的蓝色气球",
+      "scope_zh": "气球",
+      "physical_parent_zh": "较低的蓝色气球",
+      "parent_instance_id": "sa_922772:较低的蓝色气球",
+      "instruction_ref_zh": "移除手捧橙色玫瑰女孩身后人群中较低的蓝色气球。",
+      "instruction_noref_zh": "移除选中区域。",
+      "preserve": ["保留顶部边缘的气球和前方的剑兰花枝。"],
+      "findings_addressed": ["ill_posed_edit", "independence_violation"],
+      "reason": "Retarget: removing the girl's worn skirt is ill-posed and shared her parent with U2. The low blue balloon is a separate object (SAM3 t1_1, gladiolus stem in front excluded); the other blue balloons are at the top edge."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the navy suit jacket of the boy holding the blue-and-yellow bouquet", "scope": "suit jacket", "payload": "one small white flower boutonniere", "placement": {"relation": "pinned to", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "手捧蓝黄花束男孩的藏青色西装外套",
+      "scope_zh": "西装外套",
+      "physical_parent_zh": "手捧蓝黄花束的男孩",
+      "parent_instance_id": "sa_922772:手捧蓝黄花束的男孩",
+      "instruction_ref_zh": "给手捧蓝黄花束男孩的藏青色西装外套别上一朵白色小胸花。",
+      "instruction_noref_zh": "给选中区域别上一朵白色小胸花。",
+      "findings_addressed": ["wrong_instance_spatial", "grammar_style", "independence_violation"],
+      "reason": "Retarget: the green backpack is at the far left (ref said right) and belongs to the boy holding U1's bouquet. New anchor is the central boy's jacket (SAM3 t1_1, bouquet excluded); payload specific."
+    }
+  ]
+}

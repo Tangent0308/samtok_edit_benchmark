@@ -1,0 +1,63 @@
+{
+  "case_id": "v2-sa_9161358",
+  "reviewer": "shard7",
+  "notes": "Tail case: U1 recoloured green foliage to green (no-op), U2 sack is at the right wall and payload was a recolor, U3/U4 refs vague, U4 payload generic. All four 2.5.0 masks checked on clean crops and kept (U4 second component is the sign's own right end visible behind foliage).",
+  "reviewed_views": ["release_2_6_work/v2-sa_9161358/case_sheet.jpg", "release_2_6_work/v2-sa_9161358/U4/t1.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "alley"], "scene_zh": "老城小巷", "evidence_zh": "左下角铁架盆中植物的叶子、右墙脚的白色麻袋、巷尾拱形木门和花丛中的悬挂招牌是四个不同对象。", "specific_protection_zh": "保留巷道、三角梅花丛和建筑细节。"},
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {"ref": "the leaves of the small plant in the black metal planter at the lower left", "scope": "leaves", "payload": "deep purple", "attributes": [{"property": "color", "value": "deep purple"}]},
+      "ref_zh": "左下角黑色铁架花盆中小植物的叶子",
+      "scope_zh": "叶子",
+      "physical_parent_zh": "左下角铁架盆栽",
+      "parent_instance_id": "sa_9161358:左下角铁架盆栽",
+      "instruction_ref_zh": "将左下角黑色铁架花盆中小植物的叶子的颜色改为深紫色。",
+      "instruction_noref_zh": "将选中区域的颜色改为深紫色。",
+      "preserve": ["保留黑色铁架花盆、石墙和上方的植物。"],
+      "findings_addressed": ["attribute_value"],
+      "reason": "Mask is the plant's green foliage; recolouring green to green was a no-op, now deep purple."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {"ref": "the lower white sack piled at the foot of the right wall near the end of the alley", "scope": "sack", "payload": "a wooden crate"},
+      "ref_zh": "巷尾右侧墙脚堆放的下方白色麻袋",
+      "scope_zh": "麻袋",
+      "physical_parent_zh": "右墙脚下方白色麻袋",
+      "parent_instance_id": "sa_9161358:右墙脚下方白色麻袋",
+      "instruction_ref_zh": "将巷尾右侧墙脚堆放的下方白色麻袋替换为一个木箱。",
+      "instruction_noref_zh": "将选中区域替换为一个木箱。",
+      "preserve": ["保留上方的其他白色麻袋、墙面和电线。"],
+      "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+      "reason": "Masked sack is at the right wall (0.61W); sack -> wooden crate is a category change."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {"ref": "the arched wooden door at the end of the alley", "scope": "door"},
+      "ref_zh": "巷尾的拱形木门",
+      "scope_zh": "木门",
+      "physical_parent_zh": "巷尾拱形木门",
+      "parent_instance_id": "sa_9161358:巷尾拱形木门",
+      "instruction_ref_zh": "移除巷尾的拱形木门。",
+      "preserve": ["保留拱形门洞、门框石墙和地面。"],
+      "findings_addressed": [],
+      "reason": "Tail rewrite: 'near the center' replaced by a precise description; removing the door leaf leaves an open arched doorway."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {"ref": "the white ÇIÇEKLI KONAK sign hanging among the bougainvillea on the left wall", "scope": "sign", "payload": "one small black right-pointing arrow"},
+      "ref_zh": "左墙三角梅花丛中悬挂的白色 ÇIÇEKLI KONAK 招牌",
+      "scope_zh": "招牌",
+      "physical_parent_zh": "悬挂招牌",
+      "parent_instance_id": "sa_9161358:悬挂招牌",
+      "instruction_ref_zh": "给左墙三角梅花丛中悬挂的白色 ÇIÇEKLI KONAK 招牌加上一个黑色小右向箭头。",
+      "instruction_noref_zh": "给选中区域加上一个黑色小右向箭头。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "Payload made specific; the old ref 'sign at the left' also fits the green-white sign further back. mask_quality finding rejected: the second component is the sign's right end (letters 'AK') seen through the foliage."
+    }
+  ]
+}

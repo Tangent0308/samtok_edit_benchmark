@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_7420848",
+  "reviewer": "shard3-b5",
+  "notes": "U3 ref fixed to the NO PARKING THIS SIDE sign on the right sidewalk; U4 cyclist already wears a white helmet, so payload changed to a yellow reflective vest and ref fixed (left of centre, riding toward the camera). Masks unchanged (S=T / anchor without site).",
+  "reviewed_views": ["release_2_6_work/v2-sa_7420848/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the \"NO PARKING THIS SIDE\" sign on the right sidewalk"},
+     "ref_zh": "右侧人行道上写着“NO PARKING THIS SIDE”的禁停标志",
+     "physical_parent_zh": "右侧人行道禁停标志",
+     "parent_instance_id": "sa_7420848:右侧人行道禁停标志",
+     "instruction_ref_zh": "移除右侧人行道上写着“NO PARKING THIS SIDE”的禁停标志。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked sign is at cx=0.86 on the right sidewalk; another white sign stands near the centre."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the cyclist riding toward the camera on the left side of the road", "payload": "a bright yellow reflective vest"},
+     "ref_zh": "道路左侧迎面骑来的骑行者",
+     "physical_parent_zh": "迎面骑行者",
+     "parent_instance_id": "sa_7420848:迎面骑行者",
+     "instruction_ref_zh": "给道路左侧迎面骑来的骑行者加上一件亮黄色反光背心。",
+     "instruction_noref_zh": "给选中区域加上一件亮黄色反光背心。",
+     "findings_addressed": ["ill_posed_edit", "wrong_instance_spatial"],
+     "reason": "Cyclist (cx=0.27) already wears a white helmet; he wears a dark jacket with no vest, so a reflective vest is a natural addition on the selected person."}
+  ]
+}

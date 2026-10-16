@@ -1,0 +1,32 @@
+{
+  "case_id": "v2-sa_2787726",
+  "reviewer": "shard0b-b3",
+  "notes": "U1: 'brown-backpacked' -> brown shoulder bag (finding); site outer thigh -> v2 = outer thigh of her image-right jeans leg (host ∩ box 180-260 x 1290-1420). U3 remove part brim -> v2 = brim below the green hat band (SAM3 'hat brim'). U4 zh fixed (finding).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2787726/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2787726/U1/final.jpg",
+    "release_2_6_work/v2-sa_2787726/U3/final.jpg"
+  ],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the jeans of the woman with the brown shoulder bag at the front left"},
+     "ref_zh": "左前方挎棕色肩包女子的牛仔裤",
+     "physical_parent_zh": "左前挎包女子",
+     "parent_instance_id": "sa_2787726:左前挎包女子",
+     "instruction_ref_zh": "给左前方挎棕色肩包女子的牛仔裤加上一块缝在大腿外侧的小花刺绣贴布。",
+     "instruction_noref_zh": "给选中区域加上一块小花刺绣贴布。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "The brown leather item at her hip is a crossbody/shoulder bag, not a backpack. Protocol 2.0 site mask: outer thigh of the image-right leg (180-240 x 1290-1420)."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 part mask = brim of the straw hat (2016-2250 x 840-973), crown above the green band excluded."},
+    {"id": "U4", "action": "revise",
+     "instruction_ref_zh": "将象队中间上方的黄色仪仗伞改为深红色。",
+     "ref_zh": "象队中间上方的黄色仪仗伞",
+     "instruction_noref_zh": "将选中区域的颜色改为深红色。",
+     "findings_addressed": ["translation"],
+     "reason": "ZH ref mentioned the pole and omitted the elephant procession; aligned with English."}
+  ]
+}

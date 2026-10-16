@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_4521545",
+  "reviewer": "shard0-b2",
+  "notes": "U1 add site 'top' -> v2 mask = top cap of the helmet (host ∩ box y<=558). U3 ref was ambiguous among several black helmets left of centre; now uses the round white patch on the rider's olive parka (unique). U2 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4521545/case_sheet.jpg", "release_2_6_work/v2-sa_4521545/zoom_U3.jpg", "release_2_6_work/v2-sa_4521545/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep",
+     "instruction_noref_zh": "给选中区域加上一台小运动相机。"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the black helmet of the rider in the olive parka with a round white patch on its back"},
+     "ref_zh": "背后有白色圆形徽章的橄榄绿派克大衣骑手的黑头盔",
+     "instruction_ref_zh": "移除背后有白色圆形徽章的橄榄绿派克大衣骑手的黑头盔。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Several black helmets sit near/left of centre; the masked helmet's rider is the only one with a round white patch on the back of an olive parka (patch at ~x=885,y=750 source, directly below the helmet box [854,584,933,655])."}
+  ]
+}

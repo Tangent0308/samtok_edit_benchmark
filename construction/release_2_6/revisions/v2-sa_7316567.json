@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_7316567",
+  "reviewer": "shard3-b4",
+  "notes": "U1 jacket is already dark navy, value changed to light gray; U2 replacement made structural; U3 screen is gray/black, not blue. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7316567/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the dark navy jacket of the uniformed station worker", "payload": "light gray",
+              "attributes": [{"property": "color", "value": "light gray"}]},
+     "ref_zh": "穿制服的车站工作人员的深藏蓝色外套",
+     "instruction_ref_zh": "将穿制服的车站工作人员的深藏蓝色外套的颜色改为浅灰色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Jacket (x235-489,y423-903) is already dark navy; navy blue was a no-op."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a hanging digital LED departure board"},
+     "instruction_ref_zh": "将站台上方的黄色指示牌替换为一块悬挂式数字LED发车信息屏。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Blue direction board was only a recolour; a digital departure board is a structurally different sign."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the gray station information screen showing platform number 4 at the upper left"},
+     "ref_zh": "左上方显示4号站台的灰色站台信息屏",
+     "instruction_ref_zh": "移除左上方显示4号站台的灰色站台信息屏。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Screen has a gray housing and dark display with '4', not blue."}
+  ]
+}

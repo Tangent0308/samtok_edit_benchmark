@@ -1,0 +1,103 @@
+{
+  "case_id": "v2-sa_83477",
+  "reviewer": "shard5-b1",
+  "notes": "Tail case: all units re-examined. U1 car already navy (no-op) -> bright red; U2 ref made precise (vintage two-tone car at right edge); U3 fence is behind the car, not in front; U4 ref/payload made specific. All 2.5.0 masks are the edited regions (whole objects), so no v2 masks needed. Spot-check follow-up: U4 retargeted from the barely visible bicycle to the grey car parked behind the police car (v2 mask = its visible roof/windshield/mirror, SAM3 'car', no overlap with U1-U3).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_83477/case_sheet.jpg",
+    "assets/v2-sa_83477/source.jpg",
+    "release_2_6_work/v2-sa_83477/U4/t2.jpg",
+    "release_2_6_work/v2-sa_83477/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "outdoor",
+      "street",
+      "vehicles"
+    ],
+    "scene_zh": "城市车辆街景",
+    "evidence_zh": "1中央深蓝色宪兵警车、5右边缘老式双色轿车、31警车后方的奶油色栅栏和警车后方停着的灰色轿车是四个不同对象。",
+    "specific_protection_zh": "保留车辆、围栏和街道环境。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the dark blue Carabinieri police car",
+        "payload": "bright red",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "bright red"
+          }
+        ]
+      },
+      "ref_zh": "深蓝色的宪兵警车",
+      "scope_zh": "轿车",
+      "physical_parent_zh": "中央深蓝色宪兵警车",
+      "parent_instance_id": "sa_83477:center_car",
+      "instruction_ref_zh": "将深蓝色的宪兵警车的颜色改为鲜红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为鲜红色。",
+      "findings_addressed": [
+        "attribute_value"
+      ],
+      "reason": "Car is already dark navy; 'blue' was nearly a no-op. Ref names the unique Carabinieri car."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the vintage two-tone car at the right edge of the image",
+        "payload": "a white delivery van"
+      },
+      "ref_zh": "画面右边缘的老式双色轿车",
+      "scope_zh": "轿车",
+      "physical_parent_zh": "右边缘老式轿车",
+      "parent_instance_id": "sa_83477:right_car",
+      "instruction_ref_zh": "将画面右边缘的老式双色轿车替换为一辆白色厢式货车。",
+      "instruction_noref_zh": "将选中区域替换为一辆白色厢式货车。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: 'the car at the right' was template-vague (a grey car also sits behind the police car); the masked vehicle is the partially visible vintage car with black fenders at the right edge."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the cream picket fence behind the police car"
+      },
+      "ref_zh": "警车后方的奶油色栅栏",
+      "scope_zh": "栅栏",
+      "physical_parent_zh": "警车后方的栅栏",
+      "parent_instance_id": "sa_83477:front_fence",
+      "instruction_ref_zh": "移除警车后方的奶油色栅栏。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "The fence is in the background behind/left of the car, not at the front."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the grey car parked behind the police car",
+        "scope": "car",
+        "payload": "one black roof cargo box",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "停在警车后方的灰色轿车",
+      "scope_zh": "轿车",
+      "physical_parent_zh": "警车后方灰色轿车",
+      "parent_instance_id": "sa_83477:rear_grey_car",
+      "instruction_ref_zh": "在停在警车后方的灰色轿车上加上一个黑色车顶行李箱。",
+      "instruction_noref_zh": "给选中区域加上一个黑色车顶行李箱。",
+      "findings_addressed": [
+        "spot_check_invisible_anchor"
+      ],
+      "reason": "Retarget: the bicycle was only a few spokes behind the fence and mirror with a coarse blob mask; the grey car's roof is clearly visible above the police car and supports a roof box."
+    }
+  ]
+}

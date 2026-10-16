@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_2944425",
+  "reviewer": "shard0b-b3",
+  "notes": "No audit findings. U5 site 'visible shoulder' -> image-left shoulder of the black T-shirt above the sign (host ∩ box 1630-1722 x 650-735, blue backpack strap excluded). U2 'left-side' made image-left, person is a woman. Other units checked on the clean image and kept (U1 grey crossbody strap, U3 red T-shirt, U4 light-blue T-shirt).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2944425/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2944425/U5/final.jpg"
+  ],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the image-left backpack shoulder strap on the green-shirted woman in the middle"},
+     "ref_zh": "中间绿衣女子画面左侧的背包肩带",
+     "instruction_ref_zh": "移除中间绿衣女子画面左侧的背包肩带。",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": [],
+     "reason": "Body vs image side was ambiguous; the masked strap is on the image-left shoulder (899-980 x 533-722)."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"},
+    {"id": "U5", "action": "revise",
+     "spec": {"placement": {"relation": "sewn onto", "site": "image-left shoulder", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给右侧纸牌后方男子露出的深色T恤加上一块缝在画面左侧肩部的小白色布贴。",
+     "instruction_noref_zh": "给选中区域加上一块小白色布贴。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 site mask: the visible image-left shoulder (1659-1722 x 665-729); right shoulder strip is split by a backpack strap."}
+  ]
+}

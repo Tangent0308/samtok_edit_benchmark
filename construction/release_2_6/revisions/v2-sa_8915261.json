@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_8915261",
+  "reviewer": "shard6-b2",
+  "notes": "Tail case; both units rewritten. U1 mask is the navy Burlington Hotel banner at the upper RIGHT (identical one at upper left); recolour to burgundy (navy->blue was a no-op). U2 mask is the image-right white sneaker of the walking woman; replace with a black ankle boot (white sneaker payload was a no-op). Masks checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8915261/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "street"], "scene_zh": "拱廊街", "evidence_zh": "右上方的Burlington Hotel竖幅和行走女子画面右侧的白色运动鞋是两个不同对象；左上方有一条相同的竖幅，女子另一只脚也穿着白色运动鞋，需要按方位区分。", "specific_protection_zh": "保留另一条竖幅、街道标识和行人其他细节。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the hanging Burlington Hotel banner at the upper right", "payload": "burgundy", "attributes": [{"property": "color", "value": "burgundy"}]},
+     "ref_zh": "右上方悬挂的Burlington Hotel竖幅", "scope_zh": "横幅", "physical_parent_zh": "右上方Burlington Hotel竖幅", "parent_instance_id": "sa_8915261:右上方Burlington Hotel竖幅",
+     "instruction_ref_zh": "将右上方悬挂的Burlington Hotel竖幅的颜色改为酒红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为酒红色。",
+     "preserve": ["保留竖幅上的金色文字以及左上方的另一条竖幅。"],
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Mask box x 1352-1455 of 1500 is the upper-right banner; ref said upper left. Banner already navy, so new value burgundy."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the white sneaker on the image-right foot of the woman walking across the square", "scope": "sneaker", "payload": "a black leather ankle boot"},
+     "ref_zh": "横穿广场行走的女子画面右侧那只脚上的白色运动鞋", "scope_zh": "运动鞋", "physical_parent_zh": "行走的女子", "parent_instance_id": "sa_8915261:行走的女子",
+     "instruction_ref_zh": "将横穿广场行走的女子画面右侧那只脚上的白色运动鞋替换为一只黑色皮质短靴。",
+     "instruction_noref_zh": "将选中区域替换为一只黑色皮质短靴。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Shoe already a white sneaker (no-op) and 'lower center' fits both her shoes; masked one (834-896, 1815-1891) is the image-right foot."}
+  ]
+}

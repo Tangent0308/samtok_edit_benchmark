@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9289265",
+  "reviewer": "shard7",
+  "notes": "Tail case, all units rewritten. U1 motorbike ref made specific. U2 SUV is on the right (ref said left), bare-colour replace -> blue pickup truck; v2 mask drops the motorbike mirror fragment. U3 removed a worn shirt -> recolour; v2 mask is the shirt only (mirror/handlebar removed). U4 tuk-tuk canopy belonged to the trailer hitched to U1's motorbike and was 'at the right' -> retargeted to the white minivan in the background (SAM3 v2), payload specific.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9289265/case_sheet.jpg", "release_2_6_work/v2-sa_9289265/U2/t1.jpg", "release_2_6_work/v2-sa_9289265/U3/t1.jpg", "release_2_6_work/v2-sa_9289265/U4/t1.jpg", "release_2_6_work/v2-sa_9289265/U2/final.jpg", "release_2_6_work/v2-sa_9289265/U3/final.jpg", "release_2_6_work/v2-sa_9289265/U4/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "vehicles"], "scene_zh": "街头三轮车", "evidence_zh": "拉嘟嘟车的黑色本田摩托车、右侧香槟色雷克萨斯SUV、摩托车骑手的米色衬衫和背景中的白色面包车是四个不同对象。", "specific_protection_zh": "保留车辆、人物和遮阳设施。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the black Honda motorbike pulling the tuk-tuk", "scope": "motorbike"},
+      "ref_zh": "拉着嘟嘟车的黑色本田摩托车",
+      "scope_zh": "摩托车",
+      "physical_parent_zh": "黑色本田摩托车",
+      "parent_instance_id": "sa_9289265:黑色本田摩托车",
+      "instruction_ref_zh": "将拉着嘟嘟车的黑色本田摩托车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["independence_violation"],
+      "reason": "Template ref replaced by a specific one; the other unit on the same vehicle assembly (tuk-tuk canopy) was retargeted."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the champagne Lexus SUV parked at the right", "scope": "SUV", "payload": "a blue pickup truck"},
+      "ref_zh": "停在右侧的香槟色雷克萨斯SUV",
+      "scope_zh": "SUV",
+      "physical_parent_zh": "香槟色雷克萨斯SUV",
+      "parent_instance_id": "sa_9289265:香槟色雷克萨斯SUV",
+      "instruction_ref_zh": "将停在右侧的香槟色雷克萨斯SUV替换为一辆蓝色皮卡。",
+      "instruction_noref_zh": "将选中区域替换为一辆蓝色皮卡。",
+      "findings_addressed": ["ill_posed_edit"],
+      "reason": "SUV is at 0.70W (right); bare-colour payload -> structural replacement. v2 mask (SAM3 'SUV' minus U1) drops the motorbike mirror fragment."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"operation": "attribute", "ref": "the beige shirt of the motorbike rider", "scope": "shirt", "payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+      "ref_zh": "摩托车骑手的米色衬衫",
+      "scope_zh": "衬衫",
+      "physical_parent_zh": "摩托车骑手",
+      "parent_instance_id": "sa_9289265:摩托车骑手",
+      "instruction_ref_zh": "将摩托车骑手的米色衬衫的颜色改为深绿色。",
+      "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+      "findings_addressed": ["ill_posed_edit"],
+      "reason": "Removing a worn shirt is ill-posed -> recolour. v2 mask is the shirt only (SAM3 'shirt' minus U1), mirror and handlebar removed. The tuk-tuk passenger wears a gray T-shirt, so 'beige shirt of the motorbike rider' is unique."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the white minivan in the background behind the tuk-tuk", "scope": "minivan", "payload": "one red stripe decal", "placement": {"relation": "along", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "嘟嘟车后方背景中的白色面包车",
+      "scope_zh": "面包车",
+      "physical_parent_zh": "白色面包车",
+      "parent_instance_id": "sa_9289265:白色面包车",
+      "instruction_ref_zh": "沿嘟嘟车后方背景中的白色面包车加上一条红色条纹贴花。",
+      "instruction_noref_zh": "沿选中区域加上一条红色条纹贴花。",
+      "findings_addressed": ["wrong_instance_spatial", "grammar_style", "independence_violation"],
+      "reason": "Retarget: the canopy is the roof of the trailer hitched to U1's motorbike and was not at the right. The minivan is a separate vehicle (SAM3 t1_1, tuk-tuk pole and passenger's head excluded); the smaller white car to its left is not a van."
+    }
+  ]
+}

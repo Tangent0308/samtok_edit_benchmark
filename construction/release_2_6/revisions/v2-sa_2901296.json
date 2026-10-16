@@ -1,0 +1,60 @@
+{
+  "case_id": "v2-sa_2901296",
+  "reviewer": "shard1b-b3",
+  "notes": "U1 and U4 bags were both carried by the same nearest visitor and U4 was a sliver cut by the top edge; U4 retargeted to removing the man in light-blue shirt at the left (SAM3 tracker, verified). U1 ref describes the dark bag with clipped umbrella; U3 ref corrected (glass panel of the right escalator, no doorway).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2901296/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2901296/U4/p1.jpg",
+    "release_2_6_work/v2-sa_2901296/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the dark shoulder bag and clipped-on umbrella at the side of the man in navy shorts"
+      },
+      "ref_zh": "穿藏青色短裤男子身侧的深色单肩包和挂在上面的折叠伞",
+      "instruction_ref_zh": "将穿藏青色短裤男子身侧的深色单肩包和挂在上面的折叠伞替换为一个纯黑色邮差包。",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "Bag is dark gray with a folded plaid umbrella clipped on; mask covers both as one carried item, ref now says so."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the narrow glass panel between the right escalator and the steel pillar"
+      },
+      "ref_zh": "右侧扶梯与钢柱之间的窄玻璃板",
+      "instruction_ref_zh": "在右侧扶梯与钢柱之间的窄玻璃板上加上一排白色水平防撞圆点。",
+      "findings_addressed": [],
+      "reason": "Mask [1792,0,1897,186] is the escalator glass balustrade next to the steel pillar; there is no doorway there (new problem)."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the person in a light-blue shirt and navy trousers standing at the left edge",
+        "scope": "person"
+      },
+      "ref_zh": "左边缘站立的穿浅蓝色衬衫和藏青色长裤的人",
+      "instruction_ref_zh": "移除左边缘站立的穿浅蓝色衬衫和藏青色长裤的人。",
+      "findings_addressed": [
+        "independence_violation"
+      ],
+      "reason": "Old U4 bag was on the back of the same visitor carrying U1 and mostly out of frame; retargeted to an independent person [221,0,427,575]. Lead review: only waist-down is visible (head cut by top edge), so gender is not verifiable; ref uses 'person'.",
+      "scope_zh": "人",
+      "physical_parent_zh": "左侧行人",
+      "parent_instance_id": "sa_2901296:左侧行人",
+      "preserve": [
+        "保留其他游客、扶梯、玻璃和地贴原文字箭头。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_5192457",
+  "reviewer": "shard2-b9",
+  "notes": "U4 payload had a dangling 'along its edge'; site = 'front rim' (the lower, camera-facing edge of the canopy), v2 mask = host ∩ box (1370,1141,1495,1165). U1-U3 checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5192457/case_sheet.jpg", "release_2_6_work/v2-sa_5192457/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white ICE CREAM banner", "placement": {"relation": "along", "site": "front rim", "anchor_mode": "support"}},
+     "instruction_ref_zh": "沿前景厢式车后方的米色遮阳伞的前缘加上一条小白色ICE CREAM横幅。",
+     "instruction_noref_zh": "给选中区域加上一条小白色ICE CREAM横幅。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its' removed; the rim is the site and the mask is that band of the canopy."}
+  ]
+}

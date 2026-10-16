@@ -1,0 +1,17 @@
+{"case_id": "v2-sa_2938886", "reviewer": "shard1b-b4",
+ "notes": "U1 replace was colour-only; U2 door is already pale blue so 'light blue' was near no-op (new problem). Masks unchanged.",
+ "reviewed_views": ["release_2_6_work/v2-sa_2938886/case_sheet.jpg"],
+ "units": [
+  {"id": "U1", "action": "revise",
+   "spec": {"payload": "a small wooden birdhouse"},
+   "instruction_ref_zh": "将左侧最近门旁的灰色信箱替换为一个小木制鸟屋。",
+   "instruction_noref_zh": "将选中区域替换为一个小木制鸟屋。",
+   "findings_addressed": ["replace_is_attribute"],
+   "reason": "Dark-green metal mailbox only changed colour; a wall-mounted wooden birdhouse is a structural replacement."},
+  {"id": "U2", "action": "revise",
+   "spec": {"ref": "the nearest pale-blue door on the left", "payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+   "ref_zh": "左侧最近的浅蓝色门",
+   "instruction_ref_zh": "将左侧最近的浅蓝色门的颜色改为深绿色。",
+   "findings_addressed": [],
+   "reason": "Clean source shows the door (x557-602) already pale blue-grey; 'light blue' would be invisible. Value now dark green (U1 no longer uses green)."}
+ ]}

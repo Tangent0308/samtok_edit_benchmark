@@ -1,0 +1,810 @@
+{
+ "v2-sa_5460754|U2|0": {
+  "evidence_zh": "底排有四个卷轴（最左两个、U2 第三个、U3 最右）。U2（box x 614-978）是第三个，位于右下角卷轴的左侧，并不明显处于“center”；“partly hidden”有一定区分作用，但第二个卷轴同样被部分遮挡。",
+  "other_zh": null
+ },
+ "v2-sa_4521545|U3|6": {
+  "evidence_zh": "REF 'the black helmet of the rider just left of center'，正式输入为 ref+none；有多名骑手的黑色头盔位于中心附近或偏左（宽度的 x~0.30、0.40（被 mask 者）、0.46、0.48），因此该短语无法唯一指向 box [854,584,933,655] 处被 mask 的头盔。",
+  "other_zh": "或将正式输入改为包含 box/mask"
+ },
+ "v2-sa_604524|U4|12": {
+  "evidence_zh": "REF 把被 mask 的内层上衣称为 'orange'，但像素显示是左下方棕色夹克下的芥末黄上衣（North Face logo）；目标仍然唯一。",
+  "other_zh": "ZH 橙色 -> 黄色"
+ },
+ "v2-sa_4507759|U3|18": {
+  "evidence_zh": "U3 夹克 mask 在夹克上方、女子深色头发/头部区域（约合成图 x=140-175,y=445-485）有第二个小连通块，不属于夹克。",
+  "other_zh": "去掉 mask 上方的小连通块，只保留藏青色夹克躯干部分"
+ },
+ "v2-sa_4817785|U3|24": {
+  "evidence_zh": "U3 mask（box [1970,358,2074,550]）勾勒出整个远处工人的轮廓，包括头、帽子和手，而不仅是蓝色工作服；范围（scope）是 'workwear'。",
+  "other_zh": "细化 mask 以排除头/帽子/手（仅保留衣物），或将该单元的范围改为整个人并配以非服装类编辑。"
+ },
+ "v2-sa_2875285|U1|30": {
+  "evidence_zh": "NOREF ZH '移除选中的衣领' 使用了 衣领（衬衫领子），而目标是一只狗雕像的项圈（项圈），REF ZH 的表述是正确的。",
+  "other_zh": "ZH noref: 移除选中的项圈。"
+ },
+ "v2-sa_2207729|U1|37": {
+  "evidence_zh": "U1 路灯 cx=0.52W 位于图像中心或略偏右，并非 'just left of center'；但作为靠近中心的高大路灯仍然唯一。",
+  "other_zh": "ZH: 移除画面中间的高街灯。"
+ },
+ "v2-sa_6714451|U1|43": {
+  "evidence_zh": "U1 移除的是前方红色托盘（堆满冰块和扇贝）的 'the raised rim'；边缘是托盘盛放内容物的侧壁，移除后会留下物理上不合理的平板且冰块外溢；预期结果未定义。",
+  "other_zh": "将部分移除（part-remove）改为属性编辑，或替换整个托盘"
+ },
+ "v2-sa_9865645|U2|49": {
+  "evidence_zh": "REF 'the man directly behind him' 依赖 U1 的指代对象（单独使用 REF 时 'him' 未定义）；目标是站在弯腰男子身后、穿绿色衬衫、印有白色 'THE DENIM BROS' 字样的男子。",
+  "other_zh": null
+ },
+ "v2-sa_2361184|U4|55": {
+  "evidence_zh": "REF 称该孩子的蓝色上衣为 'sleeveless'，但在裁剪图中看起来是带白色字样的蓝色短袖 T 恤。",
+  "other_zh": null
+ },
+ "v2-sa_10175525|U1|61": {
+  "evidence_zh": "REF/ZH 称被 mask 的鞋为 'black sneaker'，但被 mask 的鞋（box [1598,1127,1684,1273]）是带黑色鞋带的灰色帆布高帮鞋。真正的黑色运动鞋（带白色鞋底的黑色 Vans）就在其右侧约 (1840,1350) 处，因此仅凭 ref 的理解很可能选错鞋。",
+  "other_zh": "ZH: 移除右侧从前景人物身后迈出的一只灰色高帮运动鞋。"
+ },
+ "v2-sa_1141051|U1|67": {
+  "evidence_zh": "ZH REF '移除右前警员防护背心下露出的白衬衫领口与两袖的衣领' 表述混乱（先提到 领口与两袖 又提到 衣领）；英文只移除衣领。",
+  "other_zh": "ZH: 移除右侧警员防护背心下白衬衫的衣领。"
+ },
+ "v2-sa_1901719|U2|73": {
+  "evidence_zh": "右后方穿黑衣的孩子是在伸手去够/碰花，并不明显是在指；描述 'person pointing' 较宽泛，但该实例是唯一的。",
+  "other_zh": null
+ },
+ "v2-sa_2127869|U1|79": {
+  "evidence_zh": "'the front transparent bottle with a white label on the upper shelf' 符合上层货架上数个带白色标签的透明汤力水瓶（紧邻 U1 右侧的那个，以及 U4 左侧的那个）。mask 对应的是 box [1558,126,1666,520] 处的瓶子，即可口可乐瓶右侧的第二个透明瓶。",
+  "other_zh": null
+ },
+ "v2-sa_2315709|U4|85": {
+  "evidence_zh": "上排有几十名男子戴着相同的黑色宽檐帽；'the black wide-brimmed hat in the upper-left row' 无法确定被 mask 的帽子（~0.29W,0.07H）。此外，存储的 box [597,115,950,215] 远宽于 mask（mask 仅大致覆盖 x 600-740），因此 box 定位也包含了相邻的头部。",
+  "other_zh": "将 box 收紧到帽子 mask 的范围"
+ },
+ "v2-sa_37740|U4|91": {
+  "evidence_zh": "被 mask 的灯泡（box x 379-640）是从左数第二个灯泡；另有一个被部分截断的灯泡挂在最左边缘（x~0-170）同样高度处。'the glass light bulb at the middle left' 可以理解为任一个。",
+  "other_zh": null
+ },
+ "v2-sa_4812427|U1|97": {
+  "evidence_zh": "花衬衫男子的牛仔裤（box [1614,591,1792,1026]）本身已经是中等/深色牛仔蓝；'to dark blue' 几乎无变化，难以评分。",
+  "other_zh": null
+ },
+ "v2-sa_5904224|U1|103": {
+  "evidence_zh": "被 mask 的最靠前的藤椅是从背面看到的：其编织靠背朝向镜头，座面朝向桌子，与被称为 'back-facing' 的 U2/U3 朝向相同。REF/ZH 的 'facing the camera with its back to the table' 与图像所示相反。",
+  "other_zh": "ZH -> 移除最靠前、背对镜头面向桌子的藤椅。"
+ },
+ "v2-sa_6330783|U2|109": {
+  "evidence_zh": "展示中有很多亮粉色箱包（例如左中带凸起提手的粉色箱子、右前方的大粉色箱子）。被 mask 的提手（中心 0.45W,0.62H）位于中间几排红色棱纹箱子后面的粉色箱子上，并不明显处于 'at the front center'。",
+  "other_zh": null
+ },
+ "v2-sa_7223032|U1|115": {
+  "evidence_zh": "U1 mask 是左上方（box y 651-926，中等高度）的红/蓝/绿/黄雨伞。左下角（黄/绿/蓝，约 y 1200-1500）有一把更大的雨伞，明显更靠近镜头，因此 \"the nearest multicolored umbrella canopy on the left\" 指向了错误的一把。",
+  "other_zh": null
+ },
+ "v2-sa_7543855|U5|121": {
+  "evidence_zh": "REF/ZH 称目标为 'pale trousers'（浅色裤子），但左侧桌子后站立者（黑色 T 恤、双手交握、灰色运动鞋）被 mask 的裤子 [534,860,630,1133] 是黑色/非常深的颜色。颜色描述与像素矛盾，可能让仅凭 ref 的模型选到另一件更浅色的衣物。",
+  "other_zh": "ZH: 将左后方桌子后被桌腿截断的黑色裤子替换为宽松及踝亚麻长裤。"
+ },
+ "v2-sa_8120561|U2|127": {
+  "evidence_zh": "REF 称车夫的夹克为 'blue'；图中它是深色、近乎黑色的仿皮夹克，只是调色带来冷蓝色调。目标无歧义（只有一名车夫）。",
+  "other_zh": "ZH: 将高处车夫的深色外套改为深棕色。"
+ },
+ "v2-sa_8402603|U5|133": {
+  "evidence_zh": "REF 称橙色壳体在 'on both sides of the central pole'。将被 mask 的椅子（box [191,1141,677,1443]）一分为二的杆是位于约 x=450（0.2W）的前景钢杆。该案例自己的 U4 把同一根杆称为 'the pole on the left'。图中真正的中心（约 x=1180）还有另一根镀铬杆，因此 'central pole' 指向了错误的位置。",
+  "other_zh": "ZH: 移除左侧前景立杆两侧露出的橙色空座椅壳。"
+ },
+ "v2-sa_10006079|U2|139": {
+  "evidence_zh": "被 mask 的物体是躺在船底的黑色 Quechua 圆筒旅行包/手提包（带抽绳的横向桶形），不是背包；仍可唯一识别为女子旁边的黑色包。",
+  "other_zh": null
+ },
+ "v2-sa_10308802|U1|145": {
+  "evidence_zh": "'rightmost rear wheel of the black truck' —— 被 mask 的轮子是挂车后轴组的右轮（原图 x~601-664）；牵引车自身更靠右的后驱动轮（原图约 x 940-1120）也可能被理解为卡车的后轮。",
+  "other_zh": null
+ },
+ "v2-sa_10444816|U2|151": {
+  "evidence_zh": "有数名穿橙色 T 恤、戴粉色帽子的男子（最左 x~0.0-0.05W，U1 后方约 0.12W）。U2（box [648,686,774,840]，中心 0.36W）是背景中央行走的那位，但 'the orange T-shirt facing away in the background' 也可能指左侧横幅后穿橙色衣服的男子。",
+  "other_zh": null
+ },
+ "v2-sa_10682062|U2|157": {
+  "evidence_zh": "U2 灯（box 中心 0.15W,0.64H）悬挂在与塔基齐平的线上；教堂尖顶左侧至少还有 4 盏其他悬挂灯（树木上方较低处约 0.2W,0.78H、约 0.17W,0.85H、约 0.08W,0.91H，以及左上角灯 0.0W,0.34H），因此 REF 无法单独指出它。",
+  "other_zh": null
+ },
+ "v2-sa_10817186|U1|163": {
+  "evidence_zh": "被 mask 男子（x~0.37W）左侧站着一个动态模糊、穿亮红色夹克的人。'Central person' 仍然指向 0.49W 处穿深红色外套、清晰的男子，但用更具体的 REF 指称他会更稳妥。",
+  "other_zh": null
+ },
+ "v2-sa_1112483|U2|169": {
+  "evidence_zh": "U2 mask 是近处左岸咖啡馆中 box [252,890,388,920]（cx=0.16）的大白色遮阳伞。在原图中，同一左岸更靠右约 x=570-770、y=890、中央桥旁还有更多白色遮阳伞，因此被 mask 的是最近/最左的一把，而不是最右的。",
+  "other_zh": "同时修正 ZH: 将左岸最近的白色遮阳伞的颜色改为藏蓝色。"
+ },
+ "v2-sa_1131468|U1|175": {
+  "evidence_zh": "'the large straw hat in the center'：被 mask 的圆锥形草帽位于中心偏右（box 中心 x=0.71W, y=0.34H）；左上方还有其他草帽。'large' 仍然起到区分作用。",
+  "other_zh": null
+ },
+ "v2-sa_1317508|U3|181": {
+  "evidence_zh": "REF 'the large waterside shrub just right of the boat' —— 被 mask 的灌木位于 x~1876-2084（0.90W），远离船尾（~0.66W）；紧邻船右侧（~0.68-0.75W）的灌木/芦苇更符合 'just right of the boat'。",
+  "other_zh": "ZH: 将右侧银色汽车下方水边的大圆灌木替换为一丛开白花的绣球。"
+ },
+ "v2-sa_14654|U3|187": {
+  "evidence_zh": "U3 瓶子（中排最左，蓝色瓶帽）本身已经是非常深色（可能是深绿/黑色）的玻璃酒瓶；'change the material to green glass' 几乎无变化（glass->glass），评判者无法可靠验证其成功与否。",
+  "other_zh": "或对蓝色瓶帽使用颜色属性，例如改为红色"
+ },
+ "v2-sa_1571336|U4|193": {
+  "evidence_zh": "U4 把棕色船屋的金属甲板栏杆（box [1552,866,1740,925]）替换为 'a wooden deck railing' —— 类别相同（栏杆），仅材质改变；这是属性（材质）编辑，而不是 replace。",
+  "other_zh": "或改为属性：'Change the material of the deck railing ... to wood.'"
+ },
+ "v2-sa_1642015|U4|199": {
+  "evidence_zh": "玻璃展示柜顶部放着两个淡绿色陶瓷碗/罐；被 mask 的是右边那个（box x 1088-1192），另一个紧靠其左侧。",
+  "other_zh": null
+ },
+ "v2-sa_1752343|U3|205": {
+  "evidence_zh": "U3 把黑色旅行车替换为 'a blue estate car' —— 类别/结构相同，仅改变颜色；应归入属性编辑。",
+  "other_zh": "或改为属性：Change the color of the black estate car immediately right of the minivan to blue."
+ },
+ "v2-sa_1915366|U1|211": {
+  "evidence_zh": "REF 称 'the foreground utility pole in the center'，但被 mask 的电线杆位于 x=0.29W（2250 宽中的 box 626-701），明显偏左；更左侧（~0.15W）还有一根杆，中心偏右（~0.72W）也有一根。'Foreground' 部分起到识别作用（它是最近且最高的杆），但 'in the center' 是错误的。",
+  "other_zh": null
+ },
+ "v2-sa_1954663|U4|217": {
+  "evidence_zh": "右边缘的奶油色建筑有两扇白色百叶窗：被 mask 的下方一扇 [1354,889,1485,1426] 紧邻绿色 AED 箱，另一扇在上层大致相同的 x 位置（原图约 x~1400-1480, y~270-680）。'the white shutter at the right edge' 两者都符合。",
+  "other_zh": "ZH: 将右边缘下层、绿色壁挂箱旁的白色百叶窗板的颜色改为浅蓝色。"
+ },
+ "v2-sa_215762|U4|223": {
+  "evidence_zh": "U4 门 mask 在砖墙上方的顶部边缘有零散碎片，右边缘有参差不齐的碎块。",
+  "other_zh": "清理多余的 mask 碎片"
+ },
+ "v2-sa_2310142|U3|229": {
+  "evidence_zh": "U3 'Replace the oncoming gray minivan with a white minivan' 保持相同类别（minivan），只改变颜色；被 mask 的车辆是一辆深色丰田 Sienna 小型货车。",
+  "other_zh": "或改为属性：'Change the color of the oncoming gray minivan to white.'"
+ },
+ "v2-sa_2366400|U2|235": {
+  "evidence_zh": "下层台阶左侧（~0.18W）旁还有另一根白色球形灯柱。位于小楼梯顶部、被 mask 的那根更突出，但 'beside the stairs' 并不能严格单独指出它。",
+  "other_zh": null
+ },
+ "v2-sa_2516758|U1|241": {
+  "evidence_zh": "被 mask 的物体是左侧工人所穿、印有水果（苹果、葡萄）的白色围裙；'a plain white apron' 保持相同的服装类别和形状，只是去掉印花，即图案属性编辑。",
+  "other_zh": "或改为属性：'Change the pattern of the fruit-patterned apron on the left to plain white.'"
+ },
+ "v2-sa_2602254|U2|247": {
+  "evidence_zh": "被 mask 的椅子正后方/右侧（显示图约 x 1140-1160）还有另一把部分可见的蓝色椅子，因此 \"rightmost\" 略显宽松。被 mask 的椅子是这一排右端最靠前的一把。",
+  "other_zh": null
+ },
+ "v2-sa_271071|U3|253": {
+  "evidence_zh": "U3 黑色斜挎包（box [1971,674,2169,881]）斜挎在卖泡泡者身上，而其 T 恤是 U1；两个 mask 在同一个人身上相邻，尽管包是独立的物体。",
+  "other_zh": "作为独立物体可以接受；可选择不是 U1 那个人所佩戴的包/物体"
+ },
+ "v2-sa_2741974|U3|259": {
+  "evidence_zh": "被 mask 的标牌（box x 993-1110, y 240-277）本身已经是带白色文字 'Croeso i Bentywyn / Welcome to Pendine' 的深色/黑色弧顶标牌。将其替换为 'a black sign reading Welcome in white' 几乎无变化；变化内容（文字缩短、形状）未明确指定，难以判断成功与否。",
+  "other_zh": null
+ },
+ "v2-sa_280789|U2|265": {
+  "evidence_zh": "被 mask 的壶 [1560,1284,1607,1367] 是站在右侧摊位前、人们脚边地面上的半透明米色/棕褐色壶，既不明显是黄色，也不在摊位上；'yellow plastic jug at the right-hand stall' 描述较宽松（足够唯一，但颜色/位置措辞可能误导）。",
+  "other_zh": null
+ },
+ "v2-sa_287526|U2|271": {
+  "evidence_zh": "将奶油色露台遮阳篷替换为 'a charcoal canvas awning' 保持相同的物体类别；只有颜色/材质改变。",
+  "other_zh": "或改为属性：Change the color of the cream awning ... to charcoal."
+ },
+ "v2-sa_2922373|U3|277": {
+  "evidence_zh": "目标是透过中央开口看到的折叠式黑白条纹遮阳伞；载荷 'a folded cream canvas parasol' 保持相同类别和形状，只改变颜色/材质 —— 这是属性编辑，而不是 replace。",
+  "other_zh": "或改为属性：Change the color of ... to cream."
+ },
+ "v2-sa_2981106|U2|283": {
+  "evidence_zh": "左侧挂在支架上有三盏深色灯罩；U2 mask（box y 1274-1373，~0.59H）是中间那盏。另一盏灯罩明显在其上方（~0.52H，上支架处），一盏在其下方（~0.65H）。\"uppermost lampshade on the left\"（ZH 最上方）指的是上面那盏灯，而不是被 mask 的这盏。",
+  "other_zh": "ZH: 将左侧三盏灯中间那盏的灯罩颜色改为白色。"
+ },
+ "v2-sa_3081992|U2|289": {
+  "evidence_zh": "黑板 mask box [449,501,845,1144] 远远延伸到 STRAWBERRY 2 for £5 黑板下方；mask 包含悬挂的绳圈以及下方草莓盒圆形贴纸上的一块碎片。",
+  "other_zh": "将 mask 裁剪为仅含黑板（box 约 y 501-1000）。"
+ },
+ "v2-sa_3125315|U2|295": {
+  "evidence_zh": "存储的 box [152,1709,394,2220] 远远延伸到豹纹箱包 mask（约在 y~1950 结束）下方，进入下一排箱子；box 底部附近出现细小的零散 mask 斑点。Box 定位器比物体更宽松。",
+  "other_zh": "根据主 mask 连通块重新紧凑地计算 box，并去掉零散斑点。"
+ },
+ "v2-sa_3171541|U2|301": {
+  "evidence_zh": "U2 外套 mask 轮廓（box x 1526-1676）包住了挂在外套上、位于右髋的藏青色斜挎肩包（以及握手杖的手）；包没有被抠除，因此改色时也会把包一起改色。",
+  "other_zh": "重新裁切外套 mask，排除藏青色斜挎包及其背带和手。"
+ },
+ "v2-sa_3317825|U1|307": {
+  "evidence_zh": "U1 把一棵淡绿色卷心菜替换为 'a red cabbage' —— 蔬菜类别/形状相同，实质是颜色改变。",
+  "other_zh": "或改为属性：Change the color of the cabbage nearest the vendor's knee to purple."
+ },
+ "v2-sa_3376573|U2|313": {
+  "evidence_zh": "范围是 'sconce frame'（REF：把金属框架的材质改为黄铜），但 mask（box [217,874,355,1063]）覆盖了整个双头壁灯，包括两个占 mask 大部分面积的大型磨砂玻璃灯罩。对该 mask 应用材质变更会把玻璃灯罩也变成黄铜。",
+  "other_zh": "将 mask 限制为仅深色金属臂/背板，或将范围改为整个壁灯，并把编辑改为 'Change the material of the metal arms of ... to brass'，配以仅含框架的 mask。"
+ },
+ "v2-sa_3514872|U1|319": {
+  "evidence_zh": "被 mask 的物体是蓝色长方形发光的 PERONI 标牌；替换为 'a blue sign reading BAR in white' 保持相同的类别、形状和颜色，只改变印刷文字，因此属于文本/内容编辑，而非类别/结构替换。",
+  "other_zh": "或改写为 replace 之外的文本编辑"
+ },
+ "v2-sa_3562449|U4|326": {
+  "evidence_zh": "U4 mask（box [1032,1086,1397,1187]）是河湾处方形石墩/石台顶部的装饰铁栏杆；那里看不到尖顶塔楼。REF 'railing around the pointed-roof riverside turret' 描述了一个不存在的结构，可能误导评判者。",
+  "other_zh": "ZH: 在河岸方形石台上的铁栏杆加上一个种有红花的窄花槽。"
+ },
+ "v2-sa_3633381|U4|333": {
+  "evidence_zh": "左侧出现两盏弯曲路灯：最左边一盏长拱臂灯（杆约 x=70，灯臂在 y~105 处向右弧出），以及被 mask 的、位于 x~200 的杆，其弯曲部分在顶部边缘被截断。",
+  "other_zh": null
+ },
+ "v2-sa_3662681|U2|339": {
+  "evidence_zh": "U2 披萨招牌上方的壁挂灯笼本身已经是深灰/黑色金属框架；'change the color to black' 几乎没有可见变化。",
+  "other_zh": null
+ },
+ "v2-sa_3717579|U2|346": {
+  "evidence_zh": "斜向管状结构有一条连续的缝隙窗，被接缝分成多块，从左下延伸到右上（合成图中约 x 0-500）；mask 只覆盖其中一块（box x 66-302，位于最左上方 0.08W），而不是 'above the truck'（卡车驾驶室在约 0.2-0.4W，更靠下）。'the long diagonal window above the truck' 暗示的是整条窗带或更靠近卡车的一块。",
+  "other_zh": "或将 mask 扩展到整条斜窗带"
+ },
+ "v2-sa_3783196|U4|352": {
+  "evidence_zh": "U4 box 从 x=458 开始，而红色包装位于约 x 575-697；左侧相邻的紫/橙色包装上出现一个很小的零散 mask 碎片（约 x 460）。",
+  "other_zh": "去除零散碎片，使 mask/box 仅覆盖顶部绿色包装下方的红色包装。"
+ },
+ "v2-sa_3817024|U1|359": {
+  "evidence_zh": "路过男子的衬衫（box x 1274-1385）是白/灰色小格纹（gingham）图案，不是条纹；他是唯一的路人，因此目标仍可识别。",
+  "other_zh": "ZH 条纹 -> 格纹"
+ },
+ "v2-sa_3872458|U2|365": {
+  "evidence_zh": "'Replace the black crossbody bag ... with a blue canvas sling bag'：sling bag 与 crossbody bag 属于同一类别；编辑只改变颜色/材质。",
+  "other_zh": null
+ },
+ "v2-sa_4003889|U1|372": {
+  "evidence_zh": "REF/ZH 称蹲着的男子的 T 恤为 'navy'，但图中（box [886,725,1143,923]）看起来是黑色；目标仍然唯一（前景穿蓝色牛仔裤的蹲姿男子）。",
+  "other_zh": "ZH: 黑色T恤"
+ },
+ "v2-sa_4034728|U2|379": {
+  "evidence_zh": "mask 是编队后方约 0.62W 处的深藏青色 SUV 车顶/车厢。一辆黑色皮卡正好在其前面，后排还停着其他深色车辆，因此 \"the dark SUV visible behind the center\" 略显宽松。",
+  "other_zh": null
+ },
+ "v2-sa_4179283|U1|387": {
+  "evidence_zh": "U1 mask 的是右侧杆子高处的黄色三角旗（box [1523,583,1547,692]）。将其替换为 'a plain white flag' 保持旗帜类别和形状，只改变颜色。",
+  "other_zh": "将 op 改为 attribute，或保持 replace 但换成不同物体，例如 'Replace the high yellow flag on the right with a red paper lantern.'"
+ },
+ "v2-sa_4256768|U1|394": {
+  "evidence_zh": "被 mask 的物体是穿白色 T 恤男子背的深藏青/黑色日用背包；'Replace ... with a small brown leather backpack' 保持背包类别，只改变颜色/材质/大小。",
+  "other_zh": null
+ },
+ "v2-sa_4293407|U3|401": {
+  "evidence_zh": "被 mask 的物体是右上角印有 'MOVENPICK' 字样的浅色露台遮阳伞。将其替换为 'a plain dark green canopy' 保持相同物体类型，只改变颜色并去掉印字。称其为 'canopy' 也不够准确；它是一把市集遮阳伞。",
+  "other_zh": "或改为属性：'Change the color of the pale patio umbrella at the upper right to dark green.'"
+ },
+ "v2-sa_4421546|U2|411": {
+  "evidence_zh": "被 mask 的物体是坐着的摊主头上的深藏青色针织无檐帽；'a gray wool beanie' 是相同的头饰类型/形状，只有颜色（以及名义上的材质）改变。",
+  "other_zh": "或使用明显不同的结构，例如 'a brown flat cap with a short brim'，或改为属性 'Change the color of the dark knit cap ... to gray.'"
+ },
+ "v2-sa_4505880|U2|419": {
+  "evidence_zh": "右侧建筑有三扇深色百叶窗：一扇在顶部（约 x 1130-1250, y 0-310），被 mask 的一扇（box x 1043-1124, y 585-796），另一扇被裁切，位于最右边缘较低处（约 x 1390-1500, y 700-1020）。被 mask 的百叶窗并非最低的一扇，因此 'the lower shutter on the right-hand building' 与之矛盾，或至少无法唯一识别它。",
+  "other_zh": null
+ },
+ "v2-sa_4555867|U2|428": {
+  "evidence_zh": "左侧乘客的夹克（box 934-1039）本身已经是带补丁的浅蓝色牛仔夹克。将其替换为 'a navy denim jacket' 保持衣物类型和材质，只改变颜色。",
+  "other_zh": "或改为属性：'Change the color of the left passenger's light blue jacket to navy.'"
+ },
+ "v2-sa_463680|U3|438": {
+  "evidence_zh": "柜台后方有两个黄色箱子（被 mask 的是上面一个，约视图 y~600-645，第二个在其右下方正下方，y~635-680）；'the yellow crate at the back of the counter' 无法单独指出上面那个。",
+  "other_zh": null
+ },
+ "v2-sa_4740557|U1|447": {
+  "evidence_zh": "U1 mask 的是左侧女孩的灰色 Hello Kitty T 恤（box [221,818,418,1049]）。载荷 'a plain pale pink T-shirt' 保持 T 恤类别和结构，只去掉印花并改变颜色。",
+  "other_zh": "或改为属性：'Change the color of the Hello Kitty T-shirt on the girl at the left to plain pale pink.'"
+ },
+ "v2-sa_4885403|U1|456": {
+  "evidence_zh": "前景跑者本身已经穿着藏青色短袖运动 T 恤；将其替换为 'a white athletic T-shirt' 只改变颜色（相同衣物类型）。",
+  "other_zh": "或改为属性：'Change the color of the navy shirt on the foreground runner to white.'"
+ },
+ "v2-sa_49886|U2|467": {
+  "evidence_zh": "被 mask 的物体是一把打开的绿色品牌露台遮阳伞。将其替换为 \"a cream patio umbrella\" 保持相同物体类型，只改变颜色。",
+  "other_zh": "或改为属性：Change the color of the green umbrella beneath the left balcony to cream."
+ },
+ "v2-sa_5020470|U3|475": {
+  "evidence_zh": "'Replace the small SALE PREMIUM ACCESSORY sign with a white sign reading TEST RIDES AVAILABLE'：物体类别相同（小标牌），只有颜色和印刷文字改变。",
+  "other_zh": "或改为属性（更改标牌的文字/颜色）"
+ },
+ "v2-sa_5074342|U3|484": {
+  "evidence_zh": "被 mask 的树干（box [725,751,797,1188]）是最粗树干（x~950-1050）左侧的第二根树干；另一根树干（x~795-860）正好位于二者之间。因此 \"the tree trunk immediately left of the thickest trunk\" 指的是 x~795-860 的树干，而不是被 mask 的这根。",
+  "other_zh": "或将 mask/指向移到 x~795-860 的树干"
+ },
+ "v2-sa_5252263|U2|495": {
+  "evidence_zh": "塔楼左侧更远处（cx~0.08W）还有另一棵带支撑的幼树；U2 是最靠近塔楼的那棵（cx=0.28W）。'tall' 起到部分区分作用。",
+  "other_zh": null
+ },
+ "v2-sa_5390926|U4|505": {
+  "evidence_zh": "停车计时器后方被 mask 的蓝色汽车（x~0.49W）是一辆小型蓝色掀背车（Skoda 风格），不是 SUV；目标仍可识别为那辆蓝色汽车。",
+  "other_zh": null
+ },
+ "v2-sa_5462658|U2|512": {
+  "evidence_zh": "女子的黑白图案围巾（box [1389,664,1485,986]）被替换为 \"a burgundy wool scarf\" —— 物体类型相同，只有颜色/图案/材质改变。",
+  "other_zh": "或改为属性：Change the color of the patterned scarf on the woman to solid burgundy."
+ },
+ "v2-sa_5550721|U2|519": {
+  "evidence_zh": "将绿色靠垫替换为 'a navy velvet cushion' 保持类别；只有颜色/材质改变。",
+  "other_zh": "或改为属性（颜色改为藏青色）"
+ },
+ "v2-sa_564503|U4|528": {
+  "evidence_zh": "U4 相框画 mask 在画出的椭圆内部有若干分散的孔洞（在人物脸部/手附近），因此 mask 未完全覆盖画面。",
+  "other_zh": "填补 U4 mask 内部的孔洞"
+ },
+ "v2-sa_5788594|U2|539": {
+  "evidence_zh": "U2 mask（box [1792,654,2055,776]）仅覆盖卡车下部驾驶室/底盘；一直延伸到飞机舱门的大型有顶楼梯结构（'mobile stair truck' 的大部分）在 mask 之外，因此 'change the color of the mobile stair truck to yellow' 与 mask 区域冲突。",
+  "other_zh": "或将 mask 扩展到包含楼梯结构。"
+ },
+ "v2-sa_5856108|U2|549": {
+  "evidence_zh": "U2 把银灰色背包替换为 'a brown leather backpack' —— 类别相同；只有颜色/材质改变。",
+  "other_zh": null
+ },
+ "v2-sa_5969016|U2|556": {
+  "evidence_zh": "REF：'the tall person standing near the center'，但被 mask 的穿深色外套男子（box [450,862,573,1052]，中心 0.26W）站在左三分之一处，位于旋转木马左部前方；靠近中心的人是 U1（俯身看婴儿车，0.45W）。左侧还站着数名其他穿深色外套的人，因此该描述具有误导性。",
+  "other_zh": null
+ },
+ "v2-sa_6027797|U3|565": {
+  "evidence_zh": "U3 把深色藤制躺椅（box [1894,813,2050,888]）替换为 'a white wooden sun lounger' —— 物体类别/形状相同；变化仅是颜色加材质。",
+  "other_zh": "或改为属性（材质/颜色 -> 白色木质）"
+ },
+ "v2-sa_6097564|U2|573": {
+  "evidence_zh": "U2 mask 的是左前景带毛边兜帽的浅灰色棉服（box [0,1050,830,1500]）。'A beige wool coat' 保持外套类别，只改变颜色和材质。",
+  "other_zh": "或改为属性：'Change the color of the gray coat in the left foreground to beige.'"
+ },
+ "v2-sa_6129691|U1|579": {
+  "evidence_zh": "U1 mask 是右下方杆子上的圆形白色交通管制标志（红色禁止左转箭头，文字 'EXCEPT MUNI & TAXIS'），不是 'shop sign'。",
+  "other_zh": "ZH: 右下方的圆形白色禁止左转交通标志"
+ },
+ "v2-sa_6274646|U1|590": {
+  "evidence_zh": "男孩的蓝黄格纹翻领衬衫被替换为 'a plain light green cotton shirt'，保持相同的衣物类型；只有颜色/图案改变。",
+  "other_zh": null
+ },
+ "v2-sa_6329048|U1|598": {
+  "evidence_zh": "被 mask 的物体是女子的红色小斜挎/单肩包；将其替换为 'a small black leather shoulder bag' 保持相同物体类型和大小，只改变颜色/材质。",
+  "other_zh": "或改为属性：'Change the color of the seated woman's red shoulder bag to black.'"
+ },
+ "v2-sa_6432289|U1|608": {
+  "evidence_zh": "U1 是一个米色/奶油色单肩包；'replace with a brown leather shoulder bag' 保持相同物体类型和形状，只改变颜色/材质。",
+  "other_zh": "或改为属性：将包的颜色改为棕色"
+ },
+ "v2-sa_6534458|U1|618": {
+  "evidence_zh": "REF 称 'the white flowers on the upper-left windowsill'，但 U1 mask（box [86,1755,288,1873]，cy=0.80H）是左下方、'PENSIONE WILDNER' 字样正上方的花箱。左侧更高的花箱（例如约 0.18W,0.36H 和约 0.20W,0.24H）更符合 'upper-left'。",
+  "other_zh": "ZH: 移除PENSIONE WILDNER字样左上方、左下侧窗台上的白花。"
+ },
+ "v2-sa_6561145|U2|625": {
+  "evidence_zh": "REF 的目标是 'the cream hull'（范围为船体），但 mask [177,1199,973,1500] 覆盖整艘水上出租车：光亮的桃花心木舱顶、挡风玻璃、后部驾驶舱和座椅，以及奶油色下部船体。mask 的层级（整艘船）与所指部位不符。",
+  "other_zh": "将 mask 限制为桃花心木甲板/船舱以下的奶油色船体侧面，或把范围改为 'boat' 并重新措辞。"
+ },
+ "v2-sa_6670486|U2|637": {
+  "evidence_zh": "U2 mask 的是一辆银色紧凑型跨界 SUV（类似 Ford EcoSport，box [1626,1082,1982,1287]）。载荷 'a white compact SUV' 属于相同类别和尺寸级别，因此实际变化只有颜色。",
+  "other_zh": "或改为属性：'Change the color of the silver SUV behind the sedan to white.'"
+ },
+ "v2-sa_6737576|U1|646": {
+  "evidence_zh": "'the background figure' 同时用于 U1（左上中部的挎包者，box x 426-634）和 U3（右上角的另一个人物）；背景中有多人，因此 REF 无法指出背挎包的人。",
+  "other_zh": null
+ },
+ "v2-sa_6769026|U3|652": {
+  "evidence_zh": "右侧有两条相同的木长椅。被 mask 的一条（2000 宽中的 x 1263-1402，~0.67W）站在 WOK TO WALK 售货亭前。第二条长椅（~0.72-0.80W）紧靠右侧砖砌花槽。因此 'The wooden bench beside the right planter' 指向的是另一条长椅。",
+  "other_zh": null
+ },
+ "v2-sa_6779549|U2|659": {
+  "evidence_zh": "被 mask 的窗户 [759,447,833,571]（cx=0.35）位于街道左侧，在深色前景立面之外的奶油色建筑上（上层，'SOLICIT...' 檐口下方）。'the window on the right-hand building' 与此矛盾，且右侧建筑有几十扇窗，因此 REF 无法识别目标。",
+  "other_zh": "同时需说明改变颜色的是哪一部分（窗框还是玻璃）。"
+ },
+ "v2-sa_679629|U3|665": {
+  "evidence_zh": "右侧站立者（0.83W）身上被 mask 的衣物是带毛边兜帽的橄榄绿/卡其绿派克大衣，不是 'gray padded coat'。将其替换为 'a dark green parka' 得到的基本是同一件衣物，因此编辑几乎无变化/仅轻微改色。",
+  "other_zh": null
+ },
+ "v2-sa_682765|U3|671": {
+  "evidence_zh": "移除黄色 T 恤（男子唯一可见的上身衣物，背对镜头）会留下未定义的裸露躯干；不是合理的衣物移除。",
+  "other_zh": "将 op 从 remove 改为 replace 或 attribute"
+ },
+ "v2-sa_6859686|U3|677": {
+  "evidence_zh": "U3 的 'stroller' mask 是碎片化的（4 个连通块），包含大型橙色圆点气球和条纹毯子，而婴儿周围的婴儿车框架/座椅仅被部分且参差地覆盖。",
+  "other_zh": "仅对婴儿车框架/座椅重新分割，排除气球"
+ },
+ "v2-sa_6888719|U3|683": {
+  "evidence_zh": "U3 mask 是图像中间带高 A 形架的深色船体拖网渔船（box x=1522-2362, cx=0.54），但 REF 称 'the smaller fishing boat at the far left'。它既不在最左边，也并不明显更小。",
+  "other_zh": "修正 ZH（中间的深色船体渔船）"
+ },
+ "v2-sa_6896269|U2|689": {
+  "evidence_zh": "U2 mask（box [1736,652,1801,753]）是挂在右上方白色桁架上的黑色摇头舞台灯（轭架式灯头），是并排的两个相同灯具之一；它不是音箱。",
+  "other_zh": "范围 speaker -> stage light；注意当前灯具已经是哑光黑色，因此值必须改变"
+ },
+ "v2-sa_6935352|U2|695": {
+  "evidence_zh": "U2 mask（box x 420-640, cx=0.27）是左中部的银色后车厢，位于红尾电车 1102 与杆子之间。占主导的 'silver tram at the right' 是大型前景电车 1108（显示图 x ~650-1330）；因此 REF 指向的物体与 mask 不同，且大得多。",
+  "other_zh": "ZH: 左后方红尾电车右侧的银色电车车厢; 核实 U2 是独立电车还是电车 1108 连挂的后车厢 - 若是连挂，则重新绑定或删除"
+ },
+ "v2-sa_6937647|U4|701": {
+  "evidence_zh": "露台上有许多相似的深色金属椅围着几张桌子。'The chair beside the front table' 无法识别被 mask 的小椅子（x~0.44W，部分被栏杆遮挡），且 mask 是粗糙、不完整的斑块。",
+  "other_zh": "考虑选择更可见、mask 更干净的椅子。"
+ },
+ "v2-sa_6977563|U4|707": {
+  "evidence_zh": "REF 'jeans on the man at the right'，但被 mask 的浅蓝色牛仔裤（中心 0.39W）穿在中左侧人群中穿青绿色 T 恤的男子身上。",
+  "other_zh": null
+ },
+ "v2-sa_7002146|U3|713": {
+  "evidence_zh": "U3 移除的是地被 'grass strip'（小路另一侧阳光照射的草坪的 4 个碎片，[1537,911,2000,983]）；移除一块无定形的表面区域没有明确结果（裸土？路面？），使编辑难以评判。",
+  "other_zh": "或选择离散物体，例如左侧的灯柱。"
+ },
+ "v2-sa_7116219|U2|719": {
+  "evidence_zh": "REF 称 'the person at the left'，但被 mask 的粉色裙子（带条纹腰带）穿在最右侧人群中的一个女孩身上（box x 1824-1970, cx=0.84）。左侧有其他穿粉色的人（例如 x~0.05W 处穿粉色服装的孩子），因此 REF 指向了错误的一侧/实例。",
+  "other_zh": "ZH: 将右侧人群中、穿蝙蝠侠T恤孩子旁边女孩的粉色裙子替换为一条深蓝色七分裤。"
+ },
+ "v2-sa_7125342|U3|725": {
+  "evidence_zh": "把黑色汽车替换为 'a white compact car' 本质上是同一类别的改色。",
+  "other_zh": null
+ },
+ "v2-sa_7191982|U4|731": {
+  "evidence_zh": "REF 称 'the white car at the left curb'，但 U4 mask（box [1538,629,1612,710]）是安装在右侧 U1 灯杆上的红蓝圆形禁停标志。白色汽车在最左边（x 约 0-0.14），未被 mask。该标志还附着在 U1 路灯上，因此并不独立于 U1。",
+  "other_zh": "要么把 U4 重新 mask 到最左边的白色汽车（保留 add roof sign 编辑），要么把文本改为该标志；若保留标志，请注明对 U1 灯杆的依赖"
+ },
+ "v2-sa_720948|U2|737": {
+  "evidence_zh": "背景道路上有多辆白色汽车（被 mask 的一辆在左侧建筑附近约 x=345-430，另有约 x=510-560、575-615、635-665 的）。'the white car on the road' 无法识别 U2。",
+  "other_zh": null
+ },
+ "v2-sa_7231402|U2|743": {
+  "evidence_zh": "U2 mask（box [1788,950,2104,1500]）是整个坐着的孩子（头加身体）；REF 'Change the color of the child ... to a red shirt' 对人物应用了颜色属性，并把物体短语用作值。",
+  "other_zh": "重新 mask 到孩子的米色衬衫上；范围 child -> shirt"
+ },
+ "v2-sa_724183|U2|749": {
+  "evidence_zh": "被 mask 的衣物是一件棕褐色绗缝羽绒夹克。'A navy jacket' 是相同的衣物类型，只改变颜色。",
+  "other_zh": "或改为属性：'Change the color of the fishmonger's tan quilted jacket to navy blue.'"
+ },
+ "v2-sa_7247537|U3|755": {
+  "evidence_zh": "REF：'Remove the white SUV at the left'，但 U3 mask（box [842,1277,936,1500]）覆盖的是站在酒吧入口、穿黑色外套的长发女子。那里没有白色 SUV；mask 和文本描述的是不同物体。",
+  "other_zh": "删除该单元或改写以匹配 mask，例如属性：'Change the color of the black coat of the long-haired woman at the pub entrance to camel.'（此时 mask 需只含外套）。"
+ },
+ "v2-sa_725238|U4|761": {
+  "evidence_zh": "'the white chair at the lower left' —— 左下就餐区摆满了白色塑料椅；被 mask 的椅子位于 x~0.28W 底边、食客之间（physical_parent_zh 甚至写的是 右下）。",
+  "other_zh": "修正 physical_parent_zh。"
+ },
+ "v2-sa_7279175|U3|767": {
+  "evidence_zh": "被 mask 的物体是棕色皮革背包/斜挎包；载荷 'a black backpack' 是同一物体，只改变颜色。",
+  "other_zh": "或改为属性 color=black。"
+ },
+ "v2-sa_7311948|U4|773": {
+  "evidence_zh": "U4 mask（box [1720,907,1787,1007]）是一把青绿色折叠椅，上面坐着穿灰色 T 恤的男子；mask 围绕他的身体呈碎片状，座面完全被遮住，因此 'Add a red seat cushion on the folding chair' 没有可见的座面可附着。",
+  "other_zh": "选择右侧桌子旁的空折叠椅作为锚点，或更改 op（例如 'Change the color of the folding chair ... to red'）"
+ },
+ "v2-sa_7362739|U1|779": {
+  "evidence_zh": "REF 称 'the turquoise billboard at the left'，但被 mask 的 CHINTAI 广告牌位于上方中央（cx=0.49）；浅青色的大型 Glico 跑者广告牌占据图像左侧，因此 'at the left' 指向了错误的招牌。",
+  "other_zh": "ZH: 将上方中央青绿色CHINTAI广告牌的颜色改为橙色。"
+ },
+ "v2-sa_7374194|U1|785": {
+  "evidence_zh": "推婴儿车男子的黑色 T 恤被替换为 'a white T-shirt'：类别相同，只有颜色改变。",
+  "other_zh": "或改为属性：'Change the color of the black T-shirt on the man with the stroller to white.'"
+ },
+ "v2-sa_7374523|U4|791": {
+  "evidence_zh": "U4 物体是挑在杆子上的一捆扎好的稻草，不是扫帚。",
+  "other_zh": null
+ },
+ "v2-sa_738866|U3|797": {
+  "evidence_zh": "U3 mask 只是右下角石柱右侧的一小段绿色栏杆（box [1841,1216,2250,1500]）；REF 'the metal railing across the water' 并不描述它（它在前景，而不是水对面），同样适用于石柱左侧人们站立处的长绿色栏杆段。",
+  "other_zh": "栏杆本身已经是绿色；考虑使用更明确的值，例如 'bright red'"
+ },
+ "v2-sa_7448541|U2|803": {
+  "evidence_zh": "REF 'Replace the helmeted head above the vehicle with a blue helmet' 指的是头（身体/人物层级），而 mask 只是迷彩头盔（box [578,275,733,369]）；用头盔替换头部毫无意义。",
+  "other_zh": "将 op 改为 attribute（helmet->blue helmet 是改色）"
+ },
+ "v2-sa_7464946|U2|809": {
+  "evidence_zh": "U2 mask（box [0,0,1451,1500]，占图像 54%）覆盖整个男孩，包括头、头发、耳朵和手，而不仅是衣物。衣物是带红色条纹的藏青色连帽衫，REF 称之为 'shirt'；'child at the far left' 因为他是唯一的孩子而成立。",
+  "other_zh": "重新 mask 到连帽衫上（排除头/手）；范围 shirt -> hoodie"
+ },
+ "v2-sa_7470032|U4|816": {
+  "evidence_zh": "U4 mask（box 210-244, 885-949）是左侧建筑上带小遮阳篷的窄窗，不是牌匾。",
+  "other_zh": "范围 -> window"
+ },
+ "v2-sa_7506005|U1|824": {
+  "evidence_zh": "REF 的目标是 'the shirt on the foreground runner'，但 mask/box [602,919,959,1987] 覆盖整个跑者（从头到鞋），即对衣物编辑使用了人物级 mask。",
+  "other_zh": "重新 mask 到背心上。"
+ },
+ "v2-sa_7532719|U3|830": {
+  "evidence_zh": "U3 移除的是 'the building behind the truck' —— 一栋多层公寓楼（box [1172,280,1482,567]），其下部被卡车遮挡；按协议，移除整栋大楼是不合理的。",
+  "other_zh": "更改 op，或针对可移除的部件（例如移除卫星天线/阳台栏杆）"
+ },
+ "v2-sa_754509|U2|836": {
+  "evidence_zh": "被 mask 的物体是穿灰色连帽衫的步行者背的青绿色背包；'a black backpack' 是相同的物体类型，只改变颜色。REF 'the person right of center' 也较弱：背红色背包的人就紧靠左边。",
+  "other_zh": "或改为属性：'Change the color of the teal backpack ... to black.'"
+ },
+ "v2-sa_7567943|U2|842": {
+  "evidence_zh": "U2 把路灯替换为 'a modern lamp'。现有的双臂路灯本身已经很现代，因此载荷含糊，没有给出具体的目标结构。",
+  "other_zh": null
+ },
+ "v2-sa_7620275|U4|848": {
+  "evidence_zh": "\"the small sign on the facade\" 符合店面上的许多小标牌和牌匾。mask 是悬挂在店门右侧柱子上的一块白色手绘小标牌（box 1057-1106 x 950-999）。给标牌添加 \"a blue plaque on\" 的宿主/载荷搭配也很奇怪。",
+  "other_zh": null
+ },
+ "v2-sa_7639254|U4|854": {
+  "evidence_zh": "U4 mask 的是白色救护车上方山坡上的一棵茂密落叶树（box [1624,79,1896,373]），但整个上部区域是森林，右上方有许多树。",
+  "other_zh": null
+ },
+ "v2-sa_7650202|U2|861": {
+  "evidence_zh": "右侧附近有很多车（深色车在 x~1020-1220，被 mask 的深色旅行车在 x~1240-1375，银色出租车在 x~1395-1515 和 ~1550+）。'the car near the right' 无法识别 U2。",
+  "other_zh": null
+ },
+ "v2-sa_7677069|U2|867": {
+  "evidence_zh": "载荷 'a wooden tool' 不是具体物体；结果无法验证。",
+  "other_zh": null
+ },
+ "v2-sa_7698269|U2|873": {
+  "evidence_zh": "'Replace the door ... with a blue door' 只是对同一类别的门改色。",
+  "other_zh": "或改为属性：color -> blue"
+ },
+ "v2-sa_7716977|U1|879": {
+  "evidence_zh": "'Change the surface texture of the plant ... to green and fuller' 不是清晰的属性/值对（阳台上的盆栽，box [1027,247,1195,495]，本身已是绿色）；含糊且难以评分。",
+  "other_zh": null
+ },
+ "v2-sa_77343|U3|885": {
+  "evidence_zh": "REF 'the bowl of green fruit on the right'，但 mask 是白衣玩偶前的绿色毛毡花饰（黄绿色花瓣，米色花心）；没有水果碗。",
+  "other_zh": "将范围从 'fruit bowl' 改为 'felt flower'；修正 ZH。"
+ },
+ "v2-sa_7753369|None|891": {
+  "evidence_zh": "U2 扩音器（box [744,687,867,855]）被举到 U3 要求移除的那个人的脸前（box [667,622,908,1417]）；U3 mask 围绕扩音器裁切。两项编辑在物理上相互耦合：移除该男子会让（被替换的）扩音器悬空。",
+  "other_zh": "删除 U3（移除人物）或删除 U2；或选择不同的人物/物体，使各单元相互独立"
+ },
+ "v2-sa_777091|U2|898": {
+  "evidence_zh": "REF 称 'the car at the lower left'，但被 mask 的汽车是黄色公交车前方右下方的白色小型掀背车（box x 981-1177, cx=0.72）。左下方是其他汽车（x~0.2-0.4W 的红色出租车和白色轿车），因此 REF 指向了不同的汽车。",
+  "other_zh": "ZH: 将右下方黄色公交车前的白色掀背车替换为一辆红色皮卡。（将白色掀背车的载荷设为 'a white sedan' 也几乎无变化；请使用明显不同的车辆）"
+ },
+ "v2-sa_7797481|U3|904": {
+  "evidence_zh": "U3 mask 覆盖的叠加图显示它覆盖的是草地：左侧的草坪带以及桌腿下方和周围的草。它没有覆盖木制西瓜展示桌、西瓜或三角旗。所指物体也是固定的木制展示桌/摊架，而不是 'fruit cart'。因此 mask 覆盖了错误区域，名词也不合适。",
+  "other_zh": "重新 mask 到前景木桌及其西瓜和三角旗串；设 category=display table。ZH: 移除前景装满西瓜的木制展示台。"
+ },
+ "v2-sa_7810159|U2|911": {
+  "evidence_zh": "U2 mask 覆盖左侧整个男子（戴眼镜的头、黑色 T 恤、短裤、腿和鞋；被背包男子分成 2 个连通块），而不仅是他的衬衫。",
+  "other_zh": "重新 mask 到黑色 T 恤上"
+ },
+ "v2-sa_7835850|U3|918": {
+  "evidence_zh": "U3 mask 是大型高压输电铁塔（带横担和绝缘子的格构塔，box [779,410,1398,1455]，cx=0.73W）。真正的缆车塔（带承载吊厢缆索的滑轮组）位于图像中心附近 x~0.47W；因此 'the cable car tower near the center' 指的是与 mask 不同的物体。",
+  "other_zh": "将范围改名为 'power pylon'；注意移除如此大的结构也难以评分（考虑改用属性编辑，例如把铁塔颜色改为红色）"
+ },
+ "v2-sa_7854521|U1|924": {
+  "evidence_zh": "REF 'the boat at the lower center'，但被 mask 的船位于右下方（中心 x=0.80W，延伸到右边缘）；左下方还有另一艘白色船，因此 'lower center' 与哪艘都不太吻合。",
+  "other_zh": null
+ },
+ "v2-sa_7892712|U3|930": {
+  "evidence_zh": "U3 移除整艘长尾船（占图像 17%），船上载着 U1 和 U2 的孩子（他们的 box 位于船 box 内）；移除船与编辑船上的乘客冲突，且是巨大的、不合理的修补区域。",
+  "other_zh": "或改为属性（例如把船的绿色顶篷颜色改为红色）；避免移除载有其他单元目标的船"
+ },
+ "v2-sa_7985091|U2|936": {
+  "evidence_zh": "mask 横跨整座悬索桥（栏杆、桥面、缆索；占图像 0.22，4 个连通块），新郎新娘就站在桥上。移除整个桥结构会让人物悬空，并需要修补巨大的区域，因此编辑不合理。",
+  "other_zh": "选择更小的桥上附属物（挂锁），或改为属性：'Change the color of the white bridge railings to dark green.'"
+ },
+ "v2-sa_8012456|U4|942": {
+  "evidence_zh": "'the building at the right' 既符合高大的白色塔楼（被 mask 的），也符合其下方右侧较低的弧形白色建筑。",
+  "other_zh": null
+ },
+ "v2-sa_8043384|U2|948": {
+  "evidence_zh": "U2 mask 是一个完整的人（box [1015,681,1241,1158]）；'Replace the driver ... with a blue jacket' 是用衣物替换人。此外，被 mask 的人是坐在车厢后部侧踏板上、穿绿/橄榄色夹克的乘客，而不是车夫（穿米色夹克的车夫坐在马匹后方的前部）。",
+  "other_zh": "重新 mask 到夹克上并改为属性；将 'driver' 改为 'passenger on the side step'"
+ },
+ "v2-sa_8064958|U2|955": {
+  "evidence_zh": "REF 'at the left' 与 mask 矛盾：路灯位于钟楼右侧 cx=0.76；左侧没有路灯。",
+  "other_zh": null
+ },
+ "v2-sa_807381|U3|961": {
+  "evidence_zh": "U3 移除左侧一整栋多层办公楼（box [0,794,478,1955]，约占图像 10%）。按协议，移除整栋建筑是不合理的。",
+  "other_zh": "改为属性编辑，例如 'Change the color of the facade of the building on the left to light gray.'，或删除该单元。"
+ },
+ "v2-sa_8099809|U3|967": {
+  "evidence_zh": "U3 是人群中某人（背对镜头）所穿的浅蓝色连帽夹克；移除所穿外套会留下未定义的身体/内层衣物。此外它位于 0.76W，不是 'near the lower center'。",
+  "other_zh": "将 op 改为 attribute"
+ },
+ "v2-sa_8219544|U2|975": {
+  "evidence_zh": "U2 mask 是右边缘一名穿奶油/米色衬衫的整个男子；'Replace the person at the right with a red jacket' 是用衣物替换人。",
+  "other_zh": "重新 mask 到衬衫上；scope='shirt'"
+ },
+ "v2-sa_8290161|U1|983": {
+  "evidence_zh": "'Change the color of the man near the center to blue' 对整个人应用颜色属性；mask 覆盖骑滑板车的整个男子（头、格子衬衫、牛仔裤）。",
+  "other_zh": "重新 mask 到格子衬衫上"
+ },
+ "v2-sa_8319146|U3|990": {
+  "evidence_zh": "右上方有许多雨伞：U3 是 0.66W 处的黑色雨伞（box [1468,444,1971,607]）；约 0.85W 处的透明雨伞和大型花卉粉色雨伞更靠右。'the umbrella at the upper right' 有歧义。",
+  "other_zh": null
+ },
+ "v2-sa_8336561|None|998": {
+  "evidence_zh": "U1 赌桌 mask 覆盖整个毛毡台面，包括其上的扑克牌和筹码；U3 牌（box 432-634 x 1808-1872）位于 U1 mask 内部而没有孔洞，因此两个单元的 mask 重叠。",
+  "other_zh": "从 U1 桌子 mask 中抠除牌和筹码（至少是 U3 的牌），使 mask 不重叠。"
+ },
+ "v2-sa_834249|U4|1005": {
+  "evidence_zh": "'the streetlight at the left'：左侧有数盏路灯（例如原图约 x 330 处的高黑杆和约 x 210 处的灯）；mask（box [578,120,698,326]）是左侧志愿者头部正上方的 T 形灯。",
+  "other_zh": null
+ },
+ "v2-sa_8364417|U2|1012": {
+  "evidence_zh": "'Replace the motorbike at the right with blue.' 没有物体载荷；被 mask 的 Repsol 橙/白摩托车会被替换成单纯的颜色。",
+  "other_zh": "将载荷设为物体名词。"
+ },
+ "v2-sa_8364627|U1|1019": {
+  "evidence_zh": "'the door near the center' —— 被 mask 的窄白门在 0.63W；约 0.47W 的玻璃白门更靠近中心，因此 REF 可能绑定到错误的门。",
+  "other_zh": null
+ },
+ "v2-sa_8382869|U2|1026": {
+  "evidence_zh": "U2 是白框玻璃门；'a red door' 只是颜色改变。",
+  "other_zh": null
+ },
+ "v2-sa_8403002|U1|1033": {
+  "evidence_zh": "U1 mask 是整个厨师（戴粉色头巾、穿深棕色上衣的女子，包括脸和手臂）；'Change the color of the cook to blue' 是人物级属性，没有指明任何衣物。",
+  "other_zh": "重新 mask 到头巾（或深棕色上衣）上"
+ },
+ "v2-sa_8425235|U2|1040": {
+  "evidence_zh": "U2 把女子的黑色外套替换为 'a blue coat' —— 只是颜色改变。",
+  "other_zh": "op replace->attribute（或替换为不同衣物，例如 'a beige trench coat' 仍然是外套；建议用 'a red puffer vest'）"
+ },
+ "v2-sa_8430103|U2|1046": {
+  "evidence_zh": "U2 'Replace the narrow sign above the doorway with a red sign' 只改变颜色（标牌是红/黄色方格条，在顶部边缘被截断）。mask 是图像顶部边缘的一小块不完整区域。",
+  "other_zh": "或改为属性。"
+ },
+ "v2-sa_8430740|U3|1053": {
+  "evidence_zh": "U3 mask 是早餐海报上鸡肉吐司三明治的印刷图像，不是真实食物；'Remove the food at the left' 对海报图形的描述有误。",
+  "other_zh": "范围 -> printed sandwich image"
+ },
+ "v2-sa_8489034|U1|1060": {
+  "evidence_zh": "REF 称 'the person at the left'，但被 mask 的男子在图像右侧 cx=0.82W（只有 U2 更靠右）。",
+  "other_zh": null
+ },
+ "v2-sa_8532764|U3|1066": {
+  "evidence_zh": "右侧停着许多自行车；'the bicycle at the lower right' 不唯一。mask 是橙色自行车（并似乎延伸到相邻白色自行车的车轮上）。",
+  "other_zh": "检查 mask 是否包含相邻白色自行车的车轮。"
+ },
+ "v2-sa_8550648|U2|1072": {
+  "evidence_zh": "U2 mask 是车架最右端的黄色公路自行车；'Replace ... with a red bicycle' 保持类别，只改变颜色。",
+  "other_zh": "将 op 改为 attribute，或替换为不同物体（例如 'an electric scooter'）"
+ },
+ "v2-sa_8607627|U2|1079": {
+  "evidence_zh": "被 mask 的物体是装满零件的白/奶油色 NIPPON PAINT 桶；'a blue bucket' 保持相同物体类型，只改变颜色。",
+  "other_zh": "或改为属性：'Change the color of the paint bucket at the lower right to blue.'"
+ },
+ "v2-sa_862087|U3|1087": {
+  "evidence_zh": "U3 'canopy' mask（comps=3, box [183,799,1358,1429]）覆盖白色扇贝形摊位顶篷，但也包含前面展示桌上独立的白色桌布/桌裙（约 y=1250-1430）和顶篷下悬挂的纸质通知。移除该 mask 还会移除桌布。",
+  "other_zh": "重新 mask 到仅顶篷屋顶，并去掉桌布连通块。"
+ },
+ "v2-sa_8671723|U1|1093": {
+  "evidence_zh": "U1 船（TALAIS，box [1627,608,2002,825]）有蓝色船体和白色上层建筑。'Change the color of the boat to white' 实际指的是船体，指令应当说明这一点。",
+  "other_zh": null
+ },
+ "v2-sa_8680793|U2|1099": {
+  "evidence_zh": "'Replace the fish with a larger fish' 保持类别，只改变大小（幅度未指定）；不是结构性替换。",
+  "other_zh": null
+ },
+ "v2-sa_8731521|U2|1106": {
+  "evidence_zh": "'Replace the bicycle at the lower left with a red bicycle'：类别相同，只改变颜色（两个女孩骑的黑色儿童自行车）。",
+  "other_zh": "改为属性"
+ },
+ "v2-sa_8739681|U2|1112": {
+  "evidence_zh": "U2 是塔楼三联拱窗的中间开口（cx=0.42）；其两侧拱窗同样 'at the upper left'，因此 REF 无法指出中间那个。",
+  "other_zh": "ZH: 将上方塔楼三联拱窗中间的拱窗替换为一扇圆窗。"
+ },
+ "v2-sa_8802184|U1|1121": {
+  "evidence_zh": "'Change the color of the athlete at the left to blue' —— mask 实际是左侧球员的蓝粉相间无袖球衣；REF 指的是整个人（而且球衣已经大部分是蓝色）。",
+  "other_zh": "scope='jersey'。"
+ },
+ "v2-sa_8809691|U3|1127": {
+  "evidence_zh": "花槽 mask [209,936,368,1041] 只覆盖深色砖纹箱体，不含箱中生长的灌木；用此 mask 移除 'the planter' 会让植物悬空（范围未说明）。",
+  "other_zh": "或将 mask 扩展到包含植物。"
+ },
+ "v2-sa_8830987|U2|1133": {
+  "evidence_zh": "摊位后方的咖啡馆右半边有几十把相同的棕色藤制小酒馆椅；'the chair at the right' 无法单独指出被 mask 的椅子（box 1574-1809 x，正好在摊位金属碗后面）。",
+  "other_zh": null
+ },
+ "v2-sa_886183|U1|1140": {
+  "evidence_zh": "REF 'Change the color of the child at the left to blue' 针对整个孩子，但 mask 只覆盖左侧长发孩子的白色星星印花短袖衬衫。",
+  "other_zh": "将 scope/category 设为 'shirt'"
+ },
+ "v2-sa_8874867|U1|1146": {
+  "evidence_zh": "U1 是位于 0.53W,0.92H 的高深色木制吧台凳；下方中部户外桌周围有几张类似的木凳，而且它是凳子而不是椅子。",
+  "other_zh": "category -> stool"
+ },
+ "v2-sa_8910733|U1|1152": {
+  "evidence_zh": "U1 自行车 mask 还包含附带的前篮和黑色 OXFORD 驮包，并填满了后轮盘，包括透过辐条看到的墙；此时 'change the color of the bicycle to black' 对本来就是黑色的驮包有歧义。",
+  "other_zh": "可选：从 mask 中排除驮包/车篮"
+ },
+ "v2-sa_8945299|U2|1158": {
+  "evidence_zh": "'Replace the thatched roof at the left with a dark roof'：载荷是仅以颜色描述的屋顶；茅草屋顶本来就是深灰色，因此编辑是含糊的改色/近乎无变化。",
+  "other_zh": null
+ },
+ "v2-sa_8963199|U3|1165": {
+  "evidence_zh": "过街处站着六个带自行车的男孩；U3（box 1088-1189）是看手机的黑 T 恤男孩扶着的自行车。'the bicycle near the center' 至少符合三辆自行车。",
+  "other_zh": null
+ },
+ "v2-sa_9006288|U3|1172": {
+  "evidence_zh": "REF 称 U3 为 'the banner at the upper left'，但 mask（box [312,4,561,343]）是一块带蓝色标志和营业时间的白色长方形小告示牌。一面真正的大横幅（绿/白色 'wing' 横幅）挂在更靠左处，因此 'banner' 指向了错误的物体。",
+  "other_zh": "范围 -> sign"
+ },
+ "v2-sa_9013170|U4|1179": {
+  "evidence_zh": "砖砌立面有一排相同的窄拱窗；'the window near the center' 符合多扇。被 mask 的 [842,586,877,758] 是红砖建筑上层最右边的拱窗，正好在灯排上方。",
+  "other_zh": null
+ },
+ "v2-sa_9033026|U3|1186": {
+  "evidence_zh": "U3 mask 是 KIRKLAND DELI 招牌上方混凝土柱上贴的白色价签（中心 0.26W, 0.51H）；它位于场景左上部，而不是 'near the center'，且还有其他标签/标牌。",
+  "other_zh": null
+ },
+ "v2-sa_9042900|U2|1193": {
+  "evidence_zh": "'Replace the vehicle at the left with blue' —— replace 载荷只是颜色，没有物体；编辑毫无意义。被 mask 的物体是左边缘一辆部分可见的白色小型货车。",
+  "other_zh": "或属性：Change the color of the white minivan at the left edge to blue."
+ },
+ "v2-sa_9068591|U2|1201": {
+  "evidence_zh": "U2 mask 的是左侧半埋在雪中的一小段深绿色金属栏杆（box [78,434,198,531]）。'Replace the fence at the left with a black fence' 只改变颜色。",
+  "other_zh": "将 op 改为 attribute"
+ },
+ "v2-sa_9086959|U1|1209": {
+  "evidence_zh": "U1 mask 是靠近顶部粉色建筑上的长方形店铺招牌，它本身已是带白色汉字的蓝色；'Change the color of the banner ... to blue' 无变化，而且它是招牌而不是横幅。",
+  "other_zh": "category banner->signboard"
+ },
+ "v2-sa_9089846|U2|1216": {
+  "evidence_zh": "'Replace the dress at the lower left with a blue dress'：左下方行走女子的黑色短袖连衣裙被替换为相同的衣物类型；只改变颜色。",
+  "other_zh": "改为属性"
+ },
+ "v2-sa_9111693|U2|1222": {
+  "evidence_zh": "U2（最左边的棕色 Yandex 出租轿车）'Replace ... with a blue car' 只在同一类别内改变颜色。",
+  "other_zh": "或改为属性：color -> blue"
+ },
+ "v2-sa_9123338|U1|1229": {
+  "evidence_zh": "REF/NOREF：'Change the color of the person in the jacket at the left to blue' / 'the selected person'，而 mask（box [91,591,331,964]）只覆盖最左边男子的棕色灯芯绒夹克。文本指的是人，而不是衣物。",
+  "other_zh": "范围 -> jacket"
+ },
+ "v2-sa_9131105|U2|1235": {
+  "evidence_zh": "REF 'the door near the lower center'，但被 mask 的敞开的淡绿色门扇位于左下方（cx=0.19），在小山形顶篷下。",
+  "other_zh": null
+ },
+ "v2-sa_9142280|U2|1242": {
+  "evidence_zh": "'Replace the life jacket ... with a red life jacket' 只改变同一物体的颜色（现有救生衣为带红条纹的黄色）。",
+  "other_zh": "将 op 改为 attribute（color red）"
+ },
+ "v2-sa_9161358|U4|1249": {
+  "evidence_zh": "ÇIÇEKLI 悬挂标牌的 U4 mask 在标牌右侧有第二个连通块（叶丛/支架上的独立斑块），使 box 扩展到 x=944。",
+  "other_zh": "去除零散连通块；只保留标牌板。"
+ },
+ "v2-sa_9172711|U2|1256": {
+  "evidence_zh": "'the load near the center' —— 被 mask 的物体是底部地面上的一小堆黄色硫磺块（0.47W,0.94H），不在图像中心附近；还有若干类似的硫磺货物（0.35W 和 0.63W 的筐里、工人搬运的、0.82W 的地上堆）。",
+  "other_zh": "范围 -> 'sulfur pile'"
+ },
+ "v2-sa_9173282|U4|1262": {
+  "evidence_zh": "REF 'the shirt near the center' 指向的是右侧船舱内一名坐着的乘客所穿的浅蓝色衬衫（box [1748,1142,1843,1225]，cx=0.80W）。它不在中心附近，且可见几十名乘客的上衣，因此 REF 无法识别它。",
+  "other_zh": "ZH: 在船舱内右起第二扇窗后乘客的浅蓝色衬衫上加上一个小徽章。"
+ },
+ "v2-sa_9187878|U3|1269": {
+  "evidence_zh": "REF 称 'the shirt near the center'，但 U3 mask 是最左边缘靠着护栏的男子所穿的图案浅色衬衫（box [26,499,143,559]，cx=0.04）。移除所穿衬衫也会留下未定义的身体。",
+  "other_zh": "将 op 从 remove 改为 attribute"
+ },
+ "v2-sa_9202366|U3|1276": {
+  "evidence_zh": "U3 mask 是在右边缘被截断的藤椅（cx=0.97W）；REF 称 'the chair near the center'（实际上许多藤椅在中心/左侧附近）。",
+  "other_zh": "更新 ZH: 移除右侧边缘露出一部分的藤椅。"
+ },
+ "v2-sa_9212792|U1|1282": {
+  "evidence_zh": "REF 'the car at the left'（ref+none），但被 mask 的深灰色汽车位于右边缘（box [1056,906,1500,1415]，中心 x=0.85W）；左侧没有汽车（只有停放的踏板车）。",
+  "other_zh": null
+ },
+ "v2-sa_921334|U2|1289": {
+  "evidence_zh": "U2 水上巴士位于运河中央（0.49W）；一艘货船（~0.6W）和许多贡多拉更靠右。'the boat at the right' 是错误的/有歧义。",
+  "other_zh": null
+ },
+ "v2-sa_9216210|U1|1297": {
+  "evidence_zh": "'Change the color of the railing to dark' 没有给出色相。被 mask 的栏杆是横跨整个图像宽度（box 0-1500）的圆形金/黄铜栏杆，所以 'at the left' 也是错的。",
+  "other_zh": null
+ },
+ "v2-sa_922772|U4|1304": {
+  "evidence_zh": "REF 称 'the backpack at the right'，但被 mask 的绿色背包（box [47,798,123,946]，cx=0.06W）属于最左边缘的男孩。",
+  "other_zh": "ZH: 在最左侧男孩的绿色背包上加上一个小反光星形徽章。"
+ },
+ "v2-sa_9237516|U2|1312": {
+  "evidence_zh": "'Replace the car near the center with red' 的载荷是单纯的颜色，没有物体。",
+  "other_zh": "将 op 转为 attribute（color=red），或替换为具体物体（例如 'a small red pickup truck'）。"
+ },
+ "v2-sa_9241496|U3|1319": {
+  "evidence_zh": "U3 mask 是街道中间骑踏板车、搬着纸箱的骑手所穿的深色外套（box [703,1848,880,1941]）；移除所穿外套会留下未定义的身体/内层衣物。此外骑手位于图像中心（cx=0.53），更右侧还有数名骑手，因此 'the coat at the right' 具有误导性。",
+  "other_zh": "将 remove 转为 attribute；修正空间短语"
+ },
+ "v2-sa_9249460|U1|1326": {
+  "evidence_zh": "被 mask 的轮子是黑色轮胎配深色辐条；'change the color ... to black' 基本无变化，也没有指明应改变哪个部分。",
+  "other_zh": null
+ },
+ "v2-sa_926201|U3|1332": {
+  "evidence_zh": "REF 'the bicycle at the lower center'，但被 mask 的自行车（box x0-213，cx=0.05W）位于左下角，带一个棕色驮包；下方中部有几十辆自行车。",
+  "other_zh": "ZH: 移除左下角挂棕色包的自行车。"
+ },
+ "v2-sa_9289265|U4|1338": {
+  "evidence_zh": "U4 顶篷是左上/中部（cx=0.38W）的嘟嘟车车顶，不是 'at the right'。它同时也是连在 U1 摩托车上的拖车车顶，因此 U1/U4 共享同一车辆组合。",
+  "other_zh": "考虑与 U1（拉着这辆嘟嘟车的摩托车）的独立性"
+ },
+ "v2-sa_9327453|U2|1345": {
+  "evidence_zh": "U2 'game booth' mask 是背景摊位（'degli Anelli'）的参差区域，被粉色毛绒兔子、玩具步枪和一名男子严重遮挡；其右侧碎成零散的点状碎片，并绕着该男子裁切，因此没有干净地覆盖一个摊位。",
+  "other_zh": "干净地重新分割 degli Anelli 摊位，或删除该单元"
+ },
+ "v2-sa_9337303|U3|1352": {
+  "evidence_zh": "U3 mask 的是最右边 1 号球员抬起的后脚球鞋（cx=0.88），但 REF 称 'the shoe at the left'。左侧有许多球员的球鞋。",
+  "other_zh": "修正 ZH（右侧1号球员抬起的后脚球鞋）"
+ },
+ "v2-sa_9357354|U1|1360": {
+  "evidence_zh": "U1 舞者位于前方右侧（中心 0.75W）；REF 称 'the dancer at the left'。真正位于左侧的舞者在约 0.08W 和约 0.4W。",
+  "other_zh": null
+ }
+}

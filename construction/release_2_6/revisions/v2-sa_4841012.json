@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_4841012",
+  "reviewer": "shard2-b7",
+  "notes": "U3 dangling 'near its bottom' moved into placement.site ('lower part'); v2 mask = door-glass mask ∩ box over its lower part (y>=1130). U1/U2 checked on the sheet: fine.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4841012/case_sheet.jpg", "release_2_6_work/v2-sa_4841012/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small white opening-hours sticker", "placement": {"relation": "on", "site": "lower part", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在左侧入口门玻璃的下部加上一张白色营业时间小贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张白色营业时间小贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its bottom' moved to placement.site; mask now the lower part of the glass."}
+  ]
+}

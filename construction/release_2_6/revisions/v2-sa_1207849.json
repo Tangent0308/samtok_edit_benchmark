@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_1207849",
+  "reviewer": "shard1-b6",
+  "notes": "Audit: U1 masked headwear is a soft baseball cap (brim pointing image-right), not a helmet: ref/scope -> cap. Add site 'front' -> v2 mask = front of the cap (front crown panel + brim, host ∩ box x1065-1160). U2/U3 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1207849/case_sheet.jpg", "release_2_6_work/v2-sa_1207849/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the cap of the person behind the foreground worker", "scope": "cap"},
+     "ref_zh": "前景工人后方那人的帽子",
+     "scope_zh": "帽子",
+     "instruction_ref_zh": "在前景工人后方那人的帽子的前部加上一盏小头灯。",
+     "instruction_noref_zh": "给选中区域加上一盏小头灯。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Clean crop shows a soft brimmed baseball cap, not a hard helmet."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"}
+  ]
+}

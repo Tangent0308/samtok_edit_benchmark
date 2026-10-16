@@ -1,0 +1,55 @@
+{
+  "case_id": "v2-sa_3872458",
+  "reviewer": "shard2-b2",
+  "notes": "U2 (crossbody bag) was worn by the same vendor as U3's T-shirt and its replace was same-category; retargeted to the lidded metal pot on top of the right-hand cart (SAM3 'metal pot', minus other units), replaced by a woven rattan basket. Other units verified.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_3872458/case_sheet.jpg",
+    "release_2_6_work/v2-sa_3872458/U2/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the lidded metal pot on top of the right-hand cart",
+        "scope": "pot",
+        "payload": "a lidded woven rattan basket"
+      },
+      "ref_zh": "右侧货箱顶上带盖的金属锅",
+      "scope_zh": "锅",
+      "physical_parent_zh": "金属锅",
+      "parent_instance_id": "sa_3872458:金属锅",
+      "category": "pot",
+      "source_category": "pot",
+      "instruction_ref_zh": "将右侧货箱顶上带盖的金属锅替换为一个带盖的藤编篮子。",
+      "instruction_noref_zh": "将选中区域替换为一个带盖的藤编篮子。",
+      "findings_addressed": [
+        "independence_violation",
+        "replace_is_attribute"
+      ],
+      "reason": "Bag shared the vendor parent with U3 and blue sling bag was same category. Retargeted to an independent object (pot, box 992-1105 x 1116-1211) with a genuine category replacement; interaction form kept (noref+mask)."
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "occlusion",
+      "small_targets",
+      "street_scene"
+    ],
+    "scene_zh": "沿街挑担的摊贩",
+    "evidence_zh": "2为红塑料袋，右侧货箱顶上的金属锅（新选），5为橙T恤，19为零食桶。锅、袋、桶为独立携带物，T恤属于摊贩；不把摩托与骑手混编辑。",
+    "specific_protection_zh": "保留摊贩身体、扁担、车辆、树与其他货物。"
+  }
+}

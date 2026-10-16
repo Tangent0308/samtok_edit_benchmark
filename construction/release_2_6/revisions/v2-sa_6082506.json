@@ -1,0 +1,44 @@
+{
+  "case_id": "v2-sa_6082506",
+  "reviewer": "round2",
+  "notes": "U3 replace -> qipao (structural). U4 'nearest woman' ambiguous; target is the red-and-pink hanfu directly left of the woman in pale blue (third from left counting the partially cut purple-dressed woman, so audit's 'second from left' not used). U4 site=upper chest, v2 mask = dress ∩ chest box. Round2 confirms all units against clean source, qipao structural replacement and upper-chest v2 site accepted.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6082506/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6082506/U4/final.jpg",
+    "assets/v2-sa_6082506/source.jpg"
+  ],
+  "units": [
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "payload": "a fitted pale lavender qipao"
+      },
+      "instruction_ref_zh": "将手持白花女子的浅蓝色长裙替换为一件修身的浅薰衣草紫旗袍。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Hanfu -> hanfu was colour/material only; a fitted qipao changes the structure."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the red-and-pink dress on the woman directly left of the woman in pale blue",
+        "payload": "a small gold butterfly brooch",
+        "placement": {
+          "relation": "on",
+          "site": "upper chest",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "浅蓝衣女子紧左侧女子的红粉色长裙",
+      "instruction_ref_zh": "在浅蓝衣女子紧左侧女子的红粉色长裙的上胸处加上一枚小金色蝴蝶胸针。",
+      "findings_addressed": [
+        "ambiguous_ref",
+        "grammar_style"
+      ],
+      "reason": "Two women in near-identical red-and-pink hanfu at the same depth; the masked one stands directly left of the pale-blue woman. Site moved out of payload; mask = upper-chest region."
+    }
+  ]
+}

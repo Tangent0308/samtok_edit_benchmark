@@ -1,0 +1,72 @@
+{
+  "case_id": "v2-sa_6776348",
+  "reviewer": "round2",
+  "notes": "原图核实U3在紫衣男子正右侧、画面中间偏左；避免移除穿着中的衣物，改为橙色属性；U2改无袖背心结构替换；U1原图偏深紫黑，改不依赖黑色判定的深色短袖纽扣衬衫ref。",
+  "reviewed_views": [
+    "assets/v2-sa_6776348/source.jpg",
+    "release_2_6_work/v2-sa_6776348/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "spec": {
+        "ref": "the dark short-sleeved button-up shirt on the man at the far left"
+      },
+      "ref_zh": "最左侧男子的深色短袖纽扣衬衫",
+      "instruction_ref_zh": "将最左侧男子深色短袖纽扣衬衫的颜色改为海军蓝。",
+      "id": "U1",
+      "action": "revise",
+      "scope_zh": "衬衫",
+      "physical_parent_zh": "左侧男子",
+      "parent_instance_id": "sa_6776348:left_man",
+      "category": "shirt"
+    },
+    {
+      "spec": {
+        "payload": "a plain white tank top"
+      },
+      "instruction_ref_zh": "将中间偏左男子的紫色Polo衫替换为一件纯白色背心。",
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "中间偏左男子的紫色Polo衫",
+      "scope_zh": "Polo衫",
+      "physical_parent_zh": "紫衣男子",
+      "parent_instance_id": "sa_6776348:purple_man",
+      "category": "polo shirt"
+    },
+    {
+      "spec": {
+        "operation": "attribute",
+        "ref": "the turquoise polo shirt on the man immediately right of the man in purple",
+        "payload": "orange",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "orange"
+          }
+        ]
+      },
+      "ref_zh": "紫衣男子正右侧男子的青绿色Polo衫",
+      "instruction_ref_zh": "将紫衣男子正右侧男子青绿色Polo衫的颜色改为橙色。",
+      "id": "U3",
+      "action": "revise",
+      "scope_zh": "Polo衫",
+      "physical_parent_zh": "青衣男子",
+      "parent_instance_id": "sa_6776348:turquoise_man",
+      "category": "polo shirt"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "crowd",
+      "occlusion",
+      "commerce"
+    ],
+    "scene_zh": "鱼市摊位与行人",
+    "evidence_zh": "四个不同对象：最左侧男子的深色短袖纽扣衬衫；中间偏左男子的紫色Polo衫；紫衣男子正右侧男子的青绿色Polo衫；鱼摊中间的藤筐。",
+    "specific_protection_zh": "保留鱼、摊位、道路和其他行人。"
+  }
+}

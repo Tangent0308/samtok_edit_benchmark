@@ -1,0 +1,11 @@
+{
+  "case_id": "v2-sa_1471745",
+  "reviewer": "shard1-b8",
+  "notes": "U2 mask missed the rear of the dark car behind the left fence; re-segmented the whole visible car (front + rear, fence post excluded). U1/U3 refs unique and verified; texts unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1471745/case_sheet.jpg", "release_2_6_work/v2-sa_1471745/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep", "findings_addressed": ["mask_quality"], "reason": "Mask extended to include the car's rear (x 290-332) via SAM3 text 'car' t1_1|t1_2."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

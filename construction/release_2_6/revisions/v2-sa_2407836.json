@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_2407836",
+  "reviewer": "shard1b-b1",
+  "notes": "No audit findings. U4 site 'windshield corner' is not segmentable (windshield faces away/edge-on; SAM3 'windshield' returns the side and rear windows). Site rewritten to the clearly visible door; v2 mask = door. Other units verified on case sheet.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2407836/case_sheet.jpg", "release_2_6_work/v2-sa_2407836/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "one small round blue logo decal", "placement": {"relation": "on", "site": "door", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在右侧的白色微型车的车门上加上一枚小圆形蓝色标志贴花。",
+     "instruction_noref_zh": "给选中区域加上一枚小圆形蓝色标志贴花。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 needs the site mask; the windshield is barely visible in this side view, so the site becomes the door (mask = door incl. its window, SAM3 'car door')."}
+  ]
+}

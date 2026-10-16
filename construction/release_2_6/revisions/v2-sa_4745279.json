@@ -1,0 +1,104 @@
+{
+  "case_id": "v2-sa_4745279",
+  "reviewer": "shard0-b3",
+  "notes": "U4 (sleeves of an almost hidden garment) was ill-posed: no sleeve is identifiable in the visible sliver. Retargeted U4 to the white-shaded table lamp on the book table (SAM3 'table lamp', shade + pole). Scene is a book fair stall, not a record shop: difficulty and preserve text fixed (唱片->书籍, lamp no longer protected). U2 'short-haired' was wrong (shoulder-length reddish-blonde hair). U5 zh ref aligned with English.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_4745279/case_sheet.jpg",
+    "release_2_6_work/v2-sa_4745279/zoom_U4.jpg",
+    "release_2_6_work/v2-sa_4745279/U4/t1.jpg",
+    "release_2_6_work/v2-sa_4745279/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "遮挡",
+      "紧邻保护",
+      "细长狭窄"
+    ],
+    "scene_zh": "拥挤书展摊位前的顾客",
+    "evidence_zh": "多名顾客紧邻；服装受头发、背包和手臂遮挡，购物袋提带细长，台灯灯杆细长并立在书上。",
+    "specific_protection_zh": "皮肤、头发、书籍、背包及书展陈列架"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "preserve": [
+        "All unrequested parts of this parent, neighboring objects and background; other units authorize their own changes.",
+        "皮肤、头发、书籍、背包及书展陈列架"
+      ],
+      "findings_addressed": [],
+      "reason": "Preserve list named records (唱片) and the lamp, which U4 now removes."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the gray T-shirt of the reddish-blonde customer in the middle"
+      },
+      "ref_zh": "中间红金色头发顾客的灰色T恤",
+      "physical_parent_zh": "中间红金发顾客",
+      "parent_instance_id": "sa_4745279:中间红金发顾客",
+      "instruction_ref_zh": "给中间红金色头发顾客的灰色T恤缝上一个小黑色胸袋。",
+      "instruction_noref_zh": "给选中区域缝上一个小黑色胸袋。",
+      "preserve": [
+        "All unrequested parts of this parent, neighboring objects and background; other units authorize their own changes.",
+        "皮肤、头发、书籍、背包及书展陈列架"
+      ],
+      "findings_addressed": [],
+      "reason": "The middle customer has shoulder-length reddish-blonde hair, not short hair."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "preserve": [
+        "All unrequested parts of this parent, neighboring objects and background; other units authorize their own changes.",
+        "皮肤、头发、书籍、背包及书展陈列架"
+      ],
+      "findings_addressed": [],
+      "reason": "Preserve list named records (唱片) and the lamp, which U4 now removes. zh ref omitted 的颜色; aligned.",
+      "ref_zh": "左前方戴帽顾客的蓝色T恤",
+      "instruction_ref_zh": "将左前方戴帽顾客的蓝色T恤的颜色改为芥末黄色。"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the white-shaded table lamp standing on the book table",
+        "scope": "table lamp",
+        "target_part": "",
+        "remove_mode": "whole"
+      },
+      "ref_zh": "立在书桌上的白色灯罩台灯",
+      "scope_zh": "台灯",
+      "physical_parent_zh": "书桌上的台灯",
+      "parent_instance_id": "sa_4745279:书桌上的台灯",
+      "category": "table lamp",
+      "source_category": "table lamp (SAM3 release 2.6.0)",
+      "instruction_ref_zh": "移除立在书桌上的白色灯罩台灯。",
+      "instruction_noref_zh": "移除选中区域。",
+      "preserve": [
+        "All unrequested parts of the book table, neighboring objects and background; other units authorize their own changes.",
+        "台灯下方的书籍、亚克力书架、柜台及后方顾客"
+      ],
+      "completion_requirement": "Remove the white-shaded table lamp standing on the book table, including its shade and pole. Fill the revealed area with the plausible books, table and background behind it; leave the other books and acrylic stands unchanged.",
+      "annotation_id_v1_note": "2.5.0 annotation 34 (partly visible T-shirt) replaced by a SAM3 table-lamp mask",
+      "findings_addressed": [
+        "ill_posed_edit"
+      ],
+      "reason": "No sleeve is identifiable in the visible sliver of the hidden person's garment; retargeted to the clearly visible table lamp (remove kept; the only other lamp is a cut-off shade at the far left edge)."
+    },
+    {
+      "id": "U5",
+      "action": "revise",
+      "ref_zh": "前景顾客手臂上挂的购物袋",
+      "instruction_ref_zh": "移除前景顾客手臂上挂的购物袋。",
+      "preserve": [
+        "All unrequested parts of this parent, neighboring objects and background; other units authorize their own changes.",
+        "皮肤、头发、书籍、背包及书展陈列架"
+      ],
+      "findings_addressed": [],
+      "reason": "zh ref said 左前方 while English says foreground customer; preserve list fixed."
+    }
+  ]
+}

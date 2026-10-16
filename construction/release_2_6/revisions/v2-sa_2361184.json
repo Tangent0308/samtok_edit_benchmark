@@ -1,0 +1,52 @@
+{
+  "case_id": "v2-sa_2361184",
+  "reviewer": "round2",
+  "notes": "原图确认浅色头巾女子在右侧。U4袖型审查图像不够确定，用中性blue top避免不必要袖型断言；SAM3分出全部10块可见白字。U1胸前附着区排除已有心形徽标及下方大字图案。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2361184/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2361184/U4/clean_detail.jpg",
+    "release_2_6_work/v2-sa_2361184/U4/r2letters.jpg",
+    "release_2_6_work/v2-sa_2361184/U1/final.jpg",
+    "release_2_6_work/v2-sa_2361184/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the pale headscarf of the woman on the right"
+      },
+      "ref_zh": "右侧女子的浅色头巾",
+      "instruction_ref_zh": "将右侧女子的浅色头巾替换为贴合头部的褶裥包头巾。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "两位成年人中该女子在右侧，原in the middle不准确。"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the blue top of the child between the two adults"
+      },
+      "ref_zh": "两位成年人之间孩子的蓝色上衣",
+      "instruction_ref_zh": "移除两位成年人之间孩子的蓝色上衣上的白色胸前字样。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "用颜色和成年人之间关系唯一定位，不再断言sleeveless或短袖；mask只选实际移除白字。"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ]
+}

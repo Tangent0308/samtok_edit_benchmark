@@ -1,0 +1,59 @@
+{
+  "case_id": "v2-sa_6823812",
+  "reviewer": "round2",
+  "notes": "Viewed clean source and all masks; U4 is a sunset painting, not the Christmas sign on the lifeguard tower.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6823812/case_sheet.jpg",
+    "assets/v2-sa_6823812/source.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "payload": "a gray zip-up hoodie"
+      },
+      "instruction_ref_zh": "将中间附近人物的格纹衬衫替换为一件灰色拉链连帽衫。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Hood and zipper replace the collar/button shirt structure."
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the small sunset painting hanging above the central art stall",
+        "scope": "painting"
+      },
+      "ref_zh": "中央艺术摊位上方悬挂的小幅日落画",
+      "scope_zh": "画作",
+      "physical_parent_zh": "摊位上方的小幅日落画",
+      "parent_instance_id": "sa_6823812:日落画",
+      "instruction_ref_zh": "在中央艺术摊位上方悬挂的小幅日落画上加上一枚小金色星形贴纸。",
+      "findings_addressed": [
+        "category_mismatch"
+      ],
+      "reason": "Orange/yellow square canvas, separate from right tower Christmas sign.",
+      "category": "painting"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "night",
+      "crowd",
+      "motion blur"
+    ],
+    "scene_zh": "夜市摊位与游客",
+    "evidence_zh": "左侧女子的粉色T恤、中央人物的格纹衬衫、左侧摊位的插画托袋和中央艺术摊位上方的小幅日落画是独立目标。",
+    "specific_protection_zh": "保留夜景灯光、摊位和其他行人。"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_8802184",
+  "reviewer": "shard6-b1",
+  "notes": "Tail case, all units re-examined. U1/U2 masks are jerseys, not whole athletes: refs/scopes now name the jerseys (U2 replaced by a different garment, not person->clothing). U3 is the small dark-blue Chang board; U4 the second bottle from the left in the front row of the left carrier. Masks unchanged (already the edited regions; no S!=T unit).",
+  "reviewed_views": ["release_2_6_work/v2-sa_8802184/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "sports", "people"], "scene_zh": "田径训练", "evidence_zh": "左侧球员的无袖球衣、举手门将的球衣、场边广告牌和水瓶架中的一个水瓶是四个不同对象。", "specific_protection_zh": "保留运动员、运动装备和场地标识。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the blue-and-pink sleeveless jersey of the player on the left", "scope": "jersey", "payload": "white", "attributes": [{"property": "color", "value": "white"}]},
+     "ref_zh": "左侧球员的蓝粉色无袖球衣", "scope_zh": "球衣", "physical_parent_zh": "左侧无袖球衣球员", "parent_instance_id": "sa_8802184:左侧无袖球衣球员", "category": "jersey",
+     "instruction_ref_zh": "将左侧球员的蓝粉色无袖球衣的颜色改为白色。",
+     "instruction_noref_zh": "将选中区域的颜色改为白色。",
+     "findings_addressed": ["person_clothing_level"], "reason": "Mask is the jersey; ref named the whole athlete and the target colour blue was already the jersey's colour."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the maroon jersey of the goalkeeper raising his gloved hand", "scope": "jersey", "payload": "a yellow hooded training jacket"},
+     "ref_zh": "举起戴手套的手的门将的栗色球衣", "scope_zh": "球衣", "physical_parent_zh": "举手门将", "parent_instance_id": "sa_8802184:举手门将", "category": "jersey",
+     "instruction_ref_zh": "将举起戴手套的手的门将的栗色球衣替换为一件黄色连帽训练夹克。",
+     "instruction_noref_zh": "将选中区域替换为一件黄色连帽训练夹克。",
+     "findings_addressed": ["person_clothing_level"], "reason": "Person was replaced by clothing; mask is the goalkeeper's jersey (the staff member on the right also wears a maroon shirt, so the raised gloved hand disambiguates)."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the dark blue Chang advertising board at the pitch edge on the left", "scope": "advertising board"},
+     "ref_zh": "左侧场边的深蓝色Chang广告牌", "scope_zh": "广告牌", "physical_parent_zh": "左侧Chang广告牌", "parent_instance_id": "sa_8802184:左侧Chang广告牌",
+     "instruction_ref_zh": "移除左侧场边的深蓝色Chang广告牌。",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Several boards line the pitch; the masked one is the small dark-blue Chang board."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the second water bottle from the left in the front row of the left bottle carrier", "payload": "a red wraparound label", "placement": {"relation": "around", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "左侧水瓶架前排从左数第二个水瓶", "scope_zh": "水瓶", "physical_parent_zh": "左侧水瓶架前排第二个水瓶", "parent_instance_id": "sa_8802184:左侧水瓶架前排第二个水瓶",
+     "instruction_ref_zh": "给左侧水瓶架前排从左数第二个水瓶裹上一圈红色标签。",
+     "instruction_noref_zh": "给选中区域裹上一圈红色标签。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "About twenty identical bottles; ref now gives carrier, row and ordinal (verified: masked bottle is second from left in the front row)."}
+  ]
+}

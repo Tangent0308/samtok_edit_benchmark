@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_3633416",
+  "reviewer": "shard2-b1",
+  "notes": "U1 tint of a whole window (frame+glass) was ambiguous; now a colour change of the wooden window (painted wood), mask unchanged; ref adds 'first' since a second tall window is further right. U2 fine.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3633416/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the first tall wooden window to the right of the central doorway", "payload": "pale blue", "attributes": [{"property": "color", "value": "pale blue"}]},
+     "ref_zh": "中央门口右侧第一扇木质落地窗",
+     "instruction_ref_zh": "将中央门口右侧第一扇木质落地窗的颜色改为浅蓝色。",
+     "instruction_noref_zh": "将选中区域的颜色改为浅蓝色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Tint of frame+glass was ambiguous; recolouring the painted wooden window is clear. Another tall wooden window exists further right (x~2080-2180 in source), so 'first' added."},
+    {"id": "U2", "action": "keep"}
+  ]
+}

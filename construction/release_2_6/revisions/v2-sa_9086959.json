@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9086959",
+  "reviewer": "shard6-b5",
+  "notes": "Tail case, all units re-examined. U1 signboard is already blue -> recolour to red, category signboard. U2 shirt ref disambiguated among the red team shirts and replace made structural (yellow sleeveless tank top). U3 masked only one section of the carried dragon costume (ill-defined removal) -> retargeted to the white scooter parked by the low white wall at the right (SAM3 v2 mask). U4 ref names the raised image-left shoe, payload concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9086959/case_sheet.jpg", "release_2_6_work/v2-sa_9086959/U3/t1.jpg", "release_2_6_work/v2-sa_9086959/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "dragon dance", "crowd"], "scene_zh": "庙前舞龙", "evidence_zh": "粉色楼房上的蓝色招牌、背对镜头持龙杆青年的红色上衣、右侧白墙边的白色踏板车和牛仔短裤男子抬起的鞋是四个不同对象。", "specific_protection_zh": "保留舞龙道具、表演者和寺庙建筑。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the blue signboard with white Chinese characters on the pink building near the top", "scope": "signboard", "payload": "red", "attributes": [{"property": "color", "value": "red"}]},
+      "ref_zh": "顶部附近粉色楼房上写着白色汉字的蓝色招牌",
+      "scope_zh": "招牌",
+      "physical_parent_zh": "蓝色招牌",
+      "parent_instance_id": "sa_9086959:蓝色招牌",
+      "instruction_ref_zh": "将顶部附近粉色楼房上写着白色汉字的蓝色招牌的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["attribute_value"],
+      "reason": "Signboard (box [952,227,1089,275]) is already blue: 'to blue' was a no-op; it is a signboard, not a banner."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the red shirt of the young man in black jeans with his back to the camera, holding a dragon pole right of center", "scope": "shirt", "payload": "a yellow sleeveless tank top"},
+      "ref_zh": "中间偏右背对镜头、穿黑色牛仔裤并握着龙杆的青年的红色上衣",
+      "scope_zh": "上衣",
+      "physical_parent_zh": "背对镜头的持杆青年",
+      "parent_instance_id": "sa_9086959:背对镜头的持杆青年",
+      "instruction_ref_zh": "将中间偏右背对镜头、穿黑色牛仔裤并握着龙杆的青年的红色上衣替换为一件黄色无袖背心。",
+      "instruction_noref_zh": "将选中区域替换为一件黄色无袖背心。",
+      "findings_addressed": ["replace_is_attribute", "ambiguous_ref"],
+      "reason": "Almost all performers wear red team shirts; the ref now names the masked young man (cx~0.71W). 'a yellow shirt' was a recolour; a sleeveless tank top changes structure."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the white scooter parked by the low white wall at the right", "scope": "scooter"},
+      "ref_zh": "右侧低矮白墙边停着的白色踏板车",
+      "scope_zh": "踏板车",
+      "physical_parent_zh": "白色踏板车",
+      "parent_instance_id": "sa_9086959:白色踏板车",
+      "instruction_ref_zh": "移除右侧低矮白墙边停着的白色踏板车。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["mask_quality"],
+      "reason": "Old mask was only one section of a continuous carried dragon costume (poles still held), so removal was ill-defined. Retargeted to the white scooter: SAM3 text 'scooter' t1_1, box [1661,639,1735,700], visually verified; the cluster of dark scooters is further left."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the raised image-left shoe of the man in denim shorts at the lower right", "scope": "shoe", "payload": "one small white star patch", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "右下方穿牛仔短裤男子抬起的画面左侧那只鞋",
+      "scope_zh": "鞋子",
+      "physical_parent_zh": "牛仔短裤男子",
+      "parent_instance_id": "sa_9086959:牛仔短裤男子",
+      "instruction_ref_zh": "给右下方穿牛仔短裤男子抬起的画面左侧那只鞋加上一枚白色小星形贴片。",
+      "instruction_noref_zh": "给选中区域加上一枚白色小星形贴片。",
+      "findings_addressed": ["ambiguous_ref", "grammar_style"],
+      "reason": "His other shoe is right next to it; the masked one (box [1705,1288,1794,1368]) is the raised image-left shoe. Payload made concrete."
+    }
+  ]
+}

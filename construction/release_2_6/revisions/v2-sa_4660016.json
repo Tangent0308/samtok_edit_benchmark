@@ -1,0 +1,48 @@
+{
+  "case_id": "v2-sa_4660016",
+  "notes": "Visible shoulder patches localized; under-lantern spectator is side/back facing with chest hidden, so white chest pocket changed to visible shoulder cloth patch. Pink-top removal limited to single clearly visible image-left sleeve.",
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "one small white cloth patch",
+        "placement": {
+          "relation": "sewn onto",
+          "site": "visible shoulder",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给最右侧灯笼下方深色T恤的可见肩部缝上一块小白色布贴。",
+      "reason": "Chest is obscured in side/back view; visible shoulder offers feasible attachment site."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "target_part": "the visible image-left sleeve"
+      },
+      "instruction_ref_zh": "移除前排右侧灰发女子粉色上衣图像左侧的可见衣袖。",
+      "reason": "Only near sleeve has clear visible extent. SAM3 mask selects it rather than guessing hidden far sleeve."
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ],
+  "reviewer": "round2",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_4660016/case_sheet.jpg",
+    "release_2_6_work/v2-sa_4660016/U1/final.jpg",
+    "release_2_6_work/v2-sa_4660016/U3/final.jpg",
+    "release_2_6_work/v2-sa_4660016/U5/final.jpg"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "case_id": "v2-sa_679629",
+  "reviewer": "round2",
+  "notes": "Clean source and mask sheet reviewed; correct jacket instance/category and replace parka structurally.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_679629/case_sheet.jpg",
+    "assets/v2-sa_679629/source.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the light blue denim jacket on the woman walking away in the middle of the crowd",
+        "scope": "jacket"
+      },
+      "ref_zh": "人群中背向镜头行走女子的浅蓝色牛仔夹克",
+      "scope_zh": "夹克",
+      "physical_parent_zh": "人群中背向镜头的牛仔夹克女子",
+      "parent_instance_id": "sa_679629:牛仔夹克女子",
+      "instruction_ref_zh": "将人群中背向镜头行走女子的浅蓝色牛仔夹克的颜色改为酒红色。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Masked jacket is center-right, light blue denim, not a left-side coat.",
+      "category": "jacket"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the olive parka with a fur-trimmed hood on the person standing at the right",
+        "scope": "parka",
+        "payload": "a red wool duffle coat with toggle fastenings"
+      },
+      "ref_zh": "右侧站立者带毛边兜帽的橄榄绿派克大衣",
+      "scope_zh": "派克大衣",
+      "instruction_ref_zh": "将右侧站立者带毛边兜帽的橄榄绿派克大衣替换为一件带牛角扣的红色羊毛大衣。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Clean source shows olive fur hood parka; duffle coat changes fastening and silhouette.",
+      "category": "parka"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "crowd",
+      "motion blur",
+      "commerce"
+    ],
+    "scene_zh": "商业街行人与招牌",
+    "evidence_zh": "黄色购物袋、背向镜头女子的浅蓝牛仔夹克、右侧带毛边兜帽的橄榄绿派克大衣和RAW招牌是不同对象。",
+    "specific_protection_zh": "保留行人、店铺和道路。"
+  }
+}

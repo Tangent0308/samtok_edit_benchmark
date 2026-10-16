@@ -1,0 +1,25 @@
+{
+  "case_id": "v2-sa_2732165",
+  "reviewer": "shard1b-b2",
+  "notes": "U3 (waist pack) and U2 (shorts) were on the same orange-shirted runner -> U3 retargeted to removing the runner in the neon-yellow shirt further along the path (SAM3 'person', box 559-642 x 670-924). U1 garment is loose black track pants, not leggings -> ref/scope fixed. Only other yellow-clad person is a spectator on the hill top-right, so 'on the path' disambiguates.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2732165/case_sheet.jpg", "release_2_6_work/v2-sa_2732165/U3/t1.jpg", "release_2_6_work/v2-sa_2732165/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the black track pants of the runner in the black hooded jacket", "scope": "track pants"},
+     "ref_zh": "穿黑色连帽夹克跑者的黑色运动长裤",
+     "scope_zh": "运动长裤",
+     "instruction_ref_zh": "将穿黑色连帽夹克跑者的黑色运动长裤替换为藏蓝色跑步紧身裤。",
+     "instruction_noref_zh": "将选中区域替换为藏蓝色跑步紧身裤。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "The garment is loose track pants with an ankle logo, not leggings."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the runner in the neon-yellow shirt on the path", "scope": "runner", "operation": "remove", "payload": "", "remove_mode": "whole"},
+     "ref_zh": "小路上穿荧光黄上衣的跑者",
+     "scope_zh": "跑者",
+     "physical_parent_zh": "荧光黄上衣跑者",
+     "parent_instance_id": "sa_2732165:荧光黄上衣跑者",
+     "instruction_ref_zh": "移除小路上穿荧光黄上衣的跑者。",
+     "findings_addressed": ["independence_violation"],
+     "reason": "Waist pack shared its wearer with U2's shorts; retargeted to an independent runner, keeping the remove operation."}
+  ]
+}

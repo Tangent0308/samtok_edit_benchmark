@@ -1,0 +1,92 @@
+{
+ "case_id": "v2-sa_7835850",
+ "reviewer": "shard4-b2",
+ "notes": "Tail case, all units re-examined on the clean image. U1 bus is blue (red is a visible change), ref tightened. U2 replace was a recolour; now a messenger bag. U3 mask was the power pylon (not a cable-car tower) and removing a pylon is ill-posed; retargeted to the gondola cabin hanging left of the pylon (new SAM3 mask). U4 poster is at the right edge, not the center; payload made concrete.",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_7835850/case_sheet.jpg",
+  "release_2_6_work/v2-sa_7835850/U3/p1.jpg",
+  "release_2_6_work/v2-sa_7835850/U3/final.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "outdoor",
+   "transport",
+   "crowd"
+  ],
+  "scene_zh": "缆车站人群",
+  "evidence_zh": "最左侧蓝色公交车、右侧行人的红色背包、电塔左侧的缆车吊厢和右侧竖幅海报是四个不同对象。",
+  "specific_protection_zh": "保留电塔、其他缆车、游客和站点环境。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the blue bus numbered 32 at the far left edge"
+   },
+   "ref_zh": "最左侧边缘的32路蓝色公交车",
+   "physical_parent_zh": "最左侧蓝色公交车",
+   "parent_instance_id": "sa_7835850:最左侧蓝色公交车",
+   "instruction_ref_zh": "将最左侧边缘的32路蓝色公交车的颜色改为红色。",
+   "findings_addressed": [],
+   "reason": "Tail rewrite: bus is blue with route number 32; ref made precise. Mask (visible bus) correct."
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the red backpack of the person in a black hoodie walking away at the right",
+    "payload": "a brown leather messenger bag"
+   },
+   "ref_zh": "右侧背身行走的黑色连帽衫行人的红色背包",
+   "physical_parent_zh": "右侧红背包",
+   "parent_instance_id": "sa_7835850:右侧红背包",
+   "instruction_ref_zh": "将右侧背身行走的黑色连帽衫行人的红色背包替换为一个棕色皮革邮差包。",
+   "instruction_noref_zh": "将选中区域替换为一个棕色皮革邮差包。",
+   "findings_addressed": [
+    "replace_is_attribute"
+   ],
+   "reason": "Blue backpack was a recolour only; messenger bag is a structural replacement. Mask is exactly the backpack."
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the white gondola cabin hanging just left of the large power pylon",
+    "scope": "gondola cabin"
+   },
+   "ref_zh": "大型输电铁塔左侧紧邻处悬挂的白色缆车吊厢",
+   "scope_zh": "缆车吊厢",
+   "physical_parent_zh": "电塔左侧缆车吊厢",
+   "parent_instance_id": "sa_7835850:电塔左侧缆车吊厢",
+   "instruction_ref_zh": "移除大型输电铁塔左侧紧邻处悬挂的白色缆车吊厢。",
+   "findings_addressed": [
+    "category_mismatch"
+   ],
+   "reason": "Old mask was the power pylon (not a cable-car tower); removing a pylon carrying wires is ill-posed. Retargeted to a clearly separate gondola cabin (cabin + hanger arm), SAM3 prompt mask p1_1 committed as U3_v2.",
+   "category": "gondola cabin",
+   "source_category": "gondola cabin"
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the tall white poster mounted on a pole in front of the brick building at the right",
+    "scope": "poster",
+    "payload": "a red circular logo"
+   },
+   "ref_zh": "右侧砖楼前立杆上的白色竖幅海报",
+   "scope_zh": "海报",
+   "physical_parent_zh": "右侧竖幅海报",
+   "parent_instance_id": "sa_7835850:右侧竖幅海报",
+   "instruction_ref_zh": "给右侧砖楼前立杆上的白色竖幅海报加上一个红色圆形标志。",
+   "instruction_noref_zh": "给选中区域加上一个红色圆形标志。",
+   "findings_addressed": [
+    "wrong_instance_spatial"
+   ],
+   "reason": "Poster is at x=0.91W (right), not center; 'a route number' made into a concrete, natural item.",
+   "category": "poster",
+   "source_category": "poster"
+  }
+ ]
+}

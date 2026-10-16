@@ -1,0 +1,90 @@
+{
+ "case_id": "v2-sa_7850865",
+ "reviewer": "shard4-b2",
+ "notes": "Tail case, all units re-examined. U1 ref made unique (highest flag on the tallest pole). U2 replace was a material change; now a wicker basket (structural). U3 removed a whole building (ill-posed, 2-part mask); retargeted to the grey trash bin on the walkway (new SAM3 mask). U4 lamp-post mask checked (post+arms, tripod stand excluded); payload made concrete.",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_7850865/case_sheet.jpg",
+  "release_2_6_work/v2-sa_7850865/U3/p2.jpg",
+  "release_2_6_work/v2-sa_7850865/U3/final.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "outdoor",
+   "urban",
+   "plants"
+  ],
+  "scene_zh": "城市花园广场",
+  "evidence_zh": "最高旗杆上的旗帜、右前方金属花箱、左侧步道上的垃圾桶和右前方灯柱是四个不同对象。",
+  "specific_protection_zh": "保留广场、花卉、长椅和建筑环境。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the green flag on the tallest flagpole, left of center"
+   },
+   "ref_zh": "画面中间偏左最高旗杆上的绿色旗帜",
+   "physical_parent_zh": "最高旗杆上的旗帜",
+   "parent_instance_id": "sa_7850865:最高旗杆上的旗帜",
+   "instruction_ref_zh": "将画面中间偏左最高旗杆上的绿色旗帜的颜色改为蓝色。",
+   "findings_addressed": [
+    "ambiguous_ref"
+   ],
+   "reason": "Several similar green flags on the left half; the masked one is the highest, on the tallest pole."
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the nearest blue metal planter box with yellow flowers, at the lower right",
+    "scope": "planter box",
+    "payload": "a large woven wicker basket"
+   },
+   "ref_zh": "右下方最近的种着黄花的蓝色金属花箱",
+   "scope_zh": "花箱",
+   "physical_parent_zh": "右下方金属花箱",
+   "parent_instance_id": "sa_7850865:右下方金属花箱",
+   "instruction_ref_zh": "将右下方最近的种着黄花的蓝色金属花箱替换为一个大号藤编篮。",
+   "instruction_noref_zh": "将选中区域替换为一个大号藤编篮。",
+   "findings_addressed": [
+    "replace_is_attribute"
+   ],
+   "reason": "Stone planter was a material change; wicker basket is a different structure that can still hold the flowers. Mask is the box only (flowers excluded), as required."
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the grey cylindrical trash bin beside the benches on the left walkway",
+    "scope": "trash bin"
+   },
+   "ref_zh": "左侧步道上长椅旁的灰色圆柱形垃圾桶",
+   "scope_zh": "垃圾桶",
+   "physical_parent_zh": "左侧步道垃圾桶",
+   "parent_instance_id": "sa_7850865:左侧步道垃圾桶",
+   "instruction_ref_zh": "移除左侧步道上长椅旁的灰色圆柱形垃圾桶。",
+   "findings_addressed": [
+    "ill_posed_edit"
+   ],
+   "reason": "Removing a whole multi-storey building is ill-posed; retargeted to a clearly separate trash bin (bin + post), SAM3 prompt mask committed as U3_v2.",
+   "category": "trash bin",
+   "source_category": "trash bin"
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the large dark lamp post in the right foreground",
+    "payload": "one hanging flower basket"
+   },
+   "ref_zh": "右前景的大型深色灯柱",
+   "physical_parent_zh": "右前景灯柱",
+   "parent_instance_id": "sa_7850865:右前景灯柱",
+   "instruction_ref_zh": "给右前景的大型深色灯柱加上一个吊篮花盆。",
+   "instruction_noref_zh": "给选中区域加上一个吊篮花盆。",
+   "findings_addressed": [],
+   "reason": "Tail rewrite: other lamp posts stand further back; 'a hanging sign' made into a concrete natural item."
+  }
+ ]
+}

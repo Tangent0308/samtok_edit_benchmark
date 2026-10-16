@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4551219",
+  "reviewer": "shard2-b6",
+  "notes": "U3 replace was colour-only (umbrella -> dark green umbrella) -> clear dome-shaped bubble umbrella. U4 dangling 'on its chest' removed. Masks checked on case sheet and clean crops; unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4551219/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a clear dome-shaped bubble umbrella"},
+     "instruction_ref_zh": "将舞台前撑开的黑伞替换为一把透明穹顶形泡泡伞。",
+     "instruction_noref_zh": "将选中区域替换为一把透明穹顶形泡泡伞。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Colour-only replacement; a transparent dome bubble umbrella is a structural change of the same object level."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small round yellow badge"},
+     "instruction_ref_zh": "在持伞者的黑色外套上加上一枚小圆形黄色徽章。",
+     "instruction_noref_zh": "给选中区域加上一枚小圆形黄色徽章。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its chest'; anchor stays the whole jacket."}
+  ]
+}

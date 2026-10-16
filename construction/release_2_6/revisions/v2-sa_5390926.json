@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_5390926",
+  "reviewer": "shard2-b10",
+  "notes": "U4 is a blue hatchback, not an SUV; category fixed. U3 ref adds 'nearest' (more racks hold bikes further back). Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5390926/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the nearest silver bicycle rack on the sidewalk"},
+     "ref_zh": "人行道上最近的银色自行车架",
+     "instruction_ref_zh": "给人行道上最近的银色自行车架加上一块小蓝色自行车停车牌。",
+     "findings_addressed": [],
+     "reason": "Further racks with parked bicycles stand behind; the masked one is the nearest."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the blue hatchback behind the parking meter", "scope": "hatchback"},
+     "ref_zh": "停车收费柱后方的蓝色掀背车",
+     "scope_zh": "掀背车",
+     "instruction_ref_zh": "将停车收费柱后方的蓝色掀背车替换为一辆白色紧凑型厢式车。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Masked blue car is a small hatchback."}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_1332464",
+  "reviewer": "shard1-b7",
+  "notes": "Audit: U2 hat->straw hat was near-attribute (the hat already is a woven wide-brim hat). Payload now a baseball cap (structural change); ref describes the pink-yellow patterned wide-brim hat. No S!=T units; U3 gray bag and U4 navy shirt checked on clean source.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1332464/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the left elephant rider’s patterned wide-brim hat", "payload": "a dark baseball cap"},
+     "ref_zh": "象背左侧骑手的彩绘宽檐帽",
+     "instruction_ref_zh": "将象背左侧骑手的彩绘宽檐帽替换为一顶深色棒球帽。",
+     "instruction_noref_zh": "将选中区域替换为一顶深色棒球帽。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Hat is a pink/yellow painted woven wide-brim hat; a beige straw hat kept the same structure. Baseball cap changes structure."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

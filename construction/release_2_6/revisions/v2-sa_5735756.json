@@ -1,0 +1,28 @@
+{
+  "case_id": "v2-sa_5735756",
+  "reviewer": "shard2-b12",
+  "notes": "U1 bag and U2 headscarf were both on the woman in red -> U2 retargeted to the green headscarf of the woman in blue at the left (SAM3, verified). U3 straw sunhat -> cotton sunhat was a material-only change -> payload a red baseball cap.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5735756/case_sheet.jpg", "release_2_6_work/v2-sa_5735756/U2/t1.jpg", "release_2_6_work/v2-sa_5735756/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["crowd", "occlusion", "text"], "scene_zh": "集市购物者与手袋", "evidence_zh": "红衣女子奶油色手提包、左侧蓝衣女子绿头巾、中间草帽、前景立盒四父对象。", "specific_protection_zh": "保留人物身体、市场结构、其他商品与推车。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the green headscarf on the woman in blue at the left", "scope": "headscarf", "payload": "burgundy", "attributes": [{"property": "color", "value": "burgundy"}]},
+     "ref_zh": "左侧蓝衣女子的绿色头巾",
+     "scope_zh": "头巾",
+     "physical_parent_zh": "左侧蓝衣女子",
+     "parent_instance_id": "sa_5735756:左侧蓝衣女子",
+     "instruction_ref_zh": "将左侧蓝衣女子的绿色头巾的颜色改为酒红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为酒红色。",
+     "preserve": ["保留人物身体、面部、购物袋与其他人物。"],
+     "findings_addressed": ["independence_violation"],
+     "reason": "Old U2 shared the woman in red with U1; new target is a different person's headscarf (x 631-766, y 746-968)."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a red baseball cap"},
+     "instruction_ref_zh": "将中间附近女子的草帽替换为一顶红色棒球帽。",
+     "instruction_noref_zh": "将选中区域替换为一顶红色棒球帽。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Straw sunhat -> cotton sunhat was material only; now a different hat type."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

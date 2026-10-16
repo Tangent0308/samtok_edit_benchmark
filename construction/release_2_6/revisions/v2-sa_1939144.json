@@ -1,0 +1,63 @@
+{
+  "case_id": "v2-sa_1939144",
+  "reviewer": "round2",
+  "notes": "U1先尝试原后架text及tracker，再改车把text，均未得到可靠实际支撑区；换同图独立长凳清楚可见的左段座面添加小坐垫，SAM bench后裁剪座面，保留原point交互。U3原短裤误名改牛仔裤；源图膝下被花坛遮挡。",
+  "reviewed_views": [
+    "assets/v2-sa_1939144/source.jpg",
+    "release_2_6_work/v2-sa_1939144/case_sheet.jpg",
+    "release_2_6_work/v2-sa_1939144/U1/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "occlusion",
+      "thin_structures"
+    ],
+    "scene_zh": "街心雕像花坛与骑行者",
+    "evidence_zh": "不同源对象：红衣骑车人正左侧的公园长凳；纪念碑前的花丛；纪念碑正左侧站立男子的蓝色牛仔裤；右侧白色建筑上方的云。",
+    "specific_protection_zh": "保留雕像、底座、花坛边框、人物身体、树木与其他车辆。"
+  },
+  "units": [
+    {
+      "spec": {
+        "ref": "the park bench immediately left of the red-shirted cyclist",
+        "scope": "bench",
+        "payload": "one small green seat cushion",
+        "placement": {
+          "relation": "on",
+          "site": "left section of the seat"
+        }
+      },
+      "ref_zh": "红衣骑车人正左侧的公园长凳",
+      "scope_zh": "长凳",
+      "physical_parent_zh": "左侧公园长凳",
+      "parent_instance_id": "sa_1939144:left_park_bench",
+      "instruction_ref_zh": "在红衣骑车人正左侧的公园长凳的座面左段加上一个小绿色坐垫。",
+      "reason": "原后架被后袋遮挡且车把候选包含骑者，改同图独立长凳的清楚可见座面，交互形式不变。",
+      "id": "U1",
+      "action": "revise",
+      "category": "bench"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "ref": "the blue jeans of the man standing just left of the monument",
+        "scope": "jeans"
+      },
+      "ref_zh": "纪念碑正左侧站立男子的蓝色牛仔裤",
+      "scope_zh": "牛仔裤",
+      "instruction_ref_zh": "将纪念碑正左侧站立男子的蓝色牛仔裤的颜色改为米色。",
+      "id": "U3",
+      "action": "revise",
+      "physical_parent_zh": "站立人物",
+      "parent_instance_id": "sa_1939144:standing_person",
+      "category": "jeans"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ]
+}

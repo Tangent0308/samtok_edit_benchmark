@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_5803931",
+  "reviewer": "shard2-b13",
+  "notes": "Two pink-coated children (walking child in gray knit hat vs toddler by the bicycle front): U4 and U3 refs anchored on the gray hat / walker's rust-orange trousers. U1 handlebar location moved from payload to placement.site with a handlebar-region v2 mask.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5803931/case_sheet.jpg", "release_2_6_work/v2-sa_5803931/U1/t1.jpg", "release_2_6_work/v2-sa_5803931/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a small wicker basket", "placement": {"relation": "on", "site": "handlebars", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在前景自行车的车把上加上一个小藤编车篮。",
+     "instruction_noref_zh": "给选中区域加上一个小藤编车篮。",
+     "findings_addressed": ["protocol2_site_in_payload"],
+     "reason": "Location 'on the handlebars' was inside the payload (leaks the where in blind no-ref); moved to placement.site, mask = bicycle host ∩ handlebar/stem box."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the red backpack of the walker in rust-orange trousers"},
+     "ref_zh": "穿锈橙色长裤的行人的红色背包",
+     "instruction_ref_zh": "移除穿锈橙色长裤的行人的红色背包。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "'left of the child' depended on the ambiguous child; the backpack wearer is the only walker in rust-orange trousers."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the pink coat of the child in the gray knit hat"},
+     "ref_zh": "戴灰色针织帽的儿童的粉色外套",
+     "instruction_ref_zh": "将戴灰色针织帽的儿童的粉色外套替换为一件黄色雨衣。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "A second pink-clad toddler stands by the bicycle front (bareheaded); the target child wears a gray knit hat."}
+  ]
+}

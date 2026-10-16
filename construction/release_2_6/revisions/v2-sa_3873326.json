@@ -1,0 +1,15 @@
+{
+  "case_id": "v2-sa_3873326",
+  "reviewer": "shard0-b2",
+  "notes": "No audit findings. U1 add site 'neck' -> v2 mask = the tabby's neck band around its existing orange collar (host ∩ box, head excluded). U2 payload referred to 'the bowl' (a scene object that hints the location); rewritten self-contained.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3873326/case_sheet.jpg", "release_2_6_work/v2-sa_3873326/zoom_U1.jpg", "release_2_6_work/v2-sa_3873326/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep", "instruction_noref_zh": "给选中区域系上一条小蓝方巾。"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a small black terrier eating with its head lowered"},
+     "instruction_ref_zh": "将后方黑猫替换为一只低头进食的小黑梗犬。",
+     "instruction_noref_zh": "将选中区域替换为一只低头进食的小黑梗犬。",
+     "findings_addressed": [],
+     "reason": "Payload 'eating from the bowl' depended on a scene object; made self-contained for blind no-ref."}
+  ]
+}

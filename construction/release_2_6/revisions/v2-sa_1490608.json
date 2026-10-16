@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_1490608",
+  "reviewer": "shard1-b8",
+  "notes": "U1: livery stripe appears on both sides of the nose and the mask is the image-left blue+red band; ref now names side and both colours, new value dark green. U2: sign-to-sign with new text was not a structural replace; now replaced by a traffic cone. Masks unchanged (verified on clean crop).",
+  "reviewed_views": ["release_2_6_work/v2-sa_1490608/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the blue-and-red stripe on the image-left side of the plane’s lower nose", "payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+     "ref_zh": "飞机机鼻下沿画面左侧的蓝红条纹",
+     "instruction_ref_zh": "将飞机机鼻下沿画面左侧的蓝红条纹的颜色改为深绿色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Mirrored stripe on the image-right side; mask is the image-left blue+red band."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a red-and-white striped traffic cone"},
+     "instruction_ref_zh": "将右下方的黄色滑行道标牌替换为一个红白条纹交通锥。",
+     "instruction_noref_zh": "将选中区域替换为一个红白条纹交通锥。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same sign with new text is not a category change (and the original text is blurred); replaced by a traffic cone."}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_4885403",
+  "reviewer": "shard2-b7",
+  "notes": "U1 navy T-shirt -> white T-shirt was a colour-only replace; now a sleeveless running vest. U2 dangling 'near its top' moved into placement.site ('top'); v2 mask = pole mask ∩ box over its top segment (y 251-330).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4885403/case_sheet.jpg", "release_2_6_work/v2-sa_4885403/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a white sleeveless running vest"},
+     "instruction_ref_zh": "将前景跑者的藏蓝色上衣替换为一件白色无袖跑步背心。",
+     "instruction_noref_zh": "将选中区域替换为一件白色无袖跑步背心。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same garment type with only a colour change; a sleeveless vest is a structural change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a small blue pennant", "placement": {"relation": "on", "site": "top", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在足球门紧左侧的高杆顶部加上一面蓝色小三角旗。",
+     "instruction_noref_zh": "给选中区域加上一面蓝色小三角旗。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its top' moved to placement.site; mask now the top segment of the pole."}
+  ]
+}

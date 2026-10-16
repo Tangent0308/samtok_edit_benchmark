@@ -1,0 +1,51 @@
+{
+  "case_id": "v2-sa_6426125",
+  "reviewer": "round2",
+  "notes": "U3指定画面左扶手避免两侧歧义并把椅色核实为青绿色。U4原座缘被膝腿遮挡，改为左扶手顶部的小软垫，仍为同椅同add。U5 SAM两袖并集排除躯干。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6426125/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6426125/U3/final.jpg",
+    "release_2_6_work/v2-sa_6426125/U4/final.jpg",
+    "release_2_6_work/v2-sa_6426125/U5/t1.jpg",
+    "release_2_6_work/v2-sa_6426125/U5/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the turquoise folding chair beneath the rightmost person",
+        "target_part": "the image-left armrest"
+      },
+      "ref_zh": "最右坐者身下的青绿色折叠椅",
+      "instruction_ref_zh": "移除最右坐者身下青绿色折叠椅画面左侧的扶手。",
+      "reason": "两侧扶手均可见，明确画面左扶手并提交该部件mask。"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one small blue padded armrest cover",
+        "placement": {
+          "relation": "on",
+          "site": "top of the image-left armrest",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给最左坐者身下深色折叠椅画面左侧扶手顶部加上一个小蓝色软垫套。",
+      "reason": "原座缘在膝腿之间很窄且难与短裤区分；同一椅改为清晰可见扶手顶面的小软垫套，支持mask排除下方斜支撑杆。"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ]
+}

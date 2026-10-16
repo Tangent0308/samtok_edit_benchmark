@@ -1,0 +1,48 @@
+{
+  "case_id": "v2-sa_8917525",
+  "reviewer": "round2",
+  "notes": "U1穿着足袋不宜直接移除，保持remove操作与box交互，改选鼓车右端独立松放白布。U3定位实际裤子大腿外侧并排除原host的上衣小碎片。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_8917525/case_sheet.jpg",
+    "release_2_6_work/v2-sa_8917525/U1/t1.jpg",
+    "release_2_6_work/v2-sa_8917525/U1/final.jpg",
+    "release_2_6_work/v2-sa_8917525/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "category": "cloth",
+      "spec": {
+        "ref": "the loose white cloth on the image-right end of the drum cart",
+        "scope": "cloth",
+        "target_part": "",
+        "remove_mode": "whole"
+      },
+      "ref_zh": "鼓车画面右端松放的白布",
+      "scope_zh": "布",
+      "physical_parent_zh": "鼓车右端白布",
+      "parent_instance_id": "sa_8917525:鼓车右端白布",
+      "instruction_ref_zh": "移除鼓车画面右端松放的白布。",
+      "reason": "穿着足袋移除违背衣物自然编辑规则；独立松放白布可自然移除。SAM候选1完整选择白布，排除身后足袋和绳索。"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "紧邻保护"
+    ],
+    "scene_zh": "街头多人敲鼓表演",
+    "evidence_zh": "右边缘足袋须与同色裤脚分开；右前鼓手裤侧口袋紧邻鼓架，鼓车右端松放白布邻近足袋与绳索。",
+    "specific_protection_zh": "裤脚、鞋底、鼓、鼓棒、皮肤"
+  }
+}

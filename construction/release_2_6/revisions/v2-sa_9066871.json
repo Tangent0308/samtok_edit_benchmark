@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9066871",
+  "reviewer": "shard6-b4",
+  "notes": "Tail case, all units re-examined; existing masks are the edited regions (car, foreground streetlight, the woman's puffer jacket without beanie/legs, the exhibition sign board; U1/U3 overlap 0 px). U2 bare-colour no-op replace -> modern LED streetlight. U3 removing a worn jacket -> colour change. Refs made specific; U4 payload concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9066871/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "city"], "scene_zh": "坡道街景", "evidence_zh": "左下白色现代轿车、右侧前景的黑色灯笼式路灯、左下女子的黑色羽绒服和右下画展立牌是四个不同对象。", "specific_protection_zh": "保留车辆、行人服装和街道设施。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the white Hyundai sedan at the lower left", "scope": "sedan"},
+      "ref_zh": "左下方的白色现代轿车",
+      "scope_zh": "轿车",
+      "physical_parent_zh": "左下白色轿车",
+      "parent_instance_id": "sa_9066871:左下白色轿车",
+      "instruction_ref_zh": "将左下方的白色现代轿车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: the only white car at the lower left (Hyundai badge visible); the woman in front is excluded from the mask."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the tall black lantern streetlight in the right foreground", "scope": "streetlight", "payload": "a modern silver LED streetlight"},
+      "ref_zh": "右侧前景高大的黑色灯笼式路灯",
+      "scope_zh": "路灯",
+      "physical_parent_zh": "右侧前景路灯",
+      "parent_instance_id": "sa_9066871:右侧前景路灯",
+      "instruction_ref_zh": "将右侧前景高大的黑色灯笼式路灯替换为一根现代银色 LED 路灯。",
+      "instruction_noref_zh": "将选中区域替换为一根现代银色 LED 路灯。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "'with black' was a bare colour and the lamp is already black; several smaller lantern lamps stand further back, the masked one is the nearest and tallest."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"operation": "attribute", "ref": "the black puffer jacket of the woman in a black beanie at the lower left", "scope": "puffer jacket", "payload": "burgundy", "attributes": [{"property": "color", "value": "burgundy"}], "remove_mode": "whole"},
+      "ref_zh": "左下方戴黑色毛线帽女子的黑色羽绒服",
+      "scope_zh": "羽绒服",
+      "physical_parent_zh": "左下黑羽绒服女子",
+      "parent_instance_id": "sa_9066871:左下黑羽绒服女子",
+      "instruction_ref_zh": "将左下方戴黑色毛线帽女子的黑色羽绒服的颜色改为酒红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为酒红色。",
+      "findings_addressed": ["ill_posed_edit"],
+      "reason": "Removing a worn garment is ill-posed; converted to a colour change. The mask is exactly the jacket (box [234,1168,416,1424])."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the painting-exhibition sandwich board at the lower right", "scope": "sign", "payload": "one small red arrow pointing right", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "右下方的画展立牌",
+      "scope_zh": "立牌",
+      "physical_parent_zh": "右下画展立牌",
+      "parent_instance_id": "sa_9066871:右下画展立牌",
+      "instruction_ref_zh": "给右下方的画展立牌加上一个指向右边的红色小箭头。",
+      "instruction_noref_zh": "给选中区域加上一个指向右边的红色小箭头。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "Masked board advertises a painting exhibition (ТВОРЧА МАЙСТЕРНЯ); payload made concrete."
+    }
+  ]
+}

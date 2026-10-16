@@ -1,0 +1,71 @@
+{
+  "case_id": "v2-sa_3635508",
+  "reviewer": "round2",
+  "notes": "Clean source and unit zooms reviewed. U1 and U5 lower legs are not visible (only upper trouser fragments above foreground occluders), so retained remove operations on the photo-taking phone and far-left baseball cap. U3 hip cropped from host, eliminating remote fragments. No units dropped.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_3635508/case_sheet.jpg",
+    "release_2_6_work/v2-sa_3635508/U1/final.jpg",
+    "release_2_6_work/v2-sa_3635508/U3/final.jpg",
+    "release_2_6_work/v2-sa_3635508/U5/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the phone held horizontally by the gray-haired man in the front left",
+        "scope": "phone",
+        "remove_mode": "whole",
+        "target_part": ""
+      },
+      "ref_zh": "左前方灰发男子横举的手机",
+      "scope_zh": "手机",
+      "physical_parent_zh": "左前方灰发男子的手机",
+      "parent_instance_id": "sa_3635508:左前灰发男子手机",
+      "instruction_ref_zh": "移除左前方灰发男子横举的手机。",
+      "preserve": [
+        "保留握持手机的双手、人物和背景。"
+      ],
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "The raised object is a phone. Lower legs are outside the frame or occluded, so editing visible phone is feasible.",
+      "category": "phone"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    },
+    {
+      "id": "U5",
+      "action": "revise",
+      "spec": {
+        "ref": "the navy baseball cap of the man at the far-left edge",
+        "scope": "baseball cap",
+        "remove_mode": "whole",
+        "target_part": ""
+      },
+      "ref_zh": "画面最左侧男子的深蓝色棒球帽",
+      "scope_zh": "棒球帽",
+      "physical_parent_zh": "最左侧男子的棒球帽",
+      "parent_instance_id": "sa_3635508:最左男子棒球帽",
+      "instruction_ref_zh": "移除画面最左侧男子的深蓝色棒球帽。",
+      "preserve": [
+        "保留最左侧男子的头部、衣物和周围人物。"
+      ],
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Only an upper trouser strip is visible; lower legs are hidden behind foreground spectators. Retargeted to visible cap on same distinct man.",
+      "category": "baseball cap"
+    }
+  ]
+}

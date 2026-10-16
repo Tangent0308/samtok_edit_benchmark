@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_3317928",
+  "reviewer": "shard1b-b6",
+  "notes": "U2 mask covered both the plain dark-blue hijab and the separate light-blue floral scarf knotted at the neck; v2 mask = floral scarf only (SAM3 tracker with pos points on the floral cloth, neg on the hijab, intersected with host; box 720,551-1101,977), ref now names that scarf. U1 floral jar -> plain glass jar was only a pattern change; payload now a small white ceramic bowl.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3317928/case_sheet.jpg", "release_2_6_work/v2-sa_3317928/U2/p3.jpg", "release_2_6_work/v2-sa_3317928/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a small white ceramic bowl"},
+     "instruction_ref_zh": "将柜台上的花纹调料罐替换为一个白色小陶瓷碗。",
+     "instruction_noref_zh": "将选中区域替换为一个白色小陶瓷碗。",
+     "reason": "Replacing a floral glass jar with a plain glass jar is a pattern change only; a ceramic bowl is a genuine structural replacement."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the vendor's light-blue floral scarf knotted at the neck", "scope": "scarf"},
+     "ref_zh": "摊贩颈前打结的浅蓝色碎花围巾",
+     "scope_zh": "围巾",
+     "instruction_ref_zh": "将摊贩颈前打结的浅蓝色碎花围巾的颜色改为酒红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为酒红色。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Mask restricted to the knotted floral scarf; ref matches that single item."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_2516758",
+  "reviewer": "shard1b-b1",
+  "notes": "U1 replace was a pattern change (fruit apron -> plain white apron); payload rewritten to a structurally different short waist apron. U3 Chinese ref grammar fixed. U2/U4 verified on the sheet.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2516758/sheet_all.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a short black waist apron with front pockets"},
+     "instruction_ref_zh": "将左侧的水果图案围裙替换为一条带前口袋的黑色短款腰围裙。",
+     "instruction_noref_zh": "将选中区域替换为一条带前口袋的黑色短款腰围裙。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Bib apron -> short waist apron is a genuine structural change (no bib, shorter)."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "instruction_ref_zh": "在手持的白色桶上加上一张小蓝色库存标签。",
+     "findings_addressed": [],
+     "reason": "Chinese ref missing 上; English unchanged."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

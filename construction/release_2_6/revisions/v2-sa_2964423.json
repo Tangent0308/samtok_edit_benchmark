@@ -1,0 +1,17 @@
+{"case_id": "v2-sa_2964423", "reviewer": "shard1b-b4",
+ "notes": "U3 replace colour-only -> sleeveless vest. New problem: U1 W413 shirt is orange, not yellow (yellow shirts are W408/W405). Masks unchanged (shirts, hand excluded).",
+ "reviewed_views": ["release_2_6_work/v2-sa_2964423/case_sheet.jpg"],
+ "units": [
+  {"id": "U1", "action": "revise",
+   "spec": {"ref": "runner W413's orange shirt"},
+   "ref_zh": "W413跑者的橙色上衣",
+   "instruction_ref_zh": "在W413跑者的橙色上衣加上一枚小白色跑团徽章。",
+   "findings_addressed": [],
+   "reason": "Bib W413 runner wears an orange gradient shirt; 'yellow' contradicted the image."},
+  {"id": "U3", "action": "revise",
+   "spec": {"payload": "a white sleeveless running vest"},
+   "instruction_ref_zh": "将最左侧跑者的红色上衣替换为一件白色无袖跑步背心。",
+   "instruction_noref_zh": "将选中区域替换为一件白色无袖跑步背心。",
+   "findings_addressed": ["replace_is_attribute"],
+   "reason": "Plain white running shirt kept the garment type; sleeveless vest changes structure."}
+ ]}

@@ -1,0 +1,29 @@
+{
+  "case_id": "v2-sa_738866",
+  "reviewer": "shard3-b5",
+  "notes": "U2 replace made structural (poncho) and ref tied to the bird-feeding woman; U3 ref now names the railing segment right of the stone pillar and value changed from dark green (no-op) to bright red. Masks unchanged (all S=T).",
+  "reviewed_views": ["release_2_6_work/v2-sa_738866/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the white puffer coat of the woman stretching her arm over the railing", "payload": "a red plaid wool poncho"},
+     "ref_zh": "将手臂伸过栏杆的女子的白色羽绒服",
+     "scope_zh": "外套",
+     "physical_parent_zh": "伸手喂鸟的女子",
+     "parent_instance_id": "sa_738866:伸手喂鸟的女子",
+     "instruction_ref_zh": "将手臂伸过栏杆的女子的白色羽绒服替换为一件红色格纹羊毛斗篷。",
+     "instruction_noref_zh": "将选中区域替换为一件红色格纹羊毛斗篷。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "White coat -> yellow coat was colour-only (and a girl right below already wears yellow); a poncho is a structural garment change. Ref 'near the center' replaced by her unique action."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the green railing segment to the right of the stone pillar", "payload": "bright red", "attributes": [{"property": "color", "value": "bright red"}]},
+     "ref_zh": "石柱右侧的绿色栏杆段",
+     "physical_parent_zh": "石柱右侧栏杆段",
+     "parent_instance_id": "sa_738866:石柱右侧栏杆段",
+     "instruction_ref_zh": "将石柱右侧的绿色栏杆段的颜色改为亮红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为亮红色。",
+     "findings_addressed": ["ambiguous_ref", "attribute_value"],
+     "reason": "Mask is only the segment right of the stone pillar (x>1841); railing already green so dark green was a near no-op."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

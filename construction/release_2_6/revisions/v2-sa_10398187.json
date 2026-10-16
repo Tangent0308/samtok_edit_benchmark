@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_10398187",
+  "reviewer": "shard1-b3",
+  "notes": "Clean crop: U1 is an orange tubular delineator post with base (not a cone); U2 is the only conical traffic cone in the image, so 'right' was unnecessary. Masks are correct whole objects.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10398187/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the orange delineator post", "scope": "delineator post"},
+     "ref_zh": "橙色隔离柱", "scope_zh": "隔离柱", "physical_parent_zh": "橙色隔离柱",
+     "parent_instance_id": "sa_10398187:delineator_post",
+     "instruction_ref_zh": "移除橙色隔离柱。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Object is a tubular delineator post; it is the only such post in the image."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the orange traffic cone"},
+     "ref_zh": "橙色交通锥", "physical_parent_zh": "橙色交通锥",
+     "instruction_ref_zh": "将橙色交通锥替换为一个种有小黄杨的陶土花盆。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "With U1 renamed, this is the only conical traffic cone in the image; relative 'right' dropped."}
+  ]
+}

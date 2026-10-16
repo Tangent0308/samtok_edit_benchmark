@@ -1,0 +1,45 @@
+{
+  "case_id": "v2-sa_9123338",
+  "reviewer": "shard6-b6",
+  "notes": "Tail case, all units re-examined; masks are already the edited regions (U1 jacket mask checked: clasped hands are outside it; a SAM3 re-segmentation gave the same mask, not committed). U1 ref named the person -> brown corduroy jacket. U2 stool ref 'near the center' was wrong (stool is right of centre under the man in the black jacket with gold-striped hem) and wood stool was a material-only replace -> red plastic crate. U3 'cap at the right' -> the blue baseball cap of the man in the orange jacket (the only blue cap).",
+  "reviewed_views": ["release_2_6_work/v2-sa_9123338/case_sheet.jpg", "release_2_6_work/v2-sa_9123338/U1/t1.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "crowd", "park"], "scene_zh": "公园人群", "evidence_zh": "最左侧男子的棕色灯芯绒夹克、黑夹克男子身下的圆石凳和橙色夹克男子的蓝色棒球帽是三个不同对象。", "specific_protection_zh": "保留人物、座椅和公园环境。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the brown corduroy jacket of the man standing at the far left", "scope": "jacket"},
+      "ref_zh": "最左侧站立男子的棕色灯芯绒夹克",
+      "scope_zh": "夹克",
+      "physical_parent_zh": "最左侧男子",
+      "parent_instance_id": "sa_9123338:最左侧男子",
+      "instruction_ref_zh": "将最左侧站立男子的棕色灯芯绒夹克的颜色改为蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为蓝色。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Mask (box 91-331 x 591-964) is only the jacket; text named the whole person."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the round stone stool under the seated man in the gold-hemmed black jacket", "scope": "stool", "payload": "an upturned red plastic crate"},
+      "ref_zh": "下摆带金色条纹的黑夹克男子所坐的圆石凳",
+      "scope_zh": "石凳",
+      "physical_parent_zh": "黑夹克男子所坐的石凳",
+      "parent_instance_id": "sa_9123338:黑夹克男子所坐的石凳",
+      "instruction_ref_zh": "将下摆带金色条纹的黑夹克男子所坐的圆石凳替换为一个倒扣的红色塑料筐。",
+      "instruction_noref_zh": "将选中区域替换为一个倒扣的红色塑料筐。",
+      "findings_addressed": ["replace_is_attribute", "ambiguous_ref"],
+      "reason": "Several identical stone stools; masked one (cx=0.71W) is under the man in the black jacket with gold-striped hem. Wooden stool was material-only; crate is a structural change."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the blue baseball cap of the man in the orange jacket", "scope": "cap"},
+      "ref_zh": "穿橙色夹克男子的蓝色棒球帽",
+      "scope_zh": "棒球帽",
+      "physical_parent_zh": "橙色夹克男子",
+      "parent_instance_id": "sa_9123338:橙色夹克男子",
+      "instruction_ref_zh": "移除穿橙色夹克男子的蓝色棒球帽。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Other caps (white at left, white/red, gray flat cap at right) exist; the masked one is the only blue cap, on the man in the all-orange jacket."
+    }
+  ]
+}

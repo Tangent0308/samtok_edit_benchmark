@@ -1,0 +1,51 @@
+{
+  "case_id": "v2-sa_3628858",
+  "reviewer": "round2",
+  "notes": "修U4双介词及不可见船底附着区：同一船改船首挂一个护舷。蓝箱原本已是平顶木箱，改圆拱铰接盖储物箱保证结构变化。轮胎内孔从SAM候选中扣除。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_3628858/case_sheet.jpg",
+    "release_2_6_work/v2-sa_3628858/clean.jpg",
+    "release_2_6_work/v2-sa_3628858/U1_detail.jpg",
+    "release_2_6_work/v2-sa_3628858/U3_detail.jpg",
+    "release_2_6_work/v2-sa_3628858/U3_clean_zoom.jpg",
+    "release_2_6_work/v2-sa_3628858/U3/t1.jpg",
+    "release_2_6_work/v2-sa_3628858/U3/final.jpg",
+    "release_2_6_work/v2-sa_3628858/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a wooden storage chest with a domed hinged lid and metal clasps"
+      },
+      "instruction_ref_zh": "将前景的蓝色箱子替换为一个带圆拱铰接盖和金属搭扣的木储物箱。",
+      "reason": "原已为平顶木箱，圆拱盖与铰接结构避免仅换材质。"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one small white cylindrical fender",
+        "placement": {
+          "relation": "hanging from",
+          "site": "image-right bow",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给中上方漂浮的绿色船的图像右侧船首挂上一个小白色圆柱形护舷。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "原payload inside与relation in重复，且内底被船壁遮挡；同船可见船首自然挂护舷，图像核实此处尚无护舷。"
+    }
+  ]
+}

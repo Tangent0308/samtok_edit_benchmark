@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4791630",
+  "reviewer": "shard2-b7",
+  "notes": "U2 chair stands at the left of the round marble table, not behind it; ref fixed. U1 replace was a poster->poster colour/text change; rewritten as a structural replacement. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4791630/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a round mirror with a thin gold frame"},
+     "instruction_ref_zh": "将霓虹招牌下方的带框粉色海报替换为一面细金边圆镜。",
+     "instruction_noref_zh": "将选中区域替换为一面细金边圆镜。",
+     "findings_addressed": [],
+     "reason": "Pink framed poster -> blue poster with new text was only a colour/text change; now a real object change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the metal chair at the left of the round marble table"},
+     "ref_zh": "圆形大理石桌左侧的金属椅",
+     "instruction_ref_zh": "将圆形大理石桌左侧的金属椅的颜色改为浅蓝色。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Masked chair is at the image-left/front of the table, not behind it."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

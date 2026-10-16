@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_1112483",
+  "reviewer": "shard1-b5",
+  "notes": "U2 'rightmost' was wrong: the masked parasol is the leftmost/nearest white parasol on the left bank (more parasols at x~570-770 to its right) -> 'leftmost'. U3 add site 'railing' -> v2 mask = stone balustrade along the top of the central arched bridge (SAM3 'balustrade'). U1 magenta flag verified.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1112483/case_sheet.jpg", "release_2_6_work/v2-sa_1112483/U3/t1.jpg", "release_2_6_work/v2-sa_1112483/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the leftmost white parasol on the left bank"},
+     "ref_zh": "左岸最左侧的白色遮阳伞",
+     "instruction_ref_zh": "将左岸最左侧的白色遮阳伞的颜色改为藏蓝色。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked parasol (x 252-388) is left of the other left-bank parasols near the bridge (x~570-770)."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

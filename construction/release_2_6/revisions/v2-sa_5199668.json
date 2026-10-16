@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_5199668",
+  "reviewer": "shard0-b4",
+  "notes": "U4 removed a worn life jacket (ill-posed); retargeted to removing the isolated swimmer floating on his back with legs raised at the upper left (keeps remove op). U1 site 'front': the visible life-jacket region is entirely its front face, so the v2 site mask equals the 2.5.0 mask (reviewed).",
+  "reviewed_views": ["release_2_6_work/v2-sa_5199668/case_sheet.jpg", "release_2_6_work/v2-sa_5199668/zoom_U1.jpg", "release_2_6_work/v2-sa_5199668/U1/final.jpg", "release_2_6_work/v2-sa_5199668/U4/t1.jpg", "release_2_6_work/v2-sa_5199668/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise", "reviewer": "shard0-b4",
+     "spec": {},
+     "instruction_noref_zh": "给选中区域加上一个黄色求生哨。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: site 'front' mask committed (visible jacket = its front face); explicit blind Chinese no-ref without the site word."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise", "reviewer": "shard0-b4",
+     "spec": {"ref": "the lone swimmer floating with raised legs at the upper left", "scope": "swimmer"},
+     "ref_zh": "左上方独自漂浮、双腿抬起的游泳者",
+     "scope_zh": "游泳者",
+     "physical_parent_zh": "左上方仰浮游泳者",
+     "parent_instance_id": "sa_5199668:左上方仰浮游泳者",
+     "category": "person",
+     "instruction_ref_zh": "移除左上方独自漂浮、双腿抬起的游泳者。",
+     "preserve": ["All unrequested parts of the scene, neighboring swimmers and background; other units authorize their own changes.", "水面、浪花、其他游泳者"],
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Removing a life jacket worn in water is ill-posed; retargeted to an isolated floating swimmer (box ~[422,542,544,608]), removal reveals only water/splash."}
+  ]
+}

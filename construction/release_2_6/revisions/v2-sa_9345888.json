@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9345888",
+  "reviewer": "main-session",
+  "notes": "Audit: U1/U2 called the civilians' white shirts 'officers' (person/clothing level), U3 'hat at the left' is the right soldier's hat, U4 payload vague. Viewed case sheet; masks unchanged (already the edited regions).",
+  "reviewed_views": ["release_2_6_work/v2-sa_9345888/case_sheet.jpg"],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {"ref": "the white shirt of the left man of the two in white shirts", "scope": "shirt"},
+      "ref_zh": "两名白衬衫男子中左侧男子的白衬衫",
+      "scope_zh": "衬衫",
+      "physical_parent_zh": "左侧白衬衫男子",
+      "parent_instance_id": "sa_9345888:左侧白衬衫男子",
+      "instruction_ref_zh": "将两名白衬衫男子中左侧男子的白衬衫的颜色改为蓝色。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Mask is a civilian's white shirt; the ref named a whole 'officer'."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {"ref": "the white shirt of the right man of the two in white shirts", "scope": "shirt", "payload": "a black suit jacket"},
+      "ref_zh": "两名白衬衫男子中右侧男子的白衬衫",
+      "scope_zh": "衬衫",
+      "physical_parent_zh": "右侧白衬衫男子",
+      "parent_instance_id": "sa_9345888:右侧白衬衫男子",
+      "instruction_ref_zh": "将两名白衬衫男子中右侧男子的白衬衫替换为一件黑色西装外套。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Person was replaced by clothing; the mask is the shirt, so replace the shirt with a different garment."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {"ref": "the slouch hat of the soldier standing at the right by the memorial wall", "scope": "slouch hat"},
+      "ref_zh": "纪念墙前右侧站立士兵的宽檐帽",
+      "scope_zh": "宽檐帽",
+      "physical_parent_zh": "右侧士兵",
+      "parent_instance_id": "sa_9345888:右侧士兵",
+      "instruction_ref_zh": "移除纪念墙前右侧站立士兵的宽檐帽。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked hat is at x=0.82W on the right soldier; another slouch hat is at center-left."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {"ref": "the image-left boot of the soldier standing at the center", "scope": "boot", "payload": "one thin white stripe"},
+      "ref_zh": "中间站立士兵画面左侧的靴子",
+      "scope_zh": "靴子",
+      "physical_parent_zh": "中间士兵",
+      "parent_instance_id": "sa_9345888:中间士兵",
+      "instruction_ref_zh": "给中间站立士兵画面左侧的靴子加上一条细白色条纹。",
+      "instruction_noref_zh": "给选中区域加上一条细白色条纹。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "Several shoes visible; ref now names the central soldier's image-left boot; payload made specific."
+    }
+  ]
+}

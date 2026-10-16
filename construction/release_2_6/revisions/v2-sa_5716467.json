@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_5716467",
+  "reviewer": "shard2-b12",
+  "notes": "U2: dangling 'on its lid' -> site 'lid', v2 mask = lid only (SAM3 'laptop lid'); ref made unambiguous (the back laptop at left has its screen facing the camera, so 'facing the camera' was ambiguous). U4: open lined notebook replaced by the same thing -> payload changed to a closed hardcover book.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5716467/case_sheet.jpg", "release_2_6_work/v2-sa_5716467/U2/t1.jpg", "release_2_6_work/v2-sa_5716467/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the silver laptop turned away from the camera", "payload": "a small sunflower sticker", "placement": {"relation": "on", "site": "lid", "anchor_mode": "support"}},
+     "ref_zh": "背对镜头的银色笔记本电脑",
+     "instruction_ref_zh": "在背对镜头的银色笔记本电脑的背盖上加上一张小向日葵贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小向日葵贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its lid' removed; lid is the site and the mask is the lid. Ref disambiguated from the left laptop whose screen faces the camera."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a closed hardcover book"},
+     "instruction_ref_zh": "将桌面左边缘摊开的笔记本替换为一本合上的精装书。",
+     "instruction_noref_zh": "将选中区域替换为一本合上的精装书。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Source is already an open white lined notebook; payload now a structurally different object."}
+  ]
+}

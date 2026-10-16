@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_5447626",
+  "reviewer": "shard2-b10",
+  "notes": "U1 payload was a near-identical pale blue shirt (pattern-only change); now a structurally different garment. U4 dangling 'on its rim' removed. U3 'light' added (a darker stool stands deeper in the doorway). Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5447626/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a white long-sleeved kurta"},
+     "instruction_ref_zh": "将卖花者的条纹Polo衫替换为一件白色长袖库尔塔衫。",
+     "instruction_noref_zh": "将选中区域替换为一件白色长袖库尔塔衫。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Seller wears a pale blue-grey striped short-sleeved polo; a long-sleeved kurta is a real garment change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the light wooden stool in the left doorway"},
+     "ref_zh": "左侧门洞里的浅色木凳",
+     "instruction_ref_zh": "将左侧门洞里的浅色木凳的颜色改为绿色。",
+     "findings_addressed": [],
+     "reason": "A second, dark stool is visible deeper inside the same doorway."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small price tag reading 50"},
+     "instruction_ref_zh": "给前景装有白花的大编织袋加上一张写有50的小价签。",
+     "instruction_noref_zh": "给选中区域加上一张写有50的小价签。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its rim'; anchor stays the sack fabric."}
+  ]
+}

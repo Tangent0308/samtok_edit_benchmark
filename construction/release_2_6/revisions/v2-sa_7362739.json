@@ -1,0 +1,28 @@
+{
+  "case_id": "v2-sa_7362739",
+  "reviewer": "shard3-b4",
+  "notes": "U1 billboard position fixed; U2 removing a boat full of passengers (and conflicting with U3) converted to a hull recolour; U3 person->garment replaced by garment->garment with a new SAM3 mask of her top; U4 life-ring finding rejected (ring is already a hole in the mask).",
+  "reviewed_views": ["release_2_6_work/v2-sa_7362739/case_sheet.jpg", "release_2_6_work/v2-sa_7362739/U3/final.jpg", "release_2_6_work/v2-sa_7362739/U4/t2.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the turquoise CHINTAI billboard at the top center"},
+     "ref_zh": "上方中央的青绿色CHINTAI广告牌",
+     "physical_parent_zh": "CHINTAI广告牌", "parent_instance_id": "sa_7362739:CHINTAI广告牌",
+     "instruction_ref_zh": "将上方中央的青绿色CHINTAI广告牌的颜色改为橙色。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked CHINTAI board is at upper center (cx=0.49); the large cyan runner billboard is at the left."},
+    {"id": "U2", "action": "revise",
+     "spec": {"operation": "attribute", "ref": "the purple tour boat in the center", "payload": "dark green",
+              "attributes": [{"property": "color", "value": "dark green"}], "remove_mode": "whole"},
+     "instruction_ref_zh": "将中央的紫色游船的颜色改为深绿色。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Boat carries ~40 passengers excluded from the mask; removing it would leave them floating and conflict with U3. Recolouring the purple boat is feasible; mask (boat only) unchanged."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the lilac top of the passenger sitting just behind the boat's cabin", "scope": "top"},
+     "ref_zh": "紧挨船舱后方就座乘客的淡紫色上衣", "scope_zh": "上衣",
+     "physical_parent_zh": "船舱后方乘客", "parent_instance_id": "sa_7362739:船舱后方乘客",
+     "instruction_ref_zh": "将紧挨船舱后方就座乘客的淡紫色上衣替换为一件黄色雨衣。",
+     "findings_addressed": ["person_clothing_level"],
+     "reason": "Whole person was replaced by a garment and 'near the right side' was wrong (she sits right behind the cabin, left end of the passenger area). Now her lilac top (SAM3 'top', x1207-1277,y748-808, verified) is replaced by a yellow raincoat."}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_2448967",
+  "reviewer": "shard0b-b3",
+  "notes": "No audit findings. U1 remove part (sleeves) -> v2 mask = both T-shirt sleeves (SAM3 'sleeve', 2 comps). U3 add site -> v2 = the visible back of the bending vendor's blue top (stray pixel component at ~(330,345) dropped); awkward 'visible back of the top visible on' rewritten.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2448967/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2448967/U1/final.jpg",
+    "release_2_6_work/v2-sa_2448967/U3/final.jpg"
+  ],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 part mask: both short sleeves (boxes 296-405 x 534-684 and 637-713 x 608-778)."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the blue top of the bending vendor at the left rear", "placement": {"relation": "on", "site": "back", "anchor_mode": "support"}},
+     "ref_zh": "左后方弯腰商贩的蓝色上衣",
+     "instruction_ref_zh": "给左后方弯腰商贩的蓝色上衣加上一块缝在后背上的小黄色布贴。",
+     "instruction_noref_zh": "给选中区域加上一块小黄色布贴。",
+     "findings_addressed": [],
+     "reason": "Ref had a doubled 'visible' clause; only the bent back of the top is visible, so site = back and mask = that back region (209-381 x 109-256)."}
+  ]
+}

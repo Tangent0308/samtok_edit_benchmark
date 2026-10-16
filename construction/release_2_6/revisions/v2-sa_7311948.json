@@ -1,0 +1,31 @@
+{
+  "case_id": "v2-sa_7311948",
+  "reviewer": "shard3-b4",
+  "notes": "U1 replace made structural; U3 umbrella is at the far left, not the middle; U4 chair was occupied (no visible seat) and fragmented, retargeted to the black litter bin with a SAM3 mask.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7311948/case_sheet.jpg", "release_2_6_work/v2-sa_7311948/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a stone bench with a high backrest"},
+     "instruction_ref_zh": "将前景的木长椅替换为一张带高靠背的石凳。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Dark green bench was only a recolour; a stone bench with a backrest is a structural change."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the light blue patio umbrella at the far left", "payload": "yellow and white stripes",
+              "attributes": [{"property": "pattern", "value": "yellow and white stripes"}]},
+     "ref_zh": "最左侧的浅蓝色遮阳伞",
+     "physical_parent_zh": "最左侧遮阳伞", "parent_instance_id": "sa_7311948:最左侧遮阳伞",
+     "instruction_ref_zh": "将最左侧的浅蓝色遮阳伞的图案改为黄白条纹。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Mask box x0-271 (cx=0.06) is the far-left umbrella; pattern value made a concrete pattern."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the black litter bin on the square at the center-left", "scope": "litter bin",
+              "payload": "a small green recycling symbol sticker",
+              "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "广场左中部的黑色垃圾桶", "scope_zh": "垃圾桶", "physical_parent_zh": "黑色垃圾桶",
+     "parent_instance_id": "sa_7311948:黑色垃圾桶",
+     "instruction_ref_zh": "在广场左中部的黑色垃圾桶上加上一张绿色小回收标志贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张绿色小回收标志贴纸。",
+     "findings_addressed": ["add_anchor"],
+     "reason": "Folding chair was occupied by a seated man (seat hidden, mask fragmented). Retargeted to the only black litter bin (x640-717,y821-936), SAM3 mask verified; add kept as operation."}
+  ]
+}

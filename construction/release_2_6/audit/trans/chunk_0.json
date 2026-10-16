@@ -1,0 +1,1012 @@
+[
+{
+"key": "v2-sa_5460754|U2|0",
+"evidence": "Bottom row has four reels (two far-left, U2 third, U3 rightmost). U2 (box x 614-978) is the third, left of the bottom-right reel, not clearly 'center'; 'partly hidden' disambiguates somewhat but the second reel is also partly occluded.",
+"other": null
+},
+{
+"key": "v2-sa_4521545|U3|6",
+"evidence": "REF 'the black helmet of the rider just left of center' with formal input ref+none; several black helmets of riders sit near/left of center (x~0.30, 0.40 masked, 0.46, 0.48 of width) so the phrase does not uniquely pick the masked helmet at box [854,584,933,655].",
+"other": "or change formal input to include box/mask"
+},
+{
+"key": "v2-sa_604524|U4|12",
+"evidence": "REF calls the masked inner top 'orange' but pixels show a mustard-yellow top (North Face logo) under a brown jacket at lower left; target is still unique.",
+"other": "ZH 橙色 -> 黄色"
+},
+{
+"key": "v2-sa_4507759|U3|18",
+"evidence": "U3 jacket mask has a second small component above the jacket over the woman's dark hair/head area (around composite x=140-175,y=445-485), not part of the jacket.",
+"other": "drop the small upper component of the mask so only the navy jacket torso remains"
+},
+{
+"key": "v2-sa_4817785|U3|24",
+"evidence": "U3 mask (box [1970,358,2074,550]) outlines the entire far worker silhouette including head, cap and hands, not only the blue workwear; scope is 'workwear'.",
+"other": "Refine mask to exclude head/cap/hands (garment only), or re-scope the unit to the whole person with a non-clothing edit."
+},
+{
+"key": "v2-sa_2875285|U1|30",
+"evidence": "NOREF ZH '移除选中的衣领' uses 衣领 (shirt collar) while the target is a dog sculpture's collar (项圈), as the REF ZH correctly says.",
+"other": "ZH noref: 移除选中的项圈。"
+},
+{
+"key": "v2-sa_2207729|U1|37",
+"evidence": "U1 lamp cx=0.52W is at/just right of image center, not 'just left of center'; still unique as the tall lamp near the center.",
+"other": "ZH: 移除画面中间的高街灯。"
+},
+{
+"key": "v2-sa_6714451|U1|43",
+"evidence": "U1 removes 'the raised rim' of the front red tray heaped with ice and scallops; the rim is the tray's side wall that holds the contents, so removing it leaves a physically implausible flat sheet with ice spilling; the expected result is undefined.",
+"other": "convert part-remove to attribute or replace whole tray"
+},
+{
+"key": "v2-sa_9865645|U2|49",
+"evidence": "REF 'the man directly behind him' depends on U1's referent ('him' undefined when REF is used alone); the target is the green-shirted man with white 'THE DENIM BROS' lettering standing behind the bending man.",
+"other": null
+},
+{
+"key": "v2-sa_2361184|U4|55",
+"evidence": "REF calls the child's blue top 'sleeveless', but in the crop it looks like a short-sleeved blue T-shirt with white lettering.",
+"other": null
+},
+{
+"key": "v2-sa_10175525|U1|61",
+"evidence": "REF/ZH call the masked shoe a 'black sneaker', but the masked shoe (box [1598,1127,1684,1273]) is a gray canvas high-top with black laces. A genuinely black sneaker (black Vans with white sole) is right next to it at about (1840,1350) on the right, so the ref-only reading would likely pick the wrong shoe.",
+"other": "ZH: 移除右侧从前景人物身后迈出的一只灰色高帮运动鞋。"
+},
+{
+"key": "v2-sa_1141051|U1|67",
+"evidence": "ZH REF '移除右前警员防护背心下露出的白衬衫领口与两袖的衣领' is garbled (mentions 领口与两袖 then 衣领); English only removes the collar.",
+"other": "ZH: 移除右侧警员防护背心下白衬衫的衣领。"
+},
+{
+"key": "v2-sa_1901719|U2|73",
+"evidence": "The right-rear child in black is reaching toward/touching the flowers, not clearly pointing; descriptor 'person pointing' is loose though the instance is unique.",
+"other": null
+},
+{
+"key": "v2-sa_2127869|U1|79",
+"evidence": "'the front transparent bottle with a white label on the upper shelf' fits several upper-shelf clear tonic bottles with white labels (the one immediately right of U1, and U4 at its left). Mask is the bottle at box [1558,126,1666,520], the second clear bottle right of the Coca-Cola bottles.",
+"other": null
+},
+{
+"key": "v2-sa_2315709|U4|85",
+"evidence": "Dozens of men in the upper rows wear identical black wide-brimmed hats; 'the black wide-brimmed hat in the upper-left row' does not identify the masked hat (~0.29W,0.07H). Also the stored box [597,115,950,215] is much wider than the mask (mask only spans roughly x 600-740), so the box locator also covers neighboring heads.",
+"other": "tighten box to the hat mask extent"
+},
+{
+"key": "v2-sa_37740|U4|91",
+"evidence": "Masked bulb (box x 379-640) is the second bulb from the left; another, partly cut-off bulb hangs at the same height at the far left edge (x~0-170). 'the glass light bulb at the middle left' could be read as either.",
+"other": null
+},
+{
+"key": "v2-sa_4812427|U1|97",
+"evidence": "The floral-shirted man's jeans (box [1614,591,1792,1026]) are already medium/dark denim blue; 'to dark blue' is a near no-op and hard to score.",
+"other": null
+},
+{
+"key": "v2-sa_5904224|U1|103",
+"evidence": "The masked nearest wicker chair (box x1492-1628) is seen from behind: its woven backrest faces the camera and the seat faces the table, same orientation as U2/U3 which are called 'back-facing'. REF/ZH 'facing the camera with its back to the table' is the reverse of what the image shows.",
+"other": "ZH -> 移除最靠前、背对镜头面向桌子的藤椅。"
+},
+{
+"key": "v2-sa_6330783|U2|109",
+"evidence": "Many bright-pink cases are in the display (e.g. the pink one with a raised loop handle at left-center, the large pink cases at front right). The masked handle (center 0.45W,0.62H) is on a pink case in the middle rows behind the red ribbed cases, not clearly 'at the front center'.",
+"other": null
+},
+{
+"key": "v2-sa_7223032|U1|115",
+"evidence": "U1 mask is the red/blue/green/yellow umbrella at the upper-left (box y 651-926, mid-height). A larger umbrella at the bottom-left (yellow/green/blue, ~y 1200-1500) is clearly nearer the camera, so \"the nearest multicolored umbrella canopy on the left\" points to the wrong one.",
+"other": null
+},
+{
+"key": "v2-sa_7543855|U5|121",
+"evidence": "REF/ZH call the target 'pale trousers' (浅色裤子), but the masked trousers [534,860,630,1133] of the person standing behind the left table (black T-shirt, hands clasped, gray sneakers) are black/very dark. The color descriptor contradicts the pixels and could send a ref-only model to a different, lighter garment.",
+"other": "ZH: 将左后方桌子后被桌腿截断的黑色裤子替换为宽松及踝亚麻长裤。"
+},
+{
+"key": "v2-sa_8120561|U2|127",
+"evidence": "REF calls the driver's jacket 'blue'; in the image it is a dark, nearly black leather-look jacket with only a cool blue cast from the color grading. Target is unambiguous (only one driver).",
+"other": "ZH: 将高处车夫的深色外套改为深棕色。"
+},
+{
+"key": "v2-sa_8402603|U5|133",
+"evidence": "REF says the orange shell is 'on both sides of the central pole'. The pole that splits the masked chair (box [191,1141,677,1443]) is the foreground steel pole at about x=450 (0.2W). The case's own U4 calls this same pole 'the pole on the left'. The image also has a separate chrome pole at the true center (about x=1180), so 'central pole' points to the wrong place.",
+"other": "ZH: 移除左侧前景立杆两侧露出的橙色空座椅壳。"
+},
+{
+"key": "v2-sa_10006079|U2|139",
+"evidence": "The masked object is a black Quechua duffel/holdall bag lying on the boat floor (horizontal barrel shape with drawcords), not a backpack; still uniquely identifiable as the black bag beside the woman.",
+"other": null
+},
+{
+"key": "v2-sa_10308802|U1|145",
+"evidence": "'rightmost rear wheel of the black truck' — masked wheel is the right wheel of the trailer's rear axle group (x~601-664 src); the tractor's own rear drive wheels further right (~x 940-1120 src) could also be read as rear wheels of the truck.",
+"other": null
+},
+{
+"key": "v2-sa_10444816|U2|151",
+"evidence": "Several men in orange T-shirts and pink caps are present (far left x~0.0-0.05W, behind U1 at ~0.12W). U2 (box [648,686,774,840], center 0.36W) is the one walking at center in the background, but 'the orange T-shirt facing away in the background' could also fit the orange-shirted man behind the banner on the left.",
+"other": null
+},
+{
+"key": "v2-sa_10682062|U2|157",
+"evidence": "U2 lamp (box center 0.15W,0.64H) hangs on the wire level with the tower base; at least 4 other suspended lamps are also left of the church spire (lower over the trees at ~0.2W,0.78H, ~0.17W,0.85H, ~0.08W,0.91H, and the top-left lamp at 0.0W,0.34H), so the REF does not single it out.",
+"other": null
+},
+{
+"key": "v2-sa_10817186|U1|163",
+"evidence": "A motion-blurred person in a bright red jacket stands just left of the masked man (x~0.37W). 'Central person' still points to the sharp man in the dark red coat at 0.49W, but a REF that names him more specifically would be safer.",
+"other": null
+},
+{
+"key": "v2-sa_1112483|U2|169",
+"evidence": "The U2 mask is the large white parasol at box [252,890,388,920] (cx=0.16) in the near left-bank cafe. In the source, more white parasols sit further right on the same left bank at about x=570-770, y=890 next to the central bridge, so the masked one is the nearest/leftmost, not the rightmost.",
+"other": "also fix ZH: 将左岸最近的白色遮阳伞的颜色改为藏蓝色。"
+},
+{
+"key": "v2-sa_1131468|U1|175",
+"evidence": "'the large straw hat in the center': masked conical straw hat is right of center (box center x=0.71W, y=0.34H); other straw hats exist at upper left. 'large' still disambiguates.",
+"other": null
+},
+{
+"key": "v2-sa_1317508|U3|181",
+"evidence": "REF 'the large waterside shrub just right of the boat' — the masked shrub is at x~1876-2084 (0.90W), far from the boat stern (~0.66W); the shrubs/reeds immediately right of the boat (~0.68-0.75W) better fit 'just right of the boat'.",
+"other": "ZH: 将右侧银色汽车下方水边的大圆灌木替换为一丛开白花的绣球。"
+},
+{
+"key": "v2-sa_14654|U3|187",
+"evidence": "U3 bottle (leftmost in middle row, blue capsule) is already a very dark (likely dark-green/black) glass wine bottle; 'change the material to green glass' is a near no-op (glass->glass) whose success a judge cannot reliably verify.",
+"other": "or use a color attribute on the blue capsule, e.g. change it to red"
+},
+{
+"key": "v2-sa_1571336|U4|193",
+"evidence": "U4 replaces the metal deck railing of the brown houseboat (box [1552,866,1740,925]) with 'a wooden deck railing' - same category (railing), only material changes; this is an attribute (material) edit, not a replace.",
+"other": "Or convert to attribute: 'Change the material of the deck railing ... to wood.'"
+},
+{
+"key": "v2-sa_1642015|U4|199",
+"evidence": "Two pale green ceramic bowls/pots sit on top of the glass display case; the masked one is the right one (box x 1088-1192), the other is just left of it.",
+"other": null
+},
+{
+"key": "v2-sa_1752343|U3|205",
+"evidence": "U3 replaces the black estate car with 'a blue estate car' - same category/structure, only a color change; belongs to attribute.",
+"other": "or convert to attribute: Change the color of the black estate car immediately right of the minivan to blue."
+},
+{
+"key": "v2-sa_1915366|U1|211",
+"evidence": "REF says 'the foreground utility pole in the center', but the masked pole is at x=0.29W (box 626-701 of 2250), clearly left of center; another pole stands further left (~0.15W) and one right of center (~0.72W). 'Foreground' partly identifies it (it is the nearest and tallest pole), but 'in the center' is wrong.",
+"other": null
+},
+{
+"key": "v2-sa_1954663|U4|217",
+"evidence": "The cream building at the right edge has two white louvered shutters: the masked lower one [1354,889,1485,1426] beside the green AED box, and an upper one at roughly the same x (~1400-1480, y~270-680 in source) on the upper floor. 'the white shutter at the right edge' fits both.",
+"other": "ZH: 将右边缘下层、绿色壁挂箱旁的白色百叶窗板的颜色改为浅蓝色。"
+},
+{
+"key": "v2-sa_215762|U4|223",
+"evidence": "U4 door mask has scattered fragments along the top edge over the brick wall and ragged pieces at the right edge.",
+"other": "clean stray mask fragments"
+},
+{
+"key": "v2-sa_2310142|U3|229",
+"evidence": "U3 'Replace the oncoming gray minivan with a white minivan' keeps the same category (minivan) and only changes color; the masked vehicle is a dark Toyota Sienna minivan.",
+"other": "or convert to attribute: 'Change the color of the oncoming gray minivan to white.'"
+},
+{
+"key": "v2-sa_2366400|U2|235",
+"evidence": "Another white-globe lamppost stands further left (~0.18W) beside the lower-left steps. The masked one at the top of the small stairway is more prominent, but 'beside the stairs' does not strictly single it out.",
+"other": null
+},
+{
+"key": "v2-sa_2516758|U1|241",
+"evidence": "Masked object is a white apron printed with fruit (apples, grapes) worn by the left worker; 'a plain white apron' keeps the same garment category and shape, only removing the print, i.e. a pattern attribute edit.",
+"other": "or convert to attribute: 'Change the pattern of the fruit-patterned apron on the left to plain white.'"
+},
+{
+"key": "v2-sa_2602254|U2|247",
+"evidence": "Another blue chair is partly visible directly behind/right of the masked chair (~x 1140-1160 display), so \"rightmost\" is slightly loose. The masked chair is the front-most one at the right end of the row.",
+"other": null
+},
+{
+"key": "v2-sa_271071|U3|253",
+"evidence": "U3 black crossbody bag (box [1971,674,2169,881]) is worn across the body of the same bubble seller whose T-shirt is U1; the two masks are adjacent on the same person, though the bag is a separate object.",
+"other": "acceptable as separate object; optionally choose a bag/object not worn by the U1 person"
+},
+{
+"key": "v2-sa_2741974|U3|259",
+"evidence": "The masked sign (box x 993-1110, y 240-277) is already a dark/black curved-top sign with white text 'Croeso i Bentywyn / Welcome to Pendine'. Replacing it with 'a black sign reading Welcome in white' is nearly a no-op; the change (text shortening, shape) is not specified clearly, so success is hard to judge.",
+"other": null
+},
+{
+"key": "v2-sa_280789|U2|265",
+"evidence": "The masked jug [1560,1284,1607,1367] is a translucent beige/tan jug standing on the ground among people's feet in front of the right-side stalls, not clearly yellow nor on a stall; 'yellow plastic jug at the right-hand stall' is a loose description (unique enough, but color/location wording could mislead).",
+"other": null
+},
+{
+"key": "v2-sa_287526|U2|271",
+"evidence": "Replacing the cream terrace awning with 'a charcoal canvas awning' keeps the same object category; only color/material changes.",
+"other": "or convert to attribute: Change the color of the cream awning ... to charcoal."
+},
+{
+"key": "v2-sa_2922373|U3|277",
+"evidence": "Target is a folded black-and-white striped parasol seen through the central opening; payload 'a folded cream canvas parasol' keeps the same category and shape, only changing color/material - this is an attribute edit, not a replace.",
+"other": "Alternatively convert to attribute: Change the color of ... to cream."
+},
+{
+"key": "v2-sa_2981106|U2|283",
+"evidence": "Three dark lampshades hang on brackets on the left; U2 mask (box y 1274-1373, ~0.59H) is the middle one. Another lampshade is clearly above it (~0.52H, at the upper bracket), and one below (~0.65H). \"uppermost lampshade on the left\" (ZH 最上方) names the upper lamp, not the masked one.",
+"other": "ZH: 将左侧三盏灯中间那盏的灯罩颜色改为白色。"
+},
+{
+"key": "v2-sa_3081992|U2|289",
+"evidence": "Board mask box [449,501,845,1144] extends well below the STRAWBERRY 2 for £5 board; the mask includes the hanging string loop and a fragment on the round sticker of the strawberry punnet below.",
+"other": "Trim mask to the chalkboard only (box approx y 501-1000)."
+},
+{
+"key": "v2-sa_3125315|U2|295",
+"evidence": "Stored box [152,1709,394,2220] extends far below the leopard-print case mask (which ends around y~1950) down into the next row of cases; tiny stray mask specks appear near the bottom of the box. Box locator is looser than the object.",
+"other": "Recompute box tightly from the main mask component and drop stray specks."
+},
+{
+"key": "v2-sa_3171541|U2|301",
+"evidence": "The U2 coat mask outline (box x 1526-1676) wraps around the navy crossbody shoulder bag hanging over the coat at the right hip (and the hand on the cane); the bag is not carved out, so a recolor would also recolor the bag.",
+"other": "Re-cut the coat mask to exclude the navy crossbody bag and strap and the hand."
+},
+{
+"key": "v2-sa_3317825|U1|307",
+"evidence": "U1 replaces a pale green cabbage with 'a red cabbage' - same vegetable category/shape, effectively a color change.",
+"other": "or convert to attribute: Change the color of the cabbage nearest the vendor's knee to purple."
+},
+{
+"key": "v2-sa_3376573|U2|313",
+"evidence": "Scope is 'sconce frame' (REF: change material of the metal frame to brass), but the mask (box [217,874,355,1063]) covers the whole double sconce including the two large frosted-glass shades, which make up most of the mask area. A material change applied to the mask would turn the glass shades to brass.",
+"other": "Restrict mask to the dark metal arms/backplate only, or change scope to the whole sconce and edit to 'Change the material of the metal arms of ... to brass' with a frame-only mask."
+},
+{
+"key": "v2-sa_3514872|U1|319",
+"evidence": "The masked object is a blue rectangular illuminated PERONI sign; the replacement 'a blue sign reading BAR in white' keeps the same category, shape and color and only changes the printed text, so it is a text/content edit rather than a category/structure replacement.",
+"other": "or recast as a text edit outside replace"
+},
+{
+"key": "v2-sa_3562449|U4|326",
+"evidence": "U4 mask (box [1032,1086,1397,1187]) is the ornamental iron railing on top of a square stone bastion/pier at the river bend; there is no pointed-roof turret visible there. REF 'railing around the pointed-roof riverside turret' describes a nonexistent structure and could mislead judges.",
+"other": "ZH: 在河岸方形石台上的铁栏杆加上一个种有红花的窄花槽。"
+},
+{
+"key": "v2-sa_3633381|U4|333",
+"evidence": "Two curved streetlamps appear on the left: a long arched arm lamp at the far left (pole ~x=70, arm arcing right at y~105) and the masked pole at x~200 whose curve is cut off at the top edge.",
+"other": null
+},
+{
+"key": "v2-sa_3662681|U2|339",
+"evidence": "U2 wall lantern above the pizza sign already has a dark gray/black metal frame; 'change the color to black' yields little visible change.",
+"other": null
+},
+{
+"key": "v2-sa_3717579|U2|346",
+"evidence": "The diagonal tube structure has a continuous slot window divided by seams into several panes running from lower-left to upper-right (~x 0-500 in composite); the mask covers only one pane (box x 66-302, far upper-left at 0.08W), which is not 'above the truck' (truck cab is at ~0.2-0.4W, lower). 'the long diagonal window above the truck' suggests the whole strip or a pane nearer the truck.",
+"other": "or extend mask to the full diagonal window strip"
+},
+{
+"key": "v2-sa_3783196|U4|352",
+"evidence": "U4 box starts at x=458 although the red pack is at ~x 575-697; a tiny stray mask fragment appears on the neighboring purple/orange pack to the left (~x 460).",
+"other": "Remove stray fragment so mask/box covers only the red pack below the top green pack."
+},
+{
+"key": "v2-sa_3817024|U1|359",
+"evidence": "The passing man's shirt (box x 1274-1385) is a small white/gray checked (gingham) pattern, not striped; he is the only passer-by, so the target is still identifiable.",
+"other": "ZH 条纹 -> 格纹"
+},
+{
+"key": "v2-sa_3872458|U2|365",
+"evidence": "'Replace the black crossbody bag ... with a blue canvas sling bag': a sling bag is the same category as a crossbody bag; edit only changes color/material.",
+"other": null
+},
+{
+"key": "v2-sa_4003889|U1|372",
+"evidence": "REF/ZH call the crouching man's T-shirt 'navy', but in the image (box [886,725,1143,923]) it appears black; the target is still unique (crouching man in blue jeans at front).",
+"other": "ZH: 黑色T恤"
+},
+{
+"key": "v2-sa_4034728|U2|379",
+"evidence": "The mask is a dark navy SUV roof/cabin at ~0.62W behind the formation. A black pickup sits directly in front of it and other dark vehicles are parked along the back row, so \"the dark SUV visible behind the center\" is somewhat loose.",
+"other": null
+},
+{
+"key": "v2-sa_4179283|U1|387",
+"evidence": "U1 masks a yellow pennant flag high on a pole at right (box [1523,583,1547,692]). Replacing it with 'a plain white flag' keeps the flag category and shape and only changes the color.",
+"other": "change op to attribute, or keep replace with a different object, e.g. 'Replace the high yellow flag on the right with a red paper lantern.'"
+},
+{
+"key": "v2-sa_4256768|U1|394",
+"evidence": "Masked object is a dark navy/black daypack worn by the man in the white T-shirt; 'Replace ... with a small brown leather backpack' keeps category backpack and only changes color/material/size.",
+"other": null
+},
+{
+"key": "v2-sa_4293407|U3|401",
+"evidence": "The masked object is a pale patio umbrella with a 'MOVENPICK' print at the top-right corner. Replacing it with 'a plain dark green canopy' keeps the same object type and only changes color and removes the print. Calling it a 'canopy' is also loose; it is a market umbrella.",
+"other": "Or convert to attribute: 'Change the color of the pale patio umbrella at the upper right to dark green.'"
+},
+{
+"key": "v2-sa_4421546|U2|411",
+"evidence": "Masked object is a dark navy knit beanie on the seated vendor; 'a gray wool beanie' is the same headwear type/shape, only color (and nominal material) change.",
+"other": "or use a clearly different structure such as 'a brown flat cap with a short brim', or convert to attribute 'Change the color of the dark knit cap ... to gray.'"
+},
+{
+"key": "v2-sa_4505880|U2|419",
+"evidence": "The right-hand building shows three dark shutters: one at the top (approx x 1130-1250, y 0-310), the masked one (box x 1043-1124, y 585-796), and another cropped one at the far right edge lower down (approx x 1390-1500, y 700-1020). The masked shutter is not the lowest, so 'the lower shutter on the right-hand building' contradicts or at least does not uniquely identify it.",
+"other": null
+},
+{
+"key": "v2-sa_4555867|U2|428",
+"evidence": "The left passenger's jacket (box 934-1039) is already a light-blue denim jacket with patches. Replacing it with 'a navy denim jacket' keeps the garment type and material and only changes the color.",
+"other": "Or convert to attribute: 'Change the color of the left passenger's light blue jacket to navy.'"
+},
+{
+"key": "v2-sa_463680|U3|438",
+"evidence": "Two yellow crates sit at the back of the counter (the masked upper one at view y~600-645 and a second one directly below-right at y~635-680); 'the yellow crate at the back of the counter' does not single out the upper one.",
+"other": null
+},
+{
+"key": "v2-sa_4740557|U1|447",
+"evidence": "U1 masks the gray Hello Kitty T-shirt of the girl at the left (box [221,818,418,1049]). The payload 'a plain pale pink T-shirt' keeps the T-shirt category and structure and only removes the print and changes the color.",
+"other": "or convert to attribute: 'Change the color of the Hello Kitty T-shirt on the girl at the left to plain pale pink.'"
+},
+{
+"key": "v2-sa_4885403|U1|456",
+"evidence": "The foreground runner already wears a navy short-sleeved athletic T-shirt; replacing it with 'a white athletic T-shirt' only changes color (same garment type).",
+"other": "Or convert to attribute: 'Change the color of the navy shirt on the foreground runner to white.'"
+},
+{
+"key": "v2-sa_49886|U2|467",
+"evidence": "The masked object is an open green branded patio umbrella. Replacing it with \"a cream patio umbrella\" keeps the same object type and changes only its color.",
+"other": "or convert to attribute: Change the color of the green umbrella beneath the left balcony to cream."
+},
+{
+"key": "v2-sa_5020470|U3|475",
+"evidence": "'Replace the small SALE PREMIUM ACCESSORY sign with a white sign reading TEST RIDES AVAILABLE': same object category (small sign), only color and printed text change.",
+"other": "or convert to attribute (change text/color of the sign)"
+},
+{
+"key": "v2-sa_5074342|U3|484",
+"evidence": "Masked trunk (box [725,751,797,1188]) is the second trunk to the left of the thickest trunk (x~950-1050); another trunk (x~795-860) stands directly between them. So \"the tree trunk immediately left of the thickest trunk\" names the x~795-860 trunk, not the masked one.",
+"other": "or move mask/point to the trunk at x~795-860"
+},
+{
+"key": "v2-sa_5252263|U2|495",
+"evidence": "Another young staked tree stands further left (cx~0.08W) also left of the tower; U2 is the one nearest the tower (cx=0.28W). 'tall' partly disambiguates.",
+"other": null
+},
+{
+"key": "v2-sa_5390926|U4|505",
+"evidence": "The masked blue car beyond the parking meter (x~0.49W) is a small blue hatchback (Skoda-style), not an SUV; target is still identifiable as the blue car.",
+"other": null
+},
+{
+"key": "v2-sa_5462658|U2|512",
+"evidence": "The woman's black-and-white patterned scarf (box [1389,664,1485,986]) is replaced by \"a burgundy wool scarf\" - same object type, only color/pattern/material change.",
+"other": "or convert to attribute: Change the color of the patterned scarf on the woman to solid burgundy."
+},
+{
+"key": "v2-sa_5550721|U2|519",
+"evidence": "Replacing the green cushion with 'a navy velvet cushion' keeps the category; only color/material change.",
+"other": "or convert to attribute (color to navy)"
+},
+{
+"key": "v2-sa_564503|U4|528",
+"evidence": "U4 framed-picture mask has several scattered holes inside the painted oval (around the figures' faces/hands), so the mask does not fully cover the picture surface.",
+"other": "fill interior holes of the U4 mask"
+},
+{
+"key": "v2-sa_5788594|U2|539",
+"evidence": "U2 mask (box [1792,654,2055,776]) covers only the lower truck cab/chassis; the large covered stair structure that rises to the plane door (most of the 'mobile stair truck') is outside the mask, so 'change the color of the mobile stair truck to yellow' conflicts with the masked region.",
+"other": "Or extend the mask to include the stair structure."
+},
+{
+"key": "v2-sa_5856108|U2|549",
+"evidence": "U2 replaces the silver-gray backpack with 'a brown leather backpack' - same category; only color/material changes.",
+"other": null
+},
+{
+"key": "v2-sa_5969016|U2|556",
+"evidence": "REF: 'the tall person standing near the center', but the masked man in the dark coat (box [450,862,573,1052], center 0.26W) stands in the left third, in front of the left part of the carousel; the person near the center is U1 (leaning over the stroller, 0.45W). Several other dark-coated people stand at the left, so the description is misleading.",
+"other": null
+},
+{
+"key": "v2-sa_6027797|U3|565",
+"evidence": "U3 replaces a dark rattan lounge chair (box [1894,813,2050,888]) with 'a white wooden sun lounger' - same object category/shape; the change is only color + material.",
+"other": "or convert to attribute (material/color -> white wood)"
+},
+{
+"key": "v2-sa_6097564|U2|573",
+"evidence": "U2 masks the light gray padded coat with a fur-trimmed hood in the left foreground (box [0,1050,830,1500]). 'A beige wool coat' keeps the coat category and only changes color and material.",
+"other": "or convert to attribute: 'Change the color of the gray coat in the left foreground to beige.'"
+},
+{
+"key": "v2-sa_6129691|U1|579",
+"evidence": "U1 mask is a round white traffic regulation sign (red no-left-turn arrow, text 'EXCEPT MUNI & TAXIS') on a pole at the lower right, not a 'shop sign'.",
+"other": "ZH: 右下方的圆形白色禁止左转交通标志"
+},
+{
+"key": "v2-sa_6274646|U1|590",
+"evidence": "Boy's blue-and-yellow checked collared shirt replaced by 'a plain light green cotton shirt' keeps the same garment type; only color/pattern change.",
+"other": null
+},
+{
+"key": "v2-sa_6329048|U1|598",
+"evidence": "Masked object is the woman's small red crossbody/shoulder bag; replacing it with 'a small black leather shoulder bag' keeps the same object type and size, changing only color/material.",
+"other": "or convert to attribute: 'Change the color of the seated woman's red shoulder bag to black.'"
+},
+{
+"key": "v2-sa_6432289|U1|608",
+"evidence": "U1 is a beige/cream shoulder bag; 'replace with a brown leather shoulder bag' keeps the same object type and shape and only changes color/material.",
+"other": "or convert to attribute: change the color of the bag to brown"
+},
+{
+"key": "v2-sa_6534458|U1|618",
+"evidence": "REF says 'the white flowers on the upper-left windowsill', but the U1 mask (box [86,1755,288,1873], cy=0.80H) is the flower box on the lower-left, just above the 'PENSIONE WILDNER' lettering. Higher flower boxes on the left (e.g. at ~0.18W,0.36H and ~0.20W,0.24H) fit 'upper-left' better.",
+"other": "ZH: 移除PENSIONE WILDNER字样左上方、左下侧窗台上的白花。"
+},
+{
+"key": "v2-sa_6561145|U2|625",
+"evidence": "REF targets 'the cream hull' (scope hull), but the mask [177,1199,973,1500] covers the entire water taxi: the glossy mahogany cabin roof, windshield, rear cockpit and seats as well as the cream lower hull. Mask level (whole boat) does not match the named part.",
+"other": "Restrict the mask to the cream hull sides below the mahogany deck/cabin, or change scope to 'boat' and reword."
+},
+{
+"key": "v2-sa_6670486|U2|637",
+"evidence": "U2 masks a silver compact crossover SUV (Ford EcoSport-like, box [1626,1082,1982,1287]). The payload 'a white compact SUV' is the same category and size class, so the only real change is the color.",
+"other": "or convert to attribute: 'Change the color of the silver SUV behind the sedan to white.'"
+},
+{
+"key": "v2-sa_6737576|U1|646",
+"evidence": "'the background figure' is used for U1 (satchel at top-center-left, box x 426-634) and again for U3 (a different figure at top right); multiple background people exist, so the REF does not pick out the satchel's carrier.",
+"other": null
+},
+{
+"key": "v2-sa_6769026|U3|652",
+"evidence": "There are two identical wooden benches on the right side. The masked one (x 1263-1402 of 2000, ~0.67W) stands in front of the WOK TO WALK kiosk. The second bench (~0.72-0.80W) sits directly beside the right brick planter. 'The wooden bench beside the right planter' therefore points to the other bench.",
+"other": null
+},
+{
+"key": "v2-sa_6779549|U2|659",
+"evidence": "Masked window [759,447,833,571] (cx=0.35) is on the LEFT side of the street, on the cream building beyond the dark foreground facade (upper floor, under the 'SOLICIT...' cornice). 'the window on the right-hand building' contradicts this, and the right-side buildings have dozens of windows, so the REF cannot identify the target.",
+"other": "Also clarify which part changes color (frame vs glass)."
+},
+{
+"key": "v2-sa_679629|U3|665",
+"evidence": "The masked garment on the person standing at the right (0.83W) is an olive/khaki-green parka with a fur-trimmed hood, not a 'gray padded coat'. Replacing it with 'a dark green parka' yields essentially the same garment, so the edit is a near no-op/slight recolor.",
+"other": null
+},
+{
+"key": "v2-sa_682765|U3|671",
+"evidence": "Removing the yellow T-shirt (the man's only visible upper garment, back to camera) leaves an undefined bare torso; not a well-posed garment removal.",
+"other": "change op from remove to replace or attribute"
+},
+{
+"key": "v2-sa_6859686|U3|677",
+"evidence": "U3 'stroller' mask is fragmented (4 comps) and includes the large orange polka-dot balloon and the striped blanket, while the stroller frame/seat around the baby is only partially and raggedly covered.",
+"other": "re-segment the stroller frame/seat only, excluding the balloon"
+},
+{
+"key": "v2-sa_6888719|U3|683",
+"evidence": "U3 mask is the dark-hulled trawler with a tall A-frame in the middle of the image (box x=1522-2362, cx=0.54), but REF says 'the smaller fishing boat at the far left'. It is neither at the far left nor clearly smaller.",
+"other": "fix ZH (中间的深色船体渔船)"
+},
+{
+"key": "v2-sa_6896269|U2|689",
+"evidence": "U2 mask (box [1736,652,1801,753]) is a black moving-head STAGE LIGHT (yoke-mounted lamp head) hanging from the white truss at upper right, one of two identical fixtures side by side; it is not a speaker.",
+"other": "scope speaker -> stage light; note the current fixture is already matte black so value must change"
+},
+{
+"key": "v2-sa_6935352|U2|695",
+"evidence": "U2 mask (box x 420-640, cx=0.27) is the silver rear car in the left-center, between the red-backed tram 1102 and the pole. The dominant 'silver tram at the right' is the large foreground tram 1108 (x ~650-1330 display); the REF therefore points to a different, much larger object than the mask.",
+"other": "ZH: 左后方红尾电车右侧的银色电车车厢; verify whether U2 is a separate tram or the coupled rear car of tram 1108 - if coupled, rebind or drop"
+},
+{
+"key": "v2-sa_6937647|U4|701",
+"evidence": "The patio has many similar dark metal chairs around several tables. 'The chair beside the front table' does not identify the small masked chair (x~0.44W, partly occluded behind the railing), and the mask is a rough, partial blob.",
+"other": "Consider choosing a more visible chair with a clean mask."
+},
+{
+"key": "v2-sa_6977563|U4|707",
+"evidence": "REF 'jeans on the man at the right' but masked light-blue jeans (center 0.39W) are on the man in the teal T-shirt in the center-left crowd.",
+"other": null
+},
+{
+"key": "v2-sa_7002146|U3|713",
+"evidence": "U3 removes a ground-cover 'grass strip' (4 fragments of sunlit lawn beyond the path, [1537,911,2000,983]); removing an amorphous surface region has no defined result (bare soil? pavement?), making the edit hard to judge.",
+"other": "Or pick a discrete object instead (e.g. the lamp post at the left)."
+},
+{
+"key": "v2-sa_7116219|U2|719",
+"evidence": "REF says 'the person at the left', but the masked pink skirt (with striped waistband) is worn by a girl in the crowd at the far RIGHT (box x 1824-1970, cx=0.84). On the left there are other people in pink (e.g. the child in a pink outfit at x~0.05W), so the REF points to the wrong side/instance.",
+"other": "ZH: 将右侧人群中、穿蝙蝠侠T恤孩子旁边女孩的粉色裙子替换为一条深蓝色七分裤。"
+},
+{
+"key": "v2-sa_7125342|U3|725",
+"evidence": "Replacing a black car with 'a white compact car' is essentially a recolor of the same category.",
+"other": null
+},
+{
+"key": "v2-sa_7191982|U4|731",
+"evidence": "REF says 'the white car at the left curb', but the U4 mask (box [1538,629,1612,710]) is the round red-blue no-parking sign mounted on the U1 lamp pole at the right. The white car is at the far left (x about 0-0.14) and is not masked. The sign is also attached to the U1 streetlamp, so it is not independent of U1.",
+"other": "either re-mask U4 to the white car at the far left (keeping the add roof sign edit) or change the text to the sign; if kept on the sign, note dependence on the U1 pole"
+},
+{
+"key": "v2-sa_720948|U2|737",
+"evidence": "Several white cars are on the road in the background (the masked one at the left side near the buildings at ~x=345-430, plus others at ~x=510-560, 575-615, 635-665). 'the white car on the road' does not identify U2.",
+"other": null
+},
+{
+"key": "v2-sa_7231402|U2|743",
+"evidence": "U2 mask (box [1788,950,2104,1500]) is the whole seated child (head + body); REF 'Change the color of the child ... to a red shirt' applies a color attribute to a person and uses an object phrase as the value.",
+"other": "re-mask to the child's beige shirt only; scope child -> shirt"
+},
+{
+"key": "v2-sa_724183|U2|749",
+"evidence": "The masked garment is a tan quilted down jacket. 'A navy jacket' is the same garment type and only changes the color.",
+"other": "Or convert to attribute: 'Change the color of the fishmonger's tan quilted jacket to navy blue.'"
+},
+{
+"key": "v2-sa_7247537|U3|755",
+"evidence": "REF: 'Remove the white SUV at the left', but the U3 mask (box [842,1277,936,1500]) covers a long-haired woman in a black coat standing at the pub entrance. There is no white SUV there; mask and text describe different objects.",
+"other": "Drop the unit or rewrite to match the mask, e.g. attribute: 'Change the color of the black coat of the long-haired woman at the pub entrance to camel.' (mask would then need to be the coat only)."
+},
+{
+"key": "v2-sa_725238|U4|761",
+"evidence": "'the white chair at the lower left' — many white plastic chairs fill the lower-left dining area; masked chair is at x~0.28W bottom edge between diners (physical_parent_zh even says 右下).",
+"other": "Fix physical_parent_zh."
+},
+{
+"key": "v2-sa_7279175|U3|767",
+"evidence": "Masked object is a brown leather backpack/sling bag; payload 'a black backpack' is the same object with only the color changed.",
+"other": "Or convert to attribute color=black."
+},
+{
+"key": "v2-sa_7311948|U4|773",
+"evidence": "U4 mask (box [1720,907,1787,1007]) is a teal folding chair that is occupied by a seated man in a gray T-shirt; the mask is fragmented around his body and the seat is entirely hidden, so 'Add a red seat cushion on the folding chair' has no visible seat to attach to.",
+"other": "choose an empty folding chair at the right tables as anchor, or change op (e.g. 'Change the color of the folding chair ... to red')"
+},
+{
+"key": "v2-sa_7362739|U1|779",
+"evidence": "REF says 'the turquoise billboard at the left', but the masked CHINTAI billboard is in the upper center (cx=0.49); the large light-cyan Glico runner billboard occupies the left of the image, so 'at the left' points to the wrong sign.",
+"other": "ZH: 将上方中央青绿色CHINTAI广告牌的颜色改为橙色。"
+},
+{
+"key": "v2-sa_7374194|U1|785",
+"evidence": "The black T-shirt on the man with the stroller is replaced by 'a white T-shirt': same category, only the color changes.",
+"other": "Or convert to attribute: 'Change the color of the black T-shirt on the man with the stroller to white.'"
+},
+{
+"key": "v2-sa_7374523|U4|791",
+"evidence": "U4 object is a tied bundle/sheaf of rice straw carried on a pole, not a broom.",
+"other": null
+},
+{
+"key": "v2-sa_738866|U3|797",
+"evidence": "U3 mask is only the short green railing segment in the lower-right corner, right of the stone pillar (box [1841,1216,2250,1500]); REF 'the metal railing across the water' does not describe it (it is in the foreground, not across the water) and equally fits the long green railing segment left of the pillar where the people stand.",
+"other": "the railing is already green; consider a clearer value such as 'bright red'"
+},
+{
+"key": "v2-sa_7448541|U2|803",
+"evidence": "REF 'Replace the helmeted head above the vehicle with a blue helmet' names the head (body/person level) while the mask is only the camouflage helmet (box [578,275,733,369]); replacing a head with a helmet is nonsensical.",
+"other": "convert op to attribute (helmet->blue helmet is a recolor)"
+},
+{
+"key": "v2-sa_7464946|U2|809",
+"evidence": "U2 mask (box [0,0,1451,1500], 54% of image) covers the whole boy including his head, hair, ear and hands, not just the garment. Garment is a navy hoodie with red stripes, REF calls it 'shirt'; 'child at the far left' though he is the only child.",
+"other": "re-mask to the hoodie only (exclude head/hands); scope shirt -> hoodie"
+},
+{
+"key": "v2-sa_7470032|U4|816",
+"evidence": "U4 mask (box 210-244, 885-949) is a narrow window with a small awning on the left building, not a plaque.",
+"other": "scope -> window"
+},
+{
+"key": "v2-sa_7506005|U1|824",
+"evidence": "REF targets 'the shirt on the foreground runner' but the mask/box [602,919,959,1987] covers the entire runner (head to shoes), i.e. person-level mask for a garment edit.",
+"other": "Re-mask to the singlet only."
+},
+{
+"key": "v2-sa_7532719|U3|830",
+"evidence": "U3 removes 'the building behind the truck' - a multi-storey apartment block (box [1172,280,1482,567]) whose lower part is hidden by the truck; removing a whole large building is ill-posed per protocol.",
+"other": "change op, or target a removable part (e.g. remove the satellite dish / a balcony railing)"
+},
+{
+"key": "v2-sa_754509|U2|836",
+"evidence": "Masked object is a teal backpack on the walker in a gray hoodie; 'a black backpack' is the same object type with only a color change. REF 'the person right of center' is also weak: the person with a red backpack stands immediately to the left.",
+"other": "or convert to attribute: 'Change the color of the teal backpack ... to black.'"
+},
+{
+"key": "v2-sa_7567943|U2|842",
+"evidence": "U2 replaces the streetlight with 'a modern lamp'. The existing double-arm streetlight is already modern, so the payload is vague and gives no concrete target structure.",
+"other": null
+},
+{
+"key": "v2-sa_7620275|U4|848",
+"evidence": "\"the small sign on the facade\" fits many small signs and plaques in the shopfront. The mask is a small white hand-painted sign (box 1057-1106 x 950-999) hanging on the post right of the shop door. Adding \"a blue plaque on\" a sign is also an odd host/payload pairing.",
+"other": null
+},
+{
+"key": "v2-sa_7639254|U4|854",
+"evidence": "U4 masks one bushy deciduous tree on the hillside above the white ambulance (box [1624,79,1896,373]), but the whole upper area is a forest with many trees at the upper right.",
+"other": null
+},
+{
+"key": "v2-sa_7650202|U2|861",
+"evidence": "Many cars are near the right side (dark cars at x~1020-1220, the masked dark wagon at x~1240-1375, silver taxis at x~1395-1515 and ~1550+). 'the car near the right' does not identify U2.",
+"other": null
+},
+{
+"key": "v2-sa_7677069|U2|867",
+"evidence": "Payload 'a wooden tool' is not a concrete object; the result is unverifiable.",
+"other": null
+},
+{
+"key": "v2-sa_7698269|U2|873",
+"evidence": "'Replace the door ... with a blue door' only recolors the same door category.",
+"other": "or convert to attribute: color -> blue"
+},
+{
+"key": "v2-sa_7716977|U1|879",
+"evidence": "'Change the surface texture of the plant ... to green and fuller' is not a clear property/value pair (the potted plant on the balcony, box [1027,247,1195,495], is already green); vague and hard to score.",
+"other": null
+},
+{
+"key": "v2-sa_77343|U3|885",
+"evidence": "REF 'the bowl of green fruit on the right' but the mask is a green felt flower ornament (yellow-green petals, beige center) in front of the white-dressed doll; there is no fruit bowl.",
+"other": "Change scope from 'fruit bowl' to 'felt flower'; fix ZH."
+},
+{
+"key": "v2-sa_7753369|None|891",
+"evidence": "U2 megaphone (box [744,687,867,855]) is held up to the face of the very person U3 asks to remove (box [667,622,908,1417]); the U3 mask is cut around the megaphone. The two edits are physically coupled: removing the man leaves the (replaced) megaphone floating.",
+"other": "drop U3 (person removal) or drop U2; or pick a different person/object so the units are independent"
+},
+{
+"key": "v2-sa_777091|U2|898",
+"evidence": "REF says 'the car at the lower left', but the masked car is the small white hatchback at the lower RIGHT, in front of the yellow bus (box x 981-1177, cx=0.72). At the lower left there are other cars (red taxi and white sedan at x~0.2-0.4W), so the REF points to a different car.",
+"other": "ZH: 将右下方黄色公交车前的白色掀背车替换为一辆红色皮卡。 (payload 'a white sedan' for a white hatchback is also nearly a no-op; use a clearly different vehicle)"
+},
+{
+"key": "v2-sa_7797481|U3|904",
+"evidence": "The U3 mask overlay shows it covers the GRASS: the lawn strip on the left plus the grass under and around the table legs. It does not cover the wooden watermelon display table, the watermelons or the pennants. The named object is also a fixed wooden display table/stand, not a 'fruit cart'. The mask therefore covers the wrong region and the noun does not fit.",
+"other": "Re-mask to the foreground wooden table together with its watermelons and pennant bunting; set category=display table. ZH: 移除前景装满西瓜的木制展示台。"
+},
+{
+"key": "v2-sa_7810159|U2|911",
+"evidence": "U2 mask covers the entire man at the left (head with glasses, black T-shirt, shorts, legs and shoe; 2 comps split by the backpack man), not just his shirt.",
+"other": "re-mask to the black T-shirt only"
+},
+{
+"key": "v2-sa_7835850|U3|918",
+"evidence": "U3 mask is the large high-voltage transmission pylon (lattice tower with cross-arms and insulators, box [779,410,1398,1455], cx=0.73W). The actual cable-car tower (with sheave assemblies carrying the gondola cables) stands near the image center at x~0.47W; so 'the cable car tower near the center' names a different object than the mask.",
+"other": "rename scope to 'power pylon'; note removing such a large structure is also hard to score (consider an attribute edit instead, e.g. change the pylon's color to red)"
+},
+{
+"key": "v2-sa_7854521|U1|924",
+"evidence": "REF 'the boat at the lower center' but the masked boat is at the lower right (center x=0.80W, extends to the right edge); another white boat sits at the lower left, so 'lower center' fits neither cleanly.",
+"other": null
+},
+{
+"key": "v2-sa_7892712|U3|930",
+"evidence": "U3 removes the whole long-tail boat (17% of image) that carries the U1 and U2 children (their boxes lie inside the boat box); removing the boat conflicts with editing passengers in it and is a huge ill-posed inpainting region.",
+"other": "or change to attribute (e.g. change the color of the boat's green canopy to red); avoid removing the vessel carrying other units' targets"
+},
+{
+"key": "v2-sa_7985091|U2|936",
+"evidence": "The mask spans the entire suspension bridge (railings, deck, cables; 0.22 of the image, 4 components) on which the groom and bride are standing. Removing the whole bridge structure leaves the people floating and requires inpainting a huge region, so the edit is ill-posed.",
+"other": "Pick a smaller bridge-attached object (padlocks), or make it an attribute: 'Change the color of the white bridge railings to dark green.'"
+},
+{
+"key": "v2-sa_8012456|U4|942",
+"evidence": "'the building at the right' fits both the tall white tower (masked) and the lower curved white building at the right below it.",
+"other": null
+},
+{
+"key": "v2-sa_8043384|U2|948",
+"evidence": "U2 mask is a whole person (box [1015,681,1241,1158]); 'Replace the driver ... with a blue jacket' replaces a person with a garment. Moreover the masked person is a passenger in a green/olive jacket sitting on the side step at the back of the carriage, not the driver (the driver in a beige jacket sits at the front behind the horses).",
+"other": "re-mask to the jacket only and convert to attribute; fix 'driver' -> 'passenger on the side step'"
+},
+{
+"key": "v2-sa_8064958|U2|955",
+"evidence": "REF 'at the left' contradicts the mask: the street lamp is right of the bell tower at cx=0.76; there is no street lamp on the left.",
+"other": null
+},
+{
+"key": "v2-sa_807381|U3|961",
+"evidence": "U3 removes an entire multi-story office building on the left (box [0,794,478,1955], about 10% of the image). Removing a whole building is ill-posed under the protocol.",
+"other": "Change to an attribute edit, e.g. 'Change the color of the facade of the building on the left to light gray.', or drop the unit."
+},
+{
+"key": "v2-sa_8099809|U3|967",
+"evidence": "U3 is a light-blue hooded jacket worn by a person in the crowd (seen from behind); removing a worn coat leaves an undefined body/underlayer. Also it is at 0.76W, not 'near the lower center'.",
+"other": "change op to attribute"
+},
+{
+"key": "v2-sa_8219544|U2|975",
+"evidence": "U2 mask is a whole man in a cream/beige shirt at the right edge; 'Replace the person at the right with a red jacket' replaces a person with a garment.",
+"other": "re-mask to the shirt only; scope='shirt'"
+},
+{
+"key": "v2-sa_8290161|U1|983",
+"evidence": "'Change the color of the man near the center to blue' applies a color attribute to the whole person; mask covers the whole man (head, plaid shirt, jeans) riding the scooter.",
+"other": "re-mask to the plaid shirt only"
+},
+{
+"key": "v2-sa_8319146|U3|990",
+"evidence": "Many umbrellas in the upper right: U3 is the black umbrella at 0.66W (box [1468,444,1971,607]); clear umbrellas at ~0.85W and the large floral pink umbrella are further right. 'the umbrella at the upper right' is ambiguous.",
+"other": null
+},
+{
+"key": "v2-sa_8336561|None|998",
+"evidence": "The U1 casino-table mask covers the whole felt surface including the playing cards and chips lying on it; the U3 card (box 432-634 x 1808-1872) sits inside the U1 mask with no hole, so the two units' masks overlap.",
+"other": "Cut the cards and chips (at least the U3 card) out of the U1 table mask so the masks do not overlap."
+},
+{
+"key": "v2-sa_834249|U4|1005",
+"evidence": "'the streetlight at the left': several streetlights stand at the left (e.g. the tall black pole at ~x 330 and the lamp at ~x 210 in the source); the mask (box [578,120,698,326]) is the T-shaped lamp directly above the left volunteer's head.",
+"other": null
+},
+{
+"key": "v2-sa_8364417|U2|1012",
+"evidence": "'Replace the motorbike at the right with blue.' has no object payload; the masked Repsol orange/white motorbike would be replaced by a bare color.",
+"other": "Set payload to an object noun."
+},
+{
+"key": "v2-sa_8364627|U1|1019",
+"evidence": "'the door near the center' — the masked narrow white door is at 0.63W; the glazed white door at ~0.47W is closer to the center, so REF can bind to the wrong door.",
+"other": null
+},
+{
+"key": "v2-sa_8382869|U2|1026",
+"evidence": "U2 is a white-framed glass door; 'a red door' is only a color change.",
+"other": null
+},
+{
+"key": "v2-sa_8403002|U1|1033",
+"evidence": "U1 mask is the whole cook (woman in pink hijab and dark brown blouse, incl. face and arms); 'Change the color of the cook to blue' is a person-level attribute naming no garment.",
+"other": "re-mask to the headscarf (or the dark brown blouse) only"
+},
+{
+"key": "v2-sa_8425235|U2|1040",
+"evidence": "U2 replaces the woman's black coat with 'a blue coat' - only a color change.",
+"other": "op replace->attribute (or replace with a different garment, e.g. 'a beige trench coat' is still coat; prefer 'a red puffer vest')"
+},
+{
+"key": "v2-sa_8430103|U2|1046",
+"evidence": "U2 'Replace the narrow sign above the doorway with a red sign' only changes color (sign is red/yellow checkered strip, cut off at top edge). Mask is a tiny partial region at the image top edge.",
+"other": "or convert to attribute"
+},
+{
+"key": "v2-sa_8430740|U3|1053",
+"evidence": "U3 mask is the printed image of a chicken toast sandwich on the breakfast poster, not real food; 'Remove the food at the left' misdescribes a poster graphic.",
+"other": "scope -> printed sandwich image"
+},
+{
+"key": "v2-sa_8489034|U1|1060",
+"evidence": "REF says 'the person at the left' but the masked man is at cx=0.82W on the right side of the image (only U2 is further right).",
+"other": null
+},
+{
+"key": "v2-sa_8532764|U3|1066",
+"evidence": "Many bicycles are parked at the right; 'the bicycle at the lower right' is not unique. Mask is the orange bicycle (and appears to extend onto the neighboring white bike's wheel).",
+"other": "Check mask does not include the adjacent white bicycle's wheel."
+},
+{
+"key": "v2-sa_8550648|U2|1072",
+"evidence": "U2 mask is a yellow road bicycle at the right end of the rack; 'Replace ... with a red bicycle' keeps the category and only changes color.",
+"other": "convert op to attribute, or replace with a different object (e.g. 'an electric scooter')"
+},
+{
+"key": "v2-sa_8607627|U2|1079",
+"evidence": "Masked object is a white/cream NIPPON PAINT bucket full of parts; 'a blue bucket' keeps the same object type and only changes color.",
+"other": "or convert to attribute: 'Change the color of the paint bucket at the lower right to blue.'"
+},
+{
+"key": "v2-sa_862087|U3|1087",
+"evidence": "The U3 'canopy' mask (comps=3, box [183,799,1358,1429]) covers the white scalloped stall roof, but also includes the separate white tablecloth/skirt on the front display table (about y=1250-1430) and the hanging paper notices under the roof. Removing this mask would also remove the tablecloth.",
+"other": "Re-mask to the canopy roof only and drop the tablecloth component."
+},
+{
+"key": "v2-sa_8671723|U1|1093",
+"evidence": "The U1 boat (TALAIS, box [1627,608,2002,825]) has a blue hull and a white superstructure. 'Change the color of the boat to white' really means the hull, and the instruction should say so.",
+"other": null
+},
+{
+"key": "v2-sa_8680793|U2|1099",
+"evidence": "'Replace the fish with a larger fish' keeps category and only changes size (unspecified amount); not a structural replacement.",
+"other": null
+},
+{
+"key": "v2-sa_8731521|U2|1106",
+"evidence": "'Replace the bicycle at the lower left with a red bicycle': same category, only color change (black children's bike ridden by two girls).",
+"other": "convert to attribute"
+},
+{
+"key": "v2-sa_8739681|U2|1112",
+"evidence": "U2 is the middle opening of the tower's three-arch window (cx=0.42); its two flanking arches are equally 'at the upper left', so the REF does not pick the middle one.",
+"other": "ZH: 将上方塔楼三联拱窗中间的拱窗替换为一扇圆窗。"
+},
+{
+"key": "v2-sa_8802184|U1|1121",
+"evidence": "'Change the color of the athlete at the left to blue' — mask is actually the blue-and-pink sleeveless jersey of the left player; REF names the whole person (and the jersey is already mostly blue).",
+"other": "scope='jersey'."
+},
+{
+"key": "v2-sa_8809691|U3|1127",
+"evidence": "Planter mask [209,936,368,1041] covers only the dark brick-pattern box, excluding the shrubs growing in it; removing 'the planter' with this mask would leave the plants floating (scope not stated).",
+"other": "Or extend mask to include the plants."
+},
+{
+"key": "v2-sa_8830987|U2|1133",
+"evidence": "The café behind the stall has dozens of identical brown rattan bistro chairs on the right half; 'the chair at the right' does not single out the masked chair (box 1574-1809 x, directly behind the stall's metal bowls).",
+"other": null
+},
+{
+"key": "v2-sa_886183|U1|1140",
+"evidence": "REF 'Change the color of the child at the left to blue' targets the whole child, but the mask covers only the white star-print short-sleeve shirt of the long-haired child at the left.",
+"other": "set scope/category to 'shirt'"
+},
+{
+"key": "v2-sa_8874867|U1|1146",
+"evidence": "U1 is a tall dark wooden bar stool at 0.53W,0.92H; several similar wooden stools stand around the outdoor tables at the lower center, and it is a stool rather than a chair.",
+"other": "category -> stool"
+},
+{
+"key": "v2-sa_8910733|U1|1152",
+"evidence": "U1 bicycle mask also includes the attached front basket and the black OXFORD pannier bags, and fills the rear wheel disc including the wall seen through the spokes; 'change the color of the bicycle to black' is then ambiguous for the already-black bags.",
+"other": "optionally exclude panniers/basket from mask"
+},
+{
+"key": "v2-sa_8945299|U2|1158",
+"evidence": "'Replace the thatched roof at the left with a dark roof': payload is a roof described only by color; the thatched roof is already dark gray, so the edit is a vague recolor/near no-op.",
+"other": null
+},
+{
+"key": "v2-sa_8963199|U3|1165",
+"evidence": "Six boys with bicycles stand across the crossing; U3 (box 1088-1189) is the bike held by the boy in a black T-shirt looking at his phone. 'the bicycle near the center' fits at least three bikes.",
+"other": null
+},
+{
+"key": "v2-sa_9006288|U3|1172",
+"evidence": "REF calls U3 'the banner at the upper left', but the mask (box [312,4,561,343]) is a small white rectangular notice sign with a blue logo and opening hours. A real large banner (green/white 'wing' banner) hangs further left, so 'banner' points to the wrong object.",
+"other": "scope -> sign"
+},
+{
+"key": "v2-sa_9013170|U4|1179",
+"evidence": "The brick facade has a row of identical narrow arched windows; 'the window near the center' fits several. The masked one [842,586,877,758] is the rightmost arched window on the upper floor of the red-brick building, just above the lamp row.",
+"other": null
+},
+{
+"key": "v2-sa_9033026|U3|1186",
+"evidence": "U3 mask is a white price label stuck on the concrete pillar above the KIRKLAND DELI sign (center 0.26W, 0.51H); it is in the upper-left part of the scene, not 'near the center', and other labels/signs exist.",
+"other": null
+},
+{
+"key": "v2-sa_9042900|U2|1193",
+"evidence": "'Replace the vehicle at the left with blue' — replace payload is a bare color with no object; edit is nonsensical. Masked object is a partially visible white minivan at the left edge.",
+"other": "or attribute: Change the color of the white minivan at the left edge to blue."
+},
+{
+"key": "v2-sa_9068591|U2|1201",
+"evidence": "U2 masks a small dark-green metal railing segment half-buried in snow at the left (box [78,434,198,531]). 'Replace the fence at the left with a black fence' only changes the color.",
+"other": "change op to attribute"
+},
+{
+"key": "v2-sa_9086959|U1|1209",
+"evidence": "U1 mask is a rectangular shop signboard on the pink building near the top, which is already blue with white Chinese characters; 'Change the color of the banner ... to blue' is a no-op, and it is a signboard rather than a banner.",
+"other": "category banner->signboard"
+},
+{
+"key": "v2-sa_9089846|U2|1216",
+"evidence": "'Replace the dress at the lower left with a blue dress': the black short-sleeve dress of the woman walking at lower left is replaced by the same garment type; only color changes.",
+"other": "convert to attribute"
+},
+{
+"key": "v2-sa_9111693|U2|1222",
+"evidence": "U2 (brown Yandex taxi sedan at the far left) 'Replace ... with a blue car' only changes color within the same category.",
+"other": "or convert to attribute: color -> blue"
+},
+{
+"key": "v2-sa_9123338|U1|1229",
+"evidence": "REF/NOREF: 'Change the color of the person in the jacket at the left to blue' / 'the selected person', while the mask (box [91,591,331,964]) covers only the brown corduroy jacket of the man at far left. The text names the person, not the garment.",
+"other": "scope -> jacket"
+},
+{
+"key": "v2-sa_9131105|U2|1235",
+"evidence": "REF 'the door near the lower center' but the masked open pale-green door leaf is at the lower left (cx=0.19) under the small gabled canopy.",
+"other": null
+},
+{
+"key": "v2-sa_9142280|U2|1242",
+"evidence": "'Replace the life jacket ... with a red life jacket' changes only color of the same object (existing jacket is yellow with red stripes).",
+"other": "convert op to attribute (color red)"
+},
+{
+"key": "v2-sa_9161358|U4|1249",
+"evidence": "U4 mask for the ÇIÇEKLI hanging sign has a second component to the right of the sign (a separate blob over foliage/bracket), extending the box to x=944.",
+"other": "Remove the stray component; keep only the sign board."
+},
+{
+"key": "v2-sa_9172711|U2|1256",
+"evidence": "'the load near the center' — masked object is a small pile of yellow sulfur chunks on the ground at the bottom (0.47W,0.94H), not near the image center; several similar sulfur loads exist (in baskets at 0.35W and 0.63W, carried by the worker, ground pile at 0.82W).",
+"other": "scope -> 'sulfur pile'"
+},
+{
+"key": "v2-sa_9173282|U4|1262",
+"evidence": "REF 'the shirt near the center' points to a light-blue shirt (box [1748,1142,1843,1225], cx=0.80W) worn by a seated passenger inside the cabin on the right. It is not near the center, and dozens of passengers' tops are visible, so the REF does not identify it.",
+"other": "ZH: 在船舱内右起第二扇窗后乘客的浅蓝色衬衫上加上一个小徽章。"
+},
+{
+"key": "v2-sa_9187878|U3|1269",
+"evidence": "REF says 'the shirt near the center', but the U3 mask is the patterned light shirt of the man leaning on the barrier at the far left edge (box [26,499,143,559], cx=0.04). Removing a worn shirt would also leave an undefined body.",
+"other": "change op from remove to attribute"
+},
+{
+"key": "v2-sa_9202366|U3|1276",
+"evidence": "U3 mask is the rattan chair cut off at the right edge (cx=0.97W); REF says 'the chair near the center' (many rattan chairs are actually near the center/left).",
+"other": "update ZH: 移除右侧边缘露出一部分的藤椅。"
+},
+{
+"key": "v2-sa_9212792|U1|1282",
+"evidence": "REF 'the car at the left' (ref+none) but the masked dark-gray car is at the right edge (box [1056,906,1500,1415], center x=0.85W); no car is at the left (only parked scooters).",
+"other": null
+},
+{
+"key": "v2-sa_921334|U2|1289",
+"evidence": "U2 vaporetto is at the canal center (0.49W); a cargo boat (~0.6W) and many gondolas are further right. 'the boat at the right' is wrong/ambiguous.",
+"other": null
+},
+{
+"key": "v2-sa_9216210|U1|1297",
+"evidence": "'Change the color of the railing to dark' gives no hue. The masked railing is the circular gold/brass balustrade that spans the full image width (box 0-1500), so 'at the left' is also wrong.",
+"other": null
+},
+{
+"key": "v2-sa_922772|U4|1304",
+"evidence": "REF says 'the backpack at the right', but the masked green backpack (box [47,798,123,946], cx=0.06W) belongs to the boy at the far LEFT edge.",
+"other": "ZH: 在最左侧男孩的绿色背包上加上一个小反光星形徽章。"
+},
+{
+"key": "v2-sa_9237516|U2|1312",
+"evidence": "'Replace the car near the center with red' has a bare color payload, no object.",
+"other": "Convert op to attribute (color=red), or replace with a concrete object (e.g. 'a small red pickup truck')."
+},
+{
+"key": "v2-sa_9241496|U3|1319",
+"evidence": "U3 mask is the dark coat worn by the scooter rider in the middle of the street carrying a cardboard box (box [703,1848,880,1941]); removing a worn coat leaves an undefined body/underlayer. In addition the rider is at the image center (cx=0.53) with several riders further right, so 'the coat at the right' is misleading.",
+"other": "convert remove -> attribute; fix spatial phrase"
+},
+{
+"key": "v2-sa_9249460|U1|1326",
+"evidence": "The masked wheel is a black tire with dark spokes; 'change the color ... to black' is essentially a no-op and does not identify which part should change.",
+"other": null
+},
+{
+"key": "v2-sa_926201|U3|1332",
+"evidence": "REF 'the bicycle at the lower center' but the masked bicycle (box x0-213, cx=0.05W) is at the lower-left corner with a brown pannier; dozens of bicycles are at the lower center.",
+"other": "ZH: 移除左下角挂棕色包的自行车。"
+},
+{
+"key": "v2-sa_9289265|U4|1338",
+"evidence": "U4 canopy is the tuk-tuk roof at the top-left/center (cx=0.38W), not 'at the right'. It is also the roof of the trailer hitched to the U1 motorbike, so U1/U4 share one vehicle assembly.",
+"other": "consider independence with U1 (motorbike pulling this tuk-tuk)"
+},
+{
+"key": "v2-sa_9327453|U2|1345",
+"evidence": "U2 'game booth' mask is a ragged region of the background stall ('degli Anelli') heavily occluded by the pink plush rabbit, toy rifle and a man; its right side breaks into scattered dot fragments and it cuts around the man, so it does not cleanly cover a booth.",
+"other": "re-segment the degli Anelli booth cleanly, or drop the unit"
+},
+{
+"key": "v2-sa_9337303|U3|1352",
+"evidence": "U3 masks the raised rear boot of the #1 player at the far right (cx=0.88), but REF says 'the shoe at the left'. Many players' boots are on the left side.",
+"other": "fix ZH (右侧1号球员抬起的后脚球鞋)"
+},
+{
+"key": "v2-sa_9357354|U1|1360",
+"evidence": "U1 dancer is at the front RIGHT (center 0.75W); REF says 'the dancer at the left'. Dancers at the actual left are at ~0.08W and ~0.4W.",
+"other": null
+}
+]

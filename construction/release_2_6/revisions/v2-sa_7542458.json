@@ -1,0 +1,31 @@
+{
+  "case_id": "v2-sa_7542458",
+  "reviewer": "shard3-b6",
+  "notes": "U1 masked the plaid shirt of a mid-ground man, not the 'foreground visitor'; U2 replace was a near-recolour; U3 flag is on a pole above the gate battlements, not a tower; U4 ref tightened. Masks are already the edited objects.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7542458/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "crowd"], "scene_zh": "城堡观光人群", "evidence_zh": "走向大门男子的黄色格子衬衫、花上衣女子右侧游客的深色背包、城门垛口上方的红旗和右侧塔楼的尖顶是四个不同对象。", "specific_protection_zh": "保留城堡、游客和建筑细节。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the yellow plaid shirt of the man walking toward the gate"},
+     "ref_zh": "走向大门的男子的黄色格子衬衫", "scope_zh": "衬衫", "physical_parent_zh": "格子衬衫男子", "parent_instance_id": "sa_7542458:格子衬衫男子",
+     "instruction_ref_zh": "将走向大门的男子的黄色格子衬衫的颜色改为深蓝色。",
+     "findings_addressed": ["wrong_instance_spatial"], "reason": "Masked shirt is the yellow/navy plaid shirt of a mid-ground man walking to the gate; the true foreground visitor is the white-haired woman in blue."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the dark backpack of the visitor walking right of the woman in a floral top", "payload": "a brown leather messenger bag"},
+     "ref_zh": "花上衣女子右侧行走游客的深色背包", "scope_zh": "背包", "physical_parent_zh": "背包游客", "parent_instance_id": "sa_7542458:背包游客",
+     "instruction_ref_zh": "将花上衣女子右侧行走游客的深色背包替换为一个棕色皮革邮差包。",
+     "instruction_noref_zh": "将选中区域替换为一个棕色皮革邮差包。",
+     "findings_addressed": ["replace_is_attribute"], "reason": "Backpack -> red backpack on a dark red bag was a recolour; a messenger bag is a structural change. Ref now names a landmark."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the red flag above the gate's battlements"},
+     "ref_zh": "城门垛口上方的红旗", "scope_zh": "旗帜", "physical_parent_zh": "城门旗帜", "parent_instance_id": "sa_7542458:城门旗帜",
+     "instruction_ref_zh": "移除城门垛口上方的红旗。",
+     "findings_addressed": ["wrong_instance_spatial"], "reason": "The flag flies on a pole above the gate wall between the towers, not on a tower."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the conical roof of the right tower"},
+     "ref_zh": "右侧塔楼的锥形屋顶", "scope_zh": "屋顶", "physical_parent_zh": "右侧塔楼", "parent_instance_id": "sa_7542458:右侧塔楼",
+     "instruction_ref_zh": "在右侧塔楼的锥形屋顶上加上一个小风向标。",
+     "instruction_noref_zh": "在选中区域上加上一个小风向标。",
+     "findings_addressed": [], "reason": "'the roof on the upper right tower' was awkward; there are two towers (left and right), the masked roof is the right one's conical roof."}
+  ]
+}

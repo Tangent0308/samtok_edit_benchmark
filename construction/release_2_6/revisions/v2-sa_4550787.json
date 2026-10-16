@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_4550787",
+  "reviewer": "shard2-b6",
+  "notes": "U2 replace was a colour-only change (waistcoat -> waistcoat); now a knitted cardigan. U3 dangling 'on its chest' removed from payload. Masks checked on a high-res overlay: clasped hands are excluded from both U1 and U2; masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4550787/case_sheet.jpg", "release_2_6_work/v2-sa_4550787/U1/t1.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a dark gray knitted cardigan"},
+     "instruction_ref_zh": "将左侧男子的红色马甲替换为一件深灰色针织开衫。",
+     "instruction_noref_zh": "将选中区域替换为一件深灰色针织开衫。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Payload was the same garment type in another colour; a knitted cardigan is a genuine garment change."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small white name badge"},
+     "instruction_ref_zh": "在右侧男子的棕色马甲上加上一枚小白色姓名牌。",
+     "instruction_noref_zh": "给选中区域加上一枚小白色姓名牌。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its chest'; anchor is the whole vest (mask unchanged)."}
+  ]
+}

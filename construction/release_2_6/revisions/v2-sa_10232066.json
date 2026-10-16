@@ -1,0 +1,25 @@
+{
+  "case_id": "v2-sa_10232066",
+  "reviewer": "shard0-b5",
+  "notes": "No audit findings. U3 add site 'lapel': the image-left lapel already carries a small blue pin (~1540,1238), so the site is now the image-right lapel (SAM3 text 'lapel' cand t1_1, box 1649-1698 x 1201-1300) and the payload a distinct dove pin. zh fields aligned (U1, U3, U4).",
+  "reviewed_views": ["release_2_6_work/v2-sa_10232066/case_sheet.jpg", "release_2_6_work/v2-sa_10232066/U3/t1.jpg", "release_2_6_work/v2-sa_10232066/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "ref_zh": "前排右侧男子的红色围巾",
+     "instruction_ref_zh": "移除前排右侧男子的红色围巾。",
+     "findings_addressed": [],
+     "reason": "zh ref added 胸前 not in the English."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "one small white dove-shaped enamel pin", "placement": {"relation": "on", "site": "image-right lapel", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给右侧中排男子敞开的外套的画面右侧翻领加上一枚白色鸽子形小珐琅徽章。",
+     "instruction_noref_zh": "给选中区域加上一枚白色鸽子形小珐琅徽章。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask = lapel site. The image-left lapel already has a blue pin, so the site is the free image-right lapel and the payload a distinct dove pin; blind zh no-ref."},
+    {"id": "U4", "action": "revise",
+     "instruction_ref_zh": "将左侧中排女子的橄榄色外套的颜色改为藏蓝色。",
+     "findings_addressed": [],
+     "reason": "zh ref omitted 的颜色."},
+    {"id": "U5", "action": "keep"}
+  ]
+}

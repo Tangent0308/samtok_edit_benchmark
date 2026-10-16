@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_927124",
+  "reviewer": "shard7",
+  "notes": "Tail case, both units re-examined. U1 recoloured a whole 'person' while the mask was only the back of a mostly hidden visitor's head -> retargeted to the gray T-shirt of the gray-haired man with glasses (SAM3 v2 mask, occluding boy excluded). U2 ref tightened to the American flag painting; mask (canvas minus heads) and landscape-painting replace kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_927124/case_sheet.jpg", "release_2_6_work/v2-sa_927124/U1/t1.jpg", "release_2_6_work/v2-sa_927124/U1/final.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "museum", "people"], "scene_zh": "博物馆参观", "evidence_zh": "戴眼镜灰发男子的灰色T恤和墙上的美国国旗画作属于两个不同对象。", "specific_protection_zh": "保留参观者和展品。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the gray T-shirt of the gray-haired man with glasses", "scope": "T-shirt", "payload": "dark red", "attributes": [{"property": "color", "value": "dark red"}]},
+      "ref_zh": "戴眼镜灰发男子的灰色T恤",
+      "scope_zh": "T恤",
+      "physical_parent_zh": "戴眼镜的灰发男子",
+      "parent_instance_id": "sa_927124:戴眼镜的灰发男子",
+      "instruction_ref_zh": "将戴眼镜灰发男子的灰色T恤的颜色改为深红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为深红色。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Retarget: the old mask was only the dark hair of a mostly hidden visitor and the ref recoloured a whole person. The gray-haired man's T-shirt is clearly visible and unique; SAM3 t1_1 excludes the boy's head in front."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the American flag painting on the wall", "scope": "painting"},
+      "ref_zh": "墙上的美国国旗画作",
+      "scope_zh": "画作",
+      "physical_parent_zh": "美国国旗画作",
+      "parent_instance_id": "sa_927124:美国国旗画作",
+      "instruction_ref_zh": "将墙上的美国国旗画作替换为一幅风景画。",
+      "instruction_noref_zh": "将选中区域替换为一幅风景画。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: the only painting; ref names it directly instead of a template position. Mask is the canvas with visitors' heads excluded."
+    }
+  ]
+}

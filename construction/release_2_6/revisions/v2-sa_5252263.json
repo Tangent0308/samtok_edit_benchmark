@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_5252263",
+  "reviewer": "shard2-b10",
+  "notes": "U2 ref tightened (another young tree further left), U3 railing is dark green metal with wooden top rails, U4 dangling 'its visible lower face' removed from payload. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5252263/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the tall young tree just left of the bridge tower"},
+     "ref_zh": "紧挨桥塔左侧的高幼树",
+     "instruction_ref_zh": "将紧挨桥塔左侧的高幼树替换为一棵樱花幼树。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "A second staked young tree stands further left (x~0.08W); U2 is the one nearest the tower."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the dark green railing in the lower-left foreground"},
+     "ref_zh": "左下方前景的深绿色栏杆",
+     "instruction_ref_zh": "将左下方前景的深绿色栏杆的颜色改为白色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Railing posts/panels are dark green (only the top rails are wood); white is a visible change."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small bronze information plaque"},
+     "instruction_ref_zh": "给混凝土桥塔加上一块小青铜说明牌。",
+     "instruction_noref_zh": "给选中区域加上一块小青铜说明牌。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Payload had dangling 'on its visible lower face'; dropped the site phrase so the payload is self-contained and the whole-tower anchor mask remains correct."}
+  ]
+}

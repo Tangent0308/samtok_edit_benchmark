@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_2553111",
+  "reviewer": "shard1b-b1",
+  "notes": "U2 replace was colour/material only; payload now a grey hooded zip-up sweatshirt (adds hood, different garment). U3 independence finding rejected (held package is a separate physical object, like a carried bag); U3 Chinese grammar fixed. Clean source checked: U2 garment is light purple, U1 shorts beige.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2553111/sheet_all.jpg", "release_2_6_work/v2-sa_2553111/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a grey hooded zip-up sweatshirt"},
+     "instruction_ref_zh": "将左侧的浅紫色外罩衬衫替换为一件灰色连帽拉链卫衣。",
+     "instruction_noref_zh": "将选中区域替换为一件灰色连帽拉链卫衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "White cotton overshirt kept the garment type; a hooded zip-up sweatshirt is a structural change."},
+    {"id": "U3", "action": "revise",
+     "instruction_ref_zh": "在男孩抱着的粉色包装袋上加上一张小蓝色学校标志贴纸。",
+     "findings_addressed": [],
+     "reason": "Chinese ref missing 上; English unchanged."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

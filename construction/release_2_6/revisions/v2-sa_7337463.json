@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_7337463",
+  "reviewer": "shard3-b4",
+  "notes": "U1 ref disambiguated among three Legacy Gallery signs and replacement made structural; U2 lamp post disambiguated from gooseneck lamps, tint -> color; U4 door already has handles, payload changed to a wreath. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7337463/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the green Legacy Gallery sign above the central entrance", "payload": "a hanging wooden sign shaped like a painter's palette"},
+     "ref_zh": "中央入口上方的绿色Legacy Gallery招牌",
+     "instruction_ref_zh": "将中央入口上方的绿色Legacy Gallery招牌替换为一块调色板形状的悬挂木牌。",
+     "findings_addressed": [],
+     "reason": "Self-found: three Legacy Gallery signs exist; the masked one is the dark green emblem sign over the entrance. 'a blue ART GALLERY sign' was mostly a recolour/text change; now a structurally different sign."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the street lamp post in front of the right storefront", "scope": "lamp post", "payload": "glossy black",
+              "attributes": [{"property": "color", "value": "glossy black"}]},
+     "ref_zh": "右侧店面前的路灯杆", "scope_zh": "路灯杆",
+     "instruction_ref_zh": "将右侧店面前的路灯杆的颜色改为亮黑色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Mask is the tall pale-gray street lamp post (x1456-1507); the facade's green gooseneck lamps are now excluded by 'street lamp post'; tint of a lamp was unclear, now a colour change to a visibly different value."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a round evergreen wreath"},
+     "instruction_ref_zh": "在中央的木质入口门上加上一个圆形常青花环。",
+     "instruction_noref_zh": "给选中区域加上一个圆形常青花环。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Door already has two round handles; a wreath on the door is a natural new item without needing a site."}
+  ]
+}

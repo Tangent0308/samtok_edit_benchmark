@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_5399663",
+  "reviewer": "shard2-b10",
+  "notes": "U2 mask is only the black arrow plate (REMONT TELEFONOV) below the phone-icon plate; ref now names the arrow-shaped sign, stray mask fragment on the icon plate clipped (v2), and payload made structurally different (black sign -> black sign was only a text change). U1 car is white, not silver.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5399663/case_sheet.jpg", "release_2_6_work/v2-sa_5399663/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the white car facing the camera"},
+     "ref_zh": "面向镜头的白色汽车",
+     "instruction_ref_zh": "将面向镜头的白色汽车的颜色改为深蓝色。",
+     "findings_addressed": [],
+     "reason": "The Lada facing the camera is white on the clean image."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the black arrow-shaped phone-repair sign at the left", "payload": "a rectangular white lightbox sign reading PHONE REPAIR"},
+     "ref_zh": "左侧黑色箭头形手机维修招牌",
+     "instruction_ref_zh": "将左侧黑色箭头形手机维修招牌替换为一块写有PHONE REPAIR的白色矩形灯箱招牌。",
+     "instruction_noref_zh": "将选中区域替换为一块写有PHONE REPAIR的白色矩形灯箱招牌。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Mask covers the arrow plate only (icon plate excluded); ref names that plate. v2 mask = 2.5.0 mask ∩ box [60,805,240,870] to drop a stray fragment at the icon plate's top. Old payload was a same-colour sign with new text, effectively an attribute edit."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

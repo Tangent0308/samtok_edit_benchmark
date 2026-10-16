@@ -1,0 +1,61 @@
+{
+  "case_id": "v2-sa_4812427",
+  "reviewer": "round2",
+  "notes": "原图核实U1原为蓝色，改浅灰；U4为及大腿橙色T恤裙而非短裙；协议mask裁出U2膝下段和U5鞋侧布贴落点。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_4812427/case_sheet.jpg",
+    "release_2_6_work/v2-sa_4812427/U2/review.jpg",
+    "release_2_6_work/v2-sa_4812427/U4/review.jpg",
+    "release_2_6_work/v2-sa_4812427/U5/review.jpg",
+    "release_2_6_work/v2-sa_4812427/U2/final.jpg",
+    "release_2_6_work/v2-sa_4812427/U5/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "light gray",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "light gray"
+          }
+        ]
+      },
+      "instruction_ref_zh": "将右侧穿花衬衫男子的牛仔裤的颜色改为浅灰色。",
+      "findings_addressed": [
+        "attribute_value"
+      ],
+      "reason": "原裤子已经是蓝色，浅灰有明确视觉差异。"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the short orange dress of the back-facing woman",
+        "scope": "dress"
+      },
+      "ref_zh": "背对镜头女子的橙色短连衣裙",
+      "scope_zh": "连衣裙",
+      "instruction_ref_zh": "给背对镜头女子的橙色短连衣裙缝上一个小后袋。",
+      "findings_addressed": [
+        "category_mismatch"
+      ],
+      "reason": "mask覆盖肩部到大腿的整件橙色连衣裙。",
+      "category": "dress"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ]
+}

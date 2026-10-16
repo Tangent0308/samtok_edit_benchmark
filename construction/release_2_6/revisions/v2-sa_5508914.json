@@ -1,0 +1,19 @@
+{
+  "case_id": "v2-sa_5508914",
+  "reviewer": "shard2-b11",
+  "notes": "U2 canopy->plain canopy was colour/material only; now a corrugated metal roof sheet, and the parent is a tractor (not a cart). U1/U3 checked on source.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5508914/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the patterned canopy over the tractor in the foreground", "payload": "a corrugated metal roof sheet"},
+     "ref_zh": "前景拖拉机上方的花纹顶篷",
+     "physical_parent_zh": "拖拉机",
+     "parent_instance_id": "sa_5508914:拖拉机",
+     "instruction_ref_zh": "将前景拖拉机上方的花纹顶篷替换为一块波纹金属顶板。",
+     "instruction_noref_zh": "将选中区域替换为一块波纹金属顶板。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Plain blue canvas canopy kept the structure; corrugated metal roof sheet is a structural change. The vehicle under the canopy is a tractor cab."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

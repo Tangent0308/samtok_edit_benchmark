@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_4667828",
+  "reviewer": "shard2-b6",
+  "notes": "U2 replace only changed the sign's lettering -> converted to a text attribute (no natural structural replacement for a vehicle sign box); v2 mask trims the wing sliver at the sign's upper-left (x440-497,y770-796).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4667828/case_sheet.jpg", "release_2_6_work/v2-sa_4667828/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"operation": "attribute", "payload": "CATERING", "attributes": [{"property": "text", "value": "CATERING"}]},
+     "instruction_ref_zh": "将配餐车上的gategourmet标牌上的文字改为“CATERING”。",
+     "instruction_noref_zh": "将选中区域上的文字改为“CATERING”。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "White sign box -> white sign with other lettering is a text edit; mask trimmed to the sign board only."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

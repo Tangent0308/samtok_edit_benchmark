@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_1093348",
+  "reviewer": "shard1-b4",
+  "notes": "U2 ref strengthened ('large upright'); on the clean image the claimed second dish at x760-800,y900-960 is mostly this dish's own feed arm/LNB, with at most a small low object behind it, so 'large upright' fully disambiguates. U1/U3 verified (U3 window frame is white with grey stone surround). No S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1093348/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the large upright satellite dish on the rooftops below the cruise ship"},
+     "ref_zh": "邮轮下方屋顶上较大的竖立卫星天线",
+     "instruction_ref_zh": "移除邮轮下方屋顶上较大的竖立卫星天线。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Make the masked tall oval dish unambiguous against any smaller dish-like object nearby."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

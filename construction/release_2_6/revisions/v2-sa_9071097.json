@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9071097",
+  "reviewer": "shard6-b5",
+  "notes": "Tail case, all units re-examined. U1 mask is the singer's white shirt -> garment-level ref/scope. U2 black graphic T-shirt ref disambiguated and replace made structural (red hooded sweatshirt). U3 is the gold cursive cafe lettering above the doorway. U4 flower planter at the right edge: concrete, verifiable payload. Masks are already the edited regions; no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9071097/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street performance", "crowd"], "scene_zh": "街头演出", "evidence_zh": "持麦克风女子的白衬衫、人群左侧女孩的黑色印花 T 恤、门口上方的金色咖啡馆字样和右边缘的花卉种植箱是四个不同对象。", "specific_protection_zh": "保留演唱者、围观人群、海报和建筑。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the white shirt of the woman singing into the microphone", "scope": "shirt"},
+      "ref_zh": "对着麦克风唱歌的女子的白衬衫",
+      "scope_zh": "衬衫",
+      "physical_parent_zh": "唱歌的女子",
+      "parent_instance_id": "sa_9071097:唱歌的女子",
+      "instruction_ref_zh": "将对着麦克风唱歌的女子的白衬衫的颜色改为蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为蓝色。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Mask (box [1194,545,1516,835]) is only the white long-sleeved shirt; the ref named the whole performer."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the black graphic T-shirt of the girl with clasped hands at the left of the crowd", "scope": "T-shirt", "payload": "a red hooded sweatshirt"},
+      "ref_zh": "人群左侧双手合握的女孩的黑色印花 T 恤",
+      "scope_zh": "T 恤",
+      "physical_parent_zh": "双手合握的女孩",
+      "parent_instance_id": "sa_9071097:双手合握的女孩",
+      "instruction_ref_zh": "将人群左侧双手合握的女孩的黑色印花 T 恤替换为一件红色连帽卫衣。",
+      "instruction_noref_zh": "将选中区域替换为一件红色连帽卫衣。",
+      "findings_addressed": ["ambiguous_ref", "replace_is_attribute"],
+      "reason": "Many tops at the left (denim jackets, navy shirts); the masked one is the black 'VICTORIA'S GIRLS' print T-shirt of the girl with clasped hands. 'a red shirt' was a recolour."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the gold cursive cafe lettering above the doorway of the white building", "scope": "lettering sign"},
+      "ref_zh": "白色建筑门口上方的金色花体咖啡馆字样",
+      "scope_zh": "字样招牌",
+      "physical_parent_zh": "金色咖啡馆字样",
+      "parent_instance_id": "sa_9071097:金色咖啡馆字样",
+      "instruction_ref_zh": "移除白色建筑门口上方的金色花体咖啡馆字样。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Mask is the gold 'Кофейня Ферзь' lettering (box [1647,542,1797,614]); 'the sign near the center' also fit the street-name plaque and the poster."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the red-and-purple flower planter at the right edge behind the microphone stand", "scope": "flower planter", "payload": "one small white butterfly ornament", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "右边缘麦克风支架后面的红紫色花卉种植箱",
+      "scope_zh": "花卉种植箱",
+      "physical_parent_zh": "花卉种植箱",
+      "parent_instance_id": "sa_9071097:花卉种植箱",
+      "instruction_ref_zh": "给右边缘麦克风支架后面的红紫色花卉种植箱加上一只白色小蝴蝶装饰。",
+      "instruction_noref_zh": "给选中区域加上一只白色小蝴蝶装饰。",
+      "findings_addressed": ["ill_posed_edit", "grammar_style"],
+      "reason": "The planter is already full of flowers so 'a small flower' was unverifiable and generic; a white butterfly ornament is distinct and verifiable."
+    }
+  ]
+}

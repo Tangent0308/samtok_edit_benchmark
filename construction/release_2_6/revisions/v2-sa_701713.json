@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_701713",
+  "reviewer": "shard3-b2",
+  "notes": "U2 roof is behind the ship between its masts, not right of it; U3 window made unique on the Hotel Viana Sol facade and payload made a structural replacement. U1 kept. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_701713/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["harbor", "perspective", "occlusion"], "scene_zh": "海港与沿岸建筑", "evidence_zh": "中央白色大船、两桅杆之间最高的红瓦屋顶、Hotel Viana Sol楼面左数第二扇窗是三个不同对象。", "specific_protection_zh": "保留海面、港口建筑和其他船只。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the highest terracotta roof between the ship's two masts"},
+     "ref_zh": "船两根桅杆之间最高的红瓦屋顶",
+     "instruction_ref_zh": "将船两根桅杆之间最高的红瓦屋顶的颜色改为深棕色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深棕色。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Mask [1280,569,1468,607] is the hip roof seen behind the ship between its masts; it is the topmost roof in that gap."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the second window from the left below the HOTEL VIANA SOL sign", "payload": "a narrow balcony door with a small iron railing"},
+     "ref_zh": "HOTEL VIANA SOL招牌下方左数第二扇窗户",
+     "instruction_ref_zh": "将HOTEL VIANA SOL招牌下方左数第二扇窗户替换为一扇带小铁栏杆的窄阳台门。",
+     "instruction_noref_zh": "将选中区域替换为一扇带小铁栏杆的窄阳台门。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Several identical windows on the hotel facade; the masked one is the second from the left in the row under the sign (third already has a balcony). Yellow window was only a colour change."}
+  ]
+}

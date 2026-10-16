@@ -1,0 +1,46 @@
+{
+  "case_id": "v2-sa_37740",
+  "reviewer": "round2",
+  "notes": "原图可见六个玻璃灯泡，计入最左侧被截断灯泡；U4是从左数第二个，改序数与计数方向消除middle left歧义，保留其原玻璃mask。",
+  "reviewed_views": [
+    "assets/v2-sa_37740/source.jpg",
+    "release_2_6_work/v2-sa_37740/case_sheet.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "紧邻保护"
+    ],
+    "scene_zh": "装饰物密集的店铺灯具",
+    "evidence_zh": "不同源对象：右侧吊灯的玻璃灯泡；上方中间最大吊灯的玻璃灯泡；中间靠右低垂吊灯的玻璃灯泡；从左数第二个玻璃灯泡。",
+    "specific_protection_zh": "相邻对象、同一物体其他部件及背景"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "ref": "the second glass light bulb from the left"
+      },
+      "ref_zh": "从左数第二个玻璃灯泡",
+      "instruction_ref_zh": "将从左数第二个玻璃灯泡的玻璃色调改为浅蓝色。",
+      "id": "U4",
+      "action": "revise",
+      "scope_zh": "灯泡",
+      "physical_parent_zh": "左中吊灯",
+      "parent_instance_id": "sa_37740:左中吊灯",
+      "category": "light bulb"
+    }
+  ]
+}

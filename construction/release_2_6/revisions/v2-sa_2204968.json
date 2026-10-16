@@ -1,0 +1,44 @@
+{
+  "case_id": "v2-sa_2204968",
+  "reviewer": "round2",
+  "notes": "Gray T-shirt becomes hooded sweatshirt. SAM3 isolates exposed white frame tube; use red lightning decal for visible contrast. Final reviewed before commit.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2204968/case_sheet.jpg",
+    "assets/v2-sa_2204968/source.jpg",
+    "release_2_6_work/v2-sa_2204968/frame_detail.jpg",
+    "release_2_6_work/v2-sa_2204968/U2/t1.jpg",
+    "release_2_6_work/v2-sa_2204968/U2/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a red hooded sweatshirt"
+      },
+      "instruction_ref_zh": "将骑车人的灰色T恤替换为一件红色连帽卫衣。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Hood and long sleeves give a real garment structure change."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "payload": "one small red lightning decal",
+        "placement": {
+          "relation": "on",
+          "site": "visible frame tube",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在正在骑行的自行车可见车架管上加上一枚小红色闪电贴纸。",
+      "reason": "Exposed white frame tube is the attachment support; red gives contrast against white."
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    }
+  ]
+}

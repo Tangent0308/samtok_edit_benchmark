@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_7231402",
+  "reviewer": "shard3-b3",
+  "notes": "All students wear khaki uniforms, so refs anchor on the standing man / blurred bottom-right child. U1 recolour-replace made structural. U2 recoloured a whole child with an object phrase as value; now the khaki shirt (v2 mask, SAM3 'shirt' in host) to red. U3 is a breeze-block lattice window with no sill; payload changed to bunting across it.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7231402/case_sheet.jpg", "release_2_6_work/v2-sa_7231402/U2/t1.jpg", "release_2_6_work/v2-sa_7231402/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "crowd", "occlusion"], "scene_zh": "教室里的学生", "evidence_zh": "站立男子右侧学生的衬衫、右下角模糊孩子身后男孩的衬衫和右上方花格窗是三个不同对象。", "specific_protection_zh": "保留教室、黑板和其他学生。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the khaki shirt of the boy seated just right of the standing man", "payload": "a blue hooded sweatshirt"},
+     "ref_zh": "站立男子右侧紧挨着坐的男孩的卡其色衬衫",
+     "physical_parent_zh": "站立男子右侧男孩", "parent_instance_id": "sa_7231402:站立男子右侧男孩",
+     "instruction_ref_zh": "将站立男子右侧紧挨着坐的男孩的卡其色衬衫替换为一件蓝色连帽卫衣。",
+     "instruction_noref_zh": "将选中区域替换为一件蓝色连帽卫衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Shirt -> hooded sweatshirt is structural; parent_zh was 左侧学生 though he sits right of centre."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the khaki shirt of the boy seated just behind the blurred child in the bottom-right corner", "scope": "shirt", "payload": "red", "attributes": [{"property": "color", "value": "red"}]},
+     "ref_zh": "右下角模糊孩子身后男孩的卡其色衬衫", "scope_zh": "衬衫",
+     "physical_parent_zh": "右下角孩子身后男孩", "parent_instance_id": "sa_7231402:右下角孩子身后男孩",
+     "instruction_ref_zh": "将右下角模糊孩子身后男孩的卡其色衬衫的颜色改为红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为红色。",
+     "findings_addressed": ["person_clothing_level"],
+     "reason": "Mask now the shirt only (head excluded, foreground child occluder excluded)."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the lattice window at the upper right", "scope": "window", "payload": "a string of small colorful paper bunting", "placement": {"relation": "across", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "右上方的花格窗", "scope_zh": "窗户",
+     "physical_parent_zh": "右上方花格窗", "parent_instance_id": "sa_7231402:右上方花格窗",
+     "instruction_ref_zh": "在右上方的花格窗上横挂一串彩色小纸旗。",
+     "instruction_noref_zh": "在选中区域上横挂一串彩色小纸旗。",
+     "findings_addressed": [],
+     "reason": "Breeze-block lattice has no sill for a potted plant; bunting strung across it is natural."}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_1785579",
+  "reviewer": "shard0b-b2",
+  "notes": "No audit findings. U1 parent zh said 220 (tray is marked 120). U2 ref disambiguated from the 200 tray also at the left; add site = left and right end walls of the tray (host minus middle box). U3 mask = both sleeves (SAM3 'sleeve' t1_1|t1_2).",
+  "reviewed_views": ["release_2_6_work/v2-sa_1785579/case_sheet.jpg", "release_2_6_work/v2-sa_1785579/U2/final.jpg", "release_2_6_work/v2-sa_1785579/U3/final.jpg", "release_2_6_work/v2-sa_1785579/U3/t1.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "physical_parent_zh": "右侧标价120托盘",
+     "parent_instance_id": "sa_1785579:右侧标价120托盘",
+     "findings_addressed": [],
+     "reason": "Parent zh named a 220 tray; the masked tray carries the 120 price tag."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the frontmost squid tray at the lower left, under the white handwritten sign", "placement": {"relation": "attached to", "site": "left and right ends of the rim", "anchor_mode": "support"}},
+     "ref_zh": "左下方最靠前、白色手写牌下方的鱿鱼托盘",
+     "physical_parent_zh": "前景左下托盘",
+     "instruction_ref_zh": "给左下方最靠前、白色手写牌下方的鱿鱼托盘边沿的左右两端各加上一个小环形把手。",
+     "instruction_noref_zh": "给选中区域加上两个小环形把手。",
+     "findings_addressed": [],
+     "reason": "The 200-price tray is also at the lower left; site made concrete (two end walls) and masked as such."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

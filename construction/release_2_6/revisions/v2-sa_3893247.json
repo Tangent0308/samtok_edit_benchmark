@@ -1,0 +1,59 @@
+{
+  "case_id": "v2-sa_3893247",
+  "reviewer": "shard2-b3",
+  "notes": "U3 badge and U4 headscarf were on the same child (waving child holding the adult's hand). U4 retargeted to the white headscarf of the nearer headscarved child at the right (SAM3, verified). U2 ref tightened (another white-headscarved adult stands far left in the background).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_3893247/case_sheet.jpg",
+    "release_2_6_work/v2-sa_3893247/U4/t1.jpg",
+    "release_2_6_work/v2-sa_3893247/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the white headscarf on the foreground adult at the left"
+      },
+      "ref_zh": "左侧前景成人的白色头巾",
+      "instruction_ref_zh": "将左侧前景成人的白色头巾的颜色改为浅蓝色。",
+      "findings_addressed": [],
+      "reason": "A second adult in a white headscarf stands at the far left background (source x~170-260); 'foreground' excludes her."
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the white headscarf on the nearer of the two headscarved children at the right",
+        "scope": "headscarf"
+      },
+      "ref_zh": "右侧两名戴头巾孩子中较近那名孩子的白色头巾",
+      "scope_zh": "头巾",
+      "physical_parent_zh": "右侧前景戴头巾的孩子",
+      "parent_instance_id": "sa_3893247:右侧前景戴头巾的孩子",
+      "instruction_ref_zh": "在右侧两名戴头巾孩子中较近那名孩子的白色头巾上加上一枚小蓝花胸针。",
+      "instruction_noref_zh": "给选中区域加上一枚小蓝花胸针。",
+      "findings_addressed": [
+        "independence_violation"
+      ],
+      "reason": "Old U4 headscarf belonged to the same child that wears the U3 badge. New target: headscarf of the right-foreground child (source box 1615,387-1952,949), a different physical parent."
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "crowd",
+      "occlusion",
+      "small_targets"
+    ],
+    "scene_zh": "老师带领孩子参加活动",
+    "evidence_zh": "U1为远处白车，U2为左侧前景成人头巾，U3为成人身旁孩子的名牌，U4为右侧前景戴头巾孩子的头巾。车、成人与两个不同孩子为独立父对象。",
+    "specific_protection_zh": "保留人物脸部、活动服装轮廓、其他名牌和场景。"
+  }
+}

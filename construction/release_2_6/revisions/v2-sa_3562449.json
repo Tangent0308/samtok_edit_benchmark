@@ -1,0 +1,72 @@
+{
+  "case_id": "v2-sa_3562449",
+  "reviewer": "round2",
+  "notes": "No turret at the target: railing is atop a square stone bastion. U4 attachment mask is front central top rail only, avoiding railing holes/background. U1 pickup provides structural vehicle change; U3 road-side pole correctly described.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_3562449/case_sheet.jpg",
+    "assets/v2-sa_3562449/source.jpg",
+    "release_2_6_work/v2-sa_3562449/railing_clean.jpg",
+    "release_2_6_work/v2-sa_3562449/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a red pickup truck"
+      },
+      "instruction_ref_zh": "将最靠近前景的白色奥迪替换为一辆红色皮卡。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Pickup bed and cab change rear structure."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the blue advertising board on the pole beside the road"
+      },
+      "ref_zh": "道路旁立杆上的蓝色广告牌",
+      "instruction_ref_zh": "移除道路旁立杆上的蓝色广告牌。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Pole is on road median/sidewalk rather than directly beside river."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the iron railing atop the square stone bastion on the riverbank",
+        "placement": {
+          "relation": "on",
+          "site": "front central top rail",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "河岸方形石台上的铁栏杆",
+      "physical_parent_zh": "河岸方形石台的铁栏杆",
+      "parent_instance_id": "sa_3562449:河岸方形石台铁栏杆",
+      "instruction_ref_zh": "在河岸方形石台铁栏杆正面中央的顶栏杆上加上一个种有红花的窄花槽。",
+      "findings_addressed": [
+        "category_mismatch"
+      ],
+      "reason": "Square platform, no pointed roof; source mask tightened to planter support rail."
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "perspective",
+      "occlusion",
+      "repetition"
+    ],
+    "scene_zh": "河边车流与桥梁",
+    "evidence_zh": "已逐图核对的独立目标：最靠近前景的白色奥迪；白色奥迪正后方的灰色汽车；道路旁立杆上的蓝色广告牌；河岸方形石台上的铁栏杆。",
+    "specific_protection_zh": "保留河流、桥梁、交通、建筑和其他标牌。"
+  }
+}

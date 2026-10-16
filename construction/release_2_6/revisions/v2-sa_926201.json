@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_926201",
+  "reviewer": "shard7",
+  "notes": "Tail case, all units rewritten. U1 ref unique (topmost slatted window left of the blue glass section) and 'to blue' on bluish slats -> red. U2 narrow door is in the SALLE D'EXPOSITION shopfront (ref said left), replace was a recolour -> solid wooden door. U3 bicycle is at the lower-left corner with a brown pannier (ref said lower centre); the old mask missed the pannier and saddle -> SAM3 v2 mask of the whole bicycle incl. pannier. U4 lamp is the wire-hung lamp at the upper right (ref said centre); payload/relation made concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_926201/case_sheet.jpg", "release_2_6_work/v2-sa_926201/zoom_U2.jpg", "release_2_6_work/v2-sa_926201/zoom_U3.jpg", "release_2_6_work/v2-sa_926201/zoom_U4.jpg", "release_2_6_work/v2-sa_926201/U3/p4.jpg", "release_2_6_work/v2-sa_926201/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "street"], "scene_zh": "商业建筑外景", "evidence_zh": "蓝色玻璃区左侧最上层的百叶窗、SALLE D'EXPOSITION 展厅的窄门、左下角挂棕色驮包的自行车和右上方吊在电线上的路灯是四个不同对象。", "specific_protection_zh": "保留建筑、车辆和街道设施。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the topmost slatted window left of the blue glass section", "scope": "window", "payload": "red", "attributes": [{"property": "color", "value": "red"}]},
+      "ref_zh": "蓝色玻璃区左侧最上层的百叶窗",
+      "scope_zh": "窗户",
+      "physical_parent_zh": "最上层百叶窗",
+      "parent_instance_id": "sa_926201:最上层百叶窗",
+      "instruction_ref_zh": "将蓝色玻璃区左侧最上层的百叶窗的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Dozens of similar windows; the masked one is the only top-row window left of the blue glass section. Slats are already bluish, so red is a visible change."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the narrow door of the SALLE D'EXPOSITION shopfront behind the standing person", "scope": "door", "payload": "a solid red wooden door"},
+      "ref_zh": "SALLE D'EXPOSITION 展厅站立行人身后的窄门",
+      "scope_zh": "门",
+      "physical_parent_zh": "展厅窄门",
+      "parent_instance_id": "sa_926201:展厅窄门",
+      "instruction_ref_zh": "将 SALLE D'EXPOSITION 展厅站立行人身后的窄门替换为一扇红色实木门。",
+      "instruction_noref_zh": "将选中区域替换为一扇红色实木门。",
+      "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+      "reason": "Masked door is at 0.62W in the exhibition shopfront (the UNI CARL VOGT entrance is at the left); glass door -> solid wooden door is a structural change. The person in front is excluded from the mask."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the bicycle with a brown pannier bag at the lower-left corner", "scope": "bicycle"},
+      "ref_zh": "左下角挂着棕色驮包的自行车",
+      "scope_zh": "自行车",
+      "physical_parent_zh": "左下角自行车",
+      "parent_instance_id": "sa_926201:左下角自行车",
+      "instruction_ref_zh": "移除左下角挂着棕色驮包的自行车。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Bicycle is at the lower-left corner, not the lower centre. Mask fixed (SAM3 p4_1): whole bicycle including the pannier and saddle; the neighbouring handlebar at the left edge and the black bicycle to the right are excluded."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the wire-hung street lamp at the upper right", "scope": "street lamp", "payload": "one small hanging flower basket", "placement": {"relation": "hanging from", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "右上方吊在电线上的路灯",
+      "scope_zh": "路灯",
+      "physical_parent_zh": "右上方吊灯",
+      "parent_instance_id": "sa_926201:右上方吊灯",
+      "instruction_ref_zh": "在右上方吊在电线上的路灯下挂上一个小吊篮花。",
+      "instruction_noref_zh": "在选中区域下挂上一个小吊篮花。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked lamp is at (0.84W,0.36H); the other wire-hung lamp is near the centre."
+    }
+  ]
+}

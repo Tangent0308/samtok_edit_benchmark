@@ -1,0 +1,59 @@
+{
+  "case_id": "v2-sa_921334",
+  "reviewer": "shard7",
+  "notes": "Tail case. U1/U2 refs were left/right but both vaporettos sit near the canal centre: rewritten as nearer/farther white water bus; U2 replace was a recolor -> gondola. U3 mask was a building balcony at the far right (ref said centre, removal structurally odd) and U4 a fragment of one of many identical red terrace umbrellas: both retargeted (U3 small cargo boat, U4 foreground wooden motorboat) with SAM3 v2 masks.",
+  "reviewed_views": ["release_2_6_work/v2-sa_921334/case_sheet.jpg", "release_2_6_work/v2-sa_921334/U3/t1.jpg", "release_2_6_work/v2-sa_921334/U3/final.jpg", "release_2_6_work/v2-sa_921334/U4/t1.jpg", "release_2_6_work/v2-sa_921334/U4/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "waterfront", "city"], "scene_zh": "威尼斯运河", "evidence_zh": "较近的白色水上巴士、较远的白色水上巴士、运河中的小货船和底部边缘的木质摩托艇是四个不同对象。", "specific_protection_zh": "保留船只、建筑和运河设施。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the nearer of the two white water buses in the canal", "scope": "water bus", "payload": "bright yellow", "attributes": [{"property": "color", "value": "bright yellow"}]},
+      "ref_zh": "运河中两艘白色水上巴士中较近的一艘",
+      "scope_zh": "水上巴士",
+      "physical_parent_zh": "较近的白色水上巴士",
+      "parent_instance_id": "sa_921334:较近的白色水上巴士",
+      "instruction_ref_zh": "将运河中两艘白色水上巴士中较近的一艘的颜色改为亮黄色。",
+      "instruction_noref_zh": "将选中区域的颜色改为亮黄色。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Masked boat is the nearer vaporetto at 0.36W, not 'at the left' (moored boats lie further left); it is already white, so the value is now bright yellow."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the farther of the two white water buses in the canal", "scope": "water bus", "payload": "a small black wooden gondola"},
+      "ref_zh": "运河中两艘白色水上巴士中较远的一艘",
+      "scope_zh": "水上巴士",
+      "physical_parent_zh": "较远的白色水上巴士",
+      "parent_instance_id": "sa_921334:较远的白色水上巴士",
+      "instruction_ref_zh": "将运河中两艘白色水上巴士中较远的一艘替换为一艘黑色小木质贡多拉。",
+      "instruction_noref_zh": "将选中区域替换为一艘黑色小木质贡多拉。",
+      "findings_addressed": ["replace_is_attribute", "ambiguous_ref"],
+      "reason": "Masked boat is the farther vaporetto at canal centre (0.49W); replace with a gondola is a structural change, not a recolor."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the small cargo boat with one standing man heading up the canal", "scope": "boat"},
+      "ref_zh": "运河中站着一名男子、正驶向上游的小货船",
+      "scope_zh": "小船",
+      "physical_parent_zh": "运河中的小货船",
+      "parent_instance_id": "sa_921334:运河中的小货船",
+      "instruction_ref_zh": "移除运河中站着一名男子、正驶向上游的小货船。",
+      "instruction_noref_zh": "移除选中区域。",
+      "preserve": ["保留两艘水上巴士、右侧贡多拉和运河水面。"],
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Retarget: old mask was a building balcony at the far right (0.94W) contradicting 'near the center', and removing a balcony is structurally questionable. New target: the small cargo boat at ~0.6W (SAM3 t1_1, verified)."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the wooden motorboat with a standing man at the bottom center", "scope": "motorboat", "payload": "one small Italian flag", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "底部中间站着一名男子的木质摩托艇",
+      "scope_zh": "摩托艇",
+      "physical_parent_zh": "底部木质摩托艇",
+      "parent_instance_id": "sa_921334:底部木质摩托艇",
+      "instruction_ref_zh": "给底部中间站着一名男子的木质摩托艇加上一面意大利小国旗。",
+      "instruction_noref_zh": "给选中区域加上一面意大利小国旗。",
+      "preserve": ["保留艇上站立的男子和运河水面。"],
+      "findings_addressed": ["ambiguous_ref", "grammar_style"],
+      "reason": "Retarget: old mask was a fragment of one of a long row of identical red terrace umbrellas. New anchor: the foreground wooden motorboat (SAM3 t1_1, the standing man excluded); payload made specific."
+    }
+  ]
+}

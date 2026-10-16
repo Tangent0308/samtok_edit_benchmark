@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_2729470",
+  "reviewer": "shard1b-b2",
+  "notes": "U2: a second yellow-and-green taxi is further up the road (~x1030,y510); ref now anchors to the yellow bus. Own review: U1 crossover -> compact SUV is the same class (recolour only) -> pickup truck; U4 ref anchored more precisely (tuk-tuk at the left curb beside the nearest red bus; other tuk-tuks stand beside the yellow bus on the right). U3 is the white information sign on the left sidewalk (unique). No S!=T unit.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2729470/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a silver pickup truck"},
+     "instruction_ref_zh": "将右下方的白色跨界车替换为一辆银色皮卡。",
+     "instruction_noref_zh": "将选中区域替换为一辆银色皮卡。",
+     "findings_addressed": [],
+     "reason": "The white crossover is already a compact SUV; a pickup truck is a real structural change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the yellow-and-green taxi right beside the yellow bus"},
+     "ref_zh": "紧挨黄色公交车的黄绿色出租车",
+     "instruction_ref_zh": "将紧挨黄色公交车的黄绿色出租车的颜色改为蓝色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Another yellow-and-green taxi drives further up the road."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the tuk-tuk canopy at the left curb beside the nearest red bus"},
+     "ref_zh": "左侧路边最近红色公交车旁的三轮车顶棚",
+     "instruction_ref_zh": "在左侧路边最近红色公交车旁的三轮车顶棚上加上一张小TAXI贴纸。",
+     "findings_addressed": [],
+     "reason": "Several tuk-tuks are near buses; the masked one is at the left curb beside the nearest (red) bus."}
+  ]
+}

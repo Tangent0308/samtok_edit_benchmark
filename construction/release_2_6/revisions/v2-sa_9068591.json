@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9068591",
+  "reviewer": "shard6-b5",
+  "notes": "Tail case, all units re-examined. U1 'Soccer Bar' sign is already blue -> recolour to red, ref names it. U2 railing mask was a coarse blob over one section of a railing that continues to the left past a post (ambiguous extent) and its replace was a recolour -> retargeted to the round road sign on the tall pole (SAM3 v2 mask, pole excluded) replaced by a triangular warning sign. U3 lamp ref precise. U4 payload made concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9068591/case_sheet.jpg", "release_2_6_work/v2-sa_9068591/U2/t1.jpg", "release_2_6_work/v2-sa_9068591/U2/t2.jpg", "release_2_6_work/v2-sa_9068591/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "snow"], "scene_zh": "积雪街道", "evidence_zh": "左上蓝色 Soccer Bar 招牌、高杆上的圆形路牌、弯臂上的圆顶路灯灯头和灯杆上的深灰色垃圾桶是四个不同对象。", "specific_protection_zh": "保留街道设施和冬季积雪环境。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the blue Soccer Bar sign above the shop at the upper left", "scope": "sign", "payload": "red", "attributes": [{"property": "color", "value": "red"}]},
+      "ref_zh": "左上方店铺上方的蓝色 Soccer Bar 招牌",
+      "scope_zh": "招牌",
+      "physical_parent_zh": "Soccer Bar 招牌",
+      "parent_instance_id": "sa_9068591:SoccerBar招牌",
+      "instruction_ref_zh": "将左上方店铺上方的蓝色 Soccer Bar 招牌的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: the masked sign's lettering/logo is already blue, so 'to blue' was a near no-op; changed to red and ref names it."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the round road sign on the tall pole right of the trash bin", "scope": "road sign", "payload": "a triangular warning sign"},
+      "ref_zh": "垃圾桶右侧高杆上的圆形路牌",
+      "scope_zh": "路牌",
+      "physical_parent_zh": "圆形路牌",
+      "parent_instance_id": "sa_9068591:圆形路牌",
+      "instruction_ref_zh": "将垃圾桶右侧高杆上的圆形路牌替换为一块三角形警示牌。",
+      "instruction_noref_zh": "将选中区域替换为一块三角形警示牌。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "Old mask was a coarse blob over the right section of a green railing that continues left past a post (SAM3 'metal railing' gave two sections), so the extent was ill-defined, and 'a black fence' was a recolour. Retargeted to the round sign: SAM3 text 'round sign' t2_1, box [1225,410,1316,509], pole excluded, visually verified."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the dome-shaped street lamp head on the curved arm near the top", "scope": "lamp head"},
+      "ref_zh": "顶部附近弯臂上的圆顶路灯灯头",
+      "scope_zh": "路灯灯头",
+      "physical_parent_zh": "路灯灯头",
+      "parent_instance_id": "sa_9068591:路灯灯头",
+      "instruction_ref_zh": "移除顶部附近弯臂上的圆顶路灯灯头。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: mask is the dome luminaire on the curved arm of the street light (box [897,168,979,224]); ref now says so."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the dark gray trash bin mounted on the street-light pole", "scope": "trash bin", "payload": "one white recycling-symbol sticker", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "路灯杆上挂着的深灰色垃圾桶",
+      "scope_zh": "垃圾桶",
+      "physical_parent_zh": "深灰色垃圾桶",
+      "parent_instance_id": "sa_9068591:深灰色垃圾桶",
+      "instruction_ref_zh": "给路灯杆上挂着的深灰色垃圾桶加上一张白色回收标志贴纸。",
+      "instruction_noref_zh": "给选中区域加上一张白色回收标志贴纸。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "'a small label' was generic; payload made concrete; ref names the pole-mounted bin."
+    }
+  ]
+}

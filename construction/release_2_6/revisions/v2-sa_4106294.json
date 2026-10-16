@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_4106294",
+  "reviewer": "shard2-b4",
+  "notes": "U3 add had a dangling 'its bow' in the payload; bow moved to placement.site and the mask narrowed to the jet ski's raised front (bow) region. U1/U2 verified on the sheet and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4106294/case_sheet.jpg", "release_2_6_work/v2-sa_4106294/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small red number 7 decal", "placement": {"relation": "on", "site": "bow", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在右侧摩托艇的艇首上加上一张小的红色数字7贴花。",
+     "instruction_noref_zh": "给选中区域加上一张小的红色数字7贴花。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its bow' removed from payload; site 'bow' stored in placement; v2 mask = host ∩ box [2135,540,2220,615], the raised front of the jet ski (riders face right, handlebars at x~2110)."}
+  ]
+}

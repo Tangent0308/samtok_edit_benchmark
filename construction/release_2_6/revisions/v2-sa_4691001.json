@@ -1,0 +1,60 @@
+{
+  "case_id": "v2-sa_4691001",
+  "reviewer": "round2",
+  "notes": "U3移除容器及内容物：未见超出袋轮廓的独立内容物，原bag mask核实后提交v2。U4原handle位于行李堆遮挡处，SAM3 handle无候选，改在可见箱面右上角添加贴纸，提交该site mask。U1移除远处人物上的9px碎片，保留两条肩带与左肩带扣。",
+  "reviewed_views": [
+    "assets/v2-sa_4691001/source.jpg",
+    "release_2_6_work/v2-sa_4691001/case_sheet.jpg",
+    "release_2_6_work/v2-sa_4691001/U1/final.jpg",
+    "release_2_6_work/v2-sa_4691001/U3/final.jpg",
+    "release_2_6_work/v2-sa_4691001/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "细长狭窄",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "机场行李车队列",
+    "evidence_zh": "不同源对象：前景红衣男子背包的两侧可见肩带；最前方行李车顶上的蓝色长包；后方行李车最上方的红色长包；后方行李车上的紫色硬壳箱；后排戴眼镜男子露在背包旁的浅蓝上衣。",
+    "specific_protection_zh": "包带之外的衣物、邻近箱包和行李车"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "one small yellow travel sticker",
+        "placement": {
+          "relation": "on",
+          "site": "upper-right corner",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在后方行李车上紫色硬壳箱的右上角加上一张小黄色旅行贴纸。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "后方行李车上的紫色硬壳箱",
+      "scope_zh": "行李箱",
+      "physical_parent_zh": "后车紫色硬壳箱",
+      "parent_instance_id": "sa_4691001:后车紫色硬壳箱",
+      "category": "suitcase"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ]
+}

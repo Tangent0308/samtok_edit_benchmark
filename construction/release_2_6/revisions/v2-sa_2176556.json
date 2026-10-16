@@ -1,0 +1,49 @@
+{
+  "case_id": "v2-sa_2176556",
+  "reviewer": "round2",
+  "notes": "U1原已是全景车，改同车厢为双层结构；SAM仅车厢，排除悬挂架填洞。U2改明确顶横栏支持区，SAM精分排除游客和栏杆间空洞。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2176556/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2176556/U1/t1.jpg",
+    "release_2_6_work/v2-sa_2176556/U1/final.jpg",
+    "release_2_6_work/v2-sa_2176556/U2/t1.jpg",
+    "release_2_6_work/v2-sa_2176556/U2/t3.jpg",
+    "release_2_6_work/v2-sa_2176556/U2/bar_detail.jpg",
+    "release_2_6_work/v2-sa_2176556/U2/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "category": "cable car cabin",
+      "spec": {
+        "ref": "the cable car cabin on the right",
+        "scope": "cable car cabin",
+        "payload": "a red double-deck cabin with two stacked rows of passenger windows"
+      },
+      "ref_zh": "右侧缆车的车厢",
+      "scope_zh": "缆车车厢",
+      "instruction_ref_zh": "将右侧缆车的车厢替换为带上下两排乘客窗的红色双层车厢。",
+      "preserve": [
+        "Passengers, overhead cables, suspension frame, station buildings and all unrequested neighboring content."
+      ],
+      "reason": "源车已大面积全景窗，双层车厢形成可核实结构变化；mask排除不编辑悬挂架及其孔洞。"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "placement": {
+          "relation": "on",
+          "site": "top rail",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在左上方阳台栏杆的顶横栏上加上一块蓝色小信息牌。",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "普通railing提示仍填洞；top rail候选2准确保留横栏且排除游客与空隙，提交该支持mask。"
+    }
+  ]
+}

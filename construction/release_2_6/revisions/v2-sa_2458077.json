@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_2458077",
+  "reviewer": "shard1b-b1",
+  "notes": "No audit findings. U3 site 'rear panel' faces away from the camera (cart seen side-on, rear edge only a sliver at x~1800-1830), so the site is rewritten to the clearly visible painted side panel; v2 mask = side panel band (SAM3 'painted side panel'), minus U1. U1/U2 verified.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2458077/sheet_all.jpg", "release_2_6_work/v2-sa_2458077/zoomU3.jpg", "release_2_6_work/v2-sa_2458077/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "painted side panel", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在马拉的车厢的彩绘侧板上加上一块小反光牌。",
+     "instruction_noref_zh": "给选中区域加上一块小反光牌。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 site mask; the rear panel is not visible, the painted side panel is."}
+  ]
+}

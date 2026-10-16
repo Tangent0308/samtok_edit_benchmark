@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_8257697",
+  "reviewer": "shard1-b1",
+  "notes": "No audit findings. Protocol 2.0: U1 add site 'visible chest' -> v2 = shirt front chest (host ∩ box [465,950,600,1065]); U4 remove part collar -> v2 = visible image-left collar flap (SAM3 'collar'; the other flap is hidden by the flag). U1 ZH fixed ('小布袋' = small cloth bag). Refs verified on clean source.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8257697/case_sheet.jpg", "release_2_6_work/v2-sa_8257697/U1/final.jpg", "release_2_6_work/v2-sa_8257697/U4/t1.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise", "spec": {},
+     "instruction_ref_zh": "给左前方斜持旗杆男生的制服上衣的可见胸前加上一个小布口袋。",
+     "instruction_noref_zh": "给选中区域加上一个小布口袋。",
+     "reason": "ZH mistranslated pocket as 布袋 (cloth bag); mask now the chest site (U1_v2.png)."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep", "reason": "Mask replaced by collar-only U4_v2.png."},
+    {"id": "U5", "action": "keep"}
+  ]
+}

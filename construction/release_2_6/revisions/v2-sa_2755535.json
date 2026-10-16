@@ -1,0 +1,34 @@
+{
+  "case_id": "v2-sa_2755535",
+  "reviewer": "shard1b-b3",
+  "notes": "U1 replace was near-identical (round -> round); now a square chrome-rimmed headlight. U2 ref tightened: a second, farther silver car sits at x~350-580,y~20-130.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2755535/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a square chrome-rimmed headlight"
+      },
+      "ref_zh": "黄色汽车左下方的圆形前灯",
+      "instruction_ref_zh": "将黄色汽车左下方的圆形前灯替换为一个方形镀铬边框前灯。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Round sealed-beam -> clear round LED is barely visible; square headlight is a visible structural change."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the silver car at the top-left corner behind the yellow car"
+      },
+      "ref_zh": "黄色汽车后方左上角的银色汽车",
+      "instruction_ref_zh": "将黄色汽车后方左上角的银色汽车的颜色改为深蓝色。",
+      "findings_addressed": [],
+      "reason": "Another silver car is visible farther back (x~350-580); masked car fills the top-left corner [0,0,424,205]."
+    }
+  ]
+}

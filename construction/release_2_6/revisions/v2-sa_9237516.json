@@ -1,0 +1,58 @@
+{
+  "case_id": "v2-sa_9237516",
+  "reviewer": "shard7",
+  "notes": "Tail case. U1 canopy is already blue (no-op value); U2 replace was a bare colour and the car is the dark sedan behind the concrete hut at the right, not centre; U3 bag is beside the white van's rear wheel, not at the right; U4 crate is the gray plastic crate cut off at the bottom edge, payload vague. All 2.5.0 masks checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9237516/case_sheet.jpg (full + U2/U3/U4 zooms)"],
+  "difficulty": {"mechanisms": ["outdoor", "market", "street"], "scene_zh": "露天市场", "evidence_zh": "左下前景的蓝色篷布顶棚、水泥小屋后的深色轿车、白色面包车后轮旁的橙色塑料袋和底部边缘的灰色塑料筐是四个不同对象。", "specific_protection_zh": "保留摊位、车辆和商品容器。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the blue tarp canopy in the lower left foreground", "scope": "canopy", "payload": "forest green", "attributes": [{"property": "color", "value": "forest green"}]},
+      "ref_zh": "左下前景的蓝色篷布顶棚",
+      "scope_zh": "顶棚",
+      "physical_parent_zh": "左下蓝色篷布顶棚",
+      "parent_instance_id": "sa_9237516:左下蓝色篷布顶棚",
+      "instruction_ref_zh": "将左下前景的蓝色篷布顶棚的颜色改为森林绿。",
+      "instruction_noref_zh": "将选中区域的颜色改为森林绿。",
+      "findings_addressed": ["attribute_value"],
+      "reason": "Canopy is already bright blue; new value forest green differs visibly; 'foreground' excludes the blue tarp further back."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the dark sedan parked behind the graffiti-covered concrete hut", "scope": "sedan", "payload": "a small red pickup truck"},
+      "ref_zh": "停在涂鸦水泥小屋后面的深色轿车",
+      "scope_zh": "轿车",
+      "physical_parent_zh": "水泥小屋后的深色轿车",
+      "parent_instance_id": "sa_9237516:水泥小屋后的深色轿车",
+      "instruction_ref_zh": "将停在涂鸦水泥小屋后面的深色轿车替换为一辆红色小型皮卡。",
+      "instruction_noref_zh": "将选中区域替换为一辆红色小型皮卡。",
+      "findings_addressed": ["replace_is_attribute", "wrong_instance_spatial"],
+      "reason": "Masked car (cx=0.81) is the dark sedan mostly hidden behind the hut; bare-colour payload replaced by a structurally different vehicle."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the orange plastic bag on the ground beside the rear wheel of the white van with open back doors", "scope": "plastic bag"},
+      "ref_zh": "后门敞开的白色面包车后轮旁地上的橙色塑料袋",
+      "scope_zh": "塑料袋",
+      "physical_parent_zh": "橙色塑料袋",
+      "parent_instance_id": "sa_9237516:橙色塑料袋",
+      "instruction_ref_zh": "移除后门敞开的白色面包车后轮旁地上的橙色塑料袋。",
+      "instruction_noref_zh": "移除选中区域。",
+      "preserve": ["保留旁边的白色塑料袋和面包车。"],
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Masked bag is the translucent orange bag by the van's rear wheel (cx=0.62); white bags lie to its left."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the gray plastic crate cut off at the bottom edge", "scope": "crate", "payload": "one small yellow price tag sticker"},
+      "ref_zh": "底部边缘被截断的灰色塑料筐",
+      "scope_zh": "塑料筐",
+      "physical_parent_zh": "底部灰色塑料筐",
+      "parent_instance_id": "sa_9237516:底部灰色塑料筐",
+      "instruction_ref_zh": "给底部边缘被截断的灰色塑料筐加上一张黄色小价签贴纸。",
+      "instruction_noref_zh": "给选中区域加上一张黄色小价签贴纸。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "Ref names the gray plastic crate at the bottom edge (a small wooden crate sits by the hut); payload made specific."
+    }
+  ]
+}

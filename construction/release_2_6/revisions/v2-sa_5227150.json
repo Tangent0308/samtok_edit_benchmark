@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_5227150",
+  "reviewer": "shard2-b9",
+  "notes": "U2 replace kept the T-shirt category (recolour only) -> pale blue zip-up running jacket. U4 payload had dangling 'on its visible hull' and a noisy host mask; site = 'front deck', v2 mask = host ∩ box (600,1080,1640,1500), which drops the speckled fragments at x315-560. U1/U3 checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5227150/case_sheet.jpg", "release_2_6_work/v2-sa_5227150/U4/t1.jpg", "release_2_6_work/v2-sa_5227150/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a pale blue zip-up running jacket"},
+     "instruction_ref_zh": "将前景右侧跑者的黑色印花T恤替换为一件浅蓝色拉链跑步夹克。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "T-shirt -> zip-up jacket is a genuine garment-structure change."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white exhibit-number 12 plaque", "placement": {"relation": "on", "site": "front deck", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在跑者脚下的装甲车的前甲板上加上一块小白色展品编号12牌。",
+     "instruction_noref_zh": "给选中区域加上一块小白色展品编号12牌。",
+     "findings_addressed": ["grammar_style", "mask_quality"],
+     "reason": "Dangling 'its' removed; front deck is the site and the v2 mask is that deck region (no stray fragments)."}
+  ]
+}

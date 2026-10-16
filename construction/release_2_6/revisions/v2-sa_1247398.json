@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_1247398",
+  "reviewer": "shard1-b6",
+  "notes": "Audit: U2 'colour of the trampoline' did not say which part. Now attribute with target_part 'green frame pads'; v2 mask = the green padded frame cover only (SAM3, mat and legs excluded); ref made unique ('at the lower-right corner', another green trampoline is behind at right). U1/U3 checked on clean source, unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1247398/case_sheet.jpg", "release_2_6_work/v2-sa_1247398/U2/t1.jpg", "release_2_6_work/v2-sa_1247398/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the trampoline at the lower-right corner", "target_part": "green frame pads"},
+     "ref_zh": "右下角的蹦床",
+     "instruction_ref_zh": "将右下角的蹦床的绿色边框护垫的颜色改为蓝色。",
+     "instruction_noref_zh": "将选中区域的颜色改为蓝色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Trampoline = green pads + black mat + grey legs; only the pads should turn blue. Mask now the pads."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

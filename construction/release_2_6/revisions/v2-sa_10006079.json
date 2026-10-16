@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_10006079",
+  "reviewer": "shard1-b2",
+  "notes": "U2 object is a black Quechua duffel bag lying on the boat floor, not a backpack. U1 top is yellow with a small dark print (colour named for disambiguation). Masks verified (SAM3 'tank top' reproduced the U1 host mask); no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10006079/case_sheet.jpg", "release_2_6_work/v2-sa_10006079/U1/t1.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the woman’s yellow patterned tank top"},
+     "ref_zh": "女子的黄色印花背心",
+     "instruction_ref_zh": "将女子的黄色印花背心的颜色改为蓝绿色。",
+     "findings_addressed": ["ref_attribute_precision"],
+     "reason": "Clean source: the top is yellow with a small dark motif print; 'checked' alone was imprecise."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the black duffel bag beside the woman", "scope": "duffel bag"},
+     "ref_zh": "女子身旁的黑色旅行包",
+     "scope_zh": "旅行包",
+     "physical_parent_zh": "女子身旁的旅行包",
+     "parent_instance_id": "sa_10006079:duffel_bag",
+     "instruction_ref_zh": "移除女子身旁的黑色旅行包。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Masked object is a horizontal barrel-shaped Quechua duffel/holdall with drawcords, not a backpack."}
+  ]
+}

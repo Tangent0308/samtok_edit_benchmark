@@ -1,0 +1,43 @@
+{
+  "case_id": "v2-sa_2316049",
+  "reviewer": "round2",
+  "notes": "Source close-up distinguishes car behind bench from adjacent front-facing car. Compose car minus SAM3 bench and bin masks. U2 appearance-only replacement changed to a convertible.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2316049/case_sheet.jpg",
+    "assets/v2-sa_2316049/source.jpg",
+    "release_2_6_work/v2-sa_2316049/car_detail.jpg",
+    "release_2_6_work/v2-sa_2316049/U3/t1.jpg",
+    "release_2_6_work/v2-sa_2316049/U3/t2.jpg",
+    "release_2_6_work/v2-sa_2316049/U3/t4.jpg",
+    "release_2_6_work/v2-sa_2316049/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "payload": "a white two-seat convertible with the roof lowered"
+      },
+      "instruction_ref_zh": "将右侧的蓝色掀背车替换为一辆敞篷打开的白色双座敞篷车。",
+      "reason": "An open roof and two-seat body visibly change hatchback structure."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the dark car behind the wooden bench across the street, left of center"
+      },
+      "ref_zh": "马路对面中央偏左木长椅后方的深色汽车",
+      "instruction_ref_zh": "移除马路对面中央偏左木长椅后方的深色汽车。",
+      "findings_addressed": [
+        "ambiguous_ref",
+        "mask_quality"
+      ],
+      "reason": "Bench reference selects the unique distant car; revised mask excludes bench and bin in front."
+    }
+  ]
+}

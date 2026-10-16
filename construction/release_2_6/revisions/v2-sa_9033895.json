@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9033895",
+  "reviewer": "shard6-b4",
+  "notes": "Tail case, all units re-examined. U1 is one of a row of parked cars -> dark blue minivan next to the yellow car. U2 green Balaton/Veszprém direction sign, replace was a recolour -> round street clock. U3 removing a building door was ill-posed and ambiguous -> remove the two paper notices posted on that wooden door (SAM3 v2 mask of both notices). U4 tall curved streetlight in the left foreground, payload made concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9033895/case_sheet.jpg", "release_2_6_work/v2-sa_9033895/U3/t3.jpg", "release_2_6_work/v2-sa_9033895/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "architecture"], "scene_zh": "历史街区", "evidence_zh": "黄色汽车旁的深蓝色小型面包车、灯柱上的绿色方向牌、粉色转角楼木门上的告示和左侧前景的高弯臂路灯是四个不同对象。", "specific_protection_zh": "保留车辆、建筑和街道设施。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the dark blue minivan parked next to the yellow car", "scope": "minivan"},
+      "ref_zh": "停在黄色汽车旁的深蓝色小型面包车",
+      "scope_zh": "小型面包车",
+      "physical_parent_zh": "深蓝色小型面包车",
+      "parent_instance_id": "sa_9033895:深蓝色小型面包车",
+      "instruction_ref_zh": "将停在黄色汽车旁的深蓝色小型面包车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Many cars park along the left; the masked one is the dark blue minivan at the end of the row, right of the only yellow car."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the green Balaton/Veszprém direction sign on the lamp post at the right", "scope": "sign", "payload": "a round analog street clock"},
+      "ref_zh": "右侧灯柱上的绿色 Balaton/Veszprém 方向牌",
+      "scope_zh": "方向牌",
+      "physical_parent_zh": "绿色方向牌",
+      "parent_instance_id": "sa_9033895:绿色方向牌",
+      "instruction_ref_zh": "将右侧灯柱上的绿色 Balaton/Veszprém 方向牌替换为一个圆形指针式街钟。",
+      "instruction_noref_zh": "将选中区域替换为一个圆形指针式街钟。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "Blue sign was only a recolour; a street clock is a structural replacement on the same post. Ref names the sign text to separate it from the parking and pedestrian signs."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the two paper notices posted on the brown wooden door of the pink corner building", "scope": "notices"},
+      "ref_zh": "粉色转角楼棕色木门上贴着的两张纸质告示",
+      "scope_zh": "告示",
+      "physical_parent_zh": "木门上的告示",
+      "parent_instance_id": "sa_9033895:木门上的告示",
+      "instruction_ref_zh": "移除粉色转角楼棕色木门上贴着的两张纸质告示。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Removing a building door leaves an undefined doorway and 'the door at the right' fits several doors. The notices on the only brown wooden door are removable; new SAM3 mask t3_1|t3_2|t3_3 (both notices, box [2052,1037,2108,1108]), visually verified."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the tall curved streetlight in the left foreground", "scope": "streetlight", "payload": "one hanging basket of red petunias", "placement": {"relation": "hanging from", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "左侧前景的高弯臂路灯",
+      "scope_zh": "路灯",
+      "physical_parent_zh": "左侧前景路灯",
+      "parent_instance_id": "sa_9033895:左侧前景路灯",
+      "instruction_ref_zh": "在左侧前景的高弯臂路灯上挂一个种着红色矮牵牛的吊篮。",
+      "instruction_noref_zh": "在选中区域上挂一个种着红色矮牵牛的吊篮。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: smaller lamps stand further back at the left; the masked one is the tall foreground lamp. Payload made concrete."
+    }
+  ]
+}

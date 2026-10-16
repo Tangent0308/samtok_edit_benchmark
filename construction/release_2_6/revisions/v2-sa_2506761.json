@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_2506761",
+  "reviewer": "shard0b-b3",
+  "notes": "U1 ambiguous ref fixed and remove_mode contents -> whole (drink is inside the bottle; mask unchanged). U3 site neck -> v2 neck mask (SAM3 'bottle neck'); ref anchored on the dark front bottle.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2506761/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2506761/U3/final.jpg"
+  ],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the tallest pale-drink bottle in the middle of the crate, partly hidden behind a shorter front pale-drink bottle", "remove_mode": "whole"},
+     "ref_zh": "箱子中间被前方较矮浅色饮料瓶部分遮挡的最高浅色饮料瓶",
+     "instruction_ref_zh": "移除箱子中间被前方较矮浅色饮料瓶部分遮挡的最高浅色饮料瓶。",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Several pale bottles near the front centre; the masked one (1031-1271 x 553-1249) is the tall middle-row bottle whose lower part is hidden by the front pale bottle. Contents mode was redundant for a sealed bottle."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the brown-drink bottle directly behind the dark-drink bottle at the front left"},
+     "ref_zh": "左前方深色饮料瓶正后方的棕色饮料瓶",
+     "instruction_ref_zh": "给左前方深色饮料瓶正后方的棕色饮料瓶加上一张系在瓶颈的蓝色纸吊牌。",
+     "instruction_noref_zh": "给选中区域加上一张蓝色纸吊牌。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 site mask = bottle neck (810-944 x 681-894). 'near the front left' also fit the brown bottle further left; now anchored on the front dark bottle."}
+  ]
+}

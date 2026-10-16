@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_10813555",
+  "reviewer": "shard1-b4",
+  "notes": "U2 spatial relation fixed (car is left of, not below, the mixer). Protocol 2.0: U3 add site 'cab roof' -> v2 mask = roof strip of the mixer's cab (SAM3 'truck cab roof' ∩ cab box; small, as the truck is distant).",
+  "reviewed_views": ["release_2_6_work/v2-sa_10813555/case_sheet.jpg", "release_2_6_work/v2-sa_10813555/U3/t1.jpg", "release_2_6_work/v2-sa_10813555/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the silver car to the left of the cement mixer truck"},
+     "ref_zh": "水泥搅拌车左侧的银色小汽车",
+     "instruction_ref_zh": "移除水泥搅拌车左侧的银色小汽车。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked car (x 189-410) is beside/left of the mixer (x 316-696) on the same road level."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

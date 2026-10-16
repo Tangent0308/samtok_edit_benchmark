@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_4505880",
+  "reviewer": "shard2-b6",
+  "notes": "U2 ref 'lower shutter' was wrong (masked shutter is the small middle one; a larger shutter is lower at right edge). Rewrote ref. Masks unchanged (already edited regions); no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4505880/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the small narrow shutter in the middle of the right-hand building wall"},
+     "ref_zh": "右侧楼房墙面中部那扇窄小的百叶窗扇",
+     "instruction_ref_zh": "将右侧楼房墙面中部那扇窄小的百叶窗扇的颜色改为鼠尾草绿。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Masked shutter (x1043-1124,y585-796) is the small narrow one mid-wall; a larger shutter is at the top and another larger one lower at the right edge (x1390-1500,y700-1020)."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

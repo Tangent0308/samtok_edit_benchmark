@@ -1,0 +1,32 @@
+{
+  "case_id": "v2-sa_3647055",
+  "reviewer": "shard2-b1",
+  "notes": "U1 replace payload made a real category change; U3 ref fixed (front-facing stack of three green-arrow signs); U4 railing band included bicycles/pedestrians and a red-flower planter already sits on the left railing, so the add is moved to the clean brick face of the left arched span of the same bridge (v2 mask).",
+  "reviewed_views": ["release_2_6_work/v2-sa_3647055/case_sheet.jpg", "release_2_6_work/v2-sa_3647055/U4/w.jpg", "release_2_6_work/v2-sa_3647055/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a white delivery van"},
+     "instruction_ref_zh": "将前景自行车后方的银色汽车替换为一辆白色厢式货车。",
+     "instruction_noref_zh": "将选中区域替换为一辆白色厢式货车。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Car -> dark blue compact car was essentially a recolour; a delivery van is a structural change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the stack of three green-arrow signs on the pole just left of the drawbridge", "scope": "signs"},
+     "ref_zh": "吊桥左侧杆子上叠放的三块绿色箭头指示牌",
+     "scope_zh": "指示牌",
+     "instruction_ref_zh": "移除吊桥左侧杆子上叠放的三块绿色箭头指示牌。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Zoom of source (x275-331,y954-1009) shows three stacked front-facing green-arrow direction signs; a separate red-bordered sign is to the right of the pole, excluded by 'green-arrow' and 'three stacked'."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the brick face of the left arched span of the canal bridge", "scope": "bridge wall", "payload": "one round orange lifebuoy", "placement": {"relation": "mounted on", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "运河桥左侧拱跨的砖砌立面",
+     "scope_zh": "桥墙",
+     "physical_parent_zh": "运河桥",
+     "parent_instance_id": "sa_3647055:canal_bridge",
+     "instruction_ref_zh": "在运河桥左侧拱跨的砖砌立面上安装一个圆形橙色救生圈。",
+     "instruction_noref_zh": "给选中区域加上一个圆形橙色救生圈。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Railing band mask (SAM3 cannot isolate thin bars) contained parked bicycles and pedestrians, and a red-flower planter already hangs on the left railing (x~260-380,y~1140-1180). Moved the add to the clean brick face of the left arch (v2 mask w_1, box 296,1187,910,1391), same parent bridge."}
+  ]
+}

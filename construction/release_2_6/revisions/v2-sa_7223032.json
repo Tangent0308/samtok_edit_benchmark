@@ -1,0 +1,79 @@
+{
+  "case_id": "v2-sa_7223032",
+  "reviewer": "round2",
+  "notes": "U1 identifies the left vegetable-stall canopy, with fringe restricted to lower-left edge band. U3 worn sleeves removal changed to full-top recoloring, avoiding ambiguous arm reconstruction; reviewed full top as actual target. U4 source shirt is dark gray.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_7223032/case_sheet.jpg",
+    "assets/v2-sa_7223032/source.jpg",
+    "release_2_6_work/v2-sa_7223032/U1/final.jpg",
+    "release_2_6_work/v2-sa_7223032/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the multicolored umbrella canopy above the left vegetable stall",
+        "placement": {
+          "relation": "along",
+          "site": "lower-left edge",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "左侧蔬菜摊上方的彩色雨伞伞面",
+      "physical_parent_zh": "左侧蔬菜摊上方彩伞",
+      "parent_instance_id": "sa_7223032:左侧蔬菜摊上方彩伞",
+      "instruction_ref_zh": "沿左侧蔬菜摊上方彩色雨伞伞面的左下缘加上一段短白色流苏。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Not the closest umbrella; attachment band is lower-left visible rim."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "operation": "attribute",
+        "target_part": "",
+        "remove_mode": "whole",
+        "payload": "dark green",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "dark green"
+          }
+        ]
+      },
+      "instruction_ref_zh": "将右侧抱臂戴帽摊主的深色上衣的颜色改为深绿色。",
+      "reason": "Natural whole-garment recoloring replaces removal of worn sleeves; full-top v2 reviewed."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the dark gray long-sleeved top of the white-helmeted customer between the central umbrellas"
+      },
+      "ref_zh": "中央雨伞之间戴白头盔顾客的深灰色长袖上衣",
+      "instruction_ref_zh": "将中央雨伞之间戴白头盔顾客的深灰色长袖上衣替换为一件短袖条纹女衫。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Verified dark charcoal fabric in source."
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "俯拍密集市场的彩色遮阳伞",
+    "evidence_zh": "已逐图核对的独立目标：左侧蔬菜摊上方的彩色雨伞伞面；中央前排大伞后面一把彩色伞的可见伞面；右侧抱臂戴帽摊主的深色上衣；中央雨伞之间戴白头盔顾客的深灰色长袖上衣。",
+    "specific_protection_zh": "伞柄、皮肤、头盔及前后邻伞"
+  }
+}

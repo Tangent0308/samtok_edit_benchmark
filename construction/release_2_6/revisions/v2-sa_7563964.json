@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_7563964",
+  "reviewer": "shard3-b6",
+  "notes": "U1 'near the center' pointed to the wrong panel; U2 ref tightened (several white T-shirts in the crowd); U4 bag is a yellow paper shopping bag held by the boy, a luggage tag on a paper bag is unnatural -> sticker. U3 kept. Masks already the edited objects.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7563964/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "transport", "perspective"], "scene_zh": "车站自动扶梯", "evidence_zh": "时钟右侧站台指示牌后的黄色小电子屏、右侧扶梯男孩的白色T恤、左下扶手和男孩手中的黄色购物袋是四个不同对象。", "specific_protection_zh": "保留车站标识、乘客和扶梯结构。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the small yellow display panel behind the hanging platform signs right of the clock", "scope": "display panel"},
+     "ref_zh": "时钟右侧悬挂站台指示牌后方的黄色小电子屏", "scope_zh": "电子屏", "physical_parent_zh": "时钟右侧小电子屏", "parent_instance_id": "sa_7563964:时钟右侧小电子屏",
+     "instruction_ref_zh": "将时钟右侧悬挂站台指示牌后方的黄色小电子屏的颜色改为蓝色。",
+     "findings_addressed": ["wrong_instance_spatial"], "reason": "Masked panel is the leftmost small yellow panel partly hidden behind the platform signs, not the one nearest the image center."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the white T-shirt of the boy riding the right escalator"},
+     "ref_zh": "右侧扶梯上男孩的白色T恤", "scope_zh": "T恤", "physical_parent_zh": "右侧扶梯男孩", "parent_instance_id": "sa_7563964:右侧扶梯男孩",
+     "instruction_ref_zh": "将右侧扶梯上男孩的白色T恤替换为一件绿色夹克。",
+     "findings_addressed": [], "reason": "Several people in white T-shirts in the background; the masked one is the boy on the right escalator."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the yellow shopping bag held by the boy on the right escalator", "scope": "shopping bag", "payload": "a round red sticker"},
+     "ref_zh": "右侧扶梯男孩手中的黄色购物袋", "scope_zh": "购物袋", "physical_parent_zh": "黄色购物袋", "parent_instance_id": "sa_7563964:黄色购物袋",
+     "instruction_ref_zh": "在右侧扶梯男孩手中的黄色购物袋上加上一张圆形红色贴纸。",
+     "instruction_noref_zh": "在选中区域上加上一张圆形红色贴纸。",
+     "findings_addressed": [], "reason": "The bag is held by the boy, not 'beside the right passenger'; a luggage tag on a paper shopping bag is unnatural."}
+  ]
+}

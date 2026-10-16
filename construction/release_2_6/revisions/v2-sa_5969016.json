@@ -1,0 +1,53 @@
+{
+  "case_id": "v2-sa_5969016",
+  "reviewer": "shard2b-b1",
+  "notes": "U2 ref relocated (man is at 0.26W, back to camera beside the crouching person). U4 dangling 'on its front base' moved to placement.site; v2 mask = carousel host ∩ platform-skirt band (src y 1005-1125), which keeps the host's holes for the spectators standing in front. Clean image: U1 coat is blue-grey padded, U3 stroller verified.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_5969016/case_sheet.jpg",
+    "release_2_6_work/v2-sa_5969016/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the dark coat on the man standing with his back to the camera beside the crouching person",
+        "payload": "a beige belted trench coat"
+      },
+      "ref_zh": "蹲着的人旁边背对镜头站立的男子的深色外套",
+      "instruction_ref_zh": "将蹲着的人旁边背对镜头站立的男子的深色外套替换为一件米色系带风衣。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Masked man (box ~[450,862,573,1052]) stands in the left third, not near the center; the crouching person beside him is unique. Payload changed from a beige wool coat (colour/material only) to a belted trench coat, a genuine garment-style replacement.",
+      "instruction_noref_zh": "将选中区域替换为一件米色系带风衣。"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "a small red TICKETS sign",
+        "placement": {
+          "relation": "on",
+          "site": "front base",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在旋转木马的正面底座上加上一块小红色TICKETS牌。",
+      "instruction_noref_zh": "给选中区域加上一块小红色TICKETS牌。",
+      "findings_addressed": [
+        "grammar_style",
+        "mask_quality"
+      ],
+      "reason": "Site moved out of the payload; mask is now only the visible front platform skirt with spectators excluded, so the whole-carousel mask issue no longer applies."
+    }
+  ]
+}

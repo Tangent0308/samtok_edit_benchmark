@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4740557",
+  "reviewer": "shard2-b7",
+  "notes": "U1 replace was a recolour/print removal of the same T-shirt; now replaced by a hooded zip-up sweatshirt. U3 ref said 'long yellow shoulder bag' but the clean image shows a multicoloured woven pouch on an orange-tan strap; ref corrected. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4740557/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a long-sleeved white zip-up hoodie"},
+     "instruction_ref_zh": "将左侧女孩的Hello Kitty T恤替换为一件白色长袖拉链连帽衫。",
+     "instruction_noref_zh": "将选中区域替换为一件白色长袖拉链连帽衫。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Plain pink T-shirt kept the category; a long-sleeved hooded zip-up is a structural garment change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the blue skirt of the woman with the woven shoulder bag on an orange strap"},
+     "ref_zh": "背橙色背带编织肩包女子的蓝色裙子",
+     "instruction_ref_zh": "将背橙色背带编织肩包女子的蓝色裙子的颜色改为酒红色。",
+     "findings_addressed": [],
+     "reason": "Bag colour in ref was wrong (orange strap with multicoloured woven pouch, not a long yellow bag)."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

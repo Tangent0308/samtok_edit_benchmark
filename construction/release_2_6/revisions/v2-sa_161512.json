@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_161512",
+  "reviewer": "shard1-b8",
+  "notes": "U1 shirt->shirt replace was attribute-like; now a crew-neck T-shirt. Removed a stray speck on the hand from the U1 mask (v2). U2 background T-shirt is already pale gray on the clean crop; ref colour fixed and value changed to red.",
+  "reviewed_views": ["release_2_6_work/v2-sa_161512/case_sheet.jpg", "release_2_6_work/v2-sa_161512/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a plain white crew-neck T-shirt"},
+     "instruction_ref_zh": "将前景的花衬衫替换为一件纯白色圆领T恤。",
+     "instruction_noref_zh": "将选中区域替换为一件纯白色圆领T恤。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Button shirt to linen button shirt differed only in colour/pattern/material; crew-neck T-shirt is a structural garment change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the pale gray T-shirt behind the floral sleeve on the right", "payload": "red", "attributes": [{"property": "color", "value": "red"}]},
+     "ref_zh": "右侧花袖后方的浅灰色T恤",
+     "instruction_ref_zh": "将右侧花袖后方的浅灰色T恤的颜色改为红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为红色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "T-shirt is pale gray already; light gray was no visible change."}
+  ]
+}

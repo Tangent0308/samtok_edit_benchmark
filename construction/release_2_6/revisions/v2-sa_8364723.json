@@ -1,0 +1,32 @@
+{
+  "case_id": "v2-sa_8364723",
+  "reviewer": "shard5-b2",
+  "notes": "Tail case, all units rewritten. U1 is the freestanding 'Stone Town Information' sign (navy blue, not a storefront plaque) -> dark green. U3/U4 refs disambiguated (two blue patio chairs; two hanging baskets). Masks are the edited objects already; no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8364723/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "architecture"], "scene_zh": "运河边的红砖房屋", "evidence_zh": "前景信息牌、左上角树干、露台左侧蓝色椅子和两扇拱门之间的吊花篮是四个不同对象。", "specific_protection_zh": "保留房屋、运河水面、植物和信息牌支柱。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the 'Stone Town Information' sign in the foreground", "scope": "sign", "attributes": [{"property": "color", "value": "dark green"}]},
+     "ref_zh": "前景中的“Stone Town Information”信息牌", "scope_zh": "信息牌", "physical_parent_zh": "前景信息牌", "parent_instance_id": "sa_8364723:前景信息牌",
+     "instruction_ref_zh": "将前景中的“Stone Town Information”信息牌的颜色改为深绿色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Mask is the freestanding navy-blue canal information sign in the foreground, not a storefront plaque; 'blue' was a near no-op, now dark green."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the large tree trunk at the upper-left edge"},
+     "ref_zh": "左上边缘的粗大树干", "scope_zh": "树干", "physical_parent_zh": "左上树木", "parent_instance_id": "sa_8364723:左上树木",
+     "instruction_ref_zh": "将左上边缘的粗大树干替换为一根石柱。",
+     "reason": "Tail rewrite: ref made precise (only tree trunk, at the upper-left image edge)."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the left one of the two dark blue patio chairs in front of the house"},
+     "ref_zh": "房前露台上两把深蓝色椅子中左边的那把", "scope_zh": "椅子", "physical_parent_zh": "露台左侧蓝色椅子", "parent_instance_id": "sa_8364723:露台左侧蓝色椅子",
+     "instruction_ref_zh": "移除房前露台上两把深蓝色椅子中左边的那把。",
+     "reason": "Tail rewrite: two blue chairs stand on the patio; mask is the left one (x 620-704)."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the hanging flower basket on the wall between the two arched doors", "payload": "a small red ribbon bow"},
+     "ref_zh": "两扇拱门之间墙上的吊花篮", "scope_zh": "吊花篮", "physical_parent_zh": "两门之间的吊花篮", "parent_instance_id": "sa_8364723:两门之间的吊花篮",
+     "instruction_ref_zh": "给两扇拱门之间墙上的吊花篮加上一个红色小蝴蝶结。",
+     "instruction_noref_zh": "给选中区域加上一个红色小蝴蝶结。",
+     "reason": "Tail rewrite: a second hanging basket hangs left of the left door; mask is the one between the two doors. Payload made concrete."}
+  ]
+}

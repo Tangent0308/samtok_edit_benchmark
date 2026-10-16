@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9105975",
+  "reviewer": "shard6-b5",
+  "notes": "Tail case, all units re-examined; masks are already the edited regions (no S!=T units). U1 ref names the black taxi (white van further left). U2 replace payload was a bare colour -> rectangular blue street-name sign. U3 signal ref names the large black signal on the curved pole at the right. U4 ref names the red road bike being ridden, payload concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9105975/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "intersection", "crowd"], "scene_zh": "涩谷十字路口", "evidence_zh": "左侧黑色出租车、右侧弯杆上的圆形标牌、弯杆横臂上的大型黑色信号灯和路口中央被骑行的红色公路车是四个不同对象。", "specific_protection_zh": "保留人群、车辆、交通设施和斑马线。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the black taxi on the left side of the crossing", "scope": "taxi"},
+      "ref_zh": "路口左侧的黑色出租车",
+      "scope_zh": "出租车",
+      "physical_parent_zh": "黑色出租车",
+      "parent_instance_id": "sa_9105975:黑色出租车",
+      "instruction_ref_zh": "将路口左侧的黑色出租车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "A white van is further left; the masked car (box [588,734,756,819]) is the only black taxi."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the round sign on the curved pole at the right", "scope": "sign", "payload": "a rectangular blue street-name sign"},
+      "ref_zh": "右侧弯杆上的圆形标牌",
+      "scope_zh": "标牌",
+      "physical_parent_zh": "圆形标牌",
+      "parent_instance_id": "sa_9105975:圆形标牌",
+      "instruction_ref_zh": "将右侧弯杆上的圆形标牌替换为一块蓝色长方形路名牌。",
+      "instruction_noref_zh": "将选中区域替换为一块蓝色长方形路名牌。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "Payload was a bare colour 'blue'; now a real structural replacement. Mask (box [2257,1084,2388,1199]) is the round sign split by the pole, pole excluded."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the large black traffic signal on the arm of the curved pole at the right", "scope": "traffic signal"},
+      "ref_zh": "右侧弯杆横臂上的大型黑色交通信号灯",
+      "scope_zh": "交通信号灯",
+      "physical_parent_zh": "大型黑色信号灯",
+      "parent_instance_id": "sa_9105975:大型黑色信号灯",
+      "instruction_ref_zh": "移除右侧弯杆横臂上的大型黑色交通信号灯。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Other signals exist (left pole, background); the masked one (box [1669,742,1868,857]) is the large black signal on the arm of the curved pole in the foreground right."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the red road bike ridden by the man with a beige backpack in the middle of the intersection", "scope": "bicycle", "payload": "one small black wire basket", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "路口中央背米色背包男子骑着的红色公路自行车",
+      "scope_zh": "自行车",
+      "physical_parent_zh": "红色公路自行车",
+      "parent_instance_id": "sa_9105975:红色公路自行车",
+      "instruction_ref_zh": "给路口中央背米色背包男子骑着的红色公路自行车加上一个黑色小金属丝车筐。",
+      "instruction_noref_zh": "给选中区域加上一个黑色小金属丝车筐。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: another cyclist is at the left; the masked bike is the red road bike in the middle of the intersection. Payload made concrete."
+    }
+  ]
+}

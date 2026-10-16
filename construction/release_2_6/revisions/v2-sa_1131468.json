@@ -1,0 +1,19 @@
+{
+  "case_id": "v2-sa_1131468",
+  "reviewer": "shard1-b6",
+  "notes": "U1 hat is right of centre (x~0.71W): ref fixed to 'right of center'; add site 'crown' -> v2 mask = upper crown of the conical hat (host ∩ y<=800, flaring brim excluded). U2/U3 checked, unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1131468/case_sheet.jpg", "release_2_6_work/v2-sa_1131468/U1/t1.jpg", "release_2_6_work/v2-sa_1131468/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the large conical straw hat right of center"},
+     "ref_zh": "画面中心偏右的大圆锥形草帽",
+     "physical_parent_zh": "中心偏右的戴草帽人物",
+     "parent_instance_id": "sa_1131468:central_hat_wearer",
+     "instruction_ref_zh": "在画面中心偏右的大圆锥形草帽的帽冠周围加上一圈细黑缎带。",
+     "instruction_noref_zh": "给选中区域周围加上一圈细黑缎带。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked hat centre is at x=0.71W, not the image centre; 'large conical' excludes the small straw hats at upper left."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"}
+  ]
+}

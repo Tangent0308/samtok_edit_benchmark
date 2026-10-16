@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_3804406",
+  "reviewer": "shard2-b2",
+  "notes": "U2 payload had a dangling 'in its lower corner'; payload is now just the sticker on the window (mask = whole window, unchanged). Other units verified: U1 is the only sign marked 1 (the other red sign reads 2), U3 the only freestanding lamp by the diners, U4 the road arrow.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3804406/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a small opening-hours sticker"},
+     "instruction_ref_zh": "在右侧麦当劳标志下方的高窗上加上一张小营业时间贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小营业时间贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'its lower corner' from payload so the what is self-contained; no site needed, mask stays the window."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

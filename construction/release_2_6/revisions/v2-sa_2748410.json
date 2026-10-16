@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_2748410",
+  "reviewer": "shard1b-b2",
+  "notes": "U1 cabbage -> white-and-green cabbage was a recolour; payload now a small snow-dusted dwarf conifer (natural in the snowy bed; the suggested poinsettia would be implausible outdoors in snow). Own review: U2 is a tiny distant pedestrian (~x1650-1700, y860-910) and the corner building is lilac/white, with other dark-clad pedestrians nearby in the centre of the street -> ref now names the distant pedestrian on the right-hand sidewalk. U3, U4 verified; no S!=T unit.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2748410/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a small snow-dusted dwarf conifer"},
+     "instruction_ref_zh": "将前景中央的圆形紫色观赏甘蓝替换为一株覆着薄雪的小型矮生针叶树。",
+     "instruction_noref_zh": "将选中区域替换为一株覆着薄雪的小型矮生针叶树。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same plant in another colour is an attribute change; a dwarf conifer is a structural plant replacement that fits the winter bed."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the dark coat of the distant pedestrian on the right-hand sidewalk"},
+     "ref_zh": "右侧人行道上远处行人的深色外套",
+     "physical_parent_zh": "右侧人行道远处行人",
+     "parent_instance_id": "sa_2748410:右侧人行道远处行人",
+     "instruction_ref_zh": "将右侧人行道上远处行人的深色外套的颜色改为酒红色。",
+     "findings_addressed": [],
+     "reason": "Several dark-coated pedestrians are in the distance; the masked one walks on the right-hand sidewalk."}
+  ]
+}

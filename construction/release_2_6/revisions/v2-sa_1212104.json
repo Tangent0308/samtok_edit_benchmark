@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_1212104",
+  "reviewer": "shard1-b6",
+  "notes": "Audit: U3 shutters are dark teal, not blue; ref fixed and value changed to a contrasting chestnut brown. U4 car is a BMW X6 coupe-SUV (not a sedan): ref/scope -> 'black car'; add site 'roof' -> v2 mask = roof (SAM3 'car roof' ∩ host). U1/U2 checked on clean crops, unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1212104/case_sheet.jpg", "release_2_6_work/v2-sa_1212104/U4/t1.jpg", "release_2_6_work/v2-sa_1212104/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the leftmost dark teal upstairs shutters", "payload": "chestnut brown", "attributes": [{"property": "color", "value": "chestnut brown"}]},
+     "ref_zh": "楼上最左侧的深青绿色百叶窗",
+     "instruction_ref_zh": "将楼上最左侧的深青绿色百叶窗的颜色改为栗棕色。",
+     "instruction_noref_zh": "将选中区域的颜色改为栗棕色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Clean crop shows dark teal/blue-green shutters; dark teal -> sage green was a subtle change, chestnut brown is clearly different."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the black car at the right edge", "scope": "car"},
+     "ref_zh": "右侧边缘的黑色汽车",
+     "scope_zh": "汽车",
+     "physical_parent_zh": "右侧黑色汽车",
+     "parent_instance_id": "sa_1212104:right_black_sedan",
+     "instruction_ref_zh": "在右侧边缘的黑色汽车的车顶上加上一个车顶行李架。",
+     "instruction_noref_zh": "给选中区域加上一个车顶行李架。",
+     "findings_addressed": [],
+     "reason": "The car is a BMW X6 coupe-SUV with hatch, not a sedan; neutral 'car' is accurate and still unique (only car at the right edge)."}
+  ]
+}

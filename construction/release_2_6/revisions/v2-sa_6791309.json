@@ -1,0 +1,68 @@
+{
+  "case_id": "v2-sa_6791309",
+  "reviewer": "round2",
+  "notes": "Clean garment close-up shows two matching gray cuffs continuous with burgundy sleeves of one top, not two separate red/black garments. Existing U3 mask excludes adjacent long black garment. Window localized to frame with SAM3 and changed to cobalt blue for a visible difference from pale yellow frame.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6791309/case_sheet.jpg",
+    "assets/v2-sa_6791309/source.jpg",
+    "release_2_6_work/v2-sa_6791309/hanging_detail.jpg",
+    "release_2_6_work/v2-sa_6791309/U2/t1.jpg",
+    "release_2_6_work/v2-sa_6791309/U2/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the upright white woven sack with green stripes in the middle of the scene"
+      },
+      "ref_zh": "画面中部带绿色条纹的直立白色编织袋",
+      "instruction_ref_zh": "移除画面中部带绿色条纹的直立白色编织袋。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Selected sack is in the middle distance; green stripes exclude the neighboring white sack and foreground loose sack."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the pale frame of the small window on the green house at image-left",
+        "scope": "window frame",
+        "payload": "cobalt blue",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "cobalt blue"
+          }
+        ]
+      },
+      "ref_zh": "画面左侧绿色房屋上小窗户的浅色窗框",
+      "scope_zh": "窗框",
+      "physical_parent_zh": "左侧绿色房屋",
+      "parent_instance_id": "sa_6791309:左侧绿色房屋",
+      "instruction_ref_zh": "将画面左侧绿色房屋上小窗户的浅色窗框的颜色改为钴蓝色。",
+      "reason": "Original whole-window mask mixed frame and panes; frame itself was already pale yellow, so use cobalt blue.",
+      "category": "window frame"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the burgundy top with gray cuffs hanging at the top left",
+        "scope": "top",
+        "payload": "a pale blue short-sleeved button-front shirt"
+      },
+      "ref_zh": "左上方晾挂的带灰色袖口的酒红色上衣",
+      "scope_zh": "上衣",
+      "physical_parent_zh": "左上方酒红灰袖口上衣",
+      "parent_instance_id": "sa_6791309:左上方酒红灰袖口上衣",
+      "instruction_ref_zh": "将左上方晾挂的带灰色袖口的酒红色上衣替换为一件浅蓝色短袖开襟衬衫。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Target is top left. Gray areas are matching attached cuffs; short sleeves and button front ensure structural replacement.",
+      "category": "top"
+    }
+  ]
+}

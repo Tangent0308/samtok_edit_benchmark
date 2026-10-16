@@ -1,0 +1,100 @@
+{
+ "case_id": "v2-sa_7892712",
+ "reviewer": "shard4-b2",
+ "notes": "Tail case, all units re-examined. U1/U2 were whole children (person recolour / person replaced by a garment) with swapped left/center words; now the white T-shirt and the navy striped tank top, re-masked to the garments (v2). U3 removed the whole boat carrying U1/U2; retargeted to the red-and-white flower garland on its bow (v2). U4 banner mask verified; ref and payload made precise.",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_7892712/case_sheet.jpg",
+  "release_2_6_work/v2-sa_7892712/U1/final.jpg",
+  "release_2_6_work/v2-sa_7892712/U2/final.jpg",
+  "release_2_6_work/v2-sa_7892712/U3/t1.jpg",
+  "release_2_6_work/v2-sa_7892712/U3/final.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "outdoor",
+   "water",
+   "crowd"
+  ],
+  "scene_zh": "水上市场",
+  "evidence_zh": "白T恤男孩的T恤、条纹背心孩子的背心、船头的花环和右上栏杆上的横幅是四个不同对象。",
+  "specific_protection_zh": "保留乘客、船只和河岸环境。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the white T-shirt of the boy seated right of the child in a striped tank top",
+    "scope": "T-shirt"
+   },
+   "ref_zh": "坐在条纹背心孩子右边的男孩的白色T恤",
+   "scope_zh": "T恤",
+   "physical_parent_zh": "白T恤男孩",
+   "parent_instance_id": "sa_7892712:白T恤男孩",
+   "instruction_ref_zh": "将坐在条纹背心孩子右边的男孩的白色T恤的颜色改为黄色。",
+   "instruction_noref_zh": "将选中区域的颜色改为黄色。",
+   "findings_addressed": [
+    "person_clothing_level",
+    "wrong_instance_spatial"
+   ],
+   "reason": "Recolouring a whole child; now the white T-shirt only (SAM3 'white t-shirt', committed U1_v2). Spatial words replaced by a relation to the neighbour.",
+   "category": "T-shirt",
+   "source_category": "T-shirt"
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the navy-and-white striped tank top of the child seated in the middle of the boat",
+    "scope": "tank top",
+    "payload": "a blue denim jacket"
+   },
+   "ref_zh": "坐在船中间的孩子的藏青白条纹背心",
+   "scope_zh": "背心",
+   "physical_parent_zh": "条纹背心孩子",
+   "parent_instance_id": "sa_7892712:条纹背心孩子",
+   "instruction_ref_zh": "将坐在船中间的孩子的藏青白条纹背心替换为一件蓝色牛仔夹克。",
+   "instruction_noref_zh": "将选中区域替换为一件蓝色牛仔夹克。",
+   "findings_addressed": [
+    "person_clothing_level"
+   ],
+   "reason": "A person was replaced by a garment; now the tank top is replaced by a jacket, mask re-segmented to the tank top (committed U2_v2).",
+   "category": "tank top",
+   "source_category": "tank top"
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the red-and-white flower garland on the bow of the long-tail boat in the center",
+    "scope": "flower garland"
+   },
+   "ref_zh": "中间长尾船船头上的红白花环",
+   "scope_zh": "花环",
+   "physical_parent_zh": "船头花环",
+   "parent_instance_id": "sa_7892712:船头花环",
+   "instruction_ref_zh": "移除中间长尾船船头上的红白花环。",
+   "findings_addressed": [
+    "independence_violation"
+   ],
+   "reason": "Removing the whole boat conflicts with U1/U2 and is a huge region; the garland is an independent decoration (SAM3 'flower garland', committed U3_v2).",
+   "category": "flower garland",
+   "source_category": "flower garland"
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the grey printed banner hanging on the balcony railing at the upper right",
+    "payload": "one small red circular emblem"
+   },
+   "ref_zh": "右上方阳台栏杆上挂着的灰色印刷横幅",
+   "physical_parent_zh": "右上栏杆横幅",
+   "parent_instance_id": "sa_7892712:右上栏杆横幅",
+   "instruction_ref_zh": "给右上方阳台栏杆上挂着的灰色印刷横幅加上一个红色小圆形徽记。",
+   "instruction_noref_zh": "给选中区域加上一个红色小圆形徽记。",
+   "findings_addressed": [],
+   "reason": "Tail rewrite: another banner is cut off at the top-right corner; railing distinguishes. Payload given size/shape and count."
+  }
+ ]
+}

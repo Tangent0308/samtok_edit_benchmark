@@ -1,0 +1,118 @@
+{
+  "case_id": "v2-sa_876819",
+  "reviewer": "shard5-b6",
+  "notes": "Tail case (samba parade), all units rewritten. U1/U2 masks are garments (gown, white dress), refs now name the garment; U3 railing ref made specific; U4 retargeted from a 35x94 px sign cut off at the image edge to the male dancer in the blue-and-teal costume at the right (new SAM3 mask; an interim flag retarget was dropped because the flag belongs to the U1 flag-bearer).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_876819/case_sheet.jpg",
+    "release_2_6_work/v2-sa_876819/U4/t5.jpg",
+    "release_2_6_work/v2-sa_876819/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "outdoor",
+      "performance",
+      "crowd"
+    ],
+    "scene_zh": "节庆表演",
+    "evidence_zh": "中央旋转舞者的蓬裙礼服、左前方女子的白色无袖连衣裙、上层看台前沿的栏杆和右侧穿蓝绿色羽饰服装的男舞者是四个不同对象。",
+    "specific_protection_zh": "保留表演者服装和活动设施。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the ruffled ball gown of the flag-bearer twirling in the center",
+        "scope": "gown",
+        "payload": "royal purple",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "royal purple"
+          }
+        ]
+      },
+      "ref_zh": "中央旋转的掌旗舞者的褶边蓬裙礼服",
+      "scope_zh": "礼服",
+      "physical_parent_zh": "中央掌旗舞者",
+      "parent_instance_id": "sa_876819:中央掌旗舞者",
+      "instruction_ref_zh": "将中央旋转的掌旗舞者的褶边蓬裙礼服的颜色改为皇家紫。",
+      "instruction_noref_zh": "将选中区域的颜色改为皇家紫。",
+      "preserve": [
+        "舞者的手臂、头饰、靴子，她举着的旗帜，以及周围的表演者。"
+      ],
+      "findings_addressed": [
+        "person_clothing_level"
+      ],
+      "reason": "Mask is the dancer's gown (bodice + skirt), not her body; ref names the garment and the value (royal purple) differs from the current yellow-green/teal."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the white sleeveless dress of the woman walking at the front left",
+        "scope": "dress",
+        "payload": "a blue sequined samba costume with a fringed skirt"
+      },
+      "ref_zh": "左前方行走女子的白色无袖连衣裙",
+      "scope_zh": "连衣裙",
+      "physical_parent_zh": "左前方白裙女子",
+      "parent_instance_id": "sa_876819:左前方白裙女子",
+      "instruction_ref_zh": "将左前方行走女子的白色无袖连衣裙替换为一套带流苏裙摆的蓝色亮片桑巴服装。",
+      "instruction_noref_zh": "将选中区域替换为一套带流苏裙摆的蓝色亮片桑巴服装。",
+      "preserve": [
+        "女子的头发、手臂、腿和凉鞋，她身后的女子和绿衣表演者。"
+      ],
+      "findings_addressed": [
+        "person_clothing_level"
+      ],
+      "reason": "Mask is the woman's white dress; a person was being replaced by clothing. Now garment -> different garment; 'front left' excludes the white-dressed woman on the right."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the metal railing along the front edge of the upper grandstand",
+        "scope": "railing"
+      },
+      "ref_zh": "上层看台前沿的金属栏杆",
+      "scope_zh": "栏杆",
+      "physical_parent_zh": "上层看台栏杆",
+      "parent_instance_id": "sa_876819:上层看台栏杆",
+      "instruction_ref_zh": "移除上层看台前沿的金属栏杆。",
+      "instruction_noref_zh": "移除选中区域。",
+      "preserve": [
+        "栏杆后的观众、看台结构、蓝色横梁和旗帜。"
+      ],
+      "findings_addressed": [],
+      "reason": "Tail rewrite: precise ref for the grandstand railing; 2.5.0 mask kept (excludes the flag)."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the male dancer in the blue-and-teal feathered costume at the right",
+        "scope": "dancer",
+        "payload": "one wide gold satin sash",
+        "placement": {
+          "relation": "across",
+          "site": "",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "右侧穿蓝绿色羽饰服装的男舞者",
+      "scope_zh": "舞者",
+      "physical_parent_zh": "右侧蓝绿服装男舞者",
+      "parent_instance_id": "sa_876819:右侧蓝绿服装男舞者",
+      "instruction_ref_zh": "给右侧穿蓝绿色羽饰服装的男舞者斜挎加上一条宽金色缎带。",
+      "instruction_noref_zh": "给选中区域斜挎加上一条宽金色缎带。",
+      "preserve": [
+        "舞者的头饰、羽毛、服装原有的亮片图案，他身后的观众、护栏和白色板房。"
+      ],
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Retarget: old anchor was a 35x94 px sign cut by the right image edge with a generic 'small logo' payload. The flag was rejected as anchor (same physical parent as U1's flag-bearer). New anchor is the separate male dancer at the right; SAM3 'person' mask t5_2 minus U1-U3 (no overlap), verified, committed U4_v2.png."
+    }
+  ]
+}

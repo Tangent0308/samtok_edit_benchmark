@@ -1,0 +1,54 @@
+{
+  "case_id": "v2-sa_3358386",
+  "reviewer": "round2",
+  "notes": "Bench replacement adds high backrest and upholstery rather than wood color. Narrower window is on right wall, not blank rear wall. All source objects and masks reviewed.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_3358386/case_sheet.jpg",
+    "assets/v2-sa_3358386/source.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a green upholstered bench with a high backrest"
+      },
+      "instruction_ref_zh": "将前方偏左的木长凳替换为一张带高靠背的绿色软垫长凳。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Backless plank bench to high-backed upholstered bench changes structure while retaining seating capacity."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the narrower window on the right wall"
+      },
+      "ref_zh": "右侧墙上较窄的窗户",
+      "instruction_ref_zh": "将右侧墙上较窄的窗户染成浅绿色。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Masked window is immediately left of the larger right-wall window; back wall blank."
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "low_light",
+      "occlusion",
+      "repetition"
+    ],
+    "scene_zh": "教室内成排课桌与学生",
+    "evidence_zh": "已逐图核对的独立目标：前方偏左的木长凳；右侧墙上较窄的窗户；前排左侧的蓝绿色背包；最近的课桌。",
+    "specific_protection_zh": "保留学生、坐姿、课本、其他课桌和室内自然光。"
+  }
+}

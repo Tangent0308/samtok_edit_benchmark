@@ -1,0 +1,62 @@
+{
+  "case_id": "v2-sa_6725724",
+  "reviewer": "round2",
+  "notes": "U3先改指令为短袖换白色长袖并SAM分割清楚的画面左袖，彻底避开披挂国旗和胸前挂绳证件；U4去悬空its，改灯杆中段实际附着位。",
+  "reviewed_views": [
+    "assets/v2-sa_6725724/source.jpg",
+    "release_2_6_work/v2-sa_6725724/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6725724/U3/final.jpg",
+    "release_2_6_work/v2-sa_6725724/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "crowd",
+      "occlusion",
+      "small_targets"
+    ],
+    "scene_zh": "体育场球迷",
+    "evidence_zh": "不同源对象：左后方的蓝色背包；中间球迷的绿色足球球衣；左侧球迷的球衣；左后方的路灯。",
+    "specific_protection_zh": "保留球迷、体育场和其他随身物。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a long white sleeve with a fitted cuff",
+        "target_part": "image-left sleeve"
+      },
+      "instruction_ref_zh": "将左侧球迷的球衣的画面左侧衣袖替换为一只带贴身袖口的白色长袖。",
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "左侧球迷的球衣",
+      "scope_zh": "球衣",
+      "physical_parent_zh": "左球迷",
+      "parent_instance_id": "sa_6725724:left_fan",
+      "category": "jersey"
+    },
+    {
+      "spec": {
+        "payload": "one small blue information sign",
+        "placement": {
+          "relation": "on",
+          "site": "middle section of the pole"
+        }
+      },
+      "instruction_ref_zh": "在左后方的路灯的灯杆中段加上一块小蓝色信息牌。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "左后方的路灯",
+      "scope_zh": "路灯",
+      "physical_parent_zh": "后方路灯",
+      "parent_instance_id": "sa_6725724:background_lamp",
+      "category": "streetlamp"
+    }
+  ]
+}

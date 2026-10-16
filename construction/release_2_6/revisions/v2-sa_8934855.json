@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_8934855",
+  "reviewer": "shard1-b2",
+  "notes": "No audit findings. Viewed case sheet, unit zooms and clean crops. U1/U4 add sites (top / side) now masked as host ∩ box on the helmet shell. U5 helmet is not resting on a motorcycle: it hangs from the gloved hand of the standing man, so the ref was corrected. Chinese refs of U1/U2 contained a stray '，不含面部开口' and were cleaned; site words removed from Chinese no-ref.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8934855/case_sheet.jpg", "release_2_6_work/v2-sa_8934855/U1/final.jpg", "release_2_6_work/v2-sa_8934855/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "ref_zh": "前景骑手的图案全盔外壳",
+     "instruction_ref_zh": "在前景骑手的图案全盔外壳顶部贴上一张小红色反光贴。",
+     "instruction_noref_zh": "给选中区域贴上一张小红色反光贴。",
+     "findings_addressed": ["add_site_protocol2", "translation"],
+     "reason": "Site 'top' -> v2 mask = top crown of the helmet shell (host ∩ box 520,260,790,338); ZH ref had stray clause."},
+    {"id": "U2", "action": "revise",
+     "ref_zh": "右侧绿车骑手的白色头盔外壳",
+     "instruction_ref_zh": "将右侧绿车骑手的白色头盔外壳的颜色改为亮黑色。",
+     "findings_addressed": ["translation"],
+     "reason": "ZH ref had stray '，不含面部开口' clause."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "instruction_ref_zh": "在右后蓝衣乘客的白色头盔侧面贴上一张小蓝色星形贴纸。",
+     "instruction_noref_zh": "给选中区域贴上一张小蓝色星形贴纸。",
+     "findings_addressed": ["add_site_protocol2"],
+     "reason": "Site 'side' -> v2 mask = visible side of the passenger's helmet below the dome (host ∩ box 1290,420,1380,495); ZH no-ref must not name the site."},
+    {"id": "U5", "action": "revise",
+     "spec": {"ref": "the black helmet hanging from the hand of the standing man on the left"},
+     "ref_zh": "左侧站立男子手中拎着的黑色头盔",
+     "physical_parent_zh": "左侧站立男子",
+     "parent_instance_id": "sa_8934855:左侧站立男子",
+     "instruction_ref_zh": "移除左侧站立男子手中拎着的黑色头盔。",
+     "findings_addressed": ["wrong_ref_description"],
+     "reason": "Clean crop (x110-220,y640-760) shows the helmet held by the gloved hand of the standing man, not resting on a motorcycle."}
+  ]
+}

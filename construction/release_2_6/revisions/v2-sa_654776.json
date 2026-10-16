@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_654776",
+  "reviewer": "round2",
+  "notes": "Sunhat replaces cat-ear knit cap. White baseball cap owner specified by black backpack under raised-fist placard. Cap and backpack are distinct worn accessories under rule B.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_654776/case_sheet.jpg",
+    "release_2_6_work/v2-sa_654776/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a black wide-brimmed sunhat"
+      },
+      "instruction_ref_zh": "将最左侧的粉色针织帽替换为一顶黑色宽檐遮阳帽。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Wide brim changes knit cat-ear hat structure."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the white baseball cap on the black-backpack wearer below the raised-fist placard"
+      },
+      "ref_zh": "举拳标语牌下方背黑色双肩包者的白色棒球帽",
+      "instruction_ref_zh": "将举拳标语牌下方背黑色双肩包者的白色棒球帽的颜色改为深蓝色。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Owner and placard distinguish this x0.24W cap from another white cap x0.44W."
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one small gold star",
+        "placement": {
+          "relation": "on",
+          "site": "upper-left corner",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给有红色举拳图案的黑色标语牌的左上角加上一颗小金星。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Corner support is source mask; payload independent."
+    }
+  ]
+}

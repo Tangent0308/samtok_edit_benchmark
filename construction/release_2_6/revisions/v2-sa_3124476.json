@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_3124476",
+  "reviewer": "shard1b-b5",
+  "notes": "U1 payload was a near-equivalent white->pale-blue blouse (recolour); rewritten to a hooded sweatshirt. U2 masked cap (x1512-1651,y850-958) is a gray curved-brim baseball cap; a slate-blue baseball cap sits just below it, so 'gray baseball cap' is unique. Masks unchanged (U1 mask already excludes the black bag strap).",
+  "reviewed_views": ["release_2_6_work/v2-sa_3124476/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a gray hooded sweatshirt"},
+     "instruction_ref_zh": "将右前方标牌后面的白色上衣替换为一件灰色连帽卫衣。",
+     "instruction_noref_zh": "将选中区域替换为一件灰色连帽卫衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Blouse -> blouse was mainly a colour change; a hooded sweatshirt is a structural garment replacement."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the gray baseball cap in the middle-right crowd"},
+     "ref_zh": "人群中部偏右的灰色棒球帽",
+     "scope_zh": "帽子",
+     "instruction_ref_zh": "将人群中部偏右的灰色棒球帽的颜色改为酒红色。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Masked cap is a curved-brim baseball cap, not a flat cap."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

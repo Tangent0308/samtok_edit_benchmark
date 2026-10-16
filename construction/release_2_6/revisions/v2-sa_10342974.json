@@ -1,0 +1,40 @@
+{
+ "case_id": "v2-sa_10342974",
+ "reviewer": "shard1-b2",
+ "notes": "No audit findings. 'the oven' was ambiguous: a second built-in compact oven sits in the tall cabinet on the right; U2 ref now names the oven under the countertop. Protocol 2.0 site 'handle' -> v2 mask = the oven door handle bar (SAM3 'oven door handle' t1_1). U1 masked shade is the middle of the three cylindrical pendant shades (by image x). Lead spot-check: U1 ref changed to an ordinal from the left.",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_10342974/case_sheet.jpg",
+  "release_2_6_work/v2-sa_10342974/U2/t1.jpg",
+  "release_2_6_work/v2-sa_10342974/U2/final.jpg"
+ ],
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the second of the three cylindrical pendant shades from the left"
+   },
+   "ref_zh": "从左数第二个圆柱形吊灯罩",
+   "physical_parent_zh": "左数第二个吊灯",
+   "parent_instance_id": "sa_10342974:middle_pendant",
+   "instruction_ref_zh": "将从左数第二个圆柱形吊灯罩替换为一个钟形藤编灯罩。",
+   "findings_addressed": [],
+   "reason": "shard1 lead spot-check: 'middle' is ambiguous (the masked shade is 2nd of three by image x, while the one nearest the image centre is the 3rd); ordinal with counting direction is unambiguous."
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the built-in oven under the countertop"
+   },
+   "ref_zh": "台面下方的嵌入式烤箱",
+   "instruction_ref_zh": "在台面下方的嵌入式烤箱的把手上挂一条折叠的蓝色擦碗巾。",
+   "instruction_noref_zh": "给选中区域挂上一条折叠的蓝色擦碗巾。",
+   "findings_addressed": [
+    "ambiguous_ref",
+    "add_site_protocol2"
+   ],
+   "reason": "Two ovens visible (under-counter oven and compact oven in the right tall cabinet); site mask is the handle bar."
+  }
+ ]
+}

@@ -1,0 +1,58 @@
+{
+  "case_id": "v2-sa_9229006",
+  "reviewer": "shard7",
+  "notes": "Tail case. U1 cupola, U2 door and U3 weather vane were all parts of the same building (U3 sits on U1); U2 ref said left but the door is right of the statue and the replace was a recolor; U4 lawn is at the lower RIGHT. Kept U1 (cupola, concrete colour). U2 retargeted to the small wooden barrel by the wall (replace with a stone planter), U3 to the Christmas wreath on the statue (SAM3 v2 masks). U4 ref/payload fixed.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9229006/case_sheet.jpg", "release_2_6_work/v2-sa_9229006/U2/t1.jpg", "release_2_6_work/v2-sa_9229006/U3/t1.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "campus"], "scene_zh": "学院建筑前庭", "evidence_zh": "屋顶的白色钟楼、墙边的小木桶、雕像手臂上的圣诞花环和砖路右侧的草坪是四个不同对象。", "specific_protection_zh": "保留建筑、雕像、树木和砖路。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the white clock cupola on the roof", "scope": "cupola", "payload": "sage green", "attributes": [{"property": "color", "value": "sage green"}]},
+      "ref_zh": "屋顶上的白色钟楼",
+      "scope_zh": "钟楼",
+      "physical_parent_zh": "红砖学院建筑",
+      "parent_instance_id": "sa_9229006:红砖学院建筑",
+      "instruction_ref_zh": "将屋顶上的白色钟楼的颜色改为灰绿色。",
+      "instruction_noref_zh": "将选中区域的颜色改为灰绿色。",
+      "findings_addressed": ["independence_violation"],
+      "reason": "Only building unit kept; ref names the single cupola; value made distinct."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the small wooden barrel against the building wall left of the statue", "scope": "barrel", "payload": "a square stone planter with red flowers"},
+      "ref_zh": "雕像左侧靠在建筑墙边的小木桶",
+      "scope_zh": "木桶",
+      "physical_parent_zh": "墙边小木桶",
+      "parent_instance_id": "sa_9229006:墙边小木桶",
+      "instruction_ref_zh": "将雕像左侧靠在建筑墙边的小木桶替换为一个种着红花的方形石质花槽。",
+      "instruction_noref_zh": "将选中区域替换为一个种着红花的方形石质花槽。",
+      "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute", "independence_violation"],
+      "reason": "Retarget: the door was a part of the same building as U1/U3, was right of the statue (ref said left) and the replace was a recolor. The barrel is an independent object (SAM3 t1_1, verified); barrel -> planter is structural."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the Christmas wreath with a red bow on the statue's arm", "scope": "wreath"},
+      "ref_zh": "雕像手臂上系着红色蝴蝶结的圣诞花环",
+      "scope_zh": "花环",
+      "physical_parent_zh": "雕像上的圣诞花环",
+      "parent_instance_id": "sa_9229006:雕像上的圣诞花环",
+      "instruction_ref_zh": "移除雕像手臂上系着红色蝴蝶结的圣诞花环。",
+      "instruction_noref_zh": "移除选中区域。",
+      "preserve": ["保留雕像本身和后方建筑。"],
+      "findings_addressed": ["independence_violation"],
+      "reason": "Retarget: the weather vane sat directly on U1's cupola (same parent). The wreath is a separate decoration (SAM3 t1_1, bow included, verified)."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the lawn to the right of the brick path", "scope": "lawn", "payload": "one small cluster of yellow daffodils"},
+      "ref_zh": "砖路右侧的草坪",
+      "scope_zh": "草坪",
+      "physical_parent_zh": "砖路右侧草坪",
+      "parent_instance_id": "sa_9229006:砖路右侧草坪",
+      "instruction_ref_zh": "给砖路右侧的草坪加上一小丛黄色水仙花。",
+      "instruction_noref_zh": "给选中区域加上一小丛黄色水仙花。",
+      "findings_addressed": ["wrong_instance_spatial", "grammar_style"],
+      "reason": "Masked lawn is right of the path (cx=0.80); payload made specific."
+    }
+  ]
+}

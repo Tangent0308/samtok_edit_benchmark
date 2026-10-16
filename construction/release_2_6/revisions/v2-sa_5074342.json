@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_5074342",
+  "reviewer": "shard2-b9",
+  "notes": "U3 masked trunk (x725-797) is the second trunk left of the thickest one (x~950-1050), a trunk at x~795-860 lies between. U4 replace was a material change only -> attribute. U2 car is dark blue in the clean image, not black. U1 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5074342/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the dark blue car immediately behind the red car"},
+     "ref_zh": "紧挨红车后方的深蓝色汽车",
+     "instruction_ref_zh": "将紧挨红车后方的深蓝色汽车的颜色改为银色。",
+     "findings_addressed": [],
+     "reason": "Clean source shows a dark blue Toyota hatchback, not black."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the second tree trunk to the left of the thickest trunk"},
+     "ref_zh": "最粗树干左侧的第二根树干",
+     "instruction_ref_zh": "在最粗树干左侧的第二根树干上加上一个小木制鸟屋。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Another trunk stands directly between the masked trunk and the thickest trunk."},
+    {"id": "U4", "action": "revise",
+     "spec": {"operation": "attribute", "payload": "dark gray slate", "attributes": [{"property": "material", "value": "dark gray slate"}]},
+     "instruction_ref_zh": "将最近砖房后方的小三角瓦屋顶的材质改为深灰色板岩。",
+     "instruction_noref_zh": "将选中区域的材质改为深灰色板岩。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Tiled roof -> slate roof keeps the same roof structure; no natural structural replacement for a small roof pitch, so converted to a material attribute."}
+  ]
+}

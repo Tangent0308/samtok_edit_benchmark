@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_3650367",
+  "reviewer": "shard2-b1",
+  "notes": "U1 replace was a same-type banner with new text; now replaced by a wall clock (structural change). U2/U3 checked on case sheet, unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3650367/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a large round wall clock"},
+     "instruction_ref_zh": "将左墙的蓝色宣传牌替换为一个大型圆形挂钟。",
+     "instruction_noref_zh": "将选中区域替换为一个大型圆形挂钟。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Banner -> banner with other text is a text edit; a wall clock is a genuine category change on the same wall position."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"}
+  ]
+}

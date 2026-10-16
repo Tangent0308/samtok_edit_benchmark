@@ -1,0 +1,31 @@
+{
+  "case_id": "v2-sa_7567802",
+  "reviewer": "shard3-b6",
+  "notes": "U2 payload 'a black post' was a near-identical object; U3/U4 refs ambiguous; U1 ref tightened (people sit at another bench at the far-left edge). Masks are the edited objects.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7567802/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "perspective"], "scene_zh": "纪念广场", "evidence_zh": "前排最左侧的空长椅、右侧路灯、雕像左侧三名男子中最右边的男子和左侧树后的黄绿色掀背车是四个不同对象。", "specific_protection_zh": "保留广场、行人和城市设施。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the leftmost empty bench in the front row"},
+     "ref_zh": "前排最左侧的空长椅", "scope_zh": "长椅", "physical_parent_zh": "前排最左长椅", "parent_instance_id": "sa_7567802:前排最左长椅",
+     "instruction_ref_zh": "将前排最左侧的空长椅的颜色改为深绿色。",
+     "findings_addressed": [], "reason": "People sit at another bench at the far-left edge; the masked one is the leftmost empty bench of the front row."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the street lamp on the right", "payload": "an ornate cast-iron lantern post"},
+     "ref_zh": "右侧的路灯", "scope_zh": "路灯", "physical_parent_zh": "右侧路灯", "parent_instance_id": "sa_7567802:右侧路灯",
+     "instruction_ref_zh": "将右侧的路灯替换为一根华丽的铸铁灯笼式灯柱。",
+     "instruction_noref_zh": "将选中区域替换为一根华丽的铸铁灯笼式灯柱。",
+     "findings_addressed": ["replace_is_attribute"], "reason": "The lamp post is already dark; 'a black post' was a no-op. Modern flat-head lamp -> ornate lantern post is a structural replacement."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the rightmost of the three men standing on the lawn left of the statue"},
+     "ref_zh": "雕像左侧草坪上站着的三名男子中最右边的男子", "scope_zh": "男子", "physical_parent_zh": "雕像左侧最右男子", "parent_instance_id": "sa_7567802:雕像左侧最右男子",
+     "instruction_ref_zh": "移除雕像左侧草坪上站着的三名男子中最右边的男子。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Three men stand together left of the statue; masked one (x659-697) is the rightmost, with a shoulder bag."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the lime-green hatchback behind the trees at the left", "scope": "car"},
+     "ref_zh": "左侧树后的黄绿色掀背车", "scope_zh": "小轿车", "physical_parent_zh": "黄绿色掀背车", "parent_instance_id": "sa_7567802:黄绿色掀背车",
+     "instruction_ref_zh": "在左侧树后的黄绿色掀背车上加上一个车顶标志。",
+     "instruction_noref_zh": "在选中区域上加上一个车顶标志。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Many cars parked at the left; masked one is the only lime-green hatchback (verified on clean crop)."}
+  ]
+}

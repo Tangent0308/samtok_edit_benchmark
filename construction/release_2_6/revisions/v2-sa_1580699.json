@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_1580699",
+  "reviewer": "shard0-b5",
+  "notes": "Audit U3 wrong_instance_spatial fixed: masked package (x 2021-2106) hangs right of the blue bag. U3 site 'upper end' -> v2 mask = host ∩ box 2000-2120 x 395-480 (tapered top). U2 'pale-green' not visible on the clean source (transparent bag with dried squid) -> ref rewritten.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1580699/case_sheet.jpg", "release_2_6_work/v2-sa_1580699/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the partly cut-off transparent package at the far left edge"},
+     "ref_zh": "画面最左边缘被截断的透明袋装商品",
+     "physical_parent_zh": "最左边缘透明袋装商品",
+     "parent_instance_id": "sa_1580699:最左边缘透明袋装商品",
+     "instruction_ref_zh": "将画面最左边缘被截断的透明袋装商品替换为高窄纸质礼品袋。",
+     "findings_addressed": [],
+     "reason": "Clean source shows a clear/white package with dried squid at x 0-89, not pale green; it is cut by the image edge."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the long pale package hanging just right of the large blue shopping bag"},
+     "ref_zh": "紧挨蓝色大购物袋右侧悬挂的浅色长袋装商品",
+     "physical_parent_zh": "蓝袋右侧浅色长袋商品",
+     "parent_instance_id": "sa_1580699:蓝袋右侧浅色长袋商品",
+     "instruction_ref_zh": "给紧挨蓝色大购物袋右侧悬挂的浅色长袋装商品的上端系上一个红色丝带蝴蝶结。",
+     "instruction_noref_zh": "给选中区域系上一个红色丝带蝴蝶结。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Mask (x 2021-2106) is right of the blue bag (~x1870-2025); U4 is the one on the left. Protocol 2.0: mask = upper end."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

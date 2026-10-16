@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_2527153",
+  "reviewer": "shard1b-b1",
+  "notes": "U1 replace was a pure recolour (estate -> estate); payload now a pickup truck. U4: the bicycle is tiny (~150x90 px) and partly hidden behind the man in black shorts; its rear rack is a few pixels and cannot be segmented, so the site is dropped and the payload made a plain small wicker basket on the bicycle (v2 mask committed = whole visible bicycle, identical to 2.5.0). U2/U3 verified.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2527153/sheet_all.jpg", "release_2_6_work/v2-sa_2527153/zoomU4.jpg", "release_2_6_work/v2-sa_2527153/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a dark-blue pickup truck"},
+     "instruction_ref_zh": "将左侧的银色旅行车替换为一辆深蓝色皮卡。",
+     "instruction_noref_zh": "将选中区域替换为一辆深蓝色皮卡。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Estate car -> pickup truck is a genuine body-type change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small wicker basket", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在黑色短裤者旁的自行车上加上一个小藤编车筐。",
+     "instruction_noref_zh": "给选中区域加上一个小藤编车筐。",
+     "findings_addressed": [],
+     "reason": "Site 'rear rack' is a few pixels on a small, partly occluded bicycle (box ~1370-1470 x 990-1075) and not segmentable; anchor is now the whole bicycle (2.5.0 mask)."}
+  ]
+}

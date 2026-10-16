@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_4371531",
+  "reviewer": "shard2-b5",
+  "notes": "U1 mask cleaned (stray fragments at x 571-624 removed; mask = the front face of the H&M billboard); ref now names the front face since the side face shows a different ad. U2/U3 fine.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4371531/case_sheet.jpg", "release_2_6_work/v2-sa_4371531/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the front face of the tall H&M billboard on the left", "scope": "billboard face"},
+     "ref_zh": "左侧高大H&M广告牌的正面",
+     "scope_zh": "广告牌正面",
+     "instruction_ref_zh": "将左侧高大H&M广告牌的正面替换为一幅展示雪山的蓝色旅游海报。",
+     "instruction_noref_zh": "将选中区域替换为一幅展示雪山的蓝色旅游海报。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Mask covered only the front face plus 5 stray fragments (box to y=806); fragments removed (v2 = host main component, box [203,27,590,656]) and ref states the front face."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"}
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "case_id": "v2-sa_5550721",
+  "reviewer": "shard2-b11",
+  "notes": "U2 cushion->cushion replace changed to a ceramic vase. U3 ref was ambiguous (another black/white cushion right of the green one); masked cushion is the only one with green as well as black dots. U4 balcony is the right one of the two top-floor balconies, not at the facade's upper right.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_5550721/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "payload": "a small ceramic vase"
+      },
+      "instruction_ref_zh": "将店铺橱窗里的绿色靠垫替换为一个小陶瓷花瓶。",
+      "instruction_noref_zh": "将选中区域替换为一个小陶瓷花瓶。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Navy velvet cushion kept the category; a small ceramic vase is a natural shop-window item."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the white cushion with large black and green dots in the shop window"
+      },
+      "ref_zh": "店铺橱窗里带黑色和绿色大圆点的白色靠垫",
+      "instruction_ref_zh": "将店铺橱窗里带黑色和绿色大圆点的白色靠垫的颜色改为浅粉色。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Two black-and-white patterned cushions sit on the bench; only the masked one (x331-397) has green dots besides black ones. Ref does not mention the green cushion, which U2 replaces."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the railing of the right one of the two top-floor balconies on the pink facade"
+      },
+      "ref_zh": "粉色立面顶层两个阳台中右侧阳台的栏杆",
+      "instruction_ref_zh": "给粉色立面顶层两个阳台中右侧阳台的栏杆加上一个种有红花的窄花箱。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Masked railing (x324-722) is the right of two top-floor balconies, in the middle of the facade; the rounded tower has none."
+    }
+  ]
+}

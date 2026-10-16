@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_5919801",
+  "reviewer": "shard2b-b1",
+  "notes": "U2 ref disambiguated to image-right door. Self-found: U4 replaced a blue direction sign with a blue EXIT sign (same object, text-only change); payload rewritten to a structural replacement. U3 car verified silver on clean image.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5919801/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the image-right raised door of the black sports car"},
+     "ref_zh": "黑色跑车画面右侧抬起的车门",
+     "instruction_ref_zh": "在黑色跑车画面右侧抬起的车门上加上一张小白色RACING贴花。",
+     "instruction_noref_zh": "给选中区域加上一张小白色RACING贴花。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Both scissor doors are raised; the masked one is image-right (the car's own left door)."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a hanging flat-screen monitor"},
+     "instruction_ref_zh": "将右上方背景中的蓝色导向牌替换为一台悬挂的平板显示器。",
+     "instruction_noref_zh": "将选中区域替换为一台悬挂的平板显示器。",
+     "findings_addressed": [],
+     "reason": "Self-found replace_is_attribute: blue sign -> blue EXIT sign only changed the text; now a genuine object-level replacement."}
+  ]
+}

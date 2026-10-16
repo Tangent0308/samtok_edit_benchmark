@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_4441086",
+  "reviewer": "shard2-b5",
+  "notes": "U1 'empty wheelchair' actually has a man seated in it praying (mask included him) -> retargeted to the Turkish flag hanging on the mosque facade (remove, SAM3 'flag', verified). U2 ref was ambiguous (another light-gray-shirted worshipper is in the front row left of the teal shirt); ref now anchors on the wall and the olive-shirted neighbour.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4441086/case_sheet.jpg", "release_2_6_work/v2-sa_4441086/U1/t1.jpg", "release_2_6_work/v2-sa_4441086/U1/final.jpg"],
+  "difficulty": {"mechanisms": ["crowd", "small_targets"], "scene_zh": "清真寺外祈祷", "evidence_zh": "清真寺立面上悬挂的土耳其国旗与靠墙叩拜者的浅灰上衣为独立物体及人物，不拆多个窗户凑数。", "specific_protection_zh": "保留祈祷者身体姿态、轮椅和建筑。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the large Turkish flag hanging on the mosque facade", "scope": "flag"},
+     "ref_zh": "清真寺立面上悬挂的大幅土耳其国旗",
+     "scope_zh": "旗帜",
+     "physical_parent_zh": "土耳其国旗",
+     "parent_instance_id": "sa_4441086:土耳其国旗",
+     "instruction_ref_zh": "移除清真寺立面上悬挂的大幅土耳其国旗。",
+     "instruction_noref_zh": "移除选中区域。",
+     "preserve": ["保留祈祷者身体姿态、轮椅、墙面石材与建筑。"],
+     "findings_addressed": ["category_mismatch"],
+     "reason": "The wheelchair at [1261,1335,1352,1428] is occupied by a man bowing in prayer; removing it would remove a person. Retargeted to the only flag in the image (v2 mask box [633,802,739,1052]); removal reveals the stone facade."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the light gray shirt of the worshipper bowing against the wall just left of the man in the olive shirt"},
+     "ref_zh": "紧靠墙边、橄榄色上衣男子左侧叩拜者的浅灰色上衣",
+     "instruction_ref_zh": "将紧靠墙边、橄榄色上衣男子左侧叩拜者的浅灰色上衣的颜色改为浅蓝色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Masked shirt (x 839-888) belongs to the man bowing against the wall, left of the olive-shirted man (x 945-985) who is left of the teal shirt; the other gray shirt (x 930-970, y 1380-1410) is in the front row, away from the wall."}
+  ]
+}

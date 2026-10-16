@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_2599387",
+  "reviewer": "shard1b-b1",
+  "notes": "U3 ref disambiguated from the side-facing clock face on the same dome (~x 410, y 375 display) and the two lower clock faces on the tower shaft. Clean source: U3 face is gold, cream is a visible change. U4 Chinese ref grammar fixed. U1/U2 verified.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2599387/sheet_all.jpg", "release_2_6_work/v2-sa_2599387/zoomU3.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the front-facing clock face on the tower's green dome"},
+     "ref_zh": "钟楼绿色穹顶上朝前的钟面",
+     "instruction_ref_zh": "将钟楼绿色穹顶上朝前的钟面的颜色改为奶油色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "A side-facing clock face sits on the same dome; 'upper' did not exclude it."},
+    {"id": "U4", "action": "revise",
+     "instruction_ref_zh": "在左侧建筑的屋顶栏杆上加上一串暖白色灯。",
+     "findings_addressed": [],
+     "reason": "Chinese ref missing 上; English unchanged."}
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_8651850",
+  "reviewer": "shard1-b1",
+  "notes": "No audit findings. Protocol 2.0: U5 add site 'wrist' -> v2 = wrist/cuff end of the glove next to the sleeve (host ∩ box [833,630,857,706]); relation 'at' is not in the protocol list -> 'on'. Other units verified; kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8651850/case_sheet.jpg", "release_2_6_work/v2-sa_8651850/U5/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"},
+    {"id": "U5", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "wrist", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给画面中间前排黑制服队员伸出的白手套的腕口加上一枚小黄铜按扣。",
+     "instruction_noref_zh": "给选中区域加上一枚小黄铜按扣。",
+     "reason": "Relation 'at' not allowed by the protocol; mask now the wrist site (U5_v2.png)."}
+  ]
+}

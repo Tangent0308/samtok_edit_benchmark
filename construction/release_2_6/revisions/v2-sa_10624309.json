@@ -1,0 +1,9 @@
+{
+  "case_id": "v2-sa_10624309",
+  "reviewer": "shard1-b3",
+  "notes": "U3 mask had stray pixels at the left image edge making the box [0,714,915,1055]. Committed U3_v2 = host ∩ box [300,650,1000,1100]; new tight box [365,714,915,1055]. Other bottles checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10624309/case_sheet.jpg", "release_2_6_work/v2-sa_10624309/U3/final.jpg"],
+  "units": [
+    {"id": "U3", "action": "keep", "findings_addressed": ["mask_quality"], "reason": "Stray left-edge pixels removed (U3_v2.png)."}
+  ]
+}

@@ -1,10 +1,10 @@
-"""Map the reviewed v2 recipes to protocol 1.0 without inventing edit content."""
+"""Map the reviewed v2 recipes to a protocol spec (1.0 by default, for frozen replays)."""
 
 import re
-from samtok_benchmark.v2.instruction_protocol import make_spec
+from samtok_benchmark.v2.instruction_compat import make_spec
 
 
-def design_spec(recipe, ref, scope, payload, *, placement=None, target_part=""):
+def design_spec(recipe, ref, scope, payload, *, placement=None, target_part="", version="1.0"):
     code, _, subtype = recipe.partition(":")
     operation = {"A": "add", "R": "replace", "D": "remove", "C": "attribute"}[code]
     kwargs = {}
@@ -23,4 +23,4 @@ def design_spec(recipe, ref, scope, payload, *, placement=None, target_part=""):
         if "target_part" in kwargs and kwargs["target_part"] != target_part:
             raise ValueError("conflicting target parts")
         kwargs["target_part"] = target_part
-    return make_spec(operation, ref, scope, payload, **kwargs)
+    return make_spec(operation, ref, scope, payload, version=version, **kwargs)

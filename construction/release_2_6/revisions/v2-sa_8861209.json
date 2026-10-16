@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_8861209",
+  "reviewer": "shard1-b2",
+  "notes": "No audit findings. Viewed case sheet and zooms of U1-U5 on the clean source: all five fenders are on different scooters and correctly masked. U3 site 'visible side' is meaningless for a head-on fender (only its front face is visible, i.e. the whole visible fender), so the site was removed and the anchor stays the fender. Chinese refs of U1/U2 tightened to match the English.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8861209/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "ref_zh": "停放车排中最靠近镜头的深色踏板车的前挡泥板",
+     "instruction_ref_zh": "移除停放车排中最靠近镜头的深色踏板车的前挡泥板。",
+     "findings_addressed": ["translation"],
+     "reason": "ZH said 右侧前排…黑色踏板车, not matching 'nearest dark scooter in the parked row'."},
+    {"id": "U2", "action": "revise",
+     "ref_zh": "紧挨在最近深色踏板车后方的白色前挡泥板",
+     "instruction_ref_zh": "将紧挨在最近深色踏板车后方的白色前挡泥板的颜色改为亮红色。",
+     "findings_addressed": ["translation"],
+     "reason": "ZH '其后白色踏板车' dangled without an antecedent."},
+    {"id": "U3", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给道路上迎面驶来的踏板车的白色前挡泥板加上一个小琥珀色反光片。",
+     "instruction_noref_zh": "给选中区域加上一个小琥珀色反光片。",
+     "findings_addressed": ["add_site_protocol2"],
+     "reason": "The scooter faces the camera; the 'visible side' of its front fender is the whole visible fender, so the site adds nothing. Site removed; anchor mask (the fender) is already the attachment region."},
+    {"id": "U4", "action": "keep"},
+    {"id": "U5", "action": "keep"}
+  ]
+}

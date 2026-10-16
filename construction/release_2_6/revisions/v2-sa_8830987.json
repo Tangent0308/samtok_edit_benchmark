@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_8830987",
+  "reviewer": "shard6-b1",
+  "notes": "Tail case, all units re-examined on the clean image. U1 mask is the man's blue shirt (already blue) -> shirt to white; U2 is the backrest of the rattan bistro chair right behind the stacked metal bowls -> wooden barrel; U3 is the metal bowl held by the man in the black jacket; U4 is the leftmost cantaloupe in the front row of the melon crate. Masks unchanged (already the edited regions).",
+  "reviewed_views": ["release_2_6_work/v2-sa_8830987/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "market", "food"], "scene_zh": "集市摊位", "evidence_zh": "左侧男子的蓝衬衫、摊位后方的藤编椅、黑夹克男子手中的金属碗和甜瓜箱中的一个哈密瓜是四个不同对象。", "specific_protection_zh": "保留摊主、摊位用品和商品。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the blue short-sleeved shirt of the man at the left", "scope": "shirt", "payload": "white", "attributes": [{"property": "color", "value": "white"}]},
+     "ref_zh": "左侧男子的蓝色短袖衬衫", "scope_zh": "衬衫", "physical_parent_zh": "左侧男子", "parent_instance_id": "sa_8830987:左侧男子", "category": "shirt",
+     "instruction_ref_zh": "将左侧男子的蓝色短袖衬衫的颜色改为白色。",
+     "instruction_noref_zh": "将选中区域的颜色改为白色。",
+     "findings_addressed": ["person_clothing_level"], "reason": "Mask is the shirt, not the person; the shirt is already blue, so new value white."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the rattan bistro chair directly behind the stacked metal bowls on the stall", "payload": "a wooden barrel"},
+     "ref_zh": "摊位上那摞金属碗正后方的藤编小酒馆椅", "scope_zh": "椅子", "physical_parent_zh": "金属碗后方的藤椅", "parent_instance_id": "sa_8830987:金属碗后方的藤椅",
+     "instruction_ref_zh": "将摊位上那摞金属碗正后方的藤编小酒馆椅替换为一个木桶。",
+     "instruction_noref_zh": "将选中区域替换为一个木桶。",
+     "findings_addressed": ["replace_is_attribute", "ambiguous_ref"], "reason": "Dozens of identical café chairs; the masked one stands right behind the stacked bowls. 'a red chair' was a recolour; a wooden barrel is a structural replace."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the metal bowl held by the man in the black jacket at the stall"},
+     "ref_zh": "摊位前黑夹克男子手中拿着的金属碗", "scope_zh": "金属碗", "physical_parent_zh": "黑夹克男子手中的金属碗", "parent_instance_id": "sa_8830987:黑夹克男子手中的金属碗",
+     "instruction_ref_zh": "移除摊位前黑夹克男子手中拿着的金属碗。",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Several metal bowls; verified on the clean image that the masked bowl is the one the man in the black jacket holds by its rim."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the leftmost cantaloupe in the front row of the melon crate", "scope": "cantaloupe", "payload": "a small white price sticker"},
+     "ref_zh": "甜瓜箱前排最左边的哈密瓜", "scope_zh": "哈密瓜", "physical_parent_zh": "甜瓜箱前排最左的哈密瓜", "parent_instance_id": "sa_8830987:甜瓜箱前排最左的哈密瓜", "category": "cantaloupe",
+     "instruction_ref_zh": "在甜瓜箱前排最左边的哈密瓜上贴一张白色小价格贴纸。",
+     "instruction_noref_zh": "在选中区域上贴一张白色小价格贴纸。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Crate of identical melons; ref now gives row and ordinal (a melon further back is partly hidden by the sign). Payload made concrete."}
+  ]
+}

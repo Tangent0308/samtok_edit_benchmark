@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_4203157",
+  "reviewer": "shard2-b4",
+  "notes": "U3: replace valance -> plain blue valance was a recolour, and the 2.5.0 mask actually covers the whole visible pop-up canopy (white roof + red SPECIALIZED valance, x 0-260, y 715-867), not only the valance; rewritten as a whole-canopy replacement with a structurally different object (mask kept). U4 payload location phrase ('in the corner') dropped for the blind no-ref.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4203157/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the red-and-white SPECIALIZED pop-up canopy at the far left", "scope": "canopy", "payload": "a large white patio umbrella"},
+     "ref_zh": "最左侧红白相间的SPECIALIZED折叠帐篷",
+     "scope_zh": "帐篷",
+     "instruction_ref_zh": "将最左侧红白相间的SPECIALIZED折叠帐篷替换为一把大号白色庭院遮阳伞。",
+     "instruction_noref_zh": "将选中区域替换为一把大号白色庭院遮阳伞。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Valance->plain blue valance was only colour/print; mask covers the whole canopy (roof and valance), so ref/scope now name the canopy and the payload is a different structure."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small yellow star sticker"},
+     "instruction_ref_zh": "在标有202的号码牌上贴上一张小黄星贴纸。",
+     "instruction_noref_zh": "给选中区域贴上一张小黄星贴纸。",
+     "findings_addressed": [],
+     "reason": "Self-found: payload contained a location ('in the corner') that reads as a dangling site under the blind no-ref."}
+  ]
+}

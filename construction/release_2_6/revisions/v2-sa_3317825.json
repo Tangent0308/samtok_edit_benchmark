@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_3317825",
+  "reviewer": "shard1b-b6",
+  "notes": "U1 cabbage -> red cabbage was a colour change; payload now a small orange pumpkin. U2 jacket is a navy/white gingham check, so 'pale blue' was a weak change; value now maroon. U3 basket is a white mesh basket with an orange rim sitting on a green scale; ref now says orange-rimmed and on the scale. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3317825/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a small orange pumpkin"},
+     "instruction_ref_zh": "将最靠近摊贩膝盖的卷心菜替换为一个橙色小南瓜。",
+     "instruction_noref_zh": "将选中区域替换为一个橙色小南瓜。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Pumpkin is a different produce category; natural on a vegetable boat."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "maroon", "attributes": [{"property": "color", "value": "maroon"}]},
+     "instruction_ref_zh": "将摊贩的格纹外套的颜色改为栗红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为栗红色。",
+     "reason": "Clean image: jacket is a blue gingham check; pale blue was too close to the current colour."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the orange-rimmed plastic basket on the scale beside the vendor"},
+     "ref_zh": "摊贩身旁秤上的橙边塑料篮",
+     "instruction_ref_zh": "在摊贩身旁秤上的橙边塑料篮上加上一张小手写价格牌。",
+     "instruction_noref_zh": "给选中区域加上一张小手写价格牌。",
+     "reason": "Basket is white mesh with a clearly orange rim on a green scale; ref now matches the clean image."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_8910733",
+  "reviewer": "shard6-b2",
+  "notes": "Tail case; both units rewritten. U1 recolour narrowed to the white frame (v2 mask via SAM3 'white bicycle frame'; basket, panniers, wheels and black battery excluded). U2 mask was one brick while the text said a whole wall (and a recolour-replace): retargeted to the round black wall plate left of the handlebar, replaced by a brass plaque.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8910733/case_sheet.jpg", "release_2_6_work/v2-sa_8910733/U1/final.jpg", "release_2_6_work/v2-sa_8910733/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "bicycle", "street"], "scene_zh": "街边自行车", "evidence_zh": "白色电动自行车的车架和砖墙左侧的圆形黑色墙板是两个独立对象；墙上另有一块更大的圆形黑色墙板在右侧边缘。", "specific_protection_zh": "保留自行车车筐、驮包、车轮以及砖墙背景。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the white frame of the electric bicycle leaning against the wall", "scope": "frame", "payload": "matte black", "attributes": [{"property": "color", "value": "matte black"}]},
+     "ref_zh": "靠在墙边的电动自行车的白色车架", "scope_zh": "车架", "physical_parent_zh": "电动自行车", "parent_instance_id": "sa_8910733:电动自行车",
+     "instruction_ref_zh": "将靠在墙边的电动自行车的白色车架的颜色改为哑光黑。",
+     "instruction_noref_zh": "将选中区域的颜色改为哑光黑。",
+     "preserve": ["保留车筐、黑色OXFORD驮包、车轮、电池和车座。"],
+     "findings_addressed": ["mask_quality"],
+     "reason": "Old mask = whole bike incl. basket, black panniers and wall through spokes; 'bicycle to black' ambiguous. New v2 mask = white frame only (706-1294, 491-1175)."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the small round black plate on the wall left of the bicycle's handlebar", "scope": "wall plate", "payload": "a small square brass plaque"},
+     "ref_zh": "自行车车把左侧墙上的小圆形黑色墙板", "scope_zh": "墙板", "physical_parent_zh": "左侧圆形黑色墙板", "parent_instance_id": "sa_8910733:左侧圆形黑色墙板",
+     "instruction_ref_zh": "将自行车车把左侧墙上的小圆形黑色墙板替换为一块小方形黄铜铭牌。",
+     "instruction_noref_zh": "将选中区域替换为一块小方形黄铜铭牌。",
+     "findings_addressed": ["mask_quality", "replace_is_attribute"],
+     "reason": "Mask/text extent mismatch (one brick vs wall) and recolour-only replace. Retargeted (same replace op, noref+mask form) to the plate at 343-427, 445-599 (SAM3 tracker, verified); structural replacement."}
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "case_id": "v2-sa_5735900",
+  "reviewer": "round2",
+  "notes": "U1干净原图为灰色针织袜、仅袜口绿色条纹，修正中文绿色长袜误译。U3仅袜口下方上段host∩box[1115,1054,1172,1085]并审核提交1431px；原host在右邻袜子上的两处碎片也随site收窄排除。U5原长白袜到及膝罗纹羊毛袜主要材质纹理变化，改短踝袜保证长度结构变化。",
+  "reviewed_views": [
+    "assets/v2-sa_5735900/source.jpg",
+    "release_2_6_work/v2-sa_5735900/case_sheet.jpg",
+    "release_2_6_work/v2-sa_5735900/U3/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "细长狭窄",
+      "紧邻保护"
+    ],
+    "scene_zh": "民族服装队列中的局部袜子",
+    "evidence_zh": "不同源对象：最右穿皮短裤男孩靠画面左侧的灰色长袜；右起第二名红裙女孩靠画面左侧的白袜；中间披黑外套女孩靠画面右侧的白袜；中间偏右侧身红裙女孩靠画面左侧的白袜；左侧第二名高个红裙女孩靠画面左侧的白袜。",
+    "specific_protection_zh": "鞋扣、鞋面、另一只袜和裙摆"
+  },
+  "units": [
+    {
+      "spec": {},
+      "ref_zh": "最右穿皮短裤男孩靠画面左侧的灰色长袜",
+      "instruction_ref_zh": "移除最右穿皮短裤男孩靠画面左侧的灰色长袜。",
+      "id": "U1",
+      "action": "revise",
+      "scope_zh": "袜子",
+      "physical_parent_zh": "最右皮短裤男孩",
+      "parent_instance_id": "sa_5735900:最右皮短裤男孩",
+      "category": "sock"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a short ribbed navy ankle sock"
+      },
+      "instruction_ref_zh": "将左侧第二名高个红裙女孩靠画面左侧的白袜替换为一只海军蓝罗纹短踝袜。",
+      "id": "U5",
+      "action": "revise",
+      "ref_zh": "左侧第二名高个红裙女孩靠画面左侧的白袜",
+      "scope_zh": "袜子",
+      "physical_parent_zh": "左侧第二名高个红裙女孩",
+      "parent_instance_id": "sa_5735900:左侧第二名高个红裙女孩",
+      "category": "sock"
+    }
+  ]
+}

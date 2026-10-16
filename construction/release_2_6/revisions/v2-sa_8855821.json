@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_8855821",
+  "reviewer": "shard6-b1",
+  "notes": "Tail case, all units re-examined on the clean image. U1 silver SUV -> blue (ref adds colour/type); U2 recolour-replace of the black sedan -> pickup truck; U3 is the white trigger spray bottle hanging on the open driver door (a pink bottle stands by the front wheel); U4 mask is one shoe, ref made singular with image-left side, payload concrete. Masks unchanged (whole objects; no S!=T unit).",
+  "reviewed_views": ["release_2_6_work/v2-sa_8855821/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "cars", "repair"], "scene_zh": "洗车场", "evidence_zh": "左侧银色SUV、正被擦拭的黑色轿车、挂在车门上的白色喷壶和工人的一只黑鞋是四个不同对象。", "specific_protection_zh": "保留车辆、清洁工具和场景人物物件。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the silver SUV at the left edge", "scope": "SUV"},
+     "ref_zh": "左侧边缘的银色SUV", "scope_zh": "SUV", "physical_parent_zh": "左侧银色SUV", "parent_instance_id": "sa_8855821:左侧银色SUV",
+     "instruction_ref_zh": "将左侧边缘的银色SUV的颜色改为蓝色。",
+     "instruction_noref_zh": "将选中区域的颜色改为蓝色。",
+     "findings_addressed": [], "reason": "Tail re-examination: ref names the verified colour and type."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the black sedan being wiped by the worker", "payload": "a white pickup truck"},
+     "ref_zh": "工人正在擦拭的黑色轿车", "scope_zh": "轿车", "physical_parent_zh": "被擦拭的黑色轿车", "parent_instance_id": "sa_8855821:被擦拭的黑色轿车",
+     "instruction_ref_zh": "将工人正在擦拭的黑色轿车替换为一辆白色皮卡。",
+     "instruction_noref_zh": "将选中区域替换为一辆白色皮卡。",
+     "findings_addressed": ["replace_is_attribute"], "reason": "'a red car' was a recolour; sedan -> pickup truck is a structural replace."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the white spray bottle hanging on the edge of the sedan's open door"},
+     "ref_zh": "挂在轿车敞开车门边缘的白色喷壶", "scope_zh": "喷壶", "physical_parent_zh": "车门上的白色喷壶", "parent_instance_id": "sa_8855821:车门上的白色喷壶",
+     "instruction_ref_zh": "移除挂在轿车敞开车门边缘的白色喷壶。",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "A pink bottle also stands near the center; verified that the masked bottle is the white trigger sprayer hooked on the open door edge by the planter."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the image-left black shoe of the worker wiping the car", "scope": "shoe", "payload": "a thin white reflective strip"},
+     "ref_zh": "擦车工人画面左侧的黑鞋", "scope_zh": "鞋子", "physical_parent_zh": "擦车工人", "parent_instance_id": "sa_8855821:擦车工人", "category": "shoe",
+     "instruction_ref_zh": "给擦车工人画面左侧的黑鞋加上一条细白色反光条。",
+     "instruction_noref_zh": "给选中区域加上一条细白色反光条。",
+     "findings_addressed": ["mask_quality", "grammar_style"], "reason": "Mask is one shoe (the other is partly hidden behind it); ref made singular with image-left side; payload made concrete."}
+  ]
+}

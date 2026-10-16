@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_3717579",
+  "reviewer": "shard2-b1",
+  "notes": "U2 mask was a single pane of the diagonal slot window and not above the truck; mask extended to the whole slot-window strip on the white diagonal tube (v2) and ref rewritten. U1 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3717579/case_sheet.jpg", "release_2_6_work/v2-sa_3717579/U2/t1.jpg", "release_2_6_work/v2-sa_3717579/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the long slot window running along the white diagonal tube at the upper left"},
+     "ref_zh": "左上方白色斜管上的长条窗",
+     "instruction_ref_zh": "将左上方白色斜管上的长条窗的色调改为浅蓝色。",
+     "instruction_noref_zh": "将选中区域的色调改为浅蓝色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Slot window is split by seams into 5 visible panes from (0,686) to (753,0); old mask covered one pane only. v2 mask = union of all panes (SAM3 'window' t1_1..t1_5), matching 'the long slot window'."}
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_8092195",
+  "reviewer": "shard4-b4",
+  "notes": "Tail case: both units retargeted. U1 'bridge on the left' was the lattice railing along the left canal bank (plus a footbridge sliver) with a filled mask covering people and bicycles seen through it; a hole-free railing mask is not obtainable, so U1 now recolours the cream 'Sichelschmiede' cafe umbrella (SAM3 text 'umbrella'). U2 was a tiny flower cluster among dozens of identical trumpet-vine flowers; retargeted to the round 'Papagena' shop sign (SAM3 text 'round sign'). Both v2 masks viewed.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8092195/case_sheet.jpg", "release_2_6_work/v2-sa_8092195/U1/t1.jpg", "release_2_6_work/v2-sa_8092195/U1/final.jpg", "release_2_6_work/v2-sa_8092195/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "canal"], "scene_zh": "运河边街景", "evidence_zh": "运河边的米色咖啡馆遮阳伞和右侧墙上的圆形Papagena店招是两个不同对象。", "specific_protection_zh": "保留运河、栏杆、建筑和植物。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the cream cafe umbrella printed with 'Sichelschmiede' by the canal", "scope": "umbrella", "payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+     "ref_zh": "运河边印有“Sichelschmiede”字样的米色咖啡馆遮阳伞",
+     "scope_zh": "遮阳伞",
+     "physical_parent_zh": "咖啡馆遮阳伞",
+     "parent_instance_id": "sa_8092195:咖啡馆遮阳伞",
+     "instruction_ref_zh": "将运河边印有“Sichelschmiede”字样的米色咖啡馆遮阳伞的颜色改为深绿色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+     "preserve": ["保留运河、栏杆、建筑和植物。", "保留伞下用餐的人群。"],
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Old target was a see-through railing, not a bridge, and its mask covered people/bikes; retargeted to a solid, unique object with the same attribute operation."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the round 'Papagena' shop sign hanging on the pink building at the right", "scope": "sign"},
+     "ref_zh": "右侧粉色建筑上悬挂的圆形“Papagena”店招",
+     "scope_zh": "店招",
+     "physical_parent_zh": "Papagena店招",
+     "parent_instance_id": "sa_8092195:Papagena店招",
+     "instruction_ref_zh": "移除右侧粉色建筑上悬挂的圆形“Papagena”店招。",
+     "preserve": ["保留运河、栏杆、建筑和植物。", "保留店招的铁艺挂架和墙上的凌霄花。"],
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "The masked flower was one tiny cluster among dozens; retargeted to a unique removable sign (same remove operation)."}
+  ]
+}

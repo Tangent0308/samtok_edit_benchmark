@@ -1,0 +1,66 @@
+{
+  "case_id": "v2-sa_6665557",
+  "reviewer": "round2",
+  "notes": "Chair stack is far right. U2 full-window mask retained by revising attribute to a blue-and-amber stained-glass pattern across the whole window. Sign attaches to exposed top rail near center, avoiding foreground person and railing holes.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6665557/case_sheet.jpg",
+    "assets/v2-sa_6665557/source.jpg",
+    "release_2_6_work/v2-sa_6665557/barrier_detail.jpg",
+    "release_2_6_work/v2-sa_6665557/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the rightmost stack of chairs at the top of the steps"
+      },
+      "ref_zh": "台阶顶部最右边的一摞椅子",
+      "instruction_ref_zh": "移除台阶顶部最右边的一摞椅子。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Masked stack is at far right, not below the left arched window."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the leftmost arched window between the central columns",
+        "scope": "arched window",
+        "payload": "a blue and amber geometric stained-glass mosaic",
+        "attributes": [
+          {
+            "property": "pattern",
+            "value": "a blue and amber geometric stained-glass mosaic"
+          }
+        ]
+      },
+      "ref_zh": "中央立柱之间最左侧的拱形窗",
+      "scope_zh": "拱形窗",
+      "instruction_ref_zh": "将中央立柱之间最左侧的拱形窗的图案改为蓝色与琥珀色的几何彩色玻璃拼花。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Full window mask suits a whole-window stained-glass pattern, and central columns exclude the farther-left window.",
+      "category": "arched window"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "payload": "one small blue EXIT arrow sign",
+        "placement": {
+          "relation": "on",
+          "site": "top rail near the center",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在前景长白色护栏中央附近的顶横杆上加上一块小蓝色EXIT箭头标牌。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Move dangling its-center location into a concrete rail support site with a compact v2 mask."
+    }
+  ]
+}

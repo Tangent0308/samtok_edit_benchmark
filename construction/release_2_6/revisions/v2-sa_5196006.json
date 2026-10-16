@@ -1,0 +1,58 @@
+{
+  "case_id": "v2-sa_5196006",
+  "reviewer": "round2",
+  "notes": "原图确认U4橄榄/卡其印花T恤，修复pale描述；可见单侧袖子SAM3分割后提交1059px。U2衣袖为短袖，肘部露在衣袖外，原elbow patch不合理，改小椭圆布贴；提交10382px可见袖子mask。U1剔除围裙200px与白领巾10px异物，保留实际露出衬衫领边。",
+  "reviewed_views": [
+    "assets/v2-sa_5196006/source.jpg",
+    "release_2_6_work/v2-sa_5196006/case_sheet.jpg",
+    "release_2_6_work/v2-sa_5196006/U1/final.jpg",
+    "release_2_6_work/v2-sa_5196006/U2/final.jpg",
+    "release_2_6_work/v2-sa_5196006/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "锻造演示与婚礼观众",
+    "evidence_zh": "不同源对象：左侧铁匠围裙外露的格子衬衫；中间穿马甲观众露出的浅色衬衫；新娘左后方拄拐儿童的蓝色上衣；新娘头部后方男子的橄榄色印花T恤。",
+    "specific_protection_zh": "围裙、马甲、拐杖、婚纱和皮肤"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "one small oval cloth patch"
+      },
+      "instruction_ref_zh": "在中间穿马甲观众浅色衬衫的可见衣袖上加上一块小椭圆形布贴。",
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "中间穿马甲观众露出的浅色衬衫",
+      "scope_zh": "衬衫",
+      "physical_parent_zh": "穿马甲观众",
+      "parent_instance_id": "sa_5196006:穿马甲观众",
+      "category": "shirt"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "ref": "the olive printed T-shirt of the man behind the bride's head"
+      },
+      "ref_zh": "新娘头部后方男子的橄榄色印花T恤",
+      "instruction_ref_zh": "移除新娘头部后方男子橄榄色印花T恤的衣袖。",
+      "id": "U4",
+      "action": "revise",
+      "scope_zh": "T恤",
+      "physical_parent_zh": "新娘后方男子",
+      "parent_instance_id": "sa_5196006:新娘后方男子",
+      "category": "T-shirt"
+    }
+  ]
+}

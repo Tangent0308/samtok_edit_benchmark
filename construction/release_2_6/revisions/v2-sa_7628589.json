@@ -1,0 +1,32 @@
+{
+  "case_id": "v2-sa_7628589",
+  "reviewer": "shard3-b6",
+  "notes": "U1 red->deep red was near no-op (now royal blue); U2 green->blue dress was a recolour (now blouse+skirt); U3 ref ambiguous with the larger yellow sign further right; U4 sandal belonged to the green-dress woman (same parent as U2): retargeted to the floral-dress woman's image-left wedge sandal. U1 mask checked: fan excluded.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7628589/case_sheet.jpg", "release_2_6_work/v2-sa_7628589/U4/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "performance", "crowd"], "scene_zh": "弗拉门戈服装街头", "evidence_zh": "前景舞者的红色弗拉门戈裙、白色肩包女子的绿色连衣裙、她头顶上方的禁停标志和碎花裙女子画面左侧的坡跟凉鞋是四个不同对象。", "specific_protection_zh": "保留舞者、观众和街道环境。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the red flamenco dress of the foreground dancer", "scope": "flamenco dress", "payload": "royal blue", "attributes": [{"property": "color", "value": "royal blue"}]},
+     "ref_zh": "前景舞者的红色弗拉门戈裙", "scope_zh": "弗拉门戈裙", "physical_parent_zh": "前景舞者", "parent_instance_id": "sa_7628589:前景舞者",
+     "instruction_ref_zh": "将前景舞者的红色弗拉门戈裙的颜色改为宝蓝色。",
+     "instruction_noref_zh": "将选中区域的颜色改为宝蓝色。",
+     "findings_addressed": ["attribute_value"], "reason": "Dress is already bright red; deep red is barely perceptible."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the green dress of the woman with a white shoulder bag", "payload": "a white blouse and a long navy skirt"},
+     "ref_zh": "背白色肩包女子的绿色连衣裙", "scope_zh": "裙装", "physical_parent_zh": "绿裙女子", "parent_instance_id": "sa_7628589:绿裙女子",
+     "instruction_ref_zh": "将背白色肩包女子的绿色连衣裙替换为一件白色衬衫和一条藏青色长裙。",
+     "instruction_noref_zh": "将选中区域替换为一件白色衬衫和一条藏青色长裙。",
+     "findings_addressed": ["replace_is_attribute"], "reason": "Green dress -> blue dress was only a recolour; ref now anchored on the shoulder bag."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the small round no-parking sign above the woman in the green dress"},
+     "ref_zh": "绿裙女子头顶上方的圆形禁停小标志", "scope_zh": "标牌", "physical_parent_zh": "禁停标志", "parent_instance_id": "sa_7628589:禁停标志",
+     "instruction_ref_zh": "移除绿裙女子头顶上方的圆形禁停小标志。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "A larger round yellow sign stands further upper-right; masked one is the small blue-red no-parking sign."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the image-left wedge sandal of the woman in the floral dress"},
+     "ref_zh": "碎花裙女子画面左侧的坡跟凉鞋", "scope_zh": "凉鞋", "physical_parent_zh": "碎花裙女子", "parent_instance_id": "sa_7628589:碎花裙女子",
+     "instruction_ref_zh": "给碎花裙女子画面左侧的坡跟凉鞋加上一个金色搭扣。",
+     "instruction_noref_zh": "给选中区域加上一个金色搭扣。",
+     "findings_addressed": ["independence_violation"], "reason": "Old sandal was worn by the green-dress woman (U2's parent). Retargeted to a different person's sandal (SAM3, checked)."}
+  ]
+}

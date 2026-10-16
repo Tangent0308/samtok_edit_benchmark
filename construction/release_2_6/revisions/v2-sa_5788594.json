@@ -1,0 +1,34 @@
+{
+  "case_id": "v2-sa_5788594",
+  "reviewer": "round2",
+  "notes": "Source reviewed. Existing U2 mask covers wheeled truck base (cab and chassis), not elevated stairway, so ref/scope narrowed to actual selected component.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_5788594/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the wheeled truck base beneath the boarding stairs on the right",
+        "scope": "truck base"
+      },
+      "ref_zh": "右侧登机梯下方带驾驶室的卡车底座",
+      "scope_zh": "卡车底座",
+      "instruction_ref_zh": "将右侧登机梯下方带驾驶室的卡车底座的颜色改为黄色。",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "Existing mask is the lower wheeled vehicle including cab, chassis and wheels; edit narrowed from entire stair truck to that selected component.",
+      "category": "truck base"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    }
+  ]
+}

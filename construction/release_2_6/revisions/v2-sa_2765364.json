@@ -1,0 +1,38 @@
+{
+  "case_id": "v2-sa_2765364",
+  "reviewer": "shard0b-b3",
+  "notes": "No audit findings, but: U3 shirt is already light blue on the clean image (attribute no-op) -> mustard yellow. U4 'remove the sleeves' of the back-facing green-and-yellow striped polo: no sleeve is visible (both arms hidden by neighbours), part mask impossible -> retargeted to removing the blue-and-white plastic shopping bag (SAM3, v2). U5 site 'visible shoulder' -> v2 shoulder region; ref colour corrected to pink.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2765364/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2765364/U4/final.jpg",
+    "release_2_6_work/v2-sa_2765364/U5/final.jpg"
+  ],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the light-blue shirt of the seated vendor just right of center", "attributes": [{"property": "color", "value": "mustard yellow"}], "payload": "mustard yellow"},
+     "ref_zh": "中间右侧坐姿商贩的浅蓝色衬衫",
+     "instruction_ref_zh": "将中间右侧坐姿商贩的浅蓝色衬衫的颜色改为芥末黄色。",
+     "instruction_noref_zh": "将选中区域的颜色改为芥末黄色。",
+     "findings_addressed": [],
+     "reason": "Clean image shows the shirt is already light blue; target value must differ visibly."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the blue-and-white printed plastic shopping bag just behind the crouching woman in purple", "scope": "shopping bag", "target_part": "", "remove_mode": "whole"},
+     "ref_zh": "紫衣蹲姿女子身后的蓝白印花塑料购物袋",
+     "scope_zh": "购物袋",
+     "physical_parent_zh": "蓝白塑料购物袋",
+     "parent_instance_id": "sa_2765364:蓝白塑料购物袋",
+     "instruction_ref_zh": "移除紫衣蹲姿女子身后的蓝白印花塑料购物袋。",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": [],
+     "reason": "Retarget: original target (sleeves of the green/yellow striped polo, 369-491 x 261-457) has no visible sleeve, so the part mask cannot exist. New target is a single hand-held bag (456-544 x 615-819), separate from all other units; operation remove kept."},
+    {"id": "U5", "action": "revise",
+     "spec": {"ref": "the pink shirt of the seated vendor behind the gray-haired man at the front right", "placement": {"relation": "on", "site": "shoulder", "anchor_mode": "support"}},
+     "ref_zh": "右前白发老人身后坐着的商贩的粉色衬衫",
+     "instruction_ref_zh": "给右前白发老人身后坐着的商贩的粉色衬衫加上一块缝在肩部的小蓝色布贴。",
+     "instruction_noref_zh": "给选中区域加上一块小蓝色布贴。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 site mask = visible shoulder of the shirt (1865-1970 x 630-730). Shirt is pale pink, not neutral pale."}
+  ]
+}

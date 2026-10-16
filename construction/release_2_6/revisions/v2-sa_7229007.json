@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_7229007",
+  "reviewer": "shard3-b3",
+  "notes": "Tuk-tuk faces left; masked wheel is the rear wheel under the cabin. Its tire is black with a white hubcap, so 'white' is replaced by bright red. U2 recolour-replace made structural. U3 ref made unique (two ornate wall lanterns; mask is the one above the street-name sign) and parent_zh fixed (was 左墙灯). Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7229007/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["street", "architecture", "occlusion"], "scene_zh": "马拉喀什街景", "evidence_zh": "嘟嘟车后轮、右侧行人格纹衬衫、路牌上方的壁灯是三个不同对象。", "specific_protection_zh": "保留建筑、车辆和街道环境。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the rear wheel of the striped tuk-tuk", "payload": "bright red", "attributes": [{"property": "color", "value": "bright red"}]},
+     "ref_zh": "条纹嘟嘟车的后轮",
+     "physical_parent_zh": "嘟嘟车", "parent_instance_id": "sa_7229007:嘟嘟车",
+     "instruction_ref_zh": "将条纹嘟嘟车的后轮的颜色改为鲜红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为鲜红色。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Tuk-tuk faces left (front fork at x~0.41W); mask x=0.68W is the rear wheel. White hubcap already white, red makes a clear change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the plaid shirt of the man walking at the right", "payload": "a navy hooded sweatshirt"},
+     "ref_zh": "右侧行走男子的格纹衬衫",
+     "physical_parent_zh": "右侧行走男子", "parent_instance_id": "sa_7229007:右侧行走男子",
+     "instruction_ref_zh": "将右侧行走男子的格纹衬衫替换为一件藏蓝色连帽卫衣。",
+     "instruction_noref_zh": "将选中区域替换为一件藏蓝色连帽卫衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Shirt -> hooded sweatshirt is a structural garment change; 'the pedestrian' was ambiguous among many pedestrians."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the ornate wall lantern above the street-name sign", "scope": "wall lantern"},
+     "ref_zh": "路名牌上方的华丽壁灯", "scope_zh": "壁灯",
+     "physical_parent_zh": "路名牌上方壁灯", "parent_instance_id": "sa_7229007:路名牌上方壁灯",
+     "instruction_ref_zh": "在路名牌上方的华丽壁灯上加上一个小吊篮花盆。",
+     "instruction_noref_zh": "给选中区域加上一个小吊篮花盆。",
+     "findings_addressed": [],
+     "reason": "Two identical wall lanterns on the building; the masked one hangs directly above the small street-name sign."}
+  ]
+}

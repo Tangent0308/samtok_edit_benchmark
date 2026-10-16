@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_5827205",
+  "reviewer": "shard2-b13",
+  "notes": "U3 beanie is dark crimson (a bright pink knit hat sits right of it under the same Maestro sign); its payload was only a recolour, now a baseball cap. U4 dangling 'its upper-right corner' moved to placement.site with a corner v2 mask.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5827205/case_sheet.jpg", "release_2_6_work/v2-sa_5827205/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the dark crimson beanie below the Maestro cardboard sign", "payload": "a black baseball cap"},
+     "ref_zh": "Maestro纸板牌下方的深绯红色针织帽",
+     "instruction_ref_zh": "将Maestro纸板牌下方的深绯红色针织帽替换为一顶黑色棒球帽。",
+     "findings_addressed": ["ambiguous_ref", "replace_is_attribute"],
+     "reason": "Masked beanie (618-716,1089-1198) is dark crimson, not magenta; the bright pink hat at x~990 is the rival. 'black ribbed beanie' was a colour/texture change only."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small purple flower sticker", "placement": {"relation": "on", "site": "upper-right corner", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在写有MY BODY MY CHOICE的牌子的右上角加上一张小紫花贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小紫花贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its upper-right corner' in payload; site stored separately; mask = sign ∩ upper-right corner box [1615,795,1715,885]."}
+  ]
+}

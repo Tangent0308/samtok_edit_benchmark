@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_7103552",
+  "reviewer": "shard0-b3",
+  "notes": "U1 mask (x 177-223) is player #3's image-left sock (other sock ~x 265): ref side fixed. U2 yellow player wears 15, not 14. U4 stray fragment on player 5's other (white) sock at ~x 1128 removed (v2 mask). U3 add site 'front' -> v2 mask = shin-height front of player 44's image-left sock (y 925-1005), stray fragment on his other sock dropped.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7103552/case_sheet.jpg", "release_2_6_work/v2-sa_7103552/zoom_U3.jpg", "release_2_6_work/v2-sa_7103552/U3/final.jpg", "release_2_6_work/v2-sa_7103552/zoom_U4.jpg", "release_2_6_work/v2-sa_7103552/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the image-left sock of the leftmost white-clad player"},
+     "ref_zh": "最左侧白衣球员画面左侧的长袜",
+     "instruction_ref_zh": "移除最左侧白衣球员画面左侧的长袜。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked sock (x 177-223) is the image-left one of player #3; his other sock is at ~x 265."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the sock on the leftward-extended leg of yellow-shirted player 15"},
+     "ref_zh": "15号黄衣球员向左伸出的腿上的长袜",
+     "physical_parent_zh": "15号黄衣球员",
+     "parent_instance_id": "sa_7103552:15号黄衣球员",
+     "instruction_ref_zh": "将15号黄衣球员向左伸出的腿上的长袜替换为黑色短踝袜。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "The yellow player whose extended leg is masked wears number 15 (shirt and shorts); no yellow 14 exists."},
+    {"id": "U3", "action": "revise",
+     "instruction_ref_zh": "在44号白衣球员画面左侧长袜的正面绑上一个白色护胫。",
+     "ref_zh": "44号白衣球员画面左侧的长袜",
+     "instruction_noref_zh": "给选中区域绑上一个白色护胫。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask = front shin-height part of the sock; zh ref aligned (English has no 左侧 for the player) and blind zh no-ref."},
+    {"id": "U4", "action": "keep", "findings_addressed": ["mask_quality"]},
+    {"id": "U5", "action": "keep"}
+  ]
+}

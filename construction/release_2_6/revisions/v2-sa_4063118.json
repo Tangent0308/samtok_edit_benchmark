@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_4063118",
+  "reviewer": "shard2-b3",
+  "notes": "U1 car is white (not silver) and car -> blue compact car was a recolour; now a blue delivery van. U2 ref anchored on the 'silver car' and a partly hidden red car sits between it and the target; ref now names the dark navy car beyond the white car. U3/U4 verified, kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4063118/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the white car parked on the left side of the street", "payload": "a blue delivery van"},
+     "ref_zh": "停在街道左侧的白色汽车",
+     "instruction_ref_zh": "将停在街道左侧的白色汽车替换为一辆蓝色厢式送货车。",
+     "instruction_noref_zh": "将选中区域替换为一辆蓝色厢式送货车。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Car (box x75-275, y1732-2162) is white on the clean source; a delivery van is a structural replacement. It is the only white car on the left side."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the dark navy car parked just beyond the white car on the left"},
+     "ref_zh": "停在左侧白色汽车后方不远处的深海军蓝色汽车",
+     "instruction_ref_zh": "将停在左侧白色汽车后方不远处的深海军蓝色汽车的颜色改为酒红色。",
+     "findings_addressed": [],
+     "reason": "The old ref used 'the silver car' (actually white) and a partly hidden dark red car is directly behind the white car; the target is the navy one beyond it."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

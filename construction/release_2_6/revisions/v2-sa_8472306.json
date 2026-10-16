@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_8472306",
+  "reviewer": "shard0-b1",
+  "notes": "No audit findings. U1 site 'each visible bowl' is a multi-part site SAM3 could not segment by text (no candidates for bowl/cup/oil lamp); rewritten to the single topmost bowl of the tallest arm, segmented with a SAM3 box prompt and verified. U2 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8472306/case_sheet.jpg", "release_2_6_work/v2-sa_8472306/U1/p6.jpg", "release_2_6_work/v2-sa_8472306/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"placement": {"relation": "in", "site": "topmost bowl", "anchor_mode": "support"}},
+     "ref_zh": "后排中间的分枝灯架",
+     "instruction_ref_zh": "在后排中间分枝灯架最顶端的灯碗里放一盏点燃的茶蜡。",
+     "instruction_noref_zh": "给选中区域放上一盏点燃的茶蜡。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 site mask: 'each visible bowl' (~7 bowls, multi-part) replaced by one clearly segmentable site, the topmost bowl (box 1697-1811 x 383-480)."},
+    {"id": "U2", "action": "keep"}
+  ]
+}

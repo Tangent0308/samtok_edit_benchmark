@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_4202779",
+  "reviewer": "shard0-b1",
+  "notes": "No audit findings. Protocol 2.0: U3 remove contents -> v2 mask = basket ∪ the snack packages inside it (SAM3 'snack package' t1_1..t1_5 were outside the 2.5.0 basket mask). U3 zh cleaned; difficulty text no longer asks to keep the basket contents (they are removed). U2 shirt checked on clean source: cream/green stripes; ref unique (other offerer wears a maroon T-shirt).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4202779/case_sheet.jpg", "release_2_6_work/v2-sa_4202779/U3/t1.jpg", "release_2_6_work/v2-sa_4202779/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["同类多实例", "遮挡", "细长狭窄", "孔洞结构", "紧邻保护"], "scene_zh": "递物人群中的衣物与提篮", "evidence_zh": "袍服和衬衣被持钵的前臂分开，提篮的弯曲提手环绕背景椅背；需区分相邻橙袍人物，提篮须连同篮内包装食品一起移除。", "specific_protection_zh": "金属钵、双手、提手孔内的椅背、篮旁的银色小碗、其他橙袍人物。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise", "spec": {},
+     "ref_zh": "前景的编织提篮",
+     "instruction_ref_zh": "移除前景的编织提篮及其中的物品。",
+     "preserve": ["All unrequested parts of this parent, neighboring objects and background; other units authorize their own changes.", "金属钵、双手、提手孔内的椅背、篮旁的银色小碗、其他橙袍人物。"],
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 contents mask (basket ∪ contents); zh ref had a duplicated '及提手'; preserve list no longer protects the removed contents."}
+  ]
+}

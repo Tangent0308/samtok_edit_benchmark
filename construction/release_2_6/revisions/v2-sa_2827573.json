@@ -1,0 +1,36 @@
+{
+  "case_id": "v2-sa_2827573",
+  "reviewer": "shard1b-b3",
+  "notes": "U3: two white notices stacked (upper [1063,608,1144,663], lower ~[1075,690,1130,730]); ref now says upper. U4 lamppost mask contained stray bits of a separate wall lantern (~x533-560,y300-360); removed.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2827573/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2827573/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the upper of the two white wall notices above the motorcycles"
+      },
+      "ref_zh": "摩托车上方两块白色墙面告示牌中靠上的那块",
+      "instruction_ref_zh": "移除摩托车上方两块白色墙面告示牌中靠上的那块。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Second smaller notice directly below the masked one."
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ]
+}

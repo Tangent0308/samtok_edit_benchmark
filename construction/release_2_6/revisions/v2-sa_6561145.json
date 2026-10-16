@@ -1,0 +1,69 @@
+{
+  "case_id": "v2-sa_6561145",
+  "reviewer": "round2",
+  "notes": "Boat removal now explicitly includes contents/driver with SAM3 union mask. Audit claim original mask included upper body is visually false (old host notched around it), but boat-only removal would strand driver; fixed joint extent. Foreground lower cream hull segmented; sweater replaces padded jacket; awning emblem site right end.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6561145/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6561145/U1/t1.jpg",
+    "release_2_6_work/v2-sa_6561145/U1/final.jpg",
+    "release_2_6_work/v2-sa_6561145/U2/t1.jpg",
+    "release_2_6_work/v2-sa_6561145/U2/final.jpg",
+    "release_2_6_work/v2-sa_6561145/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "remove_mode": "contents"
+      },
+      "instruction_ref_zh": "连同船上驾驶员一起移除中右侧的小型白色摩托艇。",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "Remove occupied motorboat including contents; SAM3 driver union avoids stranded occupant. Original host actually excluded driver upper body, contrary to audit evidence."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the cream lower hull of the wooden water taxi in the foreground"
+      },
+      "ref_zh": "前景木制水上出租车的奶油色下部船壳",
+      "instruction_ref_zh": "将前景木制水上出租车的奶油色下部船壳的颜色改为深蓝色。",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "SAM3 selects only cream lower hull, excluding mahogany cabin roof, windows, deck and seats."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "payload": "a knitted wool sweater"
+      },
+      "instruction_ref_zh": "将前景船中男子的深色绗缝外套替换为一件针织羊毛衫。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Pullover sweater changes jacket opening/collar/quilted structure."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one small gold coffee-cup emblem",
+        "placement": {
+          "relation": "on",
+          "site": "image-right end",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给最左侧绿色咖啡馆遮阳篷的图像右端加上一个小金色咖啡杯徽标。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Moved end locator into site and localized reviewed support mask."
+    }
+  ]
+}

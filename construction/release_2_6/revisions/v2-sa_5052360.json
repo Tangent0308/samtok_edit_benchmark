@@ -1,0 +1,15 @@
+{
+  "case_id": "v2-sa_5052360",
+  "reviewer": "shard2-b9",
+  "notes": "U2 payload had a dangling 'its front edge'; moved to placement.site 'front valance' and committed a v2 mask of the valance band (host ∩ box y 488-556). U1/U3 checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5052360/case_sheet.jpg", "release_2_6_work/v2-sa_5052360/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a small white CLASSIC CARS banner", "placement": {"relation": "along", "site": "front valance", "anchor_mode": "support"}},
+     "instruction_ref_zh": "沿右侧的蓝色遮阳棚的前沿垂边加上一条小白色CLASSIC CARS横幅。",
+     "instruction_noref_zh": "给选中区域加上一条小白色CLASSIC CARS横幅。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'its' from payload; front edge is now the site and the mask is that valance strip."}
+  ]
+}

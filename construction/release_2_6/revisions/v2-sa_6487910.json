@@ -1,0 +1,51 @@
+{
+  "case_id": "v2-sa_6487910",
+  "reviewer": "round2",
+  "notes": "核对绿色T恤与黑色夹克原图；U4拆掉悬空its，改独立反光条payload与upper back附着位并提交局部mask；U1保留木支架间露出的车身两部分，去掉木支架上的46像素碎片。",
+  "reviewed_views": [
+    "assets/v2-sa_6487910/source.jpg",
+    "release_2_6_work/v2-sa_6487910/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6487910/U1/final.jpg",
+    "release_2_6_work/v2-sa_6487910/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "perspective",
+      "occlusion"
+    ],
+    "scene_zh": "城市人行道与停放车辆",
+    "evidence_zh": "不同源对象：离镜头最近的黑色轿车；黑色轿车后方的红色皮卡；最近行人的绿色T恤；Citibank招牌下方行人的黑夹克。",
+    "specific_protection_zh": "保留人体、树木、建筑及其他车辆。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "one small white reflective strip",
+        "placement": {
+          "relation": "across",
+          "site": "upper back"
+        }
+      },
+      "instruction_ref_zh": "在Citibank招牌下方行人的黑夹克的上背部横向加上一条小白色反光条。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "Citibank招牌下方行人的黑夹克",
+      "scope_zh": "夹克",
+      "physical_parent_zh": "后行人",
+      "parent_instance_id": "sa_6487910:rear_pedestrian",
+      "category": "jacket"
+    }
+  ]
+}

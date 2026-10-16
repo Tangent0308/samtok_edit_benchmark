@@ -1,0 +1,59 @@
+{
+  "case_id": "v2-sa_6641776",
+  "reviewer": "round2",
+  "notes": "U1去悬空its，SAM实际车把mask，排除车篮与挂包；U4原夹克换灰羊毛夹克只改颜色材质，改双排扣风衣形成长短与前襟结构变化。",
+  "reviewed_views": [
+    "assets/v2-sa_6641776/source.jpg",
+    "release_2_6_work/v2-sa_6641776/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6641776/U1/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "perspective",
+      "occlusion"
+    ],
+    "scene_zh": "石色现代建筑前游客",
+    "evidence_zh": "不同源对象：靠墙的自行车；最左侧女子的黑肩包；中间附近女子的红夹克；红衣女子后方男子的深色夹克。",
+    "specific_protection_zh": "保留人体、建筑和其他随身物。"
+  },
+  "units": [
+    {
+      "spec": {
+        "payload": "one small silver bell",
+        "placement": {
+          "relation": "on",
+          "site": "handlebar"
+        }
+      },
+      "instruction_ref_zh": "在靠墙的自行车的车把上加上一个小银色车铃。",
+      "id": "U1",
+      "action": "revise",
+      "ref_zh": "靠墙的自行车",
+      "scope_zh": "自行车",
+      "physical_parent_zh": "自行车",
+      "parent_instance_id": "sa_6641776:bicycle",
+      "category": "bicycle"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a gray double-breasted trench coat"
+      },
+      "instruction_ref_zh": "将红衣女子后方男子的深色夹克替换为一件灰色双排扣风衣。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "红衣女子后方男子的深色夹克",
+      "scope_zh": "夹克",
+      "physical_parent_zh": "后男",
+      "parent_instance_id": "sa_6641776:rear_man",
+      "category": "jacket"
+    }
+  ]
+}

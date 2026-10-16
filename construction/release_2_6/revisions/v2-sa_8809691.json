@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_8809691",
+  "reviewer": "shard6-b1",
+  "notes": "Tail case, all units re-examined. U1 lamp is already black -> dark green; U2 glass door replaced by a roll-up shutter (structural); U3 planter removed together with its shrubs (remove contents, v2 mask = box ∪ shrubs); U4 ref names the tall downspout from the upper roof, payload made concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8809691/case_sheet.jpg", "release_2_6_work/v2-sa_8809691/U3/t1.jpg", "release_2_6_work/v2-sa_8809691/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "residential"], "scene_zh": "现代住宅外景", "evidence_zh": "最左侧路灯、右侧玻璃附屋的木框双开玻璃门、左下花箱及其灌木和中部高落水管是四个不同对象。", "specific_protection_zh": "保留住宅、庭院设施和建筑细节。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the leftmost black double-lantern lamp post", "scope": "lamp post", "payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+     "ref_zh": "最左侧的黑色双灯头路灯", "scope_zh": "路灯", "physical_parent_zh": "最左侧路灯", "parent_instance_id": "sa_8809691:最左侧路灯",
+     "instruction_ref_zh": "将最左侧的黑色双灯头路灯的颜色改为深绿色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+     "findings_addressed": ["attribute_value"], "reason": "Lamp post is already black; new value dark green. Three lamp posts are visible, so 'leftmost' is used."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the wooden-framed double glass door of the glass annex at the right", "payload": "a metal roll-up shutter"},
+     "ref_zh": "右侧玻璃附屋的木框双开玻璃门", "scope_zh": "门", "physical_parent_zh": "右侧玻璃附屋的门", "parent_instance_id": "sa_8809691:右侧玻璃附屋的门",
+     "instruction_ref_zh": "将右侧玻璃附屋的木框双开玻璃门替换为一扇金属卷帘门。",
+     "instruction_noref_zh": "将选中区域替换为一扇金属卷帘门。",
+     "findings_addressed": ["replace_is_attribute"], "reason": "'a wooden door' was only a panel-material change; roll-up shutter is a genuine structural replace."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the brown brick-pattern planter at the lower left", "remove_mode": "contents"},
+     "ref_zh": "左下方的棕色砖纹花箱", "scope_zh": "花箱", "physical_parent_zh": "左下花箱", "parent_instance_id": "sa_8809691:左下花箱",
+     "instruction_ref_zh": "移除左下方的棕色砖纹花箱，连同其中的植物。",
+     "instruction_noref_zh": "移除选中区域，连同其中的植物。",
+     "findings_addressed": ["mask_quality"], "reason": "Removing only the box would leave the shrubs floating; now remove_mode=contents with a v2 mask = planter ∪ shrubs (SAM3 'potted shrub' ∪ host, reviewed)."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the tall downspout running from the upper roof gutter to the ground near the center", "payload": "one green climbing ivy vine", "placement": {"relation": "around", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "中部从上层屋檐排水槽一直通到地面的高落水管", "scope_zh": "落水管", "physical_parent_zh": "中部高落水管", "parent_instance_id": "sa_8809691:中部高落水管",
+     "instruction_ref_zh": "给中部从上层屋檐排水槽一直通到地面的高落水管缠上一株绿色常春藤。",
+     "instruction_noref_zh": "给选中区域缠上一株绿色常春藤。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "A second downspout from the lower tiled eave stands just left; ref now says it runs from the upper roof to the ground. Generic 'small bracket' replaced by a visible ivy vine."}
+  ]
+}

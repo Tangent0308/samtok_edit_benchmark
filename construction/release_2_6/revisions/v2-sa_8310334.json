@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_8310334",
+  "reviewer": "shard1-b1",
+  "notes": "U4 owner had no camera (teal-shirted woman with a black quilted bag and golden offering stick); ref fixed. Protocol 2.0 v2 masks: U2 and U3 remove sleeves -> both visible sleeves (SAM3 'sleeve' within host); U4 add site 'visible outer thigh' -> outer upper thigh of the image-left leg (host ∩ box [2025,830,2100,970]).",
+  "reviewed_views": ["release_2_6_work/v2-sa_8310334/case_sheet.jpg", "release_2_6_work/v2-sa_8310334/U2/final.jpg", "release_2_6_work/v2-sa_8310334/U3/final.jpg", "release_2_6_work/v2-sa_8310334/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep", "reason": "Mask replaced by sleeves-only U2_v2.png."},
+    {"id": "U3", "action": "keep", "reason": "Mask replaced by sleeves-only U3_v2.png."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the dark trousers of the teal-shirted woman with a black quilted bag at the upper right"},
+     "ref_zh": "右上方背黑色绗缝包的青绿上衣女士的深色裤子",
+     "physical_parent_zh": "右上方青绿上衣女士",
+     "parent_instance_id": "sa_8310334:右上方青绿上衣女士",
+     "instruction_ref_zh": "给右上方背黑色绗缝包的青绿上衣女士的深色裤子的可见大腿外侧加上一个小袋盖口袋。",
+     "instruction_noref_zh": "给选中区域加上一个小袋盖口袋。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "No camera is visible; she holds a golden offering stick and carries a black quilted bag. Mask now the outer thigh site (U4_v2.png)."},
+    {"id": "U5", "action": "keep"}
+  ]
+}

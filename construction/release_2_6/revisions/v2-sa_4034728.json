@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_4034728",
+  "reviewer": "shard2-b3",
+  "notes": "U1 replace was a pattern-only change (camouflage cap -> plain khaki cap of the same type); now a black beret. U2 ref tightened: the masked vehicle is the dark blue SUV roof just right of the canopy pillar, with a black pickup and other dark cars nearby.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4034728/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a black beret"},
+     "instruction_ref_zh": "将前排最左侧完整可见人物的迷彩帽替换为一顶黑色贝雷帽。",
+     "instruction_noref_zh": "将选中区域替换为一顶黑色贝雷帽。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Plain khaki patrol cap keeps the cap type; a beret is a structural replacement."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the dark blue SUV visible above the soldiers' caps just right of the central canopy pillar"},
+     "ref_zh": "中央遮阳棚立柱右侧紧邻、在士兵帽子上方露出的深蓝色SUV",
+     "instruction_ref_zh": "移除中央遮阳棚立柱右侧紧邻、在士兵帽子上方露出的深蓝色SUV。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Mask (source x~1310-1470, y~640-700) is a dark blue SUV directly right of the canopy pillar; a black pickup and other dark cars are nearby."}
+  ]
+}

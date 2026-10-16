@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_10235725",
+  "reviewer": "shard1-b2",
+  "notes": "U3 lapel pin on a collared checked shirt without lapels -> 'a small silver pin' placed on the chest; protocol 2.0 site mask = visible chest of the shirt (host ∩ box 555,640,790,710, arm excluded by host). Other units verified on clean source (blue shirt, pale striped white shirt, yellow placard).",
+  "reviewed_views": ["release_2_6_work/v2-sa_10235725/case_sheet.jpg", "release_2_6_work/v2-sa_10235725/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small silver pin", "placement": {"relation": "on", "site": "chest", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在黑白格纹衬衫的胸前别上一枚小银色胸针。",
+     "instruction_noref_zh": "给选中区域别上一枚小银色胸针。",
+     "findings_addressed": ["add_anchor"],
+     "reason": "Checked button shirt has no lapel; pin placed on the chest, mask is the chest site."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

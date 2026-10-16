@@ -1,0 +1,61 @@
+{
+  "case_id": "v2-sa_3550286",
+  "reviewer": "round2",
+  "notes": "U1 closed parasol -> tall patio heater, structural category change. U4 dangling edge moved into site and mask restricted to lower front edge on right of central parasol. Tiny disconnected background pixels removed from U1 (7px) and U2 (1px), all finals viewed before commit.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_3550286/case_sheet.jpg",
+    "assets/v2-sa_3550286/source.jpg",
+    "release_2_6_work/v2-sa_3550286/U1/final.jpg",
+    "release_2_6_work/v2-sa_3550286/U2/final.jpg",
+    "release_2_6_work/v2-sa_3550286/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a tall stainless-steel patio heater with a broad mushroom-shaped reflector"
+      },
+      "instruction_ref_zh": "将中央的大橙色遮阳伞替换为一台带宽蘑菇形反射罩的高不锈钢露台取暖器。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Heater replaces closed umbrella with different structure and function."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one strand of warm-white lights",
+        "placement": {
+          "relation": "along",
+          "site": "lower front edge to the right of the central parasol",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "沿正面写有CAFE DAGUERRE的遮阳篷位于中央遮阳伞右侧的前方下缘加上一串暖白色灯。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Site explicitly defines attachment strip; payload self-contained."
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "backlight",
+      "repetition",
+      "occlusion"
+    ],
+    "scene_zh": "街角咖啡馆",
+    "evidence_zh": "已逐图核对的独立目标：中央的大橙色遮阳伞；中央遮阳伞右侧前排的空椅子；遮阳篷上方的金字CAFE DAGUERRE标牌；正面写有CAFE DAGUERRE的遮阳篷。",
+    "specific_protection_zh": "保留客人、其他伞椅、建筑和逆光。"
+  }
+}

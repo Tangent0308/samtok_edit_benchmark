@@ -1,0 +1,28 @@
+{
+  "case_id": "v2-sa_287810",
+  "reviewer": "shard0b-b3",
+  "notes": "No audit findings. U2 ref: 'black-shirted' man wears a navy T-shirt, 'right-side' made image-right; v2 mask drops a stray pixel blob at (1167,1320). U3 site 'visible shoulder' -> image-left shoulder of the grey T-shirt (host ∩ box 725-800 x 775-850). U1 kept (white sole -> black treaded rubber is a visible change).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_287810/case_sheet.jpg",
+    "release_2_6_work/v2-sa_287810/U2/final.jpg",
+    "release_2_6_work/v2-sa_287810/U3/final.jpg"
+  ],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the image-right sneaker of the man in the navy T-shirt standing in the middle"},
+     "ref_zh": "中间站立的藏青色T恤男子画面右侧的运动鞋",
+     "physical_parent_zh": "中间藏青T恤男子",
+     "parent_instance_id": "sa_287810:中间藏青T恤男子",
+     "instruction_ref_zh": "将中间站立的藏青色T恤男子画面右侧的运动鞋替换为棕色皮乐福鞋。",
+     "instruction_noref_zh": "将选中区域替换为一只棕色皮乐福鞋。",
+     "findings_addressed": [],
+     "reason": "Shirt is navy, 'right-side' was body/image ambiguous; mask cleaned of a stray blob."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the T-shirt of the back-facing seated man at the middle left", "placement": {"relation": "on", "site": "image-left shoulder", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给左中背对镜头坐着男子的短袖上衣加上一块缝在画面左侧肩部的小圆布贴。",
+     "instruction_noref_zh": "给选中区域加上一块小圆布贴。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 site mask: both shoulders are visible from the back, so the site names the image-left one (741-800 x 784-850)."}
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9241496",
+  "reviewer": "shard7",
+  "notes": "Tail case, all units rewritten. U1 ref now separates the cream scooter from the orange one beside it; U2 box was a cut-off fragment at the far right edge with a recolour-only payload -> retargeted to the round blue sign on the red-and-white pole at the TRANG NU awning (SAM3 v2 mask, structural replace); U3 removed a worn jacket and said 'right' -> recolour of the jacket of the central rider holding a cardboard box; U4 sign ref made unique (tall blue vertical sign above the awning) and payload specific.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9241496/case_sheet.jpg", "release_2_6_work/v2-sa_9241496/zoom_U3.jpg", "release_2_6_work/v2-sa_9241496/zoom_U4.jpg", "release_2_6_work/v2-sa_9241496/U2/p1.jpg", "release_2_6_work/v2-sa_9241496/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "market"], "scene_zh": "街边市场", "evidence_zh": "橙色踏板车旁的米色踏板车、TRANG NU 遮阳篷旁红白杆上的圆形蓝色标志、抱纸箱骑手的黑色外套和遮阳篷上方的蓝色竖招牌是四个不同对象。", "specific_protection_zh": "保留车辆、摊位物品和人物服装。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the cream scooter beside the orange scooter at the lower left", "scope": "scooter"},
+      "ref_zh": "左下方橙色踏板车旁边的米色踏板车",
+      "scope_zh": "踏板车",
+      "physical_parent_zh": "米色踏板车",
+      "parent_instance_id": "sa_9241496:米色踏板车",
+      "instruction_ref_zh": "将左下方橙色踏板车旁边的米色踏板车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Mask is the cream scooter; the orange scooter right beside it also fit 'the motorbike at the left'."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the round blue sign on the red-and-white pole at the left end of the TRANG NU awning", "scope": "sign", "payload": "a triangular warning sign"},
+      "ref_zh": "TRANG NU 遮阳篷左端红白杆上的圆形蓝色标志牌",
+      "scope_zh": "标志牌",
+      "physical_parent_zh": "红白杆上的圆形蓝色标志牌",
+      "parent_instance_id": "sa_9241496:圆形蓝色标志牌",
+      "instruction_ref_zh": "将 TRANG NU 遮阳篷左端红白杆上的圆形蓝色标志牌替换为一块三角形警告标志牌。",
+      "instruction_noref_zh": "将选中区域替换为一块三角形警告标志牌。",
+      "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+      "reason": "Retarget: the old box was a fragment cut off at the far right edge (not near the centre) and the payload only recoloured it. New target: the round blue sign disc (SAM3 p1_1, verified); the other round sign further right is on a pole past the awning. Round -> triangular sign is a structural replace."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"operation": "attribute", "ref": "the black jacket of the rider holding a cardboard box on the red motorbike", "scope": "jacket", "payload": "olive green", "attributes": [{"property": "color", "value": "olive green"}]},
+      "ref_zh": "红色摩托车上抱着纸箱的骑手的黑色外套",
+      "scope_zh": "外套",
+      "physical_parent_zh": "抱纸箱的骑手",
+      "parent_instance_id": "sa_9241496:抱纸箱的骑手",
+      "instruction_ref_zh": "将红色摩托车上抱着纸箱的骑手的黑色外套的颜色改为橄榄绿色。",
+      "instruction_noref_zh": "将选中区域的颜色改为橄榄绿色。",
+      "findings_addressed": ["ill_posed_edit"],
+      "reason": "Removing a worn jacket is ill-posed; the rider is at the centre, not the right. Mask is the jacket sleeves around the box (box excluded), kept."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the tall blue vertical shop sign with white lettering above the TRANG NU awning", "scope": "sign", "payload": "one small red arrow sticker"},
+      "ref_zh": "TRANG NU 遮阳篷上方带白色文字的蓝色高竖招牌",
+      "scope_zh": "招牌",
+      "physical_parent_zh": "蓝色竖招牌",
+      "parent_instance_id": "sa_9241496:蓝色竖招牌",
+      "instruction_ref_zh": "给 TRANG NU 遮阳篷上方带白色文字的蓝色高竖招牌贴上一枚红色小箭头贴纸。",
+      "instruction_noref_zh": "给选中区域贴上一枚红色小箭头贴纸。",
+      "findings_addressed": ["ambiguous_ref", "grammar_style"],
+      "reason": "Many signs visible; the masked one is the tall blue vertical sign at 0.54W. Payload made concrete."
+    }
+  ]
+}

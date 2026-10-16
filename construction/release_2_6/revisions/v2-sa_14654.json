@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_14654",
+  "reviewer": "shard1-b7",
+  "notes": "Audit: U3 material 'green glass' near no-op on a dark glass bottle -> 'clear transparent glass'. U2 site 'label' -> v2 mask = the tan label (SAM3 'label' inside host). U1 ordinal checked: middle-row bottles left->right are blue-capped (U3), tan-labeled (U2), U1, navy-labeled at right edge, so U1 is second from the right.",
+  "reviewed_views": ["release_2_6_work/v2-sa_14654/case_sheet.jpg", "release_2_6_work/v2-sa_14654/U2/t1.jpg", "release_2_6_work/v2-sa_14654/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "clear transparent glass", "attributes": [{"property": "material", "value": "clear transparent glass"}]},
+     "instruction_ref_zh": "将中排最左侧蓝封口的酒瓶的材质改为透明无色玻璃。",
+     "instruction_noref_zh": "将选中区域的材质改为透明无色玻璃。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Bottle is already dark glass; green glass was a near no-op. Clear glass is a visible, verifiable change."}
+  ]
+}

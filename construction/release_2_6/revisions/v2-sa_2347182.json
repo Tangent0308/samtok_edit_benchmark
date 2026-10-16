@@ -1,0 +1,54 @@
+{
+  "case_id": "v2-sa_2347182",
+  "reviewer": "round2",
+  "notes": "Original balcony ref ambiguous; ornamental railing mask filled background gaps. Text segmentation and local top-rail prompt failed to isolate a reliable support, so retarget add to independent parking sign. New sign mask and final viewed. Name street plaque by its visible text.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2347182/case_sheet.jpg",
+    "assets/v2-sa_2347182/source.jpg",
+    "release_2_6_work/v2-sa_2347182/rail_detail.jpg",
+    "release_2_6_work/v2-sa_2347182/U1/t1.jpg",
+    "release_2_6_work/v2-sa_2347182/U1/p3.jpg",
+    "release_2_6_work/v2-sa_2347182/U1/t4.jpg",
+    "release_2_6_work/v2-sa_2347182/U1/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the parking sign in front of the left facade",
+        "scope": "parking sign",
+        "payload": "one small red circular sticker",
+        "placement": {
+          "relation": "on",
+          "site": "",
+          "anchor_mode": "support"
+        }
+      },
+      "ref_zh": "左侧立面前的停车标牌",
+      "scope_zh": "停车标牌",
+      "physical_parent_zh": "左立面前停车标牌",
+      "parent_instance_id": "sa_2347182:左立面前停车标牌",
+      "instruction_ref_zh": "在左侧立面前的停车标牌上加上一枚红色小圆贴纸。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Railing has intricate holes and reliable small support mask could not be isolated; retarget independent solid parking sign, keeping add and ref+box.",
+      "category": "parking sign"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the PRINCIPE D’ACAIA street-name plaque"
+      },
+      "ref_zh": "写有PRINCIPE D’ACAIA的街名牌",
+      "instruction_ref_zh": "将写有PRINCIPE D’ACAIA的街名牌的颜色改为蓝色。",
+      "reason": "Two street-name plaques appear around the corner; visible lettering identifies the selected front plaque."
+    }
+  ]
+}

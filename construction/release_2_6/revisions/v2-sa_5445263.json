@@ -1,0 +1,59 @@
+{
+  "case_id": "v2-sa_5445263",
+  "reviewer": "round2",
+  "notes": "U1可见单侧衣袖SAM3 mask2880px。U4原green bag实际为黄色，修正ref与中文；上背部取host与box[940,775,1065,815]交集避开包带、头发和躯干下部。U2用person避免不可靠性别判断，并将长裤明确改为及膝工装短裤结构。",
+  "reviewed_views": [
+    "assets/v2-sa_5445263/source.jpg",
+    "release_2_6_work/v2-sa_5445263/case_sheet.jpg",
+    "release_2_6_work/v2-sa_5445263/U1/final.jpg",
+    "release_2_6_work/v2-sa_5445263/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "快餐店前带行李的排队顾客",
+    "evidence_zh": "不同源对象：左侧俯身男子的绿色短袖上衣；最右侧把一只脚搭在行李车上人物的牛仔裤；中间黑上衣顾客的浅色牛仔裤；百事冰柜前背向镜头、背黄包人物的深色Polo衫。",
+    "specific_protection_zh": "行李车、鞋、肩带与相邻顾客"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "ref": "the jeans on the person resting a foot on the luggage trolley at the far right",
+        "payload": "beige knee-length cargo shorts"
+      },
+      "ref_zh": "最右侧把一只脚搭在行李车上人物的牛仔裤",
+      "physical_parent_zh": "右侧把脚搭在行李车上的人物",
+      "instruction_ref_zh": "将最右侧把一只脚搭在行李车上人物的牛仔裤替换为米色及膝工装短裤。",
+      "id": "U2",
+      "action": "revise",
+      "scope_zh": "长裤",
+      "parent_instance_id": "sa_5445263:右侧靠行李车男子",
+      "category": "trousers"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "ref": "the dark polo shirt on the back-facing person carrying a yellow bag in front of the Pepsi fridge",
+        "scope": "polo shirt"
+      },
+      "ref_zh": "百事冰柜前背向镜头、背黄包人物的深色Polo衫",
+      "scope_zh": "Polo衫",
+      "physical_parent_zh": "背黄包的背向人物",
+      "instruction_ref_zh": "在百事冰柜前背向镜头、背黄包人物深色Polo衫的上背部横向加上一条小反光条。",
+      "id": "U4",
+      "action": "revise",
+      "parent_instance_id": "sa_5445263:中间背绿包女士",
+      "category": "polo shirt"
+    }
+  ]
+}

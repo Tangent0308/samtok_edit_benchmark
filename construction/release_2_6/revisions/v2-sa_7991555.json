@@ -1,0 +1,107 @@
+{
+ "case_id": "v2-sa_7991555",
+ "reviewer": "shard4-b3",
+ "notes": "Tail case, all units rewritten. U1 ref made precise (car is black). U2 person->jacket replace retargeted to the shirt of the man walking on the red lane (replace with hoodie). U3 'door near the center' (actually taxi rear door, remove ill-posed) retargeted to the roadside sign pole on its concrete base. U4 sign is black with yellow text; ref/payload made specific.",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_7991555/case_sheet.jpg",
+  "release_2_6_work/v2-sa_7991555/U2/t1.jpg",
+  "release_2_6_work/v2-sa_7991555/U2/final.jpg",
+  "release_2_6_work/v2-sa_7991555/U3/p1.jpg",
+  "release_2_6_work/v2-sa_7991555/U3/final.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "street",
+   "vehicles",
+   "crowd"
+  ],
+  "scene_zh": "机场到达口街景",
+  "evidence_zh": "最左侧黑色轿车、红色车道上行走男子的衬衫、出租车前的路边标志杆和上方黑色到达指示牌是四个不同对象。",
+  "specific_protection_zh": "保留车辆、人物和街道建筑。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the black car at the far left edge",
+    "payload": "white",
+    "attributes": [
+     {
+      "property": "color",
+      "value": "white"
+     }
+    ]
+   },
+   "ref_zh": "最左侧边缘的黑色轿车",
+   "scope_zh": "轿车",
+   "physical_parent_zh": "最左侧黑色轿车",
+   "parent_instance_id": "sa_7991555:最左侧黑色轿车",
+   "instruction_ref_zh": "将最左侧边缘的黑色轿车的颜色改为白色。",
+   "instruction_noref_zh": "将选中区域的颜色改为白色。",
+   "findings_addressed": [],
+   "reason": "Car is black; 'blue' was arbitrary next to the blue taxi. Ref names colour; new value white. Mask unchanged (the car)."
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the light blue shirt of the man walking on the red lane",
+    "scope": "shirt",
+    "payload": "a gray hooded sweatshirt"
+   },
+   "ref_zh": "在红色车道上行走的男子的浅蓝色衬衫",
+   "scope_zh": "衬衫",
+   "physical_parent_zh": "红色车道上行走的男子",
+   "parent_instance_id": "sa_7991555:红色车道上行走的男子",
+   "instruction_ref_zh": "将在红色车道上行走的男子的浅蓝色衬衫替换为一件灰色连帽卫衣。",
+   "instruction_noref_zh": "将选中区域替换为一件灰色连帽卫衣。",
+   "preserve": [
+    "保留该男子的头部、手臂、裤子和鞋，以及车辆、人群和建筑。"
+   ],
+   "findings_addressed": [
+    "person_clothing_level"
+   ],
+   "reason": "Person replaced by a jacket; the right-edge man is tiny and occluded. Retargeted to the clearly visible foreground walker's short-sleeve shirt -> hoodie (structural garment change), v2 mask = shirt (SAM3)."
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the sign pole on a concrete base in front of the blue taxi",
+    "scope": "sign pole",
+    "payload": "",
+    "remove_mode": "whole"
+   },
+   "ref_zh": "蓝色出租车前立在水泥底座上的标志杆",
+   "scope_zh": "标志杆",
+   "physical_parent_zh": "路边标志杆",
+   "parent_instance_id": "sa_7991555:路边标志杆",
+   "instruction_ref_zh": "移除蓝色出租车前立在水泥底座上的标志杆。",
+   "instruction_noref_zh": "移除选中区域。",
+   "preserve": [
+    "保留出租车、路面标线、人物和建筑。"
+   ],
+   "findings_addressed": [
+    "wrong_instance_spatial"
+   ],
+   "reason": "'Door near the center' was the taxi's rear door (wrong description; removing a car door is ill-posed). Retargeted to the free-standing sign pole with its base, v2 mask via SAM3 tracker."
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the black 'Kedatangan Domestik' sign above the entrance",
+    "payload": "a yellow arrow pointing right"
+   },
+   "ref_zh": "入口上方写着“Kedatangan Domestik”的黑色指示牌",
+   "scope_zh": "指示牌",
+   "physical_parent_zh": "到达指示牌",
+   "parent_instance_id": "sa_7991555:到达指示牌",
+   "instruction_ref_zh": "给入口上方写着“Kedatangan Domestik”的黑色指示牌加上一个指向右的黄色箭头。",
+   "instruction_noref_zh": "给选中区域加上一个指向右的黄色箭头。",
+   "findings_addressed": [],
+   "reason": "Two 'Kedatangan' signs exist (a small one below); ref now names the large black overhead sign; payload specific and matches the sign's yellow style. Mask unchanged (the sign)."
+  }
+ ]
+}

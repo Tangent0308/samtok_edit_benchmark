@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_7813406",
+  "reviewer": "shard0-b4",
+  "notes": "U5 hem mask covered the whole back-row woman (blouse, shawl, arm); v2 = only the cut-off lower skirt segment below knee level (host ∩ box [1350,730,1540,818], shoes excluded). Parent zh '金色上衣' was wrong (floral blouse) -> corrected. U3 add site 'outer thigh': v2 = outer (image-right) thigh region of the visible jeans leg, host ∩ [1975,600,2030,725]; blind zh no-ref provided. Follow-up: U4 remove of a worn red heeled boot rewritten as replace with a white low-top canvas sneaker (same mask).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_7813406/case_sheet.jpg",
+    "release_2_6_work/v2-sa_7813406/zoom_U5.jpg",
+    "release_2_6_work/v2-sa_7813406/U5/final.jpg",
+    "release_2_6_work/v2-sa_7813406/zoom_U3.jpg",
+    "release_2_6_work/v2-sa_7813406/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep",
+      "instruction_noref_zh": "给选中区域加上一个长方形侧袋。",
+      "reason": "site mask committed; blind zh no-ref"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "reviewer": "shard0-b4",
+      "spec": {
+        "operation": "replace",
+        "payload": "a white low-top canvas sneaker",
+        "remove_mode": "whole",
+        "attributes": [],
+        "placement": {}
+      },
+      "instruction_ref_zh": "将最右侧红衣表演者画面左侧的靴子替换为一只白色低帮帆布鞋。",
+      "findings_addressed": [
+        "remove_worn_garment"
+      ],
+      "reason": "Removing a boot the performer wears is not allowed; replaced (same mask) by a visibly different structure: her red heeled ankle boot -> white low-top canvas sneaker. No clash with U2 (another person's shoe)."
+    },
+    {
+      "id": "U5",
+      "action": "revise",
+      "reviewer": "shard0-b4",
+      "spec": {},
+      "physical_parent_zh": "后排花上衣蓝裙女子",
+      "parent_instance_id": "sa_7813406:后排花上衣蓝裙女子",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "Mask reduced from whole woman to the cut-off hem segment of her blue skirt; parent zh corrected (her blouse is floral, not gold)."
+    }
+  ]
+}

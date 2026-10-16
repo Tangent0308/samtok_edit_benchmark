@@ -1,0 +1,62 @@
+{
+  "case_id": "v2-sa_9136349",
+  "reviewer": "shard7",
+  "notes": "Tail case: U1 ref vague, U2 mask was an unlocatable black-shirt fragment and payload a recolor, U3 umbrella is at the upper-left edge, U4 payload generic. U2 retargeted to the white graphic T-shirt of the man raising his arm at the right (SAM3, v2 mask committed). Other masks checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9136349/case_sheet.jpg", "release_2_6_work/v2-sa_9136349/U2/t1.jpg", "release_2_6_work/v2-sa_9136349/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "crowd", "festival"], "scene_zh": "节庆人群", "evidence_zh": "左侧男子的黑色 H.I.M 帽子、右侧举手男子的白色 T 恤、左上边缘的黄色遮阳伞和右上角的小纸牌是四个不同对象。", "specific_protection_zh": "保留人群、遮阳伞和活动标识。"},
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {"ref": "the black H.I.M cap worn backwards by the shirtless man at the left", "scope": "cap", "payload": "royal blue", "attributes": [{"property": "color", "value": "royal blue"}]},
+      "ref_zh": "左侧赤膊男子反戴的黑色 H.I.M 帽子",
+      "scope_zh": "帽子",
+      "physical_parent_zh": "左侧赤膊男子",
+      "parent_instance_id": "sa_9136349:左侧赤膊男子",
+      "instruction_ref_zh": "将左侧赤膊男子反戴的黑色 H.I.M 帽子的颜色改为宝蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为宝蓝色。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: several caps in the crowd; ref now names the black H.I.M cap; concrete colour value."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {"ref": "the white graphic T-shirt of the man raising his arm at the right", "scope": "T-shirt", "payload": "a red Hawaiian shirt"},
+      "ref_zh": "右侧举起手臂男子的白色印花 T 恤",
+      "scope_zh": "T 恤",
+      "physical_parent_zh": "右侧举手男子",
+      "parent_instance_id": "sa_9136349:右侧举手男子",
+      "instruction_ref_zh": "将右侧举起手臂男子的白色印花 T 恤替换为一件红色夏威夷衬衫。",
+      "instruction_noref_zh": "将选中区域替换为一件红色夏威夷衬衫。",
+      "preserve": ["保留该男子的手臂、周围人群和彩虹旗。"],
+      "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+      "reason": "Retarget: old mask was a small unlocatable fragment of a black shirt. New target is the clearly visible white T-shirt (SAM3 t1_1, verified); T-shirt -> button Hawaiian shirt is a structural replace."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {"ref": "the yellow umbrella cut off at the upper left edge", "scope": "umbrella"},
+      "ref_zh": "左上边缘被截断的黄色遮阳伞",
+      "scope_zh": "遮阳伞",
+      "physical_parent_zh": "左上黄色遮阳伞",
+      "parent_instance_id": "sa_9136349:左上黄色遮阳伞",
+      "instruction_ref_zh": "移除左上边缘被截断的黄色遮阳伞。",
+      "preserve": ["保留中间的大黄色 Schweppes 遮阳伞和举起的手臂。"],
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked umbrella is the one cut off at the upper-left edge (cx=0.14), not the central Schweppes umbrella."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {"ref": "the small cream paper sign hanging at the upper right corner", "scope": "sign", "payload": "one small red heart sticker"},
+      "ref_zh": "右上角悬挂的米色小纸牌",
+      "scope_zh": "纸牌",
+      "physical_parent_zh": "右上角小纸牌",
+      "parent_instance_id": "sa_9136349:右上角小纸牌",
+      "instruction_ref_zh": "给右上角悬挂的米色小纸牌加上一枚红色小爱心贴纸。",
+      "instruction_noref_zh": "给选中区域加上一枚红色小爱心贴纸。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "Payload made specific; ref names the small cream paper sign."
+    }
+  ]
+}

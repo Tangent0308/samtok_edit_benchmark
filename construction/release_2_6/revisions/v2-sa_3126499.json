@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_3126499",
+  "reviewer": "shard1b-b5",
+  "notes": "U2 man (x668-737) walks in front of the column base, not right of it; ref rewritten. New: U3 'person in pink' was ambiguous (a man in a salmon T-shirt with a red backpack stands at x~1120-1170); bag is an olive-gray bag hanging on the back of the red-capped man at the far left. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3126499/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the black T-shirt of the capped man walking in front of the stone column"},
+     "ref_zh": "石柱前方戴帽行走男子的黑色T恤",
+     "physical_parent_zh": "石柱前戴帽行走男子",
+     "parent_instance_id": "sa_3126499:black_shirt_man",
+     "instruction_ref_zh": "将石柱前方戴帽行走男子的黑色T恤的颜色改为酒红色。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Mask box x668-737 overlaps the column base (x~685-800); the man walks in front of it."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the olive-gray bag on the back of the red-capped man at the far left"},
+     "ref_zh": "最左侧戴红帽男子背后的橄榄灰色包",
+     "instruction_ref_zh": "移除最左侧戴红帽男子背后的橄榄灰色包。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Two people wear pink/salmon tops; the bag owner is the red-capped man at the far left, bag is olive-gray rather than dark."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

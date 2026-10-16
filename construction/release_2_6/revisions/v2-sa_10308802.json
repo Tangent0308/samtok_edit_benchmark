@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_10308802",
+  "reviewer": "shard1-b2",
+  "notes": "U1 masked wheel is the right wheel of the trailer's rear axle group (x~593-673); the tractor's drive wheels further right could also be called rear wheels, so the ref now says 'trailer wheel'. The trailer wheels already have bright silver alloy rims, so a silver hubcap would barely be visible; payload changed to a bright red hubcap. U2/U3 verified; no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10308802/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the rightmost trailer wheel of the black truck", "payload": "a bright red hubcap"},
+     "ref_zh": "黑色卡车挂车最靠右的车轮",
+     "instruction_ref_zh": "给黑色卡车挂车最靠右的车轮加上一个亮红色轮毂盖。",
+     "instruction_noref_zh": "给选中区域加上一个亮红色轮毂盖。",
+     "findings_addressed": ["ambiguous_ref", "attribute_value"],
+     "reason": "Disambiguate trailer wheel vs tractor drive wheels; silver hubcap on an already silver rim is nearly invisible."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"}
+  ]
+}

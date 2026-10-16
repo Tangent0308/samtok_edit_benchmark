@@ -1,0 +1,59 @@
+{
+  "case_id": "v2-sa_6678734",
+  "reviewer": "round2",
+  "notes": "原图核实浅蓝衬衫、白袋、蓝牌、右缘蓝筐；蓝矩形牌替换为圆牌；毛巾payload自足，inside为placement关系。",
+  "reviewed_views": [
+    "assets/v2-sa_6678734/source.jpg",
+    "release_2_6_work/v2-sa_6678734/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a round red-and-white restaurant sign"
+      },
+      "instruction_ref_zh": "将右上边缘的蓝色招牌替换为一块圆形红白餐馆招牌。",
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "右上边缘的蓝色招牌",
+      "scope_zh": "招牌",
+      "physical_parent_zh": "蓝牌",
+      "parent_instance_id": "sa_6678734:blue_sign",
+      "category": "sign"
+    },
+    {
+      "spec": {
+        "payload": "a folded white towel",
+        "placement": {
+          "relation": "inside",
+          "site": "",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在最右侧的蓝筐内加上一条折叠的白毛巾。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "最右侧的蓝筐",
+      "scope_zh": "筐",
+      "physical_parent_zh": "蓝筐",
+      "parent_instance_id": "sa_6678734:basket",
+      "category": "basket"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "occlusion",
+      "clutter"
+    ],
+    "scene_zh": "蒸汽机车旁摊贩",
+    "evidence_zh": "四个不同对象：坐着的摊贩的浅蓝色衬衫；摊贩双手紧后方的白塑料袋；右上边缘的蓝色招牌；最右侧的蓝筐。",
+    "specific_protection_zh": "保留人体、机车结构、摩托和其余杂物。"
+  }
+}

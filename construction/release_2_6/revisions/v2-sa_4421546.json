@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_4421546",
+  "reviewer": "shard2-b5",
+  "notes": "U2 knit cap -> gray wool beanie was only a colour change; now a brimmed flat cap. U3 dangling 'on its front edge' moved to placement.site; v2 mask = the umbrella's scalloped lower front edge. U1 fine.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4421546/case_sheet.jpg", "release_2_6_work/v2-sa_4421546/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a brown flat cap with a short brim"},
+     "instruction_ref_zh": "将前景坐着的摊主的深色针织帽替换为一顶带短帽檐的棕色鸭舌帽。",
+     "instruction_noref_zh": "将选中区域替换为一顶带短帽檐的棕色鸭舌帽。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Dark knit beanie -> gray wool beanie keeps type/shape; a brimmed flat cap is a structural replacement."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small white cloth patch", "placement": {"relation": "on", "site": "the front edge", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在左侧圆顶的红色遮阳伞的前缘缝上一块小白色布贴。",
+     "instruction_noref_zh": "给选中区域缝上一块小白色布贴。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its front edge' moved to placement.site; v2 mask = host ∩ box [100,1082,410,1130] (lower scalloped front edge, box [116,1082,396,1123])."}
+  ]
+}

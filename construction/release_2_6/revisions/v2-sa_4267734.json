@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_4267734",
+  "reviewer": "shard2-b4",
+  "notes": "U1 replace was a glass finish change only; payload now a rattan shade. U3 dangling 'its empty right end' moved to placement.site; v2 mask = dresser ∩ box right of the small pot at x~1490-1570 (empty right end of the top).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4267734/case_sheet.jpg", "release_2_6_work/v2-sa_4267734/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a woven rattan dome lampshade"},
+     "instruction_ref_zh": "将前景的透明玻璃灯罩替换为一个藤编圆顶灯罩。",
+     "instruction_noref_zh": "将选中区域替换为一个藤编圆顶灯罩。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Clear -> frosted glass shade keeps category/shape; woven rattan dome is a structural change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small closed notebook", "placement": {"relation": "on", "site": "empty right end", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在花盆下方木柜空着的右端上放一本合上的小笔记本。",
+     "instruction_noref_zh": "给选中区域放上一本合上的小笔记本。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its' removed; site stored in placement; mask = host ∩ box [1580,1250,1775,1355]."}
+  ]
+}

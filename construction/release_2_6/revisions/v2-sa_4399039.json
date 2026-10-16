@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_4399039",
+  "reviewer": "shard2-b5",
+  "notes": "U4 payload had a dangling 'in its lower corner'; site moved to placement ('the lower left corner', the free corner not held by a hand) and v2 mask = that corner of the placard. U1-U3 checked on clean colours (U1 blue hat median RGB 77,88,113 -> beige; U2 straw; U3 black backpack) and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4399039/case_sheet.jpg", "release_2_6_work/v2-sa_4399039/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small yellow star sticker", "placement": {"relation": "on", "site": "the lower left corner", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在写有EVIDENCE BASED POLICY的白色手牌的左下角贴上一张小黄星贴纸。",
+     "instruction_noref_zh": "给选中区域贴上一张小黄星贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its lower corner' moved to placement.site; the lower-right corner is held by a hand, so the site is the lower left corner; v2 mask = host ∩ box [1370,1100,1470,1180] (box [1407,1100,1470,1160])."}
+  ]
+}

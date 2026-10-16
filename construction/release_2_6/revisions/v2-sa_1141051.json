@@ -1,0 +1,15 @@
+{
+  "case_id": "v2-sa_1141051",
+  "reviewer": "shard0b-b1",
+  "notes": "U1 Chinese ref was garbled; fixed. U1 protocol 2.0 mask = the back collar of the right (female) officer's white shirt (SAM3 'collar' t1_1|t1_2). U2 2.5.0 mask contained a stray blob on the vest (white radio clip at ~(836,678)); removed (host minus box 812,655,862,705). U3 checked.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1141051/case_sheet.jpg", "release_2_6_work/v2-sa_1141051/U1/final.jpg", "release_2_6_work/v2-sa_1141051/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "ref_zh": "右侧警员防护背心下白衬衫",
+     "instruction_ref_zh": "移除右侧警员防护背心下白衬衫的衣领。",
+     "findings_addressed": ["translation"],
+     "reason": "Chinese ref mixed in 领口与两袖 from U2; English removes only the collar."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"}
+  ]
+}

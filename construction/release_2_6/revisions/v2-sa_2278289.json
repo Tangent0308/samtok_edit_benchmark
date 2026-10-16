@@ -1,0 +1,42 @@
+{
+  "case_id": "v2-sa_2278289",
+  "reviewer": "round2",
+  "notes": "干净原图确认图左挡风玻璃；选择左下角玻璃内的小矩形区域，排除窗框与雨刷，明确画面左右。",
+  "reviewed_views": [
+    "assets/v2-sa_2278289/source.jpg",
+    "release_2_6_work/v2-sa_2278289/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2278289/U1/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "reflection",
+      "thin_structures"
+    ],
+    "scene_zh": "展览卡车与天空",
+    "evidence_zh": "不同源对象：卡车画面左侧的挡风玻璃；卡车左上方的小白云。",
+    "specific_protection_zh": "保留车辆结构、轮胎、设备、其他玻璃、建筑和照明。"
+  },
+  "units": [
+    {
+      "spec": {
+        "ref": "the image-left windshield pane of the truck",
+        "placement": {
+          "relation": "on",
+          "site": "lower image-left corner"
+        }
+      },
+      "ref_zh": "卡车画面左侧的挡风玻璃",
+      "instruction_ref_zh": "在卡车画面左侧的挡风玻璃的画面左下角加上一张小展览通行证贴纸。",
+      "id": "U1",
+      "action": "revise",
+      "scope_zh": "挡风玻璃",
+      "physical_parent_zh": "展览卡车",
+      "parent_instance_id": "sa_2278289:exhibit_truck",
+      "category": "windshield"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    }
+  ]
+}

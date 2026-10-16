@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4933977",
+  "reviewer": "shard2-b8",
+  "notes": "U1 mask: shoulder-bag strap and bag edge removed from the blazer mask. U2 replace was a pattern/colour change; now a track jacket. U3 ref anchored on a non-existent striped-shirted person; re-anchored to the dark-haired woman in the gray jacket, dangling 'its front edge' dropped (card simply on the tablecloth; mask = tablecloth anchor, unchanged).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4933977/case_sheet.jpg", "release_2_6_work/v2-sa_4933977/U1/final.jpg", "release_2_6_work/v2-sa_4933977/U1/t1.jpg", "release_2_6_work/v2-sa_4933977/U1/p2.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep", "findings_addressed": ["mask_quality"]},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a gray zip-up track jacket"},
+     "instruction_ref_zh": "将前景两名女子中左侧女子的花卉衬衫替换为一件灰色拉链运动夹克。",
+     "instruction_noref_zh": "将选中区域替换为一件灰色拉链运动夹克。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Pale blue linen blouse kept the garment structure; a zip-up track jacket is a real garment-type change."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the curved red tablecloth behind the dark-haired woman in the gray jacket at the right", "payload": "a small white SALE card", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "右侧穿灰色外套的深发女子身后的弧形红色台布",
+     "instruction_ref_zh": "在右侧穿灰色外套的深发女子身后的弧形红色台布上加上一张小白色SALE卡片。",
+     "instruction_noref_zh": "给选中区域加上一张小白色SALE卡片。",
+     "findings_addressed": ["ambiguous_ref", "grammar_style"],
+     "reason": "Person in front of the masked table (x~1950) wears a gray tweed jacket, not stripes; payload had dangling 'its front edge'."}
+  ]
+}

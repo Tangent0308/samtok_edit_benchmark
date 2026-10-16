@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_1647901",
+  "reviewer": "shard1-b8",
+  "notes": "U1 checked shirt -> plain shirt was a pattern change; now a dark hooded sweatshirt. U2 shirt is already pale bluish white, so pale blue was barely visible; now maroon. U3 add site top edge: v2 mask = top band of the ANCHOR sign (host ∩ box y 455-510).",
+  "reviewed_views": ["release_2_6_work/v2-sa_1647901/case_sheet.jpg", "release_2_6_work/v2-sa_1647901/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a dark hooded sweatshirt"},
+     "instruction_ref_zh": "将前景背对镜头者的格子衬衫替换为一件深色连帽卫衣。",
+     "instruction_noref_zh": "将选中区域替换为一件深色连帽卫衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Shirt-to-shirt changed only pattern/colour; hoodie is a structural garment change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "maroon", "attributes": [{"property": "color", "value": "maroon"}]},
+     "instruction_ref_zh": "将伸手男子的浅色上衣的颜色改为栗色。",
+     "instruction_noref_zh": "将选中区域的颜色改为栗色。",
+     "reason": "Shirt is already pale bluish white; pale blue would be nearly invisible."},
+    {"id": "U3", "action": "keep", "reason": "Instruction unchanged; v2 mask = top edge band of the sign."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

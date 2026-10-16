@@ -1,0 +1,14 @@
+{
+  "case_id": "v2-sa_10086904",
+  "reviewer": "shard1-b2",
+  "notes": "Clean crop shows the U1 ornamental streetlamp is already dark teal-gray, so 'matte black' was a near no-op; value changed to bright gold. U2 verified; no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10086904/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "bright gold", "attributes": [{"property": "color", "value": "bright gold"}]},
+     "instruction_ref_zh": "将右侧SEIBU招牌下的路灯的颜色改为亮金色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Lamp post is already dark gray/teal; matte black would be nearly invisible."},
+    {"id": "U2", "action": "keep"}
+  ]
+}

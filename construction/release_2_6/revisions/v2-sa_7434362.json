@@ -1,0 +1,66 @@
+{
+  "case_id": "v2-sa_7434362",
+  "reviewer": "round2",
+  "notes": "U1 remove retargeted from worn sleeves to the visible chest badge on the same uniformed man. U2 attachment mask is shoulder area only. U3 collar is navy.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_7434362/case_sheet.jpg",
+    "assets/v2-sa_7434362/source.jpg",
+    "release_2_6_work/v2-sa_7434362/U1/p2.jpg",
+    "release_2_6_work/v2-sa_7434362/U1/final.jpg",
+    "release_2_6_work/v2-sa_7434362/U2/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the white-lettered chest badge on the navy uniform beside the blue wall",
+        "scope": "badge",
+        "target_part": "",
+        "remove_mode": "whole"
+      },
+      "ref_zh": "蓝墙旁藏青色制服上的白字胸章",
+      "scope_zh": "胸章",
+      "physical_parent_zh": "蓝墙旁制服男子",
+      "parent_instance_id": "sa_7434362:蓝墙旁制服男子",
+      "instruction_ref_zh": "移除蓝墙旁藏青色制服上的白字胸章。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Retarget removal to visible embroidered badge; avoids ambiguous worn sleeve removal and wrong parent color.",
+      "category": "badge"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the dark navy collar visible at the back of the rightmost man's neck"
+      },
+      "ref_zh": "最右侧男子颈后露出的深藏青色衣领",
+      "instruction_ref_zh": "将最右侧男子颈后露出的深藏青色衣领替换为短立领。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Source collar is dark navy, not pale."
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "节庆活动中密集观众的背影",
+    "evidence_zh": "已逐图核对的独立目标：蓝墙旁藏青色制服上的白字胸章；左前灰发女士纱丽上方的绿色短袖上衣；最右侧男子颈后露出的深藏青色衣领；左侧中间女孩的紫色连衣裙。",
+    "specific_protection_zh": "纱丽、头发、皮肤和前景身体"
+  }
+}

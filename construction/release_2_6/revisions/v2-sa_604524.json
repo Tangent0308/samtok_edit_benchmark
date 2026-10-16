@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_604524",
+  "reviewer": "shard0-b3",
+  "notes": "U4 garment is a mustard-yellow North Face hooded jacket (drawstring at the neck), not an orange inner top; the brown jacket on its left belongs to another person. U2 add site 'cuff' -> v2 mask = top (wrist) end of the raised black sleeve below the hand holding the yellow sign (host ∩ box). U1/U3 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_604524/case_sheet.jpg", "release_2_6_work/v2-sa_604524/zoom_U2.jpg", "release_2_6_work/v2-sa_604524/zoom_U4.jpg", "release_2_6_work/v2-sa_604524/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "instruction_ref_zh": "给后排右侧抬起的黑色衣袖的袖口加上一圈窄反光带。",
+     "instruction_noref_zh": "给选中区域加上一圈窄反光带。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask narrowed to the cuff (wrist end, y 1902-1932) of the raised sleeve; zh no-ref no longer names the cuff site."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the yellow North Face jacket at the lower left", "scope": "jacket"},
+     "ref_zh": "左下方的黄色北面夹克",
+     "scope_zh": "夹克",
+     "physical_parent_zh": "左下方穿黄色夹克者",
+     "parent_instance_id": "sa_604524:左下方穿黄色夹克者",
+     "instruction_ref_zh": "将左下方的黄色北面夹克替换为带荷叶领的白色衬衫。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Clean pixels show a mustard-yellow North Face hooded jacket (worn by the curly-haired person at the lower left edge), not an orange inner top; the only yellow North Face garment in the image."}
+  ]
+}

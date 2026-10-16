@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_7833331",
+  "reviewer": "shard4-b1",
+  "notes": "Tail case re-examined. U1 recoloured the whole truck (white box, blue cage and cargo) ambiguously; now recolours only the white cab, with a SAM3 cab mask (v2). The blue cage is a thin lattice with cargo behind it and could not be masked cleanly, so the cab was chosen over the suggested body panels. U2 removed an entire building (ill-posed); retargeted (same remove op) to the red shop lettering above the storefront, SAM3 mask (v2).",
+  "reviewed_views": ["release_2_6_work/v2-sa_7833331/case_sheet.jpg", "release_2_6_work/v2-sa_7833331/U1/t1.jpg", "release_2_6_work/v2-sa_7833331/U1/t2.jpg", "release_2_6_work/v2-sa_7833331/U1/final.jpg", "release_2_6_work/v2-sa_7833331/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "vehicles", "occlusion"], "scene_zh": "货车装卸场景", "evidence_zh": "前景送货车的白色驾驶室和后方店面上方的红色店名字样是两个不同对象。", "specific_protection_zh": "保留货车、货物和街道背景。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the white cab of the delivery truck in the foreground", "scope": "truck cab", "attributes": [{"property": "color", "value": "dark blue"}]},
+     "ref_zh": "前景送货车的白色驾驶室", "scope_zh": "驾驶室", "physical_parent_zh": "前景送货车",
+     "parent_instance_id": "sa_7833331:前景送货车", "category": "truck cab",
+     "instruction_ref_zh": "将前景送货车的白色驾驶室的颜色改为深蓝色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深蓝色。",
+     "preserve": ["保留蓝色货架、货箱和水桶、白色后厢、后视镜、车轮以及街道背景。"],
+     "findings_addressed": ["attribute_value"],
+     "reason": "The truck mask covered white box, blue cage and cargo; the colour edit now targets the white cab only, with a cab mask (SAM3 'truck cab', side panel and door)."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the red shop lettering above the storefront behind the truck", "scope": "shop lettering"},
+     "ref_zh": "货车后方店面上方的红色店名字样", "scope_zh": "店名字样", "physical_parent_zh": "后方店面的店名字样",
+     "parent_instance_id": "sa_7833331:后方店面的店名字样", "category": "sign", "source_category": "sign",
+     "instruction_ref_zh": "移除货车后方店面上方的红色店名字样。",
+     "preserve": ["保留店面门头、橱窗、行人和货车。"],
+     "annotation_id_v1_note": "retargeted in 2.6.0; v1 mask (whole building) not used",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Removing a whole building is ill-posed; retargeted to the small red 'Beverly Hills' shop lettering, as the audit suggested."}
+  ]
+}

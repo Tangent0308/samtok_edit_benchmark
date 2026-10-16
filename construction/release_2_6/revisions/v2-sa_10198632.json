@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_10198632",
+  "reviewer": "shard0b-b1",
+  "notes": "No audit findings. Protocol 2.0 masks: U1 = both visible sleeves of the mint-green long coat (SAM3 'sleeve' t1_1|t1_2|t1_3); U4 = upper image-left sleeve of the front-right woman's black jacket (t1_2 ∩ box 1880,825,1960,912); U4 site text names the sleeve side. Other units checked on clean image (U2 dark navy jacket back right, U3 blue puffer coat of white-haired woman, U5 black jacket behind her).",
+  "reviewed_views": ["release_2_6_work/v2-sa_10198632/case_sheet.jpg", "release_2_6_work/v2-sa_10198632/U1/final.jpg", "release_2_6_work/v2-sa_10198632/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "upper image-left sleeve", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给右前提黄色袋子女子的黑外套画面左侧上臂衣袖加上一块银色反光贴布。",
+     "instruction_noref_zh": "给选中区域加上一块银色反光贴布。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 site mask; 'upper sleeve' did not say which of the two visible sleeves, now image-left to match the v2 mask."},
+    {"id": "U5", "action": "keep"}
+  ]
+}

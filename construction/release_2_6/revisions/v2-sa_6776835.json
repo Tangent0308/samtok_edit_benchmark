@@ -1,0 +1,35 @@
+{
+  "case_id": "v2-sa_6776835",
+  "reviewer": "round2",
+  "notes": "Correct near-side main wheel under fuel tank; replace its geometry rather than remove a grounded load-bearing wheel. Existing mask already exactly covers the whole wheel. This corrects the earlier manual-review-only disposition.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6776835/case_sheet.jpg",
+    "assets/v2-sa_6776835/source.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the near-side main landing wheel under the helicopter’s fuel tank",
+        "operation": "replace",
+        "payload": "a wider landing wheel with a thick knobby tire",
+        "remove_mode": "whole",
+        "target_part": "",
+        "attributes": []
+      },
+      "ref_zh": "直升机油箱下方靠镜头一侧的主起落架轮",
+      "physical_parent_zh": "直升机",
+      "parent_instance_id": "sa_6776835:直升机",
+      "instruction_ref_zh": "将直升机油箱下方靠镜头一侧的主起落架轮替换为一个装有厚实粗花纹轮胎的更宽起落架轮。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Mask identifies the near-side main wheel, not nose wheel. Removing this grounded support wheel is implausible; replace it with a wider wheel with a knobby tire so the helicopter remains supported. Visible width and tread geometry make a real structural replacement."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    }
+  ]
+}

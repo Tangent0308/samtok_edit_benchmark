@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_6004886",
+  "reviewer": "shard2b-b1",
+  "notes": "U4 dangling 'in its lower-right corner' moved to placement.site; v2 mask = sign host ∩ lower-right box of the front face (src x590-733, y1040-1200, teal side edge excluded). Ref 'square' corrected to rectangular sign. Other units verified on clean image (black iron lantern -> bronze is a visible change).",
+  "reviewed_views": ["release_2_6_work/v2-sa_6004886/case_sheet.jpg", "release_2_6_work/v2-sa_6004886/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the rectangular Body Line sign", "payload": "a small gold OPEN sticker", "placement": {"relation": "on", "site": "lower-right corner", "anchor_mode": "support"}},
+     "ref_zh": "长方形Body Line招牌",
+     "instruction_ref_zh": "在长方形Body Line招牌的右下角贴上一张小金色OPEN贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小金色OPEN贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its' removed from payload; the corner is now the site and the mask is that corner of the sign face. The sign is landscape-rectangular, not square."}
+  ]
+}

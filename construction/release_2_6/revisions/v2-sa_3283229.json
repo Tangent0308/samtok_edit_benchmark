@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_3283229",
+  "reviewer": "shard1b-b6",
+  "notes": "U3 (crossbody bag) sat on the same nearest woman as U1 (headscarf); retargeted to removing the separate pedestrian in a dark top and tan trousers walking alone further up the wooden boardwalk (box 1050,1122-1097,1238, fully visible). SAM3 tracker mask reviewed.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3283229/case_sheet.jpg", "release_2_6_work/v2-sa_3283229/U3/p1.jpg", "release_2_6_work/v2-sa_3283229/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the person in a dark top and tan trousers on the wooden boardwalk", "scope": "person"},
+     "ref_zh": "木栈道上身穿深色上衣和棕褐色长裤的行人",
+     "scope_zh": "行人",
+     "physical_parent_zh": "栈道行人",
+     "parent_instance_id": "sa_3283229:栈道行人",
+     "instruction_ref_zh": "移除木栈道上身穿深色上衣和棕褐色长裤的行人。",
+     "instruction_noref_zh": "移除选中区域。",
+     "preserve": ["保留人体、其他服饰、围栏、道路、建筑和天空。"],
+     "findings_addressed": ["independence_violation"],
+     "reason": "Retarget to an independent, fully visible pedestrian so no two units sit on the same woman."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

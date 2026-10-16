@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_7125342",
+  "reviewer": "shard3-b2",
+  "notes": "U3 car is on the left side of the street, payload made structural; U4 sign text corrected to 'Restauration de Bois Dorés'. U1/U2 kept. Masks unchanged (U3 mask already excludes the bollards).",
+  "reviewed_views": ["release_2_6_work/v2-sa_7125342/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["night", "street", "occlusion"], "scene_zh": "夜间小巷", "evidence_zh": "右侧摩托车、左上黑色招牌、街道左侧最近的黑色轿车、右上Restauration de Bois Dorés招牌是四个不同对象。", "specific_protection_zh": "保留建筑、湿润路面和其他店铺。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the nearest black car parked on the left side of the street", "payload": "a white delivery van"},
+     "ref_zh": "街道左侧停放的最近的黑色轿车",
+     "physical_parent_zh": "左侧黑色轿车",
+     "parent_instance_id": "sa_7125342:左侧黑色轿车",
+     "instruction_ref_zh": "将街道左侧停放的最近的黑色轿车替换为一辆白色厢式送货车。",
+     "instruction_noref_zh": "将选中区域替换为一辆白色厢式送货车。",
+     "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+     "reason": "Car (cx=0.25W) is on the left side next to the left scooter; another dark car is parked further back on the left, hence 'nearest'. Compact car payload was a recolour."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the black 'Restauration de Bois Dorés' sign at the upper right"},
+     "ref_zh": "右上方的黑色“Restauration de Bois Dorés”招牌",
+     "instruction_ref_zh": "在右上方的黑色“Restauration de Bois Dorés”招牌上加一个小金色OPEN贴纸。",
+     "instruction_noref_zh": "给选中区域加上一个小金色OPEN贴纸。",
+     "findings_addressed": [],
+     "reason": "Own check on the clean image: the sign reads 'RESTAURATION DE BOIS DORÉS', not 'Restaurant Bois Dorés'."}
+  ]
+}

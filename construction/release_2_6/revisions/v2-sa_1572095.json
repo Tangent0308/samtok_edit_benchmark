@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_1572095",
+  "reviewer": "shard1-b8",
+  "notes": "No audit findings. U1 dark charcoal blazer -> navy blue was barely visible; value now camel brown. U2 blazer->satin blazer was only material/colour; now a long knitted cardigan. U3 add site clasp: v2 mask = the gold jeweled clasp block on the clutch front (SAM3 prompt); clutch is cream with gold trim, ref fixed.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1572095/case_sheet.jpg", "release_2_6_work/v2-sa_1572095/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "camel brown", "attributes": [{"property": "color", "value": "camel brown"}]},
+     "instruction_ref_zh": "将背对镜头男子的深色西装外套的颜色改为驼棕色。",
+     "instruction_noref_zh": "将选中区域的颜色改为驼棕色。",
+     "reason": "Blazer is near-black charcoal; navy blue would be a barely visible change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a long knitted cardigan"},
+     "instruction_ref_zh": "将前景女子左后方的米色西装外套替换为一件长款针织开衫。",
+     "instruction_noref_zh": "将选中区域替换为一件长款针织开衫。",
+     "reason": "Blazer to satin blazer is a colour/material change; cardigan is a genuine garment-type replacement."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the foreground woman’s cream-and-gold clutch", "placement": {"relation": "on", "site": "jeweled clasp", "anchor_mode": "support"}},
+     "ref_zh": "前景女子的米金色手包",
+     "instruction_ref_zh": "在前景女子的米金色手包的镶饰搭扣上加上一个小珍珠挂饰。",
+     "instruction_noref_zh": "给选中区域加上一个小珍珠挂饰。",
+     "reason": "Clutch body is cream with gold trim; v2 mask = the jeweled gold clasp."}
+  ]
+}

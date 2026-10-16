@@ -1,0 +1,31 @@
+{
+  "case_id": "v2-sa_754509",
+  "reviewer": "shard3-b6",
+  "notes": "U1/U4 refs ambiguous (many people left of center, a dozen upper windows); U2 replace was only a recolour of a teal backpack; U3 ref clarified. Masks are already the edited objects (verified on clean crop).",
+  "reviewed_views": ["release_2_6_work/v2-sa_754509/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["street", "crowd", "architecture"], "scene_zh": "城市街头人群", "evidence_zh": "白色手提包女子左侧深发人物的黑色皮夹克、灰色连帽衫行人的青绿色背包、栏杆上的照片横幅和旗杆下方立柱左侧的上层窗户是四个不同对象。", "specific_protection_zh": "保留人群、建筑和街头标识。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the black leather jacket of the dark-haired person directly left of the woman with a white handbag", "scope": "jacket"},
+     "ref_zh": "白色手提包女子正左侧深色头发人物的黑色皮夹克", "scope_zh": "夹克", "physical_parent_zh": "深发人物", "parent_instance_id": "sa_754509:深发人物",
+     "instruction_ref_zh": "将白色手提包女子正左侧深色头发人物的黑色皮夹克的颜色改为橄榄绿色。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Several people left of center wear dark coats; masked garment is the black leather jacket of the dark-haired person at the book table next to the woman with the white handbag."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the teal backpack of the person in a grey hoodie right of the red backpack", "payload": "a brown leather messenger bag"},
+     "ref_zh": "红色背包右侧灰色连帽衫人物的青绿色背包", "scope_zh": "背包", "physical_parent_zh": "灰色连帽衫人物", "parent_instance_id": "sa_754509:灰色连帽衫人物",
+     "instruction_ref_zh": "将红色背包右侧灰色连帽衫人物的青绿色背包替换为一个棕色皮革邮差包。",
+     "instruction_noref_zh": "将选中区域替换为一个棕色皮革邮差包。",
+     "findings_addressed": ["replace_is_attribute"], "reason": "Backpack -> black backpack was a recolour; messenger bag is structural. Ref distinguishes from the red backpack next to it."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the photo banner hanging on the fence"},
+     "ref_zh": "挂在栏杆上的照片横幅", "scope_zh": "横幅", "physical_parent_zh": "栏杆横幅", "parent_instance_id": "sa_754509:栏杆横幅",
+     "instruction_ref_zh": "移除挂在栏杆上的照片横幅。",
+     "findings_addressed": [], "reason": "'across the center' was vague; it is the only large banner, hanging on the fence."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the upper-floor window just left of the column below the flagpole"},
+     "ref_zh": "旗杆下方立柱左侧紧邻的上层窗户", "scope_zh": "窗户", "physical_parent_zh": "上层窗户", "parent_instance_id": "sa_754509:上层窗户",
+     "instruction_ref_zh": "在旗杆下方立柱左侧紧邻的上层窗户上加上一个花箱。",
+     "instruction_noref_zh": "在选中区域上加上一个花箱。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Many identical upper windows; the masked one is immediately left of the portico column aligned under the rooftop flagpole."}
+  ]
+}

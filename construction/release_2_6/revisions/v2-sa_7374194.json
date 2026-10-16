@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_7374194",
+  "reviewer": "shard3-b4",
+  "notes": "U1 replacement made structural; U2 screen disambiguated among three adjacent boards and value made concrete; U3 sign is a gray check-in sign, not the green 'Departures' sign. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7374194/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a white short-sleeved button-up shirt"},
+     "instruction_ref_zh": "将推婴儿车男子的黑色T恤替换为一件白色短袖纽扣衬衫。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "White T-shirt was only a recolour; a button-up shirt changes the garment structure."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the rightmost of the three flight-information screens on the left", "payload": "green",
+              "attributes": [{"property": "color", "value": "green"}]},
+     "ref_zh": "左侧三块航班信息屏中最右侧的一块",
+     "instruction_ref_zh": "将左侧三块航班信息屏中最右侧的一块的颜色改为绿色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Three adjacent screens on the left; masked one (x269-423) is the rightmost. It is already blue/white, so 'tint blue and white' was a no-op; now colour green."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the small gray check-in sign with the green 13-17 panel on the upper left wall", "scope": "check-in sign"},
+     "ref_zh": "左上墙面上带绿色13-17数字块的灰色小值机指示牌", "scope_zh": "值机指示牌",
+     "physical_parent_zh": "灰色值机指示牌", "parent_instance_id": "sa_7374194:灰色值机指示牌",
+     "instruction_ref_zh": "移除左上墙面上带绿色13-17数字块的灰色小值机指示牌。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Masked sign (x433-528,y291-377) reads Gepaeckaufgabe/Check-in/Facturacion 13-17; the large central sign is the one reading Departures."}
+  ]
+}

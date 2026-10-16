@@ -1,0 +1,48 @@
+{
+  "case_id": "v2-sa_6262299",
+  "reviewer": "round2",
+  "notes": "Clean source reviewed. U3 sign->round hanging lantern provides structural replacement. U4 dangling lower corner moved into placement.site, specifying image-right lower windshield corner; reviewed compact site committed.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6262299/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6262299/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "payload": "a round hanging wrought-iron lantern"
+      },
+      "instruction_ref_zh": "将右侧红色CHIPOTLE招牌替换为一盏圆形悬挂式锻铁灯笼。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Lantern changes physical structure and function instead of changing sign words."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one small blue inspection sticker",
+        "placement": {
+          "relation": "on",
+          "site": "lower image-right corner",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给公交车挡风玻璃画面右下角加上一张小蓝色检查贴纸。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Removed dangling its and put locative phrase in site with matching corner mask."
+    }
+  ]
+}

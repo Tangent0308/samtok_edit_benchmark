@@ -1,0 +1,31 @@
+{
+  "case_id": "v2-sa_7567943",
+  "reviewer": "shard3-b6",
+  "notes": "U2 payload vague ('a modern lamp' for an already modern light); U3 removed a whole apartment block: retargeted to the pile of wooden planks at the lower left; U4 'near the center' was the high-rise at the far left. U1 ref adds colour.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7567943/case_sheet.jpg", "release_2_6_work/v2-sa_7567943/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "urban", "perspective"], "scene_zh": "空旷开发区", "evidence_zh": "最左侧银色轿车、左侧路灯、左下方木板堆和路灯右侧的高层住宅楼是四个不同对象。", "specific_protection_zh": "保留道路、建筑和空地环境。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the silver sedan at the far left"},
+     "ref_zh": "最左侧的银色轿车", "scope_zh": "轿车", "physical_parent_zh": "最左轿车", "parent_instance_id": "sa_7567943:最左轿车",
+     "instruction_ref_zh": "将最左侧的银色轿车的颜色改为红色。",
+     "findings_addressed": [], "reason": "Ref+none input; colour added for robustness (verified silver on clean crop)."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the double-arm streetlight on the left", "payload": "an ornate black cast-iron lamppost with a single lantern"},
+     "ref_zh": "左侧的双臂路灯", "scope_zh": "路灯", "physical_parent_zh": "左侧路灯", "parent_instance_id": "sa_7567943:左侧路灯",
+     "instruction_ref_zh": "将左侧的双臂路灯替换为一根带单个灯笼的华丽黑色铸铁灯柱。",
+     "instruction_noref_zh": "将选中区域替换为一根带单个灯笼的华丽黑色铸铁灯柱。",
+     "findings_addressed": ["ill_posed_edit"], "reason": "'a modern lamp' was vague and matched the existing light; now a concrete structural replacement."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the pile of wooden planks at the lower left", "scope": "wooden planks"},
+     "ref_zh": "左下方的木板堆", "scope_zh": "木板", "physical_parent_zh": "木板堆", "parent_instance_id": "sa_7567943:木板堆",
+     "instruction_ref_zh": "移除左下方的木板堆。",
+     "findings_addressed": ["ill_posed_edit"], "reason": "Removing a whole apartment block is ill-posed; retargeted to a removable construction-material pile (SAM3, checked)."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the pale high-rise apartment block just right of the streetlight"},
+     "ref_zh": "路灯右侧紧邻的浅色高层住宅楼", "scope_zh": "建筑", "physical_parent_zh": "路灯右侧高层楼", "parent_instance_id": "sa_7567943:路灯右侧高层楼",
+     "instruction_ref_zh": "在路灯右侧紧邻的浅色高层住宅楼上加上一个屋顶标牌。",
+     "instruction_noref_zh": "在选中区域上加上一个屋顶标牌。",
+     "findings_addressed": ["wrong_instance_spatial"], "reason": "Masked building is at 0.16W just right of the streetlight, not near the center."}
+  ]
+}

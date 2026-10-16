@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_4477450",
+  "reviewer": "shard2-b5",
+  "notes": "U1 floral dress -> plain pale blue dress was only a colour/pattern change; now replaced by a blouse with a long denim skirt (two-piece outfit, structural change). Audit's side remark that the mask clips the red bag checked: SAM3 'red bag' (box [1743,1225,1783,1303]) overlaps the 2.5.0 dress mask by only 0.7% of the bag, so the mask is kept. Other units fine.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4477450/case_sheet.jpg", "release_2_6_work/v2-sa_4477450/U1/t1.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a white blouse with a long denim skirt"},
+     "instruction_ref_zh": "将右前景女子的碎花连衣裙替换为一件白色衬衫搭配一条牛仔长裙。",
+     "instruction_noref_zh": "将选中区域替换为一件白色衬衫搭配一条牛仔长裙。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Dress -> plain pale blue summer dress keeps the garment type; a blouse plus long denim skirt is a structural replacement with the same coverage."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

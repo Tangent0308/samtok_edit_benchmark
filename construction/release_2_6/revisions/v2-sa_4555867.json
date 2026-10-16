@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4555867",
+  "reviewer": "shard2-b6",
+  "notes": "U2 replace was colour-only (light denim -> navy denim jacket) -> red quilted puffer jacket. U4 dangling 'on its bow' removed. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4555867/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a red quilted puffer jacket"},
+     "instruction_ref_zh": "将左侧乘客的浅蓝色外套替换为一件红色绗缝羽绒夹克。",
+     "instruction_noref_zh": "将选中区域替换为一件红色绗缝羽绒夹克。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Existing jacket is light-blue denim; a quilted puffer jacket is a genuine garment/structure change."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white number 7 decal"},
+     "instruction_ref_zh": "在右下角的空贡多拉上加上一枚小白色数字7贴花。",
+     "instruction_noref_zh": "给选中区域加上一枚小白色数字7贴花。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its bow'; anchor stays the whole gondola."}
+  ]
+}

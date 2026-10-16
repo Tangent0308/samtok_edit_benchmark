@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_10790861",
+  "reviewer": "shard1-b4",
+  "notes": "U4 ref made unique (second, lower green flag exists). U3 add site: the push handlebar is almost fully hidden by the woman's hand, the hanging bag (U2) and a white cup already resting there, so the site is moved to the visible padded 'SIT-N-STAND' crossbar; v2 mask = that crossbar (minus U2).",
+  "reviewed_views": ["release_2_6_work/v2-sa_10790861/case_sheet.jpg", "release_2_6_work/v2-sa_10790861/U3/t1.jpg", "release_2_6_work/v2-sa_10790861/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"placement": {"relation": "clipped to", "site": "padded crossbar", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在婴儿车的软垫横杆上加上一个杯架。",
+     "instruction_noref_zh": "给选中区域加上一个杯架。",
+     "findings_addressed": [],
+     "reason": "Handlebar is occluded by the hand, bag and an existing cup; the padded crossbar is a clearly visible attachment site, segmented with SAM3."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the flag at the top of the tall flagpole"},
+     "ref_zh": "高旗杆顶端的旗帜",
+     "instruction_ref_zh": "移除高旗杆顶端的旗帜。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "A second, smaller green flag flies lower on another pole; the masked flag tops the tall pole."}
+  ]
+}

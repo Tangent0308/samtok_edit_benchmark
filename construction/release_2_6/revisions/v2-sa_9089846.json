@@ -1,0 +1,45 @@
+{
+  "case_id": "v2-sa_9089846",
+  "reviewer": "shard6-b5",
+  "notes": "Tail case, all units re-examined. U1 J PLAZA sign is already blue -> recolour to red, category sign. U2 black dress replace was a recolour -> two-piece outfit (white T-shirt with denim skirt), ref names the woman with the plastic bag. U3 removed a worn skirt -> retargeted to the orange traffic cone in front of the red vending machine at the right (SAM3 v2 mask).",
+  "reviewed_views": ["release_2_6_work/v2-sa_9089846/case_sheet.jpg", "release_2_6_work/v2-sa_9089846/U3/t1.jpg", "release_2_6_work/v2-sa_9089846/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "signage"], "scene_zh": "涩谷街角", "evidence_zh": "右侧蓝色竖向 J PLAZA 招牌、左下提塑料袋女子的黑色连衣裙和右侧红色自动售货机前的橙色交通锥是三个不同对象。", "specific_protection_zh": "保留店面标识、行人和街道设施。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the blue vertical J PLAZA sign at the right", "scope": "sign", "payload": "red", "attributes": [{"property": "color", "value": "red"}]},
+      "ref_zh": "右侧蓝色的竖向 J PLAZA 招牌",
+      "scope_zh": "招牌",
+      "physical_parent_zh": "J PLAZA 招牌",
+      "parent_instance_id": "sa_9089846:JPLAZA招牌",
+      "instruction_ref_zh": "将右侧蓝色的竖向 J PLAZA 招牌的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["attribute_value"],
+      "reason": "The 'SHIBUYA J PLAZA MARUYAMA' sign is already blue on the clean image: 'to blue' was a no-op; it is a lit sign, not a banner."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the black dress of the woman carrying a plastic bag at the lower left", "scope": "dress", "payload": "a white T-shirt with a denim skirt"},
+      "ref_zh": "左下方提着塑料袋的女子的黑色连衣裙",
+      "scope_zh": "连衣裙",
+      "physical_parent_zh": "提塑料袋的女子",
+      "parent_instance_id": "sa_9089846:提塑料袋的女子",
+      "instruction_ref_zh": "将左下方提着塑料袋的女子的黑色连衣裙替换为一件白色 T 恤配牛仔裙。",
+      "instruction_noref_zh": "将选中区域替换为一件白色 T 恤配牛仔裙。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "'a blue dress' was only a recolour; per the user decision a genuine structural replacement (one-piece dress -> T-shirt and skirt) keeps the replace/attribute balance."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the orange traffic cone in front of the red vending machine at the right", "scope": "traffic cone"},
+      "ref_zh": "右侧红色自动售货机前的橙色交通锥",
+      "scope_zh": "交通锥",
+      "physical_parent_zh": "橙色交通锥",
+      "parent_instance_id": "sa_9089846:橙色交通锥",
+      "instruction_ref_zh": "移除右侧红色自动售货机前的橙色交通锥。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ill_posed_edit"],
+      "reason": "Removing the skirt a woman is wearing is physically absurd. Retargeted (keeping remove): SAM3 text 'traffic cone' t1_1, box [1169,1178,1183,1213], visually verified; the other cone is at the far left by the railing."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4402790",
+  "reviewer": "shard2-b5",
+  "notes": "U1 replace was a flat sign -> flat sign (colour+text only); now replaced by a structurally different set of individual neon letters. U4 dangling 'on its top bar' moved to placement.site; v2 mask = the rack's top bar/header. U2 (blue-gray tee, median RGB 78,91,119 -> dark green) and U3 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4402790/case_sheet.jpg", "release_2_6_work/v2-sa_4402790/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a row of individual glowing white neon letters spelling BOUTIQUE"},
+     "instruction_ref_zh": "将入口上方横向的紫色liberty招牌替换为一排拼出BOUTIQUE的独立白色霓虹发光字母。",
+     "instruction_noref_zh": "将选中区域替换为一排拼出BOUTIQUE的独立白色霓虹发光字母。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Navy rectangular sign with white text kept the same flat rectangular structure (colour+text change only); individual neon letters are a genuine structural replacement."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small red SALE tag", "placement": {"relation": "on", "site": "the top bar", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在商店入口右侧的服装架的顶杆上加上一张小红色SALE标签。",
+     "instruction_noref_zh": "给选中区域加上一张小红色SALE标签。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its top bar' moved to placement.site; v2 mask = host ∩ box [1400,870,1680,952] = top bar with header board (box [1419,881,1669,950]), legs excluded."}
+  ]
+}

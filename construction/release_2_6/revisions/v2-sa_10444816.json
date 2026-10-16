@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_10444816",
+  "reviewer": "shard1-b3",
+  "notes": "U2 ref ambiguous among several orange-shirt pink-cap men; the masked man is walking in the center background and is not facing away. U1 wearer is a young man, shirt has a NEW YORK print. U3 add site 'bottom edge': committed U3_v2 = banner host ∩ bottom band box [190,615,380,690].",
+  "reviewed_views": ["release_2_6_work/v2-sa_10444816/case_sheet.jpg", "release_2_6_work/v2-sa_10444816/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the black “NEW YORK” T-shirt of the young man on the left"},
+     "ref_zh": "左侧年轻男子的黑色“NEW YORK”T恤", "physical_parent_zh": "左侧黑T恤年轻男子",
+     "parent_instance_id": "sa_10444816:左侧黑T恤年轻男子",
+     "instruction_ref_zh": "将左侧年轻男子的黑色“NEW YORK”T恤替换为一件白色Polo衫。",
+     "findings_addressed": [],
+     "reason": "Wearer is an adult/young man, not a boy; print added to make the shirt unique."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the orange T-shirt of the man in a pink cap walking in the center background"},
+     "ref_zh": "背景中央行走的戴粉色帽子男子的橙色T恤",
+     "instruction_ref_zh": "将背景中央行走的戴粉色帽子男子的橙色T恤的颜色改为亮蓝色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Other orange-shirt pink-cap men stand at the far left; this one walks at x~0.36W in the background."},
+    {"id": "U3", "action": "keep", "reason": "Instruction fine; mask now the banner's bottom edge (U3_v2.png)."}
+  ]
+}

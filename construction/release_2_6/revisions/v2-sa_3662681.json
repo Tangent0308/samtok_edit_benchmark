@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_3662681",
+  "reviewer": "shard2-b1",
+  "notes": "U2 lantern is already dark grey/black -> bright blue; U4 masked object is a blue ornamental lantern on a wrought-iron bracket, not a hanging sign; U1 round->oval sign was only a shape tweak, now a chalkboard menu board. U3 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3662681/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a rectangular chalkboard menu board"},
+     "instruction_ref_zh": "将圆形木质披萨标牌替换为一块长方形黑板菜单牌。",
+     "instruction_noref_zh": "将选中区域替换为一块长方形黑板菜单牌。",
+     "findings_addressed": [],
+     "reason": "Round wooden sign -> oval wooden sign was nearly a no-op; a rectangular chalkboard menu board is a clear structural replacement."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "bright blue", "attributes": [{"property": "color", "value": "bright blue"}]},
+     "instruction_ref_zh": "将披萨标牌上方的壁灯的颜色改为亮蓝色。",
+     "instruction_noref_zh": "将选中区域的颜色改为亮蓝色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Clean crop shows the lantern frame is already dark grey/black."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the small blue ornamental lantern on the wrought-iron bracket in the distance", "scope": "lantern"},
+     "ref_zh": "远处铁艺支架上的蓝色小装饰灯",
+     "scope_zh": "灯",
+     "physical_parent_zh": "蓝色装饰灯",
+     "parent_instance_id": "sa_3662681:蓝色装饰灯",
+     "instruction_ref_zh": "移除远处铁艺支架上的蓝色小装饰灯。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Crop of box [1014,1968,1088,2039] shows a blue lantern-shaped head with scrollwork sitting on top of a blue wrought-iron bracket; not hanging, not a sign."}
+  ]
+}

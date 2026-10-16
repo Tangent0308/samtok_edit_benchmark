@@ -1,0 +1,32 @@
+{
+  "case_id": "v2-sa_7002146",
+  "reviewer": "shard3-b2",
+  "notes": "U1 wheel identified via the Czech flag above it; U2 payload made structural; U3 retargeted from amorphous grass fragments to the gray lamp post behind the tank (SAM3 mask, branch occluder excluded); U4 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7002146/case_sheet.jpg", "release_2_6_work/v2-sa_7002146/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "military", "occlusion"], "scene_zh": "坦克纪念地", "evidence_zh": "坦克国旗正下方的负重轮、前景带铭牌的混凝土柱、坦克后方的灰色路灯柱、左上角的树枝是四个不同对象。", "specific_protection_zh": "保留坦克、树林、基座和纪念牌。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the tank road wheel directly below the Czech flag on the turret"},
+     "ref_zh": "炮塔上捷克国旗正下方的坦克负重轮",
+     "instruction_ref_zh": "将炮塔上捷克国旗正下方的坦克负重轮的颜色改为深灰色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深灰色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Five near-identical road wheels; the masked one (x 487-666) sits directly below the turret flag (flag at x~550-600 in source pixels)."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a short black cast-iron bollard"},
+     "instruction_ref_zh": "将前景的混凝土柱替换为一根黑色铸铁矮护柱。",
+     "instruction_noref_zh": "将选中区域替换为一根黑色铸铁矮护柱。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "'dark stone post' only changed material/colour; a cast-iron bollard is a different structure."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the gray lamp post behind the tank at the left", "scope": "lamp post"},
+     "ref_zh": "坦克左后方的灰色路灯柱",
+     "scope_zh": "路灯柱",
+     "physical_parent_zh": "灰色路灯柱",
+     "parent_instance_id": "sa_7002146:灰色路灯柱",
+     "instruction_ref_zh": "移除坦克左后方的灰色路灯柱。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Removing amorphous lawn fragments has no defined result; retargeted to a discrete removable object, the only lamp post in view."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

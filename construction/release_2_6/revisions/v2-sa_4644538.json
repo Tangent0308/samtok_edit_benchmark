@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4644538",
+  "reviewer": "shard2-b6",
+  "notes": "U2 mask re-segmented (SAM3 'yellow banner') to drop the hanging ornament at its lower-left; payload was the same sign with new text (text-only change) -> round wooden hanging sign. U3 dangling 'on its front panel' removed.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4644538/case_sheet.jpg", "release_2_6_work/v2-sa_4644538/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a round wooden hanging sign reading TOURIST INFO"},
+     "instruction_ref_zh": "将黄色TOUR & LAUNDRY招牌替换为一块写有TOURIST INFO的圆形木质挂牌。",
+     "instruction_noref_zh": "将选中区域替换为一块写有TOURIST INFO的圆形木质挂牌。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Mask trimmed to the banner (ornament at x~420-470,y~700-790 excluded). Payload made a structural change (old payload was a yellow sign with different text only)."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small white number 5 decal"},
+     "instruction_ref_zh": "在面向镜头的踏板车上加上一枚小白色数字5贴花。",
+     "instruction_noref_zh": "给选中区域加上一枚小白色数字5贴花。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its front panel'; anchor stays the whole scooter."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

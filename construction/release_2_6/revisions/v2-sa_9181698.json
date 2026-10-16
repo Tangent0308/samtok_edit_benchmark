@@ -1,0 +1,42 @@
+{
+  "case_id": "v2-sa_9181698",
+  "reviewer": "round2",
+  "notes": "原图骑乘者牛仔裤是蓝色，目标改鲜红色以有明显色差。膝下剪裁mask排除鞋子和牵绳；胯侧添加支持区排除手臂和邻人。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_9181698/case_sheet.jpg",
+    "release_2_6_work/v2-sa_9181698/U1/final.jpg",
+    "release_2_6_work/v2-sa_9181698/U2/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "payload": "bright red",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "bright red"
+          }
+        ]
+      },
+      "instruction_ref_zh": "将牛背上骑乘者的牛仔裤可见部分改为鲜红色。",
+      "findings_addressed": [
+        "attribute_value"
+      ],
+      "reason": "源裤已是蓝色，鲜红色变化明显。"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ]
+}

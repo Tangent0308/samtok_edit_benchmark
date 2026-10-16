@@ -1,0 +1,53 @@
+{
+  "case_id": "v2-sa_5186021",
+  "reviewer": "round2",
+  "notes": "U4与U5的实际可见袖子分别采用SAM3候选，与原host相交后核实皮肤、邻人排除；提交2617px与2177px部位mask。U3额外发现原短袖亚麻上衣仅有材质/花纹变化，改尖领纽扣无袖结构，并清除落在儿童裤腿上的10px条状碎片。",
+  "reviewed_views": [
+    "assets/v2-sa_5186021/source.jpg",
+    "release_2_6_work/v2-sa_5186021/case_sheet.jpg",
+    "release_2_6_work/v2-sa_5186021/U3/final.jpg",
+    "release_2_6_work/v2-sa_5186021/U4/final.jpg",
+    "release_2_6_work/v2-sa_5186021/U5/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "拥挤庙会摊位前的行人",
+    "evidence_zh": "不同源对象：中间迎面走来男子的白色短袖上衣；左侧高个男子的白色短袖上衣；右侧背红包女士的花纹上衣；右侧斜挎黑包女士的短袖上衣；左边摊位前被女士挡住的紫色上衣。",
+    "specific_protection_zh": "斜挎带、手臂、孩子和摊位"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a white sleeveless blouse with a pointed collar and button front"
+      },
+      "instruction_ref_zh": "将右侧背红包女士的花纹上衣替换为一件尖领、前排纽扣的白色无袖衬衫。",
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "右侧背红包女士的花纹上衣",
+      "scope_zh": "上衣",
+      "physical_parent_zh": "右侧花纹上衣女士",
+      "parent_instance_id": "sa_5186021:右侧花纹上衣女士",
+      "category": "top"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ]
+}

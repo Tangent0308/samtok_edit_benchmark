@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_5232925",
+  "reviewer": "shard2-b9",
+  "notes": "Audit: U1-U3 all on the nearest woman and the two bags overlap. Retargeted U3 (add, ref+mask) to the dark stroller at the far left of the plaza (SAM3 'stroller', box 55-153 x 1063-1174), committed as v2 mask. U1 (coat) and U2 (carried white bag, a separable accessory) kept; U4 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5232925/case_sheet.jpg", "release_2_6_work/v2-sa_5232925/U3/t1.jpg", "release_2_6_work/v2-sa_5232925/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the dark stroller at the far left of the plaza", "scope": "stroller", "payload": "a small yellow balloon", "placement": {"relation": "attached to", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "广场最左侧的深色婴儿车",
+     "scope_zh": "婴儿车",
+     "physical_parent_zh": "婴儿车",
+     "parent_instance_id": "sa_5232925:婴儿车",
+     "instruction_ref_zh": "在广场最左侧的深色婴儿车上系上一个小黄色气球。",
+     "instruction_noref_zh": "给选中区域系上一个小黄色气球。",
+     "findings_addressed": ["independence_violation"],
+     "reason": "Old U3 bag overlapped U2 and belonged to the same woman; retargeted to an independent object, same operation and interaction."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

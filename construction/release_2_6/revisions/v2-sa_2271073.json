@@ -1,0 +1,25 @@
+{
+  "case_id": "v2-sa_2271073",
+  "reviewer": "shard0b-b2",
+  "notes": "U1 hood mask = SAM3 'hood'. U2 woman identified by maroon quilted vest (another long-haired woman in jeans bends at ~0.40W). U3 upper-sleeve site = child's image-right upper sleeve (SAM3 'sleeve' t2_1 within y<=1040); its image-left sleeve is hidden behind the striped child.",
+  "reviewed_views": ["release_2_6_work/v2-sa_2271073/case_sheet.jpg", "release_2_6_work/v2-sa_2271073/U1/final.jpg", "release_2_6_work/v2-sa_2271073/U3/final.jpg", "release_2_6_work/v2-sa_2271073/U3/t2.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the jeans of the long-haired woman in the maroon quilted vest"},
+     "ref_zh": "穿酒红色绗缝马甲的长发女子的牛仔裤",
+     "physical_parent_zh": "酒红马甲长发女子",
+     "parent_instance_id": "sa_2271073:酒红马甲长发女子",
+     "instruction_ref_zh": "将穿酒红色绗缝马甲的长发女子的牛仔裤替换为带大腿袋的宽松工装裤。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Masked jeans (~0.66W) belong to the woman in the maroon quilted vest; 'in the middle' could point to the bending woman at ~0.40W."},
+    {"id": "U3", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "image-right upper sleeve", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给中间背小花包孩子的深色上衣画面右侧的上臂衣袖缝上一块黄色反光贴布。",
+     "instruction_noref_zh": "给选中区域加上一块黄色反光贴布。",
+     "findings_addressed": [],
+     "reason": "Only the image-right sleeve is visible; site names it to match the v2 mask."},
+    {"id": "U4", "action": "keep"},
+    {"id": "U5", "action": "keep"}
+  ]
+}

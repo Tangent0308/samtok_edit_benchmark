@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_4435260",
+  "reviewer": "shard2-b5",
+  "notes": "U3 dangling 'on its handle' moved to placement.site; v2 mask = the cart's top push handle (SAM3 'handle'). Other units fine.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4435260/case_sheet.jpg", "release_2_6_work/v2-sa_4435260/U3/t1.jpg", "release_2_6_work/v2-sa_4435260/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small yellow number 12 tag", "placement": {"relation": "on", "site": "the handle", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在粉衣女子前方的购物车的把手上挂上一张小黄色数字12标签。",
+     "instruction_noref_zh": "给选中区域挂上一张小黄色数字12标签。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its handle' moved to placement.site; v2 mask = SAM3 'handle' inside the cart mask (box [1594,807,1809,829], hand occlusion excluded)."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

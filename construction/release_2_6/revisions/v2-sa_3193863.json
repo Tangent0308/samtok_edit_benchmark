@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_3193863",
+  "reviewer": "shard1b-b6",
+  "notes": "U1 replace was only a colour change (blue blouse -> cream blouse); payload now a cream knit cardigan (structural garment change). U4: clean image shows a beige tailored jacket over a lilac shirt on the white-haired visitor at far left, not a 'cream vest'; ref corrected. Masks unchanged (already the edited regions).",
+  "reviewed_views": ["release_2_6_work/v2-sa_3193863/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a cream knit cardigan"},
+     "instruction_ref_zh": "将前景带白领的蓝色上衣替换为一件米白色针织开衫。",
+     "instruction_noref_zh": "将选中区域替换为一件米白色针织开衫。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "A knit cardigan is a different garment structure than a collared blouse."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the beige jacket of the white-haired visitor at the far left", "scope": "jacket"},
+     "ref_zh": "最左侧白发游客的米色外套",
+     "scope_zh": "外套",
+     "instruction_ref_zh": "在最左侧白发游客的米色外套上加上一枚小红花胸针。",
+     "instruction_noref_zh": "给选中区域加上一枚小红花胸针。",
+     "reason": "Masked garment is a beige jacket (lapels, blazer cut) over a lilac shirt, not a vest; ref names the white-haired visitor for unique identification."}
+  ]
+}

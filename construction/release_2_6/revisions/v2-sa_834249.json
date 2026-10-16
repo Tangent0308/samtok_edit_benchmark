@@ -1,0 +1,43 @@
+{
+  "case_id": "v2-sa_834249",
+  "reviewer": "shard4-b6",
+  "notes": "Tail case: all units re-examined on the clean source. U1 (whole-person recolour) re-masked to the man's blue shorts; U2 (person replaced by jacket) re-masked to the boy's blue hoodie and rewritten as a garment replacement; U3/U4 refs made precise, masks kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_834249/case_sheet.jpg", "release_2_6_work/v2-sa_834249/U1/t1.jpg", "release_2_6_work/v2-sa_834249/U1/final.jpg", "release_2_6_work/v2-sa_834249/U2/t1.jpg", "release_2_6_work/v2-sa_834249/U2/final.jpg"],
+  "difficulty": {
+    "mechanisms": ["outdoor", "street", "crowd"],
+    "scene_zh": "街头人群中的志愿者",
+    "evidence_zh": "左侧男志愿者的蓝色短裤、最右侧行走男孩的蓝色连帽衫、中间穿牛仔裤女子的藏青色背包、左侧男志愿者头顶上方的T形路灯是四个不同对象。",
+    "specific_protection_zh": "保留人物、背包和街道设施。"
+  },
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the blue shorts of the volunteer man standing at the left", "scope": "shorts", "payload": "khaki", "attributes": [{"property": "color", "value": "khaki"}]},
+     "ref_zh": "左侧站立的男志愿者的蓝色短裤", "scope_zh": "短裤", "physical_parent_zh": "左侧男志愿者",
+     "parent_instance_id": "sa_834249:左侧男志愿者",
+     "instruction_ref_zh": "将左侧站立的男志愿者的蓝色短裤的颜色改为卡其色。",
+     "findings_addressed": ["person_clothing_level"],
+     "reason": "Whole person was recoloured to blue though his outfit is already blue; now the shorts only, khaki, with a shorts-only v2 mask."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the blue hoodie of the boy walking at the far right", "scope": "hoodie", "payload": "a red zip-up track jacket without a hood"},
+     "ref_zh": "最右侧行走男孩的蓝色连帽衫", "scope_zh": "连帽衫", "physical_parent_zh": "最右侧行走男孩",
+     "parent_instance_id": "sa_834249:最右侧行走男孩",
+     "instruction_ref_zh": "将最右侧行走男孩的蓝色连帽衫替换为一件无帽的红色拉链运动夹克。",
+     "findings_addressed": ["person_clothing_level"],
+     "reason": "Person was replaced by a garment; now the hoodie (v2 mask, backpack excluded) is replaced by a structurally different hoodless track jacket, keeping the replace operation."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the navy backpack of the woman in jeans at the center", "scope": "backpack"},
+     "ref_zh": "中间穿牛仔裤女子的藏青色背包", "scope_zh": "背包", "physical_parent_zh": "中间穿牛仔裤女子的背包",
+     "parent_instance_id": "sa_834249:中间穿牛仔裤女子的背包",
+     "instruction_ref_zh": "移除中间穿牛仔裤女子的藏青色背包。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Three navy backpacks visible; the masked one is worn by the woman in jeans at the center."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the T-shaped streetlight directly above the cap of the volunteer man at the left", "scope": "streetlight", "payload": "one rectangular blue banner", "placement": {"relation": "hanging from", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "左侧男志愿者帽子正上方的T形路灯", "scope_zh": "路灯", "physical_parent_zh": "T形路灯",
+     "parent_instance_id": "sa_834249:T形路灯",
+     "instruction_ref_zh": "在左侧男志愿者帽子正上方的T形路灯上挂一面蓝色长方形横幅。",
+     "instruction_noref_zh": "在选中区域上挂一面蓝色长方形横幅。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Several streetlights at the left; the masked one is the T-shaped lamp directly above the volunteer's cap. Payload made concrete."}
+  ]
+}

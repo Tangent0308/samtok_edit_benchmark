@@ -1,0 +1,52 @@
+{
+  "case_id": "v2-sa_17741",
+  "reviewer": "round2",
+  "notes": "U1 shirt -> sleeveless utility vest is structural. U3 old mask merged two adjacent white sacks; SAM3 separates the left sack, ref names it.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_17741/case_sheet.jpg",
+    "assets/v2-sa_17741/source.jpg",
+    "release_2_6_work/v2-sa_17741/U3/p1.jpg",
+    "release_2_6_work/v2-sa_17741/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a white sleeveless utility vest"
+      },
+      "instruction_ref_zh": "将跪坐摊主的蓝色上衣替换为一件白色无袖多口袋马甲。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Sleeveless multi-pocket vest changes sleeves and front construction."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the left of the two white sacks behind the green stool"
+      },
+      "ref_zh": "绿色矮凳后方两个白色袋子中的左侧袋子",
+      "instruction_ref_zh": "移除绿色矮凳后方两个白色袋子中的左侧袋子。",
+      "reason": "Old mask combined both sacks; v2 isolates one physical sack."
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "occlusion",
+      "neighbor_protection"
+    ],
+    "scene_zh": "路边果蔬摊的衣物袋子和凳子",
+    "evidence_zh": "已逐图核对的独立目标：跪坐摊主的蓝色上衣；摊主旁的绿色矮凳；绿色矮凳后方两个白色袋子中的左侧袋子；顾客手持的粉色购物袋。",
+    "specific_protection_zh": "保留皮肤、手、手持物关系、果蔬、布垫、其他袋子和车辆。"
+  }
+}

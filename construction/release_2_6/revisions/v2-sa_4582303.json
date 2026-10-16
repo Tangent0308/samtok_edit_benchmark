@@ -1,0 +1,19 @@
+{
+  "case_id": "v2-sa_4582303",
+  "reviewer": "shard2-b6",
+  "notes": "U2 shutter was mis-located by its ref (it is above the SALON DE COIFFURE sign, not the awning tip; many identical beige shutters) and the replace was colour-only. Retargeted U2 to the bicycle leaning against the red building (SAM3 'bicycle', verified) with a genuine replace.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4582303/case_sheet.jpg", "release_2_6_work/v2-sa_4582303/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the bicycle leaning against the red building at the left", "scope": "bicycle", "payload": "a red motor scooter"},
+     "ref_zh": "靠在左侧红色楼房墙边的自行车",
+     "scope_zh": "自行车",
+     "physical_parent_zh": "自行车",
+     "parent_instance_id": "sa_4582303:自行车",
+     "instruction_ref_zh": "将靠在左侧红色楼房墙边的自行车替换为一辆红色小型摩托车。",
+     "instruction_noref_zh": "将选中区域替换为一辆红色小型摩托车。",
+     "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+     "reason": "Original shutter is one of many identical beige shutters and the payload was colour-only; bicycle (x432-551,y1935-2187) is unique and a scooter is a genuine replacement."}
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4880528",
+  "reviewer": "shard2-b7",
+  "notes": "U4 pot stands to the image-left of the orange-flowered pot, not behind it; ref fixed. U1: the pot is dark brown (not black) and a second orange-flowered shrub stands farther back on the right, so the ref now says dark brown and 'nearer'. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4880528/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the dark brown pot holding the nearer orange-flowered shrub"},
+     "ref_zh": "盛放较近橙花灌木的深棕色花盆",
+     "instruction_ref_zh": "将盛放较近橙花灌木的深棕色花盆的颜色改为鼠尾草绿。",
+     "findings_addressed": [],
+     "reason": "Clean image shows a dark brown pot; another orange-flowered shrub stands farther back on the right."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the yellow-flowered shrub in the pot left of the orange-flowered shrub"},
+     "ref_zh": "橙花灌木左侧盆中的黄花灌木",
+     "instruction_ref_zh": "移除橙花灌木左侧盆中的黄花灌木。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "The yellow-flowered pot is to the left of the orange-flowered pot, not behind it."}
+  ]
+}

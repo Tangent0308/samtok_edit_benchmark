@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_10733610",
+  "reviewer": "shard1-b4",
+  "notes": "U1 mask is the rider's bowler hat, not a helmet (the crested helmet belongs to the left warrior statue); ref/scope fixed. U3 Chinese ref sentence lacked 里. No S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10733610/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the bowler hat of the mounted statue", "scope": "bowler hat"},
+     "ref_zh": "骑马雕像的圆顶礼帽",
+     "scope_zh": "圆顶礼帽",
+     "instruction_ref_zh": "将骑马雕像的圆顶礼帽的颜色改为金色。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Masked object is a rounded bowler hat with brim; the helmeted statue is the other one."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {},
+     "instruction_ref_zh": "在右侧边缘的橙色篮子里加上一瓶水。",
+     "findings_addressed": [],
+     "reason": "Chinese ref sentence missing 里 for relation 'in'."}
+  ]
+}

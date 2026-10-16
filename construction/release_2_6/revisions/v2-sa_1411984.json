@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_1411984",
+  "reviewer": "shard0-b3",
+  "notes": "U2 remove part -> v2 mask = 'Fisher King' chest print incl. fish (SAM3 'printed graphic'); zh 红色 -> 粉色. U3 garment is a white collared short-sleeved shirt on the man walking at the far left (tree only partly occludes him); ref rewritten. U4 add site 'exposed shoulder' -> v2 mask = top shoulder part of the checked shirt (host ∩ y<=462).",
+  "reviewed_views": ["release_2_6_work/v2-sa_1411984/case_sheet.jpg", "release_2_6_work/v2-sa_1411984/U2/t1.jpg", "release_2_6_work/v2-sa_1411984/U2/final.jpg", "release_2_6_work/v2-sa_1411984/zoom_U4.jpg", "release_2_6_work/v2-sa_1411984/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "ref_zh": "摩托车上男子的粉色T恤",
+     "instruction_ref_zh": "移除摩托车上男子粉色T恤的胸前印花。",
+     "preserve": ["All unrequested parts of this parent, neighboring objects and background; other units authorize their own changes.", "T恤其余部分、腿、车轮、树干、头发及车身"],
+     "findings_addressed": ["translation"],
+     "reason": "Protocol 2.0: mask = chest graphic; zh colour aligned with the salmon-pink tee."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the white short-sleeved shirt of the man walking at the far left", "scope": "shirt"},
+     "ref_zh": "画面最左侧行走男子的白色短袖衬衫",
+     "scope_zh": "衬衫",
+     "physical_parent_zh": "最左侧行走男子",
+     "parent_instance_id": "sa_1411984:最左侧行走男子",
+     "instruction_ref_zh": "将画面最左侧行走男子的白色短袖衬衫的颜色改为浅绿色。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Masked garment is a white collared short-sleeved shirt, not a T-shirt; the man walks at the far left, only partly occluded by the tree."},
+    {"id": "U4", "action": "revise",
+     "ref_zh": "坐着的女子身后露出的格子衬衫",
+     "instruction_ref_zh": "在坐着的女子身后露出的格子衬衫的外露肩部加上一块小蓝色贴布。",
+     "instruction_noref_zh": "给选中区域加上一块小蓝色贴布。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask = exposed shoulder; zh ref aligned (English does not mention a cap wearer); blind zh no-ref."}
+  ]
+}

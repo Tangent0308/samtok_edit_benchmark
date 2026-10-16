@@ -1,0 +1,47 @@
+{
+  "case_id": "v2-sa_218962",
+  "reviewer": "round2",
+  "notes": "核对原图窗台与扶手；U3只选窗底窗台作小花箱支撑，U1去掉另一侧扶手上的三处孤立碎片共23像素；U4原仅灰板换蓝板，改圆形挂钟结构替换。",
+  "reviewed_views": [
+    "assets/v2-sa_218962/source.jpg",
+    "release_2_6_work/v2-sa_218962/case_sheet.jpg",
+    "release_2_6_work/v2-sa_218962/U1/final.jpg",
+    "release_2_6_work/v2-sa_218962/U3/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "thin_structures",
+      "perspective"
+    ],
+    "scene_zh": "彩绘台阶与墙面标牌",
+    "evidence_zh": "不同源对象：最近的黑色扶手；顶部岩壁上的大标牌；右侧细长的窗户；左侧墙上的灰色告示板。",
+    "specific_protection_zh": "保留彩绘台阶、其他扶手、墙面、岩石和建筑形状。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a round blue wall clock"
+      },
+      "instruction_ref_zh": "将左侧墙上的灰色告示板替换为一个蓝色圆形挂钟。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "左侧墙上的灰色告示板",
+      "scope_zh": "告示板",
+      "physical_parent_zh": "左告示",
+      "parent_instance_id": "sa_218962:left_notice",
+      "category": "notice board"
+    }
+  ]
+}

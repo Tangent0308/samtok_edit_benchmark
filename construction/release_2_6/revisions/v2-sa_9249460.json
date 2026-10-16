@@ -1,0 +1,45 @@
+{
+  "case_id": "v2-sa_9249460",
+  "reviewer": "shard7",
+  "notes": "Tail case, all units rewritten. U1 'to black' was a no-op on a black tyre -> bright yellow, ref names the near wheel of the black-canopied becak. U2 canopy is the rightmost becak's (ref said left) and the replace payload was a bare colour -> structural replace with a striped umbrella. U3 was an arbitrary vine fragment in the top-right corner (ref said left) -> retargeted to the blue motorbike partly visible at the right edge (SAM3 v2; parts behind the becak frame excluded). The 'green bicycle' between becaks was rejected as a retarget: it is the driver section of the left becak.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9249460/case_sheet.jpg", "release_2_6_work/v2-sa_9249460/U3/t1.jpg", "release_2_6_work/v2-sa_9249460/U3/t2.jpg", "release_2_6_work/v2-sa_9249460/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "bicycles"], "scene_zh": "街边三轮车", "evidence_zh": "黑色车篷三轮车白色挡泥板下的车轮、最右侧三轮车的灰色车篷和右边缘露出一部分的蓝色摩托车是三个不同对象。", "specific_protection_zh": "保留车辆、遮阳物和街边植物。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the near wheel under the white mudguard of the becak with the black canopy", "scope": "wheel", "payload": "bright yellow", "attributes": [{"property": "color", "value": "bright yellow"}]},
+      "ref_zh": "黑色车篷三轮车白色挡泥板下方靠前的车轮",
+      "scope_zh": "车轮",
+      "physical_parent_zh": "黑色车篷三轮车",
+      "parent_instance_id": "sa_9249460:黑色车篷三轮车",
+      "instruction_ref_zh": "将黑色车篷三轮车白色挡泥板下方靠前的车轮的颜色改为亮黄色。",
+      "instruction_noref_zh": "将选中区域的颜色改为亮黄色。",
+      "findings_addressed": ["attribute_value"],
+      "reason": "Black tyre with silver spokes -> black was a no-op; bright yellow is visible. Ref names the leftmost becak by its unique black canopy."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the gray canopy of the rightmost becak", "scope": "canopy", "payload": "a large red-and-white striped umbrella"},
+      "ref_zh": "最右侧三轮车的灰色车篷",
+      "scope_zh": "车篷",
+      "physical_parent_zh": "最右侧三轮车",
+      "parent_instance_id": "sa_9249460:最右侧三轮车",
+      "instruction_ref_zh": "将最右侧三轮车的灰色车篷替换为一把红白条纹大伞。",
+      "instruction_noref_zh": "将选中区域替换为一把红白条纹大伞。",
+      "findings_addressed": ["ill_posed_edit", "wrong_instance_spatial"],
+      "reason": "Mask is the rightmost becak's canopy (cx=0.79); bare-colour payload replaced by a structural replacement (kept replace for operation balance)."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the blue motorbike partly visible at the right edge", "scope": "motorbike"},
+      "ref_zh": "右边缘露出一部分的蓝色摩托车",
+      "scope_zh": "摩托车",
+      "physical_parent_zh": "右边缘蓝色摩托车",
+      "parent_instance_id": "sa_9249460:右边缘蓝色摩托车",
+      "instruction_ref_zh": "移除右边缘露出一部分的蓝色摩托车。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Retarget: the vine mask was an arbitrary fragment of continuous foliage in the top-right corner. The motorbike is a separate parked object; SAM3 t2_2 covers its visible wheel, frame, seat and exhaust, excluding the becak in front."
+    }
+  ]
+}

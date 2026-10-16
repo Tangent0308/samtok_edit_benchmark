@@ -1,0 +1,11 @@
+{
+  "case_id": "v2-sa_4817785",
+  "reviewer": "shard0-b4",
+  "notes": "U3 workwear mask covered the whole far worker (head, cap, hands, shoes); v2 mask = SAM3 'jacket' ∪ 'trousers' inside the host (blue workwear only). U2 add site 'upper arm': v2 mask = image-left sleeve ∩ box y<=1260 (shoulder-to-upper-arm part, elbow excluded); blind zh no-ref given (derived kept 缝在上臂处).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4817785/case_sheet.jpg", "release_2_6_work/v2-sa_4817785/zoom_U2.jpg", "release_2_6_work/v2-sa_4817785/U2/final.jpg", "release_2_6_work/v2-sa_4817785/zoom_U3.jpg", "release_2_6_work/v2-sa_4817785/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep", "instruction_noref_zh": "给选中区域加上一个窄笔袋。", "reason": "site mask committed; blind zh no-ref"},
+    {"id": "U3", "action": "keep", "reason": "mask_quality fixed: v2 mask = jacket+trousers only"}
+  ]
+}

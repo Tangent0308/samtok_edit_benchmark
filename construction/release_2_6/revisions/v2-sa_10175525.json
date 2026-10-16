@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_10175525",
+  "reviewer": "shard0b-b1",
+  "notes": "U1 masked shoe is a gray canvas high-top, not black (black Vans nearby at ~(1840,1350)); ref fixed. U4 add site made a v2 mask: image-right upper/outer thigh of the woman's black trousers (host ∩ box 1595,700,1670,820). U2/U3 checked on clean image: white New Balance sneaker below banner right end; black leggings of right banner holder.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10175525/case_sheet.jpg", "release_2_6_work/v2-sa_10175525/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the gray high-top sneaker stepping out from behind the foreground person on the right"},
+     "ref_zh": "右侧从前景人物身后迈出的一只灰色高帮运动鞋",
+     "instruction_ref_zh": "移除右侧从前景人物身后迈出的一只灰色高帮运动鞋。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Masked shoe (box 1598,1127,1684,1273) is a gray canvas high-top with black laces; 'black sneaker' pointed to the black Vans at ~(1840,1350)."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "image-right outer thigh", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给右后方背黑包女子的黑色长裤画面右侧大腿外侧加上一个小拉链袋。",
+     "instruction_noref_zh": "给选中区域加上一个小拉链袋。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: site mask = image-right upper thigh of the trousers; site text names which leg so ref and mask agree."}
+  ]
+}

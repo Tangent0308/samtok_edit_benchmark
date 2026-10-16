@@ -1,0 +1,29 @@
+{
+  "case_id": "v2-sa_6977563",
+  "reviewer": "shard3-b2",
+  "notes": "U3 shirt belongs to the gray-haired man at the far right and removing a worn shirt is ill-posed -> replace with a structurally different shirt; U4 jeans belong to the man in the teal T-shirt who faces the camera, so the back-pocket payload was invisible -> plain patch on the jeans. U1/U2 kept. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_6977563/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["street", "crowd", "occlusion"], "scene_zh": "老城区街道行人", "evidence_zh": "前景女子百褶裙、上方竖直服务招牌、最右侧灰发男子的白衬衫、青绿色T恤男子的浅蓝牛仔裤是四个不同对象。", "specific_protection_zh": "保留老建筑、店铺和其他行人。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"operation": "replace", "ref": "the white shirt of the gray-haired man at the far right", "payload": "a long-sleeved red plaid flannel shirt", "remove_mode": "whole"},
+     "ref_zh": "最右侧灰发男子的白衬衫",
+     "physical_parent_zh": "最右侧灰发男子",
+     "parent_instance_id": "sa_6977563:最右侧灰发男子",
+     "instruction_ref_zh": "将最右侧灰发男子的白衬衫替换为一件红色格子长袖法兰绒衬衫。",
+     "instruction_noref_zh": "将选中区域替换为一件红色格子长袖法兰绒衬衫。",
+     "findings_addressed": ["wrong_instance_spatial", "ill_posed_edit"],
+     "reason": "Mask is the short-sleeved white shirt of the gray-haired man by the bakery door (0.91W); removing a worn shirt is ill-posed, so it becomes a structural replacement (long sleeves, flannel)."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the light-blue jeans of the man in the teal T-shirt", "payload": "one small white embroidered star patch"},
+     "ref_zh": "穿青绿色T恤男子的浅蓝色牛仔裤",
+     "physical_parent_zh": "青绿色T恤男子",
+     "parent_instance_id": "sa_6977563:青绿色T恤男子",
+     "instruction_ref_zh": "给穿青绿色T恤男子的浅蓝色牛仔裤加上一枚白色刺绣小星星贴布。",
+     "instruction_noref_zh": "给选中区域加上一枚白色刺绣小星星贴布。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked jeans (0.39W) are on the man in the teal T-shirt; he walks toward the camera so a back-pocket patch would be invisible; payload made a plain visible patch with count."}
+  ]
+}

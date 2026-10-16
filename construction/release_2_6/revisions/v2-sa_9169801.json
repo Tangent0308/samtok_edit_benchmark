@@ -1,0 +1,61 @@
+{
+  "case_id": "v2-sa_9169801",
+  "reviewer": "shard7",
+  "notes": "Tail case: U1 'car at the left' ambiguous, U2 replace payload was a bare colour, U3 masked object is a small white plaque on the chain barrier at the lower right, U4 window is on the yellow hotel at the right. All four 2.5.0 masks checked on clean crops and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9169801/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "winter"], "scene_zh": "冬季城市街道", "evidence_zh": "左侧驶离的黑色掀背车、左前景的灯笼式路灯、右下链条护栏上的小白牌和右侧黄色酒店的窗户是四个不同对象。", "specific_protection_zh": "保留车辆、建筑和道路设施。"},
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {"ref": "the small black hatchback driving away on the road at the left", "scope": "car"},
+      "ref_zh": "左侧道路上驶离的黑色小型掀背车",
+      "scope_zh": "轿车",
+      "physical_parent_zh": "左侧黑色掀背车",
+      "parent_instance_id": "sa_9169801:左侧黑色掀背车",
+      "instruction_ref_zh": "将左侧道路上驶离的黑色小型掀背车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Several cars at the left (white car, silver car); masked one is the black hatchback driving away."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {"ref": "the ornate black lantern streetlight in the left foreground", "scope": "streetlight", "payload": "a modern slim LED pole light"},
+      "ref_zh": "左前景的华丽黑色灯笼式路灯",
+      "scope_zh": "路灯",
+      "physical_parent_zh": "左前景灯笼式路灯",
+      "parent_instance_id": "sa_9169801:左前景灯笼式路灯",
+      "instruction_ref_zh": "将左前景的华丽黑色灯笼式路灯替换为一根现代纤细 LED 灯杆。",
+      "instruction_noref_zh": "将选中区域替换为一根现代纤细 LED 灯杆。",
+      "findings_addressed": ["ill_posed_edit"],
+      "reason": "Replace payload was a bare colour on an already-black lamp; now a real structural replacement."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {"ref": "the small white plaque hanging from the chain barrier at the lower right", "scope": "plaque"},
+      "ref_zh": "右下方链条护栏上悬挂的小白牌",
+      "scope_zh": "牌子",
+      "physical_parent_zh": "右下链条护栏小白牌",
+      "parent_instance_id": "sa_9169801:右下链条护栏小白牌",
+      "instruction_ref_zh": "移除右下方链条护栏上悬挂的小白牌。",
+      "preserve": ["保留链条、护栏柱和石板地面。"],
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked object is a small white plaque on the chain between bollards at the lower right (cy=0.79), not an upper-right traffic sign."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {"ref": "the rightmost red-framed window in the upper row of the yellow hotel facade, next to the white building", "scope": "window", "payload": "a red geranium flower box"},
+      "ref_zh": "黄色酒店立面上排最右侧、紧邻白色建筑的红框窗户",
+      "scope_zh": "窗户",
+      "physical_parent_zh": "黄色酒店右侧窗户",
+      "parent_instance_id": "sa_9169801:黄色酒店右侧窗户",
+      "instruction_ref_zh": "给黄色酒店立面上排最右侧、紧邻白色建筑的红框窗户加上一个红色天竺葵花箱。",
+      "instruction_noref_zh": "给选中区域加上一个红色天竺葵花箱。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked window is at the right of the image (cx=0.85) on the yellow hotel; ref now pins it among dozens of windows; payload more specific."
+    }
+  ]
+}

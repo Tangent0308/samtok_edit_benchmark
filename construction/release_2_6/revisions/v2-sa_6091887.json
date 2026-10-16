@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_6091887",
+  "reviewer": "round2",
+  "notes": "U1 red SUV is at the lower left, not center. Round2 clean source and zoom reveal four unrelated fragments on the neighboring street-sign pole in U3; removed with host minus box, reviewed final before committing.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6091887/case_sheet.jpg",
+    "assets/v2-sa_6091887/source.jpg",
+    "release_2_6_work/v2-sa_6091887/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the red SUV parked on the street at the lower left"
+      },
+      "ref_zh": "左下方街边停着的红色SUV",
+      "instruction_ref_zh": "移除左下方街边停着的红色SUV。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Red SUV centre at x≈0.29W in the lower-left; it is the only red SUV."
+    },
+    {
+      "id": "U3",
+      "action": "keep",
+      "reason": "Instruction correct; v2 mask removes detached fragments from separate neighboring signpost."
+    }
+  ]
+}

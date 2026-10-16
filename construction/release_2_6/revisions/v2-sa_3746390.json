@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_3746390",
+  "reviewer": "shard2-b1",
+  "notes": "U1 SUV->white SUV recolour replaced by a delivery van; U4 ref now names the ponytailed woman and the payload drops the site-in-payload 'on the lapel' (her lapel is not visible, she is seen from behind). U2/U3 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3746390/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a white delivery van"},
+     "instruction_ref_zh": "将左侧的棕色SUV替换为一辆白色厢式货车。",
+     "instruction_noref_zh": "将选中区域替换为一辆白色厢式货车。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same-category recolour; a delivery van is a body-type change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the black leather jacket of the ponytailed woman crossing the street", "payload": "a small silver star patch", "placement": {"relation": "sewn onto", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "正在过马路的扎马尾女子的黑色皮夹克",
+     "physical_parent_zh": "过马路的马尾女子",
+     "instruction_ref_zh": "在正在过马路的扎马尾女子的黑色皮夹克上缝一块银色小星形贴布。",
+     "instruction_noref_zh": "给选中区域加上一块银色小星形贴布。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Two pedestrians cross together (woman with ponytail in front x~1370-1454, man behind); ref now names her. Zoom shows she is seen from behind/side, lapel not visible, so 'on the lapel' removed from the payload."}
+  ]
+}

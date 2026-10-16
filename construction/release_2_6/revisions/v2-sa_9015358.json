@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9015358",
+  "reviewer": "shard6-b4",
+  "notes": "Tail case, all units re-examined. U1 white sedan ref made explicit. U2 is the gray car cut off at the far left edge (ref said centre) and its replace was a recolour -> white delivery van. U3 is the red Büyükşehir hoarding banner just right of the trunk (several banners of other colours). U4 stone tile had no distinguishing feature and a generic payload -> retargeted to the low stone wall between the gray car and the trunk (SAM3 v2 mask) with a concrete flower-pot payload.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9015358/case_sheet.jpg", "release_2_6_work/v2-sa_9015358/U4/t1.jpg", "release_2_6_work/v2-sa_9015358/U4/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "architecture"], "scene_zh": "树旁街景", "evidence_zh": "右侧白色轿车、最左边缘的灰色汽车、树干右侧的红色横幅和灰车与树干之间的矮石墙是四个不同对象。", "specific_protection_zh": "保留大树、车辆和街道细节。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the white sedan parked at the right", "scope": "sedan"},
+      "ref_zh": "停在右侧的白色轿车",
+      "scope_zh": "轿车",
+      "physical_parent_zh": "右侧白色轿车",
+      "parent_instance_id": "sa_9015358:右侧白色轿车",
+      "instruction_ref_zh": "将停在右侧的白色轿车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: the masked car is the only white car (whole car, wheels included); white -> red is visible."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the gray car partly visible at the far left edge", "scope": "car", "payload": "a white delivery van"},
+      "ref_zh": "最左侧边缘露出一部分的灰色汽车",
+      "scope_zh": "汽车",
+      "physical_parent_zh": "最左侧灰色汽车",
+      "parent_instance_id": "sa_9015358:最左侧灰色汽车",
+      "instruction_ref_zh": "将最左侧边缘露出一部分的灰色汽车替换为一辆白色厢式货车。",
+      "instruction_noref_zh": "将选中区域替换为一辆白色厢式货车。",
+      "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+      "reason": "Mask box [0,1396,149,1734] is the gray car cut off at the left edge, not near the centre; blue sedan was only a recolour."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the red Büyükşehir banner just right of the tree trunk", "scope": "banner"},
+      "ref_zh": "树干右侧紧邻的红色 Büyükşehir 横幅",
+      "scope_zh": "横幅",
+      "physical_parent_zh": "树干右侧红色横幅",
+      "parent_instance_id": "sa_9015358:树干右侧红色横幅",
+      "instruction_ref_zh": "移除树干右侧紧邻的红色 Büyükşehir 横幅。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": [],
+      "reason": "Tail rewrite: the hoarding has pink, blue and red banners on both sides of the tree; the mask is the red panel at x 1035-1158 right of the trunk."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the low stone wall between the gray car and the tree trunk", "scope": "stone wall", "payload": "one small terracotta flower pot", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "灰色汽车与树干之间的矮石墙",
+      "scope_zh": "矮石墙",
+      "physical_parent_zh": "矮石墙",
+      "parent_instance_id": "sa_9015358:矮石墙",
+      "instruction_ref_zh": "在灰色汽车与树干之间的矮石墙上放一个小陶土花盆。",
+      "instruction_noref_zh": "在选中区域上放一个小陶土花盆。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "Retarget: the paving tile could not be identified uniquely among identical tiles and 'a small flower' was generic. New SAM3 mask t1_1 of the low stone wall (box [149,1523,385,1632]), visually verified."
+    }
+  ]
+}

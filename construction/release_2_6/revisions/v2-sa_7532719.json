@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_7532719",
+  "reviewer": "shard3-b6",
+  "notes": "U2 replace was a near-recolour (dumpster -> blue recycling bin): now a glass-recycling igloo. U3 removed a whole apartment building (ill-posed): retargeted to the first black wheelie bin right of the large dumpster. U4 anchor was a washed-out roofline strip of a background building: retargeted to the second black wheelie bin. U1 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7532719/case_sheet.jpg", "release_2_6_work/v2-sa_7532719/U3/final.jpg", "release_2_6_work/v2-sa_7532719/U4/final.jpg"],
+  "difficulty": {"mechanisms": ["street", "vehicles", "occlusion"], "scene_zh": "垃圾车街景", "evidence_zh": "前景垃圾车、右侧大型灰色垃圾箱、其右侧第一个和第二个黑色带轮垃圾桶是四个不同对象。", "specific_protection_zh": "保留垃圾车、垃圾桶和街道背景。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the large grey dumpster at the right", "scope": "dumpster", "payload": "a green bell-shaped glass recycling container"},
+     "ref_zh": "右侧的大型灰色垃圾箱", "scope_zh": "垃圾箱", "physical_parent_zh": "右侧大型垃圾箱", "parent_instance_id": "sa_7532719:右侧大型垃圾箱",
+     "instruction_ref_zh": "将右侧的大型灰色垃圾箱替换为一个绿色钟形玻璃回收箱。",
+     "instruction_noref_zh": "将选中区域替换为一个绿色钟形玻璃回收箱。",
+     "findings_addressed": ["replace_is_attribute"], "reason": "Bin -> blue recycling bin was essentially a recolour; a bell-shaped glass igloo is a genuine structural replacement."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the first black wheelie bin to the right of the large grey dumpster", "scope": "wheelie bin"},
+     "ref_zh": "大型灰色垃圾箱右侧第一个黑色带轮垃圾桶", "scope_zh": "带轮垃圾桶", "physical_parent_zh": "右侧第一个黑色垃圾桶", "parent_instance_id": "sa_7532719:右侧第一个黑色垃圾桶",
+     "instruction_ref_zh": "移除大型灰色垃圾箱右侧第一个黑色带轮垃圾桶。",
+     "findings_addressed": ["ill_posed_edit"], "reason": "Removing a whole apartment block is ill-posed; retargeted to a removable bin (SAM3, checked, no overlap with U2)."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the second black wheelie bin to the right of the large grey dumpster", "scope": "wheelie bin", "payload": "a white recycling sticker"},
+     "ref_zh": "大型灰色垃圾箱右侧第二个黑色带轮垃圾桶", "scope_zh": "带轮垃圾桶", "physical_parent_zh": "右侧第二个黑色垃圾桶", "parent_instance_id": "sa_7532719:右侧第二个黑色垃圾桶",
+     "instruction_ref_zh": "在大型灰色垃圾箱右侧第二个黑色带轮垃圾桶上加上一张白色回收标志贴纸。",
+     "instruction_noref_zh": "在选中区域上加上一张白色回收标志贴纸。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Old anchor was an ambiguous, barely visible roofline strip; awning site unclear. Retargeted to a clear bin as support."}
+  ]
+}

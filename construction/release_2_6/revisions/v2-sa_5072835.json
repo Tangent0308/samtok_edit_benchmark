@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_5072835",
+  "reviewer": "shard2-b9",
+  "notes": "U2 mask is the brown shirt of the leftmost of three mannequins (x~510-640), ref said middle. Fixed ref. Other units checked on the sheet and clean crop; kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5072835/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the brown shirt on the leftmost mannequin"},
+     "ref_zh": "最左侧模特的棕色衬衫",
+     "instruction_ref_zh": "将最左侧模特的棕色衬衫替换为一件藏蓝色亚麻西装外套。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "The masked brown shirt belongs to the leftmost mannequin; the middle one wears a denim vest over a floral dress."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

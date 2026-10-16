@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_1318943",
+  "reviewer": "shard1-b7",
+  "notes": "Audit: U2 'rightmost white car on the quay' wrong (white car behind it and another at the image edge). Clean crop shows two silver VW hatchbacks parked side by side at the quay front (U1 left, U2 right) plus a silver sedan at left behind the boat and white cars behind/right. Both car refs rewritten to the pair. No S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1318943/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the left one of the two silver hatchbacks parked side by side at the front of the quay"},
+     "ref_zh": "码头前沿并排停放的两辆银色掀背车中左边那辆",
+     "instruction_ref_zh": "将码头前沿并排停放的两辆银色掀背车中左边那辆替换为一辆蓝色小型厢式车。",
+     "findings_addressed": [],
+     "reason": "'left white car beside the boat' was loose: the car is silver and another silver sedan sits further left behind the boat railing."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the right one of the two silver hatchbacks parked side by side at the front of the quay"},
+     "ref_zh": "码头前沿并排停放的两辆银色掀背车中右边那辆",
+     "instruction_ref_zh": "移除码头前沿并排停放的两辆银色掀背车中右边那辆。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "A white car is parked behind it and another is cut off at the right edge, so 'rightmost white car' was wrong."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

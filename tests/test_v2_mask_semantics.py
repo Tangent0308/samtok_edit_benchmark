@@ -24,6 +24,7 @@ def test_direct_attachment_site_below_does_not_become_remote_anchor():
             "site": "area below the cuff",
             "anchor_mode": "support",
         },
+        version="2.0",
     )
     assert mask_contract(spec)["anchor_mode"] == "support"
     assert render(spec, False) == "Add a red patch sewn onto the selected region."

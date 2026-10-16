@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_4536573",
+  "reviewer": "shard2-b6",
+  "notes": "U2 replace was only a material change (existing handle is already a metal lever) -> round brass doorknob. U3 mask covered the printed blouse -> v2 mask = pink vest only; dangling 'on its chest' removed from payload.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4536573/case_sheet.jpg", "release_2_6_work/v2-sa_4536573/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a round brass doorknob"},
+     "instruction_ref_zh": "将左门的把手替换为一个黄铜圆形门把手。",
+     "instruction_noref_zh": "将选中区域替换为一个黄铜圆形门把手。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Existing handle is a lever handle on a backplate; a round knob is a genuine structural replacement."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small white name badge"},
+     "instruction_ref_zh": "在缝纫者的粉色马甲上加上一枚小白色姓名牌。",
+     "instruction_noref_zh": "给选中区域加上一枚小白色姓名牌。",
+     "findings_addressed": ["mask_quality", "grammar_style"],
+     "reason": "Payload had dangling 'on its chest'; mask re-segmented (SAM3 'pink vest') to exclude the printed blouse sleeve and front."}
+  ]
+}

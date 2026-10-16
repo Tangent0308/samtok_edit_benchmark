@@ -1,0 +1,31 @@
+{
+  "case_id": "v2-sa_7620275",
+  "reviewer": "shard3-b6",
+  "notes": "U1 value 'matte black' on an already dark grey fence -> dark green colour; U2/U3/U4 refs vague in a crowded shopfront, rewritten with landmarks (verified on clean crop); U4 payload 'blue plaque on a sign' odd -> small blue sticker. Masks are the edited objects (U1 mesh panel mask includes see-through gaps, unavoidable for fine mesh).",
+  "reviewed_views": ["release_2_6_work/v2-sa_7620275/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["architecture", "outdoor", "detail"], "scene_zh": "装饰住宅立面", "evidence_zh": "左下铁栅栏、店门右侧长凳上的白花柳条篮、门廊屋顶右侧下挂着的红色花盆和店门右侧柱子上的白色手绘小牌是四个不同对象。", "specific_protection_zh": "保留住宅立面、门窗和庭院装饰。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+     "instruction_ref_zh": "将左下方的铁栅栏的颜色改为深绿色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+     "findings_addressed": ["attribute_value"], "reason": "Fence is already dark grey/black; matte black gives no visible change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the wicker basket of white flowers on the bench just right of the shop door", "scope": "basket"},
+     "ref_zh": "店门右侧长凳上装着白花的柳条篮", "scope_zh": "篮子", "physical_parent_zh": "白花柳条篮", "parent_instance_id": "sa_7620275:白花柳条篮",
+     "instruction_ref_zh": "将店门右侧长凳上装着白花的柳条篮替换为一个陶瓷花盆。",
+     "instruction_noref_zh": "将选中区域替换为一个陶瓷花盆。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "'decorative item' was vague; mask is the wicker basket of white flowers."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the hanging red flower pot under the right side of the wooden porch roof"},
+     "ref_zh": "木门廊屋顶右侧下方悬挂的红色花盆", "scope_zh": "盆栽", "physical_parent_zh": "悬挂红色花盆", "parent_instance_id": "sa_7620275:悬挂红色花盆",
+     "instruction_ref_zh": "移除木门廊屋顶右侧下方悬挂的红色花盆。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Many potted plants around the center; masked one is the hanging red pot under the porch roof."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the small white hand-painted sign on the post right of the shop door", "payload": "a small blue sticker"},
+     "ref_zh": "店门右侧柱子上的白色手绘小牌", "scope_zh": "标牌", "physical_parent_zh": "白色手绘小牌", "parent_instance_id": "sa_7620275:白色手绘小牌",
+     "instruction_ref_zh": "在店门右侧柱子上的白色手绘小牌上加上一张蓝色小贴纸。",
+     "instruction_noref_zh": "在选中区域上加上一张蓝色小贴纸。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Many small signs; masked one is the white hand-painted sign on the post. Plaque-on-sign was an odd pairing."}
+  ]
+}

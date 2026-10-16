@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_1572241",
+  "reviewer": "shard0b-b2",
+  "notes": "U1 backpack is hot pink, not red; U1 mask = jeans below the knees (y>=975); U4 hip site = image-left hip of the seated jeans (host box 1085-1180 x 865-945). U2/U3 refs and masks verified on the clean image (U3 jeans are blue denim).",
+  "reviewed_views": ["release_2_6_work/v2-sa_1572241/case_sheet.jpg", "release_2_6_work/v2-sa_1572241/U1/final.jpg", "release_2_6_work/v2-sa_1572241/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the jeans of the person with the pink backpack in the middle"},
+     "ref_zh": "中间背粉色背包者的牛仔裤",
+     "physical_parent_zh": "中间背粉色背包者",
+     "parent_instance_id": "sa_1572241:中间背粉色背包者",
+     "instruction_ref_zh": "剪去中间背粉色背包者的牛仔裤的下段裤腿，改成及膝短裤。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Backpack at x744-888 is hot pink/magenta; mask replaced by the cut-off lower legs."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"placement": {"relation": "clipped to", "site": "image-left hip", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给中间条纹上衣坐姿女子的牛仔裤画面左侧的胯部挂上一个小牛仔布袋。",
+     "instruction_noref_zh": "给选中区域加上一个小牛仔布袋。",
+     "findings_addressed": [],
+     "reason": "Seated with her back to the camera; only the image-left hip of the jeans is clear of the backpack, so the site names it and the mask is that hip region."}
+  ]
+}

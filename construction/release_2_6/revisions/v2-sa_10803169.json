@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_10803169",
+  "reviewer": "shard1-b4",
+  "notes": "No audit findings. Protocol 2.0: U1 add site 'front wing' -> v2 mask = front wing (SAM3). U1 payload repeated the existing number 11 already on the nose; changed to a checkered-flag decal. U3 Chinese text value quoted.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10803169/case_sheet.jpg", "release_2_6_work/v2-sa_10803169/U1/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a small white checkered-flag decal"},
+     "instruction_ref_zh": "在赛车的前翼上加上一张白色方格旗小贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张白色方格旗小贴纸。",
+     "findings_addressed": [],
+     "reason": "The car already shows number 11 on its nose; a new, distinct decal avoids duplicating existing content."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {},
+     "instruction_ref_zh": "将赛车上方的黑色“P ZERO”广告板上的文字改为“RACE DAY”。",
+     "findings_addressed": [],
+     "reason": "Chinese text value lacked quotes."}
+  ]
+}

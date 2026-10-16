@@ -1,0 +1,39 @@
+{
+  "case_id": "v2-sa_4697965",
+  "reviewer": "shard2-b7",
+  "notes": "U1 replace was a text-only change of the same rustic wooden sign; now a structural replacement by a cast-iron historical marker. U2 mask covered the whole window incl. glass; v2 mask = window mask minus the SAM3 'window glass' region (frame/trim and sill only). U3 v2 mask: removed a stray fragment left of the plank (host minus box).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_4697965/case_sheet.jpg",
+    "release_2_6_work/v2-sa_4697965/U2/t1.jpg",
+    "release_2_6_work/v2-sa_4697965/U2/t2.jpg",
+    "release_2_6_work/v2-sa_4697965/U2/final.jpg",
+    "release_2_6_work/v2-sa_4697965/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a green cast-iron historical marker plaque with a rounded top"
+      },
+      "instruction_ref_zh": "将木质校舍招牌替换为一块顶部呈圆弧形的绿色铸铁历史标识牌。",
+      "instruction_noref_zh": "将选中区域替换为一块顶部呈圆弧形的绿色铸铁历史标识牌。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Old payload kept category, material and style (weathered wooden sign) and only changed text."
+    },
+    {
+      "id": "U2",
+      "action": "keep",
+      "findings_addressed": [
+        "mask_quality"
+      ],
+      "reason": "Instruction fine; mask fixed to the wooden frame only (U2_v2.png)."
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    }
+  ]
+}

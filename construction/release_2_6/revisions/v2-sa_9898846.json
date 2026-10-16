@@ -1,0 +1,25 @@
+{
+  "case_id": "v2-sa_9898846",
+  "reviewer": "shard0-b7",
+  "notes": "U2/U3 bags hold whole longans, not cut fruit (verified on clean crop x300-1000,y1050-1350). Refs renamed; U2 contents-mode v2 mask = bag incl. longans (host already covers them). U1 rim kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9898846/case_sheet.jpg", "release_2_6_work/v2-sa_9898846/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the plastic bag of longans at the front left", "scope": "bag of longans"},
+     "ref_zh": "左前方的一袋龙眼", "scope_zh": "龙眼袋",
+     "physical_parent_zh": "左前龙眼袋", "parent_instance_id": "sa_9898846:左前龙眼袋",
+     "instruction_ref_zh": "移除左前方的一袋龙眼及其中的物品。",
+     "instruction_noref_zh": "移除选中区域及其中的物品。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Masked bag (356,1174)-(518,1312) contains whole longans; cut starfruit bags sit behind it."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the bag of longans partly hidden behind the pile of loose longans", "scope": "bag of longans"},
+     "ref_zh": "被散装龙眼堆部分遮挡的那袋龙眼", "scope_zh": "龙眼袋",
+     "physical_parent_zh": "散装龙眼后的龙眼袋", "parent_instance_id": "sa_9898846:散装龙眼后的龙眼袋",
+     "instruction_ref_zh": "将被散装龙眼堆部分遮挡的那袋龙眼替换为带盖透明长方形食品盒。",
+     "instruction_noref_zh": "将选中区域替换为带盖透明长方形食品盒。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Masked bag (514,1121)-(679,1293) holds whole longans behind the loose longan pile; the other longan bags (front left, near the vendor) are not behind the pile; dropped loose 'just left of center'."}
+  ]
+}

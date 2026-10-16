@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9298533",
+  "reviewer": "shard7",
+  "notes": "Tail case, all units rewritten. U1 lamp is the tall lantern streetlight at the right above the white fence (ref said left) and already black -> dark green. U2 is the white information board right of the gate (ref said left); colour-only replace -> wooden notice board. U3 removed a worn coat -> now removes the whole woman in the mauve hooded coat (SAM3 v2 person mask). U4 window ref was 'right' but it is left of center -> anchored to the woman taking a photo; payload made specific.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9298533/case_sheet.jpg", "release_2_6_work/v2-sa_9298533/U3/t1.jpg", "release_2_6_work/v2-sa_9298533/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "landmark", "people"], "scene_zh": "清真寺前庭院步道", "evidence_zh": "右侧白色栅栏上方的高大灯笼式路灯、庭院大门右侧墙上的白色告示牌、穿淡紫色连帽长外套走向大门的女子和拍照女子右侧的带栅栏窗户是四个不同对象。", "specific_protection_zh": "保留清真寺、行人、栅栏和庭院墙。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the tall black lantern streetlight at the right, rising above the white fence", "scope": "streetlight", "payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+      "ref_zh": "右侧白色栅栏上方高大的黑色灯笼式路灯",
+      "scope_zh": "路灯",
+      "physical_parent_zh": "右侧高大路灯",
+      "parent_instance_id": "sa_9298533:右侧高大路灯",
+      "instruction_ref_zh": "将右侧白色栅栏上方高大的黑色灯笼式路灯的颜色改为深绿色。",
+      "instruction_noref_zh": "将选中区域的颜色改为深绿色。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked lamp is at cx=0.76 above the white fence; the other right-side lamps are smaller ones by the trees. It is already black, so the value is now dark green."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the white information board on the wall right of the courtyard gate", "scope": "information board", "payload": "a wooden notice board"},
+      "ref_zh": "庭院大门右侧墙上的白色告示牌",
+      "scope_zh": "告示牌",
+      "physical_parent_zh": "大门右侧告示牌",
+      "parent_instance_id": "sa_9298533:大门右侧告示牌",
+      "instruction_ref_zh": "将庭院大门右侧墙上的白色告示牌替换为一块木质告示板。",
+      "instruction_noref_zh": "将选中区域替换为一块木质告示板。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Board is right of the gate (cx=0.66), not left; 'a blue sign' was a recolour -> structural wooden notice board. Mask correctly excludes the occluding man's head."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the woman in the long mauve hooded coat walking toward the gate", "scope": "woman"},
+      "ref_zh": "穿淡紫色连帽长外套走向大门的女子",
+      "scope_zh": "女子",
+      "physical_parent_zh": "穿淡紫色外套的女子",
+      "parent_instance_id": "sa_9298533:穿淡紫色外套的女子",
+      "instruction_ref_zh": "移除穿淡紫色连帽长外套走向大门的女子。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ill_posed_edit"],
+      "reason": "Removing a worn coat is ill-posed; kept remove (operation balance) but on the whole woman. SAM3 t1_1 covers her coat, legs and shoes; the beige-coat woman and the man in black are excluded. She is the only pedestrian in a mauve hooded coat."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the barred window in the courtyard wall just right of the woman taking a photo", "scope": "window", "payload": "a wooden flower box with red flowers"},
+      "ref_zh": "拍照女子右侧庭院墙上的带栅栏窗户",
+      "scope_zh": "窗户",
+      "physical_parent_zh": "拍照女子右侧的窗户",
+      "parent_instance_id": "sa_9298533:拍照女子右侧的窗户",
+      "instruction_ref_zh": "在拍照女子右侧庭院墙上的带栅栏窗户上加上一个种着红花的木质花箱。",
+      "instruction_noref_zh": "给选中区域加上一个种着红花的木质花箱。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Window is left of center (cx=0.42) among many identical windows; the photographing woman (x~850) is the nearest unique landmark and the window is immediately to her right. Payload specified."
+    }
+  ]
+}

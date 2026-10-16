@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_4789458",
+  "reviewer": "shard2-b7",
+  "notes": "U3 guardrail mask contained many road-surface fragments behind the rail; v2 mask = SAM3 'metal guardrail' minus the fragment candidate (beam + posts only). Dangling 'on its nearest section' removed from the payload (anchor stays the whole guardrail).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4789458/case_sheet.jpg", "release_2_6_work/v2-sa_4789458/U3/t1.jpg", "release_2_6_work/v2-sa_4789458/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small rectangular yellow reflector"},
+     "instruction_ref_zh": "在前景的金属护栏上加上一枚小矩形黄色反光片。",
+     "instruction_noref_zh": "给选中区域加上一枚小矩形黄色反光片。",
+     "findings_addressed": ["mask_quality", "grammar_style"],
+     "reason": "Payload had dangling 'its nearest section'; mask cleaned to the rail and posts."}
+  ]
+}

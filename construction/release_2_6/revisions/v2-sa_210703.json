@@ -1,0 +1,60 @@
+{
+  "case_id": "v2-sa_210703",
+  "reviewer": "round2",
+  "notes": "原图侧面已有多个救生圈，新增改小登记标签并选择红色侧防撞条中段；U2本已玻璃顶，改为双层敞开上甲板游船形成结构变化。",
+  "reviewed_views": [
+    "assets/v2-sa_210703/source.jpg",
+    "release_2_6_work/v2-sa_210703/case_sheet.jpg",
+    "release_2_6_work/v2-sa_210703/U1/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "occlusion",
+      "reflection",
+      "small_targets"
+    ],
+    "scene_zh": "河边游船队列与码头篷",
+    "evidence_zh": "不同源对象：最近的红边游船；最近游船后方的蓝色游船；左侧码头的绿色顶篷；最右侧远处的橙白色小船。",
+    "specific_protection_zh": "保留其他船、乘客、岸边人群、建筑、栏杆与水面反射。"
+  },
+  "units": [
+    {
+      "spec": {
+        "payload": "a small white registration label",
+        "placement": {
+          "relation": "on",
+          "site": "middle section of the red side bumper"
+        }
+      },
+      "instruction_ref_zh": "在最近的红边游船的红色侧面防撞条中段加上一张小白色登记标签。",
+      "id": "U1",
+      "action": "revise",
+      "ref_zh": "最近的红边游船",
+      "scope_zh": "船",
+      "physical_parent_zh": "近游船",
+      "parent_instance_id": "sa_210703:nearest_boat",
+      "category": "boat"
+    },
+    {
+      "spec": {
+        "payload": "a white double-deck tour boat with an open upper deck"
+      },
+      "instruction_ref_zh": "将最近游船后方的蓝色游船替换为一艘带敞开式上层甲板的白色双层游船。",
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "最近游船后方的蓝色游船",
+      "scope_zh": "船",
+      "physical_parent_zh": "第二船",
+      "parent_instance_id": "sa_210703:second_boat",
+      "category": "boat"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ]
+}

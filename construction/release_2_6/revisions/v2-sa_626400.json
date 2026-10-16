@@ -1,0 +1,60 @@
+{
+  "case_id": "v2-sa_626400",
+  "reviewer": "round2",
+  "notes": "Verified targets on source and individual zooms; use wearer-neutral wording for blurred U2 owner. Replace rectangular flag with a swallowtail banner for a visible structural change. Localize decal site.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_626400/case_sheet.jpg",
+    "assets/v2-sa_626400/source.jpg",
+    "release_2_6_work/v2-sa_626400/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the turquoise T-shirt on the person in sunglasses at the right edge"
+      },
+      "ref_zh": "画面右缘戴墨镜者的青绿色T恤",
+      "physical_parent_zh": "右缘戴墨镜者",
+      "parent_instance_id": "sa_626400:右缘戴墨镜者",
+      "instruction_ref_zh": "将画面右缘戴墨镜者的青绿色T恤的颜色改为珊瑚粉色。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "Avoid incorrect woman description; sunglasses and right edge identify the wearer."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "payload": "a dark blue swallowtail banner"
+      },
+      "instruction_ref_zh": "将缆车上方的大幅美国国旗替换为一面深蓝色燕尾长旗。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "A deeply forked banner changes the rectangular flag structure."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "payload": "one small white accessibility decal",
+        "placement": {
+          "relation": "on",
+          "site": "upper image-left corner",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在缆车左前窗画面左上角加上一枚小白色无障碍标识贴纸。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Move location out of payload into site; support mask is upper image-left window corner."
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_1539716",
+  "reviewer": "shard0b-b2",
+  "notes": "U2 ref named the wrong shirt (cap wearer wears a blue BMW shirt). U4/U5 add sites masked as host-box regions (front crown above the brim). U5 site changed to front: the visible face of that cap is its front panel with the logo; ref disambiguated from a second white cap just above it at x60-120,y727-755.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1539716/case_sheet.jpg", "release_2_6_work/v2-sa_1539716/U4/final.jpg", "release_2_6_work/v2-sa_1539716/U5/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the dark cap of the runner in the blue BMW shirt on the right"},
+     "ref_zh": "右侧穿蓝色BMW上衣跑者的深色棒球帽",
+     "physical_parent_zh": "右侧蓝色BMW上衣跑者",
+     "parent_instance_id": "sa_1539716:右侧蓝色BMW上衣跑者",
+     "instruction_ref_zh": "将右侧穿蓝色BMW上衣跑者的深色棒球帽替换为藏蓝色渔夫帽。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked cap (x1379-1468) is worn by the runner in the blue BMW shirt; the white-shirted person beside him wears no cap."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"},
+    {"id": "U5", "action": "revise",
+     "spec": {"ref": "the nearer white cap with a dark logo at the far left", "placement": {"relation": "on", "site": "front", "anchor_mode": "support"}},
+     "ref_zh": "最左侧较近处带深色标志的白色棒球帽",
+     "instruction_ref_zh": "给最左侧较近处带深色标志的白色棒球帽的正面加上一块小旗帜贴布。",
+     "instruction_noref_zh": "给选中区域加上一块小旗帜贴布。",
+     "findings_addressed": [],
+     "reason": "Cap faces the camera, so the visible site is its front panel (mask = crown above the brim); a second white cap sits just above it at the far left."}
+  ]
+}

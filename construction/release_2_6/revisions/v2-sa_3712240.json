@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_3712240",
+  "reviewer": "shard2-b1",
+  "notes": "U1 van -> white electric van was effectively a recolour; now van -> yellow taxi sedan. Other units checked, unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3712240/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a yellow taxi sedan"},
+     "instruction_ref_zh": "将最靠近镜头的黑色面包车替换为一辆黄色出租轿车。",
+     "instruction_noref_zh": "将选中区域替换为一辆黄色出租轿车。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same van shape, only colour visibly changes; a sedan taxi is a body-type change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

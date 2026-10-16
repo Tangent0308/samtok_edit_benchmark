@@ -1,0 +1,15 @@
+{
+  "case_id": "v2-sa_5005220",
+  "reviewer": "shard2-b8",
+  "notes": "U4: a black van sits between the masked black sedan and the red hatchback and another black sedan is farther left; ref re-anchored to the van. Dangling 'its roof' moved to placement.site; mask shrunk to the visible roof strip (host ∩ box).",
+  "reviewed_views": ["release_2_6_work/v2-sa_5005220/case_sheet.jpg", "release_2_6_work/v2-sa_5005220/U4/t1.jpg", "release_2_6_work/v2-sa_5005220/U4/final.jpg"],
+  "units": [
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the black sedan directly left of the black van", "payload": "a small white TAXI sign", "placement": {"relation": "on", "site": "roof", "anchor_mode": "support"}},
+     "ref_zh": "黑色厢式车左侧紧邻的黑色轿车",
+     "instruction_ref_zh": "在黑色厢式车左侧紧邻的黑色轿车的车顶上加上一块小白色TAXI灯牌。",
+     "instruction_noref_zh": "给选中区域加上一块小白色TAXI灯牌。",
+     "findings_addressed": ["ambiguous_ref", "grammar_style"],
+     "reason": "Masked sedan (x 389-580) is separated from the red hatchback by a black van (x~580-740); another black sedan at x~190-330. Roof is now the site."}
+  ]
+}

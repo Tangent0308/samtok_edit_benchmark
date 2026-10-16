@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_5884999",
+  "reviewer": "shard2b-b1",
+  "notes": "U4 payload had dangling 'on its pole'; folded into a plain add on the streetlamp (sign naturally mounts on the pole), no site so mask stays the lamp. Clean-image check: U2 bucket is white with an orange label (the blue-bottomed bucket is the one further left), ref fixed.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5884999/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the white bucket with an orange label just left of the foreground man's hand"},
+     "ref_zh": "前景男子手边左侧贴橙色标签的白色桶",
+     "instruction_ref_zh": "移除前景男子手边左侧贴橙色标签的白色桶。",
+     "findings_addressed": [],
+     "reason": "Self-found: masked bucket (x~1375-1520, y~1300-1470) is white/grey with an orange label; the bucket with blue base is the neighbour at x~1250-1375, so 'blue bucket' pointed at the wrong instance."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small blue FISHING PERMITTED sign", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给右侧的高路灯加上一块小蓝色FISHING PERMITTED牌。",
+     "instruction_noref_zh": "给选中区域加上一块小蓝色FISHING PERMITTED牌。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its pole' from payload; the lamp is essentially a pole, so the sign on the streetlamp needs no separate site and the mask (whole lamp) is the support."}
+  ]
+}

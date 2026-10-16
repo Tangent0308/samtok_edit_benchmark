@@ -1,0 +1,19 @@
+{
+  "case_id": "v2-sa_3110521",
+  "reviewer": "shard1b-b5",
+  "notes": "U1 masked item is a purple cloth headscarf tied over the brown hair of the woman at center-left (box x677-1046), not a hat; ref/scope renamed. U2 checked on the clean image: black jacket with white stripe. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3110521/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the purple headscarf of the long-haired woman at center-left", "scope": "headscarf"},
+     "ref_zh": "左中部长发女子的紫色头巾",
+     "scope_zh": "头巾",
+     "instruction_ref_zh": "将左中部长发女子的紫色头巾替换为一顶白色渔夫帽。",
+     "instruction_noref_zh": "将选中区域替换为一顶白色渔夫帽。",
+     "findings_addressed": ["category_mismatch"],
+     "reason": "Object is a tied cloth headscarf, wearer is center-left of the frame (x~0.3-0.47W)."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_38691",
+  "reviewer": "shard2-b2",
+  "notes": "U2 'nearest balcony railing on the right bank' was wrong: the masked balcony (1750-1951 x 1004-1156) is the small projecting one at the bridge-side end of the right-bank warehouse; galleries further right are nearer the camera. Ref rewritten, mask unchanged. U1 (green building by the bridge, verified on clean crop) and U3 verified.",
+  "reviewed_views": ["release_2_6_work/v2-sa_38691/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the small projecting balcony railing at the bridge-side end of the right-bank warehouse"},
+     "ref_zh": "右岸仓库靠桥一端的小型凸出阳台栏杆",
+     "scope_zh": "栏杆",
+     "instruction_ref_zh": "在右岸仓库靠桥一端的小型凸出阳台栏杆上加上一个种有红花的窄花槽。",
+     "instruction_noref_zh": "给选中区域加上一个种有红花的窄花槽。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked balcony is the far (bridge-side) one, not the nearest."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

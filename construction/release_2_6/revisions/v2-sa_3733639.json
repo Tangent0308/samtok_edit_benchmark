@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_3733639",
+  "reviewer": "shard2-b1",
+  "notes": "U1 parasol->parasol recolour replaced by a round thatched straw umbrella (shape/material/structure change); U3 awkward 'perched on top on' payload cleaned to a self-contained payload. U2 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3733639/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a round thatched straw umbrella"},
+     "instruction_ref_zh": "将右下方的深色咖啡馆遮阳伞替换为一把圆形茅草遮阳伞。",
+     "instruction_noref_zh": "将选中区域替换为一把圆形茅草遮阳伞。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Square fabric parasol -> round thatched straw umbrella changes shape and structure, not just colour; an awning would float unattached here."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small grey pigeon"},
+     "instruction_ref_zh": "在右侧较矮建筑最左边的烟囱上加上一只灰色小鸽子。",
+     "instruction_noref_zh": "给选中区域加上一只灰色小鸽子。",
+     "findings_addressed": [],
+     "reason": "Payload 'a small pigeon perched on top' rendered as 'perched on top on the ...'; payload made self-contained (relation 'on' already places it on the chimney)."}
+  ]
+}

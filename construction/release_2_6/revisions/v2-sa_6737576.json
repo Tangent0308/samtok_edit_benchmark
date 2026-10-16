@@ -1,0 +1,52 @@
+{
+  "case_id": "v2-sa_6737576",
+  "reviewer": "round2",
+  "notes": "原图确认U1为军帽左上方人物胯部挎包、U3为右上方背景人物裤装，新增空间参照排除其他背景人物；长裤替换为及膝短裤形成裤长结构变化。",
+  "reviewed_views": [
+    "assets/v2-sa_6737576/source.jpg",
+    "release_2_6_work/v2-sa_6737576/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "spec": {
+        "ref": "the satchel at the hip of the background figure immediately left of the foreground soldier's cap"
+      },
+      "ref_zh": "前景士兵军帽正左侧后方人物胯部的挎包",
+      "instruction_ref_zh": "移除前景士兵军帽正左侧后方人物胯部的挎包。",
+      "id": "U1",
+      "action": "revise",
+      "scope_zh": "挎包",
+      "physical_parent_zh": "后方挎包",
+      "parent_instance_id": "sa_6737576:background_satchel",
+      "category": "satchel"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "ref": "the black trousers on the background figure at the upper right",
+        "payload": "a pair of knee-length pleated shorts"
+      },
+      "ref_zh": "右上方后方人物的黑色长裤",
+      "instruction_ref_zh": "将右上方后方人物的黑色长裤替换为一条及膝褶裥短裤。",
+      "id": "U3",
+      "action": "revise",
+      "scope_zh": "长裤",
+      "physical_parent_zh": "后方长裤",
+      "parent_instance_id": "sa_6737576:background_trousers",
+      "category": "trousers"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "historical",
+      "sepia",
+      "occlusion"
+    ],
+    "scene_zh": "持步枪的历史人物",
+    "evidence_zh": "三个不同对象：前景士兵军帽正左侧后方人物胯部的挎包；前景人物的外衣；右上方后方人物的黑色长裤。",
+    "specific_protection_zh": "保留人物姿态、步枪、帽子和历史影像色调。"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "case_id": "v2-sa_2012261",
+  "reviewer": "round2",
+  "notes": "Source reviewed. U1 replacement now compact pickup, preserving structural replace. U4 selects lower image-left windshield corner only, avoiding bodywork and whole-window anchor.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2012261/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2012261/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a red compact pickup truck"
+      },
+      "instruction_ref_zh": "将前景汽车后方的白色两厢车替换为一辆红色小型皮卡。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Pickup introduces a separate cargo bed and changes silhouette; blue compact hatchback only changed color."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "placement": {
+          "relation": "on",
+          "site": "lower image-left corner",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给前景汽车挡风玻璃画面左下角加上一张小停车许可证贴纸。",
+      "reason": "Disambiguated which lower corner; committed compact host intersection at that corner."
+    }
+  ]
+}

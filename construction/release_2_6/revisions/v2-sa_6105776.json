@@ -1,0 +1,41 @@
+{
+  "case_id": "v2-sa_6105776",
+  "reviewer": "round2",
+  "notes": "U3 headscarf is red (not magenta) and a second red headscarf exists on the walking woman at right; ref now uses the green food cart. U2 (self-found): bag hangs from a parked scooter, not the food cart, and brown canvas tote was only colour/material; ref and payload fixed. Round2: rechecked source and all unit masks; confirmed prior revision before logging.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_6105776/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the light turquoise tote bag hanging from the scooter in front of the green food cart",
+        "scope": "tote bag",
+        "payload": "a woven rattan basket"
+      },
+      "ref_zh": "绿色餐车前摩托车上挂着的浅青绿色手提袋",
+      "scope_zh": "手提袋",
+      "instruction_ref_zh": "将绿色餐车前摩托车上挂着的浅青绿色手提袋替换为一个藤编篮子。",
+      "findings_addressed": [
+        "self:wrong_support_in_ref",
+        "self:replace_is_attribute"
+      ],
+      "reason": "Clean zoom shows the bag hanging from the scooter handlebar in front of the cart; tote->tote was a recolour.",
+      "category": "tote bag"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the long red headscarf of the woman standing beside the green food cart"
+      },
+      "ref_zh": "绿色餐车旁站着的女子的红色长头巾",
+      "instruction_ref_zh": "将绿色餐车旁站着的女子的红色长头巾的颜色改为藏蓝色。",
+      "findings_addressed": [
+        "grammar_style"
+      ],
+      "reason": "Headscarf is red/maroon, not magenta; 'near the center' did not exclude the red headscarf of the woman walking at right."
+    }
+  ]
+}

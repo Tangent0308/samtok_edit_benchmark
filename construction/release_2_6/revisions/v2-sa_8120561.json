@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_8120561",
+  "reviewer": "shard1-b1",
+  "notes": "U2 jacket is a dark near-black leather-look jacket (blue cast only from grading); ref fixed. U3 add site 'visible chest' -> v2 mask = jacket piece below the passenger's face right of the lamp (host ∩ box [795,570,925,720]); payload made white for contrast against the maroon jacket; ZH cleaned.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8120561/case_sheet.jpg", "release_2_6_work/v2-sa_8120561/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the elevated carriage driver's dark leather jacket"},
+     "ref_zh": "高处车夫的深色皮夹克",
+     "instruction_ref_zh": "将高处车夫的深色皮夹克改为深棕色。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Jacket is dark/near-black leather-look, not blue."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "one small white flower pin"},
+     "instruction_ref_zh": "给左后方被车灯挡住的乘客外套的可见胸前加上一枚小白花别针。",
+     "instruction_noref_zh": "给选中区域加上一枚小白花别针。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask is now the visible chest site (U3_v2.png). Red pin on maroon jacket was low contrast; ZH was garbled ('可见部分...位于可见胸部')."}
+  ]
+}

@@ -1,0 +1,1070 @@
+=== CASE v2-sa_3798228  (manifest #17, image 1500x2128, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_3798228.jpg
+  case evidence_zh: 两条领带分别紧贴衬衣和西服，其中一条被器材遮住；三脚架的细杆被手和机身遮挡，杆间可见背景不能连带改动。
+  [U1] op=remove formal_input=ref+box  category=tie physical_parent_zh=右侧受访者
+     box=[844, 560, 1015, 1318] center=(0.62W,0.44H) area=0.0182 comps=1
+     REF  : Remove the interviewee's long tie.
+     NOREF: Remove the selected tie.
+     ZH   : 移除受访者的长领带。 | 移除选中的领带。
+     spec : scope='tie' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=replace formal_input=noref+mask  category=tie physical_parent_zh=左侧摄影者
+     box=[89, 538, 172, 765] center=(0.09W,0.31H) area=0.0022 comps=1
+     REF  : Replace the tie below the camera operator's collar with a navy bow tie.
+     NOREF: Replace the selected tie with a navy bow tie.
+     ZH   : 将摄影者衣领下的领带替换为藏蓝色领结。 | 将选中的领带替换为藏蓝色领结。
+     spec : scope='tie' payload='a navy bow tie' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=add formal_input=ref+none  category=tripod physical_parent_zh=摄影三脚架
+     box=[60, 702, 950, 2128] center=(0.34W,0.66H) area=0.0704 comps=2
+     REF  : Add one small black equipment pouch hanging from the center brace of the camera tripod.
+     NOREF: Add one small black equipment pouch hanging from the center brace of the selected tripod.
+     ZH   : 给摄影三脚架的可见结构加上一个挂在中央撑杆上的小黑色器材袋。 | 给选中的三脚架加上一个挂在中央撑杆上的小黑色器材袋。
+     spec : scope='tripod' payload='one small black equipment pouch' target_part='' remove_mode=whole placement={'relation': 'hanging from', 'site': 'center brace', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U3 noref_location_leak (minor): noref has location words ['center']
+
+=== CASE v2-sa_9681021  (manifest #44, image 2065x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_9681021.jpg
+  case evidence_zh: 三名相邻行人的裤腿互相遮挡，另两名人物姿态不同；裤腿间空隙、鞋面与手持物需保护。
+  [U1] op=add formal_input=ref+point  category=top physical_parent_zh=左侧抱臂男子
+     box=[36, 1059, 164, 1255] center=(0.05W,0.77H) area=0.0062 comps=1
+     REF  : Add one small zipped chest pocket sewn onto the top of the folded-arm man at the far left.
+     NOREF: Add one small zipped chest pocket sewn onto the selected top.
+     ZH   : 给画面左侧抱臂男子的上衣加上一个小拉链胸袋。 | 给选中的上衣加上一个小拉链胸袋。
+     spec : scope='top' payload='one small zipped chest pocket' target_part='' remove_mode=whole placement={'relation': 'sewn onto', 'anchor_mode': 'support'} attrs=[]
+  [U2] op=attribute formal_input=noref+point  category=top physical_parent_zh=蹲着拍照者
+     box=[1236, 1132, 1334, 1254] center=(0.62W,0.80H) area=0.0020 comps=1
+     REF  : Change the color of the top of the crouching photographer on the right to burgundy.
+     NOREF: Change the color of the selected top to burgundy.
+     ZH   : 将右侧蹲着拍照者的上衣改为酒红色。 | 将选中的上衣改为酒红色。
+     spec : scope='top' payload='burgundy' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'burgundy'}]
+  [U3] op=remove formal_input=ref+box  category=trousers physical_parent_zh=中央最前方男子
+     box=[642, 1202, 737, 1399] center=(0.33W,0.87H) area=0.0040 comps=1
+     REF  : Remove the lower legs of the jeans of the foremost man in the center to make knee-length shorts.
+     NOREF: Remove the lower legs of the selected trousers to make knee-length shorts.
+     ZH   : 剪去中央最前方男子的牛仔裤的下段裤腿，改成及膝短裤。 | 剪去选中的长裤的下段裤腿，改成及膝短裤。
+     spec : scope='trousers' payload='' target_part='' remove_mode=lowerlegs placement={} attrs=[]
+  [U4] op=replace formal_input=noref+mask  category=trousers physical_parent_zh=中央女子
+     box=[756, 1237, 833, 1382] center=(0.38W,0.87H) area=0.0026 comps=1
+     REF  : Replace the dark trousers of the woman in the center with beige wide-leg culottes.
+     NOREF: Replace the selected trousers with beige wide-leg culottes.
+     ZH   : 将中央女子的深色长裤替换为米色阔腿裙裤。 | 将选中的长裤替换为米色阔腿裙裤。
+     spec : scope='trousers' payload='beige wide-leg culottes' target_part='' remove_mode=whole placement={} attrs=[]
+  [U5] op=attribute formal_input=ref+none  category=trousers physical_parent_zh=中央女子身后男子
+     box=[833, 1168, 890, 1355] center=(0.42W,0.84H) area=0.0023 comps=1
+     REF  : Change the color of the trousers visible on the man behind the central woman to light gray.
+     NOREF: Change the color of the selected trousers to light gray.
+     ZH   : 将中央女子身后男子的可见长裤改为浅灰色。 | 将选中的长裤改为浅灰色。
+     spec : scope='trousers' payload='light gray' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'light gray'}]
+  AUTO-FLAG U3 spatial_contradiction (blocking): center but cx=0.33 cy=0.87
+  AUTO-FLAG U3 zh_op_mismatch (minor): ref: op remove not reflected in zh "剪去中央最前方男子的牛仔裤的下段裤腿，改成及膝短裤。"
+  AUTO-FLAG U3 zh_op_mismatch (minor): noref: op remove not reflected in zh "剪去选中的长裤的下段裤腿，改成及膝短裤。"
+  AUTO-FLAG U4 spatial_contradiction (blocking): center but cx=0.38 cy=0.87
+
+=== CASE v2-sa_2992365  (manifest #71, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_2992365.jpg
+  case evidence_zh: 五个独立物体或人物部件；裤子被前方头部和邻人遮挡，提包有细把手。
+  [U1] op=attribute formal_input=ref+none  category=trousers physical_parent_zh=左中站立男子
+     box=[713, 452, 936, 691] center=(0.37W,0.38H) area=0.0065 comps=1
+     REF  : Change the color of the trousers of the standing man at the left center to charcoal gray.
+     NOREF: Change the color of the selected trousers to charcoal gray.
+     ZH   : 将左中站立男子的长裤改为炭灰色。 | 将选中的长裤改为炭灰色。
+     spec : scope='trousers' payload='charcoal gray' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'charcoal gray'}]
+  [U2] op=remove formal_input=ref+mask  category=handbag physical_parent_zh=前排地面手提包
+     box=[1394, 1275, 1498, 1416] center=(0.64W,0.90H) area=0.0031 comps=1
+     REF  : Remove the brown handbag beside the front-row man's feet.
+     NOREF: Remove the selected handbag.
+     ZH   : 移除前排男子脚边的棕色手提包。 | 移除选中的手提包。
+     spec : scope='handbag' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=add formal_input=noref+box  category=shirt physical_parent_zh=前排持杯男子
+     box=[1459, 822, 1668, 1067] center=(0.69W,0.63H) area=0.0097 comps=1
+     REF  : Add one small chest pocket sewn onto the shirt of the front-row man holding a red cup.
+     NOREF: Add one small chest pocket sewn onto the selected shirt.
+     ZH   : 给前排手持红杯男子的短袖衬衫加上一个小胸袋。 | 给选中的衬衫加上一个小胸袋。
+     spec : scope='shirt' payload='one small chest pocket' target_part='' remove_mode=whole placement={'relation': 'sewn onto', 'anchor_mode': 'support'} attrs=[]
+  [U4] op=replace formal_input=ref+point  category=trousers physical_parent_zh=右中长发女子
+     box=[1830, 708, 2021, 921] center=(0.86W,0.54H) area=0.0054 comps=1
+     REF  : Replace the trousers of the long-haired woman in the middle row on the right with a pleated navy midi skirt.
+     NOREF: Replace the selected trousers with a pleated navy midi skirt.
+     ZH   : 将右侧中排长发女子的长裤替换为藏蓝色百褶中长裙。 | 将选中的长裤替换为藏蓝色百褶中长裙。
+     spec : scope='trousers' payload='a pleated navy midi skirt' target_part='' remove_mode=whole placement={} attrs=[]
+  [U5] op=remove formal_input=noref+point  category=trousers physical_parent_zh=右上男子
+     box=[1270, 209, 1381, 352] center=(0.59W,0.19H) area=0.0023 comps=1
+     REF  : Remove the lower legs of the trousers of the man holding a bag in the upper-right row to make knee-length shorts.
+     NOREF: Remove the lower legs of the selected trousers to make knee-length shorts.
+     ZH   : 剪去右上排持袋男子的长裤的下段裤腿，改成及膝短裤。 | 剪去选中的长裤的下段裤腿，改成及膝短裤。
+     spec : scope='trousers' payload='' target_part='' remove_mode=lowerlegs placement={} attrs=[]
+  AUTO-FLAG U5 zh_op_mismatch (minor): ref: op remove not reflected in zh "剪去右上排持袋男子的长裤的下段裤腿，改成及膝短裤。"
+  AUTO-FLAG U5 zh_op_mismatch (minor): noref: op remove not reflected in zh "剪去选中的长裤的下段裤腿，改成及膝短裤。"
+
+=== CASE v2-sa_10691142  (manifest #102, image 2250x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_10691142.jpg
+  case evidence_zh: 三个人各一只袖子，另一个目标属于独立背包；袖缝、背带和围巾相邻。
+  [U1] op=remove formal_input=noref+box  category=sleeve physical_parent_zh=左前绿衣者
+     box=[7, 912, 291, 1470] center=(0.07W,0.79H) area=0.0314 comps=1
+     REF  : Remove the image-left sleeve of the green-shirted fan at the front left.
+     NOREF: Remove the selected sleeve.
+     ZH   : 移除左前绿衣者画面左侧的袖子。 | 移除选中的衣袖。
+     spec : scope='sleeve' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=replace formal_input=ref+point  category=sleeve physical_parent_zh=右前深蓝衣者
+     box=[1613, 786, 1786, 992] center=(0.76W,0.59H) area=0.0043 comps=2
+     REF  : Replace the image-left sleeve of the dark-blue-shirted fan at the front right with a fitted long sleeve with a ribbed cuff.
+     NOREF: Replace the selected sleeve with a fitted long sleeve with a ribbed cuff.
+     ZH   : 将右前深蓝衣者画面左侧的袖子替换为带罗纹袖口的修身长袖。 | 将选中的衣袖替换为带罗纹袖口的修身长袖。
+     spec : scope='sleeve' payload='a fitted long sleeve with a ribbed cuff' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=attribute formal_input=noref+point  category=sleeve physical_parent_zh=中间面具者
+     box=[878, 747, 1066, 904] center=(0.43W,0.55H) area=0.0058 comps=1
+     REF  : Change the color of the masked fan's sleeve extending toward the image left to white.
+     NOREF: Change the color of the selected sleeve to white.
+     ZH   : 将中间面具者向画面左侧伸出的衣袖改为白色。 | 将选中的衣袖改为白色。
+     spec : scope='sleeve' payload='white' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'white'}]
+  [U4] op=add formal_input=ref+box  category=strap physical_parent_zh=右前人物的背包
+     box=[1728, 752, 1841, 1061] center=(0.79W,0.60H) area=0.0049 comps=1
+     REF  : Add one gray padded shoulder cover over the backpack strap on the image-left shoulder of the fan in dark blue.
+     NOREF: Add one gray padded shoulder cover over the selected strap.
+     ZH   : 给右前深蓝衣者画面左肩的背包带加上一个灰色软垫肩套。 | 给选中的带子加上一个灰色软垫肩套。
+     spec : scope='strap' payload='one gray padded shoulder cover' target_part='' remove_mode=whole placement={'relation': 'over', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_3435597  (manifest #135, image 2258x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_3435597.jpg
+  case evidence_zh: 裤子被多根栏杆切成分离窄块，两个伞面都被前排头部遮住边缘。
+  [U1] op=replace formal_input=ref+none  category=umbrella canopy physical_parent_zh=左侧黑伞
+     box=[116, 681, 333, 755] center=(0.10W,0.48H) area=0.0030 comps=1
+     REF  : Replace the dark umbrella canopy above the crowd on the left with a square black umbrella canopy.
+     NOREF: Replace the selected umbrella canopy with a square black umbrella canopy.
+     ZH   : 将左侧人群后方黑色雨伞的伞面替换为方形黑色伞面。 | 将选中的伞面替换为方形黑色伞面。
+     spec : scope='umbrella canopy' payload='a square black umbrella canopy' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=ref+mask  category=umbrella canopy physical_parent_zh=左中黄伞
+     box=[419, 690, 612, 757] center=(0.23W,0.48H) area=0.0018 comps=1
+     REF  : Change the color of the yellow umbrella canopy near the middle left to sky blue.
+     NOREF: Change the color of the selected umbrella canopy to sky blue.
+     ZH   : 将左中黄色雨伞的伞面改为天蓝色。 | 将选中的伞面改为天蓝色。
+     spec : scope='umbrella canopy' payload='sky blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'sky blue'}]
+  [U3] op=add formal_input=noref+box  category=trousers physical_parent_zh=最左护栏后男子
+     box=[0, 1085, 163, 1423] center=(0.04W,0.84H) area=0.0099 comps=3
+     REF  : Add one small flap pocket on the visible outer thigh of the trousers of the man behind the railing at the far left.
+     NOREF: Add one small flap pocket on the visible outer thigh of the selected trousers.
+     ZH   : 给最左侧护栏后男子的长裤可见部分加上一个位于可见大腿外侧的小袋盖口袋。 | 给选中的长裤加上一个位于可见大腿外侧的小袋盖口袋。
+     spec : scope='trousers' payload='one small flap pocket' target_part='' remove_mode=whole placement={'relation': 'on', 'site': 'visible outer thigh', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_5953627  (manifest #163, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_5953627.jpg
+  case evidence_zh: 嵌套容器、凳腿孔洞与塑料袋提手需要各自准确边界；可见碗壁不含袋内物。
+  [U1] op=remove formal_input=noref+mask  category=woven cover physical_parent_zh=左侧编织圆盖
+     box=[250, 496, 553, 883] center=(0.18W,0.46H) area=0.0244 comps=1
+     REF  : Remove the upright round woven cover on the left.
+     NOREF: Remove the selected woven cover.
+     ZH   : 移除左侧竖立的圆形编织盖。 | 移除选中的编织盖。
+     spec : scope='woven cover' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=ref+none  category=bowl wall physical_parent_zh=左侧金属碗
+     box=[438, 845, 772, 947] center=(0.27W,0.60H) area=0.0053 comps=1
+     REF  : Change the material of the exposed wall of the metal bowl holding plastic bags on the left to white glazed ceramic.
+     NOREF: Change the material of the selected bowl wall to white glazed ceramic.
+     ZH   : 将左侧装塑料袋的金属碗可见碗壁的材质改为白色釉面陶瓷。 | 将选中的碗壁的材质改为白色釉面陶瓷。
+     spec : scope='bowl wall' payload='white glazed ceramic' target_part='' remove_mode=whole placement={} attrs=[{'property': 'material', 'value': 'white glazed ceramic'}]
+  [U3] op=replace formal_input=ref+mask  category=container physical_parent_zh=右上编织下层容器
+     box=[2066, 442, 2250, 557] center=(0.96W,0.33H) area=0.0039 comps=1
+     REF  : Replace the lower exposed woven container in the stack at the upper right with a shallow round wooden bowl.
+     NOREF: Replace the selected container with a shallow round wooden bowl.
+     ZH   : 将右上叠放编织容器中下层露出的容器替换为浅圆木碗。 | 将选中的容器替换为浅圆木碗。
+     spec : scope='container' payload='a shallow round wooden bowl' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+box  category=stool physical_parent_zh=右侧红凳
+     box=[1933, 820, 2117, 988] center=(0.90W,0.60H) area=0.0048 comps=1
+     REF  : Add one small round blue seat cushion on the small stool partly hidden behind the baskets on the right.
+     NOREF: Add one small round blue seat cushion on the selected stool.
+     ZH   : 给右侧篮筐后露出的红色小凳加上一个小圆蓝色坐垫。 | 给选中的凳子加上一个小圆蓝色坐垫。
+     spec : scope='stool' payload='one small round blue seat cushion' target_part='' remove_mode=whole placement={'relation': 'on', 'anchor_mode': 'support'} attrs=[]
+  [U5] op=remove formal_input=ref+point  category=bag physical_parent_zh=右后浅绿袋
+     box=[1523, 682, 1741, 847] center=(0.73W,0.51H) area=0.0057 comps=1
+     REF  : Remove the pale-green plastic bag on the rim of the rectangular basket at the right rear, including its contents.
+     NOREF: Remove the selected bag, including its contents.
+     ZH   : 移除右后方长方篮上沿的浅绿色塑料袋及其中的物品。 | 移除选中的包及其中的物品。
+     spec : scope='bag' payload='' target_part='' remove_mode=contents placement={} attrs=[]
+  AUTO-FLAG U5 remove_scope_missing (major): remove_mode=contents target_part= but no scope phrase
+
+=== CASE v2-sa_8830719  (manifest #196, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_8830719.jpg
+  case evidence_zh: 五件外套被手、头发、背包和木箱遮挡，俯身袖子需与腿及箱沿分开。
+  [U1] op=remove formal_input=ref+none  category=jacket physical_parent_zh=左侧深蓝外套男子
+     box=[105, 152, 370, 630] center=(0.11W,0.26H) area=0.0253 comps=1
+     REF  : Remove the hood from the hooded jacket of the hat-wearing man on the left.
+     NOREF: Remove the hood from the selected jacket.
+     ZH   : 移除左侧戴帽男子的深蓝连帽外套的兜帽。 | 移除选中的夹克的兜帽。
+     spec : scope='jacket' payload='' target_part='hood' remove_mode=part placement={} attrs=[]
+  [U2] op=remove formal_input=ref+mask  category=jacket physical_parent_zh=左侧棕帽外套者
+     box=[343, 254, 501, 627] center=(0.19W,0.29H) area=0.0126 comps=1
+     REF  : Remove the hood from the hooded jacket of the side-facing person immediately to his right.
+     NOREF: Remove the hood from the selected jacket.
+     ZH   : 移除其右边侧身者的棕色连帽外套的兜帽。 | 移除选中的夹克的兜帽。
+     spec : scope='jacket' payload='' target_part='hood' remove_mode=part placement={} attrs=[]
+  [U3] op=attribute formal_input=noref+box  category=jacket physical_parent_zh=右侧拿画板女孩
+     box=[1745, 485, 2041, 828] center=(0.84W,0.44H) area=0.0177 comps=2
+     REF  : Change the color of the jacket of the girl holding a picture board on the right to royal blue.
+     NOREF: Change the color of the selected jacket to royal blue.
+     ZH   : 将右侧拿画板女孩的红色外套改为宝蓝色。 | 将选中的夹克改为宝蓝色。
+     spec : scope='jacket' payload='royal blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'royal blue'}]
+  [U4] op=replace formal_input=ref+point  category=jacket physical_parent_zh=后方牛仔外套男子
+     box=[1107, 274, 1265, 497] center=(0.53W,0.26H) area=0.0078 comps=1
+     REF  : Replace the denim jacket of the back-facing man in the center background with a sleeveless quilted waistcoat.
+     NOREF: Replace the selected jacket with a sleeveless quilted waistcoat.
+     ZH   : 将后方中央背向男子的蓝色牛仔外套替换为无袖绗缝马甲。 | 将选中的夹克替换为无袖绗缝马甲。
+     spec : scope='jacket' payload='a sleeveless quilted waistcoat' target_part='' remove_mode=whole placement={} attrs=[]
+  [U5] op=add formal_input=noref+point  category=jacket physical_parent_zh=前景俯身搬箱者
+     box=[348, 630, 758, 1090] center=(0.25W,0.57H) area=0.0285 comps=1
+     REF  : Add one small reflective strip across the upper back of the jacket of the person bending over the wooden box at the front left.
+     NOREF: Add one small reflective strip across the upper back of the selected jacket.
+     ZH   : 给左前方俯身搬木箱者的黑色外套加上一条缝在上背部的小反光条。 | 给选中的夹克加上一条缝在上背部的小反光条。
+     spec : scope='jacket' payload='one small reflective strip' target_part='' remove_mode=whole placement={'relation': 'across', 'site': 'upper back', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG None relative_lr_contradiction (blocking): U2("the hooded jacket of the side-facing person immediately to his right") cx=422 vs U5("the jacket of the person bending over the wooden box at the front left") cx=553
+
+=== CASE v2-sa_10360812  (manifest #230, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_10360812.jpg
+  case evidence_zh: 前景栏杆2保留多处孔洞并绕过植物遮挡，17是建筑下方高而窄的灌木；二者为独立父物体。标牌固定在栏杆上，灌木替换是自然景观调整。
+  [U1] op=add formal_input=ref+none  category=railing physical_parent_zh=步道栏杆
+     box=[0, 938, 2231, 1441] center=(0.50W,0.79H) area=0.0411 comps=4
+     REF  : Add a small “BEACH ACCESS” sign mounted on the foreground path railing.
+     NOREF: Add a small “BEACH ACCESS” sign mounted on the selected railing.
+     ZH   : 在前景步道栏杆加上一块写有“BEACH ACCESS”的小标牌。 | 在选中的栏杆加上一块写有“BEACH ACCESS”的小标牌。
+     spec : scope='railing' payload='a small “BEACH ACCESS” sign' target_part='' remove_mode=whole placement={'relation': 'mounted on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  [U2] op=replace formal_input=ref+mask  category=shrub physical_parent_zh=建筑下高灌木
+     box=[1730, 655, 1793, 790] center=(0.78W,0.48H) area=0.0017 comps=1
+     REF  : Replace the tall shrub beneath the seaside building with a red-flowering hibiscus bush.
+     NOREF: Replace the selected shrub with a red-flowering hibiscus bush.
+     ZH   : 将海边建筑下方的高灌木替换为一株开红花的木槿灌木。 | 将选中的灌木替换为一株开红花的木槿灌木。
+     spec : scope='shrub' payload='a red-flowering hibiscus bush' target_part='' remove_mode=whole placement={} attrs=[]
+  AUTO-FLAG U1 mask_far_fragments (major): 2 big components, max dist 0.46 of image
+
+=== CASE v2-sa_10744750  (manifest #266, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_10744750.jpg
+  case evidence_zh: 2为完整DO NOT ENTER标牌面；23是右侧红色polo上衣，被前方人物遮挡；41是车辆后方灰色羽绒外套，两块衣片保留遮挡关系。避开整车mask中的乘客边界与远处微小包袋。
+  [U1] op=remove formal_input=noref+point  category=sign physical_parent_zh=禁止驶入标牌
+     box=[1601, 111, 1808, 339] center=(0.76W,0.15H) area=0.0133 comps=1
+     REF  : Remove the “DO NOT ENTER” sign.
+     NOREF: Remove the selected sign.
+     ZH   : 移除写有“DO NOT ENTER”的路牌。 | 移除选中的路牌。
+     spec : scope='sign' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=ref+box  category=polo shirt physical_parent_zh=红polo人物
+     box=[1584, 507, 1696, 727] center=(0.73W,0.41H) area=0.0035 comps=1
+     REF  : Change the color of the red polo shirt behind the car to forest green.
+     NOREF: Change the color of the selected polo shirt to forest green.
+     ZH   : 将车辆后方的红色polo衫的颜色改为森林绿。 | 将选中的polo衫的颜色改为森林绿。
+     spec : scope='polo shirt' payload='forest green' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'forest green'}]
+  [U3] op=replace formal_input=noref+mask  category=jacket physical_parent_zh=灰外套人物
+     box=[1322, 555, 1489, 770] center=(0.62W,0.44H) area=0.0055 comps=2
+     REF  : Replace the gray puffer jacket behind the car with a black leather jacket.
+     NOREF: Replace the selected jacket with a black leather jacket.
+     ZH   : 将车辆后方的灰色羽绒外套替换为一件黑色皮夹克。 | 将选中的外套替换为一件黑色皮夹克。
+     spec : scope='jacket' payload='a black leather jacket' target_part='' remove_mode=whole placement={} attrs=[]
+  AUTO-FLAG U3 replace_is_recolor (major): replace payload "a black leather jacket" only changes color/material of same category "jacket"
+
+=== CASE v2-sa_1112483  (manifest #305, image 2000x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_1112483.jpg
+  case evidence_zh: 14为右岸建筑前紫红长旗，45为左岸完整白伞，35为中央拱桥整体。不同实物，拱桥作为灯串的直接附着锚点。 全图定位复核：左岸有多把白伞，补充最右侧消歧。
+  [U1] op=remove formal_input=noref+box  category=flag physical_parent_zh=紫红旗帜
+     box=[1687, 789, 1719, 868] center=(0.85W,0.55H) area=0.0007 comps=1
+     REF  : Remove the magenta flag on the right bank.
+     NOREF: Remove the selected flag.
+     ZH   : 移除右岸的紫红色旗帜。 | 移除选中的旗帜。
+     spec : scope='flag' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=ref+point  category=parasol physical_parent_zh=左岸白伞
+     box=[252, 890, 388, 920] center=(0.16W,0.60H) area=0.0009 comps=1
+     REF  : Change the color of the rightmost white parasol on the left bank to navy blue.
+     NOREF: Change the color of the selected parasol to navy blue.
+     ZH   : 将左岸最右侧的白色遮阳伞的颜色改为藏蓝色。 | 将选中的遮阳伞的颜色改为藏蓝色。
+     spec : scope='parasol' payload='navy blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'navy blue'}]
+  [U3] op=add formal_input=noref+point  category=bridge physical_parent_zh=中央拱桥
+     box=[760, 925, 1164, 1009] center=(0.48W,0.64H) area=0.0064 comps=2
+     REF  : Add a string of warm lights along the railing of the central arched bridge.
+     NOREF: Add a string of warm lights along the railing of the selected bridge.
+     ZH   : 在中央拱桥的栏杆上加上一串暖色灯。 | 在选中的桥的栏杆上加上一串暖色灯。
+     spec : scope='bridge' payload='a string of warm lights' target_part='' remove_mode=whole placement={'relation': 'along', 'site': 'railing', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 spatial_contradiction (blocking): far-right but cx=0.16
+
+=== CASE v2-sa_1408122  (manifest #348, image 2246x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_1408122.jpg
+  case evidence_zh: 81为右前景黑色羽绒外套，169为其右侧女子白上衣；56为黑外套者背后独立蓝背包，57为左侧建筑报社文字招牌。门窗有邻物碎片，不用它们凑数。
+  [U1] op=attribute formal_input=ref+none  category=jacket physical_parent_zh=羽绒衣男子
+     box=[1818, 1150, 1902, 1282] center=(0.83W,0.81H) area=0.0025 comps=1
+     REF  : Change the color of the foreground man’s black puffer jacket to burgundy.
+     NOREF: Change the color of the selected jacket to burgundy.
+     ZH   : 将前景男子的黑色羽绒外套的颜色改为酒红色。 | 将选中的外套的颜色改为酒红色。
+     spec : scope='jacket' payload='burgundy' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'burgundy'}]
+  [U2] op=replace formal_input=ref+mask  category=top physical_parent_zh=白上衣人物
+     box=[1940, 1181, 2021, 1285] center=(0.88W,0.82H) area=0.0017 comps=1
+     REF  : Replace the white top beside the black puffer jacket with a blue knitted sweater.
+     NOREF: Replace the selected top with a blue knitted sweater.
+     ZH   : 将黑色羽绒外套旁的白色上衣替换为一件蓝色针织衫。 | 将选中的上衣替换为一件蓝色针织衫。
+     spec : scope='top' payload='a blue knitted sweater' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=add formal_input=noref+box  category=backpack physical_parent_zh=蓝背包
+     box=[1797, 1212, 1827, 1297] center=(0.81W,0.84H) area=0.0005 comps=1
+     REF  : Add a small reflective strip on the puffer-jacketed man’s blue backpack.
+     NOREF: Add a small reflective strip on the selected backpack.
+     ZH   : 在羽绒衣男子的蓝色背包加上一条小反光条。 | 在选中的背包加上一条小反光条。
+     spec : scope='backpack' payload='a small reflective strip' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  [U4] op=remove formal_input=ref+point  category=sign physical_parent_zh=报社招牌
+     box=[344, 944, 521, 969] center=(0.19W,0.64H) area=0.0010 comps=1
+     REF  : Remove the “Neue Zürcher Zeitung” sign.
+     NOREF: Remove the selected sign.
+     ZH   : 移除“Neue Zürcher Zeitung”招牌。 | 移除选中的招牌。
+     spec : scope='sign' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  AUTO-FLAG U4 odd_char (minor): ref: Remove the “Neue Zürcher Zeitung” sign.
+
+=== CASE v2-sa_1756782  (manifest #389, image 2250x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_1756782.jpg
+  case evidence_zh: 1为前景红花纹男上衣，3为左侧浅蓝衬衫，9为4for10红牌，8为右边女子独立棕包含带。包与上衣来自不同人物且目标互不重叠。
+  [U1] op=replace formal_input=noref+mask  category=shirt physical_parent_zh=红纹衣男子
+     box=[1142, 956, 1346, 1279] center=(0.55W,0.74H) area=0.0119 comps=2
+     REF  : Replace the foreground man’s red patterned shirt with a white polo shirt.
+     NOREF: Replace the selected shirt with a white polo shirt.
+     ZH   : 将前景男子的红色花纹上衣替换为一件白色Polo衫。 | 将选中的上衣替换为一件白色Polo衫。
+     spec : scope='shirt' payload='a white polo shirt' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=ref+none  category=shirt physical_parent_zh=左店旁男子
+     box=[821, 819, 957, 1160] center=(0.40W,0.66H) area=0.0102 comps=1
+     REF  : Change the color of the light blue shirt by the left shop to olive green.
+     NOREF: Change the color of the selected shirt to olive green.
+     ZH   : 将左侧店铺旁的浅蓝色衬衫的颜色改为橄榄绿。 | 将选中的衬衫的颜色改为橄榄绿。
+     spec : scope='shirt' payload='olive green' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'olive green'}]
+  [U3] op=remove formal_input=ref+mask  category=sign physical_parent_zh=促销牌
+     box=[359, 449, 559, 543] center=(0.20W,0.33H) area=0.0053 comps=1
+     REF  : Remove the red “4 for $10” sign.
+     NOREF: Remove the selected sign.
+     ZH   : 移除红色“4 for $10”标牌。 | 移除选中的标牌。
+     spec : scope='sign' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+box  category=bag physical_parent_zh=右棕包
+     box=[1812, 1043, 2053, 1373] center=(0.86W,0.81H) area=0.0025 comps=1
+     REF  : Add a small gold charm on the strap of the rightmost woman’s brown shoulder bag.
+     NOREF: Add a small gold charm on the strap of the selected bag.
+     ZH   : 在最右侧女子的棕色肩包的肩带上加上一个小金色挂饰。 | 在选中的肩包的肩带上加上一个小金色挂饰。
+     spec : scope='bag' payload='a small gold charm' target_part='' remove_mode=whole placement={'relation': 'on', 'site': 'strap', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_2176556  (manifest #425, image 2250x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_2176556.jpg
+  case evidence_zh: 13为完整缆车含吊架，16为上方最左观景栏杆。缆车与站房两个父对象，玻璃78兼含门下板不按纯玻璃使用。
+  [U1] op=replace formal_input=ref+point  category=cable car physical_parent_zh=缆车
+     box=[1622, 678, 2231, 1385] center=(0.86W,0.69H) area=0.0641 comps=2
+     REF  : Replace the cable car on the right with a red panoramic cable car.
+     NOREF: Replace the selected cable car with a red panoramic cable car.
+     ZH   : 将右侧的缆车替换为一辆红色全景缆车。 | 将选中的缆车替换为一辆红色全景缆车。
+     spec : scope='cable car' payload='a red panoramic cable car' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=add formal_input=noref+point  category=railing physical_parent_zh=站房
+     box=[38, 72, 337, 155] center=(0.08W,0.08H) area=0.0050 comps=1
+     REF  : Add a small blue information plaque on the balcony railing at the upper left.
+     NOREF: Add a small blue information plaque on the selected railing.
+     ZH   : 在左上方的阳台栏杆加上一块蓝色小信息牌。 | 在选中的栏杆加上一块蓝色小信息牌。
+     spec : scope='railing' payload='a small blue information plaque' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_2597968  (manifest #463, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_2597968.jpg
+  case evidence_zh: 11为竖琴左侧空椅，33为指挥右侧最左一位坐姿大提琴手的白衬衫，37为指挥左侧谱架。椅、人、谱架独立，不移除演奏中的乐器。
+  [U1] op=remove formal_input=ref+point  category=chair physical_parent_zh=空椅
+     box=[47, 836, 171, 995] center=(0.05W,0.61H) area=0.0028 comps=2
+     REF  : Remove the empty chair to the left of the harp.
+     NOREF: Remove the selected chair.
+     ZH   : 移除竖琴左侧的空椅子。 | 移除选中的椅子。
+     spec : scope='chair' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=noref+point  category=shirt physical_parent_zh=最左大提琴手
+     box=[1507, 810, 1603, 921] center=(0.69W,0.58H) area=0.0023 comps=1
+     REF  : Change the color of the white shirt on the leftmost seated cellist to navy blue.
+     NOREF: Change the color of the selected shirt to navy blue.
+     ZH   : 将最左侧坐姿大提琴手的白衬衫的颜色改为藏蓝色。 | 将选中的衬衫的颜色改为藏蓝色。
+     spec : scope='shirt' payload='navy blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'navy blue'}]
+  [U3] op=add formal_input=ref+box  category=music stand physical_parent_zh=谱架
+     box=[983, 804, 1109, 990] center=(0.46W,0.60H) area=0.0023 comps=1
+     REF  : Add a small clip-on light on the top edge of the music stand just left of the conductor.
+     NOREF: Add a small clip-on light on the top edge of the selected music stand.
+     ZH   : 在指挥左侧紧邻的谱架的上沿加上一盏小夹式灯。 | 在选中的谱架的上沿加上一盏小夹式灯。
+     spec : scope='music stand' payload='a small clip-on light' target_part='' remove_mode=whole placement={'relation': 'on', 'site': 'top edge', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 spatial_contradiction (blocking): far-left but cx=0.69
+  AUTO-FLAG U3 add_nonobject_payload (major): add payload is not an object: "a small clip-on light"
+
+=== CASE v2-sa_2901819  (manifest #497, image 2674x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_2901819.jpg
+  case evidence_zh: 15为走道远处背向游客深T恤，11为右店旁灰上衣，10为PRENOTATEVI QUI牌，5为右近最高FETA盒。两个人、独立牌和盒；2/3承重堆箱不强制移除。
+  [U1] op=replace formal_input=noref+point  category=T-shirt physical_parent_zh=远游客
+     box=[1115, 582, 1201, 683] center=(0.43W,0.42H) area=0.0014 comps=1
+     REF  : Replace the dark T-shirt on the visitor farther down the aisle with a navy polo shirt.
+     NOREF: Replace the selected T-shirt with a navy polo shirt.
+     ZH   : 将走道深处游客的深色T恤替换为一件藏蓝色Polo衫。 | 将选中的T恤替换为一件藏蓝色Polo衫。
+     spec : scope='T-shirt' payload='a navy polo shirt' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=ref+box  category=shirt physical_parent_zh=灰衣者
+     box=[1563, 556, 1627, 696] center=(0.60W,0.42H) area=0.0016 comps=1
+     REF  : Change the color of the gray shirt beside the right-hand counter to pale blue.
+     NOREF: Change the color of the selected shirt to pale blue.
+     ZH   : 将右侧柜台旁的灰色上衣的颜色改为浅蓝色。 | 将选中的上衣的颜色改为浅蓝色。
+     spec : scope='shirt' payload='pale blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'pale blue'}]
+  [U3] op=remove formal_input=noref+mask  category=sign physical_parent_zh=预约牌
+     box=[1928, 522, 2041, 601] center=(0.74W,0.37H) area=0.0021 comps=1
+     REF  : Remove the PRENOTATEVI QUI sign.
+     NOREF: Remove the selected sign.
+     ZH   : 移除PRENOTATEVI QUI标牌。 | 移除选中的标牌。
+     spec : scope='sign' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+none  category=box physical_parent_zh=FETA盒
+     box=[2398, 901, 2626, 1026] center=(0.94W,0.64H) area=0.0065 comps=1
+     REF  : Add a small white inventory label on the FETA box at the top of the foreground stack.
+     NOREF: Add a small white inventory label on the selected box.
+     ZH   : 在前景箱堆最上方的FETA盒加上一张小白色库存标签。 | 在选中的盒子加上一张小白色库存标签。
+     spec : scope='box' payload='a small white inventory label' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U4 spatial_contradiction (blocking): upper/top but cy=0.64
+
+=== CASE v2-sa_3283229  (manifest #535, image 2255x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_3283229.jpg
+  case evidence_zh: 12为左近白头巾，9为右人黄绿头巾，14为左人棕肩包，4为左近弯路灯。两个人、包和灯独立。
+  [U1] op=replace formal_input=ref+none  category=headscarf physical_parent_zh=左女子
+     box=[824, 1105, 876, 1177] center=(0.38W,0.76H) area=0.0007 comps=1
+     REF  : Replace the white headscarf on the nearest woman on the left with a pale-pink silk headscarf.
+     NOREF: Replace the selected headscarf with a pale-pink silk headscarf.
+     ZH   : 将左侧最近女子的白色头巾替换为一条浅粉色丝绸头巾。 | 将选中的头巾替换为一条浅粉色丝绸头巾。
+     spec : scope='headscarf' payload='a pale-pink silk headscarf' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=ref+mask  category=headscarf physical_parent_zh=右女子
+     box=[1597, 1121, 1650, 1178] center=(0.72W,0.77H) area=0.0006 comps=1
+     REF  : Change the color of the yellow-green headscarf on the woman on the right to pale blue.
+     NOREF: Change the color of the selected headscarf to pale blue.
+     ZH   : 将右侧女子的黄绿色头巾的颜色改为浅蓝色。 | 将选中的头巾的颜色改为浅蓝色。
+     spec : scope='headscarf' payload='pale blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'pale blue'}]
+  [U3] op=remove formal_input=noref+box  category=bag physical_parent_zh=棕包
+     box=[808, 1166, 874, 1305] center=(0.37W,0.82H) area=0.0006 comps=1
+     REF  : Remove the brown crossbody bag on the nearest woman on the left.
+     NOREF: Remove the selected bag.
+     ZH   : 移除左侧最近女子的棕色斜挎包。 | 移除选中的包。
+     spec : scope='bag' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+point  category=streetlamp physical_parent_zh=弯杆灯
+     box=[678, 578, 789, 927] center=(0.33W,0.50H) area=0.0033 comps=1
+     REF  : Add a small hanging flower basket on the nearest curved streetlamp on the left.
+     NOREF: Add a small hanging flower basket on the selected streetlamp.
+     ZH   : 在左侧最近的弯杆路灯加上一个小悬挂花篮。 | 在选中的路灯加上一个小悬挂花篮。
+     spec : scope='streetlamp' payload='a small hanging flower basket' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_359558  (manifest #566, image 2248x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_359558.jpg
+  case evidence_zh: 0为左蓝车，1为中银车，13为左侧自行车，35为黄色超市招牌。四个独立物体。
+  [U1] op=replace formal_input=ref+point  category=car physical_parent_zh=蓝车
+     box=[690, 888, 1077, 1047] center=(0.39W,0.65H) area=0.0137 comps=1
+     REF  : Replace the dark blue car on the left with a white compact electric car.
+     NOREF: Replace the selected car with a white compact electric car.
+     ZH   : 将左侧的深蓝色汽车替换为一辆白色小型电动车。 | 将选中的汽车替换为一辆白色小型电动车。
+     spec : scope='car' payload='a white compact electric car' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=noref+point  category=hatchback physical_parent_zh=银车
+     box=[1110, 904, 1404, 1027] center=(0.56W,0.64H) area=0.0082 comps=1
+     REF  : Change the color of the silver hatchback beside the blue car to burgundy.
+     NOREF: Change the color of the selected hatchback to burgundy.
+     ZH   : 将蓝色汽车旁的银色掀背车的颜色改为酒红色。 | 将选中的掀背车的颜色改为酒红色。
+     spec : scope='hatchback' payload='burgundy' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'burgundy'}]
+  [U3] op=remove formal_input=ref+box  category=bicycle physical_parent_zh=自行车
+     box=[307, 939, 405, 1066] center=(0.16W,0.67H) area=0.0026 comps=1
+     REF  : Remove the bicycle beside the pedestrian on the left.
+     NOREF: Remove the selected bicycle.
+     ZH   : 移除左侧行人身旁的自行车。 | 移除选中的自行车。
+     spec : scope='bicycle' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+mask  category=sign physical_parent_zh=超市牌
+     box=[189, 718, 340, 776] center=(0.12W,0.50H) area=0.0021 comps=1
+     REF  : Add a thin white illuminated border on the yellow Biedronka sign.
+     NOREF: Add a thin white illuminated border on the selected sign.
+     ZH   : 在黄色Biedronka标牌加上一圈细白色灯边。 | 在选中的标牌加上一圈细白色灯边。
+     spec : scope='sign' payload='a thin white illuminated border' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_3819573  (manifest #597, image 2250x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_3819573.jpg
+  case evidence_zh: 2为底部槽内松散纸板，15为NEW标签左侧高蓝白杯，3为上层架边。三个不同父对象；17纸箱在堆叠中指代过繁，取消该目标。
+  [U1] op=remove formal_input=ref+point  category=cardboard physical_parent_zh=散纸板
+     box=[1823, 1089, 1974, 1219] center=(0.84W,0.77H) area=0.0020 comps=1
+     REF  : Remove the loose cardboard in the bottom refrigeration channel.
+     NOREF: Remove the selected cardboard.
+     ZH   : 移除底部冷柜槽内的松散纸板。 | 移除选中的纸板。
+     spec : scope='cardboard' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=replace formal_input=noref+point  category=cup physical_parent_zh=酸奶杯
+     box=[717, 1218, 805, 1332] center=(0.34W,0.85H) area=0.0024 comps=1
+     REF  : Replace the tall blue-and-white yogurt cup just left of the NEW label with a small glass yogurt jar with a blue lid.
+     NOREF: Replace the selected cup with a small glass yogurt jar with a blue lid.
+     ZH   : 将NEW标签左侧的高蓝白酸奶杯替换为一个带蓝盖的小玻璃酸奶罐。 | 将选中的杯子替换为一个带蓝盖的小玻璃酸奶罐。
+     spec : scope='cup' payload='a small glass yogurt jar with a blue lid' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=add formal_input=ref+box  category=shelf edge physical_parent_zh=冷柜货架
+     box=[0, 0, 1938, 379] center=(0.43W,0.13H) area=0.0280 comps=1
+     REF  : Add a small red SPECIAL OFFER label on the uppermost long shelf edge.
+     NOREF: Add a small red SPECIAL OFFER label on the selected shelf edge.
+     ZH   : 在最上方的长货架边缘加上一张小红色SPECIAL OFFER标签。 | 在选中的货架边缘加上一张小红色SPECIAL OFFER标签。
+     spec : scope='shelf edge' payload='a small red SPECIAL OFFER label' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_4179283  (manifest #634, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_4179283.jpg
+  case evidence_zh: 13高黄色旗、14左楼红牌、31左码头栏杆分别为旗、独立牌及码头。
+  [U1] op=replace formal_input=noref+box  category=flag physical_parent_zh=黄旗
+     box=[1523, 583, 1547, 692] center=(0.68W,0.42H) area=0.0006 comps=1
+     REF  : Replace the high yellow flag on the right with a plain white flag.
+     NOREF: Replace the selected flag with a plain white flag.
+     ZH   : 将右侧高处的黄旗替换为一面纯白旗帜。 | 将选中的旗帜替换为一面纯白旗帜。
+     spec : scope='flag' payload='a plain white flag' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=remove formal_input=ref+point  category=sign physical_parent_zh=红牌
+     box=[591, 971, 697, 999] center=(0.29W,0.66H) area=0.0008 comps=1
+     REF  : Remove the red sign on the wooden building left of the temple.
+     NOREF: Remove the selected sign.
+     ZH   : 移除寺庙左侧木楼上的红色标牌。 | 移除选中的标牌。
+     spec : scope='sign' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=add formal_input=noref+point  category=railing physical_parent_zh=浮码头
+     box=[1003, 1108, 1197, 1175] center=(0.49W,0.76H) area=0.0024 comps=1
+     REF  : Add an orange lifebuoy on the front-left green railing of the floating dock.
+     NOREF: Add an orange lifebuoy on the selected railing.
+     ZH   : 在浮动码头前左侧的绿色栏杆加上一个橙色救生圈。 | 在选中的栏杆加上一个橙色救生圈。
+     spec : scope='railing' payload='an orange lifebuoy' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U1 replace_is_recolor (major): replace payload "a plain white flag" only changes color/material of same category "flag"
+
+=== CASE v2-sa_447473  (manifest #662, image 1500x2000, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_447473.jpg
+  case evidence_zh: 154右侧瓶装水、9三欧价签、6顾客靴子、3玻璃罩四父对象。
+  [U1] op=remove formal_input=noref+mask  category=bottle physical_parent_zh=水瓶
+     box=[1347, 1281, 1389, 1363] center=(0.91W,0.66H) area=0.0010 comps=1
+     REF  : Remove the water bottle at the right end of the counter.
+     NOREF: Remove the selected bottle.
+     ZH   : 移除柜台右端的水瓶。 | 移除选中的瓶子。
+     spec : scope='bottle' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=replace formal_input=ref+none  category=sign physical_parent_zh=促销牌
+     box=[1285, 1222, 1348, 1322] center=(0.88W,0.64H) area=0.0019 comps=1
+     REF  : Replace the SPECIAL OFFER sign priced at 3 euros with a cream sign reading SPECIAL OFFER €4.
+     NOREF: Replace the selected sign with a cream sign reading SPECIAL OFFER €4.
+     ZH   : 将标价3欧元的SPECIAL OFFER标牌替换为一块写有SPECIAL OFFER €4的米色标牌。 | 将选中的标牌替换为一块写有SPECIAL OFFER €4的米色标牌。
+     spec : scope='sign' payload='a cream sign reading SPECIAL OFFER €4' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=attribute formal_input=ref+mask  category=boot physical_parent_zh=顾客
+     box=[503, 1738, 591, 1839] center=(0.36W,0.89H) area=0.0020 comps=1
+     REF  : Change the color of the nearer beige boot on the customer to dark brown.
+     NOREF: Change the color of the selected boot to dark brown.
+     ZH   : 将顾客离镜头较近的米色靴子的颜色改为深棕色。 | 将选中的靴子的颜色改为深棕色。
+     spec : scope='boot' payload='dark brown' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'dark brown'}]
+  [U4] op=add formal_input=noref+box  category=glass dome physical_parent_zh=玻璃罩
+     box=[344, 966, 457, 1107] center=(0.27W,0.52H) area=0.0040 comps=1
+     REF  : Add a small round gold quality sticker on the second tall glass display dome from the right.
+     NOREF: Add a small round gold quality sticker on the selected glass dome.
+     ZH   : 在右起第二个高玻璃展示罩加上一张小圆形金色品质贴纸。 | 在选中的玻璃罩加上一张小圆形金色品质贴纸。
+     spec : scope='glass dome' payload='a small round gold quality sticker' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 odd_char (minor): ref: Replace the SPECIAL OFFER sign priced at 3 euros with a cream sign reading SPECIAL OFFER €4.
+  AUTO-FLAG U2 odd_char (minor): noref: Replace the selected sign with a cream sign reading SPECIAL OFFER €4.
+
+=== CASE v2-sa_4740557  (manifest #687, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_4740557.jpg
+  case evidence_zh: 15左儿童T、22左前花包、31中间蓝裙、11复印店门四父对象。
+  [U1] op=replace formal_input=ref+point  category=T-shirt physical_parent_zh=左女孩
+     box=[221, 818, 418, 1049] center=(0.14W,0.62H) area=0.0086 comps=2
+     REF  : Replace the Hello Kitty T-shirt on the girl at the left with a plain pale pink T-shirt.
+     NOREF: Replace the selected T-shirt with a plain pale pink T-shirt.
+     ZH   : 将左侧女孩的Hello Kitty T恤替换为一件纯浅粉色T恤。 | 将选中的T恤替换为一件纯浅粉色T恤。
+     spec : scope='T-shirt' payload='a plain pale pink T-shirt' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=remove formal_input=noref+point  category=handbag physical_parent_zh=花包
+     box=[475, 608, 615, 924] center=(0.24W,0.51H) area=0.0048 comps=2
+     REF  : Remove the floral handbag on the woman beside the girl.
+     NOREF: Remove the selected handbag.
+     ZH   : 移除女孩旁女子的碎花手提包。 | 移除选中的手提包。
+     spec : scope='handbag' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=attribute formal_input=ref+box  category=skirt physical_parent_zh=中女子
+     box=[828, 851, 1096, 1307] center=(0.43W,0.72H) area=0.0311 comps=1
+     REF  : Change the color of the blue skirt on the woman with the long yellow shoulder bag to burgundy.
+     NOREF: Change the color of the selected skirt to burgundy.
+     ZH   : 将背长黄色肩包女子的蓝色裙子的颜色改为酒红色。 | 将选中的裙子的颜色改为酒红色。
+     spec : scope='skirt' payload='burgundy' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'burgundy'}]
+  [U4] op=add formal_input=noref+mask  category=door physical_parent_zh=复印店
+     box=[1691, 392, 1819, 656] center=(0.78W,0.35H) area=0.0086 comps=1
+     REF  : Add a small blue OPEN plaque on the door below the COPIAS sign.
+     NOREF: Add a small blue OPEN plaque on the selected door.
+     ZH   : 在COPIAS招牌下的门加上一块小蓝色OPEN门牌。 | 在选中的门加上一块小蓝色OPEN门牌。
+     spec : scope='door' payload='a small blue OPEN plaque' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U1 replace_is_recolor (major): replace payload "a plain pale pink T-shirt" only changes color/material of same category "T-shirt"
+
+=== CASE v2-sa_5004835  (manifest #713, image 1500x2250, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_5004835.jpg
+  case evidence_zh: 17左红海报、57右花卉、34右木门分属牌、植物、建筑。
+  [U1] op=replace formal_input=ref+point  category=poster physical_parent_zh=红海报
+     box=[182, 1602, 241, 1674] center=(0.14W,0.73H) area=0.0011 comps=1
+     REF  : Replace the red poster to the left of the entrances with a dark blue event poster reading JAZZ NIGHT.
+     NOREF: Replace the selected poster with a dark blue event poster reading JAZZ NIGHT.
+     ZH   : 将入口左侧的红色海报替换为一张写有JAZZ NIGHT的深蓝色活动海报。 | 将选中的海报替换为一张写有JAZZ NIGHT的深蓝色活动海报。
+     spec : scope='poster' payload='a dark blue event poster reading JAZZ NIGHT' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=remove formal_input=noref+point  category=plant physical_parent_zh=红花
+     box=[766, 1638, 874, 1744] center=(0.55W,0.75H) area=0.0020 comps=1
+     REF  : Remove the red-flowered plant beside the right entrance.
+     NOREF: Remove the selected plant.
+     ZH   : 移除右入口旁的红花植物。 | 移除选中的植物。
+     spec : scope='plant' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=add formal_input=ref+box  category=door physical_parent_zh=建筑
+     box=[936, 1453, 1163, 1839] center=(0.70W,0.73H) area=0.0230 comps=1
+     REF  : Add a small brass OPEN plaque on the wooden door at the right entrance.
+     NOREF: Add a small brass OPEN plaque on the selected door.
+     ZH   : 在右入口的木门加上一块小黄铜OPEN牌。 | 在选中的门加上一块小黄铜OPEN牌。
+     spec : scope='door' payload='a small brass OPEN plaque' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_5258379  (manifest #736, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_5258379.jpg
+  case evidence_zh: 39远蓝车、30厢车侧门、27近护栏三个父对象。
+  [U1] op=remove formal_input=noref+point  category=car physical_parent_zh=远车
+     box=[1814, 32, 1890, 135] center=(0.82W,0.06H) area=0.0018 comps=1
+     REF  : Remove the small blue car behind the chevron sign.
+     NOREF: Remove the selected car.
+     ZH   : 移除箭头路牌后方的小蓝色汽车。 | 移除选中的汽车。
+     spec : scope='car' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=add formal_input=ref+box  category=door physical_parent_zh=快递车
+     box=[1293, 457, 1647, 1205] center=(0.65W,0.55H) area=0.0635 comps=1
+     REF  : Add a small white fleet-number 12 decal near its bottom on the sliding side door of the yellow DHL van.
+     NOREF: Add a small white fleet-number 12 decal near its bottom on the selected door.
+     ZH   : 在黄色DHL厢车的侧滑门加上一张靠近底部的小白色车队编号12贴纸。 | 在选中的车门加上一张靠近底部的小白色车队编号12贴纸。
+     spec : scope='door' payload='a small white fleet-number 12 decal near its bottom' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  [U3] op=attribute formal_input=noref+mask  category=guardrail physical_parent_zh=近护栏
+     box=[0, 665, 2250, 1130] center=(0.50W,0.60H) area=0.0252 comps=3
+     REF  : Change the color of the guardrail immediately behind the DHL van to white.
+     NOREF: Change the color of the selected guardrail to white.
+     ZH   : 将DHL厢车紧后方的护栏的颜色改为白色。 | 将选中的护栏的颜色改为白色。
+     spec : scope='guardrail' payload='white' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'white'}]
+  AUTO-FLAG U2 add_dangling_its (minor): dangling its/their in add: "Add a small white fleet-number 12 decal near its bottom on the sliding side door of the yellow DHL van."
+  AUTO-FLAG U3 mask_far_fragments (major): 3 big components, max dist 0.85 of image
+
+=== CASE v2-sa_5589230  (manifest #765, image 2250x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_5589230.jpg
+  case evidence_zh: 0右广告屏、6左圆店招、1中央路灯、51屋顶栏杆四父对象。
+  [U1] op=replace formal_input=noref+box  category=billboard physical_parent_zh=广告屏
+     box=[1643, 954, 2162, 1248] center=(0.85W,0.73H) area=0.0399 comps=2
+     REF  : Replace the large eBay billboard on the right with a blue movie poster reading COMING SOON.
+     NOREF: Replace the selected billboard with a blue movie poster reading COMING SOON.
+     ZH   : 将右侧的大型eBay广告牌替换为一张写有COMING SOON的蓝色电影海报。 | 将选中的广告牌替换为一张写有COMING SOON的蓝色电影海报。
+     spec : scope='billboard' payload='a blue movie poster reading COMING SOON' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=remove formal_input=ref+point  category=sign physical_parent_zh=GINO牌
+     box=[369, 1351, 437, 1417] center=(0.18W,0.92H) area=0.0011 comps=1
+     REF  : Remove the round turquoise GINO sign at the left.
+     NOREF: Remove the selected sign.
+     ZH   : 移除左侧青绿色圆形GINO招牌。 | 移除选中的招牌。
+     spec : scope='sign' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=attribute formal_input=noref+point  category=streetlamp physical_parent_zh=中央灯
+     box=[1195, 298, 1422, 1500] center=(0.58W,0.60H) area=0.0065 comps=2
+     REF  : Change the color of the tallest streetlamp in the center to black.
+     NOREF: Change the color of the selected streetlamp to black.
+     ZH   : 将中央最高的路灯的颜色改为黑色。 | 将选中的路灯的颜色改为黑色。
+     spec : scope='streetlamp' payload='black' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'black'}]
+  [U4] op=add formal_input=ref+box  category=railing physical_parent_zh=建筑
+     box=[797, 767, 967, 882] center=(0.39W,0.55H) area=0.0014 comps=1
+     REF  : Add a string of warm white lights on the rooftop railing left of the clock.
+     NOREF: Add a string of warm white lights on the selected railing.
+     ZH   : 在时钟左侧的屋顶栏杆加上一串暖白色灯串。 | 在选中的栏杆加上一串暖白色灯串。
+     spec : scope='railing' payload='a string of warm white lights' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_5831338  (manifest #791, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_5831338.jpg
+  case evidence_zh: 24后SUV、3中央白T人物、86空中滑手鞋、9右栏横幅四父对象。
+  [U1] op=remove formal_input=ref+none  category=SUV physical_parent_zh=银SUV
+     box=[1336, 1131, 1679, 1290] center=(0.67W,0.81H) area=0.0118 comps=1
+     REF  : Remove the silver SUV behind the center-right spectators.
+     NOREF: Remove the selected SUV.
+     ZH   : 移除中间偏右观众后方的银色SUV。 | 移除选中的SUV。
+     spec : scope='SUV' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=ref+mask  category=T-shirt physical_parent_zh=中观众
+     box=[983, 1196, 1189, 1485] center=(0.48W,0.89H) area=0.0122 comps=1
+     REF  : Change the color of the white GRIND T-shirt on the spectator near the center to light blue.
+     NOREF: Change the color of the selected T-shirt to light blue.
+     ZH   : 将中间附近观众的白色GRIND T恤的颜色改为浅蓝色。 | 将选中的T恤的颜色改为浅蓝色。
+     spec : scope='T-shirt' payload='light blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'light blue'}]
+  [U3] op=replace formal_input=noref+box  category=shoe physical_parent_zh=滑板者
+     box=[488, 756, 674, 851] center=(0.26W,0.54H) area=0.0027 comps=1
+     REF  : Replace the airborne skateboarder's shoe at the left with a red high-top skate shoe.
+     NOREF: Replace the selected shoe with a red high-top skate shoe.
+     ZH   : 将腾空滑板者左侧的鞋子替换为一只红色高帮滑板鞋。 | 将选中的鞋子替换为一只红色高帮滑板鞋。
+     spec : scope='shoe' payload='a red high-top skate shoe' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+point  category=banner physical_parent_zh=右横幅
+     box=[1548, 1291, 1958, 1500] center=(0.78W,0.93H) area=0.0128 comps=2
+     REF  : Add a small gold star emblem in its upper-left corner on the dark banner behind the rightmost spectator.
+     NOREF: Add a small gold star emblem in its upper-left corner on the selected banner.
+     ZH   : 在最右侧观众后方的深色横幅加上一个位于左上角的小金色星形徽标。 | 在选中的横幅加上一个位于左上角的小金色星形徽标。
+     spec : scope='banner' payload='a small gold star emblem in its upper-left corner' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 spatial_contradiction (blocking): center but cx=0.48 cy=0.89
+  AUTO-FLAG U4 noref_location_leak (minor): noref has location words ['left']
+  AUTO-FLAG U4 add_dangling_its (minor): dangling its/their in add: "Add a small gold star emblem in its upper-left corner on the dark banner behind the rightmost spectator."
+
+=== CASE v2-sa_6097564  (manifest #820, image 2256x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_6097564.jpg
+  case evidence_zh: 6花棉衣、16前景灰衣属不同人物，12交通标志及24右门独立。
+  [U1] op=attribute formal_input=noref+mask  category=coat physical_parent_zh=花衣人物
+     box=[1080, 840, 1641, 1500] center=(0.60W,0.78H) area=0.0852 comps=1
+     REF  : Change the color of the floral padded coat near the center to navy blue.
+     NOREF: Change the color of the selected coat to navy blue.
+     ZH   : 将中间附近的花棉衣的颜色改为藏蓝色。 | 将选中的棉衣的颜色改为藏蓝色。
+     spec : scope='coat' payload='navy blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'navy blue'}]
+  [U2] op=replace formal_input=ref+none  category=coat physical_parent_zh=左人物
+     box=[0, 1050, 830, 1500] center=(0.18W,0.85H) area=0.0791 comps=2
+     REF  : Replace the gray coat in the left foreground with a beige wool coat.
+     NOREF: Replace the selected coat with a beige wool coat.
+     ZH   : 将左侧前景的灰外套替换为一件米色羊毛外套。 | 将选中的外套替换为一件米色羊毛外套。
+     spec : scope='coat' payload='a beige wool coat' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=ref+mask  category=sign physical_parent_zh=交通标志
+     box=[743, 437, 816, 514] center=(0.35W,0.32H) area=0.0013 comps=1
+     REF  : Remove the round traffic sign above the crowd.
+     NOREF: Remove the selected sign.
+     ZH   : 移除人群上方的圆形交通标志。 | 移除选中的标志。
+     spec : scope='sign' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+box  category=door physical_parent_zh=建筑
+     box=[1936, 291, 2256, 1160] center=(0.93W,0.48H) area=0.0783 comps=1
+     REF  : Add a small blue ENTRANCE sign on the gray door at the right.
+     NOREF: Add a small blue ENTRANCE sign on the selected door.
+     ZH   : 在右侧的灰门加上一块蓝色小ENTRANCE标牌。 | 在选中的门加上一块蓝色小ENTRANCE标牌。
+     spec : scope='door' payload='a small blue ENTRANCE sign' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_6408945  (manifest #843, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_6408945.jpg
+  case evidence_zh: 2前灰本贴标、12中黑本、14左红本、13后右红本四不同物件。
+  [U1] op=remove formal_input=ref+point  category=label physical_parent_zh=前标签
+     box=[99, 1136, 216, 1362] center=(0.07W,0.83H) area=0.0063 comps=1
+     REF  : Remove the orange label on the front-left gray diary.
+     NOREF: Remove the selected label.
+     ZH   : 移除前排左侧灰色日记本上的橙色标签。 | 移除选中的标签。
+     spec : scope='label' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=noref+point  category=cover physical_parent_zh=黑本
+     box=[1171, 465, 1580, 953] center=(0.61W,0.47H) area=0.0402 comps=1
+     REF  : Change the color of the black diary cover in the middle row to burgundy.
+     NOREF: Change the color of the selected cover to burgundy.
+     ZH   : 将中排的黑色日记本封面的颜色改为酒红色。 | 将选中的封面的颜色改为酒红色。
+     spec : scope='cover' payload='burgundy' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'burgundy'}]
+  [U3] op=replace formal_input=ref+box  category=cover physical_parent_zh=左红本
+     box=[727, 461, 1153, 940] center=(0.42W,0.47H) area=0.0367 comps=1
+     REF  : Replace the bright red diary cover left of the black diary with a tan leather cover.
+     NOREF: Replace the selected cover with a tan leather cover.
+     ZH   : 将黑色日记本左侧的鲜红色日记本封面替换为一个棕黄色皮革封面。 | 将选中的封面替换为一个棕黄色皮革封面。
+     spec : scope='cover' payload='a tan leather cover' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+mask  category=cover physical_parent_zh=后红本
+     box=[1574, 304, 1954, 732] center=(0.78W,0.35H) area=0.0247 comps=1
+     REF  : Add small gold initials AB near its top on the red diary cover in the back-right corner.
+     NOREF: Add small gold initials AB near its top on the selected cover.
+     ZH   : 在后排右角红色日记本的封面加上一组位于上部的小金色字母AB。 | 在选中的封面加上一组位于上部的小金色字母AB。
+     spec : scope='cover' payload='small gold initials AB near its top' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U3 replace_is_recolor (major): replace payload "a tan leather cover" only changes color/material of same category "cover"
+  AUTO-FLAG U3 zh_color_missing (minor): ref: payload color "tan" not in zh "将黑色日记本左侧的鲜红色日记本封面替换为一个棕黄色皮革封面。"
+  AUTO-FLAG U3 zh_color_missing (minor): noref: payload color "tan" not in zh "将选中的封面替换为一个棕黄色皮革封面。"
+  AUTO-FLAG U4 add_dangling_its (minor): dangling its/their in add: "Add small gold initials AB near its top on the red diary cover in the back-right corner."
+  AUTO-FLAG U4 add_no_quantity (minor): add payload without explicit count: "small gold initials AB near its top"
+
+=== CASE v2-sa_6670486  (manifest #864, image 2247x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_6670486.jpg
+  case evidence_zh: 1轿车、2SUV、14木匾、58左石狮四独立实体。
+  [U1] op=attribute formal_input=ref+box  category=car physical_parent_zh=轿车
+     box=[1105, 1124, 1653, 1382] center=(0.61W,0.84H) area=0.0279 comps=1
+     REF  : Change the color of the silver sedan nearest the camera to dark blue.
+     NOREF: Change the color of the selected car to dark blue.
+     ZH   : 将离镜头最近的银色轿车的颜色改为深蓝色。 | 将选中的轿车的颜色改为深蓝色。
+     spec : scope='car' payload='dark blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'dark blue'}]
+  [U2] op=replace formal_input=noref+mask  category=SUV physical_parent_zh=SUV
+     box=[1626, 1082, 1982, 1287] center=(0.80W,0.79H) area=0.0153 comps=1
+     REF  : Replace the silver SUV behind the sedan with a white compact SUV.
+     NOREF: Replace the selected SUV with a white compact SUV.
+     ZH   : 将轿车后方的银色SUV替换为一辆白色紧凑型SUV。 | 将选中的SUV替换为一辆白色紧凑型SUV。
+     spec : scope='SUV' payload='a white compact SUV' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=ref+none  category=plaque physical_parent_zh=牌匾
+     box=[1417, 779, 1629, 866] center=(0.68W,0.55H) area=0.0040 comps=1
+     REF  : Remove the dark red plaque with gold lettering above the red doors.
+     NOREF: Remove the selected plaque.
+     ZH   : 移除红门上方带金字的暗红色牌匾。 | 移除选中的牌匾。
+     spec : scope='plaque' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+mask  category=statue physical_parent_zh=左狮
+     box=[994, 1037, 1052, 1143] center=(0.46W,0.73H) area=0.0013 comps=1
+     REF  : Add a small red ribbon around its neck on the stone lion left of the first red door.
+     NOREF: Add a small red ribbon around its neck on the selected statue.
+     ZH   : 在第一扇红门左侧的石狮加上一条绕在颈部的小红丝带。 | 在选中的石狮加上一条绕在颈部的小红丝带。
+     spec : scope='statue' payload='a small red ribbon around its neck' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U4 add_dangling_its (minor): dangling its/their in add: "Add a small red ribbon around its neck on the stone lion left of the first red door."
+
+=== CASE v2-sa_6868139  (manifest #888, image 2254x1500, auto_flagged=False) view=/tmp/samtok_audit/views/v2-sa_6868139.jpg
+  case evidence_zh: 1前景灯箱车轮、23右侧行人夹克、7左侧Avalon招牌、33左侧铁栏杆是四个不同对象。
+  [U1] op=remove formal_input=ref+point  category=wheel physical_parent_zh=前车
+     box=[2090, 1190, 2189, 1339] center=(0.95W,0.84H) area=0.0034 comps=1
+     REF  : Remove the front wheel on the nearest illuminated cart.
+     NOREF: Remove the selected wheel.
+     ZH   : 移除最近灯箱车上的前轮。 | 移除选中的车轮。
+     spec : scope='wheel' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U2] op=attribute formal_input=noref+point  category=jacket physical_parent_zh=右侧人物
+     box=[1944, 595, 2139, 831] center=(0.91W,0.48H) area=0.0101 comps=1
+     REF  : Change the color of the brown jacket on the person at the right to deep blue.
+     NOREF: Change the color of the selected jacket to deep blue.
+     ZH   : 将右侧人物的棕色夹克的颜色改为深蓝色。 | 将选中的夹克的颜色改为深蓝色。
+     spec : scope='jacket' payload='deep blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'deep blue'}]
+  [U3] op=replace formal_input=ref+box  category=sign physical_parent_zh=Avalon牌
+     box=[1741, 278, 2039, 542] center=(0.84W,0.27H) area=0.0093 comps=1
+     REF  : Replace the Avalon Bar sign at the upper right with a blue COFFEE sign.
+     NOREF: Replace the selected sign with a blue COFFEE sign.
+     ZH   : 将右上方的Avalon Bar招牌替换为一块蓝色COFFEE招牌。 | 将选中的招牌替换为一块蓝色COFFEE招牌。
+     spec : scope='sign' payload='a blue COFFEE sign' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+mask  category=railing physical_parent_zh=左栏杆
+     box=[96, 504, 624, 782] center=(0.16W,0.43H) area=0.0234 comps=1
+     REF  : Add a small green planter on the iron railing along the left building.
+     NOREF: Add a small green planter on the selected railing.
+     ZH   : 在左侧建筑旁的铁栏杆加上一个小绿色花盆。 | 在选中的栏杆加上一个小绿色花盆。
+     spec : scope='railing' payload='a small green planter' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+
+=== CASE v2-sa_7191982  (manifest #906, image 2249x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_7191982.jpg
+  case evidence_zh: 1左侧路灯、5交通标志、60行人外套、8左侧轿车是四个不同对象。
+  [U1] op=attribute formal_input=ref+mask  category=streetlamp physical_parent_zh=左上路灯
+     box=[1563, 0, 1662, 1072] center=(0.72W,0.36H) area=0.0055 comps=3
+     REF  : Change the finish of the streetlamp beside the right-hand entrance to matte black.
+     NOREF: Change the finish of the selected streetlamp to matte black.
+     ZH   : 将右侧入口旁的路灯的表面效果改为哑光黑色。 | 将选中的路灯的表面效果改为哑光黑色。
+     spec : scope='streetlamp' payload='matte black' target_part='' remove_mode=whole placement={} attrs=[{'property': 'finish', 'value': 'matte black'}]
+  [U2] op=remove formal_input=noref+box  category=sign physical_parent_zh=禁停标志
+     box=[604, 671, 703, 728] center=(0.29W,0.47H) area=0.0015 comps=1
+     REF  : Remove the no-parking sign near the entrance.
+     NOREF: Remove the selected sign.
+     ZH   : 移除入口附近的禁停标志。 | 移除选中的标志。
+     spec : scope='sign' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=replace formal_input=ref+point  category=jacket physical_parent_zh=右侧行人
+     box=[531, 870, 622, 954] center=(0.26W,0.61H) area=0.0015 comps=1
+     REF  : Replace the tan jacket on the pedestrian at the right with a dark blue coat.
+     NOREF: Replace the selected jacket with a dark blue coat.
+     ZH   : 将右侧行人的棕色外套替换为一件深蓝色外套。 | 将选中的外套替换为一件深蓝色外套。
+     spec : scope='jacket' payload='a dark blue coat' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+point  category=car physical_parent_zh=左车
+     box=[1538, 629, 1612, 710] center=(0.70W,0.45H) area=0.0014 comps=1
+     REF  : Add a small roof sign on the white car at the left curb.
+     NOREF: Add a small roof sign on the selected car.
+     ZH   : 在左侧路边的白色轿车加上一个小车顶标志。 | 在选中的轿车加上一个小车顶标志。
+     spec : scope='car' payload='a small roof sign' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U1 mask_far_fragments (major): 3 big components, max dist 0.40 of image
+  AUTO-FLAG U3 spatial_contradiction (blocking): right but cx=0.26
+  AUTO-FLAG U4 spatial_contradiction (blocking): left but cx=0.70
+
+=== CASE v2-sa_7381987  (manifest #925, image 2263x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_7381987.jpg
+  case evidence_zh: 1染缸液体、4晾晒皮革、66石阶、115远处建筑是四个不同对象。
+  [U1] op=attribute formal_input=noref+point  category=dye physical_parent_zh=前景染缸
+     box=[1829, 1324, 1988, 1402] center=(0.84W,0.91H) area=0.0025 comps=1
+     REF  : Change the color of the brown dye in the foreground vat to deep blue.
+     NOREF: Change the color of the selected dye to deep blue.
+     ZH   : 将前景染缸里的棕色染液的颜色改为深蓝色。 | 将选中的染液的颜色改为深蓝色。
+     spec : scope='dye' payload='deep blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'deep blue'}]
+  [U2] op=remove formal_input=ref+box  category=hide physical_parent_zh=左皮革
+     box=[2165, 424, 2245, 567] center=(0.97W,0.33H) area=0.0021 comps=1
+     REF  : Remove the hanging hide on the left.
+     NOREF: Remove the selected hide.
+     ZH   : 移除左侧晾晒的皮革。 | 移除选中的皮革。
+     spec : scope='hide' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=replace formal_input=noref+mask  category=staircase physical_parent_zh=中央石阶
+     box=[1597, 555, 1708, 703] center=(0.73W,0.42H) area=0.0021 comps=1
+     REF  : Replace the stone staircase in the center with a wooden staircase.
+     NOREF: Replace the selected staircase with a wooden staircase.
+     ZH   : 将中央的石阶替换为一段木楼梯。 | 将选中的石阶替换为一段木楼梯。
+     spec : scope='staircase' payload='a wooden staircase' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+none  category=building physical_parent_zh=远处建筑
+     box=[193, 172, 835, 850] center=(0.23W,0.34H) area=0.0814 comps=1
+     REF  : Add a small red flag on the pale building in the distance.
+     NOREF: Add a small red flag on the selected building.
+     ZH   : 在远处的浅色建筑加上一面小红旗。 | 在选中的建筑加上一面小红旗。
+     spec : scope='building' payload='a small red flag' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 spatial_contradiction (blocking): left but cx=0.97
+  AUTO-FLAG U3 replace_is_recolor (major): replace payload "a wooden staircase" only changes color/material of same category "staircase"
+
+=== CASE v2-sa_7639254  (manifest #945, image 2256x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_7639254.jpg
+  case evidence_zh: 49左侧救援车、17右侧救护车、1前景救援人员和73右上树木是四个不同对象。
+  [U1] op=attribute formal_input=ref+box  category=rescue truck physical_parent_zh=左侧救援车
+     box=[177, 450, 564, 621] center=(0.16W,0.36H) area=0.0121 comps=1
+     REF  : Change the color of the rescue truck at the left to yellow.
+     NOREF: Change the color of the selected rescue truck to yellow.
+     ZH   : 将左侧的救援车的颜色改为黄色。 | 将选中的救援车的颜色改为黄色。
+     spec : scope='rescue truck' payload='yellow' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'yellow'}]
+  [U2] op=replace formal_input=noref+mask  category=ambulance physical_parent_zh=右上救护车
+     box=[1632, 429, 2067, 613] center=(0.82W,0.35H) area=0.0182 comps=1
+     REF  : Replace the ambulance at the upper right with a blue van.
+     NOREF: Replace the selected ambulance with a blue van.
+     ZH   : 将右上方的救护车替换为一辆蓝色厢式车。 | 将选中的救护车替换为一辆蓝色厢式车。
+     spec : scope='ambulance' payload='a blue van' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=ref+none  category=firefighter physical_parent_zh=前景消防员
+     box=[920, 628, 1166, 998] center=(0.46W,0.54H) area=0.0085 comps=1
+     REF  : Remove the firefighter in the foreground.
+     NOREF: Remove the selected firefighter.
+     ZH   : 移除前景的消防员。 | 移除选中的消防员。
+     spec : scope='firefighter' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+mask  category=tree physical_parent_zh=右上树木
+     box=[1624, 79, 1896, 373] center=(0.78W,0.15H) area=0.0149 comps=1
+     REF  : Add a small bird on the tree at the upper right.
+     NOREF: Add a small bird on the selected tree.
+     ZH   : 在右上方的树加上一只小鸟。 | 在选中的树加上一只小鸟。
+     spec : scope='tree' payload='a small bird' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U4 add_generic_payload (minor): generic/underspecified add payload "a small bird"
+
+=== CASE v2-sa_7833331  (manifest #963, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_7833331.jpg
+  case evidence_zh: 0前景货车和67后方建筑是两个不同对象。
+  [U1] op=attribute formal_input=ref+none  category=truck physical_parent_zh=前景货车
+     box=[0, 0, 1583, 1500] center=(0.35W,0.50H) area=0.6052 comps=1
+     REF  : Change the color of the truck in the foreground to dark blue.
+     NOREF: Change the color of the selected truck to dark blue.
+     ZH   : 将前景的货车的颜色改为深蓝色。 | 将选中的货车的颜色改为深蓝色。
+     spec : scope='truck' payload='dark blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'dark blue'}]
+  [U2] op=remove formal_input=ref+mask  category=building physical_parent_zh=后方建筑
+     box=[1110, 0, 2250, 784] center=(0.75W,0.26H) area=0.1524 comps=3
+     REF  : Remove the building behind the truck.
+     NOREF: Remove the selected building.
+     ZH   : 移除货车后方的建筑。 | 移除选中的建筑。
+     spec : scope='building' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  AUTO-FLAG U1 mask_huge (minor): area_frac=0.605
+  AUTO-FLAG U2 remove_huge_region (major): remove of 0.15 of image ("the building behind the truck") is ill-posed inpainting
+  AUTO-FLAG U2 remove_structural (major): remove structural element "building"
+
+=== CASE v2-sa_8188123  (manifest #982, image 2000x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_8188123.jpg
+  case evidence_zh: 0中央人物、3右上人物、11左上篷布和16右侧金属栏杆是四个不同对象。
+  [U1] op=attribute formal_input=noref+point  category=person physical_parent_zh=中央人物
+     box=[1162, 788, 1299, 1182] center=(0.62W,0.66H) area=0.0089 comps=1
+     REF  : Change the color of the person near the center to blue.
+     NOREF: Change the color of the selected person to blue.
+     ZH   : 将中间附近的人物的颜色改为蓝色。 | 将选中的人物的颜色改为蓝色。
+     spec : scope='person' payload='blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'blue'}]
+  [U2] op=replace formal_input=ref+box  category=person physical_parent_zh=右上人物
+     box=[1613, 432, 1807, 595] center=(0.85W,0.34H) area=0.0052 comps=1
+     REF  : Replace the person at the upper right with a green shirt.
+     NOREF: Replace the selected person with a green shirt.
+     ZH   : 将右上方的人物替换为一件绿色上衣。 | 将选中的人物替换为一件绿色上衣。
+     spec : scope='person' payload='a green shirt' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=noref+mask  category=tarp physical_parent_zh=左上篷布
+     box=[714, 356, 835, 631] center=(0.39W,0.33H) area=0.0066 comps=1
+     REF  : Remove the tarp at the upper left.
+     NOREF: Remove the selected tarp.
+     ZH   : 移除左上方的篷布。 | 移除选中的篷布。
+     spec : scope='tarp' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+none  category=metal railing physical_parent_zh=右侧栏杆
+     box=[1723, 781, 2000, 1137] center=(0.93W,0.64H) area=0.0068 comps=1
+     REF  : Add a small sign on the metal railing at the right.
+     NOREF: Add a small sign on the selected metal railing.
+     ZH   : 在右侧的金属栏杆加上一个小标牌。 | 在选中的金属栏杆加上一个小标牌。
+     spec : scope='metal railing' payload='a small sign' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U1 person_level_attribute (blocking): attribute applied to whole person (ref head=person, scope=person)
+  AUTO-FLAG U2 person_replaced_by_clothing (blocking): person target replaced by clothing payload "a green shirt"
+  AUTO-FLAG U4 add_generic_payload (minor): generic/underspecified add payload "a small sign"
+
+=== CASE v2-sa_838336  (manifest #998, image 1500x2250, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_838336.jpg
+  case evidence_zh: 4中央建筑、2左侧人物、3右侧人物和15下方轿车是四个不同对象。
+  [U1] op=attribute formal_input=ref+point  category=building physical_parent_zh=中央建筑
+     box=[182, 330, 1373, 1385] center=(0.52W,0.38H) area=0.1798 comps=2
+     REF  : Change the color of the building at the center to warm beige.
+     NOREF: Change the color of the selected building to warm beige.
+     ZH   : 将中央的建筑的颜色改为暖米色。 | 将选中的建筑的颜色改为暖米色。
+     spec : scope='building' payload='warm beige' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'warm beige'}]
+  [U2] op=replace formal_input=noref+point  category=person physical_parent_zh=左侧人物
+     box=[839, 1741, 926, 2041] center=(0.59W,0.84H) area=0.0039 comps=1
+     REF  : Replace the person at the left with a blue coat.
+     NOREF: Replace the selected person with a blue coat.
+     ZH   : 将左侧的人物替换为一件蓝色外套。 | 将选中的人物替换为一件蓝色外套。
+     spec : scope='person' payload='a blue coat' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=ref+box  category=person physical_parent_zh=右侧人物
+     box=[407, 1735, 565, 2084] center=(0.32W,0.85H) area=0.0070 comps=1
+     REF  : Remove the person near the right.
+     NOREF: Remove the selected person.
+     ZH   : 移除右侧附近的人物。 | 移除选中的人物。
+     spec : scope='person' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+mask  category=car physical_parent_zh=右下轿车
+     box=[1292, 2026, 1500, 2250] center=(0.93W,0.95H) area=0.0115 comps=1
+     REF  : Add a small roof sign on the car at the lower right.
+     NOREF: Add a small roof sign on the selected car.
+     ZH   : 在右下方的轿车加上一个小车顶标志。 | 在选中的轿车加上一个小车顶标志。
+     spec : scope='car' payload='a small roof sign' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 person_replaced_by_clothing (blocking): person target replaced by clothing payload "a blue coat"
+  AUTO-FLAG U3 person_remove (info): whole person removal (check scope)
+  AUTO-FLAG None relative_lr_contradiction (blocking): U2("the person at the left") cx=882 vs U3("the person near the right") cx=486
+
+=== CASE v2-sa_8671723  (manifest #1015, image 2241x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_8671723.jpg
+  case evidence_zh: 右侧游船、左侧路灯、上方旗帜和左下栏杆是四个不同对象。
+  [U1] op=attribute formal_input=ref+none  category=boat physical_parent_zh=右侧游船
+     box=[1627, 608, 2002, 825] center=(0.81W,0.48H) area=0.0141 comps=1
+     REF  : Change the color of the boat at the right to white.
+     NOREF: Change the color of the selected boat to white.
+     ZH   : 将右侧的游船的颜色改为白色。 | 将选中的游船的颜色改为白色。
+     spec : scope='boat' payload='white' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'white'}]
+  [U2] op=replace formal_input=ref+mask  category=streetlight physical_parent_zh=左侧路灯
+     box=[29, 293, 160, 799] center=(0.04W,0.36H) area=0.0024 comps=2
+     REF  : Replace the streetlight at the left with a black streetlight.
+     NOREF: Replace the selected streetlight with a black streetlight.
+     ZH   : 将左侧的路灯替换为一盏黑色路灯。 | 将选中的路灯替换为一盏黑色路灯。
+     spec : scope='streetlight' payload='a black streetlight' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=noref+box  category=flag physical_parent_zh=顶部旗帜
+     box=[715, 28, 752, 97] center=(0.33W,0.04H) area=0.0004 comps=1
+     REF  : Remove the flag near the top.
+     NOREF: Remove the selected flag.
+     ZH   : 移除顶部附近的旗帜。 | 移除选中的旗帜。
+     spec : scope='flag' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+point  category=railing physical_parent_zh=左下栏杆
+     box=[0, 692, 128, 729] center=(0.03W,0.47H) area=0.0013 comps=1
+     REF  : Add a small flower pot on the railing at the lower left.
+     NOREF: Add a small flower pot on the selected railing.
+     ZH   : 在左下方的栏杆加上一个小花盆。 | 在选中的栏杆加上一个小花盆。
+     spec : scope='railing' payload='a small flower pot' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 replace_is_recolor (major): replace payload "a black streetlight" only changes color/material of same category "streetlight"
+
+=== CASE v2-sa_8908572  (manifest #1031, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_8908572.jpg
+  case evidence_zh: 左下轿车、左侧交通标牌、上方交通灯和上方另一交通灯是四个不同对象。
+  [U1] op=attribute formal_input=ref+mask  category=car physical_parent_zh=左下轿车
+     box=[602, 915, 761, 991] center=(0.30W,0.64H) area=0.0029 comps=1
+     REF  : Change the color of the car at the lower left to red.
+     NOREF: Change the color of the selected car to red.
+     ZH   : 将左下方的轿车的颜色改为红色。 | 将选中的轿车的颜色改为红色。
+     spec : scope='car' payload='red' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'red'}]
+  [U2] op=replace formal_input=noref+box  category=traffic sign physical_parent_zh=左侧交通标牌
+     box=[207, 710, 364, 788] center=(0.13W,0.50H) area=0.0035 comps=1
+     REF  : Replace the traffic sign at the left with a blue sign.
+     NOREF: Replace the selected traffic sign with a blue sign.
+     ZH   : 将左侧的交通标牌替换为一块蓝色标牌。 | 将选中的交通标牌替换为一块蓝色标牌。
+     spec : scope='traffic sign' payload='a blue sign' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=ref+point  category=traffic light physical_parent_zh=顶部交通灯
+     box=[953, 99, 1160, 185] center=(0.47W,0.09H) area=0.0038 comps=1
+     REF  : Remove the traffic light near the top.
+     NOREF: Remove the selected traffic light.
+     ZH   : 移除顶部附近的交通灯。 | 移除选中的交通灯。
+     spec : scope='traffic light' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=noref+point  category=traffic light physical_parent_zh=左上交通灯
+     box=[451, 72, 672, 152] center=(0.25W,0.07H) area=0.0026 comps=2
+     REF  : Add a small camera on the traffic light at the upper left.
+     NOREF: Add a small camera on the selected traffic light.
+     ZH   : 在左上方的交通灯加上一个小摄像头。 | 在选中的交通灯加上一个小摄像头。
+     spec : scope='traffic light' payload='a small camera' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 replace_is_recolor (major): replace payload "a blue sign" only changes color/material of same category "traffic sign"
+
+=== CASE v2-sa_9068591  (manifest #1047, image 1997x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_9068591.jpg
+  case evidence_zh: 左上标牌、左侧围栏、上方灯具和中央垃圾桶是四个不同对象。
+  [U1] op=attribute formal_input=ref+box  category=sign physical_parent_zh=左上标牌
+     box=[155, 35, 352, 270] center=(0.13W,0.10H) area=0.0055 comps=1
+     REF  : Change the color of the sign at the upper left to blue.
+     NOREF: Change the color of the selected sign to blue.
+     ZH   : 将左上方的标牌的颜色改为蓝色。 | 将选中的标牌的颜色改为蓝色。
+     spec : scope='sign' payload='blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'blue'}]
+  [U2] op=replace formal_input=noref+mask  category=fence physical_parent_zh=左侧围栏
+     box=[78, 434, 198, 531] center=(0.07W,0.32H) area=0.0027 comps=1
+     REF  : Replace the fence at the left with a black fence.
+     NOREF: Replace the selected fence with a black fence.
+     ZH   : 将左侧的围栏替换为一段黑色围栏。 | 将选中的围栏替换为一段黑色围栏。
+     spec : scope='fence' payload='a black fence' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=ref+none  category=lamp physical_parent_zh=顶部灯具
+     box=[897, 168, 979, 224] center=(0.47W,0.13H) area=0.0012 comps=1
+     REF  : Remove the lamp near the top.
+     NOREF: Remove the selected lamp.
+     ZH   : 移除顶部附近的灯具。 | 移除选中的灯具。
+     spec : scope='lamp' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+mask  category=trash bin physical_parent_zh=中央垃圾桶
+     box=[1019, 647, 1097, 804] center=(0.53W,0.48H) area=0.0035 comps=1
+     REF  : Add a small label on the trash bin near the center.
+     NOREF: Add a small label on the selected trash bin.
+     ZH   : 在中间附近的垃圾桶加上一个小标签。 | 在选中的垃圾桶加上一个小标签。
+     spec : scope='trash bin' payload='a small label' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U2 replace_is_recolor (major): replace payload "a black fence" only changes color/material of same category "fence"
+  AUTO-FLAG U4 add_generic_payload (minor): generic/underspecified add payload "a small label"
+
+=== CASE v2-sa_9187878  (manifest #1063, image 2000x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_9187878.jpg
+  case evidence_zh: 左上横幅、左侧窗户、中部上衣和顶部气球是四个不同对象。
+  [U1] op=attribute formal_input=noref+box  category=banner physical_parent_zh=左上横幅
+     box=[0, 558, 232, 733] center=(0.06W,0.43H) area=0.0126 comps=1
+     REF  : Change the color of the banner at the upper left to blue.
+     NOREF: Change the color of the selected banner to blue.
+     ZH   : 将左上方的横幅的颜色改为蓝色。 | 将选中的横幅的颜色改为蓝色。
+     spec : scope='banner' payload='blue' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'blue'}]
+  [U2] op=replace formal_input=ref+point  category=window physical_parent_zh=左侧窗户
+     box=[5, 379, 94, 521] center=(0.02W,0.30H) area=0.0032 comps=1
+     REF  : Replace the window at the left with a round window.
+     NOREF: Replace the selected window with a round window.
+     ZH   : 将左侧的窗户替换为一扇圆窗。 | 将选中的窗户替换为一扇圆窗。
+     spec : scope='window' payload='a round window' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=noref+point  category=shirt physical_parent_zh=中央上衣
+     box=[26, 499, 143, 559] center=(0.04W,0.35H) area=0.0014 comps=1
+     REF  : Remove the shirt near the center.
+     NOREF: Remove the selected shirt.
+     ZH   : 移除中间附近的上衣。 | 移除选中的上衣。
+     spec : scope='shirt' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+box  category=balloon physical_parent_zh=顶部气球
+     box=[1475, 545, 1797, 870] center=(0.82W,0.47H) area=0.0269 comps=1
+     REF  : Add a small logo on the balloon at the right.
+     NOREF: Add a small logo on the selected balloon.
+     ZH   : 在右侧的气球加上一个小标志。 | 在选中的气球加上一个小标志。
+     spec : scope='balloon' payload='a small logo' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U3 spatial_contradiction (blocking): center but cx=0.04 cy=0.35
+  AUTO-FLAG U3 remove_worn_garment (major): removing worn garment "shirt" leaves undefined body/underlayer
+  AUTO-FLAG U4 add_generic_payload (minor): generic/underspecified add payload "a small logo"
+
+=== CASE v2-sa_9298533  (manifest #1079, image 2250x1500, auto_flagged=True) view=/tmp/samtok_audit/views/v2-sa_9298533.jpg
+  case evidence_zh: 左侧路灯、左侧标牌、右侧外套和右侧窗户是四个不同对象。
+  [U1] op=attribute formal_input=ref+none  category=streetlight physical_parent_zh=左侧路灯
+     box=[1647, 449, 1766, 929] center=(0.76W,0.46H) area=0.0057 comps=1
+     REF  : Change the color of the streetlight at the left to black.
+     NOREF: Change the color of the selected streetlight to black.
+     ZH   : 将左侧的路灯的颜色改为黑色。 | 将选中的路灯的颜色改为黑色。
+     spec : scope='streetlight' payload='black' target_part='' remove_mode=whole placement={} attrs=[{'property': 'color', 'value': 'black'}]
+  [U2] op=replace formal_input=ref+mask  category=sign physical_parent_zh=左侧标牌
+     box=[1443, 1043, 1534, 1110] center=(0.66W,0.72H) area=0.0015 comps=1
+     REF  : Replace the sign at the left with a blue sign.
+     NOREF: Replace the selected sign with a blue sign.
+     ZH   : 将左侧的标牌替换为一块蓝色标牌。 | 将选中的标牌替换为一块蓝色标牌。
+     spec : scope='sign' payload='a blue sign' target_part='' remove_mode=whole placement={} attrs=[]
+  [U3] op=remove formal_input=noref+box  category=coat physical_parent_zh=右侧外套
+     box=[1354, 1089, 1442, 1286] center=(0.62W,0.79H) area=0.0036 comps=1
+     REF  : Remove the coat at the right.
+     NOREF: Remove the selected coat.
+     ZH   : 移除右侧的外套。 | 移除选中的外套。
+     spec : scope='coat' payload='' target_part='' remove_mode=whole placement={} attrs=[]
+  [U4] op=add formal_input=ref+point  category=window physical_parent_zh=右侧窗户
+     box=[913, 1019, 958, 1094] center=(0.42W,0.70H) area=0.0009 comps=1
+     REF  : Add a flower box on the window at the right.
+     NOREF: Add a flower box on the selected window.
+     ZH   : 在右侧的窗户加上一个花箱。 | 在选中的窗户加上一个花箱。
+     spec : scope='window' payload='a flower box' target_part='' remove_mode=whole placement={'relation': 'on', 'site': '', 'anchor_mode': 'support'} attrs=[]
+  AUTO-FLAG U1 spatial_contradiction (blocking): left but cx=0.76
+  AUTO-FLAG U2 spatial_contradiction (blocking): left but cx=0.66
+  AUTO-FLAG U2 replace_is_recolor (major): replace payload "a blue sign" only changes color/material of same category "sign"
+  AUTO-FLAG U3 remove_worn_garment (major): removing worn garment "coat" leaves undefined body/underlayer

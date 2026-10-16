@@ -1,0 +1,25 @@
+{
+  "case_id": "v2-sa_7985091",
+  "reviewer": "shard4-b3",
+  "notes": "Tail case, all units rewritten. U1 whole-groom colour edit -> his navy suit jacket to light gray (mask = jacket via SAM3). U2 'remove the bridge' (ill-posed, 22% of image) -> retarget to the cluster of love padlocks locked on the railing post (SAM3, groom's hand-held white lock excluded).",
+  "reviewed_views": ["release_2_6_work/v2-sa_7985091/case_sheet.jpg", "release_2_6_work/v2-sa_7985091/U1/t1.jpg", "release_2_6_work/v2-sa_7985091/U1/final.jpg", "release_2_6_work/v2-sa_7985091/U2/t1.jpg", "release_2_6_work/v2-sa_7985091/U2/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "bridge", "small_object"], "scene_zh": "桥上新人挂同心锁", "evidence_zh": "新郎的藏青西装外套与桥栏立柱上的一簇同心锁是两个不同对象；锁簇小且紧挨新郎的手和栏杆。", "specific_protection_zh": "保留桥梁、人物和水面环境。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the navy suit jacket of the groom", "scope": "suit jacket", "payload": "light gray", "attributes": [{"property": "color", "value": "light gray"}]},
+     "ref_zh": "新郎的藏青色西装外套", "scope_zh": "西装外套", "physical_parent_zh": "新郎", "parent_instance_id": "sa_7985091:新郎",
+     "instruction_ref_zh": "将新郎的藏青色西装外套的颜色改为浅灰色。",
+     "instruction_noref_zh": "将选中区域的颜色改为浅灰色。",
+     "preserve": ["保留新郎的裤子、衬衫和胸花，以及桥梁、新娘和背景。"],
+     "findings_addressed": ["person_clothing_level"],
+     "reason": "Whole-person colour edit was undefined and the suit is already navy; now the jacket only, mask re-segmented to the jacket (v2)."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the cluster of padlocks locked around the railing post", "scope": "padlocks", "payload": "", "remove_mode": "whole"},
+     "ref_zh": "锁在栏杆立柱上的一簇挂锁", "scope_zh": "挂锁", "physical_parent_zh": "立柱上的挂锁簇", "parent_instance_id": "sa_7985091:立柱上的挂锁簇",
+     "instruction_ref_zh": "移除锁在栏杆立柱上的一簇挂锁。",
+     "instruction_noref_zh": "移除选中区域。",
+     "preserve": ["保留栏杆立柱、新郎的手和手中的白色心形锁，以及桥梁和人物。"],
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Removing the entire bridge under the couple is absurd; retargeted to the padlock cluster (v2 mask, SAM3 union of the locks on the post, excludes the white heart lock held in the groom's hand)."}
+  ]
+}

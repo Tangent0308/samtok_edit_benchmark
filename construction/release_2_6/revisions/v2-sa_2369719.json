@@ -1,0 +1,56 @@
+{
+  "case_id": "v2-sa_2369719",
+  "reviewer": "round2",
+  "notes": "核对源图窗玻璃为蓝色，改深灰有效；U2原游艇本已有船舱，改小驾驶室木质拖网渔船作结构替换；U3原船头栏杆极细，改清楚可见船头船壳上段添加小徽章并作局部mask。",
+  "reviewed_views": [
+    "assets/v2-sa_2369719/source.jpg",
+    "release_2_6_work/v2-sa_2369719/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2369719/U3/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "reflection",
+      "occlusion",
+      "cropped_objects"
+    ],
+    "scene_zh": "码头并排游艇",
+    "evidence_zh": "不同源对象：最大游艇上层的椭圆窗；码头后方较小的白色游艇；左边缘被截断的游艇。",
+    "specific_protection_zh": "保留码头、绳索、其他船、楼房及水面光照。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a wooden fishing trawler with a small wheelhouse"
+      },
+      "instruction_ref_zh": "将码头后方较小的白色游艇替换为一艘带小驾驶室的木质拖网渔船。",
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "码头后方较小的白色游艇",
+      "scope_zh": "游艇",
+      "physical_parent_zh": "中间游艇",
+      "parent_instance_id": "sa_2369719:middle_yacht",
+      "category": "yacht"
+    },
+    {
+      "spec": {
+        "payload": "one small round brass emblem",
+        "placement": {
+          "relation": "on",
+          "site": "upper section of the bow hull"
+        }
+      },
+      "instruction_ref_zh": "在左边缘被截断的游艇的船头船壳上段加上一枚小圆形黄铜徽章。",
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "左边缘被截断的游艇",
+      "scope_zh": "游艇",
+      "physical_parent_zh": "左游艇",
+      "parent_instance_id": "sa_2369719:left_yacht",
+      "category": "yacht"
+    }
+  ]
+}

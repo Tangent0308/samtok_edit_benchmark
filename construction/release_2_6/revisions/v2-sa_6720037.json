@@ -1,0 +1,76 @@
+{
+  "case_id": "v2-sa_6720037",
+  "reviewer": "round2",
+  "notes": "U1改四辆停放厢式车中左起第三辆无窗车；U2限定同一排最左车；U4限定预约牌下最右侧玻璃入口门。另发现U1/U2/U4均含前景栅栏，SAM wire fence仅产实心区域不可用，按原图像素拟合各杆斜率与各网片横丝，扣除细丝、门柱和门闩，逐张final核对后提交三张v2。U3原仅黄色旗改蓝色旗，改燕尾形旗结构。",
+  "reviewed_views": [
+    "assets/v2-sa_6720037/source.jpg",
+    "release_2_6_work/v2-sa_6720037/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6720037/U1/final.jpg",
+    "release_2_6_work/v2-sa_6720037/U2/final.jpg",
+    "release_2_6_work/v2-sa_6720037/U4/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "vehicles",
+      "signage",
+      "perspective"
+    ],
+    "scene_zh": "车辆检测站",
+    "evidence_zh": "不同源对象：停放的厢式车中从左数第三辆无窗白色厢式货车；四辆停放厢式车中最左侧的白色厢式车；黄色的ADAC旗帜；预约招牌下最右侧的玻璃入口门。",
+    "specific_protection_zh": "保留检测站建筑、其他车辆和标牌。"
+  },
+  "units": [
+    {
+      "spec": {
+        "ref": "the windowless white panel van, third from the left among the parked vans"
+      },
+      "ref_zh": "停放的厢式车中从左数第三辆无窗白色厢式货车",
+      "instruction_ref_zh": "移除停放的厢式车中从左数第三辆无窗白色厢式货车。",
+      "id": "U1",
+      "action": "revise",
+      "scope_zh": "厢式车",
+      "physical_parent_zh": "中间厢式车",
+      "parent_instance_id": "sa_6720037:center_van",
+      "category": "panel van"
+    },
+    {
+      "spec": {
+        "ref": "the leftmost white van in the row of four parked vans"
+      },
+      "ref_zh": "四辆停放厢式车中最左侧的白色厢式车",
+      "instruction_ref_zh": "将四辆停放厢式车中最左侧的白色厢式车的颜色改为深蓝色。",
+      "id": "U2",
+      "action": "revise",
+      "scope_zh": "厢式车",
+      "physical_parent_zh": "左厢式车",
+      "parent_instance_id": "sa_6720037:left_van",
+      "category": "van"
+    },
+    {
+      "spec": {
+        "payload": "a blue swallowtail service flag"
+      },
+      "instruction_ref_zh": "将黄色的ADAC旗帜替换为一面蓝色燕尾形服务旗。",
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "黄色的ADAC旗帜",
+      "scope_zh": "旗帜",
+      "physical_parent_zh": "ADAC旗",
+      "parent_instance_id": "sa_6720037:adac_flag",
+      "category": "flag"
+    },
+    {
+      "spec": {
+        "ref": "the rightmost glass entrance door beneath the appointment sign"
+      },
+      "ref_zh": "预约招牌下最右侧的玻璃入口门",
+      "instruction_ref_zh": "在预约招牌下最右侧的玻璃入口门上加上一张小OPEN贴花。",
+      "id": "U4",
+      "action": "revise",
+      "scope_zh": "门",
+      "physical_parent_zh": "入口门",
+      "parent_instance_id": "sa_6720037:entrance_door",
+      "category": "door"
+    }
+  ]
+}

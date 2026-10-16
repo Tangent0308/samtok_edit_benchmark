@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_8356934",
+  "reviewer": "shard5-b1",
+  "notes": "Tail case: both units re-examined. U1 is a clock tower (clock face visible); U2 masked lamp post is the tall double-headed one right of the tower, not at the left. Masks are the whole edited objects; no v2 masks needed.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8356934/case_sheet.jpg", "assets/v2-sa_8356934/source.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "architecture", "street"], "scene_zh": "市场大厅广场", "evidence_zh": "2中央砖砌钟楼和1右侧高大的双头路灯是两个不同对象。", "specific_protection_zh": "保留市场建筑和广场设施。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the brick clock tower", "scope": "clock tower"},
+     "ref_zh": "砖砌钟楼", "scope_zh": "钟楼", "physical_parent_zh": "中央砖砌钟楼", "parent_instance_id": "sa_8356934:center_bell_tower",
+     "instruction_ref_zh": "将砖砌钟楼的颜色改为暖米色。",
+     "instruction_noref_zh": "将选中区域的颜色改为暖米色。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "The tower has a clock face; it is the only tower, so 'near the center' is unnecessary."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the tall double-headed street lamp in front of the market canopy", "scope": "street lamp"},
+     "ref_zh": "市场遮篷前高大的双头路灯", "scope_zh": "路灯", "physical_parent_zh": "右侧双头路灯", "parent_instance_id": "sa_8356934:right_lamp",
+     "instruction_ref_zh": "移除市场遮篷前高大的双头路灯。",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked lamp post is at cx=0.73 (right of the tower); shorter single lamps exist elsewhere."}
+  ]
+}

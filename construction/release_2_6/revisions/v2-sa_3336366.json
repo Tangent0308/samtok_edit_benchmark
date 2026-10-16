@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_3336366",
+  "reviewer": "shard0-b1",
+  "notes": "No audit findings. Protocol 2.0: U2 add site 'side' was not localisable (which side?); now 'image-left side' and v2 mask = beret host ∩ box x 860-912 (the drooping left part, away from the badge). zh no-ref cleaned.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3336366/case_sheet.jpg", "release_2_6_work/v2-sa_3336366/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "image-left side", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在旗帜左侧高个旗手红帽的画面左侧别上一根短白羽毛。",
+     "instruction_noref_zh": "给选中区域别上一根短白羽毛。",
+     "findings_addressed": [],
+     "reason": "Site 'side' ambiguous for a site mask; specified image-left side (badge is on the image-right end)."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

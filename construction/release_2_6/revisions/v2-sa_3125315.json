@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_3125315",
+  "reviewer": "shard1b-b5",
+  "notes": "U1 replace was only colour/pattern/material (case -> plain case); rewritten to a flip-wallet case. U2 mask had stray specks at x~390,y~2150-2190 that stretched the box into the next row; v2 mask = host clipped to the leopard case (box 152,1709-359,1996). Clean image: leopard case is blue with 'PINK' print.",
+  "reviewed_views": ["release_2_6_work/v2-sa_3125315/case_sheet.jpg", "release_2_6_work/v2-sa_3125315/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a brown leather flip-wallet phone case"},
+     "instruction_ref_zh": "将粉色蝴蝶图案手机壳替换为一个棕色皮革翻盖钱包式手机壳。",
+     "instruction_noref_zh": "将选中区域替换为一个棕色皮革翻盖钱包式手机壳。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "A flip-wallet case is a structurally different case type."},
+    {"id": "U2", "action": "keep", "findings_addressed": ["mask_quality"], "reason": "v2 mask drops stray specks; box now tight."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "case_id": "v2-sa_5842279",
+  "reviewer": "shard0-b5",
+  "notes": "Audit U1 ill_posed_edit: removing a sleeve of a worn shirt is unnatural; rewritten as a colour change of the same sleeve (mask unchanged = the raised sleeve). U2 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5842279/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"operation": "attribute", "attributes": [{"property": "color", "value": "dark red"}], "remove_mode": "whole"},
+     "instruction_ref_zh": "将前方男子画面左侧抬起的衣袖的颜色改为深红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深红色。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Removing part of a worn shirt leaves the arm undefined; the light-grey sleeve recoloured dark red is a natural, visible edit on the same mask."},
+    {"id": "U2", "action": "keep"}
+  ]
+}

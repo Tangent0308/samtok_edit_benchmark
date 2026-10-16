@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_7168629",
+  "reviewer": "shard3-b2",
+  "notes": "U1 payload made structural and colour corrected to light gray; U3 ref made unique (plastic cup of dark water above-right of the palettes) and mask holes filled; U4 ref made unique among three stacked printed photos. U2 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7168629/case_sheet.jpg", "release_2_6_work/v2-sa_7168629/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "occlusion", "perspective"], "scene_zh": "儿童绘画桌", "evidence_zh": "上方孩子的浅灰色T恤、前景蓝色棒球帽、调色盘右上方的塑料水杯、右侧三张叠放照片中最下面一张是四个不同对象。", "specific_protection_zh": "保留孩子、画具和桌面环境。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the light gray T-shirt of the child at the top", "payload": "a yellow hooded sweatshirt"},
+     "ref_zh": "上方孩子的浅灰色T恤",
+     "instruction_ref_zh": "将上方孩子的浅灰色T恤替换为一件黄色连帽卫衣。",
+     "instruction_noref_zh": "将选中区域替换为一件黄色连帽卫衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "T-shirt->T-shirt was a recolour; hooded sweatshirt is a different garment. Clean image shows the shirt is light gray, not white."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the light-blue plastic cup of dark water at the upper right of the paint palettes"},
+     "ref_zh": "调色盘右上方装着深色水的浅蓝色塑料杯",
+     "instruction_ref_zh": "移除调色盘右上方装着深色水的浅蓝色塑料杯。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Another cup of dark liquid sits between the palettes; the masked cup is above-right of the palettes. v2 mask is the filled cup (old mask had holes in the liquid)."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the bottom one of the three stacked photos printed on the right side of the table", "payload": "one small red heart sticker"},
+     "ref_zh": "桌面右侧三张叠放印刷照片中最下面的一张",
+     "instruction_ref_zh": "在桌面右侧三张叠放印刷照片中最下面的一张上贴一枚小红心贴纸。",
+     "instruction_noref_zh": "给选中区域贴上一枚小红心贴纸。",
+     "findings_addressed": [],
+     "reason": "Own check: three printed photos are stacked on the right of the table banner; 'the photo on the lower table' was ambiguous. Mask is the bottom photo."}
+  ]
+}

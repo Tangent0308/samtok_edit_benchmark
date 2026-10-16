@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_5614303",
+  "reviewer": "shard2-b11",
+  "notes": "U2: the person on the gray mat is a boy in a blue jersey, not a man. U3 green tote -> beige canvas tote was only a colour/material change; now a wicker picnic basket. U1/U4 checked on source.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5614303/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the gray yoga mat under the boy in the blue jersey"},
+     "ref_zh": "蓝色球衣男孩脚下的灰色瑜伽垫",
+     "physical_parent_zh": "前景灰色瑜伽垫",
+     "instruction_ref_zh": "将蓝色球衣男孩脚下的灰色瑜伽垫的颜色改为蓝绿色。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "The person standing on the masked mat is a young boy in a blue jersey."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small wicker picnic basket"},
+     "instruction_ref_zh": "将左边缘的绿色手提袋替换为一个小柳条野餐篮。",
+     "instruction_noref_zh": "将选中区域替换为一个小柳条野餐篮。",
+     "findings_addressed": [],
+     "reason": "Beige canvas tote bag was a colour/material change of the same tote (replace-is-attribute); a wicker picnic basket is a natural structural replacement in a park."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

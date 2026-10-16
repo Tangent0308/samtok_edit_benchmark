@@ -1,0 +1,29 @@
+{
+  "case_id": "v2-sa_7522810",
+  "reviewer": "shard3-b6",
+  "notes": "U1 ref ambiguous between two Pretto signs; U3 mask was a sliver of a cafe umbrella canopy at the image edge while the ref named a coat: retargeted to the black litter bin at the column base; U4 window ref made unique; U2 ref disambiguated from the grey-coated man beside him.",
+  "reviewed_views": ["release_2_6_work/v2-sa_7522810/case_sheet.jpg", "release_2_6_work/v2-sa_7522810/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["street", "architecture", "occlusion"], "scene_zh": "欧洲街景", "evidence_zh": "左侧较小的Pretto招牌、右前景男子的深色夹克、立柱底座旁的黑色垃圾桶和左侧建筑左上角的窗户是四个不同对象。", "specific_protection_zh": "保留街道建筑、行人和店铺环境。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the smaller red Pretto sign above the second shop arch from the left"},
+     "ref_zh": "左起第二个店铺拱门上方较小的红色Pretto招牌", "scope_zh": "招牌", "physical_parent_zh": "左起第二个拱门招牌", "parent_instance_id": "sa_7522810:左起第二个拱门招牌",
+     "instruction_ref_zh": "将左起第二个店铺拱门上方较小的红色Pretto招牌的颜色改为深蓝色。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Two Pretto signs on the left; the masked one is the smaller red one over the second arch."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the dark jacket of the man walking in the right foreground", "scope": "jacket"},
+     "ref_zh": "右侧前景中行走男子的深色夹克", "scope_zh": "夹克", "physical_parent_zh": "右前景男子", "parent_instance_id": "sa_7522810:右前景男子",
+     "instruction_ref_zh": "将右侧前景中行走男子的深色夹克替换为一件绿色雨衣。",
+     "findings_addressed": [], "reason": "'the person at the right' fits several people (grey-coated man beside him, woman further right); masked garment is the dark jacket of the nearest man."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the black litter bin at the base of the column", "scope": "litter bin"},
+     "ref_zh": "立柱底座旁的黑色垃圾桶", "scope_zh": "垃圾桶", "physical_parent_zh": "黑色垃圾桶", "parent_instance_id": "sa_7522810:黑色垃圾桶",
+     "instruction_ref_zh": "移除立柱底座旁的黑色垃圾桶。",
+     "findings_addressed": ["category_mismatch"], "reason": "Old mask was only a partial umbrella canopy cut by the image edge, named a coat (worn-garment removal). Retargeted to a clear, independent bin segmented with SAM3."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the topmost window with grey shutters at the upper-left corner of the building on the left"},
+     "ref_zh": "左侧建筑左上角最上方带灰色百叶窗的窗户", "scope_zh": "窗户", "physical_parent_zh": "左上窗户", "parent_instance_id": "sa_7522810:左上窗户",
+     "instruction_ref_zh": "给左侧建筑左上角最上方带灰色百叶窗的窗户加上一个花箱。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Ref+none input; many windows on that palazzo."}
+  ]
+}

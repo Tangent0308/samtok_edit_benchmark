@@ -1,0 +1,61 @@
+{
+  "case_id": "v2-sa_6724758",
+  "reviewer": "round2",
+  "notes": "U2由T恤改为尖领纽扣衬衫；U4额外发现胸前位置混在payload，改upper chest site并提交2940px区域mask。",
+  "reviewed_views": [
+    "assets/v2-sa_6724758/source.jpg",
+    "release_2_6_work/v2-sa_6724758/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6724758/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a white button-up shirt with a pointed collar"
+      },
+      "instruction_ref_zh": "将右侧男子的New York T恤替换为一件尖领白色纽扣衬衫。",
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "右侧男子的New York T恤",
+      "scope_zh": "T恤",
+      "physical_parent_zh": "右侧男子",
+      "parent_instance_id": "sa_6724758:right_man",
+      "category": "T-shirt"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a small white circular emblem",
+        "placement": {
+          "relation": "on",
+          "site": "upper chest",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "在中间后方人物蓝色卫衣的上胸部加上一枚小白圆形徽章。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "中间后方人物的蓝色卫衣",
+      "scope_zh": "卫衣",
+      "physical_parent_zh": "后排人物",
+      "parent_instance_id": "sa_6724758:background_person",
+      "category": "sweatshirt"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "crowd",
+      "backlight",
+      "occlusion"
+    ],
+    "scene_zh": "背光人群与旗帜",
+    "evidence_zh": "四个不同对象：左侧的大旗；右侧男子的New York T恤；中间附近女子的头巾；中间后方人物的蓝色卫衣。",
+    "specific_protection_zh": "保留人群、旗杆和场景光线。"
+  }
+}

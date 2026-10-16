@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_4057910",
+  "reviewer": "shard2-b3",
+  "notes": "U1 flag -> plain white flag was a recolour; now a long pennant banner. U2 dangling 'perched on its head' moved to placement.site='head'; v2 mask = statue head (SAM3 'head' in host, verified).",
+  "reviewed_views": ["release_2_6_work/v2-sa_4057910/case_sheet.jpg", "release_2_6_work/v2-sa_4057910/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a long red-and-gold pennant banner"},
+     "instruction_ref_zh": "将博物馆上方的红旗替换为一条红金相间的长三角旗。",
+     "instruction_noref_zh": "将选中区域替换为一条红金相间的长三角旗。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Plain white flag keeps the flag shape; a long pennant is a structural replacement."},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a small perched pigeon", "placement": {"relation": "on", "site": "head", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在最右侧的石质坐像的头顶上加上一只停歇的小鸽子。",
+     "instruction_noref_zh": "给选中区域加上一只停歇的小鸽子。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Payload referred back to the host ('its head'); site is now 'head' and the mask is the statue's head (source box 2177,826-2221,867)."}
+  ]
+}

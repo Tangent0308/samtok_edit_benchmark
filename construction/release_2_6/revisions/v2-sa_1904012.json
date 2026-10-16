@@ -1,0 +1,46 @@
+{
+  "case_id": "v2-sa_1904012",
+  "reviewer": "round2",
+  "notes": "核对干净原图；U2以实际车把作为车把包附着区域，保留刹把与车把空隙；U4原黄上衣换白上衣仅颜色变化，改为有帽卫衣结构替换。",
+  "reviewed_views": [
+    "assets/v2-sa_1904012/source.jpg",
+    "release_2_6_work/v2-sa_1904012/case_sheet.jpg",
+    "release_2_6_work/v2-sa_1904012/U2/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "occlusion",
+      "small_targets"
+    ],
+    "scene_zh": "花田旁骑行者",
+    "evidence_zh": "不同源对象：前景骑行者的蓝色上衣；前景的自行车；白色禁停告示板；最右侧的黄色骑行上衣。",
+    "specific_protection_zh": "保留身体、头盔、道路、花田、护栏及其他骑行者。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a white hooded sweatshirt"
+      },
+      "instruction_ref_zh": "将最右侧的黄色骑行上衣替换为一件白色连帽卫衣。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "最右侧的黄色骑行上衣",
+      "scope_zh": "骑行上衣",
+      "physical_parent_zh": "右骑行者",
+      "parent_instance_id": "sa_1904012:right_cyclist",
+      "category": "jersey"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_10367798",
+  "reviewer": "shard1-b2",
+  "notes": "Six hanging lights are visible: two small bulbs by the skylight, two lower bulbs next to brass lanterns at the bottom, and two large chain-hung glowing globes in the foreground at the far left (U1) and far right (U2). The audit's suggested 'upper-left' would be wrong (the skylight bulbs are higher); refs now say far left / far right and call them globe lights. The U2 globe is already a white opal-like glass globe, so 'add an opal-glass shade' was near no-op; payload changed to a red silk tassel hanging from it.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10367798/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the large pendant globe light at the far left"},
+     "ref_zh": "最左侧悬挂的大球形灯",
+     "physical_parent_zh": "最左侧大球形吊灯",
+     "instruction_ref_zh": "将最左侧悬挂的大球形灯替换为一盏传统黄铜吊灯笼。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Several hanging bulbs; masked one is the large foreground globe at the far left (x~0.07W)."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the large pendant globe light at the far right", "payload": "a red silk tassel",
+              "placement": {"relation": "hanging from", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "最右侧悬挂的大球形灯",
+     "physical_parent_zh": "最右侧大球形吊灯",
+     "instruction_ref_zh": "在最右侧悬挂的大球形灯下方挂上一条红色丝绸流苏。",
+     "instruction_noref_zh": "给选中区域挂上一条红色丝绸流苏。",
+     "findings_addressed": ["ambiguous_ref", "attribute_value"],
+     "reason": "'upper-right' is inaccurate (skylight bulbs are higher); the globe already looks like opal glass so the old add was a near no-op."}
+  ]
+}

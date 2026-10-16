@@ -1,0 +1,56 @@
+{
+  "case_id": "v2-sa_2373849",
+  "reviewer": "round2",
+  "notes": "U2以连帽工作夹克明确结构替换；U3梯梁已有红色安全条，改蓝色圆形检查贴纸，选择右侧梯梁上段清楚的金属面作为附着区域，避开梯级和人物。",
+  "reviewed_views": [
+    "assets/v2-sa_2373849/source.jpg",
+    "release_2_6_work/v2-sa_2373849/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2373849/U3/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "occlusion",
+      "thin_structures",
+      "similar_instances"
+    ],
+    "scene_zh": "两名工人清理店铺窗栏",
+    "evidence_zh": "不同源对象：右侧工人的红色长裤；梯子后面的黑色上衣；左侧的高梯子。",
+    "specific_protection_zh": "保留人体、动作、窗栏、店铺海报和建筑雕饰。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a blue hooded work jacket"
+      },
+      "instruction_ref_zh": "将梯子后面的黑色上衣替换为一件蓝色连帽工作夹克。",
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "梯子后面的黑色上衣",
+      "scope_zh": "上衣",
+      "physical_parent_zh": "左工人",
+      "parent_instance_id": "sa_2373849:left_worker",
+      "category": "shirt"
+    },
+    {
+      "spec": {
+        "payload": "one small round blue inspection sticker",
+        "placement": {
+          "relation": "on",
+          "site": "upper section of the image-right side rail"
+        }
+      },
+      "instruction_ref_zh": "在左侧的高梯子的画面右侧梯梁上段加上一张小圆形蓝色检查贴纸。",
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "左侧的高梯子",
+      "scope_zh": "梯子",
+      "physical_parent_zh": "梯子",
+      "parent_instance_id": "sa_2373849:ladder",
+      "category": "ladder"
+    }
+  ]
+}

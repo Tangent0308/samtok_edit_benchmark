@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_368308",
+  "reviewer": "shard2-b1",
+  "notes": "U1 SUV->SUV in another colour was a recolour; now SUV -> red pickup truck. Other units checked on case sheet, unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_368308/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a red pickup truck"},
+     "instruction_ref_zh": "将左侧的银色SUV替换为一辆红色皮卡。",
+     "instruction_noref_zh": "将选中区域替换为一辆红色皮卡。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same-category recolour; a pickup truck is a structural vehicle change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "keep"}
+  ]
+}

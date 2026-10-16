@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4256768",
+  "reviewer": "shard2-b4",
+  "notes": "U1 ref ambiguous (many dark backpacks in the crowd) and replace was backpack->backpack; ref now names the wearer (white T-shirt + blue jeans, x~1120-1210) and payload is a messenger bag. U3 ref called the shirt blue, but the masked T-shirt (x 237-372) is dark slate grey on the visitor in a white bucket hat; the blue T-shirt belongs to the ponytailed woman next to them. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4256768/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the black backpack on the man in the white T-shirt and blue jeans right of center", "payload": "a brown leather messenger bag"},
+     "ref_zh": "中间偏右穿白T恤和蓝色牛仔裤男子背的黑色背包",
+     "instruction_ref_zh": "将中间偏右穿白T恤和蓝色牛仔裤男子背的黑色背包替换为一个棕色皮革邮差包。",
+     "instruction_noref_zh": "将选中区域替换为一个棕色皮革邮差包。",
+     "findings_addressed": ["replace_is_attribute", "ambiguous_ref"],
+     "reason": "Another dark backpack is worn near x~0.40; the masked one is on the man in white T-shirt and blue jeans. Messenger bag is a structural change."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the grey T-shirt on the visitor in the white bucket hat at the left", "scope": "T-shirt"},
+     "ref_zh": "左侧戴白色渔夫帽游客的灰色T恤",
+     "instruction_ref_zh": "将左侧戴白色渔夫帽游客的灰色T恤的颜色改为酒红色。",
+     "findings_addressed": [],
+     "reason": "Self-found: clean source shows the masked T-shirt is dark slate grey, not blue (the blue T-shirt is the ponytailed woman's); ref now uses the white bucket hat as identifier."}
+  ]
+}

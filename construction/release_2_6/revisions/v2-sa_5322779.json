@@ -1,0 +1,24 @@
+{
+  "case_id": "v2-sa_5322779",
+  "reviewer": "shard2-b10",
+  "notes": "U1 man stands at x~0.33W just right of the three seated men (not center) and wears a pale-blue collared shirt; ref re-anchored, payload made structural (polo->polo would be colour only). U4 dangling 'on its pole' removed. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5322779/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the pale blue shirt of the standing man just right of the three seated men", "scope": "shirt", "payload": "a dark denim jacket"},
+     "ref_zh": "三名坐着男子右侧站立男子的浅蓝色上衣",
+     "scope_zh": "上衣",
+     "instruction_ref_zh": "将三名坐着男子右侧站立男子的浅蓝色上衣替换为一件深色牛仔夹克。",
+     "instruction_noref_zh": "将选中区域替换为一件深色牛仔夹克。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Masked man (box x 710-777) stands right of the three seated men at x~0.33W; shirt is pale blue with a collar, so 'navy polo' would be only a colour change; replaced with a denim jacket."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white number 8 plaque"},
+     "instruction_ref_zh": "给广场最右侧的路灯加上一块小白色编号8牌。",
+     "instruction_noref_zh": "给选中区域加上一块小白色编号8牌。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its pole' from the payload; anchor stays the whole streetlamp."}
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_724183",
+  "reviewer": "shard3-b3",
+  "notes": "U2 recolour-replace made structural, ref names the jacket by its wearer's action. U3 mask is a severed tuna head (two heads on the table), not a whole fish. U4 ref singles out the foam box next to the box marked 5.1 on the wooden counter. U1 checked (light wooden sign, dark brown is a visible change), kept. Masks unchanged; no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_724183/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "commerce", "occlusion"], "scene_zh": "鱼市工作台", "evidence_zh": "木质招牌、鱼贩的米色夹克、案板前方的金枪鱼头、标着5.1的箱子右边的泡沫箱是四个不同对象。", "specific_protection_zh": "保留鱼市、工作台和其他商品。"},
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the beige quilted jacket of the woman cutting the tuna", "payload": "a white rubber apron"},
+     "ref_zh": "正在切金枪鱼的女子的米色绗缝夹克",
+     "physical_parent_zh": "切鱼女子", "parent_instance_id": "sa_724183:切鱼女子",
+     "instruction_ref_zh": "将正在切金枪鱼的女子的米色绗缝夹克替换为一条白色橡胶围裙。",
+     "instruction_noref_zh": "将选中区域替换为一条白色橡胶围裙。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Jacket -> rubber apron (worn over her navy shirt) is a structural change; old 'navy jacket' was a recolour."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the large tuna head lying in front on the cutting table", "scope": "fish head"},
+     "ref_zh": "案板前方平放的大金枪鱼头", "scope_zh": "鱼头",
+     "physical_parent_zh": "前方金枪鱼头", "parent_instance_id": "sa_724183:前方金枪鱼头",
+     "instruction_ref_zh": "移除案板前方平放的大金枪鱼头。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Mask is the front severed tuna head; the second head behind it is being cut."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the white foam box just right of the box marked 5.1"},
+     "ref_zh": "标着5.1的箱子右边紧挨着的白色泡沫箱",
+     "physical_parent_zh": "泡沫箱", "parent_instance_id": "sa_724183:泡沫箱",
+     "instruction_ref_zh": "在标着5.1的箱子右边紧挨着的白色泡沫箱上加上一个小红色标签。",
+     "instruction_noref_zh": "给选中区域加上一个小红色标签。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Several foam boxes on the left counter; the masked one sits directly right of the box labelled 5.1."}
+  ]
+}

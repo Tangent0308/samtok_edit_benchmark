@@ -1,0 +1,39 @@
+{
+  "case_id": "v2-sa_1165283",
+  "reviewer": "round2",
+  "notes": "Reviewed source and all masks. U1 source now only both visible sleeves. U4 source now visible image-left shoulder. U2 audit rejected after enlarged review: original mask already excludes turquoise bag and scarf, retaining exposed red fabric above and below the bag. Parent spot check identified small included strap segments in U3. SAM3 brown-strap proposal subtracted from original shirt mask (231 px removed); final reviewed before commit.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_1165283/case_sheet.jpg",
+    "release_2_6_work/v2-sa_1165283/U1/final.jpg",
+    "release_2_6_work/v2-sa_1165283/U4/final.jpg",
+    "release_2_6_work/v2-sa_1165283/U2_review.jpg",
+    "release_2_6_work/v2-sa_1165283/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "placement": {
+          "relation": "on",
+          "site": "visible image-left shoulder",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给最左侧杯子后方露出的深色上衣画面左侧的外露肩部加上一块小花刺绣贴布。",
+      "reason": "Specified image-left shoulder to match compact reviewed attachment site, excluding cups."
+    }
+  ]
+}

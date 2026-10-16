@@ -1,0 +1,66 @@
+{
+  "case_id": "v2-sa_6754915",
+  "reviewer": "round2",
+  "notes": "按原图核实背包旁男子为海军蓝连帽衫与米色帽子，紫衣女子在前景且长发；U3消除her指代并明确无帽立领拉链结构；U1额外补入SAM3 tracker分割的地面背带（host|p2_2），已看final。",
+  "reviewed_views": [
+    "assets/v2-sa_6754915/source.jpg",
+    "release_2_6_work/v2-sa_6754915/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6754915/U1/final.jpg"
+  ],
+  "units": [
+    {
+      "spec": {
+        "ref": "the blue backpack beside the seated man in a navy hoodie and beige cap"
+      },
+      "ref_zh": "穿海军蓝连帽衫、戴米色帽子的坐着男子旁的蓝背包",
+      "instruction_ref_zh": "移除穿海军蓝连帽衫、戴米色帽子的坐着男子旁的蓝背包。",
+      "id": "U1",
+      "action": "revise",
+      "scope_zh": "背包",
+      "physical_parent_zh": "蓝背包",
+      "parent_instance_id": "sa_6754915:blue_backpack",
+      "category": "backpack"
+    },
+    {
+      "spec": {
+        "ref": "the purple coat on the seated long-haired woman in the foreground"
+      },
+      "ref_zh": "前景坐着的长发女子的紫色外套",
+      "instruction_ref_zh": "将前景坐着的长发女子紫色外套的颜色改为海军蓝。",
+      "id": "U2",
+      "action": "revise",
+      "scope_zh": "外套",
+      "physical_parent_zh": "坐着女子",
+      "parent_instance_id": "sa_6754915:seated_woman",
+      "category": "coat"
+    },
+    {
+      "spec": {
+        "ref": "the plaid hoodie on the seated person immediately right of the woman in purple",
+        "payload": "a beige zip-up fleece jacket with a stand collar"
+      },
+      "ref_zh": "紫衣女子正右侧坐着人物的格纹连帽衫",
+      "instruction_ref_zh": "将紫衣女子正右侧坐着人物的格纹连帽衫替换为一件米色立领拉链抓绒夹克。",
+      "id": "U3",
+      "action": "revise",
+      "scope_zh": "连帽衫",
+      "physical_parent_zh": "右侧人物",
+      "parent_instance_id": "sa_6754915:right_person",
+      "category": "hoodie"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "crowd",
+      "text",
+      "occlusion"
+    ],
+    "scene_zh": "尼泊尔广场行人",
+    "evidence_zh": "四个不同对象：穿海军蓝连帽衫、戴米色帽子的坐着男子旁的蓝背包；前景坐着的长发女子的紫色外套；紫衣女子正右侧坐着人物的格纹连帽衫；右后方的Illy咖啡招牌。",
+    "specific_protection_zh": "保留行人、广场建筑和其他标牌。"
+  }
+}

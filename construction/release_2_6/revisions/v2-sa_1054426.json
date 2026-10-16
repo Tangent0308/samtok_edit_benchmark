@@ -1,0 +1,18 @@
+{
+  "case_id": "v2-sa_1054426",
+  "reviewer": "shard0-b7",
+  "notes": "No audit findings. U3 add site 'down tube' -> v2 mask = visible down tube (575,1158)-(661,1357). Ref disambiguated from the second bicycle (wheel only) at the right end of the bar; zh ref no longer mentions handlebar; blind zh no-ref without site phrase.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1054426/case_sheet.jpg", "release_2_6_work/v2-sa_1054426/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the bicycle frame carrying the yellow flowerpot behind the bar"},
+     "ref_zh": "吧台后载着黄色花盆的自行车车架", "scope_zh": "自行车车架",
+     "physical_parent_zh": "吧台后自行车", "parent_instance_id": "sa_1054426:吧台后自行车",
+     "instruction_ref_zh": "在吧台后载着黄色花盆的自行车车架的下管上加装一个黑色水壶架。",
+     "instruction_noref_zh": "给选中区域加装一个黑色水壶架。",
+     "findings_addressed": ["protocol_2_0_site_mask"],
+     "reason": "Second bicycle partly visible behind the bar's right end; yellow flowerpot sits on this bike's rack. Chinese ref previously added 'and handlebar'. Mask is now the down tube only."}
+  ]
+}

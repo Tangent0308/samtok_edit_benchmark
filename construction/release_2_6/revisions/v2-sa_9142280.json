@@ -1,0 +1,61 @@
+{
+  "case_id": "v2-sa_9142280",
+  "reviewer": "shard7",
+  "notes": "Tail case: U1 jet ski is at the right edge, U2 life jacket ambiguous and recolor-only replace, U3 removed a worn red top (ill-posed) and was mislocated, U4 payload generic. U3 retargeted to the slipper lying on the pebbles (SAM3 prompt, v2 mask). Masks of U1/U2/U4 checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9142280/case_sheet.jpg", "release_2_6_work/v2-sa_9142280/U3/p2.jpg", "release_2_6_work/v2-sa_9142280/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "beach", "people"], "scene_zh": "海滩活动", "evidence_zh": "右边缘的白色摩托艇、走向香蕉船男子的救生衣、卵石滩上的拖鞋和白帽女子的帽子是四个不同对象。", "specific_protection_zh": "保留海滩活动用品和人物。"},
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {"ref": "the white jet ski cut off at the right edge of the image", "scope": "jet ski"},
+      "ref_zh": "画面右边缘被截断的白色摩托艇",
+      "scope_zh": "摩托艇",
+      "physical_parent_zh": "右边缘白色摩托艇",
+      "parent_instance_id": "sa_9142280:右边缘白色摩托艇",
+      "instruction_ref_zh": "将画面右边缘被截断的白色摩托艇的颜色改为黄色。",
+      "instruction_noref_zh": "将选中区域的颜色改为黄色。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked object is a white jet ski at the far right edge (cx=0.96)."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {"ref": "the yellow life jacket of the short-haired man in navy shorts walking toward the banana boat", "scope": "life jacket", "payload": "a black neoprene impact vest"},
+      "ref_zh": "穿深蓝短裤、走向香蕉船的短发男子的黄色救生衣",
+      "scope_zh": "救生衣",
+      "physical_parent_zh": "走向香蕉船的短发男子",
+      "parent_instance_id": "sa_9142280:走向香蕉船的短发男子",
+      "instruction_ref_zh": "将穿深蓝短裤、走向香蕉船的短发男子的黄色救生衣替换为一件黑色氯丁橡胶防撞背心。",
+      "instruction_noref_zh": "将选中区域替换为一件黑色氯丁橡胶防撞背心。",
+      "findings_addressed": ["ambiguous_ref", "replace_is_attribute"],
+      "reason": "Ten similar jackets; ref names the wearer. Payload changed to a structurally different garment (slim neoprene impact vest instead of a bulky foam life jacket) instead of a recolor."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {"ref": "the single dark slipper lying on the pebbles right of the woman in the white hat", "scope": "slipper"},
+      "ref_zh": "白帽女子右侧卵石上的那只深色拖鞋",
+      "scope_zh": "拖鞋",
+      "physical_parent_zh": "卵石滩上的拖鞋",
+      "parent_instance_id": "sa_9142280:卵石滩上的拖鞋",
+      "instruction_ref_zh": "移除白帽女子右侧卵石上的那只深色拖鞋。",
+      "preserve": ["保留周围卵石、白帽女子及其影子。"],
+      "findings_addressed": ["wrong_instance_spatial", "ill_posed_edit"],
+      "reason": "Retarget: removing a worn top is ill-posed and the ref was mislocated. New target: the lone slipper on the beach (SAM3 prompt p2_1, verified), a natural remove."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {"ref": "the white fedora of the woman in a grey T-shirt standing on the beach", "scope": "hat", "payload": "one small red flower pin"},
+      "ref_zh": "站在海滩上穿灰色 T 恤女子的白色礼帽",
+      "scope_zh": "帽子",
+      "physical_parent_zh": "灰T恤白帽女子",
+      "parent_instance_id": "sa_9142280:灰T恤白帽女子",
+      "instruction_ref_zh": "给站在海滩上穿灰色 T 恤女子的白色礼帽加上一枚红色小花胸针。",
+      "instruction_noref_zh": "给选中区域加上一枚红色小花胸针。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "Payload made specific; ref separates this hat from the white cap of the shirtless man."
+    }
+  ]
+}

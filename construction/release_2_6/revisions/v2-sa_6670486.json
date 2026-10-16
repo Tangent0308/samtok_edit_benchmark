@@ -1,0 +1,60 @@
+{
+  "case_id": "v2-sa_6670486",
+  "reviewer": "round2",
+  "notes": "原图核实银色SUV与石狮；U2改为具有货斗的皮卡结构；U4移除悬空its，neck作site并提交颈部810px掩码。",
+  "reviewed_views": [
+    "assets/v2-sa_6670486/source.jpg",
+    "release_2_6_work/v2-sa_6670486/case_sheet.jpg",
+    "release_2_6_work/v2-sa_6670486/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a red pickup truck"
+      },
+      "instruction_ref_zh": "将轿车后方的银色SUV替换为一辆红色皮卡。",
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "轿车后方的银色SUV",
+      "scope_zh": "SUV",
+      "physical_parent_zh": "SUV",
+      "parent_instance_id": "sa_6670486:suv",
+      "category": "SUV"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "spec": {
+        "payload": "a small red ribbon",
+        "placement": {
+          "relation": "around",
+          "site": "neck",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给第一扇红门左侧石狮的颈部围上一条小红丝带。",
+      "id": "U4",
+      "action": "revise",
+      "ref_zh": "第一扇红门左侧的石狮",
+      "scope_zh": "石狮",
+      "physical_parent_zh": "左狮",
+      "parent_instance_id": "sa_6670486:left_lion",
+      "category": "statue"
+    }
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "perspective",
+      "occlusion"
+    ],
+    "scene_zh": "寺庙门前汽车",
+    "evidence_zh": "四个不同对象：离镜头最近的银色轿车；轿车后方的银色SUV；红门上方带金字的暗红色牌匾；第一扇红门左侧的石狮。",
+    "specific_protection_zh": "保留行人、寺庙墙体与其他装饰。"
+  }
+}

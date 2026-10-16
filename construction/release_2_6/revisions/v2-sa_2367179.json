@@ -1,0 +1,30 @@
+{
+  "case_id": "v2-sa_2367179",
+  "reviewer": "shard0b-b3",
+  "notes": "U2 colour green -> red (olives on top are already green). U3 remove contents: the sack is closed, contents invisible, so container ∪ contents = the sack mask (re-committed as v2); ref sharpened. U4 site outer thigh -> upper thigh of the image-right (side-on) jeans leg, host ∩ box.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2367179/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2367179/U3/final.jpg",
+    "release_2_6_work/v2-sa_2367179/U4/final.jpg"
+  ],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"attributes": [{"property": "color", "value": "red"}], "payload": "red"},
+     "instruction_ref_zh": "将左后方装满青果的大白编织袋改为红色。",
+     "instruction_noref_zh": "将选中区域的颜色改为红色。",
+     "findings_addressed": ["attribute_value"],
+     "reason": "Sack (white woven, box 124-422 x 561-978) holds green olives; green target colour coincided with the contents, red is unambiguous."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the closed white sack right of the open olive-filled sack at the right rear"},
+     "ref_zh": "右后方敞口装橄榄白袋右侧的封口白袋",
+     "instruction_ref_zh": "移除右后方敞口装橄榄白袋右侧的封口白袋及其中的物品。",
+     "instruction_noref_zh": "移除选中区域，包括其中的物品。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 contents mask = sack ∪ contents; sack is tied shut so the union equals the visible sack (v2 = full sack). Ref names the open olive sack as the neighbour instead of vague 'between neighboring sacks'."},
+    {"id": "U4", "action": "revise",
+     "instruction_noref_zh": "给选中区域加上一个大袋盖口袋。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0 site mask: upper thigh of the side-on image-right leg (x 2110-2170, y 298-400), arm/other leg excluded."}
+  ]
+}

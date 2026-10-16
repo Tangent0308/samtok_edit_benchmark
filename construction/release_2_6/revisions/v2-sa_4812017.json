@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_4812017",
+  "reviewer": "shard2-b7",
+  "notes": "U4 dangling 'at its bottom' moved into placement.site ('bottom'); v2 mask = sign mask ∩ box over its lower third (y>=468). U1 replace was the same yellow roof sign with new text; now a structurally different triangular roof light. U2/U3 checked: grey canopy pickup (second from left) and silver vehicle at far left match.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4812017/case_sheet.jpg", "release_2_6_work/v2-sa_4812017/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a triangular red-and-white taxi roof light"},
+     "instruction_ref_zh": "将车顶TAXI-METER标牌替换为一个红白相间的三角形出租车顶灯。",
+     "instruction_noref_zh": "将选中区域替换为一个红白相间的三角形出租车顶灯。",
+     "findings_addressed": [],
+     "reason": "Yellow sign -> yellow sign with other text is a text-only change; a triangular roof light changes the structure."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small red OPEN sticker", "placement": {"relation": "on", "site": "bottom", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在出租车后方写有红色汉字的白色竖招牌的底部加上一张红色OPEN小贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张红色OPEN小贴纸。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its bottom' moved to placement.site; mask is now the bottom portion of the sign."}
+  ]
+}

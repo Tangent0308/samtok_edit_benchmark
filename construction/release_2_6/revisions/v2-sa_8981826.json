@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_8981826",
+  "reviewer": "shard1-b2",
+  "notes": "Four chairs hang on the wall (little red, green ladder-back, reddish-brown hoop-back Windsor, black). Only one green and one reddish-brown chair exist, so U1/U4 refs drop the false ordinals. Masks verified on case sheet; no S!=T units.",
+  "reviewed_views": ["release_2_6_work/v2-sa_8981826/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the visible ladder-back frame of the green chair"},
+     "ref_zh": "绿色椅子的梯形靠背可见木框",
+     "physical_parent_zh": "绿色椅子",
+     "parent_instance_id": "sa_8981826:绿色椅子",
+     "instruction_ref_zh": "将绿色椅子的梯形靠背可见木框替换为带两根竖条的圆弧形木靠背框。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Only one green chair (second chair from the left overall); 'second green chair' was false."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the seat of the reddish-brown spindle-back chair"},
+     "ref_zh": "红褐色纺锤靠背椅的座面",
+     "physical_parent_zh": "红褐色纺锤靠背椅",
+     "parent_instance_id": "sa_8981826:红褐色纺锤靠背椅",
+     "instruction_ref_zh": "给红褐色纺锤靠背椅的座面加上一个米白色小坐垫。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Masked seat belongs to the only reddish-brown hoop-back spindle Windsor chair; 'second brown chair from the right' was false."}
+  ]
+}

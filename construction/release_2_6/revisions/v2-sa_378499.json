@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_378499",
+  "reviewer": "shard2-b2",
+  "notes": "U1 replace was a colour-only change and 'middle window' was ambiguous (many windows); now replaces the olive-green jacket with a grey hooded sweatshirt and names the window above car number 22447. U3 mask re-cut from the whole display board to the yellow text lines (yellow-pixel threshold inside the board, closed/dilated, visually reviewed; SAM3 text gave only fragments). U2/U4 verified.",
+  "reviewed_views": ["release_2_6_work/v2-sa_378499/case_sheet.jpg", "release_2_6_work/v2-sa_378499/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the green jacket of the passenger seen through the window above the car number 22447", "payload": "a gray hooded sweatshirt"},
+     "ref_zh": "透过车号22447上方车窗可见的乘客的绿色外套",
+     "scope_zh": "外套",
+     "physical_parent_zh": "车窗内乘客",
+     "instruction_ref_zh": "将透过车号22447上方车窗可见的乘客的绿色外套替换为一件灰色连帽卫衣。",
+     "instruction_noref_zh": "将选中区域替换为一件灰色连帽卫衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "navy jacket was a recolour; hoodie is a genuine garment change. 'middle window' was ambiguous; the passenger window sits directly above the printed number 22447."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep", "findings_addressed": ["mask_quality"], "reason": "Mask now the yellow text lines only (box 1104-1221 x 385-421), not the whole board."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

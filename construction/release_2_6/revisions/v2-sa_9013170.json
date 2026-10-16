@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9013170",
+  "reviewer": "shard6-b4",
+  "notes": "Tail case, all units re-examined on the clean image; masks are already the edited regions (whole SUV, whole convertible, right banner, rightmost arched window). Refs made unique, U2 no-op replace rewritten to a structural replace, U4 payload/relation made concrete.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9013170/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "street", "vehicles"], "scene_zh": "城市公交街景", "evidence_zh": "公交车正后方的深灰色 SUV、红色经典敞篷车、左侧灯杆上右边的横幅和红砖楼最右侧拱窗是四个不同对象。", "specific_protection_zh": "保留车辆、建筑和街道标识。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the dark gray SUV parked directly behind the bus", "scope": "SUV"},
+      "ref_zh": "紧停在公交车后面的深灰色 SUV",
+      "scope_zh": "SUV",
+      "physical_parent_zh": "深灰色 SUV",
+      "parent_instance_id": "sa_9013170:深灰色SUV",
+      "instruction_ref_zh": "将紧停在公交车后面的深灰色 SUV 的颜色改为蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为蓝色。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Several SUVs at the lower left (a gray Toyota further left); the masked one is the dark gray Hyundai SUV directly behind the bus. ZH used 轿车 for SUV."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the red classic convertible", "scope": "convertible", "payload": "a white delivery van"},
+      "ref_zh": "红色经典敞篷车",
+      "scope_zh": "敞篷车",
+      "physical_parent_zh": "红色敞篷车",
+      "parent_instance_id": "sa_9013170:红色敞篷车",
+      "instruction_ref_zh": "将红色经典敞篷车替换为一辆白色厢式货车。",
+      "instruction_noref_zh": "将选中区域替换为一辆白色厢式货车。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "The convertible is already red, so 'a red convertible' was a no-op; a delivery van is a real structural replacement. It is the only convertible in the image."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the right one of the two banners on the lamp pole at the left", "scope": "banner"},
+      "ref_zh": "左侧灯杆上两面横幅中右边的那一面",
+      "scope_zh": "横幅",
+      "physical_parent_zh": "左侧灯杆右侧横幅",
+      "parent_instance_id": "sa_9013170:左侧灯杆右侧横幅",
+      "instruction_ref_zh": "移除左侧灯杆上两面横幅中右边的那一面。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["ambiguous_ref"],
+      "reason": "Two identical banners hang on the pole; the mask is the right one (x 271-312)."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the rightmost of the three arched windows on the red-brick building behind the bus", "scope": "window", "payload": "one wooden window box with red flowers", "placement": {"relation": "attached to", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "公交车后方红砖楼三扇拱窗中最右边的一扇",
+      "scope_zh": "窗户",
+      "physical_parent_zh": "红砖楼最右侧拱窗",
+      "parent_instance_id": "sa_9013170:红砖楼最右侧拱窗",
+      "instruction_ref_zh": "给公交车后方红砖楼三扇拱窗中最右边的一扇装上一个种着红花的木制窗台花箱。",
+      "instruction_noref_zh": "给选中区域装上一个种着红花的木制窗台花箱。",
+      "findings_addressed": ["ambiguous_ref", "grammar_style"],
+      "reason": "Many arched windows on the street; the masked one is the rightmost of the three arched windows on the low red-brick building directly behind the bus."
+    }
+  ]
+}

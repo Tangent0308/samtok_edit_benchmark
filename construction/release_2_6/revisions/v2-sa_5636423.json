@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_5636423",
+  "reviewer": "shard2-b11",
+  "notes": "U3 payload had dangling 'in its lower corner'; site dropped, window anchor mask unchanged. U2 poster->poster was only a content/text change; now a stack of chocolate gift boxes in the window display.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5636423/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a tall stack of wrapped chocolate gift boxes"},
+     "instruction_ref_zh": "将男子身旁的浅色竖海报替换为一摞高高的包装好的巧克力礼盒。",
+     "instruction_noref_zh": "将选中区域替换为一摞高高的包装好的巧克力礼盒。",
+     "findings_addressed": [],
+     "reason": "Replacing a poster with another poster only changes its printed content (replace-is-attribute); a stack of gift boxes is a structural change natural for this chocolate shop window."},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a small white star decal", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "instruction_ref_zh": "给书店上方右侧的窗户加上一张小白色星形贴花。",
+     "instruction_noref_zh": "给选中区域加上一张小白色星形贴花。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'its lower corner'; the decal goes on the selected window (anchor mask)."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "case_id": "v2-sa_10831959",
+  "reviewer": "shard0-b5",
+  "notes": "Audit U5 translation (dangling 其) fixed. U3 add site 'visible lower front' -> v2 mask = jacket host ∩ box 1560-1680 x 1150-1260; U3 ref 'behind on the right' replaced (she walks level with the group, at its right). U4 zh aligned with English.",
+  "reviewed_views": ["release_2_6_work/v2-sa_10831959/case_sheet.jpg", "release_2_6_work/v2-sa_10831959/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the black jacket of the red-headscarf woman at the right of the group"},
+     "ref_zh": "人群右侧红头巾女子的黑色外套",
+     "physical_parent_zh": "人群右侧红头巾女子",
+     "parent_instance_id": "sa_10831959:人群右侧红头巾女子",
+     "instruction_ref_zh": "给人群右侧红头巾女子的黑色外套的可见前襟下部加上一个小拉链口袋。",
+     "instruction_noref_zh": "给选中区域加上一个小拉链口袋。",
+     "findings_addressed": [],
+     "reason": "Protocol 2.0: mask = visible lower front of the jacket; blind zh no-ref without site. The woman is level with the others at the right of the group, not behind."},
+    {"id": "U4", "action": "revise",
+     "ref_zh": "左前方花纹伞的伞面",
+     "instruction_ref_zh": "将左前方花纹伞的伞面的颜色改为深红色。",
+     "findings_addressed": [],
+     "reason": "zh ref said 前方蓝绿色 (English: at the front left) and omitted 的颜色."},
+    {"id": "U5", "action": "revise",
+     "ref_zh": "右侧彩色伞的可见伞面",
+     "instruction_ref_zh": "将右侧彩色伞的可见伞面的颜色改为白色。",
+     "findings_addressed": ["translation"],
+     "reason": "Removed dangling 其 from zh ref; added 的颜色."}
+  ]
+}

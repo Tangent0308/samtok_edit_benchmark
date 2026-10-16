@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_6888719",
+  "reviewer": "shard3-b1",
+  "notes": "U2/U3 spatial descriptions were swapped; both refs rewritten, U3 payload made structural. U4 mask was one rock at the image edge; replaced by the visible breakwater (wall top + rocks) right of the large white boat (SAM3, reviewed). U1 kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_6888719/case_sheet.jpg", "release_2_6_work/v2-sa_6888719/U4/final.jpg"],
+  "difficulty": {"mechanisms": ["water", "boats", "occlusion"], "scene_zh": "渔港船只", "evidence_zh": "7右侧大型白色渔船、26最左边缘露出一部分的渔船、43中间带A形架的深色船体渔船、大白船右侧的石质防波堤是四个不同对象。", "specific_protection_zh": "保留港口、水面和其他船只。"},
+  "units": [
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the partially visible fishing boat at the far left edge"},
+     "ref_zh": "最左侧边缘露出一部分的渔船",
+     "physical_parent_zh": "最左侧渔船",
+     "parent_instance_id": "sa_6888719:far_left_boat",
+     "instruction_ref_zh": "将最左侧边缘露出一部分的渔船的颜色改为藏蓝色。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Mask is the cut-off boat at x=0-346 (cx 0.05), not center-left."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the dark-hulled A-frame fishing boat just left of the large white boat", "payload": "a red-and-white sailing yacht"},
+     "ref_zh": "大白船左侧带高A形架的深色船体渔船",
+     "physical_parent_zh": "中间A形架渔船",
+     "parent_instance_id": "sa_6888719:aframe_boat",
+     "instruction_ref_zh": "将大白船左侧带高A形架的深色船体渔船替换为一艘红白相间的帆船游艇。",
+     "instruction_noref_zh": "将选中区域替换为一艘红白相间的帆船游艇。",
+     "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+     "reason": "Mask is the A-frame trawler at x=1522-2362 (center), not the far left; 'a red-and-white boat' was only a colour scheme, now a sailing yacht."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the stone breakwater to the right of the large white boat"},
+     "ref_zh": "大白船右侧的石质防波堤",
+     "instruction_ref_zh": "在大白船右侧的石质防波堤上加上一个小红色警示标记。",
+     "instruction_noref_zh": "给选中区域加上一个小红色警示标记。",
+     "findings_addressed": ["mask_quality"],
+     "reason": "Old mask was a single rock (0.11% area) at the edge; new mask = visible breakwater wall top and rocks (SAM3 t1_1|t1_3 minus U1, minus a dark boat fitting and a buoy), box 3202,855,3587,1121."}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_1155755",
+  "reviewer": "shard1-b6",
+  "notes": "Audit: U1 (straw hat) and U3 (floral bag) belonged to the same boarding passenger. U3 retargeted to the orange life vest of the person wading in the water just right of the boarding passenger (SAM3 'orange life vest', arm excluded); same operation (add) and payload. U1/U2/U4 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1155755/case_sheet.jpg", "release_2_6_work/v2-sa_1155755/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the orange life vest of the person standing in the water just right of the boarding passenger", "scope": "life vest", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "登船旅客右侧紧邻、站在水中的人的橙色救生衣",
+     "scope_zh": "救生衣",
+     "physical_parent_zh": "水中站立的人",
+     "parent_instance_id": "sa_1155755:wading_person",
+     "instruction_ref_zh": "在登船旅客右侧紧邻、站在水中的人的橙色救生衣上加上一个小防水姓名牌。",
+     "instruction_noref_zh": "给选中区域加上一个小防水姓名牌。",
+     "preserve": ["保留人脸、肢体、船体、支架和水面。"],
+     "findings_addressed": ["independence_violation"],
+     "reason": "Old U3 bag was carried by the same boarding passenger as U1's hat; retargeted to an independent person's life vest (box [1716,964,1804,1090])."}
+  ]
+}

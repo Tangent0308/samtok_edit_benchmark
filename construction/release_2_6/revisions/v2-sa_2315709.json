@@ -1,0 +1,65 @@
+{
+  "case_id": "v2-sa_2315709",
+  "reviewer": "round2",
+  "notes": "干净原图逐个核对人物和位置；U4去掉相邻帽子上的孤立碎点并收紧box。审查建议的红书不属于U1裤子主人，因此用细条纹衬衫定位。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_2315709/case_sheet.jpg",
+    "release_2_6_work/v2-sa_2315709/U1/review.jpg",
+    "release_2_6_work/v2-sa_2315709/U2/review.jpg",
+    "release_2_6_work/v2-sa_2315709/U3/review.jpg",
+    "release_2_6_work/v2-sa_2315709/U4/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the dark trousers of the man in the pinstriped white shirt near center-left"
+      },
+      "ref_zh": "中间偏左穿白色细条纹衬衫男子的深色长裤",
+      "instruction_ref_zh": "将中间偏左穿白色细条纹衬衫男子的深色长裤的颜色改为浅灰色。",
+      "physical_parent_zh": "中间偏左穿细条纹白衬衫男子",
+      "parent_instance_id": "sa_2315709:中间偏左穿细条纹白衬衫男子",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "细条纹白衬衫唯一定位裤子主人，原中间白衬衫男子有多个候选。"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the white shirt of the man immediately image-right of the pinstriped-shirt reader"
+      },
+      "ref_zh": "细条纹衬衫读书男子紧邻画面右侧男子的白衬衫",
+      "instruction_ref_zh": "给细条纹衬衫读书男子紧邻画面右侧男子的白衬衫缝上一个小浅蓝色胸袋。",
+      "physical_parent_zh": "细条纹衬衫男子紧邻画面右侧男子",
+      "parent_instance_id": "sa_2315709:细条纹衬衫男子紧邻画面右侧男子",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "此人位于画面中心左侧，用紧邻条纹衬衫男子的关系消除多位抱书者歧义。"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the black wide-brimmed hat of the man resting his chin on his forearm at the upper left"
+      },
+      "ref_zh": "左上方把下巴搁在前臂上的男子的黑色宽檐帽",
+      "instruction_ref_zh": "移除左上方把下巴搁在前臂上的男子的黑色宽檐帽。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "下巴和前臂姿态唯一定位；U4 v2去掉相邻帽上碎点，box=597,115,738,215。"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ]
+}

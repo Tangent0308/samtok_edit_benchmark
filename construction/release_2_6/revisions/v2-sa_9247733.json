@@ -1,0 +1,57 @@
+{
+  "case_id": "v2-sa_9247733",
+  "reviewer": "shard7",
+  "notes": "Tail case, all units rewritten. U1 mask is the customer's white hair-covered cape (ref said 'barber at the left', person-level colour) -> cape recolour. U2 mask was the barber's purple undershirt collar with a person->clothing replace and shared the barber with U4 -> retargeted to the fluorescent tube light at the top edge (SAM3 v2). U3 mask was only the top of a blurred, cut-off chair back at the far left edge whose lower parts overlap a second chair -> retargeted to the whole dark red barber chair in the background below the blue spray bottles (SAM3 v2). U4 bracelet kept on the barber (now the only barber unit), ref disambiguated from the other wrist's band, payload specific.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9247733/case_sheet.jpg", "release_2_6_work/v2-sa_9247733/U2/p1.jpg", "release_2_6_work/v2-sa_9247733/U3/t1.jpg", "release_2_6_work/v2-sa_9247733/U3/p1.jpg", "release_2_6_work/v2-sa_9247733/U2/final.jpg", "release_2_6_work/v2-sa_9247733/U3/final.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "people", "service"], "scene_zh": "理发店", "evidence_zh": "顾客身上的白色理发披肩、顶部边缘的日光灯管、背景中蓝色喷壶下方的深红色理发椅和理发师握推子手腕上的银色链条手链是四个不同对象。", "specific_protection_zh": "保留人物、座椅和服务细节。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the white hair-covered cape of the seated customer", "scope": "cape", "payload": "navy blue", "attributes": [{"property": "color", "value": "navy blue"}]},
+      "ref_zh": "坐着的顾客身上沾满头发的白色理发披肩",
+      "scope_zh": "理发披肩",
+      "physical_parent_zh": "坐着的顾客",
+      "parent_instance_id": "sa_9247733:坐着的顾客",
+      "instruction_ref_zh": "将坐着的顾客身上沾满头发的白色理发披肩的颜色改为海军蓝。",
+      "instruction_noref_zh": "将选中区域的颜色改为海军蓝。",
+      "findings_addressed": ["person_clothing_level"],
+      "reason": "Mask is the cape on the customer at 0.66W, not the barber; colour change now names the cape."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the fluorescent tube light at the top edge of the image", "scope": "tube light", "payload": "a round flush-mount ceiling lamp"},
+      "ref_zh": "画面顶部边缘的日光灯管",
+      "scope_zh": "日光灯管",
+      "physical_parent_zh": "顶部日光灯管",
+      "parent_instance_id": "sa_9247733:顶部日光灯管",
+      "instruction_ref_zh": "将画面顶部边缘的日光灯管替换为一盏圆形吸顶灯。",
+      "instruction_noref_zh": "将选中区域替换为一盏圆形吸顶灯。",
+      "findings_addressed": ["person_clothing_level", "independence_violation"],
+      "reason": "Retarget: the old mask was the barber's undershirt collar (ref said customer, person replaced by clothing) and shared the barber with U4. The tube light touching the top edge (SAM3 p1_1) is unique; the other tubes are lower and smaller."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the dark red barber chair below the blue spray bottles in the background", "scope": "barber chair"},
+      "ref_zh": "背景中蓝色喷壶下方的深红色理发椅",
+      "scope_zh": "理发椅",
+      "physical_parent_zh": "背景深红色理发椅",
+      "parent_instance_id": "sa_9247733:背景深红色理发椅",
+      "instruction_ref_zh": "移除背景中蓝色喷壶下方的深红色理发椅。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Retarget: the old mask was only the upper back of a blurred chair cut off at the far left edge (not the centre), so a whole-chair removal did not match it. The background chair is fully visible and segmented by SAM3 p1_1."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the silver chain bracelet on the barber's wrist holding the clippers", "scope": "bracelet", "payload": "one small silver heart charm", "placement": {"relation": "hanging from", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "理发师握推子那只手腕上的银色链条手链",
+      "scope_zh": "手链",
+      "physical_parent_zh": "理发师的手链",
+      "parent_instance_id": "sa_9247733:理发师的手链",
+      "instruction_ref_zh": "给理发师握推子那只手腕上的银色链条手链挂上一个银色小爱心吊坠。",
+      "instruction_noref_zh": "给选中区域挂上一个银色小爱心吊坠。",
+      "findings_addressed": ["independence_violation"],
+      "reason": "Bracelet is a worn accessory and now the only unit on the barber (U2 retargeted). 'At the left' replaced by the clipper hand (the other wrist also wears a band); payload specific."
+    }
+  ]
+}

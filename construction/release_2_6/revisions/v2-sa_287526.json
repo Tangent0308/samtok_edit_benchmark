@@ -1,0 +1,36 @@
+{
+  "case_id": "v2-sa_287526",
+  "reviewer": "shard1b-b3",
+  "notes": "U1 ref ambiguous with the shaded skylight at the bottom edge (~x560-680,y1400-1500) and small roof windows; ref now names the large white-framed one on the sunlit roof. U2 awning -> wooden pergola.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_287526/case_sheet.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the large white-framed skylight on the sunlit tiled roof at the lower left"
+      },
+      "ref_zh": "左下方阳光照射的瓦屋顶上的白框大天窗",
+      "instruction_ref_zh": "将左下方阳光照射的瓦屋顶上的白框大天窗的色调改为浅绿色。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Masked skylight [525,1151,669,1241] is the only large white-framed one in sun; the other is in shadow at the bottom edge."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "payload": "a wooden pergola"
+      },
+      "ref_zh": "最左侧露台上的米色遮阳篷",
+      "instruction_ref_zh": "将最左侧露台上的米色遮阳篷替换为一个木制凉棚架。",
+      "findings_addressed": [
+        "replace_is_attribute"
+      ],
+      "reason": "Cream awning -> charcoal canvas awning was a recolor."
+    }
+  ]
+}

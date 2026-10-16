@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_1199651",
+  "reviewer": "shard1-b6",
+  "notes": "No audit findings. U3 shirt has two chest pockets: site made explicit ('image-right chest pocket'); v2 mask = that pocket (flap + body, host ∩ box). U1 'middle men' among four men made explicit ('the two middle men').",
+  "reviewed_views": ["release_2_6_work/v2-sa_1199651/case_sheet.jpg", "release_2_6_work/v2-sa_1199651/U3/t1.jpg", "release_2_6_work/v2-sa_1199651/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the bottle on the ground between the two middle men"},
+     "ref_zh": "中间两名男子之间地上的瓶子",
+     "instruction_ref_zh": "移除中间两名男子之间地上的瓶子。",
+     "findings_addressed": [],
+     "reason": "Four men in a row; 'the two middle men' names the counting group explicitly."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "image-right chest pocket", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在从左数第三位男子的衬衫的画面右侧胸袋上加上一块小长方形姓名布章。",
+     "instruction_noref_zh": "给选中区域加上一块小长方形姓名布章。",
+     "findings_addressed": [],
+     "reason": "The shirt has two chest pockets; the image-right one is fully visible (image-left one partly hidden by the raised arm). Mask = that pocket."}
+  ]
+}

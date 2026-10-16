@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_11136335",
+  "reviewer": "shard1-b5",
+  "notes": "U1 replace payload was near-identical to the existing dark ornamental lamp -> modern single-arm LED street light. U4 lamp actually has five lanterns (verified on clean crop) -> ref fixed; add site 'pole' -> v2 mask = pole below the lantern crossarm (host ∩ box). U2, U3 (orange car behind fence) verified.",
+  "reviewed_views": ["release_2_6_work/v2-sa_11136335/case_sheet.jpg", "release_2_6_work/v2-sa_11136335/U4/t1.jpg", "release_2_6_work/v2-sa_11136335/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a modern single-arm LED street light"},
+     "instruction_ref_zh": "将最左侧的装饰路灯替换为一盏现代单臂LED路灯。",
+     "instruction_noref_zh": "将选中区域替换为一盏现代单臂LED路灯。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "The masked lamp is already a dark ornamental cast-iron lamp; a modern single-arm LED light is a clear structural replacement."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the five-lantern streetlamp left of the statue"},
+     "ref_zh": "雕像左侧的五头路灯",
+     "instruction_ref_zh": "在雕像左侧的五头路灯的灯杆上加上一个小悬挂花篮。",
+     "instruction_noref_zh": "给选中区域加上一个小悬挂花篮。",
+     "findings_addressed": [],
+     "reason": "Clean crop shows five lantern heads (one top, two per side), not three."}
+  ]
+}

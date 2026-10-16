@@ -1,0 +1,65 @@
+{
+  "case_id": "v2-sa_7548763",
+  "reviewer": "shard0-b3",
+  "notes": "No audit findings. U2 site 'exposed sleeve' -> v2 mask = dark-gray sleeve of the far-left shirt (SAM3 'sleeve'). U3 remove contents -> v2 mask = wicker basket ∪ brown paper stack ∪ blue glove inside it (red stamp in front excluded). U1 value 'pale yellow' barely differs from the cream/beige shirt; changed to light blue.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_7548763/case_sheet.jpg",
+    "release_2_6_work/v2-sa_7548763/U2/t1.jpg",
+    "release_2_6_work/v2-sa_7548763/U2/final.jpg",
+    "release_2_6_work/v2-sa_7548763/U3/t1.jpg",
+    "release_2_6_work/v2-sa_7548763/U3/t2.jpg",
+    "release_2_6_work/v2-sa_7548763/U3/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "遮挡",
+      "紧邻保护",
+      "分离可见区域"
+    ],
+    "scene_zh": "摊位围帘下的人物与篮子",
+    "evidence_zh": "摊主衬衫被围裙和头发遮挡，篮身被细立杆截成分离区域，篮中纸袋和手套需随篮子一起移除；最左侧只露出一截衣袖。",
+    "specific_protection_zh": "围裙、皮肤、立杆、篮子前的红色印章和透明围帘"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "attributes": [
+          {
+            "property": "color",
+            "value": "light blue"
+          }
+        ]
+      },
+      "ref_zh": "指向左侧的摊主的可见衬衫",
+      "instruction_ref_zh": "将指向左侧的摊主的可见衬衫的颜色改为浅蓝色。",
+      "instruction_noref_zh": "将选中区域的颜色改为浅蓝色。",
+      "findings_addressed": [],
+      "reason": "Clean pixels show a cream/beige short-sleeved shirt; pale yellow is not a clearly visible change."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "ref_zh": "画面最左边部分可见的衬衫",
+      "instruction_ref_zh": "在画面最左边部分可见衬衫的外露衣袖上加一枚小红布徽章。",
+      "instruction_noref_zh": "给选中区域加上一枚小红布徽章。",
+      "findings_addressed": [],
+      "reason": "Protocol 2.0: mask = the exposed sleeve; zh fields aligned with English and blind no-ref without site."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "立杆后面的篮子",
+      "instruction_ref_zh": "移除摊位立杆后面的篮子及其中的物品。",
+      "preserve": [
+        "All unrequested parts of the table, neighboring objects and background; other units authorize their own changes.",
+        "围裙、皮肤、立杆、篮子前的红色印章和透明围帘"
+      ],
+      "findings_addressed": [],
+      "reason": "Protocol 2.0: mask = basket ∪ contents. Preserve listed 篮中物品 although the edit removes the contents; zh ref aligned (behind the pole)."
+    }
+  ]
+}

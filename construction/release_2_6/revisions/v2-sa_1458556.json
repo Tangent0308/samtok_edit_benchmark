@@ -1,0 +1,16 @@
+{
+  "case_id": "v2-sa_1458556",
+  "reviewer": "shard1-b7",
+  "notes": "Audit: U1 bench is already a dark wooden slat bench -> payload now a backless white stone bench (structural change). U3 site 'pole' -> v2 mask = blue shaft between lantern head and flared base (host ∩ box y 335-915).",
+  "reviewed_views": ["release_2_6_work/v2-sa_1458556/case_sheet.jpg", "release_2_6_work/v2-sa_1458556/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a backless white stone bench"},
+     "instruction_ref_zh": "将前景花坛后方右侧的长凳替换为一张无靠背的白色石凳。",
+     "instruction_noref_zh": "将选中区域替换为一张无靠背的白色石凳。",
+     "findings_addressed": ["ill_posed_edit"],
+     "reason": "Wooden slat bench -> wooden slat bench was a no-op; a backless stone bench changes structure and material."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"}
+  ]
+}

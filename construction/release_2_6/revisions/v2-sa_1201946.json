@@ -1,0 +1,41 @@
+{
+  "case_id": "v2-sa_1201946",
+  "reviewer": "round2",
+  "notes": "核对干净原图，U3确为孩子后方红衣女子，修正physical_parent_zh浅衣误译；mask另含手提袋/手部和孩子白衣三处碎片共436像素，已去掉，仅保留实际红色上衣。",
+  "reviewed_views": [
+    "assets/v2-sa_1201946/source.jpg",
+    "release_2_6_work/v2-sa_1201946/case_sheet.jpg",
+    "release_2_6_work/v2-sa_1201946/U3/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "同类多实例",
+      "局部部件",
+      "遮挡",
+      "紧邻保护"
+    ],
+    "scene_zh": "橱窗旁抱狗与交谈的行人",
+    "evidence_zh": "不同源对象：右前女子的黑色背心；左前抱狗女子身旁的彩色手提袋；后排右侧孩子身后女子的红色上衣。",
+    "specific_protection_zh": "相邻对象、同一物体其他部件、皮肤及背景"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "spec": {},
+      "physical_parent_zh": "右后红衣女子",
+      "id": "U3",
+      "action": "revise",
+      "ref_zh": "后排右侧孩子身后女子的红色上衣",
+      "scope_zh": "上衣",
+      "parent_instance_id": "sa_1201946:右后浅衣女子",
+      "category": "top"
+    }
+  ]
+}

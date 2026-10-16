@@ -1,0 +1,46 @@
+{
+  "case_id": "v2-sa_1928951",
+  "reviewer": "round2",
+  "notes": "Clean source and masks reviewed. U1 renewed with SAM3, filling excluded print pixels; replacement now zip-up hooded jacket. U3 selected lower outer wall only, excluding rim/interior and foreground sleeve.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_1928951/case_sheet.jpg",
+    "release_2_6_work/v2-sa_1928951/U1/final.jpg",
+    "release_2_6_work/v2-sa_1928951/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "payload": "a blue zip-up hooded jacket"
+      },
+      "instruction_ref_zh": "将孩子的红色卫衣替换为一件蓝色拉链连帽外套。",
+      "findings_addressed": [
+        "replace_is_attribute",
+        "mask_quality"
+      ],
+      "reason": "Zip front and hood change garment structure; new SAM3 mask includes all printed sweatshirt fabric."
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "placement": {
+          "relation": "on",
+          "site": "lower outer wall",
+          "anchor_mode": "support"
+        }
+      },
+      "instruction_ref_zh": "给孩子后方灰色盆子的外壁下部加上一张小白花贴纸。",
+      "reason": "A small decal fits exposed lower wall; crop excludes basin interior and rim."
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    }
+  ]
+}

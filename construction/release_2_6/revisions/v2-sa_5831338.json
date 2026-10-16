@@ -1,0 +1,22 @@
+{
+  "case_id": "v2-sa_5831338",
+  "reviewer": "shard2-b13",
+  "notes": "Three spectators wear white DC GRIND T-shirts; U2 now anchored on the black cap with green brim. U4 dangling 'its upper-left corner' moved to placement.site with a corner v2 mask on the dark DC banner.",
+  "reviewed_views": ["release_2_6_work/v2-sa_5831338/case_sheet.jpg", "release_2_6_work/v2-sa_5831338/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the white GRIND T-shirt on the spectator in the green-brimmed black cap"},
+     "ref_zh": "戴绿檐黑色帽子的观众的白色GRIND T恤",
+     "instruction_ref_zh": "将戴绿檐黑色帽子的观众的白色GRIND T恤的颜色改为浅蓝色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Two more white DC GRIND T-shirts are just left of the target (one wearer in a beige cap, one bareheaded); only the target wears a black cap with green brim."},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small gold star emblem", "placement": {"relation": "on", "site": "upper-left corner", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在最右侧观众后方的深色横幅的左上角加上一个小金色星形徽标。",
+     "instruction_noref_zh": "给选中区域加上一个小金色星形徽标。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its upper-left corner' in payload; site stored separately; mask = banner ∩ box [1545,1288,1640,1370]."}
+  ]
+}

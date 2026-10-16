@@ -1,0 +1,33 @@
+{
+  "case_id": "v2-sa_8813510",
+  "reviewer": "shard6-b1",
+  "notes": "Tail case, all units re-examined on the clean image. U1 painted statue in the right niche -> white marble; U2 recolour-replace turned into a structural replace (folding chairs); U3 black wall speaker on the left wall (other speakers are on the right); U4 column disambiguated by the Madonna niche, payload a wall sconce. Masks unchanged (whole objects; no S!=T unit).",
+  "reviewed_views": ["release_2_6_work/v2-sa_8813510/case_sheet.jpg"],
+  "difficulty": {"mechanisms": ["indoor", "architecture", "church"], "scene_zh": "教堂内部", "evidence_zh": "右侧壁龛中的彩绘雕像、右侧最近的长椅、左墙黑色音箱和圣母像壁龛旁的立柱是四个不同对象。", "specific_protection_zh": "保留宗教建筑、座椅和室内设施。"},
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the painted statue in the wall niche to the right of the apse", "payload": "white marble", "attributes": [{"property": "material", "value": "white marble"}]},
+     "ref_zh": "后殿右侧墙龛中的彩绘雕像", "scope_zh": "雕像", "physical_parent_zh": "右侧墙龛雕像", "parent_instance_id": "sa_8813510:右侧墙龛雕像",
+     "instruction_ref_zh": "将后殿右侧墙龛中的彩绘雕像的材质改为白色大理石。",
+     "instruction_noref_zh": "将选中区域的材质改为白色大理石。",
+     "findings_addressed": [], "reason": "Tail re-examination: several statues (apse, left niche, altar angels); ref names the right-niche statue. Statue already has gold trim, so 'golden' was weakly visible; white marble is a clear material change."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the nearest pew on the right side of the aisle", "payload": "a row of grey metal folding chairs"},
+     "ref_zh": "过道右侧最近的长椅", "scope_zh": "长椅", "physical_parent_zh": "右侧最近长椅", "parent_instance_id": "sa_8813510:右侧最近长椅",
+     "instruction_ref_zh": "将过道右侧最近的长椅替换为一排灰色金属折叠椅。",
+     "instruction_noref_zh": "将选中区域替换为一排灰色金属折叠椅。",
+     "findings_addressed": ["replace_is_attribute"], "reason": "'a dark wooden pew' was only a colour change; replaced by a structurally different seating object (user preference: keep replace with a real structural change)."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the black speaker on the left wall"},
+     "ref_zh": "左侧墙上的黑色音箱", "scope_zh": "音箱", "physical_parent_zh": "左墙音箱", "parent_instance_id": "sa_8813510:左墙音箱",
+     "instruction_ref_zh": "移除左侧墙上的黑色音箱。",
+     "instruction_noref_zh": "移除选中区域。",
+     "findings_addressed": [], "reason": "Tail re-examination: colour and wall added (black speakers also hang on the right wall)."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the column just right of the Madonna statue niche on the left", "payload": "a small brass wall sconce", "placement": {"relation": "mounted on", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "左侧圣母像壁龛紧右边的立柱", "scope_zh": "立柱", "physical_parent_zh": "左侧圣母壁龛旁立柱", "parent_instance_id": "sa_8813510:左侧圣母壁龛旁立柱",
+     "instruction_ref_zh": "在左侧圣母像壁龛紧右边的立柱上安装一盏小黄铜壁灯。",
+     "instruction_noref_zh": "在选中区域上安装一盏小黄铜壁灯。",
+     "findings_addressed": ["ambiguous_ref"], "reason": "Another red-gold capital column stands just right of it; the Madonna niche identifies the masked column. A candle on a vertical shaft is not natural; a mounted wall sconce is."}
+  ]
+}

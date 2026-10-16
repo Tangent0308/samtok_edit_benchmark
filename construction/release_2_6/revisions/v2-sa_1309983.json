@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_1309983",
+  "reviewer": "shard1-b7",
+  "notes": "Audit: U3 replace vest->orange vest was colour-only. Payload rewritten to a structurally different garment (hooded long-sleeve rain jacket). No S!=T units; other units verified on clean source (U1 hard hat white, U2 left worker hi-vis jacket).",
+  "reviewed_views": ["release_2_6_work/v2-sa_1309983/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"payload": "a hooded orange high-visibility rain jacket"},
+     "instruction_ref_zh": "将弯腰工人的安全背心替换为一件带兜帽的橙色高可视雨衣。",
+     "instruction_noref_zh": "将选中区域替换为一件带兜帽的橙色高可视雨衣。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Masked item is a sleeveless yellow hi-vis vest; vest->orange vest was only a colour change. A hooded rain jacket adds sleeves and a hood (real structural replacement)."},
+    {"id": "U4", "action": "keep"}
+  ]
+}

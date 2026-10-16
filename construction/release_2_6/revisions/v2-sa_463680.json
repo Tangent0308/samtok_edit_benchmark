@@ -1,0 +1,27 @@
+{
+  "case_id": "v2-sa_463680",
+  "reviewer": "shard2-b6",
+  "notes": "U1 vest->vest replace was colour/pattern only -> yellow waterproof bib apron. U3 ref now says 'upper' (two yellow crates at back). U4 dangling 'on its front' removed. Masks unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_463680/case_sheet.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a yellow waterproof bib apron"},
+     "instruction_ref_zh": "将鱼贩的深色马甲替换为一条黄色防水背带围裙。",
+     "instruction_noref_zh": "将选中区域替换为一条黄色防水背带围裙。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Same garment type before; a waterproof bib apron is a genuine garment change suited to a fish seller."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the upper yellow crate at the back of the counter"},
+     "ref_zh": "柜台后方上层的黄色周转箱",
+     "instruction_ref_zh": "将柜台后方上层的黄色周转箱的颜色改为绿色。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Masked crate (y1038-1121) is the upper of two yellow crates at the back; the other sits lower-right."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small white price label reading 5/kg"},
+     "instruction_ref_zh": "在柜台最前方的鱼箱上加上一张白色5/kg小价签。",
+     "instruction_noref_zh": "给选中区域加上一张白色5/kg小价签。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Removed dangling 'on its front'; anchor stays the whole crate."}
+  ]
+}

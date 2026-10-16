@@ -1,0 +1,44 @@
+{
+  "case_id": "v2-sa_10883561",
+  "reviewer": "shard0b-b1",
+  "notes": "U4 ref ambiguous (two dark-teal back-facing chairs in the centre); now 'directly behind the left foreground chair' (U2). U5 protocol 2.0: seat of the partly hidden chair (host ∩ box 912,878,1000,925). U3 2.5.0 mask had a stray fragment near (1197,950) on another chair; cleaned to the right-hand chair only (host ∩ box 1300,980,1560,1330).",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_10883561/case_sheet.jpg",
+    "release_2_6_work/v2-sa_10883561/U5/final.jpg",
+    "release_2_6_work/v2-sa_10883561/U3/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "keep"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the back-facing dark teal chair directly behind the left foreground chair"
+      },
+      "ref_zh": "左侧前景椅子正后方背对镜头的深青色椅子",
+      "instruction_ref_zh": "将左侧前景椅子正后方背对镜头的深青色椅子改为浅灰色。",
+      "findings_addressed": [
+        "ambiguous_ref"
+      ],
+      "reason": "Another dark back-facing chair sits behind the round table next to it; the masked one is directly behind the U2 chair."
+    },
+    {
+      "id": "U5",
+      "action": "revise",
+      "instruction_noref_zh": "给选中区域加上一条卷起的米色毯子。",
+      "findings_addressed": [],
+      "reason": "Protocol 2.0 seat site mask; Chinese no-ref must not name the site (座面)."
+    }
+  ]
+}

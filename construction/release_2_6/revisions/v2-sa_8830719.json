@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_8830719",
+  "reviewer": "shard1-b1",
+  "notes": "U1 man wears his navy hood up, no hat; U2 ref depended on U1 text ('to his right'). Protocol 2.0 v2 masks: U1/U2 remove hood -> hood only (SAM3 'hood'); U5 add site 'upper back' -> band of the jacket back just below the neck/backpack (host ∩ box [470,690,710,830]). U3 ZH colour fixed (jacket is orange-red).",
+  "reviewed_views": ["release_2_6_work/v2-sa_8830719/case_sheet.jpg", "release_2_6_work/v2-sa_8830719/U1/final.jpg", "release_2_6_work/v2-sa_8830719/U2/t1.jpg", "release_2_6_work/v2-sa_8830719/U5/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the dark navy hooded jacket of the man at the far left with his hood up"},
+     "ref_zh": "最左侧拉起兜帽男子的深海军蓝连帽外套",
+     "instruction_ref_zh": "移除最左侧拉起兜帽男子的深海军蓝连帽外套的兜帽。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "No hat is visible; the hood is pulled up. Mask now the hood (U1_v2.png)."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the brown hooded jacket of the side-facing person on the left under the rainbow umbrella"},
+     "ref_zh": "左侧彩虹伞下侧身者的棕色连帽外套",
+     "instruction_ref_zh": "移除左侧彩虹伞下侧身者的棕色连帽外套的兜帽。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "'Immediately to his right' depended on U1's text and body-side ambiguity; the umbrella and left position identify the person (other brown-hooded person is at the far right). Mask now the hood (U2_v2.png)."},
+    {"id": "U3", "action": "revise", "spec": {},
+     "ref_zh": "右侧拿画板女孩的橙红色外套",
+     "instruction_ref_zh": "将右侧拿画板女孩的橙红色外套改为宝蓝色。",
+     "reason": "Jacket is orange-red, ZH said red."},
+    {"id": "U4", "action": "keep"},
+    {"id": "U5", "action": "keep", "reason": "Mask replaced by upper-back site U5_v2.png."}
+  ]
+}

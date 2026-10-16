@@ -1,0 +1,43 @@
+{
+  "case_id": "v2-sa_8336561",
+  "reviewer": "shard4-b6",
+  "notes": "Tail case: all units re-examined on the clean source. U1 re-masked to the red felt only (rail, cards and chips excluded); U2 replace made a visible structural change; U3 ref names the eight of diamonds; U4 is the background woman's white shirt sleeve with a concrete payload. The independence finding is a false positive: the 2.5.0 U1 mask already had a hole at the U3 card (pixel overlap 0).",
+  "reviewed_views": ["release_2_6_work/v2-sa_8336561/case_sheet.jpg", "release_2_6_work/v2-sa_8336561/U1/t1.jpg", "release_2_6_work/v2-sa_8336561/U1/final.jpg"],
+  "difficulty": {
+    "mechanisms": ["indoor", "game", "detail"],
+    "scene_zh": "赌场二十一点牌桌",
+    "evidence_zh": "前景牌桌的红色台面毡布、右侧背景女子的黑色单肩包、台面左侧单独的方块8纸牌、左侧背景穿黑马甲女子的白衬衫袖子是四个不同对象。",
+    "specific_protection_zh": "保留牌桌、人物和桌面物品。"
+  },
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the red felt surface of the blackjack table in the foreground", "scope": "table felt", "payload": "dark green", "attributes": [{"property": "color", "value": "dark green"}]},
+     "ref_zh": "前景二十一点牌桌的红色台面毡布", "scope_zh": "台面毡布", "physical_parent_zh": "前景二十一点牌桌",
+     "parent_instance_id": "sa_8336561:前景二十一点牌桌",
+     "instruction_ref_zh": "将前景二十一点牌桌的红色台面毡布的颜色改为深绿色。",
+     "findings_addressed": ["wrong_instance_spatial"],
+     "reason": "Table is the foreground table spanning the bottom, not 'at the left'; only the felt is recoloured, so the mask is the felt (rail, cards, chips cut out, no overlap with U3)."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the black shoulder bag of the woman in a tan top standing in the background at the right", "scope": "shoulder bag", "payload": "a red straw tote bag"},
+     "ref_zh": "右侧背景中穿棕褐色上衣站立女子的黑色单肩包", "scope_zh": "单肩包", "physical_parent_zh": "右侧背景女子的单肩包",
+     "parent_instance_id": "sa_8336561:右侧背景女子的单肩包",
+     "instruction_ref_zh": "将右侧背景中穿棕褐色上衣站立女子的黑色单肩包替换为一个红色草编托特包。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Bag is already a black shoulder bag; replacing it with a red straw tote is a visible structural change. Mask (bag + strap) unchanged."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the lone eight of diamonds card on the left side of the table", "scope": "playing card"},
+     "ref_zh": "牌桌左侧单独放着的方块8纸牌", "scope_zh": "纸牌", "physical_parent_zh": "方块8纸牌",
+     "parent_instance_id": "sa_8336561:方块8纸牌",
+     "instruction_ref_zh": "移除牌桌左侧单独放着的方块8纸牌。",
+     "findings_addressed": [],
+     "reason": "Tail rewrite: 'card near the lower left' is vague among many cards; the masked card is the single eight of diamonds."},
+    {"id": "U4", "action": "revise",
+     "spec": {"ref": "the white shirt sleeve of the woman in a black vest bending over in the background at the left", "scope": "shirt sleeve", "payload": "one small round red embroidered patch", "placement": {"relation": "on", "site": "", "anchor_mode": "support"}},
+     "ref_zh": "左侧背景中弯腰的穿黑马甲女子的白衬衫袖子", "scope_zh": "衬衫袖子", "physical_parent_zh": "左侧背景穿黑马甲女子",
+     "parent_instance_id": "sa_8336561:左侧背景穿黑马甲女子",
+     "instruction_ref_zh": "给左侧背景中弯腰的穿黑马甲女子的白衬衫袖子加上一枚红色小圆形刺绣贴布。",
+     "instruction_noref_zh": "给选中区域加上一枚红色小圆形刺绣贴布。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Mask is the white sleeve of the background woman, not a 'shirt at the upper left'; payload made concrete. Mask unchanged (anchor = the sleeve)."}
+  ]
+}

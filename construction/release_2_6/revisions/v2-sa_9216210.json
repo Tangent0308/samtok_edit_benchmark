@@ -1,0 +1,59 @@
+{
+  "case_id": "v2-sa_9216210",
+  "reviewer": "shard7",
+  "notes": "Tail case. Scene is a round hotel/mall atrium with a zodiac relief dome, not a church. U1 railing spans the full width (not 'at the left') and the value was vague; U2 replace was a material swap and the ref weak; U3 is the left of two TUDOR signs; U4 relief is the dog of the zodiac ring at the top edge (between rooster and pig), plaque payload replaced by a hanging Chinese knot. All 2.5.0 masks checked and kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9216210/case_sheet.jpg (full + U1/U2/U3/U4 zooms)"],
+  "difficulty": {"mechanisms": ["indoor", "architecture", "crowd"], "scene_zh": "酒店圆形大堂", "evidence_zh": "环绕地面圆形图案的金色栏杆、人群后方的发光店面入口、左侧 TUDOR 招牌和穹顶顶边的镀金狗浮雕是四个不同对象。", "specific_protection_zh": "保留穹顶浮雕、地面图案、人群和建筑结构。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the gold railing around the floor medallion", "scope": "railing", "payload": "matte black", "attributes": [{"property": "color", "value": "matte black"}]},
+      "ref_zh": "环绕地面圆形图案的金色栏杆",
+      "scope_zh": "栏杆",
+      "physical_parent_zh": "金色环形栏杆",
+      "parent_instance_id": "sa_9216210:金色环形栏杆",
+      "instruction_ref_zh": "将环绕地面圆形图案的金色栏杆的颜色改为哑光黑色。",
+      "instruction_noref_zh": "将选中区域的颜色改为哑光黑色。",
+      "preserve": ["保留栏杆后的人群和地面圆形图案。"],
+      "findings_addressed": ["attribute_value"],
+      "reason": "Masked railing is the circular balustrade spanning the whole width; 'dark' replaced by matte black."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the lit shop entrance with the Shopping / Wynn Lobby direction sign behind the crowd", "scope": "shop entrance", "payload": "a large red digital advertising screen"},
+      "ref_zh": "人群后方挂着购物/永利大堂指示牌的发光店面入口",
+      "scope_zh": "店面入口",
+      "physical_parent_zh": "发光店面入口",
+      "parent_instance_id": "sa_9216210:发光店面入口",
+      "instruction_ref_zh": "将人群后方挂着购物/永利大堂指示牌的发光店面入口替换为一块大型红色数字广告屏。",
+      "instruction_noref_zh": "将选中区域替换为一块大型红色数字广告屏。",
+      "findings_addressed": ["replace_is_attribute"],
+      "reason": "Mask covers the lit glass entrance including its direction sign; wooden storefront was a material-only change, now a structural replacement; ref names the unique direction sign."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the left of the two TUDOR signs above the shops", "scope": "sign"},
+      "ref_zh": "商店上方两块 TUDOR 招牌中左边的一块",
+      "scope_zh": "招牌",
+      "physical_parent_zh": "左侧 TUDOR 招牌",
+      "parent_instance_id": "sa_9216210:左侧TUDOR招牌",
+      "instruction_ref_zh": "移除商店上方两块 TUDOR 招牌中左边的一块。",
+      "instruction_noref_zh": "移除选中区域。",
+      "preserve": ["保留右边的 TUDOR 招牌和店面。"],
+      "findings_addressed": [],
+      "reason": "Tail rewrite: two identical TUDOR signs; the masked one is the left one."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the gilded dog relief at the top edge of the ceiling dome", "scope": "relief", "payload": "one small red Chinese knot", "placement": {"relation": "hanging from", "site": "", "anchor_mode": "support"}},
+      "ref_zh": "穹顶顶边的镀金狗浮雕",
+      "scope_zh": "浮雕",
+      "physical_parent_zh": "镀金狗浮雕",
+      "parent_instance_id": "sa_9216210:镀金狗浮雕",
+      "instruction_ref_zh": "给穹顶顶边的镀金狗浮雕挂上一个红色小中国结。",
+      "instruction_noref_zh": "给选中区域挂上一个红色小中国结。",
+      "findings_addressed": ["ambiguous_ref", "grammar_style"],
+      "reason": "Masked relief is at the top edge (0.62W, 0.08H), the dog of the zodiac ring between the rooster wing and the pig; a hanging red knot is natural on a ceiling relief, unlike a plaque."
+    }
+  ]
+}

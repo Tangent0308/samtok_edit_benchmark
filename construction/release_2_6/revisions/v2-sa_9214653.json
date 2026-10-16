@@ -1,0 +1,58 @@
+{
+  "case_id": "v2-sa_9214653",
+  "reviewer": "shard7",
+  "notes": "Tail case. U1 car is the black hatchback at lower right (ref said left). U2 helmet is at the far-left edge and the replace payload was a bare colour. U3 scooter is being ridden (removal would leave a floating rider): retargeted to the pink taxi behind the plaza (SAM3 v2 mask). U4 ref/payload made specific.",
+  "reviewed_views": ["release_2_6_work/v2-sa_9214653/case_sheet.jpg", "release_2_6_work/v2-sa_9214653/U3/t1.jpg"],
+  "difficulty": {"mechanisms": ["outdoor", "city", "traffic"], "scene_zh": "城市广场", "evidence_zh": "右下前景的黑色掀背车、最左边缘的方格条纹白头盔、广场后方的粉色出租车和右侧楼上的红色店招是四个不同对象。", "specific_protection_zh": "保留车辆、骑行者、大秋千和道路标识。"},
+  "units": [
+    {
+      "id": "U1", "action": "revise",
+      "spec": {"ref": "the black hatchback in the lower right foreground", "scope": "hatchback"},
+      "ref_zh": "右下前景的黑色掀背车",
+      "scope_zh": "掀背车",
+      "physical_parent_zh": "黑色掀背车",
+      "parent_instance_id": "sa_9214653:黑色掀背车",
+      "instruction_ref_zh": "将右下前景的黑色掀背车的颜色改为红色。",
+      "instruction_noref_zh": "将选中区域的颜色改为红色。",
+      "findings_addressed": ["wrong_instance_spatial"],
+      "reason": "Masked car is the black Honda hatchback at cx=0.77, lower right."
+    },
+    {
+      "id": "U2", "action": "revise",
+      "spec": {"ref": "the white helmet with a checkered stripe at the far left edge", "scope": "helmet", "payload": "a black open-face helmet with goggles"},
+      "ref_zh": "最左边缘带方格条纹的白色头盔",
+      "scope_zh": "头盔",
+      "physical_parent_zh": "最左边缘的骑行者",
+      "parent_instance_id": "sa_9214653:最左边缘的骑行者",
+      "instruction_ref_zh": "将最左边缘带方格条纹的白色头盔替换为一顶带护目镜的黑色半盔。",
+      "instruction_noref_zh": "将选中区域替换为一顶带护目镜的黑色半盔。",
+      "findings_addressed": ["wrong_instance_spatial", "replace_is_attribute"],
+      "reason": "Masked helmet is at the far-left edge (cx=0.02); payload was a bare colour, now a structurally different helmet."
+    },
+    {
+      "id": "U3", "action": "revise",
+      "spec": {"ref": "the pink taxi on the road behind the plaza", "scope": "taxi"},
+      "ref_zh": "广场后方马路上的粉色出租车",
+      "scope_zh": "出租车",
+      "physical_parent_zh": "粉色出租车",
+      "parent_instance_id": "sa_9214653:粉色出租车",
+      "instruction_ref_zh": "移除广场后方马路上的粉色出租车。",
+      "instruction_noref_zh": "移除选中区域。",
+      "preserve": ["保留后方的大巴、其他出租车和广场上的行人。"],
+      "findings_addressed": [],
+      "reason": "Retarget: the old target was a scooter with a man riding it; removing it would leave the rider floating (ill-posed). The pink taxi is the only pink car (SAM3 t1_1, verified)."
+    },
+    {
+      "id": "U4", "action": "revise",
+      "spec": {"ref": "the larger red shop sign with gold Thai lettering on the buildings at the right", "scope": "sign", "payload": "one small round white star logo"},
+      "ref_zh": "右侧楼房上较大的金色泰文红色店招",
+      "scope_zh": "店招",
+      "physical_parent_zh": "右侧红色店招",
+      "parent_instance_id": "sa_9214653:右侧红色店招",
+      "instruction_ref_zh": "给右侧楼房上较大的金色泰文红色店招加上一个白色圆形小星标。",
+      "instruction_noref_zh": "给选中区域加上一个白色圆形小星标。",
+      "findings_addressed": ["grammar_style"],
+      "reason": "A smaller red sign sits just left of it; ref names the larger one; payload made specific."
+    }
+  ]
+}

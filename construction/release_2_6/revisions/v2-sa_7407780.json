@@ -1,0 +1,45 @@
+{
+  "case_id": "v2-sa_7407780",
+  "reviewer": "round2",
+  "notes": "修正U1相对画面中心的定位；另发现U5椅腿夹入背景与邻椅，SAM椅子候选细化后恢复可见左靠背支柱，保留实际草地大空洞。",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_7407780/case_sheet.jpg",
+    "release_2_6_work/v2-sa_7407780/clean.jpg",
+    "release_2_6_work/v2-sa_7407780/U1_detail.jpg",
+    "release_2_6_work/v2-sa_7407780/U5_detail.jpg",
+    "release_2_6_work/v2-sa_7407780/U5_clean_zoom.jpg",
+    "release_2_6_work/v2-sa_7407780/U5/t1.jpg",
+    "release_2_6_work/v2-sa_7407780/U5/final.jpg"
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the front-left-of-center folding chair facing the camera"
+      },
+      "ref_zh": "前景中央偏左面向镜头的折叠椅",
+      "instruction_ref_zh": "将前景中央偏左面向镜头的折叠椅替换为一张圆形木凳。",
+      "findings_addressed": [
+        "wrong_instance_spatial"
+      ],
+      "reason": "定位中央偏左正面椅，排除更居中侧身U2椅。"
+    },
+    {
+      "id": "U2",
+      "action": "keep"
+    },
+    {
+      "id": "U3",
+      "action": "keep"
+    },
+    {
+      "id": "U4",
+      "action": "keep"
+    },
+    {
+      "id": "U5",
+      "action": "keep"
+    }
+  ]
+}

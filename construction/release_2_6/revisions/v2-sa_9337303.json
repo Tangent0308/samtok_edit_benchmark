@@ -1,0 +1,106 @@
+{
+  "case_id": "v2-sa_9337303",
+  "reviewer": "shard7",
+  "notes": "Tail case, all units rewritten. U1 named a whole player; mask is the #8 player's kit -> recolour the jersey and shorts. U2 replaced a person with a uniform -> replace the #1 player's hooped jersey (SAM3 v2 jersey-only mask) with a sleeveless training vest. U3 was the same #1 player's boot (independence violation, wrong side, removing a worn boot) -> retargeted to removing the seated spectator in white at the far right (v2). U4 cap ref tightened and payload made specific.",
+  "reviewed_views": [
+    "release_2_6_work/v2-sa_9337303/case_sheet.jpg",
+    "release_2_6_work/v2-sa_9337303/U2/t1.jpg",
+    "release_2_6_work/v2-sa_9337303/U3/t2.jpg",
+    "release_2_6_work/v2-sa_9337303/U3/final.jpg"
+  ],
+  "difficulty": {
+    "mechanisms": [
+      "outdoor",
+      "sports",
+      "people"
+    ],
+    "scene_zh": "橄榄球比赛",
+    "evidence_zh": "最左侧8号球员的球衣短裤、右侧1号球员的红白条纹球衣、最右侧坐在草地上的白T恤观众和后排球员的黑色帽子分属四个不同的人。",
+    "specific_protection_zh": "保留其他球员、球和场地。"
+  },
+  "units": [
+    {
+      "id": "U1",
+      "action": "revise",
+      "spec": {
+        "ref": "the maroon-and-sky-blue jersey and shorts of the #8 player at the far left",
+        "scope": "jersey and shorts",
+        "payload": "forest green",
+        "attributes": [
+          {
+            "property": "color",
+            "value": "forest green"
+          }
+        ]
+      },
+      "ref_zh": "最左侧8号球员的栗红天蓝色球衣和短裤",
+      "scope_zh": "球衣和短裤",
+      "physical_parent_zh": "最左侧8号球员",
+      "parent_instance_id": "sa_9337303:最左侧8号球员",
+      "instruction_ref_zh": "将最左侧8号球员的栗红天蓝色球衣和短裤的颜色改为森林绿。",
+      "instruction_noref_zh": "将选中区域的颜色改为森林绿。",
+      "findings_addressed": [
+        "person_clothing_level"
+      ],
+      "reason": "Mask is the #8 player's kit (jersey + shorts), not the person; the kit is partly blue already, so the value is forest green. #8 distinguishes him from the #2 player in the same kit."
+    },
+    {
+      "id": "U2",
+      "action": "revise",
+      "spec": {
+        "ref": "the red-and-white hooped jersey of the #1 player reaching for the ball at the right",
+        "scope": "jersey",
+        "payload": "a sleeveless black training vest"
+      },
+      "ref_zh": "右侧伸手接球的1号球员的红白条纹球衣",
+      "scope_zh": "球衣",
+      "physical_parent_zh": "右侧1号球员",
+      "parent_instance_id": "sa_9337303:右侧1号球员",
+      "instruction_ref_zh": "将右侧伸手接球的1号球员的红白条纹球衣替换为一件黑色无袖训练背心。",
+      "instruction_noref_zh": "将选中区域替换为一件黑色无袖训练背心。",
+      "findings_addressed": [
+        "person_clothing_level"
+      ],
+      "reason": "Person was replaced by clothing; kept replace but on the jersey only (SAM3 t1_1 within the old kit mask, v2), with a structurally different sleeveless vest. Ref position corrected (cx=0.73, right, not center)."
+    },
+    {
+      "id": "U3",
+      "action": "revise",
+      "spec": {
+        "ref": "the spectator in the white T-shirt sitting on the grass at the far right",
+        "scope": "spectator"
+      },
+      "ref_zh": "最右侧坐在草地上穿白T恤的观众",
+      "scope_zh": "观众",
+      "physical_parent_zh": "最右侧白T恤观众",
+      "parent_instance_id": "sa_9337303:最右侧白T恤观众",
+      "instruction_ref_zh": "移除最右侧坐在草地上穿白T恤的观众。",
+      "instruction_noref_zh": "移除选中区域。",
+      "findings_addressed": [
+        "independence_violation",
+        "wrong_instance_spatial"
+      ],
+      "reason": "Retarget: the boot belonged to the U2 player (same physical parent), the ref said left and removing a worn boot is ill-posed. The seated spectator at the right edge is an independent person (SAM3 t2_1, v2); removal reveals grass and shrubs."
+    },
+    {
+      "id": "U4",
+      "action": "revise",
+      "spec": {
+        "ref": "the black cap of the player in a red-and-white jersey",
+        "scope": "cap",
+        "payload": "one small round white badge"
+      },
+      "ref_zh": "穿红白球衣球员戴的黑色帽子",
+      "scope_zh": "帽子",
+      "physical_parent_zh": "戴黑帽的红白球衣球员",
+      "parent_instance_id": "sa_9337303:戴黑帽的红白球衣球员",
+      "instruction_ref_zh": "在穿红白球衣球员戴的黑色帽子上加上一枚白色小圆徽章。",
+      "instruction_noref_zh": "给选中区域加上一枚白色小圆徽章。",
+      "findings_addressed": [
+        "ambiguous_ref",
+        "grammar_style"
+      ],
+      "reason": "Only cap in the image (cx=0.30, not center); ref drops the loose location word; payload made specific. Mask is the cap (anchor, unchanged). Lead review: 'back row' was imprecise (he runs mid-field) and the Puma brand is not legible; the cap is unique, so the ref names the black cap of the red-and-white-jersey player."
+    }
+  ]
+}

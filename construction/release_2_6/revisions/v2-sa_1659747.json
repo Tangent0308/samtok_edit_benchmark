@@ -1,0 +1,20 @@
+{
+  "case_id": "v2-sa_1659747",
+  "reviewer": "shard1-b9",
+  "notes": "U1 replace was hatchback->hatchback (recolor only), rewritten to a pickup truck. U2 add site made explicit (lower image-right corner, clear of existing stickers) and mask cut to that corner (windshield ∩ box). U3 unchanged.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1659747/case_sheet.jpg", "release_2_6_work/v2-sa_1659747/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a small silver pickup truck"},
+     "instruction_ref_zh": "将蓝色老爷车旁的红色两厢车替换为一辆银色小型皮卡。",
+     "instruction_noref_zh": "将选中区域替换为一辆银色小型皮卡。",
+     "findings_addressed": ["replace_is_attribute (self-found)"],
+     "reason": "Yellow compact hatchback = same category/structure as the red hatchback; pickup truck is a real structural replacement."},
+    {"id": "U2", "action": "revise",
+     "spec": {"placement": {"relation": "on", "site": "lower image-right corner", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在蓝色老爷车的挡风玻璃画面右侧的下角加上一张小停车许可贴纸。",
+     "instruction_noref_zh": "给选中区域加上一张小停车许可贴纸。",
+     "findings_addressed": ["protocol2_site_mask"],
+     "reason": "Site 'lower corner' did not say which corner; image-left lower corner already has a round sticker. Mask = windshield ∩ lower image-right corner box."}
+  ]
+}

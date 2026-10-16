@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_396678",
+  "reviewer": "shard2-b3",
+  "notes": "U4 payload had a dangling 'its canopy'; canopy moved to placement.site and the mask is now the parasol canopy (SAM3, verified; also drops two stray blobs of the old mask). Other units verified on the case sheet.",
+  "reviewed_views": ["release_2_6_work/v2-sa_396678/case_sheet.jpg", "release_2_6_work/v2-sa_396678/U4/t1.jpg", "release_2_6_work/v2-sa_396678/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a perched white gull", "placement": {"relation": "on", "site": "canopy", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在前景躺椅上方的大草伞的伞面上加上一只停歇的白色海鸥。",
+     "instruction_noref_zh": "给选中区域加上一只停歇的白色海鸥。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Payload 'a white gull perched on its canopy' depended on the host; site is now 'canopy' and the v2 mask is the canopy (source box 0,777-956,1031) without the pole."}
+  ]
+}

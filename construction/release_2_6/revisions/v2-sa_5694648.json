@@ -1,0 +1,17 @@
+{
+  "case_id": "v2-sa_5694648",
+  "reviewer": "shard2-b12",
+  "notes": "U4 payload had dangling 'along its rear edge'; rear edge moved to placement.site. The carriage's rear (seat back with plate A013) faces the camera, so the rear edge is the camera-facing fringed edge of the canopy; v2 mask = that fringe strip (SAM3 'fringe' ∩ host, x 628-1213, y 479-539).",
+  "reviewed_views": ["release_2_6_work/v2-sa_5694648/case_sheet.jpg", "release_2_6_work/v2-sa_5694648/U4/t1.jpg", "release_2_6_work/v2-sa_5694648/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small black TOURS sign", "placement": {"relation": "along", "site": "rear edge", "anchor_mode": "support"}},
+     "instruction_ref_zh": "沿马车顶篷的后沿加上一块小黑色TOURS牌。",
+     "instruction_noref_zh": "给选中区域加上一块小黑色TOURS牌。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Dangling 'its rear edge' removed; rear edge is the site and the mask is the fringed rear edge strip."}
+  ]
+}

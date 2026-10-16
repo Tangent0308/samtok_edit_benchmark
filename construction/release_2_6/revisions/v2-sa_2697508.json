@@ -1,0 +1,21 @@
+{
+  "case_id": "v2-sa_2697508",
+  "reviewer": "shard1b-b2",
+  "notes": "No audit findings. Own review on clean source: U2 skirt is coral red, not pink, and the middle woman wears a pale pink/peach long skirt, so 'long pink skirt on the right' was wrong/ambiguous -> 'long red skirt'. U1 shirt->linen shirt was a colour/material change -> short-sleeved polo. U3 add site 'strap': v2 mask = bag strap over the shoulder (SAM3 'strap', box 739-761 x 944-1040).",
+  "reviewed_views": ["release_2_6_work/v2-sa_2697508/case_sheet.jpg", "release_2_6_work/v2-sa_2697508/U3/t1.jpg", "release_2_6_work/v2-sa_2697508/U3/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"payload": "a short-sleeved light-blue polo shirt"},
+     "instruction_ref_zh": "将最近男子的白色衬衫替换为一件浅蓝色短袖Polo衫。",
+     "instruction_noref_zh": "将选中区域替换为一件浅蓝色短袖Polo衫。",
+     "findings_addressed": [],
+     "reason": "Long-sleeved white linen shirt -> light-blue linen shirt was only colour; a short-sleeved polo changes the garment structure."},
+    {"id": "U2", "action": "revise",
+     "spec": {"ref": "the long red skirt on the right"},
+     "ref_zh": "右侧的红色长裙",
+     "instruction_ref_zh": "将右侧的红色长裙的颜色改为浅黄色。",
+     "findings_addressed": [],
+     "reason": "The masked skirt is coral red on the clean image; the middle woman's long skirt is the pale pink one."},
+    {"id": "U3", "action": "keep"}
+  ]
+}

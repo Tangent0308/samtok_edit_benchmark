@@ -1,0 +1,26 @@
+{
+  "case_id": "v2-sa_1571336",
+  "reviewer": "shard1-b8",
+  "notes": "U4 railing-to-railing material swap -> structural replace with a rope barrier. U2 add site: the 'cabin roof' is the cream canvas top; v2 mask = canvas top, payload made a flexible panel. U3 cover straddles the central post (mask on both sides), ref fixed from 'just left of' to 'partly hidden behind'.",
+  "reviewed_views": ["release_2_6_work/v2-sa_1571336/case_sheet.jpg", "release_2_6_work/v2-sa_1571336/U2/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "keep"},
+    {"id": "U2", "action": "revise",
+     "spec": {"payload": "a small flexible solar panel", "placement": {"relation": "on", "site": "canvas top", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在前景米色舱顶的船的帆布顶篷上加上一块小型柔性太阳能板。",
+     "instruction_noref_zh": "给选中区域加上一块小型柔性太阳能板。",
+     "reason": "The cream 'cabin roof' is a canvas top; site renamed and v2 mask = canvas top (SAM3 'cream canvas top')."},
+    {"id": "U3", "action": "revise",
+     "spec": {"ref": "the gray boat cover partly hidden behind the central black post"},
+     "ref_zh": "部分被中央黑柱遮挡的灰色船罩",
+     "instruction_ref_zh": "将部分被中央黑柱遮挡的灰色船罩的颜色改为深蓝色。",
+     "instruction_noref_zh": "将选中区域的颜色改为深蓝色。",
+     "reason": "Covered boat extends on both sides of the post (mask has two components); 'just left of' was inaccurate."},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a low rope barrier strung between short posts"},
+     "instruction_ref_zh": "将右侧棕色船屋周围的甲板栏杆替换为一道系在矮柱之间的低绳索围栏。",
+     "instruction_noref_zh": "将选中区域替换为一道系在矮柱之间的低绳索围栏。",
+     "findings_addressed": ["replace_is_attribute"],
+     "reason": "Metal railing to wooden railing was a material change; rope barrier is a structural change."}
+  ]
+}

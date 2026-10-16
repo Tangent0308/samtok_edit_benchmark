@@ -1,0 +1,113 @@
+{
+ "case_id": "v2-sa_7945941",
+ "reviewer": "shard4-b2",
+ "notes": "Tail case, all units re-examined. U1/U2 were whole persons (recolour / person replaced by a coat); now the woman's teal shorts and the man's navy T-shirt with garment masks (v2). U3 removing a house door is ill-posed; retargeted to the black metal barrier at the left café terrace (v2). U4 adding a plaque onto the black Desigual sign was odd; retargeted to adding a door knocker on the pale grey-green door (door mask reused as U4_v2).",
+ "reviewed_views": [
+  "release_2_6_work/v2-sa_7945941/case_sheet.jpg",
+  "release_2_6_work/v2-sa_7945941/U1/final.jpg",
+  "release_2_6_work/v2-sa_7945941/U2/final.jpg",
+  "release_2_6_work/v2-sa_7945941/U3/final.jpg",
+  "release_2_6_work/v2-sa_7945941/U4/final.jpg"
+ ],
+ "difficulty": {
+  "mechanisms": [
+   "street",
+   "architecture",
+   "crowd"
+  ],
+  "scene_zh": "街巷人物",
+  "evidence_zh": "中间女子的青绿色短裤、右侧男子的藏青T恤、左侧咖啡座旁的黑色金属护栏和右侧灰绿色房门是四个不同对象。",
+  "specific_protection_zh": "保留街巷、其他行人和建筑细节。"
+ },
+ "units": [
+  {
+   "id": "U1",
+   "action": "revise",
+   "spec": {
+    "ref": "the teal shorts of the woman in a white top walking away in the center",
+    "scope": "shorts",
+    "payload": "khaki beige",
+    "attributes": [
+     {
+      "property": "color",
+      "value": "khaki beige"
+     }
+    ]
+   },
+   "ref_zh": "中间背身行走的白上衣女子的青绿色短裤",
+   "scope_zh": "短裤",
+   "physical_parent_zh": "中间白上衣女子",
+   "parent_instance_id": "sa_7945941:中间白上衣女子",
+   "instruction_ref_zh": "将中间背身行走的白上衣女子的青绿色短裤的颜色改为卡其米色。",
+   "instruction_noref_zh": "将选中区域的颜色改为卡其米色。",
+   "findings_addressed": [
+    "person_clothing_level"
+   ],
+   "reason": "Recoloured a whole person; now the teal shorts (SAM3 'teal shorts' inside the person mask, bag excluded, committed U1_v2). Teal->green would be barely visible, so khaki beige.",
+   "category": "shorts",
+   "source_category": "shorts"
+  },
+  {
+   "id": "U2",
+   "action": "revise",
+   "spec": {
+    "ref": "the navy T-shirt of the man in grey shorts walking ahead on the right side of the street",
+    "scope": "T-shirt",
+    "payload": "a light grey zip-up hoodie"
+   },
+   "ref_zh": "街道右侧前方行走的灰短裤男子的藏青色T恤",
+   "scope_zh": "T恤",
+   "physical_parent_zh": "右侧灰短裤男子",
+   "parent_instance_id": "sa_7945941:右侧灰短裤男子",
+   "instruction_ref_zh": "将街道右侧前方行走的灰短裤男子的藏青色T恤替换为一件浅灰色拉链连帽衫。",
+   "instruction_noref_zh": "将选中区域替换为一件浅灰色拉链连帽衫。",
+   "findings_addressed": [
+    "person_clothing_level"
+   ],
+   "reason": "A person was replaced by a garment; now the T-shirt is replaced (SAM3 'navy t-shirt', committed U2_v2). The boy also wears navy, so the ref names the man in grey shorts.",
+   "category": "T-shirt",
+   "source_category": "T-shirt"
+  },
+  {
+   "id": "U3",
+   "action": "revise",
+   "spec": {
+    "ref": "the nearest black metal barrier beside the café terrace on the left",
+    "scope": "metal barrier"
+   },
+   "ref_zh": "左侧咖啡座旁最近的黑色金属护栏",
+   "scope_zh": "金属护栏",
+   "physical_parent_zh": "左侧黑色金属护栏",
+   "parent_instance_id": "sa_7945941:左侧黑色金属护栏",
+   "instruction_ref_zh": "移除左侧咖啡座旁最近的黑色金属护栏。",
+   "findings_addressed": [],
+   "reason": "Tail rewrite: removing a house door is physically odd; retargeted to a free-standing barrier (SAM3 'black metal barrier', committed U3_v2).",
+   "category": "metal barrier",
+   "source_category": "metal barrier"
+  },
+  {
+   "id": "U4",
+   "action": "revise",
+   "spec": {
+    "ref": "the pale grey-green panelled door at the right",
+    "scope": "door",
+    "payload": "one brass lion-head door knocker",
+    "placement": {
+     "relation": "on",
+     "site": "",
+     "anchor_mode": "support"
+    }
+   },
+   "ref_zh": "右侧浅灰绿色镶板门",
+   "scope_zh": "门",
+   "physical_parent_zh": "右侧浅灰绿色房门",
+   "parent_instance_id": "sa_7945941:右侧浅灰绿色房门",
+   "instruction_ref_zh": "给右侧浅灰绿色镶板门加上一个黄铜狮头门环。",
+   "instruction_noref_zh": "给选中区域加上一个黄铜狮头门环。",
+   "findings_addressed": [],
+   "reason": "Tail rewrite: a blue plaque on a black shop sign was unnatural; retargeted to the door (2.5.0 U3 door mask, verified, committed U4_v2). The left-side door is white/grey in a shopfront; colour + side disambiguate.",
+   "category": "door",
+   "source_category": "door"
+  }
+ ]
+}

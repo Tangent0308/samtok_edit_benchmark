@@ -1,0 +1,23 @@
+{
+  "case_id": "v2-sa_4018051",
+  "reviewer": "shard2-b3",
+  "notes": "U1: two striped cushions on the nearest bench -> 'image-right'; plain sage-green cushion was only a colour/pattern change -> bolster pillow. U4: dangling 'its tilted top' moved to placement.site; v2 mask = tilted top of the stand (host ∩ box, verified). U2/U3 verified, kept.",
+  "reviewed_views": ["release_2_6_work/v2-sa_4018051/case_sheet.jpg", "release_2_6_work/v2-sa_4018051/U4/final.jpg"],
+  "units": [
+    {"id": "U1", "action": "revise",
+     "spec": {"ref": "the image-right striped square cushion on the nearest bench", "payload": "a long cylindrical bolster pillow"},
+     "ref_zh": "最近长椅上画面右侧的条纹方靠垫",
+     "instruction_ref_zh": "将最近长椅上画面右侧的条纹方靠垫替换为一个长圆柱形抱枕。",
+     "instruction_noref_zh": "将选中区域替换为一个长圆柱形抱枕。",
+     "findings_addressed": ["ambiguous_ref"],
+     "reason": "Two striped square cushions sit side by side on the nearest bench; the mask (box 161,1162-432,1479) is the right one. Plain cushion payload was colour-only, now a structural bolster."},
+    {"id": "U2", "action": "keep"},
+    {"id": "U3", "action": "keep"},
+    {"id": "U4", "action": "revise",
+     "spec": {"payload": "a small black menu board", "placement": {"relation": "on", "site": "tilted top", "anchor_mode": "support"}},
+     "instruction_ref_zh": "在座位区边缘的空金属菜单架的倾斜顶面上加上一块小黑色菜单板。",
+     "instruction_noref_zh": "给选中区域加上一块小黑色菜单板。",
+     "findings_addressed": ["grammar_style"],
+     "reason": "Payload 'on its tilted top' depended on the host; site is now 'tilted top' and the mask is that top section (source box 1486,804-1633,925)."}
+  ]
+}

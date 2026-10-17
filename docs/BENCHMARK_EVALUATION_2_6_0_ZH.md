@@ -28,6 +28,8 @@ bash baselines/diffsynth/run_all.sh gen flux2_dev 0,1,2,3
 | `qwen_image_21` | `QwenImage21Pipeline` | 40 | 32 |
 | `flux2_dev` | `Flux2ImagePipeline` | 50 | 16 |
 
+实现对照 DiffSynth-Studio 官方示例：[Qwen-Image-Edit-2511](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/qwen_image/model_inference_low_vram/Qwen-Image-Edit-2511.py)、[Qwen-Image-2.1](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/qwen_image_21/model_inference_low_vram/Qwen-Image-2.1.py)、[FLUX.2-dev](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/flux2/model_inference_low_vram/FLUX.2-dev.py)。本仓库只把 checkpoint 改为本地路径，把 `edit_image`、prompt、seed、尺寸和 registry 接到 benchmark job。
+
 默认输出面积约为 1 MP，保持原图宽高比，推理完成后缩回原图尺寸以满足 benchmark
 输出绑定。2511 使用官方要求的 `edit_image` 列表、`zero_cond_t=True` 和
 `edit_image_auto_resize=True`；FLUX.2-dev 使用官方编辑参数

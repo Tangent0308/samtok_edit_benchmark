@@ -14,10 +14,10 @@ INPUTS=$EXP/inputs/visual_locator_v2_mixed
 JUDGE_MODEL=${SAMTOK_JUDGE_MODEL:-/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/Qwen3.8-Flash-Next-FP8}
 JUDGE_NAME=$(basename "$JUDGE_MODEL")
 
-# DiffSynth's Qwen2.5-VL VRAM map needs transformers 4.x (renamed classes in 5.x).
+# DiffSynth's Qwen2.5-VL and FLUX.2 Mistral3 paths need the 4.x Transformers API.
 python_for() {
   case $1 in
-    qwen_image_edit_2511) echo /opt/tiger/envs/gen_tf457/bin/python ;;
+    qwen_image_edit_2511|flux2_dev) echo /opt/tiger/envs/gen_tf457/bin/python ;;
     *) echo /opt/tiger/envs/gen/bin/python ;;
   esac
 }

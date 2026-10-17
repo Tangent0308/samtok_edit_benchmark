@@ -9,7 +9,7 @@ environment.
 
 Environment:
   SAMTOK_MODEL_ROOT        directory holding the local model folders
-  SAMTOK_DIFFSYNTH_OFFLOAD none | cpu | official (default: official)
+  SAMTOK_DIFFSYNTH_OFFLOAD auto | none | cpu | official (default: auto)
   SAMTOK_VRAM_LIMIT_GB     optional; overrides the official per-GPU VRAM limit
 """
 
@@ -93,7 +93,16 @@ def _files(directory: Path, pattern: str) -> list[str]:
 
 
 def _vram(model: str):
-    mode = os.environ.get("SAMTOK_DIFFSYNTH_OFFLOAD", "official").lower()
+    mode = os.environ.get("SAMTOK_DIFFSYNTH_OFFLOAD", "auto").lower()
+    if mode == "auto":
+        if not torch.cuda.is_available():
+            raise RuntimeError("DiffSynth generation requires CUDA")
+        free_gb = torch.cuda.mem_get_info("cuda")[1] / (1024 ** 3)
+        # Qwen-Image and Qwen-Image-Edit fit on an 80 GB H100 with the official
+        # regular examples. FLUX.2-dev still uses the official CPU offload there.
+        if model in {"qwen_image_edit_2511", "qwen_image_21"} and free_gb >= 60:
+            return {}, None
+        mode = "cpu" if model == "flux2_dev" else "official"
     if mode == "none":
         return {}, None
     if mode == "cpu":

@@ -32,7 +32,7 @@ case $cmd in
     fi
     py=$(python_for "$model")
     mkdir -p "$EXP/runs/$model"
-    echo "python=$py $($py -c 'import transformers,torch;print("transformers",transformers.__version__,"torch",torch.__version__)') diffsynth=$(git -C /opt/tiger/envs/DiffSynth-Studio rev-parse --short HEAD) manifest=$(sha256sum "$MANIFEST" | cut -d' ' -f1) offload=${SAMTOK_DIFFSYNTH_OFFLOAD:-official} vram_limit_gb=${SAMTOK_VRAM_LIMIT_GB:-auto}" >> "$EXP/runs/$model/ENV.txt"
+    echo "python=$py $($py -c 'import transformers,torch;print("transformers",transformers.__version__,"torch",torch.__version__)') diffsynth=$(git -C /opt/tiger/envs/DiffSynth-Studio rev-parse --short HEAD) manifest=$(sha256sum "$MANIFEST" | cut -d' ' -f1) offload=${SAMTOK_DIFFSYNTH_OFFLOAD:-auto} vram_limit_gb=${SAMTOK_VRAM_LIMIT_GB:-auto}" >> "$EXP/runs/$model/ENV.txt"
     cd "$HERE" && "$py" run_sharded.py --jobs "$INPUTS/jobs.jsonl" --output "$EXP/runs/$model" --model "$model" --gpus "$gpus"
     /opt/tiger/envs/gen/bin/samtok-benchmark-v2 prepare-judge --manifest "$MANIFEST" --dataset-root "$DATA" \
       --inputs "$INPUTS/jobs.jsonl" --outputs "$EXP/runs/$model/outputs.jsonl" --output "$EXP/judge_inputs/$model"

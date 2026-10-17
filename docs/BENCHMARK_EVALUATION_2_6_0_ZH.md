@@ -35,13 +35,14 @@ bash baselines/diffsynth/run_all.sh gen flux2_dev 0,1,2,3
 `edit_image_auto_resize=True`；FLUX.2-dev 使用官方编辑参数
 `embedded_guidance=2.5`。
 
-默认 `SAMTOK_DIFFSYNTH_OFFLOAD=official`，采用官方 low-VRAM 示例的 disk/FP8 或
-disk/BF16 配置，并按当前可见 GPU 的显存计算 `vram_limit`。可用以下环境变量做可复现
-的资源配置：
+默认 `SAMTOK_DIFFSYNTH_OFFLOAD=auto`：80 GB H100 上 Qwen 两个模型使用官方常规加载，
+FLUX.2-dev 使用官方 CPU offload；显存较少时自动采用官方 low-VRAM 示例的 disk/FP8
+或 disk/BF16 配置，并按当前可见 GPU 的显存计算 `vram_limit`。可用以下环境变量做
+可复现的资源配置：
 
 ```bash
 export SAMTOK_MODEL_ROOT=/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models
-export SAMTOK_DIFFSYNTH_OFFLOAD=official  # official | cpu | none
+export SAMTOK_DIFFSYNTH_OFFLOAD=auto      # auto | official | cpu | none
 export SAMTOK_VRAM_LIMIT_GB=23             # 可选，覆盖自动显存上限
 ```
 

@@ -86,7 +86,7 @@ def _digest(job):
     return digest({k: v for k, v in job.items() if k != "input_digest"})
 
 
-def verify_job(job):
+def verify_job(job, verify_assets=True):
     if set(job) != PUBLIC_KEYS:
         raise ValueError("unexpected or missing public job fields")
     if job["protocol"] not in PROTOCOLS or job["input_digest"] != _digest(job):
@@ -152,9 +152,10 @@ def verify_job(job):
             raise ValueError("unsupplied locator leaked to editor")
     if set(files) != used:
         raise ValueError("unreferenced or unbound public file")
-    for f in files.values():
-        if sha256_file(Path(f["path"])) != f["sha256"]:
-            raise ValueError("input asset changed")
+    if verify_assets:
+        for f in files.values():
+            if sha256_file(Path(f["path"])) != f["sha256"]:
+                raise ValueError("input asset changed")
     with Image.open(job["images"][0]) as im:
         if list(im.size) != job["source_size"]:
             raise ValueError("source size changed")
@@ -257,7 +258,10 @@ def prepare(
                     "manifest_sha256": sha256_file(manifest),
                 }
                 job["input_digest"] = _digest(job)
-                verify_job(job)
+                # `validate` has already checked every manifest asset. The editor and judge
+                # perform the strict hash check again; avoid re-reading every source and mask
+                # once per job while preparing the public input package.
+                verify_job(job, verify_assets=False)
                 jobs.append(job)
     write_jsonl(output / "jobs.jsonl", jobs)
     return jobs

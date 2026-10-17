@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Full SAMTok v2 (mixed, visual_locator_v2) evaluation of DiffSynth baselines.
-#   bash run_all.sh gen   <model> [gpus]   # model: qwen_image_21 | qwen_image_edit_2511 | flux2_dev
+#   bash run_all.sh gen   <model> [gpus]   # model: qwen_image_21 | qwen_image_edit_2511 | flux2_dev | flux3_klein
 #   bash run_all.sh judge <model> [<model> ...]
 #   bash run_all.sh report <model>
 set -euo pipefail
@@ -15,9 +15,11 @@ JUDGE_MODEL=${SAMTOK_JUDGE_MODEL:-/mnt/bn/strategy-mllm-train/user/tanyue/models
 JUDGE_NAME=$(basename "$JUDGE_MODEL")
 
 # DiffSynth's Qwen2.5-VL and FLUX.2 Mistral3 paths need the 4.x Transformers API.
+# FLUX.3's official reference code uses vLLM for its prompt upsampler.
 python_for() {
   case $1 in
     qwen_image_edit_2511|flux2_dev) echo /opt/tiger/envs/gen_tf457/bin/python ;;
+    flux3_klein) echo /opt/tiger/envs/judge/bin/python ;;
     *) echo /opt/tiger/envs/gen/bin/python ;;
   esac
 }

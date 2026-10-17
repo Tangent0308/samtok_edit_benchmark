@@ -26,7 +26,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--jobs", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--model", required=True, choices=("qwen_image_edit_2511", "qwen_image_21", "flux2_dev"))
+    parser.add_argument(
+        "--model",
+        required=True,
+        choices=("qwen_image_edit_2511", "qwen_image_21", "flux2_dev", "flux3_klein"),
+    )
     parser.add_argument("--gpus", required=True, help="comma-separated CUDA device ids")
     parser.add_argument("--case-ids", type=Path, help="optional file with one case id per line")
     parser.add_argument("--seed", type=int, default=0)

@@ -18,6 +18,7 @@ from __future__ import annotations
 import glob
 import math
 import os
+import sys
 from pathlib import Path
 
 import torch
@@ -60,6 +61,17 @@ DEFAULTS = {
         "height_division_factor": 16,
         "width_division_factor": 16,
         "image_names": "image",
+    },
+    "flux3_klein": {
+        "model_dir": "flux-3-image-klein",
+        "pup_dir": "flux-3-image-klein-pup",
+        "num_inference_steps": 16,
+        "target_area": 1024 * 1024,
+        "height_division_factor": 16,
+        "width_division_factor": 16,
+        "image_names": "image",
+        "pup_memory": 0.35,
+        "offload": False,
     },
 }
 
@@ -157,7 +169,7 @@ def _load(config: dict):
     if key in _PIPES:
         return _PIPES[key]
     root = MODEL_ROOT / config["model_dir"]
-    vram, limit = _vram(config["model"])
+    vram, limit = ({}, None) if config["model"] == "flux3_klein" else _vram(config["model"])
     if config["model"] == "qwen_image_edit_2511":
         from diffsynth.pipelines.qwen_image import ModelConfig, QwenImagePipeline
 
@@ -201,6 +213,46 @@ def _load(config: dict):
             tokenizer_config=ModelConfig(path=str(root / "tokenizer")),
             vram_limit=limit,
         )
+    elif config["model"] == "flux3_klein":
+        # Use Black Forest Labs' reference implementation. It is kept outside the benchmark
+        # checkout because it has its own release and dependency set. The adapter deliberately
+        # uses the official prompt upsampler and distilled 16-step checkpoint; it does not
+        # substitute a DiffSynth or ComfyUI implementation.
+        code_root = Path(
+            os.environ.get("SAMTOK_FLUX3_CODE", "/opt/tiger/envs/flux3-image-klein")
+        )
+        source = code_root / "src"
+        if not source.is_dir():
+            raise FileNotFoundError(f"FLUX.3 reference code is missing: {source}")
+        if str(source) not in sys.path:
+            sys.path.insert(0, str(source))
+        os.environ.setdefault("WEIGHTS_DIR", str(MODEL_ROOT))
+        from flux3.pipeline import Pipeline
+        from flux3.pup import Upsampler
+
+        root = MODEL_ROOT / config["model_dir"]
+        pup = MODEL_ROOT / config["pup_dir"]
+        dit = root / "model.safetensors"
+        ae = root / "ae.safetensors"
+        text_encoder = root / "text_encoder"
+        for path in (dit, ae, text_encoder, pup):
+            if not path.exists():
+                raise FileNotFoundError(f"FLUX.3 weight path is missing: {path}")
+        # The small wrapper supplies exactly the attributes consumed by the official generate()
+        # function while avoiding its optional safety classifier, which is disabled for benchmark
+        # generation and would add an unrelated model to every shard.
+        class _OfficialModels:
+            pass
+
+        models = _OfficialModels()
+        models.upsampler = Upsampler(str(pup), memory=config["pup_memory"])
+        models.pipeline = Pipeline(
+            {"distilled": str(dit)},
+            str(text_encoder),
+            str(ae),
+            offload=config["offload"],
+        )
+        pipe = models
     else:
         raise ValueError(f"unknown model {config['model']}")
     _PIPES[key] = pipe
@@ -253,7 +305,7 @@ def edit(*, job: dict, seed: int, config: dict) -> Image.Image:
             height=height,
             width=width,
         )
-    else:
+    elif config["model"] == "flux2_dev":
         result = pipe(
             prompt,
             edit_image=images,
@@ -263,6 +315,21 @@ def edit(*, job: dict, seed: int, config: dict) -> Image.Image:
             embedded_guidance=config["embedded_guidance"],
             height=height,
             width=width,
+        )
+    else:
+        from flux3.generate import generate
+
+        result, _ = generate(
+            pipe,
+            "distilled",
+            prompt,
+            images,
+            width=width,
+            height=height,
+            steps=config["num_inference_steps"],
+            seed=seed,
+            pup=True,
+            safety=False,
         )
     result = _to_rgb(result)
     if result.size != (source_w, source_h):

@@ -18,15 +18,33 @@
 bash baselines/diffsynth/run_all.sh gen qwen_image_edit_2511 0,1,2,3
 bash baselines/diffsynth/run_all.sh gen qwen_image_21 0,1,2,3
 bash baselines/diffsynth/run_all.sh gen flux2_dev 0,1,2,3
+bash baselines/diffsynth/run_all.sh gen flux3_klein 0,1,2,3
 ```
 
-三个 adapter 使用 DiffSynth-Studio 当前 pipeline：
+前三个 adapter 使用 DiffSynth-Studio 当前 pipeline：
 
 | benchmark 名称 | DiffSynth pipeline | 默认步数 | 官方尺寸网格 |
 |---|---|---:|---:|
 | `qwen_image_edit_2511` | `QwenImagePipeline` | 40 | 16 |
 | `qwen_image_21` | `QwenImage21Pipeline` | 40 | 32 |
 | `flux2_dev` | `Flux2ImagePipeline` | 50 | 16 |
+
+`flux3_klein` 使用 Black Forest Labs 的官方 reference inference code，不使用 DiffSynth 或
+ComfyUI 替代实现。默认是 distilled checkpoint，16 steps、无 CFG，并且保留官方 prompt
+upsampler。代码固定在 `/opt/tiger/envs/flux3-image-klein`，权重目录由
+`SAMTOK_MODEL_ROOT` 指定，至少需要：
+
+```text
+$SAMTOK_MODEL_ROOT/flux-3-image-klein/model.safetensors
+$SAMTOK_MODEL_ROOT/flux-3-image-klein/ae.safetensors
+$SAMTOK_MODEL_ROOT/flux-3-image-klein/text_encoder/
+$SAMTOK_MODEL_ROOT/flux-3-image-klein-pup/
+```
+
+官方实现和权重下载说明见 [FLUX 3 Image Klein reference repository](https://github.com/black-forest-labs/flux-3-image-klein)。
+该模型的 prompt upsampler 默认打开；评测中会把干净源图和 locator 图作为官方多参考编辑输入，
+并将输出缩放回 benchmark 源图尺寸。`run_all.sh` 使用 `/opt/tiger/envs/judge/bin/python`，
+因为官方 upsampler 依赖 vLLM。
 
 实现对照 DiffSynth-Studio 官方示例：[Qwen-Image-Edit-2511](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/qwen_image/model_inference_low_vram/Qwen-Image-Edit-2511.py)、[Qwen-Image-2.1](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/qwen_image_21/model_inference_low_vram/Qwen-Image-2.1.py)、[FLUX.2-dev](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/flux2/model_inference_low_vram/FLUX.2-dev.py)。本仓库只把 checkpoint 改为本地路径，把 `edit_image`、prompt、seed、尺寸和 registry 接到 benchmark job。
 
@@ -42,6 +60,7 @@ FLUX.2-dev 使用官方 CPU offload；显存较少时自动采用官方 low-VRAM
 
 ```bash
 export SAMTOK_MODEL_ROOT=/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models
+export SAMTOK_FLUX3_CODE=/opt/tiger/envs/flux3-image-klein
 export SAMTOK_DIFFSYNTH_OFFLOAD=auto      # auto | official | cpu | none
 export SAMTOK_VRAM_LIMIT_GB=23             # 可选，覆盖自动显存上限
 ```

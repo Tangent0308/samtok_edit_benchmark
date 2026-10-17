@@ -62,6 +62,17 @@ DEFAULTS = {
         "width_division_factor": 16,
         "image_names": "image",
     },
+    "flux2_klein_4b": {
+        "model_dir": "FLUX.2-klein-4B",
+        # The released Klein checkpoint is distilled for the official 4-step path.
+        "num_inference_steps": 4,
+        "cfg_scale": 1.0,
+        "embedded_guidance": 1.0,
+        "target_area": 1024 * 1024,
+        "height_division_factor": 16,
+        "width_division_factor": 16,
+        "image_names": "image",
+    },
     "flux3_klein": {
         "model_dir": "flux-3-image-klein",
         "pup_dir": "flux-3-image-klein-pup",
@@ -113,6 +124,11 @@ def _vram(model: str):
         # Qwen-Image and Qwen-Image-Edit fit on an 80 GB H100 with the official
         # regular examples. FLUX.2-dev still uses the official CPU offload there.
         if model in {"qwen_image_edit_2511", "qwen_image_21"} and free_gb >= 60:
+            return {}, None
+        # Klein 4B plus its Qwen3 text encoder fits on an 80 GB GPU. Keep both
+        # on GPU in the normal case; this is the fast path recommended by the
+        # official DiffSynth example.
+        if model == "flux2_klein_4b" and free_gb >= 30:
             return {}, None
         mode = "cpu" if model == "flux2_dev" else "official"
     if mode == "none":
@@ -199,7 +215,7 @@ def _load(config: dict):
             processor_config=ModelConfig(path=str(root / "processor")),
             vram_limit=limit,
         )
-    elif config["model"] == "flux2_dev":
+    elif config["model"] in {"flux2_dev", "flux2_klein_4b"}:
         from diffsynth.pipelines.flux2_image import Flux2ImagePipeline, ModelConfig
 
         pipe = Flux2ImagePipeline.from_pretrained(
@@ -305,7 +321,7 @@ def edit(*, job: dict, seed: int, config: dict) -> Image.Image:
             height=height,
             width=width,
         )
-    elif config["model"] == "flux2_dev":
+    elif config["model"] in {"flux2_dev", "flux2_klein_4b"}:
         result = pipe(
             prompt,
             edit_image=images,

@@ -29,7 +29,7 @@ def main():
     parser.add_argument(
         "--model",
         required=True,
-        choices=("qwen_image_edit_2511", "qwen_image_21", "flux2_dev", "flux3_klein"),
+        choices=("qwen_image_edit_2511", "qwen_image_21", "flux2_dev", "flux2_klein_4b", "flux3_klein"),
     )
     parser.add_argument("--gpus", required=True, help="comma-separated CUDA device ids")
     parser.add_argument("--case-ids", type=Path, help="optional file with one case id per line")

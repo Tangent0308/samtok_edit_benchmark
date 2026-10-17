@@ -17,7 +17,7 @@
 ```bash
 bash baselines/diffsynth/run_all.sh gen qwen_image_edit_2511 0,1,2,3
 bash baselines/diffsynth/run_all.sh gen qwen_image_21 0,1,2,3
-bash baselines/diffsynth/run_all.sh gen flux2_dev 0,1,2,3
+bash baselines/diffsynth/run_all.sh gen flux2_klein_4b 0,1,2,3
 bash baselines/diffsynth/run_all.sh gen flux3_klein 0,1,2,3
 ```
 
@@ -27,7 +27,12 @@ bash baselines/diffsynth/run_all.sh gen flux3_klein 0,1,2,3
 |---|---|---:|---:|
 | `qwen_image_edit_2511` | `QwenImagePipeline` | 40 | 16 |
 | `qwen_image_21` | `QwenImage21Pipeline` | 40 | 32 |
-| `flux2_dev` | `Flux2ImagePipeline` | 50 | 16 |
+| `flux2_klein_4b` | `Flux2ImagePipeline` | 4 | 16 |
+
+`flux2_klein_4b` 使用本地 `FLUX.2-klein-4B` distilled checkpoint。4 步、`cfg_scale=1.0`
+和常规 GPU 加载对应 DiffSynth-Studio 的官方示例；显存不足时才退回官方 disk/FP8
+low-VRAM 配置。模型目录为 `$SAMTOK_MODEL_ROOT/FLUX.2-klein-4B/`。本次评测用
+`flux2_klein_4b` 取代先前未完成的 `flux2_dev`，两者结果目录和 judge 输入目录分开。
 
 `flux3_klein` 使用 Black Forest Labs 的官方 reference inference code，不使用 DiffSynth 或
 ComfyUI 替代实现。默认是 distilled checkpoint，16 steps、无 CFG，并且保留官方 prompt
@@ -46,15 +51,15 @@ $SAMTOK_MODEL_ROOT/flux-3-image-klein-pup/
 并将输出缩放回 benchmark 源图尺寸。`run_all.sh` 使用 `/opt/tiger/envs/judge/bin/python`，
 因为官方 upsampler 依赖 vLLM。
 
-实现对照 DiffSynth-Studio 官方示例：[Qwen-Image-Edit-2511](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/qwen_image/model_inference_low_vram/Qwen-Image-Edit-2511.py)、[Qwen-Image-2.1](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/qwen_image_21/model_inference_low_vram/Qwen-Image-2.1.py)、[FLUX.2-dev](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/flux2/model_inference_low_vram/FLUX.2-dev.py)。本仓库只把 checkpoint 改为本地路径，把 `edit_image`、prompt、seed、尺寸和 registry 接到 benchmark job。
+实现对照 DiffSynth-Studio 官方示例：[Qwen-Image-Edit-2511](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/qwen_image/model_inference_low_vram/Qwen-Image-Edit-2511.py)、[Qwen-Image-2.1](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/qwen_image_21/model_inference_low_vram/Qwen-Image-2.1.py)、[FLUX.2-klein-4B](https://github.com/modelscope/DiffSynth-Studio/blob/main/examples/flux2/model_inference/FLUX.2-klein-4B.py)。本仓库只把 checkpoint 改为本地路径，把 `edit_image`、prompt、seed、尺寸和 registry 接到 benchmark job。
 
 默认输出面积约为 1 MP，保持原图宽高比，推理完成后缩回原图尺寸以满足 benchmark
 输出绑定。2511 使用官方要求的 `edit_image` 列表、`zero_cond_t=True` 和
 `edit_image_auto_resize=True`；FLUX.2-dev 使用官方编辑参数
-`embedded_guidance=2.5`。
+`embedded_guidance=2.5`；FLUX.2-klein-4B 使用 distilled 4-step、`cfg_scale=1.0` 设置。
 
-默认 `SAMTOK_DIFFSYNTH_OFFLOAD=auto`：80 GB H100 上 Qwen 两个模型使用官方常规加载，
-FLUX.2-dev 使用官方 CPU offload；显存较少时自动采用官方 low-VRAM 示例的 disk/FP8
+默认 `SAMTOK_DIFFSYNTH_OFFLOAD=auto`：80 GB H100 上 Qwen 两个模型和 FLUX.2-klein-4B 使用官方常规加载，
+显存较少时自动采用官方 low-VRAM 示例的 disk/FP8
 或 disk/BF16 配置，并按当前可见 GPU 的显存计算 `vram_limit`。可用以下环境变量做
 可复现的资源配置：
 
@@ -91,6 +96,10 @@ P/Q 以及整图 `global_P`、`global_Q` 至少 3 分才通过。严格通过要
 状态，证据不足时按 0–2 分并在 evidence 中说明原因。
 
 ## 评测顺序
+
+本次完整评测按 `Qwen` 已完成、`FLUX.2-klein-4B`、`FLUX.3`、四模型联合 judge 和
+四模型 report 的顺序执行。生成阶段每个模型独立写入 `runs/<model>/`，judge 输入写入
+`judge_inputs/<model>/`。
 
 ```bash
 bash baselines/diffsynth/run_all.sh gen <model> <gpus>

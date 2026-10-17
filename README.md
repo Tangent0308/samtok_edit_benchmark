@@ -19,6 +19,7 @@
 | 原图、运行时 mask、历史审核卡 | `<数据根>/assets/<case>/`，具体文件名以 manifest 为准 |
 | 修订、日志、审查、进度 | `construction/release_2_6/{revisions,logs,audit,status.json}` |
 | 旧版冻结数据 | `data/v2_1084/` 为 2.5.0；`data/v2/` 为原版 200 张 |
+| DiffSynth 模型评测与 v2 judge | [docs/BENCHMARK_EVALUATION_2_6_0_ZH.md](docs/BENCHMARK_EVALUATION_2_6_0_ZH.md) |
 
 数据根为 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2`。`release_2_6_work/` 保存分割配方和审图过程，**正式运行不依赖该目录**。`data/v2_1k/` 是早期模板草稿，不用于评测。
 

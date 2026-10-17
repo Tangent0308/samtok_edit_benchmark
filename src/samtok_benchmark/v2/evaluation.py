@@ -11,15 +11,17 @@ from samtok_benchmark.io import asset_path, digest, read_jsonl, sha256_file, wri
 from samtok_benchmark.v2.dataset import load_cases, interaction_name
 from samtok_benchmark.v2.inputs import verify_job
 
-JUDGE_PROTOCOL = "v2_epq_all_units_2"
+JUDGE_PROTOCOL = "v2_epq_numeric_all_units_1"
 RUBRIC = """Evaluate only the actual requested units in this job, jointly, against the clean source.
-For EACH unit assign three boolean decisions with concrete visual evidence:
+For EACH unit assign an integer score from 0 through 4 and a derived boolean decision with
+concrete visual evidence for each dimension:
 E: The correct physical instance/part is edited, every requested visible piece is covered, the specified operation/result is complete. For remove/replace, leftover targeted pieces or substitute duplicates fail. For add, the existing support remains and the new accessory must be present in the requested count and location; recoloring or replacing the support fails. For attribute, retain geometry and change the requested appearance.
 P: The other parts of this object's body, neighboring objects, occluders and local background are preserved. Changes explicitly required by another unit in this same job are authorized. Penalize spill beyond the semantic edit boundary. The source target mask is a localization annotation, not a required pixel-difference mask: addition/replacement/removal may naturally alter newly exposed pixels or immediate attachments. Judge the actual request, not IoU alone.
 Q: This unit's edit looks natural: coherent material, shape, attachment, edges, occlusion, lighting, reflections and shadows. Require every visible edited fragment to pass.
-Also assign global_P and global_Q for the complete image. Global_P protects everything outside all authorized targets; global_Q catches scene-wide artifacts and inconsistent joint edits. Allow only physically necessary, local adaptations, not unrelated changes.
+Score each dimension as follows: 4 = complete and strong; 3 = substantially correct with only a minor localized defect; 2 = partially correct but with a material omission or defect; 1 = mostly wrong or severely damaged; 0 = absent, unrelated, or no usable evidence. A score of 4 is required for E to pass. A score of at least 3 is required for P and Q to pass.
+Also assign a 0-4 score and derived boolean for global_P and global_Q for the complete image. Global_P protects everything outside all authorized targets; global_Q catches scene-wide artifacts and inconsistent joint edits. Allow only physically necessary, local adaptations, not unrelated changes. Global P/Q pass at 3 or above.
 Use the full image AND each paired fixed-coordinate detail crop. Do not reward large/easy units enough to compensate for one failed unit. If evidence is insufficient, mark false and say why. A changed point marker is not completion. An added item must satisfy the stated attachment, count and location; a duplicate beside the support is not sufficient. A no-ref instruction still names a part type; its supplied locator chooses the instance. For single-unit diagnostics, all other candidate objects are protected.
-Return the provided score structure. Every boolean requires nonempty evidence. Do not invent human review: identify judge_kind and judge_name accurately."""
+Return the provided score structure. Every score must be an integer from 0 through 4, every boolean must agree with its threshold, and every judgement requires nonempty evidence. Do not invent human review: identify judge_kind and judge_name accurately."""
 
 
 def unique(rows, label):
@@ -76,7 +78,7 @@ def binding(job, row):
 
 def blank_scores(unit_ids):
     def empty():
-        return {"pass": None, "evidence": ""}
+        return {"score": None, "pass": None, "evidence": ""}
 
     return {
         "judge_kind": "",
@@ -154,15 +156,20 @@ def prepare_judge(manifest: Path, root: Path, inputs: Path, outputs: Path, direc
     return records
 
 
-def verdict(field):
+def verdict(field, threshold):
     if (
         not isinstance(field, dict)
+        or type(field.get("score")) is not int
+        or not 0 <= field["score"] <= 4
         or type(field.get("pass")) is not bool
         or not isinstance(field.get("evidence"), str)
         or not field["evidence"].strip()
     ):
-        raise ValueError("each judgement requires a boolean and concrete evidence")
-    return field["pass"]
+        raise ValueError("each judgement requires an integer score, boolean, and concrete evidence")
+    expected = field["score"] >= threshold
+    if field["pass"] != expected:
+        raise ValueError("boolean pass does not match score threshold")
+    return {"score": field["score"], "pass": field["pass"], "evidence": field["evidence"].strip()}
 
 
 def evaluate_score(job, row, score):
@@ -173,10 +180,18 @@ def evaluate_score(job, row, score):
     rows = score.get("units", [])
     if len(rows) != len(job["unit_ids"]) or {u["id"] for u in rows} != set(job["unit_ids"]):
         raise ValueError("scores must cover every authorized unit exactly once")
-    unit_results = [{"id": u["id"], **{d: verdict(u[d]) for d in "EPQ"}} for u in rows]
-    gp, gq = verdict(score["global_P"]), verdict(score["global_Q"])
+    unit_results = [
+        {
+            "id": u["id"],
+            "E": verdict(u["E"], 4),
+            "P": verdict(u["P"], 3),
+            "Q": verdict(u["Q"], 3),
+        }
+        for u in rows
+    ]
+    gp, gq = verdict(score["global_P"], 3), verdict(score["global_Q"], 3)
     return {
-        "joint_pass": gp and gq and all(u[d] for u in unit_results for d in "EPQ"),
+        "joint_pass": gp["pass"] and gq["pass"] and all(u[d]["pass"] for u in unit_results for d in "EPQ"),
         "global_P": gp,
         "global_Q": gq,
         "units": unit_results,
@@ -239,15 +254,18 @@ def report(
         summary[name]["dimension_rates"] = {
             dim: {
                 "all_units_case_rate": sum(
-                    r["evaluated"] and all(u[dim] for u in r["units"]) for r in items
+                    r["evaluated"] and all(u[dim]["pass"] for u in r["units"]) for r in items
                 )
                 / count,
-                "unit_micro_rate": sum(u[dim] for r in items for u in r["units"]) / expected_units,
+                "unit_micro_rate": sum(u[dim]["pass"] for r in items for u in r["units"]) / expected_units,
+                "mean_score": sum(u[dim]["score"] for r in items for u in r["units"]) / expected_units,
             }
             for dim in "EPQ"
         }
-        summary[name]["global_P_rate"] = sum(r.get("global_P", False) for r in items) / count
-        summary[name]["global_Q_rate"] = sum(r.get("global_Q", False) for r in items) / count
+        summary[name]["global_P_rate"] = sum(r.get("global_P", {}).get("pass", False) for r in items) / count
+        summary[name]["global_Q_rate"] = sum(r.get("global_Q", {}).get("pass", False) for r in items) / count
+        summary[name]["global_P_mean_score"] = sum(r.get("global_P", {}).get("score", 0) for r in items) / count
+        summary[name]["global_Q_mean_score"] = sum(r.get("global_Q", {}).get("score", 0) for r in items) / count
     methods = sorted({r["method"] for r in generated.values()})
     if (
         len(methods) > 1

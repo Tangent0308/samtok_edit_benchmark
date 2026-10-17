@@ -6,7 +6,7 @@ import argparse
 import json
 from pathlib import Path
 
-from samtok_benchmark.v2 import PROTOCOLS
+from samtok_benchmark.v2 import PROTOCOLS, judge
 from samtok_benchmark.v2.dataset import validate
 from samtok_benchmark.v2.editor import run_editor
 from samtok_benchmark.v2.evaluation import prepare_judge, report
@@ -45,7 +45,10 @@ def main(argv=None):
     p.add_argument("--method", required=True)
     p.add_argument("--seed", type=int, default=0)
     p.add_argument("--config", type=Path, help="JSON adapter configuration")
+    judge.add_arguments(sub.add_parser("judge", help="offline vLLM judge that fills prepare-judge scores"))
     a = parser.parse_args(argv)
+    if a.command == "judge":
+        raise SystemExit(judge.run(a))
     if a.command == "validate":
         result = validate(a.manifest, a.dataset_root, a.minimum_cases, a.output)
     elif a.command == "prepare":

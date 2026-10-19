@@ -23,11 +23,11 @@
 
 所有生成配置的目标面积约为 1 MP；输出在 registry 中绑定 source size、manifest SHA256、input digest 和 run configuration。生成使用 8 张 GPU（0–7），完整生成结果均为 1,084/1,084。
 
-各模型区域输入的示例（同一 case：`v2-sa_10006079`）：
+各模型实际推理输入包的示例（同一 case：`v2-sa_10006079`）：
 
-![四个模型的区域输入 setting 示例](figures/input_settings_examples.jpg)
+![四个模型实际收到的完整输入包](figures/input_settings_examples.jpg)
 
-前三个模型收到的是同一类灰度 label map；FLUX.3 收到的是带颜色、U 标签和 locator marks 的区域图。该 case 的原始 unit metadata 是 U1=box、U2=mask，但 `mask_full` 会把两个非 none locator 都统一编码成灰度区域，因此前三个模型的图中 U1 和 U2 都显示为 label-map 区域。这是输入 setting 的统一编码，不是把 U1 的 box metadata 误改成 mask。
+图中每一行对应一次实际推理输入，包含 Image 1（干净 source）、Image 2（区域信息图）以及随图片发送的 prompt。前三个模型的 Image 2 是实际的灰度 `mask_full` label map；FLUX.3 的 Image 2 是实际的彩色 locator 图。该 case 的原始 unit metadata 是 U1=box、U2=mask，但 `mask_full` 会把两个非 none locator 都统一编码成灰度区域，因此前三个模型的 Image 2 中 U1 和 U2 都显示为 label-map 区域。这是输入 setting 的统一编码，不是把 U1 的 box metadata 误改成 mask。
 
 ### 0.3 Judge 与通过规则
 

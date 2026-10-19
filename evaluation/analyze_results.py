@@ -1,6 +1,7 @@
 from __future__ import annotations
 import csv, html, json, math, re, shutil
 from pathlib import Path
+import textwrap
 from collections import Counter, defaultdict
 from PIL import Image, ImageChops, ImageFilter, ImageDraw, ImageFont
 
@@ -390,35 +391,56 @@ GEN_SETTINGS = {
 for m,label in MODELS.items():
     setting, impl, steps, params = GEN_SETTINGS[m]
     md.append(f'| {label} | `{setting}` | {impl} | {steps} | {params} |')
-# One representative input image per model setting, using the same case where available.
+# One complete, representative model input package per setting, using the same case.
+# Each row shows the actual Image 1 (clean source), Image 2 (locator image), and
+# the prompt text sent with that pair. This avoids presenting the locator image
+# as if it were the only model input.
 def input_setting_examples():
     cid = 'v2-sa_10006079'
-    mask_path = case_jobs['qwen_image_21'][cid]['public_job']['images'][1]
-    color_path = case_jobs['flux3_klein'][cid]['public_job']['images'][1]
-    panels = [
-        ('Qwen-Image-2.1\nmask_full', mask_path),
-        ('Qwen-Edit-2511\nmask_full', mask_path),
-        ('FLUX.2 Klein\nmask_full', mask_path),
-        ('FLUX.3 Klein\ncolor locator', color_path),
-    ]
-    cw, ch, label_h = 390, 330, 52
-    canvas = Image.new('RGB', (cw * len(panels), ch), 'white')
+    order = ['qwen_image_21', 'qwen_image_edit_2511', 'flux2_klein_4b', 'flux3_klein']
+    W, row_h = 2200, 340
+    canvas = Image.new('RGB', (W, 70 + row_h * len(order)), 'white')
     draw = ImageDraw.Draw(canvas)
     try:
-        label_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 17)
+        title_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 22)
+        label_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 18)
+        text_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 15)
+        small_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 13)
     except OSError:
-        label_font = ImageFont.load_default()
-    for i, (label, path) in enumerate(panels):
-        with Image.open(path) as src:
-            im = src.convert('RGB')
-        im.thumbnail((cw - 16, ch - label_h - 8), Image.Resampling.LANCZOS)
-        x = i * cw
-        draw.multiline_text((x + 8, 6), label, fill='black', font=label_font, spacing=2)
-        canvas.paste(im, (x + (cw - im.width) // 2, label_h))
-    canvas.save(FIG / 'input_settings_examples.jpg', quality=88, optimize=True)
+        title_font = label_font = text_font = small_font = ImageFont.load_default()
+    draw.text((18, 14), 'Actual model input package: Image 1 + Image 2 + prompt', fill='#111827', font=title_font)
+    source_box = (270, 48, 760, 320)
+    locator_box = (790, 48, 1280, 320)
+    prompt_x, prompt_w = 1310, 850
+    for i, m in enumerate(order):
+        y = 70 + i * row_h
+        job = case_jobs[m][cid]['public_job']
+        source_path, locator_path = job['images'][:2]
+        fill = '#f8fafc' if i % 2 == 0 else '#ffffff'
+        draw.rectangle((0, y, W, y + row_h), fill=fill)
+        draw.text((18, y + 18), MODELS[m], fill='#111827', font=label_font)
+        draw.text((18, y + 52), GEN_SETTINGS[m][0], fill='#4b5563', font=small_font)
+        for box, path, label in [(source_box, source_path, 'Image 1: clean source'),
+                                 (locator_box, locator_path, 'Image 2: locator input')]:
+            x0, y0, x1, y1 = box
+            y0 += y; y1 += y
+            draw.text((x0, y0 - 25), label, fill='#374151', font=small_font)
+            with Image.open(path) as src:
+                im = src.convert('RGB')
+            im.thumbnail((x1 - x0 - 10, y1 - y0 - 10), Image.Resampling.LANCZOS)
+            draw.rectangle((x0, y0, x1, y1), outline='#cbd5e1', width=1)
+            canvas.paste(im, (x0 + (x1 - x0 - im.width) // 2, y0 + (y1 - y0 - im.height) // 2))
+        draw.text((prompt_x, y + 22), 'Prompt sent with this image pair', fill='#374151', font=small_font)
+        prompt = job['prompt'].replace('\n', ' | ')
+        lines = textwrap.wrap(prompt, width=92, break_long_words=False, break_on_hyphens=False)
+        for j, line in enumerate(lines[:14]):
+            draw.text((prompt_x, y + 48 + j * 19), line, fill='#111827', font=text_font)
+        if len(lines) > 14:
+            draw.text((prompt_x, y + 48 + 14 * 19), '…', fill='#4b5563', font=text_font)
+    canvas.save(FIG / 'input_settings_examples.jpg', quality=84, optimize=True, progressive=True)
 
 input_setting_examples()
-md += ['', '所有生成配置的目标面积约为 1 MP；输出在 registry 中绑定 source size、manifest SHA256、input digest 和 run configuration。生成使用 8 张 GPU（0–7），完整生成结果均为 1,084/1,084。', '', '各模型区域输入的示例（同一 case：`v2-sa_10006079`）：', '', '![四个模型的区域输入 setting 示例](figures/input_settings_examples.jpg)', '', '前三个模型收到的是同一类灰度 label map；FLUX.3 收到的是带颜色、U 标签和 locator marks 的区域图。该 case 的原始 unit metadata 是 U1=box、U2=mask，但 `mask_full` 会把两个非 none locator 都统一编码成灰度区域，因此前三个模型的图中 U1 和 U2 都显示为 label-map 区域。这是输入 setting 的统一编码，不是把 U1 的 box metadata 误改成 mask。', '', '### 0.3 Judge 与通过规则', '', '- Judge protocol：`v2_epq_numeric_all_units_1`；Judge 模型：`/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/Qwen3.8-Flash-Next-FP8`。', '- 推理后端：vLLM，tensor parallel size=8，GPU memory utilization=0.85，temperature=0，seed=0，max tokens=12,288。', '- Judge 输入包括完整 source/output、固定坐标 source/output crops，以及只供 judge 使用的源 mask contour。模型输出本身不叠加 contour。', '- 每个单元评分 E、P、Q 为 0–4 分；E=4 才通过，P/Q≥3 才通过；整图 `global_P`、`global_Q` 也要求分数≥3。', '- `JointPass` 要求该 job 的所有 U 都满足 E/P/Q，并且 `global_P` 与 `global_Q` 都通过。', '', '### 0.4 结果路径', '', '| 内容 | 路径 |', '|---|---|']
+md += ['', '所有生成配置的目标面积约为 1 MP；输出在 registry 中绑定 source size、manifest SHA256、input digest 和 run configuration。生成使用 8 张 GPU（0–7），完整生成结果均为 1,084/1,084。', '', '各模型实际推理输入包的示例（同一 case：`v2-sa_10006079`）：', '', '![四个模型实际收到的完整输入包](figures/input_settings_examples.jpg)', '', '图中每一行对应一次实际推理输入，包含 Image 1（干净 source）、Image 2（区域信息图）以及随图片发送的 prompt。前三个模型的 Image 2 是实际的灰度 `mask_full` label map；FLUX.3 的 Image 2 是实际的彩色 locator 图。该 case 的原始 unit metadata 是 U1=box、U2=mask，但 `mask_full` 会把两个非 none locator 都统一编码成灰度区域，因此前三个模型的 Image 2 中 U1 和 U2 都显示为 label-map 区域。这是输入 setting 的统一编码，不是把 U1 的 box metadata 误改成 mask。', '', '### 0.3 Judge 与通过规则', '', '- Judge protocol：`v2_epq_numeric_all_units_1`；Judge 模型：`/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/Qwen3.8-Flash-Next-FP8`。', '- 推理后端：vLLM，tensor parallel size=8，GPU memory utilization=0.85，temperature=0，seed=0，max tokens=12,288。', '- Judge 输入包括完整 source/output、固定坐标 source/output crops，以及只供 judge 使用的源 mask contour。模型输出本身不叠加 contour。', '- 每个单元评分 E、P、Q 为 0–4 分；E=4 才通过，P/Q≥3 才通过；整图 `global_P`、`global_Q` 也要求分数≥3。', '- `JointPass` 要求该 job 的所有 U 都满足 E/P/Q，并且 `global_P` 与 `global_Q` 都通过。', '', '### 0.4 结果路径', '', '| 内容 | 路径 |', '|---|---|']
 PATH_ROWS = [
     ('最终报告（Git）', '`docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md`'),
     ('生成与 judge 外部实验根', '`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/`'),

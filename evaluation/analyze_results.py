@@ -23,6 +23,18 @@ PATHS = {
 }
 COLORS = {'qwen_image_21':'#4472c4','qwen_image_edit_2511':'#ed7d31','flux2_klein_4b':'#70ad47','flux3_klein':'#7030a0'}
 DIM_COLORS = {'E':'#4472c4','P':'#ed7d31','Q':'#70ad47','unit_joint':'#7030a0'}
+INPUT_METHODS = {
+    'qwen_image_21': 'grayscale mask label map (mask_full)',
+    'qwen_image_edit_2511': 'grayscale mask label map (mask_full)',
+    'flux2_klein_4b': 'grayscale mask label map (mask_full)',
+    'flux3_klein': 'color locator image (colored locator marks)',
+}
+SHORT_LABELS = {
+    'qwen_image_21': 'Qwen-Image-2.1',
+    'qwen_image_edit_2511': 'Qwen-Edit-2511',
+    'flux2_klein_4b': 'FLUX.2 Klein',
+    'flux3_klein': 'FLUX.3 Klein',
+}
 
 
 def read_jsonl(p):
@@ -298,14 +310,14 @@ for tag,cid in selected.items():
     shutil.copy2(j['public_job']['images'][1],ifolder/'locator.png')
     # overview
     mask_job=case_jobs['qwen_image_21'][cid]
-    imgs=[('Source',j['source_image']),('Mask locator',mask_job['public_job']['images'][1]),('Color locator',j['public_job']['images'][1])]
+    imgs=[('Source (clean)',j['source_image']),('Mask locator\n(Qwen/FLUX.2)',mask_job['public_job']['images'][1]),('Color locator\n(FLUX.3)',j['public_job']['images'][1])]
     for m,label in MODELS.items():
         mj=case_jobs[m][cid]
-        imgs.append((label,outputs[m][mj['job_id']]['output_image']))
+        imgs.append((f'{SHORT_LABELS[m]} output\n[{"mask" if m != "flux3_klein" else "color"}]',outputs[m][mj['job_id']]['output_image']))
     cells=[]
     for label,p in imgs:
-        im=thumb(Image.open(p)); cell=Image.new('RGB',(380,300),'white'); cell.paste(im,((380-im.width)//2,28)); ImageDraw.Draw(cell).text((10,6),label,fill='black',font=font(18)); cells.append(cell)
-    ov=Image.new('RGB',(380*len(cells),300),'white')
+        im=thumb(Image.open(p),size=(360,245)); cell=Image.new('RGB',(380,320),'white'); cell.paste(im,((380-im.width)//2,55)); ImageDraw.Draw(cell).multiline_text((10,6),label,fill='black',font=font(17),spacing=2); cells.append(cell)
+    ov=Image.new('RGB',(380*len(cells),320),'white')
     for i,c in enumerate(cells): ov.paste(c,(i*380,0))
     ov.save(ifolder/'overview.jpg',quality=90)
     # details
@@ -313,16 +325,16 @@ for tag,cid in selected.items():
         uid=d['id']; rowhtml=[]
         source_plain=Image.open(d['source_crop']).convert('RGB')
         source=outlined(source_plain,d['gold_source_mask'],d['crop_box_xyxy'])
-        cols=[('Source + mask',source)]
+        cols=[('Source\n(EVAL contour)',source)]
         for m,label in MODELS.items():
             # Use the crop built from the model's own input/output binding.
             mj=case_jobs[m][cid]
             md=next(x for x in mj['private_evaluation_details'] if x['id']==uid)
             outplain=Image.open(md['output_crop']).convert('RGB')
-            cols.append((label+' + mask',outlined(outplain,md['gold_source_mask'],md['crop_box_xyxy'])))
-        cw,ch=330,260; panel=Image.new('RGB',(cw*len(cols),ch),'white'); draw=ImageDraw.Draw(panel)
+            cols.append((f'{SHORT_LABELS[m]} output\n(EVAL contour)',outlined(outplain,md['gold_source_mask'],md['crop_box_xyxy'])))
+        cw,ch=330,300; panel=Image.new('RGB',(cw*len(cols),ch),'white'); draw=ImageDraw.Draw(panel)
         for i,(label,im) in enumerate(cols):
-            im.thumbnail((cw-10,ch-35),Image.Resampling.LANCZOS); panel.paste(im,(i*cw+(cw-im.width)//2,30)); draw.text((i*cw+8,5),label,fill='black',font=font(15))
+            im.thumbnail((cw-10,ch-52),Image.Resampling.LANCZOS); panel.paste(im,(i*cw+(cw-im.width)//2,45)); draw.multiline_text((i*cw+8,5),label,fill='black',font=font(14),spacing=1)
         panel.save(ifolder/f'{uid}_detail.jpg',quality=90)
 
 # Case HTML with status badges and evidence.
@@ -370,7 +382,10 @@ def prompt_zh(job):
 # Markdown report.
 md=['# SAMTok Edit Benchmark 2.6.0 结果分析','',f'生成时间：2026-10-19；四个模型均为完整 1084/1084 judge 评分。Judge 模型：`Qwen3.8-Flash-Next-FP8`。','', '## 1. 主表','', '| 模型 | JointPass | E 单元通过率 | P 单元通过率 | Q 单元通过率 | global_P | global_Q |','|---|---:|---:|---:|---:|---:|---:|']
 for r in main: md.append(f"| {r['model']} | {r['joint_pass']}/{r['cases']} ({pct(r['joint_rate'])}) | {pct(r['E_unit_rate'])} | {pct(r['P_unit_rate'])} | {pct(r['Q_unit_rate'])} | {pct(r['global_P_rate'])} | {pct(r['global_Q_rate'])} |")
-md += ['', 'JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q 通过。E 反映执行是否完成，P 反映非目标内容保持，Q 反映编辑质量。整体难度由 JointPass 体现；从单元级指标看，模型之间的主要差异可按 E、P、Q 三列比较。','', '## 2. 多目标组合代价','', '![JointPass 随 K 变化](figures/k_jointpass.svg)','', '实线是实测 JointPass，虚线是各单元 E/P/Q 联合通过率乘积 `∏u p_u`。对 K 个目标，令 `p_u` 为位置 Uu 的单元联合通过率；实测曲线低于虚线表示多个请求之间存在额外干扰。图和 `k_jointpass.csv` 另外给出 `global_P × global_Q × ∏u p_u`，用于解释全图保持与整体质量对最终 JointPass 的额外压缩。','', '## 3. 定位方式的影响','', '![定位方式影响](figures/locator_impact.svg)','', '单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图再比较 point、box、mask 三种 locator。完整 E/P/Q 与样本数见 `locator_impact.csv`。','', '| 模型 | ref unit-joint | no-ref unit-joint | no-ref - ref |','|---|---:|---:|---:|']
+md += ['', 'JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q 通过。E 反映执行是否完成，P 反映非目标内容保持，Q 反映编辑质量。整体难度由 JointPass 体现；从单元级指标看，模型之间的主要差异可按 E、P、Q 三列比较。', '', '## 1.1 模型输入设置', '', '| 模型 | 区域信息输入 | 评测输入包 |', '|---|---|---|']
+for m,label in MODELS.items():
+    md.append(f"| {label} | {INPUT_METHODS[m]} | `{PATHS[m][0]}` |")
+md += ['', '总览图中带有 `[mask]` 或 `[color]` 的模型输出面板表示该模型实际收到的区域信息形式。细节图里的红色轮廓统一是评测可视化用的源 mask 轮廓，用来对齐局部区域；它不是模型输出，也不参与输出图像评分。', '', '## 2. 多目标组合代价','', '![JointPass 随 K 变化](figures/k_jointpass.svg)','', '实线是实测 JointPass，虚线是各单元 E/P/Q 联合通过率乘积 `∏u p_u`。对 K 个目标，令 `p_u` 为位置 Uu 的单元联合通过率；实测曲线低于虚线表示多个请求之间存在额外干扰。图和 `k_jointpass.csv` 另外给出 `global_P × global_Q × ∏u p_u`，用于解释全图保持与整体质量对最终 JointPass 的额外压缩。','', '## 3. 定位方式的影响','', '![定位方式影响](figures/locator_impact.svg)','', '单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图再比较 point、box、mask 三种 locator。右图的 point/box/mask 是跨 ref 与 no-ref 的总体分组；完整 E/P/Q 与样本数见 `locator_impact.csv`。','', '| 模型 | ref unit-joint | no-ref unit-joint | no-ref - ref |','|---|---:|---:|---:|']
 for m,label in MODELS.items():
     ref=next(r for r in locrows if r['model_key']==m and r['group']=='ref')['unit_joint_rate']
     noref=next(r for r in locrows if r['model_key']==m and r['group']=='no-ref')['unit_joint_rate']

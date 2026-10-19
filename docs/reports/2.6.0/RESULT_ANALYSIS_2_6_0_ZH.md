@@ -13,6 +13,17 @@
 
 JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q 通过。E 反映执行是否完成，P 反映非目标内容保持，Q 反映编辑质量。整体难度由 JointPass 体现；从单元级指标看，模型之间的主要差异可按 E、P、Q 三列比较。
 
+## 1.1 模型输入设置
+
+| 模型 | 区域信息输入 | 评测输入包 |
+|---|---|---|
+| Qwen-Image-2.1 | grayscale mask label map (mask_full) | `qwen_image_21_mask` |
+| Qwen-Image-Edit-2511 | grayscale mask label map (mask_full) | `qwen_image_edit_2511_mask` |
+| FLUX.2 Klein-4B | grayscale mask label map (mask_full) | `flux2_klein_4b_mask` |
+| FLUX.3 Klein | color locator image (colored locator marks) | `flux3_klein_color` |
+
+总览图中带有 `[mask]` 或 `[color]` 的模型输出面板表示该模型实际收到的区域信息形式。细节图里的红色轮廓统一是评测可视化用的源 mask 轮廓，用来对齐局部区域；它不是模型输出，也不参与输出图像评分。
+
 ## 2. 多目标组合代价
 
 ![JointPass 随 K 变化](figures/k_jointpass.svg)
@@ -23,7 +34,7 @@ JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q �
 
 ![定位方式影响](figures/locator_impact.svg)
 
-单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图再比较 point、box、mask 三种 locator。完整 E/P/Q 与样本数见 `locator_impact.csv`。
+单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图再比较 point、box、mask 三种 locator。右图的 point/box/mask 是跨 ref 与 no-ref 的总体分组；完整 E/P/Q 与样本数见 `locator_impact.csv`。
 
 | 模型 | ref unit-joint | no-ref unit-joint | no-ref - ref |
 |---|---:|---:|---:|

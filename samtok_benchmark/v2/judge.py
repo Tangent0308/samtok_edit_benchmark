@@ -179,7 +179,7 @@ def _repair_units_bracket(raw):
     start = raw.find('"units"')
     if start < 0:
         return None
-    marker = re.search(r',\s*\{\s*"global_P"\s*:\s*', raw[start:])
+    marker = re.search(r',\s*(?:\{\s*)?"global_P"\s*:\s*', raw[start:])
     if marker is None:
         return None
     marker_start = start + marker.start()
@@ -204,6 +204,38 @@ def _repair_units_bracket(raw):
         + raw[global_q_start : global_q_end + 1]
         + "}"
     )
+
+
+def _extract_json_object(raw):
+    """Drop a short natural-language preamble around an otherwise JSON response."""
+    start = raw.find("{")
+    if start <= 0:
+        return None
+    end = _matching_object(raw, start)
+    if end is None:
+        return raw[start:]
+    return raw[start : end + 1]
+
+
+def _move_nested_globals(value):
+    """Move global scores back to the root when the model put them in ``units``."""
+    if not isinstance(value, dict) or not isinstance(value.get("units"), list):
+        return value
+    units, nested = [], {}
+    for item in value["units"]:
+        if isinstance(item, dict) and ("global_P" in item or "global_Q" in item):
+            nested.update({k: item[k] for k in ("global_P", "global_Q") if k in item})
+        elif isinstance(item, dict) and item.get("id") in ("global_P", "global_Q"):
+            key = item["id"]
+            nested[key] = {k: v for k, v in item.items() if k != "id"}
+        else:
+            units.append(item)
+    if nested:
+        value = dict(value)
+        value["units"] = units
+        for key, item in nested.items():
+            value.setdefault(key, item)
+    return value
 
 
 def _repair_trailing_root(raw):
@@ -233,17 +265,34 @@ def parse(raw, unit_ids):
     raw = raw.rsplit("</think>", 1)[-1].strip()
     if raw.startswith("```"):
         raw = raw.split("\n", 1)[1].rsplit("```", 1)[0].strip()
-    try:
-        value = json.loads(raw)
-        repaired = False
-    except json.JSONDecodeError:
-        fixed = _repair_units_bracket(raw)
-        if fixed is None:
-            fixed = _repair_trailing_root(raw)
-        if fixed is None:
-            raise
-        value = json.loads(fixed)
-        repaired = True
+    candidates = [raw]
+    extracted = _extract_json_object(raw)
+    if extracted is not None and extracted != raw:
+        candidates.append(extracted)
+    value = None
+    repaired = False
+    last_error = None
+    for candidate in candidates:
+        try:
+            value = json.loads(candidate)
+            repaired = candidate != raw
+            break
+        except json.JSONDecodeError as exc:
+            last_error = exc
+        for fixed in (_repair_units_bracket(candidate), _repair_trailing_root(candidate)):
+            if fixed is None:
+                continue
+            try:
+                value = json.loads(fixed)
+                repaired = True
+                break
+            except json.JSONDecodeError as exc:
+                last_error = exc
+        if value is not None:
+            break
+    if value is None:
+        raise last_error
+    value = _move_nested_globals(value)
     if not isinstance(value, dict) or not isinstance(value.get("units"), list):
         raise ValueError("response must be an object with a units list")
     units = {}

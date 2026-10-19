@@ -10,6 +10,7 @@ from __future__ import annotations
 import importlib.metadata
 import json
 import os
+import re
 import sys
 import time
 import traceback
@@ -142,17 +143,90 @@ def _field(value, name, threshold):
     }
 
 
+def _matching_object(raw, start):
+    """Return the closing index for a JSON object, respecting quoted strings."""
+    if start >= len(raw) or raw[start] != "{":
+        return None
+    depth, quoted, escaped = 0, False, False
+    for index in range(start, len(raw)):
+        char = raw[index]
+        if quoted:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                quoted = False
+            continue
+        if char == '"':
+            quoted = True
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return index
+    return None
+
+
 def _repair_units_bracket(raw):
-    """Close a `units` array the model left open before "global_P" (a recurring bracket slip)."""
+    """Repair global scores accidentally emitted as extra entries in ``units``.
+
+    The judge prompt requires ``global_P`` and ``global_Q`` at the root. The model sometimes
+    emits ``..., {"global_P": ...}, {"global_Q": ...}]}``, which is semantically complete but
+    invalid for the schema. Extract the two complete objects and close the units array.
+    """
     start = raw.find('"units"')
-    cut = raw.find('"global_P"')
-    if start < 0 or cut < 0:
+    if start < 0:
         return None
-    head = raw[start:cut]
-    if head.count("[") - head.count("]") != 1:
+    marker = re.search(r',\s*\{\s*"global_P"\s*:\s*', raw[start:])
+    if marker is None:
         return None
-    head_end = raw.rfind("}", 0, cut)
-    return raw[: head_end + 1] + "]" + raw[head_end + 1 :]
+    marker_start = start + marker.start()
+    global_p_start = start + marker.end()
+    global_p_end = _matching_object(raw, global_p_start)
+    if global_p_end is None:
+        return None
+    marker_q = re.search(
+        r',\s*(?:\{\s*)?"global_Q"\s*:\s*', raw[global_p_end + 1 :]
+    )
+    if marker_q is None:
+        return None
+    global_q_start = global_p_end + 1 + marker_q.end()
+    global_q_end = _matching_object(raw, global_q_start)
+    if global_q_end is None:
+        return None
+    return (
+        raw[:marker_start]
+        + "], \"global_P\": "
+        + raw[global_p_start : global_p_end + 1]
+        + ", \"global_Q\": "
+        + raw[global_q_start : global_q_end + 1]
+        + "}"
+    )
+
+
+def _repair_trailing_root(raw):
+    """Close a response that contains a complete root object but omits its final brace."""
+    depth, quoted, escaped = 0, False, False
+    for char in raw:
+        if quoted:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif char == '"':
+                quoted = False
+            continue
+        if char == '"':
+            quoted = True
+        elif char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+    if depth == 1 and raw.rstrip().endswith("}"):
+        return raw.rstrip() + "}"
+    return None
 
 
 def parse(raw, unit_ids):
@@ -164,6 +238,8 @@ def parse(raw, unit_ids):
         repaired = False
     except json.JSONDecodeError:
         fixed = _repair_units_bracket(raw)
+        if fixed is None:
+            fixed = _repair_trailing_root(raw)
         if fixed is None:
             raise
         value = json.loads(fixed)

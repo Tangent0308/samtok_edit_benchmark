@@ -27,7 +27,7 @@
 
 ![四个模型的区域输入 setting 示例](figures/input_settings_examples.jpg)
 
-前三个模型收到的是同一类灰度 label map；FLUX.3 收到的是带颜色、U 标签和 locator marks 的区域图。
+前三个模型收到的是同一类灰度 label map；FLUX.3 收到的是带颜色、U 标签和 locator marks 的区域图。该 case 的原始 unit metadata 是 U1=box、U2=mask，但 `mask_full` 会把两个非 none locator 都统一编码成灰度区域，因此前三个模型的图中 U1 和 U2 都显示为 label-map 区域。这是输入 setting 的统一编码，不是把 U1 的 box metadata 误改成 mask。
 
 ### 0.3 Judge 与通过规则
 
@@ -89,7 +89,7 @@ JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q �
 
 ![定位方式影响](figures/locator_impact.svg)
 
-单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图再比较 point、box、mask 三种 locator。右图的 point/box/mask 是跨 ref 与 no-ref 的总体分组；完整 E/P/Q 与样本数见 `locator_impact.csv`。
+单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图的 point/box/mask 是按 case 的原始 locator metadata 分组，且跨 ref 与 no-ref 汇总；对于前三个 `mask_full` 模型，这三类 case 最终都以灰度 label map 输入，因此右图不是三种视觉编码的受控 ablation，而是不同原始 locator 类型 case 的条件通过率。FLUX.3 的 color locator 保留了 point、box、mask 的视觉标记。完整 E/P/Q 与样本数见 `locator_impact.csv`。
 
 | 模型 | ref unit-joint | no-ref unit-joint | no-ref - ref |
 |---|---:|---:|---:|

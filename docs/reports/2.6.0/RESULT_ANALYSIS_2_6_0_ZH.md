@@ -27,6 +27,16 @@ JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q �
 - 本报告主表使用已经完成的 1,084/1,084 judge 结果；结果与输入 manifest、输出图和 prompt 通过 job/input digest 绑定。
 - 外部评测结果根：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/`。以下表格路径均相对于该目录；仓库内报告为 `docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md`。
 
+### 1.3 两轮完整评测的实际输入
+
+| 轮次 | 模型 | Image 1 | Image 2 | prompt/协议 |
+|---|---|---|---|---|
+| 第一次完整评测 | 四个模型 | 干净 source image | `visual_locator_v2` 彩色 locator：在 source 坐标上绘制 point、box、mask 和 U 标签 | 正式视觉 locator prompt；输出只保留编辑后的完整 RGB 图 |
+| 第二次完整评测 | Qwen-Image-2.1、Qwen-Image-Edit-2511、FLUX.2 Klein-4B | 同一干净 source image | `mask_full` 灰度 label map：黑色背景，U1…U5 使用 51/102/153/204/255 | `[SAMTOK_MASK_PILOT_V1]`，明确 Image 2 是 label map，禁止复制灰度值、形状和标记 |
+| 第二次完整评测 | FLUX.3 Klein | 同一干净 source image | `visual_locator_v2` 彩色 locator | 正式视觉 locator prompt |
+
+第一次完整评测的冻结输入和结果位于 `judge_inputs/<model>/judge_jobs.jsonl`、`runs/<model>/outputs.jsonl`、`judge/<model>/Qwen3.8-Flash-Next-FP8/`；第二次完整评测对应 `recommended_judge_inputs/<model>_mask`、`recommended_runs/<model>_mask` 和 `recommended_judge/<model>_mask/Qwen3.8-Flash-Next-FP8/`。两轮的每个 job 都只给编辑模型两张图，`ref` 是 unit 的语义/评测属性，不会额外增加第三张参考图。
+
 | 模型 | 结果绑定的输入包 | 生成输出 | Judge report |
 |---|---|---|---|
 | Qwen-Image-2.1 | `recommended_judge_inputs/qwen_image_21_mask/judge_jobs.jsonl` | `recommended_runs/qwen_image_21_mask/outputs.jsonl` | `recommended_judge/qwen_image_21_mask/Qwen3.8-Flash-Next-FP8/report.json` |

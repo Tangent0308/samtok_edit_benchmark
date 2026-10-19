@@ -4,6 +4,7 @@
 
 1. [Benchmark overview 2.6.0](BENCHMARK_OVERVIEW_2_6_0_ZH.md)：任务目标、统计、输入方式、模型评测入口、rubric、代表性 case 和路径。
 2. [Construction 2.6.0](CONSTRUCTION_2_6_0_ZH.md)：源数据、case 选择、instruction/spec、协议 2.0、mask 精修、审查、发布和复现。
+3. [Results analysis 2.6.0](reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md)：四个模型的完整 judge 结果、组合目标分析、定位方式对比、E 失败模式和案例研究。
 
 其他文档按用途归档：
 

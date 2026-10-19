@@ -1,0 +1,194 @@
+{
+  "occluded fragments/leftovers": [
+    {
+      "case_id": "v2-sa_10006079",
+      "unit_id": "U2",
+      "instruction": "Remove the selected region.",
+      "evidence": "The black Quechua duffel bag pixels are gone, but instead of reconstructing the boat floor/bench behind it the editor left a flat, featureless gray placeholder blob; the requested clean removal revealing background is not achieved."
+    },
+    {
+      "case_id": "v2-sa_10086904",
+      "unit_id": "U1",
+      "instruction": "Change the color of the streetlamp beneath the SEIBU sign on the right to bright gold.",
+      "evidence": "The correct streetlamp under the SEIBU sign is recolored to bright gold, but the attribute edit did not retain geometry: the source's two stacked globe lamp heads are replaced by a single pointed gold finial, altering the object's shape rather than only its color."
+    },
+    {
+      "case_id": "v2-sa_10109700",
+      "unit_id": "U3",
+      "instruction": "Remove the wine bottle lying on the wooden rack.",
+      "evidence": "Only the gold-foiled neck/label portion of the lying bottle was removed; the dark glass body of the same bottle still lies on the rack, leaving a major targeted piece behind."
+    },
+    {
+      "case_id": "v2-sa_10267079",
+      "unit_id": "U2",
+      "instruction": "Replace the small bowl on the right with a shallow square porcelain dish.",
+      "evidence": "The original round metal bowl with food is gone and replaced by a blue-and-white porcelain vessel, satisfying the porcelain material, but the new dish is clearly round/oval, not the requested shallow square shape, so the shape requirement is unmet."
+    },
+    {
+      "case_id": "v2-sa_10342974",
+      "unit_id": "U2",
+      "instruction": "Add a folded blue dish towel on the selected region.",
+      "evidence": "A blue towel was added, but it is draped over the countertop edge to the right of the oven, not on the oven's horizontal handle bar (the requested attachment site), which remains bare in the output crop."
+    }
+  ],
+  "not executed": [
+    {
+      "case_id": "v2-sa_10029202",
+      "unit_id": "U1",
+      "instruction": "Add a small brass menu plaque to the planter right of the cafe entrance.",
+      "evidence": "The crop on the planter right of the cafe entrance shows the original vertical-plank wooden planter unchanged in OUTPUT; no brass menu plaque was added to this target instance. The only brass plaque in the scene was placed on the leftmost (U2) planter, i.e. the wrong location."
+    },
+    {
+      "case_id": "v2-sa_10030491",
+      "unit_id": "U2",
+      "instruction": "Remove the small white boat beneath the brown waterfront building.",
+      "evidence": "The instruction was to remove the small white boat, but the output still contains a boat of the same shape and position, merely recolored teal/green; the targeted piece was not removed, so the removal is not achieved."
+    },
+    {
+      "case_id": "v2-sa_10044652",
+      "unit_id": "U3",
+      "instruction": "Remove the selected region.",
+      "evidence": "The distant silver Mitsubishi facing the camera is still fully present in the output (only slightly blurred/shifted); the requested removal was not performed."
+    },
+    {
+      "case_id": "v2-sa_10047011",
+      "unit_id": "U2",
+      "instruction": "Remove the foreground “NO JUSTICE NO PEACE” placard.",
+      "evidence": "The foreground 'NO JUSTICE NO PEACE' placard is still fully present and legible in the output crop; the requested removal was not performed at all."
+    },
+    {
+      "case_id": "v2-sa_1005356",
+      "unit_id": "U2",
+      "instruction": "Replace the selected region with a white polo shirt.",
+      "evidence": "The man in blue shorts still wears the original red T-shirt in the output; no white polo shirt was introduced, so the requested replacement is absent."
+    }
+  ],
+  "other E failure": [
+    {
+      "case_id": "v2-sa_10047011",
+      "unit_id": "U3",
+      "instruction": "Replace the selected region with a silver station wagon.",
+      "evidence": "The black Hyundai SUV is replaced by a silver vehicle, but the substitute is a tall crossover SUV (Mazda CX-9 style), not the requested station wagon body style."
+    },
+    {
+      "case_id": "v2-sa_1018156",
+      "unit_id": "U4",
+      "instruction": "Change the color of the selected region to rust red.",
+      "evidence": "The rear fender of the front-left jeep is recolored to a rust-red/orange tone and roughly retains its angular geometry, but the change is a flat solid fill rather than a true material recolor, so completion is only partial."
+    },
+    {
+      "case_id": "v2-sa_10367798",
+      "unit_id": "U2",
+      "instruction": "Add a red silk tassel hanging from the large pendant globe light at the far right.",
+      "evidence": "A red silk tassel is correctly added hanging below the far-right pendant, but the globe-light support itself was replaced by a brass lantern, violating the add contract that the existing support must remain."
+    },
+    {
+      "case_id": "v2-sa_10377507",
+      "unit_id": "U1",
+      "instruction": "Change the color of the selected region to black.",
+      "evidence": "The front wheel rim (correct instance) was darkened from white/silver toward black, but it remains a muddy dark gray-brown with faint light patches and visible lug dots rather than a clean black."
+    },
+    {
+      "case_id": "v2-sa_10395853",
+      "unit_id": "U1",
+      "instruction": "Remove the flowers above the “RISTORANTE” awning.",
+      "evidence": "The instruction was to REMOVE the pink flowers above the RISTORANTE awning, but the output substitutes a trailing green plant in the same box instead of removing them; a substitute in place of a removal fails the contract."
+    }
+  ],
+  "wrong granularity": [
+    {
+      "case_id": "v2-sa_10153046",
+      "unit_id": "U1",
+      "instruction": "Change the color of the selected region to navy blue.",
+      "evidence": "The camera-holding man's beige T-shirt is recolored to blue, the correct instance, but the result is a bright royal/cobalt blue rather than the requested navy blue, a localized shade defect."
+    },
+    {
+      "case_id": "v2-sa_10371278",
+      "unit_id": "U1",
+      "instruction": "Add a reflective strip on the selected region.",
+      "evidence": "The right backpack (teal-plaid walker) in the output is identical to the source: same dark fabric, same two curved zipper lines and diamond logo, with no reflective strip added anywhere on it."
+    },
+    {
+      "case_id": "v2-sa_1226158",
+      "unit_id": "U1",
+      "instruction": "Add two small flower boxes on the blue balcony railing on the central white house.",
+      "evidence": "Source blue balcony railing is bare; output adds reddish flower-box clusters on the railing of the central white house, but they read as one merged blurry patch rather than two clearly distinct small boxes, so the requested count/shape is not cleanly satisfied."
+    },
+    {
+      "case_id": "v2-sa_1226158",
+      "unit_id": "U2",
+      "instruction": "Remove the silver van at the lower-right edge.",
+      "evidence": "The silver van is gone, but the area is filled with a flat gray smudge that does not reconstruct the road/wall background, so the removal result is incomplete and placeholder-like."
+    },
+    {
+      "case_id": "v2-sa_1572241",
+      "unit_id": "U4",
+      "instruction": "Add one small denim pouch clipped to the image-left hip of the jeans of the seated woman in the striped top.",
+      "evidence": "A lighter denim rectangle appears on the hip but it reads as a faded pocket rather than a clipped pouch, and it sits on the image‑right side of the hip, not the requested image‑left hip."
+    }
+  ],
+  "locator marker in output": [
+    {
+      "case_id": "v2-sa_10175525",
+      "unit_id": "U1",
+      "instruction": "Remove the selected region.",
+      "evidence": "The gray high-top Vans-style sneaker with black laces and side stripe is still fully present in the output crop and full image; the requested removal was not performed."
+    },
+    {
+      "case_id": "v2-sa_10175525",
+      "unit_id": "U3",
+      "instruction": "Change the color of the selected region to beige.",
+      "evidence": "The banner-holder's trousers remain dark/black in the output; the requested beige recolor was not applied. Instead a zipped pocket was added, which is not the requested attribute change."
+    },
+    {
+      "case_id": "v2-sa_10175525",
+      "unit_id": "U4",
+      "instruction": "Add one small zipped pocket on the image-right outer thigh of the black trousers of the black-bag woman at the back right.",
+      "evidence": "The black-bag woman's outer thigh in the output crop shows no added zipped pocket; the requested addition is absent at its site (it was misplaced onto U3's subject)."
+    },
+    {
+      "case_id": "v2-sa_10290462",
+      "unit_id": "U3",
+      "instruction": "Remove the selected region.",
+      "evidence": "The 'GOFRY' text is gone but the sign panel itself remains as a blurred orange-bordered board with a distorted waffle image and leftover red text fragments; the targeted sign was not removed, only smeared."
+    },
+    {
+      "case_id": "v2-sa_1043581",
+      "unit_id": "U1",
+      "instruction": "Add a small orange life ring to the selected region.",
+      "evidence": "The source shows a covered motorboat (dark hull, cream cover) as the addition support; in the output the boat has been removed and replaced by an orange ring floating on open water. For an 'add' with addition_support semantics the existing support must remain with the new accessory attached, but here the support was destroyed, so the requested operation is not correctly completed."
+    }
+  ],
+  "wrong instance": [
+    {
+      "case_id": "v2-sa_10540618",
+      "unit_id": "U1",
+      "instruction": "Replace the selected region with a broad padded shoulder strap with an adjustment buckle.",
+      "evidence": "The thin neon strap over the guide's right shoulder is replaced by a visibly broader padded strap, but no clear adjustment buckle is present (only a small dark button-like dot at the top), so the requested buckle is missing."
+    },
+    {
+      "case_id": "v2-sa_10624309",
+      "unit_id": "U2",
+      "instruction": "Replace the selected region with a gold Christmas bauble.",
+      "evidence": "The requested below-right diagonal bottle was not replaced by a bauble; instead that bottle was tinted green and the gold bauble was placed on the horizontal bottle to the right (U4's instance), so the correct instance was not edited."
+    },
+    {
+      "case_id": "v2-sa_10624309",
+      "unit_id": "U4",
+      "instruction": "Tint the bottle immediately right of the central red disc green.",
+      "evidence": "The horizontal bottle immediately right of the central red disc remains clear/transparent; the green tint was applied to the different below-right diagonal bottle, so the requested instance was not tinted."
+    },
+    {
+      "case_id": "v2-sa_10669918",
+      "unit_id": "U1",
+      "instruction": "Change the material of the foreground knight’s helmet to brass.",
+      "evidence": "Source shows a polished steel pointed helmet; the requested brass material was not applied. Instead the helmet region was replaced by a woven straw sunhat, which is a different object, not a brass-material change."
+    },
+    {
+      "case_id": "v2-sa_1528858",
+      "unit_id": "U2",
+      "instruction": "Add a flower box on the selected region.",
+      "evidence": "No flower box appears on the selected top balcony railing of the rear white apartment (crop still shows only hanging laundry); a flower box with pink flowers was instead placed on the ruined arch wall, the wrong support."
+    }
+  ]
+}

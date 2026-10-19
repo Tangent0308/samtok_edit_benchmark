@@ -1,0 +1,194 @@
+{
+  "locator marker in output": [
+    {
+      "case_id": "v2-sa_10006079",
+      "unit_id": "U2",
+      "instruction": "Remove the selected region.",
+      "evidence": "The black Quechua duffel bag with orange drawstrings beside the woman is still fully present and identical in the output; the requested removal was not performed at all."
+    },
+    {
+      "case_id": "v2-sa_10153046",
+      "unit_id": "U2",
+      "instruction": "Replace the blue-dressed woman’s placard with a round placard reading “FREE SPEECH”.",
+      "evidence": "The blue-dressed woman's placard still reads 'WANT FREEDOM OF EXPRESSION' in the output crop; it was not replaced. The round 'FREE SPEECH' placard was instead placed on the left side of the large banner, a different object, so the requested replacement on the target instance is not done."
+    },
+    {
+      "case_id": "v2-sa_10308802",
+      "unit_id": "U2",
+      "instruction": "Change the color of the selected region to dark green.",
+      "evidence": "The trailer body of the white truck behind the black truck was recolored dark green, but the truck's cab (right side with mirror) remains its original white/silver, so the recolor of the selected truck is materially incomplete."
+    },
+    {
+      "case_id": "v2-sa_10698354",
+      "unit_id": "U2",
+      "instruction": "Change the color of the selected region to burgundy.",
+      "evidence": "The leftmost woman's handbag remains orange/rust colored in the output; it was not changed to burgundy, so the requested attribute edit was not performed."
+    },
+    {
+      "case_id": "v2-sa_1110518",
+      "unit_id": "U1",
+      "instruction": "Change the color of the selected region to burgundy.",
+      "evidence": "The requested recolor of the speaker's blue tie to burgundy was not performed; in the output crop the tie remains the same blue patterned tie. Instead an unrelated silver snowflake brooch was added to the lapel, and the burgundy color was misapplied to the podium sign elsewhere."
+    }
+  ],
+  "other E failure": [
+    {
+      "case_id": "v2-sa_10029202",
+      "unit_id": "U1",
+      "instruction": "Add a small brass menu plaque to the planter right of the cafe entrance.",
+      "evidence": "A brass-framed menu plaque/board is present at the right-of-entrance location, but the wooden planter that was the required attachment support has been removed and replaced by a freestanding black-pedestal menu stand, violating the addition_support contract that the existing support must remain."
+    },
+    {
+      "case_id": "v2-sa_10047011",
+      "unit_id": "U3",
+      "instruction": "Replace the selected region with a silver station wagon.",
+      "evidence": "The black Hyundai Tucson SUV is replaced by a silver car, but the result is a silver sedan with a trunk lid, not the requested silver station wagon, so the specified body type is wrong."
+    },
+    {
+      "case_id": "v2-sa_10071617",
+      "unit_id": "U2",
+      "instruction": "Add a chrome roof rack to the white vintage car on the right.",
+      "evidence": "A chrome roof rack is present, but it sits on a completely different white car body (a 1960s-style sedan with two side windows and a door handle) instead of the original rounded vintage car; the support was replaced, which fails the add contract."
+    },
+    {
+      "case_id": "v2-sa_10290462",
+      "unit_id": "U3",
+      "instruction": "Remove the selected region.",
+      "evidence": "The 'GOFRY' text is gone but the sign's waffle-image rectangle remains as a smeared brownish patch instead of being cleanly removed and the shop counter background restored."
+    },
+    {
+      "case_id": "v2-sa_10307890",
+      "unit_id": "U2",
+      "instruction": "Remove the farther red queue label on the floor.",
+      "evidence": "The farther red 'BATAS ANTRIAN DI SINI' label is gone, but the area was filled with a flat gray tile block that does not match the surrounding beige floor, so the removal result is materially wrong."
+    }
+  ],
+  "not executed": [
+    {
+      "case_id": "v2-sa_10047011",
+      "unit_id": "U2",
+      "instruction": "Remove the foreground “NO JUSTICE NO PEACE” placard.",
+      "evidence": "The foreground 'NO JUSTICE NO PEACE' placard is still fully present with identical text and hand grip in the output; the requested removal was not performed at all."
+    },
+    {
+      "case_id": "v2-sa_1005356",
+      "unit_id": "U2",
+      "instruction": "Replace the selected region with a white polo shirt.",
+      "evidence": "The target red T-shirt on the man in blue shorts is still red in the output (full image and U2 crop); instead a separate white-polo figure was inserted at the left edge, so the requested replacement did not occur on the selected instance and a duplicate substitute appears beside it."
+    },
+    {
+      "case_id": "v2-sa_10063996",
+      "unit_id": "U1",
+      "instruction": "Replace the selected region with a flared bell sleeve.",
+      "evidence": "The requested flared bell sleeve is absent on the left woman's outer sleeve: in the U1 OUTPUT crop the black sleeve remains a straight fitted tube identical to the source, with the pink wavy pocket trim unchanged. The bell flare was instead placed on the right woman's coat, so the selected instance was not edited."
+    },
+    {
+      "case_id": "v2-sa_10071617",
+      "unit_id": "U1",
+      "instruction": "Remove the selected region.",
+      "evidence": "The green/teal sedan behind the raised hood is still fully present in the OUTPUT at the same position (visible inside the evaluator contour and in the full image); no removal was performed."
+    },
+    {
+      "case_id": "v2-sa_10072920",
+      "unit_id": "U2",
+      "instruction": "Replace the selected region with an oval wooden sign reading “Ivy Room”.",
+      "evidence": "The instruction was to replace the projecting green 'Ivy Room' sign, but in the output the original green projecting sign is still fully present (visible in the U2 crop) while an oval wooden 'Ivy Room' sign was merely added on the brick wall, leaving a duplicate and the target unremoved."
+    }
+  ],
+  "occluded fragments/leftovers": [
+    {
+      "case_id": "v2-sa_10063996",
+      "unit_id": "U2",
+      "instruction": "Change the color of the red coat of the woman on the right to navy blue.",
+      "evidence": "The red coat is correctly recolored to navy blue across the body and sleeves, but the geometry was not retained: flared bell cuffs were added at the sleeve ends (visible in the U2 OUTPUT crop), an unrequested structural change that violates the retain-geometry requirement."
+    },
+    {
+      "case_id": "v2-sa_10175525",
+      "unit_id": "U1",
+      "instruction": "Remove the selected region.",
+      "evidence": "The instruction was to remove the gray high-top sneaker, but the output leaves a white high-top sneaker in its place instead of filling the region with background/leg; a substitute object was added rather than the target removed."
+    },
+    {
+      "case_id": "v2-sa_10175525",
+      "unit_id": "U2",
+      "instruction": "Replace the white sneaker visible behind the right end of the banner with a white high-top lace-up sneaker.",
+      "evidence": "The original white New Balance low-top is gone and replaced by a white sneaker, but the new shoe is a low-top with three black stripes, not the requested white high-top lace-up sneaker."
+    },
+    {
+      "case_id": "v2-sa_10207241",
+      "unit_id": "U2",
+      "instruction": "Remove the blue car on the bend beside the foreground parking lot.",
+      "evidence": "The blue hatchback on the bend is no longer present in the output crop, so the removal is essentially done, but a stray black L-shaped mark remains inside the edited region and the fill is incomplete, leaving a localized defect."
+    },
+    {
+      "case_id": "v2-sa_10290462",
+      "unit_id": "U1",
+      "instruction": "Change the color of the curled streetlamp left of the foreground man to dark green.",
+      "evidence": "The selected gray curled streetlamp with the round globe (red contour) is removed from its original position rather than recolored; a new oversized dark-green spiral lamp is added in the far-left foreground, so the correct instance's geometry was not retained and a substitute appears elsewhere."
+    }
+  ],
+  "wrong instance": [
+    {
+      "case_id": "v2-sa_1012535",
+      "unit_id": "U3",
+      "instruction": "Add one small embroidered sun patch on the selected region.",
+      "evidence": "The requested black T-shirt of the middle back-facing woman (crop region) still has no sun patch in the output; instead a flat yellow sun emoji was placed on the plaid-shirted man's lower back, the wrong instance."
+    },
+    {
+      "case_id": "v2-sa_10198632",
+      "unit_id": "U4",
+      "instruction": "Add one silver reflective patch on the selected region.",
+      "evidence": "The U4 crop (yellow-bag woman's upper image-left sleeve) shows no silver reflective patch; that shoulder was instead recolored burgundy. The silver patch was placed on the unrelated denim jacket at the left, not on the requested support."
+    },
+    {
+      "case_id": "v2-sa_10425350",
+      "unit_id": "U1",
+      "instruction": "Add an orange reflective strip on the selected region.",
+      "evidence": "The instruction requires an orange reflective strip on the truck's cab door, but in the OUTPUT the orange band is drawn around the blue cargo box (top, left and bottom edges) and the silver cab door itself has no orange strip; the requested instance was not edited."
+    },
+    {
+      "case_id": "v2-sa_10466790",
+      "unit_id": "U3",
+      "instruction": "Add one small snowflake-shaped fabric patch on the back of the carried child's glove resting on the adult's shoulder.",
+      "evidence": "No snowflake patch appears on the back of the carried child's glove (the crop still shows only the original white square label); the snowflakes were instead placed on the navy jacket/shoulder, the wrong instance."
+    },
+    {
+      "case_id": "v2-sa_10771932",
+      "unit_id": "U3",
+      "instruction": "Change the color of the selected region to dark brown.",
+      "evidence": "The requested change of the left rider's black apron to dark brown was not applied: the apron inside the contour remains identical black in the output. The only dark-brown recoloring occurred on the scooter frame, i.e. the wrong instance."
+    }
+  ],
+  "wrong granularity": [
+    {
+      "case_id": "v2-sa_1018156",
+      "unit_id": "U2",
+      "instruction": "Replace the front fender of the vehicle at the far left with a wide angular off-road fender.",
+      "evidence": "The far-left vehicle's old rounded fender is replaced by a wider, flatter off-road style fender, but the new shape is soft and only mildly angular, so the 'wide angular off-road' result is only substantially, not fully, achieved."
+    },
+    {
+      "case_id": "v2-sa_10207017",
+      "unit_id": "U3",
+      "instruction": "Add one padded black sleeve around the selected region.",
+      "evidence": "A padded sleeve was added over the chest strap of the second front-row drummer from the right, but it is navy blue rather than the requested black, and it covers only the lower portion of the strap while the upper strap remains white, so the addition is incomplete and wrong-colored."
+    },
+    {
+      "case_id": "v2-sa_10209721",
+      "unit_id": "U2",
+      "instruction": "Add a small wooden plaque reading “ALPACA” mounted on the selected region.",
+      "evidence": "A wooden plaque is added hanging from the rail below the alpaca's head, but its text reads 'ALPAA' instead of the required 'ALPACA', a material content defect in the requested addition."
+    },
+    {
+      "case_id": "v2-sa_10232066",
+      "unit_id": "U1",
+      "instruction": "Remove the red scarf of the man at the front right.",
+      "evidence": "The red scarf (and its Nikon strap) is gone, but the vacated neck/chest area was filled with a fabricated gray ribbed turtleneck collar instead of a natural reveal of the man's body/background, so the removal is not cleanly completed."
+    },
+    {
+      "case_id": "v2-sa_10235725",
+      "unit_id": "U2",
+      "instruction": "Replace the selected region with a navy polo shirt.",
+      "evidence": "The white striped shirt was replaced, but with a sage-green polo (not the requested navy), and the pose was altered (hand raised to the face instead of resting on the banner), so the specified result is wrong."
+    }
+  ]
+}

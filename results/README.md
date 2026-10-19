@@ -14,7 +14,8 @@
 - `recommended_runs/flux2_klein_4b_mask/`: 1,084/1,084 generated，registry 1,084。
 - `recommended_runs/flux3_klein_color/`: 1,084/1,084 generated，registry 1,084。
 - `recommended_judge_inputs/`: 四模型完整 judge 输入已准备。
-- `recommended_judge/`: Qwen3.8-Flash-Next-FP8 judge 正在按模型顺序生成 records；未全部完成前不发布全量分数。
+- `recommended_judge/`: Qwen3.8-Flash-Next-FP8 judge 已完成四个模型的 1,084/1,084 评分；解析失败记录已补全。
+- Git 内嵌报告：[docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md](../docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md)。
 
 ## Reproduction metadata
 

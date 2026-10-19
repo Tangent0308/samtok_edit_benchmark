@@ -8,6 +8,7 @@
 - `inputs/`: 三种区域输入的准备器；`inputs/pilots/` 只保存小批量对照实验脚本。
 - `../samtok_benchmark/v2/`: 公共 job schema、prepare-judge、rubric、judge 和 report。
 - `../results/`: 运行索引；大图、registry 和 judge records 保存在外部实验根目录。
+- `analyze_results.py`: 从四个完整 report JSON 生成统计 CSV、英文坐标图和案例研究素材；发布报告位于 `../docs/reports/2.6.0/`。
 
 ## Input modes
 

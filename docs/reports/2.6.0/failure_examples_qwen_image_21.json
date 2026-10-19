@@ -1,194 +1,194 @@
 {
-  "occluded fragments/leftovers": [
+  "locator marker in output": [
     {
-      "case_id": "v2-sa_10006079",
-      "unit_id": "U2",
-      "instruction": "Remove the selected region.",
-      "evidence": "The black Quechua duffel bag pixels are gone, but instead of reconstructing the boat floor/bench behind it the editor left a flat, featureless gray placeholder blob; the requested clean removal revealing background is not achieved."
-    },
-    {
-      "case_id": "v2-sa_10086904",
+      "case_id": "v2-sa_10146830",
       "unit_id": "U1",
-      "instruction": "Change the color of the streetlamp beneath the SEIBU sign on the right to bright gold.",
-      "evidence": "The correct streetlamp under the SEIBU sign is recolored to bright gold, but the attribute edit did not retain geometry: the source's two stacked globe lamp heads are replaced by a single pointed gold finial, altering the object's shape rather than only its color."
+      "instruction": "Remove the selected region.",
+      "evidence": "The red hood hanging down the back is still fully present in the OUTPUT crop, with the same hood seam and shape as the SOURCE; the requested removal was not performed."
     },
     {
-      "case_id": "v2-sa_10109700",
+      "case_id": "v2-sa_10146830",
+      "unit_id": "U2",
+      "instruction": "Replace the thin bag strap across the white shawl with a silver chain strap.",
+      "evidence": "The thin cream/white bag strap across the white knit shawl is unchanged in the OUTPUT crop; no silver chain strap was substituted, so the replacement failed."
+    },
+    {
+      "case_id": "v2-sa_10146830",
       "unit_id": "U3",
-      "instruction": "Remove the wine bottle lying on the wooden rack.",
-      "evidence": "Only the gold-foiled neck/label portion of the lying bottle was removed; the dark glass body of the same bottle still lies on the rack, leaving a major targeted piece behind."
+      "instruction": "Add one small round enamel pin on the upper back of the central girl's leather jacket.",
+      "evidence": "A small round enamel pin is present on the upper back of the leather jacket, but it sits on top of an unrequested translucent yellow overlay rather than cleanly on the jacket, and the jacket's own strap was altered, so the add is not cleanly completed on an intact support."
     },
     {
-      "case_id": "v2-sa_10267079",
+      "case_id": "v2-sa_6545538",
       "unit_id": "U2",
-      "instruction": "Replace the small bowl on the right with a shallow square porcelain dish.",
-      "evidence": "The original round metal bowl with food is gone and replaced by a blue-and-white porcelain vessel, satisfying the porcelain material, but the new dish is clearly round/oval, not the requested shallow square shape, so the shape requirement is unmet."
+      "instruction": "Replace the saddle of the second bicycle from the left with a wider sprung cruiser saddle.",
+      "evidence": "The second bicycle's saddle is unchanged (same black saddle) and only a blue circular locator marker was drawn on it; no wider sprung cruiser saddle was added, so the replacement is absent."
     },
     {
-      "case_id": "v2-sa_10342974",
-      "unit_id": "U2",
-      "instruction": "Add a folded blue dish towel on the selected region.",
-      "evidence": "A blue towel was added, but it is draped over the countertop edge to the right of the oven, not on the oven's horizontal handle bar (the requested attachment site), which remains bare in the output crop."
+      "case_id": "v2-sa_6545538",
+      "unit_id": "U3",
+      "instruction": "Remove the selected region.",
+      "evidence": "The third bicycle's white 'ВТБ' rear-wheel side panel is still fully present in the output; the requested removal was not performed."
     }
   ],
   "not executed": [
     {
-      "case_id": "v2-sa_10029202",
-      "unit_id": "U1",
-      "instruction": "Add a small brass menu plaque to the planter right of the cafe entrance.",
-      "evidence": "The crop on the planter right of the cafe entrance shows the original vertical-plank wooden planter unchanged in OUTPUT; no brass menu plaque was added to this target instance. The only brass plaque in the scene was placed on the leftmost (U2) planter, i.e. the wrong location."
-    },
-    {
-      "case_id": "v2-sa_10030491",
-      "unit_id": "U2",
-      "instruction": "Remove the small white boat beneath the brown waterfront building.",
-      "evidence": "The instruction was to remove the small white boat, but the output still contains a boat of the same shape and position, merely recolored teal/green; the targeted piece was not removed, so the removal is not achieved."
-    },
-    {
-      "case_id": "v2-sa_10044652",
-      "unit_id": "U3",
-      "instruction": "Remove the selected region.",
-      "evidence": "The distant silver Mitsubishi facing the camera is still fully present in the output (only slightly blurred/shifted); the requested removal was not performed."
-    },
-    {
-      "case_id": "v2-sa_10047011",
-      "unit_id": "U2",
-      "instruction": "Remove the foreground “NO JUSTICE NO PEACE” placard.",
-      "evidence": "The foreground 'NO JUSTICE NO PEACE' placard is still fully present and legible in the output crop; the requested removal was not performed at all."
-    },
-    {
-      "case_id": "v2-sa_1005356",
-      "unit_id": "U2",
-      "instruction": "Replace the selected region with a white polo shirt.",
-      "evidence": "The man in blue shorts still wears the original red T-shirt in the output; no white polo shirt was introduced, so the requested replacement is absent."
-    }
-  ],
-  "other E failure": [
-    {
-      "case_id": "v2-sa_10047011",
-      "unit_id": "U3",
-      "instruction": "Replace the selected region with a silver station wagon.",
-      "evidence": "The black Hyundai SUV is replaced by a silver vehicle, but the substitute is a tall crossover SUV (Mazda CX-9 style), not the requested station wagon body style."
-    },
-    {
-      "case_id": "v2-sa_1018156",
-      "unit_id": "U4",
-      "instruction": "Change the color of the selected region to rust red.",
-      "evidence": "The rear fender of the front-left jeep is recolored to a rust-red/orange tone and roughly retains its angular geometry, but the change is a flat solid fill rather than a true material recolor, so completion is only partial."
-    },
-    {
-      "case_id": "v2-sa_10367798",
-      "unit_id": "U2",
-      "instruction": "Add a red silk tassel hanging from the large pendant globe light at the far right.",
-      "evidence": "A red silk tassel is correctly added hanging below the far-right pendant, but the globe-light support itself was replaced by a brass lantern, violating the add contract that the existing support must remain."
-    },
-    {
-      "case_id": "v2-sa_10377507",
-      "unit_id": "U1",
-      "instruction": "Change the color of the selected region to black.",
-      "evidence": "The front wheel rim (correct instance) was darkened from white/silver toward black, but it remains a muddy dark gray-brown with faint light patches and visible lug dots rather than a clean black."
-    },
-    {
-      "case_id": "v2-sa_10395853",
-      "unit_id": "U1",
-      "instruction": "Remove the flowers above the “RISTORANTE” awning.",
-      "evidence": "The instruction was to REMOVE the pink flowers above the RISTORANTE awning, but the output substitutes a trailing green plant in the same box instead of removing them; a substitute in place of a removal fails the contract."
-    }
-  ],
-  "wrong granularity": [
-    {
-      "case_id": "v2-sa_10153046",
-      "unit_id": "U1",
-      "instruction": "Change the color of the selected region to navy blue.",
-      "evidence": "The camera-holding man's beige T-shirt is recolored to blue, the correct instance, but the result is a bright royal/cobalt blue rather than the requested navy blue, a localized shade defect."
-    },
-    {
-      "case_id": "v2-sa_10371278",
-      "unit_id": "U1",
-      "instruction": "Add a reflective strip on the selected region.",
-      "evidence": "The right backpack (teal-plaid walker) in the output is identical to the source: same dark fabric, same two curved zipper lines and diamond logo, with no reflective strip added anywhere on it."
-    },
-    {
-      "case_id": "v2-sa_1226158",
-      "unit_id": "U1",
-      "instruction": "Add two small flower boxes on the blue balcony railing on the central white house.",
-      "evidence": "Source blue balcony railing is bare; output adds reddish flower-box clusters on the railing of the central white house, but they read as one merged blurry patch rather than two clearly distinct small boxes, so the requested count/shape is not cleanly satisfied."
-    },
-    {
-      "case_id": "v2-sa_1226158",
-      "unit_id": "U2",
-      "instruction": "Remove the silver van at the lower-right edge.",
-      "evidence": "The silver van is gone, but the area is filled with a flat gray smudge that does not reconstruct the road/wall background, so the removal result is incomplete and placeholder-like."
-    },
-    {
-      "case_id": "v2-sa_1572241",
-      "unit_id": "U4",
-      "instruction": "Add one small denim pouch clipped to the image-left hip of the jeans of the seated woman in the striped top.",
-      "evidence": "A lighter denim rectangle appears on the hip but it reads as a faded pocket rather than a clipped pouch, and it sits on the image‑right side of the hip, not the requested image‑left hip."
-    }
-  ],
-  "locator marker in output": [
-    {
-      "case_id": "v2-sa_10175525",
+      "case_id": "v2-sa_10781767",
       "unit_id": "U1",
       "instruction": "Remove the selected region.",
-      "evidence": "The gray high-top Vans-style sneaker with black laces and side stripe is still fully present in the output crop and full image; the requested removal was not performed."
+      "evidence": "The middle traffic light on the overhead arm is still fully present in the OUTPUT full image and in the U1 detail crop (yellow housing with three black visors on the horizontal pole), identical to the SOURCE; the requested removal was not performed."
     },
     {
-      "case_id": "v2-sa_10175525",
-      "unit_id": "U3",
-      "instruction": "Change the color of the selected region to beige.",
-      "evidence": "The banner-holder's trousers remain dark/black in the output; the requested beige recolor was not applied. Instead a zipped pocket was added, which is not the requested attribute change."
-    },
-    {
-      "case_id": "v2-sa_10175525",
-      "unit_id": "U4",
-      "instruction": "Add one small zipped pocket on the image-right outer thigh of the black trousers of the black-bag woman at the back right.",
-      "evidence": "The black-bag woman's outer thigh in the output crop shows no added zipped pocket; the requested addition is absent at its site (it was misplaced onto U3's subject)."
-    },
-    {
-      "case_id": "v2-sa_10290462",
-      "unit_id": "U3",
-      "instruction": "Remove the selected region.",
-      "evidence": "The 'GOFRY' text is gone but the sign panel itself remains as a blurred orange-bordered board with a distorted waffle image and leftover red text fragments; the targeted sign was not removed, only smeared."
-    },
-    {
-      "case_id": "v2-sa_1043581",
+      "case_id": "v2-sa_10866716",
       "unit_id": "U1",
-      "instruction": "Add a small orange life ring to the selected region.",
-      "evidence": "The source shows a covered motorboat (dark hull, cream cover) as the addition support; in the output the boat has been removed and replaced by an orange ring floating on open water. For an 'add' with addition_support semantics the existing support must remain with the new accessory attached, but here the support was destroyed, so the requested operation is not correctly completed."
+      "instruction": "Change the color of the selected region to dark green.",
+      "evidence": "The middle bench remains bright red in the OUTPUT; only two small dark-green circular dots were added on its left slats instead of recoloring the whole bench to dark green. The requested attribute change (full recolor) is absent, and a changed point marker is not completion."
+    },
+    {
+      "case_id": "v2-sa_135742",
+      "unit_id": "U1",
+      "instruction": "Remove the selected region.",
+      "evidence": "The instruction was to remove the square pocket on the stroller's back, but in the OUTPUT the pocket is still fully present (flap, logo, outline intact); it was merely recolored from dark brown to a brighter red/maroon instead of being deleted."
+    },
+    {
+      "case_id": "v2-sa_5460754",
+      "unit_id": "U1",
+      "instruction": "Remove the upper-left reel on the cart.",
+      "evidence": "The upper-left/top horizontal reel (white body, dark flanges, right pipe) is fully present and unchanged in the OUTPUT; the requested removal was not performed at all."
+    },
+    {
+      "case_id": "v2-sa_5460754",
+      "unit_id": "U2",
+      "instruction": "Replace the selected region with a wooden cable reel with broad circular flanges.",
+      "evidence": "The selected partly-hidden middle reel (dark flange with yellow paint and left pipe, blue contour) is unchanged in the OUTPUT; the wooden broad-flange reel was instead placed on the bottom-right instance, i.e. the wrong target."
     }
   ],
   "wrong instance": [
     {
-      "case_id": "v2-sa_10540618",
-      "unit_id": "U1",
-      "instruction": "Replace the selected region with a broad padded shoulder strap with an adjustment buckle.",
-      "evidence": "The thin neon strap over the guide's right shoulder is replaced by a visibly broader padded strap, but no clear adjustment buckle is present (only a small dark button-like dot at the top), so the requested buckle is missing."
-    },
-    {
-      "case_id": "v2-sa_10624309",
+      "case_id": "v2-sa_1691871",
       "unit_id": "U2",
-      "instruction": "Replace the selected region with a gold Christmas bauble.",
-      "evidence": "The requested below-right diagonal bottle was not replaced by a bauble; instead that bottle was tinted green and the gold bauble was placed on the horizontal bottle to the right (U4's instance), so the correct instance was not edited."
+      "instruction": "Change the color of the selected region to matte black.",
+      "evidence": "The requested matte-black recolor of the third chair's wooden frame was not applied: in the U2 crop the legs/frame remain natural wood/tan, while the black fill instead landed on the seat backs of the nearest and second chairs (wrong parts and wrong instances)."
     },
     {
-      "case_id": "v2-sa_10624309",
+      "case_id": "v2-sa_5460754",
+      "unit_id": "U3",
+      "instruction": "Change the color of the bottom-right reel to dark blue.",
+      "evidence": "The bottom-right reel is now dark blue as requested, but its geometry was replaced (new wooden disc flange with protruding pipe and ridged blue body) instead of retaining the original white-cylinder/dark-flange geometry required for an attribute edit."
+    },
+    {
+      "case_id": "v2-sa_1580699",
+      "unit_id": "U3",
+      "instruction": "Add one red ribbon bow tied around the upper end of the long pale package hanging just right of the large blue shopping bag.",
+      "evidence": "No red bow is tied around the upper end of the long pale package in front of the calendar; instead a red bow was placed on the blue/orange shopping bag, the wrong instance."
+    },
+    {
+      "case_id": "v2-sa_6065460",
       "unit_id": "U4",
-      "instruction": "Tint the bottle immediately right of the central red disc green.",
-      "evidence": "The horizontal bottle immediately right of the central red disc remains clear/transparent; the green tint was applied to the different below-right diagonal bottle, so the requested instance was not tinted."
+      "instruction": "Remove the selected region.",
+      "evidence": "Instead of removing only the sleeves, the entire standing man at far left (and his T-shirt body) was deleted, leaving bare wall."
     },
     {
-      "case_id": "v2-sa_10669918",
-      "unit_id": "U1",
-      "instruction": "Change the material of the foreground knight’s helmet to brass.",
-      "evidence": "Source shows a polished steel pointed helmet; the requested brass material was not applied. Instead the helmet region was replaced by a woven straw sunhat, which is a different object, not a brass-material change."
-    },
+      "case_id": "v2-sa_7436208",
+      "unit_id": "U3",
+      "instruction": "Add one small black seat cushion on the selected region.",
+      "evidence": "The green chair at the left end of the middle table still shows its bare green seat with no black cushion added; the only black cushion in the area sits on the metal stool (U2's object), not on the requested green chair, so the addition is on the wrong instance."
+    }
+  ],
+  "occluded fragments/leftovers": [
     {
-      "case_id": "v2-sa_1528858",
+      "case_id": "v2-sa_1905152",
       "unit_id": "U2",
-      "instruction": "Add a flower box on the selected region.",
-      "evidence": "No flower box appears on the selected top balcony railing of the rear white apartment (crop still shows only hanging laundry); a flower box with pink flowers was instead placed on the ruined arch wall, the wrong support."
+      "instruction": "Change the color of the outer hood of the foreground woman's black coat to burgundy.",
+      "evidence": "The woman's outer hood is recolored to a burgundy fabric hood on the front and right side, but the left fur-trim piece remains gray fur instead of burgundy, leaving a visible un-recolored piece."
+    },
+    {
+      "case_id": "v2-sa_344959",
+      "unit_id": "U1",
+      "instruction": "Add one zipped side pocket sewn onto the red-shirted player's white shorts.",
+      "evidence": "A thin black vertical zipper line with a small pull was added on the white shorts, but no sewn pocket shape/outline is visible, so the requested 'zipped side pocket' is only partially realized; the red dot and 'U1' label are an unrequested marker, not the edit."
+    },
+    {
+      "case_id": "v2-sa_2053334",
+      "unit_id": "U3",
+      "instruction": "Remove the rider's helmet.",
+      "evidence": "The blue helmet and clear visor are fully removed with no fragments, but the edit also erased the rider's head/face that should have been revealed, so the operation went beyond the selected helmet instance."
+    },
+    {
+      "case_id": "v2-sa_9681041",
+      "unit_id": "U3",
+      "instruction": "Add one narrow woven waist belt around the selected region.",
+      "evidence": "A single narrow woven belt is added at the waist of the 3rd-from-right monk, satisfying count and location, but the support robe is covered by a yellow translucent overlay (a recolor/mask), violating the requirement that the source object remain unchanged."
+    },
+    {
+      "case_id": "v2-sa_1411984",
+      "unit_id": "U2",
+      "instruction": "Remove the selected region.",
+      "evidence": "Source chest graphic includes cursive 'Fisher King', a fish image and 'SOUTH SHORE' text; output removed the fish and lower text but the cursive 'Fisher King' script (inside the target contour) remains, leaving a targeted fragment."
+    }
+  ],
+  "wrong granularity": [
+    {
+      "case_id": "v2-sa_8829935",
+      "unit_id": "U2",
+      "instruction": "Add two small loop handles attached to the opposite sides of the rim of the shallow shrimp tray near the center.",
+      "evidence": "Two loop handles are added on opposite sides of the rim, but the support tray itself was recolored from silver metal to gold/brass, which the add contract forbids (recoloring the support fails)."
+    },
+    {
+      "case_id": "v2-sa_7548763",
+      "unit_id": "U2",
+      "instruction": "Add one small red fabric badge on the exposed sleeve of the partly visible shirt at the far left edge.",
+      "evidence": "A red badge-like patch appears on the left sleeve, but the support shirt was recolored from dark gray to white, which the add contract forbids (recoloring/replacing the support fails)."
+    },
+    {
+      "case_id": "v2-sa_9359193",
+      "unit_id": "U5",
+      "instruction": "Remove the selected region.",
+      "evidence": "The green tote is gone, but the entire white-clad woman (the support) was also removed, leaving only background; the request was to remove only the bag, so this is a material over-removal defect."
+    },
+    {
+      "case_id": "v2-sa_80787",
+      "unit_id": "U1",
+      "instruction": "Remove the baseball cap of the back-facing fisherman on the left.",
+      "evidence": "The navy baseball cap is gone, but the entire head/face of the back-facing denim fisherman was also deleted, leaving buildings/sky where his head should be; the requested cap-only removal over-deleted preserved parts."
+    },
+    {
+      "case_id": "v2-sa_10817819",
+      "unit_id": "U1",
+      "instruction": "Remove the selected region.",
+      "evidence": "The image-left long navy sleeve with rolled cuff and button of the front-row dark-blue-shirt man is fully present in the output crop, identical to the source; no removal occurred, only a red 'U1' label was overlaid."
+    }
+  ],
+  "other E failure": [
+    {
+      "case_id": "v2-sa_1018156",
+      "unit_id": "U4",
+      "instruction": "Change the color of the selected region to rust red.",
+      "evidence": "The jeep's rear fender was changed to rust red, but the original angular fender geometry (slanted top edge and curved wheel-arch cutout) was replaced by a flat orange rectangle with a notch, so geometry was not retained as required."
+    },
+    {
+      "case_id": "v2-sa_892719",
+      "unit_id": "U3",
+      "instruction": "Add a tethered cap attached to the nozzle of the red condiment bottle at the front right.",
+      "evidence": "The red nozzle of the front-right bottle was recolored yellow and a yellow cap-like shape appears, but no tethered cap attached to the nozzle is present; the requested addition is not satisfied."
+    },
+    {
+      "case_id": "v2-sa_2992365",
+      "unit_id": "U5",
+      "instruction": "Remove the selected region to make knee-length shorts.",
+      "evidence": "The man in the brown T-shirt still wears full-length blue jeans to his shoes in the output; no knee-length shorts were created, only green dot markers were added."
+    },
+    {
+      "case_id": "v2-sa_8153976",
+      "unit_id": "U1",
+      "instruction": "Remove the lower legs of the trousers of the black-shirted rider near the center front to make knee-length shorts.",
+      "evidence": "Source shows the center-front black-shirted rider with long dark trousers down to the shoes; the output still shows long dark legs on both sides of the wheel rather than knee-length shorts, and a red 'U1' text box was placed over the area instead of performing the removal."
+    },
+    {
+      "case_id": "v2-sa_8153976",
+      "unit_id": "U4",
+      "instruction": "Add one small white fabric patch on the selected region.",
+      "evidence": "No small white fabric patch was added to the pedestrian's black T-shirt; the output only shows purple circular/elliptical markers where the patch should be."
     }
   ]
 }

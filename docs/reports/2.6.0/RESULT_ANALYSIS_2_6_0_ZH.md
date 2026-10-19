@@ -6,45 +6,35 @@
 
 | 模型 | JointPass | E 单元通过率 | P 单元通过率 | Q 单元通过率 | global_P | global_Q |
 |---|---:|---:|---:|---:|---:|---:|
-| Qwen-Image-2.1 | 107/1084 (9.87%) | 55.89% | 83.52% | 84.25% | 60.24% | 75.83% |
-| Qwen-Image-Edit-2511 | 41/1084 (3.78%) | 43.23% | 66.92% | 75.05% | 20.30% | 42.62% |
-| FLUX.2 Klein-4B | 45/1084 (4.15%) | 46.41% | 74.25% | 84.43% | 28.60% | 62.73% |
-| FLUX.3 Klein | 286/1084 (26.38%) | 68.44% | 88.53% | 91.81% | 67.62% | 90.13% |
+| Qwen-Image-2.1 | 117/1084 (10.79%) | 65.52% | 61.31% | 64.20% | 25.92% | 34.59% |
+| Qwen-Image-Edit-2511 | 15/1084 (1.38%) | 43.80% | 40.78% | 47.39% | 7.38% | 14.02% |
+| FLUX.2 Klein-4B | 25/1084 (2.31%) | 42.15% | 63.12% | 68.03% | 20.94% | 39.02% |
+| FLUX.3 Klein | 270/1084 (24.91%) | 68.34% | 88.15% | 92.10% | 66.70% | 89.85% |
 
 JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q 通过。E 反映执行是否完成，P 反映非目标内容保持，Q 反映编辑质量。整体难度由 JointPass 体现；从单元级指标看，模型之间的主要差异可按 E、P、Q 三列比较。
 
 ## 1.1 评测方式与输入 setting
 
-- 每个 job 来自 `data/v2_2.6.0/cases.jsonl`，输入由干净 source image、区域定位信息和公开 instruction 组成；编辑模型只输出完整 RGB 图片。
-- 正式视觉定位 setting：`visual_locator_v2` / `mixed`。point、box、mask 和 U 标签直接绘制在第二张 locator 图上，定位信息叠加在原图坐标上；模型输出不得保留这些标记。
-- 原生区域 setting：`native_regions_v2` / `mixed`。保留 point、box、二值 mask 的原生文件/坐标，供 API 式区域输入实验使用。
-- 灰度区域 setting：`mask_full` / `mask_pilot`。第二张图是黑底灰度 label map，U1…U5 对应 51、102、153、204、255，用于 mask 对照实验。
-- 本报告案例总览保留 source、mask locator、color locator 和四个模型输出；红色轮廓只出现在局部评测对齐图中，来自 evaluator，不是模型输出。
+- 每个 job 来自 `data/v2_2.6.0/cases.jsonl`，编辑模型收到两张图和一段公开 instruction，并只输出完整 RGB 图片。
+- Image 1 是干净 source image。Image 2 是 `visual_locator_v2` / `mixed` 的彩色 locator：point、box、mask 和 U 标签直接绘制在 source 的对应坐标上。
+- prompt 明确要求第二张图只用于定位，输出中不得保留 point、box、mask、颜色或 U 标签。`ref` 只表示 unit 的语义属性，不会增加第三张图片。
+
+![实际评测输入 setting](figures/input_setting_visual_locator_v2.jpg)
+
+图中展示的是编辑模型实际收到的两张输入图；局部案例图中的红色轮廓属于 evaluator 对齐可视化，不是模型输入或模型输出。
 
 ### 1.2 评分与结果绑定
 
 - Judge 使用 `Qwen3.8-Flash-Next-FP8`，通过 vLLM 以 tensor parallel size 8、temperature 0、seed 0 运行。每个 U 评分 E/P/Q；E=4、P/Q≥3 视为单元通过，整图还要求 global_P/global_Q 通过。
-- 本报告主表使用已经完成的 1,084/1,084 judge 结果；结果与输入 manifest、输出图和 prompt 通过 job/input digest 绑定。
+- 本报告主表使用完整 1,084/1,084 judge 结果；结果与输入 manifest、输出图和 prompt 通过 job/input digest 绑定。
 - 外部评测结果根：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/`。以下表格路径均相对于该目录；仓库内报告为 `docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md`。
 
-### 1.3 两轮完整评测的实际输入
-
-| 轮次 | 模型 | Image 1 | Image 2 | prompt/协议 |
-|---|---|---|---|---|
-| 第一次完整评测 | 四个模型 | 干净 source image | `visual_locator_v2` 彩色 locator：在 source 坐标上绘制 point、box、mask 和 U 标签 | 正式视觉 locator prompt；输出只保留编辑后的完整 RGB 图 |
-| 第二次完整评测 | Qwen-Image-2.1、Qwen-Image-Edit-2511、FLUX.2 Klein-4B | 同一干净 source image | `mask_full` 灰度 label map：黑色背景，U1…U5 使用 51/102/153/204/255 | `[SAMTOK_MASK_PILOT_V1]`，明确 Image 2 是 label map，禁止复制灰度值、形状和标记 |
-| 第二次完整评测 | FLUX.3 Klein | 同一干净 source image | `visual_locator_v2` 彩色 locator | 正式视觉 locator prompt |
-
-第一次完整评测的冻结输入和结果位于 `judge_inputs/<model>/judge_jobs.jsonl`、`runs/<model>/outputs.jsonl`、`judge/<model>/Qwen3.8-Flash-Next-FP8/`；第二次完整评测对应 `recommended_judge_inputs/<model>_mask`、`recommended_runs/<model>_mask` 和 `recommended_judge/<model>_mask/Qwen3.8-Flash-Next-FP8/`。两轮的每个 job 都只给编辑模型两张图，`ref` 是 unit 的语义/评测属性，不会额外增加第三张参考图。
-
-| 模型 | 结果绑定的输入包 | 生成输出 | Judge report |
+| 模型 | 输入 job | 生成输出 | Judge report |
 |---|---|---|---|
-| Qwen-Image-2.1 | `recommended_judge_inputs/qwen_image_21_mask/judge_jobs.jsonl` | `recommended_runs/qwen_image_21_mask/outputs.jsonl` | `recommended_judge/qwen_image_21_mask/Qwen3.8-Flash-Next-FP8/report.json` |
-| Qwen-Image-Edit-2511 | `recommended_judge_inputs/qwen_image_edit_2511_mask/judge_jobs.jsonl` | `recommended_runs/qwen_image_edit_2511_mask/outputs.jsonl` | `recommended_judge/qwen_image_edit_2511_mask/Qwen3.8-Flash-Next-FP8/report.json` |
-| FLUX.2 Klein-4B | `recommended_judge_inputs/flux2_klein_4b_mask/judge_jobs.jsonl` | `recommended_runs/flux2_klein_4b_mask/outputs.jsonl` | `recommended_judge/flux2_klein_4b_mask/Qwen3.8-Flash-Next-FP8/report.json` |
-| FLUX.3 Klein | `recommended_judge_inputs/flux3_klein_color/judge_jobs.jsonl` | `recommended_runs/flux3_klein_color/outputs.jsonl` | `recommended_judge/flux3_klein_color/Qwen3.8-Flash-Next-FP8/report.json` |
-
-小批量三 setting 对照素材位于外部实验根的 `mask_pilot/setting_gallery/`；它包括正式视觉 locator、color locator control 和 mask pilot。完整主表只使用上表列出的冻结结果路径。
+| Qwen-Image-2.1 | `judge_inputs/qwen_image_21/judge_jobs.jsonl` | `runs/qwen_image_21/outputs.jsonl` | `judge/qwen_image_21/Qwen3.8-Flash-Next-FP8/report.json` |
+| Qwen-Image-Edit-2511 | `judge_inputs/qwen_image_edit_2511/judge_jobs.jsonl` | `runs/qwen_image_edit_2511/outputs.jsonl` | `judge/qwen_image_edit_2511/Qwen3.8-Flash-Next-FP8/report.json` |
+| FLUX.2 Klein-4B | `judge_inputs/flux2_klein_4b/judge_jobs.jsonl` | `runs/flux2_klein_4b/outputs.jsonl` | `judge/flux2_klein_4b/Qwen3.8-Flash-Next-FP8/report.json` |
+| FLUX.3 Klein | `judge_inputs/flux3_klein/judge_jobs.jsonl` | `runs/flux3_klein/outputs.jsonl` | `judge/flux3_klein/Qwen3.8-Flash-Next-FP8/report.json` |
 
 ## 2. 多目标组合代价
 
@@ -60,17 +50,17 @@ JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q �
 
 | 模型 | ref unit-joint | no-ref unit-joint | no-ref - ref |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | 65.28% | 29.88% | -35.40% |
-| Qwen-Image-Edit-2511 | 46.07% | 17.11% | -28.96% |
-| FLUX.2 Klein-4B | 52.03% | 17.11% | -34.93% |
-| FLUX.3 Klein | 70.98% | 54.88% | -16.10% |
+| Qwen-Image-2.1 | 54.34% | 34.28% | -20.06% |
+| Qwen-Image-Edit-2511 | 33.63% | 11.39% | -22.25% |
+| FLUX.2 Klein-4B | 42.90% | 11.93% | -30.97% |
+| FLUX.3 Klein | 70.80% | 54.40% | -16.40% |
 
 | 模型 | point | box | mask |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | 46.97% | 49.01% | 47.20% |
-| Qwen-Image-Edit-2511 | 30.80% | 30.65% | 31.74% |
-| FLUX.2 Klein-4B | 34.15% | 33.82% | 34.81% |
-| FLUX.3 Klein | 61.16% | 64.29% | 63.29% |
+| Qwen-Image-2.1 | 25.29% | 55.52% | 46.29% |
+| Qwen-Image-Edit-2511 | 15.00% | 22.42% | 22.78% |
+| FLUX.2 Klein-4B | 24.30% | 25.86% | 28.75% |
+| FLUX.3 Klein | 61.25% | 64.56% | 63.38% |
 
 ## 4. E 失败模式
 
@@ -80,60 +70,16 @@ JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q �
 
 | 模型 | 失败单元数 | 定位标记 | 未执行 | 遮挡碎片/残留 | 错误实例 | 粒度错误 | 其他 |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Qwen-Image-2.1 | 1708 | 190 | 1111 | 166 | 17 | 50 | 174 |
-| Qwen-Image-Edit-2511 | 2198 | 103 | 1464 | 237 | 49 | 127 | 218 |
-| FLUX.2 Klein-4B | 2075 | 114 | 1443 | 178 | 22 | 93 | 225 |
-| FLUX.3 Klein | 1222 | 185 | 756 | 114 | 22 | 43 | 102 |
+| Qwen-Image-2.1 | 1335 | 477 | 537 | 123 | 10 | 50 | 138 |
+| Qwen-Image-Edit-2511 | 2176 | 891 | 853 | 156 | 22 | 78 | 176 |
+| FLUX.2 Klein-4B | 2240 | 611 | 1249 | 148 | 12 | 51 | 169 |
+| FLUX.3 Klein | 1226 | 158 | 792 | 130 | 13 | 34 | 99 |
 
 ## 案例研究
 
-以下内容已直接嵌入本报告。每个案例的总览图从左到右依次为原图、mask locator、color locator 和四个模型输出；每个 U 的局部图均叠加源 mask 轮廓。状态表中的 E/P/Q 是该 U 的逐维 judge 结果；HTML 版 [`case_studies/index.html`](case_studies/index.html) 保留了更宽的排版和完整证据。选例分别覆盖所有模型失败、只有一个模型成功、实例/部件粒度错误和 no-ref 定位失败。
+以下内容已直接嵌入本报告。每个案例的总览图从左到右依次为原图、实际发送的 visual locator 输入和四个模型输出；每个 U 的局部图均叠加源 mask 轮廓。状态表中的 E/P/Q 是该 U 的逐维 judge 结果；HTML 版 [`case_studies/index.html`](case_studies/index.html) 保留了更宽的排版和完整证据。选例分别覆盖所有模型失败、只有一个模型成功、实例/部件粒度错误和 no-ref 定位失败。
 
-### all_models_fail：`v2-sa_10006079`
-
-English prompt:
-
-```text
-Edit the first image at its original size. Execute all numbered instructions. The second image, when present, supplies labeled locators only; omit those marks from the result. A locator selects a source instance; named parts further restrict the edit. For add it selects the support or spatial reference, not the new item outline. Preserve all unrequested content.
-
-U1 [ref; box]: Change the color of the woman’s yellow patterned tank top to teal.
-U2 [no ref; mask]: Remove the selected region.
-```
-
-中文翻译：
-
-```text
-编辑第一张图并保持原始尺寸。执行所有编号指令。第二张图（如有）只提供带标签的定位信息，输出中不得保留定位标记。定位器选择源图实例；命名部件进一步限定编辑范围。添加操作中，定位器选择支撑物或空间参考，不是新物体的轮廓。保留所有未请求内容。
-U1 [有参考图；框定位]：将女性的黄色图案背心改为青绿色。
-U2 [无参考图；掩码定位]：移除选定区域。
-```
-
-![v2-sa_10006079 原图、定位图和模型输出总览](case_studies/assets/all_models_fail/overview.jpg)
-
-#### U1：Change the color of the woman’s yellow patterned tank top to teal.
-
-![v2-sa_10006079 U1 局部图（源 mask 轮廓）](case_studies/assets/all_models_fail/U1_detail.jpg)
-
-| 模型 | E | P | Q |
-|---|---:|---:|---:|
-| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (4) |
-| Qwen-Image-Edit-2511 | PASS (4) | PASS (4) | PASS (4) |
-| FLUX.2 Klein-4B | PASS (4) | PASS (4) | PASS (4) |
-| FLUX.3 Klein | PASS (4) | PASS (4) | PASS (4) |
-
-#### U2：Remove the selected region.
-
-![v2-sa_10006079 U2 局部图（源 mask 轮廓）](case_studies/assets/all_models_fail/U2_detail.jpg)
-
-| 模型 | E | P | Q |
-|---|---:|---:|---:|
-| Qwen-Image-2.1 | FAIL (1) | PASS (3) | FAIL (1) |
-| Qwen-Image-Edit-2511 | FAIL (0) | PASS (4) | PASS (4) |
-| FLUX.2 Klein-4B | FAIL (0) | PASS (4) | PASS (4) |
-| FLUX.3 Klein | FAIL (1) | PASS (4) | PASS (3) |
-
-
-### only_one_model_success：`v2-sa_10044652`
+### all_models_fail：`v2-sa_10044652`
 
 English prompt:
 
@@ -154,40 +100,84 @@ U2 [有参考图；框定位]：将受损车辆后方的白色汽车改为银色
 U3 [无参考图；掩码定位]：移除选定区域。
 ```
 
-![v2-sa_10044652 原图、定位图和模型输出总览](case_studies/assets/only_one_model_success/overview.jpg)
+![v2-sa_10044652 原图、定位图和模型输出总览](case_studies/assets/all_models_fail/overview.jpg)
 
 #### U1：Replace the selected region with a navy bomber jacket.
 
-![v2-sa_10044652 U1 局部图（源 mask 轮廓）](case_studies/assets/only_one_model_success/U1_detail.jpg)
+![v2-sa_10044652 U1 局部图（源 mask 轮廓）](case_studies/assets/all_models_fail/U1_detail.jpg)
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (4) |
-| Qwen-Image-Edit-2511 | PASS (4) | PASS (3) | PASS (3) |
-| FLUX.2 Klein-4B | PASS (4) | FAIL (2) | PASS (4) |
+| Qwen-Image-2.1 | PASS (4) | FAIL (2) | FAIL (2) |
+| Qwen-Image-Edit-2511 | FAIL (3) | FAIL (1) | PASS (3) |
+| FLUX.2 Klein-4B | PASS (4) | FAIL (2) | PASS (3) |
 | FLUX.3 Klein | PASS (4) | PASS (4) | PASS (4) |
 
 #### U2：Change the color of the white car behind the damaged car to silver.
 
-![v2-sa_10044652 U2 局部图（源 mask 轮廓）](case_studies/assets/only_one_model_success/U2_detail.jpg)
+![v2-sa_10044652 U2 局部图（源 mask 轮廓）](case_studies/assets/all_models_fail/U2_detail.jpg)
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
 | Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (4) |
-| Qwen-Image-Edit-2511 | PASS (4) | PASS (4) | PASS (4) |
-| FLUX.2 Klein-4B | PASS (4) | PASS (4) | PASS (3) |
+| Qwen-Image-Edit-2511 | FAIL (1) | FAIL (1) | FAIL (1) |
+| FLUX.2 Klein-4B | FAIL (3) | PASS (3) | PASS (3) |
 | FLUX.3 Klein | PASS (4) | PASS (4) | PASS (4) |
 
 #### U3：Remove the selected region.
 
-![v2-sa_10044652 U3 局部图（源 mask 轮廓）](case_studies/assets/only_one_model_success/U3_detail.jpg)
+![v2-sa_10044652 U3 局部图（源 mask 轮廓）](case_studies/assets/all_models_fail/U3_detail.jpg)
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | FAIL (0) | PASS (3) | FAIL (2) |
-| Qwen-Image-Edit-2511 | PASS (4) | PASS (4) | PASS (3) |
-| FLUX.2 Klein-4B | PASS (4) | PASS (3) | FAIL (2) |
-| FLUX.3 Klein | FAIL (1) | PASS (3) | FAIL (2) |
+| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (4) |
+| Qwen-Image-Edit-2511 | FAIL (1) | FAIL (1) | FAIL (1) |
+| FLUX.2 Klein-4B | FAIL (0) | FAIL (2) | FAIL (2) |
+| FLUX.3 Klein | FAIL (0) | PASS (4) | PASS (4) |
+
+
+### only_one_model_success：`v2-sa_10006079`
+
+English prompt:
+
+```text
+Edit the first image at its original size. Execute all numbered instructions. The second image, when present, supplies labeled locators only; omit those marks from the result. A locator selects a source instance; named parts further restrict the edit. For add it selects the support or spatial reference, not the new item outline. Preserve all unrequested content.
+
+U1 [ref; box]: Change the color of the woman’s yellow patterned tank top to teal.
+U2 [no ref; mask]: Remove the selected region.
+```
+
+中文翻译：
+
+```text
+编辑第一张图并保持原始尺寸。执行所有编号指令。第二张图（如有）只提供带标签的定位信息，输出中不得保留定位标记。定位器选择源图实例；命名部件进一步限定编辑范围。添加操作中，定位器选择支撑物或空间参考，不是新物体的轮廓。保留所有未请求内容。
+U1 [有参考图；框定位]：将女性的黄色图案背心改为青绿色。
+U2 [无参考图；掩码定位]：移除选定区域。
+```
+
+![v2-sa_10006079 原图、定位图和模型输出总览](case_studies/assets/only_one_model_success/overview.jpg)
+
+#### U1：Change the color of the woman’s yellow patterned tank top to teal.
+
+![v2-sa_10006079 U1 局部图（源 mask 轮廓）](case_studies/assets/only_one_model_success/U1_detail.jpg)
+
+| 模型 | E | P | Q |
+|---|---:|---:|---:|
+| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (4) |
+| Qwen-Image-Edit-2511 | PASS (4) | FAIL (1) | FAIL (2) |
+| FLUX.2 Klein-4B | PASS (4) | FAIL (2) | FAIL (2) |
+| FLUX.3 Klein | PASS (4) | PASS (4) | PASS (4) |
+
+#### U2：Remove the selected region.
+
+![v2-sa_10006079 U2 局部图（源 mask 轮廓）](case_studies/assets/only_one_model_success/U2_detail.jpg)
+
+| 模型 | E | P | Q |
+|---|---:|---:|---:|
+| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (4) |
+| Qwen-Image-Edit-2511 | FAIL (0) | PASS (4) | PASS (4) |
+| FLUX.2 Klein-4B | FAIL (0) | PASS (4) | PASS (4) |
+| FLUX.3 Klein | FAIL (1) | PASS (4) | PASS (3) |
 
 
 ### granularity_error：`v2-sa_6392020`
@@ -223,9 +213,9 @@ U5 [有参考图；点定位]：移除左后方双手背在身后的人的 T 恤
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | FAIL (0) | PASS (4) | PASS (4) |
-| Qwen-Image-Edit-2511 | FAIL (0) | PASS (4) | PASS (4) |
-| FLUX.2 Klein-4B | FAIL (0) | PASS (4) | PASS (4) |
+| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (4) |
+| Qwen-Image-Edit-2511 | FAIL (0) | FAIL (0) | FAIL (0) |
+| FLUX.2 Klein-4B | FAIL (1) | PASS (3) | PASS (3) |
 | FLUX.3 Klein | PASS (4) | PASS (4) | PASS (4) |
 
 #### U2：Replace the red top of the long-haired woman facing away in the middle with a short-sleeved hooded top.
@@ -234,9 +224,9 @@ U5 [有参考图；点定位]：移除左后方双手背在身后的人的 T 恤
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | FAIL (0) | PASS (4) | PASS (4) |
+| Qwen-Image-2.1 | FAIL (1) | PASS (4) | PASS (4) |
 | Qwen-Image-Edit-2511 | PASS (4) | PASS (4) | PASS (4) |
-| FLUX.2 Klein-4B | PASS (4) | PASS (4) | PASS (4) |
+| FLUX.2 Klein-4B | FAIL (1) | PASS (3) | PASS (3) |
 | FLUX.3 Klein | PASS (4) | PASS (4) | PASS (4) |
 
 #### U3：Add one small flap chest pocket sewn onto the T-shirt of the seated man on the left.
@@ -245,10 +235,10 @@ U5 [有参考图；点定位]：移除左后方双手背在身后的人的 T 恤
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | FAIL (3) | PASS (4) | FAIL (2) |
-| Qwen-Image-Edit-2511 | FAIL (0) | PASS (4) | PASS (4) |
-| FLUX.2 Klein-4B | FAIL (0) | PASS (4) | PASS (4) |
-| FLUX.3 Klein | FAIL (2) | FAIL (2) | FAIL (2) |
+| Qwen-Image-2.1 | FAIL (1) | FAIL (1) | FAIL (1) |
+| Qwen-Image-Edit-2511 | FAIL (0) | FAIL (1) | FAIL (1) |
+| FLUX.2 Klein-4B | FAIL (0) | PASS (3) | PASS (3) |
+| FLUX.3 Klein | FAIL (1) | FAIL (1) | FAIL (2) |
 
 #### U4：Change the color of the selected region to orange.
 
@@ -256,10 +246,10 @@ U5 [有参考图；点定位]：移除左后方双手背在身后的人的 T 恤
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | FAIL (2) | PASS (4) | PASS (3) |
-| Qwen-Image-Edit-2511 | FAIL (0) | PASS (4) | PASS (4) |
-| FLUX.2 Klein-4B | FAIL (0) | PASS (4) | PASS (4) |
-| FLUX.3 Klein | PASS (4) | FAIL (2) | PASS (3) |
+| Qwen-Image-2.1 | FAIL (2) | FAIL (1) | FAIL (1) |
+| Qwen-Image-Edit-2511 | FAIL (0) | FAIL (1) | FAIL (1) |
+| FLUX.2 Klein-4B | FAIL (0) | PASS (3) | PASS (3) |
+| FLUX.3 Klein | PASS (4) | PASS (4) | PASS (4) |
 
 #### U5：Remove the sleeves from the T-shirt of the person with hands behind their back at the left rear.
 
@@ -267,9 +257,9 @@ U5 [有参考图；点定位]：移除左后方双手背在身后的人的 T 恤
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (3) |
-| Qwen-Image-Edit-2511 | PASS (4) | FAIL (2) | PASS (3) |
-| FLUX.2 Klein-4B | PASS (4) | PASS (4) | PASS (4) |
+| Qwen-Image-2.1 | FAIL (1) | PASS (3) | FAIL (1) |
+| Qwen-Image-Edit-2511 | FAIL (1) | FAIL (1) | FAIL (1) |
+| FLUX.2 Klein-4B | FAIL (1) | PASS (3) | PASS (3) |
 | FLUX.3 Klein | FAIL (1) | PASS (4) | PASS (3) |
 
 
@@ -306,10 +296,10 @@ U5 [无参考图；掩码定位]：移除选定区域，使其达到膝盖长度
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | FAIL (0) | PASS (4) | PASS (4) |
-| Qwen-Image-Edit-2511 | FAIL (1) | FAIL (2) | PASS (4) |
-| FLUX.2 Klein-4B | FAIL (1) | FAIL (1) | PASS (3) |
-| FLUX.3 Klein | FAIL (1) | FAIL (2) | PASS (3) |
+| Qwen-Image-2.1 | FAIL (0) | FAIL (1) | FAIL (1) |
+| Qwen-Image-Edit-2511 | FAIL (1) | FAIL (1) | FAIL (2) |
+| FLUX.2 Klein-4B | FAIL (2) | FAIL (1) | FAIL (2) |
+| FLUX.3 Klein | FAIL (0) | PASS (4) | PASS (4) |
 
 #### U2：Replace the image-right shoe of the foreground man in yellow with a black knee-high boot.
 
@@ -317,10 +307,10 @@ U5 [无参考图；掩码定位]：移除选定区域，使其达到膝盖长度
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (4) |
-| Qwen-Image-Edit-2511 | PASS (4) | FAIL (2) | PASS (4) |
-| FLUX.2 Klein-4B | FAIL (1) | PASS (3) | PASS (3) |
-| FLUX.3 Klein | PASS (4) | FAIL (2) | PASS (3) |
+| Qwen-Image-2.1 | PASS (4) | FAIL (1) | FAIL (2) |
+| Qwen-Image-Edit-2511 | PASS (4) | FAIL (1) | FAIL (2) |
+| FLUX.2 Klein-4B | FAIL (1) | FAIL (1) | FAIL (2) |
+| FLUX.3 Klein | PASS (4) | PASS (4) | PASS (4) |
 
 #### U3：Add one rectangular side pocket on the selected region.
 
@@ -328,9 +318,9 @@ U5 [无参考图；掩码定位]：移除选定区域，使其达到膝盖长度
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | FAIL (1) | FAIL (1) | FAIL (1) |
-| Qwen-Image-Edit-2511 | FAIL (1) | PASS (4) | PASS (3) |
-| FLUX.2 Klein-4B | FAIL (0) | PASS (4) | PASS (4) |
+| Qwen-Image-2.1 | FAIL (0) | FAIL (1) | FAIL (1) |
+| Qwen-Image-Edit-2511 | FAIL (1) | FAIL (1) | FAIL (2) |
+| FLUX.2 Klein-4B | FAIL (1) | PASS (4) | PASS (4) |
 | FLUX.3 Klein | FAIL (0) | PASS (4) | PASS (4) |
 
 #### U4：Replace the image-left boot of the far-right performer in red with a white low-top canvas sneaker.
@@ -339,10 +329,10 @@ U5 [无参考图；掩码定位]：移除选定区域，使其达到膝盖长度
 
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
-| Qwen-Image-2.1 | PASS (4) | PASS (4) | PASS (3) |
-| Qwen-Image-Edit-2511 | PASS (4) | FAIL (2) | FAIL (2) |
-| FLUX.2 Klein-4B | FAIL (1) | PASS (3) | PASS (3) |
-| FLUX.3 Klein | FAIL (2) | FAIL (2) | FAIL (2) |
+| Qwen-Image-2.1 | FAIL (0) | FAIL (1) | FAIL (1) |
+| Qwen-Image-Edit-2511 | PASS (4) | PASS (4) | PASS (4) |
+| FLUX.2 Klein-4B | FAIL (1) | PASS (4) | PASS (4) |
+| FLUX.3 Klein | PASS (4) | FAIL (2) | PASS (4) |
 
 #### U5：Remove the selected region to make it knee-length.
 
@@ -351,9 +341,9 @@ U5 [无参考图；掩码定位]：移除选定区域，使其达到膝盖长度
 | 模型 | E | P | Q |
 |---|---:|---:|---:|
 | Qwen-Image-2.1 | FAIL (0) | FAIL (1) | FAIL (1) |
-| Qwen-Image-Edit-2511 | FAIL (1) | PASS (4) | PASS (3) |
-| FLUX.2 Klein-4B | FAIL (0) | PASS (4) | PASS (4) |
-| FLUX.3 Klein | FAIL (1) | PASS (4) | PASS (4) |
+| Qwen-Image-Edit-2511 | FAIL (1) | PASS (4) | PASS (4) |
+| FLUX.2 Klein-4B | FAIL (1) | PASS (4) | PASS (4) |
+| FLUX.3 Klein | FAIL (0) | PASS (4) | PASS (4) |
 
 ### 产物
 

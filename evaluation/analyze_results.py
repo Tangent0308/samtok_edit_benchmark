@@ -16,10 +16,10 @@ MODELS = {
     'flux3_klein': 'FLUX.3 Klein',
 }
 PATHS = {
-    'qwen_image_21': ('qwen_image_21_mask', 'qwen_image_21_mask'),
-    'qwen_image_edit_2511': ('qwen_image_edit_2511_mask', 'qwen_image_edit_2511_mask'),
-    'flux2_klein_4b': ('flux2_klein_4b_mask', 'flux2_klein_4b_mask'),
-    'flux3_klein': ('flux3_klein_color', 'flux3_klein_color'),
+    'qwen_image_21': ('qwen_image_21', 'qwen_image_21'),
+    'qwen_image_edit_2511': ('qwen_image_edit_2511', 'qwen_image_edit_2511'),
+    'flux2_klein_4b': ('flux2_klein_4b', 'flux2_klein_4b'),
+    'flux3_klein': ('flux3_klein', 'flux3_klein'),
 }
 COLORS = {'qwen_image_21':'#4472c4','qwen_image_edit_2511':'#ed7d31','flux2_klein_4b':'#70ad47','flux3_klein':'#7030a0'}
 DIM_COLORS = {'E':'#4472c4','P':'#ed7d31','Q':'#70ad47','unit_joint':'#7030a0'}
@@ -30,18 +30,18 @@ def read_jsonl(p):
         return [json.loads(x) for x in f if x.strip()]
 
 jobs_by_model = {
-    m: {x['job_id']: x for x in read_jsonl(EXP / 'recommended_judge_inputs' / paths[0] / 'judge_jobs.jsonl')}
+    m: {x['job_id']: x for x in read_jsonl(EXP / 'judge_inputs' / paths[0] / 'judge_jobs.jsonl')}
     for m, paths in PATHS.items()
 }
 case_jobs = {m: {x['case_id']: x for x in jobs_by_model[m].values()} for m in MODELS}
 reports = {
-    m: json.load(open(EXP / 'recommended_judge' / paths[1] / 'Qwen3.8-Flash-Next-FP8' / 'report.json'))
+    m: json.load(open(EXP / 'judge' / paths[1] / 'Qwen3.8-Flash-Next-FP8' / 'report.json'))
     for m, paths in PATHS.items()
 }
 rows = {m: {x['job_id']: x for x in reports[m]['case_results']} for m in MODELS}
 case_rows = {m: {x['case_id']: x for x in reports[m]['case_results']} for m in MODELS}
 outputs = {
-    m: {x['job_id']: x for x in read_jsonl(EXP / 'recommended_runs' / paths[1] / 'outputs.jsonl')}
+    m: {x['job_id']: x for x in read_jsonl(EXP / 'runs' / paths[1] / 'outputs.jsonl')}
     for m, paths in PATHS.items()
 }
 
@@ -297,8 +297,7 @@ for tag,cid in selected.items():
     shutil.copy2(j['source_image'],ifolder/'source.jpg')
     shutil.copy2(j['public_job']['images'][1],ifolder/'locator.png')
     # overview
-    mask_job=case_jobs['qwen_image_21'][cid]
-    imgs=[('Source',j['source_image']),('Mask locator',mask_job['public_job']['images'][1]),('Color locator',j['public_job']['images'][1])]
+    imgs=[('Source',j['source_image']),('Locator input\n(visual_locator_v2)',j['public_job']['images'][1])]
     for m,label in MODELS.items():
         mj=case_jobs[m][cid]
         imgs.append((label,outputs[m][mj['job_id']]['output_image']))
@@ -367,10 +366,37 @@ def prompt_zh(job):
         lines.append(f"{u['id']} [{ref}；{LOC_ZH.get(u['locator'],u['locator'])}]：{PROMPT_ZH.get((job['case_id'],u['id']),u['instruction'])}")
     return '\n'.join(lines)
 
+# Actual input example for the formal full evaluation. Both images are the
+# files passed to the editor; Image 2 is the color locator rendered on source
+# coordinates, not an evaluator overlay.
+def input_setting_example():
+    cid = 'v2-sa_10006079'
+    job = case_jobs['qwen_image_21'][cid]['public_job']
+    source_path, locator_path = job['images'][:2]
+    with Image.open(source_path) as src, Image.open(locator_path) as loc:
+        source = src.convert('RGB')
+        locator = loc.convert('RGB')
+    W, H = 1100, 430
+    canvas = Image.new('RGB', (W, H), 'white')
+    draw = ImageDraw.Draw(canvas)
+    try:
+        title_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 22)
+        label_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 17)
+    except OSError:
+        title_font = label_font = ImageFont.load_default()
+    draw.text((18, 14), 'Actual visual_locator_v2 input', fill='#111827', font=title_font)
+    for x, im, label in [(40, source, 'Image 1: clean source'), (570, locator, 'Image 2: color locator on source coordinates')]:
+        draw.text((x, 55), label, fill='#374151', font=label_font)
+        im.thumbnail((490, 330), Image.Resampling.LANCZOS)
+        canvas.paste(im, (x + (490 - im.width) // 2, 85 + (330 - im.height) // 2))
+    canvas.save(FIG / 'input_setting_visual_locator_v2.jpg', quality=88, optimize=True)
+
+input_setting_example()
+
 # Markdown report.
 md=['# SAMTok Edit Benchmark 2.6.0 结果分析','',f'生成时间：2026-10-19；四个模型均为完整 1084/1084 judge 评分。Judge 模型：`Qwen3.8-Flash-Next-FP8`。','', '## 1. 主表','', '| 模型 | JointPass | E 单元通过率 | P 单元通过率 | Q 单元通过率 | global_P | global_Q |','|---|---:|---:|---:|---:|---:|---:|']
 for r in main: md.append(f"| {r['model']} | {r['joint_pass']}/{r['cases']} ({pct(r['joint_rate'])}) | {pct(r['E_unit_rate'])} | {pct(r['P_unit_rate'])} | {pct(r['Q_unit_rate'])} | {pct(r['global_P_rate'])} | {pct(r['global_Q_rate'])} |")
-md += ['', 'JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q 通过。E 反映执行是否完成，P 反映非目标内容保持，Q 反映编辑质量。整体难度由 JointPass 体现；从单元级指标看，模型之间的主要差异可按 E、P、Q 三列比较。', '', '## 1.1 评测方式与输入 setting', '', '- 每个 job 来自 `data/v2_2.6.0/cases.jsonl`，输入由干净 source image、区域定位信息和公开 instruction 组成；编辑模型只输出完整 RGB 图片。', '- 正式视觉定位 setting：`visual_locator_v2` / `mixed`。point、box、mask 和 U 标签直接绘制在第二张 locator 图上，定位信息叠加在原图坐标上；模型输出不得保留这些标记。', '- 原生区域 setting：`native_regions_v2` / `mixed`。保留 point、box、二值 mask 的原生文件/坐标，供 API 式区域输入实验使用。', '- 灰度区域 setting：`mask_full` / `mask_pilot`。第二张图是黑底灰度 label map，U1…U5 对应 51、102、153、204、255，用于 mask 对照实验。', '- 本报告案例总览保留 source、mask locator、color locator 和四个模型输出；红色轮廓只出现在局部评测对齐图中，来自 evaluator，不是模型输出。', '', '### 1.2 评分与结果绑定', '', '- Judge 使用 `Qwen3.8-Flash-Next-FP8`，通过 vLLM 以 tensor parallel size 8、temperature 0、seed 0 运行。每个 U 评分 E/P/Q；E=4、P/Q≥3 视为单元通过，整图还要求 global_P/global_Q 通过。', '- 本报告主表使用已经完成的 1,084/1,084 judge 结果；结果与输入 manifest、输出图和 prompt 通过 job/input digest 绑定。', '- 外部评测结果根：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/`。以下表格路径均相对于该目录；仓库内报告为 `docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md`。', '', '### 1.3 两轮完整评测的实际输入', '', '| 轮次 | 模型 | Image 1 | Image 2 | prompt/协议 |', '|---|---|---|---|---|', '| 第一次完整评测 | 四个模型 | 干净 source image | `visual_locator_v2` 彩色 locator：在 source 坐标上绘制 point、box、mask 和 U 标签 | 正式视觉 locator prompt；输出只保留编辑后的完整 RGB 图 |', '| 第二次完整评测 | Qwen-Image-2.1、Qwen-Image-Edit-2511、FLUX.2 Klein-4B | 同一干净 source image | `mask_full` 灰度 label map：黑色背景，U1…U5 使用 51/102/153/204/255 | `[SAMTOK_MASK_PILOT_V1]`，明确 Image 2 是 label map，禁止复制灰度值、形状和标记 |', '| 第二次完整评测 | FLUX.3 Klein | 同一干净 source image | `visual_locator_v2` 彩色 locator | 正式视觉 locator prompt |', '', '第一次完整评测的冻结输入和结果位于 `judge_inputs/<model>/judge_jobs.jsonl`、`runs/<model>/outputs.jsonl`、`judge/<model>/Qwen3.8-Flash-Next-FP8/`；第二次完整评测对应 `recommended_judge_inputs/<model>_mask`、`recommended_runs/<model>_mask` 和 `recommended_judge/<model>_mask/Qwen3.8-Flash-Next-FP8/`。两轮的每个 job 都只给编辑模型两张图，`ref` 是 unit 的语义/评测属性，不会额外增加第三张参考图。', '', '| 模型 | 结果绑定的输入包 | 生成输出 | Judge report |', '|---|---|---|---|', '| Qwen-Image-2.1 | `recommended_judge_inputs/qwen_image_21_mask/judge_jobs.jsonl` | `recommended_runs/qwen_image_21_mask/outputs.jsonl` | `recommended_judge/qwen_image_21_mask/Qwen3.8-Flash-Next-FP8/report.json` |', '| Qwen-Image-Edit-2511 | `recommended_judge_inputs/qwen_image_edit_2511_mask/judge_jobs.jsonl` | `recommended_runs/qwen_image_edit_2511_mask/outputs.jsonl` | `recommended_judge/qwen_image_edit_2511_mask/Qwen3.8-Flash-Next-FP8/report.json` |', '| FLUX.2 Klein-4B | `recommended_judge_inputs/flux2_klein_4b_mask/judge_jobs.jsonl` | `recommended_runs/flux2_klein_4b_mask/outputs.jsonl` | `recommended_judge/flux2_klein_4b_mask/Qwen3.8-Flash-Next-FP8/report.json` |', '| FLUX.3 Klein | `recommended_judge_inputs/flux3_klein_color/judge_jobs.jsonl` | `recommended_runs/flux3_klein_color/outputs.jsonl` | `recommended_judge/flux3_klein_color/Qwen3.8-Flash-Next-FP8/report.json` |', '', '小批量三 setting 对照素材位于外部实验根的 `mask_pilot/setting_gallery/`；它包括正式视觉 locator、color locator control 和 mask pilot。完整主表只使用上表列出的冻结结果路径。', '', '## 2. 多目标组合代价','', '![JointPass 随 K 变化](figures/k_jointpass.svg)','', '实线是实测 JointPass，虚线是各单元 E/P/Q 联合通过率乘积 `∏u p_u`。对 K 个目标，令 `p_u` 为位置 Uu 的单元联合通过率；实测曲线低于虚线表示多个请求之间存在额外干扰。图和 `k_jointpass.csv` 另外给出 `global_P × global_Q × ∏u p_u`，用于解释全图保持与整体质量对最终 JointPass 的额外压缩。','', '## 3. 定位方式的影响','', '![定位方式影响](figures/locator_impact.svg)','', '单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图再比较 point、box、mask 三种 locator。完整 E/P/Q 与样本数见 `locator_impact.csv`。','', '| 模型 | ref unit-joint | no-ref unit-joint | no-ref - ref |','|---|---:|---:|---:|']
+md += ['', 'JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q 通过。E 反映执行是否完成，P 反映非目标内容保持，Q 反映编辑质量。整体难度由 JointPass 体现；从单元级指标看，模型之间的主要差异可按 E、P、Q 三列比较。', '', '## 1.1 评测方式与输入 setting', '', '- 每个 job 来自 `data/v2_2.6.0/cases.jsonl`，编辑模型收到两张图和一段公开 instruction，并只输出完整 RGB 图片。', '- Image 1 是干净 source image。Image 2 是 `visual_locator_v2` / `mixed` 的彩色 locator：point、box、mask 和 U 标签直接绘制在 source 的对应坐标上。', '- prompt 明确要求第二张图只用于定位，输出中不得保留 point、box、mask、颜色或 U 标签。`ref` 只表示 unit 的语义属性，不会增加第三张图片。', '', '![实际评测输入 setting](figures/input_setting_visual_locator_v2.jpg)', '', '图中展示的是编辑模型实际收到的两张输入图；局部案例图中的红色轮廓属于 evaluator 对齐可视化，不是模型输入或模型输出。', '', '### 1.2 评分与结果绑定', '', '- Judge 使用 `Qwen3.8-Flash-Next-FP8`，通过 vLLM 以 tensor parallel size 8、temperature 0、seed 0 运行。每个 U 评分 E/P/Q；E=4、P/Q≥3 视为单元通过，整图还要求 global_P/global_Q 通过。', '- 本报告主表使用完整 1,084/1,084 judge 结果；结果与输入 manifest、输出图和 prompt 通过 job/input digest 绑定。', '- 外部评测结果根：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/`。以下表格路径均相对于该目录；仓库内报告为 `docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md`。', '', '| 模型 | 输入 job | 生成输出 | Judge report |', '|---|---|---|---|', '| Qwen-Image-2.1 | `judge_inputs/qwen_image_21/judge_jobs.jsonl` | `runs/qwen_image_21/outputs.jsonl` | `judge/qwen_image_21/Qwen3.8-Flash-Next-FP8/report.json` |', '| Qwen-Image-Edit-2511 | `judge_inputs/qwen_image_edit_2511/judge_jobs.jsonl` | `runs/qwen_image_edit_2511/outputs.jsonl` | `judge/qwen_image_edit_2511/Qwen3.8-Flash-Next-FP8/report.json` |', '| FLUX.2 Klein-4B | `judge_inputs/flux2_klein_4b/judge_jobs.jsonl` | `runs/flux2_klein_4b/outputs.jsonl` | `judge/flux2_klein_4b/Qwen3.8-Flash-Next-FP8/report.json` |', '| FLUX.3 Klein | `judge_inputs/flux3_klein/judge_jobs.jsonl` | `runs/flux3_klein/outputs.jsonl` | `judge/flux3_klein/Qwen3.8-Flash-Next-FP8/report.json` |', '', '## 2. 多目标组合代价','', '![JointPass 随 K 变化](figures/k_jointpass.svg)','', '实线是实测 JointPass，虚线是各单元 E/P/Q 联合通过率乘积 `∏u p_u`。对 K 个目标，令 `p_u` 为位置 Uu 的单元联合通过率；实测曲线低于虚线表示多个请求之间存在额外干扰。图和 `k_jointpass.csv` 另外给出 `global_P × global_Q × ∏u p_u`，用于解释全图保持与整体质量对最终 JointPass 的额外压缩。', '', '## 3. 定位方式的影响','', '![定位方式影响](figures/locator_impact.svg)','', '单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图再比较 point、box、mask 三种 locator。完整 E/P/Q 与样本数见 `locator_impact.csv`。','', '| 模型 | ref unit-joint | no-ref unit-joint | no-ref - ref |','|---|---:|---:|---:|']
 for m,label in MODELS.items():
     ref=next(r for r in locrows if r['model_key']==m and r['group']=='ref')['unit_joint_rate']
     noref=next(r for r in locrows if r['model_key']==m and r['group']=='no-ref')['unit_joint_rate']
@@ -383,7 +409,7 @@ md += ['', '## 4. E 失败模式','', '![E 失败模式](figures/failure_modes.s
 for m,label in MODELS.items():
     d={r['category']:r['count'] for r in failure_rows if r['model_key']==m}; total=sum(d.values())
     md.append(f"| {label} | {total} | {d.get('locator marker in output',0)} | {d.get('not executed',0)} | {d.get('occluded fragments/leftovers',0)} | {d.get('wrong instance',0)} | {d.get('wrong granularity',0)} | {d.get('other E failure',0)} |")
-md += ['', '## 案例研究','', '以下内容已直接嵌入本报告。每个案例的总览图从左到右依次为原图、mask locator、color locator 和四个模型输出；每个 U 的局部图均叠加源 mask 轮廓。状态表中的 E/P/Q 是该 U 的逐维 judge 结果；HTML 版 [`case_studies/index.html`](case_studies/index.html) 保留了更宽的排版和完整证据。选例分别覆盖所有模型失败、只有一个模型成功、实例/部件粒度错误和 no-ref 定位失败。']
+md += ['', '## 案例研究','', '以下内容已直接嵌入本报告。每个案例的总览图从左到右依次为原图、实际发送的 visual locator 输入和四个模型输出；每个 U 的局部图均叠加源 mask 轮廓。状态表中的 E/P/Q 是该 U 的逐维 judge 结果；HTML 版 [`case_studies/index.html`](case_studies/index.html) 保留了更宽的排版和完整证据。选例分别覆盖所有模型失败、只有一个模型成功、实例/部件粒度错误和 no-ref 定位失败。']
 for tag,cid in selected.items():
     j=case_job(cid)
     md += ['', f'### {tag}：`{cid}`','', 'English prompt:', '', '```text', j['public_job']['prompt'], '```', '', '中文翻译：', '', '```text', prompt_zh(j), '```', '', f'![{cid} 原图、定位图和模型输出总览](case_studies/assets/{tag}/overview.jpg)','']

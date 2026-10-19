@@ -2,61 +2,6 @@
 
 生成时间：2026-10-19；四个模型均为完整 1084/1084 judge 评分。Judge 模型：`Qwen3.8-Flash-Next-FP8`。
 
-## 0. 评测配置
-
-### 0.1 评测对象与输入
-
-- Benchmark manifest：`data/v2_2.6.0/cases.jsonl`，共 1,084 个 `mixed` jobs。
-- 源数据根：`/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2`。
-- 输入协议：`visual_locator_v2`。每个 job 给模型干净 source image、区域信息图和公开 instruction；模型只需输出编辑后的完整 RGB 图片。
-- 三个模型使用 `mask_full`：第二张图是灰度 label map，U1…U5 分别使用灰度值 51、102、153、204、255；颜色和形状不是输出目标。
-- FLUX.3 使用 `visual_locator_v2_mixed_color`：第二张图是带颜色 locator marks 的区域图，结合 point、box、mask 和 U 标签定位。
-
-### 0.2 生成模型与推理 setting
-
-| 模型 | 输入 setting | 推理实现 | Steps | 关键参数 |
-|---|---|---|---:|---|
-| Qwen-Image-2.1 | `mask_full` | DiffSynth `QwenImage21Pipeline` | 40 | cfg_scale=1.0; grid=32 |
-| Qwen-Image-Edit-2511 | `mask_full` | DiffSynth `QwenImagePipeline` | 40 | cfg_scale=4.0; zero_cond_t=true; edit_image_auto_resize=true; grid=16 |
-| FLUX.2 Klein-4B | `mask_full` | DiffSynth `Flux2ImagePipeline` | 4 | cfg_scale=1.0; embedded_guidance=1.0; grid=16 |
-| FLUX.3 Klein | `visual_locator_v2_mixed_color` | FLUX.3 Klein official reference inference | 16 | official prompt upsampler/PUP; grid=16 |
-
-所有生成配置的目标面积约为 1 MP；输出在 registry 中绑定 source size、manifest SHA256、input digest 和 run configuration。生成使用 8 张 GPU（0–7），完整生成结果均为 1,084/1,084。
-
-各模型实际推理输入包的示例（同一 case：`v2-sa_10006079`）：
-
-![四个模型实际收到的完整输入包](figures/input_settings_examples.jpg)
-
-图中每一行对应一次实际推理输入，包含 Image 1（干净 source）、Image 2（区域信息图）以及随图片发送的 prompt。前三个模型的 Image 2 是实际的灰度 `mask_full` label map；FLUX.3 的 Image 2 是实际的彩色 locator 图。该 case 的原始 unit metadata 是 U1=box、U2=mask，但 `mask_full` 会把两个非 none locator 都统一编码成灰度区域，因此前三个模型的 Image 2 中 U1 和 U2 都显示为 label-map 区域。这是输入 setting 的统一编码，不是把 U1 的 box metadata 误改成 mask。
-
-### 0.3 Judge 与通过规则
-
-- Judge protocol：`v2_epq_numeric_all_units_1`；Judge 模型：`/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/Qwen3.8-Flash-Next-FP8`。
-- 推理后端：vLLM，tensor parallel size=8，GPU memory utilization=0.85，temperature=0，seed=0，max tokens=12,288。
-- Judge 输入包括完整 source/output、固定坐标 source/output crops，以及只供 judge 使用的源 mask contour。模型输出本身不叠加 contour。
-- 每个单元评分 E、P、Q 为 0–4 分；E=4 才通过，P/Q≥3 才通过；整图 `global_P`、`global_Q` 也要求分数≥3。
-- `JointPass` 要求该 job 的所有 U 都满足 E/P/Q，并且 `global_P` 与 `global_Q` 都通过。
-
-### 0.4 结果路径
-
-| 内容 | 路径 |
-|---|---|
-| 最终报告（Git） | `docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md` |
-| 生成与 judge 外部实验根 | `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/` |
-| mask_full 输入 jobs | `recommended_inputs/mask_full/jobs.jsonl` |
-| FLUX.3 冻结 judge 输入 | `recommended_judge_inputs/flux3_klein_color/judge_jobs.jsonl` |
-| Qwen-Image-2.1 生成 | `recommended_runs/qwen_image_21_mask/outputs.jsonl` |
-| Qwen-Image-Edit-2511 生成 | `recommended_runs/qwen_image_edit_2511_mask/outputs.jsonl` |
-| FLUX.2 Klein-4B 生成 | `recommended_runs/flux2_klein_4b_mask/outputs.jsonl` |
-| FLUX.3 Klein 生成 | `recommended_runs/flux3_klein_color/outputs.jsonl` |
-| 四模型 judge 输入 | `recommended_judge_inputs/<model>/judge_jobs.jsonl` |
-| 四模型 scores | `recommended_judge/<model>/Qwen3.8-Flash-Next-FP8/scores.jsonl` |
-| 四模型结构化 report | `recommended_judge/<model>/Qwen3.8-Flash-Next-FP8/report.json` |
-| setting 示例图 | `docs/reports/2.6.0/figures/input_settings_examples.jpg` |
-| 本报告统计 CSV 与图 | `docs/reports/2.6.0/{main_table,k_jointpass,locator_impact,failure_modes}.*` |
-
-推荐的复现入口：`evaluation/diffsynth/run_all.sh`；统计脚本：`evaluation/analyze_results.py`。本报告使用已经完成且通过完整绑定检查的四个 `scores.jsonl`，不是 partial records。
-
 ## 1. 主表
 
 | 模型 | JointPass | E 单元通过率 | P 单元通过率 | Q 单元通过率 | global_P | global_Q |
@@ -68,16 +13,28 @@
 
 JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q 通过。E 反映执行是否完成，P 反映非目标内容保持，Q 反映编辑质量。整体难度由 JointPass 体现；从单元级指标看，模型之间的主要差异可按 E、P、Q 三列比较。
 
-## 1.1 模型输入设置
+## 1.1 评测方式与输入 setting
 
-| 模型 | 区域信息输入 | 评测输入包 |
-|---|---|---|
-| Qwen-Image-2.1 | grayscale mask label map (mask_full) | `qwen_image_21_mask` |
-| Qwen-Image-Edit-2511 | grayscale mask label map (mask_full) | `qwen_image_edit_2511_mask` |
-| FLUX.2 Klein-4B | grayscale mask label map (mask_full) | `flux2_klein_4b_mask` |
-| FLUX.3 Klein | color locator image (colored locator marks) | `flux3_klein_color` |
+- 每个 job 来自 `data/v2_2.6.0/cases.jsonl`，输入由干净 source image、区域定位信息和公开 instruction 组成；编辑模型只输出完整 RGB 图片。
+- 正式视觉定位 setting：`visual_locator_v2` / `mixed`。point、box、mask 和 U 标签直接绘制在第二张 locator 图上，定位信息叠加在原图坐标上；模型输出不得保留这些标记。
+- 原生区域 setting：`native_regions_v2` / `mixed`。保留 point、box、二值 mask 的原生文件/坐标，供 API 式区域输入实验使用。
+- 灰度区域 setting：`mask_full` / `mask_pilot`。第二张图是黑底灰度 label map，U1…U5 对应 51、102、153、204、255，用于 mask 对照实验。
+- 本报告案例总览保留 source、mask locator、color locator 和四个模型输出；红色轮廓只出现在局部评测对齐图中，来自 evaluator，不是模型输出。
 
-总览图中带有 `[mask]` 或 `[color]` 的模型输出面板表示该模型实际收到的区域信息形式。细节图里的红色轮廓统一是评测可视化用的源 mask 轮廓，用来对齐局部区域；它不是模型输出，也不参与输出图像评分。
+### 1.2 评分与结果绑定
+
+- Judge 使用 `Qwen3.8-Flash-Next-FP8`，通过 vLLM 以 tensor parallel size 8、temperature 0、seed 0 运行。每个 U 评分 E/P/Q；E=4、P/Q≥3 视为单元通过，整图还要求 global_P/global_Q 通过。
+- 本报告主表使用已经完成的 1,084/1,084 judge 结果；结果与输入 manifest、输出图和 prompt 通过 job/input digest 绑定。
+- 外部评测结果根：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/`。以下表格路径均相对于该目录；仓库内报告为 `docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md`。
+
+| 模型 | 结果绑定的输入包 | 生成输出 | Judge report |
+|---|---|---|---|
+| Qwen-Image-2.1 | `recommended_judge_inputs/qwen_image_21_mask/judge_jobs.jsonl` | `recommended_runs/qwen_image_21_mask/outputs.jsonl` | `recommended_judge/qwen_image_21_mask/Qwen3.8-Flash-Next-FP8/report.json` |
+| Qwen-Image-Edit-2511 | `recommended_judge_inputs/qwen_image_edit_2511_mask/judge_jobs.jsonl` | `recommended_runs/qwen_image_edit_2511_mask/outputs.jsonl` | `recommended_judge/qwen_image_edit_2511_mask/Qwen3.8-Flash-Next-FP8/report.json` |
+| FLUX.2 Klein-4B | `recommended_judge_inputs/flux2_klein_4b_mask/judge_jobs.jsonl` | `recommended_runs/flux2_klein_4b_mask/outputs.jsonl` | `recommended_judge/flux2_klein_4b_mask/Qwen3.8-Flash-Next-FP8/report.json` |
+| FLUX.3 Klein | `recommended_judge_inputs/flux3_klein_color/judge_jobs.jsonl` | `recommended_runs/flux3_klein_color/outputs.jsonl` | `recommended_judge/flux3_klein_color/Qwen3.8-Flash-Next-FP8/report.json` |
+
+小批量三 setting 对照素材位于外部实验根的 `mask_pilot/setting_gallery/`；它包括正式视觉 locator、color locator control 和 mask pilot。完整主表只使用上表列出的冻结结果路径。
 
 ## 2. 多目标组合代价
 
@@ -89,7 +46,7 @@ JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q �
 
 ![定位方式影响](figures/locator_impact.svg)
 
-单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图的 point/box/mask 是按 case 的原始 locator metadata 分组，且跨 ref 与 no-ref 汇总；对于前三个 `mask_full` 模型，这三类 case 最终都以灰度 label map 输入，因此右图不是三种视觉编码的受控 ablation，而是不同原始 locator 类型 case 的条件通过率。FLUX.3 的 color locator 保留了 point、box、mask 的视觉标记。完整 E/P/Q 与样本数见 `locator_impact.csv`。
+单元级 `unit_joint` 定义为该单元 E、P、Q 同时通过。左图先比较 ref 和 no-ref；no-ref 指令只写 `the selected region`，模型必须从 locator 选择实例。右图再比较 point、box、mask 三种 locator。完整 E/P/Q 与样本数见 `locator_impact.csv`。
 
 | 模型 | ref unit-joint | no-ref unit-joint | no-ref - ref |
 |---|---:|---:|---:|

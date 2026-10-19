@@ -15,13 +15,13 @@ def main():
     parser.add_argument("--training-repo", type=Path, required=True)
     parser.add_argument("--manifest", type=Path, default=repo / "data/v2/cases.jsonl")
     args = parser.parse_args()
-    canonical = repo / "src/samtok_benchmark/v2/instruction_protocol.py"
+    canonical = repo / "samtok_benchmark/v2/instruction_protocol.py"
     training = args.training_repo / "sa1b_pipeline/instruction_protocol.py"
     if canonical.read_bytes() != training.read_bytes():
         raise ValueError("benchmark and training instruction protocol implementations differ")
     for left, right in [
         (
-            repo / "src/samtok_benchmark/v2/instruction_style.py",
+            repo / "samtok_benchmark/v2/instruction_style.py",
             args.training_repo / "sa1b_pipeline/instruction_style.py",
         ),
         (

@@ -21,14 +21,14 @@ samtok-benchmark = "samtok_benchmark.v2.cli:main"
 samtok-benchmark-v2 = "samtok_benchmark.v2.cli:main"
 
 [tool.setuptools.packages.find]
-where = ["src"]
+where = ["."]
 
 [tool.setuptools.package-data]
 "samtok_benchmark.review" = ["static/*.html", "static/*.js", "static/*.css", "static/*.py"]
 "samtok_benchmark.v2" = ["*.html", "review_static/*.html", "review_static/*.js", "review_static/*.css", "review_static/*.py"]
 
 [tool.pytest.ini_options]
-pythonpath = ["src"]
+pythonpath = ["."]
 testpaths = ["tests"]
 
 [tool.ruff]

@@ -65,7 +65,7 @@ def main():
         env = {
             **os.environ,
             "CUDA_VISIBLE_DEVICES": gpu,
-            "PYTHONPATH": str(HERE) + os.pathsep + os.environ.get("PYTHONPATH", ""),
+            "PYTHONPATH": str(HERE.parent.parent) + os.pathsep + os.environ.get("PYTHONPATH", ""),
         }
         command = [
             sys.executable, "-m", "samtok_benchmark.v2.cli", "run-editor",

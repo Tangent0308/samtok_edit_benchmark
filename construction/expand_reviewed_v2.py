@@ -18,7 +18,7 @@ from pycocotools import mask as coco
 from scipy.ndimage import distance_transform_edt, label
 
 REPO = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(REPO / 'src'))
+sys.path.insert(0, str(REPO))
 from samtok_benchmark.v2.instruction_protocol import make_spec, render, mask_contract, length_advice
 from samtok_benchmark.v2.dataset import validate
 

@@ -12,13 +12,13 @@
 
 ## DiffSynth 编辑器
 
-入口在 `baselines/diffsynth/`：
+入口在 `evaluation/diffsynth/`：
 
 ```bash
-bash baselines/diffsynth/run_all.sh gen qwen_image_edit_2511 0,1,2,3
-bash baselines/diffsynth/run_all.sh gen qwen_image_21 0,1,2,3
-bash baselines/diffsynth/run_all.sh gen flux2_klein_4b 0,1,2,3
-bash baselines/diffsynth/run_all.sh gen flux3_klein 0,1,2,3
+bash evaluation/diffsynth/run_all.sh gen qwen_image_edit_2511 0,1,2,3
+bash evaluation/diffsynth/run_all.sh gen qwen_image_21 0,1,2,3
+bash evaluation/diffsynth/run_all.sh gen flux2_klein_4b 0,1,2,3
+bash evaluation/diffsynth/run_all.sh gen flux3_klein 0,1,2,3
 ```
 
 前三个 adapter 使用 DiffSynth-Studio 当前 pipeline：
@@ -102,9 +102,9 @@ P/Q 以及整图 `global_P`、`global_Q` 至少 3 分才通过。严格通过要
 `judge_inputs/<model>/`。
 
 ```bash
-bash baselines/diffsynth/run_all.sh gen <model> <gpus>
-bash baselines/diffsynth/run_all.sh judge <model>
-bash baselines/diffsynth/run_all.sh report <model>
+bash evaluation/diffsynth/run_all.sh gen <model> <gpus>
+bash evaluation/diffsynth/run_all.sh judge <model>
+bash evaluation/diffsynth/run_all.sh report <model>
 ```
 
 正式运行前先用 `run_all.sh` 的生成命令确认 GPU 列表和 checkpoint 版本；生成阶段会

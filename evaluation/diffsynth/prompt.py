@@ -21,6 +21,12 @@ IMAGE_NAMES = {"picture": ("Picture 1", "Picture 2"), "image": ("Image 1", "Imag
 
 def build_prompt(job: dict, image_names: str) -> str:
     source, locator = IMAGE_NAMES[image_names]
+    # The mask pilot stores its prompt in the public job with a sentinel so that the
+    # full visual-locator benchmark keeps its original prompt and run behavior.  Only
+    # placeholder substitution depends on the model-specific image naming convention.
+    pilot_prompt = job.get("prompt", "")
+    if pilot_prompt.startswith(("[SAMTOK_MASK_PILOT_V1]", "[SAMTOK_LABEL_MAP_V1]")):
+        return pilot_prompt.replace("{SOURCE}", source).replace("{REGION}", locator)
     has_locator = len(job["images"]) == 2
     if has_locator:
         intro = (

@@ -1,6 +1,6 @@
 # Release 2.6.0 修复完成记录（2026-10-16）
 
-全部 804 个修复任务已完成，另 280 个 case 无专项修复任务，统一迁移协议。当前正式入口为 [data/v2_2.6.0/cases.jsonl](../data/v2_2.6.0/cases.jsonl)，[发布说明](RELEASE_2_6_0_ZH.md)记录全量构建、校验和路径；[对照报告](RELEASE_2_6_BEFORE_AFTER_ZH.md)展示修改前后的 mask 与指令。
+全部 804 个修复任务已完成，另 280 个 case 无专项修复任务，统一迁移协议。当前正式入口为 [data/v2_2.6.0/cases.jsonl](../../data/v2_2.6.0/cases.jsonl)，[发布说明](RELEASE_2_6_0_ZH.md)记录全量构建、校验和路径；[对照报告](RELEASE_2_6_BEFORE_AFTER_ZH.md)展示修改前后的 mask 与指令。
 
 ## 1. 接续前后
 

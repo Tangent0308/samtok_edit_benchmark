@@ -10,7 +10,10 @@ REPO=$(cd "$HERE/../.." && pwd)
 EXP=${SAMTOK_EXP:-/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines}
 DATA=/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
 MANIFEST=$REPO/data/v2_2.6.0/cases.jsonl
-INPUTS=$EXP/inputs/visual_locator_v2_mixed
+export PYTHONPATH="$REPO${PYTHONPATH:+:$PYTHONPATH}"
+INPUT_PROTOCOL=${SAMTOK_INPUT_PROTOCOL:-visual_locator_v2}
+INPUT_VARIANTS=${SAMTOK_INPUT_VARIANTS:-mixed}
+INPUTS=${SAMTOK_INPUTS:-$EXP/inputs/${INPUT_PROTOCOL}_${INPUT_VARIANTS}}
 JUDGE_MODEL=${SAMTOK_JUDGE_MODEL:-/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/Qwen3.8-Flash-Next-FP8}
 JUDGE_NAME=$(basename "$JUDGE_MODEL")
 
@@ -30,7 +33,7 @@ case $cmd in
     model=$1; gpus=${2:-0,1,2,3,4,5,6,7}
     if [ ! -f "$INPUTS/jobs.jsonl" ]; then
       /opt/tiger/envs/gen/bin/samtok-benchmark-v2 prepare --manifest "$MANIFEST" --dataset-root "$DATA" \
-        --protocol visual_locator_v2 --variants mixed --output "$INPUTS"
+        --protocol "$INPUT_PROTOCOL" --variants "$INPUT_VARIANTS" --output "$INPUTS"
     fi
     py=$(python_for "$model")
     mkdir -p "$EXP/runs/$model"

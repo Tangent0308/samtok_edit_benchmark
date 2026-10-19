@@ -16,7 +16,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 REPO = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPO / "src"))
+sys.path.insert(0, str(REPO))
 from samtok_benchmark.io import read_jsonl, sha256_file, write_json, write_jsonl  # noqa: E402
 
 EXAMPLES = [

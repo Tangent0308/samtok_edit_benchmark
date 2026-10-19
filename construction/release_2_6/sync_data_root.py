@@ -10,7 +10,7 @@ import shutil
 import sys
 
 REPO = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPO / "src"))
+sys.path.insert(0, str(REPO))
 from samtok_benchmark.io import sha256_file, write_json  # noqa: E402
 
 

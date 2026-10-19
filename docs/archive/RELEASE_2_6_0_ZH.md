@@ -42,7 +42,7 @@
 | `data/v2_1084/` | 2.5.0 冻结基线，未改写 |
 | `data/v2/` / `data/v2_1k/` | 原版 200 张 / 早期未验收草稿，均不是当前入口 |
 
-旧审核卡的哈希继续用于来源证据校验，**卡片内的旧 mask 和指令不代表 2.6.0 标注**。新版可视化以 [修复前后报告](RELEASE_2_6_BEFORE_AFTER_ZH.md)及当前 manifest 为准。修复阶段工具索引见 [construction README](../construction/release_2_6/README.md)。
+旧审核卡的哈希继续用于来源证据校验，**卡片内的旧 mask 和指令不代表 2.6.0 标注**。新版可视化以 [修复前后报告](RELEASE_2_6_BEFORE_AFTER_ZH.md)及当前 manifest 为准。修复阶段工具索引见 [construction README](../../construction/release_2_6/README.md)。
 
 ## 3. 变更记录
 
@@ -98,7 +98,7 @@
 全量资产校验命令：
 
 ```bash
-PYTHONPATH=src /opt/tiger/envs/gen/bin/python -m samtok_benchmark.v2.cli validate \
+/opt/tiger/envs/gen/bin/python -m samtok_benchmark.v2.cli validate \
   --manifest data/v2_2.6.0/cases.jsonl \
   --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2 \
   --minimum-cases 1000 --output data/v2_2.6.0/validation.json

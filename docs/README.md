@@ -1,0 +1,18 @@
+# Documentation map
+
+当前 release 只需要先读两份主文档：
+
+1. [Benchmark overview 2.6.0](BENCHMARK_OVERVIEW_2_6_0_ZH.md)：任务目标、统计、输入方式、模型评测入口、rubric、代表性 case 和路径。
+2. [Construction 2.6.0](CONSTRUCTION_2_6_0_ZH.md)：源数据、case 选择、instruction/spec、协议 2.0、mask 精修、审查、发布和复现。
+
+其他文档按用途归档：
+
+- `archive/RELEASE_2_6_0_ZH.md`：发布时的完整路径、构建回执和资产说明；
+- `archive/BENCHMARK_EVALUATION_2_6_0_ZH.md`：旧版评测流水线细节，模型入口以 `evaluation/` 当前代码为准；
+- `archive/INSTRUCTION_PROTOCOL_ZH.md`、`archive/07_*.md`：协议 2.0 定稿和历史协议说明；
+- `archive/BENCHMARK_EXPANSION_1K_ZH.md`：扩充审核过程；
+- `archive/BENCHMARK_AUDIT_20261015_ZH.md`、`archive/RELEASE_2_6_REPAIR_STATUS_ZH.md`、`archive/RELEASE_2_6_REMAINING_CASES_ZH.md`：修复与审查过程；
+- `archive/RELEASE_2_6_BEFORE_AFTER_ZH.md`：修订前后图例；
+- `archive/INSTRUCTION_ALIGNMENT_20261013_ZH.md`、`archive/INSTRUCTION_PROTOCOL_1.0_ZH.md`：旧版本迁移和兼容记录。
+
+大体积实验 gallery、模型输出和 judge records 在 [results/README.md](../results/README.md) 指向的外部实验根目录，不复制进 Git 文档。

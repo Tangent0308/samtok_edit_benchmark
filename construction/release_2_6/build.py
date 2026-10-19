@@ -25,7 +25,7 @@ from PIL import Image
 from scipy.ndimage import distance_transform_edt, label
 
 REPO = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPO / "src"))
+sys.path.insert(0, str(REPO))
 from samtok_benchmark.io import read_jsonl, sha256_file, write_json, write_jsonl  # noqa: E402
 from samtok_benchmark.v2.instruction_protocol import (  # noqa: E402
     VERSION,

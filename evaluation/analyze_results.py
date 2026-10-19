@@ -380,7 +380,62 @@ def prompt_zh(job):
     return '\n'.join(lines)
 
 # Markdown report.
-md=['# SAMTok Edit Benchmark 2.6.0 结果分析','',f'生成时间：2026-10-19；四个模型均为完整 1084/1084 judge 评分。Judge 模型：`Qwen3.8-Flash-Next-FP8`。','', '## 1. 主表','', '| 模型 | JointPass | E 单元通过率 | P 单元通过率 | Q 单元通过率 | global_P | global_Q |','|---|---:|---:|---:|---:|---:|---:|']
+md=['# SAMTok Edit Benchmark 2.6.0 结果分析','',f'生成时间：2026-10-19；四个模型均为完整 1084/1084 judge 评分。Judge 模型：`Qwen3.8-Flash-Next-FP8`。', '', '## 0. 评测配置', '', '### 0.1 评测对象与输入', '', '- Benchmark manifest：`data/v2_2.6.0/cases.jsonl`，共 1,084 个 `mixed` jobs。', '- 源数据根：`/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2`。', '- 输入协议：`visual_locator_v2`。每个 job 给模型干净 source image、区域信息图和公开 instruction；模型只需输出编辑后的完整 RGB 图片。', '- 三个模型使用 `mask_full`：第二张图是灰度 label map，U1…U5 分别使用灰度值 51、102、153、204、255；颜色和形状不是输出目标。', '- FLUX.3 使用 `visual_locator_v2_mixed_color`：第二张图是带颜色 locator marks 的区域图，结合 point、box、mask 和 U 标签定位。', '', '### 0.2 生成模型与推理 setting', '', '| 模型 | 输入 setting | 推理实现 | Steps | 关键参数 |', '|---|---|---|---:|---|']
+GEN_SETTINGS = {
+    'qwen_image_21': ('mask_full', 'DiffSynth `QwenImage21Pipeline`', '40', 'cfg_scale=1.0; grid=32'),
+    'qwen_image_edit_2511': ('mask_full', 'DiffSynth `QwenImagePipeline`', '40', 'cfg_scale=4.0; zero_cond_t=true; edit_image_auto_resize=true; grid=16'),
+    'flux2_klein_4b': ('mask_full', 'DiffSynth `Flux2ImagePipeline`', '4', 'cfg_scale=1.0; embedded_guidance=1.0; grid=16'),
+    'flux3_klein': ('visual_locator_v2_mixed_color', 'FLUX.3 Klein official reference inference', '16', 'official prompt upsampler/PUP; grid=16'),
+}
+for m,label in MODELS.items():
+    setting, impl, steps, params = GEN_SETTINGS[m]
+    md.append(f'| {label} | `{setting}` | {impl} | {steps} | {params} |')
+# One representative input image per model setting, using the same case where available.
+def input_setting_examples():
+    cid = 'v2-sa_10006079'
+    mask_path = case_jobs['qwen_image_21'][cid]['public_job']['images'][1]
+    color_path = case_jobs['flux3_klein'][cid]['public_job']['images'][1]
+    panels = [
+        ('Qwen-Image-2.1\nmask_full', mask_path),
+        ('Qwen-Edit-2511\nmask_full', mask_path),
+        ('FLUX.2 Klein\nmask_full', mask_path),
+        ('FLUX.3 Klein\ncolor locator', color_path),
+    ]
+    cw, ch, label_h = 390, 330, 52
+    canvas = Image.new('RGB', (cw * len(panels), ch), 'white')
+    draw = ImageDraw.Draw(canvas)
+    try:
+        label_font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 17)
+    except OSError:
+        label_font = ImageFont.load_default()
+    for i, (label, path) in enumerate(panels):
+        with Image.open(path) as src:
+            im = src.convert('RGB')
+        im.thumbnail((cw - 16, ch - label_h - 8), Image.Resampling.LANCZOS)
+        x = i * cw
+        draw.multiline_text((x + 8, 6), label, fill='black', font=label_font, spacing=2)
+        canvas.paste(im, (x + (cw - im.width) // 2, label_h))
+    canvas.save(FIG / 'input_settings_examples.jpg', quality=88, optimize=True)
+
+input_setting_examples()
+md += ['', '所有生成配置的目标面积约为 1 MP；输出在 registry 中绑定 source size、manifest SHA256、input digest 和 run configuration。生成使用 8 张 GPU（0–7），完整生成结果均为 1,084/1,084。', '', '各模型区域输入的示例（同一 case：`v2-sa_10006079`）：', '', '![四个模型的区域输入 setting 示例](figures/input_settings_examples.jpg)', '', '前三个模型收到的是同一类灰度 label map；FLUX.3 收到的是带颜色、U 标签和 locator marks 的区域图。', '', '### 0.3 Judge 与通过规则', '', '- Judge protocol：`v2_epq_numeric_all_units_1`；Judge 模型：`/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/Qwen3.8-Flash-Next-FP8`。', '- 推理后端：vLLM，tensor parallel size=8，GPU memory utilization=0.85，temperature=0，seed=0，max tokens=12,288。', '- Judge 输入包括完整 source/output、固定坐标 source/output crops，以及只供 judge 使用的源 mask contour。模型输出本身不叠加 contour。', '- 每个单元评分 E、P、Q 为 0–4 分；E=4 才通过，P/Q≥3 才通过；整图 `global_P`、`global_Q` 也要求分数≥3。', '- `JointPass` 要求该 job 的所有 U 都满足 E/P/Q，并且 `global_P` 与 `global_Q` 都通过。', '', '### 0.4 结果路径', '', '| 内容 | 路径 |', '|---|---|']
+PATH_ROWS = [
+    ('最终报告（Git）', '`docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md`'),
+    ('生成与 judge 外部实验根', '`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/`'),
+    ('mask_full 输入 jobs', '`recommended_inputs/mask_full/jobs.jsonl`'),
+    ('FLUX.3 冻结 judge 输入', '`recommended_judge_inputs/flux3_klein_color/judge_jobs.jsonl`'),
+    ('Qwen-Image-2.1 生成', '`recommended_runs/qwen_image_21_mask/outputs.jsonl`'),
+    ('Qwen-Image-Edit-2511 生成', '`recommended_runs/qwen_image_edit_2511_mask/outputs.jsonl`'),
+    ('FLUX.2 Klein-4B 生成', '`recommended_runs/flux2_klein_4b_mask/outputs.jsonl`'),
+    ('FLUX.3 Klein 生成', '`recommended_runs/flux3_klein_color/outputs.jsonl`'),
+    ('四模型 judge 输入', '`recommended_judge_inputs/<model>/judge_jobs.jsonl`'),
+    ('四模型 scores', '`recommended_judge/<model>/Qwen3.8-Flash-Next-FP8/scores.jsonl`'),
+    ('四模型结构化 report', '`recommended_judge/<model>/Qwen3.8-Flash-Next-FP8/report.json`'),
+    ('setting 示例图', '`docs/reports/2.6.0/figures/input_settings_examples.jpg`'),
+    ('本报告统计 CSV 与图', '`docs/reports/2.6.0/{main_table,k_jointpass,locator_impact,failure_modes}.*`'),
+]
+for name,path in PATH_ROWS: md.append(f'| {name} | {path} |')
+md += ['', '推荐的复现入口：`evaluation/diffsynth/run_all.sh`；统计脚本：`evaluation/analyze_results.py`。本报告使用已经完成且通过完整绑定检查的四个 `scores.jsonl`，不是 partial records。', '', '## 1. 主表', '', '| 模型 | JointPass | E 单元通过率 | P 单元通过率 | Q 单元通过率 | global_P | global_Q |','|---|---:|---:|---:|---:|---:|---:|']
 for r in main: md.append(f"| {r['model']} | {r['joint_pass']}/{r['cases']} ({pct(r['joint_rate'])}) | {pct(r['E_unit_rate'])} | {pct(r['P_unit_rate'])} | {pct(r['Q_unit_rate'])} | {pct(r['global_P_rate'])} | {pct(r['global_Q_rate'])} |")
 md += ['', 'JointPass 要求每个单元的 E/P/Q 都通过，同时 global_P 与 global_Q 通过。E 反映执行是否完成，P 反映非目标内容保持，Q 反映编辑质量。整体难度由 JointPass 体现；从单元级指标看，模型之间的主要差异可按 E、P、Q 三列比较。', '', '## 1.1 模型输入设置', '', '| 模型 | 区域信息输入 | 评测输入包 |', '|---|---|---|']
 for m,label in MODELS.items():

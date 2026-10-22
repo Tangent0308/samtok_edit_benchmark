@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Full SAMTok v2 (mixed, visual_locator_v2) evaluation of DiffSynth baselines.
-#   bash run_all.sh gen   <model> [gpus]   # model: qwen_image_21 | qwen_image_edit_2511 | flux2_dev | flux2_klein_4b | flux3_klein
+#   bash run_all.sh gen   <model> [gpus]   # model: qwen_image_21 | qwen_image_edit_2511 | flux2_dev | flux2_klein_4b | flux3_klein | hunyuan_image_30_instruct | hidream_o1_image | step1x_edit | longcat_image_edit
 #   bash run_all.sh judge <model> [<model> ...]
 #   bash run_all.sh report <model>
 set -euo pipefail
@@ -21,7 +21,7 @@ JUDGE_NAME=$(basename "$JUDGE_MODEL")
 # FLUX.3's official reference code uses vLLM for its prompt upsampler.
 python_for() {
   case $1 in
-    qwen_image_edit_2511|flux2_dev|flux2_klein_4b) echo /opt/tiger/envs/gen_tf457/bin/python ;;
+    qwen_image_edit_2511|flux2_dev|flux2_klein_4b|step1x_edit|hidream_o1_image) echo /opt/tiger/envs/gen_tf457/bin/python ;;
     flux3_klein) echo /opt/tiger/envs/judge/bin/python ;;
     *) echo /opt/tiger/envs/gen/bin/python ;;
   esac

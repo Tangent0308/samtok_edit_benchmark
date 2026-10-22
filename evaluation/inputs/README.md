@@ -1,6 +1,6 @@
 # Region input builders
 
-The current release supports three equivalent ways of exposing a target region. All builders
+The current release supports three ways of exposing target regions with different information content. All builders
 consume `data/v2_2.6.0/cases.jsonl`; they never expose evaluator-only completion fields.
 
 | Mode | Public representation | Builder | Intended use |
@@ -11,7 +11,7 @@ consume `data/v2_2.6.0/cases.jsonl`; they never expose evaluator-only completion
 
 `visual_locator_v2` keeps point, box and mask as per-unit modalities in `mixed`; `single`
 creates one-unit jobs for modality diagnostics. `all_ref` and `all_mask_noref` are controlled
-ablations. The grayscale builder converts only the public target masks into a label map and
+ablations. The grayscale builder encodes the target masks, including targets originally supplied as points or boxes, into a label map and
 writes a new input digest; the frozen manifest is not modified.
 
 Example:

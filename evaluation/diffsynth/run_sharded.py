@@ -29,7 +29,17 @@ def main():
     parser.add_argument(
         "--model",
         required=True,
-        choices=("qwen_image_edit_2511", "qwen_image_21", "flux2_dev", "flux2_klein_4b", "flux3_klein"),
+        choices=(
+            "qwen_image_edit_2511",
+            "qwen_image_21",
+            "flux2_dev",
+            "flux2_klein_4b",
+            "flux3_klein",
+            "hunyuan_image_30_instruct",
+            "hidream_o1_image",
+            "step1x_edit",
+            "longcat_image_edit",
+        ),
     )
     parser.add_argument("--gpus", required=True, help="comma-separated CUDA device ids")
     parser.add_argument("--case-ids", type=Path, help="optional file with one case id per line")
@@ -50,21 +60,20 @@ def main():
     write_json(config_path, config)
 
     procs = []
-    for rank, gpu in enumerate(gpus):
-        shard = jobs[rank :: len(gpus)]
-        if not shard:
-            continue
-        shard_dir = a.output / "shards" / f"shard{rank:02d}"
+    # HunyuanImage-3.0-Instruct is an 80B MoE checkpoint. The official loader uses
+    # device_map="auto" across the visible GPUs, so it must run as one multi-GPU
+    # process rather than eight independent one-GPU workers.
+    if a.model == "hunyuan_image_30_instruct":
+        shard_dir = a.output / "shards" / "shard00"
         shard_dir.mkdir(parents=True, exist_ok=True)
-        # Rewrite the shard's job list only on first launch; reruns resume against it.
         jobs_file = shard_dir / "jobs.jsonl"
         if not jobs_file.exists():
-            write_jsonl(jobs_file, shard)
-        elif [j["job_id"] for j in read_jsonl(jobs_file)] != [j["job_id"] for j in shard]:
+            write_jsonl(jobs_file, jobs)
+        elif [j["job_id"] for j in read_jsonl(jobs_file)] != [j["job_id"] for j in jobs]:
             raise SystemExit(f"{jobs_file} holds a different job split; use a new output directory")
         env = {
             **os.environ,
-            "CUDA_VISIBLE_DEVICES": gpu,
+            "CUDA_VISIBLE_DEVICES": ",".join(gpus),
             "PYTHONPATH": str(HERE.parent.parent) + os.pathsep + os.environ.get("PYTHONPATH", ""),
         }
         command = [
@@ -74,8 +83,35 @@ def main():
             "--seed", str(a.seed), "--config", str(config_path),
         ]
         log = (shard_dir / "run.log").open("a")
-        procs.append((rank, subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT)))
-        print(f"shard{rank:02d}: GPU {gpu}, {len(shard)} jobs", flush=True)
+        procs.append((0, subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT)))
+        print(f"shard00: GPUs {','.join(gpus)}, {len(jobs)} jobs (multi-GPU model)", flush=True)
+    else:
+        for rank, gpu in enumerate(gpus):
+            shard = jobs[rank :: len(gpus)]
+            if not shard:
+                continue
+            shard_dir = a.output / "shards" / f"shard{rank:02d}"
+            shard_dir.mkdir(parents=True, exist_ok=True)
+            # Rewrite the shard's job list only on first launch; reruns resume against it.
+            jobs_file = shard_dir / "jobs.jsonl"
+            if not jobs_file.exists():
+                write_jsonl(jobs_file, shard)
+            elif [j["job_id"] for j in read_jsonl(jobs_file)] != [j["job_id"] for j in shard]:
+                raise SystemExit(f"{jobs_file} holds a different job split; use a new output directory")
+            env = {
+                **os.environ,
+                "CUDA_VISIBLE_DEVICES": gpu,
+                "PYTHONPATH": str(HERE.parent.parent) + os.pathsep + os.environ.get("PYTHONPATH", ""),
+            }
+            command = [
+                sys.executable, "-m", "samtok_benchmark.v2.cli", "run-editor",
+                "--inputs", str(jobs_file), "--output", str(shard_dir),
+                "--adapter", "adapters:edit", "--method", a.model,
+                "--seed", str(a.seed), "--config", str(config_path),
+            ]
+            log = (shard_dir / "run.log").open("a")
+            procs.append((rank, subprocess.Popen(command, env=env, stdout=log, stderr=subprocess.STDOUT)))
+            print(f"shard{rank:02d}: GPU {gpu}, {len(shard)} jobs", flush=True)
 
     failed = [rank for rank, p in procs if p.wait() != 0]
     rows = []

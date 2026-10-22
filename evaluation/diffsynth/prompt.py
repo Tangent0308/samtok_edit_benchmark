@@ -51,3 +51,36 @@ def build_prompt(job: dict, image_names: str) -> str:
             where = MARKERS[unit["locator"]].format(color=color, uid=uid) + f" in {locator}"
         lines.append(f"{uid} ({where}): {unit['instruction']}")
     return intro + "\n\n" + "\n".join(lines)
+
+
+def build_single_image_locator_prompt(job: dict) -> str:
+    """Build the fixed prompt used by models whose official editor takes one image.
+
+    The only image passed to those pipelines is the visual-locator image when a locator
+    exists.  Keeping this wording separate makes that adapter choice explicit in the run
+    configuration instead of silently pretending the model received two images.
+    """
+    if len(job["images"]) == 2:
+        intro = (
+            "The input image is the photo to edit with colored, labeled markers overlaid. "
+            "The markers are spatial selectors only. Edit the underlying photo and output the "
+            "complete edited photo. Do not copy, render, preserve, or mention any marker, "
+            "color, rectangle, mask, point, or U-label. "
+        )
+    else:
+        intro = "Edit the input photo and output the complete edited photo. "
+    intro += (
+        "Perform all instructions together and keep everything else unchanged. "
+        "A marker selects an existing object; a named part restricts the edit to that part. "
+        'For "Add", the marker shows the existing object the new item attaches to.'
+    )
+    lines = []
+    for unit in job["units"]:
+        uid = unit["id"]
+        if len(job["images"]) == 2 and unit["locator"] != "none":
+            color = COLOR_NAMES[int(uid[1:]) - 1]
+            where = MARKERS[unit["locator"]].format(color=color, uid=uid)
+        else:
+            where = "no marker; identify it from the description"
+        lines.append(f"{uid} ({where}): {unit['instruction']}")
+    return intro + "\n\n" + "\n".join(lines)

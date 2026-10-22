@@ -1,29 +1,23 @@
-# Results and run registry
+# 当前正式评测结果索引
 
-结果与大图不放进 Git 的正式数据目录；它们保存在：
+实验根：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/`。
 
-```text
-/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines/
-```
+正式结果报告：[RESULT_ANALYSIS_2_6_0_ZH.md](../docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md)。换机恢复、环境和备份：[交接清单](../docs/RECOVERY_HANDOFF_2_6_0_ZH.md)。
 
-## Current runs
+正式输入为 `inputs/visual_locator_v2_mixed/jobs.jsonl`，保留各 U 的 point/box/mask。该目录链接到本机 `/tmp`，共享备份与兼容路径恢复方式见交接清单。
 
-- `mask_pilot/`: 12-case paired input experiment，包含 color locator 与 grayscale label-map 的 jobs、配对 summary 和可视化 gallery。
-- `recommended_runs/qwen_image_21_mask/`: 1,084/1,084 generated，registry 1,084。
-- `recommended_runs/qwen_image_edit_2511_mask/`: 1,084/1,084 generated，registry 1,084。
-- `recommended_runs/flux2_klein_4b_mask/`: 1,084/1,084 generated，registry 1,084。
-- `recommended_runs/flux3_klein_color/`: 1,084/1,084 generated，registry 1,084。
-- `recommended_judge_inputs/`: 四模型完整 judge 输入已准备。
-- `recommended_judge/`: Qwen3.8-Flash-Next-FP8 judge 已完成四个模型的 1,084/1,084 评分；解析失败记录已补全。
-- Git 内嵌报告：[docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md](../docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md)。
+七个 model_key：`flux3_klein`、`qwen_image_21`、`flux2_klein_4b`、`longcat_image_edit`、`qwen_image_edit_2511`、`hidream_o1_image`、`step1x_edit`。每个模型有 1,084 个输出和 1,084 条有效评分。
 
-## Reproduction metadata
+| 内容 | 实验根下路径 |
+|---|---|
+| 生成配置 / registry / 原图 | `runs/<model_key>/{config.json,outputs.jsonl,shards/}` |
+| Judge 输入与裁剪证据 | `judge_inputs/<model_key>/` |
+| Judge 原始记录、分数、报告 | `judge/<model_key>/Qwen3.8-Flash-Next-FP8/{records/,scores.jsonl,report.json}` |
+| 当前 HiDream 队列与配置证据 | `launch/hidream_2k_20261021/` |
+| 输入诊断与压缩 gallery | `mask_pilot/` |
+| 飞书发布回读 / 备份 | `publication/lark_hidream_corrected_20261022/` |
+| 回收前恢复包 | `recovery/2026-10-22/` |
 
-- `recommended_run_plan.json`: 四模型与输入模式映射。
-- `run_recommended_full.sh`: 顺序生成和 prepare-judge 脚本。
-- `recommended_progress.sh`: 生成 registry、judge records 和进程状态。
-- `RECOMMENDED_REEVAL_PLAN.md`: 运行命令和目录绑定。
+HiDream 使用官方约 4 MP 分桶修正配置，JointPass=13/1084；旧配置只保留诊断和审计证据。Hunyuan 只有快速检查，未纳入正式表。
 
-## Interpretation boundary
-
-`mask_pilot/paired_summary.md` 是输入形式诊断，不是 benchmark release score。正式报告应在四个 judge 目录都产生完整 `scores.jsonl` 后，再用 `report` 生成并另存；不要把 partial records 当成全量结果。
+仓库 CSV、图表和选例绑定由 `evaluation/analyze_results.py`、`render_current_report.py`、`render_model_case_studies.py` 生成。历史诊断目录不作为当前分数来源，不能把不同 input digest 的 registry/score 混在一起。

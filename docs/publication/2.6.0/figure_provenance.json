@@ -1,0 +1,28 @@
+{
+  "experiment_root": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/benchmark_v2_2.6.0_baselines",
+  "manifest_sha256": "818ce524a1d1f363dc8ea5caa7a887b2dd0355c17a5600d1cbd696cffcf263fb",
+  "model_keys": [
+    "flux3_klein",
+    "qwen_image_21",
+    "flux2_klein_4b",
+    "longcat_image_edit",
+    "qwen_image_edit_2511",
+    "hidream_o1_image",
+    "step1x_edit"
+  ],
+  "protocol": "visual_locator_v2",
+  "variant": "mixed",
+  "single_image_models": [
+    "longcat_image_edit",
+    "step1x_edit"
+  ],
+  "case_selection": "case_study_notes.json",
+  "overview": "Original outputs, resized and JPEG-compressed only.",
+  "details": "Fixed-coordinate evaluator crops with red source-mask contour.",
+  "charts": "Frozen scores/reports; unchanged heuristic failure classification.",
+  "limitations": [
+    "Single-image and two-image inputs differ.",
+    "HiDream uses official approximately 4 MP resolution buckets; other model resolutions differ.",
+    "Marginal product is not a causal interference estimate."
+  ]
+}

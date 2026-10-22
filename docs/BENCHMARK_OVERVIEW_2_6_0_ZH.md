@@ -1,6 +1,6 @@
 # SAMTok Edit Benchmark 2.6.0：基准说明
 
-> 这是当前 release 的唯一总览文档。全量模型评测正在补跑，尚未完成的 judge 结果不写入本文；本文只记录已经冻结的数据、可复现的评测方法，以及已完成的小批量输入形式验证。
+> 本文说明冻结数据与方法。七模型全量结果见[结果报告](reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md)，换机恢复见[交接清单](RECOVERY_HANDOFF_2_6_0_ZH.md)。
 
 ## 1. 基准评测什么
 
@@ -48,27 +48,24 @@ no-ref 从同一个结构化 instruction spec 自动渲染，把“对哪里做�
 
 ### 3.3 小批量输入形式验证结论
 
-下表来自 12 个源 case 的严格配对诊断（相同源图、单元、seed、模型和 judge，只改变 locator 图），不是 1,084 case 发布分数。单元较少且 mixed 条件方差很大，因此只用于选择默认输入方式。
+12 个源 case 的严格配对诊断曾观察到：Qwen2.1、Qwen2511 和 FLUX.2 的灰度目标图可减少部分标记残留，FLUX.3 更适合彩色定位图。但灰度方案将原本的 point/box 目标也表示为完整 mask，区域信息量改变，不能作为当前 benchmark 的默认输入。
 
-| 模型 | 推荐默认输入 | 备用方式 | 小批量观察 |
-|---|---|---|---|
-| Qwen-Image-2.1 | grayscale label map mask | visual locator | single 条件 mask JointPass 80.6%，彩色 locator 44.4%；mask 轮廓更少引入标注残留 |
-| Qwen-Image-Edit-2511 | grayscale label map mask | visual locator | single 条件 mask 33.3%，彩色 locator 8.3%；仍需关注多目标混合时的执行完整性 |
-| FLUX.2-klein-4B | grayscale label map mask | visual locator（结构替换可复核） | single 条件两者 33.3% 并列；mask 的 P/Q 与 global 维度略稳 |
-| FLUX.3 Image Klein | visual locator 彩色定位图 | grayscale label map mask | single 条件彩色 locator 77.8%，mask 50.0%；彩色 locator 的可读目标提示对该模型更有利 |
-
-推荐方式不是改变 benchmark 的 gold 或评分，只是全量基线的输入编码选择。要比较输入编码本身，使用相同 job 的配对实验并单独报告。
+当前正式评测统一使用 `visual_locator_v2/mixed`，保留原始 point/box/mask。小批量诊断仅作为标记残留研究，路径与复查入口见[交接清单](RECOVERY_HANDOFF_2_6_0_ZH.md)。
 
 ## 4. 编辑模型与官方推理入口
 
 模型生成代码在 [evaluation/diffsynth](../evaluation/diffsynth/)；适配器固定 checkpoint、尺寸、seed、输出绑定和可恢复 shard。
 
-| benchmark 名称 | 推理实现 | 默认输入建议 |
+| benchmark 名称 | 推理实现 | 当前正式输入 |
 |---|---|---|
-| `qwen_image_21` | DiffSynth-Studio `QwenImage21Pipeline`，官方 40 steps / 32 网格 | grayscale label map |
-| `qwen_image_edit_2511` | DiffSynth-Studio `QwenImagePipeline`，官方 `edit_image`、40 steps / 16 网格 | grayscale label map |
-| `flux2_klein_4b` | DiffSynth-Studio `Flux2ImagePipeline`，官方 distilled 4 steps、`cfg_scale=1.0` | grayscale label map |
+| `qwen_image_21` | DiffSynth-Studio `QwenImage21Pipeline`，官方 40 steps / 32 网格 | visual locator 双图 |
+| `qwen_image_edit_2511` | DiffSynth-Studio `QwenImagePipeline`，官方 `edit_image`、40 steps / 16 网格 | visual locator 双图 |
+| `flux2_klein_4b` | DiffSynth-Studio `Flux2ImagePipeline`，官方 distilled 4 steps、`cfg_scale=1.0` | visual locator 双图 |
 | `flux3_klein` | Black Forest Labs 官方 FLUX.3 Image Klein reference inference，distilled 16 steps、官方 prompt upsampler | visual locator 彩色定位图 |
+| `hunyuan_image_30_instruct` | Tencent 官方 `HunyuanImage-3.0-Instruct-Distil` Transformers 推理，推荐 8 steps；8 卡单进程 `device_map=auto` | visual locator 双图 |
+| `hidream_o1_image` | DiffSynth-Studio `HiDreamO1ImagePipeline`，官方 full 50 steps | visual locator 双图 |
+| `step1x_edit` | DiffSynth-Studio `FluxImagePipeline` 的官方 Step1X-Edit i1258 路径，28 steps / `cfg_scale=6.0` | 单图 locator |
+| `longcat_image_edit` | LongCat 官方 `LongCatImageEditPipeline`，50 steps / `guidance_scale=4.5` | 单图 locator |
 
 DiffSynth 相关官方示例链接和本地模型目录见归档的 [评测说明](archive/BENCHMARK_EVALUATION_2_6_0_ZH.md)。生成入口允许通过 `SAMTOK_INPUTS`、`SAMTOK_INPUT_PROTOCOL`、`SAMTOK_INPUT_VARIANTS` 切换已准备的输入包；默认仍是 `visual_locator_v2/mixed`。
 
@@ -126,7 +123,7 @@ PYTHONPATH=. /opt/tiger/envs/gen/bin/python construction/release_2_6/materialize
   --dataset-root /mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2
 ```
 
-然后按 [evaluation/README.md](../evaluation/README.md) 生成、prepare-judge、judge 和 report。正式结果完成后另写结果文档，不回填到本说明的“当前统计”表。
+然后按 [evaluation/README.md](../evaluation/README.md) 生成、prepare-judge、judge 和 report。当前七模型结果已在独立结果报告中发布；本说明的统计表只记录数据集统计。
 
 ## 8. 数据边界
 

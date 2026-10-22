@@ -1,0 +1,194 @@
+{
+  "wrong granularity": [
+    {
+      "case_id": "v2-sa_10063996",
+      "unit_id": "U1",
+      "instruction": "Replace the selected region with a flared bell sleeve.",
+      "evidence": "The evaluator contour marks the woman's outer (image-left) sleeve, which in the OUTPUT remains a fitted sleeve unchanged; the flared bell cuff was instead added on her other (inner) arm together with a raised hand, so the requested instance was not replaced and a duplicate bell sleeve sits beside the untouched target."
+    },
+    {
+      "case_id": "v2-sa_6295141",
+      "unit_id": "U1",
+      "instruction": "Remove the selected region.",
+      "evidence": "The instruction was to remove the right chair of the nearest table, but in the OUTPUT that chair is still fully present, merely recolored burgundy/maroon; no removal occurred."
+    },
+    {
+      "case_id": "v2-sa_6545538",
+      "unit_id": "U3",
+      "instruction": "Remove the selected region.",
+      "evidence": "Source shows the white 'ВТБ' rear-wheel side panel on the third bike; in the output that same white panel with the 'ВТБ' logo is still fully present. The removal was not carried out."
+    },
+    {
+      "case_id": "v2-sa_344959",
+      "unit_id": "U1",
+      "instruction": "Add one zipped side pocket sewn onto the red-shirted player's white shorts.",
+      "evidence": "The instruction was to add a zipped side pocket to the white shorts, but no pocket appears in the output; instead the original red logo patch was replaced by a blue/red circular blob, which is not a sewn pocket."
+    },
+    {
+      "case_id": "v2-sa_4149981",
+      "unit_id": "U2",
+      "instruction": "Replace the selected region with wide-leg beige linen trousers.",
+      "evidence": "Wide-leg beige trousers are present and the original blue jeans are gone, but the swap replaced the entire seated woman (polka-dot top, arms) with a different man's body rather than changing only her jeans, a material defect against 'select this instance only'."
+    }
+  ],
+  "not executed": [
+    {
+      "case_id": "v2-sa_10146830",
+      "unit_id": "U1",
+      "instruction": "Remove the selected region.",
+      "evidence": "The red hood hanging down the red-clad person's back is still fully present in the output crop; only a slight smoothing/blur was applied, so the requested removal was not completed."
+    },
+    {
+      "case_id": "v2-sa_10146830",
+      "unit_id": "U2",
+      "instruction": "Replace the thin bag strap across the white shawl with a silver chain strap.",
+      "evidence": "The thin cream fabric bag strap across the white shawl is unchanged in the output; no silver chain strap was introduced, so the replacement was not performed."
+    },
+    {
+      "case_id": "v2-sa_10146830",
+      "unit_id": "U3",
+      "instruction": "Add one small round enamel pin on the upper back of the central girl's leather jacket.",
+      "evidence": "No round enamel pin appears on the central girl's black leather jacket in the U3 crop; the only added pin in the full image sits on the gray-sweater man's back, a different object, so the requested addition to the leather jacket is absent."
+    },
+    {
+      "case_id": "v2-sa_10781767",
+      "unit_id": "U2",
+      "instruction": "Add one small gray pigeon on the top of the rightmost traffic light.",
+      "evidence": "The U2 crop (top of the rightmost traffic light) in the output shows a green 'UNIVERSITY BLVD' sign and a black lens, not a pigeon; the added gray pigeon in the full image sits on the arm near the 'ONLY' sign, not on top of the rightmost traffic light, so the requested attachment is not satisfied."
+    },
+    {
+      "case_id": "v2-sa_10866716",
+      "unit_id": "U1",
+      "instruction": "Change the color of the selected region to dark green.",
+      "evidence": "The middle bench (with the two seated women, yellow bag and blue leggings) is still bright red in the OUTPUT detail crop; the requested recolor to dark green was not performed at all."
+    }
+  ],
+  "other E failure": [
+    {
+      "case_id": "v2-sa_5460754",
+      "unit_id": "U3",
+      "instruction": "Change the color of the bottom-right reel to dark blue.",
+      "evidence": "The bottom-right reel is recolored dark blue as requested and keeps its position/orientation, but the smooth white drum was also turned into a ribbed coiled-cable body with bolted flanges, altering geometry beyond a pure recolor."
+    },
+    {
+      "case_id": "v2-sa_5033895",
+      "unit_id": "U1",
+      "instruction": "Change the material of the selected region to polished gold.",
+      "evidence": "The crown geometry is retained and its flat matte orange of the source is shifted to a deeper amber-gold with darker crevice shading, but it lacks the bright reflective highlights of 'polished gold', so the requested material is only substantially, not fully, achieved."
+    },
+    {
+      "case_id": "v2-sa_4745279",
+      "unit_id": "U5",
+      "instruction": "Remove the shopping bag hanging from the foreground customer's arm.",
+      "evidence": "The white plastic shopping bag is absent in the output, but it disappears because the left-arm area is cropped out rather than being removed and filled with plausible arm/background."
+    },
+    {
+      "case_id": "v2-sa_741247",
+      "unit_id": "U5",
+      "instruction": "Add one small brass plaque mounted on the camera-facing side of the left end of the long wooden bench occupied by the group.",
+      "evidence": "A brass plaque exists in the output but it bears the unit label text 'U1' and is mounted on a newly-added foreground bench, not a plain plaque on the left end of the original long bench occupied by the group."
+    },
+    {
+      "case_id": "v2-sa_4507759",
+      "unit_id": "U3",
+      "instruction": "Change the color of the jacket of the woman beside the man in blue to sage green.",
+      "evidence": "The woman's jacket is now sage green, but the garment geometry changed (zipper and different cut replace the buttoned navy jacket) and her pose/face differ, so this is not a color-only attribute change retaining the selected geometry."
+    }
+  ],
+  "occluded fragments/leftovers": [
+    {
+      "case_id": "v2-sa_6295141",
+      "unit_id": "U2",
+      "instruction": "Add one burgundy seat cushion on the chair facing away in front of the nearest table.",
+      "evidence": "The chair facing away in front of the nearest table still has its original brown seat/back in the OUTPUT; no burgundy cushion was added to it. The only burgundy object is the right-hand chair (U1's target), which is the wrong instance."
+    },
+    {
+      "case_id": "v2-sa_1905152",
+      "unit_id": "U3",
+      "instruction": "Replace the selected region with a waist-length quilted jacket.",
+      "evidence": "The man browsing records still wears his long gray coat in the output; the long coat was not replaced. A dark quilted jacket appears only on a newly added back-turned person at the right, which is a duplicate/extra, not a replacement of the target."
+    },
+    {
+      "case_id": "v2-sa_3336366",
+      "unit_id": "U2",
+      "instruction": "Add one short white feather on the image-left side of the tall flag bearer's red beret just left of the flag.",
+      "evidence": "A white feather plume was added, but it appears at the leftmost/second person's chest-rifle area, not on the image-left side of the flag bearer's red beret as requested; wrong instance and attachment site."
+    },
+    {
+      "case_id": "v2-sa_3392242",
+      "unit_id": "U2",
+      "instruction": "Add one yellow luggage tag attached to the image-left side of the gray rolling bag with a red stripe pulled by the man in the gray jacket.",
+      "evidence": "The gray rolling bag with the red stripe that was the addition support is gone in the output crop, replaced by a tan trouser leg of a newly inserted standing man; no yellow luggage tag is attached to the gray bag (the only yellow tag sits on a different black suitcase elsewhere)."
+    },
+    {
+      "case_id": "v2-sa_8829935",
+      "unit_id": "U2",
+      "instruction": "Add two small loop handles attached to the opposite sides of the rim of the shallow shrimp tray near the center.",
+      "evidence": "The requested support, the central shallow tiny-shrimp tray, is destroyed (replaced by a wooden tray holding a metal plate), and the loop handles that appear sit on the wooden tray/metal plate rather than on the original shrimp-tray rim, so the add is on the wrong support and incomplete."
+    }
+  ],
+  "locator marker in output": [
+    {
+      "case_id": "v2-sa_8472306",
+      "unit_id": "U2",
+      "instruction": "Remove the selected region.",
+      "evidence": "The taller branched lamp stand at the back left (crop [462,0,1252,1138]) is fully present in the OUTPUT, now even topped with a glass tea light; the required removal was not performed at all."
+    },
+    {
+      "case_id": "v2-sa_2566092",
+      "unit_id": "U2",
+      "instruction": "Change the color of the selected region to light turquoise.",
+      "evidence": "The front-left woman holding a phone (the 'KEEP CALM' shirt) is still pink in the output; the requested light-turquoise recolor was not applied to her shirt (the turquoise instead appears on the central banner's boat logo, a different object)."
+    },
+    {
+      "case_id": "v2-sa_4308138",
+      "unit_id": "U1",
+      "instruction": "Replace the dark bar stool at the right-hand booth with a round stool with a single pedestal base.",
+      "evidence": "The seat top was reshaped from the contoured dark bar-stool seat to a flatter round seat, but the base is unchanged: the original four tapered legs with the square stretcher ring remain, so the required single pedestal base is absent and the old target's body is left as fragments."
+    },
+    {
+      "case_id": "v2-sa_10563539",
+      "unit_id": "U1",
+      "instruction": "Replace the selected region with a stainless-steel slotted serving spoon.",
+      "evidence": "The white scoop nearest the camera is unchanged in the output crop: same white plastic body, same dark fragment inside, same handle. No stainless-steel slotted serving spoon was introduced, so the requested replacement is entirely absent."
+    },
+    {
+      "case_id": "v2-sa_10563539",
+      "unit_id": "U2",
+      "instruction": "Change the color of the white scoop in the artichoke bowl to red.",
+      "evidence": "The white scoop in the artichoke bowl is recolored to red in the output crop, matching the request, but its upper handle remains pale/white rather than red, leaving a minor localized omission of the recolor."
+    }
+  ],
+  "wrong instance": [
+    {
+      "case_id": "v2-sa_8967676",
+      "unit_id": "U1",
+      "instruction": "Change the color of the raised-arm girl's white top to light green.",
+      "evidence": "The torso and upper sleeves of the white top are recolored to light green and the 'I love ski' graphic is retained, but the forearms, which were white sleeves in the source, became black instead of light green, so the requested recolor is not fully applied across the selected top."
+    },
+    {
+      "case_id": "v2-sa_3635508",
+      "unit_id": "U3",
+      "instruction": "Add one small canvas pouch clipped to the hip of the jeans of the folded-arm man in the middle.",
+      "evidence": "No canvas pouch is clipped to the folded-arm man's hip in the output crop; the requested pouch instead appears on the front-row man's waist, so the correct instance was not edited."
+    },
+    {
+      "case_id": "v2-sa_3635508",
+      "unit_id": "U4",
+      "instruction": "Change the color of the selected region to light khaki.",
+      "evidence": "The dark trousers' geometry is not retained; the masked leg region in the output crop is overwritten by the orange banner and blurred figures rather than recolored khaki trousers."
+    },
+    {
+      "case_id": "v2-sa_3635508",
+      "unit_id": "U5",
+      "instruction": "Remove the navy baseball cap of the man at the far-left edge.",
+      "evidence": "The navy cap is only partly removed; a dark cap-like shape/brim still sits at the top of the output crop over the man's head."
+    },
+    {
+      "case_id": "v2-sa_2271073",
+      "unit_id": "U2",
+      "instruction": "Replace the selected region with loose cargo trousers with large thigh pockets.",
+      "evidence": "The maroon-vest woman still wears grey jeans in the output; the requested loose cargo trousers with thigh pockets instead appear on the unrelated middle child, so the named instance was not edited."
+    }
+  ]
+}

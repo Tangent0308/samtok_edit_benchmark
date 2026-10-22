@@ -7,6 +7,8 @@ SAMTok Edit 是一个面向真实场景、多目标、细粒度图像编辑的 b
 - [Benchmark overview 2.6.0](docs/BENCHMARK_OVERVIEW_2_6_0_ZH.md)：评测目标、任务形式、统计信息、区域输入方式、rubric、代表性 case 和路径。
 - [Construction 2.6.0](docs/CONSTRUCTION_2_6_0_ZH.md)：源数据、case 选择、instruction/protocol 设计、mask 精修和发布校验。
 
+换机与交接见[恢复清单](docs/RECOVERY_HANDOFF_2_6_0_ZH.md)；全量指标与案例见[结果报告](docs/reports/2.6.0/RESULT_ANALYSIS_2_6_0_ZH.md)。
+
 ## 当前入口
 
 | 内容 | 路径 |
@@ -21,4 +23,4 @@ SAMTok Edit 是一个面向真实场景、多目标、细粒度图像编辑的 b
 
 数据根固定为 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2`。运行代码时在仓库根目录使用 `/opt/tiger/envs/gen/bin/python` 和 `PYTHONPATH=.`；模型评测命令见 [evaluation/README.md](evaluation/README.md)。
 
-2.6.0 已通过构建、资产、几何和协议校验；独立人工语义终审仍标记为未完成。模型全量 judge 结果在四个目录完成前不会写入正式 benchmark 说明。
+2.6.0 已通过构建、资产、几何和协议校验；独立人工语义终审仍标记为未完成。七模型已完成全量生成和 judge，HiDream 使用官方约 4 MP 配置的新结果；Hunyuan 尚未完成正式评测。

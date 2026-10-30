@@ -431,6 +431,59 @@ def input_route(model, setting):
     return "单图；有point用共享标注图；point/none→global，box/mask→原生区域local"
 
 
+def setting_comparisons(report):
+    """Present existing main rows by setting without recalculating any scores."""
+    models, settings = report["model_order"], report["settings"]
+    rows = {(row["model"], row["setting"]): row for row in report["rows"]}
+    expected = {(model, setting) for model in models for setting in settings}
+    if len(rows) != len(report["rows"]) or set(rows) != expected:
+        raise ValueError("Model comparisons require exactly one main row per model and setting")
+    names = {model: report["model_specifications"][model]["name"] for model in models}
+    md = [
+        "## 同一 setting 下的模型对比",
+        "",
+        f"以下仅比较已固定的主配置，共用同一批 {report['source_count']} 张源图、"
+        f"{report['units_per_model_setting']} 个编辑单元。模型顺序沿用执行计划；"
+        "S2丢弃区域补充行另列，不混入这些主结果。",
+        "",
+        "先分别展示两个通过率的总览；点击setting可跳转到含95%置信区间的七模型对比表。"
+        "百分数与区间均直接引用既有统计，不重新评分或选择配置。",
+        "",
+    ]
+    for metric in ("UnitPass", "JointPass"):
+        md += [
+            f"### {metric} 总览",
+            "",
+            "| Setting | " + " | ".join(names[model] for model in models) + " |",
+            "|---|" + "---:|" * len(models),
+        ]
+        for setting in settings:
+            values = [show_rate(rows[model, setting], metric).split(" [", 1)[0] for model in models]
+            md.append(f"| [{setting}](#{setting.lower()}) | " + " | ".join(values) + " |")
+        md.append("")
+    md += [
+        "各setting下的方括号为源图paired bootstrap的95%区间，端点单位也是百分比。"
+        "生成/规划失败仍计入原分母；Judge缺分单列，不能当作0分。",
+        "",
+    ]
+    for setting in settings:
+        md += [
+            f"### {setting}",
+            "",
+            "| 模型 | UnitPass [95% CI] | JointPass [95% CI] | 单元/源图分母 | 生成/规划失败 | Judge缺分源图 |",
+            "|---|---|---|---:|---:|---:|",
+        ]
+        for model in models:
+            row = rows[model, setting]
+            md.append(
+                f"| {names[model]} | {show_rate(row, 'UnitPass')} | {show_rate(row, 'JointPass')} | "
+                f"{row['unit_denominator']}/{row['case_denominator']} | "
+                f"{row['generation_failed_cases']} | {row['missing_cases']} |"
+            )
+        md.append("")
+    return md
+
+
 def markdown(report, directory):
     md = [
         "# IF-Bench：固定20图dev评测",
@@ -442,6 +495,11 @@ def markdown(report, directory):
         "| 做了什么 | 问题与偏差 | 阻塞项 | 下一步 |",
         "|---|---|---|---|",
         f"| 已生成{report['generation_counts'].get('generated', 0)}个逻辑输出；完整统计行{sum(r['complete'] for r in report['rows'])}/{len(report['rows'])} | 原生失败及评分缺分见逐行账本；不人为补分 | {'无评分缺失' if report['ready_for_review'] else '尚有生成/评分待完成或Judge缺分'} | 汇报固定方案完整20图结果，停在用户确认门；不自动freeze/test |",
+        "",
+    ]
+    md += setting_comparisons(report)
+    md += [
+        "## 按模型列出的完整分数与输入方式",
         "",
         "| 模型 | Setting | UnitPass [95% CI] | JointPass [95% CI] | 单元/源图分母 | 生成失败/缺分源图 | 实际输入方式 |",
         "|---|---|---|---|---|---|---|",

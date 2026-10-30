@@ -218,11 +218,12 @@ def full_score(job, row):
     for u in score["units"]:
         for dim in "EPQ":
             u[dim] = {
+                "score": 4,
                 "pass": True,
                 "evidence": "Synthetic fixture, not an actual benchmark judgement.",
             }
     for d in ("global_P", "global_Q"):
-        score[d] = {"pass": True, "evidence": "Synthetic fixture."}
+        score[d] = {"score": 4, "pass": True, "evidence": "Synthetic fixture."}
     return score
 
 
@@ -234,10 +235,12 @@ def test_strict_conjunction_never_averages_away_one_failed_unit(v2pipeline):
     for uid in range(4):
         for dim in "EPQ":
             bad = copy.deepcopy(s)
+            bad["units"][uid][dim]["score"] = 3 if dim == "E" else 2
             bad["units"][uid][dim]["pass"] = False
             assert not evaluate_score(job, row, bad)["joint_pass"]
     for dim in ("global_P", "global_Q"):
         bad = copy.deepcopy(s)
+        bad[dim]["score"] = 2
         bad[dim]["pass"] = False
         assert not evaluate_score(job, row, bad)["joint_pass"]
     for value in (1, "true", None):

@@ -1,6 +1,14 @@
 # Evaluation
 
-当前版本的模型生成、输入准备和 judge 代码集中在这里；结果不写回 `data/`。
+当前 IF-Bench fairness v2 / dev20：
+
+- [各模型 × setting 的实际输入、原生流程和评分](../docs/protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md)
+- [8 卡前台启动与进度](../docs/protocol/if-bench-v1/DEV20_RUN_ZH.md)
+- [运行模块](../samtok_benchmark/ifbench/README.md) · [审计/打包工具](protocol_audit/README.md)
+
+以下为**历史 2.6.0 评测流程**，不作为 fairness v2 的默认入口。
+
+历史 release 的模型生成、输入准备和 judge 代码集中在这里；结果不写回 `data/`。
 
 ## Layout
 

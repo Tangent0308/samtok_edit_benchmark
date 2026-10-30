@@ -42,6 +42,80 @@ def test_fixed_threshold_rejects_inconsistent_pass():
         validate_scores(value, ["U1", "U2"])
 
 
+def test_model_collection_preserves_full_order_and_shared_output_keys(tmp_path, monkeypatch):
+    from concurrent.futures import ThreadPoolExecutor
+    from PIL import Image
+    from samtok_benchmark.ifbench import fairness_dev_judge as judge
+    from samtok_benchmark.ifbench import fairness_dev_plan as plan_api
+
+    image = tmp_path / "output.png"
+    Image.new("RGB", (16, 16)).save(image)
+    case = {
+        "id": "synthetic",
+        "source": {"sha256": "source", "size": [16, 16]},
+        "units": [
+            {
+                "id": "U1",
+                "operation": "attribute",
+                "instruction_ref": "Change color",
+                "completion_requirement": "Color changed",
+                "preserve": [],
+                "target": {"mask_sha256": "mask"},
+            }
+        ],
+    }
+    tasks = []
+    for model, status in [("first", "generated"), ("second", "generated"), ("failed", "failed")]:
+        key = f"{model}/S1/synthetic"
+        task = {
+            "key": key,
+            "model": model,
+            "case_id": "synthetic",
+            "setting": "S1",
+            "result_path": str(tmp_path / model / "result.json"),
+            "request_path": None,
+            "request_sha256": "request",
+            "public_digest": "public",
+            "scientific_digest": key,
+        }
+        record = {
+            **task,
+            "plan_digest": "full-plan",
+            "task_id": key,
+            "stage": "edit",
+            "seed": 42,
+            "status": status,
+            "output_image": str(image),
+            "output_sha256": sha256_file(image),
+        }
+        write_json(task["result_path"], record)
+        tasks.append(task)
+    context = {
+        "plan": {"digest": "full-plan", "settings": ["S1"], "tasks": tasks},
+        "order": ["first", "second", "failed"],
+        "case_ids": ["synthetic"],
+        "base": tmp_path,
+        "cases": {"synthetic": case},
+        "config": {"synthetic": True},
+    }
+
+    def verify_unchanged_plan(plan, task):
+        assert plan["tasks"] is tasks and plan["digest"] == "full-plan"
+
+    monkeypatch.setattr(plan_api, "verify_task", verify_unchanged_plan)
+    full_bindings, full_jobs = judge.collect(context)
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        parts = list(pool.map(lambda m: judge.collect(context, model=m), context["order"]))
+    assert [b for bindings, _ in parts for b in bindings] == full_bindings
+    assert len(full_jobs) == 1
+    only_job = next(iter(full_jobs.values()))
+    assert only_job["logical_keys"] == [tasks[0]["key"], tasks[1]["key"]]
+    assert parts[0][1].keys() == parts[1][1].keys() == full_jobs.keys()
+    assert parts[2][0][0]["generation_status"] == "failed" and parts[2][1] == {}
+    with pytest.raises(ValueError, match="unregistered model"):
+        judge.collect(context, model="unknown")
+
+
 def test_truncated_answer_not_repaired(tmp_path):
     raw = {
         "status": "judge-failed",

@@ -195,11 +195,15 @@ def normalized_tasks(context):
         }
 
 
-def collect(context):
+def collect(context, *, model=None):
     from .fairness_dev_plan import verify_task
 
+    if model is not None and model not in context["order"]:
+        raise ValueError("Cannot collect an unregistered model")
     bindings, jobs = [], {}
     for task in normalized_tasks(context):
+        if model is not None and task["model"] != model:
+            continue
         verify_task(context["plan"], task)
         path = Path(task["result_path"])
         record = read(path) if path.exists() else None

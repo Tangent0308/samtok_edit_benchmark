@@ -112,7 +112,22 @@ def export_completed_judge(parent_path, bundle):
     from samtok_benchmark.ifbench import fairness_dev_judge as judge
 
     context = judge.load_plan(parent_path, helper_root=parent_path.parent / "repo")
-    bindings, jobs = judge.collect(context)
+    bindings, jobs = [], {}
+    # Preserve the validated full plan and original model ordering. Only the
+    # independent reads are concurrent; canonical key deduplication is identical.
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        for bound, collected in pool.map(
+            lambda model: judge.collect(context, model=model), context["order"]
+        ):
+            bindings.extend(bound)
+            for key, job in collected.items():
+                if key in jobs:
+                    jobs[key]["logical_keys"].extend(job["logical_keys"])
+                else:
+                    jobs[key] = job
+    if len(bindings) != len(context["plan"]["tasks"]):
+        raise ValueError("Completed Judge collection did not cover every parent task")
+    print(f"Verified {len(bindings)} parent outcomes / {len(jobs)} unique Judge keys.", flush=True)
     prior_cache = judge.Cache(context["plan"]["cache_index"], context["config"])
     root, raws, effectives, admissions = judge.paths(context)
     entries = {}
@@ -148,8 +163,9 @@ def export_completed_judge(parent_path, bundle):
     path = bundle / "cache/judge_index.json"
     save(path, index)
     exported = judge.Cache(path, context["config"])
-    for job in jobs.values():
-        exported.lookup(job, context)
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        list(pool.map(lambda job: exported.lookup(job, context), jobs.values()))
+    print(f"Verified all {len(entries)} exported Judge provenance chains.", flush=True)
     return bindings, len(entries)
 
 

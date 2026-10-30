@@ -1,6 +1,6 @@
-# IF-Bench 当前详细评测方式：fairness v2 / dev20
+# IF-Bench 当前详细评测方式：fairness v2.1 / dev20
 
-本文件说明 **2026-10-30 用户已确认、正在通过共享入口执行的方案**，与[执行协议](PROTOCOL.fairness-v2.dev20.md)配套。它是方法说明，不是分数报告。当前范围是七模型 × 十 setting × 相同二十张 dev 图，共 1,400 个逻辑请求；没有新候选搜索，也未授权正式冻结或 test。
+本文件说明 **2026-10-30 用户已确认修复后的方案**，与[v2.1执行修订](PROTOCOL.fairness-v2.1.dev20.md)配套。它是方法说明，不是分数报告。范围是七模型×十setting×同一二十张dev图，共1400个逻辑请求；只改变Qwen2.1的2K配置及MICE短前导/完整性检查，没有新候选搜索，未授权正式冻结或test。
 
 旧 108 图候选实验、前置两图验证、当前 20 图 dev 是三个不同阶段，不能混算结果。前置验证的 140/140 表示都生成了可读取且绑定正确的图片，**不表示编辑任务通过**。实时进度和最终图文报告位置见[启动指南](DEV20_RUN_ZH.md)。
 
@@ -117,7 +117,7 @@ U2. [{color_2} {shape_2}, label U2] {instruction_2}
 | S4-noref | `[I,A]` | `T_noref` + 同一混合标记 |
 | S5 | `[I,A]`，若全 none 则 `[I]` | 冻结的混合指令；none 单元只给文字 |
 
-固定 40 步、true CFG=1、`output_resolution=1024`、`use_kv_cache=True`、PE=False。1024 来自固定 pipeline 默认；README 的 2048 级建议是另一配置，本轮不追加分辨率搜索。当前配置中视觉与 VAE 条件沿用原生缩放；mask 输入是轮廓图，不声称用了独立 inpainting mask 参数。
+固定40步、true CFG=1、`output_resolution=2048`、`use_kv_cache=True`、PE=False。v2.1按作者README的2K推荐执行；旧v2的1024是pipeline默认，只保留为历史配置，不复用其输出、不在两种分数间择优。视觉与VAE条件沿用原生缩放和宽高比；mask仍为轮廓图。请求、环境账本及实际参数一致；显存不足不自动降回1K。
 
 证据：[接口与默认值](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py#L511)、[预处理](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py#L608)、[官方分辨率示例](https://github.com/QwenLM/Qwen-Image-2.1/blob/ab96caa944157ca28a4f36b695c3047549f48f98/README.md#L230)、[独立 PE](https://github.com/QwenLM/Qwen-Image-2.1/blob/ab96caa944157ca28a4f36b695c3047549f48f98/prompt_rewrite/README.md#L1)。本地入口：`smoke_adapters.Qwen21`，由当前 worker 调用。
 
@@ -232,10 +232,12 @@ Spatial input for this edit: the {color} {shape} labeled {unit_id} indicates the
 prompt 是 `[global_text, local_1, ...]` 用官方分隔符 `$BREAKFLAG$` 拼接。global 只列 none/point 的原文任务，local 只列对应 box/mask 的原文任务，保持 unit 顺序。含 point 的 global 前导为：
 
 ```text
-Edit the supplied image using its colored marks and U labels to identify the selected regions. Remove all marks, labels, and leader lines from the final edited image.
+U marks select source objects, parts, or attachment points. Remove all marks; keep everything else unchanged.
 ```
 
-随后是共享 selector 说明、BASE 和 global unit 行；没有 point 时只用 BASE 加 global unit 行。没有 global 任务时仍保留 BASE，不把 local 任务复制到 global。
+随后直接接global unit行，任务原文与U/颜色标签不变；不再叠加旧长selector说明和BASE。没有point时仍只用BASE加global unit行；没有global任务时保留BASE，不把local任务复制到global。
+
+官方`outer_local_prompts`实际只保留每段前200个文本条件token，不能只检查512上限。构建包及生成前按真实chat模板核对完整长度≤200，并检查原生前200有效token IDs与完整序列一致。失败在提交生成前落终态，保留原因及0次调用，不创建started、不删词、不改官方200默认。旧S2-point的4/20文本缺失记录保留；新版对全部84个含point请求统一修订。
 
 区域具体调用：仅含 box 的 regional 列表传 `instance_bboxes_xyxy_normalized`；包含 mask 时传 `instance_masks_yx`，box 用官方 floor/ceil 函数生成绑定网格，mask 用官方 nearest resize 到同一网格。mask 不先变 bbox；point 不进入 regional 列表。实际网格和非零 token 数保存为 `binding-U*.png` 与 `call.json`，小 mask 原生量化为空时不手工扩张。
 
@@ -266,7 +268,7 @@ Edit the supplied image using its colored marks and U labels to identify the sel
 
 ## 10. 固定版本、调用与工程差异
 
-下表的 SHA 来自已经发布的 `plan.json`，不是运行时重新解析 `main`/`latest`。完整参数快照见 [MODEL_CONFIGS.dev20.json](MODEL_CONFIGS.dev20.json)。Qwen 两版及 FLUX2 使用的 Diffusers 固定为 `06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a`。
+下表源码/权重SHA沿用已核验版本，不在运行时重新解析`main`/`latest`。新版参数见[MODEL_CONFIGS.dev21.json](MODEL_CONFIGS.dev21.json)，旧[dev20快照](MODEL_CONFIGS.dev20.json)保留历史1K配置。Qwen两版及FLUX2使用的Diffusers固定为`06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a`。
 
 | 模型 | 官方方法 commit | 编辑权重 revision | 原生额外组件 revision |
 |---|---|---|---|
@@ -314,7 +316,7 @@ E 是目标编辑完成度，P 是应保留内容的保持，Q 是视觉质量�
 
 | 状态 | 处理与报告 |
 |---|---|
-| 精确生成缓存 | 输入图像/文本、代码、权重、参数、seed 与内容 SHA 全部绑定；440 个请求计划复用，其余 960 个计划新生成 |
+| 精确生成缓存 | 完整请求、权重、原生参数、seed、资产SHA及父运行证据一致才复用；v2.1计划复用1116条终态（含1条原生失败），其余284条新生成 |
 | 精确 Judge 缓存 | canonical 指令/GT、输出 SHA 和 Judge 配置全相同时复用；不是按模型或候选名称直接搬分 |
 | 原生规划/生成失败 | 保存原异常与调用记录，留在完整分母并记编辑失败；不重采样、不改 N/A、不退回 S1/裸骨干 |
 | Judge 格式或运行失败 | 保存原回答/异常，记缺分；不能补 0、不能当编辑失败，相关完整行及派生量保持不可用 |
@@ -331,10 +333,10 @@ E 是目标编辑完成度，P 是应保留内容的保持，Q 是视觉质量�
 前台启动命令：
 
 ```bash
-bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v2-dev20-20261030/start.sh
+bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v21-dev20-20261030/start.sh
 ```
 
-包根的 `selection.json`、`plan.json`、`requests/` 分别保存名单、配置与最终请求。发布 plan digest 为 `2c80d958eaa663f96ef89eb89fd430f0eefa021347a39634cb2048dfabb8e3a8`，scientific configuration SHA 为 `4a4bdc3c82f52dbe113d1c73f1d165ab6bde8987ccb4bfbe0ab3eb240aefbdff`。运行包的 `repo/` 和 `code_manifest.json` 是本次实际源码身份；整理后的 Git checkout 不会热更新已启动包。
+包根的`selection.json`、`plan.json`、`requests/`保存同一名单、新配置与最终请求；`READY.json`绑定提交和文件SHA。旧父计划`2c80d958eaa663f96ef89eb89fd430f0eefa021347a39634cb2048dfabb8e3a8`及结果保持不变。新包通过`parent_run`、逐请求cache receipt和原始调用/trace追溯精确复用；不能把旧digest称为新版。运行包固定源码，后续Git更新不会热更新该包。
 
 `results/` 中保留逐请求最终 prompt、原生 response/框、真实输入图及 MICE 绑定网格、原尺寸输出、回源输出、SHA、调用次数、时间与显存。完成后的 `results/report/REPORT.md` 直接插入实际输入/输出图片，列出每模型每 setting 的 UP/JP、CI、失败/缺分及证据。仓库不复制实验图片；在有共享挂载的机器上打开该 Markdown 及相邻图片即可查看。前置两图完整图册位于 `/tmp/ifbench/fairness_v2_20261030/ALL_MODELS_ALL_SETTINGS_GALLERY.md`，不可把它称为本轮新结果。
 

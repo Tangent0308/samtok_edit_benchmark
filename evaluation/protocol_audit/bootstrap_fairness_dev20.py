@@ -386,7 +386,7 @@ def main():
     receipt_path = bundle / "results/bootstrap" / socket.gethostname() / "runtime_paths.json"
     save(receipt_path, receipt)
     print(json.dumps(receipt, ensure_ascii=False), flush=True)
-    if args.runtime_only or args.validate_only:
+    if args.runtime_only:
         return
     env = environments["generation"]
     env.update(
@@ -402,7 +402,11 @@ def main():
         "--plan",
         str(bundle / "plan.json"),
     ]
-    print("Starting the foreground evaluation coordinator.", flush=True)
+    if args.validate_only:
+        command.append("--validate-only")
+        print("Validating all prepared requests and exact caches; no inference.", flush=True)
+    else:
+        print("Starting the foreground evaluation coordinator.", flush=True)
     os.execve(command[0], command, env)
 
 

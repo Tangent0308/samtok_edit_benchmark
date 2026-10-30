@@ -1,18 +1,19 @@
 # IF-Bench 协议与评测索引
 
-**当前有效版本：2026-10-30 已确认的 fairness v2 / dev20。** 七模型各固定一套方案，相同 20 张 dev、10 个 setting、一次采样与 canonical Judge，不再选候选。用户已启动共享入口，实时状态以运行目录记录为准；完成 dev 后仍停在正式冻结/test 之前。
+**当前有效版本：2026-10-30 已确认的 fairness v2.1 / dev20。** Qwen2.1 改为推荐 2K，MICE 使用固定短标注说明并检查原生 200-token 条件完整性。七模型仍各固定一套方案，相同 20 张 dev、10 个 setting、一次采样与 canonical Judge，不再选候选。旧 v2 运行已完成并保留；新入口的实际状态以新运行目录为准，完成 dev 后仍停在正式冻结/test 之前。
 
 ## 当前文档
 
 | 文档 | 内容 |
 |---|---|
 | **[CURRENT_EVALUATION_ZH.md](CURRENT_EVALUATION_ZH.md)** | 七模型 × 十 setting 实际输入、原生 API/组件、prompt、参数、版本、UP/JP、CI、失败和缓存规则 |
-| [PROTOCOL.fairness-v2.dev20.md](PROTOCOL.fairness-v2.dev20.md) | 已确认执行规范、20 图范围与后续交付边界 |
+| [PROTOCOL.fairness-v2.1.dev20.md](PROTOCOL.fairness-v2.1.dev20.md) | 已确认修订、284 条重跑、精确终态复用与完整性检查 |
+| [PROTOCOL.fairness-v2.dev20.md](PROTOCOL.fairness-v2.dev20.md) | v2.1 继承的 setting、方法边界、Judge、20 图范围与后续交付边界 |
 | [DEV20_RUN_ZH.md](DEV20_RUN_ZH.md) | 8 卡前台入口、依赖、启动阶段、进度与实际图文报告位置 |
 | [FAIRNESS_V2_CHANGELOG_ZH.md](FAIRNESS_V2_CHANGELOG_ZH.md) | 与旧输入的逐项差别 |
 | [运行模块](../../../samtok_benchmark/ifbench/README.md) · [工具索引](../../../evaluation/protocol_audit/README.md) | 代码组织、检查与历史脚本边界 |
 
-目录名 `if-bench-v1` 为兼容旧引用而保留；当前版本以文件中的 fairness v2/dev20 标识为准。
+目录名 `if-bench-v1` 为兼容旧引用而保留；当前版本以文件中的 fairness v2.1/dev20 标识为准。
 
 ## 历史协议与证据
 
@@ -28,8 +29,9 @@
 
 | 材料 | 临时路径 |
 |---|---|
-| 当前固定名单、请求、源码、环境与运行记录 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v2-dev20-20261030/` |
+| 当前固定名单、请求、源码与运行记录 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v21-dev20-20261030/` |
 | 当前进度 / Judge / 完成后的 Markdown 插图报告 | 上述目录的 `results/PROGRESS.md`、`results/judge/`、`results/report/REPORT.md` |
+| v2 父运行、原结果、复用证据及共用环境归档（需保留） | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v2-dev20-20261030/` |
 | 前置两图验证与全 setting 图册 | `/tmp/ifbench/fairness_v2_20261030/FINAL_EVALUATION_METHODS.md`、`ALL_MODELS_ALL_SETTINGS_GALLERY.md` |
 | 旧 108 图候选分数与逐 setting 图文文档 | `/tmp/ifbench/tiered_v1/dev_selection/judge_rejudge13_v1/`、`setting_document/IF-Bench_dev_setting_report.md` |
 | 旧输入适当性复核 | `/tmp/ifbench/tiered_v1/dev_selection/input_suitability_review/` |

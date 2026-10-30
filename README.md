@@ -2,14 +2,14 @@
 
 IF-Bench（原 SAMTok Edit Benchmark）评测真实场景中的多目标、细粒度图像编辑。数据 release 2.6.0 包含 **1,084 张源图、3,872 个编辑单元，每图 2–5 个目标**。数据与评测协议分别管理；为兼容已有数据和命令，保留 `samtok_benchmark` 包名及旧 CLI。
 
-当前采用已确认的 **fairness v2 固定方案**：7 个模型、10 个 setting、相同 20 张 dev 图。只使用该 setting 的公开信息与方法自身流程，不外接输入增强组件，不继续搜索候选。正式冻结和 976 图 test 仍需 dev 汇报后确认；旧协议分数不能作为新协议成绩。
+当前采用已确认的 **fairness v2.1 固定方案**：7 个模型、10 个 setting、相同 20 张 dev 图。此次修复将 Qwen2.1 改为作者推荐的 2K，并缩短 MICE 固定标注说明、检查原生 200-token 条件完整性；其余流程保持。只使用该 setting 的公开信息与方法自身流程，不外接输入增强组件，不继续搜索候选。正式冻结和 976 图 test 仍需 dev 汇报后确认；旧协议分数不能作为新协议成绩。
 
 ## 当前评测
 
 | 阅读目的 | 文档 |
 |---|---|
 | 每个模型、每个 setting 如何输入、运行、评分 | **[详细评测方式](docs/protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md)** |
-| 已确认范围、公平性与失败规则 | [20 图 dev 协议](docs/protocol/if-bench-v1/PROTOCOL.fairness-v2.dev20.md) |
+| 已确认修复、公平性与失败规则 | [v2.1 修订协议](docs/protocol/if-bench-v1/PROTOCOL.fairness-v2.1.dev20.md) · [继承的 v2 规则](docs/protocol/if-bench-v1/PROTOCOL.fairness-v2.dev20.md) |
 | 8 卡启动、环境、进度和图文报告 | [启动指南](docs/protocol/if-bench-v1/DEV20_RUN_ZH.md) |
 | 修订记录、官方接口核对、历史协议 | [协议索引](docs/protocol/if-bench-v1/README.md) |
 | 模块组织与检查 | [运行代码](samtok_benchmark/ifbench/README.md) · [审计与打包工具](evaluation/protocol_audit/README.md) |

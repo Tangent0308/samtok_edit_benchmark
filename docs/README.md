@@ -1,8 +1,8 @@
 # Documentation map
 
-当前工作：**[IF-Bench fairness v2：七模型 × 十 setting 的详细评测方式](protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md)**。固定方案与 20 图 dev 已确认，用户已启动评测；正式 freeze/test 尚未授权。另见 [8 卡启动指南](protocol/if-bench-v1/DEV20_RUN_ZH.md)和[协议索引](protocol/if-bench-v1/README.md)。
+当前工作：**[IF-Bench fairness v2.1：七模型 × 十 setting 的详细评测方式](protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md)**。固定方案、相同 20 图 dev 及 Qwen2.1 2K / MICE 文本完整性修复已确认；新入口由用户启动，正式 freeze/test 尚未授权。另见 [8 卡启动指南](protocol/if-bench-v1/DEV20_RUN_ZH.md)和[协议索引](protocol/if-bench-v1/README.md)。
 
-以下是数据 release 2.6.0 与旧评测协议的文档；其中历史成绩不属于当前 fairness v2。
+以下是数据 release 2.6.0 与旧评测协议的文档；其中历史成绩不属于当前 fairness v2.1。
 
 换机/回收前先读：[接手与恢复清单](RECOVERY_HANDOFF_2_6_0_ZH.md)，包含当前状态、持久存储、临时依赖、环境版本、工作区快照和恢复步骤。
 

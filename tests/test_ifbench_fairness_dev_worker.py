@@ -140,6 +140,24 @@ def cached_image(tmp_path):
     }
 
 
+def test_input_preflight_failure_never_admits_or_retries_generation(tmp_path):
+    class RejectingBackend(FakeBackend):
+        def preflight(self, request, public, out):
+            raise ValueError("Native text prefix is incomplete")
+
+    plan = fixture_plan(tmp_path, count=1)
+    backend = RejectingBackend()
+    state, _ = run(tmp_path, plan, backend)
+    output = Path(plan["tasks"][0]["output_dir"])
+    result = read(output / "result.json")
+    assert state["failed"] == 1 and not backend.calls
+    assert result["status"] == "failed" and result["failure_stage"] == "input_preflight"
+    assert result["attempt_admitted"] is False and result["inference_api_calls"] == 0
+    assert not (output / "started.json").exists()
+    resumed, new_backend = run(tmp_path, plan, RejectingBackend())
+    assert resumed["already_terminal"] == 1 and not new_backend.calls
+
+
 def test_exact_cache_does_not_load_gpu_and_records_zero_new_calls(tmp_path):
     plan = fixture_plan(tmp_path, count=2)
     caches = {(task["key"], "edit"): cached_image(tmp_path) for task in plan["tasks"]}

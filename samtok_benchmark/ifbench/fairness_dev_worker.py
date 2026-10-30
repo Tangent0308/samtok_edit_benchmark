@@ -24,7 +24,7 @@ import traceback
 
 from PIL import Image
 
-from samtok_benchmark.io import sha256_file, write_json
+from samtok_benchmark.io import digest, sha256_file, write_json
 
 MODELS = ("qwen2511", "qwen21", "flux3", "replan", "mirage", "mice", "flux2_klein9b")
 PLANNERS = {"replan", "mirage"}
@@ -130,7 +130,9 @@ def reused_result(payload, expected, receipt):
     if payload.get("status") not in TERMINAL:
         raise ValueError("Cache verifier returned a nonterminal payload")
     old_cost = {
-        k: payload.get("reused_" + k, payload.get(k))
+        k: payload.get("reuse_original_metrics", {}).get(
+            k, payload.get("reused_" + k, payload.get(k))
+        )
         for k in COUNT_KEYS
         if k in payload or "reused_" + k in payload
     }
@@ -206,7 +208,14 @@ class NativeBackend:
             self.pipe = self.adapter.pipe
             self.transformers = list(self.adapter.transformers)
             self.configuration = self.adapter.configuration
+            if model == "qwen21":
+                # The actual call already forwards request parameters. Keep
+                # the load/configuration ledger aligned with that fixed plan.
+                self.configuration.update(plan["model_specifications"][model]["parameters"])
             if model == "mice":
+                from .fairness_dev_revision import verify_mice_native_defaults
+
+                verify_mice_native_defaults(self.pipe)
                 utils = importlib.import_module("flux2.pipeline_utils")
                 self.create_position_mask_list, self.resize_mask = (
                     utils.create_position_mask_list,
@@ -402,8 +411,34 @@ class NativeBackend:
             )
         return None, {**record, "status": "planned"}
 
+    def preflight(self, request, public, out):
+        """Validate text before admitting any potentially sampled attempt."""
+        if self.model == "qwen21":
+            for name, value in request["parameters"].items():
+                if self.configuration.get(name) != value:
+                    raise ValueError(f"Qwen21 request differs from fixed configuration: {name}")
+        if self.model != "mice":
+            return
+        from .fairness_dev_revision import mice_text_audit, MiceTextOverflow
+
+        if self.adapter.cfg.prompt_settings != "outer_local_prompts":
+            raise ValueError("MICE requires the approved native outer_local_prompts flow")
+        try:
+            text_check = mice_text_audit(
+                self.pipe.tokenizer, request["prompt"], 1 + len(request["regional_units"])
+            )
+        except MiceTextOverflow as error:
+            immutable(out / "text_condition_check.json", error.audit)
+            self.partial_detail = {"text_condition_check": error.audit}
+            raise
+        immutable(out / "text_condition_check.json", text_check)
+
     def _mice_edit(self, request, out):
         import numpy as np
+
+        text_check = read(out / "text_condition_check.json")
+        if text_check["prompt_digest"] != digest(request["prompt"]):
+            raise ValueError("MICE prompt changed after input preflight")
 
         torch = self.torch
         for module in self.pipe.transformer.modules():
@@ -465,6 +500,7 @@ class NativeBackend:
             "api_region_argument": next(iter(kwargs)),
             "model_size": [w, h],
             "configuration": self.adapter.configuration,
+            "text_condition_check": text_check,
         }
         immutable(out / "call.json", call)
         c = self.adapter.cfg
@@ -725,6 +761,34 @@ def run_worker(plan_path, model, stage, shard=0, shards=1, *, plan_api=None, bac
                         },
                     )
                     write_json(worker / "status.json", worker_state)
+                if hasattr(runtime, "preflight"):
+                    try:
+                        runtime.preflight(request, public, out)
+                    except Exception as error:
+                        immutable(
+                            target,
+                            {
+                                **expected,
+                                "status": "failed",
+                                "reused": False,
+                                "parameters": request.get("parameters", {}),
+                                "request_path": task["request_path"],
+                                "failure_stage": "input_preflight",
+                                "attempt_admitted": False,
+                                "error": repr(error),
+                                "error_type": type(error).__name__,
+                                "traceback": traceback.format_exc(),
+                                "text_condition_check": getattr(error, "audit", None),
+                                "load_record": str(load_record),
+                                "load_seconds": load_seconds,
+                                "wall_seconds": 0.0,
+                                **{k: 0 for k in COUNT_KEYS},
+                            },
+                        )
+                        worker_state["failed"] += 1
+                        worker_state["completed"] += 1
+                        write_json(worker / "status.json", worker_state)
+                        continue
                 immutable(
                     out / "started.json",
                     {

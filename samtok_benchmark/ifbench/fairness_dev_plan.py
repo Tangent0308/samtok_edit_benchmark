@@ -61,7 +61,8 @@ def request_identity(plan, model, request):
     )
 
 
-def load_plan(path):
+def load_plan(path, *, helper_root=None):
+    """Verify active code by default; an explicit root verifies archived evidence."""
     plan = read(path)
     if plan.get("schema") != SCHEMA or plan.get("digest") != digest(
         {k: v for k, v in plan.items() if k != "digest"}
@@ -94,8 +95,11 @@ def load_plan(path):
     actual = [(t["model"], t["setting"], t["case_id"]) for t in plan["tasks"]]
     if len(actual) != len(expected) or set(actual) != expected:
         raise ValueError("Incomplete or duplicated dev20 tasks")
+    source_root = (
+        Path(helper_root) if helper_root is not None else Path(__file__).resolve().parents[2]
+    )
     for filename, expected_sha in plan["helper_sha256"].items():
-        check_hash(Path(__file__).resolve().parents[2] / filename, expected_sha)
+        check_hash(source_root / filename, expected_sha)
     return plan
 
 
@@ -122,6 +126,11 @@ def verify_task(plan, task):
         raise ValueError("Case/setting mismatch")
     if task["case_id"] not in plan["case_ids"] or request.get("seed") != 42:
         raise ValueError("Unregistered request")
+    if (
+        task["model"] == "qwen21"
+        and request["parameters"] != plan["model_specifications"]["qwen21"]["parameters"]
+    ):
+        raise ValueError("Qwen21 request parameters differ from the fixed model specification")
     if request_identity(plan, task["model"], request) != task["scientific_digest"]:
         raise ValueError("Scientific request identity changed")
     for path, expected in task["input_files"].items():
@@ -141,6 +150,10 @@ def verify_cache(plan, task, stage):
         raise ValueError("Cache belongs to another scientific request/stage")
     for item in receipt["evidence"]:
         check_hash(item["path"], item["sha256"])
+    if receipt["kind"] == "completed-dev20":
+        from .fairness_dev_cache import verify_completed_cache
+
+        return verify_completed_cache(plan, task, stage, receipt, request, public)
     old_call = read(receipt["original_call"])
     old_result = read(receipt["original_result"])
     kind = receipt["kind"]

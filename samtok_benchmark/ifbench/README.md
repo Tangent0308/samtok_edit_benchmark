@@ -1,6 +1,6 @@
 # IF-Bench evaluation package
 
-The current workflow is **fairness v2 / fixed dev20**: seven models, ten settings,
+The current workflow is **fairness v2.1 / fixed dev20**: seven models, ten settings,
 twenty shared development images, one configuration and one sample per request.
 Read the [method reference](../../docs/protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md)
 and [launcher guide](../../docs/protocol/if-bench-v1/DEV20_RUN_ZH.md).
@@ -12,6 +12,8 @@ Historical `v2` Judge and release semantics remain unchanged.
 |---|---|
 | `plan`, `public`, `render`, `inputs` | Split/assignments, public projection, deterministic annotations and prompt forms |
 | `fairness_dev_plan` | Fixed dev20 scope, scientific identity, assets and exact cache provenance |
+| `fairness_dev_revision` | Approved Qwen2.1 2K and MICE fixed preamble changes; native 200-token completeness preflight |
+| `fairness_dev_cache` | Completed-parent terminal reuse, including native failures, after exact request/specification and evidence checks |
 | `fairness_dev_worker` | One GPU/shard, native planning or joint editing, durable attempts/results and actual calls |
 | `fairness_dev_run` | Foreground lifecycle, eight workers per model, planner/editor barriers and Judge handoff |
 | `fairness_dev_judge` | Canonical blind evidence, exact score reuse, eight-GPU model-serial scoring and parse records |

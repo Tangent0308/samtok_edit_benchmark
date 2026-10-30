@@ -2,10 +2,11 @@
 
 ## Current scope
 
-The active protocol is [fairness v2 / fixed dev20](docs/protocol/if-bench-v1/PROTOCOL.fairness-v2.dev20.md).
+The active protocol is [fairness v2.1 / fixed dev20](docs/protocol/if-bench-v1/PROTOCOL.fairness-v2.1.dev20.md).
 Read the [evaluation reference](docs/protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md) before changing inputs, parameters or scoring.
 
 - The user approved seven fixed configurations, twenty shared dev images and canonical judging. No new candidate search.
+- The approved v2.1 corrections are Qwen2.1 at 2K and MICE's fixed short annotation preamble plus native 200-token completeness checks. Preserve native algorithms/defaults otherwise. Reuse exact terminal results including the historical MIRAGE failure; never reuse 1K outputs for 2K requests.
 - Preserve the original 108-image dev pool and 976-image test split; the other 88 dev images do not become test.
 - Stop after dev scores, failures and proposed formal configuration. Formal freeze/test requires the next user confirmation.
 - MaskFlow and other methods without verified joint multi-target editing are excluded. Do not add K sequential edits.
@@ -17,7 +18,7 @@ Read the [evaluation reference](docs/protocol/if-bench-v1/CURRENT_EVALUATION_ZH.
 
 Code and protocol Markdown belong in this repository. Audit snapshots, smoke/dev outputs, logs, previews, reports and validation receipts belong under `/tmp/ifbench/` or `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/`. Only confirmed, frozen formal artifacts may enter `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/`. This overrides the parent's visualization location for temporary IF-Bench material. Preserve unrelated experiments and historical records/costs.
 
-The active shared bundle `fairness-v2-dev20-20261030` has its own immutable `repo/` snapshot, manifests and requests. Repository cleanup must not change the published bundle or imply that a running experiment has adopted new checkout code. Use the foreground launcher in [DEV20_RUN_ZH.md](docs/protocol/if-bench-v1/DEV20_RUN_ZH.md), without `nohup` or `&`. Never kill unrelated GPU processes.
+The shared bundles `fairness-v2-dev20-20261030` (completed parent) and `fairness-v21-dev20-20261030` (approved correction) have immutable `repo/` snapshots, manifests and requests. Repository cleanup must not change published bundles or imply that a running experiment has adopted new checkout code. Use the foreground launcher in [DEV20_RUN_ZH.md](docs/protocol/if-bench-v1/DEV20_RUN_ZH.md), without `nohup` or `&`. Never kill unrelated GPU processes.
 
 Inspect actual records before reporting progress. Cached output is not new inference; generation success is not task success. Keep credentials, weights, datasets and generated artifacts out of Git.
 

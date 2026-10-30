@@ -91,11 +91,11 @@ def effective(raw, unit_ids, raw_path):
     return value
 
 
-def load_plan(path, root=None):
+def load_plan(path, root=None, *, helper_root=None):
     path = Path(path).resolve()
     from .fairness_dev_plan import load_plan as verify_plan
 
-    plan = verify_plan(path)
+    plan = verify_plan(path) if helper_root is None else verify_plan(path, helper_root=helper_root)
     base = path.parent
     if plan.get("test_authorized") or plan.get("test_started") or plan.get("formal_test"):
         raise ValueError("This runner is dev-only")

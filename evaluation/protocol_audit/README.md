@@ -1,6 +1,6 @@
 # IF-Bench protocol and execution tools
 
-The current protocol is [fairness v2 / fixed dev20](../../docs/protocol/if-bench-v1/PROTOCOL.fairness-v2.dev20.md).
+The current protocol is [fairness v2.1 / fixed dev20](../../docs/protocol/if-bench-v1/PROTOCOL.fairness-v2.1.dev20.md).
 Read the [method reference](../../docs/protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md)
 and [launcher guide](../../docs/protocol/if-bench-v1/DEV20_RUN_ZH.md).
 The directory name is historical: some tools now support approved phase-2 execution.
@@ -9,7 +9,8 @@ The directory name is historical: some tools now support approved phase-2 execut
 
 | Files | Purpose |
 |---|---|
-| `prepare_fairness_dev20.py` | Select dev20 before inspecting outputs; bind requests, versions and exact caches |
+| `prepare_fairness_dev20_revision.py` | Preserve the completed v2 run and same dev20 IDs; apply approved 2K/MICE changes, verify exact terminal and Judge reuse, then publish a separate committed bundle |
+| `prepare_fairness_dev20.py` | Historical v2 selection and initial bundle; do not use it to recreate or overwrite published runs |
 | `package_fairness_dev20_assets.py` | Package public assets/upstream snapshots with verified path aliases |
 | `bootstrap_fairness_dev20.py`, `start_fairness_dev20.sh` | Verify package/resources, unpack isolated runtimes and wait in the foreground |
 | `fairness_flux3_replan.py` | FLUX3 dual/no-box flow and native RePlan planning → clean-image editing |
@@ -21,6 +22,16 @@ The active coordinator/worker/Judge/report code is in
 Helpers retain their audited location because plans bind their source hashes.
 Formatting this checkout does not update the running bundle. Do not rerun
 preparation against a published package to refresh its hashes.
+
+For the approved v2.1 correction, run
+`python -m evaluation.protocol_audit.prepare_fairness_dev20_revision` after checks
+and documentation are ready. Preparation performs CPU/tokenizer checks only;
+it does not publish or launch inference. Inspect `PREPARATION.json`, commit and
+push the exact snapshotted source, then run the same command with `--publish`.
+Publication requires a clean checkout and byte-identical committed files.
+The new bundle references immutable parent assets, runtimes and result evidence;
+both bundles must remain available. `start.sh --validate-only` checks runtime
+admission plus every prepared request and cache without inference.
 
 ## Review and historical tools
 

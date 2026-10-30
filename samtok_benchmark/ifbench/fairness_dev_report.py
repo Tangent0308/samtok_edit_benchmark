@@ -497,6 +497,11 @@ def markdown(report, directory):
         f"| 已生成{report['generation_counts'].get('generated', 0)}个逻辑输出；完整统计行{sum(r['complete'] for r in report['rows'])}/{len(report['rows'])} | 原生失败及评分缺分见逐行账本；不人为补分 | {'无评分缺失' if report['ready_for_review'] else '尚有生成/评分待完成或Judge缺分'} | 汇报固定方案完整20图结果，停在用户确认门；不自动freeze/test |",
         "",
     ]
+    if report.get("protocol_revision"):
+        md += [
+            f"协议版本：`{report['protocol_revision']}`。Qwen2.1 使用2K；MICE使用已批准短前导及原生200-token完整性检查。未变请求精确复用，历史原生失败保留；不把复用当作新推理。",
+            "",
+        ]
     md += setting_comparisons(report)
     md += [
         "## 按模型列出的完整分数与输入方式",
@@ -723,6 +728,8 @@ def run(plan, root=None):
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "plan_digest": context["plan"].get("digest"),
         "plan_sha256": context["plan_sha256"],
+        "protocol_revision": context["plan"].get("protocol_revision"),
+        "parent_run": context["plan"].get("parent_run"),
         "run_id": context["run_id"],
         "case_ids": context["case_ids"],
         "model_order": context["order"],

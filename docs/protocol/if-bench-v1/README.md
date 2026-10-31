@@ -1,6 +1,6 @@
 # IF-Bench 协议与评测索引
 
-**当前有效版本：2026-10-30 已确认的 fairness v2.1 / dev20。** Qwen2.1 改为推荐 2K，MICE 使用固定短标注说明并检查原生 200-token 条件完整性。七模型仍各固定一套方案，相同 20 张 dev、10 个 setting、一次采样与 canonical Judge，不再选候选。旧 v2 运行已完成并保留；新入口的实际状态以新运行目录为准，完成 dev 后仍停在正式冻结/test 之前。
+**当前有效版本：2026-10-30 已确认的 fairness v2.1 / dev20。** Qwen2.1 使用推荐 2K，MICE 使用固定短标注说明并检查原生 200-token 条件完整性。2026-10-31 本机修复运行通过原生 CPU offload 补齐 Qwen2.1 的 177 条解码 OOM，并完成全部缺失 Judge。七模型仍各固定一套方案，相同 20 张 dev、10 个 setting，不再选候选。23 条 Qwen 原成功输出与其余模型终态精确复用；全部历史失败和成本保留，仍停在正式冻结/test 之前。
 
 ## 当前文档
 
@@ -10,6 +10,8 @@
 | [PROTOCOL.fairness-v2.1.dev20.md](PROTOCOL.fairness-v2.1.dev20.md) | 已确认修订、284 条重跑、精确终态复用与完整性检查 |
 | [PROTOCOL.fairness-v2.dev20.md](PROTOCOL.fairness-v2.dev20.md) | v2.1 继承的 setting、方法边界、Judge、20 图范围与后续交付边界 |
 | [DEV20_RUN_ZH.md](DEV20_RUN_ZH.md) | 8 卡前台入口、依赖、启动阶段、进度与实际图文报告位置 |
+| **[DEV20_RECOVERY_RUN_ZH.md](DEV20_RECOVERY_RUN_ZH.md)** | 最新修复运行、真实新增/复用计数、全部 Judge、70 行主表及 700 例插图材料入口 |
+| [ENGINEERING_REPAIR_20261030_ZH.md](ENGINEERING_REPAIR_20261030_ZH.md) | 解码显存与 Judge 缓存根因、原生修复和两例诊断边界 |
 | [FAIRNESS_V2_CHANGELOG_ZH.md](FAIRNESS_V2_CHANGELOG_ZH.md) | 与旧输入的逐项差别 |
 | [运行模块](../../../samtok_benchmark/ifbench/README.md) · [工具索引](../../../evaluation/protocol_audit/README.md) | 代码组织、检查与历史脚本边界 |
 
@@ -29,8 +31,9 @@
 
 | 材料 | 临时路径 |
 |---|---|
-| 当前固定名单、请求、源码与运行记录 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v21-dev20-20261030/` |
+| 最新修复运行的固定名单、请求、源码与记录 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v21-qwen-repaired-dev20-20261031/` |
 | 当前进度 / Judge / 完成后的 Markdown 插图报告 | 上述目录的 `results/PROGRESS.md`、`results/judge/`、`results/report/REPORT.md` |
+| 修复前 v2.1 原终态及单独恢复的 Judge（均须保留） | `.ifbench-tmp/fairness-v21-dev20-20261030/`、`.ifbench-tmp/fairness-v21-recovery-20261031/` |
 | v2 父运行、原结果、复用证据及共用环境归档（需保留） | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v2-dev20-20261030/` |
 | 前置两图验证与全 setting 图册 | `/tmp/ifbench/fairness_v2_20261030/FINAL_EVALUATION_METHODS.md`、`ALL_MODELS_ALL_SETTINGS_GALLERY.md` |
 | 旧 108 图候选分数与逐 setting 图文文档 | `/tmp/ifbench/tiered_v1/dev_selection/judge_rejudge13_v1/`、`setting_document/IF-Bench_dev_setting_report.md` |

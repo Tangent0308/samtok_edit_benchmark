@@ -2,7 +2,7 @@
 
 本文件说明 **2026-10-30 用户已确认修复后的方案**，与[v2.1执行修订](PROTOCOL.fairness-v2.1.dev20.md)配套。它是方法说明，不是分数报告。范围是七模型×十setting×同一二十张dev图，共1400个逻辑请求；只改变Qwen2.1的2K配置及MICE短前导/完整性检查，没有新候选搜索，未授权正式冻结或test。
 
-旧 108 图候选实验、前置两图验证、当前 20 图 dev 是三个不同阶段，不能混算结果。前置验证的 140/140 表示都生成了可读取且绑定正确的图片，**不表示编辑任务通过**。实时进度和最终图文报告位置见[启动指南](DEV20_RUN_ZH.md)。
+旧 108 图候选实验、前置两图验证、当前 20 图 dev 是三个不同阶段，不能混算结果。前置验证的 140/140 表示都生成了可读取且绑定正确的图片，**不表示编辑任务通过**。2026-10-31 的原生 offload 修复已补齐 Qwen2.1 的 177 条解码 OOM，全部成功输出的 Judge 已完成；最新计数、历史成本及带图报告见[修复运行记录](DEV20_RECOVERY_RUN_ZH.md)，原启动方式见[启动指南](DEV20_RUN_ZH.md)。
 
 ## 1. 公平性、样本与适用范围
 
@@ -121,7 +121,7 @@ U2. [{color_2} {shape_2}, label U2] {instruction_2}
 
 2026-10-31 的工程修复增加显式 `execution.memory_policy="model_cpu_offload"` 选项，使用原生 CPU offload 调度组件，不改上述输入或计算参数。已用固定 S1/S2-point 两例验证，其中 S1 与原成功输出逐像素一致；S2-point 能完成但有标记残留。原发布 v2.1 包仍保留常驻 GPU 配置及其失败，诊断结果不混入 dev 分数。详见[修复验证与恢复边界](ENGINEERING_REPAIR_20261030_ZH.md)。
 
-随后用户明确授权在本机完成修复后的 dev20 与全部缺失 Judge。新包 `fairness-v21-qwen-repaired-dev20-20261031` 仅重跑原177个已终止的Qwen2.1解码OOM请求；23个原成功输出经相同公开请求、权重和采样参数校验后复用，并披露resident来源。其余六模型原终态保留，单独恢复完成的Judge记录经完整provenance校验后复用。原失败及已经完成40步去噪的成本、两例独立诊断均保留；诊断输出不能代替本轮输出。实现入口为 `evaluation.protocol_audit.prepare_fairness_dev20_recovery`；这不是新的输入方案搜索，完成后仍停在dev审核门。
+随后用户明确授权在本机完成修复后的 dev20 与全部缺失 Judge。新包 `fairness-v21-qwen-repaired-dev20-20261031` 仅重跑原177个已终止的Qwen2.1解码OOM请求；23个原成功输出经相同公开请求、权重版本和采样参数校验后复用，并披露resident来源。其余六模型原终态保留，单独恢复完成的Judge记录经完整provenance校验后复用。原失败及已经完成40步去噪的成本、两例独立诊断均保留；诊断输出不能代替本轮输出。实现入口为 `evaluation.protocol_audit.prepare_fairness_dev20_recovery`；这不是新的输入方案搜索，完成后仍停在dev审核门。
 
 证据：[接口与默认值](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py#L511)、[预处理](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py#L608)、[官方分辨率示例](https://github.com/QwenLM/Qwen-Image-2.1/blob/ab96caa944157ca28a4f36b695c3047549f48f98/README.md#L230)、[独立 PE](https://github.com/QwenLM/Qwen-Image-2.1/blob/ab96caa944157ca28a4f36b695c3047549f48f98/prompt_rewrite/README.md#L1)。本地入口：`smoke_adapters.Qwen21`，由当前 worker 调用。
 

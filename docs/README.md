@@ -1,6 +1,6 @@
 # Documentation map
 
-当前工作：**[IF-Bench fairness v2.1：七模型 × 十 setting 的详细评测方式](protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md)**。固定方案、相同 20 图 dev 及 Qwen2.1 2K / MICE 文本完整性修复已确认；新入口由用户启动，正式 freeze/test 尚未授权。另见 [8 卡启动指南](protocol/if-bench-v1/DEV20_RUN_ZH.md)和[协议索引](protocol/if-bench-v1/README.md)。
+当前工作：**[IF-Bench fairness v2.1：七模型 × 十 setting 的详细评测方式](protocol/if-bench-v1/CURRENT_EVALUATION_ZH.md)**。相同 20 图 dev 的 Qwen2.1 2K 请求已通过原生 CPU offload 补齐，全部成功输出的 Judge 已完成；最新带图报告与执行边界见 **[修复运行记录](protocol/if-bench-v1/DEV20_RECOVERY_RUN_ZH.md)**。正式 freeze/test 尚未授权。另见 [8 卡启动指南](protocol/if-bench-v1/DEV20_RUN_ZH.md)和[协议索引](protocol/if-bench-v1/README.md)。
 
 以下是数据 release 2.6.0 与旧评测协议的文档；其中历史成绩不属于当前 fairness v2.1。
 

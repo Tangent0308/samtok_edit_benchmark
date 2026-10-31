@@ -14,6 +14,8 @@ Current evaluation is **fairness-v2.2-1mp**. Read [USAGE.md](docs/USAGE.md), [FU
 - Final four-node aggregation verifies ownership, generation bindings, admissions/raw/effective provenance and exact complete coverage. Use one global source-paired bootstrap; never average node percentages or CIs. Keep measured stopped/resumed costs and unknown durations distinct.
 - GT selector paste-back is a diagnostic, never an upper bound. Human residual rates and κ require real independent human labels. Do not fabricate pending scores, visualizations, throughput or verification claims.
 
+The bounded setting check uses `one_mp_coverage.py`: exactly 49 previously unsampled frozen requests on the original K=5 dev source. Together with 21 existing outputs, `one_mp_judge.py` validates all 70 model/setting combinations on that one image. Preserve each source plan identity; never rewrite existing generation records. This diagnosis has no population CI or score-driven selection. Its real state and figures are reported by `one_mp_coverage_report.py`.
+
 ## Artifacts and documentation
 
 Code and current protocol documentation belong in this repository. Smoke outputs, audits, intermediate reports, previews and logs belong under `/tmp/ifbench/` or shared `.ifbench-tmp/`. Only the confirmed frozen full run's formal outputs enter `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/`. Preserve unrelated experiments, raw evidence and actual compute costs. Never modify a published READY, frozen request, active run snapshot or original score record.

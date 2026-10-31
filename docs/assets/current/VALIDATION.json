@@ -1,268 +1,32 @@
 {
-  "scope": "CPU regression, documentation and packaging checks; no model quality claims",
-  "manifest_sha256": "818ce524a1d1f363dc8ea5caa7a887b2dd0355c17a5600d1cbd696cffcf263fb",
+  "scope": "Current 1MP setting-coverage orchestration and report validation; real GPU/Judge outcomes are recorded separately",
   "tests": {
-    "passed": 333,
+    "passed": 378,
     "subtests_passed": 2,
-    "log": "/tmp/ifbench/resolution_1mp_20261031/pytest_final_pass.log",
-    "log_sha256": "027d5cf0a8fde4dab31b3e41e94ba74a9e44be00b6567c15603ec71babc90ffb"
+    "log": "/tmp/ifbench/coverage_1mp_20261031/pytest-final.log",
+    "log_sha256": "0f61c0bc2a005125b27aaba91b885d18e0b8b419dd35e6c78a9d877b4f74c6f3"
   },
-  "ruff": {
-    "new_findings": 0,
-    "preexisting_findings_in_touched_files": 265,
-    "files": [
-      {
-        "path": "scripts/check_docs.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "scripts/render_current_results.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/audit_instruction_images.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/build_sa1b_v2.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/expand_reviewed_v2.py",
-        "current": 59,
-        "baseline": 59,
-        "new": 0
-      },
-      {
-        "path": "src/construction/publish_review.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/release_2_6/audit/gen_report.py",
-        "current": 53,
-        "baseline": 53,
-        "new": 0
-      },
-      {
-        "path": "src/construction/release_2_6/audit/merge.py",
-        "current": 28,
-        "baseline": 28,
-        "new": 0
-      },
-      {
-        "path": "src/construction/release_2_6/audit/phaseA.py",
-        "current": 89,
-        "baseline": 89,
-        "new": 0
-      },
-      {
-        "path": "src/construction/release_2_6/audit/render.py",
-        "current": 6,
-        "baseline": 6,
-        "new": 0
-      },
-      {
-        "path": "src/construction/release_2_6/build.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/release_2_6/publish.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/release_2_6/segment.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/release_2_6/sync_data_root.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/retrieve_expansion_sources.py",
-        "current": 28,
-        "baseline": 28,
-        "new": 0
-      },
-      {
-        "path": "src/construction/verify_instruction_protocol.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/construction/write_document.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/evaluation/protocol_audit/prepare_full4.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/canvas.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/cli.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/fairness_dev_plan.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/fairness_dev_worker.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/full_plan.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/full_report.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/one_mp_probe.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/one_mp_report.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/prepare_one_mp.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/public.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "src/samtok_benchmark/ifbench/render.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "tests/test_dataset.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "tests/test_ifbench_full4.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "tests/test_ifbench_one_mp.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "tests/test_repository_layout.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      },
-      {
-        "path": "tests/test_v2_instructions.py",
-        "current": 2,
-        "baseline": 2,
-        "new": 0
-      },
-      {
-        "path": "tests/test_v2_mask_semantics.py",
-        "current": 0,
-        "baseline": 0,
-        "new": 0
-      }
-    ]
-  },
+  "ruff": "all changed Python files passed",
   "build": {
     "sdist_and_wheel": "passed",
-    "log": "/tmp/ifbench/resolution_1mp_20261031/build.log",
-    "log_sha256": "ae9ad941e85574730e465cf5a6d1c6c8e8247041fbf6a82a79304859b4c844af"
+    "log": "/tmp/ifbench/coverage_1mp_20261031/build-final.log",
+    "log_sha256": "2b1cd1132e32c0e38b47d96c645230f80d0d1eb56b04caa084c40679bfef239e"
   },
   "source_sha256": {
-    "scripts/check_docs.py": "f128578838f2352ef59cc626e0d89114684efd0fe52c951623a7764f4c2b841e",
-    "scripts/render_current_results.py": "8eb8c719599605f11f7d75089307cef17f372466a72a0d9f0cf64006f55133c6",
-    "src/construction/audit_instruction_images.py": "e50ca7f7c0f35d384618c51fff6fe9fa88703acb3f3f7d3968e3c4a9413876ac",
-    "src/construction/build_sa1b_v2.py": "7418025be755af176fc28630358426e1b453532df7ee8a47d5bd5ea27cdab50e",
-    "src/construction/expand_reviewed_v2.py": "72cd2c5e6186fb805f30c4d13bc0fe88cfad2923a013c38eddef68ef5a4ccaa6",
-    "src/construction/publish_review.py": "6bdb0f9de0e01b10d741fd16ce7e80b1347c153f992c391834f1d0ca93a4225e",
-    "src/construction/release_2_6/audit/gen_report.py": "09690f5415227a5e36e136d956279fd777a86cd09adbf6dddc9ebf57cf6c3deb",
-    "src/construction/release_2_6/audit/merge.py": "5f4cf07dd787d1e1eb95ac7cbeb4481d65787eb9f46ede1e0c1f507be829e0f6",
-    "src/construction/release_2_6/audit/phaseA.py": "a46dfd41d8f67ce450f23fc7b08fd5f471c35f1a7b8bf5f5159759c16b1de99f",
-    "src/construction/release_2_6/audit/render.py": "3e447cd6a6c268a43c88f8c102782870c2645e15898b9706850bb36471aa9719",
-    "src/construction/release_2_6/build.py": "23c107dd9ae1a140e38e5b0ee5b29c3fe2781055eca3cf5ffb2f4f88fcef2f3b",
-    "src/construction/release_2_6/publish.py": "efdc89595431136f8e0584a21a641eb8d44cc28a99c71f37edb61f52fb6f6812",
-    "src/construction/release_2_6/segment.py": "393ae914688bdd6ba5df795faa4fed3dba7a6ab1c925cced23b248fc31da2d07",
-    "src/construction/release_2_6/sync_data_root.py": "86b78d640dbc62fc736ca43545ac64b21859d6d9fa981dc43837a6c159bf5d3b",
-    "src/construction/retrieve_expansion_sources.py": "3a8afcde9f6eaeb3d1dc8a227577b35cfbf04868143b7c03044135cd8455ad53",
-    "src/construction/verify_instruction_protocol.py": "3cb9ef71db0e265ba86a8d509d86c56cf6ccde0e8f78dcbef9ef84d580ef0907",
-    "src/construction/write_document.py": "ad39aafef1993edb79cac45db8180b639f08df8dd74ce5ce6e1988a08f9e4748",
-    "src/evaluation/protocol_audit/prepare_full4.py": "02fa0ae78c6d9b37f8dbfa5e8d398ee7bf6bc1faee7a372b7e692d2280806f32",
-    "src/samtok_benchmark/ifbench/canvas.py": "ab861c926f825ae468806266cdd0bf4b7eb9ef3c5fcd44f880669853ab44c19c",
-    "src/samtok_benchmark/ifbench/cli.py": "f6f00aaefb4f4c66360393af70f164a7bac97fa69b72280f885c70994d00a9a7",
-    "src/samtok_benchmark/ifbench/fairness_dev_plan.py": "a06f7cf9aa1aa434c6f9f727e10284019db273ebe1729dde417c77a210ab0723",
-    "src/samtok_benchmark/ifbench/fairness_dev_worker.py": "5fab3290093c352ab658e7e56db56e08928f126fcd00c2a8e29b0cb9595951c0",
-    "src/samtok_benchmark/ifbench/full_plan.py": "47ccfdf18740e9ac8671d3290c2fc83873227255bdb8721df5c7e664c13d59b8",
-    "src/samtok_benchmark/ifbench/full_report.py": "1746addd6c11696858efc10acf358b6c6d102a8cdaad0175ef05bf0fa7f4981f",
-    "src/samtok_benchmark/ifbench/one_mp_probe.py": "7ee94fb3832473ea04fe332dbe0c952326cf4565fa863af23552133e210813a7",
-    "src/samtok_benchmark/ifbench/one_mp_report.py": "ff9d9d81b7eea277898d5b8a634683d97e04ceab6de754f8e80589e14df462c8",
-    "src/samtok_benchmark/ifbench/prepare_one_mp.py": "bf9be81296c25a6d00d36157b8ff962f609a45b35ec7912d8fafd1239da384b3",
-    "src/samtok_benchmark/ifbench/public.py": "bc07aed64670332155556438d573185a84a0371664f49343e3728a4e7b3ab39e",
-    "src/samtok_benchmark/ifbench/render.py": "078fd2921b7e20b57bad14bec923a535767c44b2c5c3afd9e62d8f56d17848f5",
-    "tests/test_dataset.py": "5f662c7fb6e48622ce1e5f22592cf7a496c1ec4cbe9f33be9d05494ddc2c5bf0",
-    "tests/test_ifbench_full4.py": "d3ea03c605c3b75b3495397a49d21a4179be5e7a32feef1e58ac7948ec99cce6",
-    "tests/test_ifbench_one_mp.py": "5789683ee0769e635280320917698f119e8e794032631d54343501dd2f07ae6a",
-    "tests/test_repository_layout.py": "dade00b96d7872bd8c19840fa8e36e52920b0c6020655784a3b4122fe9744e1f",
-    "tests/test_v2_instructions.py": "3efb53eb52bad4fdb20aebf34794eb6899e109bbd50e8bf250fc8fbe137ea6c0",
-    "tests/test_v2_mask_semantics.py": "016507013a5990bc475f684f85d87ec0ef4fbf2b6bd8623dc251553d105f77c8"
+    "src/samtok_benchmark/ifbench/one_mp_coverage.py": "07e09809760520b244b5d22b444eff846d4c01ccf64f978875ed782a301c7e55",
+    "src/samtok_benchmark/ifbench/one_mp_coverage_report.py": "6da545d7a1ce3c899aef48a63ad9f7ea93f9e551132b49b35f07c6420c2d5a13",
+    "src/samtok_benchmark/ifbench/one_mp_judge.py": "558dadd01862c2218a73b4b11d094483fbff81e0c4c423a4aa404efaa69d9b47",
+    "src/samtok_benchmark/ifbench/one_mp_probe.py": "94d99a6d05ba2c4512cda2116feab70a3b51b3463ac47099c6996f34507d1b3e",
+    "tests/test_ifbench_one_mp_coverage.py": "296424189ed164841680354f5e4c847c4f2648d23319d0b78df971c196f9298c",
+    "tests/test_ifbench_one_mp_coverage_report.py": "962c6a61c2be69f60ea01ff390dfc6c7c5defc12be177468bf779f4970bc78fb",
+    "tests/test_ifbench_one_mp_judge.py": "83212c95ad06c3c3ba47eef8e325359a58e10fdb04222ad15c9b411c6cd79f52"
+  },
+  "manifest_sha256": "818ce524a1d1f363dc8ea5caa7a887b2dd0355c17a5600d1cbd696cffcf263fb",
+  "documentation": {
+    "pages": 15,
+    "local_links": 176,
+    "raster_images": 21,
+    "log": "/tmp/ifbench/coverage_1mp_20261031/check-docs-final.log",
+    "log_sha256": "4a527cf10f320c10d2b3c99521d803dac28a99f1552ba4959b010794d9e04d3c"
   }
 }

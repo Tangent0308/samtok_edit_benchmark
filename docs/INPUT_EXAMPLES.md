@@ -16,7 +16,7 @@ U1. Add a small white BABY ON BOARD decal on the rear window of the black SUV.
 U2. Remove the white SUV behind the black SUV at the left.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S1/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S1/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -31,7 +31,7 @@ U4. Replace the uniform top of the headscarf-wearing person in the middle with a
 U5. Replace the camouflage jacket of the rifle-carrying man beside the blue tractor with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S1/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S1/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -45,7 +45,7 @@ U3. Remove the nearest banner on the right-hand barrier.
 U4. Add a small black arrow sticker on the cropped traffic cone at the bottom.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S1/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S1/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S2-point
 
@@ -73,7 +73,7 @@ U1. [red point, label U1] Add a small white BABY ON BOARD decal on the rear wind
 U2. [blue point, label U2] Remove the white SUV behind the black SUV at the left.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-point/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-point/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -103,7 +103,7 @@ U4. [yellow point, label U4] Replace the uniform top of the headscarf-wearing pe
 U5. [magenta point, label U5] Replace the camouflage jacket of the rifle-carrying man beside the blue tractor with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-point/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-point/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -131,7 +131,7 @@ U3. [green point, label U3] Remove the nearest banner on the right-hand barrier.
 U4. [yellow point, label U4] Add a small black arrow sticker on the cropped traffic cone at the bottom.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-point/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-point/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S2-box
 
@@ -159,7 +159,7 @@ U1. [red box, label U1] Add a small white BABY ON BOARD decal on the rear window
 U2. [blue box, label U2] Remove the white SUV behind the black SUV at the left.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-box/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-box/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -189,7 +189,7 @@ U4. [yellow box, label U4] Replace the uniform top of the headscarf-wearing pers
 U5. [magenta box, label U5] Replace the camouflage jacket of the rifle-carrying man beside the blue tractor with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-box/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-box/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -217,7 +217,7 @@ U3. [green box, label U3] Remove the nearest banner on the right-hand barrier.
 U4. [yellow box, label U4] Add a small black arrow sticker on the cropped traffic cone at the bottom.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-box/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-box/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S2-mask
 
@@ -245,7 +245,7 @@ U1. [red mask contour, label U1] Add a small white BABY ON BOARD decal on the re
 U2. [blue mask contour, label U2] Remove the white SUV behind the black SUV at the left.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-mask/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-mask/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -275,7 +275,7 @@ U4. [yellow mask contour, label U4] Replace the uniform top of the headscarf-wea
 U5. [magenta mask contour, label U5] Replace the camouflage jacket of the rifle-carrying man beside the blue tractor with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-mask/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-mask/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -303,7 +303,7 @@ U3. [green mask contour, label U3] Remove the nearest banner on the right-hand b
 U4. [yellow mask contour, label U4] Add a small black arrow sticker on the cropped traffic cone at the bottom.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-mask/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S2-mask/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S3-point
 
@@ -331,7 +331,7 @@ U1. [red point, label U1] Add a small white BABY ON BOARD decal on the selected 
 U2. [blue point, label U2] Remove the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-point/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-point/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -361,7 +361,7 @@ U4. [yellow point, label U4] Replace the selected region with a knee-length util
 U5. [magenta point, label U5] Replace the selected region with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-point/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-point/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -389,7 +389,7 @@ U3. [green point, label U3] Remove the selected region.
 U4. [yellow point, label U4] Add a small black arrow sticker on the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-point/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-point/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S3-box
 
@@ -417,7 +417,7 @@ U1. [red box, label U1] Add a small white BABY ON BOARD decal on the selected re
 U2. [blue box, label U2] Remove the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-box/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-box/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -447,7 +447,7 @@ U4. [yellow box, label U4] Replace the selected region with a knee-length utilit
 U5. [magenta box, label U5] Replace the selected region with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-box/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-box/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -475,7 +475,7 @@ U3. [green box, label U3] Remove the selected region.
 U4. [yellow box, label U4] Add a small black arrow sticker on the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-box/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-box/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S3-mask
 
@@ -503,7 +503,7 @@ U1. [red mask contour, label U1] Add a small white BABY ON BOARD decal on the se
 U2. [blue mask contour, label U2] Remove the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-mask/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-mask/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -533,7 +533,7 @@ U4. [yellow mask contour, label U4] Replace the selected region with a knee-leng
 U5. [magenta mask contour, label U5] Replace the selected region with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-mask/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-mask/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -561,7 +561,7 @@ U3. [green mask contour, label U3] Remove the selected region.
 U4. [yellow mask contour, label U4] Add a small black arrow sticker on the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-mask/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S3-mask/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S4-ref
 
@@ -589,7 +589,7 @@ U1. [red box, label U1] Add a small white BABY ON BOARD decal on the rear window
 U2. [blue mask contour, label U2] Remove the white SUV behind the black SUV at the left.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-ref/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-ref/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -619,7 +619,7 @@ U4. [yellow mask contour, label U4] Replace the uniform top of the headscarf-wea
 U5. [magenta box, label U5] Replace the camouflage jacket of the rifle-carrying man beside the blue tractor with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-ref/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-ref/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -647,7 +647,7 @@ U3. [green box, label U3] Remove the nearest banner on the right-hand barrier.
 U4. [yellow mask contour, label U4] Add a small black arrow sticker on the cropped traffic cone at the bottom.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-ref/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-ref/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S4-noref
 
@@ -675,7 +675,7 @@ U1. [red box, label U1] Add a small white BABY ON BOARD decal on the selected re
 U2. [blue mask contour, label U2] Remove the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-noref/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-noref/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -705,7 +705,7 @@ U4. [yellow mask contour, label U4] Replace the selected region with a knee-leng
 U5. [magenta box, label U5] Replace the selected region with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-noref/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-noref/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -733,7 +733,7 @@ U3. [green box, label U3] Remove the selected region.
 U4. [yellow mask contour, label U4] Add a small black arrow sticker on the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-noref/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S4-noref/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ## S5
 
@@ -761,7 +761,7 @@ U1. [red point, label U1] Add a small white BABY ON BOARD decal on the rear wind
 U2. [blue point, label U2] Remove the selected region.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S5/v2-sa_607902/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S5/v2-sa_607902/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_8415518
 
@@ -791,7 +791,7 @@ U4. Replace the uniform top of the headscarf-wearing person in the middle with a
 U5. [magenta mask contour, label U5] Replace the camouflage jacket of the rifle-carrying man beside the blue tractor with a short-sleeved work shirt with a square collar.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S5/v2-sa_8415518/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S5/v2-sa_8415518/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。
 
 ### v2-sa_3042396
 
@@ -819,4 +819,4 @@ U3. [green mask contour, label U3] Remove the selected region.
 U4. Add a small black arrow sticker on the cropped traffic cone at the bottom.
 ```
 
-七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S5/v2-sa_3042396/request.json`。RePlan/MIRAGE 的完整原生规划消息另保存在本轮结果的 `planners/` 中。
+七模型实际请求：[目录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/requests)，键为 `<model>/S5/v2-sa_3042396/request.json`。RePlan/MIRAGE 已执行请求的原生规划消息保存在相应生成包的 `planners/` 中；仅做输入核验的请求不产生规划输出。实际执行范围见 [RESULTS.md](RESULTS.md)。

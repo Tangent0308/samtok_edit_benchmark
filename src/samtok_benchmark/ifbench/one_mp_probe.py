@@ -101,11 +101,13 @@ def summary(plan):
     }
 
 
-def execute(path):
+def execute(path, *, plan_api=None, lanes=None):
     from .fairness_dev_run import run_processes
 
     path = Path(path).resolve()
-    plan = load_plan(path)
+    plan_api = plan_api or sys.modules[__name__]
+    module_name = getattr(getattr(plan_api, "__spec__", None), "name", None) or plan_api.__name__
+    plan = plan_api.load_plan(path)
     for task in plan["tasks"]:
         verify_task(plan, task)
     root = Path(plan["results_root"])
@@ -118,7 +120,7 @@ def execute(path):
     visible = os.environ.get("CUDA_VISIBLE_DEVICES", "0,1,2,3,4,5,6,7").split(",")
     if len(visible) != 8:
         raise ValueError("Probe requires eight visible GPUs")
-    lanes = [
+    lanes = lanes or [
         (["qwen2511"], [0, 1]),
         (["qwen21"], [2, 3]),
         (["flux3", "mice", "flux2_klein9b"], [4]),
@@ -145,7 +147,7 @@ def execute(path):
                     command = [
                         sys.executable,
                         "-m",
-                        "samtok_benchmark.ifbench.one_mp_probe",
+                        module_name,
                         "worker",
                         "--plan",
                         str(path),

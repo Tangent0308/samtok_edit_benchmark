@@ -203,7 +203,7 @@ box-only regional列表传 `instance_bboxes_xyxy_normalized`；包含mask则传 
 
 所有生成请求seed=42，每请求只采样一次。源码commit、编辑与planner权重revision、精度、原生参数和组件在 [配置文件](../configs/evaluation/fairness_v2_2_1mp.json) 中固定；实际执行同时保存commit、逐文件SHA、实际调用和 `plan.json`。不在运行中解析为main/latest，不用短测表现改变prompt、步数或模型版本。
 
-当前最小GPU验证固定为K=2/K=5的两张图、S1/S3-point/S5、七模型，共42条请求；CPU输入验证另加入K=4第三图，覆盖210个模型×setting×case组合。固定名单只根据公开K和ID顺序选择；实际完成与图册见[RESULTS.md](RESULTS.md)，不因少量样本成功而声称完整70组合均已GPU验证。
+当前快速验证固定K=5图 `v2-sa_8415518`，覆盖七模型×全部十种setting；另有K=2固定图在S1/S3-point/S5的21条补充生成，共91条生成请求。Judge只评同一张K=5图的70个组合，用于核验输入→推理→canonical评分完整链路，不提供总体排名或置信区间。所有请求复用冻结输入，已执行的请求不重采样；名单只根据公开K和固定顺序选择。CPU输入检查另含K=4第三图，覆盖210个组合。实际完成、失败/缺分和图册见[RESULTS.md](RESULTS.md)。
 
 每条逻辑请求保留：公开prompt与资产SHA、公共画布及几何SHA、模型最终调用、实际输入/输出尺寸、raw/output SHA、planner trace、采样seed、真实API/forward计数、终态和实测耗时。小样本图册只从这些实际文件生成；未生成前不放占位图片或宣称通过。
 

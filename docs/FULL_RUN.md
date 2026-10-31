@@ -4,7 +4,7 @@
 
 模型输入、公共灰色letterbox画布、坐标变换及输出去padding见 [USAGE.md](USAGE.md)。模型与全部原生planner只读公共约1MP的I/A；Qwen2.1使用output_resolution1024；RePlan/MIRAGE保留原生近1MP网格，不声明显式width/height能约束RePlan结果。Judge仍使用原始源图/GT和逆映射输出。
 
-当前小样本包为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031`。全量包计划位置为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031`，正式结果根计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031`。
+当前验证的共享输入和42条生成位于 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031`；补齐49条请求位于同级 `one-mp-coverage-20261031`；单图70组合Judge位于同级 `one-mp-coverage-judge-20261031`。全量包计划位置为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031`，正式结果根计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031`。
 
 **全部1,084图输入与全量READY尚待准备、核验和发布；当前不能把该路径当成已可启动的包。** 发布时以实际READY、plan和SHA回执为准。当前验证和正式结果状态见 [RESULTS.md](RESULTS.md)。构造输入前先提交并保持源码干净；构造完成并核验后，发布命令为：
 
@@ -73,7 +73,7 @@ PYTHONPATH=src python -m samtok_benchmark.ifbench.prepare_one_mp \
   --results /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031
 ```
 
-构造输出不是READY发布完成的证明。已有请求/结果目录不能覆盖；维护者需核对配置、CPU验证、最小GPU验证和源码SHA后再发布固定启动身份。当前小样本采用2图×3setting×7模型的42条生成请求；另以3图×10setting×7模型核验210条CPU请求。实际完成状态分别记录，不将少量GPU样本扩大宣称为70组合均已实测。
+构造输出不是READY发布完成的证明。已有请求/结果目录不能覆盖；维护者需核对配置、CPU验证、最小GPU验证和源码SHA后再发布固定启动身份。当前快速验证共91条生成：K=5固定图覆盖全部70个模型×setting组合，K=2固定图补充21条；Judge只评K=5的70个组合。另以3图×10setting×7模型核验210条CPU请求。实际完成、失败/缺分见RESULTS，不把单图诊断扩大为全量表现或稳定性保证。
 
 ## 进度与文件
 

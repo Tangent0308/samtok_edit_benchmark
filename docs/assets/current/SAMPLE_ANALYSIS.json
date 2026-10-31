@@ -1,0 +1,416 @@
+{
+  "scope": "Fixed K=5 source; selected final Judge evidence for the current RESULTS.md analysis. No population estimate or independent human labels.",
+  "report_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/REPORT.json",
+  "report_sha256": "da4892ab5cd4009051fc54908725ee276d4542a95d33d6114d886dc418a6c4a0",
+  "scores_modified": false,
+  "judge_repeated": false,
+  "rows": [
+    {
+      "model": "qwen2511",
+      "setting": "S1",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "bdff1db5b195a9d3673911eae12506feed13bbb96aa39108633c17448324ca6a",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/bdff1db5b195a9d3673911eae12506feed13bbb96aa39108633c17448324ca6a.json",
+      "effective_sha256": "2a0de80f2a5155a23fb8cb45d1cb1d183d33a808642555584605016442f5f16e",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/results/runs/qwen2511/outputs/S1/v2-sa_8415518/output.png",
+      "output_sha256": "7f1fc092e8ee8ad227d305fc896ed032f162cb86dbc59b4da81bf3a4ffe72cf6",
+      "unit_pass_count": 1,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 3,
+        "pass": true,
+        "evidence": "Background mountains, power lines, tractors, poppies and the unedited figures (far-left man, headscarf man, center man, front-left man) are preserved; a thin gray border artifact on the left edge and the local rifle loss keep this at 3."
+      },
+      "global_Q": {
+        "score": 3,
+        "pass": true,
+        "evidence": "The khaki recolors and the new coat blend with scene lighting, but the missing rifle and the overall slight desaturation/processing give minor scene-wide inconsistency."
+      },
+      "selected_unit_evidence": [
+        {
+          "id": "U2",
+          "E": {
+            "score": 1,
+            "pass": false,
+            "evidence": "The front-left pole-holding man already had two chest pockets in the source; the output shows the same two pockets (only a small red label appears on his left chest) and no new large flap chest pocket was added, so the add operation is essentially absent."
+          },
+          "P": {
+            "score": 4,
+            "pass": true,
+            "evidence": "The black shirt, horizontal pole, hands, the far-left walking man and the tractor are all preserved."
+          },
+          "Q": {
+            "score": 4,
+            "pass": true,
+            "evidence": "No substantive edit was made, so the region looks natural and consistent with the source."
+          }
+        }
+      ]
+    },
+    {
+      "model": "qwen2511",
+      "setting": "S3-box",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "e85ddf375ef9d0c2bce4205c05f3708510f66303239944196235fab91ae36fed",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/e85ddf375ef9d0c2bce4205c05f3708510f66303239944196235fab91ae36fed.json",
+      "effective_sha256": "bfbf58557b427d0817a7ffba3eccd4499bd71998c8e6ebe888ba80c1909a0d6b",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/qwen2511/outputs/S3-box/v2-sa_8415518/output.png",
+      "output_sha256": "7ae32de495971e64fee09fab222e70230c7b31bdb6ec4200f051b9be33c1b021",
+      "unit_pass_count": 0,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 2,
+        "pass": false,
+        "evidence": "Unauthorized khaki recolors on the U1 and U2 shirts and the garbled tractor lettering alter content outside the requested operations."
+      },
+      "global_Q": {
+        "score": 2,
+        "pass": false,
+        "evidence": "The red tractor's model number is rendered as illegible garbled text and the partial/inconsistent edits (some shirts khaki, others untouched) create scene-level artifacts."
+      },
+      "selected_unit_evidence": [
+        {
+          "id": "U3",
+          "E": {
+            "score": 4,
+            "pass": true,
+            "evidence": "The capped front-right person's black shirt is changed to light khaki while pose, cap and arm geometry are retained."
+          },
+          "P": {
+            "score": 2,
+            "pass": false,
+            "evidence": "The red tractor's '240' label in the preserve region became garbled nonsense text, an unauthorized local change."
+          },
+          "Q": {
+            "score": 3,
+            "pass": true,
+            "evidence": "The khaki shirt looks natural with consistent folds and lighting."
+          }
+        }
+      ]
+    },
+    {
+      "model": "qwen2511",
+      "setting": "S5",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "1af3e287a300488e8db8924b27279b88cb42399d995f15091a089eb8ee3659b1",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/1af3e287a300488e8db8924b27279b88cb42399d995f15091a089eb8ee3659b1.json",
+      "effective_sha256": "d43bc6e1bee82dadbfe236b5cfd5fb8e711c048b3a2d1dfe9359255cc3614923",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/results/runs/qwen2511/outputs/S5/v2-sa_8415518/output.png",
+      "output_sha256": "f9f6ddd40cec4c729342e2a4e64ef54a9353ca1e2e0e543688b13560d2e2ba48",
+      "unit_pass_count": 1,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 2,
+        "pass": false,
+        "evidence": "Background mountains, power lines, poppy field and tractors are intact, but two people (U1's middle person and U2's pole-holder) were recolored/substituted beyond their authorized edits and stray 'U1/U2/U3/U5' label boxes were overlaid on the plain output."
+      },
+      "global_Q": {
+        "score": 2,
+        "pass": false,
+        "evidence": "Most of the scene looks natural, but the wrong-person garment swaps, gibberish red text patches on the green coat, and the floating evaluation label boxes are visible scene-wide artifacts."
+      },
+      "selected_unit_evidence": [
+        {
+          "id": "U2",
+          "E": {
+            "score": 2,
+            "pass": false,
+            "evidence": "Source front-left pole-holder's black shirt has no chest flap pockets; output adds flap chest pockets but two of them (requested one) and simultaneously recolors the whole shirt to tan, which was not requested for this unit."
+          },
+          "P": {
+            "score": 2,
+            "pass": false,
+            "evidence": "The shirt body was recolored black→tan and a second pocket added, spilling well beyond the single requested pocket addition; pole, hand and tractor are kept."
+          },
+          "Q": {
+            "score": 3,
+            "pass": true,
+            "evidence": "The added flap pockets and tan fabric look materially coherent with believable seams and shading."
+          }
+        }
+      ]
+    },
+    {
+      "model": "qwen21",
+      "setting": "S2-box",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "a6d92519eda6c062a1078bea7e79de6c74f15d0a1d77a9da40f57409027f3d94",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/a6d92519eda6c062a1078bea7e79de6c74f15d0a1d77a9da40f57409027f3d94.json",
+      "effective_sha256": "3fecdd580815642e51951addeb7ba2d98675790b1e165e094f882b62f5058bb7",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/qwen21/outputs/S2-box/v2-sa_8415518/output.png",
+      "output_sha256": "4d77c80c2de47a6eda7fadfee1aebe975f8ec394da873dee791b0a4e8ef19805",
+      "unit_pass_count": 3,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 4,
+        "pass": true,
+        "evidence": "Outside the authorized targets the mountains, power lines, tractors, poppy field and all unedited figures are preserved; the only changes are the authorized U2/U3/U4 edits."
+      },
+      "global_Q": {
+        "score": 4,
+        "pass": true,
+        "evidence": "The recolored and replaced garments blend with scene lighting and occlusion; no scene-wide seams, halos or inconsistent joint edits are visible."
+      },
+      "selected_unit_evidence": [
+        {
+          "id": "U1",
+          "E": {
+            "score": 1,
+            "pass": false,
+            "evidence": "Source shows the middle front-facing man in a black long shirt with full long sleeves; the output crop still shows the same full-length black sleeves down to the wrists, so the requested sleeve removal was not performed."
+          },
+          "P": {
+            "score": 4,
+            "pass": true,
+            "evidence": "The shirt body, epaulettes, chest ribbons, hands and surrounding flowers/tractor are unchanged between source and output crops."
+          },
+          "Q": {
+            "score": 4,
+            "pass": true,
+            "evidence": "The (unchanged) shirt region is coherent with consistent fabric, lighting and edges; no artifacts introduced."
+          }
+        },
+        {
+          "id": "U5",
+          "E": {
+            "score": 1,
+            "pass": false,
+            "evidence": "Source shows a camouflage long-sleeve jacket on the rifle-carrying man; the output crop still shows the same camouflage jacket, so the requested short-sleeved square-collar work shirt replacement was not applied."
+          },
+          "P": {
+            "score": 4,
+            "pass": true,
+            "evidence": "Rifle, scarf, hands, pole, blue tractor and flowers are unchanged in the crop."
+          },
+          "Q": {
+            "score": 4,
+            "pass": true,
+            "evidence": "The unchanged camo region remains visually coherent with no editing artifacts."
+          }
+        }
+      ]
+    },
+    {
+      "model": "qwen21",
+      "setting": "S4-ref",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "cf0fb70525f6804a67be61a323cec7825d7b22b6b6c21457baf5a542a4668ddb",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/cf0fb70525f6804a67be61a323cec7825d7b22b6b6c21457baf5a542a4668ddb.json",
+      "effective_sha256": "200e0781e31662d3abd9d8854ef0158922afd9daccefbb4a4b160e4d2d08990e",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/qwen21/outputs/S4-ref/v2-sa_8415518/output.png",
+      "output_sha256": "ca979f05fd9489da47a029c78ffa0a486f2095132218406b484ad4cb5786869a",
+      "unit_pass_count": 2,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 2,
+        "pass": false,
+        "evidence": "Outside the edited garments the scene is preserved, but the full output is littered with unrequested annotation overlays (red boxes, yellow outline, green dot, 'U1'/'U5' labels) that alter pixels across multiple regions."
+      },
+      "global_Q": {
+        "score": 2,
+        "pass": false,
+        "evidence": "The completed edits (U2, U3, U4) look coherent, but the scene-wide baked-in annotation artifacts (boxes, contours, dot, text) are unnatural and inconsistent with a clean edited photograph."
+      },
+      "selected_unit_evidence": []
+    },
+    {
+      "model": "flux3",
+      "setting": "S3-point",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "32abc9f324e034eac0c731e18becaf0037a2cd978533fd6b28c64a65f3ed1689",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/32abc9f324e034eac0c731e18becaf0037a2cd978533fd6b28c64a65f3ed1689.json",
+      "effective_sha256": "c6825fb8e34e7964d77ebe9cebf609013aafd9ff8499a69a43f4f08cb454233a",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/results/runs/flux3/outputs/S3-point/v2-sa_8415518/output.png",
+      "output_sha256": "676ee3234df23a75f4a461f2bc5c8e57055eb04a260706e63b8c3aa8a38f4142",
+      "unit_pass_count": 0,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 4,
+        "pass": true,
+        "evidence": "The full output image is indistinguishable from the clean source; every person, tractor, power line, mountain and poppy field is preserved with no unauthorized change."
+      },
+      "global_Q": {
+        "score": 4,
+        "pass": true,
+        "evidence": "Because no edits were applied, the scene contains no artifacts, seams, or inconsistent joint edits; lighting and shadows remain coherent throughout."
+      },
+      "selected_unit_evidence": []
+    },
+    {
+      "model": "flux3",
+      "setting": "S3-box",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "765504162f6ee1f5b91925ad0780059fe995c84f1b4116b95e430d9c85956524",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/765504162f6ee1f5b91925ad0780059fe995c84f1b4116b95e430d9c85956524.json",
+      "effective_sha256": "a194311e5ebf04e42a1dcd593cc44b25b368d8e1e433d43eb6abfb92be38bdb9",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/flux3/outputs/S3-box/v2-sa_8415518/output.png",
+      "output_sha256": "b19ed878b0005892fe781c887d35dca242ad0a1f477ed516a64499ba2197aa10",
+      "unit_pass_count": 0,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 4,
+        "pass": true,
+        "evidence": "The full OUTPUT is indistinguishable from the full SOURCE; every person, tractor, plant, mountain and power line outside the (un-edited) targets is preserved."
+      },
+      "global_Q": {
+        "score": 4,
+        "pass": true,
+        "evidence": "Since no edit was applied, the whole scene retains the original coherent lighting, shadows and textures with no artifacts."
+      },
+      "selected_unit_evidence": []
+    },
+    {
+      "model": "flux3",
+      "setting": "S3-mask",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "59de62dd3c61175bab2a466b7beabd074ecabfc1bddfe7d62299e04e4cdc60b9",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/59de62dd3c61175bab2a466b7beabd074ecabfc1bddfe7d62299e04e4cdc60b9.json",
+      "effective_sha256": "5482887c63c172281da5a8c7d956b15e967b8610c96383b0635008f340131dca",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/flux3/outputs/S3-mask/v2-sa_8415518/output.png",
+      "output_sha256": "46eb08830f3df6fd1a4a93a8a257e6a1fc1a4ab7ed15437d13c17349d71a42cd",
+      "unit_pass_count": 0,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 4,
+        "pass": true,
+        "evidence": "The full output image is indistinguishable from the clean source; mountains, power lines, tractors, people and the poppy field are all preserved."
+      },
+      "global_Q": {
+        "score": 4,
+        "pass": true,
+        "evidence": "No edits were applied anywhere, so the scene contains no new artifacts, seams or inconsistent lighting."
+      },
+      "selected_unit_evidence": []
+    },
+    {
+      "model": "replan",
+      "setting": "S3-mask",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "a6489b0634f537639be1328705b56c879c4ee356e638b9fbce510a4763568f38",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/a6489b0634f537639be1328705b56c879c4ee356e638b9fbce510a4763568f38.json",
+      "effective_sha256": "c4bc090227a92c765d98fcc0f04ee8461df12e54d37080c02f2eee0709c89324",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/replan/outputs/S3-mask/v2-sa_8415518/output.png",
+      "output_sha256": "2a6cdeedf042b6dc58b09b365582f210a2098c62e0c77dc940de8fb598a32cfb",
+      "unit_pass_count": 1,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 1,
+        "pass": false,
+        "evidence": "The front-left pole-holding man (U2 support) was entirely removed from the full image, an unauthorized deletion of a large foreground subject."
+      },
+      "global_Q": {
+        "score": 2,
+        "pass": false,
+        "evidence": "The deleted person leaves an inconsistent empty gap in the field, and four of the five requested edits (pocket, khaki recolor, utility coat, short-sleeve shirt) are absent, so the joint edit is incoherent."
+      },
+      "selected_unit_evidence": []
+    },
+    {
+      "model": "mirage",
+      "setting": "S4-ref",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "f921e7a40b3748c3197dd4d80bf9eb8a9df3efbd86c60d573fb2740fbc254fd0",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/f921e7a40b3748c3197dd4d80bf9eb8a9df3efbd86c60d573fb2740fbc254fd0.json",
+      "effective_sha256": "cd2e6bd9218edbc29a40f585ffae479bc8c319dd3e55bc0334c5ed5c03b916dc",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/mirage/outputs/S4-ref/v2-sa_8415518/output.png",
+      "output_sha256": "3d97d87bfe4a8a86023f6567d08e70c67788d7bc3260728fbefe8ea3b2e8e3b2",
+      "unit_pass_count": 0,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 3,
+        "pass": true,
+        "evidence": "Mountains, sky, power lines, the left walking man and the poppy field are intact outside the edited figures; changes are confined to the targeted people."
+      },
+      "global_Q": {
+        "score": 2,
+        "pass": false,
+        "evidence": "Every edited figure is uniformly blurred and smeared with melted edges and flat shading, producing a scene-wide low-fidelity inpaint look inconsistent with the sharp source."
+      },
+      "selected_unit_evidence": []
+    },
+    {
+      "model": "mice",
+      "setting": "S2-box",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "ab351e3188dfa58150d9cce68dbba2103317f14996ba9b58af6b1c7c62f680df",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/ab351e3188dfa58150d9cce68dbba2103317f14996ba9b58af6b1c7c62f680df.json",
+      "effective_sha256": "d003c2b8fc813cc371f6b75b4af96ec545d976757f9f638a8022470808ba6534",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/mice/outputs/S2-box/v2-sa_8415518/output.png",
+      "output_sha256": "4a59666833ba6aa6e347e8b1ded886e97fcd2dbe4e222b7b54e64243c161b151",
+      "unit_pass_count": 5,
+      "unit_count": 5,
+      "joint_pass": true,
+      "global_P": {
+        "score": 3,
+        "pass": true,
+        "evidence": "Mountains, power lines, tractors, flowers and unedited bystanders are preserved, but several previously blurred faces (U3/U4/U5 subjects) are regenerated unblurred, an unrequested change within edited persons."
+      },
+      "global_Q": {
+        "score": 3,
+        "pass": true,
+        "evidence": "All clothing edits are scene-consistent in lighting and material, though the inconsistent face-blur (some subjects de-blurred, others still blurred) is a minor global artifact."
+      },
+      "selected_unit_evidence": []
+    },
+    {
+      "model": "mice",
+      "setting": "S2-mask",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "0878c35aeb75909be7588312bb7ff69df92bf8183080296186caee07f1c580e8",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/0878c35aeb75909be7588312bb7ff69df92bf8183080296186caee07f1c580e8.json",
+      "effective_sha256": "d2b4d6018e32a73df306546f648caa1d33d7660821aece1446622271226dd48e",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-20261031/results/runs/mice/outputs/S2-mask/v2-sa_8415518/output.png",
+      "output_sha256": "fee1bf50e57f81bc3176035556a016c01441ad85108f4e36064c8023270c8c4e",
+      "unit_pass_count": 4,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 2,
+        "pass": false,
+        "evidence": "Faces throughout the scene (e.g., the far-left old man, the keffiyeh man, the center man) are de-blurred in the output versus the blurred source, and the background mountains are smoothed—changes outside any authorized target."
+      },
+      "global_Q": {
+        "score": 3,
+        "pass": true,
+        "evidence": "The five garment edits are individually coherent and lighting-consistent with no visible seams or duplicates; only a mild global saturation/contrast shift is noticeable."
+      },
+      "selected_unit_evidence": []
+    },
+    {
+      "model": "flux2_klein9b",
+      "setting": "S5",
+      "case_id": "v2-sa_8415518",
+      "judge_key": "e15294d664f8e9b2aab253df35cc7a6de58c574b1dcdb5c2c8db03ebb0a84d43",
+      "effective_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/judge/effective_records/e15294d664f8e9b2aab253df35cc7a6de58c574b1dcdb5c2c8db03ebb0a84d43.json",
+      "effective_sha256": "26a0c50b811491f8667dad87bebfaf444bbba23d603b87a99137558519424d53",
+      "output_image": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/results/runs/flux2_klein9b/outputs/S5/v2-sa_8415518/output.png",
+      "output_sha256": "392b9ac7e98b5ce7d5bdb71fc7c7e931de605c5450da92ed4ca3f7b892336543",
+      "unit_pass_count": 1,
+      "unit_count": 5,
+      "joint_pass": false,
+      "global_P": {
+        "score": 3,
+        "pass": true,
+        "evidence": "Mountains, power lines, distant walker, tractors and the poppy field outside the five targets are preserved."
+      },
+      "global_Q": {
+        "score": 2,
+        "pass": false,
+        "evidence": "Colored selector-style contour overlays (green/magenta) are visible in the full output and the joint recolors are inconsistent (khaki, tan, blue), producing scene-wide artifacts."
+      },
+      "selected_unit_evidence": []
+    }
+  ],
+  "interpretation_note": "Judge descriptions of the same source detail differ between Qwen2511 S1 and S5 (chest pockets versus chest flap pockets). This is a reason for human review, not proof of a scoring error. Original scores remain unchanged."
+}

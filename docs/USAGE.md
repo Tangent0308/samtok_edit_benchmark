@@ -2,9 +2,9 @@
 
 IF-Bench 评测真实场景中的**联合多目标、细粒度图像编辑**：模型需在同一张源图上同时完成 2–5 个编辑目标，并保持未授权内容。操作包括添加、删除、替换和属性修改；目标可能是一个实例、部件、区段，或新增内容依附的源区域。它同时检查语言指代、区域信息形式、多个目标之间的干扰、编辑完成度、内容保持与视觉质量。
 
-本说明只覆盖七个已确认方法：**Qwen-Image-Edit-2511、Qwen-Image-2.1、FLUX.3 Klein distilled、RePlan（Qwen-2511）、MIRAGE（Qwen-2511）、MICE（Klein-4B）、FLUX.2 Klein-9B distilled**。下面描述的是已完成的 `fairness v2.1 / fixed dev20` 配置，不是任意模型的通用最佳输入建议。
+本说明只覆盖七个已确认方法：**Qwen-Image-Edit-2511、Qwen-Image-2.1、FLUX.3 Klein distilled、RePlan（Qwen-2511）、MIRAGE（Qwen-2511）、MICE（Klein-4B）、FLUX.2 Klein-9B distilled**。下面描述的是已完成 dev20 验证、并用于全量运行的固定 `fairness v2.1` 配置，不是任意模型的通用最佳输入建议。
 
-**当前状态：20 图 dev 与其 Judge 已完成；正式配置尚未冻结，976 图 test 尚未运行。** 数据 release 2.6.0、原 108/976 split 和此次 20 图子集分别是不同概念；剩余 88 张 dev 不会转成 test。当前配置见 [fairness_v2_1.json](../configs/evaluation/fairness_v2_1.json)，它是已审核 dev 配置快照，不是正式冻结凭证。
+**当前状态：20 图 dev 与其 Judge 已完成；用户已确认按相同推理方案运行全部 1,084 张图，最终只报告一份全量成绩。** 四机入口、精确缓存复用、冻结身份与结果位置见 [FULL_RUN.md](FULL_RUN.md)。原 108/976 split 和20图名单保留为历史暴露记录，不再分别作为本轮结果行；不能将全量成绩称为独立未见 test 成绩。当前参数参考 [fairness_v2_1.json](../configs/evaluation/fairness_v2_1.json)，正式执行以新运行包的 `READY.json` / `plan.json` 为冻结凭证。
 
 阅读入口：[仓库首页](../README.md) · [数据构造](CONSTRUCTION.md) · [结果与证据](RESULTS.md)。
 
@@ -31,11 +31,11 @@ release 2.6.0 包含 **1,084 张源图、3,872 个编辑单元**；每图目标�
 
 构建、资产、几何和协议校验不等于独立人工语义终审；当前 release 仍记录 `independent_human_verified=false`、`semantic_signoff=false`，见 [release.json](../data/v2_2.6.0/release.json)。
 
-### 1.2 当前 dev 范围与复现身份
+### 1.2 已完成 dev 验证的范围与复现身份
 
 本轮在原 108 图 dev 池内按 K 比例分层，层内按 SHA256(`20261027:{case_id}`，如 `20261027:v2-sa_607902`) 排序取样；K=2/3/4/5 分别取 3/4/11/2 张，共 **20 张图、72 个单元**。七模型与十种 setting 共用名单，不根据输出或分数选图。
 
-split 文件同时保留 `historical_full_release_exposure=true`：本文“test 未运行”仅指当前分级协议，不能据此声称历史上从未接触过整份 release。原 split 已将先前暴露的 audit case 强制保留在 dev。
+split 文件同时保留 `historical_full_release_exposure=true`，不能声称历史上从未接触过整份 release。原 split 已将先前暴露的 audit case 强制保留在 dev；新全量包保留此记录及原20图身份。
 
 生成 seed=42，每请求一次采样。最新运行包的固定源码 commit 为 `2ac9a536e7202f71983b7703493eebecd74493bd`，plan SHA 为 `8c2995419ad71a7b7be0a7f6c6388af45ac944c75360da13bb7e19a569acb484`。仓库目录重组或后续文档修改不会热更新已发布包内的 `repo/` 快照。
 
@@ -611,7 +611,7 @@ if-bench run-dev --bundle "$IFBENCH_DEV_BUNDLE" --validate-only
 
 CPU准备/发布工具仍保留原Python模块名，例如 `python -m evaluation.protocol_audit.prepare_fairness_dev20_recovery --help`。该 recovery builder 专门核对已批准的177个OOM及其父记录，不是任意新数据或全test的通用启动器。新运行应建新包并经过相应协议/身份核对，不能改写已完成包。
 
-**正式 test 入口需随冻结方案交付，本文不提供未经验证的全 test 命令。** 正式冻结名单、配置和执行计划需要下一次确认；不能把 dev20 脚本的样本数改为976就当作已实现正式评测。
+**全量正式入口见 [四机运行指南](FULL_RUN.md)。** 它使用独立全量 schema、四台不重叠的源图分工和统一全量统计；旧 dev20 入口继续保留20图范围校验，不改写旧包。
 
 ### 8.3 查看输入、输出和报告
 

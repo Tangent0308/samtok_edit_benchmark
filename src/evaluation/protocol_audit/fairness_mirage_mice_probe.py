@@ -86,8 +86,8 @@ def spatial_hint(unit):
     )
 
 
-def payload(model, case, setting):
-    directory = SHARED / "requests" / setting / case
+def payload(model, case, setting, *, shared_root=None):
+    directory = Path(shared_root or SHARED) / "requests" / setting / case
     public = json.loads((directory / "public.json").read_text())
     verify(public, assets=True)
     inputs = json.loads((directory / "inputs.json").read_text())

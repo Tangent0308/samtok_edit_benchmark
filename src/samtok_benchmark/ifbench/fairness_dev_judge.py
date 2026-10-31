@@ -91,13 +91,19 @@ def effective(raw, unit_ids, raw_path):
     return value
 
 
-def load_plan(path, root=None, *, helper_root=None):
+def load_plan(path, root=None, *, helper_root=None, node_id=None):
     path = Path(path).resolve()
-    from .fairness_dev_plan import load_plan as verify_plan
+    full = read(path).get("schema") == "ifbench-full-release-four-node-v1"
+    if full:
+        from .full_plan import load_plan as verify_plan
+    else:
+        from .fairness_dev_plan import load_plan as verify_plan
+        if node_id is not None:
+            raise ValueError("Node selector requires an authorized whole-release plan")
 
     plan = verify_plan(path) if helper_root is None else verify_plan(path, helper_root=helper_root)
     base = path.parent
-    if plan.get("test_authorized") or plan.get("test_started") or plan.get("formal_test"):
+    if not full and (plan.get("test_authorized") or plan.get("test_started") or plan.get("formal_test")):
         raise ValueError("This runner is dev-only")
     case_ids = plan.get("case_ids", plan.get("cases"))
     order = plan.get("model_order", plan.get("models"))
@@ -105,7 +111,7 @@ def load_plan(path, root=None, *, helper_root=None):
         order = list(order)
     if not isinstance(order, list) or len(order) != len(set(order)):
         raise ValueError("Explicit unique model order is required")
-    if len(case_ids) != len(set(case_ids)) or len(case_ids) != 20:
+    if len(case_ids) != len(set(case_ids)) or (not full and len(case_ids) != 20):
         raise ValueError("The authorized fixed dev sample must contain 20 unique source images")
     tasks = plan["tasks"]
     expected = {(m, s, c) for m in order for s in plan["settings"] for c in case_ids}
@@ -157,7 +163,18 @@ def load_plan(path, root=None, *, helper_root=None):
         for relative, expected_sha in references:
             if sha256_file(dataset_root / relative) != expected_sha:
                 raise ValueError(f"Canonical source/mask asset changed: {relative}")
+    if node_id is not None:
+        from .full_plan import node_tasks
+        selected = node_tasks(plan, node_id)
+        case_ids = [cid for cid in case_ids if cid in set(plan["node_assignments"][str(node_id)])]
+        cases = {cid: cases[cid] for cid in case_ids}
+        root = root or Path(plan["results_root"]) / "nodes" / f"node-{node_id}"
+    else:
+        selected = tasks
     context = {
+        "full_release": full,
+        "node_id": node_id,
+        "tasks": selected,
         "plan": plan,
         "plan_path": path,
         "plan_sha256": sha256_file(path),
@@ -179,7 +196,7 @@ def normalized_tasks(context):
     settings = context["plan"]["settings"]
     cases = context["case_ids"]
     for task in sorted(
-        context["plan"]["tasks"],
+        context.get("tasks", context["plan"]["tasks"]),
         key=lambda t: (
             order.index(t["model"]),
             settings.index(t["setting"]),
@@ -439,6 +456,8 @@ def verify_raw(raw, job, context):
 
 def restore_and_cache(context, jobs, cache):
     root, raws, effectives, admitted = paths(context)
+    if context.get("full_release"):
+        verify_admissions(context, jobs)
     for key, job in jobs.items():
         raw_path, effective_path = raws / f"{key}.json", effectives / f"{key}.json"
         if effective_path.exists():
@@ -460,6 +479,48 @@ def restore_and_cache(context, jobs, cache):
         raise RuntimeError(
             f"Admitted Judge calls have no terminal raw record; no automatic retry: {sorted(unresolved)}"
         )
+
+
+def verify_admissions(context, jobs):
+    """Bind every new raw answer to its one recorded native Judge admission."""
+    directory, raws, effectives, admitted = paths(context)
+    raw_keys = {p.stem for p in raws.glob("*.json")}
+    admission_keys = {p.stem for p in admitted.glob("*.json")}
+    if raw_keys != admission_keys:
+        raise ValueError("Judge raw/admission sets differ; no automatic retry")
+    if raw_keys - set(jobs):
+        raise ValueError("Unregistered Judge admission/raw key")
+    for key in sorted(raw_keys):
+        job = jobs[key]
+        admission = read(admitted / f"{key}.json")
+        raw = read(raws / f"{key}.json")
+        expected = {
+            "key": key,
+            "model": job["model"],
+            "case_id": job["case_id"],
+            "output_sha256": job["record"]["output_sha256"],
+            "canonical_prompt_digest": digest(canonical.prompt(job["case"])),
+        }
+        if any(admission.get(k) != v for k, v in expected.items()):
+            raise ValueError("Judge admission identity differs from canonical job")
+        if type(admission.get("attempt")) is not int or admission["attempt"] != 1:
+            raise ValueError("Judge admission is not a single attempt")
+        execution = Path(admission["execution"])
+        if execution.parent.resolve() != (directory / "executions").resolve():
+            raise ValueError("Judge admission belongs to a different node execution")
+        receipt_path = execution / "receipt.json"
+        if raw.get("execution_receipt") != str(receipt_path) or raw.get("new_judge_calls") != 1:
+            raise ValueError("Raw answer is not bound to its admitted execution")
+        if any(raw.get(k) != expected[k] for k in ("model", "case_id")):
+            raise ValueError("Raw answer model/source differs from admission")
+        receipt = read(receipt_path)
+        if (
+            receipt.get("run_id") != context["run_id"]
+            or receipt.get("plan_sha256") != context["plan_sha256"]
+            or receipt.get("canonical_sha256") != context["config"]["source_sha256"]
+            or receipt.get("frozen") is not True
+        ):
+            raise ValueError("Judge execution receipt differs from frozen full plan")
 
 
 def progress(context, bindings, jobs):
@@ -497,15 +558,15 @@ def progress(context, bindings, jobs):
             r.get("deterministic_repair_used", False) and "cache_reuse" not in r
             for r in effective_records.values()
         ),
-        "test_started": False,
-        "frozen": False,
+        "test_started": context.get("full_release", False),
+        "frozen": context.get("full_release", False),
     }
     write_json(root / "progress.json", value)
     return value
 
 
-def run(plan, root=None, cache_index=None, model=None, dry_run=False):
-    context = load_plan(plan, root)
+def run(plan, root=None, cache_index=None, model=None, dry_run=False, node_id=None):
+    context = load_plan(plan, root, node_id=node_id)
     directory, raws, effectives, admitted = paths(context)
     directory.mkdir(parents=True, exist_ok=True)
     lock = (directory / "controller.lock").open("a")
@@ -593,8 +654,8 @@ def run(plan, root=None, cache_index=None, model=None, dry_run=False):
         "calibration_calls": 0,
         "editor_calls": 0,
         "scheduling": "model serial; original batch16; four CPU evidence workers; at most two prefetched batches",
-        "frozen": False,
-        "test_started": False,
+        "frozen": context.get("full_release", False),
+        "test_started": context.get("full_release", False),
     }
     write_json(execution / "receipt.json", receipt)
     stop = [False]

@@ -22,9 +22,10 @@ from types import SimpleNamespace
 
 import numpy as np
 from PIL import Image, ImageOps
+from samtok_benchmark.paths import repository_root
 
 
-REPO = Path("/opt/tiger/tanyue/if-bench")
+REPO = repository_root()
 SOURCES = Path("/tmp/ifbench/protocol_review_20261027/sources")
 SHARED = Path("/tmp/ifbench/tiered_v1/shared_inputs_20261027")
 OUT = Path("/tmp/ifbench/fairness_v2_20261030")
@@ -53,14 +54,14 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def request(model, case_id, setting):
+def request(model, case_id, setting, *, shared_root=None):
     """Build one fixed mapping using only the approved public input forms."""
-    if str(REPO) not in sys.path:
+    if str(REPO / "src") not in sys.path:
         sys.path.insert(0, str(REPO / "src"))
     from samtok_benchmark.ifbench.public import verify
     from samtok_benchmark.io import digest
 
-    directory = SHARED / "requests" / setting / case_id
+    directory = Path(shared_root or SHARED) / "requests" / setting / case_id
     public = json.loads((directory / "public.json").read_text())
     inputs = json.loads((directory / "inputs.json").read_text())
     verify(public, assets=True)

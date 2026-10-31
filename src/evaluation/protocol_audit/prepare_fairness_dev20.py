@@ -117,19 +117,19 @@ def evidence_copy(bundle, path):
     return copy_verified(path, bundle / "cache/evidence" / h[:2] / (h + path.suffix))
 
 
-def request_for(model, cid, setting):
+def request_for(model, cid, setting, *, shared_root=None):
     from evaluation.protocol_audit import fairness_flux3_replan as fr
     from evaluation.protocol_audit import fairness_mirage_mice_probe as mm
 
-    directory = SHARED / "requests" / setting / cid
+    directory = Path(shared_root or SHARED) / "requests" / setting / cid
     public, inputs = read(directory / "public.json"), read(directory / "inputs.json")
     if model in ["flux3", "replan"]:
-        value = fr.request(model, cid, setting)
+        value = fr.request(model, cid, setting, shared_root=shared_root)
         value["images_sha256"] = [sha256_file(Path(p)) for p in value["images"]]
         value["call_digest"] = digest(value)
         return value
     if model in ["mirage", "mice"]:
-        return mm.payload(model, cid, setting)
+        return mm.payload(model, cid, setting, shared_root=shared_root)
     parameters = {
         "qwen2511": {
             "num_inference_steps": 40,

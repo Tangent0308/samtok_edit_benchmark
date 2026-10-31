@@ -16,7 +16,7 @@ Install `.[construction]` for data authoring/release tools. Reproduce documentat
 
 | Directory | Purpose |
 |---|---|
-| `src/samtok_benchmark/ifbench/` | Public inputs, fixed dev orchestration, native workers, canonical scoring and reports |
+| `src/samtok_benchmark/ifbench/` | Public inputs, fixed dev/full-release orchestration, native workers, canonical scoring and reports |
 | `src/samtok_benchmark/v2/` | Release validation, instruction contracts and shared evaluation primitives |
 | `src/evaluation/` | Native method helpers and audited bundle/bootstrap utilities |
 | `src/construction/` | Candidate selection, annotation, audit and release-building tools |
@@ -24,7 +24,7 @@ Install `.[construction]` for data authoring/release tools. Reproduce documentat
 | `data/v2_2.6.0/` | Current release manifests, validation receipts and reviewed mask patches |
 | `data/provenance/construction/` | Historical annotation/revision decisions, recipes and audit records |
 | `data/legacy/`, other `data/v2*/` | Earlier schema/releases, retained for provenance |
-| `docs/` | The three current guides and curated documentation figures |
+| `docs/` | Current guides and the four-node runbook and curated documentation figures |
 | `docs/archive/previous/` | Earlier documents and evidence; not current execution instructions |
 | `scripts/` | Lightweight maintenance and documentation entry points |
 | `tests/` | CPU regression tests; no model downloads or inference |
@@ -38,7 +38,7 @@ A published bundle owns its `repo/` snapshot, requests, plan and SHA manifests. 
 
 The new checkout uses `src/`; published older bundles use their original flat layout. Current bootstraps support both without modifying the old manifests. Historical standalone modules (`dev_judge`, `dev_judge_stream`, `dev_rejudge13`, `judge_repair`, early smoke/analysis/packaging tools) are evidence for previous run workflows and should be replayed in their original frozen snapshots. They are not public entry points for a new run. The canonical `ifbench/dev_judge.py`, deterministic score repair and `v2/judge.py` are retained byte-for-byte so scoring identities remain auditable; current orchestration resolves data from the plan.
 
-The completed dev20 configuration is a reference, not authorization for formal freeze/test or a new candidate search. Preserve the 108-image dev pool, its fixed 20-image subset and the 976-image test split. Formal evaluation requires the next approved configuration and run plan.
+The user has authorized the full 1,084-image release with the same fixed seven configurations on four shared-mount 8×H100 hosts. [FULL_RUN.md](docs/FULL_RUN.md) documents the dedicated full-plan schema, foreground `run-full --node 0..3` and read-only `inspect-full`. Preserve the old 108/976 split and dev20 subset as exposure provenance; report one total, without claiming unseen held-out performance. This does not authorize candidate search, retries or changes to native model defaults.
 
 ## Checks and contributions
 

@@ -2,24 +2,24 @@
 
 ## Current scope
 
-The completed dev20 protocol is [fairness v2.1 / fixed dev20](docs/archive/previous/protocol/if-bench-v1/PROTOCOL.fairness-v2.1.dev20.md).
-Latest repaired dev20 is complete; its results are summarized in [RESULTS.md](docs/RESULTS.md). Read the current [evaluation guide](docs/USAGE.md) and [configuration reference](configs/evaluation/fairness_v2_1.json) before changing inputs, parameters or scoring.
+As of 2026-10-31 the user explicitly authorized the full 1,084-image release, seven confirmed methods and ten settings, reporting one total without separate dev/test score tables. The user confirmed four machines, each with eight H100 80GB GPUs and the same shared mount. This supersedes the previous stop-before-freeze/test gate for this fixed full-release run.
 
-- The user approved seven fixed configurations, twenty shared dev images and canonical judging. No new candidate search.
-- The approved v2.1 corrections are Qwen2.1 at 2K and MICE's fixed short annotation preamble plus native 200-token completeness checks. Preserve native algorithms/defaults otherwise. Reuse exact terminal results including the historical MIRAGE failure; never reuse 1K outputs for 2K requests.
-- Qwen2.1's native model CPU offload is an explicit engineering placement option, verified on two fixed diagnostics on 2026-10-31. Preserve the original published v2.1 failures and keep these diagnostics separate from dev scores; see the [repair and recovery record](docs/archive/previous/protocol/if-bench-v1/ENGINEERING_REPAIR_20261030_ZH.md).
-- Preserve the original 108-image dev pool and 976-image test split; the other 88 dev images do not become test.
-- Stop after dev scores, failures and proposed formal configuration. Formal freeze/test requires the next user confirmation.
-- MaskFlow and other methods without verified joint multi-target editing are excluded. Do not add K sequential edits.
-- Only public text/geometry may reach editors. No external SAM, grounder, caption rewriter, PE or PUP. RePlan/MIRAGE retain their own named methods' planners and disclose actual calls.
-- One sample per request, seed 42. No manual plan repair, unknown-attempt retry, output-driven prompt changes or silent fallback. Generation failures stay in the denominator; Judge failures remain missing. The old 13-key rejudge authorization is not a general retry policy.
-- Paste-back is a **GT selector paste-back diagnostic**, never an upper bound. AI inspection does not replace independent human residual-rate or κ checks.
+Read [USAGE.md](docs/USAGE.md), [FULL_RUN.md](docs/FULL_RUN.md) and the [approved configuration reference](configs/evaluation/fairness_v2_1.json) before changing inputs, parameters or scoring.
+
+- Freeze the latest seven native configurations: Qwen2.1 2K/40 steps/CFG1/KV cache/native model CPU offload; MICE fixed short preamble and complete native 200-token segments. No new candidate search, score-driven changes or external components.
+- Retain the original 108/976 split and dev20 membership only as exposure provenance. The full report includes all 1,084 sources and does not claim an unseen held-out test estimate.
+- Four fixed, disjoint source owners, each 271 images and 968 units. A source's complete seven-model × ten-setting group stays on one node; each node has eight single-GPU generation workers and its own TP8 Judge. No cross-host NCCL.
+- Reuse the completed repaired dev20 only after exact request/public/configuration/output and Judge-key verification. Preserve terminal native failures and historical costs; do not resample old failures or revive the old 177-repair authorization.
+- Only public text/geometry reaches editors. No external SAM, grounder, caption rewrite, PE or PUP. Named methods RePlan/MIRAGE retain their own native planners; record actual calls. No K sequential edits.
+- One sample per request, seed42. No unknown-admission retries, manual plan repair or silent fallback. Generation/planning/input-limit failures retain full denominators; Judge missing scores remain missing. MICE's 19 whole-release S2-point overflows follow the existing zero-sampling failure policy, not truncation or extra prompt revision.
+- Final aggregation verifies all four owners and every unique canonical key, then computes one global source-paired bootstrap. Do not average node percentages/intervals or choose among duplicate scores.
+- Paste-back remains a GT selector paste-back diagnostic, never an upper bound. Human residual-rate and κ require actual independent human review.
 
 ## Artifact placement and active runs
 
 Code and protocol Markdown belong in this repository. Audit snapshots, smoke/dev outputs, logs, previews, reports and validation receipts belong under `/tmp/ifbench/` or `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/`. Only confirmed, frozen formal artifacts may enter `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/`. This overrides the parent's visualization location for temporary IF-Bench material. Preserve unrelated experiments and historical records/costs.
 
-The shared bundles `fairness-v2-dev20-20261030` (completed parent) and `fairness-v21-dev20-20261030` (approved correction) have immutable `repo/` snapshots, manifests and requests. Repository cleanup must not change published bundles or imply that a running experiment has adopted new checkout code. Use the foreground launcher in [DEV20_RUN_ZH.md](docs/archive/previous/protocol/if-bench-v1/DEV20_RUN_ZH.md), without `nohup` or `&`. Never kill unrelated GPU processes.
+The shared bundles `fairness-v2-dev20-20261030` (completed parent) and `fairness-v21-dev20-20261030` (approved correction) have immutable `repo/` snapshots, manifests and requests. Repository cleanup must not change published bundles or imply that a running experiment has adopted new checkout code. Use the new whole-release foreground launcher in [FULL_RUN.md](docs/FULL_RUN.md) for the new run; old dev20 bundles retain their own original entry, without `nohup` or `&`. Never kill unrelated GPU processes.
 
 Inspect actual records before reporting progress. Cached output is not new inference; generation success is not task success. Keep credentials, weights, full source datasets and raw experiment outputs out of Git. The user explicitly requested inline documentation examples: selected previews, their provenance and aggregate scores may be tracked under `docs/assets/`.
 

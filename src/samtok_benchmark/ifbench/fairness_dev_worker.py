@@ -635,7 +635,7 @@ class NativeBackend:
             return self.runner.run(request)
 
 
-def run_worker(plan_path, model, stage, shard=0, shards=1, *, plan_api=None, backend_factory=None):
+def run_worker(plan_path, model, stage, shard=0, shards=1, *, plan_api=None, backend_factory=None, node_id=None):
     """Run one fixed shard; injection is only for CPU durability/contract tests."""
     if model not in MODELS or stage not in {"planner", "edit"}:
         raise ValueError("Unknown model or stage")
@@ -647,12 +647,18 @@ def run_worker(plan_path, model, stage, shard=0, shards=1, *, plan_api=None, bac
     plan = api.load_plan(Path(plan_path))
     if plan["seed"] != 42:
         raise ValueError("The approved seed is 42")
-    selected = [task for task in plan["tasks"] if task["model"] == model][shard::shards]
+    tasks = plan["tasks"]
+    if node_id is not None:
+        from .full_plan import SCHEMA as FULL_SCHEMA, node_tasks
+        if plan.get("schema") != FULL_SCHEMA:
+            raise ValueError("Node selection is permitted only by a whole-release plan")
+        tasks = node_tasks(plan, node_id)
+    selected = [task for task in tasks if task["model"] == model][shard::shards]
     if any(task["case_id"] not in plan["case_ids"] for task in selected):
-        raise ValueError("Task outside approved 20-image dev set")
+        raise ValueError("Task outside the registered evaluation source set")
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ") + f"-{os.getpid()}"
     worker = (
-        Path(plan["results_root"])
+        (Path(plan["results_root"]) / "nodes" / f"node-{node_id}" if node_id is not None else Path(plan["results_root"]))
         / "workers"
         / model
         / stage

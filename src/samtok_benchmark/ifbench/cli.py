@@ -1,4 +1,4 @@
-"""IF-Bench's checkout-oriented data and immutable dev-bundle entry point."""
+"""IF-Bench's checkout-oriented data and immutable dev/full-release bundle entry point."""
 
 from __future__ import annotations
 
@@ -39,6 +39,14 @@ def parser():
     )
     run.add_argument("--bundle", type=Path, required=True)
     run.add_argument("--validate-only", action="store_true")
+    full = sub.add_parser(
+        "run-full", help="Run one source-owned node of a published full-release bundle"
+    )
+    full.add_argument("--bundle", type=Path, required=True)
+    full.add_argument("--node", type=int, choices=range(4), required=True)
+    full.add_argument("--validate-only", action="store_true")
+    full_status = sub.add_parser("inspect-full", help="Read the four-node full-release progress")
+    full_status.add_argument("--bundle", type=Path, required=True)
     return command
 
 
@@ -50,6 +58,26 @@ def inspect_run(bundle):
         result[name] = json.loads(path.read_text()) if path.is_file() else None
     if result["READY.json"] is None:
         raise FileNotFoundError(f"Not a published run: {bundle / 'READY.json'}")
+    return result
+
+
+def inspect_full(bundle):
+    bundle = bundle.resolve()
+    ready = json.loads((bundle / "READY.json").read_text())
+    if ready.get("schema") != "ifbench-full-release-four-node-v1":
+        raise ValueError("Not a full-release four-node bundle")
+    root = Path(ready["results_root"])
+    result = {"bundle": str(bundle), "results_root": str(root), "nodes": {}}
+    for node in range(4):
+        directory = root / "nodes" / f"node-{node}"
+        result["nodes"][str(node)] = {
+            name: json.loads((directory / name).read_text())
+            if (directory / name).exists()
+            else None
+            for name in ("progress.json", "COMPLETED.json", "ERROR.json")
+        }
+    final = root / "report/COMPLETED.json"
+    result["aggregate"] = json.loads(final.read_text()) if final.exists() else None
     return result
 
 
@@ -78,6 +106,8 @@ def main(argv=None):
         result = json.loads(args.config.read_text())
     elif args.command == "inspect-run":
         result = inspect_run(args.bundle)
+    elif args.command == "inspect-full":
+        result = inspect_full(args.bundle)
     else:
         bundle = args.bundle.resolve()
         inspect_run(bundle)  # Publication must exist; the frozen bootstrap verifies every hash.
@@ -85,6 +115,9 @@ def main(argv=None):
         if not start.is_file():
             raise FileNotFoundError(start)
         command = ["bash", str(start)]
+        if args.command == "run-full":
+            inspect_full(bundle)
+            command += ["--node", str(args.node)]
         if args.validate_only:
             command.append("--validate-only")
         # Preserve the bundle's code identity and foreground lifetime. No shell interpolation.

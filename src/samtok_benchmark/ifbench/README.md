@@ -1,11 +1,12 @@
 # IF-Bench evaluation code
 
-Read the current [usage guide](../../../docs/USAGE.md), [configuration reference](../../../configs/evaluation/fairness_v2_1.json) and [development rules](../../../CONTRIBUTING.md). The completed fixed dev20 has seven models, ten settings and twenty shared images. Formal freeze/test is pending.
+Read the current [usage guide](../../../docs/USAGE.md), [configuration reference](../../../configs/evaluation/fairness_v2_1.json) and [development rules](../../../CONTRIBUTING.md). The completed fixed dev20 has seven models, ten settings and twenty shared images. The same native configurations are authorized for the full release; see [the four-node runbook](../../../docs/FULL_RUN.md).
 
 | Modules | Responsibility |
 |---|---|
 | `cli` | Public `if-bench` data/config/run entry point |
 | `plan`, `public`, `render`, `inputs` | Split, shared assignments, public projection, deterministic annotations and prompts |
+| `full_plan`, `full_worker`, `full_run`, `full_judge`, `full_report` | Frozen full-release source ownership, four foreground nodes, exact merge and global paired statistics |
 | `fairness_dev_plan` | Fixed dev20 identity, assets, scope and exact cache verification |
 | `fairness_dev_revision`, `fairness_dev_recovery` | Approved 2K/MICE changes and native Qwen2.1 CPU-offload recovery |
 | `fairness_dev_cache` | Exact terminal reuse, including failures, with original provenance/costs |

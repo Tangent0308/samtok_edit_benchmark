@@ -239,7 +239,7 @@ def source_view(request, call):
     return None
 
 
-def example(context, task, binding, directory):
+def example(context, task, binding, directory, *, selection_label="fixed first dev example"):
     cid = task["case_id"]
     case = context["cases"][cid]
     request_path = Path(task["request_path"]) if task.get("request_path") else None
@@ -264,7 +264,7 @@ def example(context, task, binding, directory):
     )
     draw.text(
         (8, 5),
-        f"{task['model']} | {task['setting']} | {cid} | fixed first dev example",
+        f"{task['model']} | {task['setting']} | {cid} | {selection_label}",
         fill="black",
         font=font,
     )

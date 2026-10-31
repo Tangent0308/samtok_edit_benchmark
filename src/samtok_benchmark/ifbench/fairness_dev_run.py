@@ -157,7 +157,7 @@ def print_progress(plan, phase=None):
     return state
 
 
-def run_processes(commands, plan, phase, receipt_dir):
+def run_processes(commands, plan, phase, receipt_dir, *, progress_callback=None):
     children = []
     logs = []
     tick = time.monotonic()
@@ -188,7 +188,7 @@ def run_processes(commands, plan, phase, receipt_dir):
         last = 0
         while any(p.poll() is None for p in children):
             if time.monotonic() - last >= 30:
-                print_progress(plan, phase)
+                (progress_callback or print_progress)(plan, phase)
                 last = time.monotonic()
             failures = [p.returncode for p in children if p.poll() not in (None, 0)]
             if failures:

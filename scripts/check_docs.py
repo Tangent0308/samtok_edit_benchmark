@@ -15,6 +15,7 @@ PAGES = [
     "docs/CONSTRUCTION.md",
     "docs/USAGE.md",
     "docs/RESULTS.md",
+    "docs/FULL_RUN.md",
     "docs/archive/README.md",
     "data/README.md",
     "results/README.md",

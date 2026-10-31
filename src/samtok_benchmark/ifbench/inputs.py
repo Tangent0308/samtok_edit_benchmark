@@ -151,3 +151,27 @@ def export_inputs(request, directory: Path):
     payload["digest"] = digest(payload)
     write_json(directory / "inputs.json", payload)
     return payload
+
+
+def export_fairness_inputs(request, directory: Path):
+    """Export only the two visual forms used by the frozen seven-method protocol."""
+    verify(request, assets=True)
+    directory.mkdir(parents=True, exist_ok=True)
+    write_json(directory / "public.json", request)
+    annotation = render(request, directory / "annotation.png")
+    source = request["source"]["path"]
+    forms = {}
+    for mode in ("dual", "single"):
+        prompt = visual_prompt(request, mode)
+        images = [source]
+        if annotation:
+            images = [source, annotation["path"]] if mode == "dual" else [annotation["path"]]
+        forms[mode] = {"images": images, "prompt": prompt, "discard_region": False,
+                       "lossy_mask_to_box": False}
+        (directory / f"prompt.{mode}.txt").write_text(prompt + "\n")
+    payload = {"request_id": request["request_id"], "public_input_digest": request["input_digest"],
+               "forms": forms, "annotation": annotation,
+               "model_adapter_status": "frozen fairness v2.1 dual/single forms; no legacy conversions"}
+    payload["digest"] = digest(payload)
+    write_json(directory / "inputs.json", payload)
+    return payload

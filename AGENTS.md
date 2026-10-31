@@ -7,6 +7,7 @@ Read the [evaluation reference](docs/protocol/if-bench-v1/CURRENT_EVALUATION_ZH.
 
 - The user approved seven fixed configurations, twenty shared dev images and canonical judging. No new candidate search.
 - The approved v2.1 corrections are Qwen2.1 at 2K and MICE's fixed short annotation preamble plus native 200-token completeness checks. Preserve native algorithms/defaults otherwise. Reuse exact terminal results including the historical MIRAGE failure; never reuse 1K outputs for 2K requests.
+- Qwen2.1's native model CPU offload is an explicit engineering placement option, verified on two fixed diagnostics on 2026-10-31. Preserve the original published v2.1 failures and keep these diagnostics separate from dev scores; see the [repair and recovery record](docs/protocol/if-bench-v1/ENGINEERING_REPAIR_20261030_ZH.md).
 - Preserve the original 108-image dev pool and 976-image test split; the other 88 dev images do not become test.
 - Stop after dev scores, failures and proposed formal configuration. Formal freeze/test requires the next user confirmation.
 - MaskFlow and other methods without verified joint multi-target editing are excluded. Do not add K sequential edits.

@@ -119,6 +119,8 @@ U2. [{color_2} {shape_2}, label U2] {instruction_2}
 
 固定40步、true CFG=1、`output_resolution=2048`、`use_kv_cache=True`、PE=False。v2.1按作者README的2K推荐执行；旧v2的1024是pipeline默认，只保留为历史配置，不复用其输出、不在两种分数间择优。视觉与VAE条件沿用原生缩放和宽高比；mask仍为轮廓图。请求、环境账本及实际参数一致；显存不足不自动降回1K。
 
+2026-10-31 的工程修复增加显式 `execution.memory_policy="model_cpu_offload"` 选项，使用原生 CPU offload 调度组件，不改上述输入或计算参数。已用固定 S1/S2-point 两例验证，其中 S1 与原成功输出逐像素一致；S2-point 能完成但有标记残留。原发布 v2.1 包仍保留常驻 GPU 配置及其失败，诊断结果不混入 dev 分数。详见[修复验证与恢复边界](ENGINEERING_REPAIR_20261030_ZH.md)。
+
 证据：[接口与默认值](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py#L511)、[预处理](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py#L608)、[官方分辨率示例](https://github.com/QwenLM/Qwen-Image-2.1/blob/ab96caa944157ca28a4f36b695c3047549f48f98/README.md#L230)、[独立 PE](https://github.com/QwenLM/Qwen-Image-2.1/blob/ab96caa944157ca28a4f36b695c3047549f48f98/prompt_rewrite/README.md#L1)。本地入口：`smoke_adapters.Qwen21`，由当前 worker 调用。
 
 ## 5. FLUX.3 Klein distilled

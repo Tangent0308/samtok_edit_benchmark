@@ -1,7 +1,8 @@
 """Prepare the approved v2.1 dev20 correction without GPU or Judge calls.
 
-The parent bundle remains immutable. Only Qwen21 resolution and MICE's
-annotation preamble change; all other requests are checked for exact reuse.
+The parent bundle remains immutable. Qwen21 uses 2K with native model CPU
+offload; MICE uses the fixed short annotation preamble. Other requests are
+checked for exact reuse. Offload changes placement, not the public inputs.
 """
 
 from __future__ import annotations
@@ -225,8 +226,14 @@ def prepare(parent_bundle, bundle):
             "one_sample_per_request": True,
             "changes": {
                 "qwen21_output_resolution": 2048,
+                "qwen21_memory_policy": "model_cpu_offload",
                 "mice_annotation_header": MICE_HEADER,
                 "mice_effective_text_tokens_unchanged": 200,
+            },
+            "engineering_repair": {
+                "user_instruction": "开始修复。",
+                "date": "2026-10-31",
+                "qwen21": "Use native model CPU offload; preserve all sampling inputs and parameters",
             },
         },
     )
@@ -240,6 +247,9 @@ def prepare(parent_bundle, bundle):
         "code_manifest_sha256": sha256_file(parent_bundle / "code_manifest.json"),
     }
     plan["model_specifications"]["qwen21"]["parameters"]["output_resolution"] = 2048
+    plan["model_specifications"]["qwen21"].setdefault("execution", {})[
+        "memory_policy"
+    ] = "model_cpu_offload"
     plan["configuration_sha256"] = digest(
         {
             "parent_configuration": parent["configuration_sha256"],
@@ -256,6 +266,7 @@ def prepare(parent_bundle, bundle):
     helper_files = set(plan["helper_sha256"]) | {
         "samtok_benchmark/ifbench/fairness_dev_revision.py",
         "samtok_benchmark/ifbench/fairness_dev_cache.py",
+        "samtok_benchmark/ifbench/qwen21_memory.py",
     }
     plan["helper_sha256"] = {f: sha256_file(REPO / f) for f in sorted(helper_files)}
     plan["tasks"] = []

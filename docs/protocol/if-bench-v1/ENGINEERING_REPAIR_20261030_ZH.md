@@ -21,7 +21,7 @@ Qwen2.1 的两个固定 GPU 诊断已成功完成；Judge 缓存依赖问题的�
 - [官方 offload 入口](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/pipeline_utils.py#L1174)
 - [完整本机源码复核](/tmp/ifbench/qwen21_memoryfix_20261030/source_review/SOURCE_REVIEW.md)
 
-实现位于 `qwen21_memory.py` 与 `smoke_adapters.Qwen21`。默认仍为 `resident`；显式选择 `model_cpu_offload` 才启用新路径。若后续应用于新评测包，使用 `model_specifications.qwen21.execution.memory_policy` 明确记录，并重新绑定配置及科学身份，不能隐式覆盖旧包。
+实现位于 `qwen21_memory.py` 与 `smoke_adapters.Qwen21`。适配器默认仍为 `resident`，保留历史调用；显式选择 `model_cpu_offload` 才启用新路径。修复后的新包准备器会在 `model_specifications.qwen21.execution.memory_policy` 中显式写入该策略，并重新绑定配置及科学身份、固定相关 helper SHA。已发布包保持原样，不会因仓库更新而改变运行配置。
 
 ## 等待条件与固定诊断
 

@@ -1,4 +1,4 @@
-"""Verified foreground bootstrap for four independent eight-GPU source partitions."""
+"""Verified foreground bootstrap for one native eight-GPU source partition."""
 
 from __future__ import annotations
 import argparse
@@ -23,6 +23,35 @@ from evaluation.protocol_audit.bootstrap_fairness_dev20 import (  # noqa: E402
     check_gpus,
     prepare_runtime,
 )
+
+
+def local_source_alias(item):
+    """Materialize the pinned upstream sources locally without rewriting paths."""
+    alias, target = Path(item["alias"]), Path(item["target"])
+    if not alias.is_absolute() or not target.is_absolute() or not item.get("files"):
+        raise ValueError("Expected absolute source alias with a nonempty manifest")
+    for relative in item["files"]:
+        path = Path(relative)
+        if not path.parts or path.is_absolute() or ".." in path.parts:
+            raise ValueError("Unsafe upstream source member")
+    if os.path.lexists(alias):
+        if alias.resolve().is_relative_to(Path("/mnt")):
+            raise RuntimeError(
+                f"Source alias executes shared code: {alias}; use a fresh worker container"
+            )
+        for relative, expected in item["files"].items():
+            checked(alias / relative, expected)
+        return {"alias": str(alias), "status": "verified-node-local", "target": str(target)}
+    # A failed copy remains evidence; never overwrite an existing source tree.
+    alias.mkdir(parents=True)
+    for relative, expected in item["files"].items():
+        path = Path(relative)
+        checked(target / path, expected)
+        output = alias / path
+        output.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(target / path, output)
+        checked(output, expected)
+    return {"alias": str(alias), "status": "copied-node-local", "target": str(target)}
 
 
 def main():
@@ -58,7 +87,8 @@ def main():
         ("entrypoint_sha256", "start.sh"),
     ]:
         checked(bundle / relative, ready[key])
-    repo = bundle / "repo"
+    # The ARNOLD entry stages the byte-identical pinned snapshot under local /tmp.
+    repo = Path(__file__).resolve().parents[3]
     files = read(bundle / "code_manifest.json")["files"]
     for relative, expected in files.items():
         if Path(relative).is_absolute() or ".." in Path(relative).parts:
@@ -71,12 +101,24 @@ def main():
     lock = (work / "bootstrap.lock").open("a")
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     os.set_inheritable(lock.fileno(), True)
+    host_lock = Path("/tmp/ifbench/full4-host.lock").open("a")
+    fcntl.flock(host_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    os.set_inheritable(host_lock.fileno(), True)
     if platform.machine() != "x86_64" or tuple(
         int(x) for x in platform.libc_ver()[1].split(".")[:2]
     ) < (2, 36):
         raise RuntimeError("Pinned generation runtime requires x86_64 Linux and glibc >= 2.36")
-    aliases = verify_aliases(read(bundle / "aliases.json"))
     gpus = check_gpus(70, 8)
+    items = read(bundle / "aliases.json")
+    if os.environ.get("IFBENCH_CLUSTER_MANAGED") == "1":
+        source_alias = read(bundle / "plan.json")["paths"]["sources"]
+        sources = [i for i in items if i["alias"] == source_alias]
+        if len(sources) != 1:
+            raise ValueError("One pinned upstream source alias is required")
+        aliases = [local_source_alias(sources[0])]
+        aliases += verify_aliases([i for i in items if i["alias"] != source_alias])
+    else:
+        aliases = verify_aliases(items)
     proofs, pythons, environments = {}, {}, {}
     for name in ("generation", "judge"):
         pythons[name], environments[name], proofs[name] = prepare_runtime(
@@ -96,17 +138,27 @@ def main():
         "gpus": gpus,
         "bootstrap_sha256": sha(bundle / "bootstrap.json"),
         "validate_only": a.validate_only,
+        "executed_repository": str(repo),
     }
     path = (
         bundle / "validation" / f"node-{a.node}" / f"{socket.gethostname()}-{time.time_ns()}.json"
     )
     save(path, receipt)
+    if os.environ.get("IFBENCH_CLUSTER_DIRECTORY"):
+        save(
+            Path(os.environ["IFBENCH_CLUSTER_DIRECTORY"]) / "nodes" / str(a.node) / "runtime.json",
+            receipt,
+        )
     env = environments["generation"]
     env.update(
         IFBENCH_GENERATION_PYTHON=str(pythons["generation"]),
         IFBENCH_JUDGE_PYTHON=str(pythons["judge"]),
         IFBENCH_RUNTIME_RECEIPT=str(path),
         PYTHONUNBUFFERED="1",
+        TRITON_CACHE_DIR=str(work / "kernels/triton"),
+        TORCHINDUCTOR_CACHE_DIR=str(work / "kernels/inductor"),
+        TORCH_EXTENSIONS_DIR=str(work / "kernels/extensions"),
+        VLLM_CACHE_ROOT=str(work / "kernels/vllm"),
     )
     command = [
         str(pythons["generation"]),

@@ -78,7 +78,8 @@ def source_snapshot(bundle, plan):
     plan["renderer_path"] = str(bundle / "assets/shared_inputs/renderer.json")
     plan["renderer_sha256"] = sha256_file(Path(plan["renderer_path"]))
     snapshot_repo(bundle)
-    shutil.copyfile(REPO / "src/evaluation/protocol_audit/start_full4.sh", bundle / "start.sh")
+    entry = "start_arnold_full4.sh" if plan.get("cluster_execution") else "start_full4.sh"
+    shutil.copyfile(REPO / "src/evaluation/protocol_audit" / entry, bundle / "start.sh")
     (bundle / "start.sh").chmod(0o755)
     files = read(bundle / "code_manifest.json")["files"]
     plan["helper_sha256"] = {
@@ -391,6 +392,118 @@ def publish(bundle, *, refresh_source=False):
     )
 
 
+def repackage_arnold(bundle, source_bundle, results):
+    """Reuse immutable full inputs, changing only launch code and output locations."""
+    from concurrent.futures import ThreadPoolExecutor
+    from samtok_benchmark.ifbench.fairness_dev_plan import check_hash
+    from samtok_benchmark.ifbench.fairness_dev_judge import Cache
+
+    bundle, source_bundle, results = (p.resolve() for p in (bundle, source_bundle, results))
+    if (bundle.exists() and any(bundle.iterdir())) or results.exists():
+        raise ValueError("Use a new empty bundle and new formal result path")
+    ready = read(source_bundle / "READY.json")
+    for name, key in (
+        ("plan.json", "plan_sha256"),
+        ("code_manifest.json", "code_manifest_sha256"),
+        ("bootstrap.json", "bootstrap_sha256"),
+        ("aliases.json", "aliases_sha256"),
+        ("PREPARATION.json", "preparation_sha256"),
+    ):
+        check_hash(source_bundle / name, ready[key])
+    original = full_plan.load_plan(source_bundle / "plan.json", helper_root=source_bundle / "repo")
+    if Path(original["results_root"]).exists():
+        raise ValueError(
+            "Original full run has artifacts; inspect admissions instead of making a new run"
+        )
+    plan = deepcopy(original)
+    plan.pop("digest")
+    bundle.mkdir(parents=True)
+    plan["results_root"] = str(results)
+    plan["cluster_execution"] = {
+        "platform": "arnold",
+        "workers": 4,
+        "gpus_per_worker": 8,
+        "topology": "ARNOLD_ID/ARNOLD_WORKER_NUM/ARNOLD_WORKER_GPU/ARNOLD_WORKER_HOSTS",
+        "control": "TCP rendezvous, shared heartbeat/barriers, common fatal-error propagation",
+        "generation": "eight native single-GPU workers per source owner",
+        "judge": "four independent frozen TP8/EP engines",
+        "aggregate_node": 0,
+        "automatic_retry": False,
+    }
+    plan["launch_parent"] = {
+        "bundle": str(source_bundle),
+        "ready_sha256": sha256_file(source_bundle / "READY.json"),
+        "plan_sha256": sha256_file(source_bundle / "plan.json"),
+        "input_rebuilds": 0,
+        "scientific_configuration_changes": 0,
+    }
+    for task in plan["tasks"]:
+        for key in ("output_dir", "result_path", "planner_dir"):
+            task[key] = str(results / Path(task[key]).relative_to(original["results_root"]))
+    # Inputs/prompts/planner caches retain their original absolute references and hashes.
+    excluded = {"output_dir", "result_path", "planner_dir"}
+
+    def inputs(tasks):
+        return [{k: v for k, v in t.items() if k not in excluded} for t in tasks]
+
+    if inputs(plan["tasks"]) != inputs(original["tasks"]):
+        raise ValueError("A launch migration must not change any scientific request")
+    input_digest = digest(inputs(plan["tasks"]))
+    for name in ("aliases.json", "bootstrap.json", "configuration.json", "AUTHORIZATION.json"):
+        shutil.copyfile(source_bundle / name, bundle / name)
+    plan.update(
+        authorization_path=str(bundle / "AUTHORIZATION.json"),
+        configuration_reference=str(bundle / "configuration.json"),
+        case_manifest=str(bundle / "repo/data/v2_2.6.0/cases.jsonl"),
+    )
+    # Relocate only live canonical-cache pointers, preserving the raw evidence bytes.
+    cache = read(original["cache_index"])
+    references = {}
+    for entry in cache["entries"].values():
+        refs = [(entry, "effective_record", entry["sha256"])]
+        refs += [(ref, "path", ref["sha256"]) for ref in entry["provenance_files"]]
+        for container, key, expected in refs:
+            old = Path(container[key])
+            new = bundle / old.relative_to(source_bundle)
+            if old in references and references[old] != (new, expected):
+                raise ValueError("Conflicting cache provenance hashes")
+            references[old] = (new, expected)
+            container[key] = str(new)
+
+    def copy_evidence(item):
+        old, (new, expected) = item
+        check_hash(old, expected)
+        new.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(old, new)
+        check_hash(new, expected)
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        list(pool.map(copy_evidence, references.items()))
+    write_json(bundle / "cache/judge_index.json", cache)
+    plan["cache_index"] = str(bundle / "cache/judge_index.json")
+    plan["cache_index_sha256"] = sha256_file(Path(plan["cache_index"]))
+    plan = source_snapshot(bundle, plan)
+    full_plan.load_plan(bundle / "plan.json")
+    cache_check = Cache(plan["cache_index"], plan["judge_config"]).verify_portable_files(bundle)
+    save(
+        bundle / "PREPARATION.json",
+        {
+            **full_plan.summary(plan),
+            "new_inference_calls": 0,
+            "completion_method": "Verified immutable full-input reuse; exact non-output task equality and relocated cache byte checks. All runtime input preflights remain mandatory.",
+            "unchanged_task_inputs_digest": input_digest,
+            "source_preparation": {
+                "path": str(source_bundle / "PREPARATION.json"),
+                "sha256": ready["preparation_sha256"],
+            },
+            "verified_canonical_cache": cache_check,
+            "changed_inference_parameters": 0,
+            "rebuilt_inputs": 0,
+        },
+    )
+    print(json.dumps(full_plan.summary(plan)), flush=True)
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--bundle", type=Path, default=DEFAULT_BUNDLE)
@@ -399,10 +512,18 @@ if __name__ == "__main__":
     p.add_argument("--workers", type=int, default=8)
     p.add_argument("--publish", action="store_true")
     p.add_argument("--refresh-source", action="store_true")
+    p.add_argument(
+        "--reuse-full-inputs",
+        type=Path,
+        help="Prepare a new ARNOLD bundle from an unstarted frozen full-input bundle",
+    )
     a = p.parse_args()
     if a.publish:
         publish(a.bundle, refresh_source=a.refresh_source)
     else:
         if a.refresh_source:
             p.error("--refresh-source requires --publish")
-        prepare(a.bundle, a.parent, a.results, a.workers)
+        if a.reuse_full_inputs:
+            repackage_arnold(a.bundle, a.reuse_full_inputs, a.results)
+        else:
+            prepare(a.bundle, a.parent, a.results, a.workers)

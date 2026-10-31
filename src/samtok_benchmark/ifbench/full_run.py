@@ -152,6 +152,14 @@ def progress(plan, node, phase, state):
 def execute(plan_path, node, validate_only=False):
     bundle = verify_package(plan_path)
     plan = load_plan(plan_path)
+    if (
+        plan.get("cluster_execution")
+        and not validate_only
+        and os.environ.get("IFBENCH_CLUSTER_MANAGED") != "1"
+    ):
+        raise RuntimeError(
+            "This plan requires the common foreground ARNOLD entry on all four workers"
+        )
     tasks = node_tasks(plan, node)
     directory = Path(plan["results_root"]) / "nodes" / f"node-{node}"
     done = directory / "COMPLETED.json"
@@ -159,6 +167,12 @@ def execute(plan_path, node, validate_only=False):
         if read(done)["plan_digest"] != plan["digest"]:
             raise ValueError("Node completion belongs to another plan")
         print(f"Node {node} already completed; no new generation or Judge calls.", flush=True)
+        if os.environ.get("IFBENCH_CLUSTER_MANAGED") == "1":
+            # Completed nodes still participate in the common readiness barrier.
+            from .arnold import generation_barrier
+
+            generation_barrier()
+            return read(done)
         from .full_report import aggregate_if_ready
 
         return aggregate_if_ready(bundle)
@@ -199,7 +213,7 @@ def execute(plan_path, node, validate_only=False):
     signal.signal(signal.SIGTERM, terminate)
     env = dict(
         os.environ,
-        PYTHONPATH=source_pythonpath(bundle / "repo"),
+        PYTHONPATH=source_pythonpath(),
         HF_HUB_OFFLINE="1",
         TRANSFORMERS_OFFLINE="1",
         TOKENIZERS_PARALLELISM="false",
@@ -213,6 +227,9 @@ def execute(plan_path, node, validate_only=False):
     try:
         receipt = preflight(plan, bundle, node)
         write_json(execution / "preflight.json", receipt)
+        from .arnold import generation_barrier
+
+        generation_barrier()
         for model in plan["model_order"]:
             for stage in ["planner", "edit"] if model in PLANNERS else ["edit"]:
                 phase = {"model": model, "stage": stage}
@@ -290,6 +307,9 @@ def execute(plan_path, node, validate_only=False):
         release_node(directory, owner)
     from .full_report import aggregate_if_ready
 
+    if os.environ.get("IFBENCH_CLUSTER_MANAGED") == "1":
+        # The persistent ARNOLD supervisor keeps all hosts alive; node 0 merges.
+        return state
     return aggregate_if_ready(bundle)
 
 

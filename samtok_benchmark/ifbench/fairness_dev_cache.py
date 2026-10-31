@@ -39,11 +39,16 @@ def completed_parent(plan):
     return _parent(p["plan"], p["plan_sha256"], p["completion_sha256"], p["code_manifest_sha256"])
 
 
-def verify_completed_cache(plan, task, stage, receipt, request, public):
+def verify_completed_cache(plan, task, stage, receipt, request, public, *, recovered=False):
     from .fairness_dev_plan import verify_cache
     from .fairness_dev_worker import binding, verify_existing
 
-    parent, tasks = completed_parent(plan)
+    if recovered:
+        from .fairness_dev_recovery import recovered_parent, verify_placement_equivalence
+
+        parent, tasks = recovered_parent(plan)
+    else:
+        parent, tasks = completed_parent(plan)
     old_task = tasks[task["key"]]
     if receipt["parent_plan_digest"] != parent["digest"]:
         raise ValueError("Completed cache has a different parent plan")
@@ -51,7 +56,9 @@ def verify_completed_cache(plan, task, stage, receipt, request, public):
     if previous_request != request or previous_public != public:
         raise ValueError("Completed native request/public input differs")
     model = task["model"]
-    if parent["model_specifications"][model] != plan["model_specifications"][model]:
+    if recovered:
+        verify_placement_equivalence(parent, plan, model)
+    elif parent["model_specifications"][model] != plan["model_specifications"][model]:
         raise ValueError("Completed model weights/native configuration differ")
     if old_task["scientific_digest"] != request_identity(parent, model, previous_request):
         raise ValueError("Parent scientific identity changed")
@@ -65,6 +72,8 @@ def verify_completed_cache(plan, task, stage, receipt, request, public):
     check_hash(result_path, receipt["original_result_sha256"])
     result = read(result_path)
     verify_existing(result, binding(parent, old_task, stage))
+    if recovered and model == "qwen21" and result["status"] != "generated":
+        raise ValueError("Qwen recovery may reuse successful outputs only")
     if old_task.get("cache", {}).get(stage):
         original = verify_cache(parent, old_task, stage)
         for field in ("status", "output_sha256", "response"):
@@ -82,6 +91,12 @@ def verify_completed_cache(plan, task, stage, receipt, request, public):
     if result.get("traces"):
         check_hash(result["traces"], result["traces_sha256"])
     value = {**result, "original_result": str(result_path), "parent_plan_digest": parent["digest"]}
+    if recovered and model == "qwen21":
+        value["reuse_execution"] = {
+            "original_memory_policy": "resident",
+            "new_memory_policy": "model_cpu_offload",
+            "equivalence": "authorized native component placement only; original output retained",
+        }
     if receipt.get("original_call"):
         value["original_call"] = receipt["original_call"]
     # Old load costs remain reachable through original_result, but must not

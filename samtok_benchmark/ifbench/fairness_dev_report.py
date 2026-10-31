@@ -397,6 +397,26 @@ def calls_ledger(context):
     }
 
 
+def repair_history(context):
+    """Keep failed historical compute distinct from this run's new calls."""
+    records = []
+    for task in context["plan"]["tasks"]:
+        reference = task.get("repair_of")
+        if not reference:
+            continue
+        if sha256_file(Path(reference["path"])) != reference["sha256"]:
+            raise ValueError("Historical repair attempt changed")
+        result = read(reference["path"])
+        records.append({
+            "key": task["key"], "original_attempt": reference,
+            "status": result["status"], "error_type": result.get("error_type"),
+            "inference_api_calls": result.get("inference_api_calls"),
+            "transformer_forward_calls": result.get("transformer_forward_calls"),
+            "wall_seconds": result.get("wall_seconds"),
+        })
+    return records
+
+
 def show_rate(row, name):
     if row.get("not_applicable"):
         return "N/A"
@@ -502,6 +522,13 @@ def markdown(report, directory):
             f"协议版本：`{report['protocol_revision']}`。Qwen2.1 使用2K；MICE使用已批准短前导及原生200-token完整性检查。未变请求精确复用，历史原生失败保留；不把复用当作新推理。",
             "",
         ]
+    if report.get("repair_parent"):
+        md += [
+            "本报告属于单独的工程修复运行：Qwen2.1 原 23 个成功输出经输入/权重/采样参数逐项核验后复用，保留其 resident 来源；原 177 个终止于 VAE 解码的 OOM 请求使用原生 `model_cpu_offload` 重新执行。2K、40步、CFG=1、KV cache、BF16、seed42及公开输入保持原值。两张工程诊断输出不进入本报告。其他六模型原输出/原生失败和已有 Judge 分数精确复用。",
+            "",
+            "旧177次失败已经完成去噪，不是零成本；原 attempt 的调用、forward及耗时保留在 `REPORT.json` 的 `repair_history`，不与本轮新增调用混算，也不从旧/新输出中按分数择优。",
+            "",
+        ]
     md += setting_comparisons(report)
     md += [
         "## 按模型列出的完整分数与输入方式",
@@ -528,7 +555,7 @@ def markdown(report, directory):
         spec = report["model_specifications"][model]
         params = {
             k: spec[k]
-            for k in ["parameters", "planner_defaults", "attention_defaults", "negative_prompt"]
+            for k in ["parameters", "planner_defaults", "attention_defaults", "negative_prompt", "execution"]
             if k in spec
         }
         revisions = f"代码 `{spec['method_commit']}`；权重 `{spec['weight_revision']}`"
@@ -730,6 +757,8 @@ def run(plan, root=None):
         "plan_sha256": context["plan_sha256"],
         "protocol_revision": context["plan"].get("protocol_revision"),
         "parent_run": context["plan"].get("parent_run"),
+        "repair_parent": context["plan"].get("repair_parent"),
+        "repair_history": repair_history(context),
         "run_id": context["run_id"],
         "case_ids": context["case_ids"],
         "model_order": context["order"],

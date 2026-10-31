@@ -98,7 +98,7 @@ def snapshot_repo(bundle):
     (bundle / "start.sh").chmod(0o755)
 
 
-def attach_completed_cache(bundle, parent, task, old_task, stage):
+def attach_completed_cache(bundle, parent, task, old_task, stage, *, kind="completed-dev20"):
     original = (
         Path(old_task["planner_dir"]) / "result.json"
         if stage == "planner"
@@ -117,7 +117,7 @@ def attach_completed_cache(bundle, parent, task, old_task, stage):
     if old_task.get("cache", {}).get(stage):
         evidence.append(file_reference(old_task["cache"][stage]))
     receipt = {
-        "kind": "completed-dev20",
+        "kind": kind,
         "stage": stage,
         "scientific_digest": task["scientific_digest"],
         "parent_plan_digest": parent["digest"],
@@ -133,10 +133,12 @@ def attach_completed_cache(bundle, parent, task, old_task, stage):
     task["cache_sha256"][stage] = sha256_file(path)
 
 
-def export_completed_judge(parent_path, bundle):
+def export_completed_judge(parent_path, bundle, *, result_root=None):
     from samtok_benchmark.ifbench import fairness_dev_judge as judge
 
-    context = judge.load_plan(parent_path, helper_root=parent_path.parent / "repo")
+    context = judge.load_plan(
+        parent_path, root=result_root, helper_root=parent_path.parent / "repo"
+    )
     bindings, jobs = [], {}
     # Preserve the validated full plan and original model ordering. Only the
     # independent reads are concurrent; canonical key deduplication is identical.
@@ -185,6 +187,7 @@ def export_completed_judge(parent_path, bundle):
         "run_id": context["run_id"],
         "entries": entries,
         "source_plan": file_reference(parent_path),
+        "source_results_root": str(context["root"]),
     }
     path = bundle / "cache/judge_index.json"
     save(path, index)

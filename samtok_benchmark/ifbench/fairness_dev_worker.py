@@ -812,6 +812,8 @@ def run_worker(plan_path, model, stage, shard=0, shards=1, *, plan_api=None, bac
                     "load_record": str(load_record),
                     **{k: 0 for k in COUNT_KEYS},
                 }
+                if task.get("repair_of"):
+                    result["repair_of"] = task["repair_of"]
                 if planner_path:
                     result.update(
                         planner_record=str(planner_path),

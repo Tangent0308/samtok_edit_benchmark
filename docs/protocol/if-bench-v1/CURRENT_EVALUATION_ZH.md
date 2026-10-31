@@ -121,6 +121,8 @@ U2. [{color_2} {shape_2}, label U2] {instruction_2}
 
 2026-10-31 的工程修复增加显式 `execution.memory_policy="model_cpu_offload"` 选项，使用原生 CPU offload 调度组件，不改上述输入或计算参数。已用固定 S1/S2-point 两例验证，其中 S1 与原成功输出逐像素一致；S2-point 能完成但有标记残留。原发布 v2.1 包仍保留常驻 GPU 配置及其失败，诊断结果不混入 dev 分数。详见[修复验证与恢复边界](ENGINEERING_REPAIR_20261030_ZH.md)。
 
+随后用户明确授权在本机完成修复后的 dev20 与全部缺失 Judge。新包 `fairness-v21-qwen-repaired-dev20-20261031` 仅重跑原177个已终止的Qwen2.1解码OOM请求；23个原成功输出经相同公开请求、权重和采样参数校验后复用，并披露resident来源。其余六模型原终态保留，单独恢复完成的Judge记录经完整provenance校验后复用。原失败及已经完成40步去噪的成本、两例独立诊断均保留；诊断输出不能代替本轮输出。实现入口为 `evaluation.protocol_audit.prepare_fairness_dev20_recovery`；这不是新的输入方案搜索，完成后仍停在dev审核门。
+
 证据：[接口与默认值](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py#L511)、[预处理](https://github.com/huggingface/diffusers/blob/06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py#L608)、[官方分辨率示例](https://github.com/QwenLM/Qwen-Image-2.1/blob/ab96caa944157ca28a4f36b695c3047549f48f98/README.md#L230)、[独立 PE](https://github.com/QwenLM/Qwen-Image-2.1/blob/ab96caa944157ca28a4f36b695c3047549f48f98/prompt_rewrite/README.md#L1)。本地入口：`smoke_adapters.Qwen21`，由当前 worker 调用。
 
 ## 5. FLUX.3 Klein distilled

@@ -135,6 +135,10 @@ def verify_task(plan, task):
         raise ValueError("Scientific request identity changed")
     for path, expected in task["input_files"].items():
         check_hash(path, expected)
+    if task.get("repair_of"):
+        from .fairness_dev_recovery import verify_repair_target
+
+        verify_repair_target(plan, task, request, public)
     return request, public
 
 
@@ -150,10 +154,13 @@ def verify_cache(plan, task, stage):
         raise ValueError("Cache belongs to another scientific request/stage")
     for item in receipt["evidence"]:
         check_hash(item["path"], item["sha256"])
-    if receipt["kind"] == "completed-dev20":
+    if receipt["kind"] in {"completed-dev20", "recovered-dev20"}:
         from .fairness_dev_cache import verify_completed_cache
 
-        return verify_completed_cache(plan, task, stage, receipt, request, public)
+        return verify_completed_cache(
+            plan, task, stage, receipt, request, public,
+            recovered=receipt["kind"] == "recovered-dev20",
+        )
     old_call = read(receipt["original_call"])
     old_result = read(receipt["original_result"])
     kind = receipt["kind"]

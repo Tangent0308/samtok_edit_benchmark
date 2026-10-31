@@ -64,8 +64,10 @@ class Topology:
         node = int(env["ARNOLD_ID"])
         hosts = tuple(env["ARNOLD_WORKER_HOSTS"].split(","))
         hosts = tuple(h.strip() for h in hosts)
-        if node not in range(4) or len(hosts) != 4 or len(set(hosts)) != 4:
-            raise ValueError("ARNOLD_ID must be 0..3 with four distinct worker endpoints")
+        # ARNOLD may allocate multiple ports per worker (observed: 10 entries
+        # for one worker). Endpoint-list length is not the machine count.
+        if node not in range(4):
+            raise ValueError("ARNOLD_ID must be 0..3")
         for host in hosts:
             endpoint(host)
         master, port = endpoint(hosts[0])
@@ -152,7 +154,17 @@ class Cluster:
     ):
         self.root = Path(root)
         self.topology = topology
-        self.identity = fingerprint({**identity_fields, "hosts": topology.hosts})
+        # Only the first/common rendezvous endpoint coordinates the job. Do not
+        # require unused platform port allocations to match on every worker.
+        self.identity = fingerprint(
+            {
+                **identity_fields,
+                "master_host": topology.master_host,
+                "master_port": topology.master_port,
+                "workers": 4,
+                "gpus_per_worker": 8,
+            }
+        )
         self.node = topology.node
         self.directory = self.root / "nodes" / str(self.node)
         self.host = hostname or socket.gethostname()

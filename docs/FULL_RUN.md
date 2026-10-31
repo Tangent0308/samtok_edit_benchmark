@@ -31,6 +31,8 @@
 
 参考仓库核查commit为`4443f60b557cfbc12ecb6b22ea938cd2b0b0a89c`。指南当前示例锁定`50ffa0ce3d1a1b9db88ffc4fb633b684f1e4df2a`；两者涉及的启动参数和评测分片逻辑一致。指南记录的C2正式四机运行是训练阶段，不能作为IF-Bench四机评测已实测通过的证据。
 
+平台兼容核验发现：本机`ARNOLD_WORKER_NUM=1`时，`ARNOLD_WORKER_HOSTS`已经包含同一地址的10个端口条目。**端口条目数不等于worker数**。本入口按`ARNOLD_WORKER_NUM`/`ARNOLD_WORKER_GPU`校验4×8，只使用首个公共endpoint协调；不要求未使用的其余端口分配在各节点完全相同。实际四台身份在握手后的注册信息中再次校验。
+
 ## 2. 冻结输入与已知问题
 
 采样seed固定42；Qwen2.1采用原生model CPU offload、2K/40步/CFG1/KV cache。其他模型原生默认、输入路由、内部planner和外部组件关闭边界与[USAGE.md](USAGE.md)一致。Judge仍只看canonical ref指令、GT source selector及输出，统一回到源图分辨率，不知道editor拿到哪种输入形式。
@@ -46,25 +48,25 @@
 共享运行包：
 
 ```text
-/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031
+/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031-r2
 ```
 
 只有存在`READY.json`的冻结包可以启动。平台配置4个worker、每worker8卡，**四个worker都执行下面同一条命令**，不手工指定`--node`。**不要加`nohup`或`&`**，不要再在外面套一层`torchrun`：入口已经管理每机的8卡原生worker，重复启动会争抢GPU和请求。
 
 ```bash
-bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031/start.sh --attempt run001
+bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031-r2/start.sh --attempt run001
 ```
 
 默认正式入口已包含TCP通信检查和完整preflight，无需额外采样冒烟。可选的两个无推理检查也要求四个worker运行相同命令，使用不同attempt：
 
 ```bash
 # 只检查4个控制进程、真实TCP通信、共享盘、共同退出；不准备GPU环境。
-bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031/start.sh --attempt network001 --coordination-only
+bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031-r2/start.sh --attempt network001 --coordination-only
 # 在上述基础上准备runtime、检查8卡和全部输入/缓存；不调用模型或Judge。
-bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031/start.sh --attempt preflight001 --validate-only
+bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031-r2/start.sh --attempt preflight001 --validate-only
 ```
 
-`attempt`四机必须相同，每次平台提交使用新值；已使用的节点claim不会自动删除。新attempt仅避免覆盖日志，**不提供重采样授权**。旧`full4-v21-1084-20261031`包保留为输入来源与历史启动实现，本作业使用上面的ARNOLD包。底层`run-full --node`仍用于独立节点工具链，不是此平台入口。
+`attempt`四机必须相同，每次平台提交使用新值；已使用的节点claim不会自动删除。新attempt仅避免覆盖日志，**不提供重采样授权**。旧`full4-v21-1084-20261031`包保留为输入来源；首版`full4-arnold-v21-1084-20261031`在推理前发现上述端口列表校验问题，因此保留原样并改用当前`-r2`包，两者均未启动模型评测。底层`run-full --node`仍用于独立节点工具链，不是此平台入口。
 
 每台需x86_64 Linux、glibc≥2.36、gcc/g++和每卡至少70GiB空闲。两个固定runtime归档分别约10.49GB、13.50GB，启动时按各自SHA核验并展开到本机`/tmp/ifbench/arnold-runtime/<commit>`；源码位于`/tmp/ifbench/arnold-code/<manifest-sha>/repo`，编译缓存也在本机。保证临时盘足够容纳归档解压及缓存。输入、权重、历史证据必须能通过共享挂载访问。入口不会下载新权重、升级固定环境或停止其他GPU进程。需要全新的worker容器，或原源码别名已经是通过SHA校验的本地目录；已有指向共享盘的源码别名会明确拒绝，不自动改写正在被其他任务使用的路径。
 
@@ -75,13 +77,13 @@ bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-
 任一能访问挂载的主机可查看四台状态：
 
 ```bash
-bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031/start.sh --status
+bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031-r2/start.sh --status
 ```
 
 安装本仓库后可使用只读入口：
 
 ```bash
-if-bench inspect-full --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031
+if-bench inspect-full --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/full4-arnold-v21-1084-20261031-r2
 ```
 
 - 同一attempt同一rank的重复启动由永久claim拒绝；同一主机也有runtime锁，避免两份任务争同一组8卡。四台必须注册同一份READY、代码、拓扑和运行模式。
@@ -97,7 +99,7 @@ if-bench inspect-full --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-
 正式运行结果：
 
 ```text
-/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/full4-arnold-v21-1084-20261031
+/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/full4-arnold-v21-1084-20261031-r2
 ```
 
 | 相对位置 | 内容 |

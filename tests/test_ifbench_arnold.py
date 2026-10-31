@@ -53,13 +53,30 @@ def test_platform_identity_common_port_and_ipv6():
         ("ARNOLD_ID", "4"),
         ("ARNOLD_WORKER_NUM", "8"),
         ("ARNOLD_WORKER_GPU", "4"),
-        ("ARNOLD_WORKER_HOSTS", "same:12,same:12,same:12,same:12"),
+        ("ARNOLD_WORKER_HOSTS", "not-an-endpoint"),
         ("ARNOLD_ID", ""),
     ],
 )
 def test_invalid_platform_topology_is_rejected(field, value):
     with pytest.raises(ValueError):
         Topology.from_env({**environment(), field: value})
+
+
+def test_platform_port_allocations_are_not_worker_counts(tmp_path):
+    # The actual preparation host exposes ten ports for its one ARNOLD worker.
+    # The reference launcher uses only the first/common endpoint as rendezvous.
+    hosts = ",".join(
+        f"[fd00::{node + 1}]:{12000 + port}" for node in range(4) for port in range(10)
+    )
+    first = Topology.from_env(environment(0, hosts))
+    second = Topology.from_env(environment(1, "[fd00::1]:12000,[fd00::2]:22000"))
+    assert first.master_host == second.master_host == "fd00::1"
+    assert first.master_port == second.master_port == 12000
+    assert len(first.hosts) == 40
+    assert (
+        Cluster(tmp_path, first, {"plan": "same"}).identity
+        == Cluster(tmp_path, second, {"plan": "same"}).identity
+    )
 
 
 def test_native_workers_do_not_inherit_cluster_torchrun_environment():

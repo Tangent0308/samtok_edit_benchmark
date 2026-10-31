@@ -37,19 +37,24 @@ def source_call(req, native):
 
 
 class Qwen21:
-    def __init__(self, root):
+    def __init__(self, root, *, memory_policy="resident"):
+        from .qwen21_memory import place_pipeline, validate_memory_policy
+
+        validate_memory_policy(memory_policy)
         import torch
         from diffusers import QwenImage21Pipeline
 
         actual = Path(inspect.getfile(QwenImage21Pipeline))
         audited = SOURCES / "diffusers/src/diffusers/pipelines/qwenimage21/pipeline_qwenimage21.py"
         assert sha256_file(actual) == sha256_file(audited)
-        self.pipe = QwenImage21Pipeline.from_pretrained(
+        pipe = QwenImage21Pipeline.from_pretrained(
             str(MODELS / "Qwen-Image-2.1"), torch_dtype=torch.bfloat16, local_files_only=True
-        ).to("cuda")
+        )
+        self.pipe, placement = place_pipeline(pipe, memory_policy)
         self.pipe.set_progress_bar_config(disable=True)
         self.transformers = [self.pipe.transformer]
         self.configuration = {
+            **placement,
             "num_inference_steps": 40,
             "true_cfg_scale": 1.0,
             "output_resolution": 1024,

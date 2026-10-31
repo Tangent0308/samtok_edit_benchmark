@@ -203,8 +203,13 @@ class NativeBackend:
             if model == "qwen2511":
                 old = importlib.import_module("samtok_benchmark.ifbench.dev_runner")
                 self.adapter = old.Qwen2511(worker_dir)
+            elif model == "qwen21":
+                execution = plan["model_specifications"][model].get("execution", {})
+                self.adapter = adapters.Qwen21(
+                    worker_dir, memory_policy=execution.get("memory_policy", "resident")
+                )
             else:
-                self.adapter = (adapters.Qwen21 if model == "qwen21" else adapters.Mice)(worker_dir)
+                self.adapter = adapters.Mice(worker_dir)
             self.pipe = self.adapter.pipe
             self.transformers = list(self.adapter.transformers)
             self.configuration = self.adapter.configuration

@@ -44,6 +44,15 @@ def verify_package(plan_path):
 
 
 def preflight(plan, plan_path, *, check_gpus=True):
+    from .fairness_dev_judge import Cache
+
+    # A preparation-host /tmp dependency must fail before any model is loaded,
+    # rather than after all generation has completed on another machine.
+    cache = Cache(plan["cache_index"], plan["judge_config"])
+    if cache.index_sha256 != plan["cache_index_sha256"]:
+        raise ValueError("Judge cache index changed before generation")
+    judge_files = cache.verify_portable_files(Path(plan_path).resolve().parent)
+
     def inspect(task):
         verify_task(plan, task)
         for stage in task.get("cache", {}):
@@ -67,6 +76,7 @@ def preflight(plan, plan_path, *, check_gpus=True):
         "planner_caches": sum("planner" in t["cache"] for t in plan["tasks"]),
         "plan_digest": plan["digest"],
         "new_inference_calls": 0,
+        "judge_cache_files": judge_files,
         "checked_at": timestamp(),
     }
 

@@ -287,6 +287,29 @@ class Cache:
             self.verified_files[str(path)] = expected
         return path
 
+    def verify_portable_files(self, bundle):
+        """CPU preflight of the complete cache dependency set before generation.
+
+        Only live index references are relocated. Historical strings embedded
+        in immutable answers are retained; lookup validates via hashed copies.
+        """
+        bundle = Path(bundle).resolve()
+        unique = set()
+        for entry in self.entries.values():
+            chain = entry.get("provenance_files", [])
+            if not chain:
+                raise ValueError("Judge cache has no provenance chain")
+            references = [
+                {"path": entry["effective_record"], "sha256": entry["sha256"]}, *chain,
+            ]
+            for ref in references:
+                path = resolve(ref["path"], self.path.parent).resolve()
+                if not path.is_relative_to(bundle):
+                    raise ValueError(f"Judge cache dependency is outside the portable bundle: {path}")
+                self.checked(ref["path"], ref["sha256"])
+                unique.add(str(path))
+        return {"entries": len(self.entries), "unique_files": len(unique)}
+
     def lookup(self, job, context):
         entry = self.entries.get(job["key"])
         if entry is None:

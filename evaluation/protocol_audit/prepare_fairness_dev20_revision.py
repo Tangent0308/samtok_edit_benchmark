@@ -29,7 +29,7 @@ from samtok_benchmark.ifbench.fairness_dev_revision import (
     revise_request,
     mice_text_audit,
 )
-from evaluation.protocol_audit.prepare_fairness_dev20 import save
+from evaluation.protocol_audit.prepare_fairness_dev20 import evidence_copy, save
 
 REPO = Path(__file__).resolve().parents[2]
 DEFAULT_PARENT = Path(
@@ -40,6 +40,30 @@ DEFAULT_BUNDLE = DEFAULT_PARENT.with_name("fairness-v21-dev20-20261030")
 
 def file_reference(path):
     return {"path": str(path), "sha256": sha256_file(Path(path))}
+
+
+def portable_judge_entry(bundle, entry, *, origin_base):
+    """Copy exact evidence bytes; embedded historical paths remain historical.
+
+    Lookup dependencies must resolve inside the new bundle even when an old
+    effective record names an execution receipt in the preparation host's /tmp.
+    Never rewrite the raw/effective answers or relax their SHA checks.
+    """
+    def copy_reference(reference):
+        source = Path(reference["path"])
+        if not source.is_absolute():
+            source = Path(origin_base) / source
+        copied = evidence_copy(bundle, source)
+        if copied["sha256"] != reference["sha256"]:
+            raise ValueError(f"Judge provenance changed during export: {source}")
+        return copied
+
+    effective = copy_reference({"path": entry["effective_record"], "sha256": entry["sha256"]})
+    chain = [copy_reference(ref) for ref in entry["provenance_files"]]
+    return {
+        **entry, "effective_record": effective["path"], "sha256": effective["sha256"],
+        "effective_origin_path": effective["origin_path"], "provenance_files": chain,
+    }
 
 
 def snapshot_repo(bundle):
@@ -144,12 +168,13 @@ def export_completed_judge(parent_path, bundle):
         for path in candidates:
             if path.exists():
                 chain[str(path)] = file_reference(path)
-        return key, {
+        entry = {
             "effective_record": str(effective),
             "sha256": sha256_file(effective),
             "provenance_files": list(chain.values()),
             "case_id": job["case_id"],
         }
+        return key, portable_judge_entry(bundle, entry, origin_base=prior_cache.path.parent)
 
     with ThreadPoolExecutor(max_workers=8) as pool:
         entries.update(pool.map(checked_entry, jobs.items()))
@@ -163,6 +188,7 @@ def export_completed_judge(parent_path, bundle):
     path = bundle / "cache/judge_index.json"
     save(path, index)
     exported = judge.Cache(path, context["config"])
+    exported.verify_portable_files(bundle)
     with ThreadPoolExecutor(max_workers=8) as pool:
         list(pool.map(lambda job: exported.lookup(job, context), jobs.values()))
     print(f"Verified all {len(entries)} exported Judge provenance chains.", flush=True)

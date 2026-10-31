@@ -1,0 +1,84 @@
+{
+  "case_id": "v2-sa_607902",
+  "selection": "already-public dev member; no test image opened",
+  "split_digest": "d9062861e8d719988ed360b305ae158f7566109800349b707ef6ec4685a31594",
+  "source": {
+    "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/assets/v2-sa_607902/source.jpg",
+    "sha256": "07b119e3074c312d47a399f11387c461bcb54ba6a757e8e2bc1a7e24e25e2825",
+    "size": [
+      1500,
+      1875
+    ]
+  },
+  "public_requests": [
+    {
+      "path": "/tmp/ifbench/tiered_v1/shared_inputs_20261027/requests/S2-mask/v2-sa_607902/public.json",
+      "sha256": "a69de5b825dd76339a900ffcad4aab50bbda569fb9aa169182915420d0a03966",
+      "input_digest": "069b3637f160a9d3cd45d1ea105b503d860710ce1cdfdde13832b82d3048cac2"
+    },
+    {
+      "path": "/tmp/ifbench/tiered_v1/shared_inputs_20261027/requests/S2-box/v2-sa_607902/public.json",
+      "sha256": "cf5c2b3513648884b987b4c5b54af1510531ee78b5b35be7ca4164d2182dba15",
+      "input_digest": "692525c7be6b407011519ef25849701464829a5cd1f5069e3de5ae548f1a1df6"
+    },
+    {
+      "path": "/tmp/ifbench/tiered_v1/shared_inputs_20261027/requests/S2-point/v2-sa_607902/public.json",
+      "sha256": "53c2f59493cd5e7d92320f357f4e39de81e86f79d05008b2d87d52c0806bc440",
+      "input_digest": "16ef06892bc8be0c983499b23abc0a700cc1e323534da188e8bdf69ce4dc0c2e"
+    }
+  ],
+  "units": [
+    {
+      "id": "U1",
+      "operation": "add",
+      "mask": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/assets/v2-sa_607902/U1.png",
+      "mask_sha256": "ca6f2c6ac865f7451b4c4ae0ec698c9d63005fb31bb8241a7c2588eebc8aed63",
+      "box": [
+        897,
+        702,
+        1321,
+        848
+      ],
+      "point": [
+        1109,
+        778
+      ],
+      "display_crop_xyxy": [
+        827,
+        632,
+        1391,
+        918
+      ]
+    },
+    {
+      "id": "U2",
+      "operation": "remove",
+      "mask": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/assets/v2-sa_607902/U2.png",
+      "mask_sha256": "39f8c1e147f8d3abb557392aededb68bb5226aa808783cdcff00a7f6554d2597",
+      "box": [
+        200,
+        789,
+        349,
+        874
+      ],
+      "point": [
+        317,
+        804
+      ],
+      "display_crop_xyxy": [
+        145,
+        734,
+        404,
+        929
+      ]
+    }
+  ],
+  "image": "annotation_example_v2-sa_607902.png",
+  "image_sha256": "1a8e8549a0b6668ee13a1b3a589eb2cc3456119fffe76795760e00a16a10dfc8",
+  "image_size": [
+    1560,
+    930
+  ],
+  "inference_calls": 0,
+  "code_sha256": "a90a61e00febfbbf7134de46cdf31aa9d4850394939516e019538bc4292583da"
+}

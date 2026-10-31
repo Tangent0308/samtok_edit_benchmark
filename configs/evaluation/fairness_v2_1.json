@@ -1,0 +1,271 @@
+{
+  "schema": "ifbench.configuration-reference.v1",
+  "status": "completed fixed-dev20 configuration; not a formal freeze receipt",
+  "protocol_revision": "fairness-v2.1-dev20",
+  "provenance": {
+    "bundle": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v21-qwen-repaired-dev20-20261031",
+    "run_commit": "2ac9a536e7202f71983b7703493eebecd74493bd",
+    "plan_sha256": "8c2995419ad71a7b7be0a7f6c6388af45ac944c75360da13bb7e19a569acb484"
+  },
+  "data": {
+    "manifest": "data/v2_2.6.0/cases.jsonl",
+    "manifest_sha256": "818ce524a1d1f363dc8ea5caa7a887b2dd0355c17a5600d1cbd696cffcf263fb",
+    "release": "2.6.0",
+    "dev_pool_images": 108,
+    "test_images": 976,
+    "selected_dev_images": 20,
+    "case_ids": [
+      "v2-sa_607902",
+      "v2-sa_5335541",
+      "v2-sa_10367798",
+      "v2-sa_455310",
+      "v2-sa_6779549",
+      "v2-sa_1110518",
+      "v2-sa_11071167",
+      "v2-sa_3042396",
+      "v2-sa_1046640",
+      "v2-sa_8739681",
+      "v2-sa_8382869",
+      "v2-sa_11136335",
+      "v2-sa_3317928",
+      "v2-sa_5005220",
+      "v2-sa_672356",
+      "v2-sa_5584818",
+      "v2-sa_5447626",
+      "v2-sa_5831338",
+      "v2-sa_8415518",
+      "v2-sa_10831959"
+    ]
+  },
+  "seed": 42,
+  "model_order": [
+    "qwen2511",
+    "qwen21",
+    "flux3",
+    "replan",
+    "mirage",
+    "mice",
+    "flux2_klein9b"
+  ],
+  "settings": [
+    "S1",
+    "S2-point",
+    "S2-box",
+    "S2-mask",
+    "S3-point",
+    "S3-box",
+    "S3-mask",
+    "S4-ref",
+    "S4-noref",
+    "S5"
+  ],
+  "model_specifications": {
+    "qwen2511": {
+      "name": "Qwen-Image-Edit-2511",
+      "parameters": {
+        "num_inference_steps": 40,
+        "true_cfg_scale": 4.0,
+        "guidance_scale": 1.0,
+        "negative_prompt": " ",
+        "num_images_per_prompt": 1,
+        "max_sequence_length": 512
+      },
+      "seed": 42,
+      "components": [
+        "Qwen2.5-VL text/vision encoder packaged with the checkpoint",
+        "Qwen Image DiT",
+        "Qwen image VAE",
+        "official scheduler"
+      ],
+      "weight_revision": "6f3ccc0b56e431dc6a0c2b2039706d7d26f22cb9",
+      "pipeline_revision": "06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a",
+      "method_commit": "06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a",
+      "repository": "https://github.com/huggingface/diffusers",
+      "evidence": "/tmp/ifbench/fairness_v2_20261030/qwen_flux2/FINAL_METHODS.md"
+    },
+    "qwen21": {
+      "name": "Qwen-Image-2.1",
+      "parameters": {
+        "num_inference_steps": 40,
+        "true_cfg_scale": 1.0,
+        "output_resolution": 2048,
+        "use_kv_cache": true
+      },
+      "seed": 42,
+      "components": [
+        "Qwen3-VL text/vision encoder packaged with the checkpoint",
+        "Qwen Image 2.1 DiT",
+        "Qwen image 2.1 VAE",
+        "official scheduler"
+      ],
+      "weight_revision": "b3179ad355be050328e483a9dfdd9e60cd62adfa",
+      "pipeline_revision": "06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a",
+      "method_commit": "ab96caa944157ca28a4f36b695c3047549f48f98",
+      "repository": "https://github.com/QwenLM/Qwen-Image-2.1",
+      "evidence": "/tmp/ifbench/fairness_v2_20261030/qwen_flux2/FINAL_METHODS.md",
+      "equivalent_weight_metadata_revision": "d26bb61231c349cf6b7896fa83353113880e1ba3",
+      "execution": {
+        "memory_policy": "model_cpu_offload"
+      }
+    },
+    "flux3": {
+      "name": "FLUX.3 Klein distilled（PUP off）",
+      "parameters": {
+        "model": "distilled",
+        "steps": 16,
+        "guidance": null,
+        "pup": false,
+        "seed": 42
+      },
+      "seed": 42,
+      "components": [
+        "FLUX3 DiT",
+        "bundled text encoder",
+        "bundled autoencoder"
+      ],
+      "weight_revision": "337337621b8526e120f2275d250242f4a6bedd75",
+      "method_commit": "bfc8889a4497f846416f253a3972a1941ac698b9",
+      "repository": "https://github.com/black-forest-labs/flux-3-image-klein",
+      "evidence": "/tmp/ifbench/fairness_v2_20261030/FLUX3_REPLAN_FAIRNESS_REVIEW.md"
+    },
+    "replan": {
+      "name": "RePlan（Qwen-2511 骨干）",
+      "parameters": {
+        "expand_value": 0,
+        "attention_switch_step": 0.5,
+        "num_inference_steps": 40,
+        "true_cfg_scale": 4,
+        "guidance_scale": 1,
+        "negative_prompt": " ",
+        "seed": 42,
+        "native_planner_max_new_tokens": 2048
+      },
+      "seed": 42,
+      "components": [
+        "TainU/RePlan-Qwen2.5-VL-7B planner",
+        "Qwen-Image-Edit-2511 editor",
+        "RePlan regional attention"
+      ],
+      "weight_revision": "6f3ccc0b56e431dc6a0c2b2039706d7d26f22cb9",
+      "method_commit": "6c9b12f0c619cc8ca6f50b536b24aff377525f8c",
+      "repository": "https://github.com/JIA-Lab-research/RePlan",
+      "evidence": "/tmp/ifbench/fairness_v2_20261030/FLUX3_REPLAN_FAIRNESS_REVIEW.md",
+      "planner_weight_revision": "518f82339520058d043c4fbc270481876d8463e4"
+    },
+    "mirage": {
+      "name": "MIRAGE（Qwen-2511 骨干）",
+      "parameters": {
+        "num_inference_steps": 40,
+        "true_cfg_scale": 4.0,
+        "patch_ratio": 0.4,
+        "padding_pixels": 10
+      },
+      "seed": 42,
+      "method_commit": "234a31968df307879a55675873a54258d6c0eae4",
+      "repository": "https://github.com/ZiqianLiu666/MIRAGE",
+      "evidence": "/tmp/ifbench/fairness_v2_20261030/mirage_mice/MIRAGE_MICE_FAIRNESS_REVIEW.md",
+      "weight_revision": "6f3ccc0b56e431dc6a0c2b2039706d7d26f22cb9",
+      "planner_weight_revision": "c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+      "components": [
+        "official Qwen3.5-9B parser and locator",
+        "Qwen-Image-Edit-2511",
+        "MIRAGE joint local/global denoising"
+      ],
+      "planner_defaults": {
+        "thinking": false,
+        "do_sample": false,
+        "parse_max_new_tokens": 512,
+        "grounding_max_new_tokens": 128
+      },
+      "negative_prompt": " "
+    },
+    "mice": {
+      "name": "MICE（Klein-4B 骨干）",
+      "parameters": {
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0
+      },
+      "seed": 42,
+      "method_commit": "43b289de84dfd184c0ee1b551b0e1bea02f6e92d",
+      "repository": "https://github.com/Blowing-Up-Groundhogs/mice",
+      "evidence": "/tmp/ifbench/fairness_v2_20261030/mirage_mice/MIRAGE_MICE_FAIRNESS_REVIEW.md",
+      "weight_revision": "e7b7dc27f91deacad38e78976d1f2b499d76a294",
+      "components": [
+        "FLUX.2 Klein-4B distilled and native text encoder/VAE",
+        "MICE instance attention binding"
+      ],
+      "attention_defaults": {
+        "prompt_settings": "outer_local_prompts",
+        "attention_setting": "apitasmkernelnonlap",
+        "strict": false,
+        "kernel_size": 11,
+        "temperature": 3.0,
+        "sigma_scale": 0.6,
+        "masking_steps": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "flux2_klein9b": {
+      "name": "FLUX.2 Klein-9B distilled",
+      "parameters": {
+        "num_inference_steps": 4,
+        "guidance_scale": 1.0,
+        "max_sequence_length": 512
+      },
+      "seed": 42,
+      "components": [
+        "Qwen3-8B native text embedder, not an image-aware prompt generator",
+        "FLUX.2 Klein-9B distilled DiT",
+        "Flux VAE",
+        "official scheduler"
+      ],
+      "weight_revision": "92196c8e11f7b6cf2b7493e037d8c5345c559216",
+      "pipeline_revision": "06a9cfb86ae8aa69c6a220ba0da0f37b819dde6a",
+      "method_commit": "50fe5162777813d869182b139e83b10743caef15",
+      "repository": "https://github.com/black-forest-labs/flux2",
+      "evidence": "/tmp/ifbench/fairness_v2_20261030/qwen_flux2/FINAL_METHODS.md"
+    }
+  },
+  "judge_config": {
+    "protocol": "ifbench.canonical-epq.v1",
+    "model": "/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/Qwen3.8-Flash-Next-FP8",
+    "revision": "236dfdf285828023ca3bcd3f37366c58a3469b13",
+    "packages": {
+      "torch": "2.13.0+cu129",
+      "vllm": "0.31.0+cu129",
+      "transformers": "5.17.0",
+      "Pillow": "12.3.0"
+    },
+    "prompt_digest": "5b0dee8463f1a7c82bdf6ef69fb5e52276eec21b92d11650615bd16baed0f31a",
+    "source_sha256": "30ee38787dc74ff5397af082af1b8f43e243bd5c16cc6af56ec7bcc22a00359c",
+    "views": {
+      "full_max_pixels": 1048576,
+      "crop_max_pixels": 262144,
+      "crop_pad": ".25 longest selector-box side, minimum 12px",
+      "contours": "same source-mask contour on source and output crops"
+    },
+    "decode": {
+      "temperature": 0,
+      "seed": 0,
+      "max_tokens": 12288,
+      "reasoning_effort": "low"
+    },
+    "engine": {
+      "tensor_parallel_size": 8,
+      "expert_parallel": true,
+      "max_model_len": 49152,
+      "batch_size": 16,
+      "gpu_memory_utilization": 0.85
+    }
+  },
+  "test_authorized": false,
+  "freeze_authorized": false,
+  "quality_search": false,
+  "usage": "docs/USAGE.md",
+  "input_policy": "Same public information per setting. Use native input representations and planners; no external semantic converter, PE or PUP. One joint edit sample per request.",
+  "artifact_policy": "Full outputs remain external; docs contain selected previews and aggregate scores only."
+}

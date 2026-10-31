@@ -12,7 +12,7 @@ import time
 import unittest
 from unittest.mock import patch
 
-HERE = Path(__file__).resolve().parents[1] / "evaluation" / "protocol_audit"
+HERE = Path(__file__).resolve().parents[1] / "src" / "evaluation" / "protocol_audit"
 SPEC = importlib.util.spec_from_file_location(
     "bootstrap_dev20", HERE / "bootstrap_fairness_dev20.py"
 )
@@ -139,7 +139,7 @@ class BootstrapTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             bundle = root / "bundle"
-            target = bundle / "repo/evaluation/protocol_audit/bootstrap_fairness_dev20.py"
+            target = bundle / "repo/src/evaluation/protocol_audit/bootstrap_fairness_dev20.py"
             target.parent.mkdir(parents=True)
             target.write_text("# fake entry\n")
             (bundle / "READY.json").write_text("{}")

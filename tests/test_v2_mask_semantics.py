@@ -9,7 +9,7 @@ from samtok_benchmark.v2.dataset import load_cases
 from samtok_benchmark.v2.instruction_protocol import make_spec, mask_contract, render
 
 REPO = Path(__file__).parents[1]
-sys.path.insert(0, str(REPO / "construction"))
+sys.path.insert(0, str(REPO / "src/construction"))
 from instruction_adapter import design_spec  # noqa: E402
 
 

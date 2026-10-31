@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "samtok-edit-benchmark"
+name = "if-bench"
 version = "2.6.0"
 description = "IF-Bench: fine-grained multi-object image editing with tiered public inputs"
 readme = "README.md"
@@ -11,24 +11,29 @@ requires-python = ">=3.10"
 dependencies = ["Pillow>=10.1", "numpy>=1.24"]
 
 [project.optional-dependencies]
-dev = ["pytest>=7", "ruff>=0.9"]
+dev = ["pytest>=7", "ruff>=0.9", "build>=1", "scipy>=1.10"]
+docs = ["matplotlib>=3.9,<4"]
 review = ["playwright", "huggingface-hub", "markdown-it-py>=3"]
 construction = ["opencv-python-headless>=4.8", "scipy>=1.10", "pycocotools>=2.0.7"]
 judge = ["vllm", "transformers", "torch", "tqdm"]
 
 [project.scripts]
+if-bench = "samtok_benchmark.ifbench.cli:main"
 samtok-benchmark = "samtok_benchmark.v2.cli:main"
 samtok-benchmark-v2 = "samtok_benchmark.v2.cli:main"
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
+include = ["samtok_benchmark*", "evaluation*", "construction*"]
 
 [tool.setuptools.package-data]
+"evaluation.protocol_audit" = ["*.sh"]
+"construction" = ["*.sh"]
 "samtok_benchmark.review" = ["static/*.html", "static/*.js", "static/*.css", "static/*.py"]
 "samtok_benchmark.v2" = ["*.html", "review_static/*.html", "review_static/*.js", "review_static/*.css", "review_static/*.py"]
 
 [tool.pytest.ini_options]
-pythonpath = ["."]
+pythonpath = ["src"]
 testpaths = ["tests"]
 
 [tool.ruff]

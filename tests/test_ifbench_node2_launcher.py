@@ -7,7 +7,7 @@ import time
 
 
 def test_foreground_launcher_waits_and_propagates_bootstrap_failure(tmp_path):
-    source = Path(__file__).resolve().parents[1] / "evaluation/protocol_audit/start_judge_node2.sh"
+    source = Path(__file__).resolve().parents[1] / "src/evaluation/protocol_audit/start_judge_node2.sh"
     launcher = tmp_path / "start.sh"
     launcher.write_text(
         source.read_text().replace(

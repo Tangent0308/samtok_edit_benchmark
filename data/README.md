@@ -1,14 +1,10 @@
-# Data layout
+# Data index
 
-当前唯一正式版本是 [`v2_2.6.0/`](v2_2.6.0/)；[`current.json`](current.json) 指向它。
+The current release is selected by [current.json](current.json): **2.6.0**, 1,084 images and 3,872 edit units. Its manifest is [v2_2.6.0/cases.jsonl](v2_2.6.0/cases.jsonl). The full pipeline, schema fields, provenance, source terms and reproduction steps are in [CONSTRUCTION.md](../docs/CONSTRUCTION.md); evaluation splits and deployment paths are in [USAGE.md](../docs/USAGE.md).
 
-- `v2_2.6.0/cases.jsonl`: 1,084 case、3,872 unit 的正式 manifest；
-- `v2_2.6.0/statistics.json`: 机器统计；
-- `v2_2.6.0/validation.json`: 构建/资产/几何/协议校验回执；
-- `v2_2.6.0/release.json`: release 元数据和语义验收边界；
-- `v2_2.6.0/asset_manifest.jsonl`: 运行时资产清单；
-- `v2_2.6.0/mask_patch/`: 708 张可恢复的 `U#_v2.png` 补丁。
+- `v2_2.6.0/`: current manifest, asset inventory, statistics, release/validation records and 708 reviewed mask patches. Paths in manifests are relative to an external dataset root; source images and full review cards are not shipped by package installation.
+- `provenance/construction/`: preserved authoring decisions, audits, revision records and segmentation recipes. Executable construction code is in `src/construction/`.
+- Earlier `v2*/` directories: historical release evidence, not interchangeable with 2.6.0.
+- `legacy/schema.v1.json`: an earlier v1 schema, **not** the schema for the current manifest. Current contracts are enforced by [dataset.py](../src/samtok_benchmark/v2/dataset.py) and [instruction_protocol.py](../src/samtok_benchmark/v2/instruction_protocol.py).
 
-`v2_1084/`、`v2/` 和 `v2_1k/` 仅作为历史基线或构造草稿保留，不是当前评测入口；不要覆盖它们，也不要把它们的结果混入 2.6.0。
-
-正式图像资产在数据根 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/assets/`，仓库只发布新版 mask 补丁和清单，不复制全部源图。
+Current release records state `independent_human_verified=false` and `semantic_signoff=false`. Automated validation and AI visual auditing do not constitute independent human acceptance. Do not overwrite frozen manifests or validation records when running local checks.

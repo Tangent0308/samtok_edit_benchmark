@@ -94,3 +94,34 @@ def test_export_refuses_changed_evidence_and_preflight_detects_corruption(tmp_pa
     Path(portable["provenance_files"][1]["path"]).write_text("changed")
     with pytest.raises(ValueError, match="hash mismatch"):
         Cache(index, config).verify_portable_files(bundle)
+
+
+def test_repeated_cache_references_are_hashed_once(tmp_path, monkeypatch):
+    from samtok_benchmark.ifbench import fairness_dev_judge as judge
+
+    origin, bundle, config, _, entry = fixture(tmp_path)
+    portable = portable_judge_entry(bundle, entry, origin_base=origin)
+    index = bundle / "cache/index.json"
+    write_json(index, {"config": config, "entries": {str(i): portable for i in range(10)}})
+    cache = Cache(index, config)
+    checked = []
+
+    def record_hash(path):
+        checked.append(str(path))
+        return sha256_file(path)
+
+    monkeypatch.setattr(judge, "sha256_file", record_hash)
+    assert cache.verify_portable_files(bundle) == {"entries": 10, "unique_files": 2}
+    assert len(checked) == len(set(checked)) == 2
+
+
+def test_conflicting_hashes_for_one_cache_file_are_rejected(tmp_path):
+    origin, bundle, config, _, entry = fixture(tmp_path)
+    portable = portable_judge_entry(bundle, entry, origin_base=origin)
+    portable["provenance_files"].append(
+        {"path": portable["effective_record"], "sha256": "conflict"}
+    )
+    index = bundle / "cache/index.json"
+    write_json(index, {"config": config, "entries": {"synthetic-key": portable}})
+    with pytest.raises(ValueError, match="Conflicting hashes"):
+        Cache(index, config).verify_portable_files(bundle)

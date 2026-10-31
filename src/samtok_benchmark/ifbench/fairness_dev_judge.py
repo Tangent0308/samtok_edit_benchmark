@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor
 import fcntl
 from itertools import groupby
 import json
@@ -311,20 +312,32 @@ class Cache:
         in immutable answers are retained; lookup validates via hashed copies.
         """
         bundle = Path(bundle).resolve()
-        unique = set()
+        references = {}
         for entry in self.entries.values():
             chain = entry.get("provenance_files", [])
             if not chain:
                 raise ValueError("Judge cache has no provenance chain")
-            references = [
+            entry_references = [
                 {"path": entry["effective_record"], "sha256": entry["sha256"]}, *chain,
             ]
-            for ref in references:
-                path = resolve(ref["path"], self.path.parent).resolve()
-                if not path.is_relative_to(bundle):
-                    raise ValueError(f"Judge cache dependency is outside the portable bundle: {path}")
-                self.checked(ref["path"], ref["sha256"])
-                unique.add(str(path))
+            for ref in entry_references:
+                reference = str(resolve(ref["path"], self.path.parent))
+                if reference in references and references[reference] != ref["sha256"]:
+                    raise ValueError("Conflicting hashes for the same cache provenance file")
+                references[reference] = ref["sha256"]
+
+        def verify(reference):
+            expected = references[reference]
+            path = Path(reference).resolve()
+            if not path.is_relative_to(bundle):
+                raise ValueError(f"Judge cache dependency is outside the portable bundle: {path}")
+            self.checked(reference, expected)
+            return str(path)
+
+        # Canonical records are immutable and hash checks are independent. Resolve
+        # each unique reference once, with bounded I/O on the shared filesystem.
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            unique = set(pool.map(verify, references))
         return {"entries": len(self.entries), "unique_files": len(unique)}
 
     def lookup(self, job, context):

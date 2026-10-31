@@ -1,6 +1,6 @@
 import json, glob, collections, re
 A = '/tmp/samtok_audit'
-cases = [json.loads(l) for l in open('/opt/tiger/tanyue/samtok_edit_benchmark/data/v2_1084/cases.jsonl')]
+cases = [json.loads(l) for l in open('/opt/tiger/tanyue/samtok_edit_benchmark/data/provenance/construction_inputs/base1084/cases.jsonl')]
 order = {c['id']: i for i, c in enumerate(cases)}
 byid = {c['id']: c for c in cases}
 VALID_CAT = set('person_clothing_level category_mismatch wrong_instance_spatial ambiguous_ref mask_quality replace_is_attribute ill_posed_edit add_anchor attribute_value independence_violation ref_noref_mismatch translation grammar_style'.split())

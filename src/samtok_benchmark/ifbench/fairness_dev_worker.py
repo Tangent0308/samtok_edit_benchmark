@@ -420,6 +420,8 @@ class NativeBackend:
         """Validate text before admitting any potentially sampled attempt."""
         if self.model == "qwen21":
             for name, value in request["parameters"].items():
+                if request.get("resolution_policy") and name in {"width", "height"}:
+                    continue  # verified against the public canvas by the plan contract
                 if self.configuration.get(name) != value:
                     raise ValueError(f"Qwen21 request differs from fixed configuration: {name}")
         if self.model != "mice":
@@ -591,6 +593,8 @@ class NativeBackend:
                     "guidance_scale": 1.0,
                     "max_sequence_length": 512,
                 }
+                if request.get("resolution_policy"):
+                    expected.update(zip(("width", "height"), public["source"]["size"]))
                 if (
                     request["parameters"] != expected
                     or request["weight_revision"] != "92196c8e11f7b6cf2b7493e037d8c5345c559216"
@@ -833,9 +837,17 @@ def run_worker(plan_path, model, stage, shard=0, shards=1, *, plan_api=None, bac
                     runtime.synchronize()
                     if stage == "edit":
                         raw.save(out / "raw.png")
-                        raw.convert("RGB").resize(
-                            tuple(public["source"]["size"]), Image.Resampling.LANCZOS
-                        ).save(out / "output.png")
+                        if plan.get("canvas_policy"):
+                            from .canvas import restore_output
+
+                            transform = read(task["canvas_transform"])
+                            output = restore_output(raw, transform)
+                            result.update(canvas_transform=transform, input_size=public["source"]["size"])
+                        else:
+                            output = raw.convert("RGB").resize(
+                                tuple(public["source"]["size"]), Image.Resampling.LANCZOS
+                            )
+                        output.save(out / "output.png")
                         result.update(
                             status="generated",
                             raw_size=list(raw.size),

@@ -288,6 +288,11 @@ def markdown(report):
         "![JointPass](jointpass_heatmap.png)",
         "",
     ]
+    if report.get("canvas_policy"):
+        md += [
+            "所有编辑模型及原生planner共用约1MP清图/标注图。RePlan和MIRAGE保留原生近1MP输出网格；所有raw输出按冻结几何去留边、回到原始源图尺寸后交给canonical Judge。",
+            "",
+        ]
     md += setting_comparisons(report)
     md += ["## 固定推理方式", "", "| 模型 | Setting | 实际输入方式 |", "|---|---|---|"]
     for r in report["rows"]:
@@ -346,7 +351,7 @@ def markdown(report):
         "",
         f"全局plan：`{report['plan_path']}`；SHA256：`{report['plan_sha256']}`。",
         f"运行代码commit：`{report['source_commit']}`；采样seed：{report['seed']}。",
-        "所有权重版本、原生配置、额外planner调用、旧结果复用链、失败和实际耗时在REPORT.json、CALLS.json及各node的执行回执中。缓存不计新增调用。",
+        "所有权重版本、原生配置、额外planner调用、缓存来源、失败和实际耗时在REPORT.json、CALLS.json及各node的执行回执中。缓存不计新增调用。",
         "统计与图册生成不调用编辑模型或Judge。人工标记残留率、κ、GT selector paste-back诊断和另行协议消融未由这轮主表执行器自动完成；不编造其数字。",
         "",
     ]
@@ -457,6 +462,7 @@ def aggregate_if_ready(bundle):
             "assignments_sha256": plan["assignments_sha256"],
             "renderer_sha256": plan["renderer_sha256"],
             "protocol_revision": plan["protocol_revision"],
+            "canvas_policy": plan.get("canvas_policy"),
             "report_scope": "all-1084",
             "source_count": len(plan["case_ids"]),
             "units_per_model_setting": int(boot.ks.sum()),
@@ -507,7 +513,7 @@ def aggregate_if_ready(bundle):
             "timing_scope": "All recorded stopped/resumed controller wall durations x 8; unknown SIGKILL durations remain missing; excludes bootstrap/platform queue and is not kernel-active GPU time",
         }
         write_json(directory / "REPORT.json", report)
-        write_json(directory / "CALLS.json", {"nodes": ledgers, "history": plan["parent_run"]})
+        write_json(directory / "CALLS.json", {"nodes": ledgers, "history": plan.get("parent_run")})
         atomic_text(directory / "REPORT.md", markdown(report))
         result = {
             "status": "completed"

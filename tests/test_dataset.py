@@ -11,7 +11,7 @@ from samtok_benchmark.io import asset_path, read_jsonl, sha256_file, write_jsonl
 def test_current_release_metadata_and_instruction_identity():
     from samtok_benchmark.v2.dataset import load_cases as load_v2
 
-    root = Path(__file__).resolve().parents[1] / "data/v2"
+    root = Path(__file__).resolve().parents[1] / "data/provenance/construction_inputs/seed200"
     cases = load_v2(root / "cases.jsonl")
     release = json.loads((root / "release.json").read_text())
     assert release["manifest_sha256"] == sha256_file(root / "cases.jsonl")

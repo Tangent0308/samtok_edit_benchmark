@@ -1,5 +1,3 @@
-# Historical input export tools
+# IF-Bench implementation
 
-These helpers preserve earlier release input representations. They are not the current fairness configuration: in particular, historical synthesized point boxes/native JSON assets must not be substituted into current requests.
-
-Current public projection, drawing and prompt code is in [samtok_benchmark/ifbench](../../samtok_benchmark/ifbench/README.md); the authoritative model×setting mapping and real examples are in [USAGE.md](../../../docs/USAGE.md). Historical runs must use their own frozen snapshots and manifests.
+Current evaluation contracts and model input mappings are documented in [USAGE.md](../../../docs/USAGE.md). The shared 1MP canvas, native adapters and canonical Judge are orchestrated by `samtok_benchmark.ifbench`. Read [FULL_RUN.md](../../../docs/FULL_RUN.md) for the foreground four-node entry.

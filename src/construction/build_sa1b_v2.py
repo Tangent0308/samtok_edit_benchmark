@@ -92,7 +92,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--dataset-root", type=Path, required=True)
     p.add_argument("--selection-root", type=Path)
-    p.add_argument("--metadata-dir", type=Path, default=REPO / "data/v2")
+    p.add_argument("--metadata-dir", type=Path, default=REPO / "data/provenance/construction_inputs/seed200")
     args = p.parse_args()
     root = args.dataset_root
     selection = args.selection_root or root / "sa1b_source_selection"

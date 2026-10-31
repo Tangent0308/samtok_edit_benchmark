@@ -50,7 +50,7 @@ def test_host_subpart_requires_resolution_and_blind_region_selector():
 
 
 def test_frozen_contract_is_checked_on_load(tmp_path):
-    cases = load_cases(REPO / "data/v2/cases.jsonl")
+    cases = load_cases(REPO / "data/provenance/construction_inputs/seed200/cases.jsonl")
     original = copy.deepcopy(cases)
     assert all(
         u["mask_semantics"]["anchor_mode"] == "support"

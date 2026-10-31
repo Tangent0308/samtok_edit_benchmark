@@ -39,7 +39,7 @@ from samtok_benchmark.v2.instruction_compat import check_blind_noref  # noqa: E4
 from samtok_benchmark.v2.instruction_style import STYLE_VERSION  # noqa: E402
 
 RELEASE = "2.6.0"
-BASE = REPO / "data/v2_1084"
+BASE = REPO / "data/provenance/construction_inputs/base1084"
 OUT = REPO / "data/v2_2.6.0"
 HERE = construction_metadata() / "release_2_6"
 REVISIONS = HERE / "revisions"

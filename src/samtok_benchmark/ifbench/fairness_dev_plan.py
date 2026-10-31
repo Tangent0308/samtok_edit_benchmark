@@ -129,9 +129,14 @@ def verify_task(plan, task):
         raise ValueError("Unregistered request")
     if (
         task["model"] == "qwen21"
+        and not plan.get("canvas_policy")
         and request["parameters"] != plan["model_specifications"]["qwen21"]["parameters"]
     ):
         raise ValueError("Qwen21 request parameters differ from the fixed model specification")
+    if plan.get("canvas_policy"):
+        from .canvas import verify_request
+
+        verify_request(plan, task, request, public)
     if request_identity(plan, task["model"], request) != task["scientific_digest"]:
         raise ValueError("Scientific request identity changed")
     for path, expected in task["input_files"].items():

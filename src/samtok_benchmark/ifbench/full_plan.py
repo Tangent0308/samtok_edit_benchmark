@@ -86,6 +86,15 @@ def load_plan(path, *, helper_root=None):
         raise ValueError("Authorization does not cover this fixed four-node run")
     check_hash(plan["configuration_reference"], plan["configuration_reference_sha256"])
     reference = read(plan["configuration_reference"])
+    if plan.get("canvas_policy") != reference.get("canvas_policy"):
+        raise ValueError("Plan and reference disagree about the public canvas policy")
+    if plan.get("canvas_policy"):
+        from .canvas import POLICY
+
+        if plan["canvas_policy"] != POLICY or reference.get("canvas_policy") != POLICY:
+            raise ValueError("Changed common 1MP canvas policy")
+        if any(task.get("cache") for task in plan["tasks"]):
+            raise ValueError("The first 1MP full run must not import native-resolution generation caches")
     if (
         plan["model_specifications"] != reference["model_specifications"]
         or plan["judge_config"] != reference["judge_config"]

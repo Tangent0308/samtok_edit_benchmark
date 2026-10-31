@@ -4,7 +4,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 from concurrent.futures import ProcessPoolExecutor
 
 ROOT = '/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2'
-MAN = '/opt/tiger/tanyue/samtok_edit_benchmark/data/v2_1084/cases.jsonl'
+MAN = '/opt/tiger/tanyue/samtok_edit_benchmark/data/provenance/construction_inputs/base1084/cases.jsonl'
 OUT = '/tmp/samtok_audit/views'
 COL = {'U1': (255, 40, 40), 'U2': (40, 120, 255), 'U3': (255, 200, 0), 'U4': (220, 0, 255), 'U5': (0, 220, 80)}
 try:

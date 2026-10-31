@@ -25,7 +25,7 @@ def main():
     a = parser.parse_args()
     disable_progress_bars()
     meta = json.loads((a.package / "package_metadata.json").read_text())
-    release = json.loads((REPO / "data/v2/release.json").read_text())
+    release = json.loads((REPO / "data/provenance/construction_inputs/seed200/release.json").read_text())
     assert meta["cases"] == release["cases"] and meta["units"] == release["units"]
     assert meta["instruction_version"] == release["release_version"]
     assert meta["manifest_sha256"] == release["manifest_sha256"]
@@ -147,7 +147,7 @@ def main():
     )
     for p in [
         local_receipt,
-        REPO / "data/v2/review_package.json",
+        REPO / "data/provenance/construction_inputs/seed200/review_package.json",
         a.dataset_root / "benchmark/review_package.json",
     ]:
         p.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + "\n")

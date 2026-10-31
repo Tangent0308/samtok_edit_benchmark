@@ -54,7 +54,7 @@ def test_add_requires_explicit_support_semantics(v2release):
 def test_current_instruction_release_is_balanced_bilingual_and_concise():
     from collections import Counter
 
-    cases = load_cases(Path(__file__).parents[1] / "data/v2/cases.jsonl")
+    cases = load_cases(Path(__file__).parents[1] / "data/provenance/construction_inputs/seed200/cases.jsonl")
     units = [u for c in cases for u in c["units"]]
     assert len(cases) == 200 and len(units) == 785
     assert {c["source"]["dataset"] for c in cases} == {"SA-1B"}
@@ -74,7 +74,7 @@ def test_current_instruction_release_is_balanced_bilingual_and_concise():
 
 
 def test_protocol_release_rejects_silent_noref_drift(tmp_path):
-    cases = load_cases(Path(__file__).parents[1] / "data/v2/cases.jsonl")
+    cases = load_cases(Path(__file__).parents[1] / "data/provenance/construction_inputs/seed200/cases.jsonl")
     assert all(u["instruction_protocol_version"] == "1.0" for c in cases for u in c["units"])
     cases[0]["units"][0]["instruction_noref"] += " Also remove its host."
     manifest = tmp_path / "cases.jsonl"
@@ -86,7 +86,7 @@ def test_protocol_release_rejects_silent_noref_drift(tmp_path):
 def test_blind_protocol_is_checked_without_rewriting_legacy_release(tmp_path):
     from samtok_benchmark.v2.instruction_protocol import render, mask_contract
 
-    cases = load_cases(Path(__file__).parents[1] / 'data/v2/cases.jsonl')[:1]
+    cases = load_cases(Path(__file__).parents[1] / 'data/provenance/construction_inputs/seed200/cases.jsonl')[:1]
     unit = cases[0]['units'][0]
     unit['instruction_spec']['version'] = '2.0'
     unit['instruction_protocol_version'] = '2.0'

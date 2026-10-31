@@ -25,7 +25,7 @@ BG=re.compile(r'window|building|railing|balcony|roof|column|facade')
 def main():
  p=argparse.ArgumentParser();p.add_argument('--count',type=int,default=300);a=p.parse_args()
  index=json.loads((SELECTION/'sample_index.json').read_text())['selection']
- original={json.loads(l)['source']['family_id'] for l in (repository_root()/'data/v2/cases.jsonl').open()}
+ original={json.loads(l)['source']['family_id'] for l in (repository_root()/'data/provenance/construction_inputs/seed200/cases.jsonl').open()}
  existing={json.loads(l)['source_id'] for l in (BASE/'sa1b_edit_work/disjoint_pool/candidates.jsonl').open()}
  training={json.loads(l)['source_id'] for l in (BASE/'sa1b_samtok_edit_50k_20261014/inputs/reservoir.jsonl').open()}
  old=json.loads((SELECTION/'retrieval.json').read_text());rows=old['rows'] if isinstance(old,dict) else old

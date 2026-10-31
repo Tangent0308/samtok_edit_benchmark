@@ -44,7 +44,7 @@ flowchart TD
 
 SA-1B 是 Meta 为通用分割研究发布的数据集，官方说明约有 1,100 万张图像、11 亿个 mask，mask 为类别无关标注，**不含官方语义类别标签**。IF-Bench 只使用其中选出的 1,084 张图像。源数据介绍与获取条件见 [SA-1B 官方数据页](https://ai.meta.com/datasets/segment-anything/)。
 
-本项目同时使用本地配套 dense 标注，manifest 将其记为 `SA-1B companion dense labels`。检索代码读取 `objects` 中的 `object_id`、`category`、`segmentation`，并保存原始 RLE、dense 文件 SHA256 和图像索引。因此，本项目的类别词、对象描述及编辑任务不能归因于 SA-1B 官方类别标注；配套语义标签的完整上游生产流程并不由本仓库重建。[检索代码](../src/construction/retrieve_expansion_sources.py#L47-L62) 和 [源数据追溯记录](../data/v2/provenance.jsonl) 给出了实际字段及本地 TFRecord 索引。
+本项目同时使用本地配套 dense 标注，manifest 将其记为 `SA-1B companion dense labels`。检索代码读取 `objects` 中的 `object_id`、`category`、`segmentation`，并保存原始 RLE、dense 文件 SHA256 和图像索引。因此，本项目的类别词、对象描述及编辑任务不能归因于 SA-1B 官方类别标注；配套语义标签的完整上游生产流程并不由本仓库重建。[检索代码](../src/construction/retrieve_expansion_sources.py#L47-L62) 和 [源数据追溯记录](../data/provenance/construction_inputs/seed200/provenance.jsonl) 给出了实际字段及本地 TFRecord 索引。
 
 源图使用 `family_id`、`image_id` 与文件 SHA256 关联；当前 1,084 个 case 的源家族和源图哈希均唯一。所有源记录的 `training_catalog_member=true` 只说明它们在本地来源目录索引中，不表示已经证明各编辑模型的训练数据与这些图像无重叠。扩充候选对指定本地训练 reservoir 的排除检查，也不能推广为对任意模型预训练数据的去重保证。
 
@@ -60,7 +60,7 @@ SA-1B 是 Meta 为通用分割研究发布的数据集，官方说明约有 1,10
 | 扩充审查台账 | 964 个不同 source ID；接受 884、保留 75、拒绝 5 |
 | 当前发布 | 200 + 884 = 1,084 个唯一源图；保留/拒绝项不计入 release |
 
-初始数字来自 [selection/statistics.json](../data/v2/selection/statistics.json)；扩充数字可从 [expansion_reviews 的 batch JSON](../data/provenance/construction/expansion_reviews) 按 `source_id` 和 `decision` 重算。这些是构建阶段的来源记录，不是模型表现筛选。
+初始数字来自 [selection/statistics.json](../data/provenance/construction_inputs/seed200/selection/statistics.json)；扩充数字可从 [expansion_reviews 的 batch JSON](../data/provenance/construction/expansion_reviews) 按 `source_id` 和 `decision` 重算。这些是构建阶段的来源记录，不是模型表现筛选。
 
 候选处理分为三个环节：
 
@@ -76,7 +76,7 @@ SA-1B 是 Meta 为通用分割研究发布的数据集，官方说明约有 1,10
 
 ## 4. 当前标注结构
 
-当前格式的可执行约束是 [dataset.py](../src/samtok_benchmark/v2/dataset.py) 与 [instruction_protocol.py](../src/samtok_benchmark/v2/instruction_protocol.py)。原目录中的 `data/legacy/schema.v1.json` 标题和字段属于 v1，不能用于校验 2.6.0 case。
+当前格式的可执行约束是 [dataset.py](../src/samtok_benchmark/v2/dataset.py) 与 [instruction_protocol.py](../src/samtok_benchmark/v2/instruction_protocol.py)。
 
 | 层级 | 关键字段 | 含义 |
 |---|---|---|

@@ -1,0 +1,53 @@
+{
+  "reviewed_at_utc": "2026-10-31T16:47:19.679949+00:00",
+  "policy": "shared 1MP canvas; direct model output canvas; RePlan/MIRAGE native approximately 1MP grids; one float-crop LANCZOS inverse to canonical size",
+  "native_commits": {
+    "flux3": {
+      "repository": "https://github.com/black-forest-labs/flux-3-image-klein",
+      "method_commit": "bfc8889a4497f846416f253a3972a1941ac698b9"
+    },
+    "replan": {
+      "repository": "https://github.com/JIA-Lab-research/RePlan",
+      "method_commit": "6c9b12f0c619cc8ca6f50b536b24aff377525f8c"
+    },
+    "mirage": {
+      "repository": "https://github.com/ZiqianLiu666/MIRAGE",
+      "method_commit": "234a31968df307879a55675873a54258d6c0eae4"
+    },
+    "mice": {
+      "repository": "https://github.com/Blowing-Up-Groundhogs/mice",
+      "method_commit": "43b289de84dfd184c0ee1b551b0e1bea02f6e92d"
+    }
+  },
+  "mask_audit": {
+    "cases": 1084,
+    "masks": 3872,
+    "public_empty_count": 0,
+    "native_mice_empty_units": 39,
+    "native_mice_empty_cases": 39,
+    "affected_requests": 104,
+    "affected_requests_by_setting": {
+      "S2-mask": 39,
+      "S3-mask": 39,
+      "S4-ref": 9,
+      "S4-noref": 9,
+      "S5": 8
+    },
+    "minimum_public_pixels_in_native_empty_subset": 37,
+    "policy": "retain exact public masks and native quantization; no dilation, box substitution, or new inferred failure policy"
+  },
+  "evidence_files": [
+    "NATIVE_CPU_CONTRACTS.json",
+    "native_geometry_contracts.py",
+    "MICE_NEAREST_CONTRACT.json",
+    "native_mice_nearest_contract.py",
+    "MASK_DISAPPEARANCE.json",
+    "MASK_DISAPPEARANCE_ROWS.jsonl",
+    "audit_mask_disappearance.py",
+    "REPLAN_GRID_MISMATCH.json",
+    "MICE_OLD_SIZE_MISMATCH.json"
+  ],
+  "manifest_sha256": "818ce524a1d1f363dc8ea5caa7a887b2dd0355c17a5600d1cbd696cffcf263fb",
+  "evidence_root": "/tmp/ifbench/resolution_1mp_20261031",
+  "scope": "Deterministic CPU input/native-grid audit, no quality scores or new model calls."
+}

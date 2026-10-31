@@ -14,7 +14,7 @@ def main():
     repo = repository_root()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--training-repo", type=Path, required=True)
-    parser.add_argument("--manifest", type=Path, default=repo / "data/v2/cases.jsonl")
+    parser.add_argument("--manifest", type=Path, default=repo / "data/provenance/construction_inputs/seed200/cases.jsonl")
     args = parser.parse_args()
     canonical = repo / "src/samtok_benchmark/v2/instruction_protocol.py"
     training = args.training_repo / "sa1b_pipeline/instruction_protocol.py"

@@ -73,7 +73,7 @@ def main():
     args = parser.parse_args()
     root = args.dataset_root
     out = REPO / "data/v2_2.6.0"
-    base = read_jsonl(REPO / "data/v2_1084/cases.jsonl")
+    base = read_jsonl(REPO / "data/provenance/construction_inputs/base1084/cases.jsonl")
     current = read_jsonl(out / "cases.jsonl")
     old_cases = {c["id"]: c for c in base}
     new_cases = {c["id"]: c for c in current}
@@ -125,7 +125,7 @@ def main():
               if r.get("event") == "round2_final_report"][-1]
     summary = {
         "base_release": "2.5.0", "release_version": "2.6.0",
-        "before_manifest_sha256": sha256_file(REPO / "data/v2_1084/cases.jsonl"),
+        "before_manifest_sha256": sha256_file(REPO / "data/provenance/construction_inputs/base1084/cases.jsonl"),
         "after_manifest_sha256": sha256_file(out / "cases.jsonl"),
         "cases": len(current), "units": sum(len(c["units"]) for c in current),
         "source_images_unchanged": all(c["source"]["sha256"] == old_cases[c["id"]]["source"]["sha256"]

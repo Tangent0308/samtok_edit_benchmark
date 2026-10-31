@@ -1,7 +1,7 @@
 import json, glob, collections, re
 A = '/tmp/samtok_audit'
 OUT = '/opt/tiger/tanyue/samtok_edit_benchmark/docs/BENCHMARK_AUDIT_20261015_ZH.md'
-cases = [json.loads(l) for l in open('/opt/tiger/tanyue/samtok_edit_benchmark/data/v2_1084/cases.jsonl')]
+cases = [json.loads(l) for l in open('/opt/tiger/tanyue/samtok_edit_benchmark/data/provenance/construction_inputs/base1084/cases.jsonl')]
 order = {c['id']: i for i, c in enumerate(cases)}
 byid = {c['id']: c for c in cases}
 F = [json.loads(l) for l in open(A + '/findings.jsonl')]
@@ -62,7 +62,7 @@ L = []
 P = L.append
 P('# SAMTok Benchmark v2（1,084 case）指令与标注全量审查报告')
 P('')
-P('审查日期：2026-10-15。审查对象：`data/v2_1084/cases.jsonl`（1,084 case / 3,872 个编辑单元 U1–U5），数据根 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/`。本次审查**未修改** manifest 或任何已有数据文件；全部中间产物在 `/tmp/samtok_audit/`。')
+P('审查日期：2026-10-15。审查对象：`data/provenance/construction_inputs/base1084/cases.jsonl`（1,084 case / 3,872 个编辑单元 U1–U5），数据根 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2/`。本次审查**未修改** manifest 或任何已有数据文件；全部中间产物在 `/tmp/samtok_audit/`。')
 P('')
 P('> 重要说明：本次“目视审查”由 assistant（主审）与其分派的 28 个并行视觉审查子代理完成，属于**模型目视复核**，不是独立人工验收。主审本人另外抽查了 10 个 case 用于校准（与子代理结论 10/10 一致）。所有结论均附具体证据，可在 `/tmp/samtok_audit/views/<case_id>.jpg` 复核。')
 P('')

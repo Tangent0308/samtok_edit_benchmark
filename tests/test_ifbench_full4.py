@@ -357,7 +357,7 @@ def full_metadata_fixture(tmp_path):
 
     manifest = REPO / "data/v2_2.6.0/cases.jsonl"
     cases = read_jsonl(manifest)
-    config = REPO / "configs/evaluation/fairness_v2_1.json"
+    config = REPO / "tests/fixtures/native_resolution_config.json"
     reference = json.loads(config.read_text())
     auth = tmp_path / "auth.json"
     write_json(

@@ -38,7 +38,7 @@ MODEL = Path(
         "SAMTOK_SAM3", "/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/sam3"
     )
 )
-MANIFEST = repository_root() / "data/v2_1084/cases.jsonl"
+MANIFEST = repository_root() / "data/provenance/construction_inputs/base1084/cases.jsonl"
 COLORS = [(235, 40, 75), (0, 150, 240), (220, 165, 0), (145, 75, 210), (0, 175, 120),
           (255, 120, 0), (0, 200, 200), (200, 0, 200), (120, 200, 0), (90, 90, 255)]
 

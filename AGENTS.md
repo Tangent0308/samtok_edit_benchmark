@@ -1,41 +1,37 @@
 # IF-Bench development instructions
 
-## Current scope
+## Current authorized scope
 
-As of 2026-10-31 the user explicitly authorized the full 1,084-image release, seven confirmed methods and ten settings, reporting one total without separate dev/test score tables. The user confirmed four machines, each with eight H100 80GB GPUs and the same shared mount. This supersedes the previous stop-before-freeze/test gate for this fixed full-release run.
+Current evaluation is **fairness-v2.2-1mp**. Read [USAGE.md](docs/USAGE.md), [FULL_RUN.md](docs/FULL_RUN.md), and [fairness_v2_2_1mp.json](configs/evaluation/fairness_v2_2_1mp.json). The user authorized implementation, minimal correctness samples, current documentation cleanup, and commit/push. Whole-release execution uses 1,084 sources / 3,872 units, seven fixed methods and ten settings, reported together rather than as separate dev/test rows. Do not interpret smoke success as completed full evaluation; [RESULTS.md](docs/RESULTS.md) must reflect actual receipts.
 
-Read [USAGE.md](docs/USAGE.md), [FULL_RUN.md](docs/FULL_RUN.md) and the [approved configuration reference](configs/evaluation/fairness_v2_1.json) before changing inputs, parameters or scoring.
+- All editors and native planners receive only the shared approximately 1MP clean/annotated canvas. Canonical source/GT assets remain separate and are used for data identity, inverse mapping and Judge evidence.
+- Use the fixed centered RGB(128,128,128) letterbox policy in `canvas.py`: target 1024², a 32-pixel grid, 0.995 scale backoff, LANCZOS image resize and NEAREST public masks. Transform only geometry already public in the current setting. Record exact content size/offset/scale; redraw shared annotations on the canvas. Do not create extra region information, enlarge vanished masks or read the private manifest inside model adapters.
+- Qwen2.1 uses output_resolution=1024 with the public canvas width/height and native model CPU offload. Qwen2511/FLUX3/FLUX2 use the public width/height; MICE uses public model_size. RePlan and MIRAGE preserve their native approximately 1MP output grids. RePlan's native region flow does not obey an explicit width/height override; do not document one as effective or change its native algorithm to force equal integer output dimensions.
+- Preserve native steps, guidance, weights, precision, components, prompts and input counts. No score-driven candidate search, PE/PUP, external SAM/grounder/caption model or K sequential edits. RePlan/MIRAGE keep their own native planners and disclose costs.
+- One sample per request, seed 42. No manual plan repair, silent fallback or unknown-admission retries. MICE retains native 200-token segment completeness checks; input/plan/generation failures stay in full denominators. Judge failures are missing, never zero or filtered-out cases.
+- Restore every raw output by scaling the recorded content crop to raw dimensions, removing padding and resizing once with LANCZOS to canonical source size. Preserve raw outputs. This is geometric inversion, never GT paste-back or marker cleanup.
+- Canonical Judge source/configuration/evidence remain fixed. Cache reuse requires complete scientific input identity and actual output SHA. Matching resolution alone is insufficient. Never transfer scores by model name.
+- Final four-node aggregation verifies ownership, generation bindings, admissions/raw/effective provenance and exact complete coverage. Use one global source-paired bootstrap; never average node percentages or CIs. Keep measured stopped/resumed costs and unknown durations distinct.
+- GT selector paste-back is a diagnostic, never an upper bound. Human residual rates and κ require real independent human labels. Do not fabricate pending scores, visualizations, throughput or verification claims.
 
-- Freeze the latest seven native configurations: Qwen2.1 2K/40 steps/CFG1/KV cache/native model CPU offload; MICE fixed short preamble and complete native 200-token segments. No new candidate search, score-driven changes or external components.
-- Retain the original 108/976 split and dev20 membership only as exposure provenance. The full report includes all 1,084 sources and does not claim an unseen held-out test estimate.
-- Use one ARNOLD job with four workers × eight GPUs and the same foreground entry on every worker. Read ARNOLD_ID and the common endpoint from ARNOLD_WORKER_HOSTS, never the worker-local generic PORT. Stage pinned benchmark and upstream source bytes in node-local /tmp. The supervisor owns TCP rendezvous, readiness/exit barriers and fatal-error propagation; node 0 alone aggregates, and all controllers wait for it.
-- Four fixed, disjoint source owners, each 271 images and 968 units. A source's complete seven-model × ten-setting group stays on one node; each node has eight single-GPU generation workers and its own unchanged TP8 Judge. Cross-host control communication does not change inference to TP32 or add a multi-node NCCL model group.
-- Reuse the completed repaired dev20 only after exact request/public/configuration/output and Judge-key verification. Preserve terminal native failures and historical costs; do not resample old failures or revive the old 177-repair authorization.
-- Only public text/geometry reaches editors. No external SAM, grounder, caption rewrite, PE or PUP. Named methods RePlan/MIRAGE retain their own native planners; record actual calls. No K sequential edits.
-- One sample per request, seed42. No unknown-admission retries, manual plan repair or silent fallback. Generation/planning/input-limit failures retain full denominators; Judge missing scores remain missing. MICE's 19 whole-release S2-point overflows follow the existing zero-sampling failure policy, not truncation or extra prompt revision.
-- Final aggregation verifies all four owners and every unique canonical key, then computes one global source-paired bootstrap. Do not average node percentages/intervals or choose among duplicate scores.
-- Paste-back remains a GT selector paste-back diagnostic, never an upper bound. Human residual-rate and κ require actual independent human review.
+## Artifacts and documentation
 
-## Artifact placement and active runs
+Code and current protocol documentation belong in this repository. Smoke outputs, audits, intermediate reports, previews and logs belong under `/tmp/ifbench/` or shared `.ifbench-tmp/`. Only the confirmed frozen full run's formal outputs enter `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/`. Preserve unrelated experiments, raw evidence and actual compute costs. Never modify a published READY, frozen request, active run snapshot or original score record.
 
-Code and protocol Markdown belong in this repository. Audit snapshots, smoke/dev outputs, logs, previews, reports and validation receipts belong under `/tmp/ifbench/` or `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/`. Only confirmed, frozen formal artifacts may enter `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/`. This overrides the parent's visualization location for temporary IF-Bench material. Preserve unrelated experiments and historical records/costs.
+Repository documentation describes only the current evaluation setting. Data release 2.6.0 and its construction provenance are scientific data records, not evaluation-version prose. Preserve [CONSTRUCTION.md](docs/CONSTRUCTION.md), current manifest/patches and necessary authoring/audit/rebuild evidence. Before removing tracked non-current data or docs, inspect links and construction/test dependencies; relocate indispensable provenance and update executable references rather than silently breaking reconstruction. Keep full datasets, weights, credentials and model outputs outside Git. Current aggregate scores and a few actual image previews may be tracked with SHA provenance; insert real images directly in Markdown.
 
-The shared bundles `fairness-v2-dev20-20261030` (completed parent), `fairness-v21-dev20-20261030` (approved correction), and `full4-v21-1084-20261031` (superseded independent-node launcher) have immutable snapshots, manifests and requests. Use `full4-arnold-v21-1084-20261031-r2` for the common ARNOLD entry in [FULL_RUN.md](docs/FULL_RUN.md); its scientific requests reuse the previous full-input bundle exactly. Never rewrite old READY files or imply a running experiment adopted new checkout code. Keep the platform entry in the foreground, without `nohup` or `&`. Never kill unrelated GPU processes. A new attempt ID alone does not authorize repeating admitted requests.
+Use the foreground shared launcher; do not add `nohup`, `&` or a second `torchrun`. Never kill unrelated GPU processes. A new attempt ID is a logging identity, not resampling permission. Inspect actual result records before reporting progress: cached output is not new inference, and generated output is not task success.
 
-Inspect actual records before reporting progress. Cached output is not new inference; generation success is not task success. Keep credentials, weights, full source datasets and raw experiment outputs out of Git. The user explicitly requested inline documentation examples: selected previews, their provenance and aggregate scores may be tracked under `docs/assets/`.
+## Source layout and checks
 
-## Code and checks
+- `src/samtok_benchmark/ifbench/`: public inputs, canvas geometry, orchestration, workers, Judge integration and statistics.
+- `src/evaluation/protocol_audit/`: pinned native helpers and runtime/bundle tools.
+- `src/construction/` and `data/provenance/`: dataset construction and reproducibility evidence.
+- `tests/test_ifbench_*.py`: CPU contract/regression tests without model downloads or inference.
+- `docs/{CONSTRUCTION,USAGE,FULL_RUN,RESULTS}.md`: current user-facing documents.
 
-- `src/samtok_benchmark/ifbench/`: public inputs, orchestration, workers, Judge integration and reports.
-- `src/evaluation/protocol_audit/`: audited native helpers, bundle/bootstrap tools and historical analysis.
-- `tests/test_ifbench_*.py`: CPU regression tests, without model downloads/inference.
-- `docs/{CONSTRUCTION,USAGE,RESULTS}.md`: current guides; `docs/archive/previous/`: historical evidence; keep original protocols intact.
-
-Run `python -m pytest -q` and Ruff on changed Python files. Keep GPU runtimes separate from the development environment. Do not change historical `src/samtok_benchmark/v2/judge.py` or scoring semantics as a scheduling fix.
-Use English `<type>: <imperative subject>` commits as requested, following [CommitMessageGuidelines](https://github.com/MaiXiaochai/CommitMessageGuidelines).
+Run appropriate CPU tests and Ruff on changed Python files; keep development and GPU runtimes separate. Do not change canonical Judge bytes or scoring semantics for a scheduling/packaging change. Use English `<type>: <Imperative subject>` commit messages. Check all current document links, current config references and data reconstruction dependencies before commit/push.
 
 ## Collaboration and reporting
 
-The user authorized CPU subagents for per-model inspection, analysis, summaries and thumbnails (at most three analysis agents concurrently), and a dedicated read-only dev20 monitor. Bound their I/O, keep outputs temporary, and do not let them change scores, select from incomplete results or interfere with GPU jobs. File monitoring alone does not deliver chat notifications; report observed changes and uncertainty explicitly.
-
-Report completed work, problems/deviations, blockers and next steps. Use measured progress/ETA and Markdown with inline images for galleries. [Historical session notes](docs/archive/previous/protocol/if-bench-v1/archive/SESSION_HISTORY.md) preserve chronological evidence, not current permission state.
+CPU subagents may inspect methods, analyze completed outputs, draft reports and prepare thumbnails, with at most three analysis agents concurrently. Keep I/O bounded, artifacts temporary and running inference untouched. Do not select inputs based on incomplete results. Each report states work completed, issues/deviations, blockers and next steps, with real files/receipts. File monitoring alone does not deliver proactive chat updates.

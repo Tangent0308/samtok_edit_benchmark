@@ -57,6 +57,8 @@ def source_snapshot(bundle, plan):
     from samtok_benchmark.ifbench.render import specification
 
     renderer = specification()
+    if plan.get("canvas_policy"):
+        renderer["public_canvas"] = plan["canvas_policy"]
     historical_renderer = read(Path(plan["paths"]["shared"]) / "renderer.json")
     if renderer != historical_renderer:
         raise ValueError("Renderer/font/library configuration differs from approved shared inputs")
@@ -105,7 +107,7 @@ def prepare(bundle, parent_bundle, results, workers=8):
     ):
         raise ValueError("Only the completed repaired dev20 can be the reuse parent")
     bundle.mkdir(parents=True)
-    reference = REPO / "configs/evaluation/fairness_v2_1.json"
+    reference = parent_bundle / "configuration.json"
     shutil.copyfile(reference, bundle / "configuration.json")
     config = read(reference)
     if (

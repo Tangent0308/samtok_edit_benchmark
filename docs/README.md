@@ -5,4 +5,4 @@
 - [四机全量运行](FULL_RUN.md)
 - [最新结果与分析](RESULTS.md)
 
-[历史文档](archive/README.md)保留用于追溯，不代表当前配置。
+当前主评测采用统一约 1MP 公共画布，七个原生方法、十种 setting。

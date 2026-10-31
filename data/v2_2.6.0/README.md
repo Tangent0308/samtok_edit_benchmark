@@ -16,7 +16,7 @@ Current formal release: 1,084 unique SA-1B images, 3,872 units. Instruction prot
 
 Canonical dataset root: `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2`. Its `benchmark/` directory mirrors current metadata; `benchmark_history/2.5.0/` preserves the previous metadata and root documents. Runtime source images and masks are under `assets/`. Old selection review cards, ZIP and PDF remain 2.5.0 historical evidence.
 
-The repository directory `data/v2_1084/` remains the unchanged 2.5.0 baseline. `data/current.json` points to this release. Install the new masks from the repository root with:
+The repository directory `data/provenance/construction_inputs/base1084/` remains the unchanged 2.5.0 baseline. `data/current.json` points to this release. Install the new masks from the repository root with:
 
 ```bash
 /opt/tiger/envs/gen/bin/python construction/release_2_6/materialize_masks.py \

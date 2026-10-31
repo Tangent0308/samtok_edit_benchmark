@@ -23,7 +23,7 @@ def main():
     a = p.parse_args()
     a.output.mkdir(parents=True, exist_ok=True)
     repo = repository_root()
-    raw = (repo / "data/v2/cases.jsonl").read_bytes()
+    raw = (repo / "data/provenance/construction_inputs/seed200/cases.jsonl").read_bytes()
     cases = [json.loads(line) for line in raw.splitlines()]
     jobs = [(n, c, u) for n, c in enumerate(cases, 1) for u in c["units"]]
     jobs = [x for i, x in enumerate(jobs) if i % a.shards == a.shard]

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import math
 
 import numpy as np
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageFont, ImageOps
@@ -14,6 +15,12 @@ PALETTE = ((255, 0, 0), (0, 80, 255), (0, 170, 0), (255, 210, 0), (230, 0, 230))
 COLOR_NAMES = ("red", "blue", "green", "yellow", "magenta")
 FONT = Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
 RENDER_VERSION = "ifbench-outline-v1"
+
+
+def raster_box(bounds):
+    """Draw continuous half-open edges without changing the native API geometry."""
+    x1, y1, x2, y2 = bounds
+    return math.floor(x1), math.floor(y1), math.ceil(x2) - 1, math.ceil(y2) - 1
 
 
 def specification():
@@ -51,14 +58,13 @@ def public_shape(unit, size, radius):
         x, y = unit["region"]["coordinates"]
         d.ellipse((x - radius, y - radius, x + radius, y + radius), fill=255)
     elif unit["locator"] == "box":
-        x1, y1, x2, y2 = unit["region"]["coordinates"]
-        d.rectangle((x1, y1, x2 - 1, y2 - 1), fill=255)
+        d.rectangle(raster_box(unit["region"]["coordinates"]), fill=255)
     return result
 
 
 def anchor(unit):
     if unit["locator"] in {"point", "box"}:
-        return tuple(unit["region"]["coordinates"][:2])
+        return tuple(round(v) for v in unit["region"]["coordinates"][:2])
     with Image.open(unit["region"]["path"]) as im:
         y, x = np.nonzero(np.array(im.convert("L")) > 0)
     if not len(x):
@@ -124,8 +130,7 @@ def render(request, destination: Path):
             )
             d.ellipse((x - radius, y - radius, x + radius, y + radius), fill=color)
         elif u["locator"] == "box":
-            x1, y1, x2, y2 = u["region"]["coordinates"]
-            d.rectangle((x1, y1, x2 - 1, y2 - 1), outline=color, width=line)
+            d.rectangle(raster_box(u["region"]["coordinates"]), outline=color, width=line)
         else:
             mask = public_shape(u, (w, h), radius)
             eroded = ImageOps.expand(mask, border=line, fill=0).filter(

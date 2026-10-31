@@ -65,11 +65,11 @@ def test_unpublished_bundle_never_launches(tmp_path):
     run.assert_not_called()
 
 
-def test_current_canonical_source_matches_completed_run_identity():
+def test_current_judge_source_matches_configuration():
     import hashlib
 
     root = Path(__file__).resolve().parents[1]
-    config = json.loads((root / "configs/evaluation/fairness_v2_1.json").read_text())
+    config = json.loads((root / "configs/evaluation/fairness_v2_2_1mp.json").read_text())
     source = root / "src/samtok_benchmark/ifbench/dev_judge.py"
     assert (
         hashlib.sha256(source.read_bytes()).hexdigest() == config["judge_config"]["source_sha256"]

@@ -26,9 +26,9 @@ def parser():
     inputs.add_argument("--dataset-root", type=Path, required=True)
     inputs.add_argument("--output", type=Path, required=True)
     inputs.add_argument("--workers", type=int, default=4)
-    config = sub.add_parser("show-config", help="Print the current dev configuration reference")
+    config = sub.add_parser("show-config", help="Print the current 1MP evaluation configuration")
     config.add_argument(
-        "--config", type=Path, default=root / "configs/evaluation/fairness_v2_1.json"
+        "--config", type=Path, default=root / "configs/evaluation/fairness_v2_2_1mp.json"
     )
     inspect = sub.add_parser(
         "inspect-run", help="Read published run metadata without launching workers"
@@ -47,6 +47,14 @@ def parser():
     full.add_argument("--validate-only", action="store_true")
     full_status = sub.add_parser("inspect-full", help="Read the four-node full-release progress")
     full_status.add_argument("--bundle", type=Path, required=True)
+    prepare = sub.add_parser("prepare-1mp", help="Prepare fixed 1MP inputs and native requests (CPU only)")
+    prepare.add_argument("--bundle", type=Path, required=True)
+    prepare.add_argument("--scope", choices=["probe", "full"], default="probe")
+    prepare.add_argument("--results", type=Path)
+    probe = sub.add_parser("probe-1mp", help="Run the bounded 42-request native engineering probe")
+    probe.add_argument("--bundle", type=Path, required=True)
+    report = sub.add_parser("report-1mp", help="Render current real probe inputs and outputs")
+    report.add_argument("--bundle", type=Path, required=True)
     return command
 
 
@@ -108,6 +116,20 @@ def main(argv=None):
         result = inspect_run(args.bundle)
     elif args.command == "inspect-full":
         result = inspect_full(args.bundle)
+    elif args.command == "prepare-1mp":
+        from .prepare_one_mp import prepare
+
+        plan = prepare(args.bundle, scope=args.scope, results=args.results)
+        result = {"bundle": str(args.bundle), "plan_digest": plan["digest"]}
+    elif args.command == "probe-1mp":
+        from .one_mp_probe import execute
+
+        result = execute(args.bundle / "plan.json")
+    elif args.command == "report-1mp":
+        from .one_mp_report import render
+
+        render(args.bundle)
+        result = {"report": str(repository_root() / "docs/RESULTS.md")}
     else:
         bundle = args.bundle.resolve()
         inspect_run(bundle)  # Publication must exist; the frozen bootstrap verifies every hash.

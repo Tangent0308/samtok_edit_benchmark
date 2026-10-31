@@ -16,7 +16,7 @@ PAGES = [
     "docs/USAGE.md",
     "docs/RESULTS.md",
     "docs/FULL_RUN.md",
-    "docs/archive/README.md",
+    "docs/INPUT_EXAMPLES.md",
     "data/README.md",
     "results/README.md",
     "src/samtok_benchmark/ifbench/README.md",

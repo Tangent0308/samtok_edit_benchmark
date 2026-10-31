@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import copy
+import math
 from pathlib import Path
 
 import numpy as np
@@ -80,7 +81,9 @@ def project(case, setting, assigned, dataset_root: Path):
 
 
 def verify(request, assets=False):
-    if set(request) != TOP_KEYS or request["schema"] != SCHEMA or request["protocol"] != PROTOCOL:
+    from .canvas import PROTOCOL as CANVAS_PROTOCOL
+
+    if set(request) != TOP_KEYS or request["schema"] != SCHEMA or request["protocol"] not in {PROTOCOL, CANVAS_PROTOCOL}:
         raise ValueError("Private/unknown/missing public fields or wrong schema")
     if request["setting"] not in SETTINGS or request["manifest_sha256"] != MANIFEST_SHA256:
         raise ValueError("Wrong setting/release")
@@ -126,8 +129,9 @@ def verify(request, assets=False):
             if not isinstance(r, dict) or set(r) != {"coordinates"}:
                 raise ValueError("Coordinates must not expose other locator types")
             p = r["coordinates"]
-            if len(p) != (2 if loc == "point" else 4) or any(type(x) is not int for x in p):
-                raise ValueError("Coordinates must be source-pixel integers")
+            numeric = (int, float) if request["protocol"] == CANVAS_PROTOCOL else (int,)
+            if len(p) != (2 if loc == "point" else 4) or any(type(x) not in numeric or not math.isfinite(x) for x in p):
+                raise ValueError("Invalid public pixel coordinates")
             valid = (
                 (0 <= p[0] < w and 0 <= p[1] < h)
                 if loc == "point"

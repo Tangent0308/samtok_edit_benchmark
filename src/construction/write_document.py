@@ -25,9 +25,9 @@ def main():
     parser.add_argument("--dataset-root", type=Path, required=True)
     a = parser.parse_args()
     root = a.dataset_root
-    cases = read_jsonl(REPO / "data/v2/cases.jsonl")
-    s = json.loads((REPO / "data/v2/statistics.json").read_text())
-    release = json.loads((REPO / "data/v2/release.json").read_text())
+    cases = read_jsonl(REPO / "data/provenance/construction_inputs/seed200/cases.jsonl")
+    s = json.loads((REPO / "data/provenance/construction_inputs/seed200/statistics.json").read_text())
+    release = json.loads((REPO / "data/provenance/construction_inputs/seed200/release.json").read_text())
     figures = REPO / "docs/assets"
     figures.mkdir(parents=True, exist_ok=True)
     examples = []
@@ -62,7 +62,7 @@ def main():
     text = (
         f"""# SAMTok Benchmark v2：SA-1B 多对象细粒度交互编辑
 
-当前唯一版本为 **v2 / release {release["release_version"]}：200 张 SA-1B 源图、785 个独立目标，每图 2–5 个目标**。全部源图与所选 mask 及任务在 2.2.0 阶段已由 assistant 逐图查看。本次 2.4.0 原地修正指代、直接附着关系和安装部位，统一 benchmark 与训练数据的 instruction / mask 协议。原图、区域和交互形式保持不变；核查证据见 data/v2/protocol_alignment_review.json。当前冻结的是源图、任务和交互标注，尚无模型编辑结果或独立人工验收。
+当前唯一版本为 **v2 / release {release["release_version"]}：200 张 SA-1B 源图、785 个独立目标，每图 2–5 个目标**。全部源图与所选 mask 及任务在 2.2.0 阶段已由 assistant 逐图查看。本次 2.4.0 原地修正指代、直接附着关系和安装部位，统一 benchmark 与训练数据的 instruction / mask 协议。原图、区域和交互形式保持不变；核查证据见 data/provenance/construction_inputs/seed200/protocol_alignment_review.json。当前冻结的是源图、任务和交互标注，尚无模型编辑结果或独立人工验收。
 
 此文档是仓库主说明；[统一协议](docs/INSTRUCTION_PROTOCOL_ZH.md)与[本次核查记录](docs/INSTRUCTION_ALIGNMENT_20261013_ZH.md)分别维护规范正文和检查证据。审核包和数据目录中的同名内容是发布副本。旧 212 条和旧说明已退出当前清单，历史保存在 Git 与数据归档目录；不与这 200 条混合统计。
 
@@ -92,7 +92,7 @@ def main():
 - Dense TFRecord：`/mnt/hdfs/byte_ttlive_strategy_llm/user/haobo.yuan/datasets/sa1b_dense_label/annotation/`。
 - Dense 索引：上述目录的 `all1000.index`。
 - 当前源素材及筛选过程：`{root}/sa1b_source_selection/`。
-- 正式来源追溯：仓库 `data/v2/provenance.jsonl`，记录 SA ID、所选原 object_id、原始/解析后的 TFRecord 文件、offset、length、原素材清单 SHA256 和训练目录匹配。
+- 正式来源追溯：仓库 `data/provenance/construction_inputs/seed200/provenance.jsonl`，记录 SA ID、所选原 object_id、原始/解析后的 TFRecord 文件、offset、length、原素材清单 SHA256 和训练目录匹配。
 
 索引中的旧 `/mnt/hdfs/sg_byte_ttlive_strategy_llm/` 前缀解析为本机 `/mnt/hdfs/byte_ttlive_strategy_llm/`。按已给出的偏移读取记录，不重建图片全量索引。原始 RLE 和所选区域清单保存在 `sa1b_source_selection/selected_sources.jsonl`；正式 PNG 记录逐文件 SHA256。
 
@@ -113,7 +113,7 @@ def main():
 5. 舍弃 mask 把背景孔洞填满、整个人误标为衣物、错误覆盖邻居、目标明显失焦、镜面/印刷物冒充实物、同一实物重复计数等问题；可只剔除某张图的不合格 mask。
 6. 未看过、未记录 accept、备用及淘汰项均不进入正式 200 条。所有入选图本轮又查看并写任务；审查归属如实记录为 `ai_direct_visual`，不冒充人工验收。
 
-场景初筛 `review/scene_review.tsv`、细查决定 `review/decisions.jsonl`、候选图片 `candidates/`、检索/审图脚本 `scripts/` 均在源素材过程目录。仓库 `data/v2/selection/` 保存关键筛选日志、统计及原 RLE 验证结果。指令审查记录在 `data/v2/instruction_reviews.jsonl`，对应 50 张四图审查页的路径和 SHA256；大图回看保留在各源图的 `review.jpg`。
+场景初筛 `review/scene_review.tsv`、细查决定 `review/decisions.jsonl`、候选图片 `candidates/`、检索/审图脚本 `scripts/` 均在源素材过程目录。仓库 `data/provenance/construction_inputs/seed200/selection/` 保存关键筛选日志、统计及原 RLE 验证结果。指令审查记录在 `data/provenance/construction_inputs/seed200/instruction_reviews.jsonl`，对应 50 张四图审查页的路径和 SHA256；大图回看保留在各源图的 `review.jpg`。
 
 这是困难场景定向精选，并非 SA-1B 全库无偏样本。衣物、包带、提手等仍较多，领域没有做均衡配额；“高难”来自视觉结构审查，尚无模型成功率标定。
 
@@ -139,7 +139,7 @@ mask 使用 dense annotation 中该目标原始可见区域，转为与原图同
 
 本版 785 条正式英文指令：Ref 平均 16.63 词、中位 17、最长 27；No-ref 平均 9.75 词、中位 10、最长 18。属性任务当前覆盖颜色/染色与材质，协议允许的其他属性不等于本版全部覆盖。四类按目标计最多相差 1 个；2–4 目标图不重复操作类型，5 目标图覆盖四类且一类重复。这是 benchmark case 组合设置，不是单条 instruction 的语法要求。
 
-`data/provenance/construction/instructions/design.tsv` 是逐目标作者记录，`add_placements.json` 显式保存 196 条 add 的附着关系与宿主内位置，`target_parts.json` 表达必要的宿主—部件层级，`ref_corrections_zh.json` 同步中英文修订。`instruction_adapter.py` 不再扫描介词猜测锚点。自动校验与逐图核查证据见 [本次修复核查](docs/INSTRUCTION_ALIGNMENT_20261013_ZH.md)及 `data/v2/protocol_alignment_review.json`。
+`data/provenance/construction/instructions/design.tsv` 是逐目标作者记录，`add_placements.json` 显式保存 196 条 add 的附着关系与宿主内位置，`target_parts.json` 表达必要的宿主—部件层级，`ref_corrections_zh.json` 同步中英文修订。`instruction_adapter.py` 不再扫描介词猜测锚点。自动校验与逐图核查证据见 [本次修复核查](docs/INSTRUCTION_ALIGNMENT_20261013_ZH.md)及 `data/provenance/construction_inputs/seed200/protocol_alignment_review.json`。
 
 ## 6. 当前构建结果
 
@@ -169,7 +169,7 @@ mask 面积占整图中位数 **0.5725%**，最小 **0.0814%**、最大 **13.182
 | --- | --- |
 | 唯一 v2 repo | `/opt/tiger/tanyue/samtok_edit_benchmark_v2branch`，分支 `v2branch` |
 | 唯一维护文档 | repo `README.md`；`/opt/tiger/SAMTok Benchmark v2.md` 指向它 |
-| 正式版本元数据 | repo `data/v2/`，同步到 `{root}/benchmark/` |
+| 正式版本元数据 | repo `data/provenance/construction_inputs/seed200/`，同步到 `{root}/benchmark/` |
 | 数据总根目录 | `{root}` |
 | 正式源图 | `assets/v2-sa_<id>/source.jpg` |
 | 正式单目标 mask | `assets/v2-sa_<id>/U1.png` … `U5.png` |
@@ -184,11 +184,11 @@ mask 面积占整图中位数 **0.5725%**，最小 **0.0814%**、最大 **13.182
 | 当前审核压缩包 | `/opt/tiger/tanyue/samtok_edit_benchmark_v2_review_release2.4.0_20261013.zip` |
 | 完整离线 PDF | 审核包内 `benchmark_all_200_cases.pdf`，200 页，每页一个 case |
 
-相对资产路径都以数据总根目录或便携包根目录为基准。仓库只保留当前任务元数据、代码、唯一说明及少量说明插图，不提交正式大图、过程图片、审核 zip、模型结果。历史 v1 单对象 API 的基础兼容代码/合成测试保留；当前数据仅 `data/v2/`，不携带旧评测清单。
+相对资产路径都以数据总根目录或便携包根目录为基准。仓库只保留当前任务元数据、代码、唯一说明及少量说明插图，不提交正式大图、过程图片、审核 zip、模型结果。历史 v1 单对象 API 的基础兼容代码/合成测试保留；当前数据仅 `data/provenance/construction_inputs/seed200/`，不携带旧评测清单。
 
 正式元数据：`cases.jsonl` 为完整任务；`asset_manifest.jsonl` 为 1185 项资产清单；`provenance.jsonl` 为来源；`instruction_design.jsonl` 和 `instruction_reviews.jsonl` 为逐对象设计/逐图审查；`statistics.json`、`release.json`、`validation.json` 为统计、版本和验证；`selection/` 为选择依据。`release.json` 的 manifest SHA256 绑定当前任务，编辑输入、模型输出与评分均有摘要绑定。
 
-[下载完整 2.4.0 审核包](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_review_20261010.zip?download=true)；[直接查看全部 200 case 的 PDF](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_all_200_cases.pdf?download=true)。此次发布目标为 release 2.4.0 / instruction protocol 1.0，沿用旧下载名与兼容下载名；文件名中的日期不代表内部版本。远端是否已完成替换，以发布回执的 `status` 和 `remote_updated` 为准。发布脚本在单次 HF commit 中替换两个 zip、校验文件、PDF 和说明，并核验远端 SHA256。发布回执见 `data/v2/review_package.json`；包内仅记录归档前内容验证，远端回执存于仓库与 HF 同名 JSON。
+[下载完整 2.4.0 审核包](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_review_20261010.zip?download=true)；[直接查看全部 200 case 的 PDF](https://huggingface.co/datasets/TTangenty/samtok_edit/resolve/main/samtok_edit_benchmark_v2_all_200_cases.pdf?download=true)。此次发布目标为 release 2.4.0 / instruction protocol 1.0，沿用旧下载名与兼容下载名；文件名中的日期不代表内部版本。远端是否已完成替换，以发布回执的 `status` 和 `remote_updated` 为准。发布脚本在单次 HF commit 中替换两个 zip、校验文件、PDF 和说明，并核验远端 SHA256。发布回执见 `data/provenance/construction_inputs/seed200/review_package.json`；包内仅记录归档前内容验证，远端回执存于仓库与 HF 同名 JSON。
 
 解压整个压缩包后，在包内运行：
 
@@ -213,18 +213,18 @@ python src/construction/build_sa1b_v2.py \\
 python src/construction/write_document.py \\
   --dataset-root {root}
 
-samtok-benchmark-v2 validate --manifest data/v2/cases.jsonl \\
+samtok-benchmark-v2 validate --manifest data/provenance/construction_inputs/seed200/cases.jsonl \\
   --dataset-root {root} \\
-  --minimum-cases 200 --output data/v2/validation.json
+  --minimum-cases 200 --output data/provenance/construction_inputs/seed200/validation.json
 
 # 从冻结标注生成英文模型输入；不能直接把整个审核包喂给编辑模型。
-samtok-benchmark-v2 prepare --manifest data/v2/cases.jsonl \\
+samtok-benchmark-v2 prepare --manifest data/provenance/construction_inputs/seed200/cases.jsonl \\
   --dataset-root {root} \\
   --protocol native_regions_v2 --variants mixed \\
   --output {root}/evaluation/native_mixed
 
 # output 必须是空目录；已有审核结果不会被覆盖。
-samtok-benchmark-v2 review --manifest data/v2/cases.jsonl \\
+samtok-benchmark-v2 review --manifest data/provenance/construction_inputs/seed200/cases.jsonl \\
   --dataset-root {root} \\
   --output /opt/tiger/samtok_edit_benchmark_v2_review
 

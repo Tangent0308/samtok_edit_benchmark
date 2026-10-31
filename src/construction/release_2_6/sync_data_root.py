@@ -25,14 +25,11 @@ def main():
     validation = json.loads((release / "validation.json").read_text())
     if validation["status"] != "passed" or validation["manifest_sha256"] != meta["manifest_sha256"]:
         raise ValueError("release must pass full validation before mirroring")
-    # Resolve every document before any dataset write; archival sources moved in src-layout.
-    docs = ["RELEASE_2_6_0_ZH.md", "RELEASE_2_6_BEFORE_AFTER_ZH.md",
-            "RELEASE_2_6_REPAIR_STATUS_ZH.md", "RELEASE_2_6_REMAINING_CASES_ZH.md",
-            "INSTRUCTION_PROTOCOL_ZH.md", "INSTRUCTION_PROTOCOL_1.0_ZH.md",
-            "07_SAMTokEdit_Qwen21_指令协议2.0_noref改为盲指代.md"]
-    docs_root = REPO / "docs/archive/previous/archive"
-    images_root = REPO / "docs/archive/previous/assets/release_2_6"
-    guide_path = REPO / "data/provenance/construction/release_2_6/DATA_ROOT_README_ZH.md"
+    # Resolve current documentation before any dataset write.
+    docs = ["CONSTRUCTION.md", "USAGE.md", "RESULTS.md", "FULL_RUN.md", "INPUT_EXAMPLES.md"]
+    docs_root = REPO / "docs"
+    images_root = docs_root / "assets"
+    guide_path = REPO / "README.md"
     for source in [guide_path, images_root, *(docs_root / name for name in docs)]:
         if not source.exists():
             raise FileNotFoundError(source)
@@ -102,7 +99,7 @@ def main():
         dest = root / "docs" / name
         dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_text(text, encoding="utf-8")
-    shutil.copytree(images_root, root / "docs/assets/release_2_6", dirs_exist_ok=True)
+    shutil.copytree(images_root, root / "docs/assets", dirs_exist_ok=True)
     write_json(release / "data_root_sync.json", {
         "status": "synced", "dataset_root": str(root), "release_version": "2.6.0",
         "manifest_sha256": meta["manifest_sha256"],

@@ -4,7 +4,7 @@ from PIL import Image
 from concurrent.futures import ProcessPoolExecutor
 
 ROOT = '/mnt/bn/strategy-mllm-train/user/tanyue/datasets/samtok_edit_benchmark_v2'
-MAN = '/opt/tiger/tanyue/samtok_edit_benchmark/data/v2_1084/cases.jsonl'
+MAN = '/opt/tiger/tanyue/samtok_edit_benchmark/data/provenance/construction_inputs/base1084/cases.jsonl'
 cases = [json.loads(l) for l in open(MAN)]
 
 PERSON = set('person persons man men woman women boy girl boys girls dancer dancers officer officers child children kid kids people player players worker workers vendor vendors performer performers rider riders cyclist runner runners guard guards soldier soldiers pedestrian pedestrians lady gentleman figure student students musician musicians singer spectator spectators tourist tourists shopper customer customers driver passenger monk nun priest athlete athletes skier surfer swimmer baby toddler policeman policewoman bride groom couple crowd fan fans member members drummer guitarist chef waiter seller merchant farmer fisherman cook teenager adult elderly individual hiker climber'.split())

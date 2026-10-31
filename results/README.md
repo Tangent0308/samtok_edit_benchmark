@@ -1,15 +1,5 @@
-# Results index
+# Results
 
-**正式结果：待评测。** 当前只报告最新修复完成的固定 dev20；分数、95% CI、路径、运行身份和逐 setting 图例见 [RESULTS.md](../docs/RESULTS.md)。
+正式结果待评测。当前约 1MP 方案的实际小样本验证、输入/输出图和全量结果状态见 [结果与分析](../docs/RESULTS.md)。验证只检查工程可运行性，不把正常出图率当作 UnitPass 或 JointPass。
 
-Latest complete run:
-
-```text
-/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/fairness-v21-qwen-repaired-dev20-20261031/results/
-```
-
-The immutable report is `report/REPORT.md` / `report/REPORT.json`. Full outputs, Judge evidence, audits and galleries remain in that external run. Curated documentation figures and aggregate tables are in `docs/assets/results/`.
-
-The new full-release plan and four foreground launch commands are in [FULL_RUN.md](../docs/FULL_RUN.md). Its results remain pending; no full-release score is inferred from dev20.
-
-The confirmed formal-results parent is `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/`. No temporary checks or dev outputs are promoted there by this repository cleanup.
+临时验证结果位于 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031/results/`。正式运行使用 [四机入口](../docs/FULL_RUN.md)，最终结果放在 `experiments2/IF-Bench/` 下独立目录。

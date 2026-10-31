@@ -42,7 +42,7 @@ def fit(im, size):
     out=Image.new('RGB',size,'#f1f3f6'); out.paste(im,((size[0]-im.width)//2,(size[1]-im.height)//2)); return out
 
 def records():
-    original={r['source']['family_id'] for r in map(json.loads,(REPO/'data/v2/cases.jsonl').open())}
+    original={r['source']['family_id'] for r in map(json.loads,(REPO/'data/provenance/construction_inputs/seed200/cases.jsonl').open())}
     production=BASE/'sa1b_samtok_edit_50k_20261014/inputs/reservoir.jsonl'
     train={r['source_id'] for r in map(json.loads,production.open())} if production.exists() else set()
     rows=[]; seen=set()
@@ -107,7 +107,7 @@ def build():
     # Only explicit authoring ledgers can authorize admission; proposal files are ignored.
     accepted=[]
     allowed_sources={r['source_id'] for r in records()}
-    original_hashes={r['source']['sha256'] for r in map(json.loads,(REPO/'data/v2/cases.jsonl').open())}
+    original_hashes={r['source']['sha256'] for r in map(json.loads,(REPO/'data/provenance/construction_inputs/seed200/cases.jsonl').open())}
     for p in sorted((ROOT/'decisions').glob('*.json')):
         r=json.loads(p.read_text())
         if r.get('decision')!='accept':continue
@@ -168,7 +168,7 @@ def build():
 def cumulative(new_cases):
     import os
     import shutil
-    original = [json.loads(line) for line in (REPO/'data/v2/cases.jsonl').open()]
+    original = [json.loads(line) for line in (REPO/'data/provenance/construction_inputs/seed200/cases.jsonl').open()]
     cases = original + new_cases
     output = ROOT/'cumulative'
     metadata = output/'benchmark'

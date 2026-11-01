@@ -90,6 +90,7 @@ bash "$IFBENCH_BUNDLE/start.sh" --attempt preflight001 --validate-only
 ```bash
 PYTHONPATH=src python -m samtok_benchmark.ifbench.prepare_one_mp \
   --scope full \
+  --workers 32 \
   --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031 \
   --results /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031
 ```

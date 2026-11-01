@@ -65,8 +65,8 @@ def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None, workers
     from evaluation.protocol_audit.prepare_fairness_dev20 import request_for
     from evaluation.protocol_audit.prepare_fairness_dev20_revision import snapshot_repo
 
-    if type(workers) is not int or not 1 <= workers <= 16:
-        raise ValueError("CPU preparation workers must be between 1 and 16")
+    if type(workers) is not int or not 1 <= workers <= 64:
+        raise ValueError("CPU preparation workers must be between 1 and 64")
     repo, bundle = repository_root(), Path(bundle).resolve()
     if bundle.exists() and any(bundle.iterdir()):
         raise ValueError("Use an empty bundle; existing requests and attempts are immutable")

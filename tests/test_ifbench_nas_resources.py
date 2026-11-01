@@ -27,6 +27,14 @@ def resources(tmp_path, monkeypatch):
     return {"paths": paths}, entries
 
 
+@pytest.mark.parametrize("workers", [0, 65, 1.5, True])
+def test_invalid_cpu_worker_budget_rejected_before_writes(tmp_path, workers):
+    bundle = tmp_path / "new-bundle"
+    with pytest.raises(ValueError, match="CPU preparation workers"):
+        preparation.prepare(bundle, workers=workers)
+    assert not bundle.exists()
+
+
 def test_persistent_paths_use_nas_and_preserve_hashes(tmp_path, monkeypatch):
     descriptor, entries = resources(tmp_path, monkeypatch)
     paths, resolved = preparation.nas_resources(descriptor, entries)

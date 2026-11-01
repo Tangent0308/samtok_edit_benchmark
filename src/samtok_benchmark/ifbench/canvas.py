@@ -105,10 +105,21 @@ def project_public(public, source, transform, directory):
     for unit in result["units"]:
         loc = unit["locator"]
         if loc in {"point", "box"}:
-            unit["region"]["coordinates"] = [
+            original_coordinates = unit["region"]["coordinates"]
+            coordinates = [
                 v * (sx if i % 2 == 0 else sy) + (ox if i % 2 == 0 else oy)
-                for i, v in enumerate(unit["region"]["coordinates"])
+                for i, v in enumerate(original_coordinates)
             ]
+            if loc == "box":
+                for i in (2, 3):
+                    axis = i % 2
+                    limit = float(transform["canvas_size"][axis])
+                    if (
+                        original_coordinates[i] == transform["source_size"][axis]
+                        and limit < coordinates[i] <= math.nextafter(limit, math.inf)
+                    ):
+                        coordinates[i] = limit
+            unit["region"]["coordinates"] = coordinates
         elif loc == "mask":
             original = unit["region"]
             path = directory / (original["sha256"] + ".png")

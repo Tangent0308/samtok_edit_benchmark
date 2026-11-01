@@ -90,6 +90,62 @@ def test_point_request_never_receives_mask_or_box(tmp_path):
     export_fairness_inputs(result, tmp_path / "inputs")
 
 
+def test_image_edge_box_survives_affine_roundoff_without_relaxing_validation(tmp_path):
+    original = public_fixture(tmp_path)
+    path = original["source"]["path"]
+    Image.new("RGB", (1903, 1500), "blue").save(path)
+    original["source"].update(size=[1903, 1500], sha256=sha256_file(path))
+    original["units"][1]["region"]["coordinates"] = [1059, 1430, 1284, 1500]
+    original["input_digest"] = public_digest(original)
+    source, g = canvas.make_source(original["source"], tmp_path / "canvas")
+    assert 1500 * g["scale_xy"][1] == math.nextafter(896.0, math.inf)
+
+    projected = canvas.project_public(original, source, g, tmp_path / "masks")
+    assert projected["units"][1]["region"]["coordinates"][3] == 896.0
+    verify(projected, assets=True)
+    export_fairness_inputs(projected, tmp_path / "inputs")
+
+    # The public boundary stays strict, even for a single-ULP excess.
+    invalid = deepcopy(projected)
+    invalid["units"][1]["region"]["coordinates"][3] = math.nextafter(896.0, math.inf)
+    invalid["input_digest"] = public_digest(invalid)
+    with pytest.raises(ValueError, match="out-of-bounds"):
+        verify(invalid)
+    original["units"][1]["region"]["coordinates"][3] = 1501
+    original["input_digest"] = public_digest(original)
+    with pytest.raises(ValueError, match="out-of-bounds"):
+        canvas.project_public(original, source, g, tmp_path / "masks")
+
+
+def test_release_geometry_changes_only_the_confirmed_boundary_endpoint(tmp_path, monkeypatch):
+    from samtok_benchmark.ifbench import public
+    from samtok_benchmark.ifbench.plan import assignment
+
+    # Exercise real public projection/validation on all metadata, without images.
+    monkeypatch.setattr(public, "verify", lambda request, assets=False: verify(request))
+    cases = read_jsonl(repository_root() / "data/v2_2.6.0/cases.jsonl")
+    checked, changes = 0, []
+    for case in cases:
+        g = canvas.geometry(case["source"]["size"])
+        source = {"path": str(tmp_path / "unused.png"), "sha256": "0" * 64,
+                  "size": g["canvas_size"]}
+        for locator in ("point", "box"):
+            request = public.project(case, f"S3-{locator}", assignment(case), tmp_path)
+            result = canvas.project_public(request, source, g, tmp_path / "unused-masks")
+            for old, new in zip(request["units"], result["units"]):
+                affine = [v * g["scale_xy"][i % 2] + g["offset_xy"][i % 2]
+                          for i, v in enumerate(old["region"]["coordinates"])]
+                actual = new["region"]["coordinates"]
+                checked += 1
+                if actual != affine:
+                    changes.append((case["id"], new["id"], locator))
+                    assert actual[:3] == affine[:3]
+                    assert affine[3] == math.nextafter(actual[3], math.inf)
+                    assert actual[3] == g["canvas_size"][1]
+    assert checked == 7744
+    assert changes == [("v2-sa_7237977", "U2", "box")]
+
+
 def test_inverse_mapping_removes_padding_at_different_native_sizes():
     g = canvas.geometry([1300, 913])
     assert g["canvas_size"] != g["content_size"]

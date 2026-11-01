@@ -49,17 +49,27 @@ def _build_case_in_child(case):
     return _BUILD_CASE(case)
 
 
-def source_snapshot(bundle, plan):
+def source_snapshot(bundle, plan, *, preserve_renderer=False):
     if (bundle / "READY.json").exists():
         raise ValueError("Published bundles are immutable")
     if Path(plan["results_root"]).exists():
         raise ValueError("Cannot refresh source after any formal output directory exists")
+    if (bundle / "assets").is_symlink() and not preserve_renderer:
+        raise ValueError("Cannot rewrite linked frozen inputs; preserve the renderer")
     from samtok_benchmark.ifbench.render import specification
 
     renderer = specification()
     if plan.get("canvas_policy"):
         renderer["public_canvas"] = plan["canvas_policy"]
     historical_renderer = read(Path(plan["paths"]["shared"]) / "renderer.json")
+    if preserve_renderer:
+        # A code-only republication keeps the packaged NAS font reference and
+        # every renderer byte. Check the font and implementation, never rewrite
+        # through a link to the earlier published input tree.
+        font = Path(historical_renderer["font_path"])
+        if sha256_file(font) != renderer["font_sha256"]:
+            raise ValueError("Frozen annotation font differs from the current renderer")
+        renderer["font_path"] = historical_renderer["font_path"]
     if renderer != historical_renderer:
         raise ValueError("Renderer/font/library configuration differs from approved shared inputs")
     if (bundle / "code_manifest.json").exists():
@@ -76,9 +86,10 @@ def source_snapshot(bundle, plan):
             )
         (bundle / "code_manifest.json").unlink()
         shutil.rmtree(bundle / "repo")
-    save(bundle / "assets/shared_inputs/renderer.json", renderer)
-    plan["renderer_path"] = str(bundle / "assets/shared_inputs/renderer.json")
-    plan["renderer_sha256"] = sha256_file(Path(plan["renderer_path"]))
+    if not preserve_renderer:
+        save(bundle / "assets/shared_inputs/renderer.json", renderer)
+        plan["renderer_path"] = str(bundle / "assets/shared_inputs/renderer.json")
+        plan["renderer_sha256"] = sha256_file(Path(plan["renderer_path"]))
     snapshot_repo(bundle)
     entry = "start_arnold_full4.sh" if plan.get("cluster_execution") else "start_full4.sh"
     shutil.copyfile(REPO / "src/evaluation/protocol_audit" / entry, bundle / "start.sh")
@@ -394,6 +405,20 @@ def publish(bundle, *, refresh_source=False):
     )
 
 
+def link_frozen_input_trees(bundle, source_bundle):
+    """Expose the same public layout without rewriting even absolute JSON paths."""
+    links = {}
+    for name in ("assets", "requests", "preflight"):
+        source, target = source_bundle / name, bundle / name
+        if not source.is_dir():
+            raise ValueError(f"Missing frozen input tree: {source}")
+        if target.exists() or target.is_symlink():
+            raise ValueError(f"Refusing to replace an existing input tree: {target}")
+        target.symlink_to(source.resolve(), target_is_directory=True)
+        links[name] = str(source.resolve())
+    return links
+
+
 def repackage_arnold(bundle, source_bundle, results):
     """Reuse immutable full inputs, changing only launch code and output locations."""
     from concurrent.futures import ThreadPoolExecutor
@@ -420,6 +445,7 @@ def repackage_arnold(bundle, source_bundle, results):
     plan = deepcopy(original)
     plan.pop("digest")
     bundle.mkdir(parents=True)
+    input_links = link_frozen_input_trees(bundle, source_bundle)
     plan["results_root"] = str(results)
     plan["cluster_execution"] = {
         "platform": "arnold",
@@ -484,7 +510,7 @@ def repackage_arnold(bundle, source_bundle, results):
     write_json(bundle / "cache/judge_index.json", cache)
     plan["cache_index"] = str(bundle / "cache/judge_index.json")
     plan["cache_index_sha256"] = sha256_file(Path(plan["cache_index"]))
-    plan = source_snapshot(bundle, plan)
+    plan = source_snapshot(bundle, plan, preserve_renderer=True)
     full_plan.load_plan(bundle / "plan.json")
     cache_check = Cache(plan["cache_index"], plan["judge_config"]).verify_portable_files(bundle)
     save(
@@ -501,6 +527,7 @@ def repackage_arnold(bundle, source_bundle, results):
             "verified_canonical_cache": cache_check,
             "changed_inference_parameters": 0,
             "rebuilt_inputs": 0,
+            "unchanged_input_tree_links": input_links,
         },
     )
     print(json.dumps(full_plan.summary(plan)), flush=True)

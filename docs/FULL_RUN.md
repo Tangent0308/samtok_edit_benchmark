@@ -4,15 +4,37 @@
 
 模型输入、公共灰色letterbox画布、坐标变换及输出去padding见 [USAGE.md](USAGE.md)。模型与全部原生planner只读公共约1MP的I/A；Qwen2.1使用output_resolution1024；RePlan/MIRAGE保留原生近1MP网格，不声明显式width/height能约束RePlan结果。Judge仍使用原始源图/GT和逆映射输出。
 
-当前验证的共享输入和42条生成位于 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031`；补齐49条请求位于同级 `one-mp-coverage-20261031`；单图70组合Judge位于同级 `one-mp-coverage-judge-20261031`。全量包计划位置为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031`，正式结果根计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031`。
+当前验证的共享输入和42条生成位于 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031`；补齐49条请求位于同级 `one-mp-coverage-20261031`；单图70组合Judge位于同级 `one-mp-coverage-judge-20261031`。全量包计划位置为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261101-heartbeatfix`，正式结果根计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031`。
 
-**发布身份以包内 `READY.json` 和包外 NAS 交接单为准；没有 READY 的目录不能启动。** 交接单为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031-handoff.md`，记录完整 SHA、source_commit、plan digest、依赖与核验结果。发布与启动是两个步骤；本包由用户统一提交作业，准备者不执行 `start.sh`，包括预检。当前验证和正式结果状态见 [RESULTS.md](RESULTS.md)。构造输入前先提交并保持源码干净；构造完成并核验后，发布命令为：
+**发布身份以包内 `READY.json` 和包外 NAS 交接单为准；没有 READY 的目录不能启动。** 交接单为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261101-heartbeatfix-handoff.md`，记录完整 SHA、source_commit、plan digest、依赖与核验结果。发布与启动是两个步骤；本包由用户统一提交作业，准备者不执行 `start.sh`，包括预检。当前验证和正式结果状态见 [RESULTS.md](RESULTS.md)。构造输入前先提交并保持源码干净；构造完成并核验后，发布命令为：
 
 ```bash
 PYTHONPATH=src python -m evaluation.protocol_audit.prepare_full4 \
-  --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031 \
+  --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261101-heartbeatfix \
   --publish
 ```
+
+## 协调代码修复与输入复用
+
+当前运行包修复共享盘覆盖状态文件时的短暂可见性间隙。动态状态读取最多尝试3次，间隔100ms；心跳暂时不可读时保留上一次有效心跳及本地单调时钟期限，不退回OWNER时间，也不因重复读到同一条旧心跳延长期限。初次尚未读到心跳的注册节点有最多300秒观察宽限；已停止更新的节点仍会超时，明确的FAILED记录和身份不一致仍使作业失败。
+
+INPUTS_READY、CONNECTED、WORK_DONE、REPORT_ACK、EXIT_READY、SUCCESS等屏障在短暂不可读时继续等待。worker/Judge进度快照暂时不可读时标为不可用，不终止生成、不推断完成。正式输入、采样admission、结果及评分证据的严格校验保持不变。
+
+本次包只更新协调源码。`assets/`、`requests/`、`preflight/` 是指向此前冻结NAS输入树的链接，`public.json` 连同其中的绝对路径、画布、mask、标记图和prompt均不重写。输入来源包须保留；新包的repo、READY、launches与validation独立，旧作业的失败记录不会进入新attempt。原正式结果根尚无生成或Judge记录，因此继续使用上面列出的results_root。
+
+CPU重新发布入口如下；它不调用start.sh或模型：
+
+```bash
+PYTHONPATH=src python -m evaluation.protocol_audit.prepare_full4 \
+  --reuse-full-inputs /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031 \
+  --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261101-heartbeatfix \
+  --results /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031
+PYTHONPATH=src python -m evaluation.protocol_audit.prepare_full4 \
+  --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261101-heartbeatfix \
+  --publish
+```
+
+以上仅适用于没有正式结果或admission的冻结输入包；发生过生成或Judge后，发布器拒绝直接复用迁移，必须先核对真实执行记录。
 
 ## 分片与并行
 
@@ -34,7 +56,7 @@ PYTHONPATH=src python -m evaluation.protocol_audit.prepare_full4 \
 设置平台为4个worker、每worker8卡。以下为READY发布后的共同入口；四台使用相同包路径与attempt：
 
 ```bash
-export IFBENCH_BUNDLE=/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031
+export IFBENCH_BUNDLE=/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261101-heartbeatfix
 test -f "$IFBENCH_BUNDLE/READY.json" || { echo "当前1MP运行包尚未发布READY"; exit 1; }
 bash "$IFBENCH_BUNDLE/start.sh" --attempt run001
 ```
@@ -86,13 +108,13 @@ bash "$IFBENCH_BUNDLE/start.sh" --attempt preflight001 --validate-only
 
 ## CPU构造入口
 
-当前实现使用独立空目录构造公共输入和模型请求，不运行GPU。以下命令在仓库根目录执行，`python` 必须来自已核验的 generation runtime（Transformers 5.19.0、Pillow 12.3.0；完整身份见运行包 `bootstrap.json`）。CPU构造也需真实 MICE tokenizer 做长度检查，基础开发环境不包含全部这些依赖。构造和发布均设置 `PYTHONPATH=src`，避免误用其他 checkout 的已安装包。完整1,084图的构造命令为：
+首次构造使用独立空目录生成公共输入和模型请求，不运行GPU。本次协调代码修复使用上面的输入复用入口，不重新构造公开输入。以下命令在仓库根目录执行，`python` 必须来自已核验的 generation runtime（Transformers 5.19.0、Pillow 12.3.0；完整身份见运行包 `bootstrap.json`）。CPU构造也需真实 MICE tokenizer 做长度检查，基础开发环境不包含全部这些依赖。构造和发布均设置 `PYTHONPATH=src`，避免误用其他 checkout 的已安装包。完整1,084图的构造命令为：
 
 ```bash
 PYTHONPATH=src python -m samtok_benchmark.ifbench.prepare_one_mp \
   --scope full \
   --workers 32 \
-  --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031 \
+  --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261101-heartbeatfix \
   --results /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031
 ```
 

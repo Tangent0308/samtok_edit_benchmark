@@ -180,7 +180,9 @@ def test_reused_attempt_and_foreign_plan_are_rejected(tmp_path):
 def test_stale_worker_is_detected(tmp_path):
     topo = Topology.from_env(environment())
     with Cluster(tmp_path, topo, {"test": "stale"}) as cluster:
-        save(cluster.directory / "heartbeat.json", {"time": time.time() - 100})
+        save(cluster.directory / "heartbeat.json", {
+            "identity": cluster.identity, "node": 0, "time": time.time() - 100,
+        })
         with pytest.raises(RuntimeError, match="heartbeat"):
             check_peers(tmp_path, cluster.identity, stale_seconds=10)
 
@@ -192,7 +194,11 @@ def test_peer_failure_stops_only_owned_child(tmp_path):
         with Cluster(tmp_path, topo, {"test": "child"}, poll=0.02) as cluster:
 
             def fail_peer():
-                time.sleep(0.15)
+                deadline = time.monotonic() + 10
+                while not (cluster.directory / "CHILD.json").exists():
+                    if time.monotonic() >= deadline:
+                        raise TimeoutError("Synthetic child was not started")
+                    time.sleep(0.01)
                 directory = tmp_path / "nodes/2"
                 save(
                     directory / "OWNER.json",

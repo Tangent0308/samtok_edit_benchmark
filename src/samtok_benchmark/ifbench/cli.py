@@ -59,17 +59,24 @@ def parser():
 
 
 def inspect_run(bundle):
+    from .live_state import read_live
+
     bundle = bundle.resolve()
     result = {"bundle": str(bundle)}
     for name in ("READY.json", "results/progress.json", "results/COMPLETED.json"):
         path = bundle / name
-        result[name] = json.loads(path.read_text()) if path.is_file() else None
+        if name == "READY.json":
+            result[name] = json.loads(path.read_text()) if path.is_file() else None
+        else:
+            result[name] = read_live(path)
     if result["READY.json"] is None:
         raise FileNotFoundError(f"Not a published run: {bundle / 'READY.json'}")
     return result
 
 
 def inspect_full(bundle):
+    from .live_state import read_live
+
     bundle = bundle.resolve()
     ready = json.loads((bundle / "READY.json").read_text())
     if ready.get("schema") != "ifbench-full-release-four-node-v1":
@@ -79,13 +86,11 @@ def inspect_full(bundle):
     for node in range(4):
         directory = root / "nodes" / f"node-{node}"
         result["nodes"][str(node)] = {
-            name: json.loads((directory / name).read_text())
-            if (directory / name).exists()
-            else None
+            name: read_live(directory / name)
             for name in ("progress.json", "COMPLETED.json", "ERROR.json")
         }
     final = root / "report/COMPLETED.json"
-    result["aggregate"] = json.loads(final.read_text()) if final.exists() else None
+    result["aggregate"] = read_live(final)
     return result
 
 

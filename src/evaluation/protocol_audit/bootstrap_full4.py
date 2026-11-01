@@ -24,6 +24,7 @@ from evaluation.protocol_audit.bootstrap_fairness_dev20 import (  # noqa: E402
     check_gpus,
     prepare_runtime,
 )
+from samtok_benchmark.ifbench.live_state import read_live  # noqa: E402
 
 
 def local_source_alias(item, *, destination=None):
@@ -71,11 +72,11 @@ def main():
         for n in range(4):
             directory = Path(ready["results_root"]) / "nodes" / f"node-{n}"
             result["nodes"][str(n)] = {
-                name: read(directory / name) if (directory / name).exists() else None
+                name: read_live(directory / name)
                 for name in ("progress.json", "COMPLETED.json", "ERROR.json")
             }
         final = Path(ready["results_root"]) / "report/COMPLETED.json"
-        result["aggregate"] = read(final) if final.exists() else None
+        result["aggregate"] = read_live(final)
         print(json.dumps(result, ensure_ascii=False, indent=2), flush=True)
         return
     if a.node is None:

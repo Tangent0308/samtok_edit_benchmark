@@ -20,6 +20,8 @@ The user approved one narrow pre-publication exception to the canvas freeze: whe
 
 The bounded setting check uses `one_mp_coverage.py`: exactly 49 previously unsampled frozen requests on the original K=5 dev source. Together with 21 existing outputs, `one_mp_judge.py` validates all 70 model/setting combinations on that one image. Preserve each source plan identity; never rewrite existing generation records. This diagnosis has no population CI or score-driven selection. Its real state and figures are reported by `one_mp_coverage_report.py`.
 
+The current NAS heartbeat repair is coordination-only. Publish a new bundle, preserve the prior published package and failure evidence, and reuse public/input bytes through NAS links without reserializing their absolute paths. Dynamic status retries must never relax immutable input/admission/Judge checks.
+
 ## Artifacts and documentation
 
 Code and current protocol documentation belong in this repository. Smoke outputs, audits, intermediate reports, previews and logs belong under `/tmp/ifbench/` or shared `.ifbench-tmp/`. Only the confirmed frozen full run's formal outputs enter `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/`. Preserve unrelated experiments, raw evidence and actual compute costs. Never modify a published READY, frozen request, active run snapshot or original score record.

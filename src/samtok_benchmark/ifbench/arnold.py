@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass, asdict
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -19,6 +20,8 @@ import subprocess
 import threading
 import time
 import uuid
+
+from .live_state import read_live
 
 
 def read(path):
@@ -98,23 +101,63 @@ def child_environment(env=None):
     return result
 
 
-def check_peers(root, identity, stale_seconds=300):
-    now = time.time()
+@dataclass
+class PeerObservation:
+    owner: dict
+    last_advance: float
+    heartbeat_time: float | None = None
+
+
+def check_peers(root, identity, stale_seconds=300, *, observations=None):
+    """Check health without resetting liveness on missing or cached old reads.
+
+    Polling callers must retain observations for their lifetime. A one-shot
+    caller may omit it. Keys include the attempt path and identity so no peer
+    state can leak into another attempt. OWNER time is never a heartbeat.
+    """
+    root = Path(root)
+    observations = {} if observations is None else observations
     for node in range(4):
         directory = root / "nodes" / str(node)
-        owner_path = directory / "OWNER.json"
-        if not owner_path.exists():
+        key = (str(root), identity, node)
+        observation = observations.get(key)
+        owner = read_live(directory / "OWNER.json")
+        if owner is None and observation is None:
             continue
-        owner = read(owner_path)
-        if owner.get("identity") != identity or owner.get("node") != node:
-            raise RuntimeError(f"Worker {node} registered a different plan/code/topology/mode")
+        if owner is not None:
+            if owner.get("identity") != identity or owner.get("node") != node:
+                raise RuntimeError(f"Worker {node} registered a different plan/code/topology/mode")
+            if observation is None:
+                observation = PeerObservation(owner, time.monotonic())
+                observations[key] = observation
         failure = directory / "FAILED.json"
-        if failure.exists():
-            raise RuntimeError(f"Worker {node} failed: {read(failure).get('error')}; see {failure}")
-        heartbeat = directory / "heartbeat.json"
-        updated = read(heartbeat)["time"] if heartbeat.exists() else owner["time"]
-        if now - updated > stale_seconds:
+        failed = read_live(failure)
+        if failed is not None:
+            raise RuntimeError(f"Worker {node} failed: {failed.get('error')}; see {failure}")
+        heartbeat = read_live(directory / "heartbeat.json")
+        now = time.monotonic()
+        if heartbeat is not None:
+            if heartbeat.get("identity") != identity or heartbeat.get("node") != node:
+                raise RuntimeError(f"Worker {node} heartbeat belongs to a different plan/node")
+            updated = heartbeat.get("time")
+            if type(updated) not in (int, float) or not math.isfinite(updated):
+                raise ValueError(f"Worker {node} has an invalid heartbeat timestamp")
+            if observation.heartbeat_time is None or updated > observation.heartbeat_time:
+                observation.heartbeat_time = updated
+                # Anchor to a monotonic clock. Re-reading the same/older cached
+                # timestamp must not keep a dead worker alive, even with skew.
+                observation.last_advance = now - max(0, time.time() - updated)
+        if now - observation.last_advance > stale_seconds:
             raise RuntimeError(f"Worker {node} heartbeat missing for over {stale_seconds}s")
+
+
+def marker_ready(path, identity):
+    value = read_live(path)
+    if value is None:
+        return False
+    if value.get("identity") != identity:
+        raise RuntimeError(f"Cluster marker belongs to a different run: {path}")
+    return True
 
 
 def generation_barrier():
@@ -127,10 +170,12 @@ def generation_barrier():
     node = int(os.environ["IFBENCH_CLUSTER_NODE"])
     save(root / "nodes" / str(node) / "INPUTS_READY.json", {"identity": identity, "node": node})
     deadline = time.monotonic() + 7200
+    observations = {}
     while True:
-        check_peers(root, identity)
+        check_peers(root, identity, observations=observations)
         paths = [root / "nodes" / str(n) / "INPUTS_READY.json" for n in range(4)]
-        if all(p.exists() and read(p).get("identity") == identity for p in paths):
+        if (all((str(root), identity, n) in observations for n in range(4))
+                and all(marker_ready(p, identity) for p in paths)):
             return
         if time.monotonic() >= deadline:
             raise TimeoutError("All four input preflights must complete before sampling")
@@ -176,6 +221,7 @@ class Cluster:
         self.heartbeat_error = None
         self.server = None
         self.thread = None
+        self.peer_observations = {}
 
     def __enter__(self):
         self.directory.mkdir(parents=True, exist_ok=True)
@@ -226,7 +272,8 @@ class Cluster:
             raise RuntimeError(f"Cannot persist cluster heartbeat: {self.heartbeat_error}")
         if time.monotonic() - self.started > self.timeout:
             raise TimeoutError("Cluster exceeded its bounded execution time")
-        check_peers(self.root, self.identity, self.stale_seconds)
+        check_peers(self.root, self.identity, self.stale_seconds,
+                    observations=self.peer_observations)
 
     def mark(self, name, **extra):
         save(
@@ -245,7 +292,8 @@ class Cluster:
         while True:
             self.check()
             paths = [self.root / "nodes" / str(n) / (name + ".json") for n in range(4)]
-            if all(p.exists() and read(p).get("identity") == self.identity for p in paths):
+            if (all((str(self.root), self.identity, n) in self.peer_observations for n in range(4))
+                    and all(marker_ready(p, self.identity) for p in paths)):
                 return
             if time.monotonic() > deadline:
                 raise TimeoutError(f"Four-worker barrier timed out: {name}")
@@ -305,7 +353,10 @@ class Cluster:
                 time.sleep(self.poll)
         self.mark("CONNECTED")
         self.wait_all("CONNECTED", self.startup_timeout)
-        owners = [read(self.root / "nodes" / str(n) / "OWNER.json") for n in range(4)]
+        # Every CONNECTED writer registered first. Reuse the validated owner if
+        # NAS temporarily hides that immutable registration after the barrier.
+        owners = [self.peer_observations[(str(self.root), self.identity, n)].owner
+                  for n in range(4)]
         if len({o["host"] for o in owners}) != 4:
             raise RuntimeError("The four ranks must run on four distinct worker hosts")
 
@@ -350,11 +401,9 @@ class Cluster:
                     **result,
                 },
             )
-        while not (self.root / "SUCCESS.json").exists():
+        while not marker_ready(self.root / "SUCCESS.json", self.identity):
             self.check()
             time.sleep(self.poll)
-        if read(self.root / "SUCCESS.json")["identity"] != self.identity:
-            raise RuntimeError("Global completion belongs to another run")
         self.stage = "completed"
         self.beat()
 

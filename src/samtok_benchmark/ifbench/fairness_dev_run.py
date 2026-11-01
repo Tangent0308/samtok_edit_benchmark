@@ -19,6 +19,7 @@ import time
 
 from samtok_benchmark.io import sha256_file, write_json
 from .fairness_dev_plan import load_plan, read, verify_task, verify_cache, check_hash
+from .live_state import read_live
 
 PLANNERS = {"replan", "mirage"}
 
@@ -88,7 +89,7 @@ def snapshot(plan, phase=None):
     stage_left = 0
     for task in plan["tasks"]:
         path = Path(task["result_path"])
-        result = read(path) if path.exists() else None
+        result = read_live(path)
         summary[task["model"]][result["status"] if result else "pending"] += 1
         if result and result.get("reused"):
             summary[task["model"]]["reused"] += 1
@@ -96,7 +97,7 @@ def snapshot(plan, phase=None):
             stage_path = (
                 Path(task["planner_dir"]) / "result.json" if phase["stage"] == "planner" else path
             )
-            value = read(stage_path) if stage_path.exists() else None
+            value = read_live(stage_path)
             if value is None:
                 stage_left += 1
             elif not value.get("reused") and value.get("wall_seconds", 0) > 0:
@@ -114,7 +115,7 @@ def snapshot(plan, phase=None):
         "logical_requests": len(plan["tasks"]),
         "current_phase_eta_seconds_estimate": eta,
         "eta_basis": "median completed call time, remaining requests / 8; excludes future phases and reloads",
-        "judge": read(judge_progress) if judge_progress.exists() else None,
+        "judge": read_live(judge_progress),
         "test_started": False,
         "frozen": False,
     }

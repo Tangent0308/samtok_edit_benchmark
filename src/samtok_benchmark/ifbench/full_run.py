@@ -21,6 +21,7 @@ from .full_plan import load_plan, node_tasks, verify_task, verify_cache
 from .fairness_dev_plan import read, check_hash
 from .fairness_dev_run import verify_package, run_processes, PLANNERS
 from .fairness_dev_judge import Cache
+from .live_state import read_live
 
 
 def stamp():
@@ -85,13 +86,16 @@ def preflight(plan, bundle, node, workers=8):
 def progress(plan, node, phase, state):
     """Read eight small worker counters, not every shared result on each heartbeat."""
     root = Path(plan["results_root"]) / "nodes" / f"node-{node}"
-    states, samples = [], []
+    states, samples, unavailable = [], [], []
     if phase and phase["stage"] in ("planner", "edit"):
         for shard in range(8):
             parent = root / "workers" / phase["model"] / phase["stage"] / f"shard-{shard}-of-8"
             files = sorted(parent.glob("*/status.json"))
             if files:
-                worker = read(files[-1])
+                worker = read_live(files[-1])
+                if worker is None:
+                    unavailable.append(str(files[-1]))
+                    continue
                 states.append(worker)
                 if worker.get("last_task"):
                     model, setting, cid = worker["last_task"].split("/")
@@ -105,8 +109,8 @@ def progress(plan, node, phase, state):
                         / cid
                         / "result.json"
                     )
-                    if path.exists():
-                        r = read(path)
+                    r = read_live(path)
+                    if r is not None:
                         if not r.get("reused") and r.get("wall_seconds", 0) > 0:
                             samples.append(r["wall_seconds"])
     done = sum(w.get("completed", 0) + w.get("already_terminal", 0) for w in states)
@@ -117,7 +121,7 @@ def progress(plan, node, phase, state):
     )
     eta = (
         statistics.median(samples) * max(0, total - done) / 8
-        if total is not None and len(samples) >= 4
+        if total is not None and len(samples) >= 4 and len(states) == 8
         else None
     )
     judge = root / "judge/progress.json"
@@ -131,10 +135,12 @@ def progress(plan, node, phase, state):
         "phase_terminal_requests": done,
         "phase_total_requests": total,
         "phase_worker_failures": sum(w.get("failed", 0) for w in states),
+        "phase_counters_complete": len(states) == 8,
+        "unavailable_worker_status_files": unavailable,
         "phase_eta_seconds_estimate": eta,
         "eta_scope": "current stage only; excludes later models/Judge/loading",
         "completed_phases": state["phases"],
-        "judge": read(judge) if judge.exists() else None,
+        "judge": read_live(judge),
         "report_scope": "all-1084",
         "frozen": True,
     }

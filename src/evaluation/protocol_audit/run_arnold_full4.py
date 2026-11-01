@@ -13,6 +13,7 @@ import time
 from evaluation.protocol_audit.bootstrap_fairness_dev20 import checked, sha
 from samtok_benchmark.paths import repository_root
 from samtok_benchmark.ifbench.arnold import Cluster, Topology, child_environment, read
+from samtok_benchmark.ifbench.live_state import read_live
 
 
 def main():
@@ -30,20 +31,22 @@ def main():
     if args.status:
         launches = {}
         for path in sorted((bundle / "launches").glob("*/nodes/*/heartbeat.json")):
-            value = read(path)
+            value = read_live(path)
+            if value is None:
+                launches.setdefault(path.parents[2].name, {})[path.parent.name] = None
+                continue
             value["heartbeat_age_seconds"] = time.time() - value["time"]
             launches.setdefault(path.parents[2].name, {})[path.parent.name] = value
         for attempt in launches:
             root = bundle / "launches" / attempt
-            launches[attempt]["failures"] = [read(p) for p in root.glob("nodes/*/FAILED.json")]
-            launches[attempt]["success"] = (
-                read(root / "SUCCESS.json") if (root / "SUCCESS.json").exists() else None
-            )
+            launches[attempt]["failures"] = [v for p in root.glob("nodes/*/FAILED.json")
+                                             if (v := read_live(p)) is not None]
+            launches[attempt]["success"] = read_live(root / "SUCCESS.json")
         nodes = {}
         for node in range(4):
             directory = Path(ready["results_root"]) / "nodes" / f"node-{node}"
             nodes[str(node)] = {
-                name: read(directory / name) if (directory / name).exists() else None
+                name: read_live(directory / name)
                 for name in ("progress.json", "COMPLETED.json", "ERROR.json")
             }
         completed = Path(ready["results_root"]) / "report/COMPLETED.json"
@@ -53,7 +56,7 @@ def main():
                     "launches": launches,
                     "formal_results": ready["results_root"],
                     "nodes": nodes,
-                    "report": read(completed) if completed.exists() else None,
+                    "report": read_live(completed),
                 },
                 ensure_ascii=False,
                 indent=2,

@@ -12,13 +12,17 @@ LOG="$BUNDLE/logs/arnold-${ARNOLD_ID:-inspect}-$(hostname)-$(date -u +%Y%m%dT%H%
 echo "Log: $LOG"
 echo 'One ARNOLD job, four workers x eight GPUs; identical foreground command on all workers.'
 exec > >(tee -a "$LOG") 2>&1
-unset PYTHONHOME PYTHONPATH
+unset PYTHONHOME PYTHONPATH PYTHONUSERBASE PYTHONSTARTUP LD_PRELOAD IFBENCH_NATIVE_SOURCES
+unset VLLM_HOST_IP VLLM_PORT VLLM_RPC_BASE_PATH
 export PYTHONNOUSERSITE=1 PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS=4 TOKENIZERS_PARALLELISM=false VLLM_WORKER_MULTIPROC_METHOD=spawn
 # Stage the pinned snapshot BEFORE executing project Python. No mutable checkout,
 # shared Python bytecode or Git/network dependency on the execution machines.
-exec python3 - "$BUNDLE" "$@" <<'PY'
+[[ -x /usr/bin/python3 ]] || { echo 'System /usr/bin/python3 is required.' >&2; exit 1; }
+exec /usr/bin/python3 - "$BUNDLE" "$@" <<'PY'
 import fcntl, hashlib, json, os, pathlib, shutil, sys
+if sys.version_info < (3, 10):
+    raise RuntimeError('System Python 3.10 or later is required for the coordinator')
 bundle = pathlib.Path(sys.argv[1])
 ready = json.loads((bundle / 'READY.json').read_text())
 def sha(path):

@@ -6,7 +6,7 @@
 
 当前验证的共享输入和42条生成位于 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031`；补齐49条请求位于同级 `one-mp-coverage-20261031`；单图70组合Judge位于同级 `one-mp-coverage-judge-20261031`。全量包计划位置为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031`，正式结果根计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031`。
 
-**全部1,084图输入与全量READY尚待准备、核验和发布；当前不能把该路径当成已可启动的包。** 发布时以实际READY、plan和SHA回执为准。当前验证和正式结果状态见 [RESULTS.md](RESULTS.md)。构造输入前先提交并保持源码干净；构造完成并核验后，发布命令为：
+**发布身份以包内 `READY.json` 和包外 NAS 交接单为准；没有 READY 的目录不能启动。** 交接单为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261031-handoff.md`，记录完整 SHA、source_commit、plan digest、依赖与核验结果。发布与启动是两个步骤；本包由用户统一提交作业，准备者不执行 `start.sh`，包括预检。当前验证和正式结果状态见 [RESULTS.md](RESULTS.md)。构造输入前先提交并保持源码干净；构造完成并核验后，发布命令为：
 
 ```bash
 PYTHONPATH=src python -m evaluation.protocol_audit.prepare_full4 \
@@ -51,6 +51,27 @@ bash "$IFBENCH_BUNDLE/start.sh" --attempt preflight001 --validate-only
 ```
 
 各机需要x86_64 Linux、glibc≥2.36、gcc/g++及每卡至少70GiB空闲，临时盘应能容纳两个固定runtime、源码和编译缓存。平台提供的端口条目数不等于worker数；拓扑由ARNOLD_WORKER_NUM/ARNOLD_WORKER_GPU校验，共同endpoint取ARNOLD_WORKER_HOSTS首项并支持IPv6。所有运行源码与环境按固定SHA检查，不在执行中升级或下载新权重，不停止其他GPU任务。
+
+### 同一作业先验证、再运行其他方法
+
+允许四台在同一 ARNOLD 作业中依次执行：`start.sh --attempt <id>-validate --validate-only`，外部 SAMTokEdit 任务，`start.sh --attempt <id>`。四台在每个阶段使用相同 attempt；验证与正式阶段使用不同 attempt。SAMTokEdit 代码由独立仓库管理，仅消费公开输入和冻结 Judge 配置，不加入本仓库、不写入运行包；其完成屏障由外部 NAS 协调负责。benchmark 启动器不调度或等待该外部方法。
+
+验证成功后，控制进程关闭 TCP 监听和心跳，子进程退出释放文件锁；验证不创建正式 `ACTIVE`、模型 `started.json` 或 Judge admission。正式阶段重新检查 GPU、运行环境、输入和缓存。必须等四台外部任务及其子进程全部退出、每卡空闲≥70GiB后再进入正式阶段；仅显存达到阈值不能证明其他任务已经退出。平台的 ARNOLD 变量与八卡可见性应保持完整，不外套 `torchrun`。
+
+入口使用系统 `/usr/bin/python3`（≥3.10）启动纯标准库协调器，清除继承的 Python 路径、`LD_PRELOAD` 和 vLLM 地址/端口覆盖；实际生成/Judge 使用 NAS 归档恢复的固定解释器。已有其他 `/tmp` 目录不构成冲突。benchmark 只核验并复用自己的源码、runtime和kernel目录；自己的同名目录若不完整或被改动，会明确失败而不会覆盖。成功运行后留下的锁文件不等于仍持有锁；同一 attempt 的永久 `CLAIM` 则不可重复使用。
+
+### 跨机器持久路径与对接接口
+
+全量计划、公共输入、原始数据、权重、官方源码和 runtime 归档的活动依赖均指向 NAS。`aliases.json` 中的资源引用也是 NAS 路径。运行时可在各节点 `/tmp/ifbench/` 恢复固定环境和经 SHA 核验的官方源码；这些是从 NAS 重建的节点缓存，不依赖准备机器的 `/opt` 或 `/tmp`。部分大资源复用其他 NAS 目录，保留清单见交接单，不能仅因目录名含历史日期而清理。
+
+下列接口保持稳定：
+
+- `assets/shared_inputs/requests/<setting>/<case>/public.json`。
+- `assets/shared_inputs/canvases/<case>/{source.png,geometry.json}`；`public.json` 的 `source.path` 指向这里的 `source.png`。
+- `configuration.json` 的 `judge_config` 与 `bootstrap.json` 的 `judge` 描述。
+- `repo/` 快照中的 `data/v2_2.6.0/cases.jsonl` 和 `src/`。
+- `READY.json` 的 `source_commit`、`results_root`。
+- 正式结果 `report/REPORT.json` 的 `case_ids`、`rows[].per_case[]` 中的 `case_id/K/status/UnitPass_count/JointPass`，以及 `bootstrap.shared_indices_sha256`。模型失败保留0，Judge缺分保留null；完整报告只在四节点终态齐备后生成。
 
 ## 冻结、失败与恢复
 

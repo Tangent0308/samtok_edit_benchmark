@@ -14,6 +14,7 @@ import time
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
 from samtok_benchmark.io import atomic_text, digest, sha256_file, write_json
+from .fairness_dev_plan import check_hash
 from .full_plan import load_plan, NODES
 from .fairness_dev_judge import (
     load_plan as judge_context,
@@ -139,12 +140,19 @@ def execution_history(root, plan, code_sha):
     return records
 
 
-def heatmap(rows, models, settings, metric, path):
+def report_font(plan):
+    renderer = read(plan["renderer_path"])
+    path = Path(renderer["font_path"])
+    check_hash(path, renderer["font_sha256"])
+    return str(path)
+
+
+def heatmap(rows, models, settings, metric, path, *, font_path):
     width, height = 1450, 720
     canvas = Image.new("RGB", (width, height), "white")
     draw = ImageDraw.Draw(canvas)
-    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
-    small = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 15)
+    font = ImageFont.truetype(font_path, 18)
+    small = ImageFont.truetype(font_path, 15)
     draw.text((20, 12), f"IF-Bench | all 1084 sources | {metric} (%)", fill="black", font=font)
     names = ["Qwen2511", "Qwen2.1", "FLUX3", "RePlan", "MIRAGE", "MICE", "FLUX2-9B"]
     for x, label in enumerate(names):
@@ -180,7 +188,8 @@ def gallery(context, bound, directory):
             b = bound[task["model"], task["setting"], task["case_id"]]
             examples.append(
                 example(
-                    context, task, b, directory, selection_label="frozen whole-release audit sample"
+                    context, task, b, directory, selection_label="frozen whole-release audit sample",
+                    font_path=report_font(plan),
                 )
             )
     md = [
@@ -240,7 +249,7 @@ def comparisons(context, bound, directory):
     source = Path(plan["dataset_root"]) / case["source"]["image"]
     tasks = {(t["model"], t["setting"], t["case_id"]): t for t in plan["tasks"]}
     result = {}
-    font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
+    font = ImageFont.truetype(report_font(plan), 18)
     for setting in plan["settings"]:
         request = read(tasks["qwen21", setting, cid]["request_path"])
         panels = [
@@ -440,6 +449,7 @@ def aggregate_if_ready(bundle):
                 plan["settings"],
                 metric,
                 directory / f"{metric.lower()}_heatmap.png",
+                font_path=report_font(plan),
             )
         examples = gallery(context, bound, directory)
         figures = comparisons(context, bound, directory)

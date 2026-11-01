@@ -5,6 +5,8 @@ from __future__ import annotations
 import argparse
 from copy import deepcopy
 import json
+import multiprocessing
+from contextlib import ExitStack
 from pathlib import Path
 import shutil
 
@@ -22,6 +24,32 @@ BASE = Path("/mnt/bn/strategy-mllm-train/user/tanyue")
 RESOURCES = BASE / ".ifbench-tmp/fairness-v21-qwen-repaired-dev20-20261031"
 PROBE_SCHEMA = "ifbench-1mp-probe-v1"
 PROBE_SETTINGS = ["S1", "S3-point", "S5"]
+_BUILD_CASE = None
+
+
+def _build_case_in_child(case):
+    return _BUILD_CASE(case)
+
+
+def nas_resources(descriptor, aliases):
+    """Resolve old staging aliases to the same immutable bytes on shared NAS."""
+    paths = dict(descriptor["paths"])
+    resolved = []
+    for key in ("sources", "replan_planner_weights"):
+        matches = [a for a in aliases if a["alias"] == paths[key]]
+        if len(matches) != 1:
+            raise ValueError(f"Exactly one pinned resource manifest required: {key}")
+        item = matches[0]
+        target = Path(item["target"])
+        if not target.is_absolute() or not target.resolve().is_relative_to(BASE):
+            raise ValueError(f"Resource must resolve on shared NAS: {key}")
+        if not target.is_dir() or not item.get("files"):
+            raise ValueError(f"Missing pinned NAS resource: {key}")
+        paths[key] = str(target)
+        resolved.append({**item, "alias": str(target)})
+    if not Path(paths["models"]).resolve().is_relative_to(BASE):
+        raise ValueError("Model weights must resolve on shared NAS")
+    return paths, resolved
 
 
 def selections(cases, reference):
@@ -33,10 +61,12 @@ def selections(cases, reference):
     return selected, gallery
 
 
-def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None):
+def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None, workers=8):
     from evaluation.protocol_audit.prepare_fairness_dev20 import request_for
     from evaluation.protocol_audit.prepare_fairness_dev20_revision import snapshot_repo
 
+    if type(workers) is not int or not 1 <= workers <= 16:
+        raise ValueError("CPU preparation workers must be between 1 and 16")
     repo, bundle = repository_root(), Path(bundle).resolve()
     if bundle.exists() and any(bundle.iterdir()):
         raise ValueError("Use an empty bundle; existing requests and attempts are immutable")
@@ -56,16 +86,12 @@ def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None):
     owners = full_plan.assign_nodes(cases)
     owner = {cid: int(n) for n, ids in owners.items() for cid in ids}
     descriptor = read(Path(resources) / "plan.json")
-    for filename in ("bootstrap.json", "aliases.json"):
-        shutil.copyfile(Path(resources) / filename, bundle / filename)
-    # Old public-input aliases are unnecessary: every current input lives here.
-    aliases = [
-        a
-        for a in read(bundle / "aliases.json")
-        if a["alias"]
-        in {descriptor["paths"]["sources"], descriptor["paths"]["replan_planner_weights"]}
-    ]
+    shutil.copyfile(Path(resources) / "bootstrap.json", bundle / "bootstrap.json")
+    paths, aliases = nas_resources(descriptor, read(Path(resources) / "aliases.json"))
     write_json(bundle / "aliases.json", aliases)
+    from evaluation.protocol_audit import fairness_flux3_replan
+
+    fairness_flux3_replan.SOURCES = Path(paths["sources"])
     schema = full_plan.SCHEMA if scope == "full" else PROBE_SCHEMA
     auth = {
         "schema": schema,
@@ -80,6 +106,14 @@ def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None):
         "native_output_grid": ["replan", "mirage"],
     }
     write_json(bundle / "AUTHORIZATION.json", auth)
+    from . import render
+
+    font = bundle / "assets/fonts/DejaVuSans.ttf"
+    font.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(render.FONT, font)
+    if sha256_file(font) != sha256_file(render.FONT):
+        raise ValueError("Packaged annotation font differs")
+    render.FONT = font
     renderer = {**specification(), "public_canvas": canvas.POLICY}
     write_json(shared / "renderer.json", renderer)
     write_json(
@@ -118,7 +152,7 @@ def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None):
         "case_manifest_sha256": sha256_file(manifest),
         "dataset_root": str(BASE / "datasets/samtok_edit_benchmark_v2"),
         "results_root": str(results),
-        "paths": {**descriptor["paths"], "shared": str(shared), "full_shared": str(shared)},
+        "paths": {**paths, "shared": str(shared), "full_shared": str(shared)},
         "full_release_authorized": scope == "full",
         "freeze_authorized": scope == "full",
         "test_authorized": scope == "full",
@@ -142,11 +176,11 @@ def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None):
     tokenizer = AutoTokenizer.from_pretrained(
         str(Path(plan["paths"]["models"]) / "FLUX.2-klein-4B/tokenizer"), local_files_only=True
     )
-    overflows, all_tasks = [], []
-    for case in cases:
+    check_plan = {**plan, "case_ids": build_ids}
+
+    def build_case(case):
         cid = case["id"]
-        if cid not in build_ids:
-            continue
+        tasks, overflows = [], []
         canonical = project(case, "S1", assignments["assignments"][cid], Path(plan["dataset_root"]))
         asset_dir = shared / "canvases" / cid
         source, transform = canvas.make_source(canonical["source"], asset_dir)
@@ -214,19 +248,42 @@ def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None):
                     path = bundle / "preflight/mice" / setting / cid / "text_condition_check.json"
                     write_json(path, audit)
                     task["text_preflight"] = {"path": str(path), "sha256": sha256_file(path)}
-                all_tasks.append(task)
-                if cid in active_ids and setting in settings:
-                    plan["tasks"].append(task)
-        print(
-            json.dumps(
-                {
-                    "prepared_case": cid,
-                    "cpu_requests": len(all_tasks),
-                    "gpu_tasks_planned": len(plan["tasks"]),
-                }
-            ),
-            flush=True,
-        )
+                tasks.append(task)
+        for task in tasks:
+            verify_task(check_plan, task)
+        return tasks, overflows
+
+    # Independent source groups own their output directories and tokenizer state.
+    # CPU-only fork keeps the exact public constructor and per-request verifier.
+    global _BUILD_CASE
+    _BUILD_CASE = build_case
+    selected_cases = [case for case in cases if case["id"] in build_ids]
+    overflows, verified_requests = [], 0
+    with ExitStack() as stack:
+        if workers == 1:
+            completed = map(build_case, selected_cases)
+        else:
+            pool = stack.enter_context(
+                multiprocessing.get_context("fork").Pool(min(workers, len(selected_cases)))
+            )
+            completed = pool.imap_unordered(_build_case_in_child, selected_cases)
+        for count, (tasks, warnings) in enumerate(completed, 1):
+            verified_requests += len(tasks)
+            overflows.extend(warnings)
+            plan["tasks"].extend(
+                task for task in tasks
+                if task["case_id"] in active_ids and task["setting"] in settings
+            )
+            progress = {
+                "prepared_sources": count,
+                "total_sources": len(selected_cases),
+                "cpu_verified_requests": verified_requests,
+                "gpu_tasks_planned": len(plan["tasks"]),
+                "new_inference_calls": 0,
+            }
+            write_json(bundle / "preparation_progress.json", progress)
+            print(json.dumps(progress), flush=True)
+    overflows.sort(key=lambda item: item["key"])
     write_json(
         bundle / "preflight/TEXT_LIMITS.json",
         {"count": len(overflows), "mice_input_overflows": overflows},
@@ -240,10 +297,7 @@ def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None):
             active_ids.index(t["case_id"]),
         )
     )
-    # Validate all ten settings, including gallery-only requests, before any sampling.
-    check_plan = {**plan, "case_ids": build_ids}
-    for task in all_tasks:
-        verify_task(check_plan, task)
+    # Every task, including gallery-only requests, was verified in its CPU process.
     snapshot_repo(bundle)
     files = read(bundle / "code_manifest.json")["files"]
     plan["helper_sha256"] = {
@@ -270,7 +324,7 @@ def prepare(bundle, *, scope="probe", resources=RESOURCES, results=None):
             "plan_digest": plan["digest"],
             "sources": len(active_ids),
             "tasks": len(plan["tasks"]),
-            "cpu_verified_requests": len(all_tasks),
+            "cpu_verified_requests": verified_requests,
             "gallery_sources": gallery_ids,
             "mice_overflows": len(overflows),
             "new_inference_calls": 0,
@@ -287,8 +341,9 @@ def main():
     p.add_argument("--scope", choices=["probe", "full"], default="probe")
     p.add_argument("--resources", type=Path, default=RESOURCES)
     p.add_argument("--results", type=Path)
+    p.add_argument("--workers", type=int, default=8, help="CPU source preparation processes")
     a = p.parse_args()
-    prepare(a.bundle, scope=a.scope, resources=a.resources, results=a.results)
+    prepare(a.bundle, scope=a.scope, resources=a.resources, results=a.results, workers=a.workers)
 
 
 if __name__ == "__main__":

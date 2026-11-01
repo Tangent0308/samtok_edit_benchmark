@@ -3,6 +3,7 @@
 from __future__ import annotations
 import argparse
 import fcntl
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -25,9 +26,9 @@ from evaluation.protocol_audit.bootstrap_fairness_dev20 import (  # noqa: E402
 )
 
 
-def local_source_alias(item):
+def local_source_alias(item, *, destination=None):
     """Materialize the pinned upstream sources locally without rewriting paths."""
-    alias, target = Path(item["alias"]), Path(item["target"])
+    alias, target = Path(destination or item["alias"]), Path(item["target"])
     if not alias.is_absolute() or not target.is_absolute() or not item.get("files"):
         raise ValueError("Expected absolute source alias with a nonempty manifest")
     for relative in item["files"]:
@@ -115,7 +116,14 @@ def main():
         sources = [i for i in items if i["alias"] == source_alias]
         if len(sources) != 1:
             raise ValueError("One pinned upstream source alias is required")
-        aliases = [local_source_alias(sources[0])]
+        source_item = sources[0]
+        destination = None
+        if Path(source_alias).is_relative_to(Path("/mnt")):
+            source_digest = hashlib.sha256(
+                json.dumps(source_item["files"], sort_keys=True).encode()
+            ).hexdigest()
+            destination = work / "native-sources" / source_digest
+        aliases = [local_source_alias(source_item, destination=destination)]
         aliases += verify_aliases([i for i in items if i["alias"] != source_alias])
     else:
         aliases = verify_aliases(items)
@@ -150,6 +158,8 @@ def main():
             receipt,
         )
     env = environments["generation"]
+    if os.environ.get("IFBENCH_CLUSTER_MANAGED") == "1":
+        env["IFBENCH_NATIVE_SOURCES"] = aliases[0]["alias"]
     env.update(
         IFBENCH_GENERATION_PYTHON=str(pythons["generation"]),
         IFBENCH_JUDGE_PYTHON=str(pythons["judge"]),

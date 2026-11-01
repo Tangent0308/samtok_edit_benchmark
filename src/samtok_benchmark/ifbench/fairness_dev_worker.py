@@ -159,6 +159,26 @@ def planner_dependency(plan, task):
     return result, path
 
 
+def native_source_root(plan):
+    """Accept node-local source staging only when every pinned NAS member matches."""
+    staged = os.environ.get("IFBENCH_NATIVE_SOURCES")
+    if not staged:
+        return Path(plan["paths"]["sources"])
+    root = Path(staged)
+    if not root.is_absolute() or root.resolve().is_relative_to(Path("/mnt")):
+        raise ValueError("Staged native code must be an absolute node-local directory")
+    manifest = read(Path(plan["configuration_reference"]).parent / "aliases.json")
+    entries = [item for item in manifest if item["alias"] == plan["paths"]["sources"]]
+    if len(entries) != 1 or not entries[0].get("files"):
+        raise ValueError("Staged native code has no unique pinned resource manifest")
+    for relative, expected in entries[0]["files"].items():
+        if Path(relative).is_absolute() or ".." in Path(relative).parts:
+            raise ValueError("Unsafe native code manifest path")
+        if sha256_file(root / relative) != expected:
+            raise ValueError(f"Staged native code changed: {relative}")
+    return root
+
+
 class NativeBackend:
     """The already verified native calls, with paths injected by the bundle."""
 
@@ -168,7 +188,7 @@ class NativeBackend:
         self.torch = torch
         torch.set_num_threads(4)
         self.model, self.stage = model, stage
-        self.sources = Path(plan["paths"]["sources"])
+        self.sources = native_source_root(plan)
         self.weights = Path(plan["paths"]["models"])
         self.worker_dir = Path(worker_dir)
         self.metrics = {}
@@ -185,13 +205,9 @@ class NativeBackend:
                 self.runner = helper.Flux3FairnessRunner()
                 self.transformers = list(self.runner.models.pipeline.dits.values())
             elif stage == "planner":
-                alias = Path("/tmp/ifbench/weights/RePlan-Qwen2.5-VL-7B")
-                expected = Path(plan["paths"]["replan_planner_weights"])
-                if alias.resolve() != expected.resolve():
-                    raise ValueError(
-                        "RePlan native helper's checkpoint alias differs from the plan"
-                    )
-                self.runner = helper.ReplanPlannerOnlyRunner()
+                self.runner = helper.ReplanPlannerOnlyRunner(
+                    checkpoint=plan["paths"]["replan_planner_weights"]
+                )
             else:
                 self.runner = helper.ReplanEditorOnlyRunner()
                 self.transformers = [self.runner.pipe.diffusion_pipe.transformer]

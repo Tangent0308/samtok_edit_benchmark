@@ -239,7 +239,9 @@ def source_view(request, call):
     return None
 
 
-def example(context, task, binding, directory, *, selection_label="fixed first dev example"):
+def example(
+    context, task, binding, directory, *, selection_label="fixed first dev example", font_path=None
+):
     cid = task["case_id"]
     case = context["cases"][cid]
     request_path = Path(task["request_path"]) if task.get("request_path") else None
@@ -258,7 +260,7 @@ def example(context, task, binding, directory, *, selection_label="fixed first d
     figure.parent.mkdir(parents=True, exist_ok=True)
     canvas = Image.new("RGB", (1500, 450), "white")
     draw = ImageDraw.Draw(canvas)
-    font_path = Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
+    font_path = Path(font_path or "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")
     font = (
         ImageFont.truetype(str(font_path), 16) if font_path.exists() else ImageFont.load_default()
     )

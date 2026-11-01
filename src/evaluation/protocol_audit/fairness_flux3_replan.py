@@ -285,7 +285,7 @@ class ReplanFairnessRunner:
 class ReplanPlannerOnlyRunner:
     """Native planning API without loading editor weights; for a separate GPU phase."""
 
-    def __init__(self):
+    def __init__(self, checkpoint="/tmp/ifbench/weights/RePlan-Qwen2.5-VL-7B"):
         import torch
         from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
 
@@ -298,7 +298,7 @@ class ReplanPlannerOnlyRunner:
         self.pipe.sync_cuda_for_timing = True
         self.pipe.device = "cuda"
         self.pipe.image_dir = None
-        checkpoint = "/tmp/ifbench/weights/RePlan-Qwen2.5-VL-7B"
+        checkpoint = str(checkpoint)
         self.pipe.vlm_model = (
             Qwen2_5_VLForConditionalGeneration.from_pretrained(
                 checkpoint,

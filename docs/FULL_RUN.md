@@ -2,6 +2,8 @@
 
 当前配置为 [fairness_v2_2_1mp.json](../configs/evaluation/fairness_v2_2_1mp.json)。一个ARNOLD作业含4个worker，每个8×H100 80GB，共32卡，共享 `/mnt/bn/strategy-mllm-train/user/tanyue/` 挂载。全部 **1,084张图、3,872个编辑单元** 合并为一份总成绩；七模型×十setting共 **75,880条逻辑请求**。
 
+完整方法对比还包括独立运行的 **SAMTokEdit**（另10,840条逻辑请求，八方法合计86,720条）。其十setting输入与两轮原生流程见 [USAGE.md §4.4](USAGE.md#44-samtokedit我方方法)，源码和入口位于[独立仓库](https://github.com/Tangent0308/samtok_edit/tree/qwen-image-2.1-v4)。本页的75,880条请求、plan、READY和分片表仍仅属于七基线；SAMTokEdit 消费相同公开输入并使用冻结 Judge，在独立报告阶段合并，不更改这些运行接口。
+
 模型输入、公共灰色letterbox画布、坐标变换及输出去padding见 [USAGE.md](USAGE.md)。模型与全部原生planner只读公共约1MP的I/A；Qwen2.1使用output_resolution1024；RePlan/MIRAGE保留原生近1MP网格，不声明显式width/height能约束RePlan结果。Judge仍使用原始源图/GT和逆映射输出。
 
 当前验证的共享输入和42条生成位于 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-probe-20261031`；补齐49条请求位于同级 `one-mp-coverage-20261031`；单图70组合Judge位于同级 `one-mp-coverage-judge-20261031`。全量包计划位置为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-full4-20261101-heartbeatfix`，正式结果根计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/IF-Bench/one-mp-full4-20261031`。

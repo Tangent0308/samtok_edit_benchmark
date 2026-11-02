@@ -2,6 +2,8 @@
 
 每个 setting 展示三个固定请求：清图、标注图及最终共享 prompt。模型专用路由见 [使用说明](USAGE.md)。所有图均来自本轮真实公共输入；S1 没有区域标注图。
 
+图中共享清图和公开区域也供 SAMTokEdit 使用；它读取 I 与原生区域，不读取 A，最终文本使用其训练时的多目标 token 模板。具体十setting调用见 [SAMTokEdit方法说明](USAGE.md#44-samtokedit我方方法)，不能将下文双图/标注图模板误当作它的实际prompt。
+
 ## S1
 
 ![S1 三个实际输入](assets/current/inputs-S1.jpg)

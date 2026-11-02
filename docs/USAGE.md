@@ -1,8 +1,8 @@
 # IF-Bench 使用说明
 
-IF-Bench 评测同一真实场景中 2–5 个目标的联合编辑。当前固定方案为 **`fairness-v2.2-1mp`**，范围为 **Qwen-Image-Edit-2511、Qwen-Image-2.1、FLUX.3 Klein distilled、RePlan（Qwen-2511）、MIRAGE（Qwen-2511）、MICE（Klein-4B）、FLUX.2 Klein-9B distilled**。以下表格定义全部七模型×十种 setting，不按输出或分数另选输入。
+IF-Bench 评测同一真实场景中 2–5 个目标的联合编辑。当前固定方案为 **`fairness-v2.2-1mp`**，范围为七个基线 **Qwen-Image-Edit-2511、Qwen-Image-2.1、FLUX.3 Klein distilled、RePlan（Qwen-2511）、MIRAGE（Qwen-2511）、MICE（Klein-4B）、FLUX.2 Klein-9B distilled**，以及我方 **SAMTokEdit（Qwen-Image-2.1 骨干）**。下文并列说明八方法×十种 setting，不按输出或分数另选输入。
 
-配置见 [fairness_v2_2_1mp.json](../configs/evaluation/fairness_v2_2_1mp.json)，运行见 [FULL_RUN.md](FULL_RUN.md)，实际验证状态见 [RESULTS.md](RESULTS.md)，数据科学信息见 [CONSTRUCTION.md](CONSTRUCTION.md)。模型接收共同的约 1MP 图像；Judge 仍依据原始源图、原始 GT 和 canonical 指令评分。
+七基线的冻结配置见 [fairness_v2_2_1mp.json](../configs/evaluation/fairness_v2_2_1mp.json)，运行见 [FULL_RUN.md](FULL_RUN.md)，实际验证状态见 [RESULTS.md](RESULTS.md)，数据科学信息见 [CONSTRUCTION.md](CONSTRUCTION.md)。SAMTokEdit 的实现与配置位于[独立仓库的 qwen-image-2.1-v4 分支](https://github.com/Tangent0308/samtok_edit/tree/qwen-image-2.1-v4)，本页 §4.4 固定引用其核对版本；本仓库配置和已发布 plan 仍仅调度七基线。八方法接收共同的约 1MP 图像；Judge 仍依据原始源图、原始 GT 和 canonical 指令评分。
 
 ## 1. 数据与文件
 
@@ -44,7 +44,7 @@ release 2.6.0 有 **1,084 张源图、3,872 个编辑单元**。K=2/3/4/5 的图
 | mask | 公开二值 mask 用 NEAREST 缩放到内容尺寸，留边补0；白色选中、黑色未选中 |
 | none | 无几何，不从 GT 或其他 setting 补区域 |
 
-不调用 SAM、外部定位器、caption 改写器或区域修复器；不将点变成额外目标框，不把 mask 简化成 bbox。若公共 mask 缩放后为空，输入构造明确报错；原生接口拒绝输入则记录失败，不膨胀区域、删任务或删分母。模型内部量化仍保留其原生行为。
+公共输入构造不调用 SAM、外部定位器、caption 改写器或区域修复器；不将点变成额外目标框，不把 mask 简化成 bbox。方法自身的编码与定位属于下文§4明确声明的原生流程。若公共 mask 缩放后为空，输入构造明确报错；原生接口拒绝输入则记录失败，不膨胀区域、删任务或删分母。模型内部量化仍保留其原生行为。
 
 标记在公共画布上重新绘制。固定颜色为 U1 red `(255,0,0)`、U2 blue `(0,80,255)`、U3 green `(0,170,0)`、U4 yellow `(255,210,0)`、U5 magenta `(230,0,230)`。令 `d=min(Wc,Hc)`，点半径为 `max(1,round(.01d))`，白环宽 `max(1,round(.002d))`，轮廓宽 `max(1,round(.004d))`，字号 `max(12,round(.02d))`；使用固定 DejaVuSans 字体和 SHA。mask 画完整边界，包括洞、分离组件和贴边部分，不填色遮盖目标。标签与引线只依赖公开几何。
 
@@ -52,7 +52,7 @@ release 2.6.0 有 **1,084 张源图、3,872 个编辑单元**。K=2/3/4/5 的图
 
 公共输入像素预算不等于所有方法的内部视觉 token、局部裁剪或计算预算相同。检查点自身的视觉编码器、VAE、KV cache 和原生区域处理保留。
 
-Qwen2511、Qwen2.1、FLUX3、FLUX2 Klein-9B 的输出宽高按公共画布传入；MICE 的 `model_size` 使用公共画布。**RePlan 和 MIRAGE 保留各自约1MP原生输出网格。RePlan 的该原生区域流程不以传入 width/height 控制最终尺寸，不将这两个参数写成有效约束；MIRAGE 的原生接口也不增加此约束。** 两者均只读 I/A，其内部缩放和局部分支属于方法自身。每次调用记录实际 raw 尺寸与面积。
+Qwen2511、Qwen2.1、FLUX3、FLUX2 Klein-9B 和 SAMTokEdit 的输出宽高按公共画布传入；MICE 的 `model_size` 使用公共画布。**RePlan 和 MIRAGE 保留各自约1MP原生输出网格。RePlan 的该原生区域流程不以传入 width/height 控制最终尺寸，不将这两个参数写成有效约束；MIRAGE 的原生接口也不增加此约束。** 两者均只读 I/A，其内部缩放和局部分支属于方法自身。每次调用记录实际 raw 尺寸与面积。
 
 输出同时保存完整 `raw.png` 和供 Judge 使用的 `output.png`。将几何记录中的内容框按 `raw尺寸/公共画布尺寸` 换算为浮点 crop box，再用一次 LANCZOS resize 去除留边并恢复原始 `(W,H)`。这只是所有模型共同的几何逆映射，不使用 GT 擦除标记、修改背景或修图。
 
@@ -75,7 +75,7 @@ Qwen2511、Qwen2.1、FLUX3、FLUX2 Klein-9B 的输出宽高按公共画布传入
 | S4-noref | no-ref | 与 S4-ref 相同的混合分配 |
 | S5 | 固定逐单元 ref/no-ref | 固定逐单元 none/point/box/mask；none 必须是 ref |
 
-S4/S5 分配只生成一次，七模型共用。每个请求的 K 个目标进入一次原生联合编辑流程，不把目标人工分成 K 次连续改图。S3、S4-noref 和 S5 的 no-ref 单元不丢弃区域。S2 discard-region 仅以同一 case 的 S1 输出精确复用为补充，不替代主行、不参与重新择优。
+S4/S5 分配只生成一次，八方法共用。S4 由固定 seed 的哈希决定 point/box/mask；若一图全部为同一种，则将最后一个单元改为循环中的下一种，保证至少两种形式，S4-ref 与 S4-noref 共用该分配。S5 直接使用 release 中冻结的逐单元 interaction，不重新抽签。每个请求的 K 个目标进入一次原生联合编辑流程，不把目标人工分成 K 次连续改图。S3、S4-noref 和 S5 的 no-ref 单元不丢弃区域。S2 discard-region 仅以同一 case 的 S1 输出精确复用为补充，不替代主行、不参与重新择优。
 
 共享 global 模板为：
 
@@ -95,9 +95,9 @@ Apply all of the following edits to the image. Keep everything else unchanged.
 
 随后逐行追加 `U编号. [颜色 point/box/mask contour, label U编号] 公开原指令`。none 单元省略整个方括号；全 none 请求直接使用 I+global，不生成空标注图。花括号仅表示文档变量；实际请求必须保存完整最终 prompt。实现见 [inputs.py](../src/samtok_benchmark/ifbench/inputs.py)。
 
-## 4. 七模型 × 十种 setting
+## 4. 八方法 × 十种 setting
 
-方法边界为完整命名方法。PE/PUP 关闭，不接外部语义转换或能力增强组件。检查点自带编码器保留；RePlan/MIRAGE 自带 planner/parser/locator 保留，并单独记录调用与成本。†/‡/§ 分别表示另行使用 SAM、外部定位或 caption 改写的补充配置，均不进入当前主结果。
+方法边界为完整命名方法。PE/PUP 关闭，不接外部语义转换或能力增强组件。检查点自带编码器保留；RePlan/MIRAGE 自带 planner/parser/locator，以及 SAMTokEdit 自带的 Pass1、区域 codec 和码本注入保留，并单独记录调用与成本。†/‡/§ 分别表示在命名方法之外另行使用 SAM、外部定位或 caption 改写的补充配置，均不进入当前主结果。SAMTokEdit 的 codec 内部使用 VQ-SAM2，是其训练与推理中的原生区域表示；不得将其误写成“整个方法不使用 SAM”，也不将它等同于额外挂 SAM 为点/框补充输入。
 
 ### 4.1 Qwen2511、Qwen2.1、FLUX3、FLUX2 Klein-9B
 
@@ -199,9 +199,46 @@ box-only regional列表传 `instance_bboxes_xyxy_normalized`；包含mask则传 
 
 入口：[完整性检查](../src/samtok_benchmark/ifbench/fairness_dev_revision.py) · [原生绑定worker](../src/samtok_benchmark/ifbench/fairness_dev_worker.py)。
 
+### 4.4 SAMTokEdit（我方方法）
+
+SAMTokEdit 的方法边界为 **Pass1 定位模型 + SAMTok 区域 codec + Qwen-Image-2.1 编辑器及训练所得 DiT LoRA/码本注入**。代码由 [Tangent0308/samtok_edit](https://github.com/Tangent0308/samtok_edit/tree/qwen-image-2.1-v4) 管理；以下正常评测路径核对于 commit [`c0e32223876363fafc9cdf9a844a8b905ca81d13`](https://github.com/Tangent0308/samtok_edit/tree/c0e32223876363fafc9cdf9a844a8b905ca81d13)，具体运行的源码身份以其 attempt 回执为准。该方法不加入本仓库的七基线 plan，不修改运行包。
+
+**公开输入。** 每请求读取 `assets/shared_inputs/requests/<setting>/<case>/public.json`、其中 `source.path` 指向的清图 I，以及同目录 `geometry.json`；仅 mask 单元读取其公开 mask。编辑模型不用 A，也不读取 manifest、原始高分辨率图、未公开区域或私有 spec/GT。Judge 在隔离的评分阶段读取 canonical 数据。用自己的原生区域编码代替标注图并不改变 setting 公开的信息。
+
+| Setting | 原生定位/区域编码输入 | Pass1 调用 | 第二轮联合编辑输入 |
+|---|---|---|---|
+| S1 | I + 全部 ref，区域为 none | 整张图一次贪心生成全部单元 token | I + 各 ref 及其预测 token |
+| S2-point | I + ref + 公开 point | 一次 | I + ref 及预测 token |
+| S2-box | I + ref + 公开 box | 一次 | I + ref 及预测 token |
+| S2-mask | codec 编码各公开 mask | 不调用 | I + ref 及给定 mask 的输入 token |
+| S3-point | I + no-ref + 公开 point | 一次 | I + no-ref 及预测 token |
+| S3-box | I + no-ref + 公开 box | 一次 | I + no-ref 及预测 token |
+| S3-mask | codec 编码各公开 mask | 不调用 | I + no-ref 及给定 mask 的输入 token |
+| S4-ref | I + ref + 固定混合区域；mask 先编码 | 有非 mask 单元时一次 | I + 各 ref 及 token；mask 单元保留输入 token |
+| S4-noref | I + no-ref + 与 S4-ref 相同的混合区域 | 有非 mask 单元时一次 | I + 各 no-ref 及 token；不补对象名称 |
+| S5 | I + 冻结逐单元文字/区域；none 仅有 ref | 有 none/point/box 单元时一次 | I + 冻结混合文字及 token；mask 单元保留输入 token |
+
+**第一轮。** 使用 `Qwen3-VL-8B-SAMTok + Pass1 LoRA step 2000`，`do_sample=False`、`max_new_tokens=512`；Pass1 环境为 Transformers 5.19。点坐标按 `round(1000*x/Wc)`、`round(1000*y/Hc)` 量化；半开 box 左上边取 floor、右下边取 ceil，归一化到 0–1000。只改变原生表示，不将 point 先转成额外框或由外部 SAM 生成 mask。mask 由原生 codec 在 I 上编码；混合请求将其 token 一并提供给 Pass1，但第二轮保留该输入 token，不被预测值替换。`pass1_max_pixels=2097152` 是内部视觉处理上限，读取的图像仍是共同的约1MP画布。
+
+**第二轮。** 使用 Qwen-Image-2.1 的 DiT/VAE、原 SAMTok 文本编码器，以及 `S2@16000` 的 DiT LoRA 和码本注入，Transformers 5.12.1。公开指令不改写为 caption；仅在训练时规定的指代短语位置插入 token，no-ref 放在 `the selected region` 之后。ref 的替换/改属性句按公开文本中的最后一个 ` with ` / 相应 ` to ` 确定位置。该规则固定于训练数据；上游文档披露其 ref 插入点与 benchmark 渲染器约96.3%一致，这是实现局限，不使用私有 spec 逐句纠正。
+
+最终 prompt 使用训练时多目标模板，所有 U 同时执行：
+
+```text
+Execute all numbered instructions and keep everything else unchanged.
+U1: {公开原指令，插入该单元的 SAMTok token}
+U2: {公开原指令，插入该单元的 SAMTok token}
+```
+
+固定40步、seed42、单次联合生成、KV cache开启，token guidance为2.0。负向是去掉区域 token 的同一句 prompt；这是方法自身 CFG 分支，不增加新指令或隐藏目标描述。无 token 的普通生成路径使用CFG1。宽高为公共 `(Wc,Hc)`，保留 `raw.png`，通过冻结 `canvas.restore_output` 生成回源 `output.png`；没有 latent blending 或 GT paste-back。每次生成前重置编译状态，用于消除已见尺寸导致的编译历史差异。
+
+**调用与统计。** 正常带 token 的40步CFG2路径记录80次DiT forward；Pass1、codec编码/解码、文本编码和实际GPU时长分别披露，不能把两轮原生流程写成一次总模型调用。codec逐单元处理不等于对图像依次编辑K次。Judge直接使用冻结的 `evidence`、`binding`、`Backend`、`scored`、`effective`，实际配置指纹须等于包内 `judge_config`。合并统计重用 benchmark 的 `Bootstrap`、`rates`、`derived`，按基线报告的全局 case 顺序核对共享抽样摘要，并重算基线行；附我方减各基线的配对差值。分片可用 `case_ids[node::4]`，不平均四机百分数。
+
+正常流程的依据：[主配置](https://github.com/Tangent0308/samtok_edit/blob/c0e32223876363fafc9cdf9a844a8b905ca81d13/configs/ifbench/main_row.json) · [公开请求与两轮实现](https://github.com/Tangent0308/samtok_edit/blob/c0e32223876363fafc9cdf9a844a8b905ca81d13/src/samtok_edit21/evaluation/ifbench.py) · [Pass1输入适配](https://github.com/Tangent0308/samtok_edit/blob/c0e32223876363fafc9cdf9a844a8b905ca81d13/src/samtok_edit21/pass1/evaluation/ifbench.py) · [原生codec](https://github.com/Tangent0308/samtok_edit/blob/c0e32223876363fafc9cdf9a844a8b905ca81d13/src/samtok_edit21/models/codec.py) · [Judge](https://github.com/Tangent0308/samtok_edit/blob/c0e32223876363fafc9cdf9a844a8b905ca81d13/scripts/ifbench/judge.py) · [配对统计](https://github.com/Tangent0308/samtok_edit/blob/c0e32223876363fafc9cdf9a844a8b905ca81d13/src/samtok_edit21/evaluation/ifbench_report.py) · [方法文档§12.1](https://github.com/Tangent0308/samtok_edit/blob/c0e32223876363fafc9cdf9a844a8b905ca81d13/docs/03_SAMTokEdit_Qwen21_v4实验.md#121-主行的定义用户-10-31-确认)。
+
 ## 5. 固定配置与证据
 
-所有生成请求seed=42，每请求只采样一次。源码commit、编辑与planner权重revision、精度、原生参数和组件在 [配置文件](../configs/evaluation/fairness_v2_2_1mp.json) 中固定；实际执行同时保存commit、逐文件SHA、实际调用和 `plan.json`。不在运行中解析为main/latest，不用短测表现改变prompt、步数或模型版本。
+所有生成请求seed=42，每请求只采样一次。七基线的源码commit、编辑与planner权重revision、精度、原生参数和组件在 [配置文件](../configs/evaluation/fairness_v2_2_1mp.json) 中固定；实际执行同时保存commit、逐文件SHA、实际调用和 `plan.json`。SAMTokEdit 使用§4.4链接的独立主配置、`RUN.json`和实际attempt源码回执。不在运行中解析为main/latest，不用短测表现改变prompt、步数或模型版本。
 
 当前快速验证固定K=5图 `v2-sa_8415518`，覆盖七模型×全部十种setting；另有K=2固定图在S1/S3-point/S5的21条补充生成，共91条生成请求。Judge只评同一张K=5图的70个组合，用于核验输入→推理→canonical评分完整链路，不提供总体排名或置信区间。所有请求复用冻结输入，已执行的请求不重采样；名单只根据公开K和固定顺序选择。CPU输入检查另含K=4第三图，覆盖210个组合。实际完成、失败/缺分和图册见[RESULTS.md](RESULTS.md)。
 
@@ -219,7 +256,7 @@ Judge只看原始清洁源图、去padding后回到原始尺寸的输出、canon
 | UnitPass（UP） | 每个U满足E=4且P≥3且Q≥3 | 3,872个单元，微平均 |
 | JointPass（JP） | 一张图的所有U通过，且global_P≥3、global_Q≥3 | 1,084张源图 |
 
-UP与JP是两个不同层次的通过率，不是两个Judge的分数。95% CI以源图为cluster作10,000次paired bootstrap，seed=20261027；七模型与全部setting共用全局抽样索引。每轮重算抽到图像的单元总数；不能把同图U当独立样本，也不能平均四机百分数或CI。K=2…5桶在各自的全局桶内按图抽样。
+UP与JP是两个不同层次的通过率，不是两个Judge的分数。95% CI以源图为cluster作10,000次paired bootstrap，seed=20261027；八方法与全部setting共用全局抽样索引。七基线先由冻结运行包生成报告，SAMTokEdit 的独立合并器核对并复用这组索引。每轮重算抽到图像的单元总数；不能把同图U当独立样本，也不能平均四机百分数或CI。K=2…5桶在各自的全局桶内按图抽样。
 
 对 `M=UP` 和 `M=JP` 分别计算：
 

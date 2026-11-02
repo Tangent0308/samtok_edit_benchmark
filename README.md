@@ -1,5 +1,7 @@
 # IF-Bench
 
+本分支 **`eval-mira`** 增加 SITEdit 的 MIRA 外部泛化评测。入口见 [MIRA 运行说明](docs/MIRA.md)，实际小样本记录见 [MIRA smoke test](docs/MIRA_SMOKE.md)。它使用独立的数据、配置、生成目录和 GPT-5.4 Judge；下面的 IF-Bench 协议保持原样。LoMOE 的 `eval-lomoe` 分支已保留，等待数据权限后再实施。
+
 IF-Bench 评测真实场景中的细粒度、多目标图像编辑：在同一张图上联合完成 2–5 个编辑，并保持未授权内容。任务覆盖添加、删除、替换和属性修改，比较不同目标语言与区域提示下的编辑完成度、内容保持和视觉质量。
 
 当前数据 release **2.6.0** 包含 **1,084 张源图、3,872 个编辑单元**。当前评测采用 **`fairness-v2.2-1mp`**：七个基线及我方 **SAMTokEdit**、十种 setting，共享约 1MP 的清图与公开区域；模型自身的原生流程保留。全量结果合并报告，不分别列 dev/test 成绩。SAMTokEdit 由[独立仓库](https://github.com/Tangent0308/samtok_edit/tree/qwen-image-2.1-v4)运行，与七基线使用相同的公开请求、canonical Judge 和配对统计。

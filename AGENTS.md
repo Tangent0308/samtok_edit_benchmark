@@ -2,13 +2,13 @@
 
 ## External MIRA branch scope (2026-11-02)
 
-On `eval-mira`, the user authorized implementing and running very small GPU smoke tests for SITEdit, Qwen2511, Qwen2.1, RePlan and MIRAGE, plus GPT-5.4 scoring. Read [MIRA.md](docs/MIRA.md) and [MIRA_SMOKE.md](docs/MIRA_SMOKE.md). This authorization applies to the separate `external_mira` launcher, not the legacy IF-Bench `start.sh` or its four-node full run. The original IF-Bench frozen files and Judge remain unchanged. The full 200-image MIRA experiment has not been launched.
+On `eval-mira`, the user has now authorized the native-call/scoring audit, the complete 200-source × five-method MIRA run, GPT-5.4 judging, training-overlap audit and final table. Read [MIRA.md](docs/MIRA.md), [MIRA_SMOKE.md](docs/MIRA_SMOKE.md), and [MIRA_FULL_RUN.md](docs/MIRA_FULL_RUN.md). This authorization applies to the separate `external_mira` launcher, not the legacy IF-Bench `start.sh` or its four-node full run. The original IF-Bench frozen files and Judge remain unchanged. The full run is supervised by `scripts/run_mira_full.py`; check actual STATUS/receipts before reporting progress.
 
 MIRA data belongs in `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench`; formal results belong in `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira`. Keep all smoke/debug outputs under `/tmp/ifbench/` or shared `.ifbench-tmp/`, and user-facing previews under `/opt/tiger/tanyue/visualization_tmp/MIRA_smoke_20261102/`. Never commit credentials, source images, checkpoints or generated images. The user deferred LoMOE until its dataset becomes accessible.
 
 Use `configs/external/mira_judge_gpt54.json` for the user-requested judge. Keep canonical evaluation masks out of all model adapters. Preserve native inference defaults, output restoration, admission records, failures and missing scores. Do not turn a smoke score into a benchmark performance claim. Preserve the original run receipts; changed inputs, code or parameters require a separate output directory.
 
-## Current authorized scope
+## Legacy IF-Bench scope
 
 Current evaluation is **fairness-v2.2-1mp**. Read [USAGE.md](docs/USAGE.md), [FULL_RUN.md](docs/FULL_RUN.md), and [fairness_v2_2_1mp.json](configs/evaluation/fairness_v2_2_1mp.json). The user authorized implementation, minimal correctness samples, current documentation cleanup, and commit/push. Whole-release execution uses 1,084 sources / 3,872 units, seven fixed methods and ten settings, reported together rather than as separate dev/test rows. Do not interpret smoke success as completed full evaluation; [RESULTS.md](docs/RESULTS.md) must reflect actual receipts.
 

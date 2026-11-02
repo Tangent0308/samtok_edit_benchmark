@@ -1,6 +1,6 @@
 # MIRA 外部泛化评测
 
-本分支从 `v2branch@d04c1a7` 增加独立的 `samtok_benchmark.external_mira` 模块，比较 SITEdit、Qwen-Image-2.1、Qwen-Image-Edit-2511、RePlan 和 MIRAGE。已下载完整数据并完成真实 GPU / GPT-5.4 小样本验证，证据见 [MIRA_SMOKE.md](MIRA_SMOKE.md)。全量正式实验尚未执行。
+本分支从 `v2branch@d04c1a7` 增加独立的 `samtok_benchmark.external_mira` 模块，比较 SITEdit、Qwen-Image-2.1、Qwen-Image-Edit-2511、RePlan 和 MIRAGE。已下载完整数据并完成真实 GPU / GPT-5.4 小样本验证，证据见 [MIRA_SMOKE.md](MIRA_SMOKE.md)。用户随后批准全量运行，当前入口、审计证据与状态读取方式见 [MIRA_FULL_RUN.md](MIRA_FULL_RUN.md)。下文保留各阶段独立命令；运行中的目录不能另起一套并发 launcher。
 
 ## 1. 固定的数据与方法
 
@@ -83,7 +83,7 @@ MIRA_DATA=/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench
 
 可用 `--models qwen21 sitedit` 选方法，或 `--gpus 0` 顺序运行。本次只实际测试了 `001` 与 `002`；上面的 `003` 是供后续验证用的命令示例，未执行。
 
-正式评测命令如下，**未执行**。默认包含全部 200 源图、五个方法和每项一次生成；不带 `--smoke` 或 `--cases`：
+正式评测的独立生成命令如下。当前自动流水线已启动这个生成阶段；默认包含全部 200 源图、五个方法和每项一次生成，不带 `--smoke` 或 `--cases`。不要对运行中的目录重复启动：
 
 ```bash
 MIRA_FORMAL=/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira

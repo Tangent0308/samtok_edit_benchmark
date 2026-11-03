@@ -1,0 +1,181 @@
+{
+  "schema": "mira.reviewed.cases.v1",
+  "review_date": "2026-11-03",
+  "reviewer": "Assistant visual inspection; not independent human annotation",
+  "selection_note": "Purposive 18-candidate screen, then 12 examples selected for scene and failure-pattern diversity. All selected cases have five scored outputs; training overlap 138/175 and missing RePlan154 excluded. This cannot estimate failure-type frequency.",
+  "candidate_groups": {
+    "PQ_drop_PF_not_lower": [
+      "075",
+      "010",
+      "073",
+      "042",
+      "063"
+    ],
+    "PF_drop": [
+      "009",
+      "008",
+      "016",
+      "052",
+      "019"
+    ],
+    "Cons_drop": [
+      "013",
+      "068",
+      "072",
+      "043",
+      "007"
+    ],
+    "moderate_gap_quartiles": [
+      "164",
+      "024",
+      "130"
+    ]
+  },
+  "candidate_exclusions": {
+    "training_overlap": [
+      "138",
+      "175"
+    ],
+    "replan_no_output": [
+      "154"
+    ],
+    "previously_shown": [
+      "064",
+      "099",
+      "036",
+      "097"
+    ]
+  },
+  "candidate_rules": [
+    "Five largest PQ drops with PF not lower and Cons difference at least -1.",
+    "Five largest PF drops.",
+    "Five largest Cons drops.",
+    "Three quartile-position samples from per-image diagnostic gaps between -1.5 and -0.5.",
+    "Visually review all 18 candidates and retain 12 for scene/failure diversity. This is post-hoc diagnostic selection, not a population estimate."
+  ],
+  "screened_but_not_selected": {
+    "042": "Material/PQ-boundary and animal-replacement patterns already covered by 075,010,073; kept in candidate record.",
+    "063": "Repeated animal recolor/replacement binding pattern; 073 and 009 provide different scenes.",
+    "052": "Small nose-region differences are hard to judge at overview scale; avoided treating the PF gap alone as visual proof.",
+    "072": "Bird replacement/ribbon spill overlaps 073 and 043; omitted to keep the gallery to 12 cases.",
+    "007": "Clear material spill to first chair, but foreground ordinal spill already covered by 008/009 and a chair scene by 164.",
+    "024": "Umbrella/light omissions overlap the selected omission cases; 130 retained as a different moderate-gap scene."
+  },
+  "cases": [
+    {
+      "case_id": "075",
+      "category": "PQ 大幅下降，但需审查评分边界",
+      "visual": "五项编辑大多可辨认。左象出现大朵红花和额外绿叶；中间象变得很光滑、腿部链条等细节消失。原图中间象本来就是背面，不能将背面形状误认成正面畸形，也不能将指令要求的 smooth 本身视为错误。",
+      "comparison": "Qwen2.1 的花纹与皮肤更接近原照片；Qwen2511、MIRAGE 也生成了很光滑的象。RePlan 的高 PQ 伴随多项请求未实现，不能当作最好编辑。",
+      "judge": "SITEdit 的 PF/Cons 为 9.68/9.52，而 PQ 只有 2.40；PQ 理由称象的形体异常、花朵像贴片。具体哪些扣分超出了被要求的材质变化，需要人工复核，不能把该理由直接升级为已证实的机制。"
+    },
+    {
+      "case_id": "010",
+      "category": "属性扩散与删除附近的非请求变化",
+      "visual": "SITEdit 给多位女性添加墨镜；左侧删除附近剩余人物的手臂、姿态也改变。木质裙子是明确请求，不能把“木头不像布料”当作质量错误。",
+      "comparison": "Qwen2.1 也把墨镜放到另一位女性，并保留了应删除的最左女性；Qwen2511 的红发扩散到两人，RePlan 扩散得更广，MIRAGE 左侧人物接合明显不自然。",
+      "judge": "PQ 理由主要指左侧人物/手臂的异常，和肉眼可见问题相符；但 SC 关于“最左人物仍在”的说法涉及原始身份和固定区域，应逐人核对，不能仅按生成后的人数认定。"
+    },
+    {
+      "case_id": "073",
+      "category": "物体替换结构与编辑执行的权衡",
+      "visual": "SITEdit 右侧狗的身体很低、头颈和身体接合显得别扭；中间鹅的粉色和目标喙的红色等变化更贴近请求。",
+      "comparison": "Qwen2.1 的狗更像自然站立的狗，但粉色、红喙、删除等请求存在漏项或错位；MIRAGE 的狗形体也比 SITEdit 易辨认，仍有其他目标和尺度问题。",
+      "judge": "SITEdit PF 7.44 高于 Qwen2.1 的 2.96，但 PQ 3.20 低于 8.40；这是“做对更多项”和“生成结构好”不能合并为一个判断的例子。PQ 理由的头颈/动物结构问题与图中现象一致。"
+    },
+    {
+      "case_id": "009",
+      "category": "相邻实例的编辑关联错位",
+      "visual": "SITEdit 原图中央那辆摩托被抹除，粉色却落在右侧邻车；请求是中央车变粉、右邻车删除。第二辆的陶瓷质感也不明显。",
+      "comparison": "Qwen2.1 的变粉与删除位置更符合原始顺序，但它也把第二辆轮胎改白，车辆结构并不干净；Qwen2511、RePlan、MIRAGE 同样有不同程度的目标或形体问题。",
+      "judge": "PF 的差距与错位现象一致。PQ 理由指出车架、轮子结构异常；两边都有，不应把 Qwen2.1 当完全成功。尚未检查本例区域码，不能断言错在 Pass1 或 Pass2。"
+    },
+    {
+      "case_id": "008",
+      "category": "前景人物序号与属性绑定错误",
+      "visual": "按任务所指的五位前景男子计，SITEdit 给第 3 人蓝发、给第 2 人墨镜，而请求分别是第 5 人蓝发、第 3 人墨镜；第 2 人的上衣与领结还被额外上色。背景也有人，必须说明这里的计数口径。",
+      "comparison": "Qwen2.1 更接近蓝发/墨镜的指定前景对象，但第 4 人也出现墨镜，仍有额外编辑。MIRAGE 存在大面积模糊，RePlan 多项没有完成。",
+      "judge": "SITEdit PQ 8.40 甚至高于 Qwen2.1 的 7.20，但 PF 5.68 明显更低。这不是单纯画质退化，主要可见问题是对象—属性关系。区域码未复核。"
+    },
+    {
+      "case_id": "016",
+      "category": "同一目标的漏项和部件位置不对",
+      "visual": "SITEdit 雪和绿色可见，但最右羊身上的熔岩没做，黄色出现在头顶一带而非清晰覆盖两耳。删除左羊后的围栏修复也应查看细节。",
+      "comparison": "Qwen2.1、Qwen2511、MIRAGE 都能看到熔岩和黄色耳部；它们也有很强的合成质感或局部形体变化。RePlan 同样漏做熔岩。",
+      "judge": "SITEdit 的 PQ 较高不代表请求完成更好。Judge 对删除的理由把背景修补解释为“羊未删”，仅凭这一措辞不宜接受；本例最扎实的失败证据是熔岩漏做和耳部不对。"
+    },
+    {
+      "case_id": "019",
+      "category": "已有证据支持 Pass1 目标选择错误",
+      "visual": "SITEdit 击球手裤子仍是白色，最右背景坐着的人的腿部变蓝。捕手手中的替换物更像薄板；左后方背景人物衣服也有额外变化。",
+      "comparison": "Qwen2.1 和 Qwen2511 都把击球手裤子改蓝、完成更多前景请求，但小书本与手部细节仍非完美。RePlan 也改蓝裤子却漏掉其他请求；MIRAGE 发生明显模糊。",
+      "judge": "“击球手裤子未改蓝”的 PF 判断有图像依据。额外缓存检查进一步解释这个具体错目标：U1 解码区域落在最右背景腿部，最终也在那里变蓝；保存 token 与实际 S2 对应 U 行一致。",
+      "region": "019_U1"
+    },
+    {
+      "case_id": "013",
+      "category": "新增物体数量与尺度控制",
+      "visual": "要求在天空添加一个风筝，SITEdit 生成两个很大的风筝。替换马的姿态、尺度也发生改变，但从长颈鹿换成马本来会改变形状，不能单凭这一点判失败。",
+      "comparison": "Qwen2.1 只有一个较小风筝，却保留了要求删除的长颈鹿；RePlan 基本没有执行马和风筝替换/添加。其他模型也有紫色/项圈对象错位，不能只比较天空。",
+      "judge": "Cons/PQ 差距包含额外风筝和结构问题。Judge 关于删除/马仍有长颈鹿形状的文字应结合原始位置复核；本例最直观可靠的证据是“一个”变成“两只”。"
+    },
+    {
+      "case_id": "068",
+      "category": "属性扩散、颈部与躯干部位混淆",
+      "visual": "SITEdit 给左牛额外加了红色带，中间牛的红带放在躯干而非颈部；右后牛看不到要求的帽子。",
+      "comparison": "Qwen2.1 的中间颈圈位置更准确，但也没有清楚的后方帽子；Qwen2511、RePlan、MIRAGE 的帽子更可辨认，却有颈圈错给左牛或鹰替换不充分等问题。",
+      "judge": "此例三项中 Cons 落差最明显（4.32 对 8.16）。这与额外红带及位置问题相符，但不能仅凭全图判断区域码是否正确。"
+    },
+    {
+      "case_id": "043",
+      "category": "定位合理后仍有跨目标传播",
+      "visual": "SITEdit 给后方男子加了完整黄安全帽，红衣女性头上只有局部黄色物；木质面板仍留有银色中心。",
+      "comparison": "Qwen2.1、Qwen2511、MIRAGE 更接近把帽子限定到红衣女性。RePlan 把帽子放在面板上。Qwen2.1 的陶瓷白衣质感及手与面板的接合也不完美。",
+      "judge": "额外帽子和局部完成与 Cons/PF 理由一致。缓存 U2 解码区域覆盖红衣女性，且保存 token 接到正确 U2 行，说明不能简单归因于先定位了后方男子；具体注意力或训练机制仍未证实。",
+      "region": "043_U2"
+    },
+    {
+      "case_id": "164",
+      "category": "定位合理后的承载对象错误；中等差距",
+      "visual": "多数请求已呈现，最清楚的错误是白花贴在女性上衣，电脑没有花；这适合观察一个具体关联错误，不需要用极端崩坏图说明。",
+      "comparison": "Qwen2.1 的花在电脑屏幕，Qwen2511、RePlan、MIRAGE 也都落在电脑一带，但它们各有星星/椅子对象或形状改变。Qwen2.1 与 SITEdit 的大理石椅子形状都变了。",
+      "judge": "该项 PF 扣分有明确图像依据。缓存 U5 解码区域覆盖电脑，保存 token 与实际 U5 行一致，却把花生成到上衣；支持区域条件接入后仍未正确用于该项编辑的诊断，不足以断言具体 attention 原因。",
+      "region": "164_U5"
+    },
+    {
+      "case_id": "130",
+      "category": "遮挡目标漏删与改动幅度；中等差距",
+      "visual": "SITEdit 后方绿色瓶子仍在，罗勒叶覆盖披萨较大部分；油瓶、番茄酱瓶的文字/标签也有额外变化。",
+      "comparison": "Qwen2.1 同样没有干净地删除目标瓶，罗勒更多落在披萨旁；Qwen2511 把叶子加到另一盘，RePlan 漏改瓶色/材质，MIRAGE 叶子更贴近披萨但有模糊。",
+      "judge": "SITEdit PF 略高于 Qwen2.1，但 Cons/PQ 更低；不能说五项都比基线差。叶子多大才过度有判断空间，瓶子未删更直接，材质要求也不能用于惩罚一切标签变化。"
+    }
+  ],
+  "region_checks": [
+    {
+      "case_id": "164",
+      "unit_id": "U5"
+    },
+    {
+      "case_id": "043",
+      "unit_id": "U2"
+    },
+    {
+      "case_id": "019",
+      "unit_id": "U1"
+    }
+  ],
+  "source_evidence": [
+    {
+      "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_failure_comparisons_20261103/MANIFEST.json",
+      "sha256": "f4707918306a0c3c58e6fefc3fbf922c7668028fa13339119c0fa401314fa30b"
+    },
+    {
+      "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_failure_comparisons_20261103/candidate_selection.json",
+      "sha256": "c55c9016c7b6c3da6344b2cd4214e8b9c22ac8676d577570e972404776ba82fa"
+    },
+    {
+      "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_failure_comparisons_20261103/case_observations_zh.json",
+      "sha256": "063be061aeceac1d68437a380a3659422ace63569257525b0a19509979049431"
+    }
+  ]
+}

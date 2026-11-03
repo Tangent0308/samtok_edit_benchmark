@@ -1,0 +1,1127 @@
+{
+  "schema": "mira.documentation.previews.v1",
+  "date": "2026-11-03",
+  "report": {
+    "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_branch_review_20261103/REPORT.json",
+    "sha256": "6eae0f7e3cf0e85ac4974c87fe639c43dc011df0797364c378e1ddbebfb98dc9"
+  },
+  "analysis_script": {
+    "path": "/opt/tiger/tanyue/if-bench-mira/scripts/analyze_mira_results.py",
+    "sha256": "70f1199c0f95dc64587d21959a15c1a2d6a95f74c7552b10ae06be5e2c282467"
+  },
+  "selection": {
+    "path": "/opt/tiger/tanyue/if-bench-mira/configs/analysis/mira_cases_20261103.json",
+    "sha256": "7939d8dd0b490616b16cfd17cc52dce5b2acce485febeda5f9676cc85e25f89d"
+  },
+  "source_subsets": {
+    "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/overlap_audit/SOURCE_SUBSETS.json",
+    "sha256": "e00e9fa54a4c88813ccdbbf58f28b04b3e90b99d16493a30c3c6e267770c9e51"
+  },
+  "score_evidence": {
+    "qwen2511": {
+      "job_sha256": "31fa9baa6d1f20a1854485cb455ef60aa9db1aadf6bf3c709045cbae888751e9",
+      "judge_sha256": "b20b18211dafd43a6422e8937ec5646117b88b2aebce1bfcb2f40e05136e1675",
+      "scores_sha256": "e9d2d00b6b9ff88ffd817f873d210ac004a8d75cd1905c59c7cc32463baf7137"
+    },
+    "qwen21": {
+      "job_sha256": "9fdc1fcde07091608c6a0f2c08ae7df257eb0474b132d722a6458912b33ba19d",
+      "judge_sha256": "20a92dabe0b3006f214007e78ca170b93a597f44f6427b9d9cbed54cb3ed20a0",
+      "scores_sha256": "68bc791a5f2954d482340c4735023f2dcf8af85ab3f2a76e2c97247a32173f69"
+    },
+    "replan": {
+      "job_sha256": "8fcceb0558b9f2c7c682da2f4806e1e27fe0da14efc5c60005fdd1bfbf64a73d",
+      "judge_sha256": "a5b4e021515f35bc318fdf23a6feabcf8c807e0ba88b8202128711743835fcfb",
+      "scores_sha256": "efee699a9a04c1572dc532e11bab7324010407676db9047fdce9a678676f6202"
+    },
+    "mirage": {
+      "job_sha256": "71c586941a080ffa79fdab8b8c41a0008d7d32feea4bfc2d7bcf56f3d9d4f47a",
+      "judge_sha256": "24c54fc6f4d7c451c5164884368d12404a6d59c61eff827e58e6958c2d95e631",
+      "scores_sha256": "2999f92215f0de27be7f93cb665b822dd89a8b40bc76286f33bebab7efaa4bd4"
+    },
+    "sitedit": {
+      "job_sha256": "3a60ef94d389c2bf6c9fb4ae687bc88ddfa0f6549bdbfe005e0109cde520a04e",
+      "judge_sha256": "1374750165a1cce1019f96e54e41472be06e79717038fb6bbde4c7f75fcaedc6",
+      "scores_sha256": "ad4de6fcd3b5796c683c75b22f669e1b6a91815f80d6d3f7b56f3a5b1fd54107"
+    }
+  },
+  "components_198": {
+    "source_ids": [
+      "001",
+      "002",
+      "003",
+      "004",
+      "005",
+      "006",
+      "007",
+      "008",
+      "009",
+      "010",
+      "011",
+      "012",
+      "013",
+      "014",
+      "015",
+      "016",
+      "017",
+      "018",
+      "019",
+      "020",
+      "021",
+      "022",
+      "023",
+      "024",
+      "025",
+      "026",
+      "027",
+      "028",
+      "029",
+      "030",
+      "031",
+      "032",
+      "033",
+      "034",
+      "035",
+      "036",
+      "037",
+      "038",
+      "039",
+      "040",
+      "041",
+      "042",
+      "043",
+      "044",
+      "045",
+      "046",
+      "047",
+      "048",
+      "049",
+      "050",
+      "051",
+      "052",
+      "053",
+      "054",
+      "055",
+      "056",
+      "057",
+      "058",
+      "059",
+      "060",
+      "061",
+      "062",
+      "063",
+      "064",
+      "065",
+      "066",
+      "067",
+      "068",
+      "069",
+      "070",
+      "071",
+      "072",
+      "073",
+      "074",
+      "075",
+      "076",
+      "077",
+      "078",
+      "079",
+      "080",
+      "081",
+      "082",
+      "083",
+      "084",
+      "085",
+      "086",
+      "087",
+      "088",
+      "089",
+      "090",
+      "091",
+      "092",
+      "093",
+      "094",
+      "095",
+      "096",
+      "097",
+      "098",
+      "099",
+      "100",
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109",
+      "110",
+      "111",
+      "112",
+      "113",
+      "114",
+      "115",
+      "116",
+      "117",
+      "118",
+      "119",
+      "120",
+      "121",
+      "122",
+      "123",
+      "124",
+      "125",
+      "126",
+      "127",
+      "128",
+      "129",
+      "130",
+      "131",
+      "132",
+      "133",
+      "134",
+      "135",
+      "136",
+      "137",
+      "139",
+      "140",
+      "141",
+      "142",
+      "143",
+      "144",
+      "145",
+      "146",
+      "147",
+      "148",
+      "149",
+      "150",
+      "151",
+      "152",
+      "153",
+      "154",
+      "155",
+      "156",
+      "157",
+      "158",
+      "159",
+      "160",
+      "161",
+      "162",
+      "163",
+      "164",
+      "165",
+      "166",
+      "167",
+      "168",
+      "169",
+      "170",
+      "171",
+      "172",
+      "173",
+      "174",
+      "176",
+      "177",
+      "178",
+      "179",
+      "180",
+      "181",
+      "182",
+      "183",
+      "184",
+      "185",
+      "186",
+      "187",
+      "188",
+      "189",
+      "190",
+      "191",
+      "192",
+      "193",
+      "194",
+      "195",
+      "196",
+      "197",
+      "198",
+      "199",
+      "200"
+    ],
+    "n": 198,
+    "metrics": {
+      "prompt_following": {
+        "sitedit_mean": 7.607676767676769,
+        "qwen21_mean": 7.450909090909092,
+        "paired_mean_difference": 0.15676767676767678,
+        "difference_ci95": [
+          -0.09252525252525251,
+          0.40848484848484845
+        ],
+        "sitedit_lower_count": 101,
+        "tie_count": 4,
+        "sitedit_higher_count": 93,
+        "median_difference": -0.07999999999999918
+      },
+      "consistency": {
+        "sitedit_mean": 7.615757575757576,
+        "qwen21_mean": 7.758787878787879,
+        "paired_mean_difference": -0.143030303030303,
+        "difference_ci95": [
+          -0.37737373737373736,
+          0.09616161616161616
+        ],
+        "sitedit_lower_count": 101,
+        "tie_count": 8,
+        "sitedit_higher_count": 89,
+        "median_difference": -0.08000000000000007
+      },
+      "perceptual_quality": {
+        "sitedit_mean": 6.252525252525253,
+        "qwen21_mean": 7.268686868686868,
+        "paired_mean_difference": -1.0161616161616165,
+        "difference_ci95": [
+          -1.2606060606060607,
+          -0.7636363636363639
+        ],
+        "sitedit_lower_count": 136,
+        "tie_count": 30,
+        "sitedit_higher_count": 32,
+        "median_difference": -0.7999999999999998
+      }
+    },
+    "bootstrap": {
+      "unit": "source image, paired",
+      "replicates": 10000,
+      "seed": 20261103,
+      "interval": "percentile 95%",
+      "scope": "Existing single generation and Judge score; does not include repeated-generation or repeated-Judge variance."
+    }
+  },
+  "cases": [
+    {
+      "case_id": "073",
+      "category": "物体替换结构与编辑执行的权衡",
+      "visual": "SITEdit 右侧狗的身体很低、头颈和身体接合显得别扭；中间鹅的粉色和目标喙的红色等变化更贴近请求。",
+      "comparison": "Qwen2.1 的狗更像自然站立的狗，但粉色、红喙、删除等请求存在漏项或错位；MIRAGE 的狗形体也比 SITEdit 易辨认，仍有其他目标和尺度问题。",
+      "judge": "SITEdit PF 7.44 高于 Qwen2.1 的 2.96，但 PQ 3.20 低于 8.40；这是“做对更多项”和“生成结构好”不能合并为一个判断的例子。PQ 理由的头颈/动物结构问题与图中现象一致。",
+      "instruction": "Add a miniature scarf to the neck of the leftmost goose, and Change the color of the goose in the rear center near the planks to pink, and Change the color of the beak of the center goose with its head lowered to red, and Remove the foreground goose in the middle-right, and Replace the rightmost goose with a dog",
+      "image_paths": {
+        "source": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/073.jpg",
+        "qwen2511": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/073/output.png",
+        "qwen21": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/073/output.png",
+        "replan": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/073/output.png",
+        "mirage": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/073/output.png",
+        "sitedit": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/073/output.png"
+      },
+      "scores": {
+        "qwen2511": {
+          "prompt_following": 5.840000000000001,
+          "consistency": 5.840000000000001,
+          "perceptual_quality": 6.8
+        },
+        "qwen21": {
+          "prompt_following": 2.96,
+          "consistency": 2.6399999999999997,
+          "perceptual_quality": 8.4
+        },
+        "replan": {
+          "prompt_following": 2.3200000000000003,
+          "consistency": 3.28,
+          "perceptual_quality": 4.4
+        },
+        "mirage": {
+          "prompt_following": 7.280000000000001,
+          "consistency": 6.640000000000001,
+          "perceptual_quality": 3.6
+        },
+        "sitedit": {
+          "prompt_following": 7.44,
+          "consistency": 6.480000000000001,
+          "perceptual_quality": 3.2
+        }
+      },
+      "evidence": [
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/073.jpg",
+          "sha256": "d4e3aeb21f2a6f2101936bf064f43667fcec3a9485164e3b188ee3871d837c37"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen2511/JOB.json",
+          "sha256": "31fa9baa6d1f20a1854485cb455ef60aa9db1aadf6bf3c709045cbae888751e9"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/073/result.json",
+          "sha256": "251d7baa7698cc31cd56562132c23cbae1a10522840187d502c0dd547fc6d453"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/073/output.png",
+          "sha256": "9cc48576f0334b9cf5d05daefa0c825042001e868f0d9c205347195d7ecdbc9f"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen21/JOB.json",
+          "sha256": "9fdc1fcde07091608c6a0f2c08ae7df257eb0474b132d722a6458912b33ba19d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/073/result.json",
+          "sha256": "873bebe7f4b68548b03f4696e51718882d8fe5313e8abf2d7b69b9ab99d6e662"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/073/output.png",
+          "sha256": "00d33775aa1f09ca56102c59b36874ae16273f9d6ba93e6feb09fe6adaaa6a10"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/replan/JOB.json",
+          "sha256": "8fcceb0558b9f2c7c682da2f4806e1e27fe0da14efc5c60005fdd1bfbf64a73d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/073/result.json",
+          "sha256": "e24155febb702941d3031beda53481ddd7e3d205c98ac4217c0ca8ac462fe40c"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/073/output.png",
+          "sha256": "6d2fffcd7825b0f5162e30df70eac0a4d54a1a9171225841bbf1f701161fc6e1"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/mirage/JOB.json",
+          "sha256": "71c586941a080ffa79fdab8b8c41a0008d7d32feea4bfc2d7bcf56f3d9d4f47a"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/073/result.json",
+          "sha256": "3d467a866cbb7ba9b7e4c0db470b8ed2ba399dc3a2a47e4b8d7f7bd92003df77"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/073/output.png",
+          "sha256": "40c1901e41200bdbe593a2e3973eb772905aaaef208525fc1f6b1ba1f1fbcc09"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/sitedit/JOB.json",
+          "sha256": "3a60ef94d389c2bf6c9fb4ae687bc88ddfa0f6549bdbfe005e0109cde520a04e"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/073/result.json",
+          "sha256": "a9b1c031e5d2ff143a6e832847e038ab34021057e40710559cd59b94ae1c6c4f"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/073/output.png",
+          "sha256": "0fe63fd2daa725cb01e6d5f7d3316de8ac25180e8ccb4462df24f964a8a4b8c4"
+        }
+      ]
+    },
+    {
+      "case_id": "016",
+      "category": "同一目标的漏项和部件位置不对",
+      "visual": "SITEdit 雪和绿色可见，但最右羊身上的熔岩没做，黄色出现在头顶一带而非清晰覆盖两耳。删除左羊后的围栏修复也应查看细节。",
+      "comparison": "Qwen2.1、Qwen2511、MIRAGE 都能看到熔岩和黄色耳部；它们也有很强的合成质感或局部形体变化。RePlan 同样漏做熔岩。",
+      "judge": "SITEdit 的 PQ 较高不代表请求完成更好。Judge 对删除的理由把背景修补解释为“羊未删”，仅凭这一措辞不宜接受；本例最扎实的失败证据是熔岩漏做和耳部不对。",
+      "instruction": "Remove the leftmost sheep, and Add some snow onto the body of the second sheep from the left, and Change the color of the second sheep from the right to green, and Add some lava onto the body of the rightmost sheep, and Change the color of the ears of the rightmost sheep to yellow.",
+      "image_paths": {
+        "source": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/016.jpg",
+        "qwen2511": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/016/output.png",
+        "qwen21": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/016/output.png",
+        "replan": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/016/output.png",
+        "mirage": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/016/output.png",
+        "sitedit": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/016/output.png"
+      },
+      "scores": {
+        "qwen2511": {
+          "prompt_following": 7.6800000000000015,
+          "consistency": 6.4799999999999995,
+          "perceptual_quality": 4.8
+        },
+        "qwen21": {
+          "prompt_following": 7.5200000000000005,
+          "consistency": 6.3999999999999995,
+          "perceptual_quality": 6.0
+        },
+        "replan": {
+          "prompt_following": 5.76,
+          "consistency": 3.6,
+          "perceptual_quality": 4.4
+        },
+        "mirage": {
+          "prompt_following": 7.6,
+          "consistency": 4.959999999999999,
+          "perceptual_quality": 4.0
+        },
+        "sitedit": {
+          "prompt_following": 3.9200000000000004,
+          "consistency": 4.08,
+          "perceptual_quality": 7.2
+        }
+      },
+      "evidence": [
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/016.jpg",
+          "sha256": "d38edd98a143de661ec8ad4fecb3da4782b06c48db4bd20f83fc3b91a4993c5e"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen2511/JOB.json",
+          "sha256": "31fa9baa6d1f20a1854485cb455ef60aa9db1aadf6bf3c709045cbae888751e9"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/016/result.json",
+          "sha256": "25414eb17c216cf746079bb19cc14a989bae28e062421a12ba4b3d6f2320d11a"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/016/output.png",
+          "sha256": "684df3a513be7e398274aac8977e0d8a1efe468a602ce9503b042ad4cd3bae3b"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen21/JOB.json",
+          "sha256": "9fdc1fcde07091608c6a0f2c08ae7df257eb0474b132d722a6458912b33ba19d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/016/result.json",
+          "sha256": "d80aa31958d5ef8e15729f4b40171ec517770b3ce5359b43c23591d5429a614b"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/016/output.png",
+          "sha256": "c000e5b4a352784424a7ccf303fdac30fa160546f8e07db69ebaded1f2f4550b"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/replan/JOB.json",
+          "sha256": "8fcceb0558b9f2c7c682da2f4806e1e27fe0da14efc5c60005fdd1bfbf64a73d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/016/result.json",
+          "sha256": "76c932f220be8703a405b9fe2b4d5aedf39497e74df63570befb5f8366c39138"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/016/output.png",
+          "sha256": "4eac1a6c6d3b039bb8a99ab26692db233d60a8b876b2ab179abf88e592e450b8"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/mirage/JOB.json",
+          "sha256": "71c586941a080ffa79fdab8b8c41a0008d7d32feea4bfc2d7bcf56f3d9d4f47a"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/016/result.json",
+          "sha256": "1ad2043c630558626875656c320d084e86d8854bc713c009cfa85842fd1bc9cc"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/016/output.png",
+          "sha256": "a2854db7bd3251670d15e9efd195f3faf97e3339defb388f7198c96516eaf972"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/sitedit/JOB.json",
+          "sha256": "3a60ef94d389c2bf6c9fb4ae687bc88ddfa0f6549bdbfe005e0109cde520a04e"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/016/result.json",
+          "sha256": "fe4f042ae9d6be5e28ecd8e9d34a9e405d272507794ab6f07778998d2263c937"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/016/output.png",
+          "sha256": "c4ddf14b63cc521d9b8284ee53ec12b5b80bbfa99bd1c4facd440b8d13859442"
+        }
+      ]
+    },
+    {
+      "case_id": "019",
+      "category": "已有证据支持 Pass1 目标选择错误",
+      "visual": "SITEdit 击球手裤子仍是白色，最右背景坐着的人的腿部变蓝。捕手手中的替换物更像薄板；左后方背景人物衣服也有额外变化。",
+      "comparison": "Qwen2.1 和 Qwen2511 都把击球手裤子改蓝、完成更多前景请求，但小书本与手部细节仍非完美。RePlan 也改蓝裤子却漏掉其他请求；MIRAGE 发生明显模糊。",
+      "judge": "“击球手裤子未改蓝”的 PF 判断有图像依据。额外缓存检查进一步解释这个具体错目标：U1 解码区域落在最右背景腿部，最终也在那里变蓝；保存 token 与实际 S2 对应 U 行一致。",
+      "region": "019_U1",
+      "instruction": "Change the color of the pants of the rightmost person wearing a white T-shirt to blue, and Change the material of the baseball bat in the hands of the rightmost person wearing a white T-shirt to wood, and Change the color of the upper garment of the leftmost person to white, and Change the color of the helmet of the middle person to white, and Replace the glove in the hands of the middle person with a book.",
+      "image_paths": {
+        "source": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/019.jpg",
+        "qwen2511": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/019/output.png",
+        "qwen21": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/019/output.png",
+        "replan": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/019/output.png",
+        "mirage": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/019/output.png",
+        "sitedit": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/019/output.png"
+      },
+      "scores": {
+        "qwen2511": {
+          "prompt_following": 9.76,
+          "consistency": 9.440000000000001,
+          "perceptual_quality": 5.2
+        },
+        "qwen21": {
+          "prompt_following": 9.92,
+          "consistency": 9.76,
+          "perceptual_quality": 7.2
+        },
+        "replan": {
+          "prompt_following": 4.4799999999999995,
+          "consistency": 8.48,
+          "perceptual_quality": 7.6
+        },
+        "mirage": {
+          "prompt_following": 8.56,
+          "consistency": 8.319999999999999,
+          "perceptual_quality": 2.4
+        },
+        "sitedit": {
+          "prompt_following": 6.56,
+          "consistency": 8.8,
+          "perceptual_quality": 7.2
+        }
+      },
+      "evidence": [
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/019.jpg",
+          "sha256": "854c60de96d0adf7d2864a3026195dad58f30cde7d694f743640b65da8ed2697"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen2511/JOB.json",
+          "sha256": "31fa9baa6d1f20a1854485cb455ef60aa9db1aadf6bf3c709045cbae888751e9"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/019/result.json",
+          "sha256": "4da1018f3c5e07a586cf799f8bd43d7f715a5d110cedd29f68b5734dafb85387"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/019/output.png",
+          "sha256": "15c0e78bb6553cef10b010091da9728e21e727f78f9a5b61bd8cdfb57ee801c4"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen21/JOB.json",
+          "sha256": "9fdc1fcde07091608c6a0f2c08ae7df257eb0474b132d722a6458912b33ba19d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/019/result.json",
+          "sha256": "446488085e7e1d6c4daf86dfa87fa4642e3678fedf4b61773155b95c99788b1a"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/019/output.png",
+          "sha256": "bae47c669bf9903ddcc722e1cd602e7c7a51c8ff86f8cd514443589e78e69ef3"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/replan/JOB.json",
+          "sha256": "8fcceb0558b9f2c7c682da2f4806e1e27fe0da14efc5c60005fdd1bfbf64a73d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/019/result.json",
+          "sha256": "db50ad0883a49d2c5fabb836b93bc98308f4372b5dc7f21fcb4f9f9606d903ff"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/019/output.png",
+          "sha256": "593e631bceff2bd62983ec6fc35f3ec33ee59a6eb90adb9f016cb006f50b96ec"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/mirage/JOB.json",
+          "sha256": "71c586941a080ffa79fdab8b8c41a0008d7d32feea4bfc2d7bcf56f3d9d4f47a"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/019/result.json",
+          "sha256": "d96907ec24db53cc25859fb0ad801f900003be74853c110b8386b49b77192212"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/019/output.png",
+          "sha256": "1bb25a7701bae3c6c9eedf9294008b54cbeee787aa42943ab5064b54979eb176"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/sitedit/JOB.json",
+          "sha256": "3a60ef94d389c2bf6c9fb4ae687bc88ddfa0f6549bdbfe005e0109cde520a04e"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/019/result.json",
+          "sha256": "5fc8139a992790a6dbb2ed336c2efac0c2a48f11d73875e5d5535e9fa97283fc"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/019/output.png",
+          "sha256": "ddbbd763eeace4aaa748f752cde62ddd214947d83a16c5b2ddc578036b3c4670"
+        }
+      ]
+    },
+    {
+      "case_id": "043",
+      "category": "定位合理后仍有跨目标传播",
+      "visual": "SITEdit 给后方男子加了完整黄安全帽，红衣女性头上只有局部黄色物；木质面板仍留有银色中心。",
+      "comparison": "Qwen2.1、Qwen2511、MIRAGE 更接近把帽子限定到红衣女性。RePlan 把帽子放在面板上。Qwen2.1 的陶瓷白衣质感及手与面板的接合也不完美。",
+      "judge": "额外帽子和局部完成与 Cons/PF 理由一致。缓存 U2 解码区域覆盖红衣女性，且保存 token 接到正确 U2 行，说明不能简单归因于先定位了后方男子；具体注意力或训练机制仍未证实。",
+      "region": "043_U2",
+      "instruction": "Change the man at the far left to wear a bright red shirt, and Add a yellow safety helmet to the seated woman second from the left wearing a red shirt, and Change the man second from the right to wear a glossy ceramic white shirt, and Change the woman at the far right to have jet-black hair, and Change the large silver detector panel spanning the center foreground to wood.",
+      "image_paths": {
+        "source": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/043.jpg",
+        "qwen2511": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/043/output.png",
+        "qwen21": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/043/output.png",
+        "replan": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/043/output.png",
+        "mirage": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/043/output.png",
+        "sitedit": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/043/output.png"
+      },
+      "scores": {
+        "qwen2511": {
+          "prompt_following": 9.360000000000001,
+          "consistency": 7.92,
+          "perceptual_quality": 8.8
+        },
+        "qwen21": {
+          "prompt_following": 9.360000000000001,
+          "consistency": 9.280000000000001,
+          "perceptual_quality": 8.4
+        },
+        "replan": {
+          "prompt_following": 5.92,
+          "consistency": 4.16,
+          "perceptual_quality": 8.8
+        },
+        "mirage": {
+          "prompt_following": 9.76,
+          "consistency": 9.440000000000001,
+          "perceptual_quality": 7.6
+        },
+        "sitedit": {
+          "prompt_following": 7.6,
+          "consistency": 5.760000000000001,
+          "perceptual_quality": 7.6
+        }
+      },
+      "evidence": [
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/043.jpg",
+          "sha256": "22dd3bc835284b42abbc8fa1ad47c0d79ac1f1de5d03a0009a15002414fe2702"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen2511/JOB.json",
+          "sha256": "31fa9baa6d1f20a1854485cb455ef60aa9db1aadf6bf3c709045cbae888751e9"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/043/result.json",
+          "sha256": "70ce0e33bde9855002cd341a807cf785c3b0f2ee896bb636d66a598151f4f95f"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/043/output.png",
+          "sha256": "c2ee35a2977406b7e19159b2681988bd71a5f15323b61f0749cba9baac30e86b"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen21/JOB.json",
+          "sha256": "9fdc1fcde07091608c6a0f2c08ae7df257eb0474b132d722a6458912b33ba19d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/043/result.json",
+          "sha256": "a178d78f643a9a0c6569f203faeed6f448f7886a803de73a6516adaab07b3212"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/043/output.png",
+          "sha256": "837a452fb6be6c1c7faaec780dd8de7ef25cc7f4b556c06f29efed2e6d217355"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/replan/JOB.json",
+          "sha256": "8fcceb0558b9f2c7c682da2f4806e1e27fe0da14efc5c60005fdd1bfbf64a73d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/043/result.json",
+          "sha256": "464eba0009c81d0d01ae797b3e5c5874b61805c279bca9ed754675a309f5e466"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/043/output.png",
+          "sha256": "fdcd2f0ae44ef45728e35c8435de0b6156023d78d1b5c97f1a2b4aa719bc06ae"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/mirage/JOB.json",
+          "sha256": "71c586941a080ffa79fdab8b8c41a0008d7d32feea4bfc2d7bcf56f3d9d4f47a"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/043/result.json",
+          "sha256": "b25c95be274d96602ea74a9c753b6009504333800ce3e974c9d935ca23b831aa"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/043/output.png",
+          "sha256": "90ce7020e107ed12b3af2238edf5dae0cb9053ca021391caa3ba32ed7df9ab94"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/sitedit/JOB.json",
+          "sha256": "3a60ef94d389c2bf6c9fb4ae687bc88ddfa0f6549bdbfe005e0109cde520a04e"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/043/result.json",
+          "sha256": "fcbece780dc684f2f29ff132dc325d05d1d6d377d2ba6f420ec99bd26a394dbe"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/043/output.png",
+          "sha256": "40cb18545210149d5a4c4bb2d2ad7d4007d3ae698aab30364396bcd9afbe282c"
+        }
+      ]
+    },
+    {
+      "case_id": "164",
+      "category": "定位合理后的承载对象错误；中等差距",
+      "visual": "多数请求已呈现，最清楚的错误是白花贴在女性上衣，电脑没有花；这适合观察一个具体关联错误，不需要用极端崩坏图说明。",
+      "comparison": "Qwen2.1 的花在电脑屏幕，Qwen2511、RePlan、MIRAGE 也都落在电脑一带，但它们各有星星/椅子对象或形状改变。Qwen2.1 与 SITEdit 的大理石椅子形状都变了。",
+      "judge": "该项 PF 扣分有明确图像依据。缓存 U5 解码区域覆盖电脑，保存 token 与实际 U5 行一致，却把花生成到上衣；支持区域条件接入后仍未正确用于该项编辑的诊断，不足以断言具体 attention 原因。",
+      "region": "164_U5",
+      "instruction": "Change the material of the leftmost wicker chair occupied by the woman looking to the left to marble, and Change the color of the cushion on the empty wicker chair with a white cushion against the fence to blue, and Add a yellow star pattern to the wicker chair at the back right partly hidden behind the woman wearing glasses, and Add a red cushion against the backrest of the green padded chair occupied by the woman using the laptop, and Add a white flower sticker onto the laptop resting on the lap of the woman.",
+      "image_paths": {
+        "source": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/164.jpg",
+        "qwen2511": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/164/output.png",
+        "qwen21": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/164/output.png",
+        "replan": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/164/output.png",
+        "mirage": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/164/output.png",
+        "sitedit": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/164/output.png"
+      },
+      "scores": {
+        "qwen2511": {
+          "prompt_following": 7.359999999999999,
+          "consistency": 6.639999999999999,
+          "perceptual_quality": 8.4
+        },
+        "qwen21": {
+          "prompt_following": 9.84,
+          "consistency": 9.6,
+          "perceptual_quality": 8.0
+        },
+        "replan": {
+          "prompt_following": 2.4,
+          "consistency": 6.159999999999999,
+          "perceptual_quality": 7.2
+        },
+        "mirage": {
+          "prompt_following": 7.44,
+          "consistency": 6.720000000000001,
+          "perceptual_quality": 4.4
+        },
+        "sitedit": {
+          "prompt_following": 7.92,
+          "consistency": 9.76,
+          "perceptual_quality": 7.2
+        }
+      },
+      "evidence": [
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark/164.jpg",
+          "sha256": "a64293cb5d4bfa0b1e6e1c0603f7a4f9892afd90f353c9ed0b250449818d5d36"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen2511/JOB.json",
+          "sha256": "31fa9baa6d1f20a1854485cb455ef60aa9db1aadf6bf3c709045cbae888751e9"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/164/result.json",
+          "sha256": "dec0c17257f396a2fecedb2dee1ccbb9c5b2bcaf1d548c8c37c0914ba9a54087"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen2511/edit/164/output.png",
+          "sha256": "64ccdaf6998bbb843f63b84a51433f95eaeddf97c445bb1e844f5847cadd277c"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/qwen21/JOB.json",
+          "sha256": "9fdc1fcde07091608c6a0f2c08ae7df257eb0474b132d722a6458912b33ba19d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/164/result.json",
+          "sha256": "82d9c5e7cdd12ed12617bdf77c4750e750554f586d9b1ac150c0ee3496554b16"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/qwen21/edit/164/output.png",
+          "sha256": "62f859c0cc45298d3a3c7f01e37522d0509e7e027b1845b63e9e5abb880c15ee"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/replan/JOB.json",
+          "sha256": "8fcceb0558b9f2c7c682da2f4806e1e27fe0da14efc5c60005fdd1bfbf64a73d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/164/result.json",
+          "sha256": "06590228726a68f22fc99ab42890a88b0e964d9ec085abe967b921d33f6d5827"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/replan/edit/164/output.png",
+          "sha256": "ecc8536fe9c12069ff1f3806e34051c07d1615869b86062e76e0f75986fec280"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/mirage/JOB.json",
+          "sha256": "71c586941a080ffa79fdab8b8c41a0008d7d32feea4bfc2d7bcf56f3d9d4f47a"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/164/result.json",
+          "sha256": "9a15cb4db926310d932568a2f5702b05b966f4d02b78a60d1363f26261b6676f"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/mirage/edit/164/output.png",
+          "sha256": "8b9c2d801285893101ed3e06bcbe403c1bbb4b294573796f3955593255ae5abb"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/scores_gpt54_001/sitedit/JOB.json",
+          "sha256": "3a60ef94d389c2bf6c9fb4ae687bc88ddfa0f6549bdbfe005e0109cde520a04e"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/164/result.json",
+          "sha256": "5811c0a4d9e069923f17f8720852e2fdcb4c1236a606fd7be086156dfe17c3f6"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/164/output.png",
+          "sha256": "ee698ac9eb51b1adfaf3486ae7da8eb5157aec3253b5ac77f5be98dd29965310"
+        }
+      ]
+    }
+  ],
+  "region_checks": [
+    {
+      "case_id": "164",
+      "unit_id": "U5",
+      "iou": 0.9173156801661475,
+      "actual_instruction_line": "U5: Add a white flower sticker onto the laptop resting on the lap of the woman <|mt_start|><|mt_0221|><|mt_0309|><|mt_end|>.",
+      "saved_token_binding_verified": true,
+      "instruction": "Add a white flower sticker onto the laptop resting on the lap of the woman.",
+      "source_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/164/source.png",
+      "mask_path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/164/U5.png",
+      "output_path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/164/output.png",
+      "geometry": {
+        "policy_digest": "0f6d19dbe7de299cd01bfebe96a6fb258e7b67cc200b44ceeb407b9886e4681b",
+        "source_size": [
+          640,
+          427
+        ],
+        "content_size": [
+          1247,
+          832
+        ],
+        "canvas_size": [
+          1248,
+          832
+        ],
+        "content_box": [
+          0,
+          0,
+          1247,
+          832
+        ],
+        "scale_xy": [
+          1.9484375,
+          1.9484777517564402
+        ],
+        "offset_xy": [
+          0,
+          0
+        ]
+      },
+      "evidence": [
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/164/result.json",
+          "sha256": "6b2b58b7262e1cb308d6ec40b031f95f323e74b66f2154a3ffe7accd6cb5fb52"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/164/call.json",
+          "sha256": "59dd9c766a13ddfc5980f4589aa594c60f5db1641ef7e6b6ac350c5daf346bce"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/164/public.json",
+          "sha256": "09088c8e7e622e1c35a5b2ba5545c672844cd37c460e29185a55543295ab3fc1"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/164/source.png",
+          "sha256": "fef5a1d494084ef4107578bc92b7207f53e586eb44860a3ccd79c9d2a2882259"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/164/U5.png",
+          "sha256": "728a4c58872c6ea55c952e24cfcf751f21cb154fe49acd6116f2fba4c0dda8ef"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/private/evaluation.json",
+          "sha256": "f99a37104f65975a199871fc904b67b56f0f0d47b1cccb0604bae754fdf37617"
+        }
+      ],
+      "policy": "PIL polygon union; crop cached mask to recorded content_box, then NEAREST resize to canonical source_size. Offline diagnostic only; decoded masks and GT are not editor inputs."
+    },
+    {
+      "case_id": "043",
+      "unit_id": "U2",
+      "iou": 0.9058680580373097,
+      "actual_instruction_line": "U2: Add a yellow safety helmet to the seated woman second from the left wearing a red shirt <|mt_start|><|mt_0203|><|mt_0473|><|mt_end|>",
+      "saved_token_binding_verified": true,
+      "instruction": "Add a yellow safety helmet to the seated woman second from the left wearing a red shirt",
+      "source_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/043/source.png",
+      "mask_path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/043/U2.png",
+      "output_path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/043/output.png",
+      "geometry": {
+        "policy_digest": "0f6d19dbe7de299cd01bfebe96a6fb258e7b67cc200b44ceeb407b9886e4681b",
+        "source_size": [
+          960,
+          640
+        ],
+        "content_size": [
+          1248,
+          832
+        ],
+        "canvas_size": [
+          1248,
+          832
+        ],
+        "content_box": [
+          0,
+          0,
+          1248,
+          832
+        ],
+        "scale_xy": [
+          1.3,
+          1.3
+        ],
+        "offset_xy": [
+          0,
+          0
+        ]
+      },
+      "evidence": [
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/043/result.json",
+          "sha256": "f851facdb2512d46a323f1f899043327d490a83d5b33cb56cf4ff1422521d432"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/043/call.json",
+          "sha256": "af7b32c74824dfdc0e6e00eeb87ce3053023321fd4047a456db06846cda0abcd"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/043/public.json",
+          "sha256": "be3742691e0d552ed728ee949ae10d859cb9a8334f924b843b49c8e3d2a86a38"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/043/source.png",
+          "sha256": "a223fe0aad7a83137b40de1363bbfd0dc62e5ab388c9217a48ca40253aca5515"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/043/U2.png",
+          "sha256": "0bf78a12a146c3210b619f34c772e38adc0cf415de9deda8db88b4b5259d0f82"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/private/evaluation.json",
+          "sha256": "f99a37104f65975a199871fc904b67b56f0f0d47b1cccb0604bae754fdf37617"
+        }
+      ],
+      "policy": "PIL polygon union; crop cached mask to recorded content_box, then NEAREST resize to canonical source_size. Offline diagnostic only; decoded masks and GT are not editor inputs."
+    },
+    {
+      "case_id": "019",
+      "unit_id": "U1",
+      "iou": 0.0,
+      "actual_instruction_line": "U1: Change the color of the pants of the rightmost person wearing a white T-shirt <|mt_start|><|mt_0048|><|mt_0343|><|mt_end|> to blue",
+      "saved_token_binding_verified": true,
+      "instruction": "Change the color of the pants of the rightmost person wearing a white T-shirt to blue",
+      "source_path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/019/source.png",
+      "mask_path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/019/U1.png",
+      "output_path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/019/output.png",
+      "geometry": {
+        "policy_digest": "0f6d19dbe7de299cd01bfebe96a6fb258e7b67cc200b44ceeb407b9886e4681b",
+        "source_size": [
+          500,
+          333
+        ],
+        "content_size": [
+          1248,
+          831
+        ],
+        "canvas_size": [
+          1248,
+          832
+        ],
+        "content_box": [
+          0,
+          0,
+          1248,
+          831
+        ],
+        "scale_xy": [
+          2.496,
+          2.4954954954954953
+        ],
+        "offset_xy": [
+          0,
+          0
+        ]
+      },
+      "evidence": [
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/019/result.json",
+          "sha256": "b595c75bb727f9f9ecba0c3e5651c42067999cbfd89ceec1e9ce1b7be62fde39"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/edit/019/call.json",
+          "sha256": "b55951020b620aded066c00567be4908eba04ad544f4d153e144a6ecbb871d76"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/019/public.json",
+          "sha256": "f5587ac36087949f55d1d52c765801affd15425ef4f0fc3eec53a79693a64280"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/public/019/source.png",
+          "sha256": "550326e22bb82faa755af1d9d8e3f369956072ac3fa621299963ac494d75a80d"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/run_001/sitedit/tokens/019/U1.png",
+          "sha256": "303ea2b292f4fb0ea8756b973efda22ec11a5326f7f0945f2776464693bffb38"
+        },
+        {
+          "path": "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_bundle/private/evaluation.json",
+          "sha256": "f99a37104f65975a199871fc904b67b56f0f0d47b1cccb0604bae754fdf37617"
+        }
+      ],
+      "policy": "PIL polygon union; crop cached mask to recorded content_box, then NEAREST resize to canonical source_size. Offline diagnostic only; decoded masks and GT are not editor inputs."
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/assets/mira/case_073_all_models.jpg",
+      "sha256": "1bce01ca26aa58e549eebc8686e4130e4cc72c46cc226cad0975c3e2693b57a9",
+      "bytes": 622384,
+      "original_preview": {
+        "path": "/opt/tiger/tanyue/visualization_tmp/MIRA_branch_review_20261103/case_073_all_models.jpg",
+        "sha256": "1bce01ca26aa58e549eebc8686e4130e4cc72c46cc226cad0975c3e2693b57a9"
+      }
+    },
+    {
+      "path": "docs/assets/mira/case_016_all_models.jpg",
+      "sha256": "3f8fe3ac3ac68ee9f676bc6062831d5e9072621bf1a02a96938daab0cb537a50",
+      "bytes": 695956,
+      "original_preview": {
+        "path": "/opt/tiger/tanyue/visualization_tmp/MIRA_branch_review_20261103/case_016_all_models.jpg",
+        "sha256": "3f8fe3ac3ac68ee9f676bc6062831d5e9072621bf1a02a96938daab0cb537a50"
+      }
+    },
+    {
+      "path": "docs/assets/mira/case_019_all_models.jpg",
+      "sha256": "757a55bee1942adec3e64a54ca622ce02f0a9b782e21fbf7088357a960d2f8d3",
+      "bytes": 525468,
+      "original_preview": {
+        "path": "/opt/tiger/tanyue/visualization_tmp/MIRA_branch_review_20261103/case_019_all_models.jpg",
+        "sha256": "757a55bee1942adec3e64a54ca622ce02f0a9b782e21fbf7088357a960d2f8d3"
+      }
+    },
+    {
+      "path": "docs/assets/mira/case_043_all_models.jpg",
+      "sha256": "a03dc5bde78f19bd51bcbc7a4bf089d0642a0f1a5ea2fa0abc5fe89207396c64",
+      "bytes": 569079,
+      "original_preview": {
+        "path": "/opt/tiger/tanyue/visualization_tmp/MIRA_branch_review_20261103/case_043_all_models.jpg",
+        "sha256": "a03dc5bde78f19bd51bcbc7a4bf089d0642a0f1a5ea2fa0abc5fe89207396c64"
+      }
+    },
+    {
+      "path": "docs/assets/mira/case_164_all_models.jpg",
+      "sha256": "a8097993ccf3d06a82bc2d28ea2c55b41994565d33107930ac395e1c9627ffb1",
+      "bytes": 597726,
+      "original_preview": {
+        "path": "/opt/tiger/tanyue/visualization_tmp/MIRA_branch_review_20261103/case_164_all_models.jpg",
+        "sha256": "a8097993ccf3d06a82bc2d28ea2c55b41994565d33107930ac395e1c9627ffb1"
+      }
+    },
+    {
+      "path": "docs/assets/mira/164_U5_cached_region.jpg",
+      "sha256": "880e60b386b14a57416a874e7d5b7153aa28c8fd15eef4e34cabc03e8a45f2e0",
+      "bytes": 382779,
+      "original_preview": {
+        "path": "/opt/tiger/tanyue/visualization_tmp/MIRA_branch_review_20261103/164_U5_cached_region.jpg",
+        "sha256": "880e60b386b14a57416a874e7d5b7153aa28c8fd15eef4e34cabc03e8a45f2e0"
+      }
+    },
+    {
+      "path": "docs/assets/mira/043_U2_cached_region.jpg",
+      "sha256": "f9707d8dc53258691fd45349b775a9fd2493a728f295ae14dc20eb08e67a5bc8",
+      "bytes": 384215,
+      "original_preview": {
+        "path": "/opt/tiger/tanyue/visualization_tmp/MIRA_branch_review_20261103/043_U2_cached_region.jpg",
+        "sha256": "f9707d8dc53258691fd45349b775a9fd2493a728f295ae14dc20eb08e67a5bc8"
+      }
+    },
+    {
+      "path": "docs/assets/mira/019_U1_cached_region.jpg",
+      "sha256": "797927fcd22e879cc97e9747867671ee27fc1b60e76d1514e131c08370188207",
+      "bytes": 342694,
+      "original_preview": {
+        "path": "/opt/tiger/tanyue/visualization_tmp/MIRA_branch_review_20261103/019_U1_cached_region.jpg",
+        "sha256": "797927fcd22e879cc97e9747867671ee27fc1b60e76d1514e131c08370188207"
+      }
+    }
+  ],
+  "limits": "Purposive reviewed examples, not failure-frequency estimates. Existing scores only; no generation, Judge calls or formal-result modifications. Region checks do not establish a particular training or attention mechanism.",
+  "rendering": "Unmodified copies of CPU-rendered previews; only display resizing and diagnostic red overlays. Original full outputs remain on NAS. Original preview directory remains intact."
+}

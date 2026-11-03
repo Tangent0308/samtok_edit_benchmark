@@ -1,6 +1,6 @@
 # MIRA 正式运行与审计
 
-用户在完成两例 smoke 后批准了协议核验、完整 200 图 × 五方法生成、统一 GPT-5.4 评分、训练重合审计和论文表格汇总。正式流水线已于 **2026-11-02 18:02:35 UTC** 启动；本文不代表全量结果已经完成，以实际 `STATUS.json`、生成终态和评分记录为准。
+用户在完成两例 smoke 后批准了协议核验、完整 200 图 × 五方法生成、统一 GPT-5.4 评分、训练重合审计和论文表格汇总。正式流水线于 **2026-11-02 18:02:35 UTC** 启动，**2026-11-03 05:24:08 UTC** 结束。1,000 个生成请求均有终态，999 张有效输出全部评分；RePlan 154 因原生规划器产生零宽度框而失败，故状态为 `finished_with_missing`，退出码为 1。没有剩余 Judge 缺失。结果与解释见 [MIRA_RESULTS.md](MIRA_RESULTS.md)。
 
 ## 协议核验结果
 
@@ -36,7 +36,7 @@
 
 | 路径 | 内容 |
 |---|---|
-| `STATUS.json` | 流水线实际状态；`complete` 才表示评分全覆盖 |
+| `STATUS.json` | 实际状态为 `finished_with_missing`；唯一缺失是 RePlan 154 的生成失败 |
 | `PIPELINE.json` | 固定配置与入口身份 |
 | `run_mira_full.py` | 实际流水线源码快照 |
 | `generation.log` | 生成 launcher 日志 |
@@ -45,10 +45,14 @@
 | `scores_gpt54_001/<method>/ATTEMPTS.json` | Judge 尝试、返回码与时间 |
 | `scores_gpt54_001/<method>/judge_requests/` | 实际 Judge 请求标识与返回 |
 | `TABLE.md`、`TABLE.csv` | 流水线结束后生成的表格；缺失覆盖率明确标记 |
+| `audited_report_v2/` | 官方 200 图、固定 198 图以及完整覆盖/条件比较分别标明的配对区间 |
+| `execution_audit/` | 1,000 个生成终态和 999 张评分的完成核验、分数一致性与 SHA 绑定 |
+| `overlap_audit/` | 训练重合复核、证据快照和固定子集名单 |
+| `diagnostics/` | 四个明确选取的极端案例、原生失败原因和展示文件索引 |
 
 编译缓存及运行临时文件位于 `.ifbench-tmp/external_bench_20261102/formal_runtime/`，正式目录中的 `run_001/cache` 是指向该临时目录的链接。
 
-启动命令（当前已经运行，**不要重复执行**）：
+本次实际启动命令（已经结束，**不要重复执行以覆盖证据**）：
 
 ```bash
 cd /opt/tiger/tanyue/if-bench-mira
@@ -65,6 +69,8 @@ export MIRA_API_KEY_FILE=/path/to/private/gpt54.key
 
 整个任务使用前台 launcher，并有进程锁；没有 `nohup` 或第二套 GPU launcher。原有无关 GPU 进程保持不变。Judge SDK 自动重试关闭；流水线仅对明确的临时连接、超时、限流及服务器异常最多执行三次评分阶段，间隔 30 秒，保留每次请求与返回，已提交的逐图分数由官方 scorer 断点复用。生成失败不会自动换候选或重新采样。其他错误保留为缺失，不能把不完整表格当完整基准成绩。
 
+本次 Qwen2.1 和 SITEdit 各发生一次 HTTP 500，MIRAGE 发生两次读取超时，全部通过上述续跑完成。共保留 2,003 条请求记录、1,999 条成功响应；相对于 999 张图正常所需的 1,998 条成功响应，多出的一条来自官方按整图续跑时重复执行的未提交完整图像评分，原始返回均保留。最终逐图记录无重复，所有返回模型均为 `gpt-5.4-2026-03-05`，结束原因为 `stop`。
+
 ## 训练重合审计
 
 入口 `scripts/audit_mira_overlap.py` 在 CPU 上独立运行；产物位于：
@@ -77,4 +83,6 @@ export MIRA_API_KEY_FILE=/path/to/private/gpt54.key
 
 逐图计算文件 SHA-256、规范化 RGB 像素哈希、64 位 dHash 和 pHash。候选阈值固定为 dHash 距离 ≤6 或 pHash 距离 ≤8；精确匹配单独报告，近重复候选仍需视觉复核。任意裁剪、镜像及其他变换不能由有限感知哈希穷尽证明；基础模型预训练和未留记录的开发使用也不在该审计覆盖内。
 
-`INVENTORY.json` / `INVENTORY.jsonl` 保存来源；`FINGERPRINTS.jsonl` 保存扫描结果并支持续跑；`STATUS.json` 显示实际进度；完成后生成 `CANDIDATES.json` 和 `ERRORS.json`。存在未扫描或打不开的图像时，不得宣称重合审计已完整通过。发现重合时保留官方 200 图全表，另行报告透明的无重合子集及其分母。
+`INVENTORY.json` / `INVENTORY.jsonl` 保存来源；`FINGERPRINTS.jsonl` 保存扫描结果；`CANDIDATES.json` 和 `ERRORS.json` 保存候选与读取错误。本次已扫描 646,908 个路径，读取错误为 0；11 对候选经助手逐项视觉复核后，确认 138、175 两张源图与实际 S2 训练记录同源，143 为误匹配。175 的四条实际训练记录中，有一条与 MIRA 删除右前方棕色小鸟的编辑语义一致。
+
+正式结论和证据快照保存于正式根目录 `overlap_audit/`，其中 `SOURCE_SUBSETS.json` 固定官方 200 图和排除 138、175 后的 198 图，五方法使用相同名单。该子集称为“排除已确认重合后的子集”，不作全部潜在训练重合已排除的保证。

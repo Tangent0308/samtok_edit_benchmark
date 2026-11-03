@@ -1,6 +1,6 @@
 # MIRA 外部泛化评测
 
-本分支从 `v2branch@d04c1a7` 增加独立的 `samtok_benchmark.external_mira` 模块，比较 SITEdit、Qwen-Image-2.1、Qwen-Image-Edit-2511、RePlan 和 MIRAGE。已下载完整数据并完成真实 GPU / GPT-5.4 小样本验证，证据见 [MIRA_SMOKE.md](MIRA_SMOKE.md)。用户随后批准全量运行，当前入口、审计证据与状态读取方式见 [MIRA_FULL_RUN.md](MIRA_FULL_RUN.md)。下文保留各阶段独立命令；运行中的目录不能另起一套并发 launcher。
+本分支从 `v2branch@d04c1a7` 增加独立的 `samtok_benchmark.external_mira` 模块，比较 SITEdit、Qwen-Image-2.1、Qwen-Image-Edit-2511、RePlan 和 MIRAGE。完整 200 图 × 五方法评测已于 **2026-11-03 05:24 UTC** 结束：999 张有效输出全部完成 GPT-5.4 评分，RePlan 的 154 号请求生成失败。实际成绩、覆盖率和训练重合子集见 [MIRA_RESULTS.md](MIRA_RESULTS.md)；运行与审计见 [MIRA_FULL_RUN.md](MIRA_FULL_RUN.md)，早期小样本证据见 [MIRA_SMOKE.md](MIRA_SMOKE.md)。下文保留各阶段独立命令，不用于覆盖已结束的正式实验。
 
 ## 1. 固定的数据与方法
 
@@ -28,7 +28,7 @@ RePlan / MIRAGE 的规划成本和原生多分支计算属于方法本身。比�
 
 GT 多边形、canonical 图像元数据和评分用子句映射保存在 `private/evaluation.json`，模型适配器不读取它。各模型评分统一使用官方标注顺序与同一套 5 项文本，避免把某个方法自己的解析结果当成该方法的评测标准。Free-space addition 等 MIRA 原生任务全部保留，不按 SITEdit 是否容易处理过滤；MIRA 的五个编辑项也不自动等价于 IF-Bench 的五个独立目标。
 
-本实验支持“公开文本驱动的多项联合编辑泛化”，不能替代本论文交互输入、细粒度目标绑定或按 K 分组的主实验。完整训练集与 MIRA 的重合审计尚未完成，正式论文作外部泛化结论前仍需补齐。
+本实验衡量“公开文本驱动的多项联合编辑泛化”，不能替代本论文交互输入、细粒度目标绑定或按 K 分组的主实验。声明范围内的训练与开发图像重合审计已完成：646,908 个路径均成功读取，确认源图 138、175 与实际 S2 训练记录重合。正式结果同时保留官方 200 图和五方法共用的排除已确认重合后的 198 图子集；该审计不涵盖基础模型预训练和任意图像变换。
 
 ## 3. 文件与环境
 
@@ -81,9 +81,9 @@ MIRA_DATA=/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench
   --output "$MIRA_TMP/mira_smoke_new" --gpus 0,1,2,3,4 --cases 003 --smoke
 ```
 
-可用 `--models qwen21 sitedit` 选方法，或 `--gpus 0` 顺序运行。本次只实际测试了 `001` 与 `002`；上面的 `003` 是供后续验证用的命令示例，未执行。
+可用 `--models qwen21 sitedit` 选方法，或 `--gpus 0` 顺序运行。早期 smoke 实际使用 `001` 与 `002`；上面的独立 `003` smoke 命令未执行。随后正式实验覆盖了全部 200 图。
 
-正式评测的独立生成命令如下。当前自动流水线已启动这个生成阶段；默认包含全部 200 源图、五个方法和每项一次生成，不带 `--smoke` 或 `--cases`。不要对运行中的目录重复启动：
+正式评测的独立生成命令如下。本次生成已由自动流水线完成；默认包含全部 200 源图、五个方法和每项一次生成，不带 `--smoke` 或 `--cases`。已结束的正式目录保留原始终态：
 
 ```bash
 MIRA_FORMAL=/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira
@@ -114,7 +114,7 @@ export MIRA_API_KEY_FILE=/path/to/private/gpt54.key
 export MIRA_AZURE_ENDPOINT=https://aidp-i18ntt-sg.tiktok-row.net/api/modelhub/online/v2/crawl
 ```
 
-正式评分示例，**未执行**：
+独立评分入口如下。本次实际由自动流水线逐方法调用同一评分模块完成，见 `ATTEMPTS.json`；不要把此命令当成重新评分或覆盖现有结果的步骤：
 
 ```bash
 "$MIRA_PY" -u -m samtok_benchmark.external_mira score \
@@ -131,7 +131,7 @@ export MIRA_AZURE_ENDPOINT=https://aidp-i18ntt-sg.tiktok-row.net/api/modelhub/on
 Overall = sqrt(min(mean(PF), mean(Cons)) * mean(PQ))
 ```
 
-生成失败、评分失败和未知状态不能删除；Judge 缺失是 missing，不设为 0。存在缺失时展示覆盖率与已评分分母，不能当成完整 200 图成绩。只有各方法全覆盖且大于 1 张图时，才按源图做 10,000 次相同索引的配对 bootstrap，输出 Overall 95% CI 与 SITEdit 减各基线的差值区间。Smoke 的区间即使可算也没有论文结论意义；本次两个独立单图 smoke 均不生成总体 CI。
+生成失败、评分失败和未知状态不能删除；Judge 缺失是 missing，不设为 0。存在缺失时展示覆盖率与已评分分母，不能当成完整 200 图成绩。冻结的原始汇总器仅在所有方法全覆盖时生成区间，因此本次原始 `SCORES.json` 没有区间。独立的 `scripts/report_mira_audited.py` 保留原始聚合不变，为完整覆盖的方法计算源图 bootstrap 区间，并把 RePlan 的共同可评分比较明确标为条件诊断，详见 [MIRA_RESULTS.md](MIRA_RESULTS.md)。两套子集均为 10,000 次相同索引的配对 bootstrap；早期两个独立单图 smoke 不生成总体 CI。
 
 ## 7. CPU 验证
 

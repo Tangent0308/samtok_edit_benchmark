@@ -1,6 +1,6 @@
 # IF-Bench
 
-本分支 **`eval-mira`** 增加 SITEdit 的 MIRA 外部泛化评测。入口见 [MIRA 运行说明](docs/MIRA.md)，实际小样本记录见 [MIRA smoke test](docs/MIRA_SMOKE.md)。它使用独立的数据、配置、生成目录和 GPT-5.4 Judge；下面的 IF-Bench 协议保持原样。LoMOE 的 `eval-lomoe` 分支已保留，等待数据权限后再实施。
+本分支 **`eval-mira`** 增加 SITEdit 的 MIRA 外部泛化评测。200 图 × 五方法正式评测已结束，999 张有效输出全部完成评分，另保留 RePlan 的 1 个生成失败；见 [正式结果与重合子集](docs/MIRA_RESULTS.md)、[运行说明](docs/MIRA.md) 和 [协议审计](docs/MIRA_FULL_RUN.md)。早期流程验证见 [smoke test](docs/MIRA_SMOKE.md)。它使用独立的数据、配置、生成目录和 GPT-5.4 Judge；下面的 IF-Bench 协议保持原样。LoMOE 的 `eval-lomoe` 分支已保留，等待数据权限后再实施。
 
 IF-Bench 评测真实场景中的细粒度、多目标图像编辑：在同一张图上联合完成 2–5 个编辑，并保持未授权内容。任务覆盖添加、删除、替换和属性修改，比较不同目标语言与区域提示下的编辑完成度、内容保持和视觉质量。
 

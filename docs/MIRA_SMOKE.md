@@ -1,6 +1,6 @@
 # MIRA 实际 smoke 记录（2026-11-02）
 
-五个方法各完成固定 `001`、`002` 两个 case 的真实 GPU 生成与 GPT-5.4 评分，共 **10 个有效输出、50 个编辑项评分、20 次成功 Judge 返回**。两个 case 只验证运行流程，不形成方法排名、总体成绩或置信区间。正式 200 图实验尚未启动。
+五个方法各完成固定 `001`、`002` 两个 case 的真实 GPU 生成与 GPT-5.4 评分，共 **10 个有效输出、50 个编辑项评分、20 次成功 Judge 返回**。两个 case 只验证运行流程，不形成方法排名、总体成绩或置信区间。本文记录早期 smoke；随后完成的正式 200 图评测见 [MIRA_RESULTS.md](MIRA_RESULTS.md)。
 
 | 方法 | 001 生成 / 评分 | 002 生成 / 评分 | 终态输出 |
 |---|---|---|---|
@@ -25,7 +25,7 @@ SITEdit 两个 case 的五项区域码均有效，`fallback_units=0`。使用主
 - `SMOKE_AUDIT.json`：核验十张输出、raw/output SHA、result SHA、评分绑定、响应模型和状态、最终代码快照与续跑记录。SHA-256：`0bfe25a406f687802eb4bfb566e3e340a757f278cbd8021a59ea4b2daf29a02d`。
 - `mira_bundle/index.json`：200 图公开输入索引，digest `7203038df002475ec31911528889ec8d47e70fa21cba4a47615abcb14fee5ff4`。
 
-完整原始数据位于 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench`，下载器核验了上游内容标识及本地 SHA。正式结果目录 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira` 在本次核验时为空。
+完整原始数据位于 `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench`，下载器核验了上游内容标识及本地 SHA。正式结果位于 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira`，与这些 smoke 证据分开保存。
 
 ## 输入、尺寸与评分核验
 

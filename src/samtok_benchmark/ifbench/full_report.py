@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import json
 import os
@@ -23,6 +24,7 @@ from .fairness_dev_judge import (
     paths,
     verify_effective,
     verify_admissions,
+    record_index,
     read,
 )
 from .fairness_dev_report import (
@@ -33,18 +35,17 @@ from .fairness_dev_report import (
     show_rate,
     input_route,
     example,
-    calls_ledger,
     SEED,
     REPLICATES,
 )
 
 
-def verified_node(plan_path, node):
-    context = judge_context(plan_path, node_id=node)
+def verified_node(plan_path, node, *, workers=16):
+    context = judge_context(plan_path, node_id=node, io_workers=workers)
     cache = Cache(context["plan"]["cache_index"], context["config"])
     if cache.index_sha256 != context["plan"]["cache_index_sha256"]:
         raise ValueError("Frozen Judge cache index changed")
-    bindings, jobs = collect(context)
+    bindings, jobs = collect(context, workers=workers)
     from .fairness_dev_judge import FAILURES
 
     if any(
@@ -52,19 +53,25 @@ def verified_node(plan_path, node):
     ):
         raise ValueError(f"Node {node} has unattempted generation")
     directory, raws, effectives, admissions = paths(context)
-    verify_admissions(context, jobs)
+    index = record_index(context)
+    verify_admissions(context, jobs, index=index, workers=workers)
     expected_keys = set(jobs)
-    for folder in (raws, effectives, admissions):
-        if {p.stem for p in folder.glob("*.json")} - expected_keys:
+    for keys in index.values():
+        if keys - expected_keys:
             raise ValueError(f"Node {node} has unregistered Judge artifacts")
-    effective = {}
-    for key, job in jobs.items():
+    missing = expected_keys - index["effective"]
+    if missing:
+        raise ValueError(f"Node {node} has unattempted Judge key: {sorted(missing)[0]}")
+
+    def verify(item):
+        key, job = item
         path = effectives / f"{key}.json"
-        if not path.exists():
-            raise ValueError(f"Node {node} has unattempted Judge key: {key}")
         value = read(path)
         verify_effective(value, job, context, cache)
-        effective[key] = value
+        return key, value
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        effective = dict(pool.map(verify, jobs.items()))
     return context, bindings, jobs, effective
 
 
@@ -115,6 +122,7 @@ def merge_verified(parts, plan):
 
 def execution_history(root, plan, code_sha):
     """Keep all stopped/resumed controller costs; never invent SIGKILL duration."""
+    accepted = {code_sha} if isinstance(code_sha, str) else set(code_sha)
     records = []
     for node in range(NODES):
         directory = root / "nodes" / f"node-{node}"
@@ -125,7 +133,7 @@ def execution_history(root, plan, code_sha):
             if (
                 value.get("node") != node
                 or value.get("plan_digest") != plan["digest"]
-                or value.get("code_manifest_sha256") != code_sha
+                or value.get("code_manifest_sha256") not in accepted
                 or value.get("execution_id") != path.parent.name
             ):
                 raise ValueError("Node execution receipt identity differs from frozen plan")
@@ -367,6 +375,87 @@ def markdown(report):
     return "\n".join(md)
 
 
+def parallel_calls_ledger(context, *, workers=8):
+    """The unchanged cost ledger, with ordered parallel reads and unique loads."""
+    from .fairness_dev_judge import normalized_tasks, resolve
+
+    def inspect(task):
+        path = Path(task["result_path"])
+        result = read(path) if path.exists() else None
+        row, planner_row, load_refs = None, None, []
+        if result:
+            if result.get("load_record"):
+                load_refs.append(result["load_record"])
+            row = {
+                "task_key": task["key"], "status": result["status"],
+                "reused": bool(result.get("reused")),
+                "new_editor_api_calls": 0 if result.get("reused") else result.get("inference_api_calls"),
+                "transformer_forward_calls": None if result.get("reused") else result.get("transformer_forward_calls"),
+                "wall_seconds": None if result.get("reused") else result.get("wall_seconds", result.get("seconds")),
+                "result": str(path), "sha256": sha256_file(path),
+            }
+        if task.get("planner_dir"):
+            planner = resolve(task["planner_dir"], context["base"]) / "result.json"
+            if planner.exists():
+                value = read(planner)
+                if value.get("load_record"):
+                    load_refs.append(value["load_record"])
+                counts = [value[k] for k in ("native_planner_calls", "extra_planner_api_calls")
+                          if value.get(k) is not None]
+                if len(set(counts)) > 1:
+                    raise ValueError("Planner API alias counters disagree; do not sum or guess")
+                planner_row = {
+                    "path": str(planner), "sha256": sha256_file(planner),
+                    "status": value["status"], "reused": bool(value.get("reused")),
+                    "new_api_calls": 0 if value.get("reused") else counts[0] if counts else None,
+                    "batch_items": value.get("extra_planner_batch_items"),
+                    "wall_seconds": value.get("wall_seconds"),
+                }
+        return row, planner_row, load_refs
+
+    rows, planners, seen, load_paths = [], [], set(), {}
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for row, planner, refs in pool.map(inspect, normalized_tasks(context)):
+            if row:
+                rows.append(row)
+            if planner and planner["path"] not in seen:
+                planners.append(planner)
+                seen.add(planner["path"])
+            for ref in refs:
+                load_paths[str(Path(ref))] = None
+
+        def load(path):
+            p = Path(path)
+            return (path, {"sha256": sha256_file(p), **read(p)}) if p.exists() else (path, None)
+
+        loads = {p: value for p, value in pool.map(load, load_paths) if value is not None}
+    directory, raws, _, admitted = paths(context)
+    return {
+        "editor_records": rows, "planner_records": planners, "worker_load_records_once": loads,
+        "worker_load_seconds_sum_once": sum(v.get("seconds", 0) for v in loads.values()),
+        "new_editor_api_calls_known": sum(r["new_editor_api_calls"] or 0 for r in rows),
+        "unknown_editor_call_counts": sum(r["new_editor_api_calls"] is None for r in rows),
+        "new_planner_api_calls_known": sum(r["new_api_calls"] or 0 for r in planners),
+        "unknown_planner_call_counts": sum(r["new_api_calls"] is None for r in planners),
+        "new_judge_admitted_calls": len(list(admitted.glob("*.json"))),
+        "new_judge_raw_answers": len(list(raws.glob("*.json"))),
+        "judge_execution_receipts": [str(p) for p in sorted((directory / "executions").glob("*/receipt.json"))],
+        "wall_seconds_are_per_request_records_not_total_gpu_utilization": True,
+    }
+
+
+def verify_all_nodes(plan_path):
+    """Four independent owners; at most 4 x 8 asset reads at any one stage."""
+    def verify(node):
+        print(f"Verifying node {node} before full-release aggregation.", flush=True)
+        context, bindings, jobs, effective = verified_node(plan_path, node, workers=8)
+        return context, (node, bindings, jobs, effective), parallel_calls_ledger(context, workers=8)
+
+    with ThreadPoolExecutor(max_workers=NODES) as pool:
+        results = list(pool.map(verify, range(NODES)))
+    return tuple([value[index] for value in results] for index in range(3))
+
+
 def aggregate_if_ready(bundle):
     bundle = Path(bundle).resolve()
     plan_path = bundle / "plan.json"
@@ -377,6 +466,9 @@ def aggregate_if_ready(bundle):
     ] != sha256_file(bundle / "code_manifest.json"):
         raise ValueError("Full report requires the unchanged published plan/source manifest")
     root = Path(plan["results_root"])
+    from .runtime_patch import accepted_code_manifests
+
+    accepted = accepted_code_manifests(plan_path)
     directory = root / "report"
     if (directory / "COMPLETED.json").exists():
         completed = read(directory / "COMPLETED.json")
@@ -395,7 +487,7 @@ def aggregate_if_ready(bundle):
             receipt["plan_digest"] != plan["digest"]
             or receipt["status"] != "completed"
             or receipt.get("node") != node
-            or receipt.get("code_manifest_sha256") != sha256_file(bundle / "code_manifest.json")
+            or receipt.get("code_manifest_sha256") not in accepted
         ):
             raise ValueError("Node completion does not belong to this global plan")
         receipts.append(receipt)
@@ -410,17 +502,9 @@ def aggregate_if_ready(bundle):
         {"host": socket.gethostname(), "pid": os.getpid(), "time": time.time()},
     )
     try:
-        parts = []
-        contexts = []
-        ledgers = []
-        for node in range(NODES):
-            print(f"Verifying node {node} before full-release aggregation.", flush=True)
-            context, bindings, jobs, effective = verified_node(plan_path, node)
-            contexts.append(context)
-            parts.append((node, bindings, jobs, effective))
-            ledgers.append(calls_ledger(context))
+        contexts, parts, ledgers = verify_all_nodes(plan_path)
         bound, jobs, effective = merge_verified(parts, plan)
-        executions = execution_history(root, plan, sha256_file(bundle / "code_manifest.json"))
+        executions = execution_history(root, plan, accepted)
         context = {
             **contexts[0],
             "root": root,
@@ -467,6 +551,10 @@ def aggregate_if_ready(bundle):
             "plan_digest": plan["digest"],
             "source_commit": ready["source_commit"],
             "code_manifest_sha256": ready["code_manifest_sha256"],
+            "accepted_code_manifest_sha256": sorted(accepted),
+            "runtime_patch_sha256": ready.get("runtime_patch_sha256"),
+            "runtime_maintenance": read(bundle / "RUNTIME_PATCH.json")
+            if ready.get("runtime_patch_sha256") else None,
             "seed": plan["seed"],
             "configuration_reference_sha256": plan["configuration_reference_sha256"],
             "assignments_sha256": plan["assignments_sha256"],
@@ -523,7 +611,10 @@ def aggregate_if_ready(bundle):
             "timing_scope": "All recorded stopped/resumed controller wall durations x 8; unknown SIGKILL durations remain missing; excludes bootstrap/platform queue and is not kernel-active GPU time",
         }
         write_json(directory / "REPORT.json", report)
-        write_json(directory / "CALLS.json", {"nodes": ledgers, "history": plan.get("parent_run")})
+        write_json(directory / "CALLS.json", {
+            "nodes": ledgers, "history": plan.get("parent_run"),
+            "runtime_maintenance": report["runtime_maintenance"],
+        })
         atomic_text(directory / "REPORT.md", markdown(report))
         result = {
             "status": "completed"

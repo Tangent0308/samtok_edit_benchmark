@@ -155,7 +155,10 @@ def load_plan(path, *, helper_root=None):
         ):
             raise ValueError("Task result paths must be unique in the registered formal run")
     source_root = Path(helper_root) if helper_root is not None else repository_root()
-    for filename, expected_sha in plan["helper_sha256"].items():
+    from .runtime_patch import helper_hashes
+
+    helpers = helper_hashes(path, plan["helper_sha256"], source_root=source_root)
+    for filename, expected_sha in helpers.items():
         if Path(filename).is_absolute() or ".." in Path(filename).parts:
             raise ValueError("Unsafe source file in plan")
         check_hash(source_root / filename, expected_sha)

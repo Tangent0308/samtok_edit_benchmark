@@ -20,6 +20,8 @@ The user approved one narrow pre-publication exception to the canvas freeze: whe
 
 The bounded setting check uses `one_mp_coverage.py`: exactly 49 previously unsampled frozen requests on the original K=5 dev source. Together with 21 existing outputs, `one_mp_judge.py` validates all 70 model/setting combinations on that one image. Preserve each source plan identity; never rewrite existing generation records. This diagnosis has no population CI or score-driven selection. Its real state and figures are reported by `one_mp_coverage_report.py`.
 
+The user explicitly authorized the Judge I/O scheduling repair on 2026-11-03: incremental progress counters, bounded parallel verification and terminal-phase skipping. This permits the narrow `fairness_dev_judge.py` exception; canonical `dev_judge.py`, `canvas.py`, `public.py`, Judge configuration and all native calls/statistics remain byte frozen. Keep the sampled plan byte identical, publish a separate authenticated runtime-patch manifest, preserve old/new code provenance and never rewrite completed answers. The user also authorized releasing at most 16 admissions per node after an abrupt infrastructure stop, only after verifying no raw/effective exists and quarantining the original admission bytes with explicit audit evidence. This is not a general unknown-admission retry policy.
+
 The current NAS heartbeat repair is coordination-only. Publish a new bundle, preserve the prior published package and failure evidence, and reuse public/input bytes through NAS links without reserializing their absolute paths. Dynamic status retries must never relax immutable input/admission/Judge checks.
 
 ## Artifacts and documentation

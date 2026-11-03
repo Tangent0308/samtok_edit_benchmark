@@ -28,6 +28,7 @@ from .dev_judge_stream import prefetched_batches, scored
 from .judge_repair import recover, POLICY
 
 FAILURES = {"failed", "failed-planner", "failed-component", "failed-interrupted"}
+IO_WORKERS = 16
 
 
 def read(path):
@@ -92,7 +93,7 @@ def effective(raw, unit_ids, raw_path):
     return value
 
 
-def load_plan(path, root=None, *, helper_root=None, node_id=None):
+def load_plan(path, root=None, *, helper_root=None, node_id=None, io_workers=IO_WORKERS):
     path = Path(path).resolve()
     full = read(path).get("schema") == "ifbench-full-release-four-node-v1"
     if full:
@@ -158,12 +159,22 @@ def load_plan(path, root=None, *, helper_root=None, node_id=None):
         raise ValueError(
             "Canonical dataset mount must retain its original path; do not rewrite the canonical evaluator"
         )
+    assets = {}
     for case in cases.values():
         references = [(case["source"]["image"], case["source"]["sha256"])]
         references.extend((u["target"]["mask"], u["target"]["mask_sha256"]) for u in case["units"])
         for relative, expected_sha in references:
-            if sha256_file(dataset_root / relative) != expected_sha:
-                raise ValueError(f"Canonical source/mask asset changed: {relative}")
+            if relative in assets and assets[relative] != expected_sha:
+                raise ValueError(f"Conflicting canonical asset hashes: {relative}")
+            assets[relative] = expected_sha
+
+    def check_asset(item):
+        relative, expected_sha = item
+        if sha256_file(dataset_root / relative) != expected_sha:
+            raise ValueError(f"Canonical source/mask asset changed: {relative}")
+
+    with ThreadPoolExecutor(max_workers=io_workers) as pool:
+        list(pool.map(check_asset, assets.items()))
     if node_id is not None:
         from .full_plan import node_tasks
         selected = node_tasks(plan, node_id)
@@ -193,15 +204,15 @@ def load_plan(path, root=None, *, helper_root=None, node_id=None):
 
 
 def normalized_tasks(context):
-    order = context["order"]
-    settings = context["plan"]["settings"]
-    cases = context["case_ids"]
+    order = {key: i for i, key in enumerate(context["order"])}
+    settings = {key: i for i, key in enumerate(context["plan"]["settings"])}
+    cases = {key: i for i, key in enumerate(context["case_ids"])}
     for task in sorted(
         context.get("tasks", context["plan"]["tasks"]),
         key=lambda t: (
-            order.index(t["model"]),
-            settings.index(t["setting"]),
-            cases.index(t["case_id"]),
+            order[t["model"]],
+            settings[t["setting"]],
+            cases[t["case_id"]],
         ),
     ):
         yield {
@@ -213,15 +224,14 @@ def normalized_tasks(context):
         }
 
 
-def collect(context, *, model=None):
+def collect(context, *, model=None, workers=IO_WORKERS):
     from .fairness_dev_plan import verify_task
 
     if model is not None and model not in context["order"]:
         raise ValueError("Cannot collect an unregistered model")
-    bindings, jobs = [], {}
-    for task in normalized_tasks(context):
-        if model is not None and task["model"] != model:
-            continue
+    tasks = [t for t in normalized_tasks(context) if model is None or t["model"] == model]
+
+    def inspect(task):
         verify_task(context["plan"], task)
         path = Path(task["result_path"])
         record = read(path) if path.exists() else None
@@ -255,6 +265,7 @@ def collect(context, *, model=None):
         if task.get("request_sha256") and task["request_path"]:
             if sha256_file(Path(task["request_path"])) != task["request_sha256"]:
                 raise ValueError("Prepared model request changed")
+        job = None
         if record and record["status"] == "generated":
             output = Path(record["output_image"])
             if not output.is_absolute():
@@ -269,17 +280,27 @@ def collect(context, *, model=None):
             bound.update(
                 judge_key=key, output_sha256=record["output_sha256"], output_image=str(output)
             )
-            if key not in jobs:
-                jobs[key] = {
-                    "key": key,
-                    "model": task["model"],
-                    "case_id": task["case_id"],
-                    "case": case,
-                    "record": {**record, "output_image": str(output)},
-                    "logical_keys": [],
-                }
-            jobs[key]["logical_keys"].append(task["key"])
-        bindings.append(bound)
+            job = {
+                "key": key,
+                "model": task["model"],
+                "case_id": task["case_id"],
+                "case": case,
+                "record": {**record, "output_image": str(output)},
+                "logical_keys": [],
+            }
+        return bound, job
+
+    bindings, jobs = [], {}
+    # Ordered reduction preserves the original first model, duplicate-output
+    # binding and batch order regardless of filesystem completion order.
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for bound, job in pool.map(inspect, tasks):
+            bindings.append(bound)
+            if job is not None:
+                key = job["key"]
+                if key not in jobs:
+                    jobs[key] = job
+                jobs[key]["logical_keys"].append(bound["key"])
     return bindings, jobs
 
 
@@ -467,43 +488,64 @@ def verify_raw(raw, job, context):
             raise ValueError(f"Immutable raw answer differs from the original parser: {field}")
 
 
-def restore_and_cache(context, jobs, cache):
+def record_index(context):
+    """One directory snapshot under the single-controller lock, never per batch."""
+    _, raws, effectives, admitted = paths(context)
+    return {
+        name: {p.stem for p in folder.glob("*.json")}
+        for name, folder in (("raw", raws), ("effective", effectives), ("admitted", admitted))
+    }
+
+
+def restore_and_cache(context, jobs, cache, *, index=None, workers=IO_WORKERS):
     root, raws, effectives, admitted = paths(context)
+    index = record_index(context) if index is None else index
     if context.get("full_release"):
-        verify_admissions(context, jobs)
-    for key, job in jobs.items():
+        verify_admissions(context, jobs, index=index, workers=workers)
+
+    def restore(item):
+        key, job = item
         raw_path, effective_path = raws / f"{key}.json", effectives / f"{key}.json"
-        if effective_path.exists():
+        if key in index["effective"]:
             value = read(effective_path)
             verify_effective(value, job, context, cache)
-            continue
-        if raw_path.exists():
+            return key, value
+        if key in index["raw"]:
             raw = read(raw_path)
             verify_raw(raw, job, context)
-            immutable(
-                effective_path, effective(raw, [u["id"] for u in job["case"]["units"]], raw_path)
-            )
-            continue
+            value = effective(raw, [u["id"] for u in job["case"]["units"]], raw_path)
+            immutable(effective_path, value)
+            return key, value
         reused = cache.lookup(job, context)
         if reused is not None:
             immutable(effectives / f"{key}.json", reused)
-    unresolved = {p.stem for p in admitted.glob("*.json")} - {p.stem for p in raws.glob("*.json")}
+        return key, reused
+
+    restored = {}
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        for key, value in pool.map(restore, jobs.items()):
+            if value is not None:
+                restored[key] = value
+    index["effective"].update(restored)
+    unresolved = index["admitted"] - index["raw"]
     if unresolved:
         raise RuntimeError(
             f"Admitted Judge calls have no terminal raw record; no automatic retry: {sorted(unresolved)}"
         )
+    return restored
 
 
-def verify_admissions(context, jobs):
+def verify_admissions(context, jobs, *, index=None, workers=IO_WORKERS):
     """Bind every new raw answer to its one recorded native Judge admission."""
     directory, raws, effectives, admitted = paths(context)
-    raw_keys = {p.stem for p in raws.glob("*.json")}
-    admission_keys = {p.stem for p in admitted.glob("*.json")}
+    index = record_index(context) if index is None else index
+    raw_keys = index["raw"]
+    admission_keys = index["admitted"]
     if raw_keys != admission_keys:
         raise ValueError("Judge raw/admission sets differ; no automatic retry")
     if raw_keys - set(jobs):
         raise ValueError("Unregistered Judge admission/raw key")
-    for key in sorted(raw_keys):
+    def verify(key):
         job = jobs[key]
         admission = read(admitted / f"{key}.json")
         raw = read(raws / f"{key}.json")
@@ -535,42 +577,74 @@ def verify_admissions(context, jobs):
         ):
             raise ValueError("Judge execution receipt differs from frozen full plan")
 
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        list(pool.map(verify, sorted(raw_keys)))
 
-def progress(context, bindings, jobs):
-    root, raws, effectives, admitted = paths(context)
-    effective_records = {
-        key: read(effectives / f"{key}.json")
-        for key in jobs
-        if (effectives / f"{key}.json").exists()
-    }
-    per_model = {}
-    for model in context["order"]:
-        counts = Counter()
+
+class ProgressState:
+    """Incremental bookkeeping; only successful immutable writes advance state."""
+
+    def __init__(self, context, bindings, jobs, index, effective_records):
+        self.models = {m: Counter() for m in context["order"]}
+        self.logical_requests = len(bindings)
+        self.unique_generated_keys = len(jobs)
+        self.logical_by_key = {}
+        self.effective = {}
+        self.statuses = Counter()
+        self.reused = 0
+        self.repairs = 0
+        self.admitted = set(index["admitted"])
+        self.raw = set(index["raw"])
         for b in bindings:
-            if b["model"] != model:
-                continue
-            if b["generation_status"] == "generated":
-                value = effective_records.get(b["judge_key"])
-                counts[value["status"] if value else "judge-pending"] += 1
-            else:
-                counts[b["generation_status"]] += 1
-        per_model[model] = dict(counts)
+            status = b["generation_status"]
+            if status == "generated":
+                status = "judge-pending"
+                self.logical_by_key.setdefault(b["judge_key"], Counter())[b["model"]] += 1
+            self.models[b["model"]][status] += 1
+        for key, value in effective_records.items():
+            self.record_effective(key, value)
+
+    def record_effective(self, key, value):
+        summary = (value["status"], "cache_reuse" in value,
+                   bool(value.get("deterministic_repair_used", False)))
+        if key in self.effective:
+            if self.effective[key] != summary:
+                raise ValueError("Progress cannot overwrite an immutable effective status")
+            return
+        self.effective[key] = summary
+        status, reused, repaired = summary
+        self.statuses[status] += 1
+        self.reused += reused
+        self.repairs += repaired and not reused
+        for model, count in self.logical_by_key[key].items():
+            self.models[model]["judge-pending"] -= count
+            if not self.models[model]["judge-pending"]:
+                del self.models[model]["judge-pending"]
+            self.models[model][status] += count
+
+
+def progress(context, bindings, jobs, *, state=None):
+    root, _, effectives, _ = paths(context)
+    if state is None:
+        # Read-only callers can request a fresh snapshot. The running Judge
+        # always supplies its state and performs zero record reads/globs here.
+        index = record_index(context)
+        records = {key: read(effectives / f"{key}.json")
+                   for key in jobs if key in index["effective"]}
+        state = ProgressState(context, bindings, jobs, index, records)
     value = {
         "updated_at_epoch": time.time(),
         "plan_digest": context["plan"].get("digest"),
         "plan_sha256": context["plan_sha256"],
         "run_id": context["run_id"],
-        "models": per_model,
-        "logical_requests": len(bindings),
-        "unique_generated_keys": len(jobs),
-        "new_admitted_calls": len(list(admitted.glob("*.json"))),
-        "new_raw_answers": len(list(raws.glob("*.json"))),
-        "effective_statuses": dict(Counter(r["status"] for r in effective_records.values())),
-        "reused_effective_keys": sum("cache_reuse" in r for r in effective_records.values()),
-        "deterministic_repairs": sum(
-            r.get("deterministic_repair_used", False) and "cache_reuse" not in r
-            for r in effective_records.values()
-        ),
+        "models": {m: dict(c) for m, c in state.models.items()},
+        "logical_requests": state.logical_requests,
+        "unique_generated_keys": state.unique_generated_keys,
+        "new_admitted_calls": len(state.admitted),
+        "new_raw_answers": len(state.raw),
+        "effective_statuses": dict(state.statuses),
+        "reused_effective_keys": state.reused,
+        "deterministic_repairs": state.repairs,
         "test_started": context.get("full_release", False),
         "frozen": context.get("full_release", False),
     }
@@ -604,8 +678,10 @@ def run(plan, root=None, cache_index=None, model=None, dry_run=False, node_id=No
         raise ValueError("Historical Judge index changed from the fixed plan")
     bindings, jobs = collect(context)
     write_json(directory / "bindings.json", bindings)
-    restore_and_cache(context, jobs, cache)
-    pending = [j for key, j in jobs.items() if not (effectives / f"{key}.json").exists()]
+    index = record_index(context)
+    restored = restore_and_cache(context, jobs, cache, index=index)
+    state = ProgressState(context, bindings, jobs, index, restored)
+    pending = [j for key, j in jobs.items() if key not in state.effective]
     if model is not None and model not in context["order"]:
         raise ValueError("Requested model is outside plan")
     # A later model never jumps an earlier model with unresolved generation or
@@ -622,7 +698,7 @@ def run(plan, root=None, cache_index=None, model=None, dry_run=False, node_id=No
             break
         if model is None or current == model:
             allowed.extend(jj)
-    progress(context, bindings, jobs)
+    progress(context, bindings, jobs, state=state)
     generation_complete = all(
         b["generation_status"] in FAILURES | {"generated", "not-applicable"} for b in bindings
     )
@@ -644,7 +720,7 @@ def run(plan, root=None, cache_index=None, model=None, dry_run=False, node_id=No
             "Generation is not fully terminal; cache verification completed, but eight-card Judge cannot start"
         )
     if not allowed:
-        return progress(context, bindings, jobs)
+        return progress(context, bindings, jobs, state=state)
     if canonical.fingerprint() != context["config"]:
         raise ValueError("Actual Judge runtime/checkpoint fingerprint differs from original")
     execution = (
@@ -705,6 +781,7 @@ def run(plan, root=None, cache_index=None, model=None, dry_run=False, node_id=No
                             "attempt": 1,
                         },
                     )
+                    state.admitted.add(key)
                     receipt["new_admitted_calls"] += 1
                 write_json(execution / "receipt.json", receipt)
                 tick = time.monotonic()
@@ -728,13 +805,13 @@ def run(plan, root=None, cache_index=None, model=None, dry_run=False, node_id=No
                     )
                     raw_path = raws / f"{key}.json"
                     immutable(raw_path, raw)
-                    immutable(
-                        effectives / f"{key}.json",
-                        effective(raw, [u["id"] for u in case["units"]], raw_path),
-                    )
+                    state.raw.add(key)
+                    value = effective(raw, [u["id"] for u in case["units"]], raw_path)
+                    immutable(effectives / f"{key}.json", value)
+                    state.record_effective(key, value)
                     receipt["new_raw_answers"] += 1
                 write_json(execution / "receipt.json", receipt)
-                print(json.dumps(progress(context, bindings, jobs)), flush=True)
+                print(json.dumps(progress(context, bindings, jobs, state=state)), flush=True)
             if stop[0]:
                 break
             write_json(
@@ -743,7 +820,7 @@ def run(plan, root=None, cache_index=None, model=None, dry_run=False, node_id=No
             )
         receipt.update(status="drained" if stop[0] else "completed", ended_at=time.time())
         write_json(execution / "receipt.json", receipt)
-        return progress(context, bindings, jobs)
+        return progress(context, bindings, jobs, state=state)
     except BaseException as exc:
         receipt.update(status="error", error=repr(exc), ended_at=time.time())
         write_json(execution / "receipt.json", receipt)

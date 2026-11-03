@@ -155,6 +155,35 @@ def progress(plan, node, phase, state):
     return result
 
 
+def terminal_phase(plan, tasks, model, stage, *, workers=16):
+    """Skip processes only after the worker's unchanged terminal-artifact checks."""
+    from .fairness_dev_worker import binding, verify_existing
+
+    selected = [task for task in tasks if task["model"] == model]
+
+    def verify(task):
+        path = (Path(task["planner_dir"]) / "result.json"
+                if stage == "planner" else Path(task["result_path"]))
+        try:
+            value = read(path)
+        except FileNotFoundError:
+            return False
+        verify_existing(value, binding(plan, task, stage))
+        return True
+
+    started = time.monotonic()
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        complete = all(list(pool.map(verify, selected)))
+    if not complete or not selected:
+        return None
+    return {
+        "status": "completed", "wall_seconds": time.monotonic() - started,
+        "return_codes": [], "skipped_worker_launch": True,
+        "already_terminal": len(selected), "new_inference_calls": 0,
+        "verification": "unchanged worker binding and output/raw/trace hashes",
+    }
+
+
 def execute(plan_path, node, validate_only=False):
     bundle = verify_package(plan_path)
     plan = load_plan(plan_path)
@@ -239,6 +268,12 @@ def execute(plan_path, node, validate_only=False):
         for model in plan["model_order"]:
             for stage in ["planner", "edit"] if model in PLANNERS else ["edit"]:
                 phase = {"model": model, "stage": stage}
+                terminal = terminal_phase(plan, tasks, model, stage)
+                if terminal is not None:
+                    state["phases"].append({**phase, **terminal})
+                    write_json(execution / "receipt.json", state)
+                    progress(plan, node, phase, state)
+                    continue
                 phase_dir = execution / f"{model}-{stage}"
                 phase_dir.mkdir()
                 commands = []

@@ -94,22 +94,32 @@ def pack(name, source, output):
 
 
 def safe_extract(archive, destination):
+    """Lexical checks only (never follow links that are already extracted): no absolute or parent-escaping names,
+    no member below a symlink member, relative links stay inside, the single allowed absolute link is the venv
+    interpreter."""
     destination = destination.resolve()
     destination.mkdir(parents=True, exist_ok=True)
+    links = set()
     with tarfile.open(archive, "r:") as tar:
         for member in tar:
-            target = (destination / member.name).resolve()
-            if not target.is_relative_to(destination):
+            name = os.path.normpath(member.name)
+            if os.path.isabs(name) or name == ".." or name.startswith("../"):
                 raise RuntimeError(f"Unsafe archive member: {member.name}")
+            parts = Path(name).parts
+            if any(os.path.join(*parts[:i]) in links for i in range(1, len(parts))):
+                raise RuntimeError(f"Archive member below a link: {member.name}")
             if member.issym():
-                link = Path(member.linkname)
-                if link.is_absolute():
-                    if not (member.name in ("./bin/python", "bin/python") and member.linkname == INTERPRETER):
+                if os.path.isabs(member.linkname):
+                    if not (name == "bin/python" and member.linkname == INTERPRETER):
                         raise RuntimeError(f"Unexpected absolute link: {member.name} -> {member.linkname}")
-                elif not (target.parent / link).resolve().is_relative_to(destination):
-                    raise RuntimeError(f"Link escapes the environment: {member.name}")
+                else:
+                    target = os.path.normpath(os.path.join(os.path.dirname(name), member.linkname))
+                    if os.path.isabs(target) or target == ".." or target.startswith("../"):
+                        raise RuntimeError(f"Link escapes the environment: {member.name}")
+                links.add(name)
             elif member.islnk():
-                if not (destination / member.linkname).resolve().is_relative_to(destination):
+                target = os.path.normpath(member.linkname)
+                if os.path.isabs(target) or target == ".." or target.startswith("../"):
                     raise RuntimeError(f"Hard link escapes the environment: {member.name}")
             elif not (member.isfile() or member.isdir()):
                 raise RuntimeError(f"Unsupported archive member: {member.name}")

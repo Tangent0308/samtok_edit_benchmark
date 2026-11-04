@@ -24,6 +24,11 @@ from PIL import Image  # noqa: E402
 MIRA = Path("/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MIRA-Bench/benchmark")
 
 
+def polygons(item):
+    """RefEdit stores a JSON list of flat polygons; a MIRA edit is one flat polygon or a list of them."""
+    return item if item and isinstance(item[0], list) else [item]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", required=True)
@@ -41,7 +46,7 @@ def main():
                      "image_sha256": sha256_file(MIRA / row["image"]), "size": size,
                      "category": "Easy" if index < 100 else "Hard", "official_split": "Easy" if index < 100 else "Hard",
                      "editing_instruction": first, "edit_instruction_single": first,
-                     "mask": json.dumps([row["mask"][0]])})
+                     "mask": json.dumps(polygons(row["mask"][0]))})
     header = {"dataset_revision": DRYRUN_REVISION, "dryrun": True,
               "note": "Substitute MIRA-Bench images with their first edit; engineering validation only."}
     index = build_bundle(rows, MIRA, output, header)

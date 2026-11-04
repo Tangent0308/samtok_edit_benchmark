@@ -40,9 +40,15 @@
 - **22:45** 新增免费背景保持指标（目标 mask 外 PSNR/MSE/`changed_frac`），dry run 上跑通（`/tmp/claude_refedit_20261104/dryrun_scores_v2/BACKGROUND.json`）。CPU 测试 37 项通过。
 - 观察（协议性质，非结果）：dry run 的 120 号图中 MICE 改了主冲浪者的板而不是左上角的板；官方 masked SC 只看目标 mask，若目标未变则 SC 低、若目标与干扰实例都改则 SC 不扣分，因此报告时同时给出背景指标。
 
-## 待办
+## 当前状态与待办（2026-11-04 22:55 UTC）
 
-1. 数据访问获批后：下载、校验、写 `SOURCE.json`，准备 bundle。
-2. 实现与 CPU 测试：数据/bundle、适配器、worker、评分（官方 VIEScore、GPT-5.4、本地 Judge）、报告、重合审计、ARNOLD 入口。
-3. smoke：每方法 2–3 case 生成 + 评分（付费请求总数 ≤ 30），记录每 case 墙钟与峰值显存。
-4. 用实测时间估算正式运行；≤ 约 3 h 则在 GPU 6–7 直接运行，否则交付 8 GPU ARNOLD 入口并在本机伪造变量做入口 smoke。
+已完成：调研与计划、`external_refedit` 实现与 37 项 CPU 测试、训练侧重合审计、8 方法 dry run（替代图）、ARNOLD 入口及其本机 smoke（`e677c28`）、GPT-5.4 传输核验（付费 2/30）、本地 Judge 与汇总/背景指标在 dry run 上跑通。GPU 6–7 上没有残留进程。
+
+阻塞：RefEdit-Bench 数据需要 HF gated 授权（见 20:05）。拿到数据后按顺序：
+
+1. `scripts/refedit_data.py download/extract/prepare`，bundle 写到 `external_refedit/bundle`，记录 `SOURCE.json`。
+2. `scripts/refedit_placement_review.py` 对 200 条公开指令做纯文本复核；如修改放置规则（`placement.py` 属于生成身份文件），须在任何生成之前完成并重新做入口 smoke，之后冻结。
+3. `scripts/audit_refedit_overlap.py --stage benchmark`，候选逐对目视复核，写正式 `overlap_audit/` 与统一子集。
+4. 真实数据 smoke：8 方法 × 2 例（GPU 6–7），本地 Judge 全评，GPT-5.4 最多再用 28 次。
+5. 用户在 ARNOLD 单机 8 卡启动正式生成（命令见 [REFEDIT.md](REFEDIT.md) §4），预计约 3 h。
+6. 生成后：`score-export`、本地 Judge、`background`、对比图到 `visualization_tmp/RefEdit_20261104/`；GPT-5.4 正式评分需用户批准（8 × 200 × 2 = 3,200 次成功请求，另加少量重试）。

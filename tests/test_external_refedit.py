@@ -301,3 +301,24 @@ def test_dryrun_bundle_never_writes_into_the_formal_root(tmp_path, monkeypatch, 
     path.write_text(json.dumps(cfg))
     with pytest.raises(ValueError):
         worker.run(tmp_path / "bundle", path, tmp_path / "formal/run_001", "qwen21", "edit", [])
+
+
+def test_background_metrics_ignore_the_dilated_target(tmp_path):
+    source = np.full((64, 64, 3), 100, np.uint8)
+    edited = source.copy()
+    edited[20:30, 20:30] = 250                      # inside the target polygon
+    edited[60:64, 0:8] = 0                          # spill-over in the background
+    a, b = tmp_path / "a.png", tmp_path / "b.png"
+    Image.fromarray(source).save(a)
+    Image.fromarray(edited).save(b)
+    mask = json.dumps([[18, 18, 32, 18, 32, 32, 18, 32]])
+    directory = tmp_path / "sitedit"
+    directory.mkdir()
+    files = {"source_full": {"path": str(a)}, "edited_full": {"path": str(b)}}
+    (directory / "JOB.json").write_text(json.dumps({"bindings": [
+        {"case_id": "000", "category": "Easy", "files": files, "mask_text": mask}]}))
+    report = score.background_metrics(tmp_path, ["sitedit"], replicates=10)
+    row = report["rows"][0]["splits"]["All"]
+    keep = ~score.official_mask(mask, (64, 64)).astype(bool)
+    assert row["changed_frac"] == pytest.approx(32 / keep.sum())
+    assert row["psnr"] < 100

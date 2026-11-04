@@ -333,6 +333,9 @@ def main(argv=None):
     p.add_argument("--cases", nargs="+")
     p.add_argument("--prompt-cache")
     p.add_argument("--retry-unparsable", action="store_true")
+    p = sub.add_parser("background", help="free preservation metrics outside the official target mask")
+    p.add_argument("--scores", required=True)
+    p.add_argument("--models", choices=MODELS, nargs="+", required=True)
     p = sub.add_parser("aggregate", help="per-split official means and source-paired bootstrap")
     p.add_argument("--scores", required=True)
     p.add_argument("--models", choices=MODELS, nargs="+", required=True)
@@ -363,6 +366,9 @@ def main(argv=None):
                        args.cases, args.prompt_cache, args.retry_unparsable)
         print(json.dumps(counts), flush=True)
         return int(counts["errors"] > 0 or counts["unparsable"] > 0)
+    elif args.command == "background":
+        from .score import background_metrics
+        print(json.dumps(background_metrics(args.scores, args.models), indent=2))
     elif args.command == "aggregate":
         from .score import aggregate
         print(json.dumps(aggregate(args.scores, args.models), indent=2))

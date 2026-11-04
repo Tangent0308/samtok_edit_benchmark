@@ -120,7 +120,7 @@ def export(bundle, run, output, model):
             masked(source, official_mask(item["mask"], source.size)).save(files["source_masked"])
             masked(edited, official_mask(item["mask"], edited.size)).save(files["edited_masked"])
         bindings.append({"case_id": case, "category": item["category"], "official_index": item["index"],
-                         "instruction_single": item["edit_instruction_single"],
+                         "instruction_single": item["edit_instruction_single"], "mask_text": item["mask"],
                          "output_sha256": result["output_sha256"], "result_sha256": sha256_file(path),
                          "files": {k: {"path": str(v), "sha256": sha256_file(v)} for k, v in files.items()}})
     job = {"schema": "refedit.score.v1", "model": model, "scope": plan["scope"], "run": str(run),
@@ -369,4 +369,65 @@ def aggregate(score_root, models, reference="sitedit", replicates=10000, seed=20
               "category_counts": {c: sum(v == c for v in categories.values()) for c in ("Easy", "Hard")},
               "note": "O is averaged per image as in the official notebook. Missing scores are not zero."}
     write_json(score_root / "SCORES.json", report)
+    return report
+
+
+# ------------------------------------------------------------------------------------------------ free metrics
+
+
+def background_metrics(score_root, models, threshold=25, replicates=10000, seed=20261027):
+    """Preservation outside the official (first polygon, 15x15-dilated) target mask, at canonical source size.
+
+    PSNR/MSE follow the PIE-Bench "unedit part" definition on [0, 1] RGB; ``changed_frac`` is the share of background
+    pixels whose maximum channel difference exceeds ``threshold``/255 (a direct spill-over measure). These are
+    supplementary and not comparable with the RefEdit paper's Table 5 (different resolution and implementation)."""
+    score_root = Path(score_root)
+    per_model, rows = {}, []
+    for model in models:
+        job = read(score_root / model / "JOB.json")
+        values = {}
+        for binding in job["bindings"]:
+            files = binding["files"]
+            with Image.open(files["source_full"]["path"]) as a, Image.open(files["edited_full"]["path"]) as b:
+                x = np.asarray(a.convert("RGB"), dtype=np.float64) / 255
+                y = np.asarray(b.convert("RGB"), dtype=np.float64) / 255
+            private = binding.get("mask_text")
+            mask = official_mask(private, (x.shape[1], x.shape[0])).astype(bool) if private else None
+            if mask is None:
+                raise ValueError("Background metrics need the exported official mask text")
+            keep = ~mask
+            if not keep.any():
+                continue
+            diff = (x - y)[keep]
+            mse = float(np.mean(diff ** 2))
+            values[binding["case_id"]] = {
+                "category": binding["category"], "mse": mse,
+                "psnr": float(10 * np.log10(1.0 / mse)) if mse > 0 else 100.0,
+                "changed_frac": float(np.mean(np.abs(diff).max(axis=1) > threshold / 255))}
+        per_model[model] = values
+        out = {}
+        for split, test in (("Easy", lambda c: int(c) < 100), ("Hard", lambda c: int(c) >= 100),
+                            ("All", lambda c: True)):
+            chosen = [v for c, v in values.items() if test(c)]
+            out[split] = {"n": len(chosen), **{k: (float(np.mean([v[k] for v in chosen])) if chosen else None)
+                                               for k in ("psnr", "mse", "changed_frac")}}
+        rows.append({"model": model, "splits": out})
+    paired = {}
+    if "sitedit" in per_model:
+        rng = np.random.default_rng(seed)
+        for model, values in per_model.items():
+            if model == "sitedit":
+                continue
+            common = sorted(set(values) & set(per_model["sitedit"]))
+            if len(common) < 2:
+                continue
+            idx = rng.integers(0, len(common), size=(replicates, len(common)))
+            paired[model] = {}
+            for key in ("psnr", "changed_frac"):
+                d = np.array([per_model["sitedit"][c][key] - values[c][key] for c in common])
+                paired[model][key] = {"n_common": len(common), "mean_difference": float(d.mean()),
+                                      "ci95": np.quantile(d[idx].mean(axis=1), [0.025, 0.975]).tolist()}
+    report = {"rows": rows, "paired_sitedit_minus_baseline": paired, "threshold": threshold,
+              "mask": "official first polygon, one 15x15 dilation; metrics on pixels outside it"}
+    write_json(score_root / "BACKGROUND.json", report)
     return report

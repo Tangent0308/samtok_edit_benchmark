@@ -36,6 +36,10 @@
 - **22:17–22:24** 入口 smoke `entry_smoke_002`（commit `e677c28`，从 GitHub 拉取固定 SHA 的 bootstrap）：run ID 认领 → 克隆并核对 HEAD → SITEdit 克隆 `aa5a414` → 212 个原生源码文件逐一核对 → 基线运行时归档核对与导入 → env_v4/env_pass1 从 NAS 归档解包，三个包均从核对过的克隆导入 → 节点本地配置 → GPU 显存检查 → 8 方法 × 1 例生成，**全部成功，退出码 0，约 7 分钟**。8 个方法的 raw 输出与本机运行时 dry run 的同一 case **逐字节相同**（SHA-256）。已用 run ID、`ARNOLD_WORKER_NUM=2`、缺 `ARNOLD_ID` 均在克隆前被拒绝。产物：`/tmp/claude_refedit_20261104/entry_root/`。
 - **22:25** 向协调方报告速度估算、入口命令与阻塞，等待回复；数据未到位前正式生成无法启动。
 
+- **22:27–22:42** 本地免费 Judge smoke：vLLM 0.31.0 在 GPU 6–7（TP2，端口 39611）加载 Qwen3.8-27B 约 8 分钟（NAS 读权重）+ 编译约 1 分钟；dry run 8 方法 × 3 例 × SC/PQ 共 48 次请求，**全部解析为官方 JSON、0 缺失**，每次约 2–3.5 s；结束后按 PID 停止了本脚本启动的服务器。SITEdit/005 本地 Judge 为 SC [9, 9]、PQ 9，GPT-5.4 为 SC [9, 9]、PQ 8（单例，仅说明两路 Judge 都可用）。汇总与配对 bootstrap 代码在 dry run 上跑通；这些数字基于 3 张替代图，**不是任何方法的结果**。
+- **22:45** 新增免费背景保持指标（目标 mask 外 PSNR/MSE/`changed_frac`），dry run 上跑通（`/tmp/claude_refedit_20261104/dryrun_scores_v2/BACKGROUND.json`）。CPU 测试 37 项通过。
+- 观察（协议性质，非结果）：dry run 的 120 号图中 MICE 改了主冲浪者的板而不是左上角的板；官方 masked SC 只看目标 mask，若目标未变则 SC 低、若目标与干扰实例都改则 SC 不扣分，因此报告时同时给出背景指标。
+
 ## 待办
 
 1. 数据访问获批后：下载、校验、写 `SOURCE.json`，准备 bundle。

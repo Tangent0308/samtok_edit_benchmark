@@ -1,0 +1,26 @@
+{
+  "schema": "refedit.judge.v1",
+  "protocol": "RefEdit Modified VIEScore: official metrics/VIEScore/refedit.ipynb at the pinned commit",
+  "official_code": {
+    "repository": "https://github.com/bimsarapathiraja/refedit",
+    "commit": "3b4fb55d0ff0e7df124385db1f1afeddeb24b879",
+    "files": {
+      "metrics/VIEScore/sc_score.txt": "350a2b4b5ecc1c77c28308443e6eaa24ec7205ef978f4271e25f8f2130af21fb",
+      "metrics/VIEScore/pq_score.txt": "fc0a1fb4716e0af7e1614bca1485fef2b59d2139e6f7f35b48fe2da3ea67b48a",
+      "metrics/VIEScore/refedit.ipynb": "1fe8b35c57efc9b3be3b8371d7777db26606a903e9fc72f6b98a6be82fdba968"
+    }
+  },
+  "transport": "openai_compatible",
+  "base_url": "http://127.0.0.1:39611/v1",
+  "model": "Qwen3.8-27B",
+  "weights": "/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/Qwen3.8-27B",
+  "temperature": 0.0,
+  "max_tokens": 2048,
+  "timeout": 600,
+  "extra_body": {
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "note": "Free local proxy judge with the same official prompts and images; reported separately from the GPT judge."
+}

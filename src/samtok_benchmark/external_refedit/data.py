@@ -27,6 +27,8 @@ from . import (DATASET_BYTES, DATASET_FILE, DATASET_REPO, DATASET_REVISION, EASY
                OFFICIAL_CODE, OFFICIAL_COMMIT)
 
 PUBLIC_KEYS = {"schema", "case_id", "source", "instruction", "input_digest"}
+# Engineering dry runs on substitute images (never RefEdit data, never formal): see scripts/refedit_dryrun_bundle.py
+DRYRUN_REVISION = "DRYRUN-NOT-REFEDIT"
 CATEGORIES = ("Easy", "Hard")
 
 
@@ -278,11 +280,18 @@ def verify_public(public, assets=True):
 
 
 def prepare(root, output):
-    root, output = Path(root).resolve(), Path(output).resolve()
-    rows = load_annotations(root)
+    root = Path(root).resolve()
+    header = {"dataset_revision": DATASET_REVISION, "source_sha256": sha256_file(root / "SOURCE.json"),
+              "extract_sha256": sha256_file(root / "extracted/EXTRACT.json")}
+    return build_bundle(load_annotations(root), root / "extracted", output, header)
+
+
+def build_bundle(rows, image_root, output, header):
+    """Public canvas + original instruction per case; scoring fields only in private/evaluation.json."""
+    output = Path(output).resolve()
     cases, evaluation = [], []
     for row in rows:
-        original = root / "extracted" / row["image"]
+        original = Path(image_root) / row["image"]
         canonical = {"path": str(original), "sha256": row["image_sha256"], "size": row["size"]}
         directory = output / "public" / row["case_id"]
         source, geometry = make_source(canonical, directory)
@@ -297,9 +306,7 @@ def prepare(root, output):
         evaluation.append({key: row[key] for key in ("case_id", "index", "category", "official_split",
                                                     "editing_instruction", "edit_instruction_single", "mask")}
                           | {"source": canonical})
-    index = {"schema": "refedit.bundle.v1", "dataset_revision": DATASET_REVISION,
-             "source_sha256": sha256_file(root / "SOURCE.json"),
-             "extract_sha256": sha256_file(root / "extracted/EXTRACT.json"), "cases": cases}
+    index = {"schema": "refedit.bundle.v1", **header, "cases": cases}
     index["digest"] = digest(index)
     immutable(output / "index.json", index)
     immutable(output / "private/evaluation.json", evaluation)
@@ -308,8 +315,9 @@ def prepare(root, output):
 
 def load_bundle(path, case_ids=None):
     index = read(Path(path) / "index.json")
-    if (index["schema"] != "refedit.bundle.v1" or index["dataset_revision"] != DATASET_REVISION or
-            len(index["cases"]) != NUM_CASES or len({c["case_id"] for c in index["cases"]}) != NUM_CASES):
+    dryrun = index.get("dryrun") is True and index["dataset_revision"] == DRYRUN_REVISION
+    if (index["schema"] != "refedit.bundle.v1" or (index["dataset_revision"] != DATASET_REVISION and not dryrun)
+            or len(index["cases"]) != NUM_CASES or len({c["case_id"] for c in index["cases"]}) != NUM_CASES):
         raise ValueError("Expected the complete pinned 200-case public bundle")
     if index["digest"] != digest({k: v for k, v in index.items() if k != "digest"}):
         raise ValueError("Bundle digest mismatch")

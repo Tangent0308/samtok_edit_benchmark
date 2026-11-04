@@ -83,6 +83,8 @@ def run(bundle, config_path, output, model, stage, case_ids, shard=0, shards=1):
         raise ValueError("Invalid model, stage, or shard")
     config, index = read(config_path), load_bundle(bundle, case_ids)
     verify_config(config)
+    if index.get("dryrun") and Path(output).resolve().is_relative_to(Path(config["formal_results_root"]).resolve()):
+        raise ValueError("A dry-run bundle (substitute images) must never write into the formal results root")
     selected = [i for i in index["cases"] if i["case_id"] in case_ids]
     if len(selected) != len(case_ids):
         raise ValueError("Unknown or duplicated case IDs")

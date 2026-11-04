@@ -12,6 +12,24 @@
 - **20:50** 外部检索：只有 MIRAGE（arXiv 2604.05180）报告 RefEdit-Bench，协议为 EditScore PF/Cons + GPT-5.1 PQ，合并 200 图；其固定源码 README 规定 RefEdit 用 patch ratio 0.2。
 - **21:00** 写定评测计划（本分支 `docs/REFEDIT_EVALUATION.md`），随后开始实现 `external_refedit`。
 
+- **21:00–21:10** 实现 `external_refedit`（数据/bundle、8 方法适配器、worker、launcher、官方 Modified VIEScore 评分、汇总）与 CPU 测试（33 项通过）。提交 `de78476`。
+- **21:05** 训练侧重合审计（CPU，59 s）：MIRA 审计绑定的 10 个训练元数据文件 SHA 全部未变，复用其 646,908 个图像指纹；SAMTok 训练混合集中 gRES（RefCOCO）8,337 行 = 7,639 个 COCO train2014 图；经 derived 编辑 → 清洗清单 → 合板 `derived-*` 记录追踪，**3,249 个 COCO id 的 7,473 条记录进入 S2 实际训练行**，其中 819 个 id 也在 Pass1 step 2000 实际训练行；S1 行不含这些记录。产物：`.ifbench-tmp/external_bench_20261102/refedit_overlap_audit_20261104/`（`TRAINING.json`、`GRES_FINGERPRINTS.jsonl`、`COCO_TRAINING_USE.json`）。基准侧比对待数据。
+- **21:15–21:57** 工程 dry run（**MIRA 图像各取第一项编辑，不是 RefEdit 数据**），GPU 6–7，8 方法 × 3 例全部生成成功（`/tmp/claude_refedit_20261104/dryrun_run1`）。每例墙钟中位数与峰值显存（allocated/reserved GiB）：
+
+| 方法 | 每例墙钟（s） | 首次加载（s） | 峰值显存 |
+|---|---:|---:|---:|
+| SITEdit | Pass1 1.3 + S2 49.7 | 20 + 21 | 18.6 / 38.2（reserved 47.1） |
+| Qwen-Image-2.1 | 39.3 | 8 | 19.1 |
+| Qwen-Image-Edit-2511 | 74.2 | 24 | 57.9 |
+| RePlan | 规划 2.3 + 编辑 97.5 | 135 + 934 | 15.9 / 57.9 |
+| MIRAGE（patch 0.2） | 规划 5.3 + 编辑 66.5 | 351 + 709 | 18.0 / 57.9 |
+| FLUX.3 Klein | 8.8 | 361 | 23.2 |
+| MICE | 5.4 | 366 | 17.3 |
+| FLUX.2 Klein-9B | 4.1 | 689 | 34.7 |
+
+  加载时间是进程内 `build()` 的实测值，冷加载（NAS 首读、与主线作业共享 NAS）长达 6–16 分钟；同一权重已在页缓存时约 0.5 分钟（如 RePlan/MIRAGE 之后的 Qwen2511）。SITEdit 三例 Pass1 均无 fallback；区码插入规则命中 `attribute_method` 2 例、`replace_with` 1 例。
+- **21:58 正式生成估算**：按上表中位数 × 200 例，纯生成 19.9 GPU·h；按 launcher 分片（目标 3,000 s/片，26 个加载、每次按 3 分钟计）约 22 GPU·h。GPU 6–7：约 10.5 h 墙钟；若 GPU 2–7 可用：约 3.7 h；单机 8 卡：约 2.9–3.3 h（冷加载更慢时偏上限）。超过“约 3 小时”阈值，**不在本机启动正式生成**，改为交付 ARNOLD 单机 8 卡入口（`scripts/arnold/`）。SITEdit 两个环境已打包到 NAS（`refedit_runtimes/env_v4.tar` 7.64 GB、`env_pass1.tar` 7.66 GB，描述符 SHA 写入 worker 脚本）。
+
 ## 待办
 
 1. 数据访问获批后：下载、校验、写 `SOURCE.json`，准备 bundle。

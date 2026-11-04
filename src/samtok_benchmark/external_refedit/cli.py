@@ -27,9 +27,20 @@ def runtime_for(model, stage):
     return "pass1" if stage == "tokens" else "v4" if model == "sitedit" else "generation"
 
 
-def plan_tasks(config, models, case_ids, gpus):
+# Planning only (never part of a request's identity): median wall seconds per case and stage measured in the
+# 2026-11-04 dry run on H100 (single instruction, ~1MP), and a typical model load.
+SCHEDULE = {"estimated_case_seconds": {"sitedit": {"tokens": 1.5, "edit": 50}, "qwen21": {"edit": 40},
+                                       "qwen2511": {"edit": 75}, "replan": {"plan": 2.5, "edit": 98},
+                                       "mirage": {"plan": 5.5, "edit": 67}, "flux3": {"edit": 9},
+                                       "mice": {"edit": 6}, "flux2_klein9b": {"edit": 4.5}},
+            "estimated_load_seconds": 180, "target_task_seconds": 3000}
+
+
+def plan_tasks(config, models, case_ids, gpus, target=None):
     """Split each method into case shards (planning estimates only) and order them longest first."""
-    schedule = config["schedule"]
+    schedule = dict(SCHEDULE)
+    if target:
+        schedule["target_task_seconds"] = target
     tasks = []
     for model in models:
         per_case = sum(schedule["estimated_case_seconds"][model][s] for s in stages(model))
@@ -155,6 +166,8 @@ def launch(args):
             raise ValueError("Smoke artifacts must not enter the formal results directory")
     elif len(case_ids) != NUM_CASES:
         raise ValueError("A formal run must contain all 200 cases; use --smoke for bounded checks")
+    if index.get("dryrun") and (not args.smoke or output.is_relative_to(formal)):
+        raise ValueError("A dry-run bundle only supports bounded smoke runs outside the formal root")
     cards = args.gpus.split(",")
     if len(cards) != len(set(cards)) or not all(c.isdecimal() for c in cards):
         raise ValueError("GPU IDs must be distinct nonnegative integers")
@@ -179,7 +192,7 @@ def launch(args):
     attempt_dir.mkdir(parents=True, exist_ok=False)
     logs = output / "logs"
     logs.mkdir(exist_ok=True)
-    tasks = plan_tasks(config, args.models, case_ids, len(cards))
+    tasks = plan_tasks(config, args.models, case_ids, len(cards), args.target_task_seconds)
     write_json(attempt_dir / "TASKS.json", {"gpus": cards, "tasks": tasks,
                                             "started": datetime.now(timezone.utc).isoformat()})
     source = Path(config["paths"]["sitedit_source"])
@@ -214,7 +227,12 @@ def launch(args):
                 log.write(json.dumps({"attempt": attempt, "command": command, "gpu": card,
                                       "time": datetime.now(timezone.utc).isoformat()}) + "\n")
                 log.flush()
-                code = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT).returncode
+                # Native code may write debug files into its working directory (MICE saves
+                # HARD_MASK_smoothpl.png); give every task its own scratch directory inside the run.
+                scratch = output / "scratch" / name
+                scratch.mkdir(parents=True, exist_ok=True)
+                code = subprocess.run(command, env=env, stdout=log, stderr=subprocess.STDOUT,
+                                      cwd=scratch).returncode
             seconds = time.monotonic() - tick
             codes.append(code)
             print(f"[{datetime.now(timezone.utc):%H:%M:%S}] GPU {card}: end {name} exit {code} {seconds:.0f}s",
@@ -248,6 +266,29 @@ def launch(args):
     return 0 if value["all_generated"] and not any(c not in (0,) for codes in results for c in codes) else 1
 
 
+def release(output, model, stage, case, reason):
+    """The logged, manual way out for an admission without a terminal record (e.g. a killed worker).
+
+    The case directory is moved aside with its partial files; a later launch then samples the request again with
+    the same inputs and seed. Never applies to a request that has a terminal record."""
+    output = Path(output).resolve()
+    directory = output / model / stage / case
+    if (directory / "result.json").exists():
+        raise ValueError("A request with a terminal record is never released")
+    if not (directory / "ADMITTED.json").exists():
+        raise ValueError("No open admission to release")
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    target = output / "_released" / model / stage / f"{case}-{stamp}"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    admission = read(directory / "ADMITTED.json")
+    directory.rename(target)
+    entry = {"model": model, "stage": stage, "case_id": case, "reason": reason, "moved_to": str(target),
+             "admission": admission, "time": datetime.now(timezone.utc).isoformat()}
+    with (output / "RELEASES.jsonl").open("a") as stream:
+        stream.write(json.dumps(entry) + "\n")
+    return entry
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -266,6 +307,8 @@ def main(argv=None):
     p.add_argument("--max-used-gib", type=float, default=8.0,
                    help="do not start a task while another process uses more than this on the card")
     p.add_argument("--no-gpu-gate", action="store_true")
+    p.add_argument("--target-task-seconds", type=float,
+                   help="shard size target (planning only); defaults to the configuration's schedule")
     p = sub.add_parser("worker")
     for key in ("bundle", "config", "output", "model", "stage"):
         p.add_argument(f"--{key}", required=True)
@@ -274,6 +317,9 @@ def main(argv=None):
     p.add_argument("--shards", type=int, default=1)
     p = sub.add_parser("report")
     p.add_argument("--output", required=True)
+    p = sub.add_parser("release", help="move aside one admission without a terminal record (logged)")
+    for key in ("output", "model", "stage", "case", "reason"):
+        p.add_argument(f"--{key}", required=True)
     p = sub.add_parser("score-export", help="official masked/full judge inputs bound to output SHAs")
     for key in ("bundle", "run", "output"):
         p.add_argument(f"--{key}", required=True)
@@ -302,6 +348,8 @@ def main(argv=None):
         return 2 if result.get("fatal") else int(result["failed"] > 0 or result["unknown"] > 0)
     elif args.command == "report":
         print(json.dumps(report(args.output), indent=2))
+    elif args.command == "release":
+        print(json.dumps(release(args.output, args.model, args.stage, args.case, args.reason), indent=2))
     elif args.command == "run":
         return launch(args)
     elif args.command == "score-export":

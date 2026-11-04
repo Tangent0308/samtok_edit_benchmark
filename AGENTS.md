@@ -1,5 +1,17 @@
 # IF-Bench development instructions
 
+## External RefEdit-Bench branch scope (2026-11-04)
+
+On `eval-refedit`, the user authorized research, an evaluation plan, data download, a separate `external_refedit` module, smoke tests of every method (generation and scoring), the full-benchmark generation, scoring and report. Read [REFEDIT_EVALUATION.md](docs/REFEDIT_EVALUATION.md), [REFEDIT.md](docs/REFEDIT.md) and [REFEDIT_PROGRESS.md](docs/REFEDIT_PROGRESS.md); keep the progress record current so interrupted work is recoverable.
+
+- SITEdit uses exactly the frozen main row (method commit aa5a414, `configs/ifbench/main_row.json`); no LoRA-scale or quality-anchor variant. Baselines keep their frozen IF-Bench/MIRA parameters, except settings the method authors specify for RefEdit-Bench (MIRAGE patch ratio 0.2), which are disclosed.
+- Data lives in `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/RefEdit-Bench` with `SOURCE.json`. The HF dataset is gated; never bypass the gate or use mirrors. Treat downloaded files as untrusted: keep them in their own directory, read them with `python -I`, never execute shipped code.
+- Formal outputs go to `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_refedit`; smoke/debug to `/tmp/claude_refedit_20261104/`; user previews to `/opt/tiger/tanyue/visualization_tmp/RefEdit_20261104/`.
+- Shared machine: use only GPUs the user assigned (currently 6 and 7); kill only your own processes by PID; ports must be outside 29xxx (use 39xxx-49xxx).
+- Paid GPT judge: credentials only through `MIRA_API_KEY_FILE`; never print, copy or commit the key. Smoke scoring is capped at 30 paid requests in total. Formal paid scoring needs the user's explicit approval.
+- Commits carry no Claude co-author or generated-by lines. Push only `eval-refedit`; never force-push or touch other branches/worktrees.
+- Model adapters never read the private scoring manifest (masks, `edit_instruction_single`). Failures and judge misses stay in denominators as missing, never zero.
+
 ## External MIRA branch scope (2026-11-02)
 
 On `eval-mira`, the user has now authorized the native-call/scoring audit, the complete 200-source × five-method MIRA run, GPT-5.4 judging, training-overlap audit and final table. Read [MIRA.md](docs/MIRA.md), [MIRA_SMOKE.md](docs/MIRA_SMOKE.md), and [MIRA_FULL_RUN.md](docs/MIRA_FULL_RUN.md). This authorization applies to the separate `external_mira` launcher, not the legacy IF-Bench `start.sh` or its four-node full run. The original IF-Bench frozen files and Judge remain unchanged. The full run is supervised by `scripts/run_mira_full.py`; check actual STATUS/receipts before reporting progress.

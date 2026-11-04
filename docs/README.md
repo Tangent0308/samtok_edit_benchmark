@@ -1,5 +1,11 @@
 # 评测与数据文档
 
+## RefEdit-Bench 外部评测（eval-refedit）
+
+- [评测计划与协议](REFEDIT_EVALUATION.md)：数据、官方 Modified VIEScore、各方法输入、Judge 偏差、统计与重合审计计划。
+- [运行手册](REFEDIT.md)：下载、准备、生成、评分与 ARNOLD 入口命令。
+- [进度记录](REFEDIT_PROGRESS.md)：实际执行、阻塞与偏差，按时间追加。
+
 ## MIRA 外部评测（eval-mira）
 
 - [完整评测文档](MIRA_EVALUATION.md)：每个模型、Judge、两套结果、结果路径、实际图例与 SITEdit 分析。

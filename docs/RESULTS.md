@@ -1,6 +1,6 @@
 # 当前评测结果与分析
 
-**统一约1MP；以下为极小规模端到端验证。正式全量结果仍待评测。**
+**统一约1MP；以下为极小规模端到端验证。正式全量结果（八方法×十种 setting、1,084图）见 [PAPER_RESULTS.md](PAPER_RESULTS.md)。**
 
 固定K=5 dev图 `v2-sa_8415518` 覆盖七模型×十种setting，共70个组合。另有固定K=2图在S1/S3-point/S5下的21个生成请求，合计91条固定生成请求；本轮补齐其中尚未执行的49条请求。输入、prompt、权重、原生参数和seed42保持冻结，不按分数择优或重采样。
 
@@ -56,20 +56,7 @@ Judge只评分上述同一张K=5图的70个组合。调用使用原始源图、c
 
 ## 全量主结果
 
-全量1,084图、3,872单元的UnitPass / JointPass及95%配对bootstrap置信区间均待评测。
-
-| Setting | qwen2511 | qwen21 | flux3 | replan | mirage | mice | flux2_klein9b |
-|---|---|---|---|---|---|---|---|
-| S1 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S2-point | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S2-box | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S2-mask | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S3-point | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S3-box | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S3-mask | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S4-ref | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S4-noref | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
-| S5 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 | 待评测 |
+全量 1,084 图、3,872 单元的结果已完成（八方法×十种 setting），UnitPass / JointPass、95% 配对 bootstrap 区间、配对差值、派生指标、失败与补判统计及全部文件路径见 [PAPER_RESULTS.md](PAPER_RESULTS.md)。
 
 ## 十种 setting 的实际输入和七模型输出
 
@@ -121,7 +108,7 @@ Judge只评分上述同一张K=5图的70个组合。调用使用原始源图、c
 - 成功出图、Judge返回有效分数、编辑任务通过是三个独立结论。标记残留、漏编辑或原生定位错误均保留，不据诊断结果修改prompt或模型配置。
 - RePlan/MIRAGE保留原生近1MP输出网格，全部输出按冻结几何回到源图尺寸；Judge口径未改变。
 - MICE极小mask的原生绑定量化限制见[使用说明](USAGE.md)；不使用膨胀、GT修复或外部组件提高表现。
-- 单图不能说明模型总体能力或稳定性；正式成绩需要全量执行。人工标记残留率、κ及GT selector paste-back诊断仍待单独完成。
+- 单图不能说明模型总体能力或稳定性；正式成绩见[PAPER_RESULTS.md](PAPER_RESULTS.md)。人工标记残留率、κ及GT selector paste-back诊断仍待单独完成。
 
 ### 此样例暴露的问题
 
@@ -133,7 +120,7 @@ Judge只评分上述同一张K=5图的70个组合。调用使用原始源图、c
 - **部分输出保留了可视化标记。** Qwen-Image-2.1的S4-ref为2/5、全局P/Q均为2，Judge指出框、轮廓、点和编号残留；FLUX.2 Klein-9B的S5为1/5、全局Q=2，Judge指出彩色轮廓残留。上方图片保留这些现象，未进行标记清理；本轮没有人工标记残留率。
 - **Judge对细节的解释需人工抽检。** 同一源图U2的胸袋，在Qwen-Image-Edit-2511的S1解释中被描述为“已有两个胸袋”，S5中则为“没有带盖胸袋”。两处措辞和细节判断存在差异，需对照原图与裁剪证据人工复核，不能直接认定其中一个评分错误。本轮保留原分，未重评。
 
-这些结果支持当前十种setting的工程可执行性，不证明单图结果代表总体能力，也不据此为任何模型更换输入方式。全量执行仍待正式运行包发布；本次核验没有发现运行阻塞项，Judge细节判读纳入后续人工抽检。
+这些结果支持当前十种setting的工程可执行性，不证明单图结果代表总体能力，也不据此为任何模型更换输入方式。全量执行已于2026-11-04完成，结果见[PAPER_RESULTS.md](PAPER_RESULTS.md)；Judge细节判读纳入后续人工抽检。
 
 ## 结果与复现
 
@@ -142,4 +129,4 @@ Judge只评分上述同一张K=5图的70个组合。调用使用原始源图、c
 - 70组合Judge计划、原始响应和有效评分：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031`。
 - 单图诊断记录：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/one-mp-coverage-judge-20261031/results/REPORT.json`；SHA256 `da4892ab5cd4009051fc54908725ee276d4542a95d33d6114d886dc418a6c4a0`。
 - 记录、raw/effective响应和缩略图均来自真实文件；源SHA见[PROVENANCE.json](assets/current/PROVENANCE.json)。
-- 正式运行入口及待发布状态见[FULL_RUN.md](FULL_RUN.md)。
+- 正式运行入口见[FULL_RUN.md](FULL_RUN.md)；全量结果见[PAPER_RESULTS.md](PAPER_RESULTS.md)。

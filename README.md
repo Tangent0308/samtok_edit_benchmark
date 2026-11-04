@@ -7,6 +7,7 @@ IF-Bench 评测真实场景中的细粒度、多目标图像编辑：在同一�
 - [数据构建](docs/CONSTRUCTION.md)：来源、选择、任务与区域标注、审核、发布和复现。
 - [评测用法](docs/USAGE.md)：公共画布、十种 setting、八方法实际输入、参数和指标。
 - [四机运行](docs/FULL_RUN.md)：4×8 H100 前台入口、固定分片、统一 Judge 与汇总。
-- [验证与结果](docs/RESULTS.md)：当前小样本验证证据及全量评测状态。
+- [验证与结果](docs/RESULTS.md)：单图小样本验证证据。
+- [全量结果（论文用）](docs/PAPER_RESULTS.md)：八方法×十种 setting 的全部分数、区间、配对差值、数据处理规则、运行记录和每个数字的出处。
 
-**正式全量成绩待汇总发布。** 小样本能否正确调用、出图和恢复坐标，与编辑任务是否通过分别报告；不把接口验证当成全量成绩。七基线冻结配置见 [fairness_v2_2_1mp.json](configs/evaluation/fairness_v2_2_1mp.json)，SAMTokEdit 配置与调用见[方法说明](docs/USAGE.md#44-samtokedit我方方法)，开发规范见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+**正式全量成绩已完成（2026-11-04），见[全量结果](docs/PAPER_RESULTS.md)。** 小样本能否正确调用、出图和恢复坐标，与编辑任务是否通过分别报告；不把接口验证当成全量成绩。七基线冻结配置见 [fairness_v2_2_1mp.json](configs/evaluation/fairness_v2_2_1mp.json)，SAMTokEdit 配置与调用见[方法说明](docs/USAGE.md#44-samtokedit我方方法)，开发规范见 [CONTRIBUTING.md](CONTRIBUTING.md)。

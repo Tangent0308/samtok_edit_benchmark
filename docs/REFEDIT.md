@@ -62,10 +62,12 @@ $GEN -m samtok_benchmark.external_refedit release --output <run dir> --model <m>
 
 ```bash
 export REFEDIT_RUN_ID=gen_arnold_001            # 每次尝试一个新 ID；用过的 ID 会被拒绝
-export REFEDIT_COMMIT=<eval-refedit 的完整 commit SHA，见进度记录>
+export REFEDIT_COMMIT=e677c28bbc0a814d927067792bab4917f1eebdf5   # 通过入口 smoke 的提交
 curl -fsSL https://raw.githubusercontent.com/Tangent0308/samtok_edit_benchmark/$REFEDIT_COMMIT/scripts/arnold/refedit_bootstrap.sh -o /tmp/refedit_bootstrap.sh
 bash /tmp/refedit_bootstrap.sh
 ```
+
+前提：`external_refedit/bundle` 已由本机 `scripts/refedit_data.py prepare` 生成（需要先获得数据）。预计单机 8×H100 约 3 小时（实测中位数推算 22 GPU·h；开头每类模型冷加载可能多 5–15 分钟）。
 
 也可以把 [refedit_bootstrap.sh](../scripts/arnold/refedit_bootstrap.sh) 的全文粘贴为启动命令，并在前面设置这两个变量。入口依次：
 

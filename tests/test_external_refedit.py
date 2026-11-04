@@ -254,3 +254,50 @@ def test_extract_prepare_and_worker_never_resample(tmp_path, monkeypatch, config
     assert result["output_size"] == private[0]["source"]["size"]
     second = worker.run(tmp_path / "bundle", cfg_path, out, "qwen21", "edit", ids)
     assert second["reused"] == n - 1 and len(calls) == n - 1
+
+
+# ------------------------------------------------------------------------------------------------ launcher
+
+
+def test_plan_covers_every_case_exactly_once(config):
+    from samtok_benchmark.external_refedit.cli import plan_tasks
+    from samtok_benchmark.external_refedit.worker import stages
+
+    cases = [f"{i:03d}" for i in range(200)]
+    tasks = plan_tasks(config, ["sitedit", "replan", "mice"], cases, 8, target=3000)
+    for model in ("sitedit", "replan", "mice"):
+        shards = [t for t in tasks if t["model"] == model]
+        assert {t["shards"] for t in shards} == {len(shards)}
+        assert sum(t["cases"] for t in shards) == len(cases)
+    assert tasks == sorted(tasks, key=lambda t: (-t["estimated_seconds"], t["model"], t["shard"]))
+    assert stages("replan") == ("plan", "edit") and stages("sitedit") == ("tokens", "edit")
+
+
+def test_release_moves_only_open_admissions(tmp_path):
+    from samtok_benchmark.external_refedit.cli import release
+
+    case = tmp_path / "qwen21/edit/007"
+    case.mkdir(parents=True)
+    (case / "ADMITTED.json").write_text(json.dumps({"pid": 1}))
+    (case / "raw.png").write_bytes(b"partial")
+    entry = release(tmp_path, "qwen21", "edit", "007", "worker killed")
+    assert not case.exists() and Path(entry["moved_to"], "raw.png").exists()
+    assert json.loads((tmp_path / "RELEASES.jsonl").read_text())["reason"] == "worker killed"
+    done = tmp_path / "qwen21/edit/008"
+    done.mkdir(parents=True)
+    (done / "ADMITTED.json").write_text("{}")
+    (done / "result.json").write_text("{}")
+    with pytest.raises(ValueError):
+        release(tmp_path, "qwen21", "edit", "008", "x")
+
+
+def test_dryrun_bundle_never_writes_into_the_formal_root(tmp_path, monkeypatch, config):
+    from samtok_benchmark.external_refedit import worker
+
+    monkeypatch.setattr(worker, "verify_config", lambda c: None)
+    monkeypatch.setattr(worker, "load_bundle", lambda b, c=None: {"dryrun": True, "cases": []})
+    cfg = dict(config, formal_results_root=str(tmp_path / "formal"))
+    path = tmp_path / "config.json"
+    path.write_text(json.dumps(cfg))
+    with pytest.raises(ValueError):
+        worker.run(tmp_path / "bundle", path, tmp_path / "formal/run_001", "qwen21", "edit", [])

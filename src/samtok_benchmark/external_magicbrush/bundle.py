@@ -28,6 +28,20 @@ PUBLIC_KEYS = {
     "annotation",
     "input_digest",
 }
+FONT_SHA256 = "abdc775b21b1bc470d50c97e790d276f2054b7504e56e5bd3e64f48d68582322"
+FONT_PATH = Path(
+    "/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_20261105/assets/DejaVuSans.ttf"
+)
+
+
+def annotation_font(size):
+    # Recurrent requests are rendered on new nodes. Bind font bytes, not a container's font version.
+    for path in [FONT_PATH, Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf")]:
+        if path.exists():
+            raw = path.read_bytes()
+            if hashlib.sha256(raw).hexdigest() == FONT_SHA256:
+                return ImageFont.truetype(BytesIO(raw), size)
+    raise ValueError("The frozen annotation font is unavailable or changed")
 
 
 def asset(path):
@@ -64,9 +78,7 @@ def render_mask(source, mask, destination):
     im.paste((255, 0, 0), mask=edge)
     y, x = np.nonzero(np.asarray(m))
     anchor = (int(x[0]), int(y[0]))
-    font = ImageFont.truetype(
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", max(12, round(min(w, h) * 0.02))
-    )
+    font = annotation_font(max(12, round(min(w, h) * 0.02)))
     d = ImageDraw.Draw(im)
     bounds = d.textbbox((0, 0), "U1", font=font)
     tw, th = bounds[2] - bounds[0] + 2 * line, bounds[3] - bounds[1] + 2 * line

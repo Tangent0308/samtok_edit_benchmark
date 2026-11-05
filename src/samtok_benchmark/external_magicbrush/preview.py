@@ -5,10 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 import textwrap
 
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageOps
 
 from samtok_benchmark.io import sha256_file, write_json
-from .bundle import load_bundle, requests, smoke_sessions
+from .bundle import annotation_font, load_bundle, requests, smoke_sessions
 from .data import read
 from .worker import result_path
 
@@ -22,9 +22,8 @@ def preview(output, destination):
     items = [i for i in items if i["session_id"] in selected]
     private = {r["case_id"]: r for r in read(Path(plan["bundle"]) / "private/evaluation.json")}
     destination.mkdir(parents=True, exist_ok=True)
-    font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-    font = ImageFont.truetype(font_path, 18)
-    small = ImageFont.truetype(font_path, 14)
+    font = annotation_font(18)
+    small = annotation_font(14)
     receipts = []
     for item in items:
         columns = []

@@ -90,6 +90,9 @@ def publish(package):
         "overlap/OVERLAP.json",
         "METRIC_PARITY.json",
         "ESTIMATE.json",
+        "assets/DejaVuSans.ttf",
+        "assets/FONT_SOURCE.json",
+        "assets/FONT_LICENSE.txt",
     ]:
         entries[str(package / relative)] = sha(package / relative)
     config = read(REPO / "configs/external/magicbrush.json")

@@ -60,7 +60,7 @@ export MAGICBRUSH_COMMIT=<handoff中的40位commit>
 bash /path/to/published/magicbrush_bootstrap.sh
 ```
 
-结果根固定为 `experiments2/SAMTokEdit/external_magicbrush/run_001/`。每次恢复只改 attempt，例如 `run002`，不改结果根、配置或生成代码。入口先验证 READY，运行完才退出。已有完成请求按身份验证复用；新 attempt 不是重采样授权。纯编辑方法在一个 worker 中按轮次保留后端；含 planner/Pass1 的方法按依赖波次运行，所有跨模型任务按 GPU 队列分配。各进程独立工作目录，避免 MICE 原生调试图片相互覆盖。
+结果根固定为 `experiments2/SAMTokEdit/external_magicbrush/run_001/`。每次恢复只改 attempt，例如 `run002`，不改结果根、配置或生成代码。入口先验证 READY，运行完才退出。已有完成请求按身份验证复用；新 attempt 不是重采样授权。纯编辑方法在一个 worker 中按轮次保留后端；含 planner/Pass1 的方法按依赖波次运行，所有跨模型任务按 GPU 队列分配。各进程在临时 cache 根下使用独立工作目录，避免 MICE 原生调试图片相互覆盖，也不把这些调试文件写入正式结果。
 
 ## 4. 记录、恢复与评分
 

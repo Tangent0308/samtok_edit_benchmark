@@ -70,6 +70,13 @@ def launch(args):
         raise ValueError(
             "Smoke output must be outside the formal root; formal output must be within it"
         )
+    cache_root = Path(
+        args.cache_dir or f"/tmp/ifbench-magicbrush-cache-{digest(str(output))[:12]}"
+    ).resolve()
+    if cache_root.is_relative_to(formal):
+        raise ValueError(
+            "Native debug working directories and caches must stay outside formal results"
+        )
     estimate = read(args.estimate) if args.estimate else None
     if not args.smoke:
         if not estimate or not estimate["all_methods_smoke_passed"]:
@@ -165,7 +172,7 @@ def launch(args):
                     return
                 runtime = config["runtime"][runtime_for(model, stage)]
                 name = f"{model}-{stage}-{task['shard']}of{task['shards']}-wave{wave}"
-                work = attempt / "work" / name
+                work = cache_root / "work" / args.attempt / name
                 work.mkdir(parents=True)
                 environment = dict(
                     os.environ,
@@ -188,7 +195,7 @@ def launch(args):
                     "IFBENCH_NATIVE_SOURCES",
                 ]:
                     environment.pop(key, None)
-                cache = Path(args.cache_dir or output / "cache") / model / str(card)
+                cache = cache_root / model / str(card)
                 environment["TORCHINDUCTOR_CACHE_DIR"] = str(cache / "inductor")
                 environment["TRITON_CACHE_DIR"] = str(cache / "triton")
                 command = [

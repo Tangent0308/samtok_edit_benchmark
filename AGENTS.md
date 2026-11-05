@@ -1,5 +1,9 @@
 # IF-Bench development instructions
 
+## External MagicBrush branch scope (2026-11-05)
+
+On `eval-magicbrush`, follow `docs/MAGICBRUSH_EVALUATION.md` and append progress to `docs/MAGICBRUSH_PROGRESS.md`. This scope supersedes GPU/path/push restrictions specific to the RefEdit/MIRA branches below. Use only local GPUs 4–7, only after 2026-11-05 19:00 UTC and only when each has approximately 1.6 GB existing usage; never touch other jobs or GPUs 0–3. Use isolated Python (`-I`) to parse downloaded data. No paid APIs, four-node jobs, LoRA variants, or edits to frozen modules/other worktrees. Push only `eval-magicbrush`. Before formal execution, measure smoke throughput; if local time exceeds about 8 h, hand off a resumable single-node 8-GPU ARNOLD entry instead of launching the full run locally. Formal results belong only under `experiments2/SAMTokEdit/external_magicbrush`; temporary files go to `/tmp/claude_magicbrush_20261105` or `.ifbench-tmp/magicbrush_20261105`.
+
 ## External RefEdit-Bench branch scope (2026-11-04)
 
 On `eval-refedit`, the user authorized research, an evaluation plan, data download, a separate `external_refedit` module, smoke tests of every method (generation and scoring), the full-benchmark generation, scoring and report. Read [REFEDIT_EVALUATION.md](docs/REFEDIT_EVALUATION.md), [REFEDIT.md](docs/REFEDIT.md) and [REFEDIT_PROGRESS.md](docs/REFEDIT_PROGRESS.md); keep the progress record current so interrupted work is recoverable.

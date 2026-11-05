@@ -87,12 +87,12 @@ def gpu_gate(config, cards, *, check_memory=True):
 
 
 def source_identity():
-    names = ["__init__.py", "adapters.py", "bundle.py", "worker.py"]
+    names = ["__init__.py", "adapters.py", "bundle.py", "cli.py", "data.py", "worker.py"]
     paths = [Path(__file__).parent / n for n in names]
     paths += [REPO / "src" / n for n in FROZEN_FILES]
     paths += [
         REPO / "src/samtok_benchmark/external_refedit" / n
-        for n in ["adapters.py", "placement.py", "data.py"]
+        for n in ["__init__.py", "adapters.py", "placement.py", "data.py", "worker.py"]
     ]
     return {str(p.relative_to(REPO)): sha256_file(p) for p in sorted(set(paths))}
 

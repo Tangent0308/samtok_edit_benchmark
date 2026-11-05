@@ -76,7 +76,21 @@ def publish(package):
     for row in read(bundle / "private/evaluation.json"):
         for key in ["source", "mask", "target"]:
             entries[row[key]["path"]] = row[key]["sha256"]
-    for relative in ["bundle/index.json", "overlap/OVERLAP.json", "ESTIMATE.json"]:
+    parity = read(package / "METRIC_PARITY.json")
+    for key, relative in [
+        ("code_sha256", "src/samtok_benchmark/external_magicbrush/metrics.py"),
+        ("scoring_code_sha256", "src/samtok_benchmark/external_magicbrush/scoring.py"),
+    ]:
+        if parity["scorer_identity"][key] != sha(REPO / relative):
+            raise ValueError("Scoring code changed after metric parity validation")
+    if parity["check_script_sha256"] != sha(REPO / "scripts/magicbrush_metric_check.py"):
+        raise ValueError("Metric validation script changed")
+    for relative in [
+        "bundle/index.json",
+        "overlap/OVERLAP.json",
+        "METRIC_PARITY.json",
+        "ESTIMATE.json",
+    ]:
         entries[str(package / relative)] = sha(package / relative)
     config = read(REPO / "configs/external/magicbrush.json")
     for name in ["clip", "dino"]:

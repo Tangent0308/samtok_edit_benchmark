@@ -313,7 +313,34 @@ def report(output, overlap_path, destination):
         text.append(
             f"| {m['model']} | {m['requests']} | {m['status'].get('scored', 0)} | {m['status']} |"
         )
-    for subset in ["full", "no_known_corpus_overlap"]:
+    if plan["scope"] == "smoke":
+        text += [
+            "",
+            "## 逐请求端到端检查",
+            "",
+            "以下仅为三个固定请求的评分诊断。连续编辑样例是三轮会话的第二轮，不是官方最终轮；"
+            "因此不据此报告 single-turn / multi-turn 基准均分或方法排名。",
+            "",
+            "| 方法 | 请求 | 状态 | L1 ↓ | L2 ↓ | CLIP-I ↑ | DINO ↑ | CLIP-T ↑ |",
+            "|---|---|---|---:|---:|---:|---:|---:|",
+        ]
+        for model in plan["models"]:
+            for item in items:
+                record = results.get((model, item["key"]), {})
+                score = record.get("score")
+                status = (
+                    score["status"]
+                    if score
+                    else record.get("generation", {}).get("status", "missing")
+                )
+                values = [
+                    f"{score['metrics'][k]:.4f}"
+                    if score and score["status"] == "scored"
+                    else "未计分"
+                    for k in METRICS
+                ]
+                text.append(f"| {model} | {item['key']} | {status} | " + " | ".join(values) + " |")
+    for subset in ["full", "no_known_corpus_overlap"] if plan["scope"] == "full" else []:
         for track in TRACKS:
             for mode in ["single-turn", "multi-turn"]:
                 selected_rows = [

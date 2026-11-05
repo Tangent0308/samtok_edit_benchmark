@@ -35,7 +35,7 @@ GT target、local/global descriptions 仅供评测和核验，禁止进入模型
 | SITEdit / SAMTokEdit | 原文 U1 → Pass1 定位区域码 → S2 | 官方 mask → 原生 SAMTok codec 区域码 → S2，不调用 Pass1 grounder | aa5a414；raw SAMTok TE；40 步；γ=2；负向同句去 token；seed 42 |
 | Qwen-Image-2.1 | 原文 + 清图 | 清图 + mask 轮廓标记图 + 固定角色说明 + 原文 | 40 步，CFG 1，1024 分辨率策略，KV cache，原生 CPU offload |
 | Qwen-Image-Edit-2511 | 原文 + 清图 | 同上 | 40 步，true CFG 4，guidance 1，negative 单空格 |
-| FLUX.3 Klein distilled | 官方引用前缀 + 原文 + 清图 | 清图 + 标记图 + 固定说明 + 原文 | 16 步，PUP off，boxes=None |
+| FLUX.3 Klein distilled | `<ref_image_0>` 引用前缀 + 原文 + 清图 | 清图 `<ref_image_0>` + 标记图 `<ref_image_1>`，沿用 IF-Bench 的显式引用角色说明 + 原文 | 16 步，PUP off，boxes=None |
 | FLUX.2 Klein-9B distilled | 原文 + 清图 | 清图 + 标记图 + 固定说明 + 原文 | 4 步，guidance 1，文本上限 512 |
 | RePlan（Qwen2511） | 原生 planner → editor | planner 看标记图与原文，editor 编辑清图 | 40 步，CFG 4，expand 0，attention switch .5，规划上限 2048；SDPA |
 | MIRAGE（Qwen2511） | 原生 parser/locator → 联合编辑 | parser 原文，locator 看标记图 + 对应提示，editor 编辑清图 | 40 步，CFG 4，原生默认 patch ratio .4，padding 10；不沿用 RefEdit 专用 .2 |
@@ -62,6 +62,8 @@ SITEdit 源码与 `configs/ifbench/main_row.json` 必须一致；Pass1 step 2000
 具体实现使用发布者提供的 HF 权重转换：OpenAI `clip-vit-base-patch32@3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268`、Facebook `dino-vits16@abe3b354cb6a9b6f146096b14a4a9d7eecbcb4bd`，安装环境中的 Transformers，FP32、eager attention、TF32 关闭。预处理及余弦定义保持上述公开 scorer 口径；与旧 OpenAI CLIP CUDA/FP16 实现不宣称逐位相同。已在 CPU 核验相同图像的 L1=L2=0、CLIP-I=DINO=1。
 
 官方 local descriptions 中有三条空字符串：`248403-1`、`411530-1`、`551701-2`。沿用官方代码行为，对原样空字符串编码，保留在分母并显式披露；不改成指令、global caption 或人工补写文本。
+
+DINO 特别核验：HF 转换版的配置遗留 `layer_norm_eps=1e-12`，本实现显式恢复[原始 `vit_small` 的 `1e-6`](https://github.com/facebookresearch/dino/blob/7c446df5b9f45747937fb0d72314eb9f7b66930a/vision_transformer.py#L222-L225)。从官方地址下载原始 tensor checkpoint，仅用 `weights_only=True` 读取；198 个转换后参数张量逐个与原始权重完全一致。以独立实现的原始 Transformer 运算核验两张真实测试图，两组 CLS 特征最大绝对误差均为 0、余弦均为 1。证据在共享包 `METRIC_PARITY.json`；核验脚本为 `scripts/magicbrush_metric_check.py`，未执行下载的 Python 或 TorchScript。
 
 **论文与现行代码的差异必须披露。** 论文 Table 3 将 mask-provided 的 L1/L2/CLIP-T 定义为区域指标，且 L1/L2 数值量级不同；现行官方公开 scorer 对这五项均使用完整图像，没有区域模式。故本次两输入轨道统一采用上述公开代码的整图指标，mask-provided 标为“公开 scorer 下的有 mask 扩展”，不声称复现论文 Table 3 区域指标，也不据此和 GLIDE/Blended Diffusion 排名。必要的局部诊断明确单列，不替换标准五指标。
 

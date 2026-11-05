@@ -23,6 +23,8 @@ def score(output, config_path, cache, device="cpu", shard=0, shards=1):
     torch.set_num_threads(4)
     output = Path(output)
     plan, config = read(output / "RUN.json"), read(config_path)
+    if config["metrics"] != read(output / "CONFIG.json")["metrics"]:
+        raise ValueError("Metric configuration differs from the frozen run")
     if device != "cpu":
         cards = [int(c) for c in os.environ.get("CUDA_VISIBLE_DEVICES", "").split(",") if c]
         if len(cards) != 1:

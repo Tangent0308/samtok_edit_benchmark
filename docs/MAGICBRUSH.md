@@ -34,14 +34,16 @@ CUDA_VISIBLE_DEVICES='' "$MB_PY" -I -m pytest tests/test_external_magicbrush.py 
 ```bash
 nvidia-smi --query-gpu=index,name,memory.used,memory.total,uuid --format=csv,noheader
 "$MB_PY" -I scripts/magicbrush.py run --bundle "$MB_PACKAGE/bundle" \
-  --config configs/external/magicbrush.json --output /tmp/claude_magicbrush_20261105/smoke_001 \
+  --config /tmp/claude_magicbrush_20261105/local_config.json --output "$MB_PACKAGE/smoke_001" \
   --gpus 4,5,6,7 --attempt smoke001 --smoke --cache-dir /tmp/claude_magicbrush_20261105/cache
 CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/magicbrush.py score \
-  --output /tmp/claude_magicbrush_20261105/smoke_001 --config configs/external/magicbrush.json \
+  --output "$MB_PACKAGE/smoke_001" --config /tmp/claude_magicbrush_20261105/local_config.json \
   --cache /tmp/claude_magicbrush_20261105/metric_cache --device cpu
 CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/magicbrush.py estimate \
-  --output /tmp/claude_magicbrush_20261105/smoke_001 --destination "$MB_PACKAGE/ESTIMATE.json"
+  --output "$MB_PACKAGE/smoke_001" --destination "$MB_PACKAGE/ESTIMATE.json"
 ```
+
+本机 `local_config.json` 仅将已核验的原生源码与 Python 环境路径换成本机暂存路径；模型配置完全一致，启动时再次校验。
 
 输入由固定 seed/hash 选择，每方法恰好三条：会话 A 首轮无 mask、会话 B 首轮有 mask、会话 A 第 2 轮连续无 mask。连续第 2 轮使用各方法自己的首轮输出。选样不根据得分；不在测试集调 LoRA、提示词或 checkpoint。加载时间独立记录，GPU 峰值明确区分 PyTorch allocated/reserved。估计表使用本次实测逐阶段耗时；冷加载、I/O、评分另计，不能把估计写成正式实测。
 

@@ -150,7 +150,19 @@ def launch(args):
                 # Finished stages are already bound by RUN/source snapshots. Reports reverify receipt/output hashes.
                 if all_terminal(output, model, stage, subset, wave):
                     continue
-                gpu_gate(config, [card])
+                deadline = time.monotonic() + 1800
+                while not stopping.is_set():
+                    try:
+                        gpu_gate(config, [card])
+                        break
+                    except ValueError as error:
+                        if "occupied" not in str(error) or time.monotonic() >= deadline:
+                            raise
+                        # NVML can lag a worker's exit; a new unrelated job may also occupy the card.
+                        # Wait without signaling it, and recheck before importing the next model.
+                        stopping.wait(10)
+                if stopping.is_set():
+                    return
                 runtime = config["runtime"][runtime_for(model, stage)]
                 name = f"{model}-{stage}-{task['shard']}of{task['shards']}-wave{wave}"
                 work = attempt / "work" / name

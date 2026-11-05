@@ -128,13 +128,15 @@ def cosine(a, b):
 class Features:
     def __init__(self, config, cache, device="cpu"):
         import torch
-        from transformers import CLIPModel, CLIPTokenizer, ViTModel
+        from transformers import CLIPModel, CLIPTokenizer, ViTConfig, ViTModel
         from torchvision import transforms
 
         self.torch = torch
         self.device = device
         self.cache = Path(cache)
         root = Path(config["metrics"]["root"])
+        if config["metrics"]["dino"]["layer_norm_eps"] != 1e-6:
+            raise ValueError("DINO LayerNorm must match the official original architecture")
         self.proof = {name: read(root / name / "SOURCE.json") for name in ["clip", "dino"]}
         for name, proof in self.proof.items():
             if proof["revision"] != config["metrics"][name]["revision"]:
@@ -148,6 +150,7 @@ class Features:
             "device_type": str(device).split(":")[0],
             "code_sha256": sha256_file(Path(__file__)),
             "scoring_code_sha256": sha256_file(Path(__file__).with_name("scoring.py")),
+            "architecture_overrides": {"dino.layer_norm_eps": 1e-6},
             "packages": {
                 name: importlib.metadata.version(name)
                 for name in ["torch", "torchvision", "transformers", "Pillow", "scipy"]
@@ -167,9 +170,14 @@ class Features:
             .eval()
             .to(device)
         )
+        # facebookresearch/dino/vision_transformer.py:vit_small uses eps=1e-6.
+        # The publisher's 2021 HF conversion leaves ViTConfig's 1e-12 default; restore the original value.
+        dino_config = ViTConfig.from_pretrained(root / "dino", local_files_only=True)
+        dino_config.layer_norm_eps = 1e-6
         self.dino = (
             ViTModel.from_pretrained(
                 root / "dino",
+                config=dino_config,
                 local_files_only=True,
                 trust_remote_code=False,
                 weights_only=True,

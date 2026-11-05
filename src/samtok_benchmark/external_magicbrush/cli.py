@@ -115,5 +115,6 @@ def main(argv=None):
         or result.get("failed_processes")
         or result.get("unknown")
         or result.get("pending_dependency")
+        or result.get("stopped")
         else 0
     )

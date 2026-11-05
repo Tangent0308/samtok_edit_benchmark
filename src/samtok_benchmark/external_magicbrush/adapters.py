@@ -52,7 +52,13 @@ def native_request(model, public, config):
     if model in {"qwen21", "qwen2511", "flux3", "flux2_klein9b"}:
         request.update(images=[clean, marked], prompt=DUAL + instruction)
         if model == "flux3":
-            request["prompt"] = "Edit <ref_image_0>. " + request["prompt"]
+            request["prompt"] = (
+                "Reference <ref_image_1> is an annotated copy of <ref_image_0>. "
+                "Its red outline and U1 label mark the supplied editable region. "
+                "Do not reproduce marks, labels, or leader lines. Edit <ref_image_0>. "
+                + instruction
+                + " Keep everything else unchanged."
+            )
     elif model == "replan":
         request.update(planner_image=marked, editor_image=clean, prompt=PLANNER + instruction)
     elif model == "mirage":

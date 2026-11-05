@@ -138,6 +138,9 @@ def test_mask_native_vs_annotated_inputs(public_pair, config):
     assert native_request("replan", p, config)["planner_image"] == p["annotation"]["path"]
     assert native_request("mirage", p, config)["edit_image"] == p["source"]["path"]
     assert native_request("mirage", p, config)["parameters"]["patch_ratio"] == 0.4
+    flux = native_request("flux3", p, config)
+    assert "<ref_image_0>" in flux["prompt"] and "<ref_image_1>" in flux["prompt"]
+    assert flux["boxes"] is None and flux["parameters"]["pup"] is False
 
 
 def test_recurrent_input_uses_previous_generated_output(tmp_path):
@@ -259,3 +262,59 @@ def test_frozen_ifbench_files_equal_base_branch():
         relative = "src/samtok_benchmark/ifbench/" + name
         old = subprocess.check_output(["git", "show", "c9f9447:" + relative], cwd=ROOT)
         assert (ROOT / relative).read_bytes() == old
+
+
+def test_worker_recurrence_and_resume_without_model_inference(tmp_path, monkeypatch, config):
+    """Synthetic CPU fixture only: the real worker must feed its own output to the next turn."""
+    import torch
+    from samtok_benchmark.external_magicbrush import adapters
+
+    source = tmp_path / "synthetic-source.png"
+    Image.new("RGB", (1024, 1024), "blue").save(source)
+    cases = []
+    for turn in [1, 2]:
+        row = {
+            "case_id": f"123-{turn}",
+            "session_id": "123",
+            "turn": turn,
+            "instruction": "Synthetic unit-test instruction.",
+        }
+        public = bundle.make_public(
+            row, bundle.asset(source), "mask-free", tmp_path / f"public-{turn}"
+        )
+        cases.append({**row, **public, "track": "mask-free", "canonical_mask": None})
+    index = {"cases": cases, "sessions": ["123"], "digest": "synthetic-test-only"}
+    calls = []
+
+    class SyntheticCPUBackend:
+        def run(self, public, out, previous):
+            with Image.open(public["source"]["path"]) as image:
+                calls.append((public["turn"], image.getpixel((512, 512))))
+            return Image.new("RGB", (1024, 1024), "red"), {"native": {}, "calls": {"synthetic": 1}}
+
+    monkeypatch.setattr(worker, "load_bundle", lambda *_: index)
+    monkeypatch.setattr(worker, "gpu_gate", lambda *a, **kw: None)
+    monkeypatch.setattr(worker, "verify_config", lambda *_: None)
+    monkeypatch.setattr(worker, "STOP", False)
+    monkeypatch.setattr(worker.signal, "signal", lambda *a: None)
+    monkeypatch.setattr(adapters, "build", lambda *a: SyntheticCPUBackend())
+    monkeypatch.setattr(torch, "manual_seed", lambda *_: None)
+    for name in [
+        "synchronize",
+        "reset_peak_memory_stats",
+        "max_memory_allocated",
+        "max_memory_reserved",
+    ]:
+        monkeypatch.setattr(torch.cuda, name, lambda: 0)
+    monkeypatch.setenv("CUDA_VISIBLE_DEVICES", "4")
+    cp = tmp_path / "config.json"
+    cp.write_text(json.dumps(config))
+    output = tmp_path / "synthetic-results"
+    first = worker.run_stage(tmp_path, cp, output, "qwen21", "edit", ["123"], -1)
+    assert first["completed"] == 3
+    assert calls == [(1, (0, 0, 255)), (2, (0, 0, 255)), (2, (255, 0, 0))]
+    files = list(output.rglob("result.json"))
+    identities = {str(p): sha256_file(p) for p in files}
+    again = worker.run_stage(tmp_path, cp, output, "qwen21", "edit", ["123"], -1)
+    assert again["reused"] == 3 and len(calls) == 3
+    assert identities == {str(p): sha256_file(p) for p in files}

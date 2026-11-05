@@ -22,9 +22,9 @@
 
 ### 2.1 共享图像与信息边界
 
-沿用主评测约 1MP 画布及输出逆映射（固定 `ifbench/canvas.py`）。所有方法使用相同的 clean canvas、原文 instruction；只有 mask-provided 可读公开 mask。连续编辑每轮将上一轮恢复后的输出重新映射到公共画布。记录原图／画布尺寸、mask 转换、实际输出尺寸以及调用文本。保存 raw 与恢复后的 output；不贴回、不修背景。
+官方第一轮源图有 533 张为 500×500、2 张为 1024×1024；后续源图、所有 mask 和 GT 均为 1024×1024。**固定公开坐标网格为 1024×1024**：源图先转 RGB 并按 LANCZOS 确定性缩放到这个常量网格，再沿用主评测约 1MP 画布及输出逆映射（不改 `ifbench/canvas.py`）。这样第一轮不会因恢复到 500px 而令全部后续编辑持续降采样。该常量不按 GT、caption 或 mask 内容选择，两条输入轨道完全一致。所有方法使用相同 clean canvas、原文 instruction；只有 mask-provided 可读公开 mask。连续编辑每轮将上一轮恢复到 1024px 的本方法输出重新映射到公共画布。记录原图／画布尺寸、mask 转换、实际输出尺寸以及调用文本。保存 raw 与恢复后的 output；不贴回、不修背景。
 
-官方 mask 的编码与方向在数据解码时依据实际字节和官方示例核实，之后冻结为可编辑区=1；只允许确定性解码和 NEAREST 尺寸映射。未知格式、空 mask、维度冲突一律显式报错，不根据 GT 差异猜测或修复。颜色轮廓标记只由公开 mask 派生。
+实际 PNG 的 mask 是 RGBA，透明处为可编辑区域。固定取 **alpha < 128** 为二值可编辑区（255），其余为 0，再按 NEAREST 映射到画布；不从 RGB 内容或 GT 差异推导区域。保留原始 mask 字节和派生二值 mask。未知格式、空编辑区、非预期尺寸一律显式报错；颜色轮廓标记只由公开 mask 派生。
 
 GT target、local/global descriptions 仅供评测和核验，禁止进入模型 adapter。全部方法原生 planner 只能看到当前公开图像与指令；mask-provided 可看该 mask 的确定性标记图。
 
@@ -59,6 +59,10 @@ SITEdit 源码与 `configs/ifbench/main_row.json` 必须一致；Pass1 step 2000
 
 权重、实现版本、预处理、精度及 SHA 在运行配置／SOURCE 中固定。评分模型只用受信的依赖实现；远程数据和模型目录里的 Python 不会被导入，模型权重使用安全加载。逐图保存五指标与 GT CLIP-T 诊断；失败／缺项记 missing，报告目标分母和实际计分数，不填零或静默删除。完整行才视为完整基准得分。可另报各方法共有成功子集，但不替代主分母。
 
+具体实现使用发布者提供的 HF 权重转换：OpenAI `clip-vit-base-patch32@3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268`、Facebook `dino-vits16@abe3b354cb6a9b6f146096b14a4a9d7eecbcb4bd`，安装环境中的 Transformers，FP32、eager attention、TF32 关闭。预处理及余弦定义保持上述公开 scorer 口径；与旧 OpenAI CLIP CUDA/FP16 实现不宣称逐位相同。已在 CPU 核验相同图像的 L1=L2=0、CLIP-I=DINO=1。
+
+官方 local descriptions 中有三条空字符串：`248403-1`、`411530-1`、`551701-2`。沿用官方代码行为，对原样空字符串编码，保留在分母并显式披露；不改成指令、global caption 或人工补写文本。
+
 **论文与现行代码的差异必须披露。** 论文 Table 3 将 mask-provided 的 L1/L2/CLIP-T 定义为区域指标，且 L1/L2 数值量级不同；现行官方公开 scorer 对这五项均使用完整图像，没有区域模式。故本次两输入轨道统一采用上述公开代码的整图指标，mask-provided 标为“公开 scorer 下的有 mask 扩展”，不声称复现论文 Table 3 区域指标，也不据此和 GLIDE/Blended Diffusion 排名。必要的局部诊断明确单列，不替换标准五指标。
 
 其他偏差：生成端统一约 1MP、现代模型官方／IF-Bench 参数、单次 seed 42、SITEdit 自由文本适配；这些不是论文基线的原始配置。论文数字仅列为带来源的历史参考，不和本次重跑方法合并排名。mask 标记图是通用模型的一种输入适配，和原生二值 mask 接口分别记录。
@@ -82,7 +86,7 @@ SITEdit 源码与 `configs/ifbench/main_row.json` 必须一致；Pass1 step 2000
 
 直接复用 `refedit_overlap_audit_20261104/{TRAINING.json,COCO_TRAINING_USE.json,GRES_FINGERPRINTS.jsonl}` 及其绑定的 646,908 个训练图像指纹，先核验文件哈希。比较每个会话的 COCO id、原始源图字节／RGB 像素哈希、感知哈希（含镜像）。精确匹配或可追溯实际训练 COCO id 为已确认；感知近邻只作待核候选，不能仅靠 pHash 宣称训练重合。
 
-按 **会话** 统一排除：一张 COCO 源图确认重合，则其全部独立轮次与最终连续结果对所有方法同时排除。报告全量与无已确认训练重合子集，并单列 SAMTok 基础训练混合集候选／未知预训练范围；不把“未发现”写成“保证未训练”。若源图只经过重编码或缩放，COCO id 的来源证据与像素／感知比对联合核实。
+按 **会话** 统一排除：一张 COCO 源图确认重合，则其全部独立轮次与最终连续结果对所有方法同时排除。主补充子集采用保守规则：排除“可追溯实际微调重合”与“已知 SAMTok/gRES 训练语料中相同 COCO id 或精确图像”的并集；两种证据分别计数，后者不等同于证明冻结 SAMTok checkpoint 实际使用过该条数据。源图及全部 GT 编辑图均进行指纹比对，感知近邻本身不触发剔除。报告全量与无已知训练语料重合子集，不把“未发现”写成“保证未训练”。若只经过重编码或缩放，COCO id 来源证据与像素／感知比对联合核实。
 
 五指标按官方逐图均值。补充 95% CI 采用会话为 cluster 的共享 paired bootstrap（seed 20261105、10,000 次）：单轮重采样会话并保留其中所有轮次，多轮每会话一个最终结果。所有方法使用同一排除清单、同一抽样索引；不把图像内多轮当成独立样本。
 

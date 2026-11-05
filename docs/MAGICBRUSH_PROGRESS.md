@@ -10,6 +10,13 @@
 - 官方调研确认：test 已公开，535 会话／1,053 轮；HF gated=false；固定 GitHub d2d7f84 与 HF 6c25456；CC BY 4.0。未使用第三方镜像或付费接口。
 - 创建独立 worktree `/opt/tiger/tanyue/if-bench-magicbrush` 和 `eval-magicbrush`，基于 `origin/eval-refedit` c9f9447；解除继承的远程分支追踪，防止误推 RefEdit。
 - 在实现前写定方案：八方法，两种 mask 输入轨道，独立全轮／连续最终轮；mask-provided 论文区域指标与现行 scorer 整图指标的差异显式披露。
+- 17:22 数据下载与解码完成：535 会话／1,053 轮；一／二／三轮会话数 216／120／199。六个 parquet 均通过官方 SHA256；指令与官方 metadata 一致，连续轮次的 GT/source RGB 像素一致。`SOURCE.json` SHA256：`7290246236a8b5cbae16093f65c7ce6f5e618e5db25174144f09109529ee4dd9`。
+- 所有 1,053 个 mask 均为 RGBA、含透明和不透明区域；统一 alpha<128 为编辑区。首轮 533 张 500px、2 张 1024px；固定公开 1024px 网格与 IF-Bench canvas，避免连续编辑被恢复到 500px。三条官方空 local description 原样保留并披露。
+- 官方 CLIP ViT-B/32 与 DINO ViT-S/16 权重已下载校验；CPU 相同图像自检得到 L1=L2=0、CLIP-I=DINO=1。使用安全权重加载和已安装 Transformers FP32 实现，与旧 CUDA/FP16 的精度差异列入方案。
+- 新模块已具备公开输入、两轨道八方法适配、多轮依赖、独立生成／评分记录、分会话 bootstrap、报告、拼图、单机 ARNOLD staging。17 项 CPU 契约测试通过；包含禁止 GPU 0–3、19:00 时间门禁、占用门禁、无 GT 回退、mask 信息边界、完整请求数和冻结模块不变。
+- 正在构造共享输入并执行训练指纹审计。尚未开始 GPU 冒烟或正式实验。
+- 重合审计已比较 1,588 个去重后的源／GT 图像，对照 646,908 个训练图像指纹与 8,337 条 gRES 指纹。COCO id 命中 31 会话，其中 17 会话可追溯到实际 S2／Pass1 微调。逐一查看 31 对图像，确认同一 COCO 照片的裁剪关系；保守排除 31 会话，所有方法共用 504 会话／981 独立轮次子集。
+- 额外感知近邻覆盖 20 会话，已查看全部候选缩略图，未确认新增重合；两条旧路径不可访问，改从既有 gRES parquet 读取 SHA 完全相同的图像字节核查。保存 `overlap/VISUAL_REVIEW.json` 与对比图。上述目检为 Codex 辅助核查，不冒充独立人工审计；任意裁剪、基础预训练和未记录数据来源不在穷尽性保证内。
 
 ## 当前待办
 

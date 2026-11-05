@@ -1,5 +1,11 @@
 # 评测与数据文档
 
+## MagicBrush 外部评测（eval-magicbrush）
+
+- [评测方案](MAGICBRUSH_EVALUATION.md)：固定八方法、两种 mask 输入、独立／连续编辑、五项免费指标与重合审计。
+- [运行手册](MAGICBRUSH.md)：安全数据入口、CPU 检查、冒烟、单机 8 卡 ARNOLD、恢复与统计。
+- [进度记录](MAGICBRUSH_PROGRESS.md)：实际检查、阻塞、偏差及产物位置。
+
 ## RefEdit-Bench 外部评测（eval-refedit）
 
 - [评测计划与协议](REFEDIT_EVALUATION.md)：数据、官方 Modified VIEScore、各方法输入、Judge 偏差、统计与重合审计计划。

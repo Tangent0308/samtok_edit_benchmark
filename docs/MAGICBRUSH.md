@@ -51,13 +51,11 @@ CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/magicbrush.py estimate \
 
 正式运行必须先有八方法成功冒烟与 `ESTIMATE.json`。本机估计超过 8 h 时，launcher 拒绝正式执行。用户提交 **一个 worker、8×H100 80GB、同 NAS** 的作业；入口始终留在前台，先恢复受校验的 RefEdit 环境归档，再生成、免费标准评分、汇总。
 
-正式入口将在烟测通过、提交推送并发布 `READY.json` 后，把精确 commit、READY SHA、启动命令写入进度文档与 NAS handoff。**尚未发布 READY 时不要启动正式入口。** 发布工具只允许干净的 `eval-magicbrush` 工作区，核验所有输入／GT／评分模型文件都在 NAS 且哈希一致。
+八方法已通过冒烟，实测外推为 342.77 GPU·h。发布时将精确 commit、READY SHA、启动命令写入包外 NAS handoff；只从已发布的 `start.sh` 启动。发布工具只允许干净的 `eval-magicbrush` 工作区，核验所有输入／GT／评分模型文件都在 NAS 且哈希一致。
 
 ```bash
-# 发布完成后，使用 handoff 中固定的完整 commit：
-export MAGICBRUSH_ATTEMPT=run001
-export MAGICBRUSH_COMMIT=<handoff中的40位commit>
-bash /path/to/published/magicbrush_bootstrap.sh
+# 单机 8×H100、同 NAS 的 ARNOLD 作业入口（前台）：
+MAGICBRUSH_ATTEMPT=run001 bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_20261105/start.sh
 ```
 
 结果根固定为 `experiments2/SAMTokEdit/external_magicbrush/run_001/`。每次恢复只改 attempt，例如 `run002`，不改结果根、配置或生成代码。入口先验证 READY，运行完才退出。已有完成请求按身份验证复用；新 attempt 不是重采样授权。纯编辑方法在一个 worker 中按轮次保留后端；含 planner/Pass1 的方法按依赖波次运行，所有跨模型任务按 GPU 队列分配。各进程在临时 cache 根下使用独立工作目录，避免 MICE 原生调试图片相互覆盖，也不把这些调试文件写入正式结果。

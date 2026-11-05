@@ -25,8 +25,15 @@
 - 18:33 全量包 10,531 个公开／评分资产通过 NAS 路径与 SHA 核验，见 `PREPARE_VERIFICATION.json`。
 - 为连续轮次在新机器上重绘标记，固定 DejaVuSans 字体字节并附许可，放入共享包 assets；三个实际标记图重新绘制后与已有输入逐字节一致。
 
+- 19:00:12 确认 GPU 4–7 均为 1,605 MiB，只有既有 1,596 MiB 进程；19:00 后启动四卡 `smoke_001`，未使用 GPU 0–3，未结束其他进程。生成源码为 `6bd2263`，冻结 19 个生成相关源码文件。
+- 冒烟记录：`.ifbench-tmp/magicbrush_20261105/smoke_001/`；launcher 日志 `/tmp/claude_magicbrush_20261105/smoke_001.log`。SITEdit 首轮纯文字定位与直接 mask 编码已完成；尚未进行正式实验。
+
+- 八方法 24/24 张图与五指标评分全部完成：33 条阶段记录均为 completed，17 个 worker 正常退出，无缺失 admission。实际输入／输出拼图已放到 `visualization_tmp/MagicBrush_20261105/`，中文报告与逐请求分数在共享包 `smoke_001/report/`。
+- 正式生成实测外推为 342.77 GPU·h，四卡理想时间 85.69 h、八卡 42.85 h，另加加载／I/O／评分。依据用户 8 h 上限，未在本机启动正式实验。
+- Qwen2.1 连续第二轮噪声较重；19:23 独立进程对同一输入／seed 复核，raw 与 output 均与原记录 SHA 完全一致。记录在 `diagnostics/qwen21_same_input_fresh_process/`，未改原图或模型参数，未并入正式结果或吞吐估计。
+- 逐方法状态、耗时、显存、样例观察及正式剩余工作见 [MAGICBRUSH_RESULTS.md](MAGICBRUSH_RESULTS.md)。最终发布身份与命令写在包外的 `magicbrush_20261105-handoff.md`，以实际 READY 为准。
+
 ## 当前待办
 
-1. 19:00 后确认 GPU 4–7 空闲状态，执行每方法 3 个固定请求的端到端 smoke。
-2. 用本次实测耗时核算 GPU 小时；遵守本机 8 h 上限，必要时交付入口，正式状态如实记录。
-3. 检查实际输入／输出图，完成中文报告、提交与单机 ARNOLD READY 发布。
+1. 用户提交单机 8×H100 正式作业，前台运行发布的 `start.sh`；当前没有正式分数。
+2. 正式完成后汇总全量／共同去重合子集的五指标、会话 bootstrap 区间及真实样例；保留所有缺失／失败和恢复记录。

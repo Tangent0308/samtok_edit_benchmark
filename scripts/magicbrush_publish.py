@@ -62,6 +62,7 @@ def publish(package):
         if sha(REPO / relative) != expected:
             raise ValueError("Generation code changed after smoke")
     entries = {}
+    entries[str(package / "bootstrap.sh")] = sha(REPO / "scripts/arnold/magicbrush_bootstrap.sh")
     for c in index["cases"]:
         entries[c["public"]] = c["public_sha256"]
         public = read(c["public"])
@@ -96,6 +97,15 @@ def publish(package):
     ]:
         entries[str(package / relative)] = sha(package / relative)
     config = read(REPO / "configs/external/magicbrush.json")
+    # These are trusted runtime descriptors from the read-only RefEdit template. Bind the mutable
+    # NAS files as well as the archived-payload checks performed by the staging scripts.
+    for relative in [
+        ".ifbench-tmp/fairness-v2-dev20-20261030/bootstrap.json",
+        ".ifbench-tmp/external_bench_20261102/refedit_runtimes/env_v4.json",
+        ".ifbench-tmp/external_bench_20261102/refedit_runtimes/env_pass1.json",
+    ]:
+        path = NAS / relative
+        entries[str(path)] = sha(path)
     for name in ["clip", "dino"]:
         root = Path(config["metrics"]["root"]) / name
         proof = read(root / "SOURCE.json")

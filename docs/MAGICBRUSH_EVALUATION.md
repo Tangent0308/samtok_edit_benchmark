@@ -57,7 +57,35 @@ SITEdit 源码与 `configs/ifbench/main_row.json` 必须一致；Pass1 step 2000
 | DINO ↑ | 原版 DINO **ViT-S/16**（`dino_vits16`，不是 DINOv2/B16）；短边 256 BICUBIC、中心裁剪 224、ImageNet mean/std；CLS embedding 余弦 |
 | CLIP-T ↑ | 同一个 OpenAI ViT-B/32；输出图像与官方 **local description** 文本 embedding 的余弦，不使用编辑指令或 global caption 代替 |
 
-权重、实现版本、预处理、精度及 SHA 在运行配置／SOURCE 中固定。评分模型只用受信的依赖实现；远程数据和模型目录里的 Python 不会被导入，模型权重使用安全加载。逐图保存五指标与 GT CLIP-T 诊断；失败／缺项记 missing，报告目标分母和实际计分数，不填零或静默删除。完整行才视为完整基准得分。可另报各方法共有成功子集，但不替代主分母。
+权重、实现版本、预处理、精度及 SHA 在运行配置／SOURCE 中固定。评分模型只用受信的依赖实现；远程数据和模型目录里的 Python 不会被导入，模型权重使用安全加载。成功出图逐图保存五指标与 GT CLIP-T 诊断。最终全量表按用户于 2026-11-06 确认的规则纳入生成失败，采用下述数学最差值惩罚；原始评分和冻结运行报告另外保留。未生成完、尚未评分或评分错误不自动转成生成失败。完整行才输出完整全量均值与区间，不删除失败来提高均值。
+
+### 生成失败进入全量统计
+
+本规则对八个方法、两种输入轨道、独立全轮／连续最终轮、全量／去重合子集一致应用：
+
+| 指标 | 数值范围 | 生成失败的汇总赋值 |
+|---|---|---:|
+| L1 ↓ | [0,1] | 1 |
+| L2（MSE）↓ | [0,1] | 1 |
+| CLIP-I ↑ | [−1,1] | −1 |
+| DINO ↑ | [−1,1] | −1 |
+| CLIP-T ↑ | [−1,1] | −1 |
+
+只有终态为 `failed` 的生成请求使用这些值，包含连续编辑中因上一轮没有输出而失败的请求。成功图像继续使用实际测得的指标；不制造替代图像、不重新生成、不补写原始评分文件。**惩罚值是明确约定的统计规则，不是不存在图像的实测分数。** 报告分别列出实际评分数、生成失败数、目标总数和未解决数；没有生成或没有评分的待处理项仍保持未解决，不能用惩罚值掩盖执行不完整。
+
+最终表标为“含失败惩罚的全量结果”，均值使用完整请求分母。置信区间沿用原报告的会话级配对 bootstrap：seed 20261105、10,000 次、所有方法共享抽样索引，惩罚值与所属会话一起重采样。独立评测统计全部轮次，连续评测统计每个会话最终轮，保持原评测单位。该失败汇总规则属于本次评测的显式扩展，不与未采用同一规则的已发表分数直接排名。
+
+运行中的生成器、评分器、发布包和标准指标报告均保持原样。独立 CPU 汇总入口先复算并核对原报告的全部均值及完整行区间，再生成新目录中的报告；已完整评分且没有生成失败的行保持数值一致。运行完成后的命令为：
+
+```bash
+CUDA_VISIBLE_DEVICES='' python -I scripts/magicbrush_failure_report.py \
+  --source-report /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/run_001/report/REPORT.json \
+  --destination /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/run_001_failure_inclusive
+```
+
+新目录保存 `REPORT.json` 和中文 `REPORT.md`，记录原报告 SHA256、汇总代码 SHA256、失败赋值规则、逐请求贡献类别与原有 bootstrap 索引 SHA256；入口拒绝覆盖现有目录。对应实现为 `src/samtok_benchmark/postprocessing/magicbrush_failures.py`，不进入冻结的生成／评分模块。
+
+### 评分模型实现与校验
 
 具体实现使用发布者提供的 HF 权重转换：OpenAI `clip-vit-base-patch32@3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268`、Facebook `dino-vits16@abe3b354cb6a9b6f146096b14a4a9d7eecbcb4bd`，安装环境中的 Transformers，FP32、eager attention、TF32 关闭。预处理及余弦定义保持上述公开 scorer 口径；与旧 OpenAI CLIP CUDA/FP16 实现不宣称逐位相同。已在 CPU 核验相同图像的 L1=L2=0、CLIP-I=DINO=1。
 

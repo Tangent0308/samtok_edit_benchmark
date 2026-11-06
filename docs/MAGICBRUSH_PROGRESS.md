@@ -123,3 +123,13 @@
 从逐例记录复算主表的 70 个均值及 70 个区间，全部与原报告一致；核对 14 行主文、42 行补充统计、18 个本地链接和 114 个图像／记录来源哈希。三种长度组加权后重现全量多轮结果，正式源报告 SHA 不变。相对变化按原始精度计算：多轮 L1/L2 降低 24.6%/14.2%，CLIP-I/DINO 增加 0.0317/0.0426。
 
 定性部分逐轮查看 18 个候选会话，选择 141946 为主图，524311 和 3259 为补充；均使用正式单次采样输出，并明确披露为事后选择的成功案例。未重新生成或评分，未修改正式实验结果。所有核验与选例来源保存在草稿目录的 `provenance/`。
+
+## 2026-11-06：论文审阅稿 v2 与经典基线建议
+
+用户确定论文的 MagicBrush 主文和补充材料均不展示 FLUX.3、独立 Qwen-Image-Edit-2511 比较行。完成六方法审阅稿，保留 SITEdit、Qwen-Image-2.1、FLUX.2 Klein-9B、RePlan、MIRAGE、MICE；公开范围的调整不改变正式全方法记录、其他 benchmark 的表格或 RePlan／MIRAGE 的真实底座说明。飞书和 Overleaf 尚未写入。
+
+本地入口：`/opt/tiger/tanyue/visualization_tmp/MagicBrush_20261105/paper_draft_v2/README.md`；NAS 备份：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_paper_draft_20261106_v2/`。主文、补充、LaTeX 表格、轮数分组图与两张补充比较图统一采用六方法；主图改为参考图、Qwen-Image-2.1、FLUX.2 Klein-9B、SITEdit。表内排名和最优／次优标记均重新计算，结论限定在所列方法中。
+
+逐例复算 60 个均值与 60 个区间，核对 12 行主表、36 行补充表、18 个本地链接及 102 个图像／记录来源哈希；三种长度组加权仍重现全量多轮结果，原始正式报告 SHA256 不变。已目检主表、主图、分组图和两张完整六方法补充图，未启动任何生成或评分任务。
+
+另外实际阅读 MagicBrush 原论文 Table 2／3、Appendix C，以及 InstructPix2Pix、HIVE、MagicBrush 的官方仓库与推理／权重入口。候选建议为优先原版 InstructPix2Pix、其次原版 HIVE；MagicBrush 微调版作为可选领域训练对照，并显式区分训练条件。官方 InstructPix2Pix-MagicBrush 论文检查点与后续检查点不同，历史分数不能混用。调研细节与协议差异在审阅包的 `BASELINE_RECOMMENDATIONS.md`；候选尚未下载或运行，不进入当前实测表。

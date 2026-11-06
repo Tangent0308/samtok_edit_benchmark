@@ -77,3 +77,15 @@ HIVE 的历史依赖 `timm==0.6.12` 在 Python 3.11 导入时触发 dataclass �
 控制器先等待每张卡现有占用降到不超过 2,300 MiB 且空闲至少 70,000 MiB，然后执行每方法三个请求的冒烟和统一评分。根据实测成本，四卡预计超过八小时则停在 `needs_cluster`，不会自行提交作业；通过且低于门槛才启动正式全量。遇到错误写入 `FAILED.json` 并只停止自己的子进程，不自动重采样。新 attempt 可复用已有终态；已受理未完成的请求仍须明确核实，禁止静默重跑。
 
 监控文件：`.ifbench-tmp/magicbrush_classic_20261106/supervision/<attempt>/STATUS.json`，每次等待检查与阶段转换更新。`OWNER.json` 保存控制器 PID；可向该 PID 发 SIGUSR1，等自己的当前请求完成后自然退出。最终报告路径为正式新增目录的 `report/MERGED_REPORT.{json,md}`；新四行与既有六方法十二行汇总为八方法、两个评测面板。此处描述的是执行流程，未完成 GPU 冒烟前不称“已跑通”。
+
+## 评分辅助字段与最终汇总
+
+冻结评分器在五项主指标外，还保存 `GT-CLIP-T` 诊断值。最终结果采用独立的后处理入口，读取时显式选择 L1、L2、CLIP-I、DINO、CLIP-T；原始 `score.json` 的辅助字段和身份保持不变。该入口复用冻结的逐记录核验、五指标统计与共享 bootstrap，并在最终报告中记录后处理源码哈希。
+
+```bash
+/tmp/ifbench/external_bench_20261102/env_v4/bin/python -I \
+  scripts/report_magicbrush_classic_results.py \
+  --output /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/classic_20261106
+```
+
+入口仅在全部请求完成生成与评分后汇总；缺失评分仍会明确拒绝。四项 CPU 回归检查覆盖辅助字段兼容、原始记录不变、缺失／未知指标拒绝，以及评分失败不转成实测值。

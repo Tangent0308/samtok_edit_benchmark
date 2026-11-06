@@ -2,6 +2,8 @@
 
 协议见 [MAGICBRUSH_EVALUATION.md](MAGICBRUSH_EVALUATION.md)，实际状态见 [MAGICBRUSH_PROGRESS.md](MAGICBRUSH_PROGRESS.md)。本模块不调用任何收费接口，不修改其他实验。所有读取数据的 Python 均使用 `-I`；入口只显式添加本仓库与已冻结方法源码。
 
+`run002` 已于 2026-11-06 完成全部生成、评分和汇总，中文结果见 [正式结果与分析](MAGICBRUSH_RESULTS.md)。第 6 节提供只读原始结果的 CPU 汇总与可视化复现入口。
+
 ## 1. 数据、输入与重合审计
 
 以下为已固定路径。原始文件来自官方 `osunlp/MagicBrush` 指定 revision，下载校验后才解码；不运行数据包里的 Python。`SOURCE.json` 保留原 URL、版本、许可与哈希。
@@ -82,3 +84,25 @@ CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/magicbrush.py preview \
 ```
 
 拼图直接使用真实图像，附 SHA 来源。连续编辑输入是方法各自上一轮输出，因此分别显示。默认使用预先选定的两个会话，避免按最终成绩挑选；GT 标注为仅评分／展示。正式远程作业先写 NAS 的 `report/previews/`，再复制到用户指定的本地可视化目录。
+
+## 6. 已完成结果、失败汇总与固定正式图例
+
+已发布的中文报告为 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/run_001_failure_inclusive/CHINESE_REPORT.md`，其中直接插入实际图片。`REPORT.md` 含全部均值与 95% 区间，`REPORT.json` 含逐图实测／失败惩罚贡献。
+
+下列命令只在新临时目录复算已有记录，不调用生成模型或评分模型，不覆盖任何已完成产物。失败规则为用户已确认的 L1/L2=1、CLIP-I/DINO/CLIP-T=−1，仅适用于终态生成失败。
+
+```bash
+cd /opt/tiger/tanyue/if-bench-magicbrush
+MB_PY=/tmp/ifbench/external_bench_20261102/env_v4/bin/python
+MB_RUN=/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/run_001
+MB_SELECTION=/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_monitor_20261106/FORMAL_PREVIEW_SELECTION.json
+MB_REVIEW="$(mktemp -d /tmp/magicbrush-review.XXXXXX)"
+CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/magicbrush_failure_report.py \
+  --source-report "$MB_RUN/report/REPORT.json" \
+  --destination "$MB_REVIEW/failure_inclusive"
+CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/visualize_magicbrush_results.py \
+  --run "$MB_RUN" --report "$MB_REVIEW/failure_inclusive/REPORT.json" \
+  --selection "$MB_SELECTION" --destination "$MB_REVIEW/figures"
+```
+
+正式图例在评分形成前按会话 id 的固定哈希规则选择，从共同去重合的一／二／三轮会话各取一个，得到 200003、349302、139。两轨道、独立和适用的连续模式共 10 张拼图，全部八方法均展示；失败不换样。图例工具核验报告绑定、实际输入及输出 SHA，保存 `PROVENANCE.json`；连续编辑不以 GT 替代方法自身的前序输出。完整图像与数据保留于 NAS／用户可视化目录，不进入 Git。

@@ -4,8 +4,8 @@
 
 - [评测方案](docs/MAGICBRUSH_EVALUATION.md)：官方协议、八方法输入、指标、数据重合与偏差。
 - [运行手册](docs/MAGICBRUSH.md)：下载、安全解码、冒烟、四机 32 卡与断点续跑。
-- [冒烟结果与正式交付](docs/MAGICBRUSH_RESULTS.md)：24/24 流程验证、逐方法实测耗时／显存、重合审计与全量入口。
-- [实际进度](docs/MAGICBRUSH_PROGRESS.md)：已完成检查、真实结果和剩余工作；冒烟不作为正式基准成绩。
+- [正式结果与分析](docs/MAGICBRUSH_RESULTS.md)：八方法四条件、全量／共同去重合结果、95% 区间、失败处理与实际对比图；全部生成和评分已完成。
+- [实际进度](docs/MAGICBRUSH_PROGRESS.md)：运行、核查、偏差和最终交付记录。
 
 本分支基于 `eval-refedit` 的八方法后端，独立实现 MagicBrush 数据与评测模块。IF-Bench 的最新正式论文结果见主分支 [PAPER_RESULTS.md](https://github.com/Tangent0308/samtok_edit_benchmark/blob/v2branch/docs/PAPER_RESULTS.md)。下面为 IF-Bench 项目背景。
 

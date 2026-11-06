@@ -108,7 +108,7 @@ DINO 特别核验：HF 转换版的配置遗留 `layer_norm_eps=1e-12`，本实�
 | 原始数据、SOURCE、解码 | `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MagicBrush/`，原始下载隔离在 `raw/` |
 | 冒烟、调试、研究缓存 | `/tmp/claude_magicbrush_20261105/` |
 | 共享科学资产和中间准备材料 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_20261105/` |
-| 四机启动包 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_4node32_20261106/` |
+| 四机启动包 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_4node32_nas_20261106/` |
 | 正式实验 | `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/` |
 | 用户拼图／预览 | `/opt/tiger/tanyue/visualization_tmp/MagicBrush_20261105/` |
 

@@ -52,14 +52,14 @@ CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/magicbrush.py estimate \
 正式运行使用已通过的八方法冒烟与 `ESTIMATE.json`；模型、权重、输入、seed 和评分代码不变。用户提交 **一个 ARNOLD 作业，4 workers × 8 H100 80GB，共享同一 NAS**。四台 worker 前台执行完全相同的命令：
 
 ```bash
-MAGICBRUSH_ATTEMPT=run001 bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_4node32_20261106/start.sh
+MAGICBRUSH_ATTEMPT=run002 bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_4node32_nas_20261106/start.sh
 ```
 
 详细分片、保护、预检和恢复说明见 [MAGICBRUSH_CLUSTER_RUN.md](MAGICBRUSH_CLUSTER_RUN.md)。新包引用原包的全部输入字节，共同科学资产保持不变；旧单机／双机专用启动文件已移除。每次恢复只改 attempt，例如 `run002`；不改结果根 `experiments2/SAMTokEdit/external_magicbrush/run_001/`，不改配置或生成代码。入口在全部评分、汇总结束后退出。
 
 完整会话按固定请求数均衡分配：node 0–3 分别负责 133、133、135、134 会话，每方法分别 786、786、786、784 请求。每台八卡通过本地队列处理所有八方法；同一会话的连续编辑不跨节点。全部生成结束后，四台各启八个独立标准指标进程，共 32 个互斥分片。node 0 用完整逐图记录统一统计与 bootstrap。
 
-实测冒烟外推为 342.77 GPU·h；32 卡理想生成时间 10.71 h，按当前任务队列的计算约 11.36 h，均另加环境加载、I/O、评分、报告。这是三请求冒烟的外推，不是正式实测时长。新发布身份与命令写在包外的 `magicbrush_4node32_20261106-handoff.md`。
+实测冒烟外推为 342.77 GPU·h；32 卡理想生成时间 10.71 h，按当前任务队列的计算约 11.36 h，均另加环境加载、I/O、评分、报告。这是三请求冒烟的外推，不是正式实测时长。新发布身份与命令写在包外的 `magicbrush_4node32_nas_20261106-handoff.md`。
 
 ## 4. 记录、恢复与评分
 

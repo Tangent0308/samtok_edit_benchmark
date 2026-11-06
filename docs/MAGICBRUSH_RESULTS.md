@@ -77,6 +77,6 @@ SITEdit 严格使用 aa5a414、Pass1 step 2000、S2 adapter_16000、raw SAMTok t
 | 时间外推 | 上述包内 `ESTIMATE.json` |
 | 独立进程复核 | 上述包内 `diagnostics/qwen21_same_input_fresh_process/` |
 | 正式结果（待用户启动后创建） | `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/run_001/` |
-| 发布哈希、精确 commit、启动说明 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_4node32_20261106-handoff.md` |
+| 发布哈希、精确 commit、启动说明 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_4node32_nas_20261106-handoff.md` |
 
 发布后，用户只需提交 **四机、每机 8×H100 80GB、同 NAS** 作业，前台执行 handoff 中的入口。恢复时只更换 attempt，不改结果根；已完成且身份一致的记录跳过，未知 admission 保留待核，不自动重采样。不需要访问授权、付费评分批准或模型参数决定。

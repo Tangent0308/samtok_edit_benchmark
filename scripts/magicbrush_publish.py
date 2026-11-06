@@ -16,6 +16,8 @@ if not sys.flags.isolated:
     raise SystemExit("Use python -I")
 REPO = Path(__file__).resolve().parents[1]
 NAS = Path("/mnt/bn/strategy-mllm-train/user/tanyue")
+METHOD_SOURCE = NAS / ".ifbench-tmp/external_bench_20261102/deps/sitedit-aa5a414"
+METHOD_COMMIT = "aa5a414e36c01eba60b37fc46cb9e32f803f8a93"
 
 
 def read(path):
@@ -57,6 +59,16 @@ def git(*args):
     return subprocess.check_output(["git", "-C", str(REPO), *args], text=True).strip()
 
 
+def source_bundle(repo, path, revision, expected):
+    actual = subprocess.check_output(
+        ["git", "-C", str(repo), "rev-parse", revision], text=True
+    ).strip()
+    if actual != expected:
+        raise ValueError("Source bundle revision differs from the frozen commit")
+    subprocess.run(["git", "-C", str(repo), "bundle", "create", str(path), revision], check=True)
+    return {"path": str(path), "sha256": sha(path), "commit": expected}
+
+
 def verify(package, commit, *, payload=True):
     ready = read(Path(package) / "READY.json")
     if ready["source_commit"] != commit or git("rev-parse", "HEAD") != commit:
@@ -84,6 +96,13 @@ def verify(package, commit, *, payload=True):
             raise ValueError(f"Tested generation/scoring/configuration changed: {relative}")
     if any(ready["assets"].get(p) != v for p, v in baseline["assets"].items()):
         raise ValueError("Baseline scientific assets were not preserved")
+    for name, expected_commit in [("benchmark", commit), ("sitedit", METHOD_COMMIT)]:
+        source = ready["source_bundles"][name]
+        if (
+            source["commit"] != expected_commit
+            or ready["assets"].get(source["path"]) != source["sha256"]
+        ):
+            raise ValueError(f"Offline source identity changed: {name}")
     if payload:
         verify_assets(ready["assets"])
     return {
@@ -120,6 +139,14 @@ def publish(package, baseline_ready, expected_baseline_sha):
         if sha(REPO / relative) != expected:
             raise ValueError(f"Generation changed: {relative}")
     package.mkdir(parents=True, exist_ok=False)
+    sources = package / "sources"
+    sources.mkdir()
+    source_bundles = {
+        "benchmark": source_bundle(REPO, sources / "benchmark.bundle", "eval-magicbrush", commit),
+        "sitedit": source_bundle(
+            METHOD_SOURCE, sources / "sitedit-aa5a414.bundle", "HEAD", METHOD_COMMIT
+        ),
+    }
     (package / "bootstrap.sh").write_bytes(
         (REPO / "scripts/arnold/magicbrush_cluster_bootstrap.sh").read_bytes()
     )
@@ -135,15 +162,19 @@ def publish(package, baseline_ready, expected_baseline_sha):
             "estimate_sha256",
         ]
     }
+    if "baseline" in parent:
+        if sha(parent["baseline"]) != parent["baseline_sha256"]:
+            raise ValueError("Original scientific baseline seal changed")
+        scientific_assets = read(parent["baseline"])["assets"]
+    else:
+        scientific_assets = {
+            p: v for p, v in parent["assets"].items() if p != str(old / "bootstrap.sh")
+        }
     baseline.update(
         schema="magicbrush.scientific-baseline.v1",
         reference_commit=parent["source_commit"],
         reference_ready_sha256=expected_baseline_sha,
-        assets={
-            p: v
-            for p, v in parent["assets"].items()
-            if p not in {str(old / "bootstrap.sh"), str(old / "BASELINE.json")}
-        },
+        assets=scientific_assets,
     )
     with (package / "BASELINE.json").open("x") as stream:
         json.dump(baseline, stream, ensure_ascii=False, indent=2)
@@ -152,6 +183,7 @@ def publish(package, baseline_ready, expected_baseline_sha):
         **baseline["assets"],
         str(package / "BASELINE.json"): sha(package / "BASELINE.json"),
         str(package / "bootstrap.sh"): sha(package / "bootstrap.sh"),
+        **{s["path"]: s["sha256"] for s in source_bundles.values()},
     }
     verify_assets(assets)
     ready = {
@@ -164,6 +196,7 @@ def publish(package, baseline_ready, expected_baseline_sha):
         "estimate": parent.get("estimate", str(old / "ESTIMATE.json")),
         "overlap": parent.get("overlap", str(old / "overlap/OVERLAP.json")),
         "unchanged_code": unchanged,
+        "source_bundles": source_bundles,
         "assets": assets,
     }
     with (package / "READY.json").open("x") as stream:
@@ -176,6 +209,10 @@ set -Eeuo pipefail
 : "${{MAGICBRUSH_ATTEMPT:?Set a new attempt id}}"
 export MAGICBRUSH_PACKAGE={shlex.quote(str(package))}
 export MAGICBRUSH_COMMIT={commit}
+export MAGICBRUSH_CODE_BUNDLE={shlex.quote(source_bundles["benchmark"]["path"])}
+export MAGICBRUSH_CODE_BUNDLE_SHA={source_bundles["benchmark"]["sha256"]}
+export MAGICBRUSH_METHOD_BUNDLE={shlex.quote(source_bundles["sitedit"]["path"])}
+export MAGICBRUSH_METHOD_BUNDLE_SHA={source_bundles["sitedit"]["sha256"]}
 [[ "$(sha256sum "$MAGICBRUSH_PACKAGE/READY.json" | cut -d' ' -f1)" == {ready_sha} ]] || exit 2
 [[ "$(sha256sum "$MAGICBRUSH_PACKAGE/bootstrap.sh" | cut -d' ' -f1)" == {bootstrap_sha} ]] || exit 2
 exec bash "$MAGICBRUSH_PACKAGE/bootstrap.sh" "$@"

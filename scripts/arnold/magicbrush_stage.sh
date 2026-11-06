@@ -3,6 +3,7 @@
 set -Eeuo pipefail
 : "${MAGICBRUSH_REPO:?}" "${MAGICBRUSH_RUNTIME:?}" "${MAGICBRUSH_PACKAGE:?}"
 : "${MAGICBRUSH_RUN_DIR:?}" "${MAGICBRUSH_ATTEMPT:?}"
+: "${MAGICBRUSH_METHOD_BUNDLE:?}" "${MAGICBRUSH_METHOD_BUNDLE_SHA:?}"
 REPO="$MAGICBRUSH_REPO"
 RT="$MAGICBRUSH_RUNTIME"
 RUNTIMES=/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/refedit_runtimes
@@ -15,7 +16,8 @@ flock 9
 phase stage-frozen-method
 if [[ ! -d "$METHOD/.git" ]]; then
   [[ ! -e "$METHOD.partial" ]] || { echo 'Incomplete staging exists; inspect it before restarting.' >&2; exit 2; }
-  git clone --quiet https://github.com/Tangent0308/samtok_edit.git "$METHOD.partial"
+  [[ "$(sha256sum "$MAGICBRUSH_METHOD_BUNDLE" | cut -d' ' -f1)" == "$MAGICBRUSH_METHOD_BUNDLE_SHA" ]]
+  git -c protocol.allow=never -c protocol.file.allow=always clone --quiet "$MAGICBRUSH_METHOD_BUNDLE" "$METHOD.partial"
   git -C "$METHOD.partial" checkout --quiet --detach "$SITEDIT_COMMIT"
   mv "$METHOD.partial" "$METHOD"
 fi

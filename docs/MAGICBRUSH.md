@@ -47,24 +47,25 @@ CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/magicbrush.py estimate \
 
 输入由固定 seed/hash 选择，每方法恰好三条：会话 A 首轮无 mask、会话 B 首轮有 mask、会话 A 第 2 轮连续无 mask。连续第 2 轮使用各方法自己的首轮输出。选样不根据得分；不在测试集调 LoRA、提示词或 checkpoint。加载时间独立记录，GPU 峰值明确区分 PyTorch allocated/reserved。估计表使用本次实测逐阶段耗时；冷加载、I/O、评分另计，不能把估计写成正式实测。
 
-## 3. 单机 8 卡 ARNOLD 正式入口
+## 3. 双机 16 卡 ARNOLD 正式入口
 
-正式运行必须先有八方法成功冒烟与 `ESTIMATE.json`。本机估计超过 8 h 时，launcher 拒绝正式执行。用户提交 **一个 worker、8×H100 80GB、同 NAS** 的作业；入口始终留在前台，先恢复受校验的 RefEdit 环境归档，再生成、免费标准评分、汇总。
-
-八方法已通过冒烟，实测外推为 342.77 GPU·h。发布时将精确 commit、READY SHA、启动命令写入包外 NAS handoff；只从已发布的 `start.sh` 启动。发布工具只允许干净的 `eval-magicbrush` 工作区，核验所有输入／GT／评分模型文件都在 NAS 且哈希一致。
+正式运行使用已通过的八方法冒烟与 `ESTIMATE.json`；模型、权重、输入、seed 和评分代码不变。用户提交 **一个 ARNOLD 作业，2 workers × 8 H100 80GB，共享同一 NAS**。两台 worker 前台执行完全相同的命令：
 
 ```bash
-# 单机 8×H100、同 NAS 的 ARNOLD 作业入口（前台）：
-MAGICBRUSH_ATTEMPT=run001 bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_20261105/start.sh
+MAGICBRUSH_ATTEMPT=run001 bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_2node16_20261106/start.sh
 ```
 
-结果根固定为 `experiments2/SAMTokEdit/external_magicbrush/run_001/`。每次恢复只改 attempt，例如 `run002`，不改结果根、配置或生成代码。入口先验证 READY，运行完才退出。已有完成请求按身份验证复用；新 attempt 不是重采样授权。纯编辑方法在一个 worker 中按轮次保留后端；含 planner/Pass1 的方法按依赖波次运行，所有跨模型任务按 GPU 队列分配。各进程在临时 cache 根下使用独立工作目录，避免 MICE 原生调试图片相互覆盖，也不把这些调试文件写入正式结果。
+详细分片、保护、预检和恢复说明见 [MAGICBRUSH_DUAL_RUN.md](MAGICBRUSH_DUAL_RUN.md)。新包引用原包的全部输入字节，原包保持不变。每次恢复只改 attempt，例如 `run002`；不改结果根 `experiments2/SAMTokEdit/external_magicbrush/run_001/`，不改配置或生成代码。入口在全部评分、汇总结束后退出。
+
+完整会话按固定请求数均衡分配：node 0 负责 268 会话／每方法 1,572 请求，node 1 负责 267 会话／每方法 1,570 请求。每台八卡通过本地队列处理所有八方法；同一会话的连续编辑不跨节点。全部生成结束后，两台各启八个独立标准指标进程，共 16 个互斥分片。node 0 用完整逐图记录统一统计与 bootstrap。
+
+实测冒烟外推为 342.77 GPU·h；16 卡理想生成时间 21.42 h，按当前任务队列的计算约 22.67 h，均另加环境加载、I/O、评分、报告。这是三请求冒烟的外推，不是正式实测时长。新发布身份与命令写在包外的 `magicbrush_2node16_20261106-handoff.md`。
 
 ## 4. 记录、恢复与评分
 
 - `RUN.json`、`CONFIG.json`、`source_snapshot/`：冻结协议、源码与请求范围；同目录不能混入变更后的方案。
 - `runs/<model>/<tokens|plan|edit>/<track>/<independent|iterative>/<case>/`：`ADMITTED.json`、原生调用／计划、`result.json`；编辑阶段额外保存 `raw.png`、`output.png`。终态与输出不覆盖。
-- `attempts/<id>/`：各阶段日志、自己的 PID、历史和退出记录。`SIGUSR1` 发给该 attempt 的 launcher，可在当前请求完成后停止；不要对整个机器 `pkill`。
+- `nodes/node-<rank>/attempts/<id>/`：本节点生成阶段日志、PID、历史和退出记录。`cluster/<id>/node-<rank>/`：协调、心跳、评分和汇总日志；向 `OWNER.json` 记录的本机控制进程 PID 发 `SIGUSR1`，在当前请求结束后停止；不要对整台机器 `pkill`。
 - 已受理但无终态：明确列为未知，不自动重采样。先确认进程已退出，查明基础设施原因，再人工隔离该 key 并保留原因；不得覆盖证据。模型自身失败不按基础设施失败重新抽样。
 - `scores/<model>/<track>/<mode>/<case>/score.json`：五指标、输出／GT／caption／评分权重与代码的绑定。评分失败保留失败记录，缺分不填零。
 - `report/REPORT.{json,md}`：全量与统一去重合子集；完整行列均值、95% 会话 bootstrap 区间和逐图记录；不完整行明确计分覆盖。

@@ -1,6 +1,6 @@
 # MagicBrush 评测：冒烟结果与正式实验交付
 
-2026-11-05。**八方法均通过三个固定请求的生成与免费评分（24/24），正式全量尚未启动。** 实测外推超过用户设定的本机 8 小时上限，因此交付单机 8×H100 ARNOLD 入口。冒烟的“通过”表示流程完成，不表示每个编辑目标均成功，也不构成总体性能结论。
+2026-11-06 更新。**八方法均通过三个固定请求的生成与免费评分（24/24），正式全量尚未启动。** 实测外推超过用户设定的本机 8 小时上限，按用户最新要求交付双机 16 卡 ARNOLD 入口，详见 [双机运行说明](MAGICBRUSH_DUAL_RUN.md)。冒烟的“通过”表示流程完成，不表示每个编辑目标均成功，也不构成总体性能结论。
 
 ## 1. 数据、评测方式与协议差异
 
@@ -50,7 +50,7 @@ SITEdit 严格使用 aa5a414、Pass1 step 2000、S2 adapter_16000、raw SAMTok t
 
 无 mask 耗时取两个固定请求的均值，有 mask 取一个请求；都包含该方法所需的规划／定位及编辑阶段，排除冷加载和文件 I/O。峰值是本进程 PyTorch allocated/reserved，未把既有共享进程约 1.6 GB 算进去。逐请求数值、加载时间、调用次数、实际参数和输出 SHA 均有原始记录；测量仅使用 GPU 4–7，且全部发生在 19:00 UTC 之后。
 
-按每轨道每方法 1,571 个生成请求外推，合计 **342.77 GPU·小时**；四卡理想时间 **85.69 小时**，八卡理想时间 **42.85 小时**，还需冷加载、I/O、免费评分和调度时间。这是三请求小样本外推，不是正式实测，也不是完成时间保证。
+按每轨道每方法 1,571 个生成请求外推，合计 **342.77 GPU·小时**；四卡理想时间 **85.69 小时**，八卡理想时间 **42.85 小时**、十六卡 **21.42 小时**（当前双机队列约 **22.67 小时**），还需冷加载、I/O、免费评分和调度时间。这是三请求小样本外推，不是正式实测，也不是完成时间保证。
 
 33 条阶段 admission 都有完成终态，24 张输出全部成功计分；17 个 worker 进程均正常退出。所有输出为可读的 1024×1024 图像。Qwen2.1 连续第二轮图像噪声较重，额外做了一次独立进程、相同输入和 seed 的诊断，raw 与恢复后图像均逐字节一致；未发现该例由跨请求状态引起。诊断独立保存，未覆盖冒烟结果，也未进入上述吞吐估计。
 
@@ -72,11 +72,11 @@ SITEdit 严格使用 aa5a414、Pass1 step 2000、S2 adapter_16000、raw SAMTok t
 |---|---|
 | 分支 / worktree | `eval-magicbrush` / `/opt/tiger/tanyue/if-bench-magicbrush` |
 | 数据 | `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/MagicBrush/` |
-| 启动包、输入、重合审计、冒烟 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_20261105/` |
+| 原始输入、重合审计、冒烟 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_20261105/` |
 | 冒烟分数与插图报告 | 上述包内 `smoke_001/report/{CHINESE_REPORT.md,REPORT.md,REPORT.json}` |
 | 时间外推 | 上述包内 `ESTIMATE.json` |
 | 独立进程复核 | 上述包内 `diagnostics/qwen21_same_input_fresh_process/` |
 | 正式结果（待用户启动后创建） | `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/run_001/` |
-| 发布哈希、精确 commit、启动说明 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_20261105-handoff.md` |
+| 发布哈希、精确 commit、启动说明 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_2node16_20261106-handoff.md` |
 
-发布后，用户只需提交 **单机 8×H100 80GB、同 NAS** 作业，前台执行 handoff 中的入口。恢复时只更换 attempt，不改结果根；已完成且身份一致的记录跳过，未知 admission 保留待核，不自动重采样。不需要访问授权、付费评分批准或模型参数决定。
+发布后，用户只需提交 **双机、每机 8×H100 80GB、同 NAS** 作业，前台执行 handoff 中的入口。恢复时只更换 attempt，不改结果根；已完成且身份一致的记录跳过，未知 admission 保留待核，不自动重采样。不需要访问授权、付费评分批准或模型参数决定。

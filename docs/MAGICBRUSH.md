@@ -1,6 +1,6 @@
 # MagicBrush 运行手册
 
-协议见 [MAGICBRUSH_EVALUATION.md](MAGICBRUSH_EVALUATION.md)，实际状态见 [MAGICBRUSH_PROGRESS.md](MAGICBRUSH_PROGRESS.md)。本模块不调用任何收费接口，不使用四机集群，不修改其他实验。所有读取数据的 Python 均使用 `-I`；入口只显式添加本仓库与已冻结方法源码。
+协议见 [MAGICBRUSH_EVALUATION.md](MAGICBRUSH_EVALUATION.md)，实际状态见 [MAGICBRUSH_PROGRESS.md](MAGICBRUSH_PROGRESS.md)。本模块不调用任何收费接口，不修改其他实验。所有读取数据的 Python 均使用 `-I`；入口只显式添加本仓库与已冻结方法源码。
 
 ## 1. 数据、输入与重合审计
 
@@ -47,19 +47,19 @@ CUDA_VISIBLE_DEVICES='' "$MB_PY" -I scripts/magicbrush.py estimate \
 
 输入由固定 seed/hash 选择，每方法恰好三条：会话 A 首轮无 mask、会话 B 首轮有 mask、会话 A 第 2 轮连续无 mask。连续第 2 轮使用各方法自己的首轮输出。选样不根据得分；不在测试集调 LoRA、提示词或 checkpoint。加载时间独立记录，GPU 峰值明确区分 PyTorch allocated/reserved。估计表使用本次实测逐阶段耗时；冷加载、I/O、评分另计，不能把估计写成正式实测。
 
-## 3. 双机 16 卡 ARNOLD 正式入口
+## 3. 四机 32 卡 ARNOLD 正式入口
 
-正式运行使用已通过的八方法冒烟与 `ESTIMATE.json`；模型、权重、输入、seed 和评分代码不变。用户提交 **一个 ARNOLD 作业，2 workers × 8 H100 80GB，共享同一 NAS**。两台 worker 前台执行完全相同的命令：
+正式运行使用已通过的八方法冒烟与 `ESTIMATE.json`；模型、权重、输入、seed 和评分代码不变。用户提交 **一个 ARNOLD 作业，4 workers × 8 H100 80GB，共享同一 NAS**。四台 worker 前台执行完全相同的命令：
 
 ```bash
-MAGICBRUSH_ATTEMPT=run001 bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_2node16_20261106/start.sh
+MAGICBRUSH_ATTEMPT=run001 bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_4node32_20261106/start.sh
 ```
 
-详细分片、保护、预检和恢复说明见 [MAGICBRUSH_DUAL_RUN.md](MAGICBRUSH_DUAL_RUN.md)。新包引用原包的全部输入字节，原包保持不变。每次恢复只改 attempt，例如 `run002`；不改结果根 `experiments2/SAMTokEdit/external_magicbrush/run_001/`，不改配置或生成代码。入口在全部评分、汇总结束后退出。
+详细分片、保护、预检和恢复说明见 [MAGICBRUSH_CLUSTER_RUN.md](MAGICBRUSH_CLUSTER_RUN.md)。新包引用原包的全部输入字节，共同科学资产保持不变；旧单机／双机专用启动文件已移除。每次恢复只改 attempt，例如 `run002`；不改结果根 `experiments2/SAMTokEdit/external_magicbrush/run_001/`，不改配置或生成代码。入口在全部评分、汇总结束后退出。
 
-完整会话按固定请求数均衡分配：node 0 负责 268 会话／每方法 1,572 请求，node 1 负责 267 会话／每方法 1,570 请求。每台八卡通过本地队列处理所有八方法；同一会话的连续编辑不跨节点。全部生成结束后，两台各启八个独立标准指标进程，共 16 个互斥分片。node 0 用完整逐图记录统一统计与 bootstrap。
+完整会话按固定请求数均衡分配：node 0–3 分别负责 133、133、135、134 会话，每方法分别 786、786、786、784 请求。每台八卡通过本地队列处理所有八方法；同一会话的连续编辑不跨节点。全部生成结束后，四台各启八个独立标准指标进程，共 32 个互斥分片。node 0 用完整逐图记录统一统计与 bootstrap。
 
-实测冒烟外推为 342.77 GPU·h；16 卡理想生成时间 21.42 h，按当前任务队列的计算约 22.67 h，均另加环境加载、I/O、评分、报告。这是三请求冒烟的外推，不是正式实测时长。新发布身份与命令写在包外的 `magicbrush_2node16_20261106-handoff.md`。
+实测冒烟外推为 342.77 GPU·h；32 卡理想生成时间 10.71 h，按当前任务队列的计算约 11.36 h，均另加环境加载、I/O、评分、报告。这是三请求冒烟的外推，不是正式实测时长。新发布身份与命令写在包外的 `magicbrush_4node32_20261106-handoff.md`。
 
 ## 4. 记录、恢复与评分
 

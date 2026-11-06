@@ -1,4 +1,4 @@
-"""Two-node NAS coordination, with no distributed model process or network listener.
+"""Four-node NAS coordination, with no distributed model process or network listener.
 
 This module is standard-library-only so heartbeats also cover runtime staging.
 Scientific generation and scoring implementations remain unchanged.
@@ -6,8 +6,6 @@ Scientific generation and scoring implementations remain unchanged.
 
 from __future__ import annotations
 
-import errno
-import fcntl
 import json
 import os
 from pathlib import Path
@@ -20,14 +18,18 @@ import time
 import uuid
 
 
+WORKERS, GPUS_PER_WORKER = 4, 8
+RANKS = tuple(range(WORKERS))
+
+
 def partition_sessions(sessions, counts, rank):
     """Balance fixed request counts without splitting a recurrent conversation."""
-    if rank not in (0, 1):
+    if rank not in RANKS:
         raise ValueError("Invalid node rank")
-    totals, owned = [0, 0], [set(), set()]
+    totals, owned = [0] * WORKERS, [set() for _ in RANKS]
     order = {sid: index for index, sid in enumerate(sessions)}
     for sid in sorted(sessions, key=lambda sid: (-counts[sid], order[sid])):
-        node = min(range(2), key=lambda r: (totals[r], len(owned[r]), r))
+        node = min(RANKS, key=lambda r: (totals[r], len(owned[r]), r))
         totals[node] += counts[sid]
         owned[node].add(sid)
     return [sid for sid in sessions if sid in owned[rank]]
@@ -65,9 +67,11 @@ def claim(path, value):
 
 
 def release_stopped(output, attempt, reason, confirmed=False):
-    """Release coordination only after the operator confirms both workers exited."""
+    """Release coordination only after the operator confirms all four workers exited."""
     if not confirmed or not reason.strip():
-        raise ValueError("Explicit confirmation that both workers exited and a reason are required")
+        raise ValueError(
+            "Explicit confirmation that all four workers exited and a reason are required"
+        )
     output = Path(output)
     lease = read_retry(output / "CLUSTER.lock" / "OWNER.json")
     if lease is None or lease["attempt"] != attempt:
@@ -76,7 +80,7 @@ def release_stopped(output, attempt, reason, confirmed=False):
         output / "cluster" / attempt / "FORCED_RELEASE.json",
         {
             **lease,
-            "confirmed_both_workers_stopped": True,
+            "confirmed_all_workers_stopped": True,
             "reason": reason,
             "operator_host": socket.gethostname(),
             "time": time.time(),
@@ -101,7 +105,7 @@ class PeerClock:
 def local_environment(rank):
     """Isolate each native single-GPU program from the outer ARNOLD topology.
 
-    The outer coordinator validates the real 2 x 8 job. Native frozen workers
+    The outer coordinator validates the real 4 x 8 job. Native frozen workers
     expect an independent one-node runtime and do not participate in rendezvous.
     Preserve the real ownership explicitly rather than changing their code.
     """
@@ -124,7 +128,7 @@ def local_environment(rank):
         ARNOLD_WORKER_NUM="1",
         ARNOLD_ID="0",
         WORLD_SIZE="1",
-        MAGICBRUSH_CLUSTER_WORKERS="2",
+        MAGICBRUSH_CLUSTER_WORKERS=str(WORKERS),
         MAGICBRUSH_CLUSTER_NODE_ID=str(rank),
         MASTER_PORT="42000",
         HF_HUB_OFFLINE="1",
@@ -140,10 +144,13 @@ def local_environment(rank):
 
 
 def validate_topology():
-    if os.environ.get("ARNOLD_WORKER_NUM") != "2" or os.environ.get("ARNOLD_WORKER_GPU") != "8":
-        raise ValueError("Requires exactly two ARNOLD workers with eight GPUs each")
-    if os.environ.get("ARNOLD_ID") not in ("0", "1"):
-        raise ValueError("ARNOLD_ID must be 0 or 1")
+    if (
+        os.environ.get("ARNOLD_WORKER_NUM") != str(WORKERS)
+        or os.environ.get("ARNOLD_WORKER_GPU") != "8"
+    ):
+        raise ValueError("Requires exactly four ARNOLD workers with eight GPUs each")
+    if os.environ.get("ARNOLD_ID") not in tuple(map(str, RANKS)):
+        raise ValueError("ARNOLD_ID must be 0, 1, 2 or 3")
     if socket.gethostname() == "n124-253-176":
         raise ValueError("This remote entry is forbidden on the shared local machine")
     return int(os.environ["ARNOLD_ID"])
@@ -163,33 +170,24 @@ class Coordinator:
         interval=15,
         poll=3,
     ):
-        if rank not in (0, 1) or not re.fullmatch(r"[A-Za-z0-9_-]+", attempt):
+        if rank not in RANKS or not re.fullmatch(r"[A-Za-z0-9_-]+", attempt):
             raise ValueError("Invalid node rank or attempt")
         self.output, self.attempt, self.rank = Path(output), attempt, rank
         self.identity = {"attempt": attempt, "ready_sha256": ready_sha}
         self.root = self.output / "cluster" / attempt
-        self.mine, self.peer = self.root / f"node-{rank}", self.root / f"node-{1 - rank}"
+        self.mine = self.root / f"node-{rank}"
+        self.peers = {r: self.root / f"node-{r}" for r in RANKS if r != rank}
         self.host = hostname or socket.gethostname()
-        self.peer_clock = PeerClock(stale_seconds)
+        self.peer_clocks = {r: PeerClock(stale_seconds) for r in self.peers}
         self.join_seconds, self.interval, self.poll = join_seconds, interval, poll
         self.stop, self.closed = threading.Event(), threading.Event()
-        self.heartbeat_error, self.thread, self.lock = None, None, None
+        self.heartbeat_error, self.thread = None, None
         self.phase, self.sequence, self.started = "joining", 0, time.monotonic()
         self.signals = {}
         self.claimed = False
 
     def enter(self):
         self.output.mkdir(parents=True, exist_ok=True)
-        # Optional compatibility with the legacy single-node entry. Some NAS
-        # mounts return ENOSYS for flock; the directory lease below is authoritative.
-        self.lock = (self.output / "ENTRY.lock").open("a")
-        try:
-            fcntl.flock(self.lock, fcntl.LOCK_SH | fcntl.LOCK_NB)
-        except OSError as error:
-            if error.errno not in (errno.ENOSYS, errno.EOPNOTSUPP):
-                raise
-            self.lock.close()
-            self.lock = None
         lease_dir = self.output / "CLUSTER.lock"
         lease_path = lease_dir / "OWNER.json"
         if self.rank == 0:
@@ -203,7 +201,7 @@ class Coordinator:
                     raise RuntimeError("Active lease is unreadable; inspect it before recovery")
                 old_root = self.output / "cluster" / old["attempt"]
                 forced = read_retry(old_root / "FORCED_RELEASE.json")
-                released = [read_retry(old_root / f"node-{r}" / "RELEASED.json") for r in (0, 1)]
+                released = [read_retry(old_root / f"node-{r}" / "RELEASED.json") for r in RANKS]
 
                 def valid(row):
                     return row is not None and all(row.get(k) == v for k, v in old.items())
@@ -211,7 +209,7 @@ class Coordinator:
                 if not (all(valid(row) for row in released) or valid(forced)):
                     raise RuntimeError(
                         "Another attempt is active or was forcibly interrupted; "
-                        "both workers must exit before explicit recovery"
+                        "all four workers must exit before explicit recovery"
                     )
                 # Claim retirement within that lease and recheck its token. A
                 # delayed competing starter must never rename a newly acquired lease.
@@ -243,7 +241,7 @@ class Coordinator:
                 "rank": self.rank,
                 "hostname": self.host,
                 "pid": os.getpid(),
-                "workers": 2,
+                "workers": WORKERS,
                 "gpus_per_worker": 8,
                 "time": time.time(),
             },
@@ -277,10 +275,10 @@ class Coordinator:
     def marker(self, name, value=None):
         atomic(self.mine / f"{name}.json", {**self.lease, "time": time.time(), "value": value})
 
-    def peer_record(self, name):
-        row = read_retry(self.peer / f"{name}.json")
+    def peer_record(self, rank, name, attempts=1):
+        row = read_retry(self.peers[rank] / f"{name}.json", attempts=attempts)
         if row is not None and any(row.get(k) != v for k, v in self.lease.items()):
-            raise ValueError(f"Peer {name} belongs to a different attempt or READY")
+            raise ValueError(f"Peer {rank} {name} belongs to a different attempt or READY")
         return row
 
     def check(self):
@@ -293,29 +291,35 @@ class Coordinator:
             raise RuntimeError("Own heartbeat write failed") from self.heartbeat_error
         if self.stop.is_set():
             raise RuntimeError("Stop requested; finish current requests before exit")
-        failed = self.peer_record("FAILED")
-        if failed:
-            raise RuntimeError(f"Peer failed: {failed['value']}")
-        owner = self.peer_record("OWNER")
-        if owner and owner["hostname"] == self.host:
-            raise ValueError("Both node ranks are on the same host")
-        # Completed peer may exit while node 0 performs the CPU report.
-        if self.peer_record("COMPLETE"):
-            return
-        heartbeat = self.peer_record("heartbeat")
-        if self.peer_clock.observe(heartbeat):
-            raise RuntimeError("Peer heartbeat stale; last successful sequence stopped advancing")
-        if self.peer_clock.last_new is None and time.monotonic() - self.started > self.join_seconds:
-            raise RuntimeError("Peer did not join before the startup deadline")
+        hosts = {self.host}
+        for rank in self.peers:
+            failed = self.peer_record(rank, "FAILED")
+            if failed:
+                raise RuntimeError(f"Peer failed (node {rank}): {failed['value']}")
+            owner = self.peer_record(rank, "OWNER")
+            if owner:
+                if owner["hostname"] in hosts:
+                    raise ValueError("Two node ranks are on the same host")
+                hosts.add(owner["hostname"])
+            if self.peer_record(rank, "COMPLETE"):
+                continue
+            heartbeat = self.peer_record(rank, "heartbeat", attempts=5)
+            clock = self.peer_clocks[rank]
+            if clock.observe(heartbeat):
+                raise RuntimeError(
+                    f"Peer {rank} heartbeat stale; last successful sequence stopped advancing"
+                )
+            if clock.last_new is None and time.monotonic() - self.started > self.join_seconds:
+                raise RuntimeError(f"Peer {rank} did not join before the startup deadline")
 
     def barrier(self, name, value=None):
         self.phase = f"barrier-{name}"
         self.marker(name, value)
         while True:
             self.check()
-            peer = self.peer_record(name)
-            if peer is not None:
-                return peer["value"]
+            peers = {r: self.peer_record(r, name) for r in self.peers}
+            if all(row is not None for row in peers.values()):
+                return {r: row["value"] for r, row in peers.items()}
             self.stop.wait(self.poll)
 
     def jobs(self, jobs, phase, *, graceful=True):
@@ -372,5 +376,3 @@ class Coordinator:
             signal.signal(sig, previous)
         if self.claimed:
             self.marker("RELEASED", {"pid": os.getpid(), "hostname": self.host})
-        if self.lock:
-            self.lock.close()

@@ -17,7 +17,7 @@ import time
 from samtok_benchmark.io import digest, sha256_file, write_json
 from samtok_benchmark.external_refedit.cli import SCHEDULE, runtime_for
 from .bundle import load_bundle, requests, smoke_sessions
-from .cluster import partition_sessions
+from .cluster import RANKS, WORKERS, partition_sessions
 from .data import immutable, read, write_bytes
 from .worker import REPO, gpu_gate, source_identity, stages, verify_config, result_path
 
@@ -96,10 +96,10 @@ def launch(args, *, node_rank=None):
     if node_rank is not None:
         if (
             args.smoke
-            or node_rank not in (0, 1)
-            or os.environ.get("MAGICBRUSH_CLUSTER_WORKERS") != "2"
+            or node_rank not in RANKS
+            or os.environ.get("MAGICBRUSH_CLUSTER_WORKERS") != str(WORKERS)
         ):
-            raise ValueError("Node partition requires the authorized two-node controller")
+            raise ValueError("Node partition requires the authorized four-node controller")
         if os.environ.get("MAGICBRUSH_CLUSTER_NODE_ID") != str(node_rank):
             raise ValueError("Local node identity differs from its controller")
         counts = Counter(item["session_id"] for item in requests(index, sessions))

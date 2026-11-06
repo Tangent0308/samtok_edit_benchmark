@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Stage trusted runtimes only; the dual-node coordinator supervises generation and metrics.
+# Stage trusted runtimes only; the four-node coordinator supervises generation and metrics.
 set -Eeuo pipefail
 : "${MAGICBRUSH_REPO:?}" "${MAGICBRUSH_RUNTIME:?}" "${MAGICBRUSH_PACKAGE:?}"
 : "${MAGICBRUSH_RUN_DIR:?}" "${MAGICBRUSH_ATTEMPT:?}"

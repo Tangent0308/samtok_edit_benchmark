@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Foreground two-worker MagicBrush entry; model/scorer source is unchanged."""
+"""Foreground four-worker MagicBrush entry; model/scorer source is unchanged."""
 
 from __future__ import annotations
 
@@ -18,6 +18,9 @@ sys.path.insert(0, str(REPO / "src"))
 from samtok_benchmark.external_magicbrush import MODELS  # noqa: E402
 from samtok_benchmark.external_magicbrush.cluster import (  # noqa: E402
     Coordinator,
+    WORKERS,
+    GPUS_PER_WORKER,
+    RANKS,
     local_environment,
     read_retry,
     release_stopped,
@@ -68,8 +71,8 @@ def control(args):
     ready_path = Path(args.package) / "READY.json"
     raw = ready_path.read_bytes()
     ready, ready_sha = json.loads(raw), hashlib.sha256(raw).hexdigest()
-    if ready["topology"] != {"workers": 2, "gpus_per_worker": 8}:
-        raise ValueError("READY does not describe the two-node deployment")
+    if ready["topology"] != {"workers": WORKERS, "gpus_per_worker": GPUS_PER_WORKER}:
+        raise ValueError("READY does not describe the four-node deployment")
     coordinator = Coordinator(ready["results_root"], args.attempt, rank, ready_sha)
     entered = False
     try:
@@ -79,7 +82,7 @@ def control(args):
         environment["CUDA_VISIBLE_DEVICES"] = ""
         rt = Path(args.runtime)
         python = str(rt / "env_v4/bin/python")
-        base = [python, "-I", "-B", str(REPO / "scripts/magicbrush_dual.py")]
+        base = [python, "-I", "-B", str(REPO / "scripts/magicbrush_cluster.py")]
         options = [
             "--package",
             args.package,
@@ -100,13 +103,13 @@ def control(args):
             )
 
         peer_mode = coordinator.barrier("JOINED", {"validate_only": args.validate_only})
-        if peer_mode != {"validate_only": args.validate_only}:
-            raise ValueError("The two nodes must use the same validation mode")
+        if any(value != {"validate_only": args.validate_only} for value in peer_mode.values()):
+            raise ValueError("All four nodes must use the same validation mode")
         job(
             [
                 "/usr/bin/python3",
                 "-I",
-                str(REPO / "scripts/magicbrush_publish_dual.py"),
+                str(REPO / "scripts/magicbrush_publish.py"),
                 "verify",
                 "--package",
                 args.package,
@@ -115,12 +118,12 @@ def control(args):
             ],
             "verify",
         )
-        job(["bash", str(REPO / "scripts/arnold/magicbrush_dual_stage.sh")], "stage")
+        job(["bash", str(REPO / "scripts/arnold/magicbrush_stage.sh")], "stage")
         job(base + ["preflight"] + options, "preflight")
         proof = read_retry(coordinator.mine / "preflight.log")
         if proof is None:
             raise ValueError("Missing preflight proof")
-        if coordinator.barrier("STAGED", proof) != proof:
+        if any(value != proof for value in coordinator.barrier("STAGED", proof).values()):
             raise ValueError("Node runtime configuration or bundle differs")
         if not args.validate_only:
             if rank == 0:
@@ -148,7 +151,7 @@ def control(args):
                     "--shard",
                     str(shard),
                     "--shards",
-                    "16",
+                    str(WORKERS * GPUS_PER_WORKER),
                 ]
                 jobs.append(
                     (
@@ -210,15 +213,15 @@ def main():
     parser.add_argument("--package", required=True)
     parser.add_argument("--runtime", default="/tmp/ifbench-magicbrush-runtime-aa5a414")
     parser.add_argument("--attempt", required=True)
-    parser.add_argument("--rank", type=int, choices=[0, 1])
+    parser.add_argument("--rank", type=int, choices=RANKS)
     parser.add_argument("--validate-only", action="store_true")
-    parser.add_argument("--confirm-both-workers-stopped", action="store_true")
+    parser.add_argument("--confirm-all-workers-stopped", action="store_true")
     parser.add_argument("--reason", default="")
     args = parser.parse_args()
     if args.command == "release":
         ready = json.loads((Path(args.package) / "READY.json").read_text())
         result = release_stopped(
-            ready["results_root"], args.attempt, args.reason, args.confirm_both_workers_stopped
+            ready["results_root"], args.attempt, args.reason, args.confirm_all_workers_stopped
         )
     else:
         result = control(args) if args.command == "control" else scientific_step(args)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish/verify a NAS-only MagicBrush handoff after successful smoke tests; standard library only."""
+"""Publish the four-node MagicBrush entry with an independent scientific baseline seal."""
 
 from __future__ import annotations
 
@@ -8,9 +8,12 @@ from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
 from pathlib import Path
+import shlex
 import subprocess
 import sys
 
+if not sys.flags.isolated:
+    raise SystemExit("Use python -I")
 REPO = Path(__file__).resolve().parents[1]
 NAS = Path("/mnt/bn/strategy-mllm-train/user/tanyue")
 
@@ -39,130 +42,161 @@ def verify_assets(entries):
         list(pool.map(one, entries.items()))
 
 
-def publish(package):
-    if subprocess.check_output(
-        ["git", "-C", str(REPO), "status", "--porcelain"], text=True
-    ).strip():
-        raise ValueError("Commit all branch changes before publishing")
-    branch = subprocess.check_output(
-        ["git", "-C", str(REPO), "branch", "--show-current"], text=True
-    ).strip()
-    if branch != "eval-magicbrush":
-        raise ValueError("Publish only from eval-magicbrush")
-    commit = subprocess.check_output(
-        ["git", "-C", str(REPO), "rev-parse", "HEAD"], text=True
-    ).strip()
-    package = Path(package).resolve()
-    bundle = package / "bundle"
-    index = read(bundle / "index.json")
-    estimate = read(package / "ESTIMATE.json")
-    if not estimate["all_methods_smoke_passed"] or estimate["bundle_digest"] != index["digest"]:
-        raise ValueError("Successful matching smoke tests are required before READY")
-    for relative, expected in estimate["source_code"].items():
+FROZEN = [
+    "src/samtok_benchmark/external_magicbrush/metrics.py",
+    "src/samtok_benchmark/external_magicbrush/scoring.py",
+    "src/samtok_benchmark/external_magicbrush/report.py",
+    "configs/external/magicbrush.json",
+    "configs/external/magicbrush_arnold.template.json",
+    "scripts/refedit_stage.py",
+    "scripts/refedit_runtime.py",
+]
+
+
+def git(*args):
+    return subprocess.check_output(["git", "-C", str(REPO), *args], text=True).strip()
+
+
+def verify(package, commit, *, payload=True):
+    ready = read(Path(package) / "READY.json")
+    if ready["source_commit"] != commit or git("rev-parse", "HEAD") != commit:
+        raise ValueError("Published source commit differs from checkout/entry")
+    if sha(ready["baseline"]) != ready["baseline_sha256"]:
+        raise ValueError("Scientific baseline seal changed")
+    baseline = read(ready["baseline"])
+    if ready["topology"] != {"workers": 4, "gpus_per_worker": 8}:
+        raise ValueError("Wrong topology")
+    for key in [
+        "bundle",
+        "bundle_digest",
+        "results_root",
+        "generation_source_code",
+        "arnold_config_template_sha256",
+        "estimate_sha256",
+    ]:
+        if ready[key] != baseline[key]:
+            raise ValueError(f"Scientific identity changed: {key}")
+    for relative, expected in {
+        **ready["generation_source_code"],
+        **ready["unchanged_code"],
+    }.items():
         if sha(REPO / relative) != expected:
-            raise ValueError("Generation code changed after smoke")
-    entries = {}
-    entries[str(package / "bootstrap.sh")] = sha(REPO / "scripts/arnold/magicbrush_bootstrap.sh")
-    for c in index["cases"]:
-        entries[c["public"]] = c["public_sha256"]
-        public = read(c["public"])
-        for key in ["source", "mask", "annotation"]:
-            if public[key]:
-                entries[public[key]["path"]] = public[key]["sha256"]
-        if c["canonical_mask"]:
-            entries[c["canonical_mask"]["path"]] = c["canonical_mask"]["sha256"]
-        geometry = Path(public["source"]["path"]).parent / "geometry.json"
-        entries[str(geometry)] = sha(geometry)
-    entries[str(bundle / "private/evaluation.json")] = index["evaluation_sha256"]
-    for row in read(bundle / "private/evaluation.json"):
-        for key in ["source", "mask", "target"]:
-            entries[row[key]["path"]] = row[key]["sha256"]
-    parity = read(package / "METRIC_PARITY.json")
-    for key, relative in [
-        ("code_sha256", "src/samtok_benchmark/external_magicbrush/metrics.py"),
-        ("scoring_code_sha256", "src/samtok_benchmark/external_magicbrush/scoring.py"),
-    ]:
-        if parity["scorer_identity"][key] != sha(REPO / relative):
-            raise ValueError("Scoring code changed after metric parity validation")
-    if parity["check_script_sha256"] != sha(REPO / "scripts/magicbrush_metric_check.py"):
-        raise ValueError("Metric validation script changed")
-    for relative in [
-        "bundle/index.json",
-        "overlap/OVERLAP.json",
-        "METRIC_PARITY.json",
-        "ESTIMATE.json",
-        "assets/DejaVuSans.ttf",
-        "assets/FONT_SOURCE.json",
-        "assets/FONT_LICENSE.txt",
-    ]:
-        entries[str(package / relative)] = sha(package / relative)
-    config = read(REPO / "configs/external/magicbrush.json")
-    # These are trusted runtime descriptors from the read-only RefEdit template. Bind the mutable
-    # NAS files as well as the archived-payload checks performed by the staging scripts.
-    for relative in [
-        ".ifbench-tmp/fairness-v2-dev20-20261030/bootstrap.json",
-        ".ifbench-tmp/external_bench_20261102/refedit_runtimes/env_v4.json",
-        ".ifbench-tmp/external_bench_20261102/refedit_runtimes/env_pass1.json",
-    ]:
-        path = NAS / relative
-        entries[str(path)] = sha(path)
-    for name in ["clip", "dino"]:
-        root = Path(config["metrics"]["root"]) / name
-        proof = read(root / "SOURCE.json")
-        entries[str(root / "SOURCE.json")] = sha(root / "SOURCE.json")
-        for item in proof["files"]:
-            entries[str(root / item["path"])] = item["sha256"]
-    verify_assets(entries)
-    ready = {
-        "schema": "magicbrush.ready.v1",
+            raise ValueError(f"Tested generation/scoring/configuration changed: {relative}")
+    if any(ready["assets"].get(p) != v for p, v in baseline["assets"].items()):
+        raise ValueError("Baseline scientific assets were not preserved")
+    if payload:
+        verify_assets(ready["assets"])
+    return {
+        "verified": True,
+        "assets": len(ready["assets"]),
         "source_commit": commit,
-        "bundle_digest": index["digest"],
-        "bundle": str(bundle),
-        "assets": entries,
-        "results_root": config["formal_results_root"] + "/run_001",
-        "estimate_sha256": sha(package / "ESTIMATE.json"),
-        "generation_source_code": estimate["source_code"],
-        "arnold_config_template_sha256": sha(
-            REPO / "configs/external/magicbrush_arnold.template.json"
-        ),
+        "topology": ready["topology"],
+        "ready_sha256": sha(Path(package) / "READY.json"),
+    }
+
+
+def publish(package, baseline_ready, expected_baseline_sha):
+    if git("status", "--porcelain") or git("branch", "--show-current") != "eval-magicbrush":
+        raise ValueError("Publish from a clean eval-magicbrush worktree")
+    commit = git("rev-parse", "HEAD")
+    if git("ls-remote", "origin", "refs/heads/eval-magicbrush").split()[0] != commit:
+        raise ValueError("Push the branch before publication")
+    package, baseline_ready = Path(package).resolve(), Path(baseline_ready).resolve()
+    if not package.is_relative_to(NAS) or not baseline_ready.is_relative_to(NAS):
+        raise ValueError("Both packages must be on NAS")
+    if sha(baseline_ready) != expected_baseline_sha:
+        raise ValueError("Original READY differs from the approved smoke package")
+    parent, old = read(baseline_ready), baseline_ready.parent
+    unchanged = {}
+
+    for relative in FROZEN:
+        original = subprocess.check_output(
+            ["git", "-C", str(REPO), "show", f"{parent['source_commit']}:{relative}"]
+        )
+        unchanged[relative] = hashlib.sha256(original).hexdigest()
+        if sha(REPO / relative) != unchanged[relative]:
+            raise ValueError(f"Frozen implementation changed: {relative}")
+    for relative, expected in parent["generation_source_code"].items():
+        if sha(REPO / relative) != expected:
+            raise ValueError(f"Generation changed: {relative}")
+    package.mkdir(parents=True, exist_ok=False)
+    (package / "bootstrap.sh").write_bytes(
+        (REPO / "scripts/arnold/magicbrush_cluster_bootstrap.sh").read_bytes()
+    )
+    # Preserve scientific paths/bytes, while removing dependencies on retired launch files.
+    baseline = {
+        k: parent[k]
+        for k in [
+            "bundle",
+            "bundle_digest",
+            "results_root",
+            "generation_source_code",
+            "arnold_config_template_sha256",
+            "estimate_sha256",
+        ]
+    }
+    baseline.update(
+        schema="magicbrush.scientific-baseline.v1",
+        reference_commit=parent["source_commit"],
+        reference_ready_sha256=expected_baseline_sha,
+        assets={
+            p: v
+            for p, v in parent["assets"].items()
+            if p not in {str(old / "bootstrap.sh"), str(old / "BASELINE.json")}
+        },
+    )
+    with (package / "BASELINE.json").open("x") as stream:
+        json.dump(baseline, stream, ensure_ascii=False, indent=2)
+        stream.write("\n")
+    assets = {
+        **baseline["assets"],
+        str(package / "BASELINE.json"): sha(package / "BASELINE.json"),
+        str(package / "bootstrap.sh"): sha(package / "bootstrap.sh"),
+    }
+    verify_assets(assets)
+    ready = {
+        **baseline,
+        "schema": "magicbrush.ready.cluster.v1",
+        "source_commit": commit,
+        "topology": {"workers": 4, "gpus_per_worker": 8},
+        "baseline": str(package / "BASELINE.json"),
+        "baseline_sha256": sha(package / "BASELINE.json"),
+        "estimate": parent.get("estimate", str(old / "ESTIMATE.json")),
+        "overlap": parent.get("overlap", str(old / "overlap/OVERLAP.json")),
+        "unchanged_code": unchanged,
+        "assets": assets,
     }
     with (package / "READY.json").open("x") as stream:
         json.dump(ready, stream, ensure_ascii=False, indent=2)
         stream.write("\n")
-    return {
-        "source_commit": commit,
-        "bundle_digest": index["digest"],
-        "ready_sha256": sha(package / "READY.json"),
-        "assets": len(entries),
-    }
-
-
-def verify(package, commit):
-    ready = read(Path(package) / "READY.json")
-    if ready["source_commit"] != commit:
-        raise ValueError("Entrypoint commit differs from published READY")
-    for relative, expected in ready["generation_source_code"].items():
-        if sha(REPO / relative) != expected:
-            raise ValueError("Published generation source differs")
-    if (
-        sha(REPO / "configs/external/magicbrush_arnold.template.json")
-        != ready["arnold_config_template_sha256"]
-    ):
-        raise ValueError("Published run configuration differs")
-    verify_assets(ready["assets"])
-    return {"verified": True, "assets": len(ready["assets"]), "source_commit": commit}
+    ready_sha = sha(package / "READY.json")
+    bootstrap_sha = sha(package / "bootstrap.sh")
+    start = f"""#!/usr/bin/env bash
+set -Eeuo pipefail
+: "${{MAGICBRUSH_ATTEMPT:?Set a new attempt id}}"
+export MAGICBRUSH_PACKAGE={shlex.quote(str(package))}
+export MAGICBRUSH_COMMIT={commit}
+[[ "$(sha256sum "$MAGICBRUSH_PACKAGE/READY.json" | cut -d' ' -f1)" == {ready_sha} ]] || exit 2
+[[ "$(sha256sum "$MAGICBRUSH_PACKAGE/bootstrap.sh" | cut -d' ' -f1)" == {bootstrap_sha} ]] || exit 2
+exec bash "$MAGICBRUSH_PACKAGE/bootstrap.sh" "$@"
+"""
+    with (package / "start.sh").open("x") as stream:
+        stream.write(start)
+    return verify(package, commit, payload=False)
 
 
 def main():
-    if not sys.flags.isolated:
-        raise SystemExit("Use python -I")
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["publish", "verify"])
-    parser.add_argument("--package", required=True)
-    parser.add_argument("--commit")
-    args = parser.parse_args()
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("command", choices=["publish", "verify"])
+    p.add_argument("--package", required=True)
+    p.add_argument("--baseline-ready")
+    p.add_argument("--baseline-ready-sha256")
+    p.add_argument("--commit")
+    args = p.parse_args()
     result = (
-        publish(args.package) if args.command == "publish" else verify(args.package, args.commit)
+        publish(args.package, args.baseline_ready, args.baseline_ready_sha256)
+        if args.command == "publish"
+        else verify(args.package, args.commit)
     )
     print(json.dumps(result, indent=2))
 

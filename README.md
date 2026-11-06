@@ -3,7 +3,7 @@
 本分支 **`eval-magicbrush`** 增加 SITEdit 与七个基线的 MagicBrush 外部评测：535 个会话、1,053 个编辑轮次，无 mask／有 mask 两种输入，独立单轮／连续多轮两种评测，使用免费标准指标。SITEdit 固定 `aa5a414` 主行，完整推理配置、训练数据重合、执行状态均明确披露。
 
 - [评测方案](docs/MAGICBRUSH_EVALUATION.md)：官方协议、八方法输入、指标、数据重合与偏差。
-- [运行手册](docs/MAGICBRUSH.md)：下载、安全解码、冒烟、双机 16 卡与断点续跑。
+- [运行手册](docs/MAGICBRUSH.md)：下载、安全解码、冒烟、四机 32 卡与断点续跑。
 - [冒烟结果与正式交付](docs/MAGICBRUSH_RESULTS.md)：24/24 流程验证、逐方法实测耗时／显存、重合审计与全量入口。
 - [实际进度](docs/MAGICBRUSH_PROGRESS.md)：已完成检查、真实结果和剩余工作；冒烟不作为正式基准成绩。
 

@@ -3,7 +3,7 @@
 ## MagicBrush 外部评测（eval-magicbrush）
 
 - [评测方案](MAGICBRUSH_EVALUATION.md)：固定八方法、两种 mask 输入、独立／连续编辑、五项免费指标与重合审计。
-- [运行手册](MAGICBRUSH.md)：安全数据入口、CPU 检查、冒烟、双机 16 卡 ARNOLD、恢复与统计。
+- [运行手册](MAGICBRUSH.md)：安全数据入口、CPU 检查、冒烟、四机 32 卡 ARNOLD、恢复与统计。
 - [冒烟结果与正式交付](MAGICBRUSH_RESULTS.md)：实际状态、逐方法耗时／显存、重合披露与剩余正式工作。
 - [进度记录](MAGICBRUSH_PROGRESS.md)：实际检查、阻塞、偏差及产物位置。
 

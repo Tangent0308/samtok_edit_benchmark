@@ -145,3 +145,9 @@
 论文审阅稿继续保留全部 case，按用户最新要求移除主文和补充材料的重合讨论与相关链接，不增加训练／测试图像完全独立的断言。原始审计、统计与输入证据保留。当前稿件仍在本地 `visualization_tmp/MagicBrush_20261105/paper_draft_v2/`；最新 NAS 审阅副本改为 `.ifbench-tmp/magicbrush_paper_draft_20261106_v2b/`。已核对 60 个均值、60 个区间、17 个链接与 102 个图像来源哈希，未改任何实测数字。飞书与 Overleaf 尚未更新，新增两方法的分数待真实评测完成后加入。
 
 代码已于 `b79eeea` 提交并推送到 `eval-magicbrush`。新增与既有 MagicBrush CPU 测试共 26 项通过，Ruff 与格式检查通过；冻结生成源码逐文件哈希无差异，新增文档链接与全量请求覆盖核验通过。2026-11-06 18:29 UTC 启动本机 `classic001` 前台控制器，PID 282265，状态为 `waiting_for_free_gpus`，当时 GPU 4 使用 51,092 MiB。进程日志与动态状态在 `.ifbench-tmp/magicbrush_classic_20261106/supervision/classic001/`；本条记录的是启动快照，后续状态以该目录 `STATUS.json`、`FAILED.json` 或 `COMPLETE.json` 为准。
+
+## 2026-11-06：论文内容发布与补充方法正式运行
+
+经用户授权，先将已完成六方法的 MagicBrush 结果写入飞书与 Overleaf，新增两方法待正式结果完成后再补。飞书版本 2519 → 2524，主文新增 §5.3、附录新增 H，原消融标题顺延至 §5.4；9 个原生表格、4 个实际图片块均回读核对，1,751 个无关原文块保留。Overleaf 已推送 `f05abf9890ad0301d34f67a8493fa6ff6614dea0`，主表按 CVPR 双栏 booktabs 排版，附录给出区间、长度分组、历史输入诊断与方法配置；两张长案例图仅重新排列完整原始输出。完整项目编译通过，没有 Overfull、超大浮动体或未定义引用。60 个均值及 60 组区间与源报告完全一致。预览及核验入口为 `visualization_tmp/MagicBrush_20261105/paper_published_20261106/README.md`，NAS 副本为 `.ifbench-tmp/magicbrush_paper_published_20261106/`。
+
+GPU 4–7 空闲后，控制器已完成 InstructPix2Pix 与 HIVE 各三个请求的端到端冒烟，生成和统一评分均通过。单次生成实测均值分别为 8.29 / 8.24 s，峰值 allocated 均为 15.19 GiB；加载为 28.24 / 34.08 s。按冒烟估算，新增两方法合计约 7.42 GPU·h（含评分外推，冷加载和文件开销另计），四卡理想约 1.86 h，低于本机八小时门槛。2026-11-06 18:38:24 UTC 自动进入正式生成，输出在 `experiments2/SAMTokEdit/external_magicbrush/classic_20261106/`。论文发布时控制器仍在正常生成阶段，不能把冒烟通过或当前生成数量当作正式性能结论；原六方法记录和评分没有修改。

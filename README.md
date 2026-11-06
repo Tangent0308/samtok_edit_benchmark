@@ -4,7 +4,7 @@
 
 - [评测方案](docs/MAGICBRUSH_EVALUATION.md)：官方协议、八方法输入、指标、数据重合与偏差。
 - [运行手册](docs/MAGICBRUSH.md)：下载、安全解码、冒烟、四机 32 卡与断点续跑。
-- [不去重的全量主结果](docs/MAGICBRUSH_FULL_RESULTS.md)：保留全部 535 会话、1,053 轮，八方法四条件的最终分数与 95% 区间。
+- [无 mask 全量主结果](docs/MAGICBRUSH_FULL_RESULTS.md)：保留全部 535 会话、1,053 轮，七方法的独立单轮／连续多轮分数与 95% 区间。
 - [完整分析与对比图](docs/MAGICBRUSH_RESULTS.md)：输入方式、失败处理、成本与实际对比图；保留重合审计及去重合补充分析。
 - [实际进度](docs/MAGICBRUSH_PROGRESS.md)：运行、核查、偏差和最终交付记录。
 

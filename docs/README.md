@@ -4,7 +4,7 @@
 
 - [评测方案](MAGICBRUSH_EVALUATION.md)：固定八方法、两种 mask 输入、独立／连续编辑、五项免费指标与重合审计。
 - [运行手册](MAGICBRUSH.md)：安全数据入口、CPU 检查、冒烟、四机 32 卡 ARNOLD、恢复与统计。
-- [不去重的全量主结果](MAGICBRUSH_FULL_RESULTS.md)：全部 535 会话、1,053 轮，八方法四条件的分数与 95% 区间。
+- [无 mask 全量主结果](MAGICBRUSH_FULL_RESULTS.md)：全部 535 会话、1,053 轮，七方法的独立单轮／连续多轮分数与 95% 区间。
 - [完整分析与对比图](MAGICBRUSH_RESULTS.md)：输入方式、失败处理、耗时、实际对比图，以及重合审计和去重合补充结果。
 - [进度记录](MAGICBRUSH_PROGRESS.md)：实际检查、阻塞、偏差及产物位置。
 

@@ -133,3 +133,13 @@
 逐例复算 60 个均值与 60 个区间，核对 12 行主表、36 行补充表、18 个本地链接及 102 个图像／记录来源哈希；三种长度组加权仍重现全量多轮结果，原始正式报告 SHA256 不变。已目检主表、主图、分组图和两张完整六方法补充图，未启动任何生成或评分任务。
 
 另外实际阅读 MagicBrush 原论文 Table 2／3、Appendix C，以及 InstructPix2Pix、HIVE、MagicBrush 的官方仓库与推理／权重入口。候选建议为优先原版 InstructPix2Pix、其次原版 HIVE；MagicBrush 微调版作为可选领域训练对照，并显式区分训练条件。官方 InstructPix2Pix-MagicBrush 论文检查点与后续检查点不同，历史分数不能混用。调研细节与协议差异在审阅包的 `BASELINE_RECOMMENDATIONS.md`；候选尚未下载或运行，不进入当前实测表。
+
+## 2026-11-06：经典基线补充实现与资源等待
+
+用户确认加入 InstructPix2Pix 原版与 HIVE 原版，继续使用全部 535 会话、1,053 独立轮次的无 mask 测试。先写 [固定方案](MAGICBRUSH_CLASSIC_BASELINES.md)，再实现独立 `external_magicbrush_classic` 模块，不修改已完成方法的生成、评分源码与原始记录。每方法正式生成 1,571 次；原生 512、100 步 Euler ancestral、text/image CFG 7.5/1.5、seed 42。两种新增方法的分辨率与原有约 1MP 方法逐项注明。
+
+两份发布者权重已完整下载至 `models/pretrained_models/MagicBrushClassic_20261106/raw/` 并核对 SHA256；官方仓库 commit、下载 URL、文件哈希写入 `.ifbench-tmp/magicbrush_classic_20261106/ASSETS.json`。独立原生环境已安装并通过导入检查，原有 `env_v4` 未改动。两方法分别加载完整 state_dict，与各自官方模型严格匹配；HIVE 使用独立进程确认实际导入其自己的 `ddpm_edit.py`。CPU 检查在 CUDA 调用之前显式截停，不能当作 GPU 冒烟成功。证据为同目录的 `CPU_LOAD_CHECK.json`、`CPU_LOAD_HIVE_INDEPENDENT.json`、`TOKENIZER_CHECK.json` 和 `NATIVE_RUNTIME.json`。
+
+新增测试覆盖全部会话、连续输入依赖、全量失败分母、共享会话 bootstrap、缺分拒绝与权重安全加载。新增推理、评分、估时、不可变报告、断点续跑与资源等待入口已经实现；实际 GPU 冒烟及正式评测尚未开始。准备期间 GPU 4–7 被其他任务占用约 50 GB，必须等待恢复到既有约 1.6 GB 占用；不停止或干预其他任务。控制器只在资源门槛通过后运行三个固定冒烟请求／方法，评分通过且实测四卡预计不超过八小时才进入正式阶段。
+
+论文审阅稿继续保留全部 case，按用户最新要求移除主文和补充材料的重合讨论与相关链接，不增加训练／测试图像完全独立的断言。原始审计、统计与输入证据保留。当前稿件仍在本地 `visualization_tmp/MagicBrush_20261105/paper_draft_v2/`；最新 NAS 审阅副本改为 `.ifbench-tmp/magicbrush_paper_draft_20261106_v2b/`。已核对 60 个均值、60 个区间、17 个链接与 102 个图像来源哈希，未改任何实测数字。飞书与 Overleaf 尚未更新，新增两方法的分数待真实评测完成后加入。

@@ -4,6 +4,8 @@
 
 `run002` 已于 2026-11-06 完成全部生成、评分和汇总，中文结果见 [正式结果与分析](MAGICBRUSH_RESULTS.md)。第 6 节提供只读原始结果的 CPU 汇总与可视化复现入口。
 
+后续新增 InstructPix2Pix 原版与 HIVE 原版的全量无 mask 评测，使用独立模块和输出目录；固定方案、权重和执行入口见 [经典基线补充评测](MAGICBRUSH_CLASSIC_BASELINES.md)。已完成的原始实验与评分不更改。
+
 ## 1. 数据、输入与重合审计
 
 以下为已固定路径。原始文件来自官方 `osunlp/MagicBrush` 指定 revision，下载校验后才解码；不运行数据包里的 Python。`SOURCE.json` 保留原 URL、版本、许可与哈希。

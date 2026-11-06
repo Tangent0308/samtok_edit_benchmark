@@ -113,3 +113,13 @@
 全部 535 个会话、1,053 个编辑轮次继续纳入，包含 31 个已知源图重合会话，不做训练重合筛选。已确认的失败惩罚、分母、原始均值和会话 bootstrap 区间保持不变；只更新展示范围，不重新生成或评分。MIRAGE 无 mask 独立单轮的 138 个失败、连续最终图的 122 个失败仍纳入各自完整分母。
 
 更新 `MAGICBRUSH_FULL_RESULTS.md` 与文档导航；在正式结果的独立汇总目录 `run_001_failure_inclusive/` 新增 `MASK_FREE_FULL_RESULTS.json` 和 `MASK_FREE_FULL_RESULTS.md`。原始报告、逐请求记录、此前全设置摘要和完整审计保留。新的 14 行逐字段与 `REPORT.json` 核对，表内粗体仅按当前七方法重新标出最优点估计。
+
+## 2026-11-06：论文中文初稿 v1，等待用户审阅
+
+按用户确认的呈现方案，完成无 mask、七方法、全量测试的中文主文与补充材料初稿。已完整阅读 `/opt/tiger/tanyue/benchmark.pdf` 的 14 页；主文采用紧凑的完整单轮／多轮表，正文重点解释相对底座的连续编辑提升，长度分组和历史输入诊断放入补充。飞书和 Overleaf 均未更新，等待本稿确认。
+
+审阅入口：`/opt/tiger/tanyue/visualization_tmp/MagicBrush_20261105/paper_draft_v1/README.md`；NAS 副本：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/magicbrush_paper_draft_20261106_v1/`。包含 `MAGICBRUSH_DRAFT.md`、`MAGICBRUSH_SUPPLEMENT.md`、booktabs LaTeX 主表、表格 PDF 预览、三组真实逐轮对比图与分组统计图。草稿及新分析均放在独立临时／展示目录。
+
+从逐例记录复算主表的 70 个均值及 70 个区间，全部与原报告一致；核对 14 行主文、42 行补充统计、18 个本地链接和 114 个图像／记录来源哈希。三种长度组加权后重现全量多轮结果，正式源报告 SHA 不变。相对变化按原始精度计算：多轮 L1/L2 降低 24.6%/14.2%，CLIP-I/DINO 增加 0.0317/0.0426。
+
+定性部分逐轮查看 18 个候选会话，选择 141946 为主图，524311 和 3259 为补充；均使用正式单次采样输出，并明确披露为事后选择的成功案例。未重新生成或评分，未修改正式实验结果。所有核验与选例来源保存在草稿目录的 `provenance/`。

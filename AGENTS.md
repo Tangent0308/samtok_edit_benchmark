@@ -1,5 +1,22 @@
 # IF-Bench development instructions
 
+## External pilot branches (2026-11-07, current user authorization)
+
+The user approved eight independent benchmark pilot branches: GIE, CompBench,
+ComplexBench-Edit, Inter-Edit, Complex-Edit, GEdit, Omni IIE, and GIDE. Each compares
+only frozen SITEdit aa5a414 with Qwen-Image-2.1. Keep the original main-row weights,
+40 steps, seed 42, raw SAMTok TE and token guidance 2. No quality-anchor variants.
+The approved pilot sampling seed is 20261107; freeze cases before inference.
+Use original benchmark scoring, replacing paid judges with gpt-5.4-2026-03-05 as
+explicitly authorized. Credentials must remain in protected runtime files, never Git.
+Use only idle local GPUs 4–7 under the existing memory threshold. Never modify
+other worktrees or frozen IF-Bench modules. Push only the new pilot branches.
+Datasets go under datasets/<Benchmark>; selected pilot results under
+experiments2/SAMTokEdit/external_<bench>/pilot_20261107; diagnostics under
+/tmp/ifbench/external_pilots_20261107; user previews under visualization_tmp.
+Read downloaded data using python -I and never execute downloaded data scripts.
+Keep docs/<BENCH>_EVALUATION.md and docs/<BENCH>_PROGRESS.md current.
+
 ## External MagicBrush branch scope (2026-11-05)
 
 On `eval-magicbrush`, follow `docs/MAGICBRUSH_EVALUATION.md` and keep `docs/MAGICBRUSH_PROGRESS.md` current. This scope supersedes restrictions specific to the branches below. Use only local GPUs 4–7 after 2026-11-05 19:00 UTC and only when each has approximately 1.6 GB existing usage; never touch other jobs or GPUs 0–3. Use isolated Python (`-I`) to parse downloaded data. No paid APIs, LoRA variants, or edits to frozen scientific modules/other worktrees. Push only `eval-magicbrush`.

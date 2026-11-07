@@ -169,3 +169,12 @@ GPU 4–7 空闲后，控制器已完成 InstructPix2Pix 与 HIVE 各三个请�
 21:03 UTC 的独立 CPU 核验确认两个新增方法各 1,571 条完整生成，6,284 个 raw／恢复尺寸图像均通过字节哈希和身份检查，30 个冻结源码文件不变。InstructPix2Pix／HIVE 平均模型推理时间分别为 8.55／8.39 s，模型推理时间合计分别为 3.73／3.66 GPU·h，峰值 allocated 均为 15.21 GiB。证据为 `paper_monitor/GENERATION_VERIFIED.json`；此时没有正式评分，以上不是质量成绩。
 
 等待期间检查到冻结评分器还保存 `GT-CLIP-T` 辅助诊断值，而新汇总的严格五字段检查会拒绝真实完整记录。新增独立 `scripts/report_magicbrush_classic_results.py`，显式提取五项主指标，复用原始核验、统计与输出布局；全部原始评分保留，不修改 frozen 模块或源记录。四项 CPU 回归测试通过，Ruff 检查与格式检查通过；最终报告额外记录后处理脚本 SHA256。资源等待控制器在没有评分运行时安全切换为 `classic001-scorewait2`，使用该汇总入口，其余评分指令和四个分片保持原样。
+
+
+## 2026-11-07：八方法结果核对与论文更新完成
+
+InstructPix2Pix 与 HIVE 各 1,571 次生成、评分全部完成，均无失败。正式合并报告为 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_magicbrush/classic_20261106/report/MERGED_REPORT.json`，SHA256 `fa29a095dca5b8f3b1f29eb89398f5178fcade6918bbd6f12605b4f3fe596eec`。独立逐例复算全部 80 个均值和 80 组区间，原六方法十二行与原报告逐字段一致；八方法共用原全量会话 bootstrap 抽样。全部正式生成、评分和原始报告保持不可变。
+
+已更新飞书 §5.3 与附录 H，版本 2529，9 个原生表格、4 张真实图片回读核验通过，无关块保持原样。Overleaf 已推送 `13b76c01088ce92d196b717653df18590602524f`，CVPR 双栏主表、完整区间、会话长度统计、历史输入分析、逐方法配置及八方法对比图同步更新；完整论文编译通过，没有 Overfull、超大浮动体或未定义引用。两种经典方法的原生 512 推理配置明确披露。
+
+预览在 `visualization_tmp/MagicBrush_20261105/paper_eight_methods_20261106/`；NAS 归档在 `.ifbench-tmp/magicbrush_paper_eight_methods_20261106/`。资源预检拒绝、等待和后续评分调度的历史保留在 `.ifbench-tmp/magicbrush_classic_20261106/supervision/`，没有重采样生成或覆盖评分。

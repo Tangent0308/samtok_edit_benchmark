@@ -42,3 +42,18 @@ SITEdit 使用 aa5a414 冻结源码、Pass1 LoRA step 2000、S2 adapter 16000、
 ## 执行顺序
 
 核对来源和评分 → 固定子集 → 构建公开/私有输入 → CPU 合约检查 → 2 条端到端冒烟 → 余下 7 条 → 分数、逐例对比、耗时与失败清单。配置不变且绑定一致的冒烟结果直接复用。
+
+## 复现入口
+
+从仓库根目录运行；Python 分别使用 configs/external/gie.json 中的原有生成运行时，评分使用独立 `/tmp/ifbench/external_pilots_20261107/env_metrics`。
+
+```bash
+python -I scripts/gie_pilot.py download --dataset <dataset_root> --upstream <pinned_official_checkout>
+python -I scripts/gie_pilot.py prepare --dataset <dataset_root> --output <bundle>
+python scripts/run_external_pilot.py --config configs/external/gie.json --bundle <bundle> --output <run> --gpus 6 7 --attempt <new_id>
+python -m samtok_benchmark.external_gie.score judge --bundle <bundle> --run <run> --output <scores> --upstream <pinned_scorer> --key-file <protected_key_file>
+CUDA_VISIBLE_DEVICES= python -m samtok_benchmark.external_gie.score local --bundle <bundle> --run <run> --output <scores> --upstream <pinned_scorer> --cache <clip_cache>
+python -m samtok_benchmark.external_gie.report --root <pilot_root> --previews <preview_directory>
+```
+
+`PYTHONPATH` 应包含本仓库 src；数据脚本以 -I 启动并只显式加入可信仓库路径。冻结官方评分副本位于 NAS `.ifbench-tmp/external_pilots_20261107/deps/gie-06953ba`。不要重新申请没有终态的生成或 API 记录；先检查其原因。

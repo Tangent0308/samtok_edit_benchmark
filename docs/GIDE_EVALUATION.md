@@ -39,3 +39,7 @@ python scripts/run_external_pilot.py --config configs/external/gide.json --bundl
 ```
 
 上述三条冒烟覆盖 polygon / box / text 三种输入；完整固定子集不会重采样已完成项。评分使用 `PYTHONPATH=src python -m samtok_benchmark.external_gide.score --help` 所列入口，密钥仅从 `--key-file /protected/path` 读取。评分和汇总都可在 CPU 上执行。
+
+## 原生透明输出的记录口径
+
+原始 `raw.png` 保留模型返回的 RGBA；冻结画布回源函数和这些官方 RGB 指标使用 `convert("RGB")`，不会把透明区域贴回源图，也不补背景。冒烟中 Qwen2.1 部分输出预测了大面积透明 alpha，RGB 图中显为紫色；这是原始输出的透明区域在 RGB 口径下的表现，不能误写成文件损坏或预处理生成了紫色背景。后续报告保留该限制，不按得分修改输出转换或重新生成。

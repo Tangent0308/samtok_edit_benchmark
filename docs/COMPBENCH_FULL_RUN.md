@@ -63,7 +63,7 @@
 
 ## 当前进度
 
-3,481 条全量输入和 288 组完整两轮链已经构建、核验；八方法冒烟、官方客观评分和续跑验证已经结束。当前准备发布全量运行包，尚无全量正式分数。下面保留本轮准备过程的实测记录。
+3,481 条全量输入和 288 组完整两轮链已经构建、核验；八方法冒烟、官方客观评分和续跑验证已经结束。全量运行包已发布，等待用户提交单机八卡 ARNOLD 作业，尚无全量正式分数。下面保留本轮准备过程的实测记录。
 
 - 12:17 UTC：10 项 CPU 合同测试通过，覆盖两轮输出依赖、禁止 GT 替代、父结果篡改 / 跨模型隔离、子任务等权平均、完整分母以及冻结 SITEdit 配置。评分环境已归档并成功进行 CPU 解包 / 导入验证；修复了旧 Python 不支持 tarfile `filter=` 的兼容问题，保留路径及链接检查。
 - 冒烟清单在推理前固定为第一条多目标添加与第一组两轮添加，共 3 条 / 方法。清单：`/tmp/ifbench/compbench_full_20261107/SMOKE_SELECTION.json`。正式 run 不复用冒烟结果。
@@ -74,7 +74,7 @@
 
 固定三条 / 方法已完成：23/24 出图并得到五项客观评分；MIRAGE 的一条原生规划失败保留，未调用编辑器，没有数值填补。所有已产生输出都恢复到 640×640 后评分；已完成两轮链均绑定本方法实际前一轮输出。Qwen-Image-2.1 的三条结果跨 GPU 续跑验证全部复用，新增推理为零，raw/output SHA256 均通过校验。
 
-| 方法 | 成功 / 应测 | 完整请求平均秒数 | 峰值 reserved GiB | 全量生成 GPU 小时估算 |
+| 方法 | 出图并评分 / 应测 | 完整请求平均秒数 | 峰值 reserved GiB | 全量生成 GPU 小时估算 |
 |---|---:|---:|---:|---:|
 | SITEdit | 3 / 3 | 54.12 | 44.18 | 52.33 |
 | Qwen-Image-2.1 | 3 / 3 | 44.30 | 20.21 | 42.84 |
@@ -89,7 +89,19 @@
 
 客观评分本轮平均 2.52 秒 / 输出；3,285×8 输出在八个 CPU worker 上单独执行约需 2.30 小时。入口在某方法的八个生成 shard 都结束后，立即并行启动该方法的客观评分与 GPT 评分，同时 GPU 继续下一方法，因而无需把这部分全部加在生成尾部。GPT 本轮尚无实际服务耗时，不能给精确 ETA。其最多 1,568 次请求使用四路并发和独立受理记录。
 
-原始冒烟：`/tmp/ifbench/compbench_full_20261107/smoke/`。真实输入输出拼图与实测成本：`/opt/tiger/tanyue/visualization_tmp/CompBench_Full_20261107/smoke-final/SMOKE.md`。完整性 / 续跑证明：`/tmp/ifbench/compbench_full_20261107/RESUME_PROOF.json`。发布前会将上述证据复制到 NAS 的运行准备目录，不放入正式结果根。
+原始冒烟：`/tmp/ifbench/compbench_full_20261107/smoke/`。真实输入输出拼图与实测成本：`/opt/tiger/tanyue/visualization_tmp/CompBench_Full_20261107/smoke-final/SMOKE.md`。完整性 / 续跑证明：`/tmp/ifbench/compbench_full_20261107/RESUME_PROOF.json`。以上证据已归档到 `.ifbench-tmp/compbench_full_20261107/evidence/`，共 321 个文件，有独立 SHA256 清单，不放入正式结果根。13 项发布 CPU 测试通过，包含八方法评分与下一模型生成并行的调度验证；没有调用正式入口或消耗付费 API。
+
+**可视化观察与核验：**上述唯一两轮添加链的第二轮中，SITEdit 与 Qwen-Image-2.1 均出现可见纹理伪影。这不属于程序报错，也不能把“出图并评分”理解为编辑任务成功。检查确认两者的原始 `raw.png` 已含伪影，第二轮实际输入等于本方法第一轮输出经冻结画布转换后的像素，回源结果也与冻结函数逐像素一致。两张使用过的 GPU 的 ECC 计数及重映射计数均为零；这些检查没有确定伪影的具体成因。保留原始输出及评分，不重采样、不修图、不调参。检查记录：`.ifbench-tmp/compbench_full_20261107/release-verification/VISUAL_CHECK.json` 和 `GPU_ECC.txt`。
+
+## 发布信息
+
+- 包：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/compbench_full_20261107/package-v1/`。
+- 冻结运行源码：`5c3f477760c1bc59e6e9e3de9d32fa3c315b5d00`；本页后续状态说明不改变该源码快照。
+- `READY.json` SHA256：`16a04ac34b09cb390f01d5a86d3c07a9e63e571b128045852afde8eccfc2f3ae`。
+- 完整输入 digest：`3ada41250a3d42e6c1ad4a82f240c04977ed801c78f87ab154691e80e05fe586`。
+- 包外中文交接：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/compbench_full_20261107-handoff.md`。
+
+发布后复核了入口、配置、源码归档、评分环境描述及全量输入索引的哈希，均与 READY 一致。正式结果根尚未创建；运行包不依赖本机临时目录。科学源码和已发布文件不随本页的进度更新而变化。
 
 ## 单机八卡运行入口
 

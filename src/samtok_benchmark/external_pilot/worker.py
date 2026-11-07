@@ -43,6 +43,7 @@ def source_identity():
     paths = [ref / name for name in GENERATION_FILES]
     paths += [directory / name for name in ("__init__.py", "data.py", "worker.py")]
     paths += [source / name for name in FROZEN_FILES]
+    paths += [source / "samtok_benchmark/external_complexbench_edit/adapters.py"]
     return {str(p.relative_to(source)): sha256_file(p) for p in sorted(paths)}
 
 
@@ -132,7 +133,7 @@ def run(bundle, config_path, output, model, stage, case_ids, shard=0, shards=1):
         if backend is None and not upstream_failed:
             # Load before any admission: a load failure samples nothing and leaves no per-case record.
             import torch
-            from samtok_benchmark.external_refedit.adapters import build
+            from samtok_benchmark.external_complexbench_edit.adapters import build
             load_tick = time.monotonic()
             try:
                 backend = build(model, stage, config, base)

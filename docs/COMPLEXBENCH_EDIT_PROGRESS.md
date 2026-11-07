@@ -1,11 +1,20 @@
-# ComplexBench-Edit 小子集进度
+# complexbench_edit 小子集进度
 
-2026-11-07：五类各 2 条 × 两方法已完成，20/20 正常生成，20/20 完成三项指令评分和区域外 L1/L2。共 60 个正常 GPT-5.4 评分答案；前两条端到端冒烟后复用，不重新采样。无生成失败，无解析补判。
+更新：2026-11-07T11:07:03.920878+00:00
 
-- [固定方案](COMPLEXBENCH_EDIT_EVALUATION.md)、[结果](COMPLEXBENCH_EDIT_RESULTS.md)。
+- 分支：`eval-complexbench-edit`。
+- 固定请求：10；bundle digest `9d599e2c80e828acb4a8bd0d2830e209c85e89ddb6da09e10297a7528eaca0da`。
 - 结果根：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_complexbench_edit/pilot_20261107`。
-- 完整图文：`/opt/tiger/tanyue/visualization_tmp/ComplexBench-Edit_20261107/REPORT.md`。
-- 数据身份：bundle `9d599e2c80e828acb4a8bd0d2830e209c85e89ddb6da09e10297a7528eaca0da`。
-- CPU 合同/依赖聚合测试 4 项通过，新增 Python 通过 Ruff。
-- 官方输入多行映射为三个联合目标，评分用 edits 与 GroundingDINO 框未进入编辑器。
-- 观察：SITEdit 指令均分 0.4004，底座 0.6692；背景 L1 更低。小子集不足以作全量统计结论，也不据此调参或换样。
+
+| 方法 | 成功生成 | 失败生成 | 客观评分完成 | API 综合评分完成 |
+|---|---:|---:|---:|---:|
+| sitedit | 10/10 | 0 | 10 | 10 |
+| qwen21 | 10/10 | 0 | 10 | 10 |
+
+API 原始答案文件：60；异常文件：0。
+
+全部当前指标已汇总，见 [COMPLEXBENCH_EDIT_RESULTS.md](COMPLEXBENCH_EDIT_RESULTS.md) 和 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_complexbench_edit/pilot_20261107/report/REPORT.json`。
+结果仅适用于生成前固定的小子集；不据此宣布全量排名。逐条输入输出图与评分原文均保留。
+
+恢复时先核对 result/ADMITTED 收据与配置身份。仅使用闲置 GPU 4–7；CPU/API 评分独立进行。未知受理不重试，不猜分，不改官方评分定义。
+固定配置：SITEdit aa5a414 / Pass1 step2000 / S2 adapter16000 / raw TE / γ2 / 40步 / seed42；Qwen-Image-2.1 40步 / CFG1 / seed42。

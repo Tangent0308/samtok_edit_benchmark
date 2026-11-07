@@ -178,3 +178,7 @@ InstructPix2Pix 与 HIVE 各 1,571 次生成、评分全部完成，均无失败
 已更新飞书 §5.3 与附录 H，版本 2529，9 个原生表格、4 张真实图片回读核验通过，无关块保持原样。Overleaf 已推送 `13b76c01088ce92d196b717653df18590602524f`，CVPR 双栏主表、完整区间、会话长度统计、历史输入分析、逐方法配置及八方法对比图同步更新；完整论文编译通过，没有 Overfull、超大浮动体或未定义引用。两种经典方法的原生 512 推理配置明确披露。
 
 预览在 `visualization_tmp/MagicBrush_20261105/paper_eight_methods_20261106/`；NAS 归档在 `.ifbench-tmp/magicbrush_paper_eight_methods_20261106/`。资源预检拒绝、等待和后续评分调度的历史保留在 `.ifbench-tmp/magicbrush_classic_20261106/supervision/`，没有重采样生成或覆盖评分。
+
+## 2026-11-07：补评 MagicBrush 论文检查点
+
+用户授权在本机补充 InstructPix2Pix-MagicBrush（`MagicBrush-epoch-000168.ckpt`）。已先写入 [评测方案](MAGICBRUSH_PAPER_BASELINE.md)，固定官方权重 revision／SHA、100 步、512 原生分辨率、CFG 7.5/1.5、seed 42，沿用无 mask 全量单轮／多轮和统一五指标。独立 `external_magicbrush_paper` 实现通过 17 项 CPU 检查；原有 30 个冻结源码文件不变。四分片覆盖全部 535 会话、1,571 个唯一生成。仅使用满足资源门槛的 GPU 4–7，准备时四张卡均为既有 1,605 MiB 占用。权重下载后进入固定三请求冒烟；此时尚未报告新方法性能。

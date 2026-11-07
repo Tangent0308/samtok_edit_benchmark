@@ -44,3 +44,7 @@ python scripts/run_external_pilot.py --config configs/external/interedit.json --
 门控仓库使用 `--token-file /protected/path` 读取已授权凭据；不能把凭据写入 Git。数据解析始终使用 `-I`。先加 `--case-ids` 跑所选两条冒烟，再用同一 bundle/config 跑完整固定子集，完成项不会重采样。完整评分命令通过 `python -m samtok_benchmark.external_interedit.score --help` 查看；所有源码 SHA、评分原文、实际时长保留在实验根。
 
 本机评分环境：`/tmp/ifbench/external_pilots_20261107/env_metrics`，torch 2.8.0、torchvision 0.23.0、transformers 4.57.1、numpy 2.4.6、Pillow 13.0.0、scikit-image 0.25.2、torchmetrics 1.8.2、lpips 0.1.4、openai 3.28.0。生成使用配置中的独立冻结环境；没有修改生成环境。CPU 评分设置 `CUDA_VISIBLE_DEVICES=''`，`PYTHONPATH` 指向本分支 src。
+
+## 原生透明输出的记录口径
+
+原始 `raw.png` 保留模型返回的 RGBA；冻结画布回源函数和这些官方 RGB 指标使用 `convert("RGB")`，不会把透明区域贴回源图，也不补背景。冒烟中 Qwen2.1 部分输出预测了大面积透明 alpha，RGB 图中显为紫色；这是原始输出的透明区域在 RGB 口径下的表现，不能误写成文件损坏或预处理生成了紫色背景。后续报告保留该限制，不按得分修改输出转换或重新生成。

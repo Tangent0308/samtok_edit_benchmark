@@ -1,6 +1,6 @@
 # complexbench_edit 小子集进度
 
-更新：2026-11-07T11:07:03.920878+00:00
+更新：2026-11-07T11:31:27.327013+00:00
 
 - 分支：`eval-complexbench-edit`。
 - 固定请求：10；bundle digest `9d599e2c80e828acb4a8bd0d2830e209c85e89ddb6da09e10297a7528eaca0da`。

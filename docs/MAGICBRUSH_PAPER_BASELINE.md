@@ -27,9 +27,29 @@
 
 三个冒烟请求均成功生成并通过冻结 CUDA scorer 判分，输入／输出预览已检查。实测平均生成 8.3816 s、评分 0.2502 s、冷加载 35.62 s、峰值 allocated 15.1934 GiB。推算全量生成约 3.658 GPU·h、评分约 0.109 GPU·h；冷加载和文件系统开销另外计算。这是三个请求的时间外推，不是已完成全量的实测成本。
 
-2026-11-07 **04:25:34 UTC**，控制器 `paper001`（PID 476381）进入正式生成，使用本机 GPU 4–7。当时估计还需约 70–90 分钟完成生成、评分、核验和九方法报告，资源等待时间不包括在内。此处记录启动状态，当前进度以运行目录动态状态为准，尚无新方法最终分数。
+2026-11-07 **04:25:34 UTC**，控制器 `paper001`（PID 476381）进入正式生成，使用本机 GPU 4–7。全部生成、评分与九方法汇总于 **05:38:10 UTC（北京时间 13:38）完成**，正式流水线约 73 分钟，位于原先 70–90 分钟估计内。1,571 次唯一生成及 1,571 次评分全部成功，失败 0；对应完整 1,053 个单轮评价项与 535 个会话最终图。控制器和监控正常退出，实验 GPU 已释放。
+
+全量实测平均生成时间 **8.3621 s**，模型推理合计 **3.6491 GPU·h**，峰值 allocated **15.2108 GiB**。GPU·h 是生成记录中模型推理耗时之和，不包含冷加载、评分、文件读写与控制器开销。
 
 证据：`.ifbench-tmp/magicbrush_paper_20261107/supervision/paper001/ESTIMATE.json`、`CPU_CHECKPOINT_CHECK.json`、`CPU_CONTRACT_CHECK.json`；冒烟输入／输出预览：`/opt/tiger/tanyue/visualization_tmp/MagicBrush_20261105/paper_checkpoint_20261107/smoke.png`。
+
+## 正式结果
+
+下表为新增 **InstructPix2Pix-MagicBrush（论文检查点）** 的重新评测分数；两行都使用全部测试数据，不采用论文历史数字代替实测。
+
+| 设置 | 评价项 | L1 ↓ | L2 ↓ | CLIP-I ↑ | DINO ↑ | CLIP-T ↑ |
+|---|---:|---:|---:|---:|---:|---:|
+| 独立单轮 | 1,053 | 0.0622 | 0.0199 | 0.9336 | 0.9010 | 0.2776 |
+| 连续多轮最终图 | 535 | 0.0967 | 0.0354 | 0.8929 | 0.8293 | 0.2755 |
+
+九方法完整表、共享会话 bootstrap 的 95% 区间与逐例贡献：
+
+- `experiments2/SAMTokEdit/external_magicbrush/magicbrush_paper_20261107/report/MERGED_REPORT.json`
+- 同目录 `MERGED_REPORT.md`，用于阅读完整九方法比较表。
+- JSON SHA256：`c0b6530bc407c748c80a6b6c3d77800fcc8dd9b404c034ec97dc65517db2a25d`。
+- 独立核验：`.ifbench-tmp/magicbrush_paper_20261107/FINAL_REPORT_VERIFICATION.json`。逐例复算新增 10 个均值与 10 组区间，全部一致；原八方法 16 行逐字段保持不变，全部方法共用原来的 bootstrap 抽样索引。
+
+旧八方法报告和原始生成／评分记录没有改动。新增对照在 MagicBrush 训练集上微调，论文使用时应与原版 InstructPix2Pix 分别标注；方法排名应以本次九方法表重新计算。
 
 ## 运行与状态
 

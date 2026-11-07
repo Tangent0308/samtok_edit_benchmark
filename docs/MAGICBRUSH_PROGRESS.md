@@ -184,3 +184,9 @@ InstructPix2Pix 与 HIVE 各 1,571 次生成、评分全部完成，均无失败
 用户授权在本机补充 InstructPix2Pix-MagicBrush（`MagicBrush-epoch-000168.ckpt`）。已先写入 [评测方案](MAGICBRUSH_PAPER_BASELINE.md)，固定官方权重 revision／SHA、100 步、512 原生分辨率、CFG 7.5/1.5、seed 42，沿用无 mask 全量单轮／多轮和统一五指标。独立 `external_magicbrush_paper` 实现通过 17 项 CPU 检查；原有 30 个冻结源码文件不变。四分片覆盖全部 535 会话、1,571 个唯一生成。仅使用满足资源门槛的 GPU 4–7，准备时四张卡均为既有 1,605 MiB 占用。权重下载后进入固定三请求冒烟；此时尚未报告新方法性能。
 
 代码已提交并推送 `b8c69b9`。权重完整校验、安全 CPU 加载以及 GPU 三请求端到端冒烟均已通过；每次生成平均 8.38 s，评分平均 0.25 s，峰值 allocated 15.19 GiB。三个实际输入／输出预览已检查，科学记录保留于独立冒烟目录。2026-11-07 04:25:34 UTC，PID 476381 的 `paper001` 控制器进入四卡正式生成；预计约 70–90 分钟完成剩余流程，之后自动评分、核验并产生独立九方法报告。只读监控每约 50 秒写入 `.ifbench-tmp/magicbrush_paper_20261107/monitor/paper001/CURRENT.json`；出现异常时保留证据并停止依赖阶段，不覆盖已有输出。八方法旧报告保持不变，新方法此时仍在评测中。
+
+## 2026-11-07：论文检查点评测完成
+
+`paper001` 于 **05:38:10 UTC（北京时间 13:38）** 正常完成。新增 InstructPix2Pix-MagicBrush 的 1,571 次生成和评分全部成功，失败 0；正式流水线约 73 分钟，模型推理累计 3.6491 GPU·h，平均 8.3621 s／次，峰值 allocated 15.2108 GiB。控制器及只读监控正常退出。
+
+九方法完整结果位于 `experiments2/SAMTokEdit/external_magicbrush/magicbrush_paper_20261107/report/MERGED_REPORT.{json,md}`，JSON SHA256 为 `c0b6530bc407c748c80a6b6c3d77800fcc8dd9b404c034ec97dc65517db2a25d`。原八方法 16 行逐字段保持不变；独立逐例复算新增两行的 10 个均值及 10 组 95% 区间全部一致，共享 bootstrap 索引一致，核验记录在 `.ifbench-tmp/magicbrush_paper_20261107/FINAL_REPORT_VERIFICATION.json`。详细配置、结果和成本见 [论文检查点补充评测](MAGICBRUSH_PAPER_BASELINE.md)。本次仅更新仓库评测文档；飞书／Overleaf 仍为此前八方法页面，尚未加入这条新增对照。

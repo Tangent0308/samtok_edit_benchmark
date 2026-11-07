@@ -1,5 +1,20 @@
 # IF-Bench development instructions
 
+## Full CompBench scope (2026-11-07, current user authorization)
+
+The user requested the complete CompBench release and suitable IF-Bench baselines.
+Follow `docs/COMPBENCH_FULL_RUN.md`; this supersedes the two-model, eight-request
+restriction below for CompBench only. Work exclusively on `eval-compbench`.
+Preserve existing pilot files/results and frozen IF-Bench modules. New code belongs
+under `external_compbench/full/`. Evaluate frozen SITEdit aa5a414 and the seven
+IF-Bench baselines without score-driven tuning. Multi-turn generation consumes
+the same method's preceding output, never the supplied intermediate ground truth.
+Only idle local GPUs 4–7 are authorized; do not touch other processes. If the
+estimated formal local run exceeds eight hours, prepare a foreground single-node
+8-GPU ARNOLD entry for the user rather than starting a long local experiment.
+Full-run artifacts must have new paths. Keep progress, scope and real smoke costs
+in the full-run document; never describe missing scores as completed evaluation.
+
 ## External pilot branches (2026-11-07, current user authorization)
 
 The user approved eight independent benchmark pilot branches: GIE, CompBench,

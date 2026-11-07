@@ -14,7 +14,7 @@
 - 已确认的小子集结果：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_compbench/pilot_20261107/`。
 - 可视化：`/opt/tiger/tanyue/visualization_tmp/CompBench_20261107/`。
 
-具体下载版本、字段映射、官方评分代码核查以及执行命令将随验证补齐；在这些定义明确前不启动该 benchmark 的生成。
+下载版本、输入边界、官方评分代码与执行命令见下文；本小子集已完成。当前的全量方案另见 [COMPBENCH_FULL_RUN.md](COMPBENCH_FULL_RUN.md)。
 
 ## 已确认的发布接口处理
 

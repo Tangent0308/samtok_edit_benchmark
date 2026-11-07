@@ -37,3 +37,7 @@ python scripts/run_external_pilot.py --config configs/external/omni_iie.json --b
 门控仓库使用 `--token-file /protected/path` 读取已授权凭据；不能把凭据写入 Git。数据解析始终使用 `-I`。先加 `--case-ids` 跑所选两条冒烟，再用同一 bundle/config 跑完整固定子集，完成项不会重采样。完整评分命令通过 `python -m samtok_benchmark.external_omni_iie.score --help` 查看；所有源码 SHA、评分原文、实际时长保留在实验根。
 
 本机评分环境：`/tmp/ifbench/external_pilots_20261107/env_metrics`，torch 2.8.0、torchvision 0.23.0、transformers 4.57.1、numpy 2.4.6、Pillow 13.0.0、scikit-image 0.25.2、torchmetrics 1.8.2、lpips 0.1.4、openai 3.28.0。生成使用配置中的独立冻结环境；没有修改生成环境。CPU 评分设置 `CUDA_VISIBLE_DEVICES=''`，`PYTHONPATH` 指向本分支 src。
+
+## 官方 BG_CLIP_I 的实际含义
+
+[`metrics_utils.py` L271–283](https://github.com/Young-2000/OmniIIEBench/blob/d957aea591d98b7840db6d12a788d624e8b35bc4/evaluation/metrics_utils.py#L271) 将背景 mask 写入 RGBA 的 alpha，RGB 本身未遮盖；所用 CLIPProcessor 会转 RGB 并丢弃 alpha。本机核查预处理张量逐字节相同，冒烟中的逐例 BG_CLIP_I 也与全图 CLIP_I 相同。官方后续按背景面积加权，因此其汇总值可能与全图均值不同。保留官方实现和名称，避免把该项当成独立的纯背景保持证据。其他区域指标仍按各自原函数计算。

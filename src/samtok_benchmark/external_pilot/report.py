@@ -42,7 +42,7 @@ def report(root, previews, title, metric_labels, notes, doc=None, weights=None):
             values = {}
             for key in metric_labels:
                 weight_key = (weights or {}).get(key)
-                pairs = [(r["metrics"].get(key), r["metrics"].get(weight_key, 1) if weight_key else 1) for r in selected]
+                pairs = [(r["metrics"].get(key), r["metrics"].get(weight_key) if weight_key else 1) for r in selected]
                 valid = [(x, w) for x, w in pairs if isinstance(x, (int, float)) and math.isfinite(x)
                          and isinstance(w, (int, float)) and math.isfinite(w) and w >= 0]
                 denominator = sum(w for _, w in valid)

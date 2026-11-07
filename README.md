@@ -4,5 +4,6 @@
 
 - [评测方案与协议](docs/OMNI_IIE_EVALUATION.md)
 - [实际进度和恢复记录](docs/OMNI_IIE_PROGRESS.md)
+- [小子集结果](docs/OMNI_IIE_RESULTS.md)
 
 本分支从已验证的外部评测实现独立扩展。数据、权重和原始输出均不入 Git；旧分支和 IF-Bench 冻结记录保持原样。IF-Bench 正式结果见 [v2branch/PAPER_RESULTS.md](https://github.com/Tangent0308/samtok_edit_benchmark/blob/v2branch/docs/PAPER_RESULTS.md)。

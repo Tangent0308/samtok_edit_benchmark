@@ -4,7 +4,8 @@ from pathlib import Path
 
 from samtok_benchmark.io import digest, sha256_file
 from samtok_benchmark.ifbench.canvas import make_source, validate_geometry
-from samtok_benchmark.external_refedit.data import immutable, read, verify_public
+from samtok_benchmark.external_refedit.data import immutable, read
+from samtok_benchmark.external_interedit.public import verify_public
 
 
 def prepare(rows, output, provenance):

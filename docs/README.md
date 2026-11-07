@@ -7,3 +7,5 @@
 - [结果、耗时与全部对比图路径](GIE_RESULTS.md)
 
 本分支从已验证的外部评测实现独立扩展。数据、权重和原始输出均不入 Git；旧分支和 IF-Bench 冻结记录保持原样。IF-Bench 正式结果见 [v2branch/PAPER_RESULTS.md](https://github.com/Tangent0308/samtok_edit_benchmark/blob/v2branch/docs/PAPER_RESULTS.md)。
+
+- [八个外部 benchmark 小子集总报告](EXTERNAL_PILOT_SUMMARY.md)

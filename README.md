@@ -1,11 +1,13 @@
 # GIDE-Bench · SITEdit / Qwen-Image-2.1 pilot
 
-当前分支新增：[约二十条的两方法对比评测](docs/GIDE_PILOT20.md)。
+分支 `eval-gide` 已完成固定 20 条请求的两方法对比，采用冻结 SITEdit aa5a414 主行与 Qwen-Image-2.1。两方法全部正常出图并完成本轮可运行评分；这是分层小样本结果。
 
-分支 `eval-gide` 在 GIDE-Bench 固定的 8 条小子集上比较 SITEdit（冻结 aa5a414 主行）和 Qwen-Image-2.1。它用于验证输入、生成与官方评分，不代表全量 benchmark 排名。
+- [当前结果与完整指标](docs/GIDE_PILOT20_RESULTS.md)
+- [当前抽样、路径与复现方式](docs/GIDE_PILOT20.md)
+- [方法输入与原生评测协议](docs/GIDE_EVALUATION.md)
+- [进度与处理记录](docs/GIDE_PROGRESS.md)
+- [八个 benchmark 的扩展对比汇总](https://github.com/Tangent0308/samtok_edit_benchmark/blob/eval-gie/docs/EXTERNAL_PILOT20_SUMMARY.md)
 
-- [评测方案与协议](docs/GIDE_EVALUATION.md)
-- [实际进度和恢复记录](docs/GIDE_PROGRESS.md)
-- [小子集结果](docs/GIDE_RESULTS.md)
+全部实际输入输出对照：`/opt/tiger/tanyue/visualization_tmp/ExternalPilot20_20261108/gide/REPORT.md`。原小子集结果保存在 [初始 pilot 报告](docs/GIDE_RESULTS.md)，原始记录未改动。
 
-本分支从已验证的外部评测实现独立扩展。数据、权重和原始输出均不入 Git；旧分支和 IF-Bench 冻结记录保持原样。IF-Bench 正式结果见 [v2branch/PAPER_RESULTS.md](https://github.com/Tangent0308/samtok_edit_benchmark/blob/v2branch/docs/PAPER_RESULTS.md)。
+数据、权重、密钥和完整图像输出不入 Git。IF-Bench 正式结果见 [v2branch/PAPER_RESULTS.md](https://github.com/Tangent0308/samtok_edit_benchmark/blob/v2branch/docs/PAPER_RESULTS.md)。

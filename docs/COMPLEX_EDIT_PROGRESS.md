@@ -1,6 +1,6 @@
 # complex_edit 小子集进度
 
-当前扩展评测（2026-11-08）：见 [COMPLEX_EDIT_PILOT20.md](COMPLEX_EDIT_PILOT20.md)。原小子集记录保留如下。
+2026-11-08 扩展完成：24 条 / 方法，48/48 输出和全部可运行指标评分完成。结果见 [COMPLEX_EDIT_PILOT20_RESULTS.md](COMPLEX_EDIT_PILOT20_RESULTS.md)，方案与恢复记录见 [COMPLEX_EDIT_PILOT20.md](COMPLEX_EDIT_PILOT20.md)。原小子集记录保留如下。
 
 更新：2026-11-07T11:31:37.792644+00:00
 

@@ -1,5 +1,7 @@
 # GIE-Bench · SITEdit / Qwen-Image-2.1 pilot
 
+当前分支新增：[约二十条的两方法对比评测](docs/GIE_PILOT20.md)。
+
 分支 `eval-gie` 在 GIE-Bench 固定的 9 条小子集上比较 SITEdit（冻结 aa5a414 主行）和 Qwen-Image-2.1。它用于验证输入、生成与官方评分，不代表全量 benchmark 排名。
 
 - [评测方案与协议](docs/GIE_EVALUATION.md)

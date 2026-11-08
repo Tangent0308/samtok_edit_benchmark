@@ -44,7 +44,7 @@ def score_commands(bench, key_file):
         commands += [("local", [*common, "--checkpoint", str(METRICS/"alphaclip/clip_l14_grit1m_fultune_8xe.pth"),
                     "--clip-cache", str(METRICS/"clip"), "--torch-home", str(METRICS/"torch")])]
     else:
-        clip = METRICS/"clip-vit-large-patch14" if bench == "compbench" else BASE/"models/pretrained_models/MagicBrushMetrics/clip"
+        clip = METRICS/"openai/clip-vit-large-patch14" if bench == "compbench" else BASE/"models/pretrained_models/MagicBrushMetrics/clip"
         commands += [("local", [*common, "--clip-path", str(clip)])]
     return [(name, [PYTHON, "-I", "scripts/score_external_pilot.py", bench, *args]) for name, args in commands]
 

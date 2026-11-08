@@ -1,5 +1,7 @@
 # interedit 小子集进度
 
+当前扩展评测（2026-11-08）：见 [INTEREDIT_PILOT20.md](INTEREDIT_PILOT20.md)。原小子集记录保留如下。
+
 更新：2026-11-07T11:31:28.864821+00:00
 
 - 分支：`eval-interedit`。

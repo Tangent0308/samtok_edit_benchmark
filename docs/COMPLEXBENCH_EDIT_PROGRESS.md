@@ -1,5 +1,7 @@
 # complexbench_edit 小子集进度
 
+当前扩展评测（2026-11-08）：见 [COMPLEXBENCH_EDIT_PILOT20.md](COMPLEXBENCH_EDIT_PILOT20.md)。原小子集记录保留如下。
+
 更新：2026-11-07T11:31:27.327013+00:00
 
 - 分支：`eval-complexbench-edit`。

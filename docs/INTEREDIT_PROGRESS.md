@@ -20,3 +20,8 @@ API 原始答案文件：0；异常文件：0。
 
 恢复时先核对 result/ADMITTED 收据与配置身份。仅使用闲置 GPU 4–7；CPU/API 评分独立进行。未知受理不重试，不猜分，不改官方评分定义。
 固定配置：SITEdit aa5a414 / Pass1 step2000 / S2 adapter16000 / raw TE / γ2 / 40步 / seed42；Qwen-Image-2.1 40步 / CFG1 / seed42。
+
+
+## 2026-11-08：八方法四机全量入口
+
+当前部署见 [INTEREDIT_FOUR_NODE.md](INTEREDIT_FOUR_NODE.md)。新增统一 external_full 模块与独立四机脚本；原始 pilot、冻结主协议及正式记录均未修改。完成全量源数据核验、原生评分对照与八方法最小验证；本轮正式作业未启动。6 个官方空 mask 的一致处理仍待用户确认。

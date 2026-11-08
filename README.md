@@ -1,5 +1,7 @@
 # CompBench · SITEdit and IF-Bench baselines
 
+当前分支新增：[约二十条的两方法对比评测](docs/COMPBENCH_PILOT20.md)。
+
 分支 `eval-compbench` 实现 CompBench 全量 3,481 条请求上的 SITEdit 与七个 IF-Bench 基线评测，包含原生连续两轮编辑。当前正在准备全量实验，尚无全量成绩。
 
 - [全量协议、固定方法、运行安排与当前进度](docs/COMPBENCH_FULL_RUN.md)

@@ -1,5 +1,16 @@
 # IF-Bench development instructions
 
+## Pilot expansion (2026-11-08, current user authorization)
+
+Expand each of the eight pilot branches to about twenty total requests, preserving
+all previously selected cases and their immutable generation/scoring records.
+Follow docs/COMPLEX_EDIT_PILOT20.md. Only added requests receive new inference or API
+scoring. Keep frozen method settings, public input mapping and native metrics.
+Use new pilot20_20261108 result roots and new dataset asset directories; never
+modify the first pilot or the published CompBench full-run package. Local GPUs
+4–7 only, after an idle check. The user authorized the same GPT-5.4 scoring for
+these additional cases. No new checkpoint, input candidate search or resampling.
+
 ## External pilot branches (2026-11-07, current user authorization)
 
 The user approved eight independent benchmark pilot branches: GIE, CompBench,

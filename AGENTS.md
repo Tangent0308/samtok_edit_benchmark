@@ -2,6 +2,8 @@
 
 The user authorized full eight-method CompBench, Inter-Edit and single-turn Omni IIE evaluation launchers, one separate four-worker x eight-GPU entry per benchmark. Follow docs/INTEREDIT_FOUR_NODE.md. Implement reusable orchestration under external_full; preserve all frozen IF-Bench/pilot code, old packages and existing records. Only the three eval-compbench/eval-interedit/eval-omni-iie branches may be changed/pushed for this task. Prepare packages; the user submits remote jobs. Minimal local smoke may use only idle GPUs 4–7. No additional paid smoke requests.
 
+The user subsequently confirmed that the six official Inter-Edit empty masks remain in the 6,250-case expected population as data_input_invalid/N/A for all eight methods; only the other 6,244 cases are inferred. Apply the exact case list in configs/external/interedit_full4.json without changing public input bytes or model/scoring settings.
+
 # IF-Bench development instructions
 
 ## Pilot expansion (2026-11-08, current user authorization)

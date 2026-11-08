@@ -219,5 +219,21 @@
     "gpus_per_worker": 8,
     "cpu_score_workers_per_node": 4,
     "api_workers_per_node": 1
+  },
+  "data_input_errors": {
+    "policy": "retain-as-data-invalid-na",
+    "case_ids": [
+      "00442",
+      "00454",
+      "01434",
+      "02135",
+      "02185",
+      "02920"
+    ],
+    "confirmed_by": "user",
+    "confirmation_date": "2026-11-08",
+    "reason": "Official masks contain no selected pixels; retain every case in the expected population, do not infer or impute scores for these six cases.",
+    "expected_cases_per_model": 6250,
+    "generation_cases_per_model": 6244
   }
 }

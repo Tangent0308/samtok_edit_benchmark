@@ -135,3 +135,40 @@ def test_invalid_data_requires_exact_explicit_decision(tmp_path):
     cfg["data_input_errors"]["case_ids"] = ["different"]
     with pytest.raises(ValueError, match="exact case list"):
         runnable_ids(cases, ["good", "bad"], cfg)
+
+
+def test_invalid_inputs_remain_na_in_every_methods_report(tmp_path):
+    from samtok_benchmark.external_full import MODELS
+    from samtok_benchmark.external_full.data import immutable
+    from samtok_benchmark.external_full.simple_report import report
+    from samtok_benchmark.io import sha256_file
+
+    bundle = tmp_path / "bundle"
+    annotations = bundle / "private/evaluation.json"
+    cases = [
+        {"case_id": "good", "task": "Local", "sequence_id": "good", "parent_case_id": None},
+        {
+            "case_id": "bad",
+            "task": "Local",
+            "sequence_id": "bad",
+            "parent_case_id": None,
+            "input_error": "official_empty_mask",
+        },
+    ]
+    immutable(annotations, [{"case_id": r["case_id"]} for r in cases])
+    index = {
+        "benchmark": "interedit",
+        "cases": cases,
+        "provenance": {"private_sha256": sha256_file(annotations)},
+    }
+    index["digest"] = digest(index)
+    immutable(bundle / "index.json", index)
+    result = report(bundle, tmp_path / "run", tmp_path / "scores", tmp_path / "report", MODELS)
+    assert len(result["per_case"]) == 2 * len(MODELS)
+    for model in MODELS:
+        row = next(r for r in result["per_case"] if r["model"] == model and r["case_id"] == "bad")
+        assert row["status"] == "data_input_invalid" and row["metrics"] is None
+        group = result["rows"][model]["all"]
+        assert group["expected"] == 2
+        assert group["status_counts"] == {"not_generated": 1, "data_input_invalid": 1}
+        assert all(x["expected"] == 2 and x["mean"] is None for x in group["metrics"].values())

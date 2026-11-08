@@ -24,4 +24,9 @@ API 原始答案文件：0；异常文件：0。
 
 ## 2026-11-08：八方法四机全量入口
 
-当前部署见 [INTEREDIT_FOUR_NODE.md](INTEREDIT_FOUR_NODE.md)。新增统一 external_full 模块与独立四机脚本；原始 pilot、冻结主协议及正式记录均未修改。完成全量源数据核验、原生评分对照与八方法最小验证；本轮正式作业未启动。6 个官方空 mask 的一致处理仍待用户确认。
+当前部署见 [INTEREDIT_FOUR_NODE.md](INTEREDIT_FOUR_NODE.md)。新增统一 external_full 模块与独立四机脚本；原始 pilot、冻结主协议及正式记录均未修改。完成全量源数据核验、原生评分对照与八方法最小验证；本轮正式作业未启动。6 个官方空 mask 的处理已获用户确认，保留为 data_input_invalid/N/A，见当前四机文档。
+
+
+## 2026-11-08：确认空 mask 策略并发布
+
+用户确认六个官方空 mask 对全部八方法一致记为 data_input_invalid/N/A。配置固定完整 6,250 条应评清单及 6,244 条推理请求，公开输入字节、模型设置和评分实现均不变。本轮仅执行 CPU 核验与 READY 发布，不启动正式作业。

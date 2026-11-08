@@ -1,6 +1,6 @@
 # Inter-Edit：八方法四机全量评测
 
-更新：2026-11-08。实现与冒烟验证完成，正式实验未启动。Inter-Edit 的空 mask 处理尚待确认，确认前不发布可运行 READY。
+更新：2026-11-08。实现与冒烟验证完成，正式实验未启动。用户已确认空 mask 处理口径；发布包及校验和以包外交接文件为准。
 
 ## 1. 范围与冻结方法
 
@@ -31,13 +31,13 @@
 
 模型原生失败、前一阶段失败、评分失败和基础设施中断分别记录。报告保留全部应评请求及覆盖率，客观指标报告已取得的真实有效分数；缺分不擅自赋零或“最差值”，不自动重采样。评分/生成记录只写一次；不存在 MagicBrush 的惩罚值规则迁移。原生方法失败会完成该请求的终态记录并继续队列；CUDA/OOM 等基础设施错误停机检查。
 
-## 待确认的数据异常
+## 已确认的数据异常处理
 
 官方 6 张 mask：`00442 / 00454 / 01434 / 02135 / 02185 / 02920`，源文件 RGB 三通道全为 0、alpha 为 255，原始选中像素为 0。不是 alpha 误读，也不是约 1MP 转换造成区域消失。
 
-推荐保留全部 6,250 条清单和分母，将这 6 条对所有方法一致记录为 `data_input_invalid / N/A`，只对其余 6,244 条推理，不补 mask、不补零。该方案尚待用户确认；发布器和入口在缺少明确处理策略时拒绝继续。输入构造保留原始空 mask 和异常标记，本身不授权跳过推理。
+用户于 2026-11-08 确认：保留全部 6,250 条清单和覆盖率分母，将这 6 条对八种方法一致记录为 `data_input_invalid / N/A`，只对其余 6,244 条推理；不补 mask、不补零，也不把异常记为模型失败。指标均值只由实际获得的有效分数计算，并同时报告 6,250 条应评请求的覆盖率。配置中的 `data_input_errors` 固定这六个 case ID 和处理规则；发布器/入口检查清单完全匹配。公开输入及原始空 mask 字节保持不变。
 
-审计：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_20261108/INTEREDIT_MASK_AUDIT.json`。
+审计：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_20261108/INTEREDIT_FULL_INPUT_AUDIT.json`；6,250 条公开请求和 18,750 份 canonical 资产均已核验。
 
 ## 4. 四机调度和提交
 
@@ -81,7 +81,7 @@ bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_2026110
 
 这里只验证可运行性，不是全量成绩或候选选择。推理时间不含一次性模型加载；峰值是框架记录的显存，不是整卡占用。原始冒烟记录：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_20261108/SMOKE.json`。Inter/Omni 四组原生评分与此前 pilot 输出逐项一致，差值为零：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_20261108/METRIC_PARITY.json`。最小样例不能保证所有正式请求都成功。
 
-本分支 26 项 CPU 测试全部通过。共同检查覆盖四节点×八卡完整分片、连续编辑不读中间 GT、读写心跳竞态、正常/失败 barrier、租约排他、仅终止自有进程、先预检再正式再续跑、所有 mask adapter、非法输入发布阻断。评分环境重新解包后，依赖版本、torch 来源、AlphaCLIP 导入均已验证；无 GPU 或付费调用。
+本分支 27 项 CPU 测试全部通过，包括八方法报告保留非法输入为 N/A 的回归检查。共同检查覆盖四节点×八卡完整分片、连续编辑不读中间 GT、读写心跳竞态、正常/失败 barrier、租约排他、仅终止自有进程、先预检再正式再续跑、所有 mask adapter、非法输入发布阻断。评分环境重新解包后，依赖版本、torch 来源、AlphaCLIP 导入均已验证；无 GPU 或付费调用。
 
 ## 7. 路径与代码
 

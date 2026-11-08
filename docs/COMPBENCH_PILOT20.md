@@ -19,7 +19,9 @@
 
 ## 当前进度
 
-扩展清单和全部新增输入已固定并通过校验；新增生成于 2026-11-08 开始，在 GPU 4–7 的两个队列中执行。评分与后续生成交错运行。旧记录只读复用。
+已完成 20 条 / 方法的生成、评分与逐例合并。两方法共 40/40 张输出，所有本轮可运行指标均覆盖全部请求；无生成失败、API 错误或受理未作答。使用的 GPU 已释放。
+
+结果见 [COMPBENCH_PILOT20_RESULTS.md](COMPBENCH_PILOT20_RESULTS.md)，[八项目汇总](https://github.com/Tangent0308/samtok_edit_benchmark/blob/eval-gie/docs/EXTERNAL_PILOT20_SUMMARY.md)；全部输入输出图见 `/opt/tiger/tanyue/visualization_tmp/ExternalPilot20_20261108/compbench/REPORT.md`。
 
 ## 复现入口
 
@@ -30,3 +32,15 @@ python -I scripts/extend_external_pilot.py --benchmark compbench --config config
 生成与评分由 `scripts/run_pilot20_queue.py` 管理，两张授权 GPU 上各运行一种方法；原生评分脚本由隔离入口 `scripts/score_external_pilot.py` 调用。`scripts/report_external_pilot20.py` 核验原样本与新增样本的 public、bundle、源码、配置、输出、受理及评分绑定，再合并逐条数值；Omni 区域权重按官方规则重新累计。
 
 共享实验范围为 164 条请求 / 方法，保留原 70 条，仅新增 94 条 / 方法。按各官方测量次数，本轮新增 GPT-5.4 调用最多 402 次：GIE 18、ComplexBench-Edit 60、Complex-Edit 256、GEdit 44、GIDE 24；其余三个仅客观评分。已受理未作答不自动重发。
+
+核验：原 140 个输出与 68 个旧汇总值逐条复核通过，审计结果与 2026-11-07 保存的 AUDIT.json 完全一致；全部 210 条原阶段收据中的科学源码哈希与当前生成实现一致。只新增抽样/调度/汇总代码，生成和原生评分代码未修改。
+
+## 本轮工程修复
+
+客观评分首次启动被 TorchMetrics 的路径名称检查拒绝，尚未产生分数；既有 `ExternalBenchMetrics/openai/clip-vit-large-patch14` 是同一权重目录的标准名称软链接。改为该路径后，24 个新增输出均完成五项客观评分。六个权重/预处理文件的 SHA256 已核验一致；没有改模型、公式或图像，没有重新推理。证据：`.ifbench-tmp/external_pilot20_20261108/COMPBENCH_SCORER_PATH_REPAIR.json`。失败启动日志原样保留。
+
+## 本轮处理记录
+
+首次 CPU 评分因 TorchMetrics 检查 CLIP 路径名称退出；改用现有 `openai/clip-vit-large-patch14` 别名后完成。六个权重/预处理文件 SHA256 均相同，未重跑生成。原失败日志与路径修复后的完成日志均保留。
+
+本轮扩展抽样、逐例合并与原生区域权重的 5 项 CPU 合约测试通过；核验和诊断记录在 `.ifbench-tmp/external_pilot20_20261108/`。

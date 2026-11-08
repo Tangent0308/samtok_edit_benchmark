@@ -1,6 +1,6 @@
 # CompBench 小子集进度
 
-当前扩展评测（2026-11-08）：见 [COMPBENCH_PILOT20.md](COMPBENCH_PILOT20.md)。原小子集记录保留如下。
+2026-11-08 扩展完成：20 条 / 方法，40/40 输出和全部可运行指标评分完成。结果见 [COMPBENCH_PILOT20_RESULTS.md](COMPBENCH_PILOT20_RESULTS.md)，方案与恢复记录见 [COMPBENCH_PILOT20.md](COMPBENCH_PILOT20.md)。原小子集记录保留如下。
 
 当前正在准备的 3,481 条全量评测见 [COMPBENCH_FULL_RUN.md](COMPBENCH_FULL_RUN.md)。以下仅为已完成的八条 pilot 记录。
 

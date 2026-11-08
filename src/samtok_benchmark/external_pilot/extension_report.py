@@ -18,6 +18,24 @@ GIE_LABELS = {"accuracy": "编辑正确率 ↑", "rest_clip_sim": "区域外 CLI
               "aligned_psnr": "官方 PSNR ↑"}
 
 
+def current_notes(benchmark, selection, prior_notes):
+    """Keep metric definitions, but derive sample-scope prose from this selection."""
+    notes = []
+    for note in prior_notes:
+        if benchmark == "complex_edit" and note.startswith("real/syn 各"):
+            sources = {x["case_id"].rsplit("-k", 1)[0] for x in selection["selected"]}
+            counts = Counter(x.split("-", 1)[0] for x in sources)
+            notes.append(f"real {counts['real']} 张、syn {counts['syn']} 张原图，在 K=1/2/4/8 的原始复合指令上评测；共 {selection['total']} 条请求、{len(sources)} 张独立源图。")
+        elif benchmark == "gedit" and note.startswith("英文 11 类各"):
+            counts = Counter(x["task_type"] for x in selection["selected"])
+            if len(set(counts.values())) != 1:
+                raise ValueError("GEdit expansion is no longer category-balanced")
+            notes.append(f"英文 {len(counts)} 类各 {next(iter(counts.values()))} 条，使用 input_image_raw 与原始公开指令。")
+        elif not any(t in note for t in ("共 8", "共8", "四个完整", "各 2 条", "各抽 1", "八条")):
+            notes.append(note)
+    return notes
+
+
 def aggregate(cases, labels, weights):
     result = {}
     for metric in labels:
@@ -125,9 +143,7 @@ def report(benchmark, root, previews, old_config, new_config, doc=None):
                          "per_case": values, "mean_edit_seconds": statistics.mean(times) if times else None,
                          "previous_outputs": sum(v["origin"] == "previous" for v in values),
                          "additional_outputs": sum(v["origin"] == "additional" for v in values)}
-    notes = list(old_report.get("notes", []))
-    # Old scope statements describe the first pilot, not the newly frozen union.
-    notes = [x for x in notes if not any(t in x for t in ("共 8", "共8", "四个完整", "各 2 条", "各抽 1", "八条"))]
+    notes = current_notes(benchmark, selection, old_report.get("notes", []))
     if benchmark == "gie":
         notes.append(old_report["warning"])
     payload = {"benchmark": old_report["benchmark"], "scope": "fixed stratified expanded pilot; not a full-benchmark result",
@@ -148,7 +164,7 @@ def report(benchmark, root, previews, old_config, new_config, doc=None):
               *["- "+x for x in notes], "", f"- 全部逐例记录及来源：`{root / 'report/REPORT.json'}`。",
               f"- 新增 API 响应：{api['new_responses']}；旧新合计响应：{api['responses']}；未作答受理：{api['unknown_admissions']}。", ""]
     if doc:
-        Path(doc).write_text("\n".join(lines) + "\n")
+        Path(doc).write_text("\n".join(lines).rstrip() + "\n")
     previews.mkdir(parents=True, exist_ok=True)
     font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 18)
     lines += ["## 全部请求对照", ""]

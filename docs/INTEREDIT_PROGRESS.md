@@ -1,6 +1,6 @@
 # interedit 小子集进度
 
-当前扩展评测（2026-11-08）：见 [INTEREDIT_PILOT20.md](INTEREDIT_PILOT20.md)。原小子集记录保留如下。
+2026-11-08 扩展完成：20 条 / 方法，40/40 输出和全部可运行指标评分完成。结果见 [INTEREDIT_PILOT20_RESULTS.md](INTEREDIT_PILOT20_RESULTS.md)，方案与恢复记录见 [INTEREDIT_PILOT20.md](INTEREDIT_PILOT20.md)。原小子集记录保留如下。
 
 更新：2026-11-07T11:31:28.864821+00:00
 

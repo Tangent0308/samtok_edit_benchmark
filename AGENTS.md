@@ -1,3 +1,7 @@
+# Current four-node external benchmark authorization (2026-11-08)
+
+The user authorized full eight-method CompBench, Inter-Edit and single-turn Omni IIE evaluation launchers, one separate four-worker x eight-GPU entry per benchmark. Follow docs/COMPBENCH_FOUR_NODE.md. Implement reusable orchestration under external_full; preserve all frozen IF-Bench/pilot code, old packages and existing records. Only the three eval-compbench/eval-interedit/eval-omni-iie branches may be changed/pushed for this task. Prepare packages; the user submits remote jobs. Minimal local smoke may use only idle GPUs 4–7. No additional paid smoke requests.
+
 # IF-Bench development instructions
 
 ## Pilot expansion (2026-11-08, current user authorization)

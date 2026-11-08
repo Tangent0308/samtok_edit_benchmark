@@ -11,3 +11,8 @@
 - 含全部图片的报告：`/opt/tiger/tanyue/visualization_tmp/CompBench_20261107/REPORT.md`。
 - 用户确认：缺少官方可评分接口的 action/location/view 不纳入本轮，六类八条。
 - 工程问题：评分依赖与本地 CLIP 权重路径已修复，无模型或指标变更，无失败请求重采样，无付费 API。
+
+
+## 2026-11-08：八方法四机全量入口
+
+当前部署见 [COMPBENCH_FOUR_NODE.md](COMPBENCH_FOUR_NODE.md)。新增统一 external_full 模块与独立四机脚本；原始 pilot、冻结主协议及正式记录均未修改。完成全量源数据核验、原生评分对照与八方法最小验证；本轮正式作业未启动。

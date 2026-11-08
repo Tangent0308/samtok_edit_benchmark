@@ -1,10 +1,10 @@
 # CompBench · SITEdit and IF-Bench baselines
 
-分支 `eval-compbench` 实现 CompBench 全量 3,481 条请求上的 SITEdit 与七个 IF-Bench 基线评测，包含原生连续两轮编辑。当前正在准备全量实验，尚无全量成绩。
+`eval-compbench` 实现八种方法的四机全量评测，每方法 3,481 条公开请求。正式作业由用户提交，当前没有本轮全量成绩。
 
-- [全量协议、固定方法、运行安排与当前进度](COMPBENCH_FULL_RUN.md)
-- [已完成的八条 pilot 协议](COMPBENCH_EVALUATION.md)
-- [已完成的八条 pilot 进度](COMPBENCH_PROGRESS.md)
-- [已完成的八条 pilot 结果与对比图](COMPBENCH_RESULTS.md)
+- [四机入口、完整评测方式、验证与续跑](COMPBENCH_FOUR_NODE.md)
+- [已完成的 20 条 pilot 结果](COMPBENCH_PILOT20_RESULTS.md)
+- [原生数据和评分协议](COMPBENCH_EVALUATION.md)
+- [进度记录](COMPBENCH_PROGRESS.md)
 
-本分支从已验证的外部评测实现独立扩展。数据、权重和原始输出均不入 Git；旧分支和 IF-Bench 冻结记录保持原样。IF-Bench 正式结果见 [v2branch/PAPER_RESULTS.md](https://github.com/Tangent0308/samtok_edit_benchmark/blob/v2branch/docs/PAPER_RESULTS.md)。
+数据、权重、密钥和完整输出不入 Git。IF-Bench 正式结果见 [v2branch/PAPER_RESULTS.md](https://github.com/Tangent0308/samtok_edit_benchmark/blob/v2branch/docs/PAPER_RESULTS.md)。

@@ -2,7 +2,7 @@
 import unittest
 
 from samtok_benchmark.external_pilot.extension import extend_groups
-from samtok_benchmark.external_pilot.extension_report import aggregate
+from samtok_benchmark.external_pilot.extension_report import aggregate, current_notes
 
 
 class ExtensionTests(unittest.TestCase):
@@ -32,6 +32,16 @@ class ExtensionTests(unittest.TestCase):
         self.assertEqual(result["count"], 2)
         self.assertEqual(result["total"], 3)
         self.assertFalse(result["complete"])
+
+    def test_scope_notes_follow_new_selection(self):
+        selection = {"total": 24, "selected": [{"case_id": f"{kind}-{i:04d}-k{k}"}
+                     for kind in ("real", "syn") for i in range(3) for k in (1, 2, 4, 8)]}
+        note = current_notes("complex_edit", selection, ["real/syn 各 1 张原图；不是 8 张独立源图。"])[0]
+        self.assertIn("real 3 张、syn 3 张", note)
+        self.assertIn("24 条请求、6 张独立源图", note)
+        selection = {"selected": [{"task_type": str(i)} for i in range(11) for _ in range(2)]}
+        note = current_notes("gedit", selection, ["英文 11 类各 1 条，使用原始指令。"])[0]
+        self.assertIn("11 类各 2 条", note)
 
 
 if __name__ == "__main__":

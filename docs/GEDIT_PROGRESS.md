@@ -1,6 +1,6 @@
 # gedit 小子集进度
 
-当前扩展评测（2026-11-08）：见 [GEDIT_PILOT20.md](GEDIT_PILOT20.md)。原小子集记录保留如下。
+2026-11-08 扩展完成：22 条 / 方法，44/44 输出和全部可运行指标评分完成。结果见 [GEDIT_PILOT20_RESULTS.md](GEDIT_PILOT20_RESULTS.md)，方案与恢复记录见 [GEDIT_PILOT20.md](GEDIT_PILOT20.md)。原小子集记录保留如下。
 
 更新：2026-11-07T11:31:42.656695+00:00
 

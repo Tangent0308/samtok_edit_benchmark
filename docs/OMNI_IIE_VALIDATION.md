@@ -24,19 +24,57 @@
 
 本机 0–7 卡仅在每卡现有占用约 1.6 GiB、可用显存至少 70,000 MiB 时使用；不结束已有进程。采用独立本机入口复用冻结 worker，只有调度代码负责本次八卡授权。CPU 评分与下一模型生成重叠。
 
-## 当前状态
+## 完成状态与结果
 
-样本清单已经冻结：200 条请求，100 个独立源图簇，未抽到已知空 mask。本机调度复用冻结生成/评分模块；CPU 抽样、链依赖、GPU 授权及原有输入合同测试已通过。已于 2026-11-09 04:11 UTC 启动 `local001`；三个数据集的只读预检均通过，8 卡已进入 CompBench 的 SITEdit 生成。原生分数和最终配对统计尚未完成。
+已于 2026-11-09 06:39 UTC 完成生成、原生评分和配对统计；全部 200 条请求 × 两方法有效，生成/评分失败为 0，付费 API 调用为 0。本轮 GPU 任务已全部退出。
 
-固定清单：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/omni_iie/SELECTION.json`；digest：`dcaf4ed38b2804ae6b5ce473960248d404d9993ade7653e011a10d6bc29b750e`。
+本 benchmark 的 24 项预设主比较中，SITEdit 有 9 项点估计更好；5 项同时满足改善量 95% 区间下界 > 0 和跨三个 benchmark 共 53 项比较的 Holm 校正 p < 0.05。计数仅用于完整陈述结果，不是新的综合分。
 
-入口：`scripts/external_pair.py prepare / freeze / run`。统一计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/PLAN.json`，运行状态为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/STATUS.json`。`run` 必须用新的 attempt；复用已完成终态，不自动放行已受理未完成记录。
+| 任务组 | 指标 | SITEdit | Base | 改善量（95% CI） | Holm p |
+|---|---|---:|---:|---:|---:|
+| all | LPIPS ↓ | 0.3492 | 0.3581 | +0.0088 [+0.0020, +0.0154] | 0.1829 |
+| all | PSNR ↑ | 15.8597 | 16.1507 | -0.2910 [-0.5452, -0.0426] | 1.0000 |
+| all | SSIM ↑ | 0.5279 | 0.5117 | +0.0162 [+0.0058, +0.0270] | 0.0374 |
+| all | CLIP_I ↑ | 0.9050 | 0.9222 | -0.0171 [-0.0239, -0.0106] | 1.0000 |
+| all | FG_LPIPS ↓ | 0.2217 | 0.2160 | -0.0056 [-0.0151, +0.0021] | 1.0000 |
+| all | FG_CLIP_I ↑ | 0.8902 | 0.9086 | -0.0185 [-0.0262, -0.0113] | 1.0000 |
+| all | BG_LPIPS ↓ | 0.2201 | 0.2379 | +0.0178 [+0.0130, +0.0224] | 0.0053 |
+| all | BG_CLIP_I ↑ | 0.9097 | 0.9251 | -0.0155 [-0.0215, -0.0096] | 1.0000 |
+| task/low | LPIPS ↓ | 0.3093 | 0.3245 | +0.0152 [+0.0068, +0.0233] | 0.0114 |
+| task/low | PSNR ↑ | 16.9718 | 17.0544 | -0.0825 [-0.4344, +0.2744] | 1.0000 |
+| task/low | SSIM ↑ | 0.5474 | 0.5279 | +0.0196 [+0.0082, +0.0320] | 0.0144 |
+| task/low | CLIP_I ↑ | 0.9399 | 0.9426 | -0.0027 [-0.0085, +0.0030] | 1.0000 |
+| task/low | FG_LPIPS ↓ | 0.2079 | 0.2024 | -0.0055 [-0.0229, +0.0085] | 1.0000 |
+| task/low | FG_CLIP_I ↑ | 0.9307 | 0.9386 | -0.0079 [-0.0157, -0.0003] | 1.0000 |
+| task/low | BG_LPIPS ↓ | 0.1998 | 0.2254 | +0.0255 [+0.0203, +0.0309] | 0.0053 |
+| task/low | BG_CLIP_I ↑ | 0.9424 | 0.9448 | -0.0024 [-0.0081, +0.0035] | 1.0000 |
+| task/high | LPIPS ↓ | 0.3891 | 0.3916 | +0.0025 [-0.0076, +0.0125] | 1.0000 |
+| task/high | PSNR ↑ | 14.7475 | 15.2470 | -0.4995 [-0.7759, -0.2261] | 1.0000 |
+| task/high | SSIM ↑ | 0.5083 | 0.4955 | +0.0128 [-0.0009, +0.0268] | 0.9099 |
+| task/high | CLIP_I ↑ | 0.8701 | 0.9017 | -0.0316 [-0.0438, -0.0201] | 1.0000 |
+| task/high | FG_LPIPS ↓ | 0.2365 | 0.2306 | -0.0059 [-0.0136, +0.0019] | 1.0000 |
+| task/high | FG_CLIP_I ↑ | 0.8496 | 0.8787 | -0.0291 [-0.0423, -0.0168] | 1.0000 |
+| task/high | BG_LPIPS ↓ | 0.2398 | 0.2500 | +0.0102 [+0.0023, +0.0180] | 0.2490 |
+| task/high | BG_CLIP_I ↑ | 0.8779 | 0.9061 | -0.0282 [-0.0388, -0.0182] | 1.0000 |
 
+改善量的正值统一表示 SITEdit 更好；低优指标采用 Base − SITEdit，高优指标采用 SITEdit − Base。区间为逐项 95% 区间，统计显著性采用预设 53 项主比较的单侧配对源图置换检验及 Holm 校正。分组内样本量与方法均值区间见完整报告。
 
-统计和可视化只读取生成后的原生记录，源码位于 `external_pair/{statistics,report,preview}.py`。已测试官方权重、多轮同源绑定、固定 53 项比较族与校正、配对 bootstrap 的确定性。当前运行从已提交的独立快照执行，后续分析工具的增加不会改变生成源码。
+### 结果分析
 
-## 2026-11-09 05:57 UTC 运行检查
+- 整体 SSIM 与背景 LPIPS 通过统一校正；low 指令组的全图 LPIPS、SSIM、背景 LPIPS 也通过校正。优势更集中于低复杂度指令下的感知/结构保真和背景保留。
+- PSNR、CLIP-I 与前景 CLIP-I 的整体点估计由 Base 更高，high 组也呈现这种差异。因此本轮支持逐指标的能力取舍，而不是 Omni 所有指标上的整体领先。
+- 该结果覆盖 100 个完整 low/high 源图配对；保持官方面积权重。官方 BG CLIP-I 的 RGB 处理使单例特征与全图 CLIP-I 相同，仅聚合权重不同，不能解释为另一项独立的背景语义证据。
 
-CompBench 两方法各 240/240 出图和评分完成；Inter-Edit 两方法各 200/200 出图和评分完成；均无失败。Omni IIE 正在八卡生成 SITEdit，随后生成 Base。对已完成的两个 benchmark 先行复算了原生聚合与配对区间；53 项主比较的统一 Holm 校正等待 Omni 完成。所有新清单的源图像素核验通过，分组与冻结计划一致。
+### 报告、可视化与复现
 
-最终 `report/PAIRED_REPORT.json` 与 `report/REPORT.md` 自动写入各自 `validation_20261109` 根；`scripts/plot_external_pair.py` 读取最终报告绘制全部主比较的效应/区间图，保留指标原单位。全部真实样本对照图在 `visualization_tmp/ExternalValidation_20261109/<benchmark>/INDEX.md`；图中不使用结果筛选。
+- [完整逐项报告](/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_omni_iie/validation_20261109/report/REPORT.md)
+- [配对统计 JSON](/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_omni_iie/validation_20261109/report/PAIRED_REPORT.json)；SHA256：`8fe0de89a377bdc5ca4922b6f450c6f5a444e9be0fbc74304fbc13adcee8f860`。
+- [所有固定样本的真实输入输出对照](/opt/tiger/tanyue/visualization_tmp/ExternalValidation_20261109/omni_iie/INDEX.md)（按 case id 排序，无结果筛选）。
+- [完整图册 HTML](/opt/tiger/tanyue/visualization_tmp/ExternalValidation_20261109/omni_iie/index.html)
+- 清单：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/omni_iie/SELECTION.json`；原生评分与生成：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_omni_iie/validation_20261109`。
+- 生成源码提交：`1a9074dff51fc55a8db9bc106df13d8e8242b161`；计划 digest：`2366505216a28de87226e330cb8f097fc59b6f4e36e1ccc1866952497a71e075`。
+- [像素级源图核验](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/audit/SOURCE_PIXELS.json)：分组与事前清单一致。
+
+![Omni IIE 全部主比较的配对效应图](/opt/tiger/tanyue/visualization_tmp/ExternalValidation_20261109/omni_iie/PAIRED_EFFECTS.png)
+
+图像文件保留在实验可视化目录，不提交模型输出或数据到 Git。`scripts/external_pair_report.py` 复算统计，`scripts/plot_external_pair.py` 渲染图表；两者不调用推理或 API。

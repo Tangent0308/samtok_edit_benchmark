@@ -29,3 +29,8 @@
 ## 2026-11-09：固定子集多方法比较完成
 
 新增 FLUX.2 Klein-9B、MICE（全部三个子集）和 RePlan（CompBench），复用同一批 SITEdit/Base 输出。全部 2,800 张方法输出已有效计分，失败为 0；原结果、公开输入、配置与 native scorer 均未修改。按用户最新要求，剩余任务最多四卡续跑，CPU 评分并行。表格、分析、恢复记录与文件位置见 [EXTERNAL_SUBSET_RESULTS.md](EXTERNAL_SUBSET_RESULTS.md)；当前没有启动四机全量评测。
+
+
+## 2026-11-09：五方法全量四机入口
+
+沿用 240 条子集的 SITEdit、Qwen-Image-2.1、RePlan、MICE、FLUX.2 Klein-9B，准备 4 worker × 8 H100 的完整 3,481 条评测。新入口、预算和续跑方式见 [COMPBENCH_FOUR_NODE.md](COMPBENCH_FOUR_NODE.md)。16 项 CPU 测试通过，四个分片的全量 CPU 资产预检全部通过（871/870/870/870 条）；21 个冻结生成源码文件与子集相同。本次不启动 start.sh、GPU 或付费 API；用户提交正式作业。新包、结果根、代码发布 SHA 见 NAS 包外交接。旧包和全部原结果保留。

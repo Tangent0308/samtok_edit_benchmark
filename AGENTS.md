@@ -1,3 +1,7 @@
+# Current CompBench full deployment (2026-11-09)
+
+The user requests a full CompBench four-node entry and ETA after the completed five-method comparison. Prepare the same five-method roster (SITEdit, Qwen2.1, RePlan, MICE, FLUX2 Klein-9B) on 4 x 8 H100 80GB. Publish a new compbench_full5_20261109 package and independent full5_20261109 results root; preserve existing packages, all outputs, native science code and scoring. The user submits the remote job. CPU verification only locally; no start.sh, GPU or paid API calls during preparation. The prior confirmed GPT-5.4 protocol remains authorized for action/location/view, now at most 980 calls. See docs/COMPBENCH_FOUR_NODE.md. Only eval-compbench may be changed/pushed for this task.
+
 # Four-card continuation (2026-11-09)
 
 The user now requests four local GPUs for this same fixed-cohort comparison. Use at most four idle GPUs from the user-authorized local 0–7 set; recheck before each uncached stage and record actual devices. Do not occupy a card with unrelated model processes. GPU 6 acquired an unrelated external process during run001, causing a RePlan load-time OOM before admission of three requests. Preserve the 717 completed new edits, all original results, PLAN.json and scientific configuration. Seal a separate scheduling execution record, reuse completed receipts, and run only not-admitted work. Do not kill the foreign process.

@@ -2,6 +2,7 @@
 """Publish an immutable, pushed four-node benchmark package with no host-local dependency."""
 
 import argparse
+import copy
 import hashlib
 import importlib.util
 import json
@@ -14,6 +15,28 @@ NAS = Path("/mnt/bn/strategy-mllm-train/user/tanyue")
 MODELS = ["sitedit", "qwen21", "qwen2511", "replan", "mirage", "flux3", "mice", "flux2_klein9b"]
 
 
+def deployment_config(config, benchmark, index, models=None, results_root=None):
+    """Freeze a method roster without changing native scientific configuration."""
+    selected = list(MODELS if models is None else models)
+    if not selected or len(set(selected)) != len(selected) or set(selected) - set(MODELS):
+        raise ValueError("Select distinct supported methods")
+    config = copy.deepcopy(config)
+    if results_root is not None:
+        root = Path(results_root).resolve()
+        parent = NAS / "experiments2/SAMTokEdit" / ("external_" + benchmark)
+        if root == parent or not root.is_relative_to(parent):
+            raise ValueError("Results must use a benchmark-specific NAS run directory")
+        config["formal_results_root"] = str(root)
+    if benchmark == "compbench":
+        calls = sum(r["task"] in {"action", "location", "view"} for r in index["cases"])
+        calls *= len(selected)
+        spec = config["scoring"]["vlm_config"]
+        if calls > spec["max_formal_requests"]:
+            raise ValueError("Selected methods exceed the authorized VLM call budget")
+        spec["max_formal_requests"] = calls
+    return config, selected
+
+
 def sha(path):
     h = hashlib.sha256()
     with Path(path).open("rb") as stream:
@@ -22,7 +45,7 @@ def sha(path):
     return h.hexdigest()
 
 
-def publish(benchmark, destination, bundle):
+def publish(benchmark, destination, bundle, models=None, results_root=None):
     destination, bundle = map(lambda p: Path(p).resolve(), (destination, bundle))
     if any(not p.is_relative_to(NAS) for p in (destination, bundle)) or destination.exists():
         raise ValueError("Publish only to a new NAS package directory")
@@ -44,6 +67,7 @@ def publish(benchmark, destination, bundle):
     index = json.loads((bundle / "index.json").read_text())
     if len(index["cases"]) != cfg["benchmark"]["requests"] or index.get("scope") != "full":
         raise ValueError("Incomplete full-release bundle")
+    cfg, selected = deployment_config(cfg, benchmark, index, models, results_root)
     spec = importlib.util.spec_from_file_location(
         "publish_input_policy", REPO / "src/samtok_benchmark/external_full/input_policy.py"
     )
@@ -143,7 +167,7 @@ def publish(benchmark, destination, bundle):
     plan = {
         "benchmark": benchmark,
         "bundle_digest": index["digest"],
-        "models": MODELS,
+        "models": selected,
         "workers": 4,
         "gpus_per_worker": 8,
         "node_case_ids": {str(r): module.partition(index, r, helper) for r in range(4)},
@@ -157,7 +181,7 @@ def publish(benchmark, destination, bundle):
         "schema": "external.full4.ready.v1",
         "benchmark": benchmark,
         "source_commit": commit,
-        "models": MODELS,
+        "models": selected,
         "topology": {"workers": 4, "gpus_per_worker": 8},
         "configuration": str(config),
         "bundle": str(bundle),
@@ -191,4 +215,6 @@ if __name__ == "__main__":
     p.add_argument("--benchmark", choices=("compbench", "interedit", "omni_iie"), required=True)
     p.add_argument("--destination", required=True)
     p.add_argument("--bundle", required=True)
+    p.add_argument("--models", nargs="+", choices=MODELS)
+    p.add_argument("--results-root")
     publish(**vars(p.parse_args()))

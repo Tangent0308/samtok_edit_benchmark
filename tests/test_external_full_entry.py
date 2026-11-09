@@ -11,6 +11,8 @@ import socket
 import tarfile
 import uuid
 
+import pytest
+
 ROOT = Path(__file__).parents[1]
 MODELS = ["sitedit", "qwen21", "qwen2511", "replan", "mirage", "flux3", "mice", "flux2_klein9b"]
 
@@ -39,6 +41,7 @@ def node(package, attempt, rank, validate, events):
     )
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
+    published_models = json.loads((package / "READY.json").read_text())["models"]
 
     class Child:
         pid, returncode = 999999, 0
@@ -56,6 +59,7 @@ def node(package, attempt, rank, validate, events):
                     run = Path(options(command, "output")[0])
                     local_attempt = options(command, "attempt")[0]
                     ids, models = options(command, "case-ids"), options(command, "models")
+                    assert models == published_models
                     created = 0
                     for model in models:
                         for cid in ids:
@@ -74,6 +78,7 @@ def node(package, attempt, rank, validate, events):
                     events.put((rank, "generation", created))
                 elif action == "score":
                     assert env["CUDA_VISIBLE_DEVICES"] == ""
+                    assert options(command, "models")[0] in published_models
                     events.put(
                         (rank, "score", options(command, "models")[0], options(command, "shard")[0])
                     )
@@ -81,7 +86,8 @@ def node(package, attempt, rank, validate, events):
                     assert rank == 0
                     output = Path(options(command, "output")[0])
                     run = Path(options(command, "run")[0])
-                    assert len(list(run.glob("*/*/TEST_ONLY.json"))) == 32 * len(MODELS)
+                    assert options(command, "models") == published_models
+                    assert len(list(run.glob("*/*/TEST_ONLY.json"))) == 32 * len(published_models)
                     write(output / "REPORT.json", {"test_only": True})
                     events.put((rank, "report"))
                 else:
@@ -99,7 +105,10 @@ def node(package, attempt, rank, validate, events):
         raise
 
 
-def test_validate_then_full_then_resume_four_actual_entry_processes(tmp_path):
+@pytest.mark.parametrize(
+    "models", [MODELS, ["sitedit", "qwen21", "replan", "mice", "flux2_klein9b"]]
+)
+def test_validate_then_full_then_resume_four_actual_entry_processes(tmp_path, models):
     package = tmp_path / "package"
     package.mkdir()
     for file in ("entry.py", "start.sh"):
@@ -133,7 +142,7 @@ def test_validate_then_full_then_resume_four_actual_entry_processes(tmp_path):
         "source_commit": "test-commit",
         "plan_digest": "test-plan",
         "code": {"archive": str(archive), "sha256": checksum(archive)},
-        "models": MODELS,
+        "models": models,
         "control_files": {str(config): checksum(config), str(index): checksum(index)},
         "runtimes": {
             k: {"path": str(config), "sha256": checksum(config)} for k in ("pass1", "v4", "metrics")
@@ -159,7 +168,7 @@ def test_validate_then_full_then_resume_four_actual_entry_processes(tmp_path):
             for child in children:
                 child.start()
             rows = []
-            expected = 4 if validate else 4 + 4 + 4 * 8 * 4 + 1
+            expected = 4 if validate else 4 + 4 + 4 * len(models) * 4 + 1
             for _ in range(expected):
                 rows.append(events.get(timeout=40))
             for child in children:
@@ -168,7 +177,7 @@ def test_validate_then_full_then_resume_four_actual_entry_processes(tmp_path):
             assert not [r for r in rows if r[1] == "error"]
             if not validate:
                 counts = [r[2] for r in rows if r[1] == "generation"]
-                assert sum(counts) == (256 if attempt == "run001" else 0)
+                assert sum(counts) == (32 * len(models) if attempt == "run001" else 0)
                 assert len([r for r in rows if r[1] == "report"]) == 1
             assert len(list((output / "cluster" / attempt).glob("node-*/RELEASED.json"))) == 4
     finally:

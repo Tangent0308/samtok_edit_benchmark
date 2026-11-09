@@ -1,6 +1,6 @@
 # CompBench · SITEdit and IF-Bench baselines
 
-`eval-compbench` 实现八种方法的四机全量评测，每方法 3,481 条公开请求。正式作业由用户提交，当前没有本轮全量成绩。
+`eval-compbench` 当前提供五种方法的四机全量评测，每方法 3,481 条公开请求。正式作业由用户提交，当前没有本轮全量成绩。
 
 - [固定扩大子集：多方法结果与分析](docs/EXTERNAL_SUBSET_RESULTS.md)
 - [四机入口、完整评测方式、验证与续跑](docs/COMPBENCH_FOUR_NODE.md)

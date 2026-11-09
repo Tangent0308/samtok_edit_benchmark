@@ -1,92 +1,94 @@
-# CompBench：八方法四机全量评测
+# CompBench：五方法四机全量评测
 
-更新：2026-11-08。实现与冒烟验证完成，正式实验未启动。以下命令用于本轮固定发布包；READY 及源码提交号以包外交接文件为准。
+更新：2026-11-09。沿用刚完成 240 条固定子集比较的五方法名单，扩展至全部 3,481 条请求。使用一个 ARNOLD 作业，4 worker × 8 H100 80GB；四个 worker 执行同一条前台命令。用户提交作业，本机只准备运行包和 CPU 核验。
 
-## 1. 范围与冻结方法
-
-共 3,481 条编辑请求：单轮 2,905 条；288 组两轮链共 576 条。单轮 add 982、remove 1,331、replace 152、implicit 100、multi-object add/remove 各 72、action 89、location 73、view 34。连续编辑第二轮只使用同一方法第一轮的实际输出，不输入中间 GT。第一轮失败则第二轮记依赖失败。
-
-八方法：SITEdit、Qwen-Image-2.1、Qwen-Image-Edit-2511、RePlan、MIRAGE、FLUX.3 Klein、MICE、FLUX.2 Klein-9B。每请求 seed 42，仅一次采样。SITEdit 固定 `aa5a414`、Pass1 LoRA step 2000、S2 DiT LoRA/CodeInjector adapter 16000、raw SAMTok text encoder、40 步、token guidance γ=2，负向是同一句去掉区域码；不使用 quality-anchor/v5 或 LoRA 强度搜索。
-
-原图统一按冻结 IF-Bench `canvas.py` 转为约 1MP 画布。输出按记录的裁剪/缩放几何回源，保存 raw 和 restored 输出；不使用 GT paste-back。RePlan/MIRAGE 保留原生输出网格及原生规划调用，全部额外调用写入记录。评测用目标图/私有 mask 不进入模型 adapter。
-
-## 2. 模型输入与参数
-
-| 方法 | 公开输入和原生流程 | 固定参数 |
-|---|---|---|
-| SITEdit | 原图＋原指令；一次原生 Pass1 生成区域码，再执行 S2 | 40 步；token guidance 2；raw SAMTok TE |
-| Qwen-Image-2.1 | 原图＋原指令；原生 Qwen2.1 pipeline | 40 步；CFG 1；output_resolution=1024；KV cache |
-| Qwen-Image-Edit-2511 | 原图＋原指令；原生 Qwen2511 pipeline | 40 步；true CFG 4；guidance 1 |
-| RePlan | 原图＋原指令；原生规划器→Qwen2511 区域注意力编辑 | 40 步；true CFG 4；原生 planner max_new_tokens=2048 |
-| MIRAGE | 原图＋原指令；原生 parser/locator→Qwen2511 联合编辑 | 40 步；true CFG 4；patch_ratio=0.4；thinking=false |
-| FLUX.3 Klein | 原图作为原生 reference＋原指令；PUP 关闭、boxes=None | distilled；16 步；PUP=false |
-| MICE | 原图＋原指令；无公开区域时采用原生全局 prompt，不添加评分 mask | Klein-4B；4 步；guidance 1 |
-| FLUX.2 Klein-9B | 原图＋原指令；原生多图接口只传实际公开的原图 | distilled；4 步；guidance 1 |
-
-固定配置与权重/代码版本：[配置](../configs/external/compbench_full4.json)。模型只读取 `public.json`；Inter-Edit 的红色轮廓是公开 mask 的确定性表示，保留孔洞，不调用外部定位器。提示词和精确参数见 `external_full/mask_adapters.py`（mask 输入）及冻结 `external_refedit/adapters.py`（纯文字输入）。
-
-## 3. 评分与失败口径
-
-3,285 条使用官方 LC-T、LC-I、PSNR、SSIM、LPIPS；固定 evaluator ca0ec0d、CLIP ViT-L/14、LPIPS squeeze、官方 512×512 预处理、CPU FP32。按照原生等权子任务均值汇总，保留连续两轮分别的成绩。其余 action/location/view 共 196 条使用已确认的作者旧版公开提示词＋GPT-5.4，0–10 分，单独列结果；最多 1,568 次正式请求，四机合计最多四个并发，每个输出一次调用、SDK 重试关闭。人工及 Qwen72B 评分 N/A。密钥只从既有受保护 NAS 文件读取。未做新的付费冒烟。
-
-模型原生失败、前一阶段失败、评分失败和基础设施中断分别记录。报告保留全部应评请求及覆盖率，客观指标报告已取得的真实有效分数；缺分不擅自赋零或“最差值”，不自动重采样。评分/生成记录只写一次；不存在 MagicBrush 的惩罚值规则迁移。原生方法失败会完成该请求的终态记录并继续队列；CUDA/OOM 等基础设施错误停机检查。
-
-## 4. 四机调度和提交
-
-一个 ARNOLD 作业 **4 worker × 8 H100 80GB**，均挂载同一 NAS。四台执行完全相同的前台命令：
+## 1. 直接运行
 
 ```bash
-bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_20261108/start_compbench.sh --attempt run001
+bash /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/compbench_full5_20261109/package-v1/start.sh --attempt run001
 ```
 
-也可直接用包内 `start.sh --attempt run001`。可选单独预检：四台都使用 `--attempt run001-validate --validate-only`；四台退出释放租约后，以新 attempt 正式运行。三个 benchmark 是三个独立入口/作业，不要让它们同时抢占同一组 32 张卡。
+平台要求：四台均有 8×H100 80GB，访问同一个 NAS 挂载；`ARNOLD_WORKER_NUM=4`、`ARNOLD_WORKER_GPU=8`、`ARNOLD_ID=0..3` 由平台注入。不要另起 torchrun，也不要把脚本放到后台。所有代码和运行环境从 NAS 的冻结归档解包，无 GitHub 在线拉取。
 
-- 节点由 ARNOLD_ID=0…3 自动识别；先验证拓扑，NAS 心跳覆盖环境解包、生成、评分和汇总。
-- 按 sequence 平衡分给四节点，再分给每节点八张独立 GPU；连续两轮属于同一 shard。没有跨机模型 TP，也不需要另起 torchrun。
-- 每卡按固定模型顺序运行；本节点某模型八卡全部终态后，启动四个 CPU 评分进程，与后续模型生成重叠。CompBench 额外每节点一个 GPT 请求队列。
-- 心跳遇到短暂缺失/不完整 JSON 会重试，以最近成功观测到的新序号和本地单调时钟判断失联；不退回旧 OWNER 时间。协调只用 NAS，不占 ARNOLD rendezvous 端口。模型子进程端口为 41000…41007。
-- 启动时从 NAS 解包 SHA256 固定的代码和环境到独立 `/tmp/ifbench/external-full4/...`。没有 GitHub 在线下载要求，不依赖本开发机器的 `/opt` 或 `/tmp`。每卡使用前要求空闲显存至少 70,000 MiB；不会结束已有其他进程。
-- 只有 node 0 在四节点 EVALUATED 后生成全局报告。汇总逐例记录和真实分母，不平均节点百分比。原始生成/评分记录和 SHA 绑定得到保留。
+可选先单独预检：四台统一追加 `--validate-only` 并使用 `--attempt run001-validate`；四台正常退出后，再执行上面的正式命令。预检不会生成图片或调用 API。正式命令本身也包含预检。
 
-## 5. 续跑与观察
+脚本：[scripts/arnold/compbench_full4.sh](../scripts/arnold/compbench_full4.sh)。配置保存完整的冻结方法参数，实际运行名单以新包 `PLAN.json` 和 `READY.json` 的五个方法为准。
 
-正常结束或全部自然退出后，四台使用新 `--attempt run002`，结果根不变。完成记录核验输入、配置、源码和输出 SHA 后复用，不重新推理；模型自身失败同样保留。`SIGUSR1` 发给入口 PID 后，当前生成/评分请求结束再退出，四节点会协调停止。
+## 2. 数据与方法
 
-平台强制停止后，先确认四台都已退出；使用 `scripts/external_full_release.py` 和实际原因只释放协调租约。已有受理但没有终态的请求不会自动重判，需保留基础设施证据并明确放行。不要删除 result/admission 来“续跑”。
+全部 3,481 条请求：2,905 条单轮，288 组两轮链共 576 条。每个方法生成 3,481 次，共 **17,405 次编辑**；原生 Pass1/规划调用另行记录。单轮添加 982、删除 1,331、替换 152、隐式 100、多目标添加/删除各 72、动作 89、位置 73、视角 34；连续添加/删除各 288 条。
 
-日志与状态：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_compbench/full4_20261108/cluster/<attempt>/node-{0..3}/`。每卡阶段进度在 `run/attempts/<attempt>-nodeN/*.progress.json`，终态标记为 `gpuG-<model>.terminal.json`；不在每批后重新扫描整个 NAS 结果目录。
+| 方法 | 公开输入与原生流程 | 冻结设置 |
+|---|---|---|
+| SITEdit | 源图＋原指令 → 原生 Pass1 区域码 → S2 | aa5a414；Pass1 step 2000；S2 adapter 16000；raw SAMTok TE；40 步；token guidance 2 |
+| Qwen-Image-2.1 | 源图＋原指令，原生 pipeline | 40 步、CFG 1、KV cache、原生 CPU offload |
+| RePlan | 源图＋原指令 → 官方 planner → Qwen2511 区域编辑 | 40 步、true CFG 4、planner 最多 2,048 token |
+| MICE | 源图＋原指令，原生 global prompt | Klein-4B；4 步、guidance 1；无外部定位器 |
+| FLUX.2 Klein-9B | 源图＋原指令，原生单图编辑 | distilled；4 步、guidance 1 |
 
-## 6. 验证与限制
+每请求 seed 42，仅一次采样。约 1MP 画布、原始公开指令及回源几何与子集一致。GT、评分 mask 和目标 caption 不进入任何模型。连续第二轮只使用同一方法第一轮的实际输出；第一轮失败则保留依赖失败，不拿中间 GT 替代。
 
-复用此前同配置八方法 × 3 条 CompBench 冒烟证据：23/24 出图，MIRAGE 一条原生规划解析失败。新四机实现复用这些原生 adapter；本轮另在 Omni 的两条文字输入上验证同一八方法生成路径，并用 CPU 测试确认两轮输入依赖。未把旧结果移入正式根。
+固定推理配置、原生生成/规划源码及评分实现均不修改。详细数据和指标定义见 [COMPBENCH_FULL_RUN.md](COMPBENCH_FULL_RUN.md)。本包使用独立全量结果根，已有 pilot/子集与旧发布包均保留。
 
-| 方法 | 成功出图 / 请求 | 成功请求平均推理秒数（含规划） | 峰值 PyTorch allocated GiB |
+## 3. 评分
+
+- **3,285 条／方法**：官方 LC-T、LC-I、背景 PSNR、SSIM、LPIPS；共 16,425 个输出。保持官方 512×512 预处理、CLIP ViT-L/14、LPIPS squeeze、CPU FP32，按官方子任务等权汇总，并分别报告连续两轮。
+- **196 条／方法**（动作／位置／视角）：沿用用户已确认的作者公开 v2 提示词＋`gpt-5.4-2026-03-05`，0–10 分，单独列结果。五方法最多 **980 次 API 请求**，全局最多四并发；每输出一次调用，关闭 SDK 重试。该结果不与使用不同 Judge 的论文数字混排。
+- API 密钥沿用既有受保护 NAS 文件；入口自动读取，无需在命令、Git 或报告中填写密钥。当前准备未调用付费接口。
+- 保留原生失败、依赖失败、评分失败及全部应评分母；缺分不填零，不移植 MagicBrush 的失败惩罚值。受理后无终态的请求不会自动重判。
+
+## 4. 并行与续跑
+
+序列分到四节点，再分到每节点八卡；完整两轮链始终属于同一 GPU。节点请求数为 871/870/870/870，每张卡每方法 108–109 条。每卡按五方法固定顺序运行，每卡独立模型实例，不做跨机模型 TP。
+
+每节点某方法八卡终态后，四个 CPU 评分进程和一个 GPT 队列开始评分，同时 GPU 继续后续方法。node 0 在所有节点评分结束后生成全局报告。协调只用 NAS，心跳短暂缺失/JSON 不完整会重试；模型端口为 41000–41007，不占 ARNOLD rendezvous 端口或 29xxx。
+
+正常结束或四台全部退出后，以新 attempt（如 `run002`）运行同一命令；结果根不变，已有结果校验后跳过、不覆盖。`SIGUSR1` 可让入口在当前请求结束后协调退出。平台强制停止后，先确认四台都已退出，再使用 `scripts/external_full_release.py` 记录原因并释放协调租约；未知 admission 仍须单独按基础设施证据处理。
+
+## 5. 时间预算
+
+依据刚完成的每方法 240 条实际记录，包含原生 Pass1/规划；下面 GPU 小时按全量任务构成加权。动作／位置／视角未出现在该计时子集中，对这 196 条使用已测方法均值作为代理。均为资源估算，不是全量实测。
+
+| 方法 | 实测平均秒／请求 | 预计全量 GPU 小时 | 32 卡理想生成时间 |
 |---|---:|---:|---:|
-| SITEdit | 3/3 | 54.1 | 38.3 |
-| Qwen-Image-2.1 | 3/3 | 44.3 | 19.1 |
-| Qwen-Image-Edit-2511 | 3/3 | 75.0 | 58.0 |
-| RePlan | 3/3 | 98.7 | 57.9 |
-| MIRAGE | 2/3 | 81.0 | 58.0 |
-| FLUX.3 Klein | 3/3 | 9.1 | 23.3 |
-| MICE | 3/3 | 5.5 | 17.3 |
-| FLUX.2 Klein-9B | 3/3 | 4.2 | 34.8 |
+| SITEdit | 50.82 | 49.26 | 1.54 小时 |
+| Qwen-Image-2.1 | 41.63 | 42.21 | 1.32 小时 |
+| RePlan | 82.90 | 80.57 | 2.52 小时 |
+| MICE | 5.35 | 5.20 | 0.16 小时 |
+| FLUX.2 Klein-9B | 3.92 | 3.82 | 0.12 小时 |
+| 合计 | — | 181.06 | **5.66 小时** |
 
-这里只验证可运行性，不是全量成绩或候选选择。推理时间不含一次性模型加载；峰值是框架记录的显存，不是整卡占用。原始冒烟记录：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/compbench_full_20261107/evidence/previews/SMOKE.json`。Inter/Omni 四组原生评分与此前 pilot 输出逐项一致，差值为零：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_20261108/METRIC_PARITY.json`。最小样例不能保证所有正式请求都成功。
+客观评分来自 1,200 个实际输出的计时，平均 2.56 秒／输出；四机共 16 个 CPU 评分 worker，单独执行约 0.73 小时，与生成重叠。考虑环境解包、模型加载、NAS、评分尾部和汇总，**正常运行按约 7–10 小时安排，作业时限建议设 24 小时留恢复余量**，不含平台排队。
 
-本分支 26 项 CPU 测试全部通过。共同检查覆盖四节点×八卡完整分片、连续编辑不读中间 GT、读写心跳竞态、正常/失败 barrier、租约排他、仅终止自有进程、先预检再正式再续跑、所有 mask adapter、非法输入发布阻断。评分环境重新解包后，依赖版本、torch 来源、AlphaCLIP 导入均已验证；无 GPU 或付费调用。
+GPT 服务尚无本次完整提示词的正式时延数据，未为估时发新请求。每节点最多 250 次调用：若平均每次 30/60/120 秒，单节点 API 队列自身约需 2.1/4.2/8.3 小时，与生成重叠，慢服务可能主导最终完成时间。7–10 小时是服务正常情况下的调度估算，不是保证或置信区间。
 
-## 7. 路径与代码
+计时来源：`experiments2/SAMTokEdit/external_compbench/comparison_20261109/report/COMPARISON.json`；展开计算、分层与节点分片见运行包外 `ETA.json`。
 
-| 内容 | 位置 |
+## 6. 路径、验证与发布
+
+| 内容 | NAS 位置 |
 |---|---|
-| 官方原数据与 SOURCE.json | `/mnt/bn/strategy-mllm-train/user/tanyue/datasets/CompBench-Full-20261107` |
-| 全量公开输入及私有评分 manifest | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/compbench_full_20261107/bundle` |
-| 固定运行包 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/compbench_full4_20261108/package-v1` |
-| 本轮正式结果根 | `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_compbench/full4_20261108` |
-| 最终 JSON/Markdown | 上述根下 `reports/<attempt>/REPORT.{json,md}` |
-| 包外交接 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_20261108/HANDOFF.md` |
-| 临时验证/预检/拼图 | `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_full4_20261108` |
+| 运行包 | `.ifbench-tmp/compbench_full5_20261109/package-v1/` |
+| 全量共享输入 | `.ifbench-tmp/compbench_full_20261107/bundle/` |
+| 正式结果根 | `experiments2/SAMTokEdit/external_compbench/full5_20261109/` |
+| 状态／日志 | 正式根下 `cluster/<attempt>/node-{0..3}/` |
+| 每卡进度 | 正式根下 `run/attempts/<attempt>-nodeN/*.progress.json` |
+| 最终报告 | 正式根下 `reports/<attempt>/REPORT.{json,md}` |
+| 包外交接、估时与核验 | `.ifbench-tmp/compbench_full5_20261109/{HANDOFF.md,ETA.json,VERIFICATION.json}` |
 
-代码：`src/samtok_benchmark/external_full/` 分离数据、adapter、worker、CPU 指标、VLM 判分、报告与协调；`scripts/external_full_entry.py` 实现四机入口；`scripts/arnold/compbench_full4.sh` 是本 benchmark 的独立脚本；`scripts/external_full_publish.py` 在 clean/pushed eval 分支上生成新包和 READY，拒绝覆盖旧包。`configs/external/compbench_full4.json` 为本分支唯一四机配置。冻结 IF-Bench 模块、旧发布包和既有 pilot 正式结果没有修改。
+以上相对路径均位于 `/mnt/bn/strategy-mllm-train/user/tanyue/`。运行包全部持久依赖均在 NAS，节点 `/tmp` 仅用于可重建的代码／环境。已有八方法包见 [独立历史入口说明](COMPBENCH_FOUR_NODE_EIGHT_METHODS.md)，其 READY、输入和结果根未改动。
 
-重建输入使用 `scripts/external_full_prepare.py`（Inter/Omni，python -I）或既有 CompBench 全量构造器；下载归档只读取常规图像文件、检查路径和大小，不执行数据包中的代码。所有正式包依赖均在 NAS。
+仅改发布层：支持固定五方法名单和独立结果根，把 API 上限收窄到 980；不改原生推理或评分。CPU 测试覆盖五／八方法两种名单下的四进程预检、正式调用、正常续跑，以及名单/预算/结果根校验和 NAS 协调。正式发布的 commit、READY SHA256、plan digest 与核验结果以包外 HANDOFF.md 为准。
+
+重建发布命令（仅干净且已推送的 eval-compbench 分支）：
+
+```bash
+python3 -I scripts/external_full_publish.py \
+  --benchmark compbench \
+  --bundle /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/compbench_full_20261107/bundle \
+  --destination /mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/compbench_full5_20261109/package-v1 \
+  --results-root /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_compbench/full5_20261109 \
+  --models sitedit qwen21 replan mice flux2_klein9b
+```
+
+发布拒绝覆盖已有包。准备阶段不启动 start.sh、GPU 推理或 API 评分。

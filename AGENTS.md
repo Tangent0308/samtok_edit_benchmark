@@ -1,3 +1,7 @@
+# Fixed-cohort additional baseline authorization (2026-11-09)
+
+The user authorized additional representative methods on exactly the completed local validation cohort, using the same eight idle local GPUs 0–7. Fixed roster: FLUX.2 Klein-9B and MICE on all three benchmarks; additionally RePlan on CompBench. Reuse SITEdit/Qwen2.1 records read-only. Preserve all 240/200/200 case IDs, public inputs, configurations, original scores and frozen scientific modules. New orchestration/reporting belongs in external_compare; formal additions use comparison_20261109 roots. No paid APIs, score-driven sample/model selection or automatic failure retries. See docs/EXTERNAL_SUBSET_COMPARISON.md.
+
 # Local paired validation authorization (2026-11-09)
 
 The user explicitly authorized local GPUs 0–7 for larger SITEdit versus Qwen-Image-2.1 validation on these three benchmarks, superseding the older local 4–7 restriction for this task only. Preserve the existing approximately 1.6 GiB per-card process and all unrelated work. The user confirmed 240 CompBench objective-scored requests (including recurrent turns), 200 Inter-Edit requests, and 100 Omni low/high pairs (200 requests); no paid API calls. Freeze new metadata-only sampling before inference, separate it from already-analyzed pilot cases, preserve all official metrics and failures, and report paired source-cluster uncertainty without score-driven resampling or stopping. Add orchestration/analysis outside frozen external_full generation/scoring modules and published packages. Current plan: docs/INTEREDIT_VALIDATION.md.

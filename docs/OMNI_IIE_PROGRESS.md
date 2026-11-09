@@ -25,3 +25,7 @@ API 原始答案文件：0；异常文件：0。
 ## 2026-11-08：八方法四机全量入口
 
 当前部署见 [OMNI_IIE_FOUR_NODE.md](OMNI_IIE_FOUR_NODE.md)。新增统一 external_full 模块与独立四机脚本；原始 pilot、冻结主协议及正式记录均未修改。完成全量源数据核验、原生评分对照与八方法最小验证；本轮正式作业未启动。
+
+## 2026-11-09 独立扩大样本验证
+
+用户确认本机八卡，仅 SITEdit 与 Qwen-Image-2.1，采用官方客观指标。已冻结新样本并与旧 pilot 按源图分离，详见 [OMNI_IIE_VALIDATION.md](OMNI_IIE_VALIDATION.md)。不改四机包及已有结果。

@@ -34,3 +34,9 @@
 
 
 统计和可视化只读取生成后的原生记录，源码位于 `external_pair/{statistics,report,preview}.py`。已测试官方权重、多轮同源绑定、固定 53 项比较族与校正、配对 bootstrap 的确定性。当前运行从已提交的独立快照执行，后续分析工具的增加不会改变生成源码。
+
+## 2026-11-09 05:57 UTC 运行检查
+
+CompBench 两方法各 240/240 出图和评分完成；Inter-Edit 两方法各 200/200 出图和评分完成；均无失败。Omni IIE 正在八卡生成 SITEdit，随后生成 Base。对已完成的两个 benchmark 先行复算了原生聚合与配对区间；53 项主比较的统一 Holm 校正等待 Omni 完成。所有新清单的源图像素核验通过，分组与冻结计划一致。
+
+最终 `report/PAIRED_REPORT.json` 与 `report/REPORT.md` 自动写入各自 `validation_20261109` 根；`scripts/plot_external_pair.py` 读取最终报告绘制全部主比较的效应/区间图，保留指标原单位。全部真实样本对照图在 `visualization_tmp/ExternalValidation_20261109/<benchmark>/INDEX.md`；图中不使用结果筛选。

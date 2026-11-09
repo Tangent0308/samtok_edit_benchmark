@@ -15,6 +15,7 @@ DESTINATION = Path("/opt/tiger/tanyue/visualization_tmp/ExternalValidation_20261
 
 def font(size):
     for name in (
+        "/tmp/NotoSansCJKsc-Regular.otf",
         "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
         "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
     ):

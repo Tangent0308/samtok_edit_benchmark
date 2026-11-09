@@ -207,6 +207,10 @@ def run(control, attempt):
                 "native_report_sha256": sha256_file(native_path),
                 "results_root": selection["results_root"],
                 "generation_source_commit": plan["source_commit"],
+                "analysis_source_sha256": {
+                    name: sha256_file(Path(__file__).parent / name)
+                    for name in ("statistics.py", "report.py")
+                },
                 "plan_digest": plan["digest"],
                 "analysis": result,
                 "costs": costs(selection),

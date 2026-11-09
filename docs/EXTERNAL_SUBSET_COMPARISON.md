@@ -25,7 +25,7 @@
 
 ## 执行状态
 
-方案和代码准备中，尚未启动新增方法生成。沿用本机八卡：每卡只启动一个自身 worker，保留无关约 1.6 GiB 占用；原生 CPU 评分和下一方法生成重叠。
+2026-11-09 08:03 UTC 启动本机新增方法生成；33 项相关 CPU 测试通过。全部共享输入/评分资产预检通过。原两方法 131 个分组指标的均值和 95% 区间复算与原报告完全一致。沿用本机八卡：每卡只启动一个自身 worker，保留无关约 1.6 GiB 占用；原生 CPU 评分和下一方法生成重叠。
 
 - 控制目录：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_comparison_20261109/`。
 - 原清单：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/<benchmark>/SELECTION.json`。
@@ -33,3 +33,5 @@
 - 可视化：`/opt/tiger/tanyue/visualization_tmp/ExternalComparison_20261109/`。
 
 统计结论以最终逐条记录为准，此处不预填成绩。
+
+冻结生成源码：`169be537f0f69a73701a273cea84df89dc60ad7f`；新计划 digest：`ecc7a5247d13c5798e830dc4fbba909cc03ab28cb1ad386eeb1d86ce1c00c3d9`。`scripts/external_compare.py` 管理新增方法的原生 worker，`scripts/finalize_external_compare.py` 只监控与生成 CPU 报告，不改推理进程。

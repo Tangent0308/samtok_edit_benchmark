@@ -15,9 +15,9 @@ from samtok_benchmark.external_full.coordination import atomic
 from samtok_benchmark.external_compare.report import run
 
 
-def main(control, attempt):
+def main(control, attempt, analysis_id=None):
     control = Path(control)
-    output = control / "analysis" / attempt
+    output = control / "analysis" / (analysis_id or attempt)
     output.mkdir(parents=True, exist_ok=False)
     immutable(output / "OWNER.json", {"pid": os.getpid(), "attempt": attempt})
     plan = read(control / "PLAN.json")
@@ -44,6 +44,12 @@ def main(control, attempt):
                 "phase": state["phase"],
                 "groups": dict(groups),
                 "error": state.get("error"),
+                "metric_failures_observed": [
+                    {"log": str(path), "message": line}
+                    for path in (control / "attempts" / attempt).glob("*metrics*.log")
+                    for line in path.read_text(errors="replace").splitlines()
+                    if ": score_failed " in line
+                ],
                 "expected_new_edits": plan["new_generation_requests"],
                 "finished_new_edits": sum(
                     g["completed"] + g["failed"] for k, g in groups.items() if k.endswith("/edit")
@@ -76,4 +82,5 @@ if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--control", required=True)
     p.add_argument("--attempt", required=True)
+    p.add_argument("--analysis-id")
     main(**vars(p.parse_args()))

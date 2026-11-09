@@ -25,7 +25,7 @@
 
 ## 执行状态
 
-2026-11-09 08:03 UTC 启动本机新增方法生成；33 项相关 CPU 测试通过。全部共享输入/评分资产预检通过。原两方法 131 个分组指标的均值和 95% 区间复算与原报告完全一致。沿用本机八卡：每卡只启动一个自身 worker，保留无关约 1.6 GiB 占用；原生 CPU 评分和下一方法生成重叠。
+2026-11-09 08:03 UTC 启动本机新增方法生成；33 项相关 CPU 测试通过。全部共享输入/评分资产预检通过。原两方法 131 个分组指标的均值和 95% 区间复算与原报告完全一致。当前按用户最新要求使用 GPU 0–3 四卡，每卡只启动一个自身 worker；GPU 4–7 不使用。保留无关进程，原生 CPU 评分和下一方法生成重叠。
 
 - 控制目录：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_comparison_20261109/`。
 - 原清单：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/<benchmark>/SELECTION.json`。
@@ -35,3 +35,9 @@
 统计结论以最终逐条记录为准，此处不预填成绩。
 
 冻结生成源码：`169be537f0f69a73701a273cea84df89dc60ad7f`；新计划 digest：`ecc7a5247d13c5798e830dc4fbba909cc03ab28cb1ad386eeb1d86ce1c00c3d9`。`scripts/external_compare.py` 管理新增方法的原生 worker，`scripts/finalize_external_compare.py` 只监控与生成 CPU 报告，不改推理进程。
+
+## 四卡续跑记录
+
+run001 完成 717 张新增图像后，GPU 6 在 RePlan 第二轮编辑模型加载期间出现新的外部显存占用，触发 OOM。失败发生在请求 admission 之前，余下 3 条没有采样；没有模型失败或未知 admission。保留全部原始日志、load_failure 和成功记录。用户随后要求改用四卡。
+
+续跑保持原 PLAN.json、清单、方法配置、原生生成/评分源码和结果根不变；只发布 `executions/four-gpu.json` 调度记录，绑定原计划 SHA、当前调度源码和 GPU 0–3。已完成记录核验复用，其余 803 条首次推理。并发 worker 的致命错误改为即时检查，随后在当前请求完成后协调退出。没有结束或改动其他任务。

@@ -2,6 +2,7 @@
 
 import argparse
 import json
+from pathlib import Path
 
 from samtok_benchmark.external_full.worker import run
 from samtok_benchmark.external_pair.worker import guard
@@ -16,7 +17,11 @@ def main():
     parser.add_argument("--stage", choices=("plan", "edit"), required=True)
     parser.add_argument("--case-ids", nargs="+", required=True)
     args = vars(parser.parse_args())
-    guard()
+    if any(
+        not (Path(args["output"]) / args["model"] / args["stage"] / cid / "result.json").exists()
+        for cid in args["case_ids"]
+    ):
+        guard()
     result = run(**args)
     print(json.dumps(result), flush=True)
     raise SystemExit(

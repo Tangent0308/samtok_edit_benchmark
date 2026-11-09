@@ -1,3 +1,7 @@
+# Four-card continuation (2026-11-09)
+
+The user now requests four local GPUs for this same fixed-cohort comparison. Use idle GPUs 0–3 and leave GPUs 4–7 untouched. GPU 6 acquired an unrelated external process during run001, causing a RePlan load-time OOM before admission of three requests. Preserve the 717 completed new edits, all original results, PLAN.json and scientific configuration. Seal a separate scheduling execution record, reuse completed receipts, and run only not-admitted work. Do not kill the foreign process.
+
 # Fixed-cohort additional baseline authorization (2026-11-09)
 
 The user authorized additional representative methods on exactly the completed local validation cohort, using the same eight idle local GPUs 0–7. Fixed roster: FLUX.2 Klein-9B and MICE on all three benchmarks; additionally RePlan on CompBench. Reuse SITEdit/Qwen2.1 records read-only. Preserve all 240/200/200 case IDs, public inputs, configurations, original scores and frozen scientific modules. New orchestration/reporting belongs in external_compare; formal additions use comparison_20261109 roots. No paid APIs, score-driven sample/model selection or automatic failure retries. See docs/EXTERNAL_SUBSET_COMPARISON.md.

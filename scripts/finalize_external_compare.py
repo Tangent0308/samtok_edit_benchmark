@@ -31,13 +31,16 @@ def main(control, attempt, analysis_id=None):
                 continue
             if state["attempt"] != attempt or state["plan_digest"] != plan["digest"]:
                 raise ValueError("Supervisor identity changed")
-            groups = defaultdict(lambda: {"completed": 0, "failed": 0, "active": 0})
+            groups = defaultdict(
+                lambda: {"completed": 0, "failed": 0, "active": 0, "cached_on_entry": 0}
+            )
             for s in state["stages"].values():
                 if s.get("model"):
                     group = groups["/".join((s["benchmark"], s["model"], s["stage"]))]
                     group["completed"] += s["new_completed"]
                     group["failed"] += s["new_failed"]
                     group["active"] += s["phase"] == "running"
+                    group["cached_on_entry"] += s.get("terminal_on_entry", 0)
             receipt = {
                 "checked_utc": datetime.now(timezone.utc).isoformat(),
                 "scheduler_updated_utc": state["updated_utc"],
@@ -52,7 +55,9 @@ def main(control, attempt, analysis_id=None):
                 ],
                 "expected_new_edits": plan["new_generation_requests"],
                 "finished_new_edits": sum(
-                    g["completed"] + g["failed"] for k, g in groups.items() if k.endswith("/edit")
+                    g["completed"] + g["failed"] + g["cached_on_entry"]
+                    for k, g in groups.items()
+                    if k.endswith("/edit")
                 ),
             }
             receipt["heartbeat_stale"] = (

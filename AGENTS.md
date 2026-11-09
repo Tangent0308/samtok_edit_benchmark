@@ -1,3 +1,7 @@
+# Local paired validation authorization (2026-11-09)
+
+The user explicitly authorized local GPUs 0–7 for larger SITEdit versus Qwen-Image-2.1 validation on these three benchmarks, superseding the older local 4–7 restriction for this task only. Preserve the existing approximately 1.6 GiB per-card process and all unrelated work. The user confirmed 240 CompBench objective-scored requests (including recurrent turns), 200 Inter-Edit requests, and 100 Omni low/high pairs (200 requests); no paid API calls. Freeze new metadata-only sampling before inference, separate it from already-analyzed pilot cases, preserve all official metrics and failures, and report paired source-cluster uncertainty without score-driven resampling or stopping. Add orchestration/analysis outside frozen external_full generation/scoring modules and published packages. Current plan: docs/COMPBENCH_VALIDATION.md.
+
 # Current four-node external benchmark authorization (2026-11-08)
 
 The user authorized full eight-method CompBench, Inter-Edit and single-turn Omni IIE evaluation launchers, one separate four-worker x eight-GPU entry per benchmark. Follow docs/COMPBENCH_FOUR_NODE.md. Implement reusable orchestration under external_full; preserve all frozen IF-Bench/pilot code, old packages and existing records. Only the three eval-compbench/eval-interedit/eval-omni-iie branches may be changed/pushed for this task. Prepare packages; the user submits remote jobs. Minimal local smoke may use only idle GPUs 4–7. No additional paid smoke requests.

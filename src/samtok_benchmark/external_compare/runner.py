@@ -1,7 +1,7 @@
-"""Local eight-card queue with overlapping unchanged CPU metrics and owned-PID shutdown."""
+"""Pinned local queue with overlapping native CPU metrics and owned-PID shutdown."""
 
 from collections import defaultdict
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 import os
 from pathlib import Path
@@ -35,8 +35,8 @@ def partition(index, case_ids, gpus):
     return shards
 
 
-def run(control, attempt, gpus):
-    if len(set(gpus)) != 8 or set(gpus) != set(map(str, range(8))):
+def run(control, attempt, gpus, execution=None):
+    if execution is None and (len(set(gpus)) != 8 or set(gpus) != set(map(str, range(8)))):
         raise ValueError("This authorized validation uses exactly local GPUs 0–7")
     if not re.fullmatch(r"[A-Za-z0-9_-]+", attempt):
         raise ValueError("Invalid attempt")
@@ -47,9 +47,13 @@ def run(control, attempt, gpus):
     repo = Path(__file__).parents[3]
     if manifest["generation_source_identity"] != source_identity():
         raise ValueError("Frozen generation source changed")
-    if any(
-        sha256_file(repo / path) != sha for path, sha in manifest["orchestration_source"].items()
-    ):
+    execution_record = None
+    if execution:
+        from .execution import verify
+
+        execution_record = verify(execution, control, manifest, gpus)
+    orchestration = (execution_record or manifest)["orchestration_source"]
+    if any(sha256_file(repo / path) != sha for path, sha in orchestration.items()):
         raise ValueError("Committed validation scheduler changed")
     jobs = []
     for entry in manifest["benchmarks"]:
@@ -72,6 +76,9 @@ def run(control, attempt, gpus):
         "host": socket.gethostname(),
         "nonce": uuid.uuid4().hex,
         "plan_digest": manifest["digest"],
+        "gpus": gpus,
+        "execution": str(execution) if execution else None,
+        "execution_digest": execution_record["digest"] if execution_record else None,
     }
     try:
         lease.mkdir()
@@ -343,13 +350,13 @@ def run(control, attempt, gpus):
                 index = read(Path(selection["bundle"]) / "index.json")
                 shards = partition(index, selection["generation_case_ids"], gpus)
                 for model in selection["generation_models"]:
-                    with ThreadPoolExecutor(max_workers=8) as pool:
+                    with ThreadPoolExecutor(max_workers=len(gpus)) as pool:
                         futures = [
                             pool.submit(generate, selection, model, gpu, shards[gpu])
                             for gpu in gpus
                         ]
                         try:
-                            for future in futures:
+                            for future in as_completed(futures):
                                 future.result()
                         except BaseException:
                             halt(None, None)

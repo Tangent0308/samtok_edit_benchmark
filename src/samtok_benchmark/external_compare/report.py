@@ -128,6 +128,9 @@ def audit(selection, plan, native):
             "status": record["status"],
             "record": str(path),
             "record_sha256": sha256_file(path),
+            "score_status": score["status"] if stage == "edit" else None,
+            "score_error": score.get("error") if stage == "edit" else None,
+            "score_record": str(score_path) if stage == "edit" else None,
             **{
                 k: record.get(k)
                 for k in (
@@ -164,10 +167,23 @@ def audit(selection, plan, native):
                 / 2**30,
             }
         )
+    failures = [r for r in records if r["status"] != "completed"]
+    failures += [
+        {
+            "model": r["model"],
+            "case_id": r["case_id"],
+            "stage": "metrics",
+            "status": r["score_status"],
+            "error": r["score_error"],
+            "record": r["score_record"],
+        }
+        for r in records
+        if r.get("score_status") == "score_failed"
+    ]
     return {
         "records": records,
         "costs": costs,
-        "failures": [r for r in records if r["status"] != "completed"],
+        "failures": failures,
     }
 
 

@@ -24,19 +24,58 @@
 
 本机 0–7 卡仅在每卡现有占用约 1.6 GiB、可用显存至少 70,000 MiB 时使用；不结束已有进程。采用独立本机入口复用冻结 worker，只有调度代码负责本次八卡授权。CPU 评分与下一模型生成重叠。
 
-## 当前状态
+## 完成状态与结果
 
-样本清单已经冻结：240 条请求，191 个独立源图簇，未抽到已知空 mask。本机调度复用冻结生成/评分模块；CPU 抽样、链依赖、GPU 授权及原有输入合同测试已通过。已于 2026-11-09 04:11 UTC 启动 `local001`；三个数据集的只读预检均通过，8 卡已进入 CompBench 的 SITEdit 生成。原生分数和最终配对统计尚未完成。
+已于 2026-11-09 06:39 UTC 完成生成、原生评分和配对统计；全部 240 条请求 × 两方法有效，生成/评分失败为 0，付费 API 调用为 0。本轮 GPU 任务已全部退出。
 
-固定清单：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/compbench/SELECTION.json`；digest：`ab8e28826dc9617f6af78b296bf6dc84ebcd1a04e139f22f61ded4dd2277340e`。
+本 benchmark 的 25 项预设主比较中，SITEdit 有 24 项点估计更好；12 项同时满足改善量 95% 区间下界 > 0 和跨三个 benchmark 共 53 项比较的 Holm 校正 p < 0.05。计数仅用于完整陈述结果，不是新的综合分。
 
-入口：`scripts/external_pair.py prepare / freeze / run`。统一计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/PLAN.json`，运行状态为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/STATUS.json`。`run` 必须用新的 attempt；复用已完成终态，不自动放行已受理未完成记录。
+| 任务组 | 指标 | SITEdit | Base | 改善量（95% CI） | Holm p |
+|---|---|---:|---:|---:|---:|
+| Local Editing | LC-T ↑ | 21.4605 | 20.7794 | +0.6811 [+0.1151, +1.2374] | 0.3480 |
+| Local Editing | LC-I ↑ | 0.8497 | 0.8175 | +0.0322 [+0.0177, +0.0468] | 0.0078 |
+| Local Editing | PSNR ↑ | 29.8751 | 26.1089 | +3.7662 [+2.2566, +5.2390] | 0.0053 |
+| Local Editing | SSIM ↑ | 0.9552 | 0.8748 | +0.0804 [+0.0524, +0.1099] | 0.0053 |
+| Local Editing | LPIPS ↓ | 0.0448 | 0.0583 | +0.0134 [-0.0023, +0.0264] | 0.9099 |
+| Multi-object Editing | LC-T ↑ | 20.8663 | 20.2354 | +0.6309 [+0.0844, +1.1905] | 0.4266 |
+| Multi-object Editing | LC-I ↑ | 0.8699 | 0.8537 | +0.0162 [-0.0043, +0.0365] | 1.0000 |
+| Multi-object Editing | PSNR ↑ | 27.1897 | 27.1803 | +0.0094 [-1.4886, +1.4843] | 1.0000 |
+| Multi-object Editing | SSIM ↑ | 0.9375 | 0.8784 | +0.0591 [+0.0191, +0.1043] | 0.1122 |
+| Multi-object Editing | LPIPS ↓ | 0.0636 | 0.0566 | -0.0069 [-0.0252, +0.0100] | 1.0000 |
+| Implicit Reasoning | LC-T ↑ | 20.0527 | 19.0943 | +0.9584 [-0.2096, +2.2177] | 1.0000 |
+| Implicit Reasoning | LC-I ↑ | 0.8905 | 0.8365 | +0.0540 [+0.0245, +0.0832] | 0.0350 |
+| Implicit Reasoning | PSNR ↑ | 32.2221 | 27.3069 | +4.9152 [+2.3902, +7.4674] | 0.0053 |
+| Implicit Reasoning | SSIM ↑ | 0.9780 | 0.8788 | +0.0992 [+0.0616, +0.1451] | 0.0053 |
+| Implicit Reasoning | LPIPS ↓ | 0.0181 | 0.0634 | +0.0453 [+0.0311, +0.0604] | 0.0053 |
+| Multi-turn (Turn 1) | LC-T ↑ | 21.2605 | 21.0073 | +0.2532 [-0.5570, +1.0412] | 1.0000 |
+| Multi-turn (Turn 1) | LC-I ↑ | 0.8493 | 0.8266 | +0.0227 [+0.0022, +0.0468] | 0.8215 |
+| Multi-turn (Turn 1) | PSNR ↑ | 29.8615 | 27.8633 | +1.9982 [-0.7660, +4.5481] | 1.0000 |
+| Multi-turn (Turn 1) | SSIM ↑ | 0.9687 | 0.8882 | +0.0805 [+0.0293, +0.1390] | 0.0114 |
+| Multi-turn (Turn 1) | LPIPS ↓ | 0.0304 | 0.0433 | +0.0129 [+0.0010, +0.0234] | 0.4060 |
+| Multi-turn (Turn 2) | LC-T ↑ | 21.7498 | 19.9060 | +1.8438 [+0.6030, +3.0830] | 0.1122 |
+| Multi-turn (Turn 2) | LC-I ↑ | 0.8557 | 0.7787 | +0.0771 [+0.0494, +0.1028] | 0.0053 |
+| Multi-turn (Turn 2) | PSNR ↑ | 24.9302 | 18.4308 | +6.4995 [+4.9631, +7.9520] | 0.0053 |
+| Multi-turn (Turn 2) | SSIM ↑ | 0.9125 | 0.5086 | +0.4039 [+0.3480, +0.4627] | 0.0053 |
+| Multi-turn (Turn 2) | LPIPS ↓ | 0.0745 | 0.2714 | +0.1968 [+0.1569, +0.2441] | 0.0053 |
 
+改善量的正值统一表示 SITEdit 更好；低优指标采用 Base − SITEdit，高优指标采用 SITEdit − Base。区间为逐项 95% 区间，统计显著性采用预设 53 项主比较的单侧配对源图置换检验及 Holm 校正。分组内样本量与方法均值区间见完整报告。
 
-统计和可视化只读取生成后的原生记录，源码位于 `external_pair/{statistics,report,preview}.py`。已测试官方权重、多轮同源绑定、固定 53 项比较族与校正、配对 bootstrap 的确定性。当前运行从已提交的独立快照执行，后续分析工具的增加不会改变生成源码。
+### 结果分析
 
-## 2026-11-09 05:57 UTC 运行检查
+- 稳定提升集中在单目标局部编辑、隐式指令以及连续编辑第 2 轮。第 2 轮的 LC-I、PSNR、SSIM、LPIPS 均通过统一校正，说明在使用自身第一轮输出继续编辑的条件下，优势仍然保留。
+- 多目标组的各项结果应分别阅读：4/5 项点估计朝 SITEdit 改善，LPIPS 的点估计由 Base 更好；该组各项均未通过本轮统一校正。
+- 正式结论对应这 240 条固定新请求；action/location/view 未纳入，本轮结果不代表 3,481 条全量成绩。
 
-CompBench 两方法各 240/240 出图和评分完成；Inter-Edit 两方法各 200/200 出图和评分完成；均无失败。Omni IIE 正在八卡生成 SITEdit，随后生成 Base。对已完成的两个 benchmark 先行复算了原生聚合与配对区间；53 项主比较的统一 Holm 校正等待 Omni 完成。所有新清单的源图像素核验通过，分组与冻结计划一致。
+### 报告、可视化与复现
 
-最终 `report/PAIRED_REPORT.json` 与 `report/REPORT.md` 自动写入各自 `validation_20261109` 根；`scripts/plot_external_pair.py` 读取最终报告绘制全部主比较的效应/区间图，保留指标原单位。全部真实样本对照图在 `visualization_tmp/ExternalValidation_20261109/<benchmark>/INDEX.md`；图中不使用结果筛选。
+- [完整逐项报告](/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_compbench/validation_20261109/report/REPORT.md)
+- [配对统计 JSON](/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_compbench/validation_20261109/report/PAIRED_REPORT.json)；SHA256：`5f31ac3b27114d799bdc653ea2acbb875cfce420b6915011ce7a204f2fef6b9c`。
+- [所有固定样本的真实输入输出对照](/opt/tiger/tanyue/visualization_tmp/ExternalValidation_20261109/compbench/INDEX.md)（按 case id 排序，无结果筛选）。
+- [完整图册 HTML](/opt/tiger/tanyue/visualization_tmp/ExternalValidation_20261109/compbench/index.html)
+- 清单：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/compbench/SELECTION.json`；原生评分与生成：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_compbench/validation_20261109`。
+- 生成源码提交：`1a9074dff51fc55a8db9bc106df13d8e8242b161`；计划 digest：`2366505216a28de87226e330cb8f097fc59b6f4e36e1ccc1866952497a71e075`。
+- [像素级源图核验](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/audit/SOURCE_PIXELS.json)：分组与事前清单一致。
+
+![CompBench 全部主比较的配对效应图](/opt/tiger/tanyue/visualization_tmp/ExternalValidation_20261109/compbench/PAIRED_EFFECTS.png)
+
+图像文件保留在实验可视化目录，不提交模型输出或数据到 Git。`scripts/external_pair_report.py` 复算统计，`scripts/plot_external_pair.py` 渲染图表；两者不调用推理或 API。

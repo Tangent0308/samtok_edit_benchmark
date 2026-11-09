@@ -19,6 +19,7 @@ from samtok_benchmark.external_full.coordination import atomic
 from samtok_benchmark.external_full.launch import select_cases
 from samtok_benchmark.io import digest, sha256_file
 from .plan import verify_selection
+from .execution import DevicePool
 
 
 def partition(index, case_ids, gpus):
@@ -94,6 +95,7 @@ def run(control, attempt, gpus, execution=None):
     atomic(lease / "OWNER.json", owner)
     immutable(logs / "OWNER.json", owner)
     stop = threading.Event()
+    devices = DevicePool(gpus) if execution_record else None
     lock = threading.RLock()
     active, progress = {}, {}
     started = time.monotonic()
@@ -231,20 +233,25 @@ def run(control, attempt, gpus, execution=None):
                 continue
             for stage in stages(model):
                 runtime = "generation"
-                label = f"{selection['benchmark']}-{model}-gpu{gpu}-wave{wave}-{stage}"
+                output = Path(selection["results_root"]) / "run"
+                reused = sum((output / model / stage / cid / "result.json").exists() for cid in ids)
+                physical = (
+                    devices.acquire(stop)
+                    if devices and reused < len(ids)
+                    else (gpu if not devices else None)
+                )
+                label = f"{selection['benchmark']}-{model}-slot{gpu}-gpu{physical or 'cpu'}-wave{wave}-{stage}"
                 scratch = Path("/tmp/ifbench/external-comparison") / attempt / label
                 scratch.mkdir(parents=True, exist_ok=False)
                 paths = [str(repo / "src")]
                 env = dict(
                     environment,
-                    CUDA_VISIBLE_DEVICES=gpu,
+                    CUDA_VISIBLE_DEVICES=physical or "",
                     PYTHONPATH=os.pathsep.join(paths),
-                    MASTER_PORT=str(43000 + int(gpu)),
+                    MASTER_PORT=str(43000 + int(physical or gpu)),
                     TORCHINDUCTOR_CACHE_DIR=str(scratch / "inductor"),
                     TRITON_CACHE_DIR=str(scratch / "triton"),
                 )
-                output = Path(selection["results_root"]) / "run"
-                reused = sum((output / model / stage / cid / "result.json").exists() for cid in ids)
                 command = [
                     cfg["runtime"][runtime],
                     "-u",
@@ -263,19 +270,24 @@ def run(control, attempt, gpus, execution=None):
                     "--case-ids",
                     *ids,
                 ]
-                execute(
-                    label,
-                    command,
-                    env,
-                    {
-                        "benchmark": selection["benchmark"],
-                        "model": model,
-                        "stage": stage,
-                        "gpu": gpu,
-                        "expected": len(ids),
-                        "terminal_on_entry": reused,
-                    },
-                )
+                try:
+                    execute(
+                        label,
+                        command,
+                        env,
+                        {
+                            "benchmark": selection["benchmark"],
+                            "model": model,
+                            "stage": stage,
+                            "gpu": physical,
+                            "logical_shard": gpu,
+                            "expected": len(ids),
+                            "terminal_on_entry": reused,
+                        },
+                    )
+                finally:
+                    if devices and physical is not None:
+                        devices.release(physical)
 
     def scoring(selection, model):
         cfg = read(selection["configuration"])
@@ -344,7 +356,7 @@ def run(control, attempt, gpus, execution=None):
                 dict(environment, CUDA_VISIBLE_DEVICES="", PYTHONPATH=""),
             )
         state["phase"] = "generation-and-scoring"
-        with ThreadPoolExecutor(max_workers=1) as metrics_pool:
+        with ThreadPoolExecutor(max_workers=2 if execution_record else 1) as metrics_pool:
             metrics = []
             for selection in jobs:
                 index = read(Path(selection["bundle"]) / "index.json")

@@ -1,6 +1,6 @@
 # Four-card continuation (2026-11-09)
 
-The user now requests four local GPUs for this same fixed-cohort comparison. Use idle GPUs 0–3 and leave GPUs 4–7 untouched. GPU 6 acquired an unrelated external process during run001, causing a RePlan load-time OOM before admission of three requests. Preserve the 717 completed new edits, all original results, PLAN.json and scientific configuration. Seal a separate scheduling execution record, reuse completed receipts, and run only not-admitted work. Do not kill the foreign process.
+The user now requests four local GPUs for this same fixed-cohort comparison. Use at most four idle GPUs from the user-authorized local 0–7 set; recheck before each uncached stage and record actual devices. Do not occupy a card with unrelated model processes. GPU 6 acquired an unrelated external process during run001, causing a RePlan load-time OOM before admission of three requests. Preserve the 717 completed new edits, all original results, PLAN.json and scientific configuration. Seal a separate scheduling execution record, reuse completed receipts, and run only not-admitted work. Do not kill the foreign process.
 
 # Fixed-cohort additional baseline authorization (2026-11-09)
 

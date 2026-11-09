@@ -1,6 +1,7 @@
 """Monitor the existing run and finish CPU reports without changing any model process."""
 
 import argparse
+import os
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -14,12 +15,13 @@ from samtok_benchmark.external_pair.preview import render
 from samtok_benchmark.external_pair.report import run
 
 
-def main(control, attempt):
+def main(control, attempt, analysis_id=None):
     control = Path(control)
     plan = read(control / "PLAN.json")
     attempt_dir = control / "attempts" / attempt
-    report_dir = control / "analysis" / attempt
+    report_dir = control / "analysis" / (analysis_id or attempt)
     report_dir.mkdir(parents=True, exist_ok=False)
+    immutable(report_dir / "OWNER.json", {"pid": os.getpid(), "attempt": attempt})
     selections = [(Path(e["selection"]), read(e["selection"])) for e in plan["benchmarks"]]
     galleries = {}
     log = (report_dir / "MONITOR.jsonl").open("x")
@@ -91,4 +93,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--control", required=True)
     parser.add_argument("--attempt", required=True)
+    parser.add_argument("--analysis-id")
     main(**vars(parser.parse_args()))

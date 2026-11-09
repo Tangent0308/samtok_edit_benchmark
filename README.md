@@ -2,6 +2,7 @@
 
 `eval-interedit` 实现八种方法的四机全量评测，每方法 6,250 条公开请求。正式作业由用户提交，当前没有本轮全量成绩。
 
+- [固定扩大子集：多方法结果与分析](docs/EXTERNAL_SUBSET_RESULTS.md)
 - [四机入口、完整评测方式、验证与续跑](docs/INTEREDIT_FOUR_NODE.md)
 - [已完成的 20 条 pilot 结果](docs/INTEREDIT_PILOT20_RESULTS.md)
 - [原生数据和评分协议](docs/INTEREDIT_EVALUATION.md)

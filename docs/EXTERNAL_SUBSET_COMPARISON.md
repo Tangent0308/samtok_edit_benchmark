@@ -32,7 +32,7 @@
 - 新结果：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_<benchmark>/comparison_20261109/`。
 - 可视化：`/opt/tiger/tanyue/visualization_tmp/ExternalComparison_20261109/`。
 
-统计结论以最终逐条记录为准，此处不预填成绩。
+本轮已于 2026-11-09 10:13 UTC 完成：三张完整对比表、分析与原始路径见 [EXTERNAL_SUBSET_RESULTS.md](EXTERNAL_SUBSET_RESULTS.md)。全部 2,800 张方法输出有效计分；原两方法的均值和区间逐项复算完全一致。
 
 冻结生成源码：`169be537f0f69a73701a273cea84df89dc60ad7f`；新计划 digest：`ecc7a5247d13c5798e830dc4fbba909cc03ab28cb1ad386eeb1d86ce1c00c3d9`。`scripts/external_compare.py` 管理新增方法的原生 worker，`scripts/finalize_external_compare.py` 只监控与生成 CPU 报告，不改推理进程。
 
@@ -43,3 +43,5 @@ run001 完成 717 张新增图像后，GPU 6 在 RePlan 第二轮编辑模型加
 续跑保持原 PLAN.json、清单、方法配置、原生生成/评分源码和结果根不变；只发布 `executions/four-gpu.json` 调度记录，绑定原计划 SHA、当前调度源码和 GPU 0–3。已完成记录核验复用，其余 803 条首次推理。并发 worker 的致命错误改为即时检查，随后在当前请求完成后协调退出。没有结束或改动其他任务。
 
 run002-four 在任何新增请求受理前，被 GPU 2 的新增外部占用触发空闲检查而退出。run003-four-idle 改为最多四卡的空闲设备池：每个未缓存阶段重新检查空闲显存并记录实际卡号，已完成阶段仅做 CPU 核验，不占 GPU；不结束其他进程。两个模型的 CPU 评分可以并行，每个模型仍是原先四个分片、每进程四线程，评分公式/参数不变。新调度记录位于 `executions/four-gpu-idle.json`，此前两个 attempt 和执行记录全部保留。
+
+2026-11-09 10:13 UTC：run003-four-idle 正常结束；所有本轮进程退出，评分与最终核验全部通过。原计划 digest 不变。

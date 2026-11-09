@@ -38,3 +38,8 @@ API 原始答案文件：0；异常文件：0。
 ## 2026-11-09 扩大样本验证完成
 
 本轮固定新样本的两方法生成、官方客观评分、源图配对 bootstrap/置换检验及 53 项主比较 Holm 校正全部完成，生成/评分失败为 0，API 调用为 0。结果表、分析、数据路径、SHA256 和全部样例图入口见 [INTEREDIT_VALIDATION.md](INTEREDIT_VALIDATION.md)。三组 GPU 任务均已退出；未改四机包与此前结果。
+
+
+## 2026-11-09：固定子集多方法比较完成
+
+新增 FLUX.2 Klein-9B、MICE（全部三个子集）和 RePlan（CompBench），复用同一批 SITEdit/Base 输出。全部 2,800 张方法输出已有效计分，失败为 0；原结果、公开输入、配置与 native scorer 均未修改。按用户最新要求，剩余任务最多四卡续跑，CPU 评分并行。表格、分析、恢复记录与文件位置见 [EXTERNAL_SUBSET_RESULTS.md](EXTERNAL_SUBSET_RESULTS.md)；当前没有启动四机全量评测。

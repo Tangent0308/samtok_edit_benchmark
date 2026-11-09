@@ -82,3 +82,47 @@ def test_paired_source_bootstrap_preserves_low_high_and_weights():
         assert row["benefit_delta"] == pytest.approx(sign * 0.2)
         assert row["benefit_CI95"] == pytest.approx([sign * 0.2] * 2)
         assert row["paired_source_clusters"] == 12
+
+
+def test_inter_missing_scores_use_joint_pairs_without_zero_fill():
+    selected, per_case = [], []
+    for i in range(20):
+        selected.append(
+            {"case_id": str(i), "cluster": str(i), "task": "Add", "turn": 0, "language": "English"}
+        )
+        for model in ("sitedit", "qwen21"):
+            status = "failed" if i == 0 and model == "sitedit" else "completed"
+            per_case.append(
+                {
+                    "case_id": str(i),
+                    "task": "Add",
+                    "language": "English",
+                    "model": model,
+                    "status": status,
+                    "metrics": {k: float(i + (model == "qwen21")) for k in LABELS["interedit"]}
+                    if status == "completed"
+                    else None,
+                }
+            )
+    report = {
+        "case_ids": [r["case_id"] for r in selected],
+        "models": ["sitedit", "qwen21"],
+        "per_case": per_case,
+        "rows": {},
+    }
+    for model in report["models"]:
+        rs = [r for r in per_case if r["model"] == model]
+        report["rows"][model] = {
+            g: native_aggregate(rs, LABELS["interedit"], {})
+            for g in ("all", "task/Add", "language/English")
+        }
+    result = analyze(
+        "interedit", {"case_ids": report["case_ids"], "rows": selected}, report, repetitions=200
+    )
+    row = result["rows"][0]
+    assert row["expected"] == 20 and row["paired_scored"] == 19
+    assert row["models"]["sitedit"]["mean"] == 10
+    assert row["models"]["qwen21"]["mean"] == 10.5
+    assert row["models"]["qwen21"]["paired_mean"] == 11
+    assert row["benefit_delta"] == 1
+    assert row["benefit_CI95"] == pytest.approx([1.0, 1.0])

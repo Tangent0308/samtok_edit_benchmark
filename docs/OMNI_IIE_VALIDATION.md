@@ -26,8 +26,11 @@
 
 ## 当前状态
 
-样本清单已经冻结：200 条请求，100 个独立源图簇，未抽到已知空 mask。本机调度复用冻结生成/评分模块；CPU 抽样、链依赖、GPU 授权及原有输入合同测试已通过。准备启动本次八卡运行。
+样本清单已经冻结：200 条请求，100 个独立源图簇，未抽到已知空 mask。本机调度复用冻结生成/评分模块；CPU 抽样、链依赖、GPU 授权及原有输入合同测试已通过。已于 2026-11-09 04:11 UTC 启动 `local001`；三个数据集的只读预检均通过，8 卡已进入 CompBench 的 SITEdit 生成。原生分数和最终配对统计尚未完成。
 
 固定清单：`/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/omni_iie/SELECTION.json`；digest：`dcaf4ed38b2804ae6b5ce473960248d404d9993ade7653e011a10d6bc29b750e`。
 
 入口：`scripts/external_pair.py prepare / freeze / run`。统一计划为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/PLAN.json`，运行状态为 `/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_validation_20261109/STATUS.json`。`run` 必须用新的 attempt；复用已完成终态，不自动放行已受理未完成记录。
+
+
+统计和可视化只读取生成后的原生记录，源码位于 `external_pair/{statistics,report,preview}.py`。已测试官方权重、多轮同源绑定、固定 53 项比较族与校正、配对 bootstrap 的确定性。当前运行从已提交的独立快照执行，后续分析工具的增加不会改变生成源码。

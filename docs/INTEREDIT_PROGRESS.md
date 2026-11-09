@@ -30,3 +30,7 @@ API 原始答案文件：0；异常文件：0。
 ## 2026-11-08：确认空 mask 策略并发布
 
 用户确认六个官方空 mask 对全部八方法一致记为 data_input_invalid/N/A。配置固定完整 6,250 条应评清单及 6,244 条推理请求，公开输入字节、模型设置和评分实现均不变。本轮仅执行 CPU 核验与 READY 发布，不启动正式作业。
+
+## 2026-11-09 独立扩大样本验证
+
+用户确认本机八卡，仅 SITEdit 与 Qwen-Image-2.1，采用官方客观指标。已冻结新样本并与旧 pilot 按源图分离，详见 [INTEREDIT_VALIDATION.md](INTEREDIT_VALIDATION.md)。不改四机包及已有结果。

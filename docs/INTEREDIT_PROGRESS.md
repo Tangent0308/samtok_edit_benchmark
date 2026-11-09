@@ -34,3 +34,7 @@ API 原始答案文件：0；异常文件：0。
 ## 2026-11-09 独立扩大样本验证
 
 用户确认本机八卡，仅 SITEdit 与 Qwen-Image-2.1，采用官方客观指标。已冻结新样本并与旧 pilot 按源图分离，详见 [INTEREDIT_VALIDATION.md](INTEREDIT_VALIDATION.md)。不改四机包及已有结果。
+
+## 2026-11-09 扩大样本验证完成
+
+本轮固定新样本的两方法生成、官方客观评分、源图配对 bootstrap/置换检验及 53 项主比较 Holm 校正全部完成，生成/评分失败为 0，API 调用为 0。结果表、分析、数据路径、SHA256 和全部样例图入口见 [INTEREDIT_VALIDATION.md](INTEREDIT_VALIDATION.md)。三组 GPU 任务均已退出；未改四机包与此前结果。

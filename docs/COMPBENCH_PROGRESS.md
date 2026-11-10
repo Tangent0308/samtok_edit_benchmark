@@ -1,8 +1,8 @@
-# CompBench 小子集进度
+# CompBench 评测进度
 
 2026-11-08 扩展完成：20 条 / 方法，40/40 输出和全部可运行指标评分完成。结果见 [COMPBENCH_PILOT20_RESULTS.md](COMPBENCH_PILOT20_RESULTS.md)，方案与恢复记录见 [COMPBENCH_PILOT20.md](COMPBENCH_PILOT20.md)。原小子集记录保留如下。
 
-当前正在准备的 3,481 条全量评测见 [COMPBENCH_FULL_RUN.md](COMPBENCH_FULL_RUN.md)。以下仅为已完成的八条 pilot 记录。
+3,481 条全量五方法结果见 [COMPBENCH_FULL_RESULTS.md](COMPBENCH_FULL_RESULTS.md)。以下保留此前 pilot 和部署记录。
 
 2026-11-07：8 条 × 2 方法已全部生成和评分，16/16 成功。前两条完成端到端冒烟后复用，剩余六条各仅生成一次。CPU 合同测试通过，新增 Python 通过 Ruff；全部案例对照已经生成。
 
@@ -34,3 +34,11 @@
 ## 2026-11-09：五方法全量四机入口
 
 沿用 240 条子集的 SITEdit、Qwen-Image-2.1、RePlan、MICE、FLUX.2 Klein-9B，准备 4 worker × 8 H100 的完整 3,481 条评测。新入口、预算和续跑方式见 [COMPBENCH_FOUR_NODE.md](COMPBENCH_FOUR_NODE.md)。16 项 CPU 测试通过，四个分片的全量 CPU 资产预检全部通过（871/870/870/870 条）；21 个冻结生成源码文件与子集相同。本次不启动 start.sh、GPU 或付费 API；用户提交正式作业。新包、结果根、代码发布 SHA 见 NAS 包外交接。旧包和全部原结果保留。
+
+## 2026-11-10：五方法全量与 GPT 补判完成
+
+四机 run001 于 11-09 21:39 UTC 完成，实际墙钟 5 小时 12 分钟。五方法各 3,481 张，17,405/17,405 生成成功；16,425/16,425 客观评分完成。原始 980 次 GPT 请求中 53 次被资源池以 429/-4302 拒绝，均没有答案文件。
+
+用户于 11-10 明确授权补齐。独立补判层串行追加 59 次请求（53 个正常答案、6 次资源池拒绝），于 03:10 UTC 补齐 53/53；消息哈希与原 admission 完全一致。所有 17,352 条原有效逐图记录和 25 行客观分组结果保持不变，原始报告 SHA 未变化。合并复算、原始响应解析与身份绑定检查全部通过。
+
+最终五方法表格、协议、完整覆盖率、分析、耗时、数据路径及复现信息见 [COMPBENCH_FULL_RESULTS.md](COMPBENCH_FULL_RESULTS.md)。正式补判与合并根为 `experiments2/SAMTokEdit/external_compbench/full5_20261109_vlm_rejudge_20261110`；原始运行包及正式记录保留，不重发 READY。

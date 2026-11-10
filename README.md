@@ -1,7 +1,8 @@
 # CompBench · SITEdit and IF-Bench baselines
 
-`eval-compbench` 当前提供五种方法的四机全量评测，每方法 3,481 条公开请求。正式作业由用户提交，当前没有本轮全量成绩。
+`eval-compbench` 当前提供五种方法的四机全量评测，每方法 3,481 条公开请求。全量评测与用户授权的 GPT 429 补判已完成：17,405 张输出、16,425 条客观评分和 980 条 GPT 评分全部齐全。
 
+- [全量五方法结果、分析与补判核验](docs/COMPBENCH_FULL_RESULTS.md)
 - [固定扩大子集：多方法结果与分析](docs/EXTERNAL_SUBSET_RESULTS.md)
 - [四机入口、完整评测方式、验证与续跑](docs/COMPBENCH_FOUR_NODE.md)
 - [已完成的 20 条 pilot 结果](docs/COMPBENCH_PILOT20_RESULTS.md)

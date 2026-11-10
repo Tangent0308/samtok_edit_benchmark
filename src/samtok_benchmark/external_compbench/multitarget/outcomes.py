@@ -75,8 +75,13 @@ def _check_units(row, native):
 
 
 def _check_edit(units, edit):
-    placement = edit.get("placement") or {}
-    if [u.get("id") for u in placement.get("units", [])] != [u["id"] for u in units]:
+    placement = edit.get("placement")
+    if placement is None:
+        # The native renderer records no placement when Pass1 returned no valid code for
+        # any unit; S2 then runs the numbered template on text alone (a method outcome).
+        if any(u["token"] for u in units):
+            return "S2 placement is missing although Pass1 returned region codes"
+    elif [u.get("id") for u in placement.get("units", [])] != [u["id"] for u in units]:
         return "S2 placement does not list every Pass1 unit in order"
     prompt = (edit.get("native") or {}).get("conditioning_prompt") or ""
     lines = prompt.split("\n")
@@ -84,10 +89,12 @@ def _check_edit(units, edit):
         line = next((x for x in lines if x.startswith(f"U{i}: ")), None)
         if line is None:
             return f"S2 prompt has no line for U{i}"
-        if unit["token"] and unit["token"] not in line:
-            return f"U{i} region code is not on its own instruction line"
-        others = [u["token"] for u in units if u["token"] and u["id"] != unit["id"]]
-        if any(t in line for t in others):
+        if unit["token"] and line.count(unit["token"]) != 1:
+            return f"U{i} region code is not on its own instruction line exactly once"
+        # Pass1 may legitimately return the same span for two units; only a code that is
+        # not this unit's own may never appear on its line.
+        foreign = {u["token"] for u in units if u["token"]} - {unit["token"]}
+        if any(t in line for t in foreign):
             return f"U{i} line carries another unit's region code"
     if not edit.get("output_image"):
         return "S2 record has no output image"

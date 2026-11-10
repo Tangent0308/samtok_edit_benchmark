@@ -417,3 +417,42 @@ def test_smoke_without_any_completed_request_stops(tmp_path):
     assert summary["inference_seconds"] == [] and summary["completed"] == 0
     with pytest.raises(RuntimeError, match="No smoke request completed"):
         smoke_gate(summary)
+
+
+@pytest.mark.parametrize("pattern", ["same_code_for_both_units", "no_code_text_template"])
+def test_native_pass1_outcomes_still_complete(tmp_path, pattern):
+    """Formal r2 run: identical spans or text-only fallback are method outcomes, not faults."""
+    from samtok_benchmark.external_compbench.multitarget.outcomes import summarize
+
+    plan = _plan()
+    a = plan["cases"][0]
+    if pattern == "same_code_for_both_units":
+        units = [
+            {"id": f"U{i}", "instruction": s, "token": SPANS[0], "source": "pass1"}
+            for i, s in enumerate(a["units"], 1)
+        ]
+        _completed(tmp_path, a, units=units)
+    else:
+        units = [
+            {"id": f"U{i}", "instruction": s, "token": None, "source": "fallback_text"}
+            for i, s in enumerate(a["units"], 1)
+        ]
+        _completed(tmp_path, a, units=units)
+        record = tmp_path / "run/sitedit/edit/a/result.json"
+        edit = json.loads(record.read_text())
+        _write(record, {**edit, "placement": None})
+    summary = summarize(plan, tmp_path / "run", tmp_path / "scores", ["a"])
+    assert summary["counts"] == {"completed": 1}
+    assert summary["cases"][0]["coded_units"] == (2 if pattern.startswith("same") else 0)
+
+
+def test_missing_placement_with_codes_is_a_fault(tmp_path):
+    from samtok_benchmark.external_compbench.multitarget.outcomes import summarize
+
+    plan = _plan()
+    a = plan["cases"][0]
+    _completed(tmp_path, a)
+    record = tmp_path / "run/sitedit/edit/a/result.json"
+    _write(record, {**json.loads(record.read_text()), "placement": None})
+    summary = summarize(plan, tmp_path / "run", tmp_path / "scores", ["a"])
+    assert summary["counts"] == {"engineering_failure": 1}

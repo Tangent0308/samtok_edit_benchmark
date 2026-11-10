@@ -81,3 +81,12 @@ run002_remote 在远端 n124-174-004 的固定冒烟中停止，正式 144 条�
 以下全部未变：144 条 case、141 条确定性拆分规则、3 条原生枚举方案及其提示词、权重（Pass1 step 2000、S2 adapter 16000）、raw SAMTok TE、40 步、token guidance 2、seed 42、官方五项客观评分、合并方式。没有任何按分数选择的调参。新增 CPU 测试覆盖原生失败放行、各类工程故障停止、逐单元区域码绑定，以及只用成功样本统计耗时和显存。
 
 旧控制目录 `compbench_multitarget_20261110/`（PLAN、SEAL、run001、run002_remote 的全部记录）保持只读。新修订包使用独立控制目录 `.ifbench-tmp/compbench_multitarget_20261110_r2/`、结果根 `external_compbench/multitarget_20261110_r2/`，以及新 attempt。
+
+### r2 审计修正（run001_r2 之后）
+
+run001_r2 的生成和评分全部正常，但 c9c58d7 的审计把 12 条已完成并已评分的请求误判为工程故障，并因此把阶段标成了 `finished_with_engineering_failures`。这 12 条分两类，都是原生方法输出：
+
+- 6 条 Pass1 给 U1 和 U2 返回了相同的区域码，每一行带的是自己的码；
+- 6 条 Pass1 对所有单元都没有返回有效区域码，原生渲染器按设计用纯文本编号模板，placement 为空。
+
+本次修正只改审计判断，不改生成、评分、合并或任何不可变记录：相同区域码只要逐行绑定各自单元即视为完成；所有单元都没有区域码时允许 placement 为空，有区域码却缺 placement 仍判为工程故障。新增 CPU 测试覆盖这两种情况。用修正后的审计重新核对正式记录，结果为 141 条完成、3 条原生枚举失败、0 条工程故障。原 `OUTCOMES.json` 与 `DONE.json` 原样保留，复核结果另存。

@@ -1,5 +1,16 @@
 # CompBench 评测进度
 
+## 2026-11-10：独立多目标 E/P/Q 补充评测入口
+
+固定五方法 × 全部 144 条多目标指令，复用最新 720 张输出，原官方指标不变。
+方案、运行方式和局限见 [COMPBENCH_SUPPLEMENTARY_JUDGE.md](COMPBENCH_SUPPLEMENTARY_JUDGE.md)。
+本机 TP4 固定 20 个绑定全部返回合法评分，用时 366.76 秒；续跑验证没有新增调用。
+目视检查发现 1 个明确误判及 1 个数量判断疑点，证据保留，不改提示词或原分数。
+CPU 验证和独立运行时归档校验完成。准备单机 TP8/EP、batch=16 的 NAS 入口，由用户在另一台机器提交；
+当前正式补充结果尚未生成。本轮没有新出图或 API 调用，也未修改任何旧结果/冻结包。
+
+---
+
 2026-11-08 扩展完成：20 条 / 方法，40/40 输出和全部可运行指标评分完成。结果见 [COMPBENCH_PILOT20_RESULTS.md](COMPBENCH_PILOT20_RESULTS.md)，方案与恢复记录见 [COMPBENCH_PILOT20.md](COMPBENCH_PILOT20.md)。原小子集记录保留如下。
 
 3,481 条全量五方法结果见 [COMPBENCH_FULL_RESULTS.md](COMPBENCH_FULL_RESULTS.md)。以下保留此前 pilot 和部署记录。

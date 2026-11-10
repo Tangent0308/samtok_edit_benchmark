@@ -1,3 +1,16 @@
+# Supplementary CompBench whole-instruction Judge (2026-11-10)
+
+The user authorized a separate E/P/Q diagnostic on all 144 multi-object cases
+for SITEdit, Qwen2.1, RePlan, MICE and FLUX2 Klein-9B. Reuse the latest 720
+completed outputs; never regenerate or replace official objective scores.
+Follow docs/COMPBENCH_SUPPLEMENTARY_JUDGE.md. New code belongs only under
+external_compbench/vlm_judge and its new entry/tests. Freeze a method-blind
+whole-instruction rubric before inference: source, output, original public text,
+fixed image quadrants; no GT masks/targets/captions, native tokens or plans.
+Local smoke may use only idle GPUs 4–7 (TP4), with separate temporary scores.
+Prepare a NAS single-node TP8 package; the user starts the remote formal run.
+Do not invoke paid APIs or other GPU jobs. Preserve all existing packages/results.
+
 # Authorized nine-request post-hoc repair (2026-11-10)
 
 The user explicitly authorized deterministic syntax recovery for six fallback

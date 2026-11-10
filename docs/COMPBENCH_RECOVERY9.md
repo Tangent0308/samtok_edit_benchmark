@@ -39,7 +39,28 @@
   `DEBUG_AUDIT.json` 记录所有调试调用，`SELECTION.json` 在 S2 前固定采用的输入。
 - 新结果目录：
   `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_compbench/recovery9_20261110/`。
-  正在准备九条统一重新生成和原官方客观评分；完成状态以实际终态记录为准。
+  已于 2026-11-10 07:55 UTC 完成九条重新生成和原官方五项客观评分。
+- 结果核验：9/9 出图、9/9 评分，19 个区域码，零无 token 回退；其余 16,416 条
+  逐图记录与父报告逐项一致，375 个汇总字段独立重算一致。生成采用代码提交
+  `3d3523df880c2f399fd3018468ace165bedd9bb3`，相关 CPU 测试 32 项通过。
+- 三条枚举的图像观察：兔子和飞机的目标均已删除；黑鸭图仍误删后方白鸭并漏删
+  左侧黑鸭。因此该条恢复了生成和计分，但不能描述为语义修复成功。
+- 九条新记录整体纳入独立事后修复表；多目标分组为 144/144 已评分，SITEdit
+  五类客观结果共 3,285 条，其他模型与其余请求均未重跑或改动。
+
+## 结果与可视化
+
+- 完整五方法表：新结果目录下 `reports/run001/MERGED_REPORT.md` 与同名 JSON。
+- 九条原始评分：`reports/run001/nine/REPORT.json`。
+- 独立核验：`reports/run001/VERIFICATION.json`。
+- 全部九条对照图：
+  `/opt/tiger/tanyue/visualization_tmp/CompBench_Recovery9_20261110/PREVIEWS.md`，
+  每条并列源图、Qwen-Image-2.1、修复前 SITEdit、修复后 SITEdit。
+- 汇总 JSON SHA256：
+  `cc8b1a46eabef1b772d655600c691b23084bfb110a9387a4c11d889bc054f5c5`。
+
+上述结果属于用户授权的事后修复。所有格式错误、未采用的 prompt、额外原生调用
+和黑鸭的语义问题均保留，不能将其写成没有额外调试的原始冻结评测。
 
 ## 复现入口
 

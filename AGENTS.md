@@ -1,3 +1,15 @@
+# Authorized supplementary Judge syntax recovery (2026-11-10)
+
+The user explicitly authorized repairing failed supplementary Judge answers on
+this machine. Implement a separate CPU-only overlay under external_compbench/epq_repair.
+Recover only unambiguous JSON syntax from the existing complete raw response;
+do not invent scores, change evidence, rejudge valid answers or modify frozen
+vlm_judge code, the published package, original receipts or original reports.
+Apply one method-independent rule to all failures; preserve rejects as missing.
+Recompute paired statistics and verify all unaffected rows and bootstrap indices
+against the original report. This authorization supersedes the earlier rule
+requiring a separate approval before recovery, only for this repair task.
+
 # Supplementary CompBench whole-instruction Judge (2026-11-10)
 
 The user authorized a separate E/P/Q diagnostic on all 144 multi-object cases

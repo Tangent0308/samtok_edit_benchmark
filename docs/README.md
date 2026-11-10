@@ -2,7 +2,8 @@
 
 ## MIRA 外部评测（eval-mira）
 
-- [完整评测文档](MIRA_EVALUATION.md)：每个模型、Judge、两套结果、结果路径、实际图例与 SITEdit 分析。
+- **[当前 R2@1000 全量结果](MIRA_R2.md)**：200 张、六行对比、配对差值、权重核验和结果路径。
+- [完整评测文档](MIRA_EVALUATION.md)：各模型推理、Judge、公共协议；v4 历史分析明确标注。
 - [运行手册](MIRA.md)：环境、数据、生成、评分和 CPU 复算命令。
 - [实际执行与协议审计](MIRA_FULL_RUN.md)：正式启动、原生调用核验、重合审计记录。
 - [RePlan 154 失败与恢复诊断](MIRA_REPLAN_FAILURE.md)：独立测试，不替换正式失败。

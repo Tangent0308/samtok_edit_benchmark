@@ -13,6 +13,7 @@ PAGES = [
     "AGENTS.md",
     "docs/README.md",
     "docs/MIRA_EVALUATION.md",
+    "docs/MIRA_R2.md",
     "docs/MIRA.md",
     "docs/MIRA_RESULTS.md",
     "docs/MIRA_FULL_RUN.md",

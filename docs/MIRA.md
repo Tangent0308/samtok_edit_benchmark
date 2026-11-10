@@ -1,8 +1,8 @@
 # MIRA 运行手册
 
-本页负责环境、命令与复现操作。**完整协议、每模型流程、Judge、两套结果、图例和 SITEdit 分析统一见 [MIRA_EVALUATION.md](MIRA_EVALUATION.md)**。实际正式启动与协议核验见 [MIRA_FULL_RUN.md](MIRA_FULL_RUN.md)，早期两例记录见 [MIRA_SMOKE.md](MIRA_SMOKE.md)，独立失败恢复见 [MIRA_REPLAN_FAILURE.md](MIRA_REPLAN_FAILURE.md)。
+本页负责环境、命令与复现操作。**当前 R2@1000 全量结果、权重配置、专用运行及恢复命令见 [MIRA_R2.md](MIRA_R2.md)**；公共协议、五种方法的原生流程及 Judge 见 [MIRA_EVALUATION.md](MIRA_EVALUATION.md)。实际启动与协议核验见 [MIRA_FULL_RUN.md](MIRA_FULL_RUN.md)，早期两例记录见 [MIRA_SMOKE.md](MIRA_SMOKE.md)，独立失败恢复见 [MIRA_REPLAN_FAILURE.md](MIRA_REPLAN_FAILURE.md)。
 
-200 图 × 五方法评测已完成：999 张输出全部评分，RePlan 154 生成失败。下面的新运行命令使用新目录；已结束的 `external_mira/run_001` 与原始评分保留为证据。
+原五行 200 图评测已完成：999 张输出全部评分，RePlan 154 生成失败。**11-10 新增 R2@1000 的 200/200 张已完成**，单独保存在 `external_mira/r2_20261110`。下面第 1–4 节的 `mira.json` 命令对应原五行（SITEdit v4）；R2 使用专用 [profile](../configs/external/mira_r2_1000.json) 和 [前台协调器](../scripts/run_mira_r2_full.py)，不要把默认 v4 配置当成 R2。
 
 ## 1. 环境与固定路径
 
@@ -102,7 +102,9 @@ export MIRA_AZURE_ENDPOINT=https://aidp-i18ntt-sg.tiktok-row.net/api/modelhub/on
 
 ## 5. CPU 分析与验证
 
-本次两套总体表由 `scripts/report_mira_audited.py` 复算，输入是已完成的正式 run、评分和重合子集，输出使用新的临时目录：
+当前六行对比由 `scripts/report_mira_r2.py` 直接读取原始逐图分数、验证绑定、复算均值与区间，核对已有完整报告；`scripts/audit_mira_r2.py` 检查 R2 checkpoint、200 张实际调用及可选 30 张 pilot 一致性。两者只写新临时目录，不启动 GPU/API，完整命令见 [R2 复现入口](MIRA_R2.md#7-代码组织与复现)。
+
+原五行的两套总体表由 `scripts/report_mira_audited.py` 复算，输入是已完成的正式 run、评分和重合子集，输出使用新的临时目录：
 
 ```bash
 python3 scripts/report_mira_audited.py \
@@ -115,8 +117,10 @@ python3 scripts/report_mira_audited.py \
 ```bash
 PYTHONPATH="$PWD/src:$MIRA_TMP/deps/sitedit-aa5a414/src" \
   python3 -m pytest -q tests/test_external_mira.py tests/test_mira_audited_report.py \
-  tests/test_mira_overlap.py tests/test_mira_replan_diagnostic.py tests/test_mira_analysis.py
-uv tool run ruff check scripts/analyze_mira_results.py scripts/check_docs.py tests/test_mira_analysis.py
+  tests/test_mira_overlap.py tests/test_mira_replan_diagnostic.py tests/test_mira_analysis.py \
+  tests/test_mira_r2.py
+uv tool run ruff check scripts/run_mira_r2_full.py scripts/supervise_mira_r2_full.py \
+  scripts/report_mira_r2.py scripts/audit_mira_r2.py scripts/check_docs.py tests/test_mira_r2.py
 python3 scripts/check_docs.py
 ```
 

@@ -1,10 +1,10 @@
 # MIRA-Bench：评测协议、完整结果与 SITEdit 分析
 
-本文件是 `eval-mira` 分支的完整评测说明，记录 **2026-11-02 至 2026-11-03 实际完成的实验**。所有表格来自保存的生成与评分记录，展示图来自实际输出。运行命令见 [MIRA.md](MIRA.md)，原生调用核验与执行记录见 [MIRA_FULL_RUN.md](MIRA_FULL_RUN.md)。
+本文件是 `eval-mira` 分支的公共评测协议与方法说明。**当前 R2@1000 全量结果、正确权重核验及六行对比见 [MIRA_R2.md](MIRA_R2.md)**；第 8.1 节也列出当前全量表。运行命令见 [MIRA.md](MIRA.md)，原生调用与执行记录见 [MIRA_FULL_RUN.md](MIRA_FULL_RUN.md)。
 
-本次覆盖官方当前版本的 **200 张源图 × 5 个方法**，每张源图有 5 项编辑。1,000 个编辑请求全部终结，**999 张有效输出全部完成 GPT-5.4 评分**；RePlan 的 154 号请求生成失败。SITEdit 没有在本次 MIRA 分数上选择 checkpoint、调整超参或挑选多次生成中的最佳图。
+原五行评测于 11-03 完成，覆盖官方 **200 张源图 × 5 个方法**，每图 5 项编辑：999 张有效输出均已评分，RePlan 154 生成失败。11-10 按用户指定新增 SITEdit R2@1000，**200/200 张生成及 GPT-5.4 评分均完成**，原五行不重跑。本次 R2 使用事先指定的检查点和参数，每请求一次生成；它此前已有 30 张诊断记录，不将本次全量表表述为从未用于开发的独立测试集。
 
-当前结论：SITEdit 的综合分低于 Qwen-Image-2.1，主要评分差距在 PQ；PF 均值略高，但配对区间跨零。具体案例同时存在 Pass1 选错目标、正确区域条件接入后仍执行错对象、漏项和生成结构问题。两张源图与实际训练记录重合，因此同时报告官方 200 图及统一排除它们后的 198 图。
+当前 R2 的 PF / Cons / PQ / Overall 为 **7.881 / 7.830 / 6.748 / 7.269**，相对 v4 四项均提高；PF、Cons 点估计最高，Overall 居第二。R2 与 Qwen2.1 的 Overall 配对差区间包含零。**第 8.2–10 节保留 11-03 的 v4 子集与案例诊断**，不代表 R2 的分析。该历史训练重合审计及原始证据保持原样。
 
 ## 1. 本实验回答什么问题
 
@@ -91,6 +91,8 @@ Qwen2511、Qwen2.1、SITEdit 使用公开画布宽高；RePlan、MIRAGE 保留�
 
 方法固定为 [samtok_edit@aa5a414](https://github.com/Tangent0308/samtok_edit/tree/aa5a414e36c01eba60b37fc46cb9e32f803f8a93)。
 
+同一方法现报告 v4 / S2@16000 和 R2@1000 两个检查点。下述公开输入、Pass1、token 放置及 S2 推理方式对两者一致，只替换加载 DiT LoRA 与 CodeInjector 的 `dit_adapter` 目录，LoRA 强度均为 1.0。
+
 **Pass1：公开文本到逐项区域码。**
 
 - 输入同一清图和五项原文，协议使用 `normalized_0_1000`，每项目标标签为 U1–U5，`has_ref=true, locator=none`。
@@ -100,7 +102,7 @@ Qwen2511、Qwen2.1、SITEdit 使用公开画布宽高；RePlan、MIRAGE 保留�
 
 **S2：逐项绑定后一次联合编辑。**
 
-- 使用 Qwen-Image-2.1 DiT/VAE、SAMTok 文本编码器、CodeInjector 和 S2 DiT LoRA `qwen21_v3/runs/s2_4n_001/train/adapter_16000`。
+- 使用 Qwen-Image-2.1 DiT/VAE、SAMTok 文本编码器、CodeInjector 和 DiT LoRA。当前 R2 使用 `quality_anchor_20261104/runs_v5/v6_full/r2/train/adapter_1000`，v4 对照使用 `qwen21_v3/runs/s2_4n_001/train/adapter_16000`；两个组件均从对应目录加载。
 - 沿用方法仓库 `place_token` 将区域码接到该项被指代对象/添加锚点之后，再由 `multi_edit_prompt` 组成编号指令。其前缀为 `Execute all numbered instructions and keep everything else unchanged.`，后接 U1–U5。没有根据评分修订指令。实际 token 位置和正负提示均可从 `call.json` 复核。
 - `pass2_te="raw"` 表示关闭 Pass1 的 PEFT adapter、使用**发布的 SAMTok TE**，不表示恢复原版 Qwen TE。不能把两者混称为“原版编码器”。
 - 40 steps，`mode="inline", cfg_scale=2, use_kv_cache=true`，宽高取公共画布，seed 42；保持方法训练时的 attention 路径。
@@ -113,7 +115,7 @@ Qwen2511、Qwen2.1、SITEdit 使用公开画布宽高；RePlan、MIRAGE 保留�
 
 ### 4.1 源码和权重版本
 
-完整配置为 [mira.json](../configs/external/mira.json)，本次使用的副本保存在正式目录 `run_001/CONFIG.json`。下表的 revision 与 config 一致；运行源码的实际 SHA 存于 `run_001/RUN.json`，副本存于 `run_001/source_snapshot/`。
+原五行完整配置为 [mira.json](../configs/external/mira.json)，使用的副本保存在正式目录 `run_001/CONFIG.json`。R2 依据 [mira_r2_1000.json](../configs/external/mira_r2_1000.json) 仅替换 adapter，实际配置单独保存在 `r2_20261110/run_001/CONFIG.json`。下表代码与基础权重版本不变；运行源码 SHA 和副本分别存于各自 `RUN.json`、`source_snapshot/`。
 
 | 对象 | 固定 revision / commit |
 |---|---|
@@ -138,15 +140,16 @@ MIRAGE 的生成与评分代码采用不同固定 commit，分别记录，不能
 /mnt/bn/strategy-mllm-train/user/tanyue/models/SAMTok/Qwen3-VL-8B-SAMTok
 /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/pass1_localization_lora_formal_20261030_0939/runs/formal/step_2000
 /mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/qwen21_v3/runs/s2_4n_001/train/adapter_16000
+/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/quality_anchor_20261104/runs_v5/v6_full/r2/train/adapter_1000
 ```
 
 其他生成权重在 `/mnt/bn/strategy-mllm-train/user/tanyue/models/pretrained_models/`；RePlan planner 和原生源码位于 config 的共享 NAS `paths`。方法源码只读副本在 `.ifbench-tmp/external_bench_20261102/deps/sitedit-aa5a414`。
 
 ### 4.2 实际环境与计算记录
 
-本次单节点使用 GPU 0–4，设备记录为 NVIDIA H100 80GB HBM3。基线/原生 planner 和 SITEdit Pass1 使用 Torch 2.8.0（CUDA 12.8）、Transformers 5.19.0；SITEdit S2 使用 Torch 2.8.0+cu128、Transformers 5.12.1。图像运行时 Pillow 为 12.3.0。三个 Python 环境独立，路径见 config；安装与检查入口为 [setup_mira_runtime.py](../scripts/setup_mira_runtime.py)。
+原五行运行单节点 GPU 0–4，R2 单独使用 GPU 4–7；设备为 NVIDIA H100 80GB HBM3。基线/原生 planner 和 SITEdit Pass1 使用 Torch 2.8.0（CUDA 12.8）、Transformers 5.19.0；SITEdit S2 使用 Torch 2.8.0+cu128、Transformers 5.12.1。图像运行时 Pillow 为 12.3.0。三个 Python 环境独立，路径见 config；安装与检查入口为 [setup_mira_runtime.py](../scripts/setup_mira_runtime.py)。
 
-模型在每一阶段只加载一次并处理整批源图；RePlan、MIRAGE、SITEdit 的前后阶段分别加载。每条 result 保存 `packages`、阶段 `inference_seconds/wall_seconds`、显存等字段；首次请求另记加载时间。SITEdit 的 codec decode 是额外诊断成本。Judge 与剩余模型生成重叠进行，最多三个 Judge 进程。
+模型在每个阶段/分片加载一次；RePlan、MIRAGE、SITEdit 的前后阶段分别加载。每条 result 保存 `packages`、阶段 `inference_seconds/wall_seconds`、显存等字段；首次请求另记加载时间。SITEdit 的 codec decode 是额外诊断成本。原五行最多三个 Judge 进程；R2 四个十图批次并行，剩余评分恢复时最多两条 API lane。
 
 这些是运行日志，不是受控速度基准。不同 CPU offload、加载/缓存状态、planner 调用数及诊断 decode 使阶段耗时不可直接作为端到端方法排名。需要比较速度时应另列加载、规划、编辑、恢复和总成本。
 
@@ -200,11 +203,11 @@ $$
 
 每方法保留 `per_edit_results.jsonl`、`per_image_results.jsonl`、原始 Judge 响应与官方 `summary.json/csv`；外层汇总检查分数范围、重复源图和输出绑定。`JOB.json` 固定源图/输出/生成 result SHA、canonical 标注、Judge 配置及官方评分代码身份，`JUDGE.json` 绑定该 JOB 与实际参数。
 
-### 5.4 重试、缺失与本次实际 API 数
+### 5.4 重试、缺失与实际 API 数
 
-SDK 自动重试关闭。流水线只对已识别的限流、网络、超时、服务器错误执行最多 **3 次评分进程尝试**，间隔 30 s；不是每张图最多三次择优打分。官方 resume 以完整逐图记录为提交标记，已完成整图不重评；单图若尚未提交完整记录，恢复时可能重发该图之前已成功的一部分请求。内部 JSONL 损坏会拒绝续跑；可恢复尾部写入按官方规则处理。
+SDK 自动重试关闭。原五行流水线只对已识别的限流、网络、超时、服务器错误执行最多 **3 次评分进程尝试**，间隔 30 s；不是每张图最多三次择优打分。R2 在用户授权下增加持续的资源不足恢复，当前维护入口采用退避重试；配置、证据和有效评分规则不变。官方 resume 以完整逐图记录为提交标记，已完成整图不重评；单图若尚未提交完整记录，恢复时可能重发该图之前已成功的一部分请求。内部 JSONL 损坏会拒绝续跑；可恢复尾部写入按官方规则处理。
 
-本次 999 图通常需要 1,998 次成功请求。实际留有 **2,003 份 request、1,999 份成功 response**：4 次传输失败恢复后完成，另有一次尚未完成整图的成功部分响应被重发。所有成功返回均为指定 GPT-5.4、`finish_reason=stop`；最终每个已评分源图只有一个有效逐图记录。没有根据返回分数选优。
+原五行 999 图通常需要 1,998 次成功请求。实际留有 **2,003 份 request、1,999 份成功 response**：4 次传输失败恢复后完成，另有一次尚未完成整图的成功部分响应被重发。所有成功返回均为指定 GPT-5.4、`finish_reason=stop`；最终每个已评分源图只有一个有效逐图记录。R2 新增 **404 次请求、400 个成功响应**，4 次 429 均恢复，全部 200 张已提交完整分数。没有根据返回分数选优。
 
 | 方法 | 请求记录 | 成功响应 | 最终已评分图 |
 |---|---:|---:|---:|
@@ -212,13 +215,16 @@ SDK 自动重试关闭。流水线只对已识别的限流、网络、超时、�
 | Qwen2.1 | 401 | 400 | 200 |
 | RePlan | 398 | 398 | 199 |
 | MIRAGE | 403 | 401 | 200 |
-| SITEdit | 401 | 400 | 200 |
+| SITEdit v4 | 401 | 400 | 200 |
+| SITEdit R2@1000 | 404 | 400 | 200 |
 
 生成失败与 Judge 缺失分开记录。两者均不填 0，不偷偷从请求分母消失。本次没有剩余 Judge 缺分，唯一不可评分的是 RePlan 154 的生成失败。
 
 ## 6. 完成状态、失败与独立恢复测试
 
-正式流水线开始于 **2026-11-02 18:02:35 UTC**，结束于 **2026-11-03 05:24:08 UTC**。最终 `STATUS.json` 为 `finished_with_missing`，退出码 1，表示所有工作已终结、仍有一个生成失败，不表示还在等待评分。
+R2 的 200/200 张已完成，状态为 `complete`，新增运行与文档追加恢复记录见 [MIRA_R2.md §5](MIRA_R2.md#5-实际运行故障与恢复)。下文为原五行运行及 RePlan 独立诊断。
+
+原五行流水线开始于 **2026-11-02 18:02:35 UTC**，结束于 **2026-11-03 05:24:08 UTC**。其 `STATUS.json` 为 `finished_with_missing`，退出码 1，表示所有工作已终结、仍有一个生成失败，不表示还在等待评分。
 
 每请求在调用前排他写入 `ADMITTED.json`，终结后写 `result.json`。相同输入/源码/配置/输出身份才可复用；admission 存在但没有终态时不能自动再采样。原生规划失败不阻止其他成功计划继续编辑；致命加载/CUDA 错误会停止该方法后续阶段。
 
@@ -230,7 +236,9 @@ SDK 自动重试关闭。流水线只对已识别的限流、网络、超时、�
 
 ## 7. 训练重合审计与统计方法
 
-### 7.1 统一的 198 图子集
+### 7.1 v4 历史审计与统一的 198 图子集
+
+本节审计于 11-03 完成，覆盖下面列明的训练来源。当前 R2 按用户要求使用全部 200 张；此处的 198 张附加结果仅对应原五行，不声称已重新审计 R2 新增训练数据。
 
 审计范围包括 Pass1 step 2000 的实际/计划行、前置 S1 step 6000、S2 step 16000 及已声明开发/测试图像；实际暴露与尚未训练的计划行分别记录。扫描 **646,908 个图像路径，读取错误 0**。这些是路径数，不是唯一照片数。
 
@@ -242,13 +250,13 @@ SDK 自动重试关闭。流水线只对已识别的限流、网络、超时、�
 
 总体表使用源图为重采样单位的 **10,000 次配对 bootstrap，seed 20261027，percentile 95% CI**。相同源图集合共用抽样索引，每次重采样后重新计算官方非线性聚合，不能先平均各节点 CI 或逐图 Overall。
 
-完整覆盖的四个方法给出总体 Overall CI。RePlan 均值仅来自其成功生成的 199/200 或 197/198，不给完整分母 CI；与 SITEdit 的配对比较只使用双方共同可评分的源图，并明确标为条件诊断，存在幸存者偏差。
+完整覆盖的行给出总体 Overall CI。RePlan 均值仅来自其成功生成的 199/200 或 197/198，不给完整分母 CI；与 SITEdit 的配对比较只使用双方共同可评分的源图，并明确标为条件诊断，存在幸存者偏差。
 
 第 8.3 节的分量诊断另固定 seed 20261103，同样 10,000 次源图配对 bootstrap。所有区间均条件于本次一次生成、一次有效评分，不包含多 seed 生成或重复 Judge 的方差。统计实现见 [report_mira_audited.py](../scripts/report_mira_audited.py) 和 [analyze_mira_results.py](../scripts/analyze_mira_results.py)。
 
 ## 8. 完整评测结果
 
-### 8.1 官方 200 图
+### 8.1 官方 200 图：当前六行对比
 
 | 方法 | PF | Cons | PQ | Overall | Overall 95% CI | 已评分/请求数 |
 |---|---:|---:|---:|---:|---|---:|
@@ -256,9 +264,14 @@ SDK 自动重试关闭。流水线只对已识别的限流、网络、超时、�
 | Qwen-Image-2.1 | 7.443 | 7.760 | 7.276 | 7.359 | [7.175, 7.541] | 200/200 |
 | RePlan | 4.593 | 6.442 | 6.923 | 5.639 | 不提供完整分母 CI | 199/200 |
 | MIRAGE | 7.730 | 7.182 | 4.336 | 5.580 | [5.390, 5.770] | 200/200 |
-| SITEdit | 7.596 | 7.613 | 6.264 | 6.898 | [6.697, 7.072] | 200/200 |
+| SITEdit v4 / S2@16000 | 7.596 | 7.613 | 6.264 | 6.898 | [6.697, 7.072] | 200/200 |
+| SITEdit R2@1000 | **7.881** | **7.830** | 6.748 | 7.269 | [7.079, 7.440] | 200/200 |
 
-### 8.2 排除已确认重合的 198 图
+R2 相对各方法的配对差值、相对 v4 的四项变化及分析见 [当前结果 §4](MIRA_R2.md#4-完整结果)。该表来自 `r2_20261110/ALL_MODELS_COMPARISON.json`；原五行保持保存的评分，R2 新增 200 张评分。
+
+### 8.2 v4 历史结果：排除已确认重合的 198 图
+
+本节及 8.3、9、10 节的“SITEdit”均指 **v4 / S2@16000**，不含 R2@1000。
 
 | 方法 | PF | Cons | PQ | Overall | Overall 95% CI | 已评分/请求数 |
 |---|---:|---:|---:|---:|---|---:|
@@ -279,7 +292,7 @@ SDK 自动重试关闭。流水线只对已识别的限流、网络、超时、�
 
 RePlan 的两列都不含失败源图 154，不能用该条件差值替代全分母结论。排除已确认训练重合后，其余主要结论保持一致。
 
-### 8.3 SITEdit 相对 Qwen2.1 的分量差异
+### 8.3 v4 相对 Qwen2.1 的分量差异
 
 以下统计使用完整固定 198 图，而不是后面展示的 12 个案例。
 
@@ -291,7 +304,7 @@ RePlan 的两列都不含失败源图 154，不能用该条件差值替代全分
 
 当前自动评分中，PQ 有 **68.7% 的源图更低**，不是只由少数极端低分图构成。PF 和 Cons 的均值差区间跨零，不能宣称 PF 已有稳定优势或 Cons 已建立稳定劣势。PQ 差距值得优先诊断，但仍需结合第 5 节的 Judge 边界。
 
-## 9. 可视化案例与两层失败诊断
+## 9. v4 历史可视化案例与两层失败诊断
 
 ### 9.1 选例范围与可复现性
 
@@ -345,7 +358,9 @@ U1 的解码区域确实位于背景人物腿部，与目标 GT 的离线 IoU �
 
 其余案例：008/009 是人物属性或邻近实例错位；068 是额外属性与颈部/躯干部位混淆；010 涉及墨镜扩散和删除附近姿态变化；013 将一个风筝变成两个；130 有遮挡目标漏删和改动幅度问题。075 的 smooth、010 的 wood 都是明确指令，不能将材质本身作为失败证据。部分删除/替换的自动理由与全图直观不完全一致，逐例报告保留了这种不确定性。
 
-## 10. 对 SITEdit 的分析、结论与下一步
+## 10. v4 历史分析与诊断建议
+
+以下是 11-03 基于 v4 的分析与当时建议，保留为实验溯源；最新 R2 的分析以 [MIRA_R2.md](MIRA_R2.md) 为准，不把下文的“当前”解释成 R2。
 
 1. **本次 MIRA 不支持整体优于 Qwen2.1。** 两套子集的 Overall 配对区间均为负。与 Qwen2511 的差值区间跨零；与 MIRAGE 的差值为正；与 RePlan 的比较必须附带失败覆盖率和共同可评分子集限定。
 2. **PQ 是当前最明确的评分短板，PF 优势尚未建立。** 198 图上的 PQ 均差 −1.016 且多数源图更低；PF +0.157 的区间跨零。不能只强调平均 PF 略高而忽略质量回退。
@@ -360,6 +375,8 @@ U1 的解码区域确实位于背景人物腿部，与目标 GT 的离线 IoU �
 这些判断与本地《任务定义与 Benchmark 写作指南》的 §3.5（指标对应约束）、§3.6（兼顾执行与保持/质量）、§3.7（裁判可信度）、§3.9（诚实报告劣势）、§3.10（分类失败分析）一致。
 
 ## 11. 结果路径与证据入口
+
+**当前六行对比及 R2 原始记录：** `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/r2_20261110/`。完整文件说明见 [MIRA_R2.md §6](MIRA_R2.md#6-目录与结果文件)。下表与后续图例路径属于原五行及其诊断。
 
 正式根目录 **R**：`/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira`。
 
@@ -398,13 +415,17 @@ U1 的解码区域确实位于背景人物腿部，与目标 GT 的离线 IoU �
 | [external_mira/cli.py](../src/samtok_benchmark/external_mira/cli.py) | download / prepare / run / report / score 命令 |
 | [external_mira/score.py](../src/samtok_benchmark/external_mira/score.py) | 评分导出、ModelHub transport、覆盖率与原始聚合 |
 | [run_mira_full.py](../scripts/run_mira_full.py) | 前台生成、最多三个并发 Judge、有限网络恢复与最终表 |
+| [run_mira_r2_full.py](../scripts/run_mira_r2_full.py) | R2 固定配置、GPU 4–7、20 个评分批次与临时故障恢复 |
+| [supervise_mira_r2_full.py](../scripts/supervise_mira_r2_full.py) | 生成完成后补缺失评分，不重采样图像 |
+| [report_mira_r2.py](../scripts/report_mira_r2.py) | CPU 核验原始分数与绑定，复算当前六行对比及区间 |
+| [audit_mira_r2.py](../scripts/audit_mira_r2.py) | CPU 核验权重、实际推理及可选 pilot PNG 一致性 |
 | [audit_mira_protocol.py](../scripts/audit_mira_protocol.py) | 源码、公开输入、评分区域和原生重放核验 |
 | [audit_mira_overlap.py](../scripts/audit_mira_overlap.py) | 图像重合候选审计；最终判定另有保存证据 |
 | [report_mira_audited.py](../scripts/report_mira_audited.py) | 完整/条件分母及两套子集的统计表 |
 | [analyze_mira_results.py](../scripts/analyze_mira_results.py) | CPU 分量统计、绑定核验、固定案例绘图和区域诊断 |
 | [diagnose_mira_replan_failure.py](../scripts/diagnose_mira_replan_failure.py) | 独立 audit / plan / edit 恢复实验，不改变正式流程 |
 
-生成和 Judge 使用的源码、参数及正式证据保持冻结；此次整理只增加独立分析入口、选例记录、文档和少量带来源记录的预览。分析脚本放在 `scripts/`，不加入 worker 扫描的冻结生成源码目录。
+生成和 Judge 使用的源码、参数及正式证据保持冻结；协调器、CPU 分析和核验脚本放在 `scripts/`，不加入 worker 扫描的冻结生成源码目录。R2 维护入口及结果已独立整理，复现见 [MIRA_R2.md](MIRA_R2.md)。
 
 完整运行命令见 [MIRA.md](MIRA.md)，已完成运行的实际启动命令见 [MIRA_FULL_RUN.md](MIRA_FULL_RUN.md)。任何新实验使用新目录；不得拿改过的配置覆盖 `run_001`。
 
@@ -426,11 +447,13 @@ CPU 验证覆盖配对抽样源图对齐、缺失不静默排除、坐标去 pad
 ```bash
 PYTHONPATH="$PWD/src:/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/deps/sitedit-aa5a414/src" \
   python3 -m pytest -q tests/test_external_mira.py tests/test_mira_audited_report.py \
-  tests/test_mira_overlap.py tests/test_mira_replan_diagnostic.py tests/test_mira_analysis.py
-uv tool run ruff check scripts/analyze_mira_results.py scripts/check_docs.py tests/test_mira_analysis.py
+  tests/test_mira_overlap.py tests/test_mira_replan_diagnostic.py tests/test_mira_analysis.py \
+  tests/test_mira_r2.py
+uv tool run ruff check scripts/run_mira_r2_full.py scripts/supervise_mira_r2_full.py \
+  scripts/report_mira_r2.py scripts/audit_mira_r2.py scripts/check_docs.py tests/test_mira_r2.py
 python3 scripts/check_docs.py
 ```
 
-本轮整理实际通过 **28 项 CPU 测试**、修改 Python 文件的 Ruff 检查，以及 21 份文档、256 个本地链接、29 张嵌入图像的检查。14 个冻结推理源码文件和生成配置与正式 run 身份一致；五方法评分文件 SHA 与正式统计报告一致，正文十行结果逐项核对通过。新增分析入口已在全部现有评分上运行，分量统计及三项 IoU 与此前报告一致；8 张仓库预览与展示目录原件及其证据 SHA 一致。[检查记录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_branch_review_20261103/DELIVERY_CHECKS.json) 保存在临时证据目录。
+11-03 的整理通过 28 项 CPU 测试及当时的文档检查，[历史检查记录](/mnt/bn/strategy-mllm-train/user/tanyue/.ifbench-tmp/external_bench_20261102/mira_branch_review_20261103/DELIVERY_CHECKS.json) 保留。11-10 新增 R2 的 10 项测试；当前检查范围为 **38 项 CPU 测试**、修改文件 Ruff 和全部入口文档链接。R2 CPU 复算已核对原五行、R2/v4 四项区间及六行配对结果，200 张实际推理与 30 张 pilot 一致性也通过；14 个冻结推理源码文件保持原样。
 
 本文件、结果及可视化对应一次已完成实验；未来的 guidance、TE、训练或人工 Judge 验证应作为新实验记录，不能回写成此次评测已经得出的因果结论。

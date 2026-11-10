@@ -1,6 +1,13 @@
 # IF-Bench
 
-本分支 **`eval-mira`** 增加 SITEdit 的 MIRA 外部泛化评测。**[完整评测文档](docs/MIRA_EVALUATION.md)** 单独说明五方法的实际流程、GPT-5.4 Judge、200/198 图结果、可视化与 SITEdit 分析。正式运行已结束：999 张有效输出全部完成评分，另保留 RePlan 的 1 个生成失败。操作见 [运行手册](docs/MIRA.md)，实际核验见 [执行审计](docs/MIRA_FULL_RUN.md)。它使用独立的数据、配置、生成目录和 Judge；下面的 IF-Bench 协议保持原样。LoMOE 的 `eval-lomoe` 分支已保留，等待数据权限后再实施。
+本分支 **`eval-mira`** 保存 SITEdit 的 MIRA-Bench 评测实现、协议与结果。**最新 R2@1000 已完成全部 200 张图的生成和 GPT-5.4 评分**，并与 Qwen-Image-2.1、Qwen-Image-Edit-2511、RePlan、MIRAGE 及 SITEdit v4 对比。R2 的 PF / Cons / PQ / Overall 为 **7.881 / 7.830 / 6.748 / 7.269**（0–10 分）。
+
+- **[当前完整结果与 R2 配置](docs/MIRA_R2.md)**：六行对比、置信区间、正确权重核验、全部结果路径及 CPU 复算入口。
+- [公共评测协议](docs/MIRA_EVALUATION.md)：200 张图、每图五项联合编辑，各模型推理方式、官方指标及 GPT-5.4 Judge。
+- [运行手册](docs/MIRA.md)：环境、数据、生成、评分、断点恢复和检查命令。
+- [实际执行审计](docs/MIRA_FULL_RUN.md)：运行记录与原生调用证据；[文档索引](docs/README.md)列出独立诊断材料。
+
+R2 正式结果位于 `/mnt/bn/strategy-mllm-train/user/tanyue/experiments2/SAMTokEdit/external_mira/r2_20261110/`。五行既有对照记录保持原样；RePlan 的一例生成失败保留，按 199/200 覆盖率报告。原始图像、权重、评分记录与密钥不存入 Git。
 
 IF-Bench 评测真实场景中的细粒度、多目标图像编辑：在同一张图上联合完成 2–5 个编辑，并保持未授权内容。任务覆盖添加、删除、替换和属性修改，比较不同目标语言与区域提示下的编辑完成度、内容保持和视觉质量。
 
@@ -11,4 +18,4 @@ IF-Bench 评测真实场景中的细粒度、多目标图像编辑：在同一�
 - [四机运行](docs/FULL_RUN.md)：4×8 H100 前台入口、固定分片、统一 Judge 与汇总。
 - [验证与结果](docs/RESULTS.md)：当前小样本验证证据及全量评测状态。
 
-**正式全量成绩待汇总发布。** 小样本能否正确调用、出图和恢复坐标，与编辑任务是否通过分别报告；不把接口验证当成全量成绩。七基线冻结配置见 [fairness_v2_2_1mp.json](configs/evaluation/fairness_v2_2_1mp.json)，SAMTokEdit 配置与调用见[方法说明](docs/USAGE.md#44-samtokedit我方方法)，开发规范见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+本分支保留外部评测所依赖的 IF-Bench 冻结实现；IF-Bench 主评测的最新论文结果以 [v2branch](https://github.com/Tangent0308/samtok_edit_benchmark/tree/v2branch) 为准。七基线配置见 [fairness_v2_2_1mp.json](configs/evaluation/fairness_v2_2_1mp.json)，开发规范见 [CONTRIBUTING.md](CONTRIBUTING.md)。

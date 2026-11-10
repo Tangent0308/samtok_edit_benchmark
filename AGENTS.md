@@ -14,6 +14,9 @@ use the method's own multi_edit_prompt renderer. Run the fixed smoke then formal
 generation and unchanged official objective scoring; no paid API calls. Only
 eval-compbench may be committed/pushed. Do not publish new paper numbers until
 the correction has complete evidence; never choose old versus new outputs by score.
+Revision r2 (same day) changes only failure handling/run control: a recorded native
+enumeration failure no longer blocks the fixed smoke; engineering faults still stop.
+No change to cases, decomposition, enumeration prompt, weights or generation settings.
 
 # Current CompBench full deployment (2026-11-09)
 

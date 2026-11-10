@@ -227,3 +227,193 @@ def test_full_table_replaces_fixed_cases_even_if_new_score_is_lower():
     assert result["rows"]["sitedit"]["tasks"][0]["scored"] == 3284
     with pytest.raises(ValueError, match="cover all"):
         combine(plan, original, {"per_case": []})
+
+
+# --- Smoke gate: native method outcomes versus engineering faults (2026-11-10 revision) ---
+
+SPANS = [
+    "<|mt_start|><|mt_0001|><|mt_0257|><|mt_end|>",
+    "<|mt_start|><|mt_0002|><|mt_0258|><|mt_end|>",
+]
+
+
+def _write(path, data):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data))
+
+
+def _render(units):
+    """Same line structure as the native numbered template: one region code per unit line."""
+    lines = ["Execute all numbered instructions and keep everything else unchanged."]
+    for u in units:
+        lines.append(f"{u['id']}: {u['instruction']}" + (f" {u['token']}" if u["token"] else ""))
+    return "\n".join(lines)
+
+
+def _completed(root, row, *, seconds=(2.0, 30.0), peak=(20, 40), prompt=None, units=None):
+    units = units or [
+        {"id": f"U{i}", "instruction": s, "token": SPANS[i - 1], "source": "pass1"}
+        for i, s in enumerate(row["units"], 1)
+    ]
+    native = {"units": units, "original_instruction": row["instruction"]}
+    _write(
+        root / "run/sitedit/tokens" / row["case_id"] / "result.json",
+        {"status": "completed", "native": native, "inference_seconds": seconds[0],
+         "peak_gpu_reserved_bytes": peak[0]},
+    )
+    _write(
+        root / "run/sitedit/edit" / row["case_id"] / "result.json",
+        {"status": "completed", "inference_seconds": seconds[1], "peak_gpu_reserved_bytes": peak[1],
+         "output_image": "out.png", "placement": {"units": [{"id": u["id"]} for u in units]},
+         "native": {"conditioning_prompt": prompt or _render(units)}},
+    )
+    _write(root / "scores/sitedit" / row["case_id"] / "local.json",
+           {"status": "completed", "metrics": {"LC-I": 0.5}})
+
+
+ONE_TARGET = '[{"label": "U1","instruction": "remove the rabbits"}]<|im_end|>'
+
+
+def _native_failure(root, row, raw=ONE_TARGET, error=None):
+    from samtok_benchmark.external_compbench.multitarget.adapters import (
+        ENUMERATION_PROMPT,
+        parse_enumeration,
+    )
+
+    if error is None:
+        try:
+            parse_enumeration(raw)
+            error = "no error"
+        except ValueError as exc:
+            error = repr(exc)
+    tokens = root / "run/sitedit/tokens" / row["case_id"]
+    prompt = ENUMERATION_PROMPT + row["instruction"]
+    _write(tokens / "enumeration.json", {"prompt": prompt, "raw": raw})
+    _write(tokens / "result.json", {"status": "failed", "fatal": False, "error": error})
+    _write(root / "run/sitedit/edit" / row["case_id"] / "result.json",
+           {"status": "blocked_dependency", "fatal": False,
+            "error": "RuntimeError('Previous native stage failed; no editor call made')"})
+    _write(root / "scores/sitedit" / row["case_id"] / "local.json",
+           {"status": "generation_failed", "generation_status": "blocked_dependency",
+            "metrics": None})
+
+
+def _plan():
+    rows = [
+        {"case_id": "a", "mode": "text", "instruction": "add a red fish and a blue fish",
+         "units": ["add a red fish", "add a blue fish"]},
+        {"case_id": "b", "mode": "text", "instruction": "remove the two cats",
+         "units": ["remove one of the two cats", "remove the other of the two cats"]},
+        {"case_id": "c", "mode": "native_enumeration", "instruction": "remove the rabbits",
+         "units": []},
+    ]
+    return {"cases": rows, "case_ids": [r["case_id"] for r in rows]}
+
+
+def test_smoke_gate_keeps_native_enumeration_failure_and_continues(tmp_path):
+    from samtok_benchmark.external_compbench.multitarget.outcomes import smoke_gate, summarize
+
+    plan = _plan()
+    _completed(tmp_path, plan["cases"][0], seconds=(2.4, 30.3), peak=(20, 44))
+    _completed(tmp_path, plan["cases"][1], seconds=(1.8, 25.2), peak=(20, 43))
+    _native_failure(tmp_path, plan["cases"][2])
+    summary = summarize(plan, tmp_path / "run", tmp_path / "scores")
+    smoke_gate(summary)  # does not raise
+    assert summary["counts"] == {"completed": 2, "native_failure": 1}
+    assert summary["completed"] == 2 and len(summary["native_failures"]) == 1
+    failure = summary["native_failures"][0]
+    assert failure["case_id"] == "c" and "2–5 targets" in failure["error"]
+    assert failure["downstream"] == {"edit": "blocked_dependency", "score": "generation_failed"}
+    # Timing/memory only from completed requests, never from fields absent in failures.
+    assert summary["inference_seconds"] == pytest.approx([32.7, 27.0])
+    assert summary["peak_reserved_bytes"] == [44, 43]
+    done = [c for c in summary["cases"] if c["outcome"] == "completed"]
+    assert all(c["coded_units"] == 2 for c in done)
+    assert all([u["id"] for u in c["units"]] == ["U1", "U2"] for c in done)
+
+
+@pytest.mark.parametrize(
+    "fault",
+    [
+        "cuda_error_on_native_case",
+        "valid_enumeration_but_failed",
+        "text_case_failed",
+        "fatal_flag",
+        "missing_score",
+        "edit_exception",
+        "score_exception",
+        "dependency_not_recorded",
+        "grounding_after_failed_enumeration",
+    ],
+)
+def test_engineering_failures_stop_the_smoke(tmp_path, fault):
+    from samtok_benchmark.external_compbench.multitarget.outcomes import smoke_gate, summarize
+
+    plan = _plan()
+    a, b, c = plan["cases"]
+    _completed(tmp_path, a)
+    _completed(tmp_path, b)
+    _native_failure(tmp_path, c)
+    edit_b = tmp_path / "run/sitedit/edit/b/result.json"
+    score_b = tmp_path / "scores/sitedit/b/local.json"
+    tokens_c = tmp_path / "run/sitedit/tokens/c"
+    if fault == "cuda_error_on_native_case":
+        _native_failure(tmp_path, c, error="RuntimeError('CUDA error: out of memory')")
+    elif fault == "valid_enumeration_but_failed":
+        raw = json.dumps([{"label": "U1", "instruction": "remove the left rabbit"},
+                          {"label": "U2", "instruction": "remove the right rabbit"}])
+        _native_failure(tmp_path, c, raw=raw, error="RuntimeError('load failed')")
+    elif fault == "text_case_failed":
+        _write(tmp_path / "run/sitedit/tokens/b/result.json",
+               {"status": "failed", "fatal": False, "error": "ValueError('x')"})
+    elif fault == "fatal_flag":
+        record = json.loads((tokens_c / "result.json").read_text())
+        _write(tokens_c / "result.json", {**record, "fatal": True})
+    elif fault == "missing_score":
+        score_b.unlink()
+    elif fault == "edit_exception":
+        _write(edit_b, {"status": "failed", "error": "RuntimeError('CUDA error')"})
+    elif fault == "score_exception":
+        _write(score_b, {"status": "failed", "error": "OSError('lpips weights')", "metrics": None})
+    elif fault == "dependency_not_recorded":
+        score_c = tmp_path / "scores/sitedit/c/local.json"
+        _write(score_c, {"status": "completed", "metrics": {"x": 1}})
+    elif fault == "grounding_after_failed_enumeration":
+        _write(tokens_c / "request.json", {"targets": []})
+    summary = summarize(plan, tmp_path / "run", tmp_path / "scores")
+    assert summary["engineering_failures"]
+    with pytest.raises(RuntimeError, match="engineering failures"):
+        smoke_gate(summary)
+
+
+@pytest.mark.parametrize("fault", ["swapped_codes", "merged_unit", "wrong_decomposition"])
+def test_completed_requires_each_code_bound_to_its_own_unit(tmp_path, fault):
+    from samtok_benchmark.external_compbench.multitarget.outcomes import summarize
+
+    plan = _plan()
+    a = plan["cases"][0]
+    units = [
+        {"id": f"U{i}", "instruction": s, "token": SPANS[i - 1], "source": "pass1"}
+        for i, s in enumerate(a["units"], 1)
+    ]
+    if fault == "swapped_codes":
+        swapped = [{**units[0], "token": SPANS[1]}, {**units[1], "token": SPANS[0]}]
+        _completed(tmp_path, a, units=units, prompt=_render(swapped))
+    elif fault == "merged_unit":
+        _completed(tmp_path, a, units=[{**units[0], "instruction": a["instruction"]}])
+    else:
+        changed = [{**u, "instruction": u["instruction"] + " now"} for u in units]
+        _completed(tmp_path, a, units=changed)
+    summary = summarize(plan, tmp_path / "run", tmp_path / "scores", ["a"])
+    assert summary["counts"] == {"engineering_failure": 1}
+
+
+def test_smoke_without_any_completed_request_stops(tmp_path):
+    from samtok_benchmark.external_compbench.multitarget.outcomes import smoke_gate, summarize
+
+    plan = _plan()
+    _native_failure(tmp_path, plan["cases"][2])
+    summary = summarize(plan, tmp_path / "run", tmp_path / "scores", ["c"])
+    assert summary["inference_seconds"] == [] and summary["completed"] == 0
+    with pytest.raises(RuntimeError, match="No smoke request completed"):
+        smoke_gate(summary)

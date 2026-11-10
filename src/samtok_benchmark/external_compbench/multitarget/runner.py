@@ -13,6 +13,7 @@ import time
 
 from samtok_benchmark.external_full.coordination import atomic
 from samtok_benchmark.external_refedit.data import immutable, read
+from .outcomes import smoke_gate, summarize
 from .plan import load
 
 
@@ -236,24 +237,23 @@ def run(control, attempt, scratch_root, gpus=("4", "5", "6", "7")):
         update(phase="smoke")
         for stage in ("tokens", "edit", "score"):
             launch(stage, ids, gpu, root, f"smoke-{stage}")
-        records = [read(root / "run/sitedit/edit" / cid / "result.json") for cid in ids]
-        scores = [read(root / "scores/sitedit" / cid / "local.json") for cid in ids]
-        if any(r["status"] != "completed" for r in records + scores):
-            raise RuntimeError("Smoke is not end-to-end complete; formal inference has not started")
-        native = [read(root / "run/sitedit/tokens" / cid / "result.json") for cid in ids]
+        # Engineering faults stop here; a recorded native method failure does not block the
+        # fixed cohort. Timing/memory come from completed requests only.
+        summary = summarize(plan, root / "run", root / "scores", ids)
+        update(smoke_outcomes={k: summary[k] for k in ("expected", "counts")})
+        smoke_gate(summary)
         evidence = {
             "case_ids": ids,
             "smoke_root": str(root),
             "gpu": gpu,
-            "inference_seconds": [
-                e["inference_seconds"] + t["inference_seconds"] for e, t in zip(records, native)
-            ],
-            "peak_reserved_bytes": [
-                max(e["peak_gpu_reserved_bytes"], t["peak_gpu_reserved_bytes"])
-                for e, t in zip(records, native)
-            ],
+            "completed": summary["completed"],
+            "native_failures": summary["native_failures"],
+            "engineering_failures": summary["engineering_failures"],
+            "outcomes": summary["cases"],
+            "inference_seconds": summary["inference_seconds"],
+            "peak_reserved_bytes": summary["peak_reserved_bytes"],
         }
-        mean_seconds = sum(evidence["inference_seconds"]) / len(ids)
+        mean_seconds = sum(evidence["inference_seconds"]) / len(evidence["inference_seconds"])
         evidence["formal_gpu_hours_estimate"] = mean_seconds * len(plan["case_ids"]) / 3600
         evidence["four_gpu_generation_hours_estimate"] = evidence[
             "formal_gpu_hours_estimate"
@@ -286,7 +286,14 @@ def run(control, attempt, scratch_root, gpus=("4", "5", "6", "7")):
             futures = [pool.submit(one_card, pair) for pair in enumerate(gpus)]
             for f in futures:
                 f.result()
-        update(phase="report")
+        audit = summarize(plan, results / "run", results / "scores")
+        immutable(logs / "OUTCOMES.json", audit)
+        update(
+            phase="report",
+            outcomes={k: audit[k] for k in ("expected", "counts")},
+            native_failures=[i["case_id"] for i in audit["native_failures"]],
+            engineering_failures=audit["engineering_failures"],
+        )
         from .report import report
 
         merged = report(control, results, results / "reports" / attempt)
@@ -297,7 +304,11 @@ def run(control, attempt, scratch_root, gpus=("4", "5", "6", "7")):
         )
         complete = all(g["complete"] for g in merged["rows"]["sitedit"]["groups"])
         update(
-            phase="complete" if complete else "finished_with_missing_results",
+            phase=(
+                "finished_with_engineering_failures"
+                if audit["engineering_failures"]
+                else "complete" if complete else "finished_with_missing_results"
+            ),
             report=str(results / "reports" / attempt / "MERGED_REPORT.json"),
             preview=preview,
         )

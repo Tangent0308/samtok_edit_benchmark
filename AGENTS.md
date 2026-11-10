@@ -1,3 +1,20 @@
+# SITEdit multi-target protocol correction (2026-11-10)
+
+The user explicitly requires re-evaluation with separate public edit units and
+one native region code per unit. Follow docs/COMPBENCH_MULTITARGET_REEVALUATION.md.
+The fixed method remains aa5a414 with its original weights and generation settings.
+Correct all 144 multi-object requests in a new output root; preserve original
+packages, scientific modules, outputs and baseline scores. New adapters and
+orchestration belong under external_compbench/multitarget. Use only idle local
+GPUs 4–7, at most four; never interrupt other jobs. CPU waiting/monitoring is allowed.
+The user approved one extra same-model/LoRA native enumeration call for each of
+the three publicly underspecified plural requests. Do not use GT/captions or an
+external model to split instructions. Freeze decomposition before inference and
+use the method's own multi_edit_prompt renderer. Run the fixed smoke then formal
+generation and unchanged official objective scoring; no paid API calls. Only
+eval-compbench may be committed/pushed. Do not publish new paper numbers until
+the correction has complete evidence; never choose old versus new outputs by score.
+
 # Current CompBench full deployment (2026-11-09)
 
 The user requests a full CompBench four-node entry and ETA after the completed five-method comparison. Prepare the same five-method roster (SITEdit, Qwen2.1, RePlan, MICE, FLUX2 Klein-9B) on 4 x 8 H100 80GB. Publish a new compbench_full5_20261109 package and independent full5_20261109 results root; preserve existing packages, all outputs, native science code and scoring. The user submits the remote job. CPU verification only locally; no start.sh, GPU or paid API calls during preparation. The prior confirmed GPT-5.4 protocol remains authorized for action/location/view, now at most 980 calls. See docs/COMPBENCH_FOUR_NODE.md. Only eval-compbench may be changed/pushed for this task.

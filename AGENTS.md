@@ -1,3 +1,14 @@
+# Authorized nine-request post-hoc repair (2026-11-10)
+
+The user explicitly authorized deterministic syntax recovery for six fallback
+answers and native prompt debugging for three enumeration failures, followed by
+new generation of all nine. Follow docs/COMPBENCH_RECOVERY9.md. Implement outside
+the frozen multitarget modules, under external_compbench/recovery9. Preserve every
+original answer and debug trial; never use private scoring inputs or edit scores
+to choose prompts/outputs. Use the same native model, LoRA and S2 settings. A
+structurally valid model prediction can still have a disclosed semantic error;
+do not silently repair that error by hand. Only idle local GPUs 4–7 may be used.
+
 # SITEdit multi-target protocol correction (2026-11-10)
 
 The user explicitly requires re-evaluation with separate public edit units and

@@ -1,7 +1,9 @@
 # CompBench · SITEdit and IF-Bench baselines
 
-`eval-compbench` 实现八种方法的四机全量评测，每方法 3,481 条公开请求。正式作业由用户提交，当前没有本轮全量成绩。
+`eval-compbench` 已完成五方法全量评测；当前在本机四卡补全 MIRAGE 的 3,285 条客观评分请求，以及最终 SITEdit R2@1000 的 144 条逐目标评测。原始结果与运行包保留，新结果单独保存。
 
+- **[当前补全协议、配置、进度与路径](COMPBENCH_COMPLETION_20261111.md)**
+- [已完成的五方法全量结果](COMPBENCH_FULL_RESULTS.md)
 - [四机入口、完整评测方式、验证与续跑](COMPBENCH_FOUR_NODE.md)
 - [已完成的 20 条 pilot 结果](COMPBENCH_PILOT20_RESULTS.md)
 - [原生数据和评分协议](COMPBENCH_EVALUATION.md)

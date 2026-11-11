@@ -3,6 +3,7 @@
 本分支 **`eval-mira`** 保存 SITEdit 的 MIRA-Bench 评测实现、协议与结果。**最新 R2@1000 已完成全部 200 张图的生成和 GPT-5.4 评分**，并与 Qwen-Image-2.1、Qwen-Image-Edit-2511、RePlan、MIRAGE 及 SITEdit v4 对比。R2 的 PF / Cons / PQ / Overall 为 **7.881 / 7.830 / 6.748 / 7.269**（0–10 分）。
 
 - **[当前完整结果与 R2 配置](docs/MIRA_R2.md)**：六行对比、置信区间、正确权重核验、全部结果路径及 CPU 复算入口。
+- **[MICE 全量补全结果](docs/MIRA_MICE_COMPLETION.md)**：新增 200/200 张生成与评分，PF / Cons 为 6.519 / 6.310；其余方法的原始结果保持不变。
 - [公共评测协议](docs/MIRA_EVALUATION.md)：200 张图、每图五项联合编辑，各模型推理方式、官方指标及 GPT-5.4 Judge。
 - [运行手册](docs/MIRA.md)：环境、数据、生成、评分、断点恢复和检查命令。
 - [实际执行审计](docs/MIRA_FULL_RUN.md)：运行记录与原生调用证据；[文档索引](docs/README.md)列出独立诊断材料。

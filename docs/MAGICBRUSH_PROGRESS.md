@@ -2,6 +2,18 @@
 
 时间均为 UTC；协议见 [MAGICBRUSH_EVALUATION.md](MAGICBRUSH_EVALUATION.md)。
 
+## 当前任务：2026-11-11 MIRAGE 失败恢复
+
+用户要求保留 RePlan、MIRAGE、MICE，授权修复／本机补跑 MagicBrush MIRAGE。核验无 mask 独立单轮的 138 条失败全部在规划阶段（120 空目标、7 列表不匹配、8 空定位、3 输出截断）。[固定恢复规则](MAGICBRUSH_MIRAGE_RECOVERY.md) 仅对原失败增加原生 VLM 恢复，不改变冻结编辑器或评分器，旧记录只读保留。
+
+临时记录位于 `/tmp/ifbench/magicbrush_mirage_repair_20261111/`，共享审计副本为 `.ifbench-tmp/magicbrush_mirage_repair_20261111/`。首轮功能检查定位并修复了恢复入口读取旧失败记录字段的问题；旧失败仅保存 traces，没有成功计划的 native 字段。随后固定五例规划、生成、评分全部成功；平均生成 75.96 s，峰值 allocated 57.98 GiB，评分器身份与原始分数完全一致。43 项针对性 CPU 测试通过。冻结模块和所有原始结果未改动。
+
+16:03:56 UTC 开始本机 GPU 4–7 正式恢复全部 138 条原规划失败，独立结果根为 `experiments2/SAMTokEdit/external_magicbrush/mirage_recovery_20261111/`，manifest digest 为 `a9643cd525aa42ea7461cff1249e10f4f4ac9f859d60c30ba665f11c22d50f16`。前台监督器按规划 → 编辑 → 原五指标评分 → 完整汇总顺序执行；启动时预计约 45–60 分钟，实际状态以终态记录为准，尚不把该预估视作完成时间。
+
+随后用户明确要求全部八卡加速。四卡进程完成当前请求后正常退出，共保留 38 条完整生成，悬空受理为 0。核验 GPU 0–7 均仅有 1,605 MiB 既有占用后，以八分片恢复剩余 100 条；输入、策略、配置和 manifest 不变。额外授权、进程和代码证据写在结果根 `execution/20261111-eight-gpu.json`；八卡日志为共享审计目录 `full8-logs/`。不修改源科学模块，以独立入口扩展 GPU 资源门槛范围。
+
+16:38:25 UTC：138 条恢复全部完成规划、生成、评分，失败 0；合并原 915 条后，MIRAGE 全量 1,053 条均为实测指标。独立复算五项均值、五组 95% 区间全部一致，共享 bootstrap 索引与最终 SITEdit 一致。38 条切换前记录不变，五个固定冒烟输出与正式输出逐字节一致。44 项 CPU 测试、Ruff、文档链接与 30 个预览图像来源哈希检查通过。八张卡均已释放。六方法新表和详细结果见 [恢复报告](MAGICBRUSH_MIRAGE_RECOVERY.md)；正式 `REPORT.json` SHA256 为 `9293f85c7d40bd04470844c097c361cf785f80f93d36ae5dd041b19d6507e2dc`。飞书和 Overleaf 未改动。
+
 ## 2026-11-05
 
 - 16:24 开始只读核对。系统时间早于 GPU 许可时段；GPU 4–7 约占用 46–50 GB，未启动任何 GPU 进程。

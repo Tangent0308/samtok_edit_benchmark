@@ -2,6 +2,8 @@
 
 本方案于 2026-11-05 在实现及生成之前写定。执行证据见 [MAGICBRUSH_PROGRESS.md](MAGICBRUSH_PROGRESS.md)。只使用 SITEdit `aa5a414` 主行，不做 checkpoint、LoRA 强度、quality-anchor、v5 或提示词择优。任何未运行的项目明确标注待执行，冒烟分数不作为基准结果。
 
+以上冻结描述对应原始八方法运行。后续用户独立授权的 SITEdit 最终 R2@1000 与 MIRAGE 失败恢复分别保留独立结果；当前无 mask 单轮六方法比较、恢复扩展及原始记录边界见 [MAGICBRUSH_MIRAGE_RECOVERY.md](MAGICBRUSH_MIRAGE_RECOVERY.md)，不回写原始配置或结果。
+
 ## 1. 官方资料与冻结版本
 
 - [论文](https://arxiv.org/html/2306.10012v3)：MagicBrush: A Manually Annotated Dataset for Instruction-Guided Image Editing，NeurIPS 2023 Datasets and Benchmarks。

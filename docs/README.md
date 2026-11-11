@@ -7,6 +7,7 @@
 - [无 mask 全量主结果](MAGICBRUSH_FULL_RESULTS.md)：全部 535 会话、1,053 轮，八方法（含 InstructPix2Pix、HIVE）的独立单轮／连续多轮分数与 95% 区间。
 - [完整分析与对比图](MAGICBRUSH_RESULTS.md)：输入方式、失败处理、耗时、实际对比图，以及重合审计和去重合补充结果。
 - [经典基线补充](MAGICBRUSH_CLASSIC_BASELINES.md)：InstructPix2Pix／HIVE 原版的固定配置、源码与权重、正式结果。
+- [MIRAGE 恢复与当前六方法比较](MAGICBRUSH_MIRAGE_RECOVERY.md)：原生 VLM 条件式恢复、完整无 mask 单轮结果与最终版 SITEdit。
 - [进度记录](MAGICBRUSH_PROGRESS.md)：实际检查、阻塞、偏差及产物位置。
 
 ## RefEdit-Bench 外部评测（eval-refedit）

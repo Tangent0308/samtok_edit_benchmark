@@ -204,13 +204,25 @@ def report(plan, output):
             }
         )
     value["worker_accounting"] = worker_records
+    if profile.get("unified_execution"):
+        value["execution_control"] = profile["unified_execution"]
+        value["quality_result_reuse"] = False
+        value["quality_review_required"] = True
+        value["implementation_validations"] = [
+            {"path": str(p), **read(p)}
+            for p in sorted((root / "attempts").glob("*/*/VALIDATION-*.json"))
+        ]
     save(root / "REPORT.json", value)
     text = [
         "# IF-Bench 推理开销",
         "",
         "当前指标是各阶段已加载模型的同步耗时之和，不是实测端到端响应时间。",
         "每个源图先取三次重复的中位数，再在源图间统计。失败或未完成请求另记，不混入成功耗时。",
-        "SITEdit 前向次数沿用冻结去噪循环的计数公式；其余方法读取原生 wrapper 的前向 hook。次数不等同于 FLOPs。",
+        (
+            "本补测所有编辑器的前向次数均由实际 forward hook 记录；次数不等同于 FLOPs。"
+            if profile.get("unified_execution")
+            else "SITEdit 前向次数沿用冻结去噪循环的计数公式；其余方法读取原生 wrapper 的前向 hook。次数不等同于 FLOPs。"
+        ),
         "",
         "| 方法 | Setting | 完整请求 | 定位／规划（秒） | 编辑（秒） | 阶段耗时和（秒）↓ | 单阶段峰值显存（GiB）↓ | 去噪前向次数 |",
         "|---|---|---:|---:|---:|---:|---:|---:|",
@@ -234,6 +246,14 @@ def report(plan, output):
         "共同完成的配对耗时表见 paired_complete_rows；加载和 worker 占用时长见 worker_accounting。",
         "",
     ]
+    if profile.get("unified_execution"):
+        text += [
+            "本表为统一 Diffusers／GPU 驻留的执行变体；专用区域注意力和规划流程保持原生。",
+            "Qwen/SITEdit 使用相同的 DiT 注意力实现和原始文本特征提取；SITEdit 保留原生区域码、LoRA、CodeInjector 和 guidance。",
+            "实现检查通过不等于质量等价；变更后端产生的新输出不能直接继承原质量分数。",
+            "阶段耗时之和仍不是冷启动或端到端响应时间。",
+            "",
+        ]
     (root / "REPORT.md").write_text("\n".join(text))
     plot(rows, root / "COST_VS_K.svg")
     return value

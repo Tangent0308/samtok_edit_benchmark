@@ -152,6 +152,45 @@ def sit_runtime(descriptor, destination, base, repo, method):
     return str(wrapper), json.loads(done.stdout.strip().splitlines()[-1])
 
 
+def unified_runtime(package, ready, local, generation, repo, method):
+    """Reuse the pinned generation interpreter, adding only pinned PEFT files."""
+    extra = local / "unified-extra"
+    unpack(package / "extra.tar", ready["files"]["extra.tar"], extra)
+    paths = [
+        repo / "src",
+        method / "src",
+        method / "third_party/diffsynth",
+        method / "third_party",
+        extra,
+    ]
+    template = Path(generation).read_text().splitlines()
+    matches = [i for i, line in enumerate(template) if line.startswith("export PYTHONPATH=")]
+    if len(matches) != 1:
+        raise ValueError("Unexpected pinned generation launcher")
+    template[matches[0]] = "export PYTHONPATH=" + shlex.quote(os.pathsep.join(map(str, paths)))
+    wrapper = local / "unified-python"
+    wrapper.write_text("\n".join(template) + "\n")
+    wrapper.chmod(0o755)
+    probe = (
+        "import json,torch,importlib.metadata as m; "
+        "from samtok_benchmark.inference_cost.unified import UnifiedQwenPipeline; "
+        "from samtok_edit21.models import adapters; "
+        "expected={'torch':'2.8.0','transformers':'5.19.0','diffusers':'0.42.0.dev0','peft':'0.20.0'}; "
+        "actual={n:m.version(n).split('+')[0] for n in expected}; "
+        "assert expected==actual,(expected,actual); assert not torch.cuda.is_initialized(); "
+        "print(json.dumps({'packages':actual,'cuda':torch.version.cuda,'module':UnifiedQwenPipeline.__module__}))"
+    )
+    result = subprocess.run(
+        [str(wrapper), "-B", "-c", probe],
+        env=dict(os.environ, CUDA_VISIBLE_DEVICES=""),
+        capture_output=True,
+        text=True,
+        check=True,
+        timeout=180,
+    )
+    return str(wrapper), json.loads(result.stdout.strip().splitlines()[-1])
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--package", type=Path, required=True)
@@ -253,6 +292,8 @@ def main():
         archive.unlink()
         interpreters, proofs = {"generation": str(generation)}, {"generation": proof}
         for name in ("pass1", "v4"):
+            if name not in runtime_spec:
+                continue
             status(f"restoring_{name}_runtime")
             python, proof = sit_runtime(
                 runtime_spec[name],
@@ -262,6 +303,11 @@ def main():
                 local / "method",
             )
             interpreters[name], proofs[name] = python, proof
+        if plan.get("unified_execution"):
+            status("verifying_unified_runtime")
+            interpreters["unified"], proofs["unified"] = unified_runtime(
+                package, ready, local, generation, repo, local / "method"
+            )
         runtime = {
             "python": interpreters,
             "proofs": proofs,

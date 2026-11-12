@@ -1,5 +1,8 @@
 # IF-Bench 推理开销实验
 
+统一后端与 GPU 驻留的独立补测见 [INFERENCE_COST_UNIFIED.md](INFERENCE_COST_UNIFIED.md)。
+本页记录已完成的原生实现计时，两类执行配置分别保存与报告。
+
 本分支 `eval-inference-cost` 实现独立的计时实验，复用已冻结的 IF-Bench
 fairness-v2.2-1mp 输入与模型接口。所有结果写入新的 NAS 临时目录；不修改
 正式评测的输入、模型输出、Judge、分数或运行包。不调用付费 API。

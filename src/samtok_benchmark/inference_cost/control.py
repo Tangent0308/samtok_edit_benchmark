@@ -88,6 +88,7 @@ def run(plan, output, runtime, attempt, validate_only=False, smoke_only=False):
             for st in profile["settings"]
             for stage in stages(m)
         ]
+        capacity_limited = False
         try:
             for number, (model, setting, stage) in enumerate(waves, 1):
                 if stopped:
@@ -131,6 +132,10 @@ def run(plan, output, runtime, attempt, validate_only=False, smoke_only=False):
                     if model == "sitedit"
                     else "generation"
                 )
+                if profile.get("unified_execution") and not (
+                    model == "sitedit" and stage == "tokens"
+                ):
+                    name = "unified"
                 for gpu in range(8):
                     env = os.environ.copy()
                     env.update(
@@ -176,6 +181,7 @@ def run(plan, output, runtime, attempt, validate_only=False, smoke_only=False):
                         subprocess.Popen(args, env=env, stdout=stream, stderr=subprocess.STDOUT)
                     )
                 start, go, workers = time.monotonic(), False, {}
+                stop_deadline = None
                 try:
                     while True:
                         for gpu in range(8):
@@ -225,10 +231,41 @@ def run(plan, output, runtime, attempt, validate_only=False, smoke_only=False):
                             eta_scope="Current stage only; loading, subsequent methods and report not estimated.",
                         )
                         exits = [p.poll() for p in processes]
+                        capacity_workers = {
+                            gpu: w
+                            for gpu, w in workers.items()
+                            if w.get("status") == "capacity_failed"
+                        }
+                        if (
+                            capacity_workers
+                            and profile.get("capacity_probe")
+                            and not capacity_limited
+                        ):
+                            # A measured OOM is a feasibility outcome for this control,
+                            # not permission to change precision, resolution or placement.
+                            capacity_limited = True
+                            stop_deadline = time.monotonic() + 600
+                            save(
+                                root / "CAPACITY_LIMIT.json",
+                                {
+                                    "plan_digest": profile["digest"],
+                                    "phase": str(phase),
+                                    "evidence": [
+                                        w["capacity_evidence"] for w in capacity_workers.values()
+                                    ],
+                                    "unattempted_requests": "Remain pending; never relabelled as model failures",
+                                },
+                                immutable=True,
+                            )
+                            save(phase / "STOP.json", {"reason": "declared_capacity_gate"})
+                            for process in processes:
+                                if process.poll() is None:
+                                    process.send_signal(signal.SIGUSR1)
                         if any(code not in (None, 0) for code in exits):
                             raise RuntimeError(f"Worker failed in {phase}; inspect gpu logs")
                         if (
                             not go
+                            and not capacity_limited
                             and len(workers) == 8
                             and all(w["status"] in {"ready", "done"} for w in workers.values())
                         ):
@@ -249,10 +286,14 @@ def run(plan, output, runtime, attempt, validate_only=False, smoke_only=False):
                         if all(code is not None for code in exits):
                             break
                         if stopped:
+                            if stop_deadline is None:
+                                stop_deadline = time.monotonic() + 600
                             save(phase / "STOP.json", {"reason": "user_or_platform_signal"})
                             for p in processes:
                                 if p.poll() is None:
                                     p.send_signal(signal.SIGUSR1)
+                        if stop_deadline is not None and time.monotonic() > stop_deadline:
+                            raise TimeoutError("Own workers did not drain within ten minutes")
                         if not go and time.monotonic() - start > 7200:
                             raise TimeoutError("Worker loading/warmup exceeded two hours")
                         snap = gpu_snapshot()
@@ -286,11 +327,20 @@ def run(plan, output, runtime, attempt, validate_only=False, smoke_only=False):
                 finally:
                     for stream in streams:
                         stream.close()
+                if capacity_limited:
+                    break
+                if stopped:
+                    progress(status="stopped")
+                    return
             from .report import report
 
             result = report(plan, root)
             progress(
-                status="complete" if result["complete"] else "incomplete",
+                status="capacity_limited"
+                if capacity_limited
+                else "complete"
+                if result["complete"]
+                else "incomplete",
                 report=str(root / "REPORT.json"),
             )
         except BaseException as error:

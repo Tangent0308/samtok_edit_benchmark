@@ -193,7 +193,10 @@ def payload_reference(plan, model, setting, stage, request, task):
 
 def run(plan, output, phase_root, model, stage, setting, shard, smoke=False):
     profile = load_plan(plan)
-    if model == "sitedit":
+    unified = profile.get("unified_execution")
+    controlled_editor = bool(unified and stage == "edit" and model in {"sitedit", "qwen21"})
+    variant = unified or {}
+    if model == "sitedit" or controlled_editor:
         for p in ("src", "third_party/diffsynth", "third_party"):
             sys.path.insert(
                 0, str(Path(os.environ.get("IFBENCH_COST_METHOD", profile["method_source"])) / p)
@@ -283,14 +286,37 @@ def run(plan, output, phase_root, model, stage, setting, shard, smoke=False):
             for request, *_ in pending:
                 verify(read(request["public"]), assets=True)
             start = time.perf_counter()
-            if model == "sitedit":
-                backend = (
-                    SitTokens(profile["method"], setting)
-                    if stage == "tokens"
-                    else SitEditor(profile["method"])
+            try:
+                if controlled_editor:
+                    from .unified import Editor
+
+                    backend = Editor(profile["method"], unified, sit=model == "sitedit")
+                elif model == "sitedit":
+                    backend = (
+                        SitTokens(profile["method"], setting)
+                        if stage == "tokens"
+                        else SitEditor(profile["method"])
+                    )
+                else:
+                    backend = Baseline(model, stage, profile["baseline_config"], work / "loader")
+            except torch.cuda.OutOfMemoryError as error:
+                if not profile.get("capacity_probe"):
+                    raise
+                evidence = {
+                    "type": "gpu_out_of_memory",
+                    "phase": "loading",
+                    "error": repr(error),
+                    "traceback": traceback.format_exc(),
+                    "variant": variant,
+                    "gpu": shard,
+                    "host": socket.gethostname(),
+                }
+                save(phase / f"CAPACITY-{shard}.json", evidence, immutable=True)
+                progress(
+                    status="capacity_failed",
+                    capacity_evidence=str(phase / f"CAPACITY-{shard}.json"),
                 )
-            else:
-                backend = Baseline(model, stage, profile["baseline_config"], work / "loader")
+                return
             torch.cuda.synchronize()
             progress(
                 load_seconds=time.perf_counter() - start,
@@ -298,6 +324,50 @@ def run(plan, output, phase_root, model, stage, setting, shard, smoke=False):
                 gpu_name=torch.cuda.get_device_name(),
                 packages={n: importlib.metadata.version(n) for n in ["torch", "transformers"]},
             )
+            if controlled_editor:
+                first, _, _, _, prior = pending[0]
+                task = tasks.get((model, setting, first["case_id"]))
+                checks = backend.validate_prompt(
+                    read(first["public"]),
+                    prior,
+                    read(task["request_path"]) if task else None,
+                )
+                save(
+                    phase / f"VALIDATION-{shard}.json",
+                    {
+                        "status": "passed",
+                        "model": model,
+                        "gpu": shard,
+                        "checks": checks,
+                        "quality_equivalence_claimed": False,
+                        "validation_case": first["case_id"],
+                    },
+                    immutable=True,
+                )
+            if unified and stage == "edit":
+                transformers = (
+                    [backend.pipe.transformer] if controlled_editor else backend.native.transformers
+                )
+                devices = sorted({str(p.device) for m in transformers for p in m.parameters()})
+                if devices != ["cuda:0"]:
+                    raise ValueError(f"Unified editor is not GPU resident: {devices}")
+                save(
+                    phase / f"EXECUTION-{shard}.json",
+                    {
+                        "model": model,
+                        "parameter_devices": devices,
+                        "packages": {
+                            n: importlib.metadata.version(n)
+                            for n in ["torch", "transformers", "diffusers", "peft"]
+                        },
+                        "cuda": torch.version.cuda,
+                        "pipeline": type(backend.pipe).__name__
+                        if controlled_editor
+                        else "native_method_pipeline",
+                        "method_specific_attention_retained": model in {"replan", "mirage", "mice"},
+                    },
+                    immutable=True,
+                )
 
             def execute(item, directory):
                 request, repeat, dest, ident, previous = item
@@ -324,7 +394,11 @@ def run(plan, output, phase_root, model, stage, setting, shard, smoke=False):
                 tick = time.perf_counter()
                 try:
                     # Preserve each method's own no_grad/inference_mode decorators.
-                    if model == "sitedit":
+                    if controlled_editor:
+                        image, detail, calls = backend.run(
+                            public, directory, previous, native_request
+                        )
+                    elif model == "sitedit":
                         image, detail, calls = backend.run(public, directory, previous)
                     else:
                         image, detail, calls = backend.run(
@@ -346,6 +420,8 @@ def run(plan, output, phase_root, model, stage, setting, shard, smoke=False):
                         "gpu_name": torch.cuda.get_device_name(),
                         "host": socket.gethostname(),
                     }
+                    if variant:
+                        result["execution_variant"] = variant
                     if model != "sitedit" and stage == "planner":
                         result["native_planner_trace"] = backend.native.last_trace
                     if image is not None:
@@ -385,8 +461,9 @@ def run(plan, output, phase_root, model, stage, setting, shard, smoke=False):
                         "native_seconds": time.perf_counter() - tick,
                         "fatal": fatal_cuda_error(error)
                         or isinstance(error, torch.cuda.OutOfMemoryError),
+                        "capacity_error": isinstance(error, torch.cuda.OutOfMemoryError),
                     }
-                    if model != "sitedit":
+                    if hasattr(backend, "native"):
                         failure.update(
                             calls=dict(backend.native.metrics),
                             native_partial_detail=backend.native.partial_detail,
@@ -395,12 +472,30 @@ def run(plan, output, phase_root, model, stage, setting, shard, smoke=False):
                     return failure, None
 
             for index, candidate in enumerate(pending):
-                warm, _ = execute(candidate, work / f"warmup-{index}")
+                if stop:
+                    progress(status="stopped")
+                    return
+                warm, warm_image = execute(candidate, work / f"warmup-{index}")
+                if warm_image is not None:
+                    preview = phase / f"warmup-{shard}-{index}.png"
+                    warm_image.save(preview)
+                    warm["preview"] = str(preview)
+                    del warm_image
                 save(phase / f"warmup-{shard}-{index}.json", warm)
+                if warm.get("capacity_error") and profile.get("capacity_probe"):
+                    evidence = dict(warm, type="gpu_out_of_memory", phase="warmup")
+                    save(phase / f"CAPACITY-{shard}.json", evidence, immutable=True)
+                    progress(
+                        status="capacity_failed",
+                        capacity_evidence=str(phase / f"CAPACITY-{shard}.json"),
+                    )
+                    return
                 if warm.get("fatal"):
                     raise RuntimeError("Fatal CUDA error during warmup")
                 if warm["status"] == "completed":
                     break
+            if controlled_editor and warm["status"] != "completed":
+                raise RuntimeError("Migrated editor did not produce a successful validation output")
             progress(status="ready", warmup_status=warm["status"], pending=len(pending))
             deadline = time.monotonic() + 7200
             while not (phase / "GO.json").exists():
@@ -434,6 +529,14 @@ def run(plan, output, phase_root, model, stage, setting, shard, smoke=False):
                 save(dest / "result.json", result, immutable=True)
                 state[result["status"]] += 1
                 progress(last_native_seconds=result.get("native_seconds"))
+                if result.get("capacity_error") and profile.get("capacity_probe"):
+                    evidence = dict(result, type="gpu_out_of_memory", phase="measurement")
+                    save(phase / f"CAPACITY-{shard}.json", evidence, immutable=True)
+                    progress(
+                        status="capacity_failed",
+                        capacity_evidence=str(phase / f"CAPACITY-{shard}.json"),
+                    )
+                    return
                 if result.get("fatal"):
                     raise RuntimeError(f"Fatal GPU error; preserved {dest}")
                 if image is not None:
